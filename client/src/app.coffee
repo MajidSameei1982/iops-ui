@@ -1,20 +1,19 @@
 Marionette = require('marionette')
-Extensions = require('./base/extensions')
+Extensions = require('./common/extensions')
 Controller = require('./controller')
 Router = require('./router')
 ContactModel = require('./models/contact')
-ContactsCollection = require('./collections/contacts')
+ContactsCollection = require('./models/contacts')
 
-module.exports = window.App = ->
+module.exports = window.DemoApp = ->
   start: ->
-    App.core = new Mn.Application()
+    DemoApp.core = new Mn.Application()
 
-    App.core.on "before:start", (options)->
-      debugger
-      App.core.vent.trigger('app:log', 'App: Starting')
+    DemoApp.core.on "before:start", (options)->
+      DemoApp.core.vent.trigger('app:log', 'App: Starting')
 
-      App.views = {}
-      App.data = {}
+      DemoApp.views = {}
+      DemoApp.data = {}
 
       # load up some initial data:
       contacts = new ContactsCollection([])
@@ -23,24 +22,23 @@ module.exports = window.App = ->
       #     @data.contacts = contacts
       #     @core.vent.trigger('app:start')
 
-      App.data.contacts = contacts
+      DemoApp.data.contacts = contacts
           
-    App.core.on 'start', (options)->
-      debugger
-      App.core.vent.trigger('app:log', 'App: Started')
+    DemoApp.core.on 'start', (options)->
+      DemoApp.core.vent.trigger('app:log', 'App: Started')
       if (Backbone.history) 
-        App.controller = new Controller()
-        App.router = new Router
-          controller: App.controller
-        App.core.vent.trigger('app:log', 'App: Backbone.history starting')
+        DemoApp.controller = new Controller()
+        DemoApp.router = new Router
+          controller: DemoApp.controller
+        DemoApp.core.vent.trigger('app:log', 'App: Backbone.history starting')
         Backbone.history.start()
 
       # new up and views and render for base app here...
-      App.core.vent.trigger('app:log', 'App: Done starting and running!')
+      DemoApp.core.vent.trigger('app:log', 'App: Done starting and running!')
 
 
-    App.core.vent.bind 'app:log', (msg)->
+    DemoApp.core.vent.bind 'app:log', (msg)->
       console.log(msg)
 
-    App.core.start();
+    DemoApp.core.start();
 

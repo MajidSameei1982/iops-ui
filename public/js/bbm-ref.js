@@ -138,7 +138,7 @@ var ContactModel, ContactsCollection, Controller, Extensions, Marionette, Router
 
 Marionette = require('marionette');
 
-Extensions = require('./base/extensions');
+Extensions = require('./common/extensions');
 
 Controller = require('./controller');
 
@@ -146,43 +146,41 @@ Router = require('./router');
 
 ContactModel = require('./models/contact');
 
-ContactsCollection = require('./collections/contacts');
+ContactsCollection = require('./models/contacts');
 
-module.exports = window.App = function() {
+module.exports = window.DemoApp = function() {
   return {
     start: function() {
-      App.core = new Mn.Application();
-      App.core.on("before:start", function(options) {
-        debugger;
+      DemoApp.core = new Mn.Application();
+      DemoApp.core.on("before:start", function(options) {
         var contacts;
-        App.core.vent.trigger('app:log', 'App: Starting');
-        App.views = {};
-        App.data = {};
+        DemoApp.core.vent.trigger('app:log', 'App: Starting');
+        DemoApp.views = {};
+        DemoApp.data = {};
         contacts = new ContactsCollection([]);
-        return App.data.contacts = contacts;
+        return DemoApp.data.contacts = contacts;
       });
-      App.core.on('start', function(options) {
-        debugger;
-        App.core.vent.trigger('app:log', 'App: Started');
+      DemoApp.core.on('start', function(options) {
+        DemoApp.core.vent.trigger('app:log', 'App: Started');
         if (Backbone.history) {
-          App.controller = new Controller();
-          App.router = new Router({
-            controller: App.controller
+          DemoApp.controller = new Controller();
+          DemoApp.router = new Router({
+            controller: DemoApp.controller
           });
-          App.core.vent.trigger('app:log', 'App: Backbone.history starting');
+          DemoApp.core.vent.trigger('app:log', 'App: Backbone.history starting');
           Backbone.history.start();
         }
-        return App.core.vent.trigger('app:log', 'App: Done starting and running!');
+        return DemoApp.core.vent.trigger('app:log', 'App: Done starting and running!');
       });
-      App.core.vent.bind('app:log', function(msg) {
+      DemoApp.core.vent.bind('app:log', function(msg) {
         return console.log(msg);
       });
-      return App.core.start();
+      return DemoApp.core.start();
     }
   };
 };
 
-},{"./base/extensions":2,"./collections/contacts":3,"./controller":4,"./models/contact":5,"./router":6}],2:[function(require,module,exports){
+},{"./common/extensions":2,"./controller":3,"./models/contact":4,"./models/contacts":5,"./router":6}],2:[function(require,module,exports){
 
 /* MODS */
 Backbone.Marionette.Renderer.render = function(template, data) {
@@ -195,18 +193,6 @@ Backbone.Marionette.Renderer.render = function(template, data) {
 };
 
 },{}],3:[function(require,module,exports){
-var Backbone, ContactModel, ContactsCollection;
-
-Backbone = require('backbone');
-
-ContactModel = require('../models/contact');
-
-module.exports = ContactsCollection = Backbone.Collection.extend({
-  model: ContactModel,
-  url: '/api/contacts'
-});
-
-},{"../models/contact":5}],4:[function(require,module,exports){
 var AddContactView, ContactDetailsView, ContactsView, Controller, Marionette;
 
 Marionette = require('marionette');
@@ -219,49 +205,49 @@ AddContactView = require('./views/add');
 
 module.exports = Controller = Marionette.Controller.extend({
   initialize: function() {
-    App.core.vent.trigger('app:log', 'Controller: Initializing');
-    return window.App.views.contactsView = new ContactsView({
-      collection: window.App.data.contacts
+    DemoApp.core.vent.trigger('app:log', 'Controller: Initializing');
+    return DemoApp.views.contactsView = new ContactsView({
+      collection: DemoApp.data.contacts
     });
   },
   home: function() {
     var view;
-    App.core.vent.trigger('app:log', 'Controller: "Home" route hit.');
-    view = window.App.views.contactsView;
+    DemoApp.core.vent.trigger('app:log', 'Controller: "Home" route hit.');
+    view = DemoApp.views.contactsView;
     this.renderView(view);
-    return window.App.router.navigate('#');
+    return DemoApp.router.navigate('#');
   },
   details: function(id) {
     var view;
-    App.core.vent.trigger('app:log', 'Controller: "Contact Details" route hit.');
+    DemoApp.core.vent.trigger('app:log', 'Controller: "Contact Details" route hit.');
     view = new ContactDetailsView({
-      model: window.App.data.contacts.get(id)
+      model: DemoApp.data.contacts.get(id)
     });
     this.renderView(view);
-    return window.App.router.navigate('details/' + id);
+    return DemoApp.router.navigate('details/' + id);
   },
   add: function() {
     var view;
-    App.core.vent.trigger('app:log', 'Controller: "Add Contact" route hit.');
+    DemoApp.core.vent.trigger('app:log', 'Controller: "Add Contact" route hit.');
     view = new AddContactView();
     this.renderView(view);
-    return window.App.router.navigate('add');
+    return DemoApp.router.navigate('add');
   },
   renderView: function(view) {
     this.destroyCurrentView(view);
-    App.core.vent.trigger('app:log', 'Controller: Rendering new view.');
+    DemoApp.core.vent.trigger('app:log', 'Controller: Rendering new view.');
     return $('#js-boilerplate-app').html(view.render().el);
   },
   destroyCurrentView: function(view) {
-    if (!_.isUndefined(window.App.views.currentView)) {
-      App.core.vent.trigger('app:log', 'Controller: Destroying existing view.');
-      window.App.views.currentView.close();
+    if (!_.isUndefined(DemoApp.views.currentView)) {
+      DemoApp.core.vent.trigger('app:log', 'Controller: Destroying existing view.');
+      DemoApp.views.currentView.close();
     }
-    return window.App.views.currentView = view;
+    return DemoApp.views.currentView = view;
   }
 });
 
-},{"./views/add":7,"./views/contact_details":8,"./views/contacts":9}],5:[function(require,module,exports){
+},{"./views/add":7,"./views/contact_details":8,"./views/contacts":9}],4:[function(require,module,exports){
 var Backbone, ContactModel;
 
 Backbone = require('backbone');
@@ -271,7 +257,19 @@ module.exports = ContactModel = Backbone.Model.extend({
   urlRoot: 'api/contacts'
 });
 
-},{}],6:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
+var Backbone, ContactModel, ContactsCollection;
+
+Backbone = require('backbone');
+
+ContactModel = require('./contact');
+
+module.exports = ContactsCollection = Backbone.Collection.extend({
+  model: ContactModel,
+  url: '/api/contacts'
+});
+
+},{"./contact":4}],6:[function(require,module,exports){
 var Marionette, Router;
 
 Marionette = require('marionette');

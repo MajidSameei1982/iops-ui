@@ -1,5 +1,5 @@
 Backbone = require('backbone')
-ContactModel = require('../models/contact')
+ContactModel = require('./contact')
 
 module.exports = ContactsCollection = Backbone.Collection.extend
   model:  ContactModel

@@ -1,5 +1,5 @@
 {
-  "name": "myapp",
+  "name": "bbm-ref",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
@@ -7,7 +7,8 @@
     "jquery": "~2.1.4",
     "underscore": "~1.8.3",
     "backbone": "~1.2.1",
-    "backbone.modelbinder": "git://github.com/theironcook/Backbone.ModelBinder.git"
+    "backbone.modelbinder": "git://github.com/theironcook/Backbone.ModelBinder.git",
+    "bootstrap": "~3.3.5"
   },
   "exportsOverride": {
     "underscore": { "js": "underscore.js" },

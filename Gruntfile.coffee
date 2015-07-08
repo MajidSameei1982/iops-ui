@@ -6,6 +6,7 @@ module.exports = (grunt)->
   grunt.initConfig
     pkg: grunt.file.readJSON('package.json')
 
+    # load up bower libs
     bower:
       install:
         options:
@@ -14,12 +15,12 @@ module.exports = (grunt)->
           cleanTargetDir: true
           verbose: true
       
+    # clean out target directories
     clean: 
       build: ['build']
-      dev: 
-        src: ['build/app.js', 'build/<%= pkg.name %>.css', 'build/<%= pkg.name %>.js']
-      prod: ['dist']
-
+      public: ['public']
+      
+    # resolve references into aggregate libraries
     browserify:
       vendor: 
         src: ['client/requires/**/*.js']
@@ -51,17 +52,21 @@ module.exports = (grunt)->
         options:
           external: ['jquery', 'underscore', 'backbone', 'marionette']
         
+    # compile eco templates into global JST
     eco:
       build:
         options:
-          basePath: 'client/templates/'
+          basePath: 'client/src/templates/'
         files:
-          'build/templates.js': ['client/templates/**/*.eco']
-    sass:
-      dist:
-        files:
-          'build/<%= pkg.name %>.css' : 'client/styles/app.scss'
+          'build/templates.js': ['client/src/templates/**/*.eco']
 
+    # compile sass to css
+    sass:
+      build:
+        files:
+          'build/<%= pkg.name %>.css' : 'client/src/styles/app.scss'
+
+    # compile coffeescript to js retaining structure
     coffee:
       build:
         expand: true
@@ -75,79 +80,90 @@ module.exports = (grunt)->
         
     # concat vendor and app js files into a single package
     concat: 
-      app:
+      js:
         src: ['build/templates.js', 'build/<%= pkg.name %>.js']
         dest: 'build/<%= pkg.name %>.js'
       compact:
         src: ['build/vendor.js', 'build/<%= pkg.name %>.js']
         dest: 'build/<%= pkg.name %>.js'
 
+    # move files to distribution targets
     copy: 
-      dev: 
+      js: 
         files: [
-          src: 'build/<%= pkg.name %>.js',
+          src: 'build/<%= pkg.name %>.js'
           dest: 'public/js/<%= pkg.name %>.js'
         , 
-          src: 'build/vendor.js',
+          src: 'build/vendor.js'
           dest: 'public/js/vendor.js'
-        , 
-          src: 'build/<%= pkg.name %>.css',
-          dest: 'public/css/<%= pkg.name %>.css'
-        , 
-          src: 'client/img/*',
-          dest: 'public/img/'
         ]
-      prod: 
+      css:
+        files: [ 
+          src: 'build/<%= pkg.name %>.css'
+          dest: 'public/css/<%= pkg.name %>.css'
+        ]
+      static: 
+        options:
+          verbose: true
         files: [
-          src: ['client/img/*'], dest: 'dist/img/'
+          src: 'client/img/*'
+          dest: 'public/img/'
+        ,
+          cwd: 'client'
+          src: ['**/*.html']
+          dest: 'public'
+          expand: true
         ]
 
-    # CSS minification.
+    # css minification.
     cssmin: 
       minify: 
         src: ['build/<%= pkg.name %>.css']
-        dest: 'dist/css/<%= pkg.name %>.css'
+        dest: 'build/<%= pkg.name %>.min.css'
 
-    # Javascript minification.
+    # js minification.
     uglify:
       compile: 
         options: 
           compress: true
-          verbose: true
+          verbose: false
         files: [
           src: 'build/<%= pkg.name %>.js'
-          dest: 'dist/js/<%= pkg.name %>.js'
+          dest: 'build/<%= pkg.name %>.min.js'
+        ,
+          src: 'build/vendor.js'
+          dest: 'build/vendor.min.js'
         ]
       
-    
     # for changes to the front-end code
     watch: 
-      scripts: 
-        files: ['client/templates/*.eco', 'client/src/**/*.js']
-        tasks: ['clean:dev', 'browserify:app', 'concat:app', 'copy:dev']
-      less: 
-        files: ['client/styles/**/*.less']
-        tasks: ['less:transpile', 'copy:dev']
+      js: 
+        files: ['client/templates/*.eco', 'client/src/**/*.js', 'client/src/**/*.coffee']
+        tasks: ['build:js', 'copy:js']
+      css: 
+        files: ['client/src/styles/**/*.scss']
+        tasks: ['sass:build', 'copy:css']
       
-    # for changes to the node code
+    # for changes to the code
     concurrent: 
       dev: 
-        tasks: ['watch:scripts', 'watch:less']
+        tasks: ['watch:js', 'watch:css']
         options: 
           logConcurrentOutput: true
 
     # js linter
-    jshint: 
-      all: ['Gruntfile.js', 'client/src/**/*.js']
-      dev: ['client/src/**/*.js']
+    # jshint: 
+    #   all: ['Gruntfile.js', 'client/src/**/*.js']
+    #   dev: ['client/src/**/*.js']
 
-  grunt.registerTask('init:dev', ['clean', 'bower', 'browserify:vendor']);
+  grunt.registerTask('init:dev', ['clean:build', 'bower', 'build:dev']);
 
-  #grunt.registerTask('build:dev', ['clean:dev', 'browserify:app', 'jshint:dev', 'less:transpile', 'concat', 'copy:dev']);
-  #grunt.registerTask('build:dev', ['clean:build', 'coffee:build', 'browserify:app', 'jshint:dev', 'sass', 'concat', 'copy:dev']);
-  grunt.registerTask('build:dev', ['clean:build', 'coffee:build', 'eco:build', 'browserify:vendor', 'browserify:app', 'sass', 'concat:app', 'copy:dev']);
-  #grunt.registerTask('build:prod', ['clean:prod', 'browserify:vendor', 'browserify:app', 'jshint:all', 'less:transpile', 'concat', 'cssmin', 'uglify', 'copy:prod']);
+  grunt.registerTask('build:js', ['coffee:build', 'eco:build', 'browserify:vendor', 'browserify:app', 'concat:js']);
+  grunt.registerTask('build:css', ['sass:build'])
+  grunt.registerTask('build:dev', ['build:js', 'copy:js', 'build:css', 'copy:css', 'copy:static']);
+  #grunt.registerTask('build:prod', ['clean:build', 'browserify:vendor', 'browserify:app', 'jshint:all', 'less:transpile', 'concat', 'cssmin', 'uglify', 'copy:prod']);
 
-  grunt.registerTask('server', ['build:dev', 'concurrent:dev']);
-  
+  grunt.registerTask('dev', ['clean:build', 'build:dev', 'concurrent:dev']);
+
+
   
