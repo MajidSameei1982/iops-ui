@@ -1,0 +1,17 @@
+{
+  "name": "myapp",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "backbone.marionette": "~2.4.2",
+    "jquery": "~2.1.4",
+    "underscore": "~1.8.3",
+    "backbone": "~1.2.1",
+    "backbone.modelbinder": "git://github.com/theironcook/Backbone.ModelBinder.git"
+  },
+  "exportsOverride": {
+    "underscore": { "js": "underscore.js" },
+    "backbone": { "js": "backbone.js" },
+    "backbone.marionette": { "js": "lib/backbone.marionette.js" }
+  }
+}
