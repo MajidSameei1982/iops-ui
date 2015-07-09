@@ -1,6 +1,12 @@
 Marionette = require('marionette')
 
-module.exports = Router = Marionette.AppRouter.extend
+# ----------------------------------
+
+class Router extends Marionette.AppRouter
   appRoutes:
-    ''  : 'home',
-    'add' : 'add'
+    ''  : 'home'
+    #'add' : 'add'
+
+# ----------------------------------
+
+module.exports = Router

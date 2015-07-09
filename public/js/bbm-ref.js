@@ -22,7 +22,7 @@ window.JST["contact"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class=\'bs-callout bs-callout-warning\'>\n\t<a class="delete" href=\'#\'>x</a>\n\t<address>\n\t  <strong>'));
+      _print(_safe('<div class=\'col-sm-12 col-md-6 bs-callout bs-callout-warning\'>\n\t<a class="delete" href=\'#\'>x</a>\n\t<address>\n\t  <strong>'));
     
       _print(this.name);
     
@@ -46,7 +46,7 @@ window.JST["contact"] = function(__obj) {
     
       _print(this.phone);
     
-      _print(_safe('\n\t</address>\n</div>'));
+      _print(_safe('\n\t</address>\n</div>\n'));
     
     }).call(this);
     
@@ -70,7 +70,7 @@ window.JST["contact"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
-window.JST["contact_form"] = function(__obj) {
+window.JST["contact_add"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
       value = '';
@@ -91,7 +91,7 @@ window.JST["contact_form"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class=\'bs-callout bs-callout-success\'>\n\t<address>\n\t  <strong><input id="name" type="text"></strong><br/>\n\t  <input id="street" type="text"><br/>\n\t  <input id="city" type="text">, <input id="state" type="text"> <input id="postal_code" type="text"><br/>\n\t  <abbr title="Phone">P:</abbr> <input id="phone" type="text">\n\t</address>\n</div>'));
+      _print(_safe('<div class=\'bs-callout bs-callout-success\'>\n\t<address>\n\t  <strong><input id="name" type="text"></strong><br/>\n\t  <input id="street" type="text"><br/>\n\t  <input id="city" type="text">, <input id="state" type="text"> <input id="postal_code" type="text"><br/>\n\t  <abbr title="Phone">P:</abbr> <input id="phone" type="text">\n\t  <a id=\'contact_save\' href=\'#\'>SAVE</a>\n\t</address>\n</div>'));
     
     }).call(this);
     
@@ -113,7 +113,7 @@ window.JST["contact_form"] = function(__obj) {
 };
 
 ;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var BaselineApp, ContactCollection, ContactController, ContactModel, Extensions, Marionette, Router;
+var BaselineApp, ContactCollection, ContactController, ContactLayout, ContactModel, Extensions, Marionette, Router;
 
 Marionette = require('marionette');
 
@@ -129,6 +129,8 @@ ContactModel = require('./models/contact');
 
 ContactCollection = require('./models/contact_collection');
 
+ContactLayout = require('./views/contact_layout');
+
 window.Demo = (function() {
   var App;
   if (window.App != null) {
@@ -141,7 +143,8 @@ window.Demo = (function() {
     this.views = {};
     this.data = {};
     contacts = new ContactCollection([]);
-    return this.data.contacts = contacts;
+    this.data.contacts = contacts;
+    return this.layout = new ContactLayout();
   });
   App.on('start', function(options) {
     this.log('Started');
@@ -158,7 +161,7 @@ window.Demo = (function() {
   return App;
 })();
 
-},{"./common/baseline_app":2,"./common/extensions":3,"./contact_controller":4,"./models/contact":5,"./models/contact_collection":6,"./router":7}],2:[function(require,module,exports){
+},{"./common/baseline_app":2,"./common/extensions":3,"./contact_controller":4,"./models/contact":5,"./models/contact_collection":6,"./router":7,"./views/contact_layout":10}],2:[function(require,module,exports){
 var BaselineApp, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -215,7 +218,7 @@ Backbone.Marionette.Renderer.render = function(template, data) {
 };
 
 },{}],4:[function(require,module,exports){
-var ContactAddView, ContactCollectionView, ContactController, Marionette,
+var ContactAddView, ContactCollectionView, ContactController, ContactLayout, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -225,6 +228,8 @@ ContactCollectionView = require('./views/contact_collection');
 
 ContactAddView = require('./views/contact_add');
 
+ContactLayout = require('./views/contact_layout');
+
 ContactController = (function(superClass) {
   extend(ContactController, superClass);
 
@@ -233,40 +238,26 @@ ContactController = (function(superClass) {
   }
 
   ContactController.prototype.initialize = function() {
-    App.log('Initializing', 'Controller');
-    return App.views.contactsView = new ContactCollectionView({
-      collection: App.data.contacts
-    });
+    return App.log('Initializing', 'Controller');
   };
 
   ContactController.prototype.home = function() {
-    var view;
+    var v;
     App.log('"Home" route hit.', 'Controller');
-    view = App.views.contactsView;
-    this.renderView(view);
-    return App.router.navigate('#');
+    v = new ContactCollectionView({
+      collection: App.data.contacts
+    });
+    App.layout.list_region.show(v);
+    App.router.navigate('#');
+    return App.vent.bind('contact:added', function() {
+      return App.layout.add_region.empty();
+    });
   };
 
   ContactController.prototype.add = function() {
-    var view;
-    App.log('"Add Contact" route hit.', 'Controller');
-    view = new ContactAddView();
-    this.renderView(view);
-    return App.router.navigate('add');
-  };
-
-  ContactController.prototype.renderView = function(view) {
-    this.destroyCurrentView(view);
-    App.log('Rendering new view.', 'Controller');
-    return $('#js-boilerplate-app').html(view.render().el);
-  };
-
-  ContactController.prototype.destroyCurrentView = function(view) {
-    if (!_.isUndefined(App.views.currentView)) {
-      App.log('Destroying existing view.', 'Controller');
-      App.views.currentView.close();
-    }
-    return App.views.currentView = view;
+    var v;
+    v = new ContactAddView();
+    return App.layout.add_region.show(v);
   };
 
   return ContactController;
@@ -275,15 +266,29 @@ ContactController = (function(superClass) {
 
 module.exports = ContactController;
 
-},{"./views/contact_add":8,"./views/contact_collection":9}],5:[function(require,module,exports){
-var Backbone, ContactModel;
+},{"./views/contact_add":8,"./views/contact_collection":9,"./views/contact_layout":10}],5:[function(require,module,exports){
+var Backbone, ContactModel,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
 
 Backbone = require('backbone');
 
-module.exports = ContactModel = Backbone.Model.extend({
-  idAttribute: '_id',
-  urlRoot: 'api/contacts'
-});
+ContactModel = (function(superClass) {
+  extend(ContactModel, superClass);
+
+  function ContactModel() {
+    return ContactModel.__super__.constructor.apply(this, arguments);
+  }
+
+  ContactModel.prototype.idAttribute = '_id';
+
+  ContactModel.prototype.urlRoot = 'api/contacts';
+
+  return ContactModel;
+
+})(Backbone.Model);
+
+module.exports = ContactModel;
 
 },{}],6:[function(require,module,exports){
 var Backbone, ContactCollection, ContactModel,
@@ -312,19 +317,32 @@ ContactCollection = (function(superClass) {
 module.exports = ContactCollection;
 
 },{"./contact":5}],7:[function(require,module,exports){
-var Marionette, Router;
+var Marionette, Router,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
 
 Marionette = require('marionette');
 
-module.exports = Router = Marionette.AppRouter.extend({
-  appRoutes: {
-    '': 'home',
-    'add': 'add'
+Router = (function(superClass) {
+  extend(Router, superClass);
+
+  function Router() {
+    return Router.__super__.constructor.apply(this, arguments);
   }
-});
+
+  Router.prototype.appRoutes = {
+    '': 'home'
+  };
+
+  return Router;
+
+})(Marionette.AppRouter);
+
+module.exports = Router;
 
 },{}],8:[function(require,module,exports){
 var ContactAddView, Marionette,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -334,28 +352,39 @@ ContactAddView = (function(superClass) {
   extend(ContactAddView, superClass);
 
   function ContactAddView() {
+    this.save = bind(this.save, this);
     return ContactAddView.__super__.constructor.apply(this, arguments);
   }
 
-  ContactAddView.prototype.template = "contact_form";
+  ContactAddView.prototype.template = "contact_add";
 
   ContactAddView.prototype.events = {
-    'click a.save-button': 'save'
+    'click a#contact_save': 'save'
+  };
+
+  ContactAddView.prototype.ui = {
+    name: "input#name",
+    street: "input#street",
+    city: "input#city",
+    state: "input#state",
+    zip: "input#zip",
+    phone: "input#phone"
   };
 
   ContactAddView.prototype.save = function(e) {
     var newContact;
     e.preventDefault();
     newContact = {
-      name: this.$el.find('#name').val(),
-      street: this.$el.find('#street').val(),
-      city: this.$el.find('#city').val(),
-      state: this.$el.find('#state').val(),
-      postal_code: this.$el.find('#postal_code').val(),
-      phone: this.$el.find('#phone').val()
+      name: this.ui.name.val(),
+      street: this.ui.street.val(),
+      city: this.ui.city.val(),
+      state: this.ui.state.val(),
+      postal_code: this.ui.zip.val(),
+      phone: this.ui.phone.val()
     };
     App.data.contacts.create(newContact);
-    return App.log('Saved new contact!', "AddView");
+    App.log('Saved new contact!', "AddView");
+    return App.vent.trigger('contact:added');
   };
 
   return ContactAddView;
@@ -417,5 +446,45 @@ ContactCollectionView = (function(superClass) {
 
 module.exports = ContactCollectionView;
 
-},{}]},{},[1])
+},{}],10:[function(require,module,exports){
+var ContactAddView, ContactLayout, Marionette,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+ContactAddView = require('./contact_add');
+
+ContactLayout = (function(superClass) {
+  extend(ContactLayout, superClass);
+
+  function ContactLayout() {
+    return ContactLayout.__super__.constructor.apply(this, arguments);
+  }
+
+  ContactLayout.prototype.el = '#contact_layout';
+
+  ContactLayout.prototype.regions = {
+    add_region: '#add_region',
+    list_region: '#list_region'
+  };
+
+  ContactLayout.prototype.events = {
+    'click #add_c': 'add_contact'
+  };
+
+  ContactLayout.prototype.add_contact = function(e) {
+    var v;
+    e.preventDefault();
+    v = new ContactAddView();
+    return App.layout.add_region.show(v);
+  };
+
+  return ContactLayout;
+
+})(Marionette.LayoutView);
+
+module.exports = ContactLayout;
+
+},{"./contact_add":8}]},{},[1])
 ;

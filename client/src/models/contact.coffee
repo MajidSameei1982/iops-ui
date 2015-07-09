@@ -1,6 +1,11 @@
 Backbone = require('backbone')
 
-module.exports = ContactModel = Backbone.Model.extend
+# ----------------------------------
+
+class ContactModel extends Backbone.Model
   idAttribute: '_id'
   urlRoot: 'api/contacts'
 
+# ----------------------------------
+
+module.exports = ContactModel

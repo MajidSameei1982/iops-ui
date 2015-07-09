@@ -1,4 +1,4 @@
-<div class='bs-callout bs-callout-warning'>
+<div class='col-sm-12 col-md-6 bs-callout bs-callout-warning'>
 	<a class="delete" href='#'>x</a>
 	<address>
 	  <strong><%= @name %></strong><br/>

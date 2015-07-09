@@ -1,5 +1,7 @@
 Marionette = require('marionette')
 
+# ----------------------------------
+
 class ContactItemView extends Marionette.ItemView
   template: "contact"
   initialize: ()->
@@ -14,10 +16,14 @@ class ContactItemView extends Marionette.ItemView
     # this will actually send a DELETE to the server:
     # @model.destroy()
 
+# ----------------------------------
+
 class ContactCollectionView extends Marionette.CollectionView
   initialize: ()->
     @listenTo(@collection, 'change', @render)
   childView: ContactItemView
+
+# ----------------------------------
 
 module.exports = ContactCollectionView
 

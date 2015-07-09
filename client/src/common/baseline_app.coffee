@@ -1,5 +1,7 @@
 Marionette = require('marionette')
 
+# ----------------------------------
+
 class BaselineApp extends Marionette.Application
 	log: (msg, src, lvl) =>
 		@vent.trigger("app:log", msg, src, lvl)
@@ -14,5 +16,7 @@ class BaselineApp extends Marionette.Application
 	  		msg = "#{lvl} | #{src} | #{msg}"
 	  		console?.log?(msg)
 		@
+
+# ----------------------------------
 
 module.exports = BaselineApp
