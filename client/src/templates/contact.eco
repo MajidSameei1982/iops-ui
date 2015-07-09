@@ -1,0 +1,9 @@
+<div class='bs-callout bs-callout-warning'>
+	<a class="delete" href='#'>x</a>
+	<address>
+	  <strong><%= @name %></strong><br/>
+	  <%= @street %><br/>
+	  <%= @city %>, <%= @state %> <%= @postal_code %><br/>
+	  <abbr title="Phone">P:</abbr> <%= @phone %>
+	</address>
+</div>
