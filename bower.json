@@ -8,11 +8,17 @@
     "underscore": "~1.8.3",
     "backbone": "~1.2.1",
     "backbone.modelbinder": "git://github.com/theironcook/Backbone.ModelBinder.git",
-    "bootstrap": "~3.3.5"
+    "bootstrap-sass": "~3.3.5"
   },
   "exportsOverride": {
-    "underscore": { "js": "underscore.js" },
-    "backbone": { "js": "backbone.js" },
-    "backbone.marionette": { "js": "lib/backbone.marionette.js" }
+    "underscore": {
+      "js": "underscore.js"
+    },
+    "backbone": {
+      "js": "backbone.js"
+    },
+    "backbone.marionette": {
+      "js": "lib/backbone.marionette.js"
+    }
   }
 }

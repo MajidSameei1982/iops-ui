@@ -6994,7 +6994,10 @@ global.underscore = require("underscore");
 
 },{"jquery":"rXHJC3","underscore":"i0Hiwb"}],"backbone":[function(require,module,exports){
 module.exports=require('9GUI0x');
-},{}],8:[function(require,module,exports){
+},{}],"dvprZW":[function(require,module,exports){
+var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
+
+; global.$ = require("jquery");
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -9359,6 +9362,12 @@ if (typeof jQuery === 'undefined') {
 
 }(jQuery);
 
+; browserify_shim__define__module__export__(typeof bootstrap != "undefined" ? bootstrap : window.bootstrap);
+
+}).call(global, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
+
+},{"jquery":"rXHJC3"}],"bootstrap":[function(require,module,exports){
+module.exports=require('dvprZW');
 },{}],"rXHJC3":[function(require,module,exports){
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
 /*!
@@ -20135,5 +20144,5 @@ var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? 
 
 },{}],"underscore":[function(require,module,exports){
 module.exports=require('i0Hiwb');
-},{}]},{},[1,"BwEfLW",4,5,"9GUI0x",8,"rXHJC3","i0Hiwb"])
+},{}]},{},[1,"BwEfLW",4,5,"9GUI0x","dvprZW","rXHJC3","i0Hiwb"])
 ;

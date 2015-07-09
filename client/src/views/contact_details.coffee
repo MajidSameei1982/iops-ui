@@ -7,15 +7,16 @@ module.exports = ContactDetailsView = Marionette.ItemView.extend
     'click a.delete': 'deleteContact'
   goBack: (e)->
     e.preventDefault()
-    window.App.controller.home()
+    App.controller.home()
   
   deleteContact: (e)->
+    debugger
     e.preventDefault()
     console.log('Deleting contact')
-    window.App.data.contacts.remove(@model)
+    App.data.contacts.remove(@model)
 
     # this will actually send a DELETE to the server:
-    @model.destroy()
+    # @model.destroy()
 
-    window.App.controller.home()
+    App.controller.home()
 

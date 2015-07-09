@@ -5,10 +5,14 @@ itemView = Marionette.ItemView.extend
   initialize: ()->
     @listenTo(@model, 'change', @render)
   events:
-    'click': 'showDetails'
-  showDetails: ()->
-    window.App.core.vent.trigger('app:log', 'Contacts View: showDetails hit.')
-    window.App.controller.details(@model.id)
+    'click a.delete': 'deleteContact'
+  deleteContact: (e)->
+    e.preventDefault()
+    console.log('Deleting contact')
+    App.data.contacts.remove(@model)
+
+    # this will actually send a DELETE to the server:
+    # @model.destroy()
 
 module.exports = CollectionView = Marionette.CollectionView.extend
   initialize: ()->

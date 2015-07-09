@@ -46,11 +46,17 @@ module.exports = (grunt)->
                 jquery: '$'
                 backbone: 'Backbone'
                 underscore: '_'
+            bootstrap:
+              path: 'client/requires/bootstrap-sass/bootstrap.js'
+              exports: 'bootstrap'
+              depends:
+                jquery: '$'
+            
       app:
         files:
           'build/<%= pkg.name %>.js': ['build/src/app.js']
         options:
-          external: ['jquery', 'underscore', 'backbone', 'marionette']
+          external: ['jquery', 'underscore', 'backbone', 'marionette', 'bootstrap']
         
     # compile eco templates into global JST
     eco:
@@ -62,6 +68,12 @@ module.exports = (grunt)->
 
     # compile sass to css
     sass:
+      bootstrap:
+        options: 
+          style: 'expanded'
+          compass: false
+        files: 
+          'client/requires/bootstrap-sass/bootstrap.css':'client/assets/scss/bootstrap.scss'
       build:
         files:
           'build/<%= pkg.name %>.css' : 'client/src/styles/app.scss'
@@ -78,11 +90,14 @@ module.exports = (grunt)->
         options:
           bare: true
         
-    # concat vendor and app js files into a single package
+    # concat files
     concat: 
       js:
         src: ['build/templates.js', 'build/<%= pkg.name %>.js']
         dest: 'build/<%= pkg.name %>.js'
+      vendor_css:
+        src: ['client/requires/bootstrap-sass/bootstrap.css']
+        dest: 'build/vendor.css'
       compact:
         src: ['build/vendor.js', 'build/<%= pkg.name %>.js']
         dest: 'build/<%= pkg.name %>.js'
@@ -101,6 +116,9 @@ module.exports = (grunt)->
         files: [ 
           src: 'build/<%= pkg.name %>.css'
           dest: 'public/css/<%= pkg.name %>.css'
+        ,
+          src: 'build/vendor.css'
+          dest: 'public/css/vendor.css'
         ]
       static: 
         options:
@@ -138,16 +156,19 @@ module.exports = (grunt)->
     # for changes to the front-end code
     watch: 
       js: 
-        files: ['client/templates/*.eco', 'client/src/**/*.js', 'client/src/**/*.coffee']
+        files: ['client/src/templates/**/*.eco', 'client/src/**/*.js', 'client/src/**/*.coffee']
         tasks: ['build:js', 'copy:js']
       css: 
         files: ['client/src/styles/**/*.scss']
         tasks: ['sass:build', 'copy:css']
+      static:
+        files: ['client/**/*.html','client/**/*.png','client/**/*.jpg','client/**/*.gif',]
+        tasks: ['copy:static']
       
     # for changes to the code
     concurrent: 
       dev: 
-        tasks: ['watch:js', 'watch:css']
+        tasks: ['watch:js', 'watch:css', 'watch:static']
         options: 
           logConcurrentOutput: true
 
@@ -160,7 +181,8 @@ module.exports = (grunt)->
 
   grunt.registerTask('build:js', ['coffee:build', 'eco:build', 'browserify:vendor', 'browserify:app', 'concat:js']);
   grunt.registerTask('build:css', ['sass:build'])
-  grunt.registerTask('build:dev', ['build:js', 'copy:js', 'build:css', 'copy:css', 'copy:static']);
+  grunt.registerTask('build:vendor_css', ['sass:bootstrap', 'concat:vendor_css'])
+  grunt.registerTask('build:dev', ['build:js', 'copy:js', 'build:css', 'build:vendor_css', 'copy:css','copy:static']);
   #grunt.registerTask('build:prod', ['clean:build', 'browserify:vendor', 'browserify:app', 'jshint:all', 'less:transpile', 'concat', 'cssmin', 'uglify', 'copy:prod']);
 
   grunt.registerTask('dev', ['clean:build', 'build:dev', 'concurrent:dev']);

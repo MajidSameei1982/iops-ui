@@ -5,36 +5,36 @@ AddContactView = require('./views/add')
 
 module.exports = Controller = Marionette.Controller.extend
   initialize: ()->
-    DemoApp.core.vent.trigger('app:log', 'Controller: Initializing')
-    DemoApp.views.contactsView = new ContactsView
-      collection: DemoApp.data.contacts
+    App.log('Controller: Initializing')
+    App.views.contactsView = new ContactsView
+      collection: App.data.contacts
 
   home: ()->
-    DemoApp.core.vent.trigger('app:log', 'Controller: "Home" route hit.')
-    view = DemoApp.views.contactsView
+    App.log('Controller: "Home" route hit.')
+    view = App.views.contactsView
     @renderView(view)
-    DemoApp.router.navigate('#')
+    App.router.navigate('#')
 
   details: (id)->
-    DemoApp.core.vent.trigger('app:log', 'Controller: "Contact Details" route hit.')
+    App.log('Controller: "Contact Details" route hit.')
     view = new ContactDetailsView
-      model: DemoApp.data.contacts.get(id)
+      model: App.data.contacts.get(id)
     @renderView(view)
-    DemoApp.router.navigate('details/' + id)
+    App.router.navigate('details/' + id)
 
   add: ()->
-    DemoApp.core.vent.trigger('app:log', 'Controller: "Add Contact" route hit.')
+    App.log( 'Controller: "Add Contact" route hit.')
     view = new AddContactView()
     @renderView(view)
-    DemoApp.router.navigate('add')
+    App.router.navigate('add')
 
   renderView: (view)->
     @destroyCurrentView(view)
-    DemoApp.core.vent.trigger('app:log', 'Controller: Rendering new view.')
+    App.log( 'Controller: Rendering new view.')
     $('#js-boilerplate-app').html(view.render().el)
 
   destroyCurrentView: (view)->
-    if (!_.isUndefined(DemoApp.views.currentView))
-      DemoApp.core.vent.trigger('app:log', 'Controller: Destroying existing view.')
-      DemoApp.views.currentView.close()
-    DemoApp.views.currentView = view
+    if (!_.isUndefined(App.views.currentView))
+      App.log( 'Controller: Destroying existing view.')
+      App.views.currentView.close()
+    App.views.currentView = view

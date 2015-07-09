@@ -5,16 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Test Page</title>
     
+    <link type='text/css' rel='stylesheet' href='css/vendor.css'>
     <link type='text/css' rel='stylesheet' href='css/bbm-ref.css'>
     <script type='text/javascript' src='js/vendor.js'></script>
     <script type='text/javascript' src='js/bbm-ref.js'></script>
   </head>
   <body>
+    <h1>This is a Test</h1>
+    <button class="btn btn-small btn-success">This is a test button</button>
     <div id="js-boilerplate-app"></div>
     <script type="text/javascript">
       $(document).ready(function(){
-        window.myapp = new DemoApp();
-        window.myapp.start();
+        Demo.start();
       });
     </script>
   </body>
