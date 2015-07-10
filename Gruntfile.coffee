@@ -121,8 +121,6 @@ module.exports = (grunt)->
           dest: 'public/css/vendor.css'
         ]
       static: 
-        options:
-          verbose: true
         files: [
           src: 'client/img/*'
           dest: 'public/img/'
@@ -130,6 +128,13 @@ module.exports = (grunt)->
           cwd: 'client'
           src: ['**/*.html']
           dest: 'public'
+          expand: true
+        ]
+      bootstrap_static: 
+        files: [
+          cwd: 'bower_components/bootstrap-sass/assets/fonts/bootstrap/'
+          src: ['**/*.*']
+          dest: 'public/fonts/bootstrap'
           expand: true
         ]
 
@@ -182,10 +187,10 @@ module.exports = (grunt)->
   grunt.registerTask('build:js', ['coffee:build', 'eco:build', 'browserify:vendor', 'browserify:app', 'concat:js']);
   grunt.registerTask('build:css', ['sass:build'])
   grunt.registerTask('build:vendor_css', ['sass:bootstrap', 'concat:vendor_css'])
-  grunt.registerTask('build:dev', ['build:js', 'copy:js', 'build:css', 'build:vendor_css', 'copy:css','copy:static']);
+  grunt.registerTask('build:dev', ['build:js', 'copy:js', 'build:css', 'build:vendor_css', 'copy:css','copy:static', 'copy:bootstrap_static']);
   #grunt.registerTask('build:prod', ['clean:build', 'browserify:vendor', 'browserify:app', 'jshint:all', 'less:transpile', 'concat', 'cssmin', 'uglify', 'copy:prod']);
 
-  grunt.registerTask('dev', ['clean:build', 'build:dev', 'concurrent:dev']);
+  #grunt.registerTask('dev', ['clean:build', 'build:dev', 'concurrent:dev']);
 
 
   
