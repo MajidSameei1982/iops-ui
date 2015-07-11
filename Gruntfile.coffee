@@ -48,7 +48,7 @@ module.exports = (grunt)->
                 underscore: '_'
             bootstrap:
               path: 'client/requires/bootstrap-sass/bootstrap.js'
-              exports: 'bootstrap'
+              exports: 'Bootstrap'
               depends:
                 jquery: '$'
             
@@ -96,19 +96,18 @@ module.exports = (grunt)->
         src: ['build/templates.js', 'build/<%= pkg.name %>.js']
         dest: 'build/<%= pkg.name %>.js'
       vendor_css:
-        src: ['client/requires/bootstrap-sass/bootstrap.css']
+        src: ['client/requires/bootstrap-sass/bootstrap.css', 'client/requires/font-awesome/font-awesome.css']
         dest: 'build/vendor.css'
-      compact:
-        src: ['build/vendor.js', 'build/<%= pkg.name %>.js']
-        dest: 'build/<%= pkg.name %>.js'
-
+      
     # move files to distribution targets
     copy: 
       js: 
         files: [
           src: 'build/<%= pkg.name %>.js'
           dest: 'public/js/<%= pkg.name %>.js'
-        , 
+        ]
+      vendor_js:
+        files: [
           src: 'build/vendor.js'
           dest: 'public/js/vendor.js'
         ]
@@ -116,7 +115,9 @@ module.exports = (grunt)->
         files: [ 
           src: 'build/<%= pkg.name %>.css'
           dest: 'public/css/<%= pkg.name %>.css'
-        ,
+        ]
+      vendor_css: 
+        files: [
           src: 'build/vendor.css'
           dest: 'public/css/vendor.css'
         ]
@@ -130,19 +131,27 @@ module.exports = (grunt)->
           dest: 'public'
           expand: true
         ]
-      bootstrap_static: 
+      vendor_static:
         files: [
           cwd: 'bower_components/bootstrap-sass/assets/fonts/bootstrap/'
           src: ['**/*.*']
           dest: 'public/fonts/bootstrap'
           expand: true
+        ,
+          cwd: 'client/requires/font-awesome/'
+          src: ['**/*-webfont.*']
+          dest: 'public/fonts'
+          expand: true
         ]
 
     # css minification.
     cssmin: 
-      minify: 
+      css: 
         src: ['build/<%= pkg.name %>.css']
-        dest: 'build/<%= pkg.name %>.min.css'
+        dest: 'build/<%= pkg.name %>.css'
+      vendor_css: 
+        src: ['build/vendor.css']
+        dest: 'build/vendor.css'
 
     # js minification.
     uglify:
@@ -152,10 +161,10 @@ module.exports = (grunt)->
           verbose: false
         files: [
           src: 'build/<%= pkg.name %>.js'
-          dest: 'build/<%= pkg.name %>.min.js'
+          dest: 'build/<%= pkg.name %>.js'
         ,
           src: 'build/vendor.js'
-          dest: 'build/vendor.min.js'
+          dest: 'build/vendor.js'
         ]
       
     # for changes to the front-end code
@@ -177,20 +186,20 @@ module.exports = (grunt)->
         options: 
           logConcurrentOutput: true
 
-    # js linter
-    # jshint: 
-    #   all: ['Gruntfile.js', 'client/src/**/*.js']
-    #   dev: ['client/src/**/*.js']
-
-  grunt.registerTask('init:dev', ['clean:build', 'bower', 'build:dev']);
-
-  grunt.registerTask('build:js', ['coffee:build', 'eco:build', 'browserify:vendor', 'browserify:app', 'concat:js']);
-  grunt.registerTask('build:css', ['sass:build'])
-  grunt.registerTask('build:vendor_css', ['sass:bootstrap', 'concat:vendor_css'])
-  grunt.registerTask('build:dev', ['build:js', 'copy:js', 'build:css', 'build:vendor_css', 'copy:css','copy:static', 'copy:bootstrap_static']);
-  #grunt.registerTask('build:prod', ['clean:build', 'browserify:vendor', 'browserify:app', 'jshint:all', 'less:transpile', 'concat', 'cssmin', 'uglify', 'copy:prod']);
-
-  #grunt.registerTask('dev', ['clean:build', 'build:dev', 'concurrent:dev']);
+  
+  grunt.registerTask('init:dev', ['clean', 'bower', 'build:vendor_js', 'build:js', 'build:css']);
+  # build source
+  grunt.registerTask('build:vendor_js', ['browserify:vendor']);
+  grunt.registerTask('build:js', ['coffee:build', 'eco:build', 'browserify:app', 'concat:js']);
+  grunt.registerTask('build:css', ['sass:build', 'sass:bootstrap', 'concat:vendor_css'])
+  # copy to runtime destination
+  grunt.registerTask('deploy:vendor', ['copy:vendor_js', 'copy:vendor_css', 'copy:vendor_static'])
+  grunt.registerTask('deploy:dev', ['copy:js', 'copy:css', 'copy:static'])
+  
+  # wipe the slate clean and start coding
+  grunt.registerTask('dev', ['init:dev', 'deploy:vendor', 'deploy:dev', 'concurrent:dev']);
+  # wipe clean and deploy prod with minified resources
+  grunt.registerTask('prod', ['init:dev', 'cssmin', 'uglify', 'deploy:vendor', 'deploy:dev']);
 
 
   
