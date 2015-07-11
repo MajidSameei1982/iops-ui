@@ -93,10 +93,24 @@ module.exports = (grunt)->
     # concat files
     concat: 
       js:
-        src: ['build/templates.js', 'build/<%= pkg.name %>.js']
+        src: [
+          'build/templates.js'
+          'build/<%= pkg.name %>.js'
+        ]
         dest: 'build/<%= pkg.name %>.js'
+      vendor_js:
+        src: [
+          'build/vendor.js'
+          'client/adminlte/dist/js/app.js'
+        ]
+        dest: 'build/vendor.js'
       vendor_css:
-        src: ['client/requires/bootstrap-sass/bootstrap.css', 'client/requires/font-awesome/font-awesome.css']
+        src: [
+          'client/requires/bootstrap-sass/bootstrap.css'
+          'client/requires/font-awesome/font-awesome.css'
+          'client/adminlte/dist/css/AdminLTE.css'
+          'client/adminlte/dist/css/skins/_all-skins.css'
+        ]
         dest: 'build/vendor.css'
       
     # move files to distribution targets
@@ -129,6 +143,13 @@ module.exports = (grunt)->
           cwd: 'client'
           src: ['**/*.html']
           dest: 'public'
+          expand: true
+        ]
+      admin_lte_img:
+        files: [
+          cwd: 'client/adminlte/dist/img'
+          src: ['**/*.png','**/*.jpg','**/*.gif']
+          dest: 'public/adminlte/img'
           expand: true
         ]
       vendor_static:
@@ -190,10 +211,10 @@ module.exports = (grunt)->
   grunt.registerTask('init:dev', ['clean', 'bower', 'build:vendor_js', 'build:js', 'build:css']);
   # build source
   grunt.registerTask('build:vendor_js', ['browserify:vendor']);
-  grunt.registerTask('build:js', ['coffee:build', 'eco:build', 'browserify:app', 'concat:js']);
+  grunt.registerTask('build:js', ['coffee:build', 'eco:build', 'browserify:app', 'concat:vendor_js', 'concat:js']);
   grunt.registerTask('build:css', ['sass:build', 'sass:bootstrap', 'concat:vendor_css'])
   # copy to runtime destination
-  grunt.registerTask('deploy:vendor', ['copy:vendor_js', 'copy:vendor_css', 'copy:vendor_static'])
+  grunt.registerTask('deploy:vendor', ['copy:vendor_js', 'copy:vendor_css', 'copy:vendor_static', 'copy:admin_lte_img'])
   grunt.registerTask('deploy:dev', ['copy:js', 'copy:css', 'copy:static'])
   
   # wipe the slate clean and start coding
