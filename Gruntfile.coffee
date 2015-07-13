@@ -146,6 +146,11 @@ module.exports = (grunt)->
           src: ['**/*.html']
           dest: 'public'
           expand: true
+        ,
+          cwd: 'client/adminlte/plugins/iCheck'
+          src: ['**/*.*']
+          dest: 'public/adminlte/plugins/iCheck'
+          expand: true
         ]
       admin_lte_img:
         files: [

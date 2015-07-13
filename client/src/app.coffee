@@ -1,15 +1,14 @@
 Marionette = require('marionette')
 BaselineApp = require('./common/baseline_app')
 Extensions = require('./common/extensions')
-ContactController = require('./contact_controller')
+IopsController = require('./iops_controller')
 Router = require('./router')
-ContactModel = require('./models/contact')
-ContactCollection = require('./models/contact_collection')
-ContactLayout = require('./views/contact_layout')
+LoginModel = require('./models/login')
+IopsLayout = require('./views/iops_layout')
 
 # ----------------------------------
 
-window.Demo = do()->
+window.IOPS = do()->
 
   return window.App if window.App?
 
@@ -21,26 +20,19 @@ window.Demo = do()->
     @views = {}
     @data = {}
 
-    # load up some initial data:
-    contacts = new ContactCollection([])
-    # contacts.fetch
-    #   success: ()=>
-    #     @data.contacts = contacts
-    #     @core.vent.trigger('app:start')
-
-    @data.contacts = contacts
-
-    @layout = new ContactLayout();
+    @layout = new IopsLayout();
 
   App.on 'start', (options)->
     @log('Started')
     if (Backbone.history) 
-      @controller = new ContactController()
+      @controller = new IopsController()
       @router = new Router
         controller: @controller
       @log('Backbone.history starting')
       Backbone.history.start()
 
+      # force for now
+      App.router.navigate('login', {trigger:true})
 
     # new up and views and render for base app here...
     @log('Done starting and running!')

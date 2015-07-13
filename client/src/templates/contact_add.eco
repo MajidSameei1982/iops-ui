@@ -1,9 +1,0 @@
-<div class='bs-callout bs-callout-success'>
-	<address>
-	  <strong><input id="name" type="text"></strong><br/>
-	  <input id="street" type="text"><br/>
-	  <input id="city" type="text">, <input id="state" type="text"> <input id="postal_code" type="text"><br/>
-	  <abbr title="Phone">P:</abbr> <input id="phone" type="text">
-	  <a id='contact_save' href='#'>SAVE</a>
-	</address>
-</div>
