@@ -6,8 +6,15 @@
 * Version 0.0.1
 
 ### How do I get set up? ###
-
-* npm install
-* "grunt dev" to start a dev session
-* "grunt prod" to build a prod deployment with minified resources
-* open index.html - this version includes AdminLTE for the application dashboard functionality
+```
+npm install
+```
+Start a dev session...
+```
+grunt dev
+```
+Build a prod deployment with minified resources...
+```
+grunt prod
+```
+Open index.html - this version includes AdminLTE for the application dashboard functionality
