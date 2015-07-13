@@ -137,8 +137,10 @@ module.exports = (grunt)->
         ]
       static: 
         files: [
-          src: 'client/img/*'
-          dest: 'public/img/'
+          cwd: 'client/assets/img'
+          src: ['**/*.png','**/*.jpg','**/*.gif']
+          dest: 'public/img'
+          expand: true
         ,
           cwd: 'client'
           src: ['**/*.html']

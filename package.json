@@ -1,7 +1,7 @@
 {
-  "name": "bbm-ref",
+  "name": "iops-ui",
   "version": "0.0.1",
-  "description": "BBM Reference App",
+  "description": "iOPS front-end application",
   "devDependencies": {
     "bower": "~1.2.8",
     "grunt": "~0.4.1",
