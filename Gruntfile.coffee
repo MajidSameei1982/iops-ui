@@ -101,7 +101,7 @@ module.exports = (grunt)->
       vendor_js:
         src: [
           'build/vendor.js'
-          'client/adminlte/dist/js/app.js'
+          #'client/adminlte/dist/js/app.js'
         ]
         dest: 'build/vendor.js'
       vendor_css:

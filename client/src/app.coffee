@@ -5,6 +5,7 @@ IopsController = require('./iops_controller')
 Router = require('./router')
 LoginModel = require('./models/login')
 IopsLayout = require('./views/iops_layout')
+AdminLTE_lib = require('./common/adminlte_lib')
 
 # ----------------------------------
 
@@ -13,6 +14,7 @@ window.IOPS = do()->
   return window.App if window.App?
 
   App = window.App = new BaselineApp()
+  App.AdminLTE_lib = AdminLTE_lib
 
   App.on "before:start", (options)->
     @log('Starting')

@@ -5,9 +5,9 @@ Marionette = require('marionette')
 class DashboardView extends Marionette.ItemView
   template: "dashboard"
 
-  onDomRefresh: () ->
+  onShow: () ->
   	# spin up AdminLTE layout
-    $.AdminLTE.layout.activate()
+    App.AdminLTE_lib.reset()
 
 # ----------------------------------
 
