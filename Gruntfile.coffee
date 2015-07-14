@@ -101,15 +101,16 @@ module.exports = (grunt)->
       vendor_js:
         src: [
           'build/vendor.js'
-          #'client/adminlte/dist/js/app.js'
+          'client/assets/js/basil.js'
+          'client/requires/jsws/jsrsasign-latest-all-min.js'
         ]
         dest: 'build/vendor.js'
       vendor_css:
         src: [
           'client/requires/bootstrap-sass/bootstrap.css'
           'client/requires/font-awesome/font-awesome.css'
-          'client/adminlte/dist/css/AdminLTE.css'
-          'client/adminlte/dist/css/skins/_all-skins.css'
+          'client/assets/adminlte/dist/css/AdminLTE.css'
+          'client/assets/adminlte/dist/css/skins/_all-skins.css'
         ]
         dest: 'build/vendor.css'
       
@@ -146,18 +147,6 @@ module.exports = (grunt)->
           src: ['**/*.html']
           dest: 'public'
           expand: true
-        ,
-          cwd: 'client/adminlte/plugins/iCheck'
-          src: ['**/*.*']
-          dest: 'public/adminlte/plugins/iCheck'
-          expand: true
-        ]
-      admin_lte_img:
-        files: [
-          cwd: 'client/adminlte/dist/img'
-          src: ['**/*.png','**/*.jpg','**/*.gif']
-          dest: 'public/adminlte/img'
-          expand: true
         ]
       vendor_static:
         files: [
@@ -169,6 +158,16 @@ module.exports = (grunt)->
           cwd: 'client/requires/font-awesome/'
           src: ['**/*-webfont.*']
           dest: 'public/fonts'
+          expand: true
+        ,
+          cwd: 'client/assets/adminlte/dist/img'
+          src: ['**/*.png','**/*.jpg','**/*.gif']
+          dest: 'public/assets/adminlte/img'
+          expand: true
+        ,
+          cwd: 'client/assets/adminlte/plugins/iCheck'
+          src: ['**/*.*']
+          dest: 'public/assets/adminlte/plugins/iCheck'
           expand: true
         ]
 
@@ -206,6 +205,11 @@ module.exports = (grunt)->
       static:
         files: ['client/**/*.html','client/**/*.png','client/**/*.jpg','client/**/*.gif',]
         tasks: ['copy:static']
+
+    open:
+      dev:
+        path: 'public/index.html'
+        app: 'Google Chrome'
       
     # for changes to the code
     concurrent: 
@@ -221,11 +225,11 @@ module.exports = (grunt)->
   grunt.registerTask('build:js', ['coffee:build', 'eco:build', 'browserify:app', 'concat:vendor_js', 'concat:js']);
   grunt.registerTask('build:css', ['sass:build', 'sass:bootstrap', 'concat:vendor_css'])
   # copy to runtime destination
-  grunt.registerTask('deploy:vendor', ['copy:vendor_js', 'copy:vendor_css', 'copy:vendor_static', 'copy:admin_lte_img'])
+  grunt.registerTask('deploy:vendor', ['copy:vendor_js', 'copy:vendor_css', 'copy:vendor_static'])
   grunt.registerTask('deploy:dev', ['copy:js', 'copy:css', 'copy:static'])
   
   # wipe the slate clean and start coding
-  grunt.registerTask('dev', ['init:dev', 'deploy:vendor', 'deploy:dev', 'concurrent:dev']);
+  grunt.registerTask('dev', ['init:dev', 'deploy:vendor', 'deploy:dev', 'open:dev', 'concurrent:dev']);
   # wipe clean and deploy prod with minified resources
   grunt.registerTask('prod', ['init:dev', 'cssmin', 'uglify', 'deploy:vendor', 'deploy:dev']);
 

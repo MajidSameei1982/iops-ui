@@ -75,11 +75,11 @@ class AdminLTE_lib extends Object
 
     $.AdminLTE.layout =
       activate: ->
-        @fix()
-        @fixSidebar()
+        $.AdminLTE.layout.fix()
+        $.AdminLTE.layout.fixSidebar()
         $(window, '.wrapper').resize ->
-          @fix()
-          @fixSidebar()
+          $.AdminLTE.layout.fix()
+          $.AdminLTE.layout.fixSidebar()
           
       fix: ->
         #Get window height and the wrapper height
