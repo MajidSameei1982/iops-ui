@@ -1,3 +1,3 @@
 FROM nginx
 COPY public /usr/share/nginx/html
-EXPOSE 80 443 8080 8000
+EXPOSE 80 443 8000 8080
