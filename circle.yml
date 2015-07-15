@@ -1,0 +1,15 @@
+machine:
+  services:
+    - docker
+
+notify:
+  webhooks:
+    - url: https://dashboard.tutum.co/api/v1/service/5c367715-a453-4085-86f2-9d88453373e7/trigger/4dada893-af28-4c3c-85bd-f7646ad54235/call/
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - docker login -e john@avenue80.com -u jifka -p 6jifka!! tutum.co
+      - docker build -t tutum.co/jifka/iops-ui-nginx:$CIRCLE_SHA1 .
+      - docker push tutum.co/jifka/iops-ui-nginx
