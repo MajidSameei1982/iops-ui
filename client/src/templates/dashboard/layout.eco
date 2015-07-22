@@ -1,0 +1,22 @@
+<div class="wrapper">
+
+  <!-- Main Header -->
+  <div id="header-region"></div>
+
+  <!-- Left side column. contains the logo and sidebar -->
+  <div id="side-region"></div>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div id="content-region" class="content-wrapper"></div>
+  
+  <!-- Main Footer -->
+  <div id="footer-region"></div>
+  
+  <!-- Control Sidebar -->      
+  <div id="tool-region"></div>
+
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class='control-sidebar-bg'></div>
+</div><!-- ./wrapper -->
+<script src='adminlte/app.js' type="text/javascript"></script>

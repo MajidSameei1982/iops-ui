@@ -100,6 +100,7 @@ class AdminLTE_lib extends Object
             postSetWidth = sidebar_height
           #Fix for the control sidebar height
           controlSidebar = $($.AdminLTE.options.controlSidebarOptions.selector)
+          controlSidebar.css('min-height', $(".main-sidebar").height())
           if typeof controlSidebar != 'undefined'
             if controlSidebar.height() > postSetWidth
               $('.content-wrapper, .right-side').css 'min-height', controlSidebar.height()

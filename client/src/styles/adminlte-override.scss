@@ -1,0 +1,8 @@
+@media (max-width: 767px) {
+	.skin-black .main-header > .logo {
+		background-color: #d2d6de;
+		&:hover {
+			background-color:#fff;
+		}
+	}
+}

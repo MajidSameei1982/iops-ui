@@ -3,7 +3,7 @@ Marionette = require('marionette')
 # ----------------------------------
 
 class IopsLayout extends Marionette.LayoutView
-  el: '#contact_layout'
+  el: "html"
   regions:
     center_region:   '#center'
 

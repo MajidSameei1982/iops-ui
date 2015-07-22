@@ -54,4 +54,10 @@
 .bs-callout-info h4 {
   color: #5bc0de; }
 
+@media (max-width: 767px) {
+  .skin-black .main-header > .logo {
+    background-color: #d2d6de; }
+    .skin-black .main-header > .logo:hover {
+      background-color: #fff; } }
+
 /*# sourceMappingURL=iops-ui.css.map */

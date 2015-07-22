@@ -1,7 +1,7 @@
 if (!window.JST) {
   window.JST = {};
 }
-window.JST["dashboard"] = function(__obj) {
+window.JST["dashboard/content"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
       value = '';
@@ -22,7 +22,232 @@ window.JST["dashboard"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="wrapper">\n\n  <!-- Main Header -->\n  <header class="main-header">\n\n    <!-- Logo -->\n    <a href="index2.html" class="logo">\n      <!-- mini logo for sidebar mini 50x50 pixels -->\n      <span class="logo-mini"><b>iO</b></span>\n      <!-- logo for regular state and mobile devices -->\n      <span class="logo-lg"><img src=\'img/logo.png\' alt=\'JBT iOPS\' style=\'height:40px;\'/></span>\n    </a>\n\n    <!-- Header Navbar -->\n    <nav class="navbar navbar-static-top" role="navigation">\n      <!-- Sidebar toggle button-->\n      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">\n        <span class="sr-only">Toggle navigation</span>\n      </a>\n      <!-- Navbar Right Menu -->\n      <div class="navbar-custom-menu">\n        <ul class="nav navbar-nav">\n          <!-- Messages: style can be found in dropdown.less-->\n          <li class="dropdown messages-menu">\n            <!-- Menu toggle button -->\n            <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n              <i class="fa fa-envelope-o"></i>\n              <span class="label label-success">4</span>\n            </a>\n            <ul class="dropdown-menu">\n              <li class="header">You have 4 messages</li>\n              <li>\n                <!-- inner menu: contains the messages -->\n                <ul class="menu">\n                  <li><!-- start message -->\n                    <a href="#">\n                      <div class="pull-left">\n                        <!-- User Image -->\n                        <img src="img/user2-160x160.jpg" class="img-circle" alt="User Image"/>\n                      </div>\n                      <!-- Message title and timestamp -->\n                      <h4>\n                        Support Team\n                        <small><i class="fa fa-clock-o"></i> 5 mins</small>\n                      </h4>\n                      <!-- The message -->\n                      <p>Why not buy a new awesome theme?</p>\n                    </a>\n                  </li><!-- end message -->\n                </ul><!-- /.menu -->\n              </li>\n              <li class="footer"><a href="#">See All Messages</a></li>\n            </ul>\n          </li><!-- /.messages-menu -->\n\n          <!-- Notifications Menu -->\n          <li class="dropdown notifications-menu">\n            <!-- Menu toggle button -->\n            <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n              <i class="fa fa-bell-o"></i>\n              <span class="label label-warning">10</span>\n            </a>\n            <ul class="dropdown-menu">\n              <li class="header">You have 10 notifications</li>\n              <li>\n                <!-- Inner Menu: contains the notifications -->\n                <ul class="menu">\n                  <li><!-- start notification -->\n                    <a href="#">\n                      <i class="fa fa-users text-aqua"></i> 5 new members joined today\n                    </a>\n                  </li><!-- end notification -->\n                </ul>\n              </li>\n              <li class="footer"><a href="#">View all</a></li>\n            </ul>\n          </li>\n          <!-- Tasks Menu -->\n          <li class="dropdown tasks-menu">\n            <!-- Menu Toggle Button -->\n            <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n              <i class="fa fa-flag-o"></i>\n              <span class="label label-danger">9</span>\n            </a>\n            <ul class="dropdown-menu">\n              <li class="header">You have 9 tasks</li>\n              <li>\n                <!-- Inner menu: contains the tasks -->\n                <ul class="menu">\n                  <li><!-- Task item -->\n                    <a href="#">\n                      <!-- Task title and progress text -->\n                      <h3>\n                        Design some buttons\n                        <small class="pull-right">20%</small>\n                      </h3>\n                      <!-- The progress bar -->\n                      <div class="progress xs">\n                        <!-- Change the css width attribute to simulate progress -->\n                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">\n                          <span class="sr-only">20% Complete</span>\n                        </div>\n                      </div>\n                    </a>\n                  </li><!-- end task item -->\n                </ul>\n              </li>\n              <li class="footer">\n                <a href="#">View all tasks</a>\n              </li>\n            </ul>\n          </li>\n          <!-- User Account Menu -->\n          <li class="dropdown user user-menu">\n            <!-- Menu Toggle Button -->\n            <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n              <!-- The user image in the navbar-->\n              <img src="img/user2-160x160.jpg" class="user-image" alt="User Image"/>\n              <!-- hidden-xs hides the username on small devices so only the image appears. -->\n              <span class="hidden-xs">Alexander Pierce</span>\n            </a>\n            <ul class="dropdown-menu">\n              <!-- The user image in the menu -->\n              <li class="user-header">\n                <img src="img/user2-160x160.jpg" class="img-circle" alt="User Image" />\n                <p>\n                  Alexander Pierce - Web Developer\n                  <small>Member since Nov. 2012</small>\n                </p>\n              </li>\n              <!-- Menu Body -->\n              <li class="user-body">\n                <div class="col-xs-4 text-center">\n                  <a href="#">Followers</a>\n                </div>\n                <div class="col-xs-4 text-center">\n                  <a href="#">Sales</a>\n                </div>\n                <div class="col-xs-4 text-center">\n                  <a href="#">Friends</a>\n                </div>\n              </li>\n              <!-- Menu Footer-->\n              <li class="user-footer">\n                <div class="pull-left">\n                  <a href="#" class="btn btn-default btn-flat">Profile</a>\n                </div>\n                <div class="pull-right">\n                  <a href="#" class="btn btn-default btn-flat">Sign out</a>\n                </div>\n              </li>\n            </ul>\n          </li>\n          <!-- Control Sidebar Toggle Button -->\n          <li>\n            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>\n          </li>\n        </ul>\n      </div>\n    </nav>\n  </header>\n  <!-- Left side column. contains the logo and sidebar -->\n  <aside class="main-sidebar">\n\n    <!-- sidebar: style can be found in sidebar.less -->\n    <section class="sidebar">\n\n      <!-- Sidebar user panel (optional) -->\n      <div class="user-panel">\n        <div class="pull-left image">\n          <img src="img/user2-160x160.jpg" class="img-circle" alt="User Image" />\n        </div>\n        <div class="pull-left info">\n          <p>Alexander Pierce</p>\n          <!-- Status -->\n          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>\n        </div>\n      </div>\n\n      <!-- search form (Optional) -->\n      <form action="#" method="get" class="sidebar-form">\n        <div class="input-group">\n          <input type="text" name="q" class="form-control" placeholder="Search..."/>\n          <span class="input-group-btn">\n            <button type=\'submit\' name=\'search\' id=\'search-btn\' class="btn btn-flat"><i class="fa fa-search"></i></button>\n          </span>\n        </div>\n      </form>\n      <!-- /.search form -->\n\n      <!-- Sidebar Menu -->\n      <ul class="sidebar-menu">\n        <li class="header">HEADER</li>\n        <!-- Optionally, you can add icons to the links -->\n        <li class="active"><a href="#"><i class=\'fa fa-link\'></i> <span>Link</span></a></li>\n        <li><a href="#"><i class=\'fa fa-link\'></i> <span>Another Link</span></a></li>\n        <li class="treeview">\n          <a href="#"><i class=\'fa fa-link\'></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>\n          <ul class="treeview-menu">\n            <li><a href="#">Link in level 2</a></li>\n            <li><a href="#">Link in level 2</a></li>\n          </ul>\n        </li>\n      </ul><!-- /.sidebar-menu -->\n    </section>\n    <!-- /.sidebar -->\n  </aside>\n\n  <!-- Content Wrapper. Contains page content -->\n  <div class="content-wrapper">\n    <!-- Content Header (Page header) -->\n    <section class="content-header">\n      <h1>\n        Page Header\n        <small>Optional description</small>\n      </h1>\n      <ol class="breadcrumb">\n        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>\n        <li class="active">Here</li>\n      </ol>\n    </section>\n\n    <!-- Main content -->\n    <section class="content">\n\n      <!-- Your Page Content Here -->\n\n    </section><!-- /.content -->\n  </div><!-- /.content-wrapper -->\n\n  <!-- Main Footer -->\n  <footer class="main-footer">\n    <!-- To the right -->\n    <div class="pull-right hidden-xs">\n      Anything you want\n    </div>\n    <!-- Default to the left -->\n    <strong>Copyright &copy; 2015 <a href="#">JBT</a>.</strong> All rights reserved.\n  </footer>\n  \n  <!-- Control Sidebar -->      \n  <aside class="control-sidebar control-sidebar-dark">                \n    <!-- Create the tabs -->\n    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">\n      <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>\n      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>\n    </ul>\n    <!-- Tab panes -->\n    <div class="tab-content">\n      <!-- Home tab content -->\n      <div class="tab-pane active" id="control-sidebar-home-tab">\n        <h3 class="control-sidebar-heading">Recent Activity</h3>\n        <ul class=\'control-sidebar-menu\'>\n          <li>\n            <a href=\'javascript::;\'>\n              <i class="menu-icon fa fa-birthday-cake bg-red"></i>\n              <div class="menu-info">\n                <h4 class="control-sidebar-subheading">Langdon\'s Birthday</h4>\n                <p>Will be 23 on April 24th</p>\n              </div>\n            </a>\n          </li>              \n        </ul><!-- /.control-sidebar-menu -->\n\n        <h3 class="control-sidebar-heading">Tasks Progress</h3> \n        <ul class=\'control-sidebar-menu\'>\n          <li>\n            <a href=\'javascript::;\'>               \n              <h4 class="control-sidebar-subheading">\n                Custom Template Design\n                <span class="label label-danger pull-right">70%</span>\n              </h4>\n              <div class="progress progress-xxs">\n                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>\n              </div>                                    \n            </a>\n          </li>                         \n        </ul><!-- /.control-sidebar-menu -->         \n\n      </div><!-- /.tab-pane -->\n      <!-- Stats tab content -->\n      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div><!-- /.tab-pane -->\n      <!-- Settings tab content -->\n      <div class="tab-pane" id="control-sidebar-settings-tab">            \n        <form method="post">\n          <h3 class="control-sidebar-heading">General Settings</h3>\n          <div class="form-group">\n            <label class="control-sidebar-subheading">\n              Report panel usage\n              <input type="checkbox" class="pull-right" checked />\n            </label>\n            <p>\n              Some information about this general settings option\n            </p>\n          </div><!-- /.form-group -->\n        </form>\n      </div><!-- /.tab-pane -->\n    </div>\n  </aside><!-- /.control-sidebar -->\n  <!-- Add the sidebar\'s background. This div must be placed\n       immediately after the control sidebar -->\n  <div class=\'control-sidebar-bg\'></div>\n</div><!-- ./wrapper -->\n<script src=\'adminlte/app.js\' type="text/javascript"></script>'));
+      _print(_safe('<!-- Content Header (Page header) -->\n<section class="content-header">\n  <h1>\n    Page Header\n    <small>Optional description</small>\n  </h1>\n  <ol class="breadcrumb">\n    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>\n    <li class="active">Here</li>\n  </ol>\n</section>\n\n<!-- Main content -->\n<section class="content">\n\n  <!-- Your Page Content Here -->\n\n  Pump.Value: <button id="pumpval" class=\'btn\'></button>\n\n</section><!-- /.content -->'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
+window.JST["dashboard/footer"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<!-- To the right -->\n<div class="pull-right hidden-xs">\n  Anything you want\n</div>\n<!-- Default to the left -->\n<strong>Copyright &copy; 2015 <a href="#">JBT</a>.</strong> All rights reserved.\n'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
+window.JST["dashboard/header"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<!-- Logo -->\n<a href="/" class="logo">\n  <!-- mini logo for sidebar mini 50x50 pixels -->\n  <span class="logo-mini"><b>iO</b></span>\n  <!-- logo for regular state and mobile devices -->\n  <span class="logo-lg"><img src=\'img/logo.png\' alt=\'JBT iOPS\' style=\'height:40px;\'/></span>\n</a>\n\n<!-- Header Navbar -->\n<nav class="navbar navbar-static-top" role="navigation">\n  <!-- Sidebar toggle button-->\n  <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">\n    <span class="sr-only">Toggle navigation</span>\n  </a>\n  <!-- Navbar Right Menu -->\n  <div class="navbar-custom-menu">\n    <ul class="nav navbar-nav">\n      <!-- Messages: style can be found in dropdown.less-->\n      <li class="dropdown messages-menu">\n        <!-- Menu toggle button -->\n        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n          <i class="fa fa-envelope-o"></i>\n          <span class="label label-success">4</span>\n        </a>\n        <ul class="dropdown-menu">\n          <li class="header">You have 4 messages</li>\n          <li>\n            <!-- inner menu: contains the messages -->\n            <ul class="menu">\n              <li><!-- start message -->\n                <a href="#">\n                  <div class="pull-left">\n                    <!-- User Image -->\n                    <img src="img/user2-160x160.jpg" class="img-circle" alt="User Image"/>\n                  </div>\n                  <!-- Message title and timestamp -->\n                  <h4>\n                    Support Team\n                    <small><i class="fa fa-clock-o"></i> 5 mins</small>\n                  </h4>\n                  <!-- The message -->\n                  <p>Why not buy a new awesome theme?</p>\n                </a>\n              </li><!-- end message -->\n            </ul><!-- /.menu -->\n          </li>\n          <li class="footer"><a href="#">See All Messages</a></li>\n        </ul>\n      </li><!-- /.messages-menu -->\n\n      <!-- Notifications Menu -->\n      <li class="dropdown notifications-menu">\n        <!-- Menu toggle button -->\n        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n          <i class="fa fa-bell-o"></i>\n          <span class="label label-warning">10</span>\n        </a>\n        <ul class="dropdown-menu">\n          <li class="header">You have 10 notifications</li>\n          <li>\n            <!-- Inner Menu: contains the notifications -->\n            <ul class="menu">\n              <li><!-- start notification -->\n                <a href="#">\n                  <i class="fa fa-users text-aqua"></i> 5 new members joined today\n                </a>\n              </li><!-- end notification -->\n            </ul>\n          </li>\n          <li class="footer"><a href="#">View all</a></li>\n        </ul>\n      </li>\n      <!-- Tasks Menu -->\n      <li class="dropdown tasks-menu">\n        <!-- Menu Toggle Button -->\n        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n          <i class="fa fa-flag-o"></i>\n          <span class="label label-danger">9</span>\n        </a>\n        <ul class="dropdown-menu">\n          <li class="header">You have 9 tasks</li>\n          <li>\n            <!-- Inner menu: contains the tasks -->\n            <ul class="menu">\n              <li><!-- Task item -->\n                <a href="#">\n                  <!-- Task title and progress text -->\n                  <h3>\n                    Design some buttons\n                    <small class="pull-right">20%</small>\n                  </h3>\n                  <!-- The progress bar -->\n                  <div class="progress xs">\n                    <!-- Change the css width attribute to simulate progress -->\n                    <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">\n                      <span class="sr-only">20% Complete</span>\n                    </div>\n                  </div>\n                </a>\n              </li><!-- end task item -->\n            </ul>\n          </li>\n          <li class="footer">\n            <a href="#">View all tasks</a>\n          </li>\n        </ul>\n      </li>\n      <!-- User Account Menu -->\n      <li class="dropdown user user-menu">\n        <!-- Menu Toggle Button -->\n        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n          <!-- The user image in the navbar-->\n          <img src="img/user2-160x160.jpg" class="user-image" alt="User Image"/>\n          <!-- hidden-xs hides the username on small devices so only the image appears. -->\n          <span class="hidden-xs">Alexander Pierce</span>\n        </a>\n        <ul class="dropdown-menu">\n          <!-- The user image in the menu -->\n          <li class="user-header">\n            <img src="img/user2-160x160.jpg" class="img-circle" alt="User Image" />\n            <p>\n              Alexander Pierce - Web Developer\n              <small>Member since Nov. 2012</small>\n            </p>\n          </li>\n          <!-- Menu Body -->\n          <li class="user-body">\n            <div class="col-xs-4 text-center">\n              <a href="#">Followers</a>\n            </div>\n            <div class="col-xs-4 text-center">\n              <a href="#">Sales</a>\n            </div>\n            <div class="col-xs-4 text-center">\n              <a href="#">Friends</a>\n            </div>\n          </li>\n          <!-- Menu Footer-->\n          <li class="user-footer">\n            <div class="pull-left">\n              <a href="#" class="btn btn-default btn-flat">Profile</a>\n            </div>\n            <div class="pull-right">\n              <a href="#" class="btn btn-default btn-flat">Sign out</a>\n            </div>\n          </li>\n        </ul>\n      </li>\n      <!-- Control Sidebar Toggle Button -->\n      <li>\n        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>\n      </li>\n    </ul>\n  </div>\n</nav>'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
+window.JST["dashboard/layout"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div class="wrapper">\n\n  <!-- Main Header -->\n  <div id="header-region"></div>\n\n  <!-- Left side column. contains the logo and sidebar -->\n  <div id="side-region"></div>\n\n  <!-- Content Wrapper. Contains page content -->\n  <div id="content-region" class="content-wrapper"></div>\n  \n  <!-- Main Footer -->\n  <div id="footer-region"></div>\n  \n  <!-- Control Sidebar -->      \n  <div id="tool-region"></div>\n\n  <!-- Add the sidebar\'s background. This div must be placed\n       immediately after the control sidebar -->\n  <div class=\'control-sidebar-bg\'></div>\n</div><!-- ./wrapper -->\n<script src=\'adminlte/app.js\' type="text/javascript"></script>'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
+window.JST["dashboard/side"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<!-- sidebar: style can be found in sidebar.less -->\n<section class="sidebar">\n\n  <!-- Sidebar user panel (optional) -->\n  <div class="user-panel">\n    <div class="pull-left image">\n      <img src="img/user2-160x160.jpg" class="img-circle" alt="User Image" />\n    </div>\n    <div class="pull-left info">\n      <p>Alexander Pierce</p>\n      <!-- Status -->\n      <a href="#"><i class="fa fa-circle text-success"></i> Online</a>\n    </div>\n  </div>\n\n  <!-- search form (Optional) -->\n  <form action="#" method="get" class="sidebar-form">\n    <div class="input-group">\n      <input type="text" name="q" class="form-control" placeholder="Search..."/>\n      <span class="input-group-btn">\n        <button type=\'submit\' name=\'search\' id=\'search-btn\' class="btn btn-flat"><i class="fa fa-search"></i></button>\n      </span>\n    </div>\n  </form>\n  <!-- /.search form -->\n\n  <!-- Sidebar Menu -->\n  <ul class="sidebar-menu">\n    <li class="header">HEADER</li>\n    <!-- Optionally, you can add icons to the links -->\n    <li class="active"><a href="#"><i class=\'fa fa-link\'></i> <span>Link</span></a></li>\n    <li><a href="#"><i class=\'fa fa-link\'></i> <span>Another Link</span></a></li>\n    <li class="treeview">\n      <a href="#"><i class=\'fa fa-link\'></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>\n      <ul class="treeview-menu">\n        <li><a href="#">Link in level 2</a></li>\n        <li><a href="#">Link in level 2</a></li>\n      </ul>\n    </li>\n  </ul><!-- /.sidebar-menu -->\n</section>\n<!-- /.sidebar -->'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
+window.JST["dashboard/tool"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<!-- Create the tabs -->\n<ul class="nav nav-tabs nav-justified control-sidebar-tabs">\n  <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>\n  <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>\n</ul>\n<!-- Tab panes -->\n<div class="tab-content">\n  <!-- Home tab content -->\n  <div class="tab-pane active" id="control-sidebar-home-tab">\n    <h3 class="control-sidebar-heading">Recent Activity</h3>\n    <ul class=\'control-sidebar-menu\'>\n      <li>\n        <a href=\'javascript::;\'>\n          <i class="menu-icon fa fa-birthday-cake bg-red"></i>\n          <div class="menu-info">\n            <h4 class="control-sidebar-subheading">Langdon\'s Birthday</h4>\n            <p>Will be 23 on April 24th</p>\n          </div>\n        </a>\n      </li>              \n    </ul><!-- /.control-sidebar-menu -->\n\n    <h3 class="control-sidebar-heading">Tasks Progress</h3> \n    <ul class=\'control-sidebar-menu\'>\n      <li>\n        <a href=\'javascript::;\'>               \n          <h4 class="control-sidebar-subheading">\n            Custom Template Design\n            <span class="label label-danger pull-right">70%</span>\n          </h4>\n          <div class="progress progress-xxs">\n            <div class="progress-bar progress-bar-danger" style="width: 70%"></div>\n          </div>                                    \n        </a>\n      </li>                         \n    </ul><!-- /.control-sidebar-menu -->         \n\n  </div><!-- /.tab-pane -->\n  <!-- Stats tab content -->\n  <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div><!-- /.tab-pane -->\n  <!-- Settings tab content -->\n  <div class="tab-pane" id="control-sidebar-settings-tab">            \n    <form method="post">\n      <h3 class="control-sidebar-heading">General Settings</h3>\n      <div class="form-group">\n        <label class="control-sidebar-subheading">\n          Report panel usage\n          <input type="checkbox" class="pull-right" checked />\n        </label>\n        <p>\n          Some information about this general settings option\n        </p>\n      </div><!-- /.form-group -->\n    </form>\n  </div><!-- /.tab-pane -->\n</div>\n<!-- /.control-sidebar -->'));
     
     }).call(this);
     
@@ -138,7 +363,7 @@ window.IOPS = (function() {
   return App;
 })();
 
-},{"./common/adminlte_lib":2,"./common/baseline_app":3,"./common/extensions":4,"./iops_controller":5,"./models/login":6,"./router":7,"./views/iops_layout":9}],2:[function(require,module,exports){
+},{"./common/adminlte_lib":2,"./common/baseline_app":3,"./common/extensions":4,"./iops_controller":5,"./models/login":6,"./router":7,"./views/iops_layout":14}],2:[function(require,module,exports){
 
 /*
  *
@@ -253,6 +478,7 @@ AdminLTE_lib = (function(superClass) {
             postSetWidth = sidebar_height;
           }
           controlSidebar = $($.AdminLTE.options.controlSidebarOptions.selector);
+          controlSidebar.css('min-height', $(".main-sidebar").height());
           if (typeof controlSidebar !== 'undefined') {
             if (controlSidebar.height() > postSetWidth) {
               return $('.content-wrapper, .right-side').css('min-height', controlSidebar.height());
@@ -652,7 +878,7 @@ Backbone.Marionette.Renderer.render = function(template, data) {
 };
 
 },{}],5:[function(require,module,exports){
-var DashboardView, IopsController, IopsLayout, LoginView, Marionette,
+var DashboardLayout, IopsController, IopsLayout, LoginView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -662,7 +888,7 @@ IopsLayout = require('./views/iops_layout');
 
 LoginView = require('./views/login');
 
-DashboardView = require('./views/dashboard');
+DashboardLayout = require('./views/dashboard/layout');
 
 IopsController = (function(superClass) {
   extend(IopsController, superClass);
@@ -677,7 +903,7 @@ IopsController = (function(superClass) {
 
   IopsController.prototype.home = function() {
     var v;
-    v = new DashboardView();
+    v = new DashboardLayout();
     return App.layout.center_region.show(v);
   };
 
@@ -693,7 +919,7 @@ IopsController = (function(superClass) {
 
 module.exports = IopsController;
 
-},{"./views/dashboard":8,"./views/iops_layout":9,"./views/login":10}],6:[function(require,module,exports){
+},{"./views/dashboard/layout":11,"./views/iops_layout":14,"./views/login":15}],6:[function(require,module,exports){
 var Backbone, LoginModel,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -743,32 +969,187 @@ Router = (function(superClass) {
 module.exports = Router;
 
 },{}],8:[function(require,module,exports){
-var DashboardView, Marionette,
+var DashboardContentView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
 Marionette = require('marionette');
 
-DashboardView = (function(superClass) {
-  extend(DashboardView, superClass);
+DashboardContentView = (function(superClass) {
+  extend(DashboardContentView, superClass);
 
-  function DashboardView() {
-    return DashboardView.__super__.constructor.apply(this, arguments);
+  function DashboardContentView() {
+    return DashboardContentView.__super__.constructor.apply(this, arguments);
   }
 
-  DashboardView.prototype.template = "dashboard";
+  DashboardContentView.prototype.template = "dashboard/content";
 
-  DashboardView.prototype.onShow = function() {
-    return App.AdminLTE_lib.reset();
-  };
-
-  return DashboardView;
+  return DashboardContentView;
 
 })(Marionette.ItemView);
 
-module.exports = DashboardView;
+module.exports = DashboardContentView;
 
 },{}],9:[function(require,module,exports){
+var DashboardFooterView, Marionette,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+DashboardFooterView = (function(superClass) {
+  extend(DashboardFooterView, superClass);
+
+  function DashboardFooterView() {
+    return DashboardFooterView.__super__.constructor.apply(this, arguments);
+  }
+
+  DashboardFooterView.prototype.template = "dashboard/footer";
+
+  DashboardFooterView.prototype.tagName = "footer";
+
+  DashboardFooterView.prototype.className = "main-footer";
+
+  return DashboardFooterView;
+
+})(Marionette.ItemView);
+
+module.exports = DashboardFooterView;
+
+},{}],10:[function(require,module,exports){
+var DashboardHeaderView, Marionette,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+DashboardHeaderView = (function(superClass) {
+  extend(DashboardHeaderView, superClass);
+
+  function DashboardHeaderView() {
+    return DashboardHeaderView.__super__.constructor.apply(this, arguments);
+  }
+
+  DashboardHeaderView.prototype.template = "dashboard/header";
+
+  DashboardHeaderView.prototype.tagName = "header";
+
+  DashboardHeaderView.prototype.className = "main-header";
+
+  return DashboardHeaderView;
+
+})(Marionette.ItemView);
+
+module.exports = DashboardHeaderView;
+
+},{}],11:[function(require,module,exports){
+var DashboardContentView, DashboardFooterView, DashboardHeaderView, DashboardLayout, DashboardSideView, DashboardToolView, Marionette,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+DashboardHeaderView = require('./headerview');
+
+DashboardSideView = require('./sideview');
+
+DashboardToolView = require('./toolview');
+
+DashboardFooterView = require('./footerview');
+
+DashboardContentView = require('./contentview');
+
+DashboardLayout = (function(superClass) {
+  extend(DashboardLayout, superClass);
+
+  function DashboardLayout() {
+    return DashboardLayout.__super__.constructor.apply(this, arguments);
+  }
+
+  DashboardLayout.prototype.template = "dashboard/layout";
+
+  DashboardLayout.prototype.regions = {
+    header: "#header-region",
+    side: "#side-region",
+    tool: "#tool-region",
+    footer: "#footer-region",
+    content: "#content-region"
+  };
+
+  DashboardLayout.prototype.onShow = function() {
+    var contentview, footerview, headerview, sideview, toolview;
+    headerview = new DashboardHeaderView();
+    this.header.show(headerview);
+    sideview = new DashboardSideView();
+    this.side.show(sideview);
+    toolview = new DashboardToolView();
+    this.tool.show(toolview);
+    footerview = new DashboardFooterView();
+    this.footer.show(footerview);
+    contentview = new DashboardContentView();
+    this.content.show(contentview);
+    return App.AdminLTE_lib.reset();
+  };
+
+  return DashboardLayout;
+
+})(Marionette.LayoutView);
+
+module.exports = DashboardLayout;
+
+},{"./contentview":8,"./footerview":9,"./headerview":10,"./sideview":12,"./toolview":13}],12:[function(require,module,exports){
+var DashboardSideView, Marionette,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+DashboardSideView = (function(superClass) {
+  extend(DashboardSideView, superClass);
+
+  function DashboardSideView() {
+    return DashboardSideView.__super__.constructor.apply(this, arguments);
+  }
+
+  DashboardSideView.prototype.template = "dashboard/side";
+
+  DashboardSideView.prototype.tagName = "aside";
+
+  DashboardSideView.prototype.className = "main-sidebar";
+
+  return DashboardSideView;
+
+})(Marionette.ItemView);
+
+module.exports = DashboardSideView;
+
+},{}],13:[function(require,module,exports){
+var DashboardToolView, Marionette,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+DashboardToolView = (function(superClass) {
+  extend(DashboardToolView, superClass);
+
+  function DashboardToolView() {
+    return DashboardToolView.__super__.constructor.apply(this, arguments);
+  }
+
+  DashboardToolView.prototype.template = "dashboard/tool";
+
+  DashboardToolView.prototype.tagName = "aside";
+
+  DashboardToolView.prototype.className = "control-sidebar control-sidebar-dark";
+
+  return DashboardToolView;
+
+})(Marionette.ItemView);
+
+module.exports = DashboardToolView;
+
+},{}],14:[function(require,module,exports){
 var IopsLayout, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -782,7 +1163,7 @@ IopsLayout = (function(superClass) {
     return IopsLayout.__super__.constructor.apply(this, arguments);
   }
 
-  IopsLayout.prototype.el = '#contact_layout';
+  IopsLayout.prototype.el = "html";
 
   IopsLayout.prototype.regions = {
     center_region: '#center'
@@ -794,7 +1175,7 @@ IopsLayout = (function(superClass) {
 
 module.exports = IopsLayout;
 
-},{}],10:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 var LoginView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;

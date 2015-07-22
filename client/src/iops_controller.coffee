@@ -1,7 +1,7 @@
 Marionette = require('marionette')
 IopsLayout = require('./views/iops_layout')
 LoginView = require('./views/login')
-DashboardView = require('./views/dashboard')
+DashboardLayout = require('./views/dashboard/layout')
 
 # ----------------------------------
 
@@ -11,7 +11,7 @@ class IopsController extends Marionette.Controller
     # add more controller initialization code here
     
   home: ()->
-    v = new DashboardView()
+    v = new DashboardLayout()
     App.layout.center_region.show(v)
 
   login: ()->

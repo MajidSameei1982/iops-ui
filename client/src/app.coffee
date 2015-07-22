@@ -10,7 +10,6 @@ AdminLTE_lib = require('./common/adminlte_lib')
 # ----------------------------------
 
 window.IOPS = do()->
-
   return window.App if window.App?
 
   App = window.App = new BaselineApp()
