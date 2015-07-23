@@ -22,7 +22,7 @@ window.JST["dashboard/content"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<!-- Content Header (Page header) -->\n<section class="content-header">\n  <h1>\n    Page Header\n    <small>Optional description</small>\n  </h1>\n  <ol class="breadcrumb">\n    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>\n    <li class="active">Here</li>\n  </ol>\n</section>\n\n<!-- Main content -->\n<section class="content">\n\n  <!-- Your Page Content Here -->\n\n  Pump.Value: <button id="pumpval" class=\'btn\'></button>\n\n</section><!-- /.content -->'));
+      _print(_safe('<!-- Content Header (Page header) -->\n<section class="content-header">\n  <h1 id="title"></h1>\n\n  <!-- <ol class="breadcrumb">\n    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>\n    <li class="active">Here</li>\n  </ol> -->\n</section>\n\n<!-- Main content -->\n<section id="center-region" class="content"></section>\n<!-- /.content -->'));
     
     }).call(this);
     
@@ -67,7 +67,7 @@ window.JST["dashboard/footer"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<!-- To the right -->\n<div class="pull-right hidden-xs">\n  Anything you want\n</div>\n<!-- Default to the left -->\n<strong>Copyright &copy; 2015 <a href="#">JBT</a>.</strong> All rights reserved.\n'));
+      _print(_safe('<!-- To the right -->\n<div class="pull-right hidden-xs">Message of the day?</div>\n<!-- Default to the left -->\n<strong>Copyright &copy; 2015 <a href="#">JBT</a>.</strong> All rights reserved.\n'));
     
     }).call(this);
     
@@ -984,9 +984,21 @@ DashboardContentView = (function(superClass) {
 
   DashboardContentView.prototype.template = "dashboard/content";
 
+  DashboardContentView.prototype.regions = {
+    center: '#center-region'
+  };
+
+  DashboardContentView.prototype.onDomRefresh = function() {
+    var st, t;
+    t = this.title != null ? this.title : 'Foo';
+    st = this.subtitle != null ? this.subtitle : '';
+    t = t + " <small>" + st + "</small>";
+    return $("#title").html(t);
+  };
+
   return DashboardContentView;
 
-})(Marionette.ItemView);
+})(Marionette.LayoutView);
 
 module.exports = DashboardContentView;
 
@@ -1087,6 +1099,8 @@ DashboardLayout = (function(superClass) {
     footerview = new DashboardFooterView();
     this.footer.show(footerview);
     contentview = new DashboardContentView();
+    contentview.title = "Main Dashboard";
+    contentview.subtitle = "This is an example dashboard";
     this.content.show(contentview);
     return App.AdminLTE_lib.reset();
   };

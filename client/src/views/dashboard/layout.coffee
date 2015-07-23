@@ -29,7 +29,10 @@ class DashboardLayout extends Marionette.LayoutView
     footerview = new DashboardFooterView()
     @footer.show(footerview)
 
+    # pick a dashboard here?
     contentview = new DashboardContentView()
+    contentview.title = "Main Dashboard"
+    contentview.subtitle = "This is an example dashboard"
     @content.show(contentview)
 
     App.AdminLTE_lib.reset()

@@ -10,6 +10,6 @@ deployment:
   production:
     branch: master
     commands:
-      - docker login -e john@avenue80.com -u jifka -p 6jifka!! tutum.co
-      - docker build -t tutum.co/jifka/iops-ui-nginx:$CIRCLE_SHA1 .
-      - docker push tutum.co/jifka/iops-ui-nginx
+      - docker login -e $TUTUM_EML -u $TUTUM_USER -p $TUTUM_PW tutum.co
+      - docker build -t tutum.co/iops/ui:$CIRCLE_SHA1 .
+      - docker push tutum.co/iops/ui
