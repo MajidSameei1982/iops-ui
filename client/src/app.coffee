@@ -33,7 +33,7 @@ window.IOPS = do()->
       Backbone.history.start()
 
       # force for now
-      App.router.navigate('login', {trigger:true})
+      #App.router.navigate('login', {trigger:true})
 
     # new up and views and render for base app here...
     @log('Done starting and running!')

@@ -1,4 +1,5 @@
 Marionette = require('marionette')
+UIUtils = require('../common/uiutils')
 
 # ----------------------------------
 
@@ -13,13 +14,12 @@ class LoginView extends Marionette.ItemView
 
   login: (e)->
     e.preventDefault();
-    App.router.navigate('',{trigger:true})
+    UIUtils.checkFields(@)
+
+    #App.router.navigate('',{trigger:true})
 
   onDomRefresh: () ->
-    $('input', @el).iCheck
-      checkboxClass: 'icheckbox_square-blue'
-      radioClass: 'iradio_square-blue'
-      increaseArea: '20%'
+    UIUtils.setICheck(@)
     $('body').addClass('login-page')
 
 # ----------------------------------

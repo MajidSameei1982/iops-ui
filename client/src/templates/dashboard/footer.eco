@@ -1,4 +1,4 @@
-<!-- To the right -->
-<div class="pull-right hidden-xs">Message of the day?</div>
-<!-- Default to the left -->
-<strong>Copyright &copy; 2015 <a href="#">JBT</a>.</strong> All rights reserved.
+<div class="pull-right">
+	<span id='logo'><img src='img/logo_lg.png' class='iops'/> powered by <img src='img/jbt_sm.png' class='jbt'/></span>
+</div>
+
