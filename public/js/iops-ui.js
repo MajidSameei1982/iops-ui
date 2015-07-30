@@ -292,7 +292,7 @@ window.JST["login"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="login-box">\n  <div class="login-logo">\n    <img src=\'img/logo_login.png\' style="max-width:350px;"/>\n  </div><!-- /.login-logo -->\n  <div class="login-box-body">\n    <p class="login-box-msg">Sign in to start your session</p>\n    <form action="#" method="post">\n      \n      '));
+      _print(_safe('<div class="login-box">\n  <div class="login-logo">\n    <img src=\'img/logo_login.png\' style="max-width:300px;"/>\n  </div><!-- /.login-logo -->\n  <div class="login-box-body">\n    <p class="login-box-msg">Sign in to start your session</p>\n    <form action="#" method="post">\n      \n      '));
     
       _print(_safe(this.formGroup({
         id: 'email',
@@ -332,7 +332,7 @@ window.JST["login"] = function(__obj) {
 };
 
 ;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var AdminLTE_lib, BaselineApp, Extensions, IopsController, IopsLayout, LoginModel, Marionette, Router;
+var AdminLTE_lib, AppConfig, BaselineApp, Extensions, IopsController, IopsLayout, Marionette, Router, SessionModel;
 
 Marionette = require('marionette');
 
@@ -344,9 +344,11 @@ IopsController = require('./iops_controller');
 
 Router = require('./router');
 
-LoginModel = require('./models/login');
-
 IopsLayout = require('./views/iops_layout');
+
+AppConfig = require('./common/appconfig');
+
+SessionModel = require('./models/session');
 
 AdminLTE_lib = require('./common/adminlte_lib');
 
@@ -357,10 +359,12 @@ window.IOPS = (function() {
   }
   App = window.App = new BaselineApp();
   App.AdminLTE_lib = AdminLTE_lib;
+  App.config = AppConfig;
   App.on("before:start", function(options) {
     this.log('Starting');
     this.views = {};
     this.data = {};
+    this.session = SessionModel.restore();
     return this.layout = new IopsLayout();
   });
   App.on('start', function(options) {
@@ -378,7 +382,7 @@ window.IOPS = (function() {
   return App;
 })();
 
-},{"./common/adminlte_lib":2,"./common/baseline_app":3,"./common/extensions":4,"./iops_controller":6,"./models/login":7,"./router":8,"./views/iops_layout":15}],2:[function(require,module,exports){
+},{"./common/adminlte_lib":2,"./common/appconfig":3,"./common/baseline_app":4,"./common/extensions":5,"./iops_controller":7,"./models/session":9,"./router":10,"./views/iops_layout":17}],2:[function(require,module,exports){
 
 /*
  *
@@ -837,6 +841,28 @@ AdminLTE_lib = (function(superClass) {
 module.exports = AdminLTE_lib;
 
 },{}],3:[function(require,module,exports){
+var AppConfig,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+AppConfig = (function(superClass) {
+  extend(AppConfig, superClass);
+
+  function AppConfig() {
+    return AppConfig.__super__.constructor.apply(this, arguments);
+  }
+
+  AppConfig.api_baseurl = 'http://iops/api/v1';
+
+  AppConfig.session_timeout = 30;
+
+  return AppConfig;
+
+})(Object);
+
+module.exports = AppConfig;
+
+},{}],4:[function(require,module,exports){
 var BaselineApp, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -880,7 +906,7 @@ BaselineApp = (function(superClass) {
 
 module.exports = BaselineApp;
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 
 /* MODS */
 Backbone.Marionette.Renderer.render = function(template, data) {
@@ -935,7 +961,7 @@ _.extend(Marionette.View.prototype, {
   }
 });
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 var UIUtils,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -979,7 +1005,7 @@ UIUtils = (function(superClass) {
 
 module.exports = UIUtils;
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 var DashboardLayout, IopsController, IopsLayout, LoginView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1003,22 +1029,8 @@ IopsController = (function(superClass) {
     return App.log('Initializing', 'Controller');
   };
 
-  IopsController.prototype.check_session = function() {
-    var session;
-    session = true;
-    if (!session) {
-      App.router.navigate('login', {
-        trigger: true
-      });
-    }
-    return session;
-  };
-
   IopsController.prototype.home = function() {
     var v;
-    if (!this.check_session()) {
-      return;
-    }
     v = new DashboardLayout();
     return App.layout.center_region.show(v);
   };
@@ -1029,37 +1041,101 @@ IopsController = (function(superClass) {
     return App.layout.center_region.show(v);
   };
 
+  IopsController.prototype.logout = function() {
+    if (App.session != null) {
+      App.session.clear();
+    }
+    App.session = null;
+    return App.router.navigate('login', {
+      trigger: true
+    });
+  };
+
   return IopsController;
 
 })(Marionette.Controller);
 
 module.exports = IopsController;
 
-},{"./views/dashboard/layout":12,"./views/iops_layout":15,"./views/login":16}],7:[function(require,module,exports){
-var Backbone, LoginModel,
+},{"./views/dashboard/layout":14,"./views/iops_layout":17,"./views/login":18}],8:[function(require,module,exports){
+var AppConfig, Backbone, BaseModel,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
+AppConfig = require('../common/appconfig');
+
 Backbone = require('backbone');
 
-LoginModel = (function(superClass) {
-  extend(LoginModel, superClass);
+BaseModel = (function(superClass) {
+  extend(BaseModel, superClass);
 
-  function LoginModel() {
-    return LoginModel.__super__.constructor.apply(this, arguments);
+  function BaseModel(opts) {
+    BaseModel.__super__.constructor.apply(this, arguments);
+    if (this.urlRoot != null) {
+      this.urlRoot = "" + AppConfig.api_baseurl + this.urlRoot;
+    }
+    this;
   }
 
-  LoginModel.prototype.idAttribute = '_id';
-
-  LoginModel.prototype.urlRoot = 'api/login';
-
-  return LoginModel;
+  return BaseModel;
 
 })(Backbone.Model);
 
-module.exports = LoginModel;
+module.exports = BaseModel;
 
-},{}],8:[function(require,module,exports){
+},{"../common/appconfig":3}],9:[function(require,module,exports){
+var BaseModel, SessionModel,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+BaseModel = require('./_base');
+
+SessionModel = (function(superClass) {
+  extend(SessionModel, superClass);
+
+  function SessionModel() {
+    return SessionModel.__super__.constructor.apply(this, arguments);
+  }
+
+  SessionModel.prototype.idAttribute = '_id';
+
+  SessionModel.prototype.urlRoot = '/login';
+
+  SessionModel.prototype.initialize = function() {
+    console.log("session:init");
+    this.on("change", this.persist);
+    this.persist();
+    return this;
+  };
+
+  SessionModel.prototype.persist = function() {
+    $.cookie('session', this);
+    return this;
+  };
+
+  SessionModel.prototype.clear = function() {
+    this.off("change");
+    $.cookie('session', null);
+    return this;
+  };
+
+  SessionModel.restore = function() {
+    return $.cookie('session');
+  };
+
+  SessionModel.create = function(config) {
+    var s;
+    s = new SessionModel(config);
+    return s;
+  };
+
+  return SessionModel;
+
+})(BaseModel);
+
+module.exports = SessionModel;
+
+},{"./_base":8}],10:[function(require,module,exports){
 var Marionette, Router,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1075,7 +1151,18 @@ Router = (function(superClass) {
 
   Router.prototype.appRoutes = {
     '': 'home',
-    'login': 'login'
+    'login': 'login',
+    'logout': 'logout'
+  };
+
+  Router.prototype.onRoute = function(name, path, args) {
+    if ((path !== 'login' || path === 'logout') && !App.session) {
+      App.router.navigate('login', {
+        trigger: true
+      });
+      return false;
+    }
+    return true;
   };
 
   return Router;
@@ -1084,7 +1171,7 @@ Router = (function(superClass) {
 
 module.exports = Router;
 
-},{}],9:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 var DashboardContentView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1118,7 +1205,7 @@ DashboardContentView = (function(superClass) {
 
 module.exports = DashboardContentView;
 
-},{}],10:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 var DashboardFooterView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1144,7 +1231,7 @@ DashboardFooterView = (function(superClass) {
 
 module.exports = DashboardFooterView;
 
-},{}],11:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 var DashboardHeaderView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1170,7 +1257,7 @@ DashboardHeaderView = (function(superClass) {
 
 module.exports = DashboardHeaderView;
 
-},{}],12:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 var DashboardContentView, DashboardFooterView, DashboardHeaderView, DashboardLayout, DashboardSideView, DashboardToolView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1227,7 +1314,7 @@ DashboardLayout = (function(superClass) {
 
 module.exports = DashboardLayout;
 
-},{"./contentview":9,"./footerview":10,"./headerview":11,"./sideview":13,"./toolview":14}],13:[function(require,module,exports){
+},{"./contentview":11,"./footerview":12,"./headerview":13,"./sideview":15,"./toolview":16}],15:[function(require,module,exports){
 var DashboardSideView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1253,7 +1340,7 @@ DashboardSideView = (function(superClass) {
 
 module.exports = DashboardSideView;
 
-},{}],14:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 var DashboardToolView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1279,7 +1366,7 @@ DashboardToolView = (function(superClass) {
 
 module.exports = DashboardToolView;
 
-},{}],15:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 var IopsLayout, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1305,14 +1392,16 @@ IopsLayout = (function(superClass) {
 
 module.exports = IopsLayout;
 
-},{}],16:[function(require,module,exports){
-var LoginView, Marionette, UIUtils,
+},{}],18:[function(require,module,exports){
+var LoginView, Marionette, SessionModel, UIUtils,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
 Marionette = require('marionette');
 
 UIUtils = require('../common/uiutils');
+
+SessionModel = require('../models/session');
 
 LoginView = (function(superClass) {
   extend(LoginView, superClass);
@@ -1335,7 +1424,14 @@ LoginView = (function(superClass) {
 
   LoginView.prototype.login = function(e) {
     e.preventDefault();
-    return UIUtils.checkFields(this);
+    UIUtils.checkFields(this);
+    App.session = new SessionModel({
+      un: '',
+      pw: ''
+    });
+    return App.router.navigate('', {
+      trigger: true
+    });
   };
 
   LoginView.prototype.onDomRefresh = function() {
@@ -1349,5 +1445,5 @@ LoginView = (function(superClass) {
 
 module.exports = LoginView;
 
-},{"../common/uiutils":5}]},{},[1])
+},{"../common/uiutils":6,"../models/session":9}]},{},[1])
 ;

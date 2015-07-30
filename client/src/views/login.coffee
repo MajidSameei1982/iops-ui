@@ -1,5 +1,6 @@
 Marionette = require('marionette')
 UIUtils = require('../common/uiutils')
+SessionModel = require('../models/session')
 
 # ----------------------------------
 
@@ -15,8 +16,8 @@ class LoginView extends Marionette.ItemView
   login: (e)->
     e.preventDefault();
     UIUtils.checkFields(@)
-
-    #App.router.navigate('',{trigger:true})
+    App.session = new SessionModel({un:'',pw:''})
+    App.router.navigate('',{trigger:true})
 
   onDomRefresh: () ->
     UIUtils.setICheck(@)

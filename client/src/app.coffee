@@ -3,8 +3,9 @@ BaselineApp = require('./common/baseline_app')
 Extensions = require('./common/extensions')
 IopsController = require('./iops_controller')
 Router = require('./router')
-LoginModel = require('./models/login')
 IopsLayout = require('./views/iops_layout')
+AppConfig = require('./common/appconfig')
+SessionModel = require('./models/session')
 AdminLTE_lib = require('./common/adminlte_lib')
 
 # ----------------------------------
@@ -14,12 +15,14 @@ window.IOPS = do()->
 
   App = window.App = new BaselineApp()
   App.AdminLTE_lib = AdminLTE_lib
+  App.config = AppConfig
 
   App.on "before:start", (options)->
     @log('Starting')
 
     @views = {}
     @data = {}
+    @session = SessionModel.restore()
 
     @layout = new IopsLayout();
 
@@ -31,9 +34,6 @@ window.IOPS = do()->
         controller: @controller
       @log('Backbone.history starting')
       Backbone.history.start()
-
-      # force for now
-      #App.router.navigate('login', {trigger:true})
 
     # new up and views and render for base app here...
     @log('Done starting and running!')
