@@ -247,7 +247,7 @@ window.JST["dashboard/sortable"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div>\nfoo\n</div>'));
+      _print(_safe('<div class="gridster">\n\t<ul class="container">\n\t\t<li class=\'cell\' data-row="1" data-col="1" data-sizex="1" data-sizey="1"></li>\n\t  <li class=\'cell\' data-row="2" data-col="1" data-sizex="1" data-sizey="1"></li>\n\t  <li class=\'cell\' data-row="3" data-col="1" data-sizex="1" data-sizey="1"></li>\n\n\t  <li class=\'cell\' data-row="1" data-col="2" data-sizex="2" data-sizey="1"></li>\n\t  <li class=\'cell\' data-row="2" data-col="2" data-sizex="2" data-sizey="2"></li>\n\n\t  <li class=\'cell\' data-row="1" data-col="4" data-sizex="1" data-sizey="1"></li>\n\t  <li class=\'cell\' data-row="2" data-col="4" data-sizex="2" data-sizey="1"></li>\n\t  <li class=\'cell\' data-row="3" data-col="4" data-sizex="1" data-sizey="1"></li>\n\n\t  <li class=\'cell\' data-row="1" data-col="5" data-sizex="1" data-sizey="1"></li>\n\t  <li class=\'cell\' data-row="3" data-col="5" data-sizex="1" data-sizey="1"></li>\n\n\t  <li class=\'cell\' data-row="1" data-col="6" data-sizex="1" data-sizey="1"></li>\n\t  <li class=\'cell\' data-row="2" data-col="6" data-sizex="1" data-sizey="2"></li>\n\t</ul>\n</div>'));
     
     }).call(this);
     
@@ -1407,6 +1407,10 @@ SortableView = (function(superClass) {
   }
 
   SortableView.prototype.template = "dashboard/sortable";
+
+  SortableView.prototype.onDomRefresh = function() {
+    return $(".gridster ul.container").gridster();
+  };
 
   return SortableView;
 

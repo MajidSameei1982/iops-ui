@@ -1,3 +1,13 @@
 @import "bs-callouts";
 @import "adminlte-override";
 
+.gridster {
+	ul.container {
+		list-style: none;
+		li.cell {
+			border:solid 1px #ccc;
+			background:#fff;
+		}
+	}
+}
+
