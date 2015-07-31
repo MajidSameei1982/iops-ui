@@ -1102,31 +1102,44 @@ SessionModel = (function(superClass) {
   SessionModel.prototype.urlRoot = '/login';
 
   SessionModel.prototype.initialize = function() {
-    console.log("session:init");
     this.on("change", this.persist);
     this.persist();
     return this;
   };
 
   SessionModel.prototype.persist = function() {
-    $.cookie('session', this);
+    var s;
+    Cookies.set('session', this);
+    s = Cookies.get('session');
+    if ((s == null) && (typeof localStorage !== "undefined" && localStorage !== null)) {
+      localStorage.setItem("session", JSON.stringify(this));
+    }
     return this;
   };
 
   SessionModel.prototype.clear = function() {
     this.off("change");
-    $.cookie('session', null);
+    Cookies.remove('session');
+    if (typeof localStorage !== "undefined" && localStorage !== null) {
+      localStorage.removeItem("session");
+    }
     return this;
   };
 
   SessionModel.restore = function() {
-    return $.cookie('session');
+    var s;
+    s = Cookies.get('session');
+    if ((s == null) && (typeof localStorage !== "undefined" && localStorage !== null)) {
+      s = localStorage.getItem('session');
+      if (s != null) {
+        return this.create(JSON.parse(s));
+      }
+    }
+    return s;
   };
 
   SessionModel.create = function(config) {
-    var s;
-    s = new SessionModel(config);
-    return s;
+    return new SessionModel(config);
   };
 
   return SessionModel;
@@ -1425,7 +1438,7 @@ LoginView = (function(superClass) {
   LoginView.prototype.login = function(e) {
     e.preventDefault();
     UIUtils.checkFields(this);
-    App.session = new SessionModel({
+    App.session = SessionModel.create({
       un: '',
       pw: ''
     });

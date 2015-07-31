@@ -7,32 +7,32 @@ class SessionModel extends BaseModel
   urlRoot: '/login'
 
   initialize: ()->
-  	console.log "session:init"
   	@on "change", @persist
   	@persist()
   	@
 
   persist: ()->
-  	#if localStorage? then localStorage.setItem("session", JSON.stringify(@))
-  	$.cookie('session',@)
+  	Cookies.set('session',@)
+  	s = Cookies.get('session')
+  	if !s? && localStorage? then localStorage.setItem("session", JSON.stringify(@))
   	@
 
   clear: ()->  	
   	@off "change"
-  	#if localStorage? then localStorage.removeItem("session")
-  	$.cookie('session',null)
+  	Cookies.remove('session')
+  	if localStorage? then localStorage.removeItem("session")
   	@
 
   @restore: ()->
-  	# if localStorage?
-  	# 	s = localStorage.getItem('session')
-  	# 	if s?
-  	#      return @create(JSON.parse(s))
-  	$.cookie('session')
+  	s = Cookies.get('session')
+  	if !s? && localStorage?
+  		s = localStorage.getItem('session')
+  		if s?
+  	     return @create(JSON.parse(s))
+  	s
 
   @create: (config)->
-  	s = new SessionModel(config)
-  	s
+  	return new SessionModel(config)
 
 # ----------------------------------
 

@@ -5,7 +5,7 @@
   "dependencies": {
     "backbone.marionette": "~2.4.2",
     "jquery": "~2.1.4",
-    "jquery-cookie": "https://github.com/carhartl/jquery-cookie.git#~1.4.1",
+    "js-cookie": "git://github.com/js-cookie/js-cookie.git",
     "underscore": "~1.8.3",
     "backbone": "~1.2.1",
     "backbone.modelbinder": "git://github.com/theironcook/Backbone.ModelBinder.git",
