@@ -2,10 +2,9 @@ BaseModel = require('./_base')
 
 # ----------------------------------
 
-class Accounts extends BaseModel
-  idAttribute: '_id'
-  urlRoot: '/accounts'
+class User extends BaseModel
+  urlRoot: '/user'
 
 # ----------------------------------
 
-module.exports = Accounts
+module.exports = User

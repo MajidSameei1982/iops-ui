@@ -3,7 +3,6 @@ BaseModel = require('./_base')
 # ----------------------------------
 
 class SessionModel extends BaseModel
-  idAttribute: '_id'
   urlRoot: '/login'
 
   initialize: ()->

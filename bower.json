@@ -8,6 +8,7 @@
     "underscore": "~1.8.3",
     "backbone": "~1.2.1",
     "backbone.modelbinder": "git://github.com/theironcook/Backbone.ModelBinder.git",
+    "backbone.mutators": "git://github.com/asciidisco/Backbone.Mutators.git",
     "bootstrap-sass": "~3.3.5",
     "font-awesome": "~4.3.0",
     "jsjws": "https://github.com/kjur/jsrsasign.git#~4.8.3",

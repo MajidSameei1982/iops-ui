@@ -51,6 +51,19 @@ module.exports = (grunt)->
               exports: 'Bootstrap'
               depends:
                 jquery: '$'
+            'backbone.mutators':
+              path: 'client/requires/backbone.mutators/backbone.mutators.js'
+              exports: 'Mutators'
+              depends:
+                backbone: 'Backbone'
+            basil:
+              path: 'client/requires/basil.js/basil.js'
+              exports: 'Basil'
+              depends:
+                jquery: '$'
+            jsrasign:
+              path: 'client/requires/jsjws/jsrsasign-latest-all-min.js'
+              exports: 'jsrasign'
             
       app:
         files:
@@ -98,14 +111,6 @@ module.exports = (grunt)->
           'build/<%= pkg.name %>.js'
         ]
         dest: 'build/<%= pkg.name %>.js'
-      vendor_js:
-        src: [
-          'build/vendor.js'
-          'client/assets/js/basil.js'
-          'client/requires/jsws/jsrsasign-latest-all-min.js'
-          'client/requires/basil.js/basil.js'
-        ]
-        dest: 'build/vendor.js'
       vendor_css:
         src: [
           'client/requires/bootstrap-sass/bootstrap.css'
@@ -223,7 +228,7 @@ module.exports = (grunt)->
   grunt.registerTask('init:dev', ['clean', 'bower', 'build:vendor_js', 'build:js', 'build:css']);
   # build source
   grunt.registerTask('build:vendor_js', ['browserify:vendor']);
-  grunt.registerTask('build:js', ['coffee:build', 'eco:build', 'browserify:app', 'concat:vendor_js', 'concat:js']);
+  grunt.registerTask('build:js', ['coffee:build', 'eco:build', 'browserify:app', 'concat:js']);
   grunt.registerTask('build:css', ['sass:build', 'sass:bootstrap', 'concat:vendor_css'])
   # copy to runtime destination
   grunt.registerTask('deploy:vendor', ['copy:vendor_js', 'copy:vendor_css', 'copy:vendor_static'])

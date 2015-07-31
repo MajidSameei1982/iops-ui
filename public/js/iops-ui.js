@@ -22,7 +22,7 @@ window.JST["dashboard/content"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<!-- Content Header (Page header) -->\n<section class="content-header">\n  <h1 id="title"></h1>\n\n  <!-- <ol class="breadcrumb">\n    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>\n    <li class="active">Here</li>\n  </ol> -->\n</section>\n\n<!-- Main content -->\n<section id="center-region" class="content"></section>\n<!-- /.content -->'));
+      _print(_safe('<!-- Content Header (Page header) -->\n<section class="content-header">\n  <h1 id="title"></h1>\n</section>\n\n<!-- Main content -->\n<section id="center-region" class="content"></section>\n<!-- /.content -->'));
     
     }).call(this);
     
@@ -226,6 +226,51 @@ window.JST["dashboard/side"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
+window.JST["dashboard/sortable"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div>\nfoo\n</div>'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
 window.JST["dashboard/tool"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
@@ -377,7 +422,7 @@ window.IOPS = (function() {
   return App;
 })();
 
-},{"./common/adminlte_lib":2,"./common/baseline_app":4,"./common/extensions":5,"./iops_controller":7,"./models/session":9,"./router":10,"./views/iops_layout":17}],2:[function(require,module,exports){
+},{"./common/adminlte_lib":2,"./common/baseline_app":4,"./common/extensions":5,"./iops_controller":7,"./models/session":9,"./router":10,"./views/iops_layout":18}],2:[function(require,module,exports){
 
 /*
  *
@@ -1056,7 +1101,7 @@ IopsController = (function(superClass) {
 
 module.exports = IopsController;
 
-},{"./views/dashboard/layout":14,"./views/iops_layout":17,"./views/login":18}],8:[function(require,module,exports){
+},{"./views/dashboard/layout":14,"./views/iops_layout":18,"./views/login":19}],8:[function(require,module,exports){
 var AppConfig, Backbone, BaseModel,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1095,8 +1140,6 @@ SessionModel = (function(superClass) {
   function SessionModel() {
     return SessionModel.__super__.constructor.apply(this, arguments);
   }
-
-  SessionModel.prototype.idAttribute = '_id';
 
   SessionModel.prototype.urlRoot = '/login';
 
@@ -1173,11 +1216,13 @@ Router = (function(superClass) {
 module.exports = Router;
 
 },{}],11:[function(require,module,exports){
-var DashboardContentView, Marionette,
+var DashboardContentView, Marionette, SortableView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
 Marionette = require('marionette');
+
+SortableView = require('./sortable');
 
 DashboardContentView = (function(superClass) {
   extend(DashboardContentView, superClass);
@@ -1190,6 +1235,12 @@ DashboardContentView = (function(superClass) {
 
   DashboardContentView.prototype.regions = {
     center: '#center-region'
+  };
+
+  DashboardContentView.prototype.onShow = function() {
+    var sv;
+    sv = new SortableView();
+    return this.center.show(sv);
   };
 
   DashboardContentView.prototype.onDomRefresh = function() {
@@ -1206,7 +1257,7 @@ DashboardContentView = (function(superClass) {
 
 module.exports = DashboardContentView;
 
-},{}],12:[function(require,module,exports){
+},{"./sortable":16}],12:[function(require,module,exports){
 var DashboardFooterView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1315,7 +1366,7 @@ DashboardLayout = (function(superClass) {
 
 module.exports = DashboardLayout;
 
-},{"./contentview":11,"./footerview":12,"./headerview":13,"./sideview":15,"./toolview":16}],15:[function(require,module,exports){
+},{"./contentview":11,"./footerview":12,"./headerview":13,"./sideview":15,"./toolview":17}],15:[function(require,module,exports){
 var DashboardSideView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1342,6 +1393,28 @@ DashboardSideView = (function(superClass) {
 module.exports = DashboardSideView;
 
 },{}],16:[function(require,module,exports){
+var Marionette, SortableView,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+SortableView = (function(superClass) {
+  extend(SortableView, superClass);
+
+  function SortableView() {
+    return SortableView.__super__.constructor.apply(this, arguments);
+  }
+
+  SortableView.prototype.template = "dashboard/sortable";
+
+  return SortableView;
+
+})(Marionette.ItemView);
+
+module.exports = SortableView;
+
+},{}],17:[function(require,module,exports){
 var DashboardToolView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1367,7 +1440,7 @@ DashboardToolView = (function(superClass) {
 
 module.exports = DashboardToolView;
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 var IopsLayout, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1393,7 +1466,7 @@ IopsLayout = (function(superClass) {
 
 module.exports = IopsLayout;
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 var LoginView, Marionette, SessionModel, UIUtils,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;

@@ -1,4 +1,5 @@
 Marionette = require('marionette')
+SortableView = require('./sortable')
 
 # ----------------------------------
 
@@ -6,6 +7,10 @@ class DashboardContentView extends Marionette.LayoutView
   template:		"dashboard/content"
   regions:
   	center: '#center-region'
+
+  onShow: ()->
+    sv = new SortableView()
+    @center.show(sv)
 
   onDomRefresh: ()->
   	# set page title/subtitle
