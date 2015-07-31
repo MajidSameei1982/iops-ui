@@ -332,7 +332,7 @@ window.JST["login"] = function(__obj) {
 };
 
 ;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var AdminLTE_lib, AppConfig, BaselineApp, Extensions, IopsController, IopsLayout, Marionette, Router, SessionModel;
+var AdminLTE_lib, BaselineApp, Extensions, IopsController, IopsLayout, Marionette, Router, SessionModel;
 
 Marionette = require('marionette');
 
@@ -346,8 +346,6 @@ Router = require('./router');
 
 IopsLayout = require('./views/iops_layout');
 
-AppConfig = require('./common/appconfig');
-
 SessionModel = require('./models/session');
 
 AdminLTE_lib = require('./common/adminlte_lib');
@@ -359,11 +357,8 @@ window.IOPS = (function() {
   }
   App = window.App = new BaselineApp();
   App.AdminLTE_lib = AdminLTE_lib;
-  App.config = AppConfig;
   App.on("before:start", function(options) {
     this.log('Starting');
-    this.views = {};
-    this.data = {};
     this.session = SessionModel.restore();
     return this.layout = new IopsLayout();
   });
@@ -382,7 +377,7 @@ window.IOPS = (function() {
   return App;
 })();
 
-},{"./common/adminlte_lib":2,"./common/appconfig":3,"./common/baseline_app":4,"./common/extensions":5,"./iops_controller":7,"./models/session":9,"./router":10,"./views/iops_layout":17}],2:[function(require,module,exports){
+},{"./common/adminlte_lib":2,"./common/baseline_app":4,"./common/extensions":5,"./iops_controller":7,"./models/session":9,"./router":10,"./views/iops_layout":17}],2:[function(require,module,exports){
 
 /*
  *
@@ -863,12 +858,14 @@ AppConfig = (function(superClass) {
 module.exports = AppConfig;
 
 },{}],4:[function(require,module,exports){
-var BaselineApp, Marionette,
+var AppConfig, BaselineApp, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
 Marionette = require('marionette');
+
+AppConfig = require('./appconfig');
 
 BaselineApp = (function(superClass) {
   extend(BaselineApp, superClass);
@@ -885,6 +882,8 @@ BaselineApp = (function(superClass) {
 
   BaselineApp.prototype.initialize = function(options) {
     this.silent = false;
+    this.store = new Basil();
+    this.config = AppConfig;
     this.vent.bind('app:log', function(msg, src, lvl) {
       if (src == null) {
         src = 'App';
@@ -906,7 +905,7 @@ BaselineApp = (function(superClass) {
 
 module.exports = BaselineApp;
 
-},{}],5:[function(require,module,exports){
+},{"./appconfig":3}],5:[function(require,module,exports){
 
 /* MODS */
 Backbone.Marionette.Renderer.render = function(template, data) {
@@ -1108,32 +1107,21 @@ SessionModel = (function(superClass) {
   };
 
   SessionModel.prototype.persist = function() {
-    var s;
-    Cookies.set('session', this);
-    s = Cookies.get('session');
-    if ((s == null) && (typeof localStorage !== "undefined" && localStorage !== null)) {
-      localStorage.setItem("session", JSON.stringify(this));
-    }
+    App.store.set('session', this);
     return this;
   };
 
   SessionModel.prototype.clear = function() {
     this.off("change");
-    Cookies.remove('session');
-    if (typeof localStorage !== "undefined" && localStorage !== null) {
-      localStorage.removeItem("session");
-    }
+    App.store.remove('session');
     return this;
   };
 
   SessionModel.restore = function() {
     var s;
-    s = Cookies.get('session');
-    if ((s == null) && (typeof localStorage !== "undefined" && localStorage !== null)) {
-      s = localStorage.getItem('session');
-      if (s != null) {
-        return this.create(JSON.parse(s));
-      }
+    s = App.store.get('session');
+    if (s != null) {
+      s = this.create(s);
     }
     return s;
   };

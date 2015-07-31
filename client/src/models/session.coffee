@@ -12,23 +12,17 @@ class SessionModel extends BaseModel
   	@
 
   persist: ()->
-  	Cookies.set('session',@)
-  	s = Cookies.get('session')
-  	if !s? && localStorage? then localStorage.setItem("session", JSON.stringify(@))
+  	App.store.set('session',@)
   	@
 
   clear: ()->  	
   	@off "change"
-  	Cookies.remove('session')
-  	if localStorage? then localStorage.removeItem("session")
+  	App.store.remove('session')
   	@
 
   @restore: ()->
-  	s = Cookies.get('session')
-  	if !s? && localStorage?
-  		s = localStorage.getItem('session')
-  		if s?
-  	     return @create(JSON.parse(s))
+  	s = App.store.get('session')
+  	if s? then s = @create(s)
   	s
 
   @create: (config)->

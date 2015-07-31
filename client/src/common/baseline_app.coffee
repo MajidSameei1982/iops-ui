@@ -1,4 +1,5 @@
 Marionette = require('marionette')
+AppConfig = require('./appconfig')
 
 # ----------------------------------
 
@@ -9,6 +10,9 @@ class BaselineApp extends Marionette.Application
 
 	initialize: (options)->
 		@silent = false
+		@store = new Basil()
+		@config = AppConfig
+
 
 		# simple event-based loging
 		@vent.bind 'app:log', (msg, src='App', lvl='DEBUG')->

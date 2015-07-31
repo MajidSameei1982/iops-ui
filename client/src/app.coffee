@@ -4,7 +4,6 @@ Extensions = require('./common/extensions')
 IopsController = require('./iops_controller')
 Router = require('./router')
 IopsLayout = require('./views/iops_layout')
-AppConfig = require('./common/appconfig')
 SessionModel = require('./models/session')
 AdminLTE_lib = require('./common/adminlte_lib')
 
@@ -15,15 +14,10 @@ window.IOPS = do()->
 
   App = window.App = new BaselineApp()
   App.AdminLTE_lib = AdminLTE_lib
-  App.config = AppConfig
-
+  
   App.on "before:start", (options)->
     @log('Starting')
-
-    @views = {}
-    @data = {}
     @session = SessionModel.restore()
-
     @layout = new IopsLayout();
 
   App.on 'start', (options)->

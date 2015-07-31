@@ -103,7 +103,7 @@ module.exports = (grunt)->
           'build/vendor.js'
           'client/assets/js/basil.js'
           'client/requires/jsws/jsrsasign-latest-all-min.js'
-          'client/requires/js-cookie/js.cookie.js'
+          'client/requires/basil.js/basil.js'
         ]
         dest: 'build/vendor.js'
       vendor_css:
