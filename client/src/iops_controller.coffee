@@ -1,5 +1,4 @@
 Marionette = require('marionette')
-IopsLayout = require('./views/iops_layout')
 LoginView = require('./views/login')
 DashboardLayout = require('./views/dashboard/layout')
 

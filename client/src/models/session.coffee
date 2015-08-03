@@ -19,6 +19,10 @@ class SessionModel extends BaseModel
   	App.store.remove('session')
   	@
 
+  validate: ()->
+    # ? run some validation to ensure the session is still active ?
+    true
+
   @restore: ()->
   	s = App.store.get('session')
   	if s? then s = @create(s)
@@ -26,6 +30,7 @@ class SessionModel extends BaseModel
 
   @create: (config)->
   	return new SessionModel(config)
+
 
 # ----------------------------------
 

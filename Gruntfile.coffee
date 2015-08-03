@@ -123,6 +123,21 @@ module.exports = (grunt)->
       
     # move files to distribution targets
     copy: 
+      config_dev: 
+        files: [
+          src: 'client/src/common/appconfig.dev.coffee'
+          dest: 'client/src/common/appconfig.coffee'
+        ]
+      config_test: 
+        files: [
+          src: 'client/src/common/appconfig.test.coffee'
+          dest: 'client/src/common/appconfig.coffee'
+        ]
+      config_prod: 
+        files: [
+          src: 'client/src/common/appconfig.prod.coffee'
+          dest: 'client/src/common/appconfig.coffee'
+        ]
       js: 
         files: [
           src: 'build/<%= pkg.name %>.js'
@@ -236,9 +251,11 @@ module.exports = (grunt)->
   grunt.registerTask('deploy:dev', ['copy:js', 'copy:css', 'copy:static'])
   
   # wipe the slate clean and start coding
-  grunt.registerTask('dev', ['init:dev', 'deploy:vendor', 'deploy:dev', 'open:dev', 'concurrent:dev']);
+  grunt.registerTask('dev', ['copy:config_dev', 'init:dev', 'deploy:vendor', 'deploy:dev', 'open:dev', 'concurrent:dev']);
+  # wipe clean and deploy test with minified resources
+  grunt.registerTask('prod', ['copy:config_test', 'init:dev', 'cssmin', 'uglify', 'deploy:vendor', 'deploy:dev']);
   # wipe clean and deploy prod with minified resources
-  grunt.registerTask('prod', ['init:dev', 'cssmin', 'uglify', 'deploy:vendor', 'deploy:dev']);
+  grunt.registerTask('prod', ['copy:config_prod', 'init:dev', 'cssmin', 'uglify', 'deploy:vendor', 'deploy:dev']);
 
 
   
