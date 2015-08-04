@@ -16,8 +16,16 @@ class LoginView extends Marionette.ItemView
   login: (e)->
     e.preventDefault();
     UIUtils.checkFields(@)
-    App.session = SessionModel.create({un:'',pw:''})
-    App.router.navigate('',{trigger:true})
+    SessionModel.create
+      email:@ui.email.val()
+      password: @ui.password.val()
+    App.session.auth
+      success: (a,b,c)->
+        debugger
+        App.router.navigate('',{trigger:true})
+      error: (a,b,c)->
+        debugger
+        App.session.clear()
 
   onDomRefresh: () ->
     UIUtils.setICheck(@)

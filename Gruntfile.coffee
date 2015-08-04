@@ -125,17 +125,17 @@ module.exports = (grunt)->
     copy: 
       config_dev: 
         files: [
-          src: 'client/src/common/appconfig.dev.coffee'
+          src: 'client/config/appconfig.dev.coffee'
           dest: 'client/src/common/appconfig.coffee'
         ]
       config_test: 
         files: [
-          src: 'client/src/common/appconfig.test.coffee'
+          src: 'client/config/appconfig.test.coffee'
           dest: 'client/src/common/appconfig.coffee'
         ]
       config_prod: 
         files: [
-          src: 'client/src/common/appconfig.prod.coffee'
+          src: 'client/config//appconfig.prod.coffee'
           dest: 'client/src/common/appconfig.coffee'
         ]
       js: 
@@ -218,6 +218,9 @@ module.exports = (grunt)->
       
     # for changes to the front-end code
     watch: 
+      config_dev:
+        files: ['client/config/appconfig.dev.coffee']
+        tasks: ['copy:config_dev', 'build:js']
       js: 
         files: ['client/src/templates/**/*.eco', 'client/src/**/*.js', 'client/src/**/*.coffee']
         tasks: ['build:js', 'copy:js']
@@ -236,7 +239,7 @@ module.exports = (grunt)->
     # for changes to the code
     concurrent: 
       dev: 
-        tasks: ['watch:js', 'watch:css', 'watch:static']
+        tasks: ['watch:config_dev', 'watch:js', 'watch:css', 'watch:static']
         options: 
           logConcurrentOutput: true
 

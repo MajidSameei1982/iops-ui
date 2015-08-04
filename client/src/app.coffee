@@ -18,7 +18,7 @@ window.IOPS = do()->
   
   App.on "before:start", (options)->
     @log('Starting')
-    @session = SessionModel.restore()
+    SessionModel.restore()
     @layout = new IopsLayout();
 
   App.on 'start', (options)->

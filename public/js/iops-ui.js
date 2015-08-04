@@ -405,7 +405,7 @@ window.IOPS = (function() {
   App.SessionModel = SessionModel;
   App.on("before:start", function(options) {
     this.log('Starting');
-    this.session = SessionModel.restore();
+    SessionModel.restore();
     return this.layout = new IopsLayout();
   });
   App.on('start', function(options) {
@@ -893,28 +893,7 @@ AppConfig = (function(superClass) {
     return AppConfig.__super__.constructor.apply(this, arguments);
   }
 
-  AppConfig.api_baseurl = 'http://accounts.iopsnj.com/v1';
-
-  AppConfig.session_timeout = 1;
-
-  return AppConfig;
-
-})(Object);
-
-module.exports = AppConfig;
-
-var AppConfig,
-  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-  hasProp = {}.hasOwnProperty;
-
-AppConfig = (function(superClass) {
-  extend(AppConfig, superClass);
-
-  function AppConfig() {
-    return AppConfig.__super__.constructor.apply(this, arguments);
-  }
-
-  AppConfig.api_baseurl = 'http://dev.iopsnj.com/v1';
+  AppConfig.api_baseurl = 'http://{service}iopsnj.com/v1';
 
   AppConfig.session_timeout = 1;
 
@@ -1134,9 +1113,13 @@ BaseModel = (function(superClass) {
   extend(BaseModel, superClass);
 
   function BaseModel(opts) {
+    var url;
     BaseModel.__super__.constructor.apply(this, arguments);
+    url = this.service != null ? ("" + AppConfig.api_baseurl).replace('{service}', this.service + ".") : "" + AppConfig.api_baseurl;
     if (this.urlRoot != null) {
-      this.urlRoot = "" + AppConfig.api_baseurl + this.urlRoot;
+      this.urlRoot = "" + url + this.urlRoot;
+    } else {
+      url;
     }
     this;
   }
@@ -1173,47 +1156,53 @@ SessionModel = (function(superClass) {
 
   SessionModel.prototype.persist = function() {
     App.store.set('session', this);
+    SessionModel.set_token(this);
     return this;
   };
 
   SessionModel.prototype.clear = function() {
     this.off("change");
+    SessionModel.set_token();
     App.store.remove('session');
-    return this;
+    App.session = null;
+    return null;
   };
 
-  SessionModel.authenticate = function(un, pw) {
-    var s;
-    s = this.create({
-      email: un,
-      password: pw
+  SessionModel.prototype.auth = function(arg) {
+    var error, success;
+    success = arg.success, error = arg.error;
+    return this.save(null, {
+      success: success,
+      error: error
     });
-    return s.save({
-      success: function(a, b, c) {
-        debugger;
-      },
-      error: function(a, b, c) {
-        debugger;
+  };
+
+  SessionModel.set_token = function(session) {
+    var tk;
+    tk = session != null ? session.get("token") : null;
+    $.ajaxSetup({
+      headers: {
+        'token': tk
       }
     });
-  };
-
-  SessionModel.prototype.validate = function() {
-    return true;
+    return session;
   };
 
   SessionModel.restore = function() {
     var s;
     s = App.store.get('session');
     if (s != null) {
-      s = this.create(s);
+      this.create(s);
     }
-    return s;
+    return true;
   };
 
   SessionModel.create = function(config) {
-    debugger;
-    return new SessionModel(config);
+    if (App.session != null) {
+      App.session.clear();
+    }
+    App.session = new SessionModel(config);
+    return App.session;
   };
 
   return SessionModel;
@@ -1243,7 +1232,7 @@ Router = (function(superClass) {
   };
 
   Router.prototype.onRoute = function(name, path, args) {
-    if ((path !== 'login' || path === 'logout') && (!App.session || !App.session.validate())) {
+    if ((path !== 'login' || path === 'logout') && (!App.session)) {
       App.router.navigate('login', {
         trigger: true
       });
@@ -1546,12 +1535,21 @@ LoginView = (function(superClass) {
   LoginView.prototype.login = function(e) {
     e.preventDefault();
     UIUtils.checkFields(this);
-    App.session = SessionModel.create({
-      un: '',
-      pw: ''
+    SessionModel.create({
+      email: this.ui.email.val(),
+      password: this.ui.password.val()
     });
-    return App.router.navigate('', {
-      trigger: true
+    return App.session.auth({
+      success: function(a, b, c) {
+        debugger;
+        return App.router.navigate('', {
+          trigger: true
+        });
+      },
+      error: function(a, b, c) {
+        debugger;
+        return App.session.clear();
+      }
     });
   };
 

@@ -1,11 +1,10 @@
 BaseModel = require('./_base')
-Backbone = require('Backbone')
 
 # ----------------------------------
 
-class SessionModel extends Backbone.Model
+class SessionModel extends BaseModel
   service: 'accounts'
-  urlRoot: 'http://accounts.iopsnj.com/v1/sessions'
+  urlRoot: '/sessions'
 
   initialize: ()->
     @on "change", @persist
@@ -14,37 +13,41 @@ class SessionModel extends Backbone.Model
 
   persist: ()->
     App.store.set('session',@)
-    #@set_token(@)
+    SessionModel.set_token(@)
     @
-  
+
   clear: ()->
     @off "change"
-    #@set_token()
+    SessionModel.set_token()
     App.store.remove('session')
-    @
+    App.session = null
+    null
 
-  @authenticate: (un, pw)->
-    s = @create
-      email: un
-      password: pw
-    s.save
-      success: (a, b, c)->
-        debugger
-      error: (a, b, c)->
-        debugger
+  auth: ({success, error})->
+    @save null,
+      success: success
+      error: error
 
-  validate: ()->
-    # ? run validation against claim to ensure the session is still valid and not timed out ?
-    true
+  # validate: ()->
+  #   # ? run validation against claim to ensure the session is still valid and not timed out ?
+  #   true
+
+  @set_token: (session)->
+    tk = if session? then session.get("token") else null
+    $.ajaxSetup
+      headers:
+        'token': tk
+    session
   
   @restore: ()->
-    s = App.store.get('session')
-    if s? then s = @create(s)
-    s
+  	s = App.store.get('session')
+  	if s? then @create(s)
+  	true
 
   @create: (config)->
-    debugger
-    return new SessionModel(config)
+    if App.session? then App.session.clear()
+    App.session = new SessionModel(config)
+    App.session
 
 
 # ----------------------------------

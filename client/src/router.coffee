@@ -9,7 +9,7 @@ class Router extends Marionette.AppRouter
     'logout':	'logout'
 
   onRoute: (name, path, args)->
-  	if (path != 'login' || path == 'logout') && (!App.session || !App.session.validate())
+  	if (path != 'login' || path == 'logout') && (!App.session)
   		App.router.navigate('login', {trigger:true})
   		return false
   	true
