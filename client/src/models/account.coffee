@@ -3,7 +3,8 @@ BaseModel = require('./_base')
 # ----------------------------------
 
 class Account extends BaseModel
-  urlRoot: '/accounts'
+	service: 'accounts'
+	urlRoot: '/accounts'
 
 # ----------------------------------
 

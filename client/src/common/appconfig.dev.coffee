@@ -1,8 +1,8 @@
 # ----------------------------------
 
 class AppConfig extends Object
-  @api_baseurl: 'http://iops/api/v1'
-  @session_timeout: 30
+  @api_baseurl: 'http://dev.iopsnj.com/v1'
+  @session_timeout: 1
 
 # ----------------------------------
 

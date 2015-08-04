@@ -402,6 +402,7 @@ window.IOPS = (function() {
   }
   App = window.App = new BaselineApp();
   App.AdminLTE_lib = AdminLTE_lib;
+  App.SessionModel = SessionModel;
   App.on("before:start", function(options) {
     this.log('Starting');
     this.session = SessionModel.restore();
@@ -892,30 +893,9 @@ AppConfig = (function(superClass) {
     return AppConfig.__super__.constructor.apply(this, arguments);
   }
 
-  AppConfig.api_baseurl = 'http://iops/api/v1';
+  AppConfig.api_baseurl = 'http://accounts.iopsnj.com/v1';
 
-  AppConfig.session_timeout = 30;
-
-  return AppConfig;
-
-})(Object);
-
-module.exports = AppConfig;
-
-var AppConfig,
-  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-  hasProp = {}.hasOwnProperty;
-
-AppConfig = (function(superClass) {
-  extend(AppConfig, superClass);
-
-  function AppConfig() {
-    return AppConfig.__super__.constructor.apply(this, arguments);
-  }
-
-  AppConfig.api_baseurl = 'http://iops/api/v1';
-
-  AppConfig.session_timeout = 30;
+  AppConfig.session_timeout = 1;
 
   return AppConfig;
 
@@ -934,30 +914,9 @@ AppConfig = (function(superClass) {
     return AppConfig.__super__.constructor.apply(this, arguments);
   }
 
-  AppConfig.api_baseurl = 'http://iops/api/v1';
+  AppConfig.api_baseurl = 'http://dev.iopsnj.com/v1';
 
-  AppConfig.session_timeout = 30;
-
-  return AppConfig;
-
-})(Object);
-
-module.exports = AppConfig;
-
-var AppConfig,
-  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-  hasProp = {}.hasOwnProperty;
-
-AppConfig = (function(superClass) {
-  extend(AppConfig, superClass);
-
-  function AppConfig() {
-    return AppConfig.__super__.constructor.apply(this, arguments);
-  }
-
-  AppConfig.api_baseurl = 'http://iops/api/v1';
-
-  AppConfig.session_timeout = 30;
+  AppConfig.session_timeout = 1;
 
   return AppConfig;
 
@@ -1202,7 +1161,9 @@ SessionModel = (function(superClass) {
     return SessionModel.__super__.constructor.apply(this, arguments);
   }
 
-  SessionModel.prototype.urlRoot = '/login';
+  SessionModel.prototype.service = 'accounts';
+
+  SessionModel.prototype.urlRoot = '/sessions';
 
   SessionModel.prototype.initialize = function() {
     this.on("change", this.persist);
@@ -1221,6 +1182,22 @@ SessionModel = (function(superClass) {
     return this;
   };
 
+  SessionModel.authenticate = function(un, pw) {
+    var s;
+    s = this.create({
+      email: un,
+      password: pw
+    });
+    return s.save({
+      success: function(a, b, c) {
+        debugger;
+      },
+      error: function(a, b, c) {
+        debugger;
+      }
+    });
+  };
+
   SessionModel.prototype.validate = function() {
     return true;
   };
@@ -1235,6 +1212,7 @@ SessionModel = (function(superClass) {
   };
 
   SessionModel.create = function(config) {
+    debugger;
     return new SessionModel(config);
   };
 

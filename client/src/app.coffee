@@ -14,6 +14,7 @@ window.IOPS = do()->
 
   App = window.App = new BaselineApp()
   App.AdminLTE_lib = AdminLTE_lib
+  App.SessionModel = SessionModel
   
   App.on "before:start", (options)->
     @log('Starting')

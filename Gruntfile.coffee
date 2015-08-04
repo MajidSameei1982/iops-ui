@@ -253,7 +253,7 @@ module.exports = (grunt)->
   # wipe the slate clean and start coding
   grunt.registerTask('dev', ['copy:config_dev', 'init:dev', 'deploy:vendor', 'deploy:dev', 'open:dev', 'concurrent:dev']);
   # wipe clean and deploy test with minified resources
-  grunt.registerTask('prod', ['copy:config_test', 'init:dev', 'cssmin', 'uglify', 'deploy:vendor', 'deploy:dev']);
+  grunt.registerTask('test', ['copy:config_test', 'init:dev', 'cssmin', 'uglify', 'deploy:vendor', 'deploy:dev']);
   # wipe clean and deploy prod with minified resources
   grunt.registerTask('prod', ['copy:config_prod', 'init:dev', 'cssmin', 'uglify', 'deploy:vendor', 'deploy:dev']);
 

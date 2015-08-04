@@ -3,33 +3,47 @@ BaseModel = require('./_base')
 # ----------------------------------
 
 class SessionModel extends BaseModel
-  urlRoot: '/login'
+  service: 'accounts'
+  urlRoot: '/sessions'
 
   initialize: ()->
-  	@on "change", @persist
-  	@persist()
-  	@
+    @on "change", @persist
+    @persist()
+    @
 
   persist: ()->
-  	App.store.set('session',@)
-  	@
+    App.store.set('session',@)
+    #@set_token(@)
+    @
+  
+  clear: ()->
+    @off "change"
+    #@set_token()
+    App.store.remove('session')
+    @
 
-  clear: ()->  	
-  	@off "change"
-  	App.store.remove('session')
-  	@
+  @authenticate: (un, pw)->
+    s = @create
+      email: un
+      password: pw
+    s.save
+      success: (a, b, c)->
+        debugger
+      error: (a, b, c)->
+        debugger
 
   validate: ()->
-    # ? run some validation to ensure the session is still active ?
+    # ? run validation against claim to ensure the session is still valid and not timed out ?
     true
-
+  
   @restore: ()->
-  	s = App.store.get('session')
-  	if s? then s = @create(s)
-  	s
+    s = App.store.get('session')
+    if s? then s = @create(s)
+    s
 
   @create: (config)->
-  	return new SessionModel(config)
+    debugger
+    return new SessionModel(config)
 
 
 # ----------------------------------
