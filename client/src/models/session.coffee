@@ -1,10 +1,11 @@
 BaseModel = require('./_base')
+Backbone = require('Backbone')
 
 # ----------------------------------
 
-class SessionModel extends BaseModel
+class SessionModel extends Backbone.Model
   service: 'accounts'
-  urlRoot: '/sessions'
+  urlRoot: 'http://accounts.iopsnj.com/v1/sessions'
 
   initialize: ()->
     @on "change", @persist
