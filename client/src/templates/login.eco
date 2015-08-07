@@ -1,3 +1,5 @@
+<div class="box-body" id="alert-container">
+</div>
 <div class="login-box">
   <div class="login-logo">
     <img src='img/logo_login.png' style="max-width:300px;"/>
@@ -19,7 +21,7 @@
           </div>
         </div><!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat" id='login' name='login'>Sign In</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat" id='login' name='login'>Log In</button>
         </div><!-- /.col -->
       </div>
     </form>

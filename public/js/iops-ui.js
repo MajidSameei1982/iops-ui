@@ -337,7 +337,7 @@ window.JST["login"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="login-box">\n  <div class="login-logo">\n    <img src=\'img/logo_login.png\' style="max-width:300px;"/>\n  </div><!-- /.login-logo -->\n  <div class="login-box-body">\n    <p class="login-box-msg">Sign in to start your session</p>\n    <form action="#" method="post">\n      \n      '));
+      _print(_safe('<div class="box-body" id="alert-container">\n</div>\n<div class="login-box">\n  <div class="login-logo">\n    <img src=\'img/logo_login.png\' style="max-width:300px;"/>\n  </div><!-- /.login-logo -->\n  <div class="login-box-body">\n    <p class="login-box-msg">Sign in to start your session</p>\n    <form action="#" method="post">\n      \n      '));
     
       _print(_safe(this.formGroup({
         id: 'email',
@@ -355,7 +355,7 @@ window.JST["login"] = function(__obj) {
         placeholder: 'Password'
       })));
     
-      _print(_safe('\n\n      <div class="row">\n        <div class="col-xs-8">\n          <div class="checkbox icheck">\n            <label>\n              <input type="checkbox" id=\'remember\' name=\'remember\'> Remember Me\n            </label>\n          </div>\n        </div><!-- /.col -->\n        <div class="col-xs-4">\n          <button type="submit" class="btn btn-primary btn-block btn-flat" id=\'login\' name=\'login\'>Sign In</button>\n        </div><!-- /.col -->\n      </div>\n    </form>\n    \n    <a href="#">I forgot my password</a><br>\n    <a href="register.html" class="text-center">Register</a>\n\n  </div><!-- /.login-box-body -->\n</div><!-- /.login-box -->\n\n'));
+      _print(_safe('\n\n      <div class="row">\n        <div class="col-xs-8">\n          <div class="checkbox icheck">\n            <label>\n              <input type="checkbox" id=\'remember\' name=\'remember\'> Remember Me\n            </label>\n          </div>\n        </div><!-- /.col -->\n        <div class="col-xs-4">\n          <button type="submit" class="btn btn-primary btn-block btn-flat" id=\'login\' name=\'login\'>Log In</button>\n        </div><!-- /.col -->\n      </div>\n    </form>\n    \n    <a href="#">I forgot my password</a><br>\n    <a href="register.html" class="text-center">Register</a>\n\n  </div><!-- /.login-box-body -->\n</div><!-- /.login-box -->\n\n'));
     
     }).call(this);
     
@@ -1043,6 +1043,22 @@ UIUtils = (function(superClass) {
     return v;
   };
 
+  UIUtils.clearAlerts = function(el) {
+    return $('.alert', el).remove();
+  };
+
+  UIUtils.showAlert = function(el, arg) {
+    var alert, html, icn, icon, message, title, ttl, type;
+    type = arg.type, message = arg.message, title = arg.title, icon = arg.icon;
+    this.clearAlerts(el);
+    icn = icon != null ? "<i class='icon fa fa-" + icon + "'></i>" : '';
+    ttl = title != null ? "<h4>" + icn + title + "</h4>" : "" + icn;
+    html = "<div class=\"alert alert-" + type + " alert-dismissable\">\n  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">×</button>\n  " + ttl + message + "\n</div>";
+    alert = $(html);
+    $(el).prepend(alert);
+    return alert;
+  };
+
   return UIUtils;
 
 })(Object);
@@ -1567,7 +1583,8 @@ LoginView = (function(superClass) {
     email: "input#email",
     password: "input#password",
     remember: "input#remember",
-    login: "button#login"
+    login: "button#login",
+    acontainer: "#alert-container"
   };
 
   LoginView.prototype.set_errors = function() {
@@ -1582,8 +1599,9 @@ LoginView = (function(superClass) {
 
   LoginView.prototype.login = function(e) {
     e.preventDefault();
+    UIUtils.clearAlerts(this.ui.acontainer);
     this.$("input, button").attr('disabled', 'disabled');
-    this.ui.login.html('Signing in...');
+    this.ui.login.html('<i class="fa fa-spinner fa-pulse"></i>');
     this.clear_errors();
     return SessionModel.auth({
       email: this.ui.email.val(),
@@ -1595,8 +1613,14 @@ LoginView = (function(superClass) {
       },
       error: (function(_this) {
         return function() {
+          UIUtils.showAlert(_this.ui.acontainer, {
+            title: "LOGIN FAILED!",
+            message: "Check the email address and password, then try again.",
+            type: "danger",
+            icon: "warning"
+          });
           _this.$("input, button").attr('disabled', null);
-          _this.ui.login.html('Sign In...');
+          _this.ui.login.html('Log In');
           return _this.set_errors();
         };
       })(this)

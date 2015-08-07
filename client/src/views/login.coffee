@@ -13,6 +13,7 @@ class LoginView extends Marionette.ItemView
     password: "input#password"
     remember: "input#remember"
     login:    "button#login"
+    acontainer: "#alert-container"
 
   set_errors: ()->
     @ui.email.parent().addClass('has-error')
@@ -24,8 +25,9 @@ class LoginView extends Marionette.ItemView
   login: (e)->
     e.preventDefault();
     #UIUtils.checkFields(@)
+    UIUtils.clearAlerts(@ui.acontainer)
     @$("input, button").attr('disabled', 'disabled')
-    @ui.login.html('Signing in...')
+    @ui.login.html('<i class="fa fa-spinner fa-pulse"></i>')
     @clear_errors()
     SessionModel.auth
       email:@ui.email.val()
@@ -33,8 +35,13 @@ class LoginView extends Marionette.ItemView
       success: (a,b,c)->
         App.router.navigate('',{trigger:true})
       error: ()=>
+        UIUtils.showAlert @ui.acontainer,
+          title: "LOGIN FAILED!"
+          message: "Check the email address and password, then try again."
+          type: "danger"
+          icon: "warning"
         @$("input, button").attr('disabled', null)
-        @ui.login.html('Sign In...')
+        @ui.login.html('Log In')
         @set_errors()
 
   onDomRefresh: () ->

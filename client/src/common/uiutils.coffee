@@ -21,7 +21,23 @@ class UIUtils extends Object
     return false if !v?
     m = v.model
     v
-  	
+
+  @clearAlerts: (el)->
+    $('.alert', el).remove()
+
+  @showAlert: (el, {type, message, title, icon})->
+    @clearAlerts(el)
+    icn = if icon? then "<i class='icon fa fa-#{icon}'></i>" else ''
+    ttl = if title? then "<h4>#{icn}#{title}</h4>" else "#{icn}"
+    html = """
+      <div class="alert alert-#{type} alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        #{ttl}#{message}
+      </div>
+    """
+    alert = $(html)
+    $(el).prepend(alert)
+    alert
 # ----------------------------------
 
 module.exports = UIUtils
