@@ -402,7 +402,6 @@ window.IOPS = (function() {
   }
   App = window.App = new BaselineApp();
   App.AdminLTE_lib = AdminLTE_lib;
-  App.SessionModel = SessionModel;
   App.on("before:start", function(options) {
     this.log('Starting');
     SessionModel.restore();
@@ -893,7 +892,7 @@ AppConfig = (function(superClass) {
     return AppConfig.__super__.constructor.apply(this, arguments);
   }
 
-  AppConfig.api_baseurl = 'http://{service}iopsnj.com/v1';
+  AppConfig.api_baseurl = 'http://{service}dev.iopsnj.com/v1';
 
   AppConfig.session_timeout = 1;
 
@@ -1065,12 +1064,8 @@ IopsController = (function(superClass) {
   extend(IopsController, superClass);
 
   function IopsController() {
-    return IopsController.__super__.constructor.apply(this, arguments);
+    App.log('Initializing', 'Controller');
   }
-
-  IopsController.prototype.initialize = function() {
-    return App.log('Initializing', 'Controller');
-  };
 
   IopsController.prototype.home = function() {
     var v;
@@ -1096,7 +1091,7 @@ IopsController = (function(superClass) {
 
   return IopsController;
 
-})(Marionette.Controller);
+})(Object);
 
 module.exports = IopsController;
 
@@ -1156,22 +1151,58 @@ SessionModel = (function(superClass) {
 
   SessionModel.prototype.persist = function() {
     App.store.set('session', this);
-    SessionModel.set_token(this);
     return this;
   };
 
-  SessionModel.prototype.clear = function() {
-    this.off("change");
+  SessionModel.clear = function() {
+    if (App.session != null) {
+      App.session.off("change");
+    }
     SessionModel.set_token();
     App.store.remove('session');
     App.session = null;
     return null;
   };
 
-  SessionModel.prototype.auth = function(arg) {
-    var error, success;
-    success = arg.success, error = arg.error;
-    return this.save(null, {
+  SessionModel.auth = function(arg) {
+    var email, error, oe, os, password, success;
+    email = arg.email, password = arg.password, success = arg.success, error = arg.error;
+    SessionModel.clear();
+    App.session = new SessionModel({
+      email: email,
+      password: password
+    });
+    if (success != null) {
+      os = success;
+      success = (function(_this) {
+        return function() {
+          SessionModel.set_token(App.session);
+          return os();
+        };
+      })(this);
+    } else {
+      success = (function(_this) {
+        return function() {
+          return SessionModel.set_token(App.session);
+        };
+      })(this);
+    }
+    if (error != null) {
+      oe = error;
+      error = (function(_this) {
+        return function() {
+          SessionModel.clear();
+          return oe();
+        };
+      })(this);
+    } else {
+      error = (function(_this) {
+        return function() {
+          return SessionModel.clear();
+        };
+      })(this);
+    }
+    return App.session.save(null, {
       success: success,
       error: error
     });
@@ -1179,12 +1210,18 @@ SessionModel = (function(superClass) {
 
   SessionModel.set_token = function(session) {
     var tk;
-    tk = session != null ? session.get("token") : null;
-    $.ajaxSetup({
-      headers: {
-        'token': tk
+    if (session != null) {
+      tk = session.get("token");
+      $.ajaxSetup({
+        headers: {
+          'token': tk
+        }
+      });
+    } else {
+      if ($.ajaxSettings.headers != null) {
+        delete $.ajaxSettings.headers["token"];
       }
-    });
+    }
     return session;
   };
 
@@ -1529,27 +1566,40 @@ LoginView = (function(superClass) {
   LoginView.prototype.ui = {
     email: "input#email",
     password: "input#password",
-    remember: "input#remember"
+    remember: "input#remember",
+    login: "button#login"
+  };
+
+  LoginView.prototype.set_errors = function() {
+    this.ui.email.parent().addClass('has-error');
+    return this.ui.password.parent().addClass('has-error');
+  };
+
+  LoginView.prototype.clear_errors = function() {
+    this.ui.email.parent().removeClass('has-error');
+    return this.ui.password.parent().removeClass('has-error');
   };
 
   LoginView.prototype.login = function(e) {
     e.preventDefault();
-    UIUtils.checkFields(this);
-    SessionModel.create({
+    this.$("input, button").attr('disabled', 'disabled');
+    this.ui.login.html('Signing in...');
+    this.clear_errors();
+    return SessionModel.auth({
       email: this.ui.email.val(),
-      password: this.ui.password.val()
-    });
-    return App.session.auth({
+      password: this.ui.password.val(),
       success: function(a, b, c) {
-        debugger;
         return App.router.navigate('', {
           trigger: true
         });
       },
-      error: function(a, b, c) {
-        debugger;
-        return App.session.clear();
-      }
+      error: (function(_this) {
+        return function() {
+          _this.$("input, button").attr('disabled', null);
+          _this.ui.login.html('Sign In...');
+          return _this.set_errors();
+        };
+      })(this)
     });
   };
 

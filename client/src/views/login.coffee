@@ -12,20 +12,30 @@ class LoginView extends Marionette.ItemView
     email:    "input#email"
     password: "input#password"
     remember: "input#remember"
+    login:    "button#login"
+
+  set_errors: ()->
+    @ui.email.parent().addClass('has-error')
+    @ui.password.parent().addClass('has-error')
+  clear_errors: ()->
+    @ui.email.parent().removeClass('has-error')
+    @ui.password.parent().removeClass('has-error')
 
   login: (e)->
     e.preventDefault();
-    UIUtils.checkFields(@)
-    SessionModel.create
+    #UIUtils.checkFields(@)
+    @$("input, button").attr('disabled', 'disabled')
+    @ui.login.html('Signing in...')
+    @clear_errors()
+    SessionModel.auth
       email:@ui.email.val()
       password: @ui.password.val()
-    App.session.auth
       success: (a,b,c)->
-        debugger
         App.router.navigate('',{trigger:true})
-      error: (a,b,c)->
-        debugger
-        App.session.clear()
+      error: ()=>
+        @$("input, button").attr('disabled', null)
+        @ui.login.html('Sign In...')
+        @set_errors()
 
   onDomRefresh: () ->
     UIUtils.setICheck(@)

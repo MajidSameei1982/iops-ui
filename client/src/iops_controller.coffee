@@ -4,8 +4,8 @@ DashboardLayout = require('./views/dashboard/layout')
 
 # ----------------------------------
 
-class IopsController extends Marionette.Controller
-  initialize: ()->
+class IopsController extends Object
+  constructor: ()->
     App.log('Initializing', 'Controller')
     # add more controller initialization code here
     

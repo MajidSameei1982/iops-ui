@@ -13,18 +13,40 @@ class SessionModel extends BaseModel
 
   persist: ()->
     App.store.set('session',@)
-    SessionModel.set_token(@)
     @
 
-  clear: ()->
-    @off "change"
+  @clear: ()->
+    if App.session? then App.session.off "change"
     SessionModel.set_token()
     App.store.remove('session')
     App.session = null
     null
 
-  auth: ({success, error})->
-    @save null,
+  @auth: ({email, password, success, error})->
+    SessionModel.clear()
+    App.session = new SessionModel
+      email:email
+      password:password
+
+    if success?
+      os = success
+      success = ()=>
+        SessionModel.set_token(App.session)
+        os()
+    else
+      success = ()=>
+        SessionModel.set_token(App.session)
+
+    if error?
+      oe = error
+      error = ()=>
+        SessionModel.clear()
+        oe()
+    else
+      error = ()=>
+        SessionModel.clear()
+
+    App.session.save null,
       success: success
       error: error
 
@@ -33,10 +55,13 @@ class SessionModel extends BaseModel
   #   true
 
   @set_token: (session)->
-    tk = if session? then session.get("token") else null
-    $.ajaxSetup
-      headers:
-        'token': tk
+    if session?
+      tk = session.get("token")
+      $.ajaxSetup
+        headers:
+          'token': tk
+    else
+      if $.ajaxSettings.headers? then delete $.ajaxSettings.headers["token"];
     session
   
   @restore: ()->
