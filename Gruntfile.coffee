@@ -109,6 +109,7 @@ module.exports = (grunt)->
           'client/assets/js/jquery.gridster.min.js'
           'client/requires/jsjws/jsrsasign-latest-all-min.js'
           'client/requires/basil.js/basil.js'
+          'client/requires/jquery-dateFormat/jquery-dateFormat.js'
         ]
         dest: 'build/vendor.js'
       vendor_css:

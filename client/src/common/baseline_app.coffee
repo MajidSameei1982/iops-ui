@@ -13,12 +13,11 @@ class BaselineApp extends Marionette.Application
 		@store = new Basil()
 		@config = AppConfig
 
-
-		# simple event-based loging
-		@vent.bind 'app:log', (msg, src='App', lvl='DEBUG')->
+		@vent.on 'app:log', (msg, src='App', lvl='DEBUG')=>
 	  	if !@silent
 	  		msg = "#{lvl} | #{src} | #{msg}"
 	  		console?.log?(msg)
+
 		@
 
 # ----------------------------------

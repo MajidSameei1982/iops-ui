@@ -34,6 +34,7 @@ _.extend Marionette.View::,
 
   		cls = cls.join(' ')
   		"<div class='form-group #{cls}' for='#{id}'>#{label}#{field}#{feedback}</div>"
+
     
     
 

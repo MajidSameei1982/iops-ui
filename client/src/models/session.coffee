@@ -1,4 +1,5 @@
 BaseModel = require('./_base')
+User = require('./user')
 
 # ----------------------------------
 
@@ -22,33 +23,56 @@ class SessionModel extends BaseModel
     App.session = null
     null
 
+  ## DISABLED UNTIL SESSION SERVICE IS WORKING
+  # @auth: ({email, password, success, error})->
+  #   SessionModel.clear()
+  #   App.session = new SessionModel
+  #     email:email
+  #     password:password
+
+  #   s = (data, status, xhr)=>
+  #     SessionModel.set_token(App.session)
+  #   e = (xhr, status, error)=>
+  #     SessionModel.clear()
+
+  #   if success?
+  #     os = success
+  #     s = (data, status, xhr)=>
+  #       SessionModel.set_token(App.session)
+  #       os(data, status, xhr)
+
+  #   if error?
+  #     oe = error
+  #     e = (xhr, status, error)=>
+  #       SessionModel.clear()
+  #       oe(xhr, status, error)
+
+  #   App.session.save null,
+  #     success: s
+  #     error: e
+  #     timeout:3000
+
+  
+  ## DUMMY AUTH
   @auth: ({email, password, success, error})->
     SessionModel.clear()
-    App.session = new SessionModel
-      email:email
-      password:password
-
-    if success?
-      os = success
-      success = ()=>
-        SessionModel.set_token(App.session)
-        os()
+    if !email? or email.trim() == '' or !password? or password.trim() == ''
+      error()
     else
-      success = ()=>
-        SessionModel.set_token(App.session)
-
-    if error?
-      oe = error
-      error = ()=>
-        SessionModel.clear()
-        oe()
-    else
-      error = ()=>
-        SessionModel.clear()
-
-    App.session.save null,
-      success: success
-      error: error
+      App.session = new SessionModel
+        email:email
+        password:password
+        token: 'foo'
+        user:
+          id: 1
+          firstname: 'John'
+          lastname: 'Talarico'
+          fullname: 'John Talarico'
+          email: 'john@opcsystems.com'
+          avatar: null
+      SessionModel.set_token(App.session)
+      App.session.attributes['password'] = null
+      success()
 
   # validate: ()->
   #   # ? run validation against claim to ensure the session is still valid and not timed out ?

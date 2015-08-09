@@ -12,7 +12,8 @@
     "bootstrap-sass": "~3.3.5",
     "font-awesome": "~4.3.0",
     "jsjws": "https://github.com/kjur/jsrsasign.git#~4.8.3",
-    "basil.js":"git://github.com/Wisembly/basil.js.git"
+    "basil.js":"git://github.com/Wisembly/basil.js.git",
+    "jquery-dateFormat" : "https://github.com/phstc/jquery-dateFormat.git"
   },
   "exportsOverride": {
     "underscore": {

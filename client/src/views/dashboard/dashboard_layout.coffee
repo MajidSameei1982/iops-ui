@@ -1,0 +1,54 @@
+Marionette = require('marionette')
+DashboardHeaderView = require('./header_view')
+DashboardSideView = require('./side_view')
+DashboardToolView = require('./tool_view')
+DashboardFooterView = require('./footer_view')
+DashboardContentView = require('./content_view')
+WidgetsView = require('./widgets_view')
+
+# ----------------------------------
+
+class DashboardLayout extends Marionette.LayoutView
+  template: "dashboard/dashboard_layout"
+  regions:
+    header: "#header-region"
+    side: "#side-region"
+    tool: "#tool-region"
+    footer: "#footer-region"
+    content: "#content-region"
+
+  show_content: ({title, subtitle, view})->
+    contentview = new DashboardContentView()
+    contentview.title = title
+    contentview.subtitle = subtitle
+    contentview.center_view = view
+    @content.show(contentview)
+    @
+
+  show_widgets: (dash)->
+    @show_content
+      title: dash.get('title')
+      subtitle: ''
+      view: new WidgetsView
+        model: dash
+
+  onShow: () ->
+    headerview = new DashboardHeaderView()
+    @header.show(headerview)
+
+    sideview = new DashboardSideView
+      collection: @collection
+    @side.show(sideview)
+
+    toolview = new DashboardToolView()
+    @tool.show(toolview)
+
+    footerview = new DashboardFooterView()
+    @footer.show(footerview)
+
+    App.AdminLTE_lib.reset()
+
+# ----------------------------------
+
+module.exports = DashboardLayout
+    

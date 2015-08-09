@@ -46,97 +46,7 @@ window.JST["dashboard/content"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
-window.JST["dashboard/footer"] = function(__obj) {
-  var _safe = function(value) {
-    if (typeof value === 'undefined' && value == null)
-      value = '';
-    var result = new String(value);
-    result.ecoSafe = true;
-    return result;
-  };
-  return (function() {
-    var __out = [], __self = this, _print = function(value) {
-      if (typeof value !== 'undefined' && value != null)
-        __out.push(value.ecoSafe ? value : __self.escape(value));
-    }, _capture = function(callback) {
-      var out = __out, result;
-      __out = [];
-      callback.call(this);
-      result = __out.join('');
-      __out = out;
-      return _safe(result);
-    };
-    (function() {
-      _print(_safe('<div class="pull-right">\n\t<span id=\'logo\'><img src=\'img/logo_lg.png\' class=\'iops\'/> powered by <img src=\'img/jbt_sm.png\' class=\'jbt\'/></span>\n</div>\n\n'));
-    
-    }).call(this);
-    
-    return __out.join('');
-  }).call((function() {
-    var obj = {
-      escape: function(value) {
-        return ('' + value)
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
-      },
-      safe: _safe
-    }, key;
-    for (key in __obj) obj[key] = __obj[key];
-    return obj;
-  })());
-};
-
-if (!window.JST) {
-  window.JST = {};
-}
-window.JST["dashboard/header"] = function(__obj) {
-  var _safe = function(value) {
-    if (typeof value === 'undefined' && value == null)
-      value = '';
-    var result = new String(value);
-    result.ecoSafe = true;
-    return result;
-  };
-  return (function() {
-    var __out = [], __self = this, _print = function(value) {
-      if (typeof value !== 'undefined' && value != null)
-        __out.push(value.ecoSafe ? value : __self.escape(value));
-    }, _capture = function(callback) {
-      var out = __out, result;
-      __out = [];
-      callback.call(this);
-      result = __out.join('');
-      __out = out;
-      return _safe(result);
-    };
-    (function() {
-      _print(_safe('<!-- Logo -->\n<a href="/" class="logo">\n  <span class="logo-mini"><img src=\'img/logo_sm.png\' alt=\'JBT iOPS\' style=\'height:41px;\'/></span>\n  <span class="logo-lg"><img src=\'img/logo_lg.png\' alt=\'JBT iOPS\' style=\'height:41px;\'/></span>\n</a>\n\n<!-- Header Navbar -->\n<nav class="navbar navbar-static-top" role="navigation">\n  <!-- Sidebar toggle button-->\n  <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">\n    <span class="sr-only">Toggle navigation</span>\n  </a>\n  <!-- Navbar Right Menu -->\n  <div class="navbar-custom-menu">\n    <ul class="nav navbar-nav">\n      <!-- Messages: style can be found in dropdown.less-->\n      <li class="dropdown messages-menu">\n        <!-- Menu toggle button -->\n        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n          <i class="fa fa-envelope-o"></i>\n          <span class="label label-success">4</span>\n        </a>\n        <ul class="dropdown-menu">\n          <li class="header">You have 4 messages</li>\n          <li>\n            <!-- inner menu: contains the messages -->\n            <ul class="menu">\n              <li><!-- start message -->\n                <a href="#">\n                  <div class="pull-left">\n                    <!-- User Image -->\n                    <img src="img/user2-160x160.jpg" class="img-circle" alt="User Image"/>\n                  </div>\n                  <!-- Message title and timestamp -->\n                  <h4>\n                    Support Team\n                    <small><i class="fa fa-clock-o"></i> 5 mins</small>\n                  </h4>\n                  <!-- The message -->\n                  <p>Why not buy a new awesome theme?</p>\n                </a>\n              </li><!-- end message -->\n            </ul><!-- /.menu -->\n          </li>\n          <li class="footer"><a href="#">See All Messages</a></li>\n        </ul>\n      </li><!-- /.messages-menu -->\n\n      <!-- Notifications Menu -->\n      <li class="dropdown notifications-menu">\n        <!-- Menu toggle button -->\n        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n          <i class="fa fa-bell-o"></i>\n          <span class="label label-warning">10</span>\n        </a>\n        <ul class="dropdown-menu">\n          <li class="header">You have 10 notifications</li>\n          <li>\n            <!-- Inner Menu: contains the notifications -->\n            <ul class="menu">\n              <li><!-- start notification -->\n                <a href="#">\n                  <i class="fa fa-users text-aqua"></i> 5 new members joined today\n                </a>\n              </li><!-- end notification -->\n            </ul>\n          </li>\n          <li class="footer"><a href="#">View all</a></li>\n        </ul>\n      </li>\n      <!-- Tasks Menu -->\n      <li class="dropdown tasks-menu">\n        <!-- Menu Toggle Button -->\n        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n          <i class="fa fa-flag-o"></i>\n          <span class="label label-danger">9</span>\n        </a>\n        <ul class="dropdown-menu">\n          <li class="header">You have 9 tasks</li>\n          <li>\n            <!-- Inner menu: contains the tasks -->\n            <ul class="menu">\n              <li><!-- Task item -->\n                <a href="#">\n                  <!-- Task title and progress text -->\n                  <h3>\n                    Design some buttons\n                    <small class="pull-right">20%</small>\n                  </h3>\n                  <!-- The progress bar -->\n                  <div class="progress xs">\n                    <!-- Change the css width attribute to simulate progress -->\n                    <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">\n                      <span class="sr-only">20% Complete</span>\n                    </div>\n                  </div>\n                </a>\n              </li><!-- end task item -->\n            </ul>\n          </li>\n          <li class="footer">\n            <a href="#">View all tasks</a>\n          </li>\n        </ul>\n      </li>\n      <!-- User Account Menu -->\n      <li class="dropdown user user-menu">\n        <!-- Menu Toggle Button -->\n        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n          <!-- The user image in the navbar-->\n          <img src="img/user2-160x160.jpg" class="user-image" alt="User Image"/>\n          <!-- hidden-xs hides the username on small devices so only the image appears. -->\n          <span class="hidden-xs">Firstname Lastname</span>\n        </a>\n        <ul class="dropdown-menu">\n          <!-- The user image in the menu -->\n          <li class="user-header">\n            <img src="img/user2-160x160.jpg" class="img-circle" alt="User Image" />\n            <p>\n              Firstname Lastname - Web Developer\n              <small>Member since Nov. 2012</small>\n            </p>\n          </li>\n          <!-- Menu Body -->\n          <li class="user-body">\n            <div class="col-xs-4 text-center">\n              <a href="#">Followers</a>\n            </div>\n            <div class="col-xs-4 text-center">\n              <a href="#">Sales</a>\n            </div>\n            <div class="col-xs-4 text-center">\n              <a href="#">Friends</a>\n            </div>\n          </li>\n          <!-- Menu Footer-->\n          <li class="user-footer">\n            <div class="pull-left">\n              <a href="#" class="btn btn-default btn-flat">Profile</a>\n            </div>\n            <div class="pull-right">\n              <a href="#" class="btn btn-default btn-flat">Sign out</a>\n            </div>\n          </li>\n        </ul>\n      </li>\n      <!-- Control Sidebar Toggle Button -->\n      <li>\n        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>\n      </li>\n    </ul>\n  </div>\n</nav>'));
-    
-    }).call(this);
-    
-    return __out.join('');
-  }).call((function() {
-    var obj = {
-      escape: function(value) {
-        return ('' + value)
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
-      },
-      safe: _safe
-    }, key;
-    for (key in __obj) obj[key] = __obj[key];
-    return obj;
-  })());
-};
-
-if (!window.JST) {
-  window.JST = {};
-}
-window.JST["dashboard/layout"] = function(__obj) {
+window.JST["dashboard/dashboard_layout"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
       value = '';
@@ -181,7 +91,7 @@ window.JST["dashboard/layout"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
-window.JST["dashboard/side"] = function(__obj) {
+window.JST["dashboard/footer"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
       value = '';
@@ -202,7 +112,7 @@ window.JST["dashboard/side"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<!-- sidebar: style can be found in sidebar.less -->\n<section class="sidebar">\n\n  <!-- Sidebar user panel (optional) -->\n  <div class="user-panel">\n    <div class="pull-left image">\n      <img src="img/user2-160x160.jpg" class="img-circle" alt="User Image" />\n    </div>\n    <div class="pull-left info">\n      <p>Alexander Pierce</p>\n      <!-- Status -->\n      <a href="#"><i class="fa fa-circle text-success"></i> Online</a>\n    </div>\n  </div>\n\n  <!-- search form (Optional) -->\n  <form action="#" method="get" class="sidebar-form">\n    <div class="input-group">\n      <input type="text" name="q" class="form-control" placeholder="Search..."/>\n      <span class="input-group-btn">\n        <button type=\'submit\' name=\'search\' id=\'search-btn\' class="btn btn-flat"><i class="fa fa-search"></i></button>\n      </span>\n    </div>\n  </form>\n  <!-- /.search form -->\n\n  <!-- Sidebar Menu -->\n  <ul class="sidebar-menu">\n    <li class="header">HEADER</li>\n    <!-- Optionally, you can add icons to the links -->\n    <li class="active"><a href="#"><i class=\'fa fa-link\'></i> <span>Link</span></a></li>\n    <li><a href="#"><i class=\'fa fa-link\'></i> <span>Another Link</span></a></li>\n    <li class="treeview">\n      <a href="#"><i class=\'fa fa-link\'></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>\n      <ul class="treeview-menu">\n        <li><a href="#">Link in level 2</a></li>\n        <li><a href="#">Link in level 2</a></li>\n      </ul>\n    </li>\n  </ul><!-- /.sidebar-menu -->\n</section>\n<!-- /.sidebar -->'));
+      _print(_safe('<div class="pull-right">\n\t<span id=\'logo\'><img src=\'img/logos/logo_lg.png\' class=\'iops\'/> powered by <img src=\'img/logos/jbt_sm.png\' class=\'jbt\'/></span>\n</div>\n\n'));
     
     }).call(this);
     
@@ -226,7 +136,7 @@ window.JST["dashboard/side"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
-window.JST["dashboard/sortable"] = function(__obj) {
+window.JST["dashboard/header.bak"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
       value = '';
@@ -247,7 +157,158 @@ window.JST["dashboard/sortable"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="gridster">\n\t<ul class="container">\n\t\t<li class=\'cell\' data-row="1" data-col="1" data-sizex="1" data-sizey="1"></li>\n\t  <li class=\'cell\' data-row="2" data-col="1" data-sizex="1" data-sizey="1"></li>\n\t  <li class=\'cell\' data-row="3" data-col="1" data-sizex="1" data-sizey="1"></li>\n\n\t  <li class=\'cell\' data-row="1" data-col="2" data-sizex="2" data-sizey="1"></li>\n\t  <li class=\'cell\' data-row="2" data-col="2" data-sizex="2" data-sizey="2"></li>\n\n\t \n\t</ul>\n</div>'));
+      _print(_safe('<!-- Logo -->\n<a href="/" class="logo">\n  <span class="logo-mini"><img src=\'img/logos/logo_sm.png\' alt=\'JBT iOPS\' style=\'height:41px;\'/></span>\n  <span class="logo-lg"><img src=\'img/logos/logo_lg.png\' alt=\'JBT iOPS\' style=\'height:41px;\'/></span>\n</a>\n\n<!-- Header Navbar -->\n<nav class="navbar navbar-static-top" role="navigation">\n  <!-- Sidebar toggle button-->\n  <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">\n    <span class="sr-only">Toggle navigation</span>\n  </a>\n  <!-- Navbar Right Menu -->\n  <div class="navbar-custom-menu">\n    <ul class="nav navbar-nav">\n      <!-- Messages: style can be found in dropdown.less-->\n      <li class="dropdown messages-menu">\n        <!-- Menu toggle button -->\n        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n          <i class="fa fa-envelope-o"></i>\n          <span class="label label-success">4</span>\n        </a>\n        <ul class="dropdown-menu">\n          <li class="header">You have 4 messages</li>\n          <li>\n            <!-- inner menu: contains the messages -->\n            <ul class="menu">\n              <li><!-- start message -->\n                <a href="#">\n                  <div class="pull-left">\n                    <!-- User Image -->\n                    <img src="img/user2-160x160.jpg" class="img-circle" alt="User Image"/>\n                  </div>\n                  <!-- Message title and timestamp -->\n                  <h4>\n                    Support Team\n                    <small><i class="fa fa-clock-o"></i> 5 mins</small>\n                  </h4>\n                  <!-- The message -->\n                  <p>Why not buy a new awesome theme?</p>\n                </a>\n              </li><!-- end message -->\n            </ul><!-- /.menu -->\n          </li>\n          <li class="footer"><a href="#">See All Messages</a></li>\n        </ul>\n      </li><!-- /.messages-menu -->\n\n      <!-- Notifications Menu -->\n      <li class="dropdown notifications-menu">\n        <!-- Menu toggle button -->\n        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n          <i class="fa fa-bell-o"></i>\n          <span class="label label-warning">10</span>\n        </a>\n        <ul class="dropdown-menu">\n          <li class="header">You have 10 notifications</li>\n          <li>\n            <!-- Inner Menu: contains the notifications -->\n            <ul class="menu">\n              <li><!-- start notification -->\n                <a href="#">\n                  <i class="fa fa-users text-aqua"></i> 5 new members joined today\n                </a>\n              </li><!-- end notification -->\n            </ul>\n          </li>\n          <li class="footer"><a href="#">View all</a></li>\n        </ul>\n      </li>\n      <!-- Tasks Menu -->\n      <li class="dropdown tasks-menu">\n        <!-- Menu Toggle Button -->\n        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n          <i class="fa fa-flag-o"></i>\n          <span class="label label-danger">9</span>\n        </a>\n        <ul class="dropdown-menu">\n          <li class="header">You have 9 tasks</li>\n          <li>\n            <!-- Inner menu: contains the tasks -->\n            <ul class="menu">\n              <li><!-- Task item -->\n                <a href="#">\n                  <!-- Task title and progress text -->\n                  <h3>\n                    Design some buttons\n                    <small class="pull-right">20%</small>\n                  </h3>\n                  <!-- The progress bar -->\n                  <div class="progress xs">\n                    <!-- Change the css width attribute to simulate progress -->\n                    <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">\n                      <span class="sr-only">20% Complete</span>\n                    </div>\n                  </div>\n                </a>\n              </li><!-- end task item -->\n            </ul>\n          </li>\n          <li class="footer">\n            <a href="#">View all tasks</a>\n          </li>\n        </ul>\n      </li>\n      <!-- User Account Menu -->\n      <li class="dropdown user user-menu">\n        <!-- Menu Toggle Button -->\n        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n          <!-- The user image in the navbar-->\n          <img src="img/user2-160x160.jpg" class="user-image" alt="User Image"/>\n          <!-- hidden-xs hides the username on small devices so only the image appears. -->\n          <span class="hidden-xs">Firstname Lastname</span>\n        </a>\n        <ul class="dropdown-menu">\n          <!-- The user image in the menu -->\n          <li class="user-header">\n            <img src="img/user2-160x160.jpg" class="img-circle" alt="User Image" />\n            <p>\n              Firstname Lastname - Web Developer\n              <small>Member since Nov. 2012</small>\n            </p>\n          </li>\n          <!-- Menu Body -->\n          <li class="user-body">\n            <div class="col-xs-4 text-center">\n              <a href="#">Followers</a>\n            </div>\n            <div class="col-xs-4 text-center">\n              <a href="#">Sales</a>\n            </div>\n            <div class="col-xs-4 text-center">\n              <a href="#">Friends</a>\n            </div>\n          </li>\n          <!-- Menu Footer-->\n          <li class="user-footer">\n            <div class="pull-left">\n              <a href="#" class="btn btn-default btn-flat">Profile</a>\n            </div>\n            <div class="pull-right">\n              <a href="#" class="btn btn-default btn-flat">Sign out</a>\n            </div>\n          </li>\n        </ul>\n      </li>\n      <!-- Control Sidebar Toggle Button -->\n      <li>\n        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>\n      </li>\n    </ul>\n  </div>\n</nav>'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
+window.JST["dashboard/header"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<!-- Logo -->\n<a href="/" class="logo">\n  <span class="logo-mini"><img src=\'img/logos/logo_sm.png\' alt=\'JBT iOPS\' style=\'height:41px;\'/></span>\n  <span class="logo-lg"><img src=\'img/logos/logo_lg.png\' alt=\'JBT iOPS\' style=\'height:41px;\'/></span>\n</a>\n\n<!-- Header Navbar -->\n<nav class="navbar navbar-static-top" role="navigation">\n  <!-- Sidebar toggle button-->\n  <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">\n    <span class="sr-only">Toggle navigation</span>\n  </a>\n  <!-- Navbar Right Menu -->\n  <div class="navbar-custom-menu">\n    <ul class="nav navbar-nav">\n      <li class=\'user user-menu\'>\n        <div style=\'padding:15px\' id=\'clock\'>--, --- ---, ---- 00:00</div>\n      </li>\n      <!-- User Account Menu -->\n      <li class="dropdown user user-menu">\n        <!-- Menu Toggle Button -->\n        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n          <!-- The user image in the navbar-->\n          <img src="img/avatar.png" class="user-image" id=\'avatar\'/>\n          <!-- hidden-xs hides the username on small devices so only the image appears. -->\n          <span class="hidden-xs" id=\'fullname\'>'));
+    
+      _print(App.current_user.fullname);
+    
+      _print(_safe('</span>\n        </a>\n        <ul class="dropdown-menu">\n          <!-- The user image in the menu -->\n          <li class="user-header">\n            <img src="img/avatar.png" class="img-circle" id=\'avatar_full\' />\n            <p>\n              <span id=\'fullname_full\'>'));
+    
+      _print(App.current_user.fullname);
+    
+      _print(_safe('</span> <small id=\'email_full\'>'));
+    
+      _print(App.current_user.email);
+    
+      _print(_safe('</small>\n            </p>\n          </li>\n          <!-- Menu Body -->\n          <!-- <li class="user-body"></li> -->\n          <!-- Menu Footer-->\n          <li class="user-footer">\n            <div class="pull-left">\n              <a href="#" class="btn btn-default btn-flat" id=\'profile\'>Profile</a>\n            </div>\n            <div class="pull-right">\n              <a href="#" class="btn btn-default btn-flat" id=\'logout\'>Log Out</a>\n            </div>\n          </li>\n        </ul>\n      </li>\n      <!-- Control Sidebar Toggle Button -->\n      <li>\n        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>\n      </li>\n    </ul>\n  </div>\n</nav>'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
+window.JST["dashboard/side.bak"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<!-- sidebar: style can be found in sidebar.less -->\n<section class="sidebar">\n\n  <!-- Sidebar user panel (optional) -->\n  <div class="user-panel">\n    <div class="pull-left image" id=\'avatar\'>\n      <img src="img/avatar.png" class="img-circle" alt="User Image" />\n    </div>\n    <div class="pull-left info">\n      <p id=\'fullname\'>'));
+    
+      _print(App.current_user.fullname);
+    
+      _print(_safe('</p>\n    </div>\n  </div>\n\n  <!-- search form (Optional) -->\n  <form action="#" method="get" class="sidebar-form">\n    <div class="input-group">\n      <input type="text" name="q" class="form-control" placeholder="Search..."/>\n      <span class="input-group-btn">\n        <button type=\'submit\' name=\'search\' id=\'search-btn\' class="btn btn-flat"><i class="fa fa-search"></i></button>\n      </span>\n    </div>\n  </form>\n  <!-- /.search form -->\n\n  <!-- Sidebar Menu -->\n  <ul class="sidebar-menu">\n    <li class="header">HEADER</li>\n    <!-- Optionally, you can add icons to the links -->\n    <li class="active"><a href="#"><i class=\'fa fa-link\'></i> <span>Link</span></a></li>\n    <li><a href="#"><i class=\'fa fa-link\'></i> <span>Another Link</span></a></li>\n    <li class="treeview">\n      <a href="#"><i class=\'fa fa-link\'></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>\n      <ul class="treeview-menu">\n        <li><a href="#">Link in level 2</a></li>\n        <li><a href="#">Link in level 2</a></li>\n      </ul>\n    </li>\n  </ul><!-- /.sidebar-menu -->\n</section>\n<!-- /.sidebar -->'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
+window.JST["dashboard/side"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<!-- sidebar -->\n<section class="sidebar">\n  <!-- Sidebar Menu -->\n  <ul class="sidebar-menu" id=\'dashboard-list\'>\n    <li class="header">DASHBOARDS</li>\n    <!-- <li><a href="#"><i class=\'fa fa-th-large\'></i> <span>Link</span></a></li> -->\n    <!-- <li><a href="#"><i class=\'fa fa-th-large\'></i> <span>Another Link</span></a></li> -->\n  </ul>\n  <!-- /.sidebar-menu -->\n</section>\n<!-- /.sidebar -->'));
     
     }).call(this);
     
@@ -316,6 +377,96 @@ window.JST["dashboard/tool"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
+window.JST["dashboard/widgets"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div class="gridster">\n\t<ul class="container">\n\t\t<li class=\'cell\' data-row="1" data-col="1" data-sizex="1" data-sizey="1"></li>\n\t  <li class=\'cell\' data-row="2" data-col="1" data-sizex="1" data-sizey="1"></li>\n\t  <li class=\'cell\' data-row="3" data-col="1" data-sizex="1" data-sizey="1"></li>\n\n\t  <li class=\'cell\' data-row="1" data-col="2" data-sizex="2" data-sizey="1"></li>\n\t  <li class=\'cell\' data-row="2" data-col="2" data-sizex="2" data-sizey="2"></li>\n\n\t \n\t</ul>\n</div>'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
+window.JST["forms/profile"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div>PROFILE</div>'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
 window.JST["login"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
@@ -337,7 +488,7 @@ window.JST["login"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-body" id="alert-container">\n</div>\n<div class="login-box">\n  <div class="login-logo">\n    <img src=\'img/logo_login.png\' style="max-width:300px;"/>\n  </div><!-- /.login-logo -->\n  <div class="login-box-body">\n    <p class="login-box-msg">Sign in to start your session</p>\n    <form action="#" method="post">\n      \n      '));
+      _print(_safe('<div class="box-body" id="alert-container">\n</div>\n<div class="login-box">\n  <div class="login-logo">\n    <img src=\'img/logos/logo_login.png\' style="max-width:300px;"/>\n  </div><!-- /.login-logo -->\n  <div class="login-box-body">\n    <p class="login-box-msg">Sign in to start your session</p>\n    <form action="#" method="post">\n      \n      '));
     
       _print(_safe(this.formGroup({
         id: 'email',
@@ -408,6 +559,7 @@ window.IOPS = (function() {
     return this.layout = new IopsLayout();
   });
   App.on('start', function(options) {
+    var dtfn;
     this.log('Started');
     if (Backbone.history) {
       this.controller = new IopsController();
@@ -417,12 +569,28 @@ window.IOPS = (function() {
       this.log('Backbone.history starting');
       Backbone.history.start();
     }
+    dtfn = function() {
+      App.time = new Date();
+      App.vent.trigger('app:clock', App.time);
+      return App.time;
+    };
+    App.clock = setInterval(dtfn, 5000);
+    dtfn();
     return this.log('Done starting and running!');
+  });
+  Object.defineProperty(App, 'current_user', {
+    get: function() {
+      if ((App.session != null) && (App.session.get('user') != null)) {
+        return App.session.get('user');
+      } else {
+        return null;
+      }
+    }
   });
   return App;
 })();
 
-},{"./common/adminlte_lib":2,"./common/baseline_app":4,"./common/extensions":5,"./iops_controller":7,"./models/session":9,"./router":10,"./views/iops_layout":18}],2:[function(require,module,exports){
+},{"./common/adminlte_lib":2,"./common/baseline_app":4,"./common/extensions":5,"./iops_controller":7,"./models/session":12,"./router":14,"./views/iops_layout":23}],2:[function(require,module,exports){
 
 /*
  *
@@ -894,6 +1062,8 @@ AppConfig = (function(superClass) {
 
   AppConfig.api_baseurl = 'http://{service}dev.iopsnj.com/v1';
 
+  AppConfig.dt_format = 'E, MMM D, yyyy HH:mm';
+
   AppConfig.session_timeout = 1;
 
   return AppConfig;
@@ -929,18 +1099,20 @@ BaselineApp = (function(superClass) {
     this.silent = false;
     this.store = new Basil();
     this.config = AppConfig;
-    this.vent.bind('app:log', function(msg, src, lvl) {
-      if (src == null) {
-        src = 'App';
-      }
-      if (lvl == null) {
-        lvl = 'DEBUG';
-      }
-      if (!this.silent) {
-        msg = lvl + " | " + src + " | " + msg;
-        return typeof console !== "undefined" && console !== null ? typeof console.log === "function" ? console.log(msg) : void 0 : void 0;
-      }
-    });
+    this.vent.on('app:log', (function(_this) {
+      return function(msg, src, lvl) {
+        if (src == null) {
+          src = 'App';
+        }
+        if (lvl == null) {
+          lvl = 'DEBUG';
+        }
+        if (!_this.silent) {
+          msg = lvl + " | " + src + " | " + msg;
+          return typeof console !== "undefined" && console !== null ? typeof console.log === "function" ? console.log(msg) : void 0 : void 0;
+        }
+      };
+    })(this));
     return this;
   };
 
@@ -1066,15 +1238,25 @@ UIUtils = (function(superClass) {
 module.exports = UIUtils;
 
 },{}],7:[function(require,module,exports){
-var DashboardLayout, IopsController, LoginView, Marionette,
+var Dashboard, DashboardCollection, DashboardContentView, DashboardLayout, IopsController, LoginView, Marionette, ProfileView, User,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
 Marionette = require('marionette');
 
-LoginView = require('./views/login');
+LoginView = require('./views/login_view');
 
-DashboardLayout = require('./views/dashboard/layout');
+User = require('./models/user');
+
+ProfileView = require('./views/forms/profile_view');
+
+Dashboard = require('./models/dashboard');
+
+DashboardCollection = require('./models/dashboard_collection');
+
+DashboardLayout = require('./views/dashboard/dashboard_layout');
+
+DashboardContentView = require('./views/dashboard/content_view');
 
 IopsController = (function(superClass) {
   extend(IopsController, superClass);
@@ -1084,15 +1266,26 @@ IopsController = (function(superClass) {
   }
 
   IopsController.prototype.home = function() {
-    var v;
-    v = new DashboardLayout();
-    return App.layout.center_region.show(v);
+    var dash, dashes, dl;
+    dashes = new DashboardCollection();
+    dash = new Dashboard({
+      id: 1,
+      title: "Sample Dashboard"
+    });
+    dashes.add(dash);
+    dl = new DashboardLayout({
+      collection: dashes
+    });
+    App.layout.center_region.show(dl);
+    this.dashboard(dash);
+    return this;
   };
 
   IopsController.prototype.login = function() {
     var v;
     v = new LoginView();
-    return App.layout.center_region.show(v);
+    App.layout.center_region.show(v);
+    return this;
   };
 
   IopsController.prototype.logout = function() {
@@ -1100,9 +1293,33 @@ IopsController = (function(superClass) {
       App.session.clear();
     }
     App.session = null;
-    return App.router.navigate('login', {
+    App.router.navigate('login', {
       trigger: true
     });
+    return this;
+  };
+
+  IopsController.prototype.profile = function() {
+    var dl;
+    dl = App.layout.center_region.currentView;
+    dl.show_content({
+      title: 'Your Profile',
+      subtitle: "Edit your user account profile below",
+      view: new ProfileView({
+        model: new User(App.current_user)
+      })
+    });
+    return this;
+  };
+
+  IopsController.prototype.dashboard = function(dash) {
+    var dl;
+    if (dash == null) {
+      return this;
+    }
+    dl = App.layout.center_region.currentView;
+    dl.show_widgets(dash);
+    return this;
   };
 
   return IopsController;
@@ -1111,7 +1328,7 @@ IopsController = (function(superClass) {
 
 module.exports = IopsController;
 
-},{"./views/dashboard/layout":14,"./views/login":19}],8:[function(require,module,exports){
+},{"./models/dashboard":10,"./models/dashboard_collection":11,"./models/user":13,"./views/dashboard/content_view":15,"./views/dashboard/dashboard_layout":16,"./views/forms/profile_view":22,"./views/login_view":24}],8:[function(require,module,exports){
 var AppConfig, Backbone, BaseModel,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1142,11 +1359,83 @@ BaseModel = (function(superClass) {
 module.exports = BaseModel;
 
 },{"../common/appconfig":3}],9:[function(require,module,exports){
-var BaseModel, SessionModel,
+var AppConfig, Backbone, BaseCollection,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+AppConfig = require('../common/appconfig');
+
+Backbone = require('backbone');
+
+BaseCollection = (function(superClass) {
+  extend(BaseCollection, superClass);
+
+  function BaseCollection(opts) {
+    var url;
+    BaseCollection.__super__.constructor.apply(this, arguments);
+    url = this.service != null ? ("" + AppConfig.api_baseurl).replace('{service}', this.service + ".") : "" + AppConfig.api_baseurl;
+    if (this.url != null) {
+      this.url = "" + url + this.url;
+    } else {
+      url;
+    }
+    this;
+  }
+
+  return BaseCollection;
+
+})(Backbone.Collection);
+
+module.exports = BaseCollection;
+
+},{"../common/appconfig":3}],10:[function(require,module,exports){
+var BaseModel, Dashboard,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
 BaseModel = require('./_base');
+
+Dashboard = (function(superClass) {
+  extend(Dashboard, superClass);
+
+  function Dashboard() {
+    return Dashboard.__super__.constructor.apply(this, arguments);
+  }
+
+  return Dashboard;
+
+})(BaseModel);
+
+module.exports = Dashboard;
+
+},{"./_base":8}],11:[function(require,module,exports){
+var BaseCollection, DashboardCollection,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+BaseCollection = require('./_base_collection');
+
+DashboardCollection = (function(superClass) {
+  extend(DashboardCollection, superClass);
+
+  function DashboardCollection() {
+    return DashboardCollection.__super__.constructor.apply(this, arguments);
+  }
+
+  return DashboardCollection;
+
+})(BaseCollection);
+
+module.exports = DashboardCollection;
+
+},{"./_base_collection":9}],12:[function(require,module,exports){
+var BaseModel, SessionModel, User,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+BaseModel = require('./_base');
+
+User = require('./user');
 
 SessionModel = (function(superClass) {
   extend(SessionModel, superClass);
@@ -1181,47 +1470,29 @@ SessionModel = (function(superClass) {
   };
 
   SessionModel.auth = function(arg) {
-    var email, error, oe, os, password, success;
+    var email, error, password, success;
     email = arg.email, password = arg.password, success = arg.success, error = arg.error;
     SessionModel.clear();
-    App.session = new SessionModel({
-      email: email,
-      password: password
-    });
-    if (success != null) {
-      os = success;
-      success = (function(_this) {
-        return function() {
-          SessionModel.set_token(App.session);
-          return os();
-        };
-      })(this);
+    if ((email == null) || email.trim() === '' || (password == null) || password.trim() === '') {
+      return error();
     } else {
-      success = (function(_this) {
-        return function() {
-          return SessionModel.set_token(App.session);
-        };
-      })(this);
+      App.session = new SessionModel({
+        email: email,
+        password: password,
+        token: 'foo',
+        user: {
+          id: 1,
+          firstname: 'John',
+          lastname: 'Talarico',
+          fullname: 'John Talarico',
+          email: 'john@opcsystems.com',
+          avatar: null
+        }
+      });
+      SessionModel.set_token(App.session);
+      App.session.attributes['password'] = null;
+      return success();
     }
-    if (error != null) {
-      oe = error;
-      error = (function(_this) {
-        return function() {
-          SessionModel.clear();
-          return oe();
-        };
-      })(this);
-    } else {
-      error = (function(_this) {
-        return function() {
-          return SessionModel.clear();
-        };
-      })(this);
-    }
-    return App.session.save(null, {
-      success: success,
-      error: error
-    });
   };
 
   SessionModel.set_token = function(session) {
@@ -1264,7 +1535,31 @@ SessionModel = (function(superClass) {
 
 module.exports = SessionModel;
 
-},{"./_base":8}],10:[function(require,module,exports){
+},{"./_base":8,"./user":13}],13:[function(require,module,exports){
+var BaseModel, User,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+BaseModel = require('./_base');
+
+User = (function(superClass) {
+  extend(User, superClass);
+
+  function User() {
+    return User.__super__.constructor.apply(this, arguments);
+  }
+
+  User.prototype.service = 'accounts';
+
+  User.prototype.urlRoot = '/user';
+
+  return User;
+
+})(BaseModel);
+
+module.exports = User;
+
+},{"./_base":8}],14:[function(require,module,exports){
 var Marionette, Router,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1300,14 +1595,12 @@ Router = (function(superClass) {
 
 module.exports = Router;
 
-},{}],11:[function(require,module,exports){
-var DashboardContentView, Marionette, SortableView,
+},{}],15:[function(require,module,exports){
+var DashboardContentView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
 Marionette = require('marionette');
-
-SortableView = require('./sortable');
 
 DashboardContentView = (function(superClass) {
   extend(DashboardContentView, superClass);
@@ -1323,9 +1616,9 @@ DashboardContentView = (function(superClass) {
   };
 
   DashboardContentView.prototype.onShow = function() {
-    var sv;
-    sv = new SortableView();
-    return this.center.show(sv);
+    if (this.center_view != null) {
+      return this.center.show(this.center_view);
+    }
   };
 
   DashboardContentView.prototype.onDomRefresh = function() {
@@ -1342,7 +1635,85 @@ DashboardContentView = (function(superClass) {
 
 module.exports = DashboardContentView;
 
-},{"./sortable":16}],12:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
+var DashboardContentView, DashboardFooterView, DashboardHeaderView, DashboardLayout, DashboardSideView, DashboardToolView, Marionette, WidgetsView,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+DashboardHeaderView = require('./header_view');
+
+DashboardSideView = require('./side_view');
+
+DashboardToolView = require('./tool_view');
+
+DashboardFooterView = require('./footer_view');
+
+DashboardContentView = require('./content_view');
+
+WidgetsView = require('./widgets_view');
+
+DashboardLayout = (function(superClass) {
+  extend(DashboardLayout, superClass);
+
+  function DashboardLayout() {
+    return DashboardLayout.__super__.constructor.apply(this, arguments);
+  }
+
+  DashboardLayout.prototype.template = "dashboard/dashboard_layout";
+
+  DashboardLayout.prototype.regions = {
+    header: "#header-region",
+    side: "#side-region",
+    tool: "#tool-region",
+    footer: "#footer-region",
+    content: "#content-region"
+  };
+
+  DashboardLayout.prototype.show_content = function(arg) {
+    var contentview, subtitle, title, view;
+    title = arg.title, subtitle = arg.subtitle, view = arg.view;
+    contentview = new DashboardContentView();
+    contentview.title = title;
+    contentview.subtitle = subtitle;
+    contentview.center_view = view;
+    this.content.show(contentview);
+    return this;
+  };
+
+  DashboardLayout.prototype.show_widgets = function(dash) {
+    return this.show_content({
+      title: dash.get('title'),
+      subtitle: '',
+      view: new WidgetsView({
+        model: dash
+      })
+    });
+  };
+
+  DashboardLayout.prototype.onShow = function() {
+    var footerview, headerview, sideview, toolview;
+    headerview = new DashboardHeaderView();
+    this.header.show(headerview);
+    sideview = new DashboardSideView({
+      collection: this.collection
+    });
+    this.side.show(sideview);
+    toolview = new DashboardToolView();
+    this.tool.show(toolview);
+    footerview = new DashboardFooterView();
+    this.footer.show(footerview);
+    return App.AdminLTE_lib.reset();
+  };
+
+  return DashboardLayout;
+
+})(Marionette.LayoutView);
+
+module.exports = DashboardLayout;
+
+},{"./content_view":15,"./footer_view":17,"./header_view":18,"./side_view":19,"./tool_view":20,"./widgets_view":21}],17:[function(require,module,exports){
 var DashboardFooterView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1368,17 +1739,22 @@ DashboardFooterView = (function(superClass) {
 
 module.exports = DashboardFooterView;
 
-},{}],13:[function(require,module,exports){
-var DashboardHeaderView, Marionette,
+},{}],18:[function(require,module,exports){
+var AppConfig, DashboardHeaderView, Marionette,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
 Marionette = require('marionette');
 
+AppConfig = require('../../common/appconfig');
+
 DashboardHeaderView = (function(superClass) {
   extend(DashboardHeaderView, superClass);
 
   function DashboardHeaderView() {
+    this.onDomRefresh = bind(this.onDomRefresh, this);
+    this.set_clock = bind(this.set_clock, this);
     return DashboardHeaderView.__super__.constructor.apply(this, arguments);
   }
 
@@ -1388,70 +1764,56 @@ DashboardHeaderView = (function(superClass) {
 
   DashboardHeaderView.prototype.className = "main-header";
 
+  DashboardHeaderView.prototype.ui = {
+    avatar: '#avatar',
+    fullname: '#fullname',
+    avatar_full: '#avatar_full',
+    fullname_full: '#fullname_full',
+    email_full: '#email_full',
+    profile: 'a#profile',
+    logout: 'a#logout',
+    clock: '#clock'
+  };
+
+  DashboardHeaderView.prototype.events = {
+    'click a#logout': 'logout',
+    'click a#profile': 'profile'
+  };
+
+  DashboardHeaderView.prototype.set_clock = function(dt) {
+    return this.ui.clock.html($.format.date(dt, AppConfig.dt_format));
+  };
+
+  DashboardHeaderView.prototype.logout = function(e) {
+    e.preventDefault();
+    return App.controller.logout();
+  };
+
+  DashboardHeaderView.prototype.profile = function(e) {
+    e.preventDefault();
+    return App.controller.profile();
+  };
+
+  DashboardHeaderView.prototype.onDomRefresh = function() {
+    if ((App.current_user != null) && (App.current_user.avatar != null)) {
+      this.ui.avatar.attr('src', App.current_user.avatar);
+      this.ui.avatar_full.attr('src', App.current_user.avatar);
+    }
+    App.vent.on('app:clock', this.set_clock);
+    return this.set_clock(new Date());
+  };
+
+  DashboardHeaderView.prototype.onBeforeDestroy = function(args) {
+    return App.vent.off('app:clock', this.set_clock);
+  };
+
   return DashboardHeaderView;
 
 })(Marionette.ItemView);
 
 module.exports = DashboardHeaderView;
 
-},{}],14:[function(require,module,exports){
-var DashboardContentView, DashboardFooterView, DashboardHeaderView, DashboardLayout, DashboardSideView, DashboardToolView, Marionette,
-  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-  hasProp = {}.hasOwnProperty;
-
-Marionette = require('marionette');
-
-DashboardHeaderView = require('./headerview');
-
-DashboardSideView = require('./sideview');
-
-DashboardToolView = require('./toolview');
-
-DashboardFooterView = require('./footerview');
-
-DashboardContentView = require('./contentview');
-
-DashboardLayout = (function(superClass) {
-  extend(DashboardLayout, superClass);
-
-  function DashboardLayout() {
-    return DashboardLayout.__super__.constructor.apply(this, arguments);
-  }
-
-  DashboardLayout.prototype.template = "dashboard/layout";
-
-  DashboardLayout.prototype.regions = {
-    header: "#header-region",
-    side: "#side-region",
-    tool: "#tool-region",
-    footer: "#footer-region",
-    content: "#content-region"
-  };
-
-  DashboardLayout.prototype.onShow = function() {
-    var contentview, footerview, headerview, sideview, toolview;
-    headerview = new DashboardHeaderView();
-    this.header.show(headerview);
-    sideview = new DashboardSideView();
-    this.side.show(sideview);
-    toolview = new DashboardToolView();
-    this.tool.show(toolview);
-    footerview = new DashboardFooterView();
-    this.footer.show(footerview);
-    contentview = new DashboardContentView();
-    contentview.title = "Main Dashboard";
-    contentview.subtitle = "This is an example dashboard";
-    this.content.show(contentview);
-    return App.AdminLTE_lib.reset();
-  };
-
-  return DashboardLayout;
-
-})(Marionette.LayoutView);
-
-module.exports = DashboardLayout;
-
-},{"./contentview":11,"./footerview":12,"./headerview":13,"./sideview":15,"./toolview":17}],15:[function(require,module,exports){
+},{"../../common/appconfig":3}],19:[function(require,module,exports){
 var DashboardSideView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1471,39 +1833,59 @@ DashboardSideView = (function(superClass) {
 
   DashboardSideView.prototype.className = "main-sidebar";
 
+  DashboardSideView.prototype.ui = {
+    avatar: '#avatar',
+    fullname: '#fullname',
+    dashboard_list: '#dashboard-list'
+  };
+
+  DashboardSideView.prototype.events = {
+    'click #dashboard-list': 'show_dash'
+  };
+
+  DashboardSideView.prototype.show_dash = function(e) {
+    var d, dlink, i, len, ref, tgt;
+    tgt = $(e.target);
+    dlink = tgt.closest('.dashboard-link');
+    if ((dlink == null) || dlink.length === 0) {
+      return null;
+    }
+    ref = this.collection.models;
+    for (i = 0, len = ref.length; i < len; i++) {
+      d = ref[i];
+      if (dlink.hasClass("d_" + d.id)) {
+        $('li', this.ui.dashboard_list).removeClass('active');
+        dlink.addClass('active');
+        App.controller.dashboard(d);
+        break;
+      }
+    }
+    return this;
+  };
+
+  DashboardSideView.prototype.onDomRefresh = function() {
+    var d, dl, i, len, ref, results;
+    if ((App.current_user != null) && (App.current_user.avatar != null)) {
+      this.ui.avatar.attr('src', App.current_user.avatar);
+    }
+    $('li.dashboard-link', this.ui.dashboard_list).remove();
+    ref = this.collection.models;
+    results = [];
+    for (i = 0, len = ref.length; i < len; i++) {
+      d = ref[i];
+      dl = $("<li class='dashboard-link d_" + d.id + "'><a href='#'><i class='fa fa-th-large'></i> <span>" + (d.get('title')) + "</span></a></li>");
+      results.push(this.ui.dashboard_list.append(dl));
+    }
+    return results;
+  };
+
   return DashboardSideView;
 
 })(Marionette.ItemView);
 
 module.exports = DashboardSideView;
 
-},{}],16:[function(require,module,exports){
-var Marionette, SortableView,
-  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-  hasProp = {}.hasOwnProperty;
-
-Marionette = require('marionette');
-
-SortableView = (function(superClass) {
-  extend(SortableView, superClass);
-
-  function SortableView() {
-    return SortableView.__super__.constructor.apply(this, arguments);
-  }
-
-  SortableView.prototype.template = "dashboard/sortable";
-
-  SortableView.prototype.onDomRefresh = function() {
-    return $(".gridster ul.container").gridster();
-  };
-
-  return SortableView;
-
-})(Marionette.ItemView);
-
-module.exports = SortableView;
-
-},{}],17:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 var DashboardToolView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1529,7 +1911,55 @@ DashboardToolView = (function(superClass) {
 
 module.exports = DashboardToolView;
 
-},{}],18:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
+var Marionette, WidgetsView,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+WidgetsView = (function(superClass) {
+  extend(WidgetsView, superClass);
+
+  function WidgetsView() {
+    return WidgetsView.__super__.constructor.apply(this, arguments);
+  }
+
+  WidgetsView.prototype.template = "dashboard/widgets";
+
+  WidgetsView.prototype.onDomRefresh = function() {
+    return $(".gridster ul.container").gridster();
+  };
+
+  return WidgetsView;
+
+})(Marionette.ItemView);
+
+module.exports = WidgetsView;
+
+},{}],22:[function(require,module,exports){
+var Marionette, ProfileView,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+ProfileView = (function(superClass) {
+  extend(ProfileView, superClass);
+
+  function ProfileView() {
+    return ProfileView.__super__.constructor.apply(this, arguments);
+  }
+
+  ProfileView.prototype.template = "forms/profile";
+
+  return ProfileView;
+
+})(Marionette.ItemView);
+
+module.exports = ProfileView;
+
+},{}],23:[function(require,module,exports){
 var IopsLayout, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1555,7 +1985,7 @@ IopsLayout = (function(superClass) {
 
 module.exports = IopsLayout;
 
-},{}],19:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 var LoginView, Marionette, SessionModel, UIUtils,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1589,21 +2019,42 @@ LoginView = (function(superClass) {
 
   LoginView.prototype.set_errors = function() {
     this.ui.email.parent().addClass('has-error');
-    return this.ui.password.parent().addClass('has-error');
+    this.ui.password.parent().addClass('has-error');
+    return this;
   };
 
   LoginView.prototype.clear_errors = function() {
+    UIUtils.clearAlerts(this.ui.acontainer);
     this.ui.email.parent().removeClass('has-error');
-    return this.ui.password.parent().removeClass('has-error');
+    this.ui.password.parent().removeClass('has-error');
+    return this;
+  };
+
+  LoginView.prototype.show_login_error = function() {
+    UIUtils.showAlert(this.ui.acontainer, {
+      title: "LOGIN FAILED!",
+      message: "Check the email address and password, then try again.",
+      type: "danger",
+      icon: "warning"
+    });
+    this.set_errors();
+    return this;
+  };
+
+  LoginView.prototype.disable_ui = function(disable) {
+    var b, d;
+    d = disable ? 'disabled' : null;
+    this.$("input, button").attr('disabled', d);
+    b = disable ? '<i class="fa fa-spinner fa-pulse"></i>' : 'Log In';
+    this.ui.login.html(b);
+    return this;
   };
 
   LoginView.prototype.login = function(e) {
     e.preventDefault();
-    UIUtils.clearAlerts(this.ui.acontainer);
-    this.$("input, button").attr('disabled', 'disabled');
-    this.ui.login.html('<i class="fa fa-spinner fa-pulse"></i>');
     this.clear_errors();
-    return SessionModel.auth({
+    this.disable_ui(true);
+    SessionModel.auth({
       email: this.ui.email.val(),
       password: this.ui.password.val(),
       success: function(a, b, c) {
@@ -1613,18 +2064,12 @@ LoginView = (function(superClass) {
       },
       error: (function(_this) {
         return function() {
-          UIUtils.showAlert(_this.ui.acontainer, {
-            title: "LOGIN FAILED!",
-            message: "Check the email address and password, then try again.",
-            type: "danger",
-            icon: "warning"
-          });
-          _this.$("input, button").attr('disabled', null);
-          _this.ui.login.html('Log In');
-          return _this.set_errors();
+          _this.show_login_error();
+          return _this.disable_ui(false);
         };
       })(this)
     });
+    return this;
   };
 
   LoginView.prototype.onDomRefresh = function() {
@@ -1638,5 +2083,5 @@ LoginView = (function(superClass) {
 
 module.exports = LoginView;
 
-},{"../common/uiutils":6,"../models/session":9}]},{},[1])
+},{"../common/uiutils":6,"../models/session":12}]},{},[1])
 ;

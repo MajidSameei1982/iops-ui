@@ -54,6 +54,9 @@
 .bs-callout-info h4 {
   color: #5bc0de; }
 
+.user-panel .image img {
+  max-width: 35px; }
+
 .main-footer {
   box-sizing: content;
   height: 30px !important;

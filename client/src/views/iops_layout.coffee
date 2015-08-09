@@ -1,6 +1,9 @@
 Marionette = require('marionette')
 
 # ----------------------------------
+# Represents the top-level layout 
+# with a single region
+# ----------------------------------
 
 class IopsLayout extends Marionette.LayoutView
   el: "html"

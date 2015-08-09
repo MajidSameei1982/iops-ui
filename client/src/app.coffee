@@ -14,7 +14,7 @@ window.IOPS = do()->
 
   App = window.App = new BaselineApp()
   App.AdminLTE_lib = AdminLTE_lib
-  
+
   App.on "before:start", (options)->
     @log('Starting')
     SessionModel.restore()
@@ -29,8 +29,21 @@ window.IOPS = do()->
       @log('Backbone.history starting')
       Backbone.history.start()
 
+    # setup app clock
+    dtfn = ()->
+      App.time = new Date()
+      App.vent.trigger 'app:clock', App.time
+      App.time
+
+    App.clock = setInterval(dtfn, 5000)
+    dtfn()
+
     # new up and views and render for base app here...
     @log('Done starting and running!')
+
+  Object.defineProperty App, 'current_user',
+    get: ()->
+      if App.session? and App.session.get('user')? then App.session.get('user') else null
 
   App
 
