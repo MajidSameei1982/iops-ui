@@ -1,1 +1,15 @@
-<div>PROFILE</div>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-4" style='border-right:solid 1px #ccc;'>
+			<div style='border:solid 1px #ccc;width:200px;height:200px'></div>
+		</div>
+		<div class="col-xs-12 col-sm-8">
+			<%- @formGroup({id:'email', type:'email', placeholder:'Email', cls: 'col-sm-12', label: 'Email Address'}) %>
+			<%- @formGroup({id:'firstname', type:'text', placeholder:'First Name', cls: 'col-sm-6', label: 'Name'}) %>
+			<%- @formGroup({id:'lastname', type:'text', placeholder:'Last Name', cls: 'col-sm-6', label: '&nbsp;'}) %>
+			<%- @formGroup({id:'password', type:'password', placeholder:'', cls: 'col-sm-12', label: 'Reset Password'}) %>
+			<div class="col-xs-12"><button class="btn btn-primary">SAVE PROFILE</button></div>
+			
+		</div>
+	</div>
+</div>

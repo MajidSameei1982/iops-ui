@@ -32,7 +32,7 @@ class DashboardHeaderView extends Marionette.ItemView
 
   profile: (e)->
     e.preventDefault()
-    App.controller.profile()
+    App.router.navigate('profile', {trigger:true})
     @
 
   onDomRefresh: ()=>

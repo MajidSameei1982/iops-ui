@@ -443,7 +443,47 @@ window.JST["forms/profile"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div>PROFILE</div>'));
+      _print(_safe('<div class="container">\n\t<div class="row">\n\t\t<div class="col-xs-12 col-sm-4" style=\'border-right:solid 1px #ccc;\'>\n\t\t\t<div style=\'border:solid 1px #ccc;width:200px;height:200px\'></div>\n\t\t</div>\n\t\t<div class="col-xs-12 col-sm-8">\n\t\t\t'));
+    
+      _print(_safe(this.formGroup({
+        id: 'email',
+        type: 'email',
+        placeholder: 'Email',
+        cls: 'col-sm-12',
+        label: 'Email Address'
+      })));
+    
+      _print(_safe('\n\t\t\t'));
+    
+      _print(_safe(this.formGroup({
+        id: 'firstname',
+        type: 'text',
+        placeholder: 'First Name',
+        cls: 'col-sm-6',
+        label: 'Name'
+      })));
+    
+      _print(_safe('\n\t\t\t'));
+    
+      _print(_safe(this.formGroup({
+        id: 'lastname',
+        type: 'text',
+        placeholder: 'Last Name',
+        cls: 'col-sm-6',
+        label: '&nbsp;'
+      })));
+    
+      _print(_safe('\n\t\t\t'));
+    
+      _print(_safe(this.formGroup({
+        id: 'password',
+        type: 'password',
+        placeholder: '',
+        cls: 'col-sm-12',
+        label: 'Reset Password'
+      })));
+    
+      _print(_safe('\n\t\t\t<div class="col-xs-12"><button class="btn btn-primary">SAVE PROFILE</button></div>\n\t\t\t\n\t\t</div>\n\t</div>\n</div>'));
     
     }).call(this);
     
@@ -1267,10 +1307,11 @@ IopsController = (function(superClass) {
     App.log('Initializing', 'Controller');
   }
 
-  IopsController.prototype.home = function() {
-    var dashes, dl;
-    if (!App.router.onRoute('home', '', null)) {
-      return this;
+  IopsController.prototype.set_main_layout = function() {
+    var cv, dashes, dl;
+    cv = App.layout.center_region.currentView;
+    if (cv != null) {
+      return cv;
     }
     dashes = new DashboardCollection();
     dashes.add(new Dashboard({
@@ -1351,7 +1392,17 @@ IopsController = (function(superClass) {
       collection: dashes
     });
     App.layout.center_region.show(dl);
-    this.dashboard(dashes.models[0]);
+    return dl;
+  };
+
+  IopsController.prototype.home = function() {
+    var d, dl;
+    if (!App.router.onRoute('home', '', null)) {
+      return this;
+    }
+    dl = this.set_main_layout();
+    d = (dl != null) && (dl.collection != null) && dl.collection.models.length > 0 ? 1 : 0;
+    this.dashboard(d);
     return this;
   };
 
@@ -1375,7 +1426,7 @@ IopsController = (function(superClass) {
 
   IopsController.prototype.profile = function() {
     var dl;
-    dl = App.layout.center_region.currentView;
+    dl = this.set_main_layout();
     dl.show_content({
       title: 'Your Profile',
       subtitle: "Edit your user account profile below",
@@ -1387,14 +1438,26 @@ IopsController = (function(superClass) {
     return this;
   };
 
-  IopsController.prototype.dashboard = function(dash) {
-    var dl;
-    if (dash == null) {
-      return this;
+  IopsController.prototype.dashboard = function(id) {
+    var d, dash, dl, i, len, ref;
+    if (id == null) {
+      return null;
     }
-    dl = App.layout.center_region.currentView;
-    dl.show_widgets(dash);
-    App.vent.trigger("show:dashboard", dash);
+    id = parseInt(id);
+    dl = this.set_main_layout();
+    dash = null;
+    ref = dl.collection.models;
+    for (i = 0, len = ref.length; i < len; i++) {
+      d = ref[i];
+      if (d.id === id) {
+        dash = d;
+        break;
+      }
+    }
+    if (dash != null) {
+      dl.show_widgets(dash);
+      App.vent.trigger("show:dashboard", id);
+    }
     return this;
   };
 
@@ -1700,7 +1763,9 @@ Router = (function(superClass) {
   Router.prototype.appRoutes = {
     '': 'home',
     'login': 'login',
-    'logout': 'logout'
+    'logout': 'logout',
+    'profile': 'profile',
+    'dashboard/:id': 'dashboard'
   };
 
   Router.prototype.onRoute = function(name, path, args) {
@@ -1917,7 +1982,9 @@ DashboardHeaderView = (function(superClass) {
 
   DashboardHeaderView.prototype.profile = function(e) {
     e.preventDefault();
-    App.controller.profile();
+    App.router.navigate('profile', {
+      trigger: true
+    });
     return this;
   };
 
@@ -1974,6 +2041,7 @@ DashboardSideView = (function(superClass) {
 
   DashboardSideView.prototype.show_dash = function(e) {
     var d, dlink, i, len, ref, tgt;
+    e.preventDefault();
     tgt = $(e.target);
     dlink = tgt.closest('.dashboard-link');
     if ((dlink == null) || dlink.length === 0) {
@@ -1985,17 +2053,19 @@ DashboardSideView = (function(superClass) {
       if (dlink.hasClass("d_" + d.id)) {
         $('li', this.ui.dashboard_list).removeClass('active');
         dlink.addClass('active');
-        App.controller.dashboard(d);
+        App.router.navigate("dashboard/" + d.id, {
+          trigger: true
+        });
         break;
       }
     }
     return this;
   };
 
-  DashboardSideView.prototype.update_dash_links = function(dash) {
+  DashboardSideView.prototype.update_dash_links = function(id) {
     $('li', this.ui.dashboard_list).removeClass('active');
-    if (dash != null) {
-      return $("li.dashboard-link.d_" + dash.id).addClass('active');
+    if (id != null) {
+      return $("li.dashboard-link.d_" + id).addClass('active');
     }
   };
 

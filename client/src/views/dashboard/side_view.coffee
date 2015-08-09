@@ -15,6 +15,7 @@ class DashboardSideView extends Marionette.ItemView
   	'click #dashboard-list' : 'show_dash'
 
   show_dash: (e)->
+  	e.preventDefault()
   	tgt = $(e.target)
   	dlink = tgt.closest('.dashboard-link')
   	return null if !dlink? or dlink.length == 0
@@ -22,14 +23,14 @@ class DashboardSideView extends Marionette.ItemView
   		if dlink.hasClass("d_#{d.id}")
   			$('li',@ui.dashboard_list).removeClass('active')
   			dlink.addClass('active')
-  			App.controller.dashboard(d)
+  			App.router.navigate("dashboard/#{d.id}", {trigger:true})
   			break
   	@
 
-  update_dash_links: (dash)=>
+  update_dash_links: (id)=>
   	$('li', @ui.dashboard_list).removeClass('active')
-  	if dash?
-  		$("li.dashboard-link.d_#{dash.id}").addClass('active')
+  	if id?
+  		$("li.dashboard-link.d_#{id}").addClass('active')
 
   onShow: ()->
   	App.vent.on "show:dashboard", @update_dash_links

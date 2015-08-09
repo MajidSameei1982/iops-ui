@@ -14,9 +14,10 @@ class IopsController extends Object
   constructor: ()->
     App.log('Initializing', 'Controller')
     # add more controller initialization code here
-    
-  home: ()->
-    return @ if !App.router.onRoute('home', '', null)
+
+  set_main_layout: ()->
+    cv = App.layout.center_region.currentView
+    return cv if cv?
 
     # TODO: pull dashboards from current user and show first one
     dashes = new DashboardCollection()
@@ -45,9 +46,14 @@ class IopsController extends Object
     dl = new DashboardLayout
       collection: dashes
     App.layout.center_region.show(dl)
+    dl
 
-    @dashboard(dashes.models[0])
-
+  home: ()->
+    return @ if !App.router.onRoute('home', '', null)
+    dl = @set_main_layout()
+    # default to first dashboard
+    d = if dl? and dl.collection? and dl.collection.models.length > 0 then 1 else 0
+    @dashboard(d)
     @
 
   login: ()->
@@ -62,7 +68,7 @@ class IopsController extends Object
     @
 
   profile: ()->
-    dl = App.layout.center_region.currentView
+    dl = @set_main_layout()
     dl.show_content
       title: 'Your Profile'
       subtitle: "Edit your user account profile below"
@@ -71,12 +77,18 @@ class IopsController extends Object
     App.vent.trigger "show:dashboard"
     @
 
-  dashboard: (dash)->
-    return @ if !dash?
-
-    dl = App.layout.center_region.currentView
-    dl.show_widgets(dash)
-    App.vent.trigger "show:dashboard", dash
+  dashboard: (id)->
+    return null if !id?
+    id = parseInt(id)
+    dl = @set_main_layout()
+    dash = null
+    for d in dl.collection.models
+      if d.id == id
+        dash = d
+        break
+    if dash?
+      dl.show_widgets(dash)
+      App.vent.trigger "show:dashboard", id
     @
 
 # ----------------------------------
