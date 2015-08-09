@@ -553,13 +553,21 @@ window.IOPS = (function() {
   }
   App = window.App = new BaselineApp();
   App.AdminLTE_lib = AdminLTE_lib;
+  Object.defineProperty(App, 'current_user', {
+    get: function() {
+      if ((App.session != null) && (App.session.get('user') != null)) {
+        return App.session.get('user');
+      } else {
+        return null;
+      }
+    }
+  });
   App.on("before:start", function(options) {
     this.log('Starting');
     SessionModel.restore();
     return this.layout = new IopsLayout();
   });
   App.on('start', function(options) {
-    var dtfn;
     this.log('Started');
     if (Backbone.history) {
       this.controller = new IopsController();
@@ -569,23 +577,7 @@ window.IOPS = (function() {
       this.log('Backbone.history starting');
       Backbone.history.start();
     }
-    dtfn = function() {
-      App.time = new Date();
-      App.vent.trigger('app:clock', App.time);
-      return App.time;
-    };
-    App.clock = setInterval(dtfn, 5000);
-    dtfn();
     return this.log('Done starting and running!');
-  });
-  Object.defineProperty(App, 'current_user', {
-    get: function() {
-      if ((App.session != null) && (App.session.get('user') != null)) {
-        return App.session.get('user');
-      } else {
-        return null;
-      }
-    }
   });
   return App;
 })();
@@ -1269,6 +1261,9 @@ IopsController = (function(superClass) {
 
   IopsController.prototype.home = function() {
     var dashes, dl;
+    if (!App.router.onRoute('home', '', null)) {
+      return this;
+    }
     dashes = new DashboardCollection();
     dashes.add(new Dashboard({
       id: 1,
@@ -1701,7 +1696,7 @@ Router = (function(superClass) {
   };
 
   Router.prototype.onRoute = function(name, path, args) {
-    if ((path !== 'login' || path === 'logout') && (!App.session)) {
+    if ((path !== 'login' || path === 'logout') && (!App.session || (App.session.get('email') == null) || (App.current_user == null))) {
       App.router.navigate('login', {
         trigger: true
       });

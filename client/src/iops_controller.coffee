@@ -16,6 +16,8 @@ class IopsController extends Object
     # add more controller initialization code here
     
   home: ()->
+    return @ if !App.router.onRoute('home', '', null)
+
     # TODO: pull dashboards from current user and show first one
     dashes = new DashboardCollection()
     dashes.add new Dashboard
