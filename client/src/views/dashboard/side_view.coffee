@@ -26,6 +26,14 @@ class DashboardSideView extends Marionette.ItemView
   			break
   	@
 
+  update_dash_links: (dash)=>
+  	$('li', @ui.dashboard_list).removeClass('active')
+  	if dash?
+  		$("li.dashboard-link.d_#{dash.id}").addClass('active')
+
+  onShow: ()->
+  	App.vent.on "show:dashboard", @update_dash_links
+
   onDomRefresh: ()->
   	if App.current_user? && App.current_user.avatar? 
   		@ui.avatar.attr('src', App.current_user.avatar)

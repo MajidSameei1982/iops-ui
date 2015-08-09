@@ -6,6 +6,7 @@ Dashboard = require('./models/dashboard')
 DashboardCollection = require('./models/dashboard_collection')
 DashboardLayout = require('./views/dashboard/dashboard_layout')
 DashboardContentView = require('./views/dashboard/content_view')
+WidgetCollection = require('./models/widget_collection')
 
 # ----------------------------------
 
@@ -17,16 +18,33 @@ class IopsController extends Object
   home: ()->
     # TODO: pull dashboards from current user and show first one
     dashes = new DashboardCollection()
-    dash = new Dashboard
+    dashes.add new Dashboard
       id: 1
       title: "Sample Dashboard"
-    dashes.add dash
+      widgets : [
+        {id:1 ,sx: 1, sy: 1, r: 1, c: 1}
+        {id:2 ,sx: 1, sy: 1, r: 2, c: 1}
+        {id:3 ,sx: 1, sy: 1, r: 3, c: 1}
+        {id:4 ,sx: 2, sy: 1, r: 1, c: 2}
+        {id:5 ,sx: 2, sy: 2, r: 2, c: 2}
+      ]
+
+    dashes.add new Dashboard
+      id: 2
+      title: "Another Dashboard"
+      widgets : [
+        {id:1 ,sx: 1, sy: 1, r: 1, c: 2}
+        {id:2 ,sx: 1, sy: 1, r: 2, c: 2}
+        {id:3 ,sx: 1, sy: 1, r: 3, c: 2}
+        {id:4 ,sx: 2, sy: 1, r: 2, c: 1}
+        {id:5 ,sx: 2, sy: 2, r: 1, c: 1}
+      ]
 
     dl = new DashboardLayout
       collection: dashes
     App.layout.center_region.show(dl)
 
-    @dashboard(dash)
+    @dashboard(dashes.models[0])
 
     @
 
@@ -48,6 +66,7 @@ class IopsController extends Object
       subtitle: "Edit your user account profile below"
       view: new ProfileView
         model : new User(App.current_user)
+    App.vent.trigger "show:dashboard"
     @
 
   dashboard: (dash)->
@@ -55,6 +74,7 @@ class IopsController extends Object
 
     dl = App.layout.center_region.currentView
     dl.show_widgets(dash)
+    App.vent.trigger "show:dashboard", dash
     @
 
 # ----------------------------------
