@@ -34,13 +34,13 @@ window.IOPS = do()->
       Backbone.history.start()
 
     # setup app clock
-    # dtfn = ()->
-    #   App.time = new Date()
-    #   App.vent.trigger 'app:clock', App.time
-    #   App.time
+    dtfn = ()->
+      App.time = new Date()
+      App.vent.trigger 'app:clock', App.time
+      App.time
 
-    # App.clock = setInterval(dtfn, 5000)
-    # dtfn()
+    App.clock = setInterval(dtfn, 5000)
+    dtfn()
 
     # new up and views and render for base app here...
     @log('Done starting and running!')

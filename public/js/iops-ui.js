@@ -568,6 +568,7 @@ window.IOPS = (function() {
     return this.layout = new IopsLayout();
   });
   App.on('start', function(options) {
+    var dtfn;
     this.log('Started');
     if (Backbone.history) {
       this.controller = new IopsController();
@@ -577,6 +578,13 @@ window.IOPS = (function() {
       this.log('Backbone.history starting');
       Backbone.history.start();
     }
+    dtfn = function() {
+      App.time = new Date();
+      App.vent.trigger('app:clock', App.time);
+      return App.time;
+    };
+    App.clock = setInterval(dtfn, 5000);
+    dtfn();
     return this.log('Done starting and running!');
   });
   return App;
@@ -1897,17 +1905,20 @@ DashboardHeaderView = (function(superClass) {
   };
 
   DashboardHeaderView.prototype.set_clock = function(dt) {
-    return this.ui.clock.html($.format.date(dt, AppConfig.dt_format));
+    this.ui.clock.html($.format.date(dt, AppConfig.dt_format));
+    return this;
   };
 
   DashboardHeaderView.prototype.logout = function(e) {
     e.preventDefault();
-    return App.controller.logout();
+    App.controller.logout();
+    return this;
   };
 
   DashboardHeaderView.prototype.profile = function(e) {
     e.preventDefault();
-    return App.controller.profile();
+    App.controller.profile();
+    return this;
   };
 
   DashboardHeaderView.prototype.onDomRefresh = function() {

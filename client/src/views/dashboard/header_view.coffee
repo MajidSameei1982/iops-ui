@@ -22,23 +22,25 @@ class DashboardHeaderView extends Marionette.ItemView
   	'click a#profile' : 'profile'
 
   set_clock: (dt)=>
-  	@ui.clock.html($.format.date(dt, AppConfig.dt_format))
+    @ui.clock.html($.format.date(dt, AppConfig.dt_format))
+    @
 
   logout: (e)->
-  	e.preventDefault()
-  	App.controller.logout()
+    e.preventDefault()
+    App.controller.logout()
+    @
 
   profile: (e)->
-  	e.preventDefault()
-  	App.controller.profile()
+    e.preventDefault()
+    App.controller.profile()
+    @
 
   onDomRefresh: ()=>
-  	if App.current_user? and App.current_user.avatar?
-  		@ui.avatar.attr('src', App.current_user.avatar)
-  		@ui.avatar_full.attr('src', App.current_user.avatar)
-  	
-  	App.vent.on 'app:clock', @set_clock
-  	@set_clock(new Date())
+    if App.current_user? and App.current_user.avatar?
+      @ui.avatar.attr('src', App.current_user.avatar)
+      @ui.avatar_full.attr('src', App.current_user.avatar)
+    App.vent.on 'app:clock', @set_clock
+    @set_clock(new Date())
 
   onBeforeDestroy: (args)->
   	App.vent.off 'app:clock', @set_clock
