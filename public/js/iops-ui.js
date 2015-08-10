@@ -450,7 +450,8 @@ window.JST["forms/profile"] = function(__obj) {
         type: 'email',
         placeholder: 'Email',
         cls: 'col-sm-12',
-        label: 'Email Address'
+        label: 'Email Address',
+        value: this.email
       })));
     
       _print(_safe('\n\t\t\t'));
@@ -460,7 +461,8 @@ window.JST["forms/profile"] = function(__obj) {
         type: 'text',
         placeholder: 'First Name',
         cls: 'col-sm-6',
-        label: 'Name'
+        label: 'Name',
+        value: this.firstname
       })));
     
       _print(_safe('\n\t\t\t'));
@@ -470,7 +472,8 @@ window.JST["forms/profile"] = function(__obj) {
         type: 'text',
         placeholder: 'Last Name',
         cls: 'col-sm-6',
-        label: '&nbsp;'
+        label: '&nbsp;',
+        value: this.lastname
       })));
     
       _print(_safe('\n\t\t\t'));
@@ -1178,8 +1181,8 @@ _.extend(Marionette.View.prototype, {
   templateHelpers: function() {
     return {
       formGroup: function(arg) {
-        var cls, feedback, field, id, label, placeholder, type;
-        id = arg.id, type = arg.type, label = arg.label, placeholder = arg.placeholder, cls = arg.cls, feedback = arg.feedback;
+        var cls, feedback, field, id, label, placeholder, type, value;
+        id = arg.id, type = arg.type, label = arg.label, placeholder = arg.placeholder, cls = arg.cls, feedback = arg.feedback, value = arg.value;
         if (type == null) {
           type = 'text';
         }
@@ -1195,13 +1198,16 @@ _.extend(Marionette.View.prototype, {
         if (feedback == null) {
           feedback = '';
         }
+        if (value == null) {
+          value = '';
+        }
         cls = [cls];
         field = "";
         switch (type) {
           case 'text':
           case 'email':
           case 'password':
-            field = "<input type='" + type + "' id='" + id + "' name='" + id + "' class='form-control' placeholder='" + placeholder + "' />";
+            field = "<input type='" + type + "' id='" + id + "' name='" + id + "' class='form-control' placeholder='" + placeholder + "' value='" + value + "'/>";
         }
         if (label !== '') {
           label = "<label>" + label + "</label>";
