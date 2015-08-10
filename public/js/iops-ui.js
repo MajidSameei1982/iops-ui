@@ -1316,7 +1316,7 @@ IopsController = (function(superClass) {
   IopsController.prototype.set_main_layout = function() {
     var cv, dashes, dl;
     cv = App.layout.center_region.currentView;
-    if (cv != null) {
+    if ((cv != null) && cv instanceof DashboardLayout) {
       return cv;
     }
     dashes = new DashboardCollection();

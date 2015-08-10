@@ -17,7 +17,7 @@ class IopsController extends Object
 
   set_main_layout: ()->
     cv = App.layout.center_region.currentView
-    return cv if cv?
+    return cv if cv? and cv instanceof DashboardLayout
 
     # TODO: pull dashboards from current user and show first one
     dashes = new DashboardCollection()
