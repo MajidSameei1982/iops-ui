@@ -2248,7 +2248,7 @@ WidgetLayout = (function(superClass) {
       });
       this.getRegion("widget_" + idx).show(wv);
     }
-    $(this.el).gridster({
+    return $(this.el).gridster({
       resize: {
         enabled: true
       },
@@ -2257,7 +2257,6 @@ WidgetLayout = (function(superClass) {
         handle: '.box-header'
       }
     });
-    return App.AdminLTE_lib.reset();
   };
 
   return WidgetLayout;

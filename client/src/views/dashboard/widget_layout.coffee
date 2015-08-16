@@ -48,7 +48,7 @@ class WidgetLayout extends Marionette.LayoutView
   			# 	console.log ui
   			# 	console.log @
 
-  	App.AdminLTE_lib.reset()
+  	#App.AdminLTE_lib.reset()
   	
 # ----------------------------------
 
