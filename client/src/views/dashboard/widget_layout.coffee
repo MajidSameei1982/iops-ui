@@ -6,7 +6,7 @@ WidgetView = require('./widget_view')
 
 class WidgetLayout extends Marionette.LayoutView
   template:		"dashboard/widget_layout"
-  className: 'gridster container widget-container'
+  className: 'gridster widget-container'
   tagName: 'ul'
 
   onDomRefresh: ()->
@@ -27,6 +27,9 @@ class WidgetLayout extends Marionette.LayoutView
   		@getRegion("widget_#{idx}").show(wv);
 
   	$(@el).gridster
+  		resize:
+  			enabled: true
+  		autogrow_cols: true
   		draggable:
   			handle: '.box-header'
   			# start: (e, ui)->

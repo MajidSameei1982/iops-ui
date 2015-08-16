@@ -2221,7 +2221,7 @@ WidgetLayout = (function(superClass) {
 
   WidgetLayout.prototype.template = "dashboard/widget_layout";
 
-  WidgetLayout.prototype.className = 'gridster container widget-container';
+  WidgetLayout.prototype.className = 'gridster widget-container';
 
   WidgetLayout.prototype.tagName = 'ul';
 
@@ -2249,6 +2249,10 @@ WidgetLayout = (function(superClass) {
       this.getRegion("widget_" + idx).show(wv);
     }
     $(this.el).gridster({
+      resize: {
+        enabled: true
+      },
+      autogrow_cols: true,
       draggable: {
         handle: '.box-header'
       }
