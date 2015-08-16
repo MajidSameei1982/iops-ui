@@ -4,6 +4,7 @@ Widget = require('./widget')
 # ----------------------------------
 
 class WidgetCollection extends BaseCollection
+	local:true
 	model: Widget
 
 # ----------------------------------

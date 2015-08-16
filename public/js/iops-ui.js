@@ -377,7 +377,7 @@ window.JST["dashboard/tool"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
-window.JST["dashboard/widgets"] = function(__obj) {
+window.JST["dashboard/widget"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
       value = '';
@@ -398,7 +398,56 @@ window.JST["dashboard/widgets"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<ul class="container" id=\'widget-container\'>\n\t\n</ul>\n'));
+      _print(_safe('<div class="box-header with-border">\n  <h3 class="box-title"><i class="fa fa-cube"></i> '));
+    
+      _print(_safe(this.title));
+    
+      _print(_safe('</h3>\n  <!-- <div class="box-tools pull-right">\n    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>\n  </div> -->\n  <!-- /.box-tools -->\n</div><!-- /.box-header -->\n<div class="box-body" style="display: block;">\n  Widget Body\n</div><!-- /.box-body -->\n'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
+window.JST["dashboard/widget_layout"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<!-- placeholder -->\n'));
     
     }).call(this);
     
@@ -633,7 +682,7 @@ window.IOPS = (function() {
   return App;
 })();
 
-},{"./common/adminlte_lib":2,"./common/baseline_app":4,"./common/extensions":5,"./iops_controller":7,"./models/session":12,"./router":16,"./views/iops_layout":25}],2:[function(require,module,exports){
+},{"./common/adminlte_lib":2,"./common/baseline_app":4,"./common/extensions":5,"./iops_controller":7,"./models/session":12,"./router":16,"./views/iops_layout":26}],2:[function(require,module,exports){
 
 /*
  *
@@ -947,7 +996,7 @@ AdminLTE_lib = (function(superClass) {
         var _this, box, box_content;
         _this = this;
         box = element.parents('.box').first();
-        box_content = box.find('> .box-body, > .box-footer');
+        box_content = box.find('.box-body, .box-footer');
         if (!box.hasClass('collapsed-box')) {
           element.children(':first').removeClass(_this.icons.collapse).addClass(_this.icons.open);
           return box_content.slideUp(300, function() {
@@ -1473,7 +1522,7 @@ IopsController = (function(superClass) {
 
 module.exports = IopsController;
 
-},{"./models/dashboard":10,"./models/dashboard_collection":11,"./models/user":13,"./models/widget_collection":15,"./views/dashboard/content_view":17,"./views/dashboard/dashboard_layout":18,"./views/forms/profile_view":24,"./views/login_view":26}],8:[function(require,module,exports){
+},{"./models/dashboard":10,"./models/dashboard_collection":11,"./models/user":13,"./models/widget_collection":15,"./views/dashboard/content_view":17,"./views/dashboard/dashboard_layout":18,"./views/forms/profile_view":25,"./views/login_view":27}],8:[function(require,module,exports){
 var AppConfig, Backbone, BaseModel,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1488,11 +1537,15 @@ BaseModel = (function(superClass) {
   function BaseModel(opts) {
     var url;
     BaseModel.__super__.constructor.apply(this, arguments);
-    url = this.service != null ? ("" + AppConfig.api_baseurl).replace('{service}', this.service + ".") : "" + AppConfig.api_baseurl;
-    if (this.urlRoot != null) {
-      this.urlRoot = "" + url + this.urlRoot;
+    if ((this.local != null) && this.local === true) {
+      url = '';
     } else {
-      url;
+      url = this.service != null ? ("" + AppConfig.api_baseurl).replace('{service}', this.service + ".") : "" + AppConfig.api_baseurl;
+      if (this.urlRoot != null) {
+        this.urlRoot = "" + url + this.urlRoot;
+      } else {
+        url;
+      }
     }
     this;
   }
@@ -1518,11 +1571,15 @@ BaseCollection = (function(superClass) {
   function BaseCollection(opts) {
     var url;
     BaseCollection.__super__.constructor.apply(this, arguments);
-    url = this.service != null ? ("" + AppConfig.api_baseurl).replace('{service}', this.service + ".") : "" + AppConfig.api_baseurl;
-    if (this.url != null) {
-      this.url = "" + url + this.url;
+    if ((this.local != null) && this.local === true) {
+      url = '';
     } else {
-      url;
+      url = this.service != null ? ("" + AppConfig.api_baseurl).replace('{service}', this.service + ".") : "" + AppConfig.api_baseurl;
+      if (this.url != null) {
+        this.url = "" + url + this.url;
+      } else {
+        url;
+      }
     }
     this;
   }
@@ -1547,6 +1604,8 @@ Dashboard = (function(superClass) {
     return Dashboard.__super__.constructor.apply(this, arguments);
   }
 
+  Dashboard.prototype.local = true;
+
   return Dashboard;
 
 })(BaseModel);
@@ -1568,6 +1627,8 @@ DashboardCollection = (function(superClass) {
   function DashboardCollection() {
     return DashboardCollection.__super__.constructor.apply(this, arguments);
   }
+
+  DashboardCollection.prototype.local = true;
 
   DashboardCollection.prototype.model = Dashboard;
 
@@ -1722,6 +1783,17 @@ Widget = (function(superClass) {
     return Widget.__super__.constructor.apply(this, arguments);
   }
 
+  Widget.prototype.local = true;
+
+  Widget.prototype.defaults = {
+    r: 0,
+    c: 0,
+    sx: 0,
+    sy: 0,
+    service: null,
+    title: null
+  };
+
   return Widget;
 
 })(BaseModel);
@@ -1743,6 +1815,8 @@ WidgetCollection = (function(superClass) {
   function WidgetCollection() {
     return WidgetCollection.__super__.constructor.apply(this, arguments);
   }
+
+  WidgetCollection.prototype.local = true;
 
   WidgetCollection.prototype.model = Widget;
 
@@ -1831,7 +1905,7 @@ DashboardContentView = (function(superClass) {
 module.exports = DashboardContentView;
 
 },{}],18:[function(require,module,exports){
-var DashboardContentView, DashboardFooterView, DashboardHeaderView, DashboardLayout, DashboardSideView, DashboardToolView, Marionette, WidgetsView,
+var DashboardContentView, DashboardFooterView, DashboardHeaderView, DashboardLayout, DashboardSideView, DashboardToolView, Marionette, WidgetLayout,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -1847,7 +1921,7 @@ DashboardFooterView = require('./footer_view');
 
 DashboardContentView = require('./content_view');
 
-WidgetsView = require('./widgets_view');
+WidgetLayout = require('./widget_layout');
 
 DashboardLayout = (function(superClass) {
   extend(DashboardLayout, superClass);
@@ -1881,7 +1955,7 @@ DashboardLayout = (function(superClass) {
     return this.show_content({
       title: dash.get('title'),
       subtitle: '',
-      view: new WidgetsView({
+      view: new WidgetLayout({
         model: dash
       })
     });
@@ -1908,7 +1982,7 @@ DashboardLayout = (function(superClass) {
 
 module.exports = DashboardLayout;
 
-},{"./content_view":17,"./footer_view":19,"./header_view":20,"./side_view":21,"./tool_view":22,"./widgets_view":23}],19:[function(require,module,exports){
+},{"./content_view":17,"./footer_view":19,"./header_view":20,"./side_view":21,"./tool_view":22,"./widget_layout":23}],19:[function(require,module,exports){
 var DashboardFooterView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2128,46 +2202,96 @@ DashboardToolView = (function(superClass) {
 module.exports = DashboardToolView;
 
 },{}],23:[function(require,module,exports){
-var Marionette, WidgetsView,
+var Marionette, Widget, WidgetLayout, WidgetView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
 Marionette = require('marionette');
 
-WidgetsView = (function(superClass) {
-  extend(WidgetsView, superClass);
+Widget = require('../../models/widget');
 
-  function WidgetsView() {
-    return WidgetsView.__super__.constructor.apply(this, arguments);
+WidgetView = require('./widget_view');
+
+WidgetLayout = (function(superClass) {
+  extend(WidgetLayout, superClass);
+
+  function WidgetLayout() {
+    return WidgetLayout.__super__.constructor.apply(this, arguments);
   }
 
-  WidgetsView.prototype.template = "dashboard/widgets";
+  WidgetLayout.prototype.template = "dashboard/widget_layout";
 
-  WidgetsView.prototype.className = 'gridster';
+  WidgetLayout.prototype.className = 'gridster container widget-container';
 
-  WidgetsView.prototype.ui = {
-    container: 'ul#widget-container'
-  };
+  WidgetLayout.prototype.tagName = 'ul';
 
-  WidgetsView.prototype.onDomRefresh = function() {
-    var i, len, ref, w, wli;
-    this.ui.container.empty();
+  WidgetLayout.prototype.onDomRefresh = function() {
+    var i, idx, len, m, ref, w, wli, wv;
     ref = this.model.get('widgets');
-    for (i = 0, len = ref.length; i < len; i++) {
-      w = ref[i];
-      wli = $("<li class='cell' data-row='" + w.r + "' data-col='" + w.c + "' data-sizex='" + w.sx + "' data-sizey='" + w.sy + "'></li>");
-      this.ui.container.append(wli);
+    for (idx = i = 0, len = ref.length; i < len; idx = ++i) {
+      w = ref[idx];
+      wli = $("<li id='widget_" + idx + "' class='widget'></li>");
+      wli.attr({
+        'data-row': w.r,
+        'data-col': w.c,
+        'data-sizex': w.sx,
+        'data-sizey': w.sy
+      });
+      $(this.el).append(wli);
+      this.addRegion("widget_" + idx, "li#widget_" + idx);
+      m = new Widget({
+        id: idx,
+        title: "Widget " + idx
+      });
+      wv = new WidgetView({
+        model: m
+      });
+      this.getRegion("widget_" + idx).show(wv);
     }
-    return this.ui.container.gridster();
+    $(this.el).gridster({
+      draggable: {
+        handle: '.box-header'
+      }
+    });
+    return App.AdminLTE_lib.reset();
   };
 
-  return WidgetsView;
+  return WidgetLayout;
+
+})(Marionette.LayoutView);
+
+module.exports = WidgetLayout;
+
+},{"../../models/widget":14,"./widget_view":24}],24:[function(require,module,exports){
+var Marionette, WidgetView,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+WidgetView = (function(superClass) {
+  extend(WidgetView, superClass);
+
+  function WidgetView() {
+    return WidgetView.__super__.constructor.apply(this, arguments);
+  }
+
+  WidgetView.prototype.template = "dashboard/widget";
+
+  WidgetView.prototype.className = 'widget-outer box box-primary';
+
+  WidgetView.prototype.ui = {
+    header: '.header',
+    body: '.body'
+  };
+
+  return WidgetView;
 
 })(Marionette.ItemView);
 
-module.exports = WidgetsView;
+module.exports = WidgetView;
 
-},{}],24:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 var Marionette, ProfileView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2189,7 +2313,7 @@ ProfileView = (function(superClass) {
 
 module.exports = ProfileView;
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 var IopsLayout, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2215,7 +2339,7 @@ IopsLayout = (function(superClass) {
 
 module.exports = IopsLayout;
 
-},{}],26:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 var LoginView, Marionette, SessionModel, UIUtils,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;

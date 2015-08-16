@@ -298,7 +298,7 @@ class AdminLTE_lib extends Object
         #Find the box parent
         box = element.parents('.box').first()
         #Find the body and the footer
-        box_content = box.find('> .box-body, > .box-footer')
+        box_content = box.find('.box-body, .box-footer')
         if !box.hasClass('collapsed-box')
           #Convert minus into plus
           element.children(':first').removeClass(_this.icons.collapse).addClass _this.icons.open

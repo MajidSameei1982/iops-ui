@@ -6,8 +6,11 @@ Backbone = require('backbone')
 class BaseCollection extends Backbone.Collection
   constructor: (opts) ->
   	super
-  	url = if @service? then "#{AppConfig.api_baseurl}".replace('{service}', "#{@service}.") else "#{AppConfig.api_baseurl}"
-  	if @url? then @url = "#{url}#{@url}" else url
+  	if @local? and @local == true
+  		url = ''
+  	else
+	  	url = if @service? then "#{AppConfig.api_baseurl}".replace('{service}', "#{@service}.") else "#{AppConfig.api_baseurl}"
+	  	if @url? then @url = "#{url}#{@url}" else url
   	@
 
 # ----------------------------------

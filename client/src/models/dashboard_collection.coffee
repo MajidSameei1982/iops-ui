@@ -4,6 +4,7 @@ Dashboard = require('./dashboard')
 # ----------------------------------
 
 class DashboardCollection extends BaseCollection
+	local: true
 	model: Dashboard
 
 # ----------------------------------

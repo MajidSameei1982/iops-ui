@@ -4,7 +4,7 @@ DashboardSideView = require('./side_view')
 DashboardToolView = require('./tool_view')
 DashboardFooterView = require('./footer_view')
 DashboardContentView = require('./content_view')
-WidgetsView = require('./widgets_view')
+WidgetLayout = require('./widget_layout')
 
 # ----------------------------------
 
@@ -29,7 +29,7 @@ class DashboardLayout extends Marionette.LayoutView
     @show_content
       title: dash.get('title')
       subtitle: ''
-      view: new WidgetsView
+      view: new WidgetLayout
         model: dash
 
   onShow: () ->

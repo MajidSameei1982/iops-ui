@@ -4,6 +4,7 @@ User = require('./user')
 # ----------------------------------
 
 class UserCollection extends BaseCollection
+	service: 'accounts'
 	url: '/users'
 	model: User
 

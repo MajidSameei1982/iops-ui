@@ -4,6 +4,7 @@ Account = require('./account')
 # ----------------------------------
 
 class AccountCollection extends BaseCollection
+	service: 'accounts'
 	url: '/accounts'
 	model: Account
 
