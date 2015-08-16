@@ -2203,6 +2203,7 @@ module.exports = DashboardToolView;
 
 },{}],23:[function(require,module,exports){
 var Marionette, Widget, WidgetLayout, WidgetView,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -2216,6 +2217,8 @@ WidgetLayout = (function(superClass) {
   extend(WidgetLayout, superClass);
 
   function WidgetLayout() {
+    this.onDomRefresh = bind(this.onDomRefresh, this);
+    this.adjust_widgets = bind(this.adjust_widgets, this);
     return WidgetLayout.__super__.constructor.apply(this, arguments);
   }
 
@@ -2225,36 +2228,55 @@ WidgetLayout = (function(superClass) {
 
   WidgetLayout.prototype.tagName = 'ul';
 
+  WidgetLayout.prototype.adjust_widgets = function(e, ui) {
+    var arr, wid;
+    wid = $(e.target).closest('li.widget').data('id');
+    arr = [];
+    this.$('li.widget').each(function() {
+      return arr.push({
+        r: $(this).data('row'),
+        c: $(this).data('col'),
+        sx: $(this).data('sizex'),
+        sy: $(this).data('sizey'),
+        id: $(this).data('id')
+      });
+    });
+    return console.log(arr);
+  };
+
   WidgetLayout.prototype.onDomRefresh = function() {
     var i, idx, len, m, ref, w, wli, wv;
     ref = this.model.get('widgets');
     for (idx = i = 0, len = ref.length; i < len; idx = ++i) {
       w = ref[idx];
-      wli = $("<li id='widget_" + idx + "' class='widget'></li>");
+      wli = $("<li id='widget_" + w.id + "' class='widget'></li>");
       wli.attr({
         'data-row': w.r,
         'data-col': w.c,
         'data-sizex': w.sx,
-        'data-sizey': w.sy
+        'data-sizey': w.sy,
+        'data-id': w.id
       });
       $(this.el).append(wli);
-      this.addRegion("widget_" + idx, "li#widget_" + idx);
+      this.addRegion("widget_" + w.id, "li#widget_" + w.id);
       m = new Widget({
-        id: idx,
-        title: "Widget " + idx
+        id: w.id,
+        title: "Widget " + w.id
       });
       wv = new WidgetView({
         model: m
       });
-      this.getRegion("widget_" + idx).show(wv);
+      this.getRegion("widget_" + w.id).show(wv);
     }
-    return $(this.el).gridster({
+    return this.grid = $(this.el).gridster({
       resize: {
-        enabled: true
+        enabled: true,
+        stop: this.adjust_widgets
       },
       autogrow_cols: true,
       draggable: {
-        handle: '.box-header'
+        handle: '.box-header',
+        stop: this.adjust_widgets
       }
     });
   };

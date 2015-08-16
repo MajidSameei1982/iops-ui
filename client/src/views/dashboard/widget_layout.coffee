@@ -9,44 +9,47 @@ class WidgetLayout extends Marionette.LayoutView
   className: 'gridster widget-container'
   tagName: 'ul'
 
-  onDomRefresh: ()->
+  adjust_widgets: (e, ui)=>
+  	wid = $(e.target).closest('li.widget').data('id')
+  	arr = []
+  	@$('li.widget').each ()->
+  		arr.push
+  			r : $(@).data('row')
+  			c : $(@).data('col')
+  			sx : $(@).data('sizex')
+  			sy : $(@).data('sizey')
+  			id : $(@).data('id')
+  	console.log arr
+  	# serialize positions
+		# save locally
+		# raise event
+
+  onDomRefresh: ()=>
   	for w, idx in @model.get('widgets')
-  		wli = $("<li id='widget_#{idx}' class='widget'></li>")
+  		wli = $("<li id='widget_#{w.id}' class='widget'></li>")
   		wli.attr
   			'data-row' : w.r
   			'data-col' : w.c
   			'data-sizex' : w.sx
   			'data-sizey' : w.sy
+  			'data-id' : w.id
   		$(@el).append(wli)
-  		@addRegion("widget_#{idx}", "li#widget_#{idx}")
+  		@addRegion("widget_#{w.id}", "li#widget_#{w.id}")
   		m = new Widget
-  			id: idx
-  			title: "Widget #{idx}"
+  			id: w.id
+  			title: "Widget #{w.id}"
   		wv = new WidgetView
   			model: m
-  		@getRegion("widget_#{idx}").show(wv);
+  		@getRegion("widget_#{w.id}").show(wv);
 
-  	$(@el).gridster
+  	@grid = $(@el).gridster
   		resize:
   			enabled: true
+  			stop: @adjust_widgets
   		autogrow_cols: true
   		draggable:
   			handle: '.box-header'
-  			# start: (e, ui)->
-  			# 	console.log "START"
-  			# 	console.log e
-  			# 	console.log ui
-  			# 	console.log @
-  			# drag: (e, ui)->
-  			# 	console.log "DRAG"
-  			# 	console.log e
-  			# 	console.log ui
-  			# 	console.log @
-  			# stop: (e, ui)->
-  			# 	console.log "STOP"
-  			# 	console.log e
-  			# 	console.log ui
-  			# 	console.log @
+  			stop: @adjust_widgets
 
   	#App.AdminLTE_lib.reset()
   	
