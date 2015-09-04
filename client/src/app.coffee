@@ -17,7 +17,7 @@ window.IOPS = do()->
   
   Object.defineProperty App, 'current_user',
     get: ()->
-      if App.session? and App.session.get('user')? then App.session.get('user') else null
+      if App.session? and App.session.user? then App.session.user else null
 
   App.on "before:start", (options)->
     @log('Starting')

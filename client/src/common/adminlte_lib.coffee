@@ -99,11 +99,11 @@ class AdminLTE_lib extends Object
             $('.content-wrapper, .right-side').css 'min-height', sidebar_height
             postSetWidth = sidebar_height
           #Fix for the control sidebar height
-          controlSidebar = $($.AdminLTE.options.controlSidebarOptions.selector)
-          controlSidebar.css('min-height', $(".main-sidebar").height())
-          if typeof controlSidebar != 'undefined'
-            if controlSidebar.height() > postSetWidth
-              $('.content-wrapper, .right-side').css 'min-height', controlSidebar.height()
+          # controlSidebar = $($.AdminLTE.options.controlSidebarOptions.selector)
+          # controlSidebar.css('min-height', $(".main-sidebar").height())
+          # if typeof controlSidebar != 'undefined'
+          #   if controlSidebar.height() > postSetWidth
+          #     $('.content-wrapper, .right-side').css 'min-height', controlSidebar.height()
       
       fixSidebar: ->
         #Make sure the body tag has the .fixed class

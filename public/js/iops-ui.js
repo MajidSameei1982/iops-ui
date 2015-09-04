@@ -136,51 +136,6 @@ window.JST["dashboard/footer"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
-window.JST["dashboard/header.bak"] = function(__obj) {
-  var _safe = function(value) {
-    if (typeof value === 'undefined' && value == null)
-      value = '';
-    var result = new String(value);
-    result.ecoSafe = true;
-    return result;
-  };
-  return (function() {
-    var __out = [], __self = this, _print = function(value) {
-      if (typeof value !== 'undefined' && value != null)
-        __out.push(value.ecoSafe ? value : __self.escape(value));
-    }, _capture = function(callback) {
-      var out = __out, result;
-      __out = [];
-      callback.call(this);
-      result = __out.join('');
-      __out = out;
-      return _safe(result);
-    };
-    (function() {
-      _print(_safe('<!-- Logo -->\n<a href="/" class="logo">\n  <span class="logo-mini"><img src=\'img/logos/logo_sm.png\' alt=\'JBT iOPS\' style=\'height:41px;\'/></span>\n  <span class="logo-lg"><img src=\'img/logos/logo_lg.png\' alt=\'JBT iOPS\' style=\'height:41px;\'/></span>\n</a>\n\n<!-- Header Navbar -->\n<nav class="navbar navbar-static-top" role="navigation">\n  <!-- Sidebar toggle button-->\n  <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">\n    <span class="sr-only">Toggle navigation</span>\n  </a>\n  <!-- Navbar Right Menu -->\n  <div class="navbar-custom-menu">\n    <ul class="nav navbar-nav">\n      <!-- Messages: style can be found in dropdown.less-->\n      <li class="dropdown messages-menu">\n        <!-- Menu toggle button -->\n        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n          <i class="fa fa-envelope-o"></i>\n          <span class="label label-success">4</span>\n        </a>\n        <ul class="dropdown-menu">\n          <li class="header">You have 4 messages</li>\n          <li>\n            <!-- inner menu: contains the messages -->\n            <ul class="menu">\n              <li><!-- start message -->\n                <a href="#">\n                  <div class="pull-left">\n                    <!-- User Image -->\n                    <img src="img/user2-160x160.jpg" class="img-circle" alt="User Image"/>\n                  </div>\n                  <!-- Message title and timestamp -->\n                  <h4>\n                    Support Team\n                    <small><i class="fa fa-clock-o"></i> 5 mins</small>\n                  </h4>\n                  <!-- The message -->\n                  <p>Why not buy a new awesome theme?</p>\n                </a>\n              </li><!-- end message -->\n            </ul><!-- /.menu -->\n          </li>\n          <li class="footer"><a href="#">See All Messages</a></li>\n        </ul>\n      </li><!-- /.messages-menu -->\n\n      <!-- Notifications Menu -->\n      <li class="dropdown notifications-menu">\n        <!-- Menu toggle button -->\n        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n          <i class="fa fa-bell-o"></i>\n          <span class="label label-warning">10</span>\n        </a>\n        <ul class="dropdown-menu">\n          <li class="header">You have 10 notifications</li>\n          <li>\n            <!-- Inner Menu: contains the notifications -->\n            <ul class="menu">\n              <li><!-- start notification -->\n                <a href="#">\n                  <i class="fa fa-users text-aqua"></i> 5 new members joined today\n                </a>\n              </li><!-- end notification -->\n            </ul>\n          </li>\n          <li class="footer"><a href="#">View all</a></li>\n        </ul>\n      </li>\n      <!-- Tasks Menu -->\n      <li class="dropdown tasks-menu">\n        <!-- Menu Toggle Button -->\n        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n          <i class="fa fa-flag-o"></i>\n          <span class="label label-danger">9</span>\n        </a>\n        <ul class="dropdown-menu">\n          <li class="header">You have 9 tasks</li>\n          <li>\n            <!-- Inner menu: contains the tasks -->\n            <ul class="menu">\n              <li><!-- Task item -->\n                <a href="#">\n                  <!-- Task title and progress text -->\n                  <h3>\n                    Design some buttons\n                    <small class="pull-right">20%</small>\n                  </h3>\n                  <!-- The progress bar -->\n                  <div class="progress xs">\n                    <!-- Change the css width attribute to simulate progress -->\n                    <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">\n                      <span class="sr-only">20% Complete</span>\n                    </div>\n                  </div>\n                </a>\n              </li><!-- end task item -->\n            </ul>\n          </li>\n          <li class="footer">\n            <a href="#">View all tasks</a>\n          </li>\n        </ul>\n      </li>\n      <!-- User Account Menu -->\n      <li class="dropdown user user-menu">\n        <!-- Menu Toggle Button -->\n        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n          <!-- The user image in the navbar-->\n          <img src="img/user2-160x160.jpg" class="user-image" alt="User Image"/>\n          <!-- hidden-xs hides the username on small devices so only the image appears. -->\n          <span class="hidden-xs">Firstname Lastname</span>\n        </a>\n        <ul class="dropdown-menu">\n          <!-- The user image in the menu -->\n          <li class="user-header">\n            <img src="img/user2-160x160.jpg" class="img-circle" alt="User Image" />\n            <p>\n              Firstname Lastname - Web Developer\n              <small>Member since Nov. 2012</small>\n            </p>\n          </li>\n          <!-- Menu Body -->\n          <li class="user-body">\n            <div class="col-xs-4 text-center">\n              <a href="#">Followers</a>\n            </div>\n            <div class="col-xs-4 text-center">\n              <a href="#">Sales</a>\n            </div>\n            <div class="col-xs-4 text-center">\n              <a href="#">Friends</a>\n            </div>\n          </li>\n          <!-- Menu Footer-->\n          <li class="user-footer">\n            <div class="pull-left">\n              <a href="#" class="btn btn-default btn-flat">Profile</a>\n            </div>\n            <div class="pull-right">\n              <a href="#" class="btn btn-default btn-flat">Sign out</a>\n            </div>\n          </li>\n        </ul>\n      </li>\n      <!-- Control Sidebar Toggle Button -->\n      <li>\n        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>\n      </li>\n    </ul>\n  </div>\n</nav>'));
-    
-    }).call(this);
-    
-    return __out.join('');
-  }).call((function() {
-    var obj = {
-      escape: function(value) {
-        return ('' + value)
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
-      },
-      safe: _safe
-    }, key;
-    for (key in __obj) obj[key] = __obj[key];
-    return obj;
-  })());
-};
-
-if (!window.JST) {
-  window.JST = {};
-}
 window.JST["dashboard/header"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
@@ -204,66 +159,17 @@ window.JST["dashboard/header"] = function(__obj) {
     (function() {
       _print(_safe('<!-- Logo -->\n<a href="/" class="logo">\n  <span class="logo-mini"><img src=\'img/logos/logo_sm.png\' alt=\'JBT iOPS\' style=\'height:41px;\'/></span>\n  <span class="logo-lg"><img src=\'img/logos/logo_lg.png\' alt=\'JBT iOPS\' style=\'height:41px;\'/></span>\n</a>\n\n<!-- Header Navbar -->\n<nav class="navbar navbar-static-top" role="navigation">\n  <!-- Sidebar toggle button-->\n  <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">\n    <span class="sr-only">Toggle navigation</span>\n  </a>\n  <!-- Navbar Right Menu -->\n  <div class="navbar-custom-menu">\n    <ul class="nav navbar-nav">\n      <li class=\'user user-menu\'>\n        <div style=\'padding:15px\' id=\'clock\'>--, --- ---, ---- 00:00</div>\n      </li>\n      <!-- User Account Menu -->\n      <li class="dropdown user user-menu">\n        <!-- Menu Toggle Button -->\n        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n          <!-- The user image in the navbar-->\n          <img src="img/avatar.png" class="user-image" id=\'avatar\'/>\n          <!-- hidden-xs hides the username on small devices so only the image appears. -->\n          <span class="hidden-xs" id=\'fullname\'>'));
     
-      _print(App.current_user.fullname);
+      _print(this.fullname);
     
       _print(_safe('</span>\n        </a>\n        <ul class="dropdown-menu">\n          <!-- The user image in the menu -->\n          <li class="user-header">\n            <img src="img/avatar.png" class="img-circle" id=\'avatar_full\' />\n            <p>\n              <span id=\'fullname_full\'>'));
     
-      _print(App.current_user.fullname);
+      _print(this.fullname);
     
       _print(_safe('</span> <small id=\'email_full\'>'));
     
-      _print(App.current_user.email);
+      _print(this.email);
     
       _print(_safe('</small>\n            </p>\n          </li>\n          <!-- Menu Body -->\n          <!-- <li class="user-body"></li> -->\n          <!-- Menu Footer-->\n          <li class="user-footer">\n            <div class="pull-left">\n              <a href="#" class="btn btn-default btn-flat" id=\'profile\'>Profile</a>\n            </div>\n            <div class="pull-right">\n              <a href="#" class="btn btn-default btn-flat" id=\'logout\'>Log Out</a>\n            </div>\n          </li>\n        </ul>\n      </li>\n      <!-- Control Sidebar Toggle Button -->\n      <li>\n        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>\n      </li>\n    </ul>\n  </div>\n</nav>'));
-    
-    }).call(this);
-    
-    return __out.join('');
-  }).call((function() {
-    var obj = {
-      escape: function(value) {
-        return ('' + value)
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
-      },
-      safe: _safe
-    }, key;
-    for (key in __obj) obj[key] = __obj[key];
-    return obj;
-  })());
-};
-
-if (!window.JST) {
-  window.JST = {};
-}
-window.JST["dashboard/side.bak"] = function(__obj) {
-  var _safe = function(value) {
-    if (typeof value === 'undefined' && value == null)
-      value = '';
-    var result = new String(value);
-    result.ecoSafe = true;
-    return result;
-  };
-  return (function() {
-    var __out = [], __self = this, _print = function(value) {
-      if (typeof value !== 'undefined' && value != null)
-        __out.push(value.ecoSafe ? value : __self.escape(value));
-    }, _capture = function(callback) {
-      var out = __out, result;
-      __out = [];
-      callback.call(this);
-      result = __out.join('');
-      __out = out;
-      return _safe(result);
-    };
-    (function() {
-      _print(_safe('<!-- sidebar: style can be found in sidebar.less -->\n<section class="sidebar">\n\n  <!-- Sidebar user panel (optional) -->\n  <div class="user-panel">\n    <div class="pull-left image" id=\'avatar\'>\n      <img src="img/avatar.png" class="img-circle" alt="User Image" />\n    </div>\n    <div class="pull-left info">\n      <p id=\'fullname\'>'));
-    
-      _print(App.current_user.fullname);
-    
-      _print(_safe('</p>\n    </div>\n  </div>\n\n  <!-- search form (Optional) -->\n  <form action="#" method="get" class="sidebar-form">\n    <div class="input-group">\n      <input type="text" name="q" class="form-control" placeholder="Search..."/>\n      <span class="input-group-btn">\n        <button type=\'submit\' name=\'search\' id=\'search-btn\' class="btn btn-flat"><i class="fa fa-search"></i></button>\n      </span>\n    </div>\n  </form>\n  <!-- /.search form -->\n\n  <!-- Sidebar Menu -->\n  <ul class="sidebar-menu">\n    <li class="header">HEADER</li>\n    <!-- Optionally, you can add icons to the links -->\n    <li class="active"><a href="#"><i class=\'fa fa-link\'></i> <span>Link</span></a></li>\n    <li><a href="#"><i class=\'fa fa-link\'></i> <span>Another Link</span></a></li>\n    <li class="treeview">\n      <a href="#"><i class=\'fa fa-link\'></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>\n      <ul class="treeview-menu">\n        <li><a href="#">Link in level 2</a></li>\n        <li><a href="#">Link in level 2</a></li>\n      </ul>\n    </li>\n  </ul><!-- /.sidebar-menu -->\n</section>\n<!-- /.sidebar -->'));
     
     }).call(this);
     
@@ -353,7 +259,7 @@ window.JST["dashboard/tool"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<!-- Create the tabs -->\n<ul class="nav nav-tabs nav-justified control-sidebar-tabs">\n  <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>\n  <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>\n</ul>\n<!-- Tab panes -->\n<div class="tab-content">\n  <!-- Home tab content -->\n  <div class="tab-pane active" id="control-sidebar-home-tab">\n    <h3 class="control-sidebar-heading">Recent Activity</h3>\n    <ul class=\'control-sidebar-menu\'>\n      <li>\n        <a href=\'javascript::;\'>\n          <i class="menu-icon fa fa-birthday-cake bg-red"></i>\n          <div class="menu-info">\n            <h4 class="control-sidebar-subheading">Langdon\'s Birthday</h4>\n            <p>Will be 23 on April 24th</p>\n          </div>\n        </a>\n      </li>              \n    </ul><!-- /.control-sidebar-menu -->\n\n    <h3 class="control-sidebar-heading">Tasks Progress</h3> \n    <ul class=\'control-sidebar-menu\'>\n      <li>\n        <a href=\'javascript::;\'>               \n          <h4 class="control-sidebar-subheading">\n            Custom Template Design\n            <span class="label label-danger pull-right">70%</span>\n          </h4>\n          <div class="progress progress-xxs">\n            <div class="progress-bar progress-bar-danger" style="width: 70%"></div>\n          </div>                                    \n        </a>\n      </li>                         \n    </ul><!-- /.control-sidebar-menu -->         \n\n  </div><!-- /.tab-pane -->\n  <!-- Stats tab content -->\n  <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div><!-- /.tab-pane -->\n  <!-- Settings tab content -->\n  <div class="tab-pane" id="control-sidebar-settings-tab">            \n    <form method="post">\n      <h3 class="control-sidebar-heading">General Settings</h3>\n      <div class="form-group">\n        <label class="control-sidebar-subheading">\n          Report panel usage\n          <input type="checkbox" class="pull-right" checked />\n        </label>\n        <p>\n          Some information about this general settings option\n        </p>\n      </div><!-- /.form-group -->\n    </form>\n  </div><!-- /.tab-pane -->\n</div>\n<!-- /.control-sidebar -->'));
+      _print(_safe('<!-- sidebar -->\n<section class="sidebar">\n  <!-- Sidebar Menu -->\n  <ul class="sidebar-menu" id=\'dashboard-list\'>\n    <li class="header">iOPS Admin</li>\n    <li><a href="#"><i class=\'fa fa-building-o\'></i> <span>Manage Accounts</span></a></li>\n    <li><a href="#"><i class=\'fa fa-users\'></i> <span>Manage Users</span></a></li>\n  </ul>\n  <!-- /.sidebar-menu -->\n</section>\n<!-- /.sidebar -->'));
     
     }).call(this);
     
@@ -647,8 +553,8 @@ window.IOPS = (function() {
   App.AdminLTE_lib = AdminLTE_lib;
   Object.defineProperty(App, 'current_user', {
     get: function() {
-      if ((App.session != null) && (App.session.get('user') != null)) {
-        return App.session.get('user');
+      if ((App.session != null) && (App.session.user != null)) {
+        return App.session.user;
       } else {
         return null;
       }
@@ -781,7 +687,7 @@ AdminLTE_lib = (function(superClass) {
         });
       },
       fix: function() {
-        var controlSidebar, neg, postSetWidth, sidebar_height, window_height;
+        var neg, postSetWidth, sidebar_height, window_height;
         neg = $('.main-header').outerHeight() + $('.main-footer').outerHeight();
         window_height = $(window).height();
         sidebar_height = $('.sidebar').height();
@@ -791,17 +697,10 @@ AdminLTE_lib = (function(superClass) {
           postSetWidth = void 0;
           if (window_height >= sidebar_height) {
             $('.content-wrapper, .right-side').css('min-height', window_height - neg);
-            postSetWidth = window_height - neg;
+            return postSetWidth = window_height - neg;
           } else {
             $('.content-wrapper, .right-side').css('min-height', sidebar_height);
-            postSetWidth = sidebar_height;
-          }
-          controlSidebar = $($.AdminLTE.options.controlSidebarOptions.selector);
-          controlSidebar.css('min-height', $(".main-sidebar").height());
-          if (typeof controlSidebar !== 'undefined') {
-            if (controlSidebar.height() > postSetWidth) {
-              return $('.content-wrapper, .right-side').css('min-height', controlSidebar.height());
-            }
+            return postSetWidth = sidebar_height;
           }
         }
       },
@@ -1486,7 +1385,7 @@ IopsController = (function(superClass) {
       title: 'Your Profile',
       subtitle: "Edit your user account profile below",
       view: new ProfileView({
-        model: new User(App.current_user)
+        model: App.current_user
       })
     });
     App.vent.trigger("show:dashboard");
@@ -1650,13 +1549,14 @@ User = require('./user');
 SessionModel = (function(superClass) {
   extend(SessionModel, superClass);
 
-  function SessionModel() {
-    return SessionModel.__super__.constructor.apply(this, arguments);
-  }
-
   SessionModel.prototype.service = 'accounts';
 
   SessionModel.prototype.urlRoot = '/sessions';
+
+  function SessionModel(config) {
+    SessionModel.__super__.constructor.call(this, config);
+    this.user = new User(this.get('user'));
+  }
 
   SessionModel.prototype.initialize = function() {
     this.on("change", this.persist);
@@ -1762,6 +1662,15 @@ User = (function(superClass) {
   User.prototype.service = 'accounts';
 
   User.prototype.urlRoot = '/user';
+
+  User.prototype.defaults = {
+    email: null,
+    firstname: null,
+    lastname: null,
+    phone1: null,
+    phone2: null,
+    claims: []
+  };
 
   return User;
 
@@ -1963,7 +1872,9 @@ DashboardLayout = (function(superClass) {
 
   DashboardLayout.prototype.onShow = function() {
     var footerview, headerview, sideview, toolview;
-    headerview = new DashboardHeaderView();
+    headerview = new DashboardHeaderView({
+      model: App.current_user
+    });
     this.header.show(headerview);
     sideview = new DashboardSideView({
       collection: this.collection
@@ -2069,9 +1980,9 @@ DashboardHeaderView = (function(superClass) {
   };
 
   DashboardHeaderView.prototype.onDomRefresh = function() {
-    if ((App.current_user != null) && (App.current_user.avatar != null)) {
-      this.ui.avatar.attr('src', App.current_user.avatar);
-      this.ui.avatar_full.attr('src', App.current_user.avatar);
+    if ((App.current_user != null) && (App.current_user.get('avatar') != null)) {
+      this.ui.avatar.attr('src', App.current_user.get('avatar'));
+      this.ui.avatar_full.attr('src', App.current_user.get('avatar'));
     }
     App.vent.on('app:clock', this.set_clock);
     return this.set_clock(new Date());
@@ -2155,8 +2066,8 @@ DashboardSideView = (function(superClass) {
 
   DashboardSideView.prototype.onDomRefresh = function() {
     var d, dl, i, len, ref, results;
-    if ((App.current_user != null) && (App.current_user.avatar != null)) {
-      this.ui.avatar.attr('src', App.current_user.avatar);
+    if ((App.current_user != null) && (App.current_user.get('avatar') != null)) {
+      this.ui.avatar.attr('src', App.current_user.get('avatar'));
     }
     $('li.dashboard-link', this.ui.dashboard_list).remove();
     ref = this.collection.models;

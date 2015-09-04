@@ -36,9 +36,9 @@ class DashboardHeaderView extends Marionette.ItemView
     @
 
   onDomRefresh: ()=>
-    if App.current_user? and App.current_user.avatar?
-      @ui.avatar.attr('src', App.current_user.avatar)
-      @ui.avatar_full.attr('src', App.current_user.avatar)
+    if App.current_user? and App.current_user.get('avatar')?
+      @ui.avatar.attr('src', App.current_user.get('avatar'))
+      @ui.avatar_full.attr('src', App.current_user.get('avatar'))
     App.vent.on 'app:clock', @set_clock
     @set_clock(new Date())
 

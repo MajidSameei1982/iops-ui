@@ -73,7 +73,7 @@ class IopsController extends Object
       title: 'Your Profile'
       subtitle: "Edit your user account profile below"
       view: new ProfileView
-        model : new User(App.current_user)
+        model : App.current_user
     App.vent.trigger "show:dashboard"
     @
 

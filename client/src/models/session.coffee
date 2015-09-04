@@ -7,6 +7,10 @@ class SessionModel extends BaseModel
   service: 'accounts'
   urlRoot: '/sessions'
 
+  constructor:(config)->
+    super config
+    @user = new User(@get('user'))
+
   initialize: ()->
     @on "change", @persist
     @persist()
