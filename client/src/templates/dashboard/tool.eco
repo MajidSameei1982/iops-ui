@@ -3,8 +3,8 @@
   <!-- Sidebar Menu -->
   <ul class="sidebar-menu" id='dashboard-list'>
     <li class="header">iOPS Admin</li>
-    <li><a href="#"><i class='fa fa-building-o'></i> <span>Manage Accounts</span></a></li>
-    <li><a href="#"><i class='fa fa-users'></i> <span>Manage Users</span></a></li>
+    <li id="manage_accounts" class='tool_link' data-toggle="control-sidebar"><a href="#"><i class='fa fa-building-o'></i> <span>Manage Accounts</span></a></li>
+    <li id="manage_users" class='tool_link' data-toggle="control-sidebar"><a href="#"><i class='fa fa-users'></i> <span>Manage Users</span></a></li>
   </ul>
   <!-- /.sidebar-menu -->
 </section>

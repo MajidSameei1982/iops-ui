@@ -1,0 +1,19 @@
+<div class='account_container'>
+	<div class='col-md-12 title'>
+		<i id='account_active' class="fa fa-fw"></i>
+		<span id='name_label'><%= @name %></span>
+		<input type='text' id='account_name' value='<%- @name%>' size='50' placeholder='Account Name'/>
+
+		<span id='crud-container'>
+			<span class='crud' id='edit_account'><i class="fa fa-pencil-square" title='Edit Account'></i> Edit</span>
+			<span class='crud' id='add_site'><i class="fa fa-plus-square" title='Add Site to Account'></i> Add Site</span>
+			<span class='crud' id='delete_account'><i class="fa fa-times-circle" title='Delete Account'></i> Delete</span>
+		</span>
+		<span id='button-container'>
+			<button class="btn btn-xs" id='cancel'><i class="fa fa-ban"></i> CANCEL</button>
+			<button class="btn btn-xs btn-success" id='save'><i class="fa fa-check-square"></i> SAVE</button>
+		</span>
+	</div>
+	
+	<div class='col-md-12 site_list container'></div>
+</div>

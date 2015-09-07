@@ -7,7 +7,10 @@
 			<%- @formGroup({id:'email', type:'email', placeholder:'Email', cls: 'col-sm-12', label: 'Email Address', value: @email}) %>
 			<%- @formGroup({id:'firstname', type:'text', placeholder:'First Name', cls: 'col-sm-6', label: 'Name', value: @firstname}) %>
 			<%- @formGroup({id:'lastname', type:'text', placeholder:'Last Name', cls: 'col-sm-6', label: '&nbsp;', value: @lastname}) %>
-			<%- @formGroup({id:'password', type:'password', placeholder:'', cls: 'col-sm-12', label: 'Reset Password'}) %>
+			<%- @formGroup({id:'phone1', type:'text', placeholder:'Primary Phone', cls: 'col-sm-6', label: 'Phone Numbers', value: @phone1}) %>
+			<%- @formGroup({id:'phone2', type:'text', placeholder:'Secondary Phone', cls: 'col-sm-6', label: '&nbsp;', value: @phone2}) %>
+			<%- @formGroup({id:'password', type:'password', placeholder:'new password', cls: 'col-sm-6', label: 'Reset Password'}) %>
+			<%- @formGroup({id:'password_confirmation', type:'password', placeholder:'confirm new password', cls: 'col-sm-6', label: '&nbsp;' }) %>
 			<div class="col-xs-12"><button class="btn btn-primary">SAVE PROFILE</button></div>
 			
 		</div>

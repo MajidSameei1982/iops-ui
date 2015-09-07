@@ -1,0 +1,23 @@
+<div class='col-md-12 site_container'>
+  <div id='site_label'>
+    <i id='site_active' class="fa fa-fw"></i> <%= @name %> <%= if @abbrev? && @abbrev!='' then "(#{@abbrev})" else '' %>
+    <span id='crud-container'>
+      <span class='crud' id='edit_site'><i class="fa fa-pencil-square" title='Edit Site'></i></span>
+      <span class='crud' id='delete_site'><i class="fa fa-times-circle" title='Delete Site'></i></span>
+    </span>
+  </div>
+  <div id='site_short_label'><%= @shortName %></div>
+  <div>
+    <input type='text' id='site_name' value='<%- @name%>' size='40' placeholder='Site Name'/>
+    <input type='text' id='site_abbrev' value='<%- @abbrev%>' size='5' placeholder='CODE'/>
+  </div>
+  <div>
+    <input type='text' id='site_short' value='<%- @shortName%>' size='40' placeholder='Short Name'/>
+  </div>
+
+  
+  <span id='button-container'>
+    <button class="btn btn-xs" id='cancel'><i class="fa fa-ban"></i> CANCEL</button>
+    <button class="btn btn-xs btn-success" id='save'><i class="fa fa-check-square"></i> SAVE</button>
+  </span>
+</div>

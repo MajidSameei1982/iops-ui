@@ -1,0 +1,47 @@
+#add_account {
+  margin-left:20px;
+  cursor: pointer;
+}
+
+.account_container {
+	border-top: solid 1px #ccc;
+  padding:20px 0 0 0;
+  .title {
+    font-size:21px;
+    font-weight:bold;
+  }
+  #account_active {
+    // font-size: .75em;
+    &.fa-toggle-on { color:#363; }
+    &.fa-toggle-off { color:#999; }
+  }
+  #account_name { 
+    display:none;
+    max-width:90%;
+  }
+  #button-container { display:none; }
+  &.rw {
+    #name { display:inline !important; }
+    #name_label { display:none; }
+    #crud-container { display:none; }
+    #button-container { display:inline !important; }
+    #isActive {
+      cursor: pointer;
+      text-shadow: 0 0 3px 3px rgba(0,0,0,0.1);
+    }
+  }
+
+  .site_list {
+    margin-bottom:20px;
+    #header {
+      margin: 10px 0 5px 30px;
+    }
+    .row {
+      padding-left: 30px;
+      border-top: dashed 1px #ccc;
+    }
+  }
+}
+.preamble {
+	padding:0 0 20px 0;
+}

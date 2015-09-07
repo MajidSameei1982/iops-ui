@@ -1,0 +1,16 @@
+#crud-container {
+	margin:0 5px;
+	color:#999;
+	.crud {
+		margin:0 5px;
+		cursor:pointer;
+		font-weight:normal;
+		font-size: 14px;
+		.fa-pencil-square, .fa-pencil-square-o { color: #336; }
+		.fa-plus-square { color: #363; }
+		.fa-times-circle { color: #933; }
+		&:hover {
+			color:#000;
+		}
+	}
+}

@@ -2,6 +2,7 @@ Marionette = require('marionette')
 LoginView = require('./views/login_view')
 User = require('./models/user')
 ProfileView = require('./views/forms/profile_view')
+ManageAccountsView = require('./views/forms/manage_accounts_view')
 Dashboard = require('./models/dashboard')
 DashboardCollection = require('./models/dashboard_collection')
 DashboardLayout = require('./views/dashboard/dashboard_layout')
@@ -72,9 +73,30 @@ class IopsController extends Object
     dl.show_content
       title: 'Your Profile'
       subtitle: "Edit your user account profile below"
+      icon: "user"
       view: new ProfileView
         model : App.current_user
     App.vent.trigger "show:dashboard"
+    @
+
+  mgaccounts: ()->
+    dl = @set_main_layout()
+    dl.show_content
+      title: 'Manage Accounts'
+      subtitle: "Manage account details and associated Sites"
+      icon: "building-o"
+      view: new ManageAccountsView
+        collection: App.accounts
+    App.vent.trigger "show:dashboard"
+    @
+
+  mgusers: ()->
+    # dl = @set_main_layout()
+    # dl.show_content
+    #   title: 'Manage Accounts'
+    #   subtitle: "Manage accounts and Sites associated with each"
+    #   view: new ManageAccountsView
+    # App.vent.trigger "show:dashboard"
     @
 
   dashboard: (id)->

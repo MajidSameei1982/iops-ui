@@ -17,12 +17,14 @@ class DashboardLayout extends Marionette.LayoutView
     footer: "#footer-region"
     content: "#content-region"
 
-  show_content: ({title, subtitle, view})->
+  show_content: ({title, subtitle, view, icon})->
     contentview = new DashboardContentView()
     contentview.title = title
     contentview.subtitle = subtitle
     contentview.center_view = view
+    contentview.icon = icon
     @content.show(contentview)
+    #App.AdminLTE_lib.reset()
     @
 
   show_widgets: (dash)->

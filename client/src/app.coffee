@@ -5,6 +5,7 @@ IopsController = require('./iops_controller')
 Router = require('./router')
 IopsLayout = require('./views/iops_layout')
 SessionModel = require('./models/session')
+AccountCollection = require('./models/account_collection')
 AdminLTE_lib = require('./common/adminlte_lib')
 
 # ----------------------------------
@@ -24,6 +25,18 @@ window.IOPS = do()->
     SessionModel.restore()
     @layout = new IopsLayout();
 
+    # setup dummy AccountCollection
+    App.accounts = new AccountCollection [
+      id: 1
+      name: 'AccountABC'
+      isActive: true
+      sites: [{id:1, name:'John F. Kennedy International Airport', abbrev: 'JFK', shortName: "JFK International"}]
+    ,  
+      id: 2
+      name: 'XYZCorp'
+      isActive: false
+    ]
+
   App.on 'start', (options)->
     @log('Started')
     if (Backbone.history) 
@@ -32,6 +45,7 @@ window.IOPS = do()->
         controller: @controller
       @log('Backbone.history starting')
       Backbone.history.start()
+
 
     # setup app clock
     dtfn = ()->

@@ -259,7 +259,7 @@ window.JST["dashboard/tool"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<!-- sidebar -->\n<section class="sidebar">\n  <!-- Sidebar Menu -->\n  <ul class="sidebar-menu" id=\'dashboard-list\'>\n    <li class="header">iOPS Admin</li>\n    <li><a href="#"><i class=\'fa fa-building-o\'></i> <span>Manage Accounts</span></a></li>\n    <li><a href="#"><i class=\'fa fa-users\'></i> <span>Manage Users</span></a></li>\n  </ul>\n  <!-- /.sidebar-menu -->\n</section>\n<!-- /.sidebar -->'));
+      _print(_safe('<!-- sidebar -->\n<section class="sidebar">\n  <!-- Sidebar Menu -->\n  <ul class="sidebar-menu" id=\'dashboard-list\'>\n    <li class="header">iOPS Admin</li>\n    <li id="manage_accounts" class=\'tool_link\' data-toggle="control-sidebar"><a href="#"><i class=\'fa fa-building-o\'></i> <span>Manage Accounts</span></a></li>\n    <li id="manage_users" class=\'tool_link\' data-toggle="control-sidebar"><a href="#"><i class=\'fa fa-users\'></i> <span>Manage Users</span></a></li>\n  </ul>\n  <!-- /.sidebar-menu -->\n</section>\n<!-- /.sidebar -->'));
     
     }).call(this);
     
@@ -377,6 +377,104 @@ window.JST["dashboard/widget_layout"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
+window.JST["forms/account"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div class=\'account_container\'>\n\t<div class=\'col-md-12 title\'>\n\t\t<i id=\'account_active\' class="fa fa-fw"></i>\n\t\t<span id=\'name_label\'>'));
+    
+      _print(this.name);
+    
+      _print(_safe('</span>\n\t\t<input type=\'text\' id=\'account_name\' value=\''));
+    
+      _print(_safe(this.name));
+    
+      _print(_safe('\' size=\'50\' placeholder=\'Account Name\'/>\n\n\t\t<span id=\'crud-container\'>\n\t\t\t<span class=\'crud\' id=\'edit_account\'><i class="fa fa-pencil-square" title=\'Edit Account\'></i> Edit</span>\n\t\t\t<span class=\'crud\' id=\'add_site\'><i class="fa fa-plus-square" title=\'Add Site to Account\'></i> Add Site</span>\n\t\t\t<span class=\'crud\' id=\'delete_account\'><i class="fa fa-times-circle" title=\'Delete Account\'></i> Delete</span>\n\t\t</span>\n\t\t<span id=\'button-container\'>\n\t\t\t<button class="btn btn-xs" id=\'cancel\'><i class="fa fa-ban"></i> CANCEL</button>\n\t\t\t<button class="btn btn-xs btn-success" id=\'save\'><i class="fa fa-check-square"></i> SAVE</button>\n\t\t</span>\n\t</div>\n\t\n\t<div class=\'col-md-12 site_list container\'></div>\n</div>\n'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
+window.JST["forms/manage_accounts"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div class="container preamble">\n\t<span id="add_account"><i class=\'fa fa-plus-square\'></i> Add New Account</span>\n</div>\n<div class="container" id="account_list"></div>\n\n<div id="accounts_modal" class="modal modal-danger">\n  <div class="modal-dialog">\n    <div class="modal-content">\n      <div class="modal-header">\n        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>\n        <h4 class="modal-title">Modal Danger</h4>\n      </div>\n      <div class="modal-body">\n        <p>One fine body…</p>\n      </div>\n      <div class="modal-footer">\n        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>\n        <button type="button" class="btn btn-outline">Save changes</button>\n      </div>\n    </div><!-- /.modal-content -->\n  </div><!-- /.modal-dialog -->\n</div>'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
 window.JST["forms/profile"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
@@ -434,14 +532,115 @@ window.JST["forms/profile"] = function(__obj) {
       _print(_safe('\n\t\t\t'));
     
       _print(_safe(this.formGroup({
+        id: 'phone1',
+        type: 'text',
+        placeholder: 'Primary Phone',
+        cls: 'col-sm-6',
+        label: 'Phone Numbers',
+        value: this.phone1
+      })));
+    
+      _print(_safe('\n\t\t\t'));
+    
+      _print(_safe(this.formGroup({
+        id: 'phone2',
+        type: 'text',
+        placeholder: 'Secondary Phone',
+        cls: 'col-sm-6',
+        label: '&nbsp;',
+        value: this.phone2
+      })));
+    
+      _print(_safe('\n\t\t\t'));
+    
+      _print(_safe(this.formGroup({
         id: 'password',
         type: 'password',
-        placeholder: '',
-        cls: 'col-sm-12',
+        placeholder: 'new password',
+        cls: 'col-sm-6',
         label: 'Reset Password'
       })));
     
+      _print(_safe('\n\t\t\t'));
+    
+      _print(_safe(this.formGroup({
+        id: 'password_confirmation',
+        type: 'password',
+        placeholder: 'confirm new password',
+        cls: 'col-sm-6',
+        label: '&nbsp;'
+      })));
+    
       _print(_safe('\n\t\t\t<div class="col-xs-12"><button class="btn btn-primary">SAVE PROFILE</button></div>\n\t\t\t\n\t\t</div>\n\t</div>\n</div>'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
+window.JST["forms/site"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div class=\'col-md-12 site_container\'>\n  <div id=\'site_label\'>\n    <i id=\'site_active\' class="fa fa-fw"></i> '));
+    
+      _print(this.name);
+    
+      _print(_safe(' '));
+    
+      _print((this.abbrev != null) && this.abbrev !== '' ? "(" + this.abbrev + ")" : '');
+    
+      _print(_safe('\n    <span id=\'crud-container\'>\n      <span class=\'crud\' id=\'edit_site\'><i class="fa fa-pencil-square" title=\'Edit Site\'></i></span>\n      <span class=\'crud\' id=\'delete_site\'><i class="fa fa-times-circle" title=\'Delete Site\'></i></span>\n    </span>\n  </div>\n  <div id=\'site_short_label\'>'));
+    
+      _print(this.shortName);
+    
+      _print(_safe('</div>\n  <div>\n    <input type=\'text\' id=\'site_name\' value=\''));
+    
+      _print(_safe(this.name));
+    
+      _print(_safe('\' size=\'40\' placeholder=\'Site Name\'/>\n    <input type=\'text\' id=\'site_abbrev\' value=\''));
+    
+      _print(_safe(this.abbrev));
+    
+      _print(_safe('\' size=\'5\' placeholder=\'CODE\'/>\n  </div>\n  <div>\n    <input type=\'text\' id=\'site_short\' value=\''));
+    
+      _print(_safe(this.shortName));
+    
+      _print(_safe('\' size=\'40\' placeholder=\'Short Name\'/>\n  </div>\n\n  \n  <span id=\'button-container\'>\n    <button class="btn btn-xs" id=\'cancel\'><i class="fa fa-ban"></i> CANCEL</button>\n    <button class="btn btn-xs btn-success" id=\'save\'><i class="fa fa-check-square"></i> SAVE</button>\n  </span>\n</div>\n'));
     
     }).call(this);
     
@@ -526,7 +725,7 @@ window.JST["login"] = function(__obj) {
 };
 
 ;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var AdminLTE_lib, BaselineApp, Extensions, IopsController, IopsLayout, Marionette, Router, SessionModel;
+var AccountCollection, AdminLTE_lib, BaselineApp, Extensions, IopsController, IopsLayout, Marionette, Router, SessionModel;
 
 Marionette = require('marionette');
 
@@ -541,6 +740,8 @@ Router = require('./router');
 IopsLayout = require('./views/iops_layout');
 
 SessionModel = require('./models/session');
+
+AccountCollection = require('./models/account_collection');
 
 AdminLTE_lib = require('./common/adminlte_lib');
 
@@ -563,7 +764,26 @@ window.IOPS = (function() {
   App.on("before:start", function(options) {
     this.log('Starting');
     SessionModel.restore();
-    return this.layout = new IopsLayout();
+    this.layout = new IopsLayout();
+    return App.accounts = new AccountCollection([
+      {
+        id: 1,
+        name: 'AccountABC',
+        isActive: true,
+        sites: [
+          {
+            id: 1,
+            name: 'John F. Kennedy International Airport',
+            abbrev: 'JFK',
+            shortName: "JFK International"
+          }
+        ]
+      }, {
+        id: 2,
+        name: 'XYZCorp',
+        isActive: false
+      }
+    ]);
   });
   App.on('start', function(options) {
     var dtfn;
@@ -588,7 +808,7 @@ window.IOPS = (function() {
   return App;
 })();
 
-},{"./common/adminlte_lib":2,"./common/baseline_app":4,"./common/extensions":5,"./iops_controller":7,"./models/session":12,"./router":16,"./views/iops_layout":26}],2:[function(require,module,exports){
+},{"./common/adminlte_lib":2,"./common/baseline_app":4,"./common/extensions":5,"./iops_controller":7,"./models/account_collection":11,"./models/session":14,"./router":20,"./views/iops_layout":33}],2:[function(require,module,exports){
 
 /*
  *
@@ -1232,7 +1452,7 @@ UIUtils = (function(superClass) {
 module.exports = UIUtils;
 
 },{}],7:[function(require,module,exports){
-var Dashboard, DashboardCollection, DashboardContentView, DashboardLayout, IopsController, LoginView, Marionette, ProfileView, User, WidgetCollection,
+var Dashboard, DashboardCollection, DashboardContentView, DashboardLayout, IopsController, LoginView, ManageAccountsView, Marionette, ProfileView, User, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -1243,6 +1463,8 @@ LoginView = require('./views/login_view');
 User = require('./models/user');
 
 ProfileView = require('./views/forms/profile_view');
+
+ManageAccountsView = require('./views/forms/manage_accounts_view');
 
 Dashboard = require('./models/dashboard');
 
@@ -1384,11 +1606,31 @@ IopsController = (function(superClass) {
     dl.show_content({
       title: 'Your Profile',
       subtitle: "Edit your user account profile below",
+      icon: "user",
       view: new ProfileView({
         model: App.current_user
       })
     });
     App.vent.trigger("show:dashboard");
+    return this;
+  };
+
+  IopsController.prototype.mgaccounts = function() {
+    var dl;
+    dl = this.set_main_layout();
+    dl.show_content({
+      title: 'Manage Accounts',
+      subtitle: "Manage account details and associated Sites",
+      icon: "building-o",
+      view: new ManageAccountsView({
+        collection: App.accounts
+      })
+    });
+    App.vent.trigger("show:dashboard");
+    return this;
+  };
+
+  IopsController.prototype.mgusers = function() {
     return this;
   };
 
@@ -1421,7 +1663,7 @@ IopsController = (function(superClass) {
 
 module.exports = IopsController;
 
-},{"./models/dashboard":10,"./models/dashboard_collection":11,"./models/user":13,"./models/widget_collection":15,"./views/dashboard/content_view":17,"./views/dashboard/dashboard_layout":18,"./views/forms/profile_view":25,"./views/login_view":27}],8:[function(require,module,exports){
+},{"./models/dashboard":12,"./models/dashboard_collection":13,"./models/user":17,"./models/widget_collection":19,"./views/dashboard/content_view":21,"./views/dashboard/dashboard_layout":22,"./views/forms/manage_accounts_view":30,"./views/forms/profile_view":31,"./views/login_view":34}],8:[function(require,module,exports){
 var AppConfig, Backbone, BaseModel,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1490,6 +1732,72 @@ BaseCollection = (function(superClass) {
 module.exports = BaseCollection;
 
 },{"../common/appconfig":3}],10:[function(require,module,exports){
+var Account, BaseModel, SiteCollection,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+BaseModel = require('./_base');
+
+SiteCollection = require('./site_collection');
+
+Account = (function(superClass) {
+  extend(Account, superClass);
+
+  Account.prototype.service = 'accounts';
+
+  Account.prototype.urlRoot = '/accounts';
+
+  Account.prototype.defaults = {
+    name: null,
+    isActive: true,
+    sites: []
+  };
+
+  function Account(data, opts) {
+    Account.__super__.constructor.call(this, data, opts);
+    this.sites = new SiteCollection(this.get('sites'));
+    this.sites.on("update", (function(_this) {
+      return function() {
+        return _this.attributes["sites"] = _this.sites.toJSON();
+      };
+    })(this));
+  }
+
+  return Account;
+
+})(BaseModel);
+
+module.exports = Account;
+
+},{"./_base":8,"./site_collection":16}],11:[function(require,module,exports){
+var Account, AccountCollection, BaseCollection,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+BaseCollection = require('./_base_collection');
+
+Account = require('./account');
+
+AccountCollection = (function(superClass) {
+  extend(AccountCollection, superClass);
+
+  function AccountCollection() {
+    return AccountCollection.__super__.constructor.apply(this, arguments);
+  }
+
+  AccountCollection.prototype.service = 'accounts';
+
+  AccountCollection.prototype.url = '/accounts';
+
+  AccountCollection.prototype.model = Account;
+
+  return AccountCollection;
+
+})(BaseCollection);
+
+module.exports = AccountCollection;
+
+},{"./_base_collection":9,"./account":10}],12:[function(require,module,exports){
 var BaseModel, Dashboard,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1511,7 +1819,7 @@ Dashboard = (function(superClass) {
 
 module.exports = Dashboard;
 
-},{"./_base":8}],11:[function(require,module,exports){
+},{"./_base":8}],13:[function(require,module,exports){
 var BaseCollection, Dashboard, DashboardCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1537,7 +1845,7 @@ DashboardCollection = (function(superClass) {
 
 module.exports = DashboardCollection;
 
-},{"./_base_collection":9,"./dashboard":10}],12:[function(require,module,exports){
+},{"./_base_collection":9,"./dashboard":12}],14:[function(require,module,exports){
 var BaseModel, SessionModel, User,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1645,7 +1953,66 @@ SessionModel = (function(superClass) {
 
 module.exports = SessionModel;
 
-},{"./_base":8,"./user":13}],13:[function(require,module,exports){
+},{"./_base":8,"./user":17}],15:[function(require,module,exports){
+var BaseModel, Site,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+BaseModel = require('./_base');
+
+Site = (function(superClass) {
+  extend(Site, superClass);
+
+  function Site() {
+    return Site.__super__.constructor.apply(this, arguments);
+  }
+
+  Site.prototype.service = 'accounts';
+
+  Site.prototype.urlRoot = '/sites';
+
+  Site.prototype.defaults = {
+    name: null,
+    isActive: true,
+    shortName: null,
+    abbrev: null
+  };
+
+  return Site;
+
+})(BaseModel);
+
+module.exports = Site;
+
+},{"./_base":8}],16:[function(require,module,exports){
+var BaseCollection, Site, SiteCollection,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+BaseCollection = require('./_base_collection');
+
+Site = require('./site');
+
+SiteCollection = (function(superClass) {
+  extend(SiteCollection, superClass);
+
+  function SiteCollection() {
+    return SiteCollection.__super__.constructor.apply(this, arguments);
+  }
+
+  SiteCollection.prototype.service = 'accounts';
+
+  SiteCollection.prototype.url = '/sites';
+
+  SiteCollection.prototype.model = Site;
+
+  return SiteCollection;
+
+})(BaseCollection);
+
+module.exports = SiteCollection;
+
+},{"./_base_collection":9,"./site":15}],17:[function(require,module,exports){
 var BaseModel, User,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1678,7 +2045,7 @@ User = (function(superClass) {
 
 module.exports = User;
 
-},{"./_base":8}],14:[function(require,module,exports){
+},{"./_base":8}],18:[function(require,module,exports){
 var BaseModel, Widget,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1709,7 +2076,7 @@ Widget = (function(superClass) {
 
 module.exports = Widget;
 
-},{"./_base":8}],15:[function(require,module,exports){
+},{"./_base":8}],19:[function(require,module,exports){
 var BaseCollection, Widget, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1735,7 +2102,7 @@ WidgetCollection = (function(superClass) {
 
 module.exports = WidgetCollection;
 
-},{"./_base_collection":9,"./widget":14}],16:[function(require,module,exports){
+},{"./_base_collection":9,"./widget":18}],20:[function(require,module,exports){
 var Marionette, Router,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1754,6 +2121,8 @@ Router = (function(superClass) {
     'login': 'login',
     'logout': 'logout',
     'profile': 'profile',
+    'mgaccounts': 'mgaccounts',
+    'mgusers': 'mgusers',
     'dashboard/:id': 'dashboard'
   };
 
@@ -1773,7 +2142,7 @@ Router = (function(superClass) {
 
 module.exports = Router;
 
-},{}],17:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 var DashboardContentView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1803,6 +2172,9 @@ DashboardContentView = (function(superClass) {
     var st, t;
     t = this.title != null ? this.title : 'Foo';
     st = this.subtitle != null ? this.subtitle : '';
+    if (this.icon != null) {
+      t = "<i class='fa fa-" + this.icon + "'></i> " + t;
+    }
     t = t + " <small>" + st + "</small>";
     return $("#title").html(t);
   };
@@ -1813,7 +2185,7 @@ DashboardContentView = (function(superClass) {
 
 module.exports = DashboardContentView;
 
-},{}],18:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 var DashboardContentView, DashboardFooterView, DashboardHeaderView, DashboardLayout, DashboardSideView, DashboardToolView, Marionette, WidgetLayout,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1850,12 +2222,13 @@ DashboardLayout = (function(superClass) {
   };
 
   DashboardLayout.prototype.show_content = function(arg) {
-    var contentview, subtitle, title, view;
-    title = arg.title, subtitle = arg.subtitle, view = arg.view;
+    var contentview, icon, subtitle, title, view;
+    title = arg.title, subtitle = arg.subtitle, view = arg.view, icon = arg.icon;
     contentview = new DashboardContentView();
     contentview.title = title;
     contentview.subtitle = subtitle;
     contentview.center_view = view;
+    contentview.icon = icon;
     this.content.show(contentview);
     return this;
   };
@@ -1893,7 +2266,7 @@ DashboardLayout = (function(superClass) {
 
 module.exports = DashboardLayout;
 
-},{"./content_view":17,"./footer_view":19,"./header_view":20,"./side_view":21,"./tool_view":22,"./widget_layout":23}],19:[function(require,module,exports){
+},{"./content_view":21,"./footer_view":23,"./header_view":24,"./side_view":25,"./tool_view":26,"./widget_layout":27}],23:[function(require,module,exports){
 var DashboardFooterView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1919,7 +2292,7 @@ DashboardFooterView = (function(superClass) {
 
 module.exports = DashboardFooterView;
 
-},{}],20:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 var AppConfig, DashboardHeaderView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -1998,7 +2371,7 @@ DashboardHeaderView = (function(superClass) {
 
 module.exports = DashboardHeaderView;
 
-},{"../../common/appconfig":3}],21:[function(require,module,exports){
+},{"../../common/appconfig":3}],25:[function(require,module,exports){
 var DashboardSideView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -2086,7 +2459,7 @@ DashboardSideView = (function(superClass) {
 
 module.exports = DashboardSideView;
 
-},{}],22:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 var DashboardToolView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2106,13 +2479,37 @@ DashboardToolView = (function(superClass) {
 
   DashboardToolView.prototype.className = "control-sidebar control-sidebar-dark";
 
+  DashboardToolView.prototype.ui = {
+    accounts_link: "#manage_accounts",
+    users_link: "#manage_users"
+  };
+
+  DashboardToolView.prototype.events = {
+    "click #manage_accounts": "manage_accounts",
+    "click #manage_users": "manage_users"
+  };
+
+  DashboardToolView.prototype.manage_accounts = function(e) {
+    e.preventDefault();
+    return App.router.navigate('mgaccounts', {
+      trigger: true
+    });
+  };
+
+  DashboardToolView.prototype.manage_users = function(e) {
+    e.preventDefault();
+    return App.router.navigate('mgusers', {
+      trigger: true
+    });
+  };
+
   return DashboardToolView;
 
 })(Marionette.ItemView);
 
 module.exports = DashboardToolView;
 
-},{}],23:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 var Marionette, Widget, WidgetLayout, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -2198,7 +2595,7 @@ WidgetLayout = (function(superClass) {
 
 module.exports = WidgetLayout;
 
-},{"../../models/widget":14,"./widget_view":24}],24:[function(require,module,exports){
+},{"../../models/widget":18,"./widget_view":28}],28:[function(require,module,exports){
 var Marionette, WidgetView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2227,7 +2624,171 @@ WidgetView = (function(superClass) {
 
 module.exports = WidgetView;
 
-},{}],25:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
+var Account, AccountView, Marionette, SiteView,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+SiteView = require('./site_view');
+
+Account = require('../../models/account');
+
+AccountView = (function(superClass) {
+  extend(AccountView, superClass);
+
+  function AccountView() {
+    return AccountView.__super__.constructor.apply(this, arguments);
+  }
+
+  AccountView.prototype.template = "forms/account";
+
+  AccountView.prototype.tagName = 'div';
+
+  AccountView.prototype.className = 'row';
+
+  AccountView.prototype.childViewContainer = '.site_list';
+
+  AccountView.prototype.childView = SiteView;
+
+  AccountView.prototype.ui = {
+    container: '.account_container'
+  };
+
+  AccountView.prototype.events = {
+    'click #edit_account': 'show_edit',
+    'click #add_site': 'add_site',
+    'click #delete_account': 'delete',
+    'click button#cancel': 'cancel_edit',
+    'click button#save': 'save',
+    'click #account_active': 'toggle_active'
+  };
+
+  AccountView.prototype.bindings = {
+    name: '#account_name',
+    isActive: {
+      selector: 'i#account_active',
+      elAttribute: 'class',
+      converter: function(action, value, field) {
+        if (value) {
+          return 'fa-toggle-on';
+        } else {
+          return 'fa-toggle-off';
+        }
+      }
+    }
+  };
+
+  AccountView.prototype.initialize = function() {
+    this.collection = this.model.sites;
+    return this.modelBinder = new Backbone.ModelBinder();
+  };
+
+  AccountView.prototype.toggle_active = function() {
+    if (!this.ui.container.hasClass('rw')) {
+      return false;
+    }
+    return this.model.set('isActive', !this.model.get('isActive'));
+  };
+
+  AccountView.prototype.toggle_edit = function(rw) {
+    return this.ui.container.toggleClass('rw', rw);
+  };
+
+  AccountView.prototype.show_edit = function(e) {
+    this.old_model = $.extend(true, {}, this.model.attributes);
+    return this.toggle_edit(true);
+  };
+
+  AccountView.prototype.cancel_edit = function() {
+    if ((this.model.id == null) || this.model.id < 1) {
+      this.model.collection.remove(this.model);
+      return;
+    }
+    this.toggle_edit(false);
+    this.model = new Account(this.old_model);
+    return this.render();
+  };
+
+  AccountView.prototype["delete"] = function() {
+    return $('#account_modal').modal();
+  };
+
+  AccountView.prototype.save = function() {
+    var name;
+    name = this.model.get('name');
+    if ((name == null) || name.trim() === '') {
+      return;
+    }
+    this.model.id = 99;
+    return this.render();
+  };
+
+  AccountView.prototype.onRender = function() {
+    this.modelBinder.bind(this.model, this.el, this.bindings);
+    if ((this.model.id == null) || this.model.id < 1) {
+      this.$("#delete").hide();
+      return this.show_edit();
+    }
+  };
+
+  return AccountView;
+
+})(Marionette.CompositeView);
+
+module.exports = AccountView;
+
+},{"../../models/account":10,"./site_view":32}],30:[function(require,module,exports){
+var AccountView, ManageAccountsView, Marionette,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+AccountView = require('./account_view');
+
+ManageAccountsView = (function(superClass) {
+  extend(ManageAccountsView, superClass);
+
+  function ManageAccountsView() {
+    return ManageAccountsView.__super__.constructor.apply(this, arguments);
+  }
+
+  ManageAccountsView.prototype.template = "forms/manage_accounts";
+
+  ManageAccountsView.prototype.childViewContainer = '#account_list';
+
+  ManageAccountsView.prototype.childView = AccountView;
+
+  ManageAccountsView.prototype.events = {
+    'click #add_account': 'add_account'
+  };
+
+  ManageAccountsView.prototype.add_account = function() {
+    var acct, i, len, ref;
+    ref = this.collection.models;
+    for (i = 0, len = ref.length; i < len; i++) {
+      acct = ref[i];
+      if ((acct.id == null) || acct.id === 0) {
+        return false;
+      }
+    }
+    return this.collection.add({
+      name: "",
+      isActive: false
+    }, {
+      at: 0
+    });
+  };
+
+  return ManageAccountsView;
+
+})(Marionette.CompositeView);
+
+module.exports = ManageAccountsView;
+
+},{"./account_view":29}],31:[function(require,module,exports){
 var Marionette, ProfileView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2249,7 +2810,60 @@ ProfileView = (function(superClass) {
 
 module.exports = ProfileView;
 
-},{}],26:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
+var Marionette, SiteView,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+SiteView = (function(superClass) {
+  extend(SiteView, superClass);
+
+  function SiteView() {
+    return SiteView.__super__.constructor.apply(this, arguments);
+  }
+
+  SiteView.prototype.template = "forms/site";
+
+  SiteView.prototype.tagName = 'div';
+
+  SiteView.prototype.className = 'row';
+
+  SiteView.prototype.bindings = {
+    name: '#site_name',
+    isActive: {
+      selector: 'i#site_active',
+      elAttribute: 'class',
+      converter: function(action, value, field) {
+        if (value) {
+          return 'fa-toggle-on';
+        } else {
+          return 'fa-toggle-off';
+        }
+      }
+    }
+  };
+
+  SiteView.prototype.initialize = function() {
+    return this.modelBinder = new Backbone.ModelBinder();
+  };
+
+  SiteView.prototype.onRender = function() {
+    this.modelBinder.bind(this.model, this.el, this.bindings);
+    if ((this.model.id == null) || this.model.id < 1) {
+      this.$("#delete").hide();
+      return this.show_edit();
+    }
+  };
+
+  return SiteView;
+
+})(Marionette.ItemView);
+
+module.exports = SiteView;
+
+},{}],33:[function(require,module,exports){
 var IopsLayout, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2275,7 +2889,7 @@ IopsLayout = (function(superClass) {
 
 module.exports = IopsLayout;
 
-},{}],27:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 var LoginView, Marionette, SessionModel, UIUtils,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2373,5 +2987,5 @@ LoginView = (function(superClass) {
 
 module.exports = LoginView;
 
-},{"../common/uiutils":6,"../models/session":12}]},{},[1])
+},{"../common/uiutils":6,"../models/session":14}]},{},[1])
 ;

@@ -11,11 +11,12 @@ class DashboardContentView extends Marionette.LayoutView
     if @center_view? then @center.show(@center_view)    
 
   onDomRefresh: ()->
-  	# set page title/subtitle
-  	t = if @title? then @title else 'Foo'
-  	st = if @subtitle? then @subtitle else ''
-  	t = "#{t} <small>#{st}</small>"
-  	$("#title").html(t)
+    # set page title/subtitle
+    t = if @title? then @title else 'Foo'
+    st = if @subtitle? then @subtitle else ''
+    if @icon? then t = "<i class='fa fa-#{@icon}'></i> #{t}" 
+    t = "#{t} <small>#{st}</small>"
+    $("#title").html(t)
 
   	
 # ----------------------------------
