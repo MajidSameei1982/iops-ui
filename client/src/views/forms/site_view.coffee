@@ -6,7 +6,7 @@ Site = require('../../models/site')
 class SiteView extends Marionette.ItemView
   template: "forms/site"
   tagName: 'div'
-  className: 'row'
+  className: ''
 
   ui:
     container: '.site_container'

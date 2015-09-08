@@ -109,12 +109,24 @@ ul.gridster.widget-container {
     .crud_container .crud:hover {
       color: #000; }
 
+.nav-tabs-custom {
+  background-color: transparent !important;
+  box-shadow: none; }
+
+.nav.nav-tabs li.active {
+  font-weight: bold; }
+
 #add_account {
   margin-left: 20px;
   cursor: pointer; }
 
 .preamble {
   padding: 0 0 20px 0; }
+
+#account_list {
+  width: 100%; }
+  #account_list .row {
+    background-color: rgba(255, 255, 255, 0.5); }
 
 .account_container {
   border-top: solid 1px #ccc;
@@ -152,8 +164,7 @@ ul.gridster.widget-container {
   margin-top: 10px;
   border-top: dashed 1px #ccc;
   box-sizing: content-box;
-  padding-top: 10px;
-  padding-left: 0; }
+  padding: 10px 0 0 10px; }
   .site_container #site_active.fa-toggle-on {
     color: #363; }
   .site_container #site_active.fa-toggle-off {

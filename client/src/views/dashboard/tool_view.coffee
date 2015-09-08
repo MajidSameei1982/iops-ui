@@ -8,17 +8,17 @@ class DashboardToolView extends Marionette.ItemView
   className:	"control-sidebar control-sidebar-dark"
   ui:
   	accounts_link: "#manage_accounts"
-  	users_link: "#manage_users"
+  	users_link: "#manage_permissions"
   events: 
   	"click #manage_accounts" : "manage_accounts"
-  	"click #manage_users" : "manage_users"
+  	"click #manage_permissions" : "manage_permissions"
 
   manage_accounts: (e) ->
   	e.preventDefault()
   	App.router.navigate('mgaccounts', {trigger:true})
-  manage_users: (e)->
+  manage_permissions: (e)->
   	e.preventDefault()
-  	App.router.navigate('mgusers', {trigger:true})
+  	App.router.navigate('mgpermissions', {trigger:true})
 
 # ----------------------------------
 

@@ -6,6 +6,13 @@
   padding:0 0 20px 0;
 }
 
+#account_list {
+  width:100%;
+  .row {
+    background-color: rgba(255,255,255,0.5);
+  }
+}
+
 .account_container {
 	border-top: solid 1px #ccc;
   padding:20px 0 0 0;
@@ -52,8 +59,7 @@
   margin-top:10px;
   border-top: dashed 1px #ccc;
   box-sizing: content-box;
-  padding-top:10px;
-  padding-left:0;
+  padding:10px 0 0 10px;
   
   #site_active {
     // font-size: .75em;

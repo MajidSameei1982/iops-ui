@@ -9,7 +9,7 @@ class Router extends Marionette.AppRouter
     'logout'				  :	'logout'
     'profile'         : 'profile'
     'mgaccounts'      : 'mgaccounts'
-    'mgusers'         : 'mgusers'
+    'mgpermissions'   : 'mgpermissions'
     'dashboard/:id'	  : 'dashboard'
 
   onRoute: (name, path, args)->
