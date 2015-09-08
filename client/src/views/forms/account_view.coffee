@@ -15,12 +15,18 @@ class AccountView extends Marionette.CompositeView
     container: '.account_container'
 
   events:
-    'click #edit_account'     : 'show_edit'
-    'click #add_site'         : 'add_site'
-    'click #delete_account'   : 'delete'
-    'click button#cancel'     : 'cancel_edit'
-    'click button#save'       : 'save'
-    'click #account_active'   : 'toggle_active'
+    'click #edit_account'             : 'show_edit'
+    'click #add_site'                 : 'add_site'
+    'click #delete_account'           : 'delete'
+    'click #account_buttons>#cancel'  : 'cancel_edit'
+    'click #account_buttons>#save'    : 'save'
+    'click #account_active'           : 'toggle_active'
+
+  add_site: ()->
+    for site in @collection.models
+      if !site.id? || site.id == 0 then return false
+    @collection.add {name: '', isActive: false, abbrev:'', shortName: ''}, {at:0}
+
 
   bindings:
     name: '#account_name'
@@ -54,7 +60,7 @@ class AccountView extends Marionette.CompositeView
     @render()
 
   delete: ()->
-    $('#account_modal').modal()
+    $('#accounts_modal').modal()
 
   save: ()->
     # TODO: FIRE MODEL SAVE

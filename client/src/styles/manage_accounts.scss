@@ -2,32 +2,38 @@
   margin-left:20px;
   cursor: pointer;
 }
+.preamble {
+  padding:0 0 20px 0;
+}
 
 .account_container {
 	border-top: solid 1px #ccc;
   padding:20px 0 0 0;
+
   .title {
     font-size:21px;
     font-weight:bold;
   }
+  
   #account_active {
     // font-size: .75em;
     &.fa-toggle-on { color:#363; }
     &.fa-toggle-off { color:#999; }
   }
+  
   #account_name { 
     display:none;
     max-width:90%;
   }
-  #button-container { display:none; }
+
+  #account_buttons { display:none; }
   &.rw {
-    #name { display:inline !important; }
-    #name_label { display:none; }
-    #crud-container { display:none; }
-    #button-container { display:inline !important; }
-    #isActive {
+    #account_name { display:inline !important; }
+    #account_name_label { display:none; }
+    #account_crud { display:none; }
+    #account_buttons { display:inline !important; }
+    #account_active {
       cursor: pointer;
-      text-shadow: 0 0 3px 3px rgba(0,0,0,0.1);
     }
   }
 
@@ -37,11 +43,36 @@
       margin: 10px 0 5px 30px;
     }
     .row {
-      padding-left: 30px;
-      border-top: dashed 1px #ccc;
+      padding-left:20px;
     }
   }
 }
-.preamble {
-	padding:0 0 20px 0;
+
+.site_container {
+  margin-top:10px;
+  border-top: dashed 1px #ccc;
+  box-sizing: content-box;
+  padding-top:10px;
+  padding-left:0;
+  
+  #site_active {
+    // font-size: .75em;
+    &.fa-toggle-on { color:#363; }
+    &.fa-toggle-off { color:#999; }
+  }
+  #site_name { max-width:90%; }
+
+  #site_short, #site_short_label, #site_buttons { margin-left:21px }
+  #site_buttons {margin-top: 10px;}
+
+  #site_name, #site_abbrev, #site_short, #site_buttons { display:none; }
+  &.rw {
+    #site_name, #site_abbrev, #site_short { display:inline !important; }
+    #site_label, #site_short_label, #site_crud { display:none; }
+    #site_buttons { display:block !important; }
+    #site_active { cursor: pointer; }
+  }
+
 }
+
+

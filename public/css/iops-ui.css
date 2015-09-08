@@ -92,26 +92,29 @@ ul.gridster.widget-container {
     ul.gridster.widget-container li.widget .widget-outer.box-primary .box-header {
       background-color: #3c8dbc; }
 
-#crud-container {
+.crud_container {
   margin: 0 5px;
   color: #999; }
-  #crud-container .crud {
+  .crud_container .crud {
     margin: 0 5px;
     cursor: pointer;
     font-weight: normal;
     font-size: 14px; }
-    #crud-container .crud .fa-pencil-square, #crud-container .crud .fa-pencil-square-o {
+    .crud_container .crud .fa-pencil-square, .crud_container .crud .fa-pencil-square-o {
       color: #336; }
-    #crud-container .crud .fa-plus-square {
+    .crud_container .crud .fa-plus-square {
       color: #363; }
-    #crud-container .crud .fa-times-circle {
+    .crud_container .crud .fa-times-circle {
       color: #933; }
-    #crud-container .crud:hover {
+    .crud_container .crud:hover {
       color: #000; }
 
 #add_account {
   margin-left: 20px;
   cursor: pointer; }
+
+.preamble {
+  padding: 0 0 20px 0; }
 
 .account_container {
   border-top: solid 1px #ccc;
@@ -126,28 +129,50 @@ ul.gridster.widget-container {
   .account_container #account_name {
     display: none;
     max-width: 90%; }
-  .account_container #button-container {
+  .account_container #account_buttons {
     display: none; }
-  .account_container.rw #name {
+  .account_container.rw #account_name {
     display: inline !important; }
-  .account_container.rw #name_label {
+  .account_container.rw #account_name_label {
     display: none; }
-  .account_container.rw #crud-container {
+  .account_container.rw #account_crud {
     display: none; }
-  .account_container.rw #button-container {
+  .account_container.rw #account_buttons {
     display: inline !important; }
-  .account_container.rw #isActive {
-    cursor: pointer;
-    text-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1); }
+  .account_container.rw #account_active {
+    cursor: pointer; }
   .account_container .site_list {
     margin-bottom: 20px; }
     .account_container .site_list #header {
       margin: 10px 0 5px 30px; }
     .account_container .site_list .row {
-      padding-left: 30px;
-      border-top: dashed 1px #ccc; }
+      padding-left: 20px; }
 
-.preamble {
-  padding: 0 0 20px 0; }
+.site_container {
+  margin-top: 10px;
+  border-top: dashed 1px #ccc;
+  box-sizing: content-box;
+  padding-top: 10px;
+  padding-left: 0; }
+  .site_container #site_active.fa-toggle-on {
+    color: #363; }
+  .site_container #site_active.fa-toggle-off {
+    color: #999; }
+  .site_container #site_name {
+    max-width: 90%; }
+  .site_container #site_short, .site_container #site_short_label, .site_container #site_buttons {
+    margin-left: 21px; }
+  .site_container #site_buttons {
+    margin-top: 10px; }
+  .site_container #site_name, .site_container #site_abbrev, .site_container #site_short, .site_container #site_buttons {
+    display: none; }
+  .site_container.rw #site_name, .site_container.rw #site_abbrev, .site_container.rw #site_short {
+    display: inline !important; }
+  .site_container.rw #site_label, .site_container.rw #site_short_label, .site_container.rw #site_crud {
+    display: none; }
+  .site_container.rw #site_buttons {
+    display: block !important; }
+  .site_container.rw #site_active {
+    cursor: pointer; }
 
 /*# sourceMappingURL=iops-ui.css.map */

@@ -398,7 +398,7 @@ window.JST["forms/account"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class=\'account_container\'>\n\t<div class=\'col-md-12 title\'>\n\t\t<i id=\'account_active\' class="fa fa-fw"></i>\n\t\t<span id=\'name_label\'>'));
+      _print(_safe('<div class=\'account_container\'>\n\t<div class=\'col-md-12 title\'>\n\t\t<i id=\'account_active\' class="fa fa-fw"></i>\n\t\t<span id=\'account_name_label\'>'));
     
       _print(this.name);
     
@@ -406,7 +406,7 @@ window.JST["forms/account"] = function(__obj) {
     
       _print(_safe(this.name));
     
-      _print(_safe('\' size=\'50\' placeholder=\'Account Name\'/>\n\n\t\t<span id=\'crud-container\'>\n\t\t\t<span class=\'crud\' id=\'edit_account\'><i class="fa fa-pencil-square" title=\'Edit Account\'></i> Edit</span>\n\t\t\t<span class=\'crud\' id=\'add_site\'><i class="fa fa-plus-square" title=\'Add Site to Account\'></i> Add Site</span>\n\t\t\t<span class=\'crud\' id=\'delete_account\'><i class="fa fa-times-circle" title=\'Delete Account\'></i> Delete</span>\n\t\t</span>\n\t\t<span id=\'button-container\'>\n\t\t\t<button class="btn btn-xs" id=\'cancel\'><i class="fa fa-ban"></i> CANCEL</button>\n\t\t\t<button class="btn btn-xs btn-success" id=\'save\'><i class="fa fa-check-square"></i> SAVE</button>\n\t\t</span>\n\t</div>\n\t\n\t<div class=\'col-md-12 site_list container\'></div>\n</div>\n'));
+      _print(_safe('\' size=\'50\' placeholder=\'Account Name\'/>\n\n\t\t<span id=\'account_crud\' class=\'crud_container\'>\n\t\t\t<span class=\'crud\' id=\'edit_account\'><i class="fa fa-pencil-square" title=\'Edit Account\'></i> Edit</span>\n\t\t\t<span class=\'crud\' id=\'add_site\'><i class="fa fa-plus-square" title=\'Add Site to Account\'></i> Add Site</span>\n\t\t\t<span class=\'crud\' id=\'delete_account\'><i class="fa fa-times-circle" title=\'Delete Account\'></i> Delete</span>\n\t\t</span>\n\t\t<span id=\'account_buttons\'>\n\t\t\t<button class="btn btn-xs" id=\'cancel\'><i class="fa fa-ban"></i> CANCEL</button>\n\t\t\t<button class="btn btn-xs btn-success" id=\'save\'><i class="fa fa-check-square"></i> SAVE</button>\n\t\t</span>\n\t</div>\n\t\n\t<div class=\'col-md-12 site_list container\'></div>\n</div>\n'));
     
     }).call(this);
     
@@ -616,7 +616,7 @@ window.JST["forms/site"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class=\'col-md-12 site_container\'>\n  <div id=\'site_label\'>\n    <i id=\'site_active\' class="fa fa-fw"></i> '));
+      _print(_safe('<div class=\'col-md-12 site_container\'>\n  <i id=\'site_active\' class="fa fa-fw"></i>\n  <span id=\'site_label\'>'));
     
       _print(this.name);
     
@@ -624,23 +624,23 @@ window.JST["forms/site"] = function(__obj) {
     
       _print((this.abbrev != null) && this.abbrev !== '' ? "(" + this.abbrev + ")" : '');
     
-      _print(_safe('\n    <span id=\'crud-container\'>\n      <span class=\'crud\' id=\'edit_site\'><i class="fa fa-pencil-square" title=\'Edit Site\'></i></span>\n      <span class=\'crud\' id=\'delete_site\'><i class="fa fa-times-circle" title=\'Delete Site\'></i></span>\n    </span>\n  </div>\n  <div id=\'site_short_label\'>'));
-    
-      _print(this.shortName);
-    
-      _print(_safe('</div>\n  <div>\n    <input type=\'text\' id=\'site_name\' value=\''));
+      _print(_safe('</span>\n  <input type=\'text\' id=\'site_name\' value=\''));
     
       _print(_safe(this.name));
     
-      _print(_safe('\' size=\'40\' placeholder=\'Site Name\'/>\n    <input type=\'text\' id=\'site_abbrev\' value=\''));
+      _print(_safe('\' size=\'40\' placeholder=\'Site Name\'/>\n  <input type=\'text\' id=\'site_abbrev\' value=\''));
     
       _print(_safe(this.abbrev));
     
-      _print(_safe('\' size=\'5\' placeholder=\'CODE\'/>\n  </div>\n  <div>\n    <input type=\'text\' id=\'site_short\' value=\''));
+      _print(_safe('\' size=\'5\' placeholder=\'CODE\'/>\n  <span id=\'site_crud\' class=\'crud_container\'>\n    <span class=\'crud\' id=\'edit_site\'><i class="fa fa-pencil-square" title=\'Edit Site\'></i></span>\n    <span class=\'crud\' id=\'delete_site\'><i class="fa fa-times-circle" title=\'Delete Site\'></i></span>\n  </span>\n  <div id=\'site_short_label\'>'));
+    
+      _print(this.shortName);
+    
+      _print(_safe('</div>\n  <div>\n    <input type=\'text\' id=\'site_short\' value=\''));
     
       _print(_safe(this.shortName));
     
-      _print(_safe('\' size=\'40\' placeholder=\'Short Name\'/>\n  </div>\n\n  \n  <span id=\'button-container\'>\n    <button class="btn btn-xs" id=\'cancel\'><i class="fa fa-ban"></i> CANCEL</button>\n    <button class="btn btn-xs btn-success" id=\'save\'><i class="fa fa-check-square"></i> SAVE</button>\n  </span>\n</div>\n'));
+      _print(_safe('\' size=\'40\' placeholder=\'Short Name\'/>\n  </div>\n\n  <span id=\'site_buttons\'>\n    <button class="btn btn-xs" id=\'cancel\'><i class="fa fa-ban"></i> CANCEL</button>\n    <button class="btn btn-xs btn-success" id=\'save\'><i class="fa fa-check-square"></i> SAVE</button>\n  </span>\n</div>\n'));
     
     }).call(this);
     
@@ -2660,9 +2660,28 @@ AccountView = (function(superClass) {
     'click #edit_account': 'show_edit',
     'click #add_site': 'add_site',
     'click #delete_account': 'delete',
-    'click button#cancel': 'cancel_edit',
-    'click button#save': 'save',
+    'click #account_buttons>#cancel': 'cancel_edit',
+    'click #account_buttons>#save': 'save',
     'click #account_active': 'toggle_active'
+  };
+
+  AccountView.prototype.add_site = function() {
+    var i, len, ref, site;
+    ref = this.collection.models;
+    for (i = 0, len = ref.length; i < len; i++) {
+      site = ref[i];
+      if ((site.id == null) || site.id === 0) {
+        return false;
+      }
+    }
+    return this.collection.add({
+      name: '',
+      isActive: false,
+      abbrev: '',
+      shortName: ''
+    }, {
+      at: 0
+    });
   };
 
   AccountView.prototype.bindings = {
@@ -2712,7 +2731,7 @@ AccountView = (function(superClass) {
   };
 
   AccountView.prototype["delete"] = function() {
-    return $('#account_modal').modal();
+    return $('#accounts_modal').modal();
   };
 
   AccountView.prototype.save = function() {
@@ -2811,11 +2830,13 @@ ProfileView = (function(superClass) {
 module.exports = ProfileView;
 
 },{}],32:[function(require,module,exports){
-var Marionette, SiteView,
+var Marionette, Site, SiteView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
 Marionette = require('marionette');
+
+Site = require('../../models/site');
 
 SiteView = (function(superClass) {
   extend(SiteView, superClass);
@@ -2830,8 +2851,22 @@ SiteView = (function(superClass) {
 
   SiteView.prototype.className = 'row';
 
+  SiteView.prototype.ui = {
+    container: '.site_container'
+  };
+
+  SiteView.prototype.events = {
+    'click #edit_site': 'show_edit',
+    'click #delete_site': 'delete',
+    'click #site_buttons>#cancel': 'cancel_edit',
+    'click #site_buttons>#save': 'save',
+    'click #site_active': 'toggle_active'
+  };
+
   SiteView.prototype.bindings = {
     name: '#site_name',
+    abbrev: '#site_abbrev',
+    shortName: '#site_short',
     isActive: {
       selector: 'i#site_active',
       elAttribute: 'class',
@@ -2849,6 +2884,48 @@ SiteView = (function(superClass) {
     return this.modelBinder = new Backbone.ModelBinder();
   };
 
+  SiteView.prototype.toggle_active = function() {
+    if (!this.ui.container.hasClass('rw')) {
+      return false;
+    }
+    return this.model.set('isActive', !this.model.get('isActive'));
+  };
+
+  SiteView.prototype.toggle_edit = function(rw) {
+    return this.ui.container.toggleClass('rw', rw);
+  };
+
+  SiteView.prototype.cancel_edit = function() {
+    if ((this.model.id == null) || this.model.id < 1) {
+      if (this.model.collection != null) {
+        this.model.collection.remove(this.model);
+      }
+      return;
+    }
+    this.toggle_edit(false);
+    this.model = new Site(this.old_model);
+    return this.render();
+  };
+
+  SiteView.prototype.show_edit = function(e) {
+    this.old_model = $.extend(true, {}, this.model.attributes);
+    return this.toggle_edit(true);
+  };
+
+  SiteView.prototype["delete"] = function() {
+    return $('#account_modal').modal();
+  };
+
+  SiteView.prototype.save = function() {
+    var name;
+    name = this.model.get('name');
+    if ((name == null) || name.trim() === '') {
+      return;
+    }
+    this.model.id = 99;
+    return this.render();
+  };
+
   SiteView.prototype.onRender = function() {
     this.modelBinder.bind(this.model, this.el, this.bindings);
     if ((this.model.id == null) || this.model.id < 1) {
@@ -2863,7 +2940,7 @@ SiteView = (function(superClass) {
 
 module.exports = SiteView;
 
-},{}],33:[function(require,module,exports){
+},{"../../models/site":15}],33:[function(require,module,exports){
 var IopsLayout, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
