@@ -6,6 +6,7 @@ Router = require('./router')
 IopsLayout = require('./views/iops_layout')
 SessionModel = require('./models/session')
 AccountCollection = require('./models/account_collection')
+ClaimCollection = require('./models/claim_collection')
 AdminLTE_lib = require('./common/adminlte_lib')
 UIUtils = require('./common/uiutils')
 
@@ -29,6 +30,7 @@ window.IOPS = do()->
 
     # setup dummy AccountCollection
     App.accounts = new AccountCollection()
+    App.claims = new ClaimCollection()
     # App.accounts = new AccountCollection [
     #   id: 1
     #   name: 'AccountABC'

@@ -1,4 +1,4 @@
-<div class="container preamble">
+<div class="preamble">
 	<span id="add_account"><i class='fa fa-plus-square'></i> Add New Account</span>
 </div>
 <div class="container" id="account_list"></div>

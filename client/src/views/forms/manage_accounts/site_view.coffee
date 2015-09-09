@@ -1,10 +1,10 @@
 Marionette = require('marionette')
-Site = require('../../models/site')
+Site = require('../../../models/site')
 
 # ----------------------------------
 
 class SiteView extends Marionette.ItemView
-  template: "forms/site"
+  template: "forms/manage_accounts/site"
   tagName: 'div'
   className: ''
 

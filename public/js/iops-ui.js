@@ -422,7 +422,7 @@ window.JST["dashboard/widget_layout"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
-window.JST["forms/account"] = function(__obj) {
+window.JST["forms/manage_accounts/account"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
       value = '';
@@ -475,7 +475,7 @@ window.JST["forms/account"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
-window.JST["forms/manage_accounts"] = function(__obj) {
+window.JST["forms/manage_accounts/accounts"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
       value = '';
@@ -496,7 +496,7 @@ window.JST["forms/manage_accounts"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="container preamble">\n\t<span id="add_account"><i class=\'fa fa-plus-square\'></i> Add New Account</span>\n</div>\n<div class="container" id="account_list"></div>'));
+      _print(_safe('<div class="preamble">\n\t<span id="add_account"><i class=\'fa fa-plus-square\'></i> Add New Account</span>\n</div>\n<div class="container" id="account_list"></div>'));
     
     }).call(this);
     
@@ -520,7 +520,7 @@ window.JST["forms/manage_accounts"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
-window.JST["forms/manage_permissions"] = function(__obj) {
+window.JST["forms/manage_accounts/site"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
       value = '';
@@ -541,7 +541,174 @@ window.JST["forms/manage_permissions"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="nav-tabs-custom">\n  <ul class="nav nav-tabs">\n    <li class="active"><a href="#users" data-toggle="tab" aria-expanded="true">Users</a></li>\n    <li class=""><a href="#roles" data-toggle="tab" aria-expanded="false">Roles</a></li>\n    <li class=""><a href="#permissions" data-toggle="tab" aria-expanded="false">Permissions</a></li>\n  </ul>\n  <div class="tab-content">\n    <div class="tab-pane active" id="users">\n      USERS\n    </div><!-- /.tab-pane -->\n\n    <div class="tab-pane" id="roles">\n      ROLES\n    </div><!-- /.tab-pane -->\n\n    <div class="tab-pane" id="permissions">\n      PERMISSIONS\n    </div><!-- /.tab-pane -->\n  </div><!-- /.tab-content -->\n</div>'));
+      _print(_safe('<div class=\'site_container\'>\n  <i id=\'site_active\' class="fa fa-fw"></i>\n  <span id=\'site_label\'>'));
+    
+      _print(this.name);
+    
+      _print(_safe(' '));
+    
+      _print((this.abbrev != null) && this.abbrev !== '' ? "(" + this.abbrev + ")" : '');
+    
+      _print(_safe('</span>\n  <input type=\'text\' id=\'site_name\' value=\''));
+    
+      _print(_safe(this.name));
+    
+      _print(_safe('\' size=\'40\' placeholder=\'Site Name\'/>\n  <input type=\'text\' id=\'site_abbrev\' value=\''));
+    
+      _print(_safe(this.abbrev));
+    
+      _print(_safe('\' size=\'5\' placeholder=\'CODE\'/>\n  <span id=\'site_crud\' class=\'crud_container\'>\n    <span class=\'crud\' id=\'edit_site\'><i class="fa fa-pencil-square" title=\'Edit Site\'></i></span>\n    <span class=\'crud\' id=\'delete_site\'><i class="fa fa-times-circle" title=\'Delete Site\'></i></span>\n  </span>\n  <div id=\'site_short_label\'>'));
+    
+      _print(this.shortName);
+    
+      _print(_safe('</div>\n  <div>\n    <input type=\'text\' id=\'site_short\' value=\''));
+    
+      _print(_safe(this.shortName));
+    
+      _print(_safe('\' size=\'40\' placeholder=\'Short Name\'/>\n  </div>\n\n  <span id=\'site_buttons\'>\n    <button class="btn btn-xs" id=\'cancel\'><i class="fa fa-ban"></i> CANCEL</button>\n    <button class="btn btn-xs btn-success" id=\'save\'><i class="fa fa-check-square"></i> SAVE</button>\n  </span>\n</div>\n'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
+window.JST["forms/manage_permissions/layout"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div class="nav-tabs-custom">\n  <ul class="nav nav-tabs">\n    <li class=""><a href="#users_region" data-toggle="tab" aria-expanded="true">Users</a></li>\n    <li class=""><a href="#roles_region" data-toggle="tab" aria-expanded="false">Roles</a></li>\n    <li class="active"><a href="#permissions_region" data-toggle="tab" aria-expanded="false">Permissions</a></li>\n  </ul>\n  <div class="tab-content">\n    <div class="tab-pane" id="users_region"></div>\n    <div class="tab-pane" id="roles_region"></div>\n    <div class="tab-pane active" id="permissions_region"></div>\n  </div><!-- /.tab-content -->\n</div>'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
+window.JST["forms/manage_permissions/permission"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div>'));
+    
+      _print(this.name);
+    
+      _print(_safe('</div>\n<div><i>'));
+    
+      _print(this.description);
+    
+      _print(_safe('</i></div>\n'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
+window.JST["forms/manage_permissions/permissions"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div class="preamble">\n  <span id="add_claim"><i class=\'fa fa-plus-square\'></i> Add New Permission</span>\n</div>\n<div id=\'permissions_list\'></div>'));
     
     }).call(this);
     
@@ -685,75 +852,6 @@ window.JST["forms/profile"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
-window.JST["forms/site"] = function(__obj) {
-  var _safe = function(value) {
-    if (typeof value === 'undefined' && value == null)
-      value = '';
-    var result = new String(value);
-    result.ecoSafe = true;
-    return result;
-  };
-  return (function() {
-    var __out = [], __self = this, _print = function(value) {
-      if (typeof value !== 'undefined' && value != null)
-        __out.push(value.ecoSafe ? value : __self.escape(value));
-    }, _capture = function(callback) {
-      var out = __out, result;
-      __out = [];
-      callback.call(this);
-      result = __out.join('');
-      __out = out;
-      return _safe(result);
-    };
-    (function() {
-      _print(_safe('<div class=\'site_container\'>\n  <i id=\'site_active\' class="fa fa-fw"></i>\n  <span id=\'site_label\'>'));
-    
-      _print(this.name);
-    
-      _print(_safe(' '));
-    
-      _print((this.abbrev != null) && this.abbrev !== '' ? "(" + this.abbrev + ")" : '');
-    
-      _print(_safe('</span>\n  <input type=\'text\' id=\'site_name\' value=\''));
-    
-      _print(_safe(this.name));
-    
-      _print(_safe('\' size=\'40\' placeholder=\'Site Name\'/>\n  <input type=\'text\' id=\'site_abbrev\' value=\''));
-    
-      _print(_safe(this.abbrev));
-    
-      _print(_safe('\' size=\'5\' placeholder=\'CODE\'/>\n  <span id=\'site_crud\' class=\'crud_container\'>\n    <span class=\'crud\' id=\'edit_site\'><i class="fa fa-pencil-square" title=\'Edit Site\'></i></span>\n    <span class=\'crud\' id=\'delete_site\'><i class="fa fa-times-circle" title=\'Delete Site\'></i></span>\n  </span>\n  <div id=\'site_short_label\'>'));
-    
-      _print(this.shortName);
-    
-      _print(_safe('</div>\n  <div>\n    <input type=\'text\' id=\'site_short\' value=\''));
-    
-      _print(_safe(this.shortName));
-    
-      _print(_safe('\' size=\'40\' placeholder=\'Short Name\'/>\n  </div>\n\n  <span id=\'site_buttons\'>\n    <button class="btn btn-xs" id=\'cancel\'><i class="fa fa-ban"></i> CANCEL</button>\n    <button class="btn btn-xs btn-success" id=\'save\'><i class="fa fa-check-square"></i> SAVE</button>\n  </span>\n</div>\n'));
-    
-    }).call(this);
-    
-    return __out.join('');
-  }).call((function() {
-    var obj = {
-      escape: function(value) {
-        return ('' + value)
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
-      },
-      safe: _safe
-    }, key;
-    for (key in __obj) obj[key] = __obj[key];
-    return obj;
-  })());
-};
-
-if (!window.JST) {
-  window.JST = {};
-}
 window.JST["login"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
@@ -815,7 +913,7 @@ window.JST["login"] = function(__obj) {
 };
 
 ;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var AccountCollection, AdminLTE_lib, BaselineApp, Extensions, IopsController, IopsLayout, Marionette, Router, SessionModel, UIUtils;
+var AccountCollection, AdminLTE_lib, BaselineApp, ClaimCollection, Extensions, IopsController, IopsLayout, Marionette, Router, SessionModel, UIUtils;
 
 Marionette = require('marionette');
 
@@ -832,6 +930,8 @@ IopsLayout = require('./views/iops_layout');
 SessionModel = require('./models/session');
 
 AccountCollection = require('./models/account_collection');
+
+ClaimCollection = require('./models/claim_collection');
 
 AdminLTE_lib = require('./common/adminlte_lib');
 
@@ -858,7 +958,8 @@ window.IOPS = (function() {
     SessionModel.restore();
     this.layout = new IopsLayout();
     this.uiutils = UIUtils;
-    return App.accounts = new AccountCollection();
+    App.accounts = new AccountCollection();
+    return App.claims = new ClaimCollection();
   });
   App.on('start', function(options) {
     var dtfn;
@@ -883,7 +984,7 @@ window.IOPS = (function() {
   return App;
 })();
 
-},{"./common/adminlte_lib":2,"./common/baseline_app":4,"./common/extensions":5,"./common/uiutils":6,"./iops_controller":7,"./models/account_collection":11,"./models/session":14,"./router":20,"./views/iops_layout":35}],2:[function(require,module,exports){
+},{"./common/adminlte_lib":2,"./common/baseline_app":4,"./common/extensions":5,"./common/uiutils":6,"./iops_controller":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/session":16,"./router":22,"./views/iops_layout":39}],2:[function(require,module,exports){
 
 /*
  *
@@ -1539,8 +1640,8 @@ UIUtils = (function(superClass) {
 
 module.exports = UIUtils;
 
-},{"../views/common/modal_view":21}],7:[function(require,module,exports){
-var Dashboard, DashboardCollection, DashboardContentView, DashboardLayout, IopsController, LoginView, ManageAccountsView, ManagePermissionsView, Marionette, ProfileView, User, WidgetCollection,
+},{"../views/common/modal_view":23}],7:[function(require,module,exports){
+var AccountsView, Dashboard, DashboardCollection, DashboardContentView, DashboardLayout, IopsController, LoginView, Marionette, PermissionsLayout, ProfileView, User, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -1552,9 +1653,9 @@ User = require('./models/user');
 
 ProfileView = require('./views/forms/profile_view');
 
-ManageAccountsView = require('./views/forms/manage_accounts_view');
+AccountsView = require('./views/forms/manage_accounts/accounts_view');
 
-ManagePermissionsView = require('./views/forms/manage_permissions_view');
+PermissionsLayout = require('./views/forms/manage_permissions/permissions_layout');
 
 Dashboard = require('./models/dashboard');
 
@@ -1712,7 +1813,7 @@ IopsController = (function(superClass) {
       title: 'Manage Accounts',
       subtitle: "Manage account details and associated Sites",
       icon: "building-o",
-      view: new ManageAccountsView({
+      view: new AccountsView({
         collection: App.accounts
       })
     });
@@ -1727,7 +1828,7 @@ IopsController = (function(superClass) {
       title: 'Manage Permissions',
       subtitle: "Manage Users, Roles, and Permissions applied to each",
       icon: "users",
-      view: new ManagePermissionsView()
+      view: new PermissionsLayout()
     });
     App.vent.trigger("show:dashboard");
     return this;
@@ -1762,7 +1863,7 @@ IopsController = (function(superClass) {
 
 module.exports = IopsController;
 
-},{"./models/dashboard":12,"./models/dashboard_collection":13,"./models/user":17,"./models/widget_collection":19,"./views/dashboard/content_view":22,"./views/dashboard/dashboard_layout":23,"./views/forms/manage_accounts_view":31,"./views/forms/manage_permissions_view":32,"./views/forms/profile_view":33,"./views/login_view":36}],8:[function(require,module,exports){
+},{"./models/dashboard":14,"./models/dashboard_collection":15,"./models/user":19,"./models/widget_collection":21,"./views/dashboard/content_view":24,"./views/dashboard/dashboard_layout":25,"./views/forms/manage_accounts/accounts_view":33,"./views/forms/manage_permissions/permissions_layout":36,"./views/forms/profile_view":38,"./views/login_view":40}],8:[function(require,module,exports){
 var AppConfig, Backbone, BaseModel,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1868,7 +1969,7 @@ Account = (function(superClass) {
 
 module.exports = Account;
 
-},{"./_base":8,"./site_collection":16}],11:[function(require,module,exports){
+},{"./_base":8,"./site_collection":18}],11:[function(require,module,exports){
 var Account, AccountCollection, BaseCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1897,6 +1998,63 @@ AccountCollection = (function(superClass) {
 module.exports = AccountCollection;
 
 },{"./_base_collection":9,"./account":10}],12:[function(require,module,exports){
+var BaseModel, Claim,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+BaseModel = require('./_base');
+
+Claim = (function(superClass) {
+  extend(Claim, superClass);
+
+  function Claim() {
+    return Claim.__super__.constructor.apply(this, arguments);
+  }
+
+  Claim.prototype.service = 'accounts';
+
+  Claim.prototype.urlRoot = '/claim';
+
+  Claim.prototype.defaults = {
+    name: '',
+    description: ''
+  };
+
+  return Claim;
+
+})(BaseModel);
+
+module.exports = Claim;
+
+},{"./_base":8}],13:[function(require,module,exports){
+var BaseCollection, Claim, ClaimCollection,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+BaseCollection = require('./_base_collection');
+
+Claim = require('./claim');
+
+ClaimCollection = (function(superClass) {
+  extend(ClaimCollection, superClass);
+
+  function ClaimCollection() {
+    return ClaimCollection.__super__.constructor.apply(this, arguments);
+  }
+
+  ClaimCollection.prototype.service = 'accounts';
+
+  ClaimCollection.prototype.url = '/claims';
+
+  ClaimCollection.prototype.model = Claim;
+
+  return ClaimCollection;
+
+})(BaseCollection);
+
+module.exports = ClaimCollection;
+
+},{"./_base_collection":9,"./claim":12}],14:[function(require,module,exports){
 var BaseModel, Dashboard,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1918,7 +2076,7 @@ Dashboard = (function(superClass) {
 
 module.exports = Dashboard;
 
-},{"./_base":8}],13:[function(require,module,exports){
+},{"./_base":8}],15:[function(require,module,exports){
 var BaseCollection, Dashboard, DashboardCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1944,7 +2102,7 @@ DashboardCollection = (function(superClass) {
 
 module.exports = DashboardCollection;
 
-},{"./_base_collection":9,"./dashboard":12}],14:[function(require,module,exports){
+},{"./_base_collection":9,"./dashboard":14}],16:[function(require,module,exports){
 var BaseModel, SessionModel, User,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2052,7 +2210,7 @@ SessionModel = (function(superClass) {
 
 module.exports = SessionModel;
 
-},{"./_base":8,"./user":17}],15:[function(require,module,exports){
+},{"./_base":8,"./user":19}],17:[function(require,module,exports){
 var BaseModel, Site,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2083,7 +2241,7 @@ Site = (function(superClass) {
 
 module.exports = Site;
 
-},{"./_base":8}],16:[function(require,module,exports){
+},{"./_base":8}],18:[function(require,module,exports){
 var BaseCollection, Site, SiteCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2111,7 +2269,7 @@ SiteCollection = (function(superClass) {
 
 module.exports = SiteCollection;
 
-},{"./_base_collection":9,"./site":15}],17:[function(require,module,exports){
+},{"./_base_collection":9,"./site":17}],19:[function(require,module,exports){
 var BaseModel, User,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2144,7 +2302,7 @@ User = (function(superClass) {
 
 module.exports = User;
 
-},{"./_base":8}],18:[function(require,module,exports){
+},{"./_base":8}],20:[function(require,module,exports){
 var BaseModel, Widget,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2175,7 +2333,7 @@ Widget = (function(superClass) {
 
 module.exports = Widget;
 
-},{"./_base":8}],19:[function(require,module,exports){
+},{"./_base":8}],21:[function(require,module,exports){
 var BaseCollection, Widget, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2201,7 +2359,7 @@ WidgetCollection = (function(superClass) {
 
 module.exports = WidgetCollection;
 
-},{"./_base_collection":9,"./widget":18}],20:[function(require,module,exports){
+},{"./_base_collection":9,"./widget":20}],22:[function(require,module,exports){
 var Marionette, Router,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2241,7 +2399,7 @@ Router = (function(superClass) {
 
 module.exports = Router;
 
-},{}],21:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 var Marionette, ModalView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -2322,7 +2480,7 @@ ModalView = (function(superClass) {
 
 module.exports = ModalView;
 
-},{}],22:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 var DashboardContentView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2365,7 +2523,7 @@ DashboardContentView = (function(superClass) {
 
 module.exports = DashboardContentView;
 
-},{}],23:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 var DashboardContentView, DashboardFooterView, DashboardHeaderView, DashboardLayout, DashboardSideView, DashboardToolView, Marionette, WidgetLayout,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2446,7 +2604,7 @@ DashboardLayout = (function(superClass) {
 
 module.exports = DashboardLayout;
 
-},{"./content_view":22,"./footer_view":24,"./header_view":25,"./side_view":26,"./tool_view":27,"./widget_layout":28}],24:[function(require,module,exports){
+},{"./content_view":24,"./footer_view":26,"./header_view":27,"./side_view":28,"./tool_view":29,"./widget_layout":30}],26:[function(require,module,exports){
 var DashboardFooterView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2472,7 +2630,7 @@ DashboardFooterView = (function(superClass) {
 
 module.exports = DashboardFooterView;
 
-},{}],25:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 var AppConfig, DashboardHeaderView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -2551,7 +2709,7 @@ DashboardHeaderView = (function(superClass) {
 
 module.exports = DashboardHeaderView;
 
-},{"../../common/appconfig":3}],26:[function(require,module,exports){
+},{"../../common/appconfig":3}],28:[function(require,module,exports){
 var DashboardSideView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -2639,7 +2797,7 @@ DashboardSideView = (function(superClass) {
 
 module.exports = DashboardSideView;
 
-},{}],27:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 var DashboardToolView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2689,7 +2847,7 @@ DashboardToolView = (function(superClass) {
 
 module.exports = DashboardToolView;
 
-},{}],28:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 var Marionette, Widget, WidgetLayout, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -2775,7 +2933,7 @@ WidgetLayout = (function(superClass) {
 
 module.exports = WidgetLayout;
 
-},{"../../models/widget":18,"./widget_view":29}],29:[function(require,module,exports){
+},{"../../models/widget":20,"./widget_view":31}],31:[function(require,module,exports){
 var Marionette, WidgetView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2804,7 +2962,7 @@ WidgetView = (function(superClass) {
 
 module.exports = WidgetView;
 
-},{}],30:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 var Account, AccountView, Marionette, SiteView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2813,7 +2971,7 @@ Marionette = require('marionette');
 
 SiteView = require('./site_view');
 
-Account = require('../../models/account');
+Account = require('../../../models/account');
 
 AccountView = (function(superClass) {
   extend(AccountView, superClass);
@@ -2822,7 +2980,7 @@ AccountView = (function(superClass) {
     return AccountView.__super__.constructor.apply(this, arguments);
   }
 
-  AccountView.prototype.template = "forms/account";
+  AccountView.prototype.template = "forms/manage_accounts/account";
 
   AccountView.prototype.tagName = 'div';
 
@@ -2948,8 +3106,8 @@ AccountView = (function(superClass) {
 
 module.exports = AccountView;
 
-},{"../../models/account":10,"./site_view":34}],31:[function(require,module,exports){
-var AccountView, ManageAccountsView, Marionette,
+},{"../../../models/account":10,"./site_view":34}],33:[function(require,module,exports){
+var AccountView, AccountsView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -2957,24 +3115,24 @@ Marionette = require('marionette');
 
 AccountView = require('./account_view');
 
-ManageAccountsView = (function(superClass) {
-  extend(ManageAccountsView, superClass);
+AccountsView = (function(superClass) {
+  extend(AccountsView, superClass);
 
-  function ManageAccountsView() {
-    return ManageAccountsView.__super__.constructor.apply(this, arguments);
+  function AccountsView() {
+    return AccountsView.__super__.constructor.apply(this, arguments);
   }
 
-  ManageAccountsView.prototype.template = "forms/manage_accounts";
+  AccountsView.prototype.template = "forms/manage_accounts/accounts";
 
-  ManageAccountsView.prototype.childViewContainer = '#account_list';
+  AccountsView.prototype.childViewContainer = '#account_list';
 
-  ManageAccountsView.prototype.childView = AccountView;
+  AccountsView.prototype.childView = AccountView;
 
-  ManageAccountsView.prototype.events = {
+  AccountsView.prototype.events = {
     'click #add_account': 'add_account'
   };
 
-  ManageAccountsView.prototype.add_account = function() {
+  AccountsView.prototype.add_account = function() {
     var acct, i, len, ref;
     ref = this.collection.models;
     for (i = 0, len = ref.length; i < len; i++) {
@@ -2991,64 +3149,20 @@ ManageAccountsView = (function(superClass) {
     });
   };
 
-  return ManageAccountsView;
+  return AccountsView;
 
 })(Marionette.CompositeView);
 
-module.exports = ManageAccountsView;
+module.exports = AccountsView;
 
-},{"./account_view":30}],32:[function(require,module,exports){
-var ManagePermissionsView, Marionette,
-  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-  hasProp = {}.hasOwnProperty;
-
-Marionette = require('marionette');
-
-ManagePermissionsView = (function(superClass) {
-  extend(ManagePermissionsView, superClass);
-
-  function ManagePermissionsView() {
-    return ManagePermissionsView.__super__.constructor.apply(this, arguments);
-  }
-
-  ManagePermissionsView.prototype.template = "forms/manage_permissions";
-
-  return ManagePermissionsView;
-
-})(Marionette.LayoutView);
-
-module.exports = ManagePermissionsView;
-
-},{}],33:[function(require,module,exports){
-var Marionette, ProfileView,
-  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-  hasProp = {}.hasOwnProperty;
-
-Marionette = require('marionette');
-
-ProfileView = (function(superClass) {
-  extend(ProfileView, superClass);
-
-  function ProfileView() {
-    return ProfileView.__super__.constructor.apply(this, arguments);
-  }
-
-  ProfileView.prototype.template = "forms/profile";
-
-  return ProfileView;
-
-})(Marionette.ItemView);
-
-module.exports = ProfileView;
-
-},{}],34:[function(require,module,exports){
+},{"./account_view":32}],34:[function(require,module,exports){
 var Marionette, Site, SiteView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
 Marionette = require('marionette');
 
-Site = require('../../models/site');
+Site = require('../../../models/site');
 
 SiteView = (function(superClass) {
   extend(SiteView, superClass);
@@ -3057,7 +3171,7 @@ SiteView = (function(superClass) {
     return SiteView.__super__.constructor.apply(this, arguments);
   }
 
-  SiteView.prototype.template = "forms/site";
+  SiteView.prototype.template = "forms/manage_accounts/site";
 
   SiteView.prototype.tagName = 'div';
 
@@ -3162,7 +3276,137 @@ SiteView = (function(superClass) {
 
 module.exports = SiteView;
 
-},{"../../models/site":15}],35:[function(require,module,exports){
+},{"../../../models/site":17}],35:[function(require,module,exports){
+var Marionette, PermissionView,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+PermissionView = (function(superClass) {
+  extend(PermissionView, superClass);
+
+  function PermissionView() {
+    return PermissionView.__super__.constructor.apply(this, arguments);
+  }
+
+  PermissionView.prototype.template = "forms/manage_permissions/permission";
+
+  return PermissionView;
+
+})(Marionette.ItemView);
+
+module.exports = PermissionView;
+
+},{}],36:[function(require,module,exports){
+var Marionette, PermissionsLayout, PermissionsView,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+PermissionsView = require('./permissions_view');
+
+PermissionsLayout = (function(superClass) {
+  extend(PermissionsLayout, superClass);
+
+  function PermissionsLayout() {
+    return PermissionsLayout.__super__.constructor.apply(this, arguments);
+  }
+
+  PermissionsLayout.prototype.template = "forms/manage_permissions/layout";
+
+  PermissionsLayout.prototype.regions = {
+    users_region: '#users_region',
+    roles_region: '#roles_region',
+    permissions_region: '#permissions_region'
+  };
+
+  PermissionsLayout.prototype.onShow = function() {
+    this.pv = new PermissionsView({
+      collection: App.claims
+    });
+    return this.permissions_region.show(this.pv);
+  };
+
+  return PermissionsLayout;
+
+})(Marionette.LayoutView);
+
+module.exports = PermissionsLayout;
+
+},{"./permissions_view":37}],37:[function(require,module,exports){
+var Marionette, PermissionView, PermissionsView,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+PermissionView = require('./permission_view');
+
+PermissionsView = (function(superClass) {
+  extend(PermissionsView, superClass);
+
+  function PermissionsView() {
+    return PermissionsView.__super__.constructor.apply(this, arguments);
+  }
+
+  PermissionsView.prototype.template = "forms/manage_permissions/permissions";
+
+  PermissionsView.prototype.childViewContainer = '#permissions_list';
+
+  PermissionsView.prototype.childView = PermissionView;
+
+  PermissionsView.prototype.events = {
+    'click #add_claim': 'add_claim'
+  };
+
+  PermissionsView.prototype.add_claim = function() {
+    var c, i, len, ref;
+    ref = this.collection.models;
+    for (i = 0, len = ref.length; i < len; i++) {
+      c = ref[i];
+      if ((c.id == null) || c.id === 0) {
+        return false;
+      }
+    }
+    return this.collection.add({
+      name: 'New Permission',
+      description: 'Description'
+    }, {
+      at: 0
+    });
+  };
+
+  return PermissionsView;
+
+})(Marionette.CompositeView);
+
+module.exports = PermissionsView;
+
+},{"./permission_view":35}],38:[function(require,module,exports){
+var Marionette, ProfileView,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+ProfileView = (function(superClass) {
+  extend(ProfileView, superClass);
+
+  function ProfileView() {
+    return ProfileView.__super__.constructor.apply(this, arguments);
+  }
+
+  ProfileView.prototype.template = "forms/profile";
+
+  return ProfileView;
+
+})(Marionette.ItemView);
+
+module.exports = ProfileView;
+
+},{}],39:[function(require,module,exports){
 var IopsLayout, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -3189,7 +3433,7 @@ IopsLayout = (function(superClass) {
 
 module.exports = IopsLayout;
 
-},{}],36:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 var LoginView, Marionette, SessionModel, UIUtils,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -3287,5 +3531,5 @@ LoginView = (function(superClass) {
 
 module.exports = LoginView;
 
-},{"../common/uiutils":6,"../models/session":14}]},{},[1])
+},{"../common/uiutils":6,"../models/session":16}]},{},[1])
 ;

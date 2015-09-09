@@ -3,8 +3,8 @@ AccountView = require('./account_view')
 
 # ----------------------------------
 
-class ManageAccountsView extends Marionette.CompositeView
-  template: "forms/manage_accounts"
+class AccountsView extends Marionette.CompositeView
+  template: "forms/manage_accounts/accounts"
   childViewContainer: '#account_list'
   childView: AccountView
 
@@ -18,4 +18,4 @@ class ManageAccountsView extends Marionette.CompositeView
 
 # ----------------------------------
 
-module.exports = ManageAccountsView
+module.exports = AccountsView

@@ -39,6 +39,7 @@ class ModalView extends Marionette.ItemView
     @m.on "hidden.bs.modal", ()=>
       if @model.on_cancel? then @model.on_cancel()
       App.layout.modal_region.empty()
+      
 
 # ----------------------------------
 

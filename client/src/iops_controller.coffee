@@ -2,8 +2,8 @@ Marionette = require('marionette')
 LoginView = require('./views/login_view')
 User = require('./models/user')
 ProfileView = require('./views/forms/profile_view')
-ManageAccountsView = require('./views/forms/manage_accounts_view')
-ManagePermissionsView = require('./views/forms/manage_permissions_view')
+AccountsView = require('./views/forms/manage_accounts/accounts_view')
+PermissionsLayout = require('./views/forms/manage_permissions/permissions_layout')
 Dashboard = require('./models/dashboard')
 DashboardCollection = require('./models/dashboard_collection')
 DashboardLayout = require('./views/dashboard/dashboard_layout')
@@ -86,7 +86,7 @@ class IopsController extends Object
       title: 'Manage Accounts'
       subtitle: "Manage account details and associated Sites"
       icon: "building-o"
-      view: new ManageAccountsView
+      view: new AccountsView
         collection: App.accounts
     App.vent.trigger "show:dashboard"
     @
@@ -97,7 +97,7 @@ class IopsController extends Object
       title: 'Manage Permissions'
       subtitle: "Manage Users, Roles, and Permissions applied to each"
       icon: "users"
-      view: new ManagePermissionsView()
+      view: new PermissionsLayout()
     App.vent.trigger "show:dashboard"
     @
 

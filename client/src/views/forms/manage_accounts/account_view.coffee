@@ -1,11 +1,11 @@
 Marionette = require('marionette')
 SiteView = require('./site_view')
-Account = require('../../models/account')
+Account = require('../../../models/account')
 
 # ----------------------------------
 
 class AccountView extends Marionette.CompositeView
-  template: "forms/account"
+  template: "forms/manage_accounts/account"
   tagName: 'div'
   className: 'row'
   childViewContainer: '.site_list'

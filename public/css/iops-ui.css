@@ -121,7 +121,8 @@ ul.gridster.widget-container {
   cursor: pointer; }
 
 .preamble {
-  padding: 0 0 20px 0; }
+  padding: 0 0 20px 0;
+  margin-left: 5px; }
 
 #account_list {
   width: 100%; }
