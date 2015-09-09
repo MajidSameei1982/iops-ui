@@ -51,7 +51,13 @@ class SiteView extends Marionette.ItemView
     @toggle_edit(true);
 
   delete: ()->
-    $('#account_modal').modal()
+    App.uiutils.showModal
+      title: 'Delete Site?'
+      icon: 'warning'
+      type: 'warning'
+      body: 'Are you sure you want to delete this Site? This cannot be undone and all Site data will be lost.'
+      on_save: ()=>
+        @model.collection.remove(@model)
 
   save: ()->
     # TODO: FIRE MODEL SAVE

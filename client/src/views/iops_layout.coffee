@@ -8,7 +8,8 @@ Marionette = require('marionette')
 class IopsLayout extends Marionette.LayoutView
   el: "html"
   regions:
-    center_region:   '#center'
+    center_region : '#center-region'
+    modal_region  : '#modal-region'
 
 # ----------------------------------
 

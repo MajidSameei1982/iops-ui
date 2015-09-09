@@ -60,7 +60,13 @@ class AccountView extends Marionette.CompositeView
     @render()
 
   delete: ()->
-    $('#accounts_modal').modal()
+    App.uiutils.showModal
+      title: 'Delete Account?'
+      icon: 'warning'
+      type: 'warning'
+      body: 'Are you sure you want to delete this Account? This cannot be undone and all Account and associated Site data will be lost.'
+      on_save: ()=>
+        @model.collection.remove(@model)
 
   save: ()->
     # TODO: FIRE MODEL SAVE

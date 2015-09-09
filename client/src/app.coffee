@@ -7,6 +7,7 @@ IopsLayout = require('./views/iops_layout')
 SessionModel = require('./models/session')
 AccountCollection = require('./models/account_collection')
 AdminLTE_lib = require('./common/adminlte_lib')
+UIUtils = require('./common/uiutils')
 
 # ----------------------------------
 
@@ -23,19 +24,21 @@ window.IOPS = do()->
   App.on "before:start", (options)->
     @log('Starting')
     SessionModel.restore()
-    @layout = new IopsLayout();
+    @layout = new IopsLayout()
+    @uiutils = UIUtils
 
     # setup dummy AccountCollection
-    App.accounts = new AccountCollection [
-      id: 1
-      name: 'AccountABC'
-      isActive: true
-      sites: [{id:1, name:'John F. Kennedy International Airport', abbrev: 'JFK', shortName: "JFK International"}]
-    ,  
-      id: 2
-      name: 'XYZCorp'
-      isActive: false
-    ]
+    App.accounts = new AccountCollection()
+    # App.accounts = new AccountCollection [
+    #   id: 1
+    #   name: 'AccountABC'
+    #   isActive: true
+    #   sites: [{id:1, name:'John F. Kennedy International Airport', abbrev: 'JFK', shortName: "JFK International"}]
+    # ,  
+    #   id: 2
+    #   name: 'XYZCorp'
+    #   isActive: false
+    # ]
 
   App.on 'start', (options)->
     @log('Started')
