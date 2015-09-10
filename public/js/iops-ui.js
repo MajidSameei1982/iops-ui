@@ -655,15 +655,23 @@ window.JST["forms/manage_permissions/permission"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div>'));
+      _print(_safe('<div class=\'col-md-12\'>\n  <span id=\'permission_label\'><b>'));
     
       _print(this.name);
     
-      _print(_safe('</div>\n<div><i>'));
+      _print(_safe('</b></span>\n  <input type=\'text\' id=\'permission_name\' value=\''));
+    
+      _print(_safe(this.name));
+    
+      _print(_safe('\' size=\'50\' placeholder=\'Permission Name\'/>\n\n  <span id=\'permission_crud\' class=\'crud_container\'>\n    <span class=\'crud\' id=\'edit_permission\'><i class="fa fa-pencil-square" title=\'Edit Permission\'></i></span>\n    <span class=\'crud\' id=\'delete_permission\'><i class="fa fa-times-circle" title=\'Delete Permission\'></i></span>\n  </span>\n  <span id=\'permission_buttons\'>\n    <button class="btn btn-xs" id=\'cancel\'><i class="fa fa-ban"></i> CANCEL</button>\n    <button class="btn btn-xs btn-success" id=\'save\'><i class="fa fa-check-square"></i> SAVE</button>\n  </span>\n</div>\n<div class="col-md-12" id=\'permission_desc_container\'>\n  <span id=\'permission_desc_label\'><i>'));
     
       _print(this.description);
     
-      _print(_safe('</i></div>\n'));
+      _print(_safe('</i></span>\n  <input type=\'text\' id=\'permission_desc\' value=\''));
+    
+      _print(_safe(this.description));
+    
+      _print(_safe('\' size=\'50\' placeholder=\'Permission Description\'/>\n</div>\n'));
     
     }).call(this);
     
@@ -959,7 +967,21 @@ window.IOPS = (function() {
     this.layout = new IopsLayout();
     this.uiutils = UIUtils;
     App.accounts = new AccountCollection();
-    return App.claims = new ClaimCollection();
+    return App.claims = new ClaimCollection([
+      {
+        id: 1,
+        name: 'can_admin_users',
+        description: 'Can add and modify Users'
+      }, {
+        id: 2,
+        name: 'can_admin_accounts',
+        description: 'Can add and modify Accounts and associated Sites'
+      }, {
+        id: 3,
+        name: 'can_admin_permissions',
+        description: 'Can add and modify Groups and Permissions'
+      }
+    ]);
   });
   App.on('start', function(options) {
     var dtfn;
@@ -3003,6 +3025,21 @@ AccountView = (function(superClass) {
     'click #account_active': 'toggle_active'
   };
 
+  AccountView.prototype.bindings = {
+    name: '#account_name',
+    isActive: {
+      selector: 'i#account_active',
+      elAttribute: 'class',
+      converter: function(action, value, field) {
+        if (value) {
+          return 'fa-toggle-on';
+        } else {
+          return 'fa-toggle-off';
+        }
+      }
+    }
+  };
+
   AccountView.prototype.add_site = function() {
     var i, len, ref, site;
     ref = this.collection.models;
@@ -3020,21 +3057,6 @@ AccountView = (function(superClass) {
     }, {
       at: 0
     });
-  };
-
-  AccountView.prototype.bindings = {
-    name: '#account_name',
-    isActive: {
-      selector: 'i#account_active',
-      elAttribute: 'class',
-      converter: function(action, value, field) {
-        if (value) {
-          return 'fa-toggle-on';
-        } else {
-          return 'fa-toggle-off';
-        }
-      }
-    }
   };
 
   AccountView.prototype.initialize = function() {
@@ -3097,6 +3119,8 @@ AccountView = (function(superClass) {
     if ((this.model.id == null) || this.model.id < 1) {
       this.$("#delete").hide();
       return this.show_edit();
+    } else {
+      return this.toggle_edit(false);
     }
   };
 
@@ -3277,11 +3301,13 @@ SiteView = (function(superClass) {
 module.exports = SiteView;
 
 },{"../../../models/site":17}],35:[function(require,module,exports){
-var Marionette, PermissionView,
+var Claim, Marionette, PermissionView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
 Marionette = require('marionette');
+
+Claim = require('../../../models/claim');
 
 PermissionView = (function(superClass) {
   extend(PermissionView, superClass);
@@ -3292,13 +3318,84 @@ PermissionView = (function(superClass) {
 
   PermissionView.prototype.template = "forms/manage_permissions/permission";
 
+  PermissionView.prototype.className = 'row permission_container';
+
+  PermissionView.prototype.events = {
+    'click #edit_permission': 'show_edit',
+    'click #delete_permission': 'delete',
+    'click #permission_buttons>#cancel': 'cancel_edit',
+    'click #permission_buttons>#save': 'save'
+  };
+
+  PermissionView.prototype.bindings = {
+    name: '#permission_name',
+    description: '#permission_desc'
+  };
+
+  PermissionView.prototype.initialize = function() {
+    return this.modelBinder = new Backbone.ModelBinder();
+  };
+
+  PermissionView.prototype.toggle_edit = function(rw) {
+    return $(this.el).toggleClass('rw', rw);
+  };
+
+  PermissionView.prototype.show_edit = function(e) {
+    this.old_model = $.extend(true, {}, this.model.attributes);
+    return this.toggle_edit(true);
+  };
+
+  PermissionView.prototype.cancel_edit = function() {
+    if ((this.model.id == null) || this.model.id < 1) {
+      this.model.collection.remove(this.model);
+      return;
+    }
+    this.toggle_edit(false);
+    this.model = new Claim(this.old_model);
+    return this.render();
+  };
+
+  PermissionView.prototype["delete"] = function() {
+    return App.uiutils.showModal({
+      title: 'Delete Permission?',
+      icon: 'warning',
+      type: 'warning',
+      body: 'Are you sure you want to delete this Permission? This cannot be undone and all associated Users and Roles will lose this Permission',
+      on_save: (function(_this) {
+        return function() {
+          return _this.model.collection.remove(_this.model);
+        };
+      })(this)
+    });
+  };
+
+  PermissionView.prototype.save = function() {
+    var name;
+    name = this.model.get('name');
+    if ((name == null) || name.trim() === '') {
+      return;
+    }
+    this.model.id = 99;
+    return this.render();
+  };
+
+  PermissionView.prototype.onRender = function() {
+    this.modelBinder.bind(this.model, this.el, this.bindings);
+    if ((this.model.id == null) || this.model.id < 1) {
+      this.$("#delete").hide();
+      return this.show_edit();
+    } else {
+      return this.toggle_edit(false);
+    }
+  };
+
   return PermissionView;
 
 })(Marionette.ItemView);
 
 module.exports = PermissionView;
 
-},{}],36:[function(require,module,exports){
+},{"../../../models/claim":12}],36:[function(require,module,exports){
 var Marionette, PermissionsLayout, PermissionsView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -3371,8 +3468,8 @@ PermissionsView = (function(superClass) {
       }
     }
     return this.collection.add({
-      name: 'New Permission',
-      description: 'Description'
+      name: '',
+      description: ''
     }, {
       at: 0
     });

@@ -1,2 +1,17 @@
-<div><%=@name%></div>
-<div><i><%=@description%></i></div>
+<div class='col-md-12'>
+  <span id='permission_label'><b><%= @name %></b></span>
+  <input type='text' id='permission_name' value='<%- @name%>' size='50' placeholder='Permission Name'/>
+
+  <span id='permission_crud' class='crud_container'>
+    <span class='crud' id='edit_permission'><i class="fa fa-pencil-square" title='Edit Permission'></i></span>
+    <span class='crud' id='delete_permission'><i class="fa fa-times-circle" title='Delete Permission'></i></span>
+  </span>
+  <span id='permission_buttons'>
+    <button class="btn btn-xs" id='cancel'><i class="fa fa-ban"></i> CANCEL</button>
+    <button class="btn btn-xs btn-success" id='save'><i class="fa fa-check-square"></i> SAVE</button>
+  </span>
+</div>
+<div class="col-md-12" id='permission_desc_container'>
+  <span id='permission_desc_label'><i><%= @description %></i></span>
+  <input type='text' id='permission_desc' value='<%- @description%>' size='50' placeholder='Permission Description'/>
+</div>

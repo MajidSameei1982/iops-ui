@@ -1,0 +1,24 @@
+#add_claim {
+  cursor: pointer;
+}
+#permissions_list {
+  padding:0 0 0 20px;
+}
+.permission_container {
+  padding: 10px 0;
+  width:100%;
+  border-top: 1px dashed #ccc;
+
+  #permission_label {font-size:18px;}
+
+  #permission_desc_container { }
+
+  #permission_name, #permission_buttons, #permission_desc { display:none; }
+
+  &.rw {
+    #permission_name, #permission_desc { display:inline !important; }
+    #permission_label, #permission_desc_label { display:none !important; }
+    #permission_crud { display:none; }
+    #permission_buttons { display:inline !important; }
+  }
+}

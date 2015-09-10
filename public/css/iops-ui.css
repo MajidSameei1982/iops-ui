@@ -187,4 +187,27 @@ ul.gridster.widget-container {
   .site_container.rw #site_active {
     cursor: pointer; }
 
+#add_claim {
+  cursor: pointer; }
+
+#permissions_list {
+  padding: 0 0 0 20px; }
+
+.permission_container {
+  padding: 10px 0;
+  width: 100%;
+  border-top: 1px dashed #ccc; }
+  .permission_container #permission_label {
+    font-size: 18px; }
+  .permission_container #permission_name, .permission_container #permission_buttons, .permission_container #permission_desc {
+    display: none; }
+  .permission_container.rw #permission_name, .permission_container.rw #permission_desc {
+    display: inline !important; }
+  .permission_container.rw #permission_label, .permission_container.rw #permission_desc_label {
+    display: none !important; }
+  .permission_container.rw #permission_crud {
+    display: none; }
+  .permission_container.rw #permission_buttons {
+    display: inline !important; }
+
 /*# sourceMappingURL=iops-ui.css.map */

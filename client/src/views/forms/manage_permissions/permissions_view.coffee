@@ -14,7 +14,7 @@ class PermissionsView extends Marionette.CompositeView
   add_claim: ()->
     for c in @collection.models
       if !c.id? || c.id == 0 then return false
-    @collection.add {name: 'New Permission', description: 'Description'}, {at:0}
+    @collection.add {name: '', description: ''}, {at:0}
 
 # ----------------------------------
 

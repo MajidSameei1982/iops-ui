@@ -22,12 +22,6 @@ class AccountView extends Marionette.CompositeView
     'click #account_buttons>#save'    : 'save'
     'click #account_active'           : 'toggle_active'
 
-  add_site: ()->
-    for site in @collection.models
-      if !site.id? || site.id == 0 then return false
-    @collection.add {name: '', isActive: false, abbrev:'', shortName: ''}, {at:0}
-
-
   bindings:
     name: '#account_name'
     isActive:
@@ -35,6 +29,11 @@ class AccountView extends Marionette.CompositeView
       elAttribute: 'class'
       converter: (action, value, field)->
         if value then 'fa-toggle-on' else 'fa-toggle-off'
+
+  add_site: ()->
+    for site in @collection.models
+      if !site.id? || site.id == 0 then return false
+    @collection.add {name: '', isActive: false, abbrev:'', shortName: ''}, { at:0 }
 
   initialize: ()->
     @collection = this.model.sites
@@ -81,6 +80,8 @@ class AccountView extends Marionette.CompositeView
     if (!@model.id? || @model.id < 1)
       @$("#delete").hide()
       @show_edit()
+    else
+      @toggle_edit(false)
 
 # ----------------------------------
 

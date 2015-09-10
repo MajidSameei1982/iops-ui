@@ -30,7 +30,6 @@ window.IOPS = do()->
 
     # setup dummy AccountCollection
     App.accounts = new AccountCollection()
-    App.claims = new ClaimCollection()
     # App.accounts = new AccountCollection [
     #   id: 1
     #   name: 'AccountABC'
@@ -41,6 +40,19 @@ window.IOPS = do()->
     #   name: 'XYZCorp'
     #   isActive: false
     # ]
+    App.claims = new ClaimCollection [
+      id: 1
+      name: 'can_admin_users'
+      description: 'Can add and modify Users'
+    ,  
+      id: 2
+      name: 'can_admin_accounts'
+      description: 'Can add and modify Accounts and associated Sites'
+    ,
+      id: 3
+      name: 'can_admin_permissions'
+      description: 'Can add and modify Groups and Permissions'
+    ]
 
   App.on 'start', (options)->
     @log('Started')
