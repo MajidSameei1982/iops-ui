@@ -110,6 +110,7 @@ module.exports = (grunt)->
           'client/requires/jsjws/jsrsasign-latest-all-min.js'
           'client/requires/basil.js/basil.js'
           'client/requires/jquery-dateFormat/jquery-dateFormat.js'
+          'client/assets/js/opc-lib.min.js'
         ]
         dest: 'build/vendor.js'
       vendor_css:

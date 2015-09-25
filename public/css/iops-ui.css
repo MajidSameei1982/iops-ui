@@ -89,6 +89,9 @@ ul.gridster.widget-container {
       ul.gridster.widget-container li.widget .widget-outer .box-header h3 {
         font-size: 14px;
         font-weight: bold; }
+      ul.gridster.widget-container li.widget .widget-outer .box-header .controls a {
+        color: #fff;
+        margin-left: 10px; }
     ul.gridster.widget-container li.widget .widget-outer.box-primary .box-header {
       background-color: #3c8dbc; }
 

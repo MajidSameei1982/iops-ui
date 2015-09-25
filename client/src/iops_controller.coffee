@@ -21,32 +21,8 @@ class IopsController extends Object
     cv = App.layout.center_region.currentView
     return cv if cv? and cv instanceof DashboardLayout
 
-    # TODO: pull dashboards from current user and show first one
-    dashes = new DashboardCollection()
-    dashes.add new Dashboard
-      id: 1
-      title: "Sample Dashboard"
-      widgets : [
-        {id:1 ,sx: 1, sy: 1, r: 1, c: 1}
-        {id:2 ,sx: 1, sy: 1, r: 2, c: 1}
-        {id:3 ,sx: 1, sy: 1, r: 3, c: 1}
-        {id:4 ,sx: 2, sy: 1, r: 1, c: 2}
-        {id:5 ,sx: 2, sy: 2, r: 2, c: 2}
-      ]
-
-    dashes.add new Dashboard
-      id: 2
-      title: "Another Dashboard"
-      widgets : [
-        {id:1 ,sx: 1, sy: 1, r: 1, c: 2}
-        {id:2 ,sx: 1, sy: 1, r: 2, c: 2}
-        {id:3 ,sx: 1, sy: 1, r: 3, c: 2}
-        {id:4 ,sx: 2, sy: 1, r: 2, c: 1}
-        {id:5 ,sx: 2, sy: 2, r: 1, c: 1}
-      ]
-
     dl = new DashboardLayout
-      collection: dashes
+      collection: App.current_user.dashboards
     App.layout.center_region.show(dl)
     dl
 

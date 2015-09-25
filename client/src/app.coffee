@@ -11,7 +11,6 @@ AdminLTE_lib = require('./common/adminlte_lib')
 UIUtils = require('./common/uiutils')
 
 # ----------------------------------
-
 window.IOPS = do()->
   return window.App if window.App?
 
@@ -28,31 +27,22 @@ window.IOPS = do()->
     @layout = new IopsLayout()
     @uiutils = UIUtils
 
-    # setup dummy AccountCollection
     App.accounts = new AccountCollection()
-    # App.accounts = new AccountCollection [
+    
+    App.claims = new ClaimCollection()
+    # App.claims = new ClaimCollection [
     #   id: 1
-    #   name: 'AccountABC'
-    #   isActive: true
-    #   sites: [{id:1, name:'John F. Kennedy International Airport', abbrev: 'JFK', shortName: "JFK International"}]
+    #   name: 'can_admin_users'
+    #   description: 'Can add and modify Users'
     # ,  
     #   id: 2
-    #   name: 'XYZCorp'
-    #   isActive: false
+    #   name: 'can_admin_accounts'
+    #   description: 'Can add and modify Accounts and associated Sites'
+    # ,
+    #   id: 3
+    #   name: 'can_admin_permissions'
+    #   description: 'Can add and modify Groups and Permissions'
     # ]
-    App.claims = new ClaimCollection [
-      id: 1
-      name: 'can_admin_users'
-      description: 'Can add and modify Users'
-    ,  
-      id: 2
-      name: 'can_admin_accounts'
-      description: 'Can add and modify Accounts and associated Sites'
-    ,
-      id: 3
-      name: 'can_admin_permissions'
-      description: 'Can add and modify Groups and Permissions'
-    ]
 
   App.on 'start', (options)->
     @log('Started')

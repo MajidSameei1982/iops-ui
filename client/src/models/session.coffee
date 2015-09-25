@@ -74,6 +74,60 @@ class SessionModel extends BaseModel
           fullname: 'John Talarico'
           email: 'john@opcsystems.com'
           avatar: null
+          dashboards: [ 
+            id: 1
+            title: "Sample Dashboard"
+            widgets: [
+              id:1
+              title:"foo"
+              settings:
+                layout: {sx: 1, sy: 1, r: 1, c: 1}
+            ,
+              id:2
+              title:"bar"
+              settings:
+                layout: {sx: 1, sy: 1, r: 2, c: 1}
+            ,
+              id:3
+              settings:
+                layout: {sx: 1, sy: 1, r: 3, c: 1}
+            ,
+              id:4
+              settings:
+                layout: {sx: 2, sy: 1, r: 1, c: 2}
+            ,
+              id:5
+              settings:
+                layout: {sx: 2, sy: 2, r: 2, c: 2}
+            ]
+          ,
+            id: 2
+            title: "Another Dashboard"
+            widgets : [
+              id:1
+              title:"top"
+              settings:
+                layout: {sx: 1, sy: 1, r: 1, c: 2}
+            ,
+              id:2
+              title:"bottom"
+              settings:
+                layout: {sx: 1, sy: 1, r: 2, c: 2}
+            ,
+              id:3
+              settings:
+                layout: {sx: 1, sy: 1, r: 3, c: 2}
+            ,
+              id:4
+              settings:
+                layout: {sx: 2, sy: 1, r: 2, c: 1}
+            ,
+              id:5
+              settings:
+                layout: {sx: 2, sy: 2, r: 1, c: 1}
+            ]
+          ]
+
       SessionModel.set_token(App.session)
       App.session.attributes['password'] = null
       success()

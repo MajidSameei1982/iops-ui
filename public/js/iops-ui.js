@@ -349,11 +349,11 @@ window.JST["dashboard/widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <h3 class="box-title"><i class="fa fa-cube"></i> '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><h3 class="box-title"><i class="fa fa-cube"></i> '));
     
       _print(_safe(this.title));
     
-      _print(_safe('</h3>\n  <!-- <div class="box-tools pull-right">\n    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>\n  </div> -->\n  <!-- /.box-tools -->\n</div><!-- /.box-header -->\n<div class="box-body" style="display: block;">\n  Widget Body\n</div><!-- /.box-body -->\n'));
+      _print(_safe('</h3></div>\n  <div class="pull-right controls"><a href="#" id="settings"><i class="fa fa-cogs"></i></a> <a href="#" id="settings"><i class="fa fa-times-circle"></i></a></div>\n\n  <!-- <div class="box-tools pull-right">\n    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>\n  </div> -->\n  <!-- /.box-tools -->\n</div><!-- /.box-header -->\n<div class="box-body" style="display: block;">\n  Widget Body\n</div><!-- /.box-body -->\n'));
     
     }).call(this);
     
@@ -967,21 +967,7 @@ window.IOPS = (function() {
     this.layout = new IopsLayout();
     this.uiutils = UIUtils;
     App.accounts = new AccountCollection();
-    return App.claims = new ClaimCollection([
-      {
-        id: 1,
-        name: 'can_admin_users',
-        description: 'Can add and modify Users'
-      }, {
-        id: 2,
-        name: 'can_admin_accounts',
-        description: 'Can add and modify Accounts and associated Sites'
-      }, {
-        id: 3,
-        name: 'can_admin_permissions',
-        description: 'Can add and modify Groups and Permissions'
-      }
-    ]);
+    return App.claims = new ClaimCollection();
   });
   App.on('start', function(options) {
     var dtfn;
@@ -1697,88 +1683,13 @@ IopsController = (function(superClass) {
   }
 
   IopsController.prototype.set_main_layout = function() {
-    var cv, dashes, dl;
+    var cv, dl;
     cv = App.layout.center_region.currentView;
     if ((cv != null) && cv instanceof DashboardLayout) {
       return cv;
     }
-    dashes = new DashboardCollection();
-    dashes.add(new Dashboard({
-      id: 1,
-      title: "Sample Dashboard",
-      widgets: [
-        {
-          id: 1,
-          sx: 1,
-          sy: 1,
-          r: 1,
-          c: 1
-        }, {
-          id: 2,
-          sx: 1,
-          sy: 1,
-          r: 2,
-          c: 1
-        }, {
-          id: 3,
-          sx: 1,
-          sy: 1,
-          r: 3,
-          c: 1
-        }, {
-          id: 4,
-          sx: 2,
-          sy: 1,
-          r: 1,
-          c: 2
-        }, {
-          id: 5,
-          sx: 2,
-          sy: 2,
-          r: 2,
-          c: 2
-        }
-      ]
-    }));
-    dashes.add(new Dashboard({
-      id: 2,
-      title: "Another Dashboard",
-      widgets: [
-        {
-          id: 1,
-          sx: 1,
-          sy: 1,
-          r: 1,
-          c: 2
-        }, {
-          id: 2,
-          sx: 1,
-          sy: 1,
-          r: 2,
-          c: 2
-        }, {
-          id: 3,
-          sx: 1,
-          sy: 1,
-          r: 3,
-          c: 2
-        }, {
-          id: 4,
-          sx: 2,
-          sy: 1,
-          r: 2,
-          c: 1
-        }, {
-          id: 5,
-          sx: 2,
-          sy: 2,
-          r: 1,
-          c: 1
-        }
-      ]
-    }));
     dl = new DashboardLayout({
-      collection: dashes
+      collection: App.current_user.dashboards
     });
     App.layout.center_region.show(dl);
     return dl;
@@ -2092,6 +2003,10 @@ Dashboard = (function(superClass) {
 
   Dashboard.prototype.local = true;
 
+  Dashboard.prototype.defaults = {
+    widgets: []
+  };
+
   return Dashboard;
 
 })(BaseModel);
@@ -2183,7 +2098,126 @@ SessionModel = (function(superClass) {
           lastname: 'Talarico',
           fullname: 'John Talarico',
           email: 'john@opcsystems.com',
-          avatar: null
+          avatar: null,
+          dashboards: [
+            {
+              id: 1,
+              title: "Sample Dashboard",
+              widgets: [
+                {
+                  id: 1,
+                  title: "foo",
+                  settings: {
+                    layout: {
+                      sx: 1,
+                      sy: 1,
+                      r: 1,
+                      c: 1
+                    }
+                  }
+                }, {
+                  id: 2,
+                  title: "bar",
+                  settings: {
+                    layout: {
+                      sx: 1,
+                      sy: 1,
+                      r: 2,
+                      c: 1
+                    }
+                  }
+                }, {
+                  id: 3,
+                  settings: {
+                    layout: {
+                      sx: 1,
+                      sy: 1,
+                      r: 3,
+                      c: 1
+                    }
+                  }
+                }, {
+                  id: 4,
+                  settings: {
+                    layout: {
+                      sx: 2,
+                      sy: 1,
+                      r: 1,
+                      c: 2
+                    }
+                  }
+                }, {
+                  id: 5,
+                  settings: {
+                    layout: {
+                      sx: 2,
+                      sy: 2,
+                      r: 2,
+                      c: 2
+                    }
+                  }
+                }
+              ]
+            }, {
+              id: 2,
+              title: "Another Dashboard",
+              widgets: [
+                {
+                  id: 1,
+                  title: "top",
+                  settings: {
+                    layout: {
+                      sx: 1,
+                      sy: 1,
+                      r: 1,
+                      c: 2
+                    }
+                  }
+                }, {
+                  id: 2,
+                  title: "bottom",
+                  settings: {
+                    layout: {
+                      sx: 1,
+                      sy: 1,
+                      r: 2,
+                      c: 2
+                    }
+                  }
+                }, {
+                  id: 3,
+                  settings: {
+                    layout: {
+                      sx: 1,
+                      sy: 1,
+                      r: 3,
+                      c: 2
+                    }
+                  }
+                }, {
+                  id: 4,
+                  settings: {
+                    layout: {
+                      sx: 2,
+                      sy: 1,
+                      r: 2,
+                      c: 1
+                    }
+                  }
+                }, {
+                  id: 5,
+                  settings: {
+                    layout: {
+                      sx: 2,
+                      sy: 2,
+                      r: 1,
+                      c: 1
+                    }
+                  }
+                }
+              ]
+            }
+          ]
         }
       });
       SessionModel.set_token(App.session);
@@ -2292,18 +2326,16 @@ SiteCollection = (function(superClass) {
 module.exports = SiteCollection;
 
 },{"./_base_collection":9,"./site":17}],19:[function(require,module,exports){
-var BaseModel, User,
+var BaseModel, DashboardCollection, User,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
 BaseModel = require('./_base');
 
+DashboardCollection = require('./dashboard_collection');
+
 User = (function(superClass) {
   extend(User, superClass);
-
-  function User() {
-    return User.__super__.constructor.apply(this, arguments);
-  }
 
   User.prototype.service = 'accounts';
 
@@ -2315,8 +2347,14 @@ User = (function(superClass) {
     lastname: null,
     phone1: null,
     phone2: null,
-    claims: []
+    claims: [],
+    dashboards: []
   };
+
+  function User(config) {
+    User.__super__.constructor.apply(this, arguments);
+    this.dashboards = new DashboardCollection(this.get('dashboards'));
+  }
 
   return User;
 
@@ -2324,7 +2362,7 @@ User = (function(superClass) {
 
 module.exports = User;
 
-},{"./_base":8}],20:[function(require,module,exports){
+},{"./_base":8,"./dashboard_collection":15}],20:[function(require,module,exports){
 var BaseModel, Widget,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2341,12 +2379,17 @@ Widget = (function(superClass) {
   Widget.prototype.local = true;
 
   Widget.prototype.defaults = {
-    r: 0,
-    c: 0,
-    sx: 0,
-    sy: 0,
-    service: null,
-    title: null
+    title: null,
+    type: "default",
+    settings: {
+      layout: {
+        r: 0,
+        c: 0,
+        sx: 0,
+        sy: 0
+      }
+    },
+    config: true
   };
 
   return Widget;
@@ -2406,7 +2449,10 @@ Router = (function(superClass) {
   };
 
   Router.prototype.onRoute = function(name, path, args) {
-    if ((path !== 'login' || path === 'logout') && (!App.session || (App.session.get('email') == null) || (App.current_user == null))) {
+    if (path === 'login' || path === 'logout') {
+      return true;
+    }
+    if (!App.session || (App.session.get('email') == null) || (App.current_user == null)) {
       App.router.navigate('login', {
         trigger: true
       });
@@ -2870,7 +2916,7 @@ DashboardToolView = (function(superClass) {
 module.exports = DashboardToolView;
 
 },{}],30:[function(require,module,exports){
-var Marionette, Widget, WidgetLayout, WidgetView,
+var GateWidgetView, Marionette, Widget, WidgetLayout, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2880,6 +2926,8 @@ Marionette = require('marionette');
 Widget = require('../../models/widget');
 
 WidgetView = require('./widget_view');
+
+GateWidgetView = require('../widgets/gate_widget_view');
 
 WidgetLayout = (function(superClass) {
   extend(WidgetLayout, superClass);
@@ -2900,7 +2948,7 @@ WidgetLayout = (function(superClass) {
     var arr, wid;
     wid = $(e.target).closest('li.widget').data('id');
     arr = [];
-    this.$('li.widget').each(function() {
+    return this.$('li.widget').each(function() {
       return arr.push({
         r: $(this).data('row'),
         c: $(this).data('col'),
@@ -2909,31 +2957,37 @@ WidgetLayout = (function(superClass) {
         id: $(this).data('id')
       });
     });
-    return console.log(arr);
   };
 
   WidgetLayout.prototype.onDomRefresh = function() {
-    var i, idx, len, m, ref, w, wli, wv;
+    var i, idx, len, lo, m, ref, w, wli, wv;
     ref = this.model.get('widgets');
     for (idx = i = 0, len = ref.length; i < len; idx = ++i) {
       w = ref[idx];
       wli = $("<li id='widget_" + w.id + "' class='widget'></li>");
+      lo = (w.settings != null) && w.settings.layout ? w.settings.layout : null;
       wli.attr({
-        'data-row': w.r,
-        'data-col': w.c,
-        'data-sizex': w.sx,
-        'data-sizey': w.sy,
+        'data-row': lo.r,
+        'data-col': lo.c,
+        'data-sizex': lo.sx,
+        'data-sizey': lo.sy,
         'data-id': w.id
       });
       $(this.el).append(wli);
       this.addRegion("widget_" + w.id, "li#widget_" + w.id);
       m = new Widget({
         id: w.id,
-        title: "Widget " + w.id
+        title: w.title != null ? w.title : "Widget " + w.id
       });
-      wv = new WidgetView({
-        model: m
-      });
+      if ((w.type != null) && w.type === 'gate') {
+        wv = new GateWidgetView({
+          model: m
+        });
+      } else {
+        wv = new WidgetView({
+          model: m
+        });
+      }
       this.getRegion("widget_" + w.id).show(wv);
     }
     return this.grid = $(this.el).gridster({
@@ -2955,7 +3009,7 @@ WidgetLayout = (function(superClass) {
 
 module.exports = WidgetLayout;
 
-},{"../../models/widget":20,"./widget_view":31}],31:[function(require,module,exports){
+},{"../../models/widget":20,"../widgets/gate_widget_view":41,"./widget_view":31}],31:[function(require,module,exports){
 var Marionette, WidgetView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -3628,5 +3682,36 @@ LoginView = (function(superClass) {
 
 module.exports = LoginView;
 
-},{"../common/uiutils":6,"../models/session":16}]},{},[1])
+},{"../common/uiutils":6,"../models/session":16}],41:[function(require,module,exports){
+var GateWidgetView, Marionette, WidgetView,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+WidgetView = require('../dashboard/widget_view');
+
+GateWidgetView = (function(superClass) {
+  extend(GateWidgetView, superClass);
+
+  function GateWidgetView() {
+    return GateWidgetView.__super__.constructor.apply(this, arguments);
+  }
+
+  GateWidgetView.prototype.template = "widgets/gate_widget";
+
+  GateWidgetView.prototype.className = 'widget-outer box box-primary';
+
+  GateWidgetView.prototype.ui = {
+    header: '.header',
+    body: '.body'
+  };
+
+  return GateWidgetView;
+
+})(WidgetView);
+
+module.exports = GateWidgetView;
+
+},{"../dashboard/widget_view":31}]},{},[1])
 ;

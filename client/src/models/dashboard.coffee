@@ -3,7 +3,9 @@ BaseModel = require('./_base')
 # ----------------------------------
 
 class Dashboard extends BaseModel
-	local: true
+  local: true
+  defaults:
+    widgets: []
 
 # ----------------------------------
 
