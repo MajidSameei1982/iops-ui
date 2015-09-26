@@ -9,10 +9,10 @@ class Widget extends BaseModel
     type:       "default"
     settings:
       layout:
-        r:          0
-        c:          0
-        sx:         0
-        sy:         0
+        r:          1
+        c:          1
+        sx:         1
+        sy:         1
     config:     true
 
 # ----------------------------------

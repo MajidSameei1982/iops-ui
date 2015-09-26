@@ -4,7 +4,7 @@ Extensions = require('./common/extensions')
 IopsController = require('./iops_controller')
 Router = require('./router')
 IopsLayout = require('./views/iops_layout')
-SessionModel = require('./models/session')
+Session = require('./models/session')
 AccountCollection = require('./models/account_collection')
 ClaimCollection = require('./models/claim_collection')
 AdminLTE_lib = require('./common/adminlte_lib')
@@ -23,7 +23,7 @@ window.IOPS = do()->
 
   App.on "before:start", (options)->
     @log('Starting')
-    SessionModel.restore()
+    Session.restore()
     @layout = new IopsLayout()
     @uiutils = UIUtils
 

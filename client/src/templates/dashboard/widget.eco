@@ -1,5 +1,5 @@
 <div class="box-header with-border">
-  <div class='pull-left'><h3 class="box-title"><i class="fa fa-cube"></i> <%- @title%></h3></div>
+  <div class='pull-left'><h3 class="box-title"><i class="fa fa-cube"></i> <%- if @title? then @title else "Widget #{@id}" %></h3></div>
   <div class="pull-right controls"><a href="#" id="settings"><i class="fa fa-cogs"></i></a> <a href="#" id="settings"><i class="fa fa-times-circle"></i></a></div>
 
   <!-- <div class="box-tools pull-right">

@@ -16,7 +16,7 @@ class User extends BaseModel
     dashboards: []
 
   constructor: (config)->
-    super
+    super(config)
     @dashboards = new DashboardCollection(@get('dashboards'))
 # ----------------------------------
 

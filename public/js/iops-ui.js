@@ -351,7 +351,7 @@ window.JST["dashboard/widget"] = function(__obj) {
     (function() {
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><h3 class="box-title"><i class="fa fa-cube"></i> '));
     
-      _print(_safe(this.title));
+      _print(_safe(this.title != null ? this.title : "Widget " + this.id));
     
       _print(_safe('</h3></div>\n  <div class="pull-right controls"><a href="#" id="settings"><i class="fa fa-cogs"></i></a> <a href="#" id="settings"><i class="fa fa-times-circle"></i></a></div>\n\n  <!-- <div class="box-tools pull-right">\n    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>\n  </div> -->\n  <!-- /.box-tools -->\n</div><!-- /.box-header -->\n<div class="box-body" style="display: block;">\n  Widget Body\n</div><!-- /.box-body -->\n'));
     
@@ -921,7 +921,7 @@ window.JST["login"] = function(__obj) {
 };
 
 ;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var AccountCollection, AdminLTE_lib, BaselineApp, ClaimCollection, Extensions, IopsController, IopsLayout, Marionette, Router, SessionModel, UIUtils;
+var AccountCollection, AdminLTE_lib, BaselineApp, ClaimCollection, Extensions, IopsController, IopsLayout, Marionette, Router, Session, UIUtils;
 
 Marionette = require('marionette');
 
@@ -935,7 +935,7 @@ Router = require('./router');
 
 IopsLayout = require('./views/iops_layout');
 
-SessionModel = require('./models/session');
+Session = require('./models/session');
 
 AccountCollection = require('./models/account_collection');
 
@@ -963,7 +963,7 @@ window.IOPS = (function() {
   });
   App.on("before:start", function(options) {
     this.log('Starting');
-    SessionModel.restore();
+    Session.restore();
     this.layout = new IopsLayout();
     this.uiutils = UIUtils;
     App.accounts = new AccountCollection();
@@ -1988,18 +1988,16 @@ ClaimCollection = (function(superClass) {
 module.exports = ClaimCollection;
 
 },{"./_base_collection":9,"./claim":12}],14:[function(require,module,exports){
-var BaseModel, Dashboard,
+var BaseModel, Dashboard, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
 BaseModel = require('./_base');
 
+WidgetCollection = require('./widget_collection');
+
 Dashboard = (function(superClass) {
   extend(Dashboard, superClass);
-
-  function Dashboard() {
-    return Dashboard.__super__.constructor.apply(this, arguments);
-  }
 
   Dashboard.prototype.local = true;
 
@@ -2007,13 +2005,18 @@ Dashboard = (function(superClass) {
     widgets: []
   };
 
+  function Dashboard(config) {
+    Dashboard.__super__.constructor.call(this, config);
+    this.widgets = new WidgetCollection(this.get('widgets'));
+  }
+
   return Dashboard;
 
 })(BaseModel);
 
 module.exports = Dashboard;
 
-},{"./_base":8}],15:[function(require,module,exports){
+},{"./_base":8,"./widget_collection":21}],15:[function(require,module,exports){
 var BaseCollection, Dashboard, DashboardCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2040,7 +2043,7 @@ DashboardCollection = (function(superClass) {
 module.exports = DashboardCollection;
 
 },{"./_base_collection":9,"./dashboard":14}],16:[function(require,module,exports){
-var BaseModel, SessionModel, User,
+var BaseModel, Session, User,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -2048,185 +2051,199 @@ BaseModel = require('./_base');
 
 User = require('./user');
 
-SessionModel = (function(superClass) {
-  extend(SessionModel, superClass);
+Session = (function(superClass) {
+  extend(Session, superClass);
 
-  SessionModel.prototype.service = 'accounts';
+  Session.prototype.service = 'accounts';
 
-  SessionModel.prototype.urlRoot = '/sessions';
+  Session.prototype.urlRoot = '/sessions';
 
-  function SessionModel(config) {
-    SessionModel.__super__.constructor.call(this, config);
+  function Session(config) {
+    Session.__super__.constructor.call(this, config);
     this.user = new User(this.get('user'));
   }
 
-  SessionModel.prototype.initialize = function() {
+  Session.prototype.initialize = function() {
     this.on("change", this.persist);
     this.persist();
     return this;
   };
 
-  SessionModel.prototype.persist = function() {
+  Session.prototype.persist = function() {
     App.store.set('session', this);
     return this;
   };
 
-  SessionModel.clear = function() {
+  Session.clear = function() {
     if (App.session != null) {
       App.session.off("change");
     }
-    SessionModel.set_token();
+    Session.set_token();
     App.store.remove('session');
     App.session = null;
     return null;
   };
 
-  SessionModel.auth = function(arg) {
+  Session.get_dummy_user = function() {
+    var user;
+    user = App.store.get('user');
+    if (user == null) {
+      user = {
+        id: 1,
+        firstname: 'John',
+        lastname: 'Talarico',
+        fullname: 'John Talarico',
+        email: 'john@opcsystems.com',
+        avatar: null,
+        dashboards: [
+          {
+            id: 1,
+            title: "Sample Dashboard",
+            widgets: [
+              {
+                id: 1,
+                title: "foo",
+                settings: {
+                  layout: {
+                    sx: 1,
+                    sy: 1,
+                    r: 1,
+                    c: 1
+                  }
+                }
+              }, {
+                id: 2,
+                title: "bar",
+                settings: {
+                  layout: {
+                    sx: 1,
+                    sy: 1,
+                    r: 2,
+                    c: 1
+                  }
+                }
+              }, {
+                id: 3,
+                settings: {
+                  layout: {
+                    sx: 1,
+                    sy: 1,
+                    r: 3,
+                    c: 1
+                  }
+                }
+              }, {
+                id: 4,
+                settings: {
+                  layout: {
+                    sx: 2,
+                    sy: 1,
+                    r: 1,
+                    c: 2
+                  }
+                }
+              }, {
+                id: 5,
+                settings: {
+                  layout: {
+                    sx: 2,
+                    sy: 2,
+                    r: 2,
+                    c: 2
+                  }
+                }
+              }
+            ]
+          }, {
+            id: 2,
+            title: "Another Dashboard",
+            widgets: [
+              {
+                id: 1,
+                title: "top",
+                settings: {
+                  layout: {
+                    sx: 1,
+                    sy: 1,
+                    r: 1,
+                    c: 2
+                  }
+                }
+              }, {
+                id: 2,
+                title: "bottom",
+                settings: {
+                  layout: {
+                    sx: 1,
+                    sy: 1,
+                    r: 2,
+                    c: 2
+                  }
+                }
+              }, {
+                id: 3,
+                settings: {
+                  layout: {
+                    sx: 1,
+                    sy: 1,
+                    r: 3,
+                    c: 2
+                  }
+                }
+              }, {
+                id: 4,
+                settings: {
+                  layout: {
+                    sx: 2,
+                    sy: 1,
+                    r: 2,
+                    c: 1
+                  }
+                }
+              }, {
+                id: 5,
+                settings: {
+                  layout: {
+                    sx: 2,
+                    sy: 2,
+                    r: 1,
+                    c: 1
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      };
+      App.store.set('user', user);
+    }
+    return user;
+  };
+
+  Session.auth = function(arg) {
     var email, error, password, success;
     email = arg.email, password = arg.password, success = arg.success, error = arg.error;
-    SessionModel.clear();
+    Session.clear();
     if ((email == null) || email.trim() === '' || (password == null) || password.trim() === '') {
-      return error();
+      if (error != null) {
+        return error();
+      }
     } else {
-      App.session = new SessionModel({
+      App.session = new Session({
         email: email,
         password: password,
         token: 'foo',
-        user: {
-          id: 1,
-          firstname: 'John',
-          lastname: 'Talarico',
-          fullname: 'John Talarico',
-          email: 'john@opcsystems.com',
-          avatar: null,
-          dashboards: [
-            {
-              id: 1,
-              title: "Sample Dashboard",
-              widgets: [
-                {
-                  id: 1,
-                  title: "foo",
-                  settings: {
-                    layout: {
-                      sx: 1,
-                      sy: 1,
-                      r: 1,
-                      c: 1
-                    }
-                  }
-                }, {
-                  id: 2,
-                  title: "bar",
-                  settings: {
-                    layout: {
-                      sx: 1,
-                      sy: 1,
-                      r: 2,
-                      c: 1
-                    }
-                  }
-                }, {
-                  id: 3,
-                  settings: {
-                    layout: {
-                      sx: 1,
-                      sy: 1,
-                      r: 3,
-                      c: 1
-                    }
-                  }
-                }, {
-                  id: 4,
-                  settings: {
-                    layout: {
-                      sx: 2,
-                      sy: 1,
-                      r: 1,
-                      c: 2
-                    }
-                  }
-                }, {
-                  id: 5,
-                  settings: {
-                    layout: {
-                      sx: 2,
-                      sy: 2,
-                      r: 2,
-                      c: 2
-                    }
-                  }
-                }
-              ]
-            }, {
-              id: 2,
-              title: "Another Dashboard",
-              widgets: [
-                {
-                  id: 1,
-                  title: "top",
-                  settings: {
-                    layout: {
-                      sx: 1,
-                      sy: 1,
-                      r: 1,
-                      c: 2
-                    }
-                  }
-                }, {
-                  id: 2,
-                  title: "bottom",
-                  settings: {
-                    layout: {
-                      sx: 1,
-                      sy: 1,
-                      r: 2,
-                      c: 2
-                    }
-                  }
-                }, {
-                  id: 3,
-                  settings: {
-                    layout: {
-                      sx: 1,
-                      sy: 1,
-                      r: 3,
-                      c: 2
-                    }
-                  }
-                }, {
-                  id: 4,
-                  settings: {
-                    layout: {
-                      sx: 2,
-                      sy: 1,
-                      r: 2,
-                      c: 1
-                    }
-                  }
-                }, {
-                  id: 5,
-                  settings: {
-                    layout: {
-                      sx: 2,
-                      sy: 2,
-                      r: 1,
-                      c: 1
-                    }
-                  }
-                }
-              ]
-            }
-          ]
-        }
+        user: this.get_dummy_user()
       });
-      SessionModel.set_token(App.session);
+      Session.set_token(App.session);
       App.session.attributes['password'] = null;
-      return success();
+      if (success != null) {
+        return success();
+      }
     }
   };
 
-  SessionModel.set_token = function(session) {
+  Session.set_token = function(session) {
     var tk;
     if (session != null) {
       tk = session.get("token");
@@ -2243,7 +2260,7 @@ SessionModel = (function(superClass) {
     return session;
   };
 
-  SessionModel.restore = function() {
+  Session.restore = function() {
     var s;
     s = App.store.get('session');
     if (s != null) {
@@ -2252,19 +2269,19 @@ SessionModel = (function(superClass) {
     return true;
   };
 
-  SessionModel.create = function(config) {
+  Session.create = function(config) {
     if (App.session != null) {
       App.session.clear();
     }
-    App.session = new SessionModel(config);
+    App.session = new Session(config);
     return App.session;
   };
 
-  return SessionModel;
+  return Session;
 
 })(BaseModel);
 
-module.exports = SessionModel;
+module.exports = Session;
 
 },{"./_base":8,"./user":19}],17:[function(require,module,exports){
 var BaseModel, Site,
@@ -2352,7 +2369,7 @@ User = (function(superClass) {
   };
 
   function User(config) {
-    User.__super__.constructor.apply(this, arguments);
+    User.__super__.constructor.call(this, config);
     this.dashboards = new DashboardCollection(this.get('dashboards'));
   }
 
@@ -2383,10 +2400,10 @@ Widget = (function(superClass) {
     type: "default",
     settings: {
       layout: {
-        r: 0,
-        c: 0,
-        sx: 0,
-        sy: 0
+        r: 1,
+        c: 1,
+        sx: 1,
+        sy: 1
       }
     },
     config: true
@@ -2933,8 +2950,10 @@ WidgetLayout = (function(superClass) {
   extend(WidgetLayout, superClass);
 
   function WidgetLayout() {
-    this.onDomRefresh = bind(this.onDomRefresh, this);
+    this.onShow = bind(this.onShow, this);
+    this.draw_widgets = bind(this.draw_widgets, this);
     this.adjust_widgets = bind(this.adjust_widgets, this);
+    this.initialize = bind(this.initialize, this);
     return WidgetLayout.__super__.constructor.apply(this, arguments);
   }
 
@@ -2944,53 +2963,43 @@ WidgetLayout = (function(superClass) {
 
   WidgetLayout.prototype.tagName = 'ul';
 
-  WidgetLayout.prototype.adjust_widgets = function(e, ui) {
-    var arr, wid;
-    wid = $(e.target).closest('li.widget').data('id');
-    arr = [];
-    return this.$('li.widget').each(function() {
-      return arr.push({
-        r: $(this).data('row'),
-        c: $(this).data('col'),
-        sx: $(this).data('sizex'),
-        sy: $(this).data('sizey'),
-        id: $(this).data('id')
-      });
-    });
+  WidgetLayout.prototype.initialize = function(a, b, c) {
+    return this.model.widgets.on("update", (function(_this) {
+      return function(coll, delta) {
+        return _this.draw_widgets();
+      };
+    })(this));
   };
 
-  WidgetLayout.prototype.onDomRefresh = function() {
-    var i, idx, len, lo, m, ref, w, wli, wv;
-    ref = this.model.get('widgets');
+  WidgetLayout.prototype.adjust_widgets = function(e, ui) {
+    var arr, i, idx, len, ref, results, wid, wm;
+    wid = $(e.target).closest('li.widget').data('id');
+    arr = [];
+    ref = this.model.widgets.models;
+    results = [];
     for (idx = i = 0, len = ref.length; i < len; idx = ++i) {
-      w = ref[idx];
-      wli = $("<li id='widget_" + w.id + "' class='widget'></li>");
-      lo = (w.settings != null) && w.settings.layout ? w.settings.layout : null;
-      wli.attr({
-        'data-row': lo.r,
-        'data-col': lo.c,
-        'data-sizex': lo.sx,
-        'data-sizey': lo.sy,
-        'data-id': w.id
-      });
-      $(this.el).append(wli);
-      this.addRegion("widget_" + w.id, "li#widget_" + w.id);
-      m = new Widget({
-        id: w.id,
-        title: w.title != null ? w.title : "Widget " + w.id
-      });
-      if ((w.type != null) && w.type === 'gate') {
-        wv = new GateWidgetView({
-          model: m
-        });
-      } else {
-        wv = new WidgetView({
-          model: m
-        });
-      }
-      this.getRegion("widget_" + w.id).show(wv);
+      wm = ref[idx];
+      results.push(this.$('li.widget').each(function() {
+        var id, s, w;
+        id = $(this).data('id');
+        w = {
+          r: $(this).data('row'),
+          c: $(this).data('col'),
+          sx: $(this).data('sizex'),
+          sy: $(this).data('sizey')
+        };
+        if (id === wm.id) {
+          s = wm.get("settings");
+          s.layout = w;
+          return wm.set("settings", s);
+        }
+      }));
     }
-    return this.grid = $(this.el).gridster({
+    return results;
+  };
+
+  WidgetLayout.prototype.set_gridster = function() {
+    this.grid = $(this.el).gridster({
       resize: {
         enabled: true,
         stop: this.adjust_widgets
@@ -3001,6 +3010,50 @@ WidgetLayout = (function(superClass) {
         stop: this.adjust_widgets
       }
     });
+    this.grid = this.grid.data('gridster');
+    return this;
+  };
+
+  WidgetLayout.prototype.draw_widgets = function() {
+    var i, idx, len, lo, new_region, r, ref, region, results, s, w, wli, wv;
+    if (this.grid == null) {
+      this.set_gridster();
+    }
+    ref = this.model.widgets.models;
+    results = [];
+    for (idx = i = 0, len = ref.length; i < len; idx = ++i) {
+      w = ref[idx];
+      region = "widget_" + w.id;
+      r = this.getRegion(region);
+      if ((r == null) || (r.currentView == null)) {
+        new_region = this.addRegion(region, "li#" + region);
+        wli = $("<li id='" + region + "' class='widget'></li>");
+        s = w.get('settings');
+        lo = (s != null) && (s.layout != null) ? s.layout : null;
+        wli.attr({
+          'data-id': w.id
+        });
+        $(this.el).append(wli);
+        if ((w.get('type') != null) && w.get('type') === 'gate') {
+          wv = new GateWidgetView({
+            model: w
+          });
+        } else {
+          wv = new WidgetView({
+            model: w
+          });
+        }
+        new_region.show(wv);
+        results.push(this.grid.add_widget(wli, lo.sx, lo.sy, lo.c, lo.r));
+      } else {
+        results.push(void 0);
+      }
+    }
+    return results;
+  };
+
+  WidgetLayout.prototype.onShow = function() {
+    return this.draw_widgets();
   };
 
   return WidgetLayout;
@@ -3585,7 +3638,7 @@ IopsLayout = (function(superClass) {
 module.exports = IopsLayout;
 
 },{}],40:[function(require,module,exports){
-var LoginView, Marionette, SessionModel, UIUtils,
+var LoginView, Marionette, Session, UIUtils,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -3593,7 +3646,7 @@ Marionette = require('marionette');
 
 UIUtils = require('../common/uiutils');
 
-SessionModel = require('../models/session');
+Session = require('../models/session');
 
 LoginView = (function(superClass) {
   extend(LoginView, superClass);
@@ -3653,7 +3706,7 @@ LoginView = (function(superClass) {
     e.preventDefault();
     this.clear_errors();
     this.disable_ui(true);
-    SessionModel.auth({
+    Session.auth({
       email: this.ui.email.val(),
       password: this.ui.password.val(),
       success: function(a, b, c) {

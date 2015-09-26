@@ -10,44 +10,32 @@ class WidgetLayout extends Marionette.LayoutView
   className: 'gridster widget-container'
   tagName: 'ul'
 
+  initialize: (a, b, c)=>
+    @model.widgets.on "update", (coll, delta)=>
+      @draw_widgets()
+
   adjust_widgets: (e, ui)=>
     wid = $(e.target).closest('li.widget').data('id')
     arr = []
-    @$('li.widget').each ()->
-      arr.push
-        r : $(@).data('row')
-        c : $(@).data('col')
-        sx : $(@).data('sizex')
-        sy : $(@).data('sizey')
-        id : $(@).data('id')
+    for wm, idx in @model.widgets.models
+      @$('li.widget').each ()->
+        id = $(@).data('id')
+        w =
+          r : $(@).data('row')
+          c : $(@).data('col')
+          sx : $(@).data('sizex')
+          sy : $(@).data('sizey')
+        if (id == wm.id)
+          s = wm.get("settings")
+          s.layout = w
+          wm.set("settings", s)
+          
+        
     # serialize positions
     # save locally
     # raise event
-  
-  onDomRefresh: ()=>
-    for w, idx in @model.get('widgets')
-      wli = $("<li id='widget_#{w.id}' class='widget'></li>")
-      lo = if w.settings? && w.settings.layout then w.settings.layout else null
-      wli.attr
-        'data-row' : lo.r
-        'data-col' : lo.c
-        'data-sizex' : lo.sx
-        'data-sizey' : lo.sy
-        'data-id' : w.id
-      $(@el).append(wli)
-      @addRegion("widget_#{w.id}", "li#widget_#{w.id}")
 
-      m = new Widget
-        id: w.id
-        title: if w.title? then w.title else "Widget #{w.id}"
-
-      if (w.type? && w.type=='gate')
-        wv = new GateWidgetView({model:m})
-      else
-        wv = new WidgetView({model: m})
-      
-      @getRegion("widget_#{w.id}").show(wv);
-
+  set_gridster: ()->
     @grid = $(@el).gridster
       resize:
         enabled: true
@@ -56,6 +44,39 @@ class WidgetLayout extends Marionette.LayoutView
       draggable:
         handle: '.box-header'
         stop: @adjust_widgets
+    @grid = @grid.data('gridster')
+    @
+
+  draw_widgets: ()=>
+    if !@grid? then @set_gridster()
+    for w, idx in @model.widgets.models
+      region = "widget_#{w.id}"
+      r = @getRegion(region)
+      if (!r? || !r.currentView?)
+        # create the region if it's a new widget
+        new_region = @addRegion(region, "li##{region}")
+
+        wli = $("<li id='#{region}' class='widget'></li>")
+        s = w.get('settings')
+        lo = if s? && s.layout? then s.layout else null
+        wli.attr
+          'data-id' : w.id
+        $(@el).append(wli)
+        
+        if (w.get('type')? && w.get('type')=='gate')
+          wv = new GateWidgetView({model:w})
+        else
+          wv = new WidgetView({model: w})
+        
+        # show the widget view
+        new_region.show(wv);
+        # add it to gridster
+        @grid.add_widget(wli, lo.sx, lo.sy, lo.c, lo.r)
+
+    #@set_gridster()
+    
+  onShow: ()=>
+    @draw_widgets()
 
   	#App.AdminLTE_lib.reset()
   	

@@ -3,7 +3,7 @@ User = require('./user')
 
 # ----------------------------------
 
-class SessionModel extends BaseModel
+class Session extends BaseModel
   service: 'accounts'
   urlRoot: '/sessions'
 
@@ -22,33 +22,33 @@ class SessionModel extends BaseModel
 
   @clear: ()->
     if App.session? then App.session.off "change"
-    SessionModel.set_token()
+    Session.set_token()
     App.store.remove('session')
     App.session = null
     null
 
   ## DISABLED UNTIL SESSION SERVICE IS WORKING
   # @auth: ({email, password, success, error})->
-  #   SessionModel.clear()
-  #   App.session = new SessionModel
+  #   Session.clear()
+  #   App.session = new Session
   #     email:email
   #     password:password
 
   #   s = (data, status, xhr)=>
-  #     SessionModel.set_token(App.session)
+  #     Session.set_token(App.session)
   #   e = (xhr, status, error)=>
-  #     SessionModel.clear()
+  #     Session.clear()
 
   #   if success?
   #     os = success
   #     s = (data, status, xhr)=>
-  #       SessionModel.set_token(App.session)
+  #       Session.set_token(App.session)
   #       os(data, status, xhr)
 
   #   if error?
   #     oe = error
   #     e = (xhr, status, error)=>
-  #       SessionModel.clear()
+  #       Session.clear()
   #       oe(xhr, status, error)
 
   #   App.session.save null,
@@ -56,86 +56,95 @@ class SessionModel extends BaseModel
   #     error: e
   #     timeout:3000
 
+  @get_dummy_user: ()->
+    user = App.store.get('user')
+    if !user?
+      user = 
+        id: 1
+        firstname: 'John'
+        lastname: 'Talarico'
+        fullname: 'John Talarico'
+        email: 'john@opcsystems.com'
+        avatar: null
+        dashboards: [ 
+          id: 1
+          title: "Sample Dashboard"
+          widgets: [
+            id:1
+            title:"foo"
+            settings:
+              layout: {sx: 1, sy: 1, r: 1, c: 1}
+          ,
+            id:2
+            title:"bar"
+            settings:
+              layout: {sx: 1, sy: 1, r: 2, c: 1}
+          ,
+            id:3
+            settings:
+              layout: {sx: 1, sy: 1, r: 3, c: 1}
+          ,
+            id:4
+            settings:
+              layout: {sx: 2, sy: 1, r: 1, c: 2}
+          ,
+            id:5
+            settings:
+              layout: {sx: 2, sy: 2, r: 2, c: 2}
+          ]
+        ,
+          id: 2
+          title: "Another Dashboard"
+          widgets : [
+            id:1
+            title:"top"
+            settings:
+              layout: {sx: 1, sy: 1, r: 1, c: 2}
+          ,
+            id:2
+            title:"bottom"
+            settings:
+              layout: {sx: 1, sy: 1, r: 2, c: 2}
+          ,
+            id:3
+            settings:
+              layout: {sx: 1, sy: 1, r: 3, c: 2}
+          ,
+            id:4
+            settings:
+              layout: {sx: 2, sy: 1, r: 2, c: 1}
+          ,
+            id:5
+            settings:
+              layout: {sx: 2, sy: 2, r: 1, c: 1}
+          ]
+        ]
+      App.store.set('user', user)
+    user
+
   
-  ## DUMMY AUTH
+  ## DUMMY AUTH - need to 
+  ##  1. execute auth from server
+  ##  2. on success, generate Session 
   @auth: ({email, password, success, error})->
-    SessionModel.clear()
+    Session.clear()
     if !email? or email.trim() == '' or !password? or password.trim() == ''
-      error()
+      if error? then error()
     else
-      App.session = new SessionModel
+      App.session = new Session
         email:email
         password:password
         token: 'foo'
-        user:
-          id: 1
-          firstname: 'John'
-          lastname: 'Talarico'
-          fullname: 'John Talarico'
-          email: 'john@opcsystems.com'
-          avatar: null
-          dashboards: [ 
-            id: 1
-            title: "Sample Dashboard"
-            widgets: [
-              id:1
-              title:"foo"
-              settings:
-                layout: {sx: 1, sy: 1, r: 1, c: 1}
-            ,
-              id:2
-              title:"bar"
-              settings:
-                layout: {sx: 1, sy: 1, r: 2, c: 1}
-            ,
-              id:3
-              settings:
-                layout: {sx: 1, sy: 1, r: 3, c: 1}
-            ,
-              id:4
-              settings:
-                layout: {sx: 2, sy: 1, r: 1, c: 2}
-            ,
-              id:5
-              settings:
-                layout: {sx: 2, sy: 2, r: 2, c: 2}
-            ]
-          ,
-            id: 2
-            title: "Another Dashboard"
-            widgets : [
-              id:1
-              title:"top"
-              settings:
-                layout: {sx: 1, sy: 1, r: 1, c: 2}
-            ,
-              id:2
-              title:"bottom"
-              settings:
-                layout: {sx: 1, sy: 1, r: 2, c: 2}
-            ,
-              id:3
-              settings:
-                layout: {sx: 1, sy: 1, r: 3, c: 2}
-            ,
-              id:4
-              settings:
-                layout: {sx: 2, sy: 1, r: 2, c: 1}
-            ,
-              id:5
-              settings:
-                layout: {sx: 2, sy: 2, r: 1, c: 1}
-            ]
-          ]
-
-      SessionModel.set_token(App.session)
+        user: @get_dummy_user()
+      Session.set_token(App.session)
       App.session.attributes['password'] = null
-      success()
+      if success? then success()
 
   # validate: ()->
   #   # ? run validation against claim to ensure the session is still valid and not timed out ?
   #   true
 
+  # apply session token to header for all subsequent requests
   @set_token: (session)->
     if session?
       tk = session.get("token")
@@ -146,6 +155,7 @@ class SessionModel extends BaseModel
       if $.ajaxSettings.headers? then delete $.ajaxSettings.headers["token"];
     session
   
+  # pull a session from local storage
   @restore: ()->
   	s = App.store.get('session')
   	if s? then @create(s)
@@ -153,10 +163,10 @@ class SessionModel extends BaseModel
 
   @create: (config)->
     if App.session? then App.session.clear()
-    App.session = new SessionModel(config)
+    App.session = new Session(config)
     App.session
 
 
 # ----------------------------------
 
-module.exports = SessionModel
+module.exports = Session

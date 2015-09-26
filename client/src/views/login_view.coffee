@@ -1,6 +1,6 @@
 Marionette = require('marionette')
 UIUtils = require('../common/uiutils')
-SessionModel = require('../models/session')
+Session = require('../models/session')
 
 # ----------------------------------
 
@@ -43,7 +43,7 @@ class LoginView extends Marionette.ItemView
     e.preventDefault();
     @clear_errors()
     @disable_ui(true)
-    SessionModel.auth
+    Session.auth
       email:@ui.email.val()
       password: @ui.password.val()
       success: (a,b,c)->
