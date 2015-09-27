@@ -1,0 +1,15 @@
+<div class="box-header with-border">
+  <div class='pull-left'><h3 class="box-title"></h3></div>
+  <div class="pull-right controls">
+    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> 
+    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>
+  </div>
+</div><!-- /.box-header -->
+<div class="box-body content">
+  <iframe id='iframe' src=""></iframe>
+  <div class="settings" style="display: none;">
+    <h3>Settings</h3>
+    <%- @formGroup({id:'title', type:'text', placeholder:'Widget Title', value:@settings.name}) %>
+    <%- @formGroup({id:'url', type:'text', feedback:'link', placeholder:'URL', value:@settings.url}) %>  
+  </div><!-- /.box-body -->
+</div><!-- /.box-body -->

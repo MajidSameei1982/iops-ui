@@ -224,7 +224,7 @@ module.exports = (grunt)->
         files: ['client/config/appconfig.dev.coffee']
         tasks: ['copy:config_dev', 'build:js']
       js: 
-        files: ['client/src/templates/**/*.eco', 'client/src/**/*.js', 'client/src/**/*.coffee']
+        files: ['client/src/**/*.eco', 'client/src/**/*.js', 'client/src/**/*.coffee']
         tasks: ['build:js', 'copy:js']
       css: 
         files: ['client/src/styles/**/*.scss']

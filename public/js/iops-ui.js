@@ -112,7 +112,7 @@ window.JST["dashboard/dashboard_layout"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="wrapper">\n\n  <!-- Main Header -->\n  <div id="header-region"></div>\n\n  <!-- Left side column. contains the logo and sidebar -->\n  <div id="side-region"></div>\n\n  <!-- Content Wrapper. Contains page content -->\n  <div id="content-region" class="content-wrapper"></div>\n  \n  <!-- Main Footer -->\n  <div id="footer-region"></div>\n  \n  <!-- Control Sidebar -->      \n  <div id="tool-region"></div>\n\n  <!-- Add the sidebar\'s background. This div must be placed\n       immediately after the control sidebar -->\n  <div class=\'control-sidebar-bg\'></div>\n\n</div><!-- ./wrapper -->\n<script src=\'adminlte/app.js\' type="text/javascript"></script>\n\n\n'));
+      _print(_safe('<div class="wrapper">\n\n  <!-- Main Header -->\n  <div id="header-region" tabindex="-1"></div>\n\n  <!-- Left side column. contains the logo and sidebar -->\n  <div id="side-region" tabindex="-1"></div>\n\n  <!-- Content Wrapper. Contains page content -->\n  <div id="content-region" class="content-wrapper" tabindex="-1"></div>\n  \n  <!-- Main Footer -->\n  <div id="footer-region" tabindex="-1"></div>\n  \n  <!-- Control Sidebar -->      \n  <div id="tool-region" tabindex="-1"></div>\n\n  <!-- Add the sidebar\'s background. This div must be placed\n       immediately after the control sidebar -->\n  <div class=\'control-sidebar-bg\' tabindex="-1"></div>\n\n</div><!-- ./wrapper -->\n<script src=\'adminlte/app.js\' type="text/javascript"></script>\n\n\n'));
     
     }).call(this);
     
@@ -304,56 +304,7 @@ window.JST["dashboard/tool"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<!-- sidebar -->\n<section class="sidebar">\n  <!-- Sidebar Menu -->\n  <ul class="sidebar-menu" id=\'dashboard-list\'>\n    <li class="header">iOPS Admin</li>\n    <li id="manage_accounts" class=\'tool_link\' data-toggle="control-sidebar"><a href="#"><i class=\'fa fa-building-o\'></i> <span>Manage Accounts</span></a></li>\n    <li id="manage_permissions" class=\'tool_link\' data-toggle="control-sidebar"><a href="#"><i class=\'fa fa-users\'></i> <span>Manage Permissions</span></a></li>\n  </ul>\n  <!-- /.sidebar-menu -->\n</section>\n<!-- /.sidebar -->'));
-    
-    }).call(this);
-    
-    return __out.join('');
-  }).call((function() {
-    var obj = {
-      escape: function(value) {
-        return ('' + value)
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
-      },
-      safe: _safe
-    }, key;
-    for (key in __obj) obj[key] = __obj[key];
-    return obj;
-  })());
-};
-
-if (!window.JST) {
-  window.JST = {};
-}
-window.JST["dashboard/widget"] = function(__obj) {
-  var _safe = function(value) {
-    if (typeof value === 'undefined' && value == null)
-      value = '';
-    var result = new String(value);
-    result.ecoSafe = true;
-    return result;
-  };
-  return (function() {
-    var __out = [], __self = this, _print = function(value) {
-      if (typeof value !== 'undefined' && value != null)
-        __out.push(value.ecoSafe ? value : __self.escape(value));
-    }, _capture = function(callback) {
-      var out = __out, result;
-      __out = [];
-      callback.call(this);
-      result = __out.join('');
-      __out = out;
-      return _safe(result);
-    };
-    (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><h3 class="box-title"><i class="fa fa-cube"></i> '));
-    
-      _print(_safe(this.title != null ? this.title : "Widget " + this.id));
-    
-      _print(_safe('</h3></div>\n  <div class="pull-right controls"><a href="#" id="settings"><i class="fa fa-cogs"></i></a> <a href="#" id="settings"><i class="fa fa-times-circle"></i></a></div>\n\n  <!-- <div class="box-tools pull-right">\n    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>\n  </div> -->\n  <!-- /.box-tools -->\n</div><!-- /.box-header -->\n<div class="box-body" style="display: block;">\n  Widget Body\n</div><!-- /.box-body -->\n'));
+      _print(_safe('<!-- sidebar -->\n<section class="sidebar" tabindex="-1">\n  <!-- Sidebar Menu -->\n  <ul class="sidebar-menu" id=\'dashboard-list\'>\n    <li class="header">iOPS Admin</li>\n    <li id="manage_accounts" class=\'tool_link\' data-toggle="control-sidebar"><a href="#"><i class=\'fa fa-building-o\'></i> <span>Manage Accounts</span></a></li>\n    <li id="manage_permissions" class=\'tool_link\' data-toggle="control-sidebar"><a href="#"><i class=\'fa fa-users\'></i> <span>Manage Permissions</span></a></li>\n  </ul>\n  <!-- /.sidebar-menu -->\n</section>\n<!-- /.sidebar -->'));
     
     }).call(this);
     
@@ -398,7 +349,52 @@ window.JST["dashboard/widget_layout"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<!-- placeholder -->\n'));
+      _print(_safe('<div><a id="add_widget" href="#"><i class=\'fa fa-plus-square\'></i> Add New Widget</a></div>\n<ul class=\'gridster widget-container\'></ul>\n'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
+window.JST["dashboard/widget_modal"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div class="modal-dialog">\n  <div class="modal-content">\n    <div class="modal-header">\n      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>\n      <h4 class="modal-title">Add a Widget</h4>\n      Select a widget below to add to the current dashboard.\n    </div>\n    <div class="modal-body">\n      <div id=\'widget_selections\'>\n        <a class=\'widget_select\' id=\'default\' href="#"><i class="fa fa-cubes"></i> Default Widget</a>\n        <a class=\'widget_select\' id=\'url\' href="#"><i class="fa fa-cloud"></i> URL Widget</a>\n        <a class=\'widget_select\' id=\'gate\' href="#"><i class="fa fa-plane"></i> Gate Widget</a>\n      </div>\n    </div>\n    <div class="modal-footer">\n      <button type="button" id=\'modal_cancel\' class="btn btn-outline pull-left" data-dismiss="modal">CANCEL</button>\n    </div>\n  </div><!-- /.modal-content -->\n</div><!-- /.modal-dialog -->\n'));
     
     }).call(this);
     
@@ -920,6 +916,164 @@ window.JST["login"] = function(__obj) {
   })());
 };
 
+if (!window.JST) {
+  window.JST = {};
+}
+window.JST["widgets/gate_widget"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div class="box-header with-border">\n  <h3 class="box-title"><i class="fa fa-cube"></i> '));
+    
+      _print(_safe(this.title));
+    
+      _print(_safe('</h3>\n</div><!-- /.box-header -->\n<div class="box-body" style="display: block;"></div><!-- /.box-body -->\n'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
+window.JST["widgets/url_widget"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <iframe id=\'iframe\' src=""></iframe>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+    
+      _print(_safe(this.formGroup({
+        id: 'title',
+        type: 'text',
+        placeholder: 'Widget Title',
+        value: this.settings.name
+      })));
+    
+      _print(_safe('\n    '));
+    
+      _print(_safe(this.formGroup({
+        id: 'url',
+        type: 'text',
+        feedback: 'link',
+        placeholder: 'URL',
+        value: this.settings.url
+      })));
+    
+      _print(_safe('  \n  </div><!-- /.box-body -->\n</div><!-- /.box-body -->\n'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
+window.JST["widgets/widget"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  Widget Body\n</div><!-- /.box-body -->\n'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
 ;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var AccountCollection, AdminLTE_lib, BaselineApp, ClaimCollection, Extensions, IopsController, IopsLayout, Marionette, Router, Session, UIUtils;
 
@@ -987,8 +1141,18 @@ window.IOPS = (function() {
     };
     App.clock = setInterval(dtfn, 5000);
     dtfn();
+    App.vent.on("user:update", function() {
+      return App.store.set("user", App.current_user);
+    });
     return this.log('Done starting and running!');
   });
+  App.flush = function() {
+    App.store.remove("user");
+    App.store.remove("session");
+    return App.router.navigate('login', {
+      trigger: true
+    });
+  };
   return App;
 })();
 
@@ -2008,7 +2172,22 @@ Dashboard = (function(superClass) {
   function Dashboard(config) {
     Dashboard.__super__.constructor.call(this, config);
     this.widgets = new WidgetCollection(this.get('widgets'));
+    this.widgets.on("update", (function(_this) {
+      return function() {
+        return _this.set_widgets();
+      };
+    })(this));
+    this.widgets.on("change", (function(_this) {
+      return function() {
+        return _this.set_widgets();
+      };
+    })(this));
   }
+
+  Dashboard.prototype.set_widgets = function() {
+    this.set("widgets", this.widgets.toJSON());
+    return App.vent.trigger("user:update");
+  };
 
   return Dashboard;
 
@@ -2099,119 +2278,11 @@ Session = (function(superClass) {
           {
             id: 1,
             title: "Sample Dashboard",
-            widgets: [
-              {
-                id: 1,
-                title: "foo",
-                settings: {
-                  layout: {
-                    sx: 1,
-                    sy: 1,
-                    r: 1,
-                    c: 1
-                  }
-                }
-              }, {
-                id: 2,
-                title: "bar",
-                settings: {
-                  layout: {
-                    sx: 1,
-                    sy: 1,
-                    r: 2,
-                    c: 1
-                  }
-                }
-              }, {
-                id: 3,
-                settings: {
-                  layout: {
-                    sx: 1,
-                    sy: 1,
-                    r: 3,
-                    c: 1
-                  }
-                }
-              }, {
-                id: 4,
-                settings: {
-                  layout: {
-                    sx: 2,
-                    sy: 1,
-                    r: 1,
-                    c: 2
-                  }
-                }
-              }, {
-                id: 5,
-                settings: {
-                  layout: {
-                    sx: 2,
-                    sy: 2,
-                    r: 2,
-                    c: 2
-                  }
-                }
-              }
-            ]
+            widgets: []
           }, {
             id: 2,
             title: "Another Dashboard",
-            widgets: [
-              {
-                id: 1,
-                title: "top",
-                settings: {
-                  layout: {
-                    sx: 1,
-                    sy: 1,
-                    r: 1,
-                    c: 2
-                  }
-                }
-              }, {
-                id: 2,
-                title: "bottom",
-                settings: {
-                  layout: {
-                    sx: 1,
-                    sy: 1,
-                    r: 2,
-                    c: 2
-                  }
-                }
-              }, {
-                id: 3,
-                settings: {
-                  layout: {
-                    sx: 1,
-                    sy: 1,
-                    r: 3,
-                    c: 2
-                  }
-                }
-              }, {
-                id: 4,
-                settings: {
-                  layout: {
-                    sx: 2,
-                    sy: 1,
-                    r: 2,
-                    c: 1
-                  }
-                }
-              }, {
-                id: 5,
-                settings: {
-                  layout: {
-                    sx: 2,
-                    sy: 2,
-                    r: 1,
-                    c: 1
-                  }
-                }
-              }
-            ]
+            widgets: []
           }
         ]
       };
@@ -2261,9 +2332,11 @@ Session = (function(superClass) {
   };
 
   Session.restore = function() {
-    var s;
+    var s, u;
     s = App.store.get('session');
+    u = Session.get_dummy_user();
     if (s != null) {
+      s.user = u;
       this.create(s);
     }
     return true;
@@ -2371,6 +2444,16 @@ User = (function(superClass) {
   function User(config) {
     User.__super__.constructor.call(this, config);
     this.dashboards = new DashboardCollection(this.get('dashboards'));
+    this.dashboards.on("change", (function(_this) {
+      return function() {
+        return _this.set("dashboards", _this.dashboards.toJSON());
+      };
+    })(this));
+    this.dashboards.on("update", (function(_this) {
+      return function() {
+        return _this.set("dashboards", _this.dashboards.toJSON());
+      };
+    })(this));
   }
 
   return User;
@@ -2587,7 +2670,10 @@ DashboardContentView = (function(superClass) {
 
   DashboardContentView.prototype.onShow = function() {
     if (this.center_view != null) {
-      return this.center.show(this.center_view);
+      this.center.show(this.center_view);
+      return App.currentView = this.center_view;
+    } else {
+      return App.currentView = null;
     }
   };
 
@@ -2933,7 +3019,7 @@ DashboardToolView = (function(superClass) {
 module.exports = DashboardToolView;
 
 },{}],30:[function(require,module,exports){
-var GateWidgetView, Marionette, Widget, WidgetLayout, WidgetView,
+var GateWidgetView, Marionette, UrlWidgetView, Widget, WidgetLayout, WidgetModalView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2942,64 +3028,89 @@ Marionette = require('marionette');
 
 Widget = require('../../models/widget');
 
-WidgetView = require('./widget_view');
+WidgetView = require('../widgets/widget_view');
 
 GateWidgetView = require('../widgets/gate_widget_view');
+
+UrlWidgetView = require('../widgets/url_widget_view');
+
+WidgetModalView = require('./widget_modal');
 
 WidgetLayout = (function(superClass) {
   extend(WidgetLayout, superClass);
 
   function WidgetLayout() {
-    this.onShow = bind(this.onShow, this);
-    this.draw_widgets = bind(this.draw_widgets, this);
     this.adjust_widgets = bind(this.adjust_widgets, this);
-    this.initialize = bind(this.initialize, this);
     return WidgetLayout.__super__.constructor.apply(this, arguments);
   }
 
   WidgetLayout.prototype.template = "dashboard/widget_layout";
 
-  WidgetLayout.prototype.className = 'gridster widget-container';
+  WidgetLayout.prototype.ui = {
+    wgrid: "ul.gridster"
+  };
 
-  WidgetLayout.prototype.tagName = 'ul';
+  WidgetLayout.prototype.events = {
+    "click #add_widget": "add_widget"
+  };
 
-  WidgetLayout.prototype.initialize = function(a, b, c) {
-    return this.model.widgets.on("update", (function(_this) {
-      return function(coll, delta) {
-        return _this.draw_widgets();
-      };
-    })(this));
+  WidgetLayout.prototype.insert_widget = function(type) {
+    var id;
+    id = this.model.widgets.length + 1;
+    this.model.widgets.add({
+      id: id,
+      type: type,
+      settings: {
+        layout: {
+          r: 1,
+          c: 1,
+          sx: 1,
+          sy: 1
+        }
+      },
+      config: true
+    });
+    return this.draw_widgets();
+  };
+
+  WidgetLayout.prototype.add_widget = function(e) {
+    var m;
+    e.preventDefault();
+    m = new Backbone.Model();
+    m.view = this;
+    this.wmv = new WidgetModalView({
+      model: m
+    });
+    return App.layout.modal_region.show(this.wmv);
   };
 
   WidgetLayout.prototype.adjust_widgets = function(e, ui) {
-    var arr, i, idx, len, ref, results, wid, wm;
+    var i, idx, len, ref, wid, wm;
     wid = $(e.target).closest('li.widget').data('id');
-    arr = [];
     ref = this.model.widgets.models;
-    results = [];
     for (idx = i = 0, len = ref.length; i < len; idx = ++i) {
       wm = ref[idx];
-      results.push(this.$('li.widget').each(function() {
-        var id, s, w;
+      this.$('ul.gridster li').each(function() {
+        var id, layout, s;
         id = $(this).data('id');
-        w = {
-          r: $(this).data('row'),
-          c: $(this).data('col'),
-          sx: $(this).data('sizex'),
-          sy: $(this).data('sizey')
-        };
         if (id === wm.id) {
           s = wm.get("settings");
-          s.layout = w;
+          layout = {
+            r: $(this).attr('data-row'),
+            c: $(this).attr('data-col'),
+            sx: $(this).attr('data-sizex'),
+            sy: $(this).attr('data-sizey')
+          };
+          s.layout = layout;
           return wm.set("settings", s);
         }
-      }));
+      });
     }
-    return results;
+    return App.vent.trigger("user:update");
   };
 
   WidgetLayout.prototype.set_gridster = function() {
-    this.grid = $(this.el).gridster({
+    this.grid = $(this.ui.wgrid).gridster({
       resize: {
         enabled: true,
         stop: this.adjust_widgets
@@ -3015,45 +3126,66 @@ WidgetLayout = (function(superClass) {
   };
 
   WidgetLayout.prototype.draw_widgets = function() {
-    var i, idx, len, lo, new_region, r, ref, region, results, s, w, wli, wv;
-    if (this.grid == null) {
-      this.set_gridster();
-    }
+    var i, idx, len, lo, new_region, r, ref, region, s, tpe, w, wli, wv;
+    this.set_gridster();
     ref = this.model.widgets.models;
-    results = [];
     for (idx = i = 0, len = ref.length; i < len; idx = ++i) {
       w = ref[idx];
       region = "widget_" + w.id;
       r = this.getRegion(region);
-      if ((r == null) || (r.currentView == null)) {
-        new_region = this.addRegion(region, "li#" + region);
-        wli = $("<li id='" + region + "' class='widget'></li>");
-        s = w.get('settings');
-        lo = (s != null) && (s.layout != null) ? s.layout : null;
-        wli.attr({
-          'data-id': w.id
-        });
-        $(this.el).append(wli);
-        if ((w.get('type') != null) && w.get('type') === 'gate') {
+      if ((r != null) && (r.currentView != null)) {
+        continue;
+      }
+      wli = $("<li id='" + region + "' class='widget'></li>");
+      s = w.get('settings');
+      lo = (s != null) && (s.layout != null) ? s.layout : null;
+      wli.attr({
+        'data-id': w.id,
+        'data-row': s.layout.r,
+        'data-column': s.layout.c,
+        'data-sizex': s.layout.sx,
+        'data-sizey': s.layout.sy
+      });
+      $(this.ui.wgrid).append(wli);
+      tpe = w.get('type') != null ? w.get('type') : 'default';
+      switch (tpe) {
+        case 'gate':
           wv = new GateWidgetView({
             model: w
           });
-        } else {
+          break;
+        case 'url':
+          wv = new UrlWidgetView({
+            model: w
+          });
+          break;
+        default:
           wv = new WidgetView({
             model: w
           });
-        }
-        new_region.show(wv);
-        results.push(this.grid.add_widget(wli, lo.sx, lo.sy, lo.c, lo.r));
-      } else {
-        results.push(void 0);
       }
+      new_region = this.addRegion(region, "li#" + region);
+      new_region.on("show", (function(_this) {
+        return function() {
+          return _this.grid.add_widget(wli, lo.sx, lo.sy, lo.c, lo.r);
+        };
+      })(this));
+      new_region.show(wv);
     }
-    return results;
+    return this.set_gridster();
   };
 
-  WidgetLayout.prototype.onShow = function() {
-    return this.draw_widgets();
+  WidgetLayout.prototype.onRender = function() {
+    this.draw_widgets();
+    this.model.widgets.on("remove", (function(_this) {
+      return function(w, b) {
+        var cid, rg;
+        cid = _this.cid;
+        rg = "widget_" + w.id;
+        return App.currentView.grid.remove_widget($("li#" + rg));
+      };
+    })(this));
+    return App.currentView = this;
   };
 
   return WidgetLayout;
@@ -3062,34 +3194,65 @@ WidgetLayout = (function(superClass) {
 
 module.exports = WidgetLayout;
 
-},{"../../models/widget":20,"../widgets/gate_widget_view":41,"./widget_view":31}],31:[function(require,module,exports){
-var Marionette, WidgetView,
+},{"../../models/widget":20,"../widgets/gate_widget_view":41,"../widgets/url_widget_view":42,"../widgets/widget_view":43,"./widget_modal":31}],31:[function(require,module,exports){
+var Marionette, WidgetModalView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
 Marionette = require('marionette');
 
-WidgetView = (function(superClass) {
-  extend(WidgetView, superClass);
+WidgetModalView = (function(superClass) {
+  extend(WidgetModalView, superClass);
 
-  function WidgetView() {
-    return WidgetView.__super__.constructor.apply(this, arguments);
+  function WidgetModalView() {
+    return WidgetModalView.__super__.constructor.apply(this, arguments);
   }
 
-  WidgetView.prototype.template = "dashboard/widget";
+  WidgetModalView.prototype.template = 'dashboard/widget_modal';
 
-  WidgetView.prototype.className = 'widget-outer box box-primary';
+  WidgetModalView.prototype.className = 'modal modal-primary';
 
-  WidgetView.prototype.ui = {
-    header: '.header',
-    body: '.body'
+  WidgetModalView.prototype.id = 'app_modal';
+
+  WidgetModalView.prototype.ui = {
+    title: '.modal-title',
+    cancel: '#modal_cancel',
+    save: '#modal_save',
+    body: '.modal-body'
   };
 
-  return WidgetView;
+  WidgetModalView.prototype.events = {
+    'click #widget_selections>a.widget_select': "select"
+  };
+
+  WidgetModalView.prototype.select = function(e) {
+    var sel, wid;
+    e.preventDefault();
+    sel = $(e.target);
+    wid = sel.attr("id");
+    if ((this.model != null) && (this.model.view != null)) {
+      this.model.view.insert_widget(wid);
+    }
+    return $('#app_modal').modal('hide');
+  };
+
+  WidgetModalView.prototype.onShow = function() {
+    this.m = $('#app_modal').modal();
+    return this.m.on("hidden.bs.modal", (function(_this) {
+      return function() {
+        if ((_this.model != null) && (_this.model.on_cancel != null)) {
+          _this.model.on_cancel();
+        }
+        return App.layout.modal_region.empty();
+      };
+    })(this));
+  };
+
+  return WidgetModalView;
 
 })(Marionette.ItemView);
 
-module.exports = WidgetView;
+module.exports = WidgetModalView;
 
 },{}],32:[function(require,module,exports){
 var Account, AccountView, Marionette, SiteView,
@@ -3742,7 +3905,7 @@ var GateWidgetView, Marionette, WidgetView,
 
 Marionette = require('marionette');
 
-WidgetView = require('../dashboard/widget_view');
+WidgetView = require('./widget_view');
 
 GateWidgetView = (function(superClass) {
   extend(GateWidgetView, superClass);
@@ -3766,5 +3929,130 @@ GateWidgetView = (function(superClass) {
 
 module.exports = GateWidgetView;
 
-},{"../dashboard/widget_view":31}]},{},[1])
+},{"./widget_view":43}],42:[function(require,module,exports){
+var Marionette, UrlWidgetView, WidgetView,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+WidgetView = require('./widget_view');
+
+UrlWidgetView = (function(superClass) {
+  extend(UrlWidgetView, superClass);
+
+  function UrlWidgetView() {
+    this.set_model = bind(this.set_model, this);
+    return UrlWidgetView.__super__.constructor.apply(this, arguments);
+  }
+
+  UrlWidgetView.prototype.template = "widgets/url_widget";
+
+  UrlWidgetView.prototype.className = 'widget-outer box box-primary';
+
+  UrlWidgetView.prototype.ui = {
+    header: '.header',
+    body: '.body',
+    content: '.content',
+    settings: '.settings',
+    iframe: 'iframe#iframe',
+    title: 'input#title',
+    url: 'input#url',
+    wtitle: "h3.box-title"
+  };
+
+  UrlWidgetView.prototype.modelEvents = {
+    "change": "update"
+  };
+
+  UrlWidgetView.prototype.toggle_settings = function(e) {
+    e.preventDefault();
+    this.settings = !this.settings;
+    this.ui.iframe.toggle(!this.settings);
+    return this.ui.settings.toggle(this.settings);
+  };
+
+  UrlWidgetView.prototype.update = function() {
+    var s;
+    s = this.model.get("settings");
+    this.ui.iframe.attr("src", s.url);
+    return this.ui.wtitle.html("<i class='fa fa-link'></i> " + s.name);
+  };
+
+  UrlWidgetView.prototype.set_model = function() {
+    var s, url;
+    s = _.clone(this.model.get("settings"));
+    url = this.ui.url.val().trim();
+    if (url.indexOf("http://") === -1 || url.indexOf("https://") === -1) {
+      url = "http://" + url;
+    }
+    s.url = url;
+    s.name = this.ui.title.val();
+    return this.model.set("settings", s);
+  };
+
+  UrlWidgetView.prototype.onShow = function() {
+    this.settings = false;
+    this.ui.title.on("change", (function(_this) {
+      return function() {
+        return _this.set_model();
+      };
+    })(this));
+    this.ui.url.on("change", (function(_this) {
+      return function() {
+        return _this.set_model();
+      };
+    })(this));
+    return this.update();
+  };
+
+  return UrlWidgetView;
+
+})(WidgetView);
+
+module.exports = UrlWidgetView;
+
+},{"./widget_view":43}],43:[function(require,module,exports){
+var Marionette, WidgetView,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+WidgetView = (function(superClass) {
+  extend(WidgetView, superClass);
+
+  function WidgetView() {
+    return WidgetView.__super__.constructor.apply(this, arguments);
+  }
+
+  WidgetView.prototype.template = "widgets/widget";
+
+  WidgetView.prototype.className = 'widget-outer box box-primary';
+
+  WidgetView.prototype.ui = {
+    header: '.header',
+    body: '.body'
+  };
+
+  WidgetView.prototype.events = {
+    "click #show_settings": "toggle_settings",
+    "click #remove": "remove_widget"
+  };
+
+  WidgetView.prototype.remove_widget = function(e) {
+    if (e != null) {
+      e.preventDefault();
+      return this.model.collection.remove(this.model);
+    }
+  };
+
+  return WidgetView;
+
+})(Marionette.ItemView);
+
+module.exports = WidgetView;
+
+},{}]},{},[1])
 ;

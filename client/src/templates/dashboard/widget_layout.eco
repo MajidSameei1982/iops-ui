@@ -1,1 +1,2 @@
-<!-- placeholder -->
+<div><a id="add_widget" href="#"><i class='fa fa-plus-square'></i> Add New Widget</a></div>
+<ul class='gridster widget-container'></ul>

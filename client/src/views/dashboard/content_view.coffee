@@ -8,7 +8,11 @@ class DashboardContentView extends Marionette.LayoutView
   	center: '#center-region'
 
   onShow: ()->
-    if @center_view? then @center.show(@center_view)    
+    if @center_view?
+      @center.show(@center_view)
+      App.currentView = @center_view
+    else
+      App.currentView = null
 
   onDomRefresh: ()->
     # set page title/subtitle

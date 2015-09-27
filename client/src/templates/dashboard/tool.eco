@@ -1,5 +1,5 @@
 <!-- sidebar -->
-<section class="sidebar">
+<section class="sidebar" tabindex="-1">
   <!-- Sidebar Menu -->
   <ul class="sidebar-menu" id='dashboard-list'>
     <li class="header">iOPS Admin</li>

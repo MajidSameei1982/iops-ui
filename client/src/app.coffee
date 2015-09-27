@@ -63,8 +63,17 @@ window.IOPS = do()->
     App.clock = setInterval(dtfn, 5000)
     dtfn()
 
+    # REMOVE WHEN API IS CONNECTED
+    App.vent.on "user:update", ()->
+      App.store.set("user", App.current_user)
+
     # new up and views and render for base app here...
     @log('Done starting and running!')
+
+  App.flush = ()->
+    App.store.remove("user")
+    App.store.remove("session")
+    App.router.navigate('login', {trigger:true})
 
   App
 

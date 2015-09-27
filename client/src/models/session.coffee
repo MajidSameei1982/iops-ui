@@ -69,55 +69,11 @@ class Session extends BaseModel
         dashboards: [ 
           id: 1
           title: "Sample Dashboard"
-          widgets: [
-            id:1
-            title:"foo"
-            settings:
-              layout: {sx: 1, sy: 1, r: 1, c: 1}
-          ,
-            id:2
-            title:"bar"
-            settings:
-              layout: {sx: 1, sy: 1, r: 2, c: 1}
-          ,
-            id:3
-            settings:
-              layout: {sx: 1, sy: 1, r: 3, c: 1}
-          ,
-            id:4
-            settings:
-              layout: {sx: 2, sy: 1, r: 1, c: 2}
-          ,
-            id:5
-            settings:
-              layout: {sx: 2, sy: 2, r: 2, c: 2}
-          ]
+          widgets: []
         ,
           id: 2
           title: "Another Dashboard"
-          widgets : [
-            id:1
-            title:"top"
-            settings:
-              layout: {sx: 1, sy: 1, r: 1, c: 2}
-          ,
-            id:2
-            title:"bottom"
-            settings:
-              layout: {sx: 1, sy: 1, r: 2, c: 2}
-          ,
-            id:3
-            settings:
-              layout: {sx: 1, sy: 1, r: 3, c: 2}
-          ,
-            id:4
-            settings:
-              layout: {sx: 2, sy: 1, r: 2, c: 1}
-          ,
-            id:5
-            settings:
-              layout: {sx: 2, sy: 2, r: 1, c: 1}
-          ]
+          widgets: []
         ]
       App.store.set('user', user)
     user
@@ -157,9 +113,12 @@ class Session extends BaseModel
   
   # pull a session from local storage
   @restore: ()->
-  	s = App.store.get('session')
-  	if s? then @create(s)
-  	true
+    s = App.store.get('session')
+    u = Session.get_dummy_user()
+    if s?
+      s.user = u
+      @create(s)
+    true
 
   @create: (config)->
     if App.session? then App.session.clear()

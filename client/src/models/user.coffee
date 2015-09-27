@@ -18,6 +18,10 @@ class User extends BaseModel
   constructor: (config)->
     super(config)
     @dashboards = new DashboardCollection(@get('dashboards'))
+    @dashboards.on "change", ()=>
+        @set("dashboards", @dashboards.toJSON())
+    @dashboards.on "update", ()=>
+        @set("dashboards", @dashboards.toJSON())
 # ----------------------------------
 
 module.exports = User
