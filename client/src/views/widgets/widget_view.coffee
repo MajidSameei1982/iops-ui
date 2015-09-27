@@ -5,9 +5,6 @@ Marionette = require('marionette')
 class WidgetView extends Marionette.ItemView
   template:		"widgets/widget"
   className: 'widget-outer box box-primary'
-  ui:
-    header: '.header'
-    body: '.body'
 
   events:
     "click #show_settings" : "toggle_settings"
@@ -20,9 +17,8 @@ class WidgetView extends Marionette.ItemView
 
   toggle_settings: (e)->
     if e? then e.preventDefault()
-    @settings = !@settings_visible
-    @ui.iframe.toggle(!@settings_visible)
-    @ui.settings.toggle(@settings_visible)
+    @settings_visible = !@settings_visible
+    @$(".settings").toggle(@settings_visible)
 
   remove_widget: (e)->
     if e?

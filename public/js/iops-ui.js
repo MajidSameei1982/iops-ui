@@ -3957,10 +3957,6 @@ UrlWidgetView = (function(superClass) {
   UrlWidgetView.prototype.className = 'widget-outer box box-primary';
 
   UrlWidgetView.prototype.ui = {
-    header: '.header',
-    body: '.body',
-    content: '.content',
-    settings: '.settings',
     iframe: 'iframe#iframe',
     title: 'input#title',
     url: 'input#url',
@@ -3988,6 +3984,11 @@ UrlWidgetView = (function(superClass) {
     s.url = url;
     s.name = this.ui.title.val();
     return this.model.set("settings", s);
+  };
+
+  UrlWidgetView.prototype.toggle_settings = function(e) {
+    UrlWidgetView.__super__.toggle_settings.call(this, e);
+    return this.ui.iframe.toggle(!this.settings_visible);
   };
 
   UrlWidgetView.prototype.onShow = function() {
@@ -4029,11 +4030,6 @@ WidgetView = (function(superClass) {
 
   WidgetView.prototype.className = 'widget-outer box box-primary';
 
-  WidgetView.prototype.ui = {
-    header: '.header',
-    body: '.body'
-  };
-
   WidgetView.prototype.events = {
     "click #show_settings": "toggle_settings",
     "click #remove": "remove_widget"
@@ -4049,9 +4045,8 @@ WidgetView = (function(superClass) {
     if (e != null) {
       e.preventDefault();
     }
-    this.settings = !this.settings_visible;
-    this.ui.iframe.toggle(!this.settings_visible);
-    return this.ui.settings.toggle(this.settings_visible);
+    this.settings_visible = !this.settings_visible;
+    return this.$(".settings").toggle(this.settings_visible);
   };
 
   WidgetView.prototype.remove_widget = function(e) {

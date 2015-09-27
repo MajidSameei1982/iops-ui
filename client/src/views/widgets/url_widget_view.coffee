@@ -7,10 +7,6 @@ class UrlWidgetView extends WidgetView
   template:   "widgets/url_widget"
   className: 'widget-outer box box-primary'
   ui:
-    header: '.header'
-    body: '.body'
-    content: '.content'
-    settings: '.settings'
     iframe: 'iframe#iframe'
     title: 'input#title'
     url: 'input#url'
@@ -32,6 +28,10 @@ class UrlWidgetView extends WidgetView
     s.url = url
     s.name = @ui.title.val()
     @model.set("settings", s)
+
+  toggle_settings: (e)->
+    super(e)
+    @ui.iframe.toggle(!@settings_visible)
 
   onShow: ()->
     @ui.title.on "change", ()=>@set_model()

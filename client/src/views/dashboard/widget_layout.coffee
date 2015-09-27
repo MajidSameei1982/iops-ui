@@ -101,7 +101,6 @@ class WidgetLayout extends Marionette.LayoutView
         @grid.add_widget(wli, lo.sx, lo.sy, lo.c, lo.r)
 
       r.show(wv);
-    #@set_gridster()
       
   onShow: ()->
     @draw_widgets()
