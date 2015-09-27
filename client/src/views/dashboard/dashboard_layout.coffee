@@ -18,6 +18,7 @@ class DashboardLayout extends Marionette.LayoutView
     content: "#content-region"
 
   show_content: ({title, subtitle, view, icon})->
+    App.currentView = view
     contentview = new DashboardContentView()
     contentview.title = title
     contentview.subtitle = subtitle
@@ -28,11 +29,12 @@ class DashboardLayout extends Marionette.LayoutView
     @
 
   show_widgets: (dash)->
+    v = new WidgetLayout
+      model: dash
     @show_content
       title: dash.get('title')
       subtitle: ''
-      view: new WidgetLayout
-        model: dash
+      view: v
 
   onShow: () ->
     headerview = new DashboardHeaderView

@@ -1,4 +1,10 @@
 <div class="box-header with-border">
-  <h3 class="box-title"><i class="fa fa-cube"></i> <%- @title%></h3>
+  <div class='pull-left'><h3 class="box-title"></h3></div>
+  <div class="pull-right controls">
+    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> 
+    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>
+  </div>
 </div><!-- /.box-header -->
-<div class="box-body" style="display: block;"></div><!-- /.box-body -->
+<div class="box-body content">
+  GATE Widget Body
+</div><!-- /.box-body -->

@@ -68,13 +68,16 @@ class WidgetLayout extends Marionette.LayoutView
   draw_widgets: ()->
     #if !@grid? then @set_gridster()
     @set_gridster()
+    
     for w, idx in @model.widgets.models
-      region = "widget_#{w.id}"
-      r = @getRegion(region)
-      if r? && r.currentView?
-        @removeRegion(region)
+      rg = "widget_#{w.id}"
+      r = @getRegion(rg)
+      if (r?) then continue
 
-      wli = $("<li id='#{region}' class='widget'></li>")
+      wli = $("li##{rg}")
+      if !wli? || wli.length == 0
+        wli = $("<li id='#{rg}' class='widget'></li>")
+        $(@ui.wgrid).append(wli)
       s = w.get('settings')
       lo = if s? && s.layout? then s.layout else null
       wli.attr
@@ -82,8 +85,7 @@ class WidgetLayout extends Marionette.LayoutView
         'data-row' : s.layout.r
         'data-column' : s.layout.c
         'data-sizex' : s.layout.sx
-        'data-sizey' : s.layout.sy
-      $(@ui.wgrid).append(wli)
+        'data-sizey' : s.layout.sy        
       
       tpe = if w.get('type')? then w.get('type') else 'default'
       
@@ -93,21 +95,21 @@ class WidgetLayout extends Marionette.LayoutView
         else wv = new WidgetView({model: w})
       
       # create the region if it's a new widget
-      new_region = @addRegion(region, "li##{region}")
-      new_region.on "show", ()=>
-        # add it to gridster
-        @grid.add_widget(wli, lo.sx, lo.sy, lo.c, lo.r)
-      
+      r = @addRegion(rg, "li##{rg}")
       # show the widget view
-      new_region.show(wv);
-    @set_gridster()
+      r.on "show", ()=>
+        @grid.add_widget(wli, lo.sx, lo.sy, lo.c, lo.r)
+
+      r.show(wv);
+    #@set_gridster()
       
-  onRender: ()->
+  onShow: ()->
     @draw_widgets()
     @model.widgets.on "remove", (w, b)=>
       cid = @.cid
       rg = "widget_#{w.id}"
-      App.currentView.grid.remove_widget($("li##{rg}"))
+      App.currentView.grid.remove_widget $("li##{rg}"), ()=>
+        App.currentView.removeRegion(rg)
     App.currentView = @
       
   	#App.AdminLTE_lib.reset()

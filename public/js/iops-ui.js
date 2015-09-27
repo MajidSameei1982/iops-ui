@@ -940,11 +940,7 @@ window.JST["widgets/gate_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <h3 class="box-title"><i class="fa fa-cube"></i> '));
-    
-      _print(_safe(this.title));
-    
-      _print(_safe('</h3>\n</div><!-- /.box-header -->\n<div class="box-body" style="display: block;"></div><!-- /.box-body -->\n'));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  GATE Widget Body\n</div><!-- /.box-body -->\n'));
     
     }).call(this);
     
@@ -2733,6 +2729,7 @@ DashboardLayout = (function(superClass) {
   DashboardLayout.prototype.show_content = function(arg) {
     var contentview, icon, subtitle, title, view;
     title = arg.title, subtitle = arg.subtitle, view = arg.view, icon = arg.icon;
+    App.currentView = view;
     contentview = new DashboardContentView();
     contentview.title = title;
     contentview.subtitle = subtitle;
@@ -2743,12 +2740,14 @@ DashboardLayout = (function(superClass) {
   };
 
   DashboardLayout.prototype.show_widgets = function(dash) {
+    var v;
+    v = new WidgetLayout({
+      model: dash
+    });
     return this.show_content({
       title: dash.get('title'),
       subtitle: '',
-      view: new WidgetLayout({
-        model: dash
-      })
+      view: v
     });
   };
 
@@ -3126,17 +3125,22 @@ WidgetLayout = (function(superClass) {
   };
 
   WidgetLayout.prototype.draw_widgets = function() {
-    var i, idx, len, lo, new_region, r, ref, region, s, tpe, w, wli, wv;
+    var i, idx, len, lo, r, ref, results, rg, s, tpe, w, wli, wv;
     this.set_gridster();
     ref = this.model.widgets.models;
+    results = [];
     for (idx = i = 0, len = ref.length; i < len; idx = ++i) {
       w = ref[idx];
-      region = "widget_" + w.id;
-      r = this.getRegion(region);
-      if ((r != null) && (r.currentView != null)) {
-        this.removeRegion(region);
+      rg = "widget_" + w.id;
+      r = this.getRegion(rg);
+      if ((r != null)) {
+        continue;
       }
-      wli = $("<li id='" + region + "' class='widget'></li>");
+      wli = $("li#" + rg);
+      if ((wli == null) || wli.length === 0) {
+        wli = $("<li id='" + rg + "' class='widget'></li>");
+        $(this.ui.wgrid).append(wli);
+      }
       s = w.get('settings');
       lo = (s != null) && (s.layout != null) ? s.layout : null;
       wli.attr({
@@ -3146,7 +3150,6 @@ WidgetLayout = (function(superClass) {
         'data-sizex': s.layout.sx,
         'data-sizey': s.layout.sy
       });
-      $(this.ui.wgrid).append(wli);
       tpe = w.get('type') != null ? w.get('type') : 'default';
       switch (tpe) {
         case 'gate':
@@ -3164,25 +3167,27 @@ WidgetLayout = (function(superClass) {
             model: w
           });
       }
-      new_region = this.addRegion(region, "li#" + region);
-      new_region.on("show", (function(_this) {
+      r = this.addRegion(rg, "li#" + rg);
+      r.on("show", (function(_this) {
         return function() {
           return _this.grid.add_widget(wli, lo.sx, lo.sy, lo.c, lo.r);
         };
       })(this));
-      new_region.show(wv);
+      results.push(r.show(wv));
     }
-    return this.set_gridster();
+    return results;
   };
 
-  WidgetLayout.prototype.onRender = function() {
+  WidgetLayout.prototype.onShow = function() {
     this.draw_widgets();
     this.model.widgets.on("remove", (function(_this) {
       return function(w, b) {
         var cid, rg;
         cid = _this.cid;
         rg = "widget_" + w.id;
-        return App.currentView.grid.remove_widget($("li#" + rg));
+        return App.currentView.grid.remove_widget($("li#" + rg), function() {
+          return App.currentView.removeRegion(rg);
+        });
       };
     })(this));
     return App.currentView = this;
@@ -3966,15 +3971,6 @@ UrlWidgetView = (function(superClass) {
     "change": "update"
   };
 
-  UrlWidgetView.prototype.toggle_settings = function(e) {
-    if (e != null) {
-      e.preventDefault();
-    }
-    this.settings = !this.settings;
-    this.ui.iframe.toggle(!this.settings);
-    return this.ui.settings.toggle(this.settings);
-  };
-
   UrlWidgetView.prototype.update = function() {
     var s;
     s = this.model.get("settings");
@@ -3996,7 +3992,6 @@ UrlWidgetView = (function(superClass) {
 
   UrlWidgetView.prototype.onShow = function() {
     var url;
-    this.settings = false;
     this.ui.title.on("change", (function(_this) {
       return function() {
         return _this.set_model();
@@ -4030,10 +4025,6 @@ Marionette = require('marionette');
 WidgetView = (function(superClass) {
   extend(WidgetView, superClass);
 
-  function WidgetView() {
-    return WidgetView.__super__.constructor.apply(this, arguments);
-  }
-
   WidgetView.prototype.template = "widgets/widget";
 
   WidgetView.prototype.className = 'widget-outer box box-primary';
@@ -4046,6 +4037,21 @@ WidgetView = (function(superClass) {
   WidgetView.prototype.events = {
     "click #show_settings": "toggle_settings",
     "click #remove": "remove_widget"
+  };
+
+  function WidgetView(config) {
+    WidgetView.__super__.constructor.call(this, config);
+    this.settings_visible = false;
+    this;
+  }
+
+  WidgetView.prototype.toggle_settings = function(e) {
+    if (e != null) {
+      e.preventDefault();
+    }
+    this.settings = !this.settings_visible;
+    this.ui.iframe.toggle(!this.settings_visible);
+    return this.ui.settings.toggle(this.settings_visible);
   };
 
   WidgetView.prototype.remove_widget = function(e) {

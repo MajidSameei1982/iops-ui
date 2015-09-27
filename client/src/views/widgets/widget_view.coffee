@@ -13,6 +13,17 @@ class WidgetView extends Marionette.ItemView
     "click #show_settings" : "toggle_settings"
     "click #remove" : "remove_widget"
 
+  constructor: (config)->
+    super(config)
+    @settings_visible = false
+    @
+
+  toggle_settings: (e)->
+    if e? then e.preventDefault()
+    @settings = !@settings_visible
+    @ui.iframe.toggle(!@settings_visible)
+    @ui.settings.toggle(@settings_visible)
+
   remove_widget: (e)->
     if e?
       e.preventDefault()
