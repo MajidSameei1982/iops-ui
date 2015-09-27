@@ -71,7 +71,8 @@ class WidgetLayout extends Marionette.LayoutView
     for w, idx in @model.widgets.models
       region = "widget_#{w.id}"
       r = @getRegion(region)
-      continue if r? && r.currentView?
+      if r? && r.currentView?
+        @removeRegion(region)
 
       wli = $("<li id='#{region}' class='widget'></li>")
       s = w.get('settings')

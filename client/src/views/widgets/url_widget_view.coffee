@@ -20,7 +20,7 @@ class UrlWidgetView extends WidgetView
     "change" : "update"
 
   toggle_settings: (e)->
-    e.preventDefault()
+    if e? then e.preventDefault()
     @settings = !@settings
     @ui.iframe.toggle(!@settings)
     @ui.settings.toggle(@settings)
@@ -43,6 +43,9 @@ class UrlWidgetView extends WidgetView
     @settings = false
     @ui.title.on "change", ()=>@set_model()
     @ui.url.on "change", ()=>@set_model()
+    url = @model.get("settings").url
+    if !url? || url == ''
+      @toggle_settings()
     @update()
     
 # ----------------------------------

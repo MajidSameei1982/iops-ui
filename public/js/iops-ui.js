@@ -3134,7 +3134,7 @@ WidgetLayout = (function(superClass) {
       region = "widget_" + w.id;
       r = this.getRegion(region);
       if ((r != null) && (r.currentView != null)) {
-        continue;
+        this.removeRegion(region);
       }
       wli = $("<li id='" + region + "' class='widget'></li>");
       s = w.get('settings');
@@ -3967,7 +3967,9 @@ UrlWidgetView = (function(superClass) {
   };
 
   UrlWidgetView.prototype.toggle_settings = function(e) {
-    e.preventDefault();
+    if (e != null) {
+      e.preventDefault();
+    }
     this.settings = !this.settings;
     this.ui.iframe.toggle(!this.settings);
     return this.ui.settings.toggle(this.settings);
@@ -3993,6 +3995,7 @@ UrlWidgetView = (function(superClass) {
   };
 
   UrlWidgetView.prototype.onShow = function() {
+    var url;
     this.settings = false;
     this.ui.title.on("change", (function(_this) {
       return function() {
@@ -4004,6 +4007,10 @@ UrlWidgetView = (function(superClass) {
         return _this.set_model();
       };
     })(this));
+    url = this.model.get("settings").url;
+    if ((url == null) || url === '') {
+      this.toggle_settings();
+    }
     return this.update();
   };
 
