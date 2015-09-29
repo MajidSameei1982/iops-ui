@@ -15,6 +15,10 @@ class UrlWidgetView extends WidgetView
   modelEvents:
     "change" : "update"
 
+  @layout:
+    sx: 8
+    sy: 5
+
   update: ()->
     s = @model.get("settings")
     @ui.iframe.attr("src", s.url)
@@ -45,4 +49,5 @@ class UrlWidgetView extends WidgetView
     
 # ----------------------------------
 
+window.UrlWidgetView = UrlWidgetView
 module.exports = UrlWidgetView

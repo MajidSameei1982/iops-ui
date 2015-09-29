@@ -22,13 +22,16 @@ class WidgetLayout extends Marionette.LayoutView
       if m.id > id then id = m.id
     id = id+1
     lo = 
-      r:          1
-      c:          1
-      sx:         1
-      sy:         1
-    if type == 'alarm'
-      lo.sx = 2
-      lo.sy = 2
+      r:  1
+      c:  1
+      sx: 4
+      sy: 2
+    debugger
+    tc = if type == 'default' then '' else type.charAt(0).toUpperCase() + type.slice(1)
+    cls = window["#{tc}WidgetView"]
+    if cls
+      lo.sx = cls.layout.sx
+      lo.sy = cls.layout.sy
     w = @model.widgets.add
       id: id
       type: type
@@ -72,7 +75,7 @@ class WidgetLayout extends Marionette.LayoutView
   set_gridster: ()->
     return @grid if @grid?
     grid = @$('ul.gridster').gridster
-      widget_base_dimensions: [200, 120]
+      widget_base_dimensions: [50, 50]
       autogrow_cols: true
       resize:
         enabled: true

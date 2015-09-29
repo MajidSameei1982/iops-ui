@@ -12,6 +12,10 @@ class AlarmWidgetView extends WidgetView
     display: '.display'
     content: '.content'
 
+  @layout:
+    sx: 6
+    sy: 6
+
   # modelEvents:
   #   "change" : "update"
 
@@ -91,4 +95,5 @@ class AlarmWidgetView extends WidgetView
     
 # ----------------------------------
 
+window.AlarmWidgetView = AlarmWidgetView
 module.exports = AlarmWidgetView

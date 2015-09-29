@@ -3356,7 +3356,7 @@ WidgetLayout = (function(superClass) {
   };
 
   WidgetLayout.prototype.add_widget = function(type) {
-    var i, id, len, lo, m, ref, w, wli;
+    var cls, i, id, len, lo, m, ref, tc, w, wli;
     id = 0;
     ref = this.model.widgets.models;
     for (i = 0, len = ref.length; i < len; i++) {
@@ -3369,12 +3369,15 @@ WidgetLayout = (function(superClass) {
     lo = {
       r: 1,
       c: 1,
-      sx: 1,
-      sy: 1
+      sx: 4,
+      sy: 2
     };
-    if (type === 'alarm') {
-      lo.sx = 2;
-      lo.sy = 2;
+    debugger;
+    tc = type === 'default' ? '' : type.charAt(0).toUpperCase() + type.slice(1);
+    cls = window[tc + "WidgetView"];
+    if (cls) {
+      lo.sx = cls.layout.sx;
+      lo.sy = cls.layout.sy;
     }
     w = this.model.widgets.add({
       id: id,
@@ -3436,7 +3439,7 @@ WidgetLayout = (function(superClass) {
       return this.grid;
     }
     grid = this.$('ul.gridster').gridster({
-      widget_base_dimensions: [200, 120],
+      widget_base_dimensions: [50, 50],
       autogrow_cols: true,
       resize: {
         enabled: true,
@@ -4266,6 +4269,11 @@ AlarmWidgetView = (function(superClass) {
     content: '.content'
   };
 
+  AlarmWidgetView.layout = {
+    sx: 6,
+    sy: 6
+  };
+
   AlarmWidgetView.prototype.update = function() {
     var s;
     s = this.model.get("settings");
@@ -4346,6 +4354,8 @@ AlarmWidgetView = (function(superClass) {
 
 })(WidgetView);
 
+window.AlarmWidgetView = AlarmWidgetView;
+
 module.exports = AlarmWidgetView;
 
 },{"./widget_view":46}],43:[function(require,module,exports){
@@ -4379,6 +4389,11 @@ GateWidgetView = (function(superClass) {
     display: '.display',
     content: '.content',
     docked: '#docked'
+  };
+
+  GateWidgetView.layout = {
+    sx: 3,
+    sy: 2
   };
 
   GateWidgetView.prototype.modelEvents = {
@@ -4502,6 +4517,8 @@ GateWidgetView = (function(superClass) {
 
 })(WidgetView);
 
+window.GateWidgetView = GateWidgetView;
+
 module.exports = GateWidgetView;
 
 },{"./widget_view":46}],44:[function(require,module,exports){
@@ -4535,6 +4552,11 @@ UrlWidgetView = (function(superClass) {
 
   UrlWidgetView.prototype.modelEvents = {
     "change": "update"
+  };
+
+  UrlWidgetView.layout = {
+    sx: 8,
+    sy: 5
   };
 
   UrlWidgetView.prototype.update = function() {
@@ -4587,6 +4609,8 @@ UrlWidgetView = (function(superClass) {
 
 })(WidgetView);
 
+window.UrlWidgetView = UrlWidgetView;
+
 module.exports = UrlWidgetView;
 
 },{"./widget_view":46}],45:[function(require,module,exports){
@@ -4620,6 +4644,11 @@ WeatherWidgetView = (function(superClass) {
 
   WeatherWidgetView.prototype.modelEvents = {
     "change": "update"
+  };
+
+  WeatherWidgetView.layout = {
+    sx: 3,
+    sy: 4
   };
 
   WeatherWidgetView.prototype.update = function() {
@@ -4677,6 +4706,8 @@ WeatherWidgetView = (function(superClass) {
 
 })(WidgetView);
 
+window.WeatherWidgetView = WeatherWidgetView;
+
 module.exports = WeatherWidgetView;
 
 },{"./widget_view":46}],46:[function(require,module,exports){
@@ -4696,6 +4727,11 @@ WidgetView = (function(superClass) {
   WidgetView.prototype.events = {
     "click #show_settings": "toggle_settings",
     "click #remove": "remove_widget"
+  };
+
+  WidgetView.layout = {
+    sx: 4,
+    sy: 3
   };
 
   function WidgetView(config) {

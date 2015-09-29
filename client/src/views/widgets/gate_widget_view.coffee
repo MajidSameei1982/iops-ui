@@ -13,6 +13,10 @@ class GateWidgetView extends WidgetView
     content: '.content'
     docked: '#docked'
 
+  @layout:
+    sx: 3
+    sy: 2
+
   modelEvents:
     "change" : "update"
 
@@ -114,4 +118,5 @@ class GateWidgetView extends WidgetView
     
 # ----------------------------------
 
+window.GateWidgetView = GateWidgetView
 module.exports = GateWidgetView

@@ -10,6 +10,10 @@ class WidgetView extends Marionette.ItemView
     "click #show_settings" : "toggle_settings"
     "click #remove" : "remove_widget"
 
+  @layout:
+    sx: 4
+    sy: 3
+
   constructor: (config)->
     super(config)
     @settings_visible = false

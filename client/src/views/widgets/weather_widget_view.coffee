@@ -15,6 +15,10 @@ class WeatherWidgetView extends WidgetView
   modelEvents:
     "change" : "update"
 
+  @layout:
+    sx: 3
+    sy: 4
+
   update: ()->
     s = @model.get("settings")
     state = ""
@@ -56,4 +60,5 @@ class WeatherWidgetView extends WidgetView
     
 # ----------------------------------
 
+window.WeatherWidgetView = WeatherWidgetView
 module.exports = WeatherWidgetView
