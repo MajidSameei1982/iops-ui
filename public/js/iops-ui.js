@@ -394,7 +394,7 @@ window.JST["dashboard/widget_modal"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="modal-dialog">\n  <div class="modal-content">\n    <div class="modal-header">\n      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>\n      <h4 class="modal-title">Add a Widget</h4>\n      Select a widget below to add to the current dashboard.\n    </div>\n    <div class="modal-body">\n      <div id=\'widget_selections\'>\n        <a class=\'widget_select\' id=\'default\' href="#"><i class="fa fa-cubes"></i> Default Widget</a>\n        <a class=\'widget_select\' id=\'url\' href="#"><i class="fa fa-cloud"></i> URL Widget</a>\n        <a class=\'widget_select\' id=\'gate\' href="#"><i class="fa fa-plane"></i> Gate Widget</a>\n      </div>\n    </div>\n    <div class="modal-footer">\n      <button type="button" id=\'modal_cancel\' class="btn btn-outline pull-left" data-dismiss="modal">CANCEL</button>\n    </div>\n  </div><!-- /.modal-content -->\n</div><!-- /.modal-dialog -->\n'));
+      _print(_safe('<div class="modal-dialog">\n  <div class="modal-content">\n    <div class="modal-header">\n      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>\n      <h4 class="modal-title">Add a Widget</h4>\n      Select a widget below to add to the current dashboard.\n    </div>\n    <div class="modal-body">\n      <div id=\'widget_selections\'>\n        <a class=\'widget_select\' id=\'default\' href="#"><i class="fa fa-cubes"></i> Default Widget</a>\n        <a class=\'widget_select\' id=\'url\' href="#"><i class="fa fa-cloud"></i> URL Widget</a>\n        <a class=\'widget_select\' id=\'gate\' href="#"><i class="fa fa-plane"></i> Gate Widget</a>\n        <a class=\'widget_select\' id=\'alarm\' href="#"><i class="fa fa-bullhorn"></i> Alarm Widget</a>\n      </div>\n    </div>\n    <div class="modal-footer">\n      <button type="button" id=\'modal_cancel\' class="btn btn-outline pull-left" data-dismiss="modal">CANCEL</button>\n    </div>\n  </div><!-- /.modal-content -->\n</div><!-- /.modal-dialog -->\n'));
     
     }).call(this);
     
@@ -919,6 +919,51 @@ window.JST["login"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
+window.JST["widgets/alarm_widget"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-bullhorn"></i> <h3 class="box-title">Alarms</h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" id=\'content\'>\n  <div class="display contain">\n    \n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    \n  </div><!-- /.box-body -->\n</div><!-- /.box-body -->\n'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
 window.JST["widgets/gate_widget"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
@@ -940,7 +985,7 @@ window.JST["widgets/gate_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" id=\'content\'>\n  <div class="display">\n    <div id="gate_label"><h1><span id=\'txt\'></span> <span id="docked" style=\'display:none;\'><i class="fa fa-plane"></i></span></h1></div>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" id=\'content\'>\n  <div class="display">\n    <div id="gate_label"><h1><span id=\'txt\'></span> <span id="docked" style=\'display:none;\'><i class="fa fa-plane"></i></span></h1></div>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.formGroup({
         id: 'gate',
@@ -995,7 +1040,7 @@ window.JST["widgets/url_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <iframe id=\'iframe\' src=""></iframe>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-link"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <iframe id=\'iframe\' src=""></iframe>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.formGroup({
         id: 'title',
@@ -1141,6 +1186,12 @@ window.IOPS = (function() {
             abbrev: "CID",
             shortName: "Cedar Rapids",
             opc: 'http://opc.iopsnow.com:58725'
+          }, {
+            id: 2,
+            name: 'Open Automation Systems',
+            abbrev: "OAS",
+            shortName: "OPCSystems.NET",
+            opc: 'http://www.opcsystems.com:58725'
           }
         ]
       }
@@ -2617,6 +2668,30 @@ OPCManager = (function() {
     }
   };
 
+  OPCManager.add_alarm = function(conn, binding) {
+    var ab, c, exists, i, len, ref;
+    c = this.connections[conn];
+    if (c != null) {
+      c.toggle_refresh(false);
+      exists = false;
+      if (c.config.alarm_bindings == null) {
+        c.config.alarm_bindings = [];
+      }
+      ref = c.config.alarm_bindings;
+      for (i = 0, len = ref.length; i < len; i++) {
+        ab = ref[i];
+        if (ab.alarmid === binding.alarmid) {
+          exists = true;
+          ab = binding;
+        }
+      }
+      if (!exists) {
+        c.config.alarm_bindings.push(binding);
+      }
+      return c.init();
+    }
+  };
+
   OPCManager.add_ref = function(conn) {
     var c;
     c = this.refs[conn];
@@ -3178,7 +3253,7 @@ DashboardToolView = (function(superClass) {
 module.exports = DashboardToolView;
 
 },{}],31:[function(require,module,exports){
-var GateWidgetView, Marionette, UrlWidgetView, Widget, WidgetLayout, WidgetModalView, WidgetView,
+var AlarmWidgetView, GateWidgetView, Marionette, UrlWidgetView, Widget, WidgetLayout, WidgetModalView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -3190,6 +3265,8 @@ Widget = require('../../models/widget');
 WidgetView = require('../widgets/widget_view');
 
 GateWidgetView = require('../widgets/gate_widget_view');
+
+AlarmWidgetView = require('../widgets/alarm_widget_view');
 
 UrlWidgetView = require('../widgets/url_widget_view');
 
@@ -3258,6 +3335,7 @@ WidgetLayout = (function(superClass) {
 
   WidgetLayout.prototype.persist_widgets = function(e, ui) {
     var i, idx, len, ref, wid, wm;
+    App.log("persist_widgets");
     wid = $(e.target).closest('li.widget').data('id');
     ref = this.model.widgets.models;
     for (idx = i = 0, len = ref.length; i < len; idx = ++i) {
@@ -3266,7 +3344,7 @@ WidgetLayout = (function(superClass) {
         var id, layout, s;
         id = $(this).data('id');
         if (id === wm.id) {
-          s = wm.get("settings");
+          s = _.clone(wm.get("settings"));
           layout = {
             r: $(this).attr('data-row'),
             c: $(this).attr('data-col'),
@@ -3317,6 +3395,7 @@ WidgetLayout = (function(superClass) {
     s = w.get('settings');
     lo = (s != null) && (s.layout != null) ? s.layout : null;
     wli.attr({
+      'data-id': w.id,
       'data-row': s.layout.r,
       'data-col': s.layout.c,
       'data-sizex': s.layout.sx,
@@ -3332,6 +3411,11 @@ WidgetLayout = (function(superClass) {
         break;
       case 'url':
         wv = new UrlWidgetView({
+          model: w
+        });
+        break;
+      case 'alarm':
+        wv = new AlarmWidgetView({
           model: w
         });
         break;
@@ -3372,7 +3456,7 @@ WidgetLayout = (function(superClass) {
 
 module.exports = WidgetLayout;
 
-},{"../../models/widget":20,"../widgets/gate_widget_view":42,"../widgets/url_widget_view":43,"../widgets/widget_view":44,"./widget_modal":32}],32:[function(require,module,exports){
+},{"../../models/widget":20,"../widgets/alarm_widget_view":42,"../widgets/gate_widget_view":43,"../widgets/url_widget_view":44,"../widgets/widget_view":45,"./widget_modal":32}],32:[function(require,module,exports){
 var Marionette, WidgetModalView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4077,6 +4161,118 @@ LoginView = (function(superClass) {
 module.exports = LoginView;
 
 },{"../common/uiutils":6,"../models/session":16}],42:[function(require,module,exports){
+var AlarmWidgetView, Marionette, WidgetView,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+WidgetView = require('./widget_view');
+
+AlarmWidgetView = (function(superClass) {
+  extend(AlarmWidgetView, superClass);
+
+  function AlarmWidgetView() {
+    this.set_model = bind(this.set_model, this);
+    this.data_update = bind(this.data_update, this);
+    return AlarmWidgetView.__super__.constructor.apply(this, arguments);
+  }
+
+  AlarmWidgetView.prototype.template = "widgets/alarm_widget";
+
+  AlarmWidgetView.prototype.className = 'widget-outer box box-primary';
+
+  AlarmWidgetView.prototype.ui = {
+    gate: 'select#site',
+    wtitle: "h3.box-title",
+    display: '.display',
+    content: '.content'
+  };
+
+  AlarmWidgetView.prototype.update = function() {
+    var s;
+    s = this.model.get("settings");
+    this.alarm_binding = {
+      alarmid: "alarm_" + this.model.id,
+      showSearch: false,
+      showHistory: false,
+      filter: {
+        alarmtypes: ["Digital", "High", "High High", "Low", "Low Low"]
+      },
+      columns: [
+        {
+          name: "AlarmDateTime",
+          text: "Alarm Date/Time",
+          type: "datetime",
+          visible: true,
+          sort: 'desc',
+          width: '130px',
+          searchable: false
+        }, {
+          name: "Active",
+          text: "Active",
+          type: "boolean",
+          visible: true,
+          width: '50px',
+          align: 'center'
+        }, {
+          name: "AlarmValue",
+          text: "Alarm Value",
+          type: "string",
+          visible: false,
+          align: 'right'
+        }, {
+          name: "Text",
+          text: "Text",
+          type: "string",
+          visible: true
+        }, {
+          name: "AlarmType",
+          text: "Alarm Type",
+          type: "string",
+          visible: true
+        }, {
+          name: "Acked",
+          text: "Acked",
+          type: "boolean",
+          visible: false
+        }
+      ]
+    };
+    return App.opc.add_alarm("OAS", this.alarm_binding);
+  };
+
+  AlarmWidgetView.prototype.data_update = function(data) {};
+
+  AlarmWidgetView.prototype.set_model = function() {};
+
+  AlarmWidgetView.prototype.toggle_settings = function(e) {
+    return AlarmWidgetView.__super__.toggle_settings.call(this, e);
+  };
+
+  AlarmWidgetView.prototype.onShow = function() {
+    var a;
+    a = this.$(".display #alarm_" + this.model.id);
+    if ((a == null) || a.length === 0) {
+      a = $("<div id='alarm_" + this.model.id + "'></div>");
+      return this.$('.display').append(a);
+    }
+  };
+
+  AlarmWidgetView.prototype.start = function() {
+    return this.update();
+  };
+
+  AlarmWidgetView.prototype.onDestroy = function(arg1, arg2) {};
+
+  return AlarmWidgetView;
+
+})(WidgetView);
+
+module.exports = AlarmWidgetView;
+
+},{"./widget_view":45}],43:[function(require,module,exports){
 var GateWidgetView, Marionette, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -4228,7 +4424,7 @@ GateWidgetView = (function(superClass) {
 
 module.exports = GateWidgetView;
 
-},{"./widget_view":44}],43:[function(require,module,exports){
+},{"./widget_view":45}],44:[function(require,module,exports){
 var Marionette, UrlWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -4313,7 +4509,7 @@ UrlWidgetView = (function(superClass) {
 
 module.exports = UrlWidgetView;
 
-},{"./widget_view":44}],44:[function(require,module,exports){
+},{"./widget_view":45}],45:[function(require,module,exports){
 var Marionette, WidgetView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;

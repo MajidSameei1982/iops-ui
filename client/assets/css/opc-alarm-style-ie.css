@@ -1,0 +1,43 @@
+/*** Alarm Styles ***/
+/* Active */
+table.opc-alarm tr.active td.sorting_1,
+table.opc-alarm tr.active td.sorting_2,
+table.opc-alarm tr.active td.sorting_3 { background-color: #c00; }
+table.opc-alarm tr.active:hover td.sorting_1,
+table.opc-alarm tr.active:hover td.sorting_2,
+table.opc-alarm tr.active:hover td.sorting_3 { background-color: #c66; }
+/* ActiveAcked */
+table.opc-alarm tr.active-acked td.sorting_1,
+table.opc-alarm tr.active-acked td.sorting_2,
+table.opc-alarm tr.active-acked td.sorting_3 { background-color: #cc0; }
+table.opc-alarm tr.active-acked:hover td.sorting_1,
+table.opc-alarm tr.active-acked:hover td.sorting_2,
+table.opc-alarm tr.active-acked:hover td.sorting_3 { background-color: #cc9; }
+/* NotActive */
+table.opc-alarm tr.not-active td.sorting_1,
+table.opc-alarm tr.not-active td.sorting_2,
+table.opc-alarm tr.not-active td.sorting_3 { background-color: #6425a9; }
+table.opc-alarm tr.not-active:hover td.sorting_1,
+table.opc-alarm tr.not-active:hover td.sorting_2,
+table.opc-alarm tr.not-active:hover td.sorting_3 { background-color: #7e54ab; }
+/* NotActiveAcked */
+table.opc-alarm tr.not-active-acked td.sorting_1,
+table.opc-alarm tr.not-active-acked td.sorting_2,
+table.opc-alarm tr.not-active-acked td.sorting_3 { background-color: #090; color: #fff; }
+table.opc-alarm tr.not-active-acked:hover td.sorting_1,
+table.opc-alarm tr.not-active-acked:hover td.sorting_2,
+table.opc-alarm tr.not-active-acked:hover td.sorting_3 { background-color: #6b6; }
+/* OperatorEvent */
+table.opc-alarm tr.operator-event td.sorting_1,
+table.opc-alarm tr.operator-event td.sorting_2,
+table.opc-alarm tr.operator-event td.sorting_3 { background-color: #eee; border-bottom: solid 1px #fff !important;}
+table.opc-alarm tr.operator-event:hover td.sorting_1,
+table.opc-alarm tr.operator-event:hover td.sorting_2,
+table.opc-alarm tr.operator-event:hover td.sorting_3 { background-color: #ddd; }
+/* TagEvent */
+table.opc-alarm tr.tag-event td.sorting_1,
+table.opc-alarm tr.tag-event td.sorting_2,
+table.opc-alarm tr.tag-event td.sorting_3 { background-color: #eee; border-bottom: solid 1px #fff !important; }
+table.opc-alarm tr.tag-event:hover td.sorting_1,
+table.opc-alarm tr.tag-event:hover td.sorting_2,
+table.opc-alarm tr.tag-event:hover td.sorting_3 { background-color: #ddd; }

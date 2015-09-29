@@ -10,6 +10,7 @@
         <a class='widget_select' id='default' href="#"><i class="fa fa-cubes"></i> Default Widget</a>
         <a class='widget_select' id='url' href="#"><i class="fa fa-cloud"></i> URL Widget</a>
         <a class='widget_select' id='gate' href="#"><i class="fa fa-plane"></i> Gate Widget</a>
+        <a class='widget_select' id='alarm' href="#"><i class="fa fa-bullhorn"></i> Alarm Widget</a>
       </div>
     </div>
     <div class="modal-footer">

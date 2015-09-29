@@ -30,6 +30,19 @@ class OPCManager
           added = true
       if added then c.init() else c.toggle_refresh(true)
 
+  @add_alarm: (conn, binding)->
+    c = @connections[conn]
+    if c?
+      c.toggle_refresh(false)
+      exists = false 
+      if !c.config.alarm_bindings? then c.config.alarm_bindings = []
+      for ab in c.config.alarm_bindings
+        if ab.alarmid == binding.alarmid
+          exists = true
+          ab = binding
+      if !exists then c.config.alarm_bindings.push(binding)
+      c.init()
+
   @add_ref: (conn)->
     c = @refs[conn]
     c = if c? then c+1 else 1

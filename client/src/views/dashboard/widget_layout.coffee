@@ -2,6 +2,7 @@ Marionette = require('marionette')
 Widget = require('../../models/widget')
 WidgetView = require('../widgets/widget_view')
 GateWidgetView = require('../widgets/gate_widget_view')
+AlarmWidgetView = require('../widgets/alarm_widget_view')
 UrlWidgetView = require('../widgets/url_widget_view')
 WidgetModalView = require('./widget_modal')
 
@@ -45,12 +46,13 @@ class WidgetLayout extends Marionette.LayoutView
 
   # persist widget position and dimensions
   persist_widgets: (e, ui)=>
+    App.log "persist_widgets"
     wid = $(e.target).closest('li.widget').data('id')
     for wm, idx in @model.widgets.models
       @$('ul.gridster li').each ()->
         id = $(@).data('id')
         if (id == wm.id)
-          s = wm.get("settings")
+          s = _.clone(wm.get("settings"))
           layout = 
             r : $(@).attr('data-row')
             c : $(@).attr('data-col')
@@ -58,6 +60,7 @@ class WidgetLayout extends Marionette.LayoutView
             sy : $(@).attr('data-sizey')
           s.layout = layout
           wm.set("settings", s)
+          #App.log s
     App.vent.trigger("user:update")
  
   set_gridster: ()->
@@ -86,7 +89,7 @@ class WidgetLayout extends Marionette.LayoutView
     s = w.get('settings')
     lo = if s? && s.layout? then s.layout else null
     wli.attr
-      #'data-id' : w.id
+      'data-id' : w.id
       'data-row' : s.layout.r
       'data-col' : s.layout.c
       'data-sizex' : s.layout.sx
@@ -98,6 +101,7 @@ class WidgetLayout extends Marionette.LayoutView
     switch tpe
       when 'gate' then wv = new GateWidgetView({model:w})
       when 'url' then wv = new UrlWidgetView({model:w})
+      when 'alarm' then wv = new AlarmWidgetView({model:w})
       else wv = new WidgetView({model: w})
 
     # create the region and show widget

@@ -39,6 +39,12 @@ window.IOPS = do()->
         abbrev: "CID"
         shortName: "Cedar Rapids"
         opc: 'http://opc.iopsnow.com:58725'
+      ,
+        id: 2
+        name: 'Open Automation Systems'
+        abbrev: "OAS"
+        shortName: "OPCSystems.NET"
+        opc: 'http://www.opcsystems.com:58725'
       ]
     ]
     

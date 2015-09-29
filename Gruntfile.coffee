@@ -120,6 +120,8 @@ module.exports = (grunt)->
           'client/assets/adminlte/dist/css/AdminLTE.css'
           'client/assets/adminlte/dist/css/skins/_all-skins.css'
           'client/assets/css/jquery.gridster.min.css'
+          'client/assets/css/opc-style.css'
+          'client/assets/css/opc-alarm-style.css'
         ]
         dest: 'build/vendor.css'
       
@@ -174,6 +176,11 @@ module.exports = (grunt)->
         ]
       vendor_static:
         files: [
+          cwd: 'client/assets/js/datatables'
+          src: ['**/*.*']
+          dest: 'public/assets/datatables'
+          expand: true
+        ,
           cwd: 'bower_components/bootstrap-sass/assets/fonts/bootstrap/'
           src: ['**/*.*']
           dest: 'public/fonts/bootstrap'
