@@ -14,7 +14,7 @@ class GateWidgetView extends WidgetView
     docked: '#docked'
 
   @layout:
-    sx: 6
+    sx: 4
     sy: 4
 
   modelEvents:

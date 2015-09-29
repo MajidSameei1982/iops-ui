@@ -1762,7 +1762,7 @@ AppConfig = (function(superClass) {
 
   AppConfig.api_baseurl = 'http://{service}dev.iopsnj.com/v1';
 
-  AppConfig.dt_format = 'E, MMM D, yyyy HH:mm';
+  AppConfig.dt_format = 'MMM D, yyyy HH:mm';
 
   AppConfig.session_timeout = 1;
 
@@ -4245,8 +4245,8 @@ AlarmWidgetView = (function(superClass) {
   };
 
   AlarmWidgetView.layout = {
-    sx: 8,
-    sy: 8
+    sx: 4,
+    sy: 4
   };
 
   AlarmWidgetView.prototype.update = function() {
@@ -4367,7 +4367,7 @@ GateWidgetView = (function(superClass) {
   };
 
   GateWidgetView.layout = {
-    sx: 6,
+    sx: 4,
     sy: 4
   };
 
@@ -4558,7 +4558,7 @@ UrlWidgetView = (function(superClass) {
   };
 
   UrlWidgetView.layout = {
-    sx: 8,
+    sx: 4,
     sy: 5
   };
 

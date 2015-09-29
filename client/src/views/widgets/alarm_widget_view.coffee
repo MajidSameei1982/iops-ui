@@ -13,8 +13,8 @@ class AlarmWidgetView extends WidgetView
     content: '.content'
 
   @layout:
-    sx: 8
-    sy: 8
+    sx: 4
+    sy: 4
 
   # modelEvents:
   #   "change" : "update"

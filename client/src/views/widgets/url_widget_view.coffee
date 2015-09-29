@@ -16,7 +16,7 @@ class UrlWidgetView extends WidgetView
     "change" : "update"
 
   @layout:
-    sx: 8
+    sx: 4
     sy: 5
 
   update: ()->
