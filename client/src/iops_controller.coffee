@@ -34,6 +34,9 @@ class IopsController extends Object
     @dashboard(d)
     @
 
+  flush: ()->
+    App.flush()
+
   login: ()->
     v = new LoginView()
     App.layout.center_region.show(v)

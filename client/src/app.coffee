@@ -9,6 +9,7 @@ AccountCollection = require('./models/account_collection')
 ClaimCollection = require('./models/claim_collection')
 AdminLTE_lib = require('./common/adminlte_lib')
 UIUtils = require('./common/uiutils')
+OPCManager = require('./opcmanager')
 
 # ----------------------------------
 window.IOPS = do()->
@@ -27,8 +28,21 @@ window.IOPS = do()->
     @layout = new IopsLayout()
     @uiutils = UIUtils
 
-    App.accounts = new AccountCollection()
+    # TODO: load from server
+    App.accounts = new AccountCollection [
+      id: 1
+      name : "Example Corporation, International"
+      isActive: true
+      sites: [
+        id: 1
+        name: "The Eastern Iowa Airport"
+        abbrev: "CID"
+        shortName: "Cedar Rapids"
+        opc: 'http://opc.iopsnow.com:58725'
+      ]
+    ]
     
+    # TODO: load from server - all known claims
     App.claims = new ClaimCollection()
     # App.claims = new ClaimCollection [
     #   id: 1
@@ -44,6 +58,11 @@ window.IOPS = do()->
     #   description: 'Can add and modify Groups and Permissions'
     # ]
 
+    # connect OPCManager
+    App.opc = OPCManager
+    App.opc.init(App)
+
+
   App.on 'start', (options)->
     @log('Started')
     if (Backbone.history) 
@@ -52,7 +71,6 @@ window.IOPS = do()->
         controller: @controller
       @log('Backbone.history starting')
       Backbone.history.start()
-
 
     # setup app clock
     dtfn = ()->

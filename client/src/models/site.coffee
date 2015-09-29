@@ -6,10 +6,11 @@ class Site extends BaseModel
 	service: 'accounts'
 	urlRoot: '/sites'
 	defaults:
-		name:				null
-		isActive:		true
-		shortName:	null
-		abbrev:			null
+    name:				null
+    isActive:		true
+    shortName:	null
+    abbrev:			null
+    opc:        null
 
 # ----------------------------------
 

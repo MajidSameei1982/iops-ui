@@ -5,6 +5,12 @@
     <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>
   </div>
 </div><!-- /.box-header -->
-<div class="box-body content">
-  GATE Widget Body
+<div class="box-body content" id='content'>
+  <div class="display">
+    <div id="gate_label"><h1><span id='txt'></span> <span id="docked" style='display:none;'><i class="fa fa-plane"></i></span></h1></div>
+  </div>
+  <div class="settings" style="display: none;">
+    <h3>Settings</h3>
+    <%- @formGroup({id:'gate', type:'text', feedback:'plane', placeholder:'Gate #', value:@settings.gate}) %>
+  </div><!-- /.box-body -->
 </div><!-- /.box-body -->

@@ -11,10 +11,11 @@ class Router extends Marionette.AppRouter
     'mgaccounts'      : 'mgaccounts'
     'mgpermissions'   : 'mgpermissions'
     'dashboard/:id'	  : 'dashboard'
+    'flush'           : 'flush'
 
   onRoute: (name, path, args)->
     # always allow login and logout paths
-    return true if (path == 'login' || path == 'logout')
+    return true if (path == 'login' || path == 'logout' || path == 'flush')
 
     # check for session on all others
     if !App.session || !App.session.get('email')? || !App.current_user?

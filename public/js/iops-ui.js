@@ -940,7 +940,17 @@ window.JST["widgets/gate_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  GATE Widget Body\n</div><!-- /.box-body -->\n'));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" id=\'content\'>\n  <div class="display">\n    <div id="gate_label"><h1><span id=\'txt\'></span> <span id="docked" style=\'display:none;\'><i class="fa fa-plane"></i></span></h1></div>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+    
+      _print(_safe(this.formGroup({
+        id: 'gate',
+        type: 'text',
+        feedback: 'plane',
+        placeholder: 'Gate #',
+        value: this.settings.gate
+      })));
+    
+      _print(_safe('\n  </div><!-- /.box-body -->\n</div><!-- /.box-body -->\n'));
     
     }).call(this);
     
@@ -1071,7 +1081,7 @@ window.JST["widgets/widget"] = function(__obj) {
 };
 
 ;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var AccountCollection, AdminLTE_lib, BaselineApp, ClaimCollection, Extensions, IopsController, IopsLayout, Marionette, Router, Session, UIUtils;
+var AccountCollection, AdminLTE_lib, BaselineApp, ClaimCollection, Extensions, IopsController, IopsLayout, Marionette, OPCManager, Router, Session, UIUtils;
 
 Marionette = require('marionette');
 
@@ -1095,6 +1105,8 @@ AdminLTE_lib = require('./common/adminlte_lib');
 
 UIUtils = require('./common/uiutils');
 
+OPCManager = require('./opcmanager');
+
 window.IOPS = (function() {
   var App;
   if (window.App != null) {
@@ -1116,8 +1128,25 @@ window.IOPS = (function() {
     Session.restore();
     this.layout = new IopsLayout();
     this.uiutils = UIUtils;
-    App.accounts = new AccountCollection();
-    return App.claims = new ClaimCollection();
+    App.accounts = new AccountCollection([
+      {
+        id: 1,
+        name: "Example Corporation, International",
+        isActive: true,
+        sites: [
+          {
+            id: 1,
+            name: "The Eastern Iowa Airport",
+            abbrev: "CID",
+            shortName: "Cedar Rapids",
+            opc: 'http://opc.iopsnow.com:58725'
+          }
+        ]
+      }
+    ]);
+    App.claims = new ClaimCollection();
+    App.opc = OPCManager;
+    return App.opc.init(App);
   });
   App.on('start', function(options) {
     var dtfn;
@@ -1152,7 +1181,7 @@ window.IOPS = (function() {
   return App;
 })();
 
-},{"./common/adminlte_lib":2,"./common/baseline_app":4,"./common/extensions":5,"./common/uiutils":6,"./iops_controller":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/session":16,"./router":22,"./views/iops_layout":39}],2:[function(require,module,exports){
+},{"./common/adminlte_lib":2,"./common/baseline_app":4,"./common/extensions":5,"./common/uiutils":6,"./iops_controller":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/session":16,"./opcmanager":22,"./router":23,"./views/iops_layout":40}],2:[function(require,module,exports){
 
 /*
  *
@@ -1808,7 +1837,7 @@ UIUtils = (function(superClass) {
 
 module.exports = UIUtils;
 
-},{"../views/common/modal_view":23}],7:[function(require,module,exports){
+},{"../views/common/modal_view":24}],7:[function(require,module,exports){
 var AccountsView, Dashboard, DashboardCollection, DashboardContentView, DashboardLayout, IopsController, LoginView, Marionette, PermissionsLayout, ProfileView, User, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1864,6 +1893,10 @@ IopsController = (function(superClass) {
     d = (dl != null) && (dl.collection != null) && dl.collection.models.length > 0 ? 1 : 0;
     this.dashboard(d);
     return this;
+  };
+
+  IopsController.prototype.flush = function() {
+    return App.flush();
   };
 
   IopsController.prototype.login = function() {
@@ -1956,7 +1989,7 @@ IopsController = (function(superClass) {
 
 module.exports = IopsController;
 
-},{"./models/dashboard":14,"./models/dashboard_collection":15,"./models/user":19,"./models/widget_collection":21,"./views/dashboard/content_view":24,"./views/dashboard/dashboard_layout":25,"./views/forms/manage_accounts/accounts_view":33,"./views/forms/manage_permissions/permissions_layout":36,"./views/forms/profile_view":38,"./views/login_view":40}],8:[function(require,module,exports){
+},{"./models/dashboard":14,"./models/dashboard_collection":15,"./models/user":19,"./models/widget_collection":21,"./views/dashboard/content_view":25,"./views/dashboard/dashboard_layout":26,"./views/forms/manage_accounts/accounts_view":34,"./views/forms/manage_permissions/permissions_layout":37,"./views/forms/profile_view":39,"./views/login_view":41}],8:[function(require,module,exports){
 var AppConfig, Backbone, BaseModel,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2374,7 +2407,8 @@ Site = (function(superClass) {
     name: null,
     isActive: true,
     shortName: null,
-    abbrev: null
+    abbrev: null,
+    opc: null
   };
 
   return Site;
@@ -2521,6 +2555,122 @@ WidgetCollection = (function(superClass) {
 module.exports = WidgetCollection;
 
 },{"./_base_collection":9,"./widget":20}],22:[function(require,module,exports){
+var OPCManager;
+
+OPCManager = (function() {
+  function OPCManager() {}
+
+  OPCManager.connections = {};
+
+  OPCManager.refs = {};
+
+  OPCManager.create = function(conn, config) {
+    var c;
+    c = new OPC(config);
+    this.connections[conn] = c;
+    return c;
+  };
+
+  OPCManager.get_conn = function(conn) {
+    return this.connections[conn];
+  };
+
+  OPCManager.add_tags = function(conn, tags) {
+    var added, c, exists, i, j, len, len1, nt, ref, t;
+    c = this.connections[conn];
+    if (c != null) {
+      added = false;
+      c.toggle_refresh(false);
+      for (i = 0, len = tags.length; i < len; i++) {
+        nt = tags[i];
+        exists = false;
+        if (c.config.watch_tags == null) {
+          c.config.watch_tags = [];
+        }
+        ref = c.config.watch_tags;
+        for (j = 0, len1 = ref.length; j < len1; j++) {
+          t = ref[j];
+          if (t === nt) {
+            exists = true;
+            break;
+          }
+        }
+        if (!exists) {
+          c.config.watch_tags.push(nt);
+          added = true;
+        }
+      }
+      if (added) {
+        return c.init();
+      } else {
+        return c.toggle_refresh(true);
+      }
+    }
+  };
+
+  OPCManager.add_ref = function(conn) {
+    var c;
+    c = this.refs[conn];
+    c = c != null ? c + 1 : 1;
+    if (c >= 1) {
+      this.connections[conn].toggle_refresh(true);
+    }
+    this.refs[conn] = c;
+    return c;
+  };
+
+  OPCManager.rem_ref = function(conn) {
+    var c;
+    c = this.refs[conn];
+    c = c != null ? c - 1 : 0;
+    if (c <= 0) {
+      c = 0;
+      this.connections[conn].toggle_refresh(false);
+    }
+    this.refs[conn] = c;
+    return c;
+  };
+
+  OPCManager.notify = function(conn, data) {
+    return App.vent.trigger("opc:data:" + conn, data);
+  };
+
+  OPCManager.init = function(app) {
+    var abbrev, account, i, len, opc_addr, ref, results, site;
+    ref = app.accounts.models;
+    results = [];
+    for (i = 0, len = ref.length; i < len; i++) {
+      account = ref[i];
+      results.push((function() {
+        var j, len1, ref1, results1;
+        ref1 = account.sites.models;
+        results1 = [];
+        for (j = 0, len1 = ref1.length; j < len1; j++) {
+          site = ref1[j];
+          opc_addr = site.get("opc");
+          abbrev = site.get("abbrev");
+          results1.push(OPCManager.create(abbrev, {
+            token: '7e61b230-481d-4551-b24b-ba9046e3d8f2',
+            interval: 5000,
+            refresh_callback: function(data) {
+              return OPCManager.notify(abbrev, data);
+            },
+            serverURL: opc_addr
+          }));
+        }
+        return results1;
+      })());
+    }
+    return results;
+  };
+
+  return OPCManager;
+
+})();
+
+module.exports = OPCManager;
+
+},{}],23:[function(require,module,exports){
 var Marionette, Router,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2541,11 +2691,12 @@ Router = (function(superClass) {
     'profile': 'profile',
     'mgaccounts': 'mgaccounts',
     'mgpermissions': 'mgpermissions',
-    'dashboard/:id': 'dashboard'
+    'dashboard/:id': 'dashboard',
+    'flush': 'flush'
   };
 
   Router.prototype.onRoute = function(name, path, args) {
-    if (path === 'login' || path === 'logout') {
+    if (path === 'login' || path === 'logout' || path === 'flush') {
       return true;
     }
     if (!App.session || (App.session.get('email') == null) || (App.current_user == null)) {
@@ -2563,7 +2714,7 @@ Router = (function(superClass) {
 
 module.exports = Router;
 
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 var Marionette, ModalView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -2644,7 +2795,7 @@ ModalView = (function(superClass) {
 
 module.exports = ModalView;
 
-},{}],24:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 var DashboardContentView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2690,7 +2841,7 @@ DashboardContentView = (function(superClass) {
 
 module.exports = DashboardContentView;
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 var DashboardContentView, DashboardFooterView, DashboardHeaderView, DashboardLayout, DashboardSideView, DashboardToolView, Marionette, WidgetLayout,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2774,7 +2925,7 @@ DashboardLayout = (function(superClass) {
 
 module.exports = DashboardLayout;
 
-},{"./content_view":24,"./footer_view":26,"./header_view":27,"./side_view":28,"./tool_view":29,"./widget_layout":30}],26:[function(require,module,exports){
+},{"./content_view":25,"./footer_view":27,"./header_view":28,"./side_view":29,"./tool_view":30,"./widget_layout":31}],27:[function(require,module,exports){
 var DashboardFooterView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2800,7 +2951,7 @@ DashboardFooterView = (function(superClass) {
 
 module.exports = DashboardFooterView;
 
-},{}],27:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 var AppConfig, DashboardHeaderView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -2879,7 +3030,7 @@ DashboardHeaderView = (function(superClass) {
 
 module.exports = DashboardHeaderView;
 
-},{"../../common/appconfig":3}],28:[function(require,module,exports){
+},{"../../common/appconfig":3}],29:[function(require,module,exports){
 var DashboardSideView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -2967,7 +3118,7 @@ DashboardSideView = (function(superClass) {
 
 module.exports = DashboardSideView;
 
-},{}],29:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 var DashboardToolView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -3017,7 +3168,7 @@ DashboardToolView = (function(superClass) {
 
 module.exports = DashboardToolView;
 
-},{}],30:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 var GateWidgetView, Marionette, UrlWidgetView, Widget, WidgetLayout, WidgetModalView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -3199,7 +3350,7 @@ WidgetLayout = (function(superClass) {
 
 module.exports = WidgetLayout;
 
-},{"../../models/widget":20,"../widgets/gate_widget_view":41,"../widgets/url_widget_view":42,"../widgets/widget_view":43,"./widget_modal":31}],31:[function(require,module,exports){
+},{"../../models/widget":20,"../widgets/gate_widget_view":42,"../widgets/url_widget_view":43,"../widgets/widget_view":44,"./widget_modal":32}],32:[function(require,module,exports){
 var Marionette, WidgetModalView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -3259,7 +3410,7 @@ WidgetModalView = (function(superClass) {
 
 module.exports = WidgetModalView;
 
-},{}],32:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 var Account, AccountView, Marionette, SiteView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -3405,7 +3556,7 @@ AccountView = (function(superClass) {
 
 module.exports = AccountView;
 
-},{"../../../models/account":10,"./site_view":34}],33:[function(require,module,exports){
+},{"../../../models/account":10,"./site_view":35}],34:[function(require,module,exports){
 var AccountView, AccountsView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -3454,7 +3605,7 @@ AccountsView = (function(superClass) {
 
 module.exports = AccountsView;
 
-},{"./account_view":32}],34:[function(require,module,exports){
+},{"./account_view":33}],35:[function(require,module,exports){
 var Marionette, Site, SiteView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -3575,7 +3726,7 @@ SiteView = (function(superClass) {
 
 module.exports = SiteView;
 
-},{"../../../models/site":17}],35:[function(require,module,exports){
+},{"../../../models/site":17}],36:[function(require,module,exports){
 var Claim, Marionette, PermissionView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -3670,7 +3821,7 @@ PermissionView = (function(superClass) {
 
 module.exports = PermissionView;
 
-},{"../../../models/claim":12}],36:[function(require,module,exports){
+},{"../../../models/claim":12}],37:[function(require,module,exports){
 var Marionette, PermissionsLayout, PermissionsView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -3707,7 +3858,7 @@ PermissionsLayout = (function(superClass) {
 
 module.exports = PermissionsLayout;
 
-},{"./permissions_view":37}],37:[function(require,module,exports){
+},{"./permissions_view":38}],38:[function(require,module,exports){
 var Marionette, PermissionView, PermissionsView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -3756,7 +3907,7 @@ PermissionsView = (function(superClass) {
 
 module.exports = PermissionsView;
 
-},{"./permission_view":35}],38:[function(require,module,exports){
+},{"./permission_view":36}],39:[function(require,module,exports){
 var Marionette, ProfileView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -3778,7 +3929,7 @@ ProfileView = (function(superClass) {
 
 module.exports = ProfileView;
 
-},{}],39:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 var IopsLayout, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -3805,7 +3956,7 @@ IopsLayout = (function(superClass) {
 
 module.exports = IopsLayout;
 
-},{}],40:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 var LoginView, Marionette, Session, UIUtils,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -3903,8 +4054,9 @@ LoginView = (function(superClass) {
 
 module.exports = LoginView;
 
-},{"../common/uiutils":6,"../models/session":16}],41:[function(require,module,exports){
+},{"../common/uiutils":6,"../models/session":16}],42:[function(require,module,exports){
 var GateWidgetView, Marionette, WidgetView,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -3916,6 +4068,10 @@ GateWidgetView = (function(superClass) {
   extend(GateWidgetView, superClass);
 
   function GateWidgetView() {
+    this.set_model = bind(this.set_model, this);
+    this.data_update = bind(this.data_update, this);
+    this.get_value = bind(this.get_value, this);
+    this.get_bool = bind(this.get_bool, this);
     return GateWidgetView.__super__.constructor.apply(this, arguments);
   }
 
@@ -3924,8 +4080,121 @@ GateWidgetView = (function(superClass) {
   GateWidgetView.prototype.className = 'widget-outer box box-primary';
 
   GateWidgetView.prototype.ui = {
-    header: '.header',
-    body: '.body'
+    gate: 'input#gate',
+    wtitle: "h3.box-title",
+    display: '.display',
+    content: '.content',
+    docked: '#docked'
+  };
+
+  GateWidgetView.prototype.modelEvents = {
+    "change": "update"
+  };
+
+  GateWidgetView.prototype.watch_updates = function(conn) {
+    return App.vent.on("opc:data:" + conn, this.data_update);
+  };
+
+  GateWidgetView.prototype.kill_updates = function(conn) {
+    return App.vent.off("opc:data:" + conn, this.data_update);
+  };
+
+  GateWidgetView.prototype.update = function() {
+    var i, lbl, len, ref, s, t, tags;
+    s = this.model.get("settings");
+    if ((s != null) && (s.gate != null) && s.gate !== '') {
+      this.kill_updates("CID");
+      this.prefix = "\\\\opc.iopsnow.com\\RemoteSCADAHosting.Airport-CID.Airport.CID.Term1.Zone1.Gate C-" + s.gate + ".";
+      this.tags = ["PBB.PLANE_DOCKED.Value", "PBB.PBB_IN_OPER_MODE.Value", "PBB.Warning._HasWarnings.Value", "PBB.AUTOLEVELMODEFLAG.Value", "GPU.RVOUTAVG.Value", "PBB.Alarm._HasAlarms.Value"];
+      tags = [];
+      ref = this.tags;
+      for (i = 0, len = ref.length; i < len; i++) {
+        t = ref[i];
+        tags.push("" + this.prefix + t);
+      }
+      App.opc.add_tags("CID", tags);
+      this.watch_updates("CID");
+      lbl = "Gate C-" + s.gate;
+      this.ui.wtitle.html(lbl);
+      return this.$('#gate_label #txt').html(lbl);
+    }
+  };
+
+  GateWidgetView.prototype.get_bool = function(tag) {
+    var v;
+    v = this.get_value(tag);
+    if ((v != null) && v.toUpperCase() === "TRUE") {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  GateWidgetView.prototype.get_value = function(tag) {
+    return App.opc.connections["CID"].get_value("" + this.prefix + tag);
+  };
+
+  GateWidgetView.prototype.data_update = function(data) {
+    var avg, docked, green, orange, red, yellow;
+    docked = this.get_bool("PBB.PLANE_DOCKED.Value");
+    green = this.get_bool("PBB.PBB_IN_OPER_MODE.Value");
+    yellow = this.get_bool("PBB.Warning._HasWarnings.Value");
+    orange = this.get_bool("PBB.AUTOLEVELMODEFLAG.Value");
+    red = this.get_bool("PBB.Alarm._HasAlarms.Value");
+    avg = this.get_value("GPU.RVOUTAVG.Value");
+    if (red) {
+      this.ui.content.css({
+        'background-color': '#c00',
+        'color': '#fc0'
+      });
+    } else if (orange) {
+      this.ui.content.css({
+        'background-color': '#c90',
+        'color': '#fff'
+      });
+    } else if (yellow) {
+      this.ui.content.css({
+        'background-color': '#fc6',
+        'color': '#000'
+      });
+    } else if (green) {
+      this.ui.content.css({
+        'background-color': '#6c6',
+        'color': '#fff'
+      });
+    }
+    return this.ui.docked.toggle(docked);
+  };
+
+  GateWidgetView.prototype.set_model = function() {
+    var gate, s;
+    s = _.clone(this.model.get("settings"));
+    gate = this.ui.gate.val().trim();
+    s.gate = gate;
+    return this.model.set("settings", s);
+  };
+
+  GateWidgetView.prototype.toggle_settings = function(e) {
+    GateWidgetView.__super__.toggle_settings.call(this, e);
+    return this.ui.display.toggle(!this.settings_visible);
+  };
+
+  GateWidgetView.prototype.onShow = function() {
+    var gate;
+    this.ui.gate.on("change", (function(_this) {
+      return function() {
+        return _this.set_model();
+      };
+    })(this));
+    gate = this.model.get("settings").gate;
+    if ((gate == null) || gate === '') {
+      this.toggle_settings();
+    }
+    return this.update();
+  };
+
+  GateWidgetView.prototype.onDestroy = function(arg1, arg2) {
+    return this.kill_updates("CID");
   };
 
   return GateWidgetView;
@@ -3934,7 +4203,7 @@ GateWidgetView = (function(superClass) {
 
 module.exports = GateWidgetView;
 
-},{"./widget_view":43}],42:[function(require,module,exports){
+},{"./widget_view":44}],43:[function(require,module,exports){
 var Marionette, UrlWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -4016,7 +4285,7 @@ UrlWidgetView = (function(superClass) {
 
 module.exports = UrlWidgetView;
 
-},{"./widget_view":43}],43:[function(require,module,exports){
+},{"./widget_view":44}],44:[function(require,module,exports){
 var Marionette, WidgetView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
