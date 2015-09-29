@@ -2627,6 +2627,7 @@ OPCManager = (function() {
   OPCManager.create = function(conn, config) {
     var c;
     c = new OPC(config);
+    c.abbrev = conn;
     this.connections[conn] = c;
     return c;
   };
@@ -2735,9 +2736,8 @@ OPCManager = (function() {
           abbrev = site.get("abbrev");
           results1.push(OPCManager.create(abbrev, {
             token: '7e61b230-481d-4551-b24b-ba9046e3d8f2',
-            interval: 5000,
             refresh_callback: function(data) {
-              return OPCManager.notify(abbrev, data);
+              return OPCManager.notify(this.abbrev, data);
             },
             serverURL: opc_addr
           }));
@@ -3291,7 +3291,7 @@ WidgetLayout = (function(superClass) {
   };
 
   WidgetLayout.prototype.add_widget = function(type) {
-    var i, id, len, m, ref, w, wli;
+    var i, id, len, lo, m, ref, w, wli;
     id = 0;
     ref = this.model.widgets.models;
     for (i = 0, len = ref.length; i < len; i++) {
@@ -3301,24 +3301,30 @@ WidgetLayout = (function(superClass) {
       }
     }
     id = id + 1;
+    lo = {
+      r: 1,
+      c: 1,
+      sx: 1,
+      sy: 1
+    };
+    if (type === 'alarm') {
+      lo.sx = 2;
+      lo.sy = 2;
+    }
     w = this.model.widgets.add({
       id: id,
       type: type,
       settings: {
-        layout: {
-          r: 1,
-          c: 1,
-          sx: 1,
-          sy: 1
-        }
+        layout: lo
       },
       config: true
     });
     if (this.grid) {
       wli = $("<li id='widget_" + id + "' class='widget'></li>");
       this.$('ul.gridster').append(wli);
-      this.grid.add_widget(wli, 1, 1, 1, 1);
-      return this.draw_widget_view(w);
+      this.grid.add_widget(wli, lo.sx, lo.sy, lo.c, lo.r);
+      this.draw_widget_view(w);
+      return wli.append('<span class="gs-resize-handle gs-resize-handle-both"></span>');
     }
   };
 
@@ -4353,13 +4359,13 @@ GateWidgetView = (function(superClass) {
   };
 
   GateWidgetView.prototype.data_update = function(data) {
-    var avg, docked, green, orange, red, yellow;
+    var docked, green, orange, red, yellow;
     docked = this.get_bool("PBB.PLANE_DOCKED.Value");
     green = this.get_bool("PBB.PBB_IN_OPER_MODE.Value");
     yellow = this.get_bool("PBB.Warning._HasWarnings.Value");
     orange = this.get_bool("PBB.AUTOLEVELMODEFLAG.Value");
     red = this.get_bool("PBB.Alarm._HasAlarms.Value");
-    avg = this.get_value("GPU.RVOUTAVG.Value");
+    console.log(docked);
     if (red) {
       this.ui.content.css({
         'background-color': '#c00',
@@ -4401,7 +4407,12 @@ GateWidgetView = (function(superClass) {
     var gate;
     this.ui.gate.on("change", (function(_this) {
       return function() {
-        return _this.set_model();
+        var v;
+        v = _this.ui.gate.val().trim();
+        if (v !== '') {
+          _this.set_model();
+          return _this.toggle_settings();
+        }
       };
     })(this));
     gate = this.model.get("settings").gate;

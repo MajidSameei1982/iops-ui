@@ -20,21 +20,26 @@ class WidgetLayout extends Marionette.LayoutView
     for m in @model.widgets.models
       if m.id > id then id = m.id
     id = id+1
+    lo = 
+      r:          1
+      c:          1
+      sx:         1
+      sy:         1
+    if type == 'alarm'
+      lo.sx = 2
+      lo.sy = 2
     w = @model.widgets.add
       id: id
       type: type
       settings:
-        layout:
-          r:          1
-          c:          1
-          sx:         1
-          sy:         1
+        layout: lo
       config:     true
     if @grid
       wli = $("<li id='widget_#{id}' class='widget'></li>")
       @$('ul.gridster').append(wli)
-      @grid.add_widget(wli, 1, 1, 1, 1)
+      @grid.add_widget(wli, lo.sx, lo.sy, lo.c, lo.r)
       @draw_widget_view(w)
+      wli.append('<span class="gs-resize-handle gs-resize-handle-both"></span>')
     
   show_add: (e)->
     e.preventDefault()

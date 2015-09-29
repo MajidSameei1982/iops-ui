@@ -64,7 +64,9 @@ class GateWidgetView extends WidgetView
     yellow = @get_bool("PBB.Warning._HasWarnings.Value")
     orange = @get_bool("PBB.AUTOLEVELMODEFLAG.Value")
     red = @get_bool("PBB.Alarm._HasAlarms.Value")
-    avg = @get_value("GPU.RVOUTAVG.Value")
+    #avg = @get_value("GPU.RVOUTAVG.Value")
+    console.log docked
+
     if red
       @ui.content.css
         'background-color' : '#c00'
@@ -95,7 +97,11 @@ class GateWidgetView extends WidgetView
     @ui.display.toggle(!@settings_visible)
 
   onShow: ()->
-    @ui.gate.on "change", ()=>@set_model()
+    @ui.gate.on "change", ()=>
+      v = @ui.gate.val().trim()
+      if v != ''
+        @set_model()
+        @toggle_settings()
     gate = @model.get("settings").gate
     if !gate? || gate == ''
       @toggle_settings()

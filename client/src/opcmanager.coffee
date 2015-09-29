@@ -7,6 +7,7 @@ class OPCManager
 
   @create: (conn, config)->
     c = new OPC(config)
+    c.abbrev = conn
     @connections[conn] = c
     c
 
@@ -70,9 +71,9 @@ class OPCManager
         abbrev = site.get("abbrev")
         OPCManager.create abbrev,
           token:'7e61b230-481d-4551-b24b-ba9046e3d8f2'
-          interval:5000
+          #interval:5000
           refresh_callback: (data)->
-            OPCManager.notify abbrev, data
+            OPCManager.notify @.abbrev, data
           serverURL : opc_addr
       
 # ----------------------------------
