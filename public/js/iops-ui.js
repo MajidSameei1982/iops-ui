@@ -985,7 +985,7 @@ window.JST["widgets/gate_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" id=\'content\'>\n  <div class="display">\n    <div id="gate_label"><h1><span id=\'txt\'></span> <span id="docked" style=\'display:none;\'><i class="fa fa-plane"></i></span></h1></div>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" id=\'content\'>\n  <div class="display contain">\n    <div id="gate_label"><h1><span id=\'txt\'></span> <span id="docked" style=\'display:none;\'><i class="fa fa-plane"></i></span></h1></div>\n    <table class=\'data\'>\n      <tr><td class=\'lbl\'>PBB Status</td><td id=\'pbb_status\' class=\'val\'></td></tr>\n      <tr><td class=\'lbl\'>PBB Mode</td><td id=\'pbb_mode\' class=\'val\'></td></tr>\n      <tr><td class=\'lbl\'>E-Stop</td><td id=\'plb_estop\' class=\'val\'></td></tr>\n      <tr><td class=\'lbl\'>Smoke Detector</td><td id=\'pbb_smoke\' class=\'val\'></td></tr>\n    </table>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.formGroup({
         id: 'gate',
@@ -4356,7 +4356,7 @@ GateWidgetView = (function(superClass) {
 
   GateWidgetView.prototype.template = "widgets/gate_widget";
 
-  GateWidgetView.prototype.className = 'widget-outer box box-primary';
+  GateWidgetView.prototype.className = 'widget-outer box box-primary gate_widget';
 
   GateWidgetView.prototype.ui = {
     gate: 'input#gate',
@@ -4367,8 +4367,8 @@ GateWidgetView = (function(superClass) {
   };
 
   GateWidgetView.layout = {
-    sx: 3,
-    sy: 2
+    sx: 6,
+    sy: 4
   };
 
   GateWidgetView.prototype.modelEvents = {
@@ -4384,16 +4384,25 @@ GateWidgetView = (function(superClass) {
   };
 
   GateWidgetView.prototype.update = function() {
-    var i, lbl, len, ref, s, t, tags;
+    var lbl, s, t, tags, tg;
     s = this.model.get("settings");
     if ((s != null) && (s.gate != null) && s.gate !== '') {
       this.kill_updates("CID");
       this.prefix = "\\\\opc.iopsnow.com\\RemoteSCADAHosting.Airport-CID.Airport.CID.Term1.Zone1.Gate C-" + s.gate + ".";
-      this.tags = ["PBB.PLANE_DOCKED.Value", "PBB.PBB_IN_OPER_MODE.Value", "PBB.Warning._HasWarnings.Value", "PBB.AUTOLEVELMODEFLAG.Value", "GPU.RVOUTAVG.Value", "PBB.Alarm._HasAlarms.Value"];
+      this.tags = {
+        pbb_plane_docked: "PBB.PLANE_DOCKED.Value",
+        pbb_in_oper_mode: "PBB.PBB_IN_OPER_MODE.Value",
+        pbb_maintok: 'PBB.MAINTOK.Value',
+        pbb_has_warnings: "PBB.Warning._HasWarnings.Value",
+        pbb_autolevelmode: "PBB.AUTOLEVELMODEFLAG.Value",
+        gpu_rvoutavg: "GPU.RVOUTAVG.Value",
+        pbb_has_alarms: "PBB.Alarm._HasAlarms.Value",
+        plb_estop: 'PLB.Alarm.E_STOP.Value',
+        pbb_smoke: 'PBB.SMOKEDETECTOR.Value'
+      };
       tags = [];
-      ref = this.tags;
-      for (i = 0, len = ref.length; i < len; i++) {
-        t = ref[i];
+      for (tg in this.tags) {
+        t = this.tags[tg];
         tags.push("" + this.prefix + t);
       }
       App.opc.add_tags("CID", tags);
@@ -4404,9 +4413,7 @@ GateWidgetView = (function(superClass) {
     }
   };
 
-  GateWidgetView.prototype.get_bool = function(tag) {
-    var v;
-    v = this.get_value(tag);
+  GateWidgetView.prototype.get_bool = function(v) {
     if ((v != null) && v.toUpperCase() === "TRUE") {
       return true;
     } else {
@@ -4419,8 +4426,11 @@ GateWidgetView = (function(superClass) {
   };
 
   GateWidgetView.prototype.data_update = function(data) {
-    var docked, green, orange, red, yellow;
-    docked = this.get_bool("PBB.PLANE_DOCKED.Value");
+    var estop, green, maint, mode, orange, pbb_status, red, smoke, stat, tg, txt, yellow;
+    this.vals = {};
+    for (tg in this.tags) {
+      this.vals[tg] = this.get_value(this.tags[tg]);
+    }
     green = this.get_bool("PBB.PBB_IN_OPER_MODE.Value");
     yellow = this.get_bool("PBB.Warning._HasWarnings.Value");
     orange = this.get_bool("PBB.AUTOLEVELMODEFLAG.Value");
@@ -4446,7 +4456,25 @@ GateWidgetView = (function(superClass) {
         'color': '#fff'
       });
     }
-    return this.ui.docked.toggle(docked);
+    stat = this.get_bool(this.vals.pbb_in_oper_mode);
+    pbb_status = stat ? "Ready/OK" : "Not Ready";
+    this.$('#pbb_status').html(pbb_status).toggleClass("ok", stat);
+    mode = this.get_bool(this.vals.pbb_autolevelmode);
+    maint = this.get_bool(this.vals.pbb_maintok);
+    txt = "Logged Off";
+    if (mode) {
+      txt = "Auto Level";
+    } else if (maint) {
+      txt = "Manual Mode";
+    }
+    this.$('#pbb_mode').html(txt).toggleClass("ok", mode && !maint).toggleClass('blue', maint);
+    estop = this.get_bool(this.vals.plb_estop);
+    txt = estop ? "Activated" : "Ready/OK";
+    this.$('#plb_estop').html(txt).toggleClass("err", estop);
+    smoke = this.get_bool(this.vals.pbb_smoke);
+    txt = !smoke ? "Activated" : "Ready/OK";
+    this.$('#pbb_smoke').html(txt).toggleClass("err", !smoke);
+    return this.ui.docked.toggle(this.get_bool(this.vals.pbb_plane_docked));
   };
 
   GateWidgetView.prototype.set_model = function() {

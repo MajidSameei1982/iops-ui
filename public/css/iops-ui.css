@@ -132,6 +132,48 @@ ul.gridster.widget-container {
     background-color: rgba(255, 255, 255, 0.5);
     color: #000; }
 
+.gate_widget .display {
+  min-height: 100%;
+  min-width: 100%;
+  overflow: auto; }
+  .gate_widget .display #gate_label {
+    margin-bottom: 3px; }
+    .gate_widget .display #gate_label h1 {
+      line-height: 48px;
+      font-weight: bold;
+      margin: 0 0 0 0; }
+  .gate_widget .display #docked i.fa.fa-plane {
+    color: #069;
+    padding: 10px 10px 5px 10px;
+    background-color: #eee;
+    border-radius: 10px;
+    margin-left: 10px; }
+.gate_widget table.data {
+  width: 100%;
+  border: solid 1px #999;
+  border-spacing: 1px;
+  border-collapse: separate; }
+  .gate_widget table.data td {
+    padding: 3px 10px;
+    background-color: #eee;
+    color: #999; }
+    .gate_widget table.data td.lbl {
+      background-color: #fff;
+      font-style: italic;
+      color: #333;
+      border-bottom: solid 1px #ddd; }
+    .gate_widget table.data td.val {
+      font-weight: bold; }
+    .gate_widget table.data td.err {
+      color: #fe6;
+      background-color: #c33; }
+    .gate_widget table.data td.ok {
+      background-color: #090;
+      color: #fff; }
+    .gate_widget table.data td.blue {
+      background-color: #06c;
+      color: #fff; }
+
 .crud_container {
   margin: 0 5px;
   color: #999; }

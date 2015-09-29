@@ -5,7 +5,7 @@ WidgetView = require('./widget_view')
 
 class GateWidgetView extends WidgetView
   template:   "widgets/gate_widget"
-  className: 'widget-outer box box-primary'
+  className: 'widget-outer box box-primary gate_widget'
   ui:
     gate: 'input#gate'
     wtitle: "h3.box-title"
@@ -14,8 +14,8 @@ class GateWidgetView extends WidgetView
     docked: '#docked'
 
   @layout:
-    sx: 3
-    sy: 2
+    sx: 6
+    sy: 4
 
   modelEvents:
     "change" : "update"
@@ -32,16 +32,20 @@ class GateWidgetView extends WidgetView
       @kill_updates("CID")
       # build settings      
       @prefix = "\\\\opc.iopsnow.com\\RemoteSCADAHosting.Airport-CID.Airport.CID.Term1.Zone1.Gate C-#{s.gate}."
-      @tags = [
-        "PBB.PLANE_DOCKED.Value"
-        "PBB.PBB_IN_OPER_MODE.Value"
-        "PBB.Warning._HasWarnings.Value"
-        "PBB.AUTOLEVELMODEFLAG.Value"
-        "GPU.RVOUTAVG.Value"
-        "PBB.Alarm._HasAlarms.Value"
-      ]
+      @tags =
+        pbb_plane_docked : "PBB.PLANE_DOCKED.Value"
+        pbb_in_oper_mode : "PBB.PBB_IN_OPER_MODE.Value"
+        pbb_maintok : 'PBB.MAINTOK.Value'
+        pbb_has_warnings : "PBB.Warning._HasWarnings.Value"
+        pbb_autolevelmode : "PBB.AUTOLEVELMODEFLAG.Value"
+        gpu_rvoutavg : "GPU.RVOUTAVG.Value"
+        pbb_has_alarms : "PBB.Alarm._HasAlarms.Value"
+        plb_estop: 'PLB.Alarm.E_STOP.Value'
+        pbb_smoke: 'PBB.SMOKEDETECTOR.Value'
+      
       tags = []
-      for t in @tags
+      for tg of @tags
+        t = @tags[tg]
         tags.push "#{@prefix}#{t}"
       App.opc.add_tags "CID", tags
 
@@ -52,8 +56,7 @@ class GateWidgetView extends WidgetView
       @ui.wtitle.html(lbl)
       @$('#gate_label #txt').html(lbl)
 
-  get_bool: (tag)=>
-    v = @get_value(tag)
+  get_bool: (v)=>
     if v? && v.toUpperCase() == "TRUE"
       return true
     else
@@ -63,7 +66,10 @@ class GateWidgetView extends WidgetView
     return App.opc.connections["CID"].get_value("#{@prefix}#{tag}")
 
   data_update: (data)=>
-    docked = @get_bool("PBB.PLANE_DOCKED.Value")
+    @vals = {}
+    for tg of @tags
+      @vals[tg] = @get_value(@tags[tg])
+
     green = @get_bool("PBB.PBB_IN_OPER_MODE.Value")
     yellow = @get_bool("PBB.Warning._HasWarnings.Value")
     orange = @get_bool("PBB.AUTOLEVELMODEFLAG.Value")
@@ -87,7 +93,33 @@ class GateWidgetView extends WidgetView
         'background-color' : '#6c6'
         'color' : '#fff'
 
-    @ui.docked.toggle(docked)
+    # PBB STATUS
+    stat = @get_bool(@vals.pbb_in_oper_mode)
+    pbb_status = if stat then "Ready/OK" else "Not Ready"
+    @$('#pbb_status').html(pbb_status).toggleClass("ok", stat)
+
+    # PBB MODE
+    mode = @get_bool(@vals.pbb_autolevelmode)
+    maint = @get_bool(@vals.pbb_maintok)
+    txt = "Logged Off"
+    if mode
+      txt = "Auto Level" 
+    else if maint
+      txt = "Manual Mode"
+    @$('#pbb_mode').html(txt).toggleClass("ok", mode && !maint).toggleClass('blue', maint)
+
+    # E-STOP
+    estop = @get_bool(@vals.plb_estop)
+    txt = if estop then "Activated" else "Ready/OK"
+    @$('#plb_estop').html(txt).toggleClass("err", estop)
+
+    # SMOKE DETECTOR
+    smoke = @get_bool(@vals.pbb_smoke)
+    txt = if !smoke then "Activated" else "Ready/OK"
+    @$('#pbb_smoke').html(txt).toggleClass("err", !smoke)
+
+    # DOCKED
+    @ui.docked.toggle(@get_bool(@vals.pbb_plane_docked))
 
   set_model: ()=>
     s = _.clone(@model.get("settings"))
