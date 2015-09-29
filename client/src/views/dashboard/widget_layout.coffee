@@ -12,11 +12,14 @@ class WidgetLayout extends Marionette.LayoutView
   ui:
     wgrid : "ul.gridster"
   events:
-    "click #add_widget" : "add_widget"
+    "click #add_widget" : "show_add"
 
-  insert_widget: (type)->
-    id = @model.widgets.length+1
-    @model.widgets.add
+  add_widget: (type)->
+    id = 0
+    for m in @model.widgets.models
+      if m.id > id then id = m.id
+    id = id+1
+    w = @model.widgets.add
       id: id
       type: type
       settings:
@@ -26,9 +29,13 @@ class WidgetLayout extends Marionette.LayoutView
           sx:         1
           sy:         1
       config:     true
-    @draw_widgets()
-
-  add_widget: (e)->
+    if @grid
+      wli = $("<li id='widget_#{id}' class='widget'></li>")
+      @$('ul.gridster').append(wli)
+      @grid.add_widget(wli, 1, 1, 1, 1)
+      @draw_widget_view(w)
+    
+  show_add: (e)->
     e.preventDefault()
     m = new Backbone.Model()
     m.view = @
@@ -36,7 +43,8 @@ class WidgetLayout extends Marionette.LayoutView
       model:m
     App.layout.modal_region.show(@wmv)
 
-  adjust_widgets: (e, ui)=>
+  # persist widget position and dimensions
+  persist_widgets: (e, ui)=>
     wid = $(e.target).closest('li.widget').data('id')
     for wm, idx in @model.widgets.models
       @$('ul.gridster li').each ()->
@@ -53,57 +61,54 @@ class WidgetLayout extends Marionette.LayoutView
     App.vent.trigger("user:update")
  
   set_gridster: ()->
-    #return if @grid?
-    @grid = $(@ui.wgrid).gridster
+    return @grid if @grid?
+    grid = @$('ul.gridster').gridster
+      widget_base_dimensions: [250, 200]
+      autogrow_cols: true
       resize:
         enabled: true
-        stop: @adjust_widgets
-      autogrow_cols: true
+        stop: @persist_widgets
       draggable:
         handle: '.box-header'
-        stop: @adjust_widgets
-    @grid = @grid.data('gridster')
+        stop: @persist_widgets
+    @grid = grid.data('gridster')
     @
 
-  draw_widgets: ()->
-    #if !@grid? then @set_gridster()
-    @set_gridster()
+  draw_widget_view: (w)->
+    wid = "widget_#{w.id}"
+    r = @getRegion(wid)
+    if (r?) then return
+
+    wli = $("li##{wid}")
+    if !wli? || wli.length == 0
+      wli = $("<li id='#{wid}' class='widget'></li>")
+      $('ul.gridster').append(wli)
+    s = w.get('settings')
+    lo = if s? && s.layout? then s.layout else null
+    wli.attr
+      #'data-id' : w.id
+      'data-row' : s.layout.r
+      'data-col' : s.layout.c
+      'data-sizex' : s.layout.sx
+      'data-sizey' : s.layout.sy        
     
-    for w, idx in @model.widgets.models
-      rg = "widget_#{w.id}"
-      r = @getRegion(rg)
-      if (r?) then continue
+    tpe = if w.get('type')? then w.get('type') else 'default'
+    
+    wv = null
+    switch tpe
+      when 'gate' then wv = new GateWidgetView({model:w})
+      when 'url' then wv = new UrlWidgetView({model:w})
+      else wv = new WidgetView({model: w})
 
-      wli = $("li##{rg}")
-      if !wli? || wli.length == 0
-        wli = $("<li id='#{rg}' class='widget'></li>")
-        $(@ui.wgrid).append(wli)
-      s = w.get('settings')
-      lo = if s? && s.layout? then s.layout else null
-      wli.attr
-        'data-id' : w.id
-        'data-row' : s.layout.r
-        'data-column' : s.layout.c
-        'data-sizex' : s.layout.sx
-        'data-sizey' : s.layout.sy        
-      
-      tpe = if w.get('type')? then w.get('type') else 'default'
-      
-      switch tpe
-        when 'gate' then wv = new GateWidgetView({model:w})
-        when 'url' then wv = new UrlWidgetView({model:w})
-        else wv = new WidgetView({model: w})
-      
-      # create the region if it's a new widget
-      r = @addRegion(rg, "li##{rg}")
-      # show the widget view
-      r.on "show", ()=>
-        @grid.add_widget(wli, lo.sx, lo.sy, lo.c, lo.r)
+    # create the region and show widget
+    r = @addRegion(wid, "li##{wid}")
+    r.show(wv)
+    wv.start()
 
-      r.show(wv);
-      
   onShow: ()->
-    @draw_widgets()
+    for w, idx in @model.widgets.models
+      @draw_widget_view(w)
+    @set_gridster()
     @model.widgets.on "remove", (w, b)=>
       cid = @.cid
       rg = "widget_#{w.id}"

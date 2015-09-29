@@ -59,8 +59,23 @@ window.IOPS = do()->
     # ]
 
     # connect OPCManager
+    @log('Initializing OPCManager')
     App.opc = OPCManager
     App.opc.init(App)
+
+    # REMOVE WHEN API IS CONNECTED - persist user locally until db is connected
+    @log('Persisting user')
+    App.vent.on "user:update", ()->
+      App.store.set("user", App.current_user)
+
+    # setup app clock
+    @log('Setting system clock')
+    dtfn = ()->
+      App.time = new Date()
+      App.vent.trigger 'app:clock', App.time
+      App.time
+
+    App.clock = setInterval(dtfn, 5000)
 
 
   App.on 'start', (options)->
@@ -71,19 +86,6 @@ window.IOPS = do()->
         controller: @controller
       @log('Backbone.history starting')
       Backbone.history.start()
-
-    # setup app clock
-    dtfn = ()->
-      App.time = new Date()
-      App.vent.trigger 'app:clock', App.time
-      App.time
-
-    App.clock = setInterval(dtfn, 5000)
-    dtfn()
-
-    # REMOVE WHEN API IS CONNECTED
-    App.vent.on "user:update", ()->
-      App.store.set("user", App.current_user)
 
     # new up and views and render for base app here...
     @log('Done starting and running!')

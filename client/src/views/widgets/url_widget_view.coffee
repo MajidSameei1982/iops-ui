@@ -39,6 +39,8 @@ class UrlWidgetView extends WidgetView
     url = @model.get("settings").url
     if !url? || url == ''
       @toggle_settings()
+
+  start:()->
     @update()
     
 # ----------------------------------

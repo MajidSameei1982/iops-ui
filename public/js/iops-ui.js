@@ -1124,6 +1124,7 @@ window.IOPS = (function() {
     }
   });
   App.on("before:start", function(options) {
+    var dtfn;
     this.log('Starting');
     Session.restore();
     this.layout = new IopsLayout();
@@ -1145,11 +1146,22 @@ window.IOPS = (function() {
       }
     ]);
     App.claims = new ClaimCollection();
+    this.log('Initializing OPCManager');
     App.opc = OPCManager;
-    return App.opc.init(App);
+    App.opc.init(App);
+    this.log('Persisting user');
+    App.vent.on("user:update", function() {
+      return App.store.set("user", App.current_user);
+    });
+    this.log('Setting system clock');
+    dtfn = function() {
+      App.time = new Date();
+      App.vent.trigger('app:clock', App.time);
+      return App.time;
+    };
+    return App.clock = setInterval(dtfn, 5000);
   });
   App.on('start', function(options) {
-    var dtfn;
     this.log('Started');
     if (Backbone.history) {
       this.controller = new IopsController();
@@ -1159,16 +1171,6 @@ window.IOPS = (function() {
       this.log('Backbone.history starting');
       Backbone.history.start();
     }
-    dtfn = function() {
-      App.time = new Date();
-      App.vent.trigger('app:clock', App.time);
-      return App.time;
-    };
-    App.clock = setInterval(dtfn, 5000);
-    dtfn();
-    App.vent.on("user:update", function() {
-      return App.store.set("user", App.current_user);
-    });
     return this.log('Done starting and running!');
   });
   App.flush = function() {
@@ -1886,6 +1888,7 @@ IopsController = (function(superClass) {
 
   IopsController.prototype.home = function() {
     var d, dl;
+    App.log('route:home');
     if (!App.router.onRoute('home', '', null)) {
       return this;
     }
@@ -1901,12 +1904,14 @@ IopsController = (function(superClass) {
 
   IopsController.prototype.login = function() {
     var v;
+    App.log('route:login');
     v = new LoginView();
     App.layout.center_region.show(v);
     return this;
   };
 
   IopsController.prototype.logout = function() {
+    App.log('route:logout');
     if (App.session != null) {
       App.session.clear();
     }
@@ -1919,6 +1924,7 @@ IopsController = (function(superClass) {
 
   IopsController.prototype.profile = function() {
     var dl;
+    App.log('route:profile');
     dl = this.set_main_layout();
     dl.show_content({
       title: 'Your Profile',
@@ -1934,6 +1940,7 @@ IopsController = (function(superClass) {
 
   IopsController.prototype.mgaccounts = function() {
     var dl;
+    App.log('route:mgaccounts');
     dl = this.set_main_layout();
     dl.show_content({
       title: 'Manage Accounts',
@@ -1949,6 +1956,7 @@ IopsController = (function(superClass) {
 
   IopsController.prototype.mgpermissions = function() {
     var dl;
+    App.log('route:mgpermissions');
     dl = this.set_main_layout();
     dl.show_content({
       title: 'Manage Permissions',
@@ -1962,6 +1970,7 @@ IopsController = (function(superClass) {
 
   IopsController.prototype.dashboard = function(id) {
     var d, dash, dl, i, len, ref;
+    App.log('route:dashboard');
     if (id == null) {
       return null;
     }
@@ -3190,7 +3199,7 @@ WidgetLayout = (function(superClass) {
   extend(WidgetLayout, superClass);
 
   function WidgetLayout() {
-    this.adjust_widgets = bind(this.adjust_widgets, this);
+    this.persist_widgets = bind(this.persist_widgets, this);
     return WidgetLayout.__super__.constructor.apply(this, arguments);
   }
 
@@ -3201,13 +3210,21 @@ WidgetLayout = (function(superClass) {
   };
 
   WidgetLayout.prototype.events = {
-    "click #add_widget": "add_widget"
+    "click #add_widget": "show_add"
   };
 
-  WidgetLayout.prototype.insert_widget = function(type) {
-    var id;
-    id = this.model.widgets.length + 1;
-    this.model.widgets.add({
+  WidgetLayout.prototype.add_widget = function(type) {
+    var i, id, len, m, ref, w, wli;
+    id = 0;
+    ref = this.model.widgets.models;
+    for (i = 0, len = ref.length; i < len; i++) {
+      m = ref[i];
+      if (m.id > id) {
+        id = m.id;
+      }
+    }
+    id = id + 1;
+    w = this.model.widgets.add({
       id: id,
       type: type,
       settings: {
@@ -3220,10 +3237,15 @@ WidgetLayout = (function(superClass) {
       },
       config: true
     });
-    return this.draw_widgets();
+    if (this.grid) {
+      wli = $("<li id='widget_" + id + "' class='widget'></li>");
+      this.$('ul.gridster').append(wli);
+      this.grid.add_widget(wli, 1, 1, 1, 1);
+      return this.draw_widget_view(w);
+    }
   };
 
-  WidgetLayout.prototype.add_widget = function(e) {
+  WidgetLayout.prototype.show_add = function(e) {
     var m;
     e.preventDefault();
     m = new Backbone.Model();
@@ -3234,7 +3256,7 @@ WidgetLayout = (function(superClass) {
     return App.layout.modal_region.show(this.wmv);
   };
 
-  WidgetLayout.prototype.adjust_widgets = function(e, ui) {
+  WidgetLayout.prototype.persist_widgets = function(e, ui) {
     var i, idx, len, ref, wid, wm;
     wid = $(e.target).closest('li.widget').data('id');
     ref = this.model.widgets.models;
@@ -3260,77 +3282,77 @@ WidgetLayout = (function(superClass) {
   };
 
   WidgetLayout.prototype.set_gridster = function() {
-    this.grid = $(this.ui.wgrid).gridster({
+    var grid;
+    if (this.grid != null) {
+      return this.grid;
+    }
+    grid = this.$('ul.gridster').gridster({
+      widget_base_dimensions: [250, 200],
+      autogrow_cols: true,
       resize: {
         enabled: true,
-        stop: this.adjust_widgets
+        stop: this.persist_widgets
       },
-      autogrow_cols: true,
       draggable: {
         handle: '.box-header',
-        stop: this.adjust_widgets
+        stop: this.persist_widgets
       }
     });
-    this.grid = this.grid.data('gridster');
+    this.grid = grid.data('gridster');
     return this;
   };
 
-  WidgetLayout.prototype.draw_widgets = function() {
-    var i, idx, len, lo, r, ref, results, rg, s, tpe, w, wli, wv;
-    this.set_gridster();
-    ref = this.model.widgets.models;
-    results = [];
-    for (idx = i = 0, len = ref.length; i < len; idx = ++i) {
-      w = ref[idx];
-      rg = "widget_" + w.id;
-      r = this.getRegion(rg);
-      if ((r != null)) {
-        continue;
-      }
-      wli = $("li#" + rg);
-      if ((wli == null) || wli.length === 0) {
-        wli = $("<li id='" + rg + "' class='widget'></li>");
-        $(this.ui.wgrid).append(wli);
-      }
-      s = w.get('settings');
-      lo = (s != null) && (s.layout != null) ? s.layout : null;
-      wli.attr({
-        'data-id': w.id,
-        'data-row': s.layout.r,
-        'data-column': s.layout.c,
-        'data-sizex': s.layout.sx,
-        'data-sizey': s.layout.sy
-      });
-      tpe = w.get('type') != null ? w.get('type') : 'default';
-      switch (tpe) {
-        case 'gate':
-          wv = new GateWidgetView({
-            model: w
-          });
-          break;
-        case 'url':
-          wv = new UrlWidgetView({
-            model: w
-          });
-          break;
-        default:
-          wv = new WidgetView({
-            model: w
-          });
-      }
-      r = this.addRegion(rg, "li#" + rg);
-      r.on("show", (function(_this) {
-        return function() {
-          return _this.grid.add_widget(wli, lo.sx, lo.sy, lo.c, lo.r);
-        };
-      })(this));
-      results.push(r.show(wv));
+  WidgetLayout.prototype.draw_widget_view = function(w) {
+    var lo, r, s, tpe, wid, wli, wv;
+    wid = "widget_" + w.id;
+    r = this.getRegion(wid);
+    if ((r != null)) {
+      return;
     }
-    return results;
+    wli = $("li#" + wid);
+    if ((wli == null) || wli.length === 0) {
+      wli = $("<li id='" + wid + "' class='widget'></li>");
+      $('ul.gridster').append(wli);
+    }
+    s = w.get('settings');
+    lo = (s != null) && (s.layout != null) ? s.layout : null;
+    wli.attr({
+      'data-row': s.layout.r,
+      'data-col': s.layout.c,
+      'data-sizex': s.layout.sx,
+      'data-sizey': s.layout.sy
+    });
+    tpe = w.get('type') != null ? w.get('type') : 'default';
+    wv = null;
+    switch (tpe) {
+      case 'gate':
+        wv = new GateWidgetView({
+          model: w
+        });
+        break;
+      case 'url':
+        wv = new UrlWidgetView({
+          model: w
+        });
+        break;
+      default:
+        wv = new WidgetView({
+          model: w
+        });
+    }
+    r = this.addRegion(wid, "li#" + wid);
+    r.show(wv);
+    return wv.start();
   };
 
   WidgetLayout.prototype.onShow = function() {
-    this.draw_widgets();
+    var i, idx, len, ref, w;
+    ref = this.model.widgets.models;
+    for (idx = i = 0, len = ref.length; i < len; idx = ++i) {
+      w = ref[idx];
+      this.draw_widget_view(w);
+    }
+    this.set_gridster();
     this.model.widgets.on("remove", (function(_this) {
       return function(w, b) {
         var cid, rg;
@@ -3387,7 +3409,7 @@ WidgetModalView = (function(superClass) {
     sel = $(e.target);
     wid = sel.attr("id");
     if ((this.model != null) && (this.model.view != null)) {
-      this.model.view.insert_widget(wid);
+      this.model.view.add_widget(wid);
     }
     return $('#app_modal').modal('hide');
   };
@@ -4188,8 +4210,11 @@ GateWidgetView = (function(superClass) {
     })(this));
     gate = this.model.get("settings").gate;
     if ((gate == null) || gate === '') {
-      this.toggle_settings();
+      return this.toggle_settings();
     }
+  };
+
+  GateWidgetView.prototype.start = function() {
     return this.update();
   };
 
@@ -4274,8 +4299,11 @@ UrlWidgetView = (function(superClass) {
     })(this));
     url = this.model.get("settings").url;
     if ((url == null) || url === '') {
-      this.toggle_settings();
+      return this.toggle_settings();
     }
+  };
+
+  UrlWidgetView.prototype.start = function() {
     return this.update();
   };
 
@@ -4323,6 +4351,10 @@ WidgetView = (function(superClass) {
       e.preventDefault();
       return this.model.collection.remove(this.model);
     }
+  };
+
+  WidgetView.prototype.start = function() {
+    return console.log("not implemented");
   };
 
   return WidgetView;

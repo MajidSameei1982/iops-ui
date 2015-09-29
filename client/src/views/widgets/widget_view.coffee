@@ -25,6 +25,9 @@ class WidgetView extends Marionette.ItemView
       e.preventDefault()
       @model.collection.remove(@model)
 
+  start: ()->
+    console.log "not implemented"
+
   	
 # ----------------------------------
 

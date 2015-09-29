@@ -99,6 +99,8 @@ class GateWidgetView extends WidgetView
     gate = @model.get("settings").gate
     if !gate? || gate == ''
       @toggle_settings()
+
+  start: ()->
     @update()
 
   onDestroy: (arg1, arg2) ->

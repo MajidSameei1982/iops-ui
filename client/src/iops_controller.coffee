@@ -27,6 +27,7 @@ class IopsController extends Object
     dl
 
   home: ()->
+    App.log('route:home')
     return @ if !App.router.onRoute('home', '', null)
     dl = @set_main_layout()
     # default to first dashboard
@@ -38,17 +39,20 @@ class IopsController extends Object
     App.flush()
 
   login: ()->
+    App.log('route:login')
     v = new LoginView()
     App.layout.center_region.show(v)
     @
 
   logout: ()->
+    App.log('route:logout')
     if App.session? then App.session.clear()
     App.session = null
     App.router.navigate('login', {trigger:true})
     @
 
   profile: ()->
+    App.log('route:profile')
     dl = @set_main_layout()
     dl.show_content
       title: 'Your Profile'
@@ -60,6 +64,7 @@ class IopsController extends Object
     @
 
   mgaccounts: ()->
+    App.log('route:mgaccounts')
     dl = @set_main_layout()
     dl.show_content
       title: 'Manage Accounts'
@@ -71,6 +76,7 @@ class IopsController extends Object
     @
 
   mgpermissions: ()->
+    App.log('route:mgpermissions')
     dl = @set_main_layout()
     dl.show_content
       title: 'Manage Permissions'
@@ -81,6 +87,7 @@ class IopsController extends Object
     @
 
   dashboard: (id)->
+    App.log('route:dashboard')
     return null if !id?
     id = parseInt(id)
     dl = @set_main_layout()

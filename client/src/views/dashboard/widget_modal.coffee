@@ -18,7 +18,7 @@ class WidgetModalView extends Marionette.ItemView
     e.preventDefault()
     sel = $(e.target)
     wid = sel.attr("id")
-    if @model? && @model.view? then @model.view.insert_widget(wid)
+    if @model? && @model.view? then @model.view.add_widget(wid)
     $('#app_modal').modal('hide')
 
   onShow: ()->
