@@ -394,7 +394,7 @@ window.JST["dashboard/widget_modal"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="modal-dialog">\n  <div class="modal-content">\n    <div class="modal-header">\n      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>\n      <h4 class="modal-title">Add a Widget</h4>\n      Select a widget below to add to the current dashboard.\n    </div>\n    <div class="modal-body">\n      <div id=\'widget_selections\'>\n        <a class=\'widget_select\' id=\'default\' href="#"><i class="fa fa-cubes"></i> Default Widget</a>\n        <a class=\'widget_select\' id=\'url\' href="#"><i class="fa fa-cloud"></i> URL Widget</a>\n        <a class=\'widget_select\' id=\'gate\' href="#"><i class="fa fa-plane"></i> Gate Widget</a>\n        <a class=\'widget_select\' id=\'alarm\' href="#"><i class="fa fa-bullhorn"></i> Alarm Widget</a>\n      </div>\n    </div>\n    <div class="modal-footer">\n      <button type="button" id=\'modal_cancel\' class="btn btn-outline pull-left" data-dismiss="modal">CANCEL</button>\n    </div>\n  </div><!-- /.modal-content -->\n</div><!-- /.modal-dialog -->\n'));
+      _print(_safe('<div class="modal-dialog">\n  <div class="modal-content">\n    <div class="modal-header">\n      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>\n      <h4 class="modal-title">Add a Widget</h4>\n      Select a widget below to add to the current dashboard.\n    </div>\n    <div class="modal-body">\n      <div id=\'widget_selections\'>\n        <a class=\'widget_select\' id=\'default\' href="#"><i class="fa fa-cubes"></i> Default Widget</a>\n        <a class=\'widget_select\' id=\'url\' href="#"><i class="fa fa-link"></i> URL Widget</a>\n        <a class=\'widget_select\' id=\'gate\' href="#"><i class="fa fa-plane"></i> Gate Widget</a>\n        <a class=\'widget_select\' id=\'alarm\' href="#"><i class="fa fa-bullhorn"></i> Alarm Widget</a>\n        <a class=\'widget_select\' id=\'weather\' href="#"><i class="fa fa-cloud"></i> Weather Widget</a>\n      </div>\n    </div>\n    <div class="modal-footer">\n      <button type="button" id=\'modal_cancel\' class="btn btn-outline pull-left" data-dismiss="modal">CANCEL</button>\n    </div>\n  </div><!-- /.modal-content -->\n</div><!-- /.modal-dialog -->\n'));
     
     }).call(this);
     
@@ -1040,7 +1040,7 @@ window.JST["widgets/url_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-link"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <iframe id=\'iframe\' src=""></iframe>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <iframe id=\'iframe\' src=""></iframe>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.formGroup({
         id: 'title',
@@ -1057,6 +1057,69 @@ window.JST["widgets/url_widget"] = function(__obj) {
         feedback: 'link',
         placeholder: 'URL',
         value: this.settings.url
+      })));
+    
+      _print(_safe('  \n  </div><!-- /.box-body -->\n</div><!-- /.box-body -->\n'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
+window.JST["widgets/weather_widget"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-cloud"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\'></div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+    
+      _print(_safe(this.formGroup({
+        id: 'title',
+        type: 'text',
+        placeholder: 'Widget Title',
+        value: this.settings.name
+      })));
+    
+      _print(_safe('\n    '));
+    
+      _print(_safe(this.formGroup({
+        id: 'zip',
+        type: 'text',
+        placeholder: 'ZIP',
+        value: this.settings.zip
       })));
     
       _print(_safe('  \n  </div><!-- /.box-body -->\n</div><!-- /.box-body -->\n'));
@@ -3253,7 +3316,7 @@ DashboardToolView = (function(superClass) {
 module.exports = DashboardToolView;
 
 },{}],31:[function(require,module,exports){
-var AlarmWidgetView, GateWidgetView, Marionette, UrlWidgetView, Widget, WidgetLayout, WidgetModalView, WidgetView,
+var AlarmWidgetView, GateWidgetView, Marionette, UrlWidgetView, WeatherWidgetView, Widget, WidgetLayout, WidgetModalView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -3267,6 +3330,8 @@ WidgetView = require('../widgets/widget_view');
 GateWidgetView = require('../widgets/gate_widget_view');
 
 AlarmWidgetView = require('../widgets/alarm_widget_view');
+
+WeatherWidgetView = require('../widgets/weather_widget_view');
 
 UrlWidgetView = require('../widgets/url_widget_view');
 
@@ -3371,7 +3436,7 @@ WidgetLayout = (function(superClass) {
       return this.grid;
     }
     grid = this.$('ul.gridster').gridster({
-      widget_base_dimensions: [250, 200],
+      widget_base_dimensions: [200, 120],
       autogrow_cols: true,
       resize: {
         enabled: true,
@@ -3425,6 +3490,11 @@ WidgetLayout = (function(superClass) {
           model: w
         });
         break;
+      case 'weather':
+        wv = new WeatherWidgetView({
+          model: w
+        });
+        break;
       default:
         wv = new WidgetView({
           model: w
@@ -3462,7 +3532,7 @@ WidgetLayout = (function(superClass) {
 
 module.exports = WidgetLayout;
 
-},{"../../models/widget":20,"../widgets/alarm_widget_view":42,"../widgets/gate_widget_view":43,"../widgets/url_widget_view":44,"../widgets/widget_view":45,"./widget_modal":32}],32:[function(require,module,exports){
+},{"../../models/widget":20,"../widgets/alarm_widget_view":42,"../widgets/gate_widget_view":43,"../widgets/url_widget_view":44,"../widgets/weather_widget_view":45,"../widgets/widget_view":46,"./widget_modal":32}],32:[function(require,module,exports){
 var Marionette, WidgetModalView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4278,7 +4348,7 @@ AlarmWidgetView = (function(superClass) {
 
 module.exports = AlarmWidgetView;
 
-},{"./widget_view":45}],43:[function(require,module,exports){
+},{"./widget_view":46}],43:[function(require,module,exports){
 var GateWidgetView, Marionette, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -4365,7 +4435,6 @@ GateWidgetView = (function(superClass) {
     yellow = this.get_bool("PBB.Warning._HasWarnings.Value");
     orange = this.get_bool("PBB.AUTOLEVELMODEFLAG.Value");
     red = this.get_bool("PBB.Alarm._HasAlarms.Value");
-    console.log(docked);
     if (red) {
       this.ui.content.css({
         'background-color': '#c00',
@@ -4435,7 +4504,7 @@ GateWidgetView = (function(superClass) {
 
 module.exports = GateWidgetView;
 
-},{"./widget_view":45}],44:[function(require,module,exports){
+},{"./widget_view":46}],44:[function(require,module,exports){
 var Marionette, UrlWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -4520,7 +4589,97 @@ UrlWidgetView = (function(superClass) {
 
 module.exports = UrlWidgetView;
 
-},{"./widget_view":45}],45:[function(require,module,exports){
+},{"./widget_view":46}],45:[function(require,module,exports){
+var Marionette, WeatherWidgetView, WidgetView,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+WidgetView = require('./widget_view');
+
+WeatherWidgetView = (function(superClass) {
+  extend(WeatherWidgetView, superClass);
+
+  function WeatherWidgetView() {
+    this.set_model = bind(this.set_model, this);
+    return WeatherWidgetView.__super__.constructor.apply(this, arguments);
+  }
+
+  WeatherWidgetView.prototype.template = "widgets/weather_widget";
+
+  WeatherWidgetView.prototype.className = 'widget-outer box box-primary';
+
+  WeatherWidgetView.prototype.ui = {
+    display: '#display',
+    title: 'input#title',
+    zip: 'input#zip',
+    wtitle: "h3.box-title"
+  };
+
+  WeatherWidgetView.prototype.modelEvents = {
+    "change": "update"
+  };
+
+  WeatherWidgetView.prototype.update = function() {
+    var city, img, parts, s, state;
+    s = this.model.get("settings");
+    state = "";
+    if ((s.name != null) && s.name !== '') {
+      parts = s.name.split(',');
+      if ((parts != null) && parts.length > 0) {
+        state = parts[parts.length - 1].trim();
+        city = parts[0].trim();
+      }
+    }
+    img = "<span style=\"display: block !important; width: 100%; text-align: center; font-family: sans-serif; font-size: 12px;\">\n  <a href=\"http://www.wunderground.com/cgi-bin/findweather/getForecast?query=zmw:" + s.zip + ".1.99999&bannertypeclick=wu_travel_jet1\" target=\"_blank\">\n  <img src=\"http://weathersticker.wunderground.com/weathersticker/cgi-bin/banner/ban/wxBanner?bannertype=wu_travel_jet1&airportcode=CID&ForcedCity=" + city + "&ForcedState=" + state + "&zip=" + s.zip + "&language=EN\" \n    alt=\"Find more about Weather\" style='width:100%;' />\n  </a>\n</span>";
+    this.ui.display.html(img);
+    return this.ui.wtitle.html("" + s.name);
+  };
+
+  WeatherWidgetView.prototype.set_model = function() {
+    var s;
+    s = _.clone(this.model.get("settings"));
+    s.zip = this.ui.zip.val().trim();
+    s.name = this.ui.title.val();
+    return this.model.set("settings", s);
+  };
+
+  WeatherWidgetView.prototype.toggle_settings = function(e) {
+    WeatherWidgetView.__super__.toggle_settings.call(this, e);
+    return this.ui.display.toggle(!this.settings_visible);
+  };
+
+  WeatherWidgetView.prototype.onShow = function() {
+    var zip;
+    this.ui.title.on("change", (function(_this) {
+      return function() {
+        return _this.set_model();
+      };
+    })(this));
+    this.ui.zip.on("change", (function(_this) {
+      return function() {
+        return _this.set_model();
+      };
+    })(this));
+    zip = this.model.get("settings").zip;
+    if ((zip == null) || zip === '') {
+      return this.toggle_settings();
+    }
+  };
+
+  WeatherWidgetView.prototype.start = function() {
+    return this.update();
+  };
+
+  return WeatherWidgetView;
+
+})(WidgetView);
+
+module.exports = WeatherWidgetView;
+
+},{"./widget_view":46}],46:[function(require,module,exports){
 var Marionette, WidgetView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;

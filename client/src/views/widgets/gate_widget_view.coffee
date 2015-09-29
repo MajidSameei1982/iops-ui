@@ -65,8 +65,7 @@ class GateWidgetView extends WidgetView
     orange = @get_bool("PBB.AUTOLEVELMODEFLAG.Value")
     red = @get_bool("PBB.Alarm._HasAlarms.Value")
     #avg = @get_value("GPU.RVOUTAVG.Value")
-    console.log docked
-
+    
     if red
       @ui.content.css
         'background-color' : '#c00'

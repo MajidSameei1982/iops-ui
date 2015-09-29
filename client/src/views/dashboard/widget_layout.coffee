@@ -3,6 +3,7 @@ Widget = require('../../models/widget')
 WidgetView = require('../widgets/widget_view')
 GateWidgetView = require('../widgets/gate_widget_view')
 AlarmWidgetView = require('../widgets/alarm_widget_view')
+WeatherWidgetView = require('../widgets/weather_widget_view')
 UrlWidgetView = require('../widgets/url_widget_view')
 WidgetModalView = require('./widget_modal')
 
@@ -71,7 +72,7 @@ class WidgetLayout extends Marionette.LayoutView
   set_gridster: ()->
     return @grid if @grid?
     grid = @$('ul.gridster').gridster
-      widget_base_dimensions: [250, 200]
+      widget_base_dimensions: [200, 120]
       autogrow_cols: true
       resize:
         enabled: true
@@ -107,6 +108,7 @@ class WidgetLayout extends Marionette.LayoutView
       when 'gate' then wv = new GateWidgetView({model:w})
       when 'url' then wv = new UrlWidgetView({model:w})
       when 'alarm' then wv = new AlarmWidgetView({model:w})
+      when 'weather' then wv = new WeatherWidgetView({model:w})
       else wv = new WidgetView({model: w})
 
     # create the region and show widget
