@@ -16,17 +16,14 @@ class WidgetLayout extends Marionette.LayoutView
   events:
     "click #add_widget" : "show_add"
 
+  # add widget to collection and grid
   add_widget: (type)->
     id = 0
     for m in @model.widgets.models
       if m.id > id then id = m.id
     id = id+1
-    lo = 
-      r:  1
-      c:  1
-      sx: 4
-      sy: 2
-    debugger
+    lo = { r: 1, c: 1, sx: 4, sy: 2 }
+    # pull default widget layout from widget class - the convention is <Type>WidgetView
     tc = if type == 'default' then '' else type.charAt(0).toUpperCase() + type.slice(1)
     cls = window["#{tc}WidgetView"]
     if cls
@@ -45,6 +42,7 @@ class WidgetLayout extends Marionette.LayoutView
       @draw_widget_view(w)
       wli.append('<span class="gs-resize-handle gs-resize-handle-both"></span>')
     
+  # show widget dialog
   show_add: (e)->
     e.preventDefault()
     m = new Backbone.Model()
@@ -55,7 +53,6 @@ class WidgetLayout extends Marionette.LayoutView
 
   # persist widget position and dimensions
   persist_widgets: (e, ui)=>
-    App.log "persist_widgets"
     wid = $(e.target).closest('li.widget').data('id')
     for wm, idx in @model.widgets.models
       @$('ul.gridster li').each ()->
@@ -72,6 +69,7 @@ class WidgetLayout extends Marionette.LayoutView
           #App.log s
     App.vent.trigger("user:update")
  
+  # initialize gridster with default settings
   set_gridster: ()->
     return @grid if @grid?
     grid = @$('ul.gridster').gridster
@@ -86,6 +84,7 @@ class WidgetLayout extends Marionette.LayoutView
     @grid = grid.data('gridster')
     @
 
+  # add region (if necessary) and render view in region
   draw_widget_view: (w)->
     wid = "widget_#{w.id}"
     r = @getRegion(wid)
@@ -105,14 +104,9 @@ class WidgetLayout extends Marionette.LayoutView
       'data-sizey' : s.layout.sy        
     
     tpe = if w.get('type')? then w.get('type') else 'default'
-    
-    wv = null
-    switch tpe
-      when 'gate' then wv = new GateWidgetView({model:w})
-      when 'url' then wv = new UrlWidgetView({model:w})
-      when 'alarm' then wv = new AlarmWidgetView({model:w})
-      when 'weather' then wv = new WeatherWidgetView({model:w})
-      else wv = new WidgetView({model: w})
+    tpe = if tpe == 'default' then '' else tpe.charAt(0).toUpperCase() + tpe.slice(1)
+    wv = new window["#{tpe}WidgetView"]
+      model: w
 
     # create the region and show widget
     r = @addRegion(wid, "li##{wid}")

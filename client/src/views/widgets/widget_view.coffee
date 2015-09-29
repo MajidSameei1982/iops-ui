@@ -35,4 +35,5 @@ class WidgetView extends Marionette.ItemView
   	
 # ----------------------------------
 
+window.WidgetView = WidgetView
 module.exports = WidgetView

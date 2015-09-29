@@ -3372,7 +3372,6 @@ WidgetLayout = (function(superClass) {
       sx: 4,
       sy: 2
     };
-    debugger;
     tc = type === 'default' ? '' : type.charAt(0).toUpperCase() + type.slice(1);
     cls = window[tc + "WidgetView"];
     if (cls) {
@@ -3409,7 +3408,6 @@ WidgetLayout = (function(superClass) {
 
   WidgetLayout.prototype.persist_widgets = function(e, ui) {
     var i, idx, len, ref, wid, wm;
-    App.log("persist_widgets");
     wid = $(e.target).closest('li.widget').data('id');
     ref = this.model.widgets.models;
     for (idx = i = 0, len = ref.length; i < len; idx = ++i) {
@@ -3476,33 +3474,10 @@ WidgetLayout = (function(superClass) {
       'data-sizey': s.layout.sy
     });
     tpe = w.get('type') != null ? w.get('type') : 'default';
-    wv = null;
-    switch (tpe) {
-      case 'gate':
-        wv = new GateWidgetView({
-          model: w
-        });
-        break;
-      case 'url':
-        wv = new UrlWidgetView({
-          model: w
-        });
-        break;
-      case 'alarm':
-        wv = new AlarmWidgetView({
-          model: w
-        });
-        break;
-      case 'weather':
-        wv = new WeatherWidgetView({
-          model: w
-        });
-        break;
-      default:
-        wv = new WidgetView({
-          model: w
-        });
-    }
+    tpe = tpe === 'default' ? '' : tpe.charAt(0).toUpperCase() + tpe.slice(1);
+    wv = new window[tpe + "WidgetView"]({
+      model: w
+    });
     r = this.addRegion(wid, "li#" + wid);
     r.show(wv);
     return wv.start();
@@ -4270,8 +4245,8 @@ AlarmWidgetView = (function(superClass) {
   };
 
   AlarmWidgetView.layout = {
-    sx: 6,
-    sy: 6
+    sx: 8,
+    sy: 8
   };
 
   AlarmWidgetView.prototype.update = function() {
@@ -4762,6 +4737,8 @@ WidgetView = (function(superClass) {
   return WidgetView;
 
 })(Marionette.ItemView);
+
+window.WidgetView = WidgetView;
 
 module.exports = WidgetView;
 
