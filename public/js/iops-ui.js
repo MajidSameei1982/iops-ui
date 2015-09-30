@@ -4404,7 +4404,7 @@ GateWidgetView = (function(superClass) {
         pbb_autolevelmode: 'PBB.AUTOLEVELMODEFLAG',
         gpu_rvoutavg: 'GPU.RVOUTAVG',
         pbb_has_alarms: 'PBB.Alarm._HasAlarms',
-        plb_estop: 'PLB.Alarm.E_STOP',
+        plb_estop: 'PBB.Alarm.E_STOP',
         pbb_smoke: 'PBB.SMOKEDETECTOR',
         pbb_canopy: 'PBB.Warning.CANOPYDOWN',
         gpu_hoist: 'GPU.HZ400CABLEDEPLOYED'
