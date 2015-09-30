@@ -259,7 +259,7 @@ window.JST["dashboard/side"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<!-- sidebar -->\n<section class="sidebar" tabindex=\'-1\'>\n  <!-- Sidebar Menu -->\n  <ul class="sidebar-menu" id=\'dashboard-list\' tabindex=\'-1\'>\n    <li class="header" tabindex=\'-1\'>DASHBOARDS</li>\n  </ul>\n  <!-- /.sidebar-menu -->\n</section>\n<!-- /.sidebar -->'));
+      _print(_safe('<!-- sidebar -->\n<section class="sidebar" tabindex=\'-1\'>\n  <!-- Sidebar Menu -->\n  <ul class="sidebar-menu" id=\'dashboard-list\' tabindex=\'-1\'>\n    <!-- <li class="header" tabindex=\'-1\'>DASHBOARDS  <a href=\'#\' id=\'add_dash\' class=\'inline\'><i class=\'fa fa-plus-square\'></i>Add</a></li> -->\n    <li class="header" tabindex=\'-1\'>DASHBOARDS </li>\n  </ul>\n  <!-- /.sidebar-menu -->\n</section>\n<!-- /.sidebar -->'));
     
     }).call(this);
     
@@ -985,7 +985,7 @@ window.JST["widgets/gate_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" id=\'content\'>\n  <div class="display contain">\n    <div id="gate_label"><h1><span id=\'txt\'></span> <span id="docked" style=\'display:none;\'><i class="fa fa-plane"></i></span></h1></div>\n    <table class=\'data\'>\n      <tr><td class=\'lbl\'>PBB Status</td><td id=\'pbb_status\' class=\'val\'></td></tr>\n      <tr><td class=\'lbl\'>PBB Mode</td><td id=\'pbb_mode\' class=\'val\'></td></tr>\n      <tr><td class=\'lbl\'>E-Stop</td><td id=\'pbb_estop\' class=\'val\'></td></tr>\n      <tr><td class=\'lbl\'>Smoke Detector</td><td id=\'pbb_smoke\' class=\'val\'></td></tr>\n      <tr><td class=\'lbl\'>Canopy</td><td id=\'pbb_canopy\' class=\'val\'></td></tr>\n      <tr><td class=\'lbl\'>Cable Hoist</td><td id=\'gpu_hoist\' class=\'val\'></td></tr>\n    </table>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" id=\'content\'>\n  <div class="display contain">\n    <div id="gate_label"><h1><span id=\'txt\'></span> <span id="docked" style=\'display:none;\'><i class="fa fa-plane"></i></span></h1></div>\n    <table class=\'data\'>\n      <tr><td class=\'lbl\'>PBB Status</td><td id=\'pbb_status\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>PBB Mode</td><td id=\'pbb_mode\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>E-Stop</td><td id=\'pbb_estop\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Smoke Detector</td><td id=\'pbb_smoke\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Canopy</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Cable Hoist</td><td id=\'gpu_hoist\' class=\'val\'>LOADING...</td></tr>\n    </table>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.formGroup({
         id: 'gate',
@@ -3190,6 +3190,7 @@ DashboardSideView = (function(superClass) {
   extend(DashboardSideView, superClass);
 
   function DashboardSideView() {
+    this.onDomRefresh = bind(this.onDomRefresh, this);
     this.update_dash_links = bind(this.update_dash_links, this);
     return DashboardSideView.__super__.constructor.apply(this, arguments);
   }
@@ -3242,7 +3243,12 @@ DashboardSideView = (function(superClass) {
 
   DashboardSideView.prototype.onShow = function() {
     App.vent.on("show:dashboard", this.update_dash_links);
-    return $(this.el).attr('tabindex', '-1');
+    $(this.el).attr('tabindex', '-1');
+    return this.collection.on("update", (function(_this) {
+      return function() {
+        return _this.onDomRefresh();
+      };
+    })(this));
   };
 
   DashboardSideView.prototype.onDomRefresh = function() {
@@ -4425,9 +4431,10 @@ GateWidgetView = (function(superClass) {
   GateWidgetView.prototype.get_bool = function(v) {
     if ((v != null) && v.toUpperCase() === "TRUE") {
       return true;
-    } else {
+    } else if ((v != null) && v.toUpperCase() === "FALSE") {
       return false;
     }
+    return null;
   };
 
   GateWidgetView.prototype.get_value = function(tag) {
@@ -4473,8 +4480,8 @@ GateWidgetView = (function(superClass) {
     this.mark_bad_data(q, this.$('#pbb_estop').html(txt).toggleClass("err", estop));
     q = this.data_q(this.tags.pbb_smoke);
     smoke = this.get_bool(this.vals.pbb_smoke);
-    txt = !smoke ? "Activated" : "Ready/OK";
-    this.mark_bad_data(q, this.$('#pbb_smoke').html(txt).toggleClass("err", !smoke));
+    txt = smoke === false ? "Activated" : "Ready/OK";
+    this.mark_bad_data(q, this.$('#pbb_smoke').html(txt).toggleClass("err", smoke === false && q));
     q = this.data_q(this.tags.pbb_canopy);
     canopy = this.get_bool(this.vals.pbb_canopy);
     txt = canopy ? "Extended" : "Retracted";

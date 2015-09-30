@@ -298,4 +298,13 @@ ul.gridster.widget-container {
 * {
   outline: none; }
 
+a.inline {
+  display: inline !important;
+  padding: 0;
+  margin: 0 0 0 10px;
+  border-left: none !important; }
+  a.inline:hover, a.inline:focus {
+    border-left: none !important;
+    background-color: transparent !important; }
+
 /*# sourceMappingURL=iops-ui.css.map */

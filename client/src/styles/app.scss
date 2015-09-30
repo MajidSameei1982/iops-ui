@@ -9,3 +9,14 @@
   // eliminate glow on webkit browsers
   outline:none;
 }
+
+a.inline {
+  display:inline !important;
+  padding:0;
+  margin:0 0 0 10px;
+  border-left:none !important;
+  &:hover, &:focus {
+    border-left:none !important;
+    background-color:transparent !important;
+  }
+}
