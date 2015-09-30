@@ -11,7 +11,7 @@
     <table class='data'>
       <tr><td class='lbl'>PBB Status</td><td id='pbb_status' class='val'></td></tr>
       <tr><td class='lbl'>PBB Mode</td><td id='pbb_mode' class='val'></td></tr>
-      <tr><td class='lbl'>E-Stop</td><td id='plb_estop' class='val'></td></tr>
+      <tr><td class='lbl'>E-Stop</td><td id='pbb_estop' class='val'></td></tr>
       <tr><td class='lbl'>Smoke Detector</td><td id='pbb_smoke' class='val'></td></tr>
       <tr><td class='lbl'>Canopy</td><td id='pbb_canopy' class='val'></td></tr>
       <tr><td class='lbl'>Cable Hoist</td><td id='gpu_hoist' class='val'></td></tr>

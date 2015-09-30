@@ -40,7 +40,7 @@ class GateWidgetView extends WidgetView
         pbb_autolevelmode : 'PBB.AUTOLEVELMODEFLAG'
         gpu_rvoutavg : 'GPU.RVOUTAVG'
         pbb_has_alarms : 'PBB.Alarm._HasAlarms'
-        plb_estop: 'PBB.Alarm.E_STOP'
+        pbb_estop: 'PBB.Alarm.E_STOP'
         pbb_smoke: 'PBB.SMOKEDETECTOR'
         pbb_canopy: 'PBB.Warning.CANOPYDOWN'
         gpu_hoist: 'GPU.HZ400CABLEDEPLOYED'
@@ -99,10 +99,10 @@ class GateWidgetView extends WidgetView
     @mark_bad_data q, @$('#pbb_mode').html(txt).toggleClass("ok", mode && !maint).toggleClass('blue', maint)
  
     # E-STOP
-    q = @data_q(@tags.plb_estop)
-    estop = @get_bool(@vals.plb_estop)
+    q = @data_q(@tags.pbb_estop)
+    estop = @get_bool(@vals.pbb_estop)
     txt = if estop then "Activated" else "Ready/OK"
-    @mark_bad_data q, @$('#plb_estop').html(txt).toggleClass("err", estop)
+    @mark_bad_data q, @$('#pbb_estop').html(txt).toggleClass("err", estop)
   
     # SMOKE DETECTOR
     q = @data_q(@tags.pbb_smoke)

@@ -985,7 +985,7 @@ window.JST["widgets/gate_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" id=\'content\'>\n  <div class="display contain">\n    <div id="gate_label"><h1><span id=\'txt\'></span> <span id="docked" style=\'display:none;\'><i class="fa fa-plane"></i></span></h1></div>\n    <table class=\'data\'>\n      <tr><td class=\'lbl\'>PBB Status</td><td id=\'pbb_status\' class=\'val\'></td></tr>\n      <tr><td class=\'lbl\'>PBB Mode</td><td id=\'pbb_mode\' class=\'val\'></td></tr>\n      <tr><td class=\'lbl\'>E-Stop</td><td id=\'plb_estop\' class=\'val\'></td></tr>\n      <tr><td class=\'lbl\'>Smoke Detector</td><td id=\'pbb_smoke\' class=\'val\'></td></tr>\n      <tr><td class=\'lbl\'>Canopy</td><td id=\'pbb_canopy\' class=\'val\'></td></tr>\n      <tr><td class=\'lbl\'>Cable Hoist</td><td id=\'gpu_hoist\' class=\'val\'></td></tr>\n    </table>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" id=\'content\'>\n  <div class="display contain">\n    <div id="gate_label"><h1><span id=\'txt\'></span> <span id="docked" style=\'display:none;\'><i class="fa fa-plane"></i></span></h1></div>\n    <table class=\'data\'>\n      <tr><td class=\'lbl\'>PBB Status</td><td id=\'pbb_status\' class=\'val\'></td></tr>\n      <tr><td class=\'lbl\'>PBB Mode</td><td id=\'pbb_mode\' class=\'val\'></td></tr>\n      <tr><td class=\'lbl\'>E-Stop</td><td id=\'pbb_estop\' class=\'val\'></td></tr>\n      <tr><td class=\'lbl\'>Smoke Detector</td><td id=\'pbb_smoke\' class=\'val\'></td></tr>\n      <tr><td class=\'lbl\'>Canopy</td><td id=\'pbb_canopy\' class=\'val\'></td></tr>\n      <tr><td class=\'lbl\'>Cable Hoist</td><td id=\'gpu_hoist\' class=\'val\'></td></tr>\n    </table>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.formGroup({
         id: 'gate',
@@ -4404,7 +4404,7 @@ GateWidgetView = (function(superClass) {
         pbb_autolevelmode: 'PBB.AUTOLEVELMODEFLAG',
         gpu_rvoutavg: 'GPU.RVOUTAVG',
         pbb_has_alarms: 'PBB.Alarm._HasAlarms',
-        plb_estop: 'PBB.Alarm.E_STOP',
+        pbb_estop: 'PBB.Alarm.E_STOP',
         pbb_smoke: 'PBB.SMOKEDETECTOR',
         pbb_canopy: 'PBB.Warning.CANOPYDOWN',
         gpu_hoist: 'GPU.HZ400CABLEDEPLOYED'
@@ -4467,10 +4467,10 @@ GateWidgetView = (function(superClass) {
       txt = "Manual Mode";
     }
     this.mark_bad_data(q, this.$('#pbb_mode').html(txt).toggleClass("ok", mode && !maint).toggleClass('blue', maint));
-    q = this.data_q(this.tags.plb_estop);
-    estop = this.get_bool(this.vals.plb_estop);
+    q = this.data_q(this.tags.pbb_estop);
+    estop = this.get_bool(this.vals.pbb_estop);
     txt = estop ? "Activated" : "Ready/OK";
-    this.mark_bad_data(q, this.$('#plb_estop').html(txt).toggleClass("err", estop));
+    this.mark_bad_data(q, this.$('#pbb_estop').html(txt).toggleClass("err", estop));
     q = this.data_q(this.tags.pbb_smoke);
     smoke = this.get_bool(this.vals.pbb_smoke);
     txt = !smoke ? "Activated" : "Ready/OK";
