@@ -2799,6 +2799,7 @@ OPCManager = (function() {
           abbrev = site.get("abbrev");
           results1.push(OPCManager.create(abbrev, {
             token: '7e61b230-481d-4551-b24b-ba9046e3d8f2',
+            max_tags_per_msg: 25,
             refresh_callback: function(data) {
               return OPCManager.notify(this.abbrev, data);
             },
