@@ -15,7 +15,7 @@ class GateWidgetView extends WidgetView
 
   @layout:
     sx: 4
-    sy: 4
+    sy: 7
 
   modelEvents:
     "change" : "update"
@@ -33,20 +33,22 @@ class GateWidgetView extends WidgetView
       # build settings      
       @prefix = "\\\\opc.iopsnow.com\\RemoteSCADAHosting.Airport-CID.Airport.CID.Term1.Zone1.Gate C-#{s.gate}."
       @tags =
-        pbb_plane_docked : "PBB.PLANE_DOCKED.Value"
-        pbb_in_oper_mode : "PBB.PBB_IN_OPER_MODE.Value"
-        pbb_maintok : 'PBB.MAINTOK.Value'
-        pbb_has_warnings : "PBB.Warning._HasWarnings.Value"
-        pbb_autolevelmode : "PBB.AUTOLEVELMODEFLAG.Value"
-        gpu_rvoutavg : "GPU.RVOUTAVG.Value"
-        pbb_has_alarms : "PBB.Alarm._HasAlarms.Value"
-        plb_estop: 'PLB.Alarm.E_STOP.Value'
-        pbb_smoke: 'PBB.SMOKEDETECTOR.Value'
+        pbb_plane_docked : 'PBB.PLANE_DOCKED'
+        pbb_in_oper_mode : 'PBB.PBB_IN_OPER_MODE'
+        pbb_maintok : 'PBB.MAINTOK'
+        pbb_has_warnings : 'PBB.Warning._HasWarnings'
+        pbb_autolevelmode : 'PBB.AUTOLEVELMODEFLAG'
+        gpu_rvoutavg : 'GPU.RVOUTAVG'
+        pbb_has_alarms : 'PBB.Alarm._HasAlarms'
+        plb_estop: 'PLB.Alarm.E_STOP'
+        pbb_smoke: 'PBB.SMOKEDETECTOR'
+        pbb_canopy: 'PBB.Warning.CANOPYDOWN'
+        gpu_hoist: 'GPU.HZ400CABLEDEPLOYED'
       
       tags = []
       for tg of @tags
         t = @tags[tg]
-        tags.push "#{@prefix}#{t}"
+        tags.push "#{@prefix}#{t}.Value"
       App.opc.add_tags "CID", tags
 
       # listen for updates
@@ -63,42 +65,30 @@ class GateWidgetView extends WidgetView
       return false
 
   get_value: (tag)=>
-    return App.opc.connections["CID"].get_value("#{@prefix}#{tag}")
+    return App.opc.connections["CID"].get_value("#{@prefix}#{tag}.Value")
+
+  mark_bad_data: (q, el)->
+    h = if !q then 'BAD DATA' else $(el).html()
+    $(el).html(h).toggleClass("bad_data", !q)
+
+  data_q: (tag)=>
+    c = App.opc.connections["CID"]
+    t = c.tags["#{@prefix}#{tag}"]
+    t.props.Value.quality
 
   data_update: (data)=>
     @vals = {}
     for tg of @tags
       @vals[tg] = @get_value(@tags[tg])
 
-    green = @get_bool("PBB.PBB_IN_OPER_MODE.Value")
-    yellow = @get_bool("PBB.Warning._HasWarnings.Value")
-    orange = @get_bool("PBB.AUTOLEVELMODEFLAG.Value")
-    red = @get_bool("PBB.Alarm._HasAlarms.Value")
-    #avg = @get_value("GPU.RVOUTAVG.Value")
-    
-    if red
-      @ui.content.css
-        'background-color' : '#c00'
-        'color' : '#fc0'
-    else if orange
-      @ui.content.css
-        'background-color' : '#c90'
-        'color' : '#fff'
-    else if yellow
-      @ui.content.css
-        'background-color' : '#fc6'
-        'color' : '#000'
-    else if green
-      @ui.content.css
-        'background-color' : '#6c6'
-        'color' : '#fff'
-
     # PBB STATUS
+    q = @data_q(@tags.pbb_in_oper_mode)
     stat = @get_bool(@vals.pbb_in_oper_mode)
     pbb_status = if stat then "Ready/OK" else "Not Ready"
-    @$('#pbb_status').html(pbb_status).toggleClass("ok", stat)
-
+    @mark_bad_data q, @$('#pbb_status').html(pbb_status).toggleClass("ok", stat)
+  
     # PBB MODE
+    q = @data_q(@tags.pbb_autolevelmode) && @data_q(@tags.pbb_maintok)
     mode = @get_bool(@vals.pbb_autolevelmode)
     maint = @get_bool(@vals.pbb_maintok)
     txt = "Logged Off"
@@ -106,17 +96,31 @@ class GateWidgetView extends WidgetView
       txt = "Auto Level" 
     else if maint
       txt = "Manual Mode"
-    @$('#pbb_mode').html(txt).toggleClass("ok", mode && !maint).toggleClass('blue', maint)
-
+    @mark_bad_data q, @$('#pbb_mode').html(txt).toggleClass("ok", mode && !maint).toggleClass('blue', maint)
+ 
     # E-STOP
+    q = @data_q(@tags.plb_estop)
     estop = @get_bool(@vals.plb_estop)
     txt = if estop then "Activated" else "Ready/OK"
-    @$('#plb_estop').html(txt).toggleClass("err", estop)
-
+    @mark_bad_data q, @$('#plb_estop').html(txt).toggleClass("err", estop)
+  
     # SMOKE DETECTOR
+    q = @data_q(@tags.pbb_smoke)
     smoke = @get_bool(@vals.pbb_smoke)
     txt = if !smoke then "Activated" else "Ready/OK"
-    @$('#pbb_smoke').html(txt).toggleClass("err", !smoke)
+    @mark_bad_data q, @$('#pbb_smoke').html(txt).toggleClass("err", !smoke)
+  
+    # CANOPY
+    q = @data_q(@tags.pbb_canopy)
+    canopy = @get_bool(@vals.pbb_canopy)
+    txt = if canopy then "Extended" else "Retracted"
+    @mark_bad_data q, @$('#pbb_canopy').html(txt).toggleClass("ok", canopy)
+
+    # CABLE HOIST
+    q = @data_q(@tags.gpu_hoist)
+    hoist = @get_bool(@vals.gpu_hoist)
+    txt = if hoist then "Deployed" else "Retracted"
+    @mark_bad_data q, @$('#gpu_hoist').html(txt).toggleClass("ok", hoist)
 
     # DOCKED
     @ui.docked.toggle(@get_bool(@vals.pbb_plane_docked))

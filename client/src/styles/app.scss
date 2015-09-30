@@ -4,3 +4,8 @@
 @import "forms";
 @import "manage_accounts";
 @import "manage_permissions";
+
+* {
+  // eliminate glow on webkit browsers
+  outline:none;
+}

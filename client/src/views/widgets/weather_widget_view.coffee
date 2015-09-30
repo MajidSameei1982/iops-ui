@@ -17,7 +17,7 @@ class WeatherWidgetView extends WidgetView
 
   @layout:
     sx: 3
-    sy: 4
+    sy: 8
 
   update: ()->
     s = @model.get("settings")

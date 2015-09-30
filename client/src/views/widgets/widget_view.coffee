@@ -12,7 +12,7 @@ class WidgetView extends Marionette.ItemView
 
   @layout:
     sx: 4
-    sy: 3
+    sy: 5
 
   constructor: (config)->
     super(config)

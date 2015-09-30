@@ -259,7 +259,7 @@ window.JST["dashboard/side"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<!-- sidebar -->\n<section class="sidebar">\n  <!-- Sidebar Menu -->\n  <ul class="sidebar-menu" id=\'dashboard-list\'>\n    <li class="header">DASHBOARDS</li>\n    <!-- <li><a href="#"><i class=\'fa fa-th-large\'></i> <span>Link</span></a></li> -->\n    <!-- <li><a href="#"><i class=\'fa fa-th-large\'></i> <span>Another Link</span></a></li> -->\n  </ul>\n  <!-- /.sidebar-menu -->\n</section>\n<!-- /.sidebar -->'));
+      _print(_safe('<!-- sidebar -->\n<section class="sidebar" tabindex=\'-1\'>\n  <!-- Sidebar Menu -->\n  <ul class="sidebar-menu" id=\'dashboard-list\' tabindex=\'-1\'>\n    <li class="header" tabindex=\'-1\'>DASHBOARDS</li>\n  </ul>\n  <!-- /.sidebar-menu -->\n</section>\n<!-- /.sidebar -->'));
     
     }).call(this);
     
@@ -304,7 +304,7 @@ window.JST["dashboard/tool"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<!-- sidebar -->\n<section class="sidebar" tabindex="-1">\n  <!-- Sidebar Menu -->\n  <ul class="sidebar-menu" id=\'dashboard-list\'>\n    <li class="header">iOPS Admin</li>\n    <li id="manage_accounts" class=\'tool_link\' data-toggle="control-sidebar"><a href="#"><i class=\'fa fa-building-o\'></i> <span>Manage Accounts</span></a></li>\n    <li id="manage_permissions" class=\'tool_link\' data-toggle="control-sidebar"><a href="#"><i class=\'fa fa-users\'></i> <span>Manage Permissions</span></a></li>\n  </ul>\n  <!-- /.sidebar-menu -->\n</section>\n<!-- /.sidebar -->'));
+      _print(_safe('<!-- sidebar -->\n<section class="sidebar" tabindex="-1">\n  <!-- Sidebar Menu -->\n  <ul class="sidebar-menu" id=\'dashboard-list\' tabindex=\'-1\'>\n    <li class="header">iOPS Admin</li>\n    <li id="manage_accounts" class=\'tool_link\' data-toggle="control-sidebar" tabindex=\'-1\'><a href="#" tabindex=\'-1\'><i class=\'fa fa-building-o\'></i> <span>Manage Accounts</span></a></li>\n    <li id="manage_permissions" class=\'tool_link\' data-toggle="control-sidebar" tabindex=\'-1\'><a href="#" tabindex=\'-1\'><i class=\'fa fa-users\'></i> <span>Manage Permissions</span></a></li>\n  </ul>\n  <!-- /.sidebar-menu -->\n</section>\n<!-- /.sidebar -->'));
     
     }).call(this);
     
@@ -985,7 +985,7 @@ window.JST["widgets/gate_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" id=\'content\'>\n  <div class="display contain">\n    <div id="gate_label"><h1><span id=\'txt\'></span> <span id="docked" style=\'display:none;\'><i class="fa fa-plane"></i></span></h1></div>\n    <table class=\'data\'>\n      <tr><td class=\'lbl\'>PBB Status</td><td id=\'pbb_status\' class=\'val\'></td></tr>\n      <tr><td class=\'lbl\'>PBB Mode</td><td id=\'pbb_mode\' class=\'val\'></td></tr>\n      <tr><td class=\'lbl\'>E-Stop</td><td id=\'plb_estop\' class=\'val\'></td></tr>\n      <tr><td class=\'lbl\'>Smoke Detector</td><td id=\'pbb_smoke\' class=\'val\'></td></tr>\n    </table>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" id=\'content\'>\n  <div class="display contain">\n    <div id="gate_label"><h1><span id=\'txt\'></span> <span id="docked" style=\'display:none;\'><i class="fa fa-plane"></i></span></h1></div>\n    <table class=\'data\'>\n      <tr><td class=\'lbl\'>PBB Status</td><td id=\'pbb_status\' class=\'val\'></td></tr>\n      <tr><td class=\'lbl\'>PBB Mode</td><td id=\'pbb_mode\' class=\'val\'></td></tr>\n      <tr><td class=\'lbl\'>E-Stop</td><td id=\'plb_estop\' class=\'val\'></td></tr>\n      <tr><td class=\'lbl\'>Smoke Detector</td><td id=\'pbb_smoke\' class=\'val\'></td></tr>\n      <tr><td class=\'lbl\'>Canopy</td><td id=\'pbb_canopy\' class=\'val\'></td></tr>\n      <tr><td class=\'lbl\'>Cable Hoist</td><td id=\'gpu_hoist\' class=\'val\'></td></tr>\n    </table>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.formGroup({
         id: 'gate',
@@ -3240,7 +3240,8 @@ DashboardSideView = (function(superClass) {
   };
 
   DashboardSideView.prototype.onShow = function() {
-    return App.vent.on("show:dashboard", this.update_dash_links);
+    App.vent.on("show:dashboard", this.update_dash_links);
+    return $(this.el).attr('tabindex', '-1');
   };
 
   DashboardSideView.prototype.onDomRefresh = function() {
@@ -3307,6 +3308,10 @@ DashboardToolView = (function(superClass) {
     return App.router.navigate('mgpermissions', {
       trigger: true
     });
+  };
+
+  DashboardToolView.prototype.onShow = function() {
+    return $(this.el).attr('tabindex', '-1');
   };
 
   return DashboardToolView;
@@ -3437,7 +3442,7 @@ WidgetLayout = (function(superClass) {
       return this.grid;
     }
     grid = this.$('ul.gridster').gridster({
-      widget_base_dimensions: [50, 50],
+      widget_base_dimensions: [50, 25],
       autogrow_cols: true,
       resize: {
         enabled: true,
@@ -4246,7 +4251,7 @@ AlarmWidgetView = (function(superClass) {
 
   AlarmWidgetView.layout = {
     sx: 4,
-    sy: 4
+    sy: 10
   };
 
   AlarmWidgetView.prototype.update = function() {
@@ -4349,6 +4354,7 @@ GateWidgetView = (function(superClass) {
   function GateWidgetView() {
     this.set_model = bind(this.set_model, this);
     this.data_update = bind(this.data_update, this);
+    this.data_q = bind(this.data_q, this);
     this.get_value = bind(this.get_value, this);
     this.get_bool = bind(this.get_bool, this);
     return GateWidgetView.__super__.constructor.apply(this, arguments);
@@ -4368,7 +4374,7 @@ GateWidgetView = (function(superClass) {
 
   GateWidgetView.layout = {
     sx: 4,
-    sy: 4
+    sy: 7
   };
 
   GateWidgetView.prototype.modelEvents = {
@@ -4390,20 +4396,22 @@ GateWidgetView = (function(superClass) {
       this.kill_updates("CID");
       this.prefix = "\\\\opc.iopsnow.com\\RemoteSCADAHosting.Airport-CID.Airport.CID.Term1.Zone1.Gate C-" + s.gate + ".";
       this.tags = {
-        pbb_plane_docked: "PBB.PLANE_DOCKED.Value",
-        pbb_in_oper_mode: "PBB.PBB_IN_OPER_MODE.Value",
-        pbb_maintok: 'PBB.MAINTOK.Value',
-        pbb_has_warnings: "PBB.Warning._HasWarnings.Value",
-        pbb_autolevelmode: "PBB.AUTOLEVELMODEFLAG.Value",
-        gpu_rvoutavg: "GPU.RVOUTAVG.Value",
-        pbb_has_alarms: "PBB.Alarm._HasAlarms.Value",
-        plb_estop: 'PLB.Alarm.E_STOP.Value',
-        pbb_smoke: 'PBB.SMOKEDETECTOR.Value'
+        pbb_plane_docked: 'PBB.PLANE_DOCKED',
+        pbb_in_oper_mode: 'PBB.PBB_IN_OPER_MODE',
+        pbb_maintok: 'PBB.MAINTOK',
+        pbb_has_warnings: 'PBB.Warning._HasWarnings',
+        pbb_autolevelmode: 'PBB.AUTOLEVELMODEFLAG',
+        gpu_rvoutavg: 'GPU.RVOUTAVG',
+        pbb_has_alarms: 'PBB.Alarm._HasAlarms',
+        plb_estop: 'PLB.Alarm.E_STOP',
+        pbb_smoke: 'PBB.SMOKEDETECTOR',
+        pbb_canopy: 'PBB.Warning.CANOPYDOWN',
+        gpu_hoist: 'GPU.HZ400CABLEDEPLOYED'
       };
       tags = [];
       for (tg in this.tags) {
         t = this.tags[tg];
-        tags.push("" + this.prefix + t);
+        tags.push("" + this.prefix + t + ".Value");
       }
       App.opc.add_tags("CID", tags);
       this.watch_updates("CID");
@@ -4422,43 +4430,33 @@ GateWidgetView = (function(superClass) {
   };
 
   GateWidgetView.prototype.get_value = function(tag) {
-    return App.opc.connections["CID"].get_value("" + this.prefix + tag);
+    return App.opc.connections["CID"].get_value("" + this.prefix + tag + ".Value");
+  };
+
+  GateWidgetView.prototype.mark_bad_data = function(q, el) {
+    var h;
+    h = !q ? 'BAD DATA' : $(el).html();
+    return $(el).html(h).toggleClass("bad_data", !q);
+  };
+
+  GateWidgetView.prototype.data_q = function(tag) {
+    var c, t;
+    c = App.opc.connections["CID"];
+    t = c.tags["" + this.prefix + tag];
+    return t.props.Value.quality;
   };
 
   GateWidgetView.prototype.data_update = function(data) {
-    var estop, green, maint, mode, orange, pbb_status, red, smoke, stat, tg, txt, yellow;
+    var canopy, estop, hoist, maint, mode, pbb_status, q, smoke, stat, tg, txt;
     this.vals = {};
     for (tg in this.tags) {
       this.vals[tg] = this.get_value(this.tags[tg]);
     }
-    green = this.get_bool("PBB.PBB_IN_OPER_MODE.Value");
-    yellow = this.get_bool("PBB.Warning._HasWarnings.Value");
-    orange = this.get_bool("PBB.AUTOLEVELMODEFLAG.Value");
-    red = this.get_bool("PBB.Alarm._HasAlarms.Value");
-    if (red) {
-      this.ui.content.css({
-        'background-color': '#c00',
-        'color': '#fc0'
-      });
-    } else if (orange) {
-      this.ui.content.css({
-        'background-color': '#c90',
-        'color': '#fff'
-      });
-    } else if (yellow) {
-      this.ui.content.css({
-        'background-color': '#fc6',
-        'color': '#000'
-      });
-    } else if (green) {
-      this.ui.content.css({
-        'background-color': '#6c6',
-        'color': '#fff'
-      });
-    }
+    q = this.data_q(this.tags.pbb_in_oper_mode);
     stat = this.get_bool(this.vals.pbb_in_oper_mode);
     pbb_status = stat ? "Ready/OK" : "Not Ready";
-    this.$('#pbb_status').html(pbb_status).toggleClass("ok", stat);
+    this.mark_bad_data(q, this.$('#pbb_status').html(pbb_status).toggleClass("ok", stat));
+    q = this.data_q(this.tags.pbb_autolevelmode) && this.data_q(this.tags.pbb_maintok);
     mode = this.get_bool(this.vals.pbb_autolevelmode);
     maint = this.get_bool(this.vals.pbb_maintok);
     txt = "Logged Off";
@@ -4467,13 +4465,23 @@ GateWidgetView = (function(superClass) {
     } else if (maint) {
       txt = "Manual Mode";
     }
-    this.$('#pbb_mode').html(txt).toggleClass("ok", mode && !maint).toggleClass('blue', maint);
+    this.mark_bad_data(q, this.$('#pbb_mode').html(txt).toggleClass("ok", mode && !maint).toggleClass('blue', maint));
+    q = this.data_q(this.tags.plb_estop);
     estop = this.get_bool(this.vals.plb_estop);
     txt = estop ? "Activated" : "Ready/OK";
-    this.$('#plb_estop').html(txt).toggleClass("err", estop);
+    this.mark_bad_data(q, this.$('#plb_estop').html(txt).toggleClass("err", estop));
+    q = this.data_q(this.tags.pbb_smoke);
     smoke = this.get_bool(this.vals.pbb_smoke);
     txt = !smoke ? "Activated" : "Ready/OK";
-    this.$('#pbb_smoke').html(txt).toggleClass("err", !smoke);
+    this.mark_bad_data(q, this.$('#pbb_smoke').html(txt).toggleClass("err", !smoke));
+    q = this.data_q(this.tags.pbb_canopy);
+    canopy = this.get_bool(this.vals.pbb_canopy);
+    txt = canopy ? "Extended" : "Retracted";
+    this.mark_bad_data(q, this.$('#pbb_canopy').html(txt).toggleClass("ok", canopy));
+    q = this.data_q(this.tags.gpu_hoist);
+    hoist = this.get_bool(this.vals.gpu_hoist);
+    txt = hoist ? "Deployed" : "Retracted";
+    this.mark_bad_data(q, this.$('#gpu_hoist').html(txt).toggleClass("ok", hoist));
     return this.ui.docked.toggle(this.get_bool(this.vals.pbb_plane_docked));
   };
 
@@ -4559,7 +4567,7 @@ UrlWidgetView = (function(superClass) {
 
   UrlWidgetView.layout = {
     sx: 4,
-    sy: 5
+    sy: 10
   };
 
   UrlWidgetView.prototype.update = function() {
@@ -4651,7 +4659,7 @@ WeatherWidgetView = (function(superClass) {
 
   WeatherWidgetView.layout = {
     sx: 3,
-    sy: 4
+    sy: 8
   };
 
   WeatherWidgetView.prototype.update = function() {
@@ -4734,7 +4742,7 @@ WidgetView = (function(superClass) {
 
   WidgetView.layout = {
     sx: 4,
-    sy: 3
+    sy: 5
   };
 
   function WidgetView(config) {

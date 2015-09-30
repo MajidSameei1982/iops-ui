@@ -20,6 +20,9 @@ class DashboardToolView extends Marionette.ItemView
   	e.preventDefault()
   	App.router.navigate('mgpermissions', {trigger:true})
 
+  onShow: ()->
+    $(@el).attr('tabindex', '-1')
+
 # ----------------------------------
 
 module.exports = DashboardToolView

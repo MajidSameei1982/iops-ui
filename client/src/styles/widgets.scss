@@ -134,6 +134,10 @@ ul.gridster.widget-container {
 				background-color: #06c;
 				color:#fff;	
 			}
+			&.bad_data {
+				background-color: #fec;
+				color:#999;
+			}
 		}
 	}
 }

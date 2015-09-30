@@ -17,7 +17,7 @@ class UrlWidgetView extends WidgetView
 
   @layout:
     sx: 4
-    sy: 5
+    sy: 10
 
   update: ()->
     s = @model.get("settings")

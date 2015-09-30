@@ -33,7 +33,8 @@ class DashboardSideView extends Marionette.ItemView
   		$("li.dashboard-link.d_#{id}").addClass('active')
 
   onShow: ()->
-  	App.vent.on "show:dashboard", @update_dash_links
+    App.vent.on "show:dashboard", @update_dash_links
+    $(@el).attr('tabindex', '-1')
 
   onDomRefresh: ()->
   	if App.current_user? && App.current_user.get('avatar')? 

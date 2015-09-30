@@ -173,6 +173,9 @@ ul.gridster.widget-container {
     .gate_widget table.data td.blue {
       background-color: #06c;
       color: #fff; }
+    .gate_widget table.data td.bad_data {
+      background-color: #fec;
+      color: #999; }
 
 .crud_container {
   margin: 0 5px;
@@ -291,5 +294,8 @@ ul.gridster.widget-container {
     display: none; }
   .permission_container.rw #permission_buttons {
     display: inline !important; }
+
+* {
+  outline: none; }
 
 /*# sourceMappingURL=iops-ui.css.map */

@@ -73,7 +73,7 @@ class WidgetLayout extends Marionette.LayoutView
   set_gridster: ()->
     return @grid if @grid?
     grid = @$('ul.gridster').gridster
-      widget_base_dimensions: [50, 50]
+      widget_base_dimensions: [50, 25]
       autogrow_cols: true
       resize:
         enabled: true
