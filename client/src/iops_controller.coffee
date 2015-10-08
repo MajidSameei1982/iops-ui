@@ -91,14 +91,19 @@ class IopsController extends Object
     return null if !id?
     id = parseInt(id)
     dl = @set_main_layout()
+    first = null
+    if dl.collection? && dl.collection.models? && dl.collection.models.length > 0
+      first = dl.collection.models[0]
     dash = null
     for d in dl.collection.models
       if d.id == id
         dash = d
         break
-    if dash?
-      dl.show_widgets(dash)
-      App.vent.trigger "show:dashboard", id
+    if !dash? 
+      dash = first
+      App.router.navigate("dashboard/#{dash.id}", {trigger:false})
+    dl.show_widgets(dash)
+    App.vent.trigger "show:dashboard", dash.id
     @
 
 # ----------------------------------

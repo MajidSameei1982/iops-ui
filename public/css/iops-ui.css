@@ -307,4 +307,19 @@ a.inline {
     border-left: none !important;
     background-color: transparent !important; }
 
+li.dashboard-link {
+  position: relative; }
+  li.dashboard-link .controls {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 13px;
+    z-index: 9999; }
+    li.dashboard-link .controls i.fa {
+      margin-right: 5px; }
+    li.dashboard-link .controls a:hover {
+      color: #fff; }
+  li.dashboard-link:hover .controls {
+    display: block; }
+
 /*# sourceMappingURL=iops-ui.css.map */

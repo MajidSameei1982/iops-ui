@@ -20,3 +20,27 @@ a.inline {
     background-color:transparent !important;
   }
 }
+
+li.dashboard-link {
+  position: relative;
+
+  .controls {
+    display:none;
+    position: absolute;
+    right: 0;
+    top: 13px;
+    z-index: 9999;
+    i.fa {
+      margin-right:5px;
+    }
+    a:hover {
+      color:#fff;
+    }
+  }
+
+  &:hover {
+    .controls {
+      display:block;
+    }
+  }
+}

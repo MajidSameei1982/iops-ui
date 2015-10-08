@@ -2,8 +2,8 @@
 <section class="sidebar" tabindex='-1'>
   <!-- Sidebar Menu -->
   <ul class="sidebar-menu" id='dashboard-list' tabindex='-1'>
-    <!-- <li class="header" tabindex='-1'>DASHBOARDS  <a href='#' id='add_dash' class='inline'><i class='fa fa-plus-square'></i>Add</a></li> -->
-    <li class="header" tabindex='-1'>DASHBOARDS </li>
+    <li class="header" tabindex='-1'>DASHBOARDS  <a href='#' id='add_dash' class='inline'><i class='fa fa-plus-square'></i>Add</a></li>
+    <!-- <li class="header" tabindex='-1'>DASHBOARDS </li> -->
   </ul>
   <!-- /.sidebar-menu -->
 </section>
