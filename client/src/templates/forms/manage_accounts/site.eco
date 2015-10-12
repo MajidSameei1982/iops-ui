@@ -8,9 +8,9 @@
     <span class='crud' id='delete_site'><i class="fa fa-times-circle" title='Delete Site'></i></span>
   </span>
   <div id='site_short_label'><%= @shortName %></div>
-  <div>
-    <input type='text' id='site_short' value='<%- @shortName%>' size='40' placeholder='Short Name'/>
-  </div>
+  <div><input type='text' id='site_short' value='<%- @shortName%>' size='40' placeholder='Short Name'/></div>
+  <div id='site_opc_label'><%= @opc %></div>
+  <div><input type='text' id='site_opc' value='<%- @opc%>' size='40' placeholder='OPCSystems Server URL'/></div>
 
   <span id='site_buttons'>
     <button class="btn btn-xs" id='cancel'><i class="fa fa-ban"></i> CANCEL</button>

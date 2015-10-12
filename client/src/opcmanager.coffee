@@ -14,6 +14,26 @@ class OPCManager
   @get_conn: (conn)->
     @connections[conn]
 
+  @drop_connections: ()->
+    # clear out all tags for all connections
+    for c of @connections
+      @refs[c] = 0
+      oc = @connections[c]
+      oc.config.watch_tags = []
+      oc.config.tags = []
+      oc.init()
+    true
+
+  @get_site_code: (id)->
+    site_code = null
+    if App.accounts? && App.accounts.models.length > 0
+      for acc in App.accounts.models
+        if acc.sites? && acc.sites.models.length > 0
+          for st in acc.sites.models
+            if "#{st.id}" == "#{id}"
+              return st.get('abbrev')
+    null
+
   @add_tags: (conn, tags)->
     c = @connections[conn]
     if c?
@@ -44,7 +64,7 @@ class OPCManager
       if !exists then c.config.alarm_bindings.push(binding)
       c.init()
 
-  @add_ref: (conn)->
+  @add_ref: (conn)=>
     c = @refs[conn]
     c = if c? then c+1 else 1
     if c >= 1
@@ -52,7 +72,7 @@ class OPCManager
     @refs[conn] = c
     c
 
-  @rem_ref: (conn)->
+  @rem_ref: (conn)=>
     c = @refs[conn]
     c = if c? then c-1 else 0
     if c <= 0

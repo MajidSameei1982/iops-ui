@@ -22,6 +22,7 @@ class SiteView extends Marionette.ItemView
     name      : '#site_name'
     abbrev    : '#site_abbrev'
     shortName : '#site_short'
+    opc       : '#site_opc'
     isActive:
       selector: 'i#site_active'
       elAttribute: 'class'

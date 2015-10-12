@@ -14,18 +14,14 @@ class DashboardSideView extends Marionette.ItemView
     dashboard_list: '#dashboard-list'
 
   events:
-    'click #dashboard-list' : 'show_dash'
+    'click #dashboard-list' : 'click_dash'
     'click #add_dash' : 'show_add'
 
-  show_add: (e)->
-    if e? then e.preventDefault()
-    d = new Dashboard
-      id:0
-      title: 'New Dashboard'
+  show_dash_modal: (d, action)->
     @dmv = new DashboardModalView
       model: d
     @dmv.dashboards = @collection
-    @dmv.action = 'add'
+    @dmv.action = action
     App.layout.modal_region.show(@dmv)
 
   add_dash: (e)->
@@ -35,18 +31,16 @@ class DashboardSideView extends Marionette.ItemView
       if !d.id? || d.id == 0 then doAdd = false
     if doAdd then @collection.add {id:0, title: 'New Dashboard'},{at:0}
 
-  show_dash: (e)->
-    debugger
+  click_dash: (e)->
     e.preventDefault()
-    tgt = $(e.target)
-    dlink = tgt.closest('.dashboard-link')
-    if !dlink? || dlink.length == 0 then return null
-    for d in @collection.models
-      if dlink.hasClass("d_#{d.id}")
-        $('li',@ui.dashboard_list).removeClass('active')
-        dlink.addClass('active')
-        App.router.navigate("dashboard/#{d.id}", {trigger:true})
-        break
+    link = $(e.target).closest('a')
+    if !link? || link.length == 0 then return null
+    if link.hasClass('dash_link')
+      @show_link(e)
+    else if link.hasClass('edit')
+      @edit_link(e)
+    else if link.hasClass('delete')
+      @delete_link(e)
     @
 
   update_dash_links: (id)=>
@@ -54,21 +48,56 @@ class DashboardSideView extends Marionette.ItemView
     if id?
       $("li.dashboard-link.d_#{id}").addClass('active')
 
+  show_link: (e)->
+    if e? then e.preventDefault()
+    link = $(e.target).closest('a')
+    dlink = link.closest('.dashboard-link')
+    if !dlink? || dlink.length == 0 then return null
+    for d in @collection.models
+      if dlink.hasClass("d_#{d.id}")
+        $('li',@ui.dashboard_list).removeClass('active')
+        dlink.addClass('active')
+        App.router.navigate("dashboard/#{d.id}", {trigger:true})
+        break
+    null
+
+  show_add: (e)->
+    if e? then e.preventDefault()
+    d = new Dashboard
+      id:99
+      title: 'New Dashboard'
+    @show_dash_modal(d, 'add')
+
   edit_link: (e)->
     if e? then e.preventDefault()
-    debugger
+    link = $(e.target).closest('a')
+    for d in @collection.models
+      if link.hasClass("edit_#{d.id}")
+        @show_dash_modal(d, 'edit')
+        break
+    null
+
   delete_link: (e)->
     if e? then e.preventDefault()
-    debugger
+    link = $(e.target).closest('a')
+    for d in @collection.models
+      if link.hasClass("delete_#{d.id}")
+        App.uiutils.showModal
+          title: 'Delete Dashboard?'
+          icon: 'warning'
+          type: 'warning'
+          body: 'Are you sure you want to delete this Dashboard? This cannot be undone and all Widget configurations for this Dashboard will be lost.'
+          on_save: ()=>
+            @collection.remove(d)
+            # TODO: update user to persist removal
+        break
+    null
 
   onShow: ()->
     App.vent.on "show:dashboard", @update_dash_links
     $(@el).attr('tabindex', '-1')
     @collection.on "update", ()=>
       @onDomRefresh()
-      @$('li.dashboard-link a.edit').click @edit_dash
-      @$('li.dashboard-link a.delete').click @delete_dash
-
 
   onDomRefresh: ()=>
     if App.current_user? && App.current_user.get('avatar')? 
@@ -78,14 +107,13 @@ class DashboardSideView extends Marionette.ItemView
     for d in @collection.models
       hh = """
       <li class='dashboard-link d_#{d.id}'>
-        <a href='#'><i class='fa fa-th-large'></i> <span>#{d.get('title')}</span></a>
+        <a href='#' class='dash_link'><i class='fa fa-th-large'></i> <span>#{d.get('title')}</span></a>
         <div class='controls'>
-          <a href='#' id='edit_#{d.id}' class='edit'><i class='fa fa-pencil-square'></i></a>
-          <a href='#' id='delete_#{d.id}' class='delete'><i class='fa fa-times-circle'></i></a>
+          <a href='#' class='edit edit_#{d.id}'><i class='fa fa-pencil-square'></i></a>
+          <a href='#' class='delete delete_#{d.id}'><i class='fa fa-times-circle'></i></a>
         </div>
       </li>
       """
-      #dl = $("<li class='dashboard-link d_#{d.id}'><a href='#'><i class='fa fa-th-large'></i> <span>#{d.get('title')}</span></a> </li>")
       dl = $(hh)
       @ui.dashboard_list.append(dl)
 

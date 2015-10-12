@@ -19,6 +19,10 @@
   </div>
   <div class="settings" style="display: none;">
     <h3>Settings</h3>
+    <div class="form-group">
+      <label>Site</label>
+      <select id='site' class="form-control"></select>
+    </div>
     <%- @formGroup({id:'gate', type:'text', feedback:'plane', placeholder:'Gate #', value:@settings.gate}) %>
   </div><!-- /.box-body -->
 </div><!-- /.box-body -->

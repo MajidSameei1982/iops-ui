@@ -1,5 +1,6 @@
 Marionette = require('marionette')
 WidgetView = require('./widget_view')
+OPCManager = require('../../opcmanager')
 
 # ----------------------------------
 
@@ -12,10 +13,24 @@ class GateWidgetView extends WidgetView
     display: '.display'
     content: '.content'
     docked: '#docked'
+    site: 'select#site'
 
   @layout:
     sx: 4
     sy: 7
+
+  tags:
+    pbb_plane_docked : 'PBB.PLANE_DOCKED'
+    pbb_in_oper_mode : 'PBB.PBB_IN_OPER_MODE'
+    pbb_maintok : 'PBB.MAINTOK'
+    pbb_has_warnings : 'PBB.Warning._HasWarnings'
+    pbb_autolevelmode : 'PBB.AUTOLEVELMODEFLAG'
+    gpu_rvoutavg : 'GPU.RVOUTAVG'
+    pbb_has_alarms : 'PBB.Alarm._HasAlarms'
+    pbb_estop: 'PBB.Alarm.E_STOP'
+    pbb_smoke: 'PBB.SMOKEDETECTOR'
+    pbb_canopy: 'PBB.Warning.CANOPYDOWN'
+    gpu_hoist: 'GPU.HZ400CABLEDEPLOYED'
 
   modelEvents:
     "change" : "update"
@@ -29,30 +44,23 @@ class GateWidgetView extends WidgetView
     s = @model.get("settings")
     if s? && s.gate? && s.gate != ''
       # stop listening for updates
-      @kill_updates("CID")
-      # build settings      
-      @prefix = "\\\\opc.iopsnow.com\\RemoteSCADAHosting.Airport-CID.Airport.CID.Term1.Zone1.Gate C-#{s.gate}."
-      @tags =
-        pbb_plane_docked : 'PBB.PLANE_DOCKED'
-        pbb_in_oper_mode : 'PBB.PBB_IN_OPER_MODE'
-        pbb_maintok : 'PBB.MAINTOK'
-        pbb_has_warnings : 'PBB.Warning._HasWarnings'
-        pbb_autolevelmode : 'PBB.AUTOLEVELMODEFLAG'
-        gpu_rvoutavg : 'GPU.RVOUTAVG'
-        pbb_has_alarms : 'PBB.Alarm._HasAlarms'
-        pbb_estop: 'PBB.Alarm.E_STOP'
-        pbb_smoke: 'PBB.SMOKEDETECTOR'
-        pbb_canopy: 'PBB.Warning.CANOPYDOWN'
-        gpu_hoist: 'GPU.HZ400CABLEDEPLOYED'
+      @site_code = OPCManager.get_site_code(s.site)
+      if !@site_code? then return null
+
+      @kill_updates(@site_code)
+      OPCManager.rem_ref(@site_code)
       
+      # build settings      
+      @prefix = "\\\\opc.iopsnow.com\\RemoteSCADAHosting.Airport-#{@site_code}.Airport.#{@site_code}.Term1.Zone1.Gate C-#{s.gate}."
       tags = []
       for tg of @tags
         t = @tags[tg]
         tags.push "#{@prefix}#{t}.Value"
-      App.opc.add_tags "CID", tags
+      App.opc.add_tags @site_code, tags
 
       # listen for updates
-      @watch_updates("CID")
+      @watch_updates(@site_code)
+      OPCManager.add_ref(@site_code)
       
       lbl = "Gate C-#{s.gate}"
       @ui.wtitle.html(lbl)
@@ -66,14 +74,14 @@ class GateWidgetView extends WidgetView
     null
 
   get_value: (tag)=>
-    return App.opc.connections["CID"].get_value("#{@prefix}#{tag}.Value")
+    return App.opc.connections[@site_code].get_value("#{@prefix}#{tag}.Value")
 
   mark_bad_data: (q, el)->
     h = if !q then 'BAD DATA' else $(el).html()
     $(el).html(h).toggleClass("bad_data", !q)
 
   data_q: (tag)=>
-    c = App.opc.connections["CID"]
+    c = App.opc.connections[@site_code]
     t = c.tags["#{@prefix}#{tag}"]
     t.props.Value.quality
 
@@ -130,6 +138,8 @@ class GateWidgetView extends WidgetView
     s = _.clone(@model.get("settings"))
     gate = @ui.gate.val().trim()
     s.gate = gate
+    site = @ui.site.val().trim()
+    s.site = site
     @model.set("settings", s)
 
   toggle_settings: (e)->
@@ -137,21 +147,36 @@ class GateWidgetView extends WidgetView
     @ui.display.toggle(!@settings_visible)
 
   onShow: ()->
-    @ui.gate.on "change", ()=>
-      v = @ui.gate.val().trim()
-      if v != ''
-        @set_model()
-        @toggle_settings()
-    gate = @model.get("settings").gate
+    @ui.gate.on "change", @set_model
+    @ui.site.on "change", @set_model
+
+    settings = @model.get('settings')
+    gate = settings.gate
     if !gate? || gate == ''
       @toggle_settings()
+    site = settings.site
+    site_code = OPCManager.get_site_code(site)
+    if site_code? then OPCManager.add_ref(site_code)
+    
+    @ui.site.empty()
+    @ui.site.append($("<option value=''>Select a Site</option>"))
+    if App.accounts? && App.accounts.models.length > 0
+      for acc in App.accounts.models
+        if acc.sites? && acc.sites.models.length > 0
+          for s in acc.sites.models
+            opt = $("<option value='#{s.id}'>#{s.get('name')}</option>")
+            @ui.site.append(opt)
+
+    ms = @model.get('settings')
+    if ms? && ms.site? then @ui.site.val(ms.site)
 
   start: ()->
     @update()
 
   onDestroy: (arg1, arg2) ->
     # be sure to remove listener
-    @kill_updates("CID")
+    @kill_updates(@site_code)
+    OPCManager.rem_ref(@site_code)
     
 # ----------------------------------
 

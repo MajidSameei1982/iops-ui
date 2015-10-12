@@ -69,13 +69,13 @@
   }
   #site_name { max-width:90%; }
 
-  #site_short, #site_short_label, #site_buttons { margin-left:21px }
+  #site_short, #site_short_label, #site_opc_label, #site_opc, #site_buttons { margin-left:21px }
   #site_buttons {margin-top: 10px;}
 
-  #site_name, #site_abbrev, #site_short, #site_buttons { display:none; }
+  #site_name, #site_abbrev, #site_short, #site_opc, #site_buttons { display:none; }
   &.rw {
-    #site_name, #site_abbrev, #site_short { display:inline !important; }
-    #site_label, #site_short_label, #site_crud { display:none; }
+    #site_name, #site_abbrev, #site_short, #site_opc { display:inline !important; }
+    #site_label, #site_short_label, #site_crud, #site_opc_label { display:none; }
     #site_buttons { display:block !important; }
     #site_active { cursor: pointer; }
   }

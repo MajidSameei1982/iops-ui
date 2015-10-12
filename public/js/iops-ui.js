@@ -613,11 +613,19 @@ window.JST["forms/manage_accounts/site"] = function(__obj) {
     
       _print(this.shortName);
     
-      _print(_safe('</div>\n  <div>\n    <input type=\'text\' id=\'site_short\' value=\''));
+      _print(_safe('</div>\n  <div><input type=\'text\' id=\'site_short\' value=\''));
     
       _print(_safe(this.shortName));
     
-      _print(_safe('\' size=\'40\' placeholder=\'Short Name\'/>\n  </div>\n\n  <span id=\'site_buttons\'>\n    <button class="btn btn-xs" id=\'cancel\'><i class="fa fa-ban"></i> CANCEL</button>\n    <button class="btn btn-xs btn-success" id=\'save\'><i class="fa fa-check-square"></i> SAVE</button>\n  </span>\n</div>\n'));
+      _print(_safe('\' size=\'40\' placeholder=\'Short Name\'/></div>\n  <div id=\'site_opc_label\'>'));
+    
+      _print(this.opc);
+    
+      _print(_safe('</div>\n  <div><input type=\'text\' id=\'site_opc\' value=\''));
+    
+      _print(_safe(this.opc));
+    
+      _print(_safe('\' size=\'40\' placeholder=\'OPCSystems Server URL\'/></div>\n\n  <span id=\'site_buttons\'>\n    <button class="btn btn-xs" id=\'cancel\'><i class="fa fa-ban"></i> CANCEL</button>\n    <button class="btn btn-xs btn-success" id=\'save\'><i class="fa fa-check-square"></i> SAVE</button>\n  </span>\n</div>\n'));
     
     }).call(this);
     
@@ -1041,7 +1049,7 @@ window.JST["widgets/gate_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" id=\'content\'>\n  <div class="display contain">\n    <div id="gate_label"><h1><span id=\'txt\'></span> <span id="docked" style=\'display:none;\'><i class="fa fa-plane"></i></span></h1></div>\n    <table class=\'data\'>\n      <tr><td class=\'lbl\'>PBB Status</td><td id=\'pbb_status\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>PBB Mode</td><td id=\'pbb_mode\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>E-Stop</td><td id=\'pbb_estop\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Smoke Detector</td><td id=\'pbb_smoke\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Canopy</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Cable Hoist</td><td id=\'gpu_hoist\' class=\'val\'>LOADING...</td></tr>\n    </table>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" id=\'content\'>\n  <div class="display contain">\n    <div id="gate_label"><h1><span id=\'txt\'></span> <span id="docked" style=\'display:none;\'><i class="fa fa-plane"></i></span></h1></div>\n    <table class=\'data\'>\n      <tr><td class=\'lbl\'>PBB Status</td><td id=\'pbb_status\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>PBB Mode</td><td id=\'pbb_mode\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>E-Stop</td><td id=\'pbb_estop\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Smoke Detector</td><td id=\'pbb_smoke\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Canopy</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Cable Hoist</td><td id=\'gpu_hoist\' class=\'val\'>LOADING...</td></tr>\n    </table>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    <div class="form-group">\n      <label>Site</label>\n      <select id=\'site\' class="form-control"></select>\n    </div>\n    '));
     
       _print(_safe(this.formGroup({
         id: 'gate',
@@ -2763,6 +2771,39 @@ OPCManager = (function() {
     return this.connections[conn];
   };
 
+  OPCManager.drop_connections = function() {
+    var c, oc;
+    for (c in this.connections) {
+      this.refs[c] = 0;
+      oc = this.connections[c];
+      oc.config.watch_tags = [];
+      oc.config.tags = [];
+      oc.init();
+    }
+    return true;
+  };
+
+  OPCManager.get_site_code = function(id) {
+    var acc, i, j, len, len1, ref, ref1, site_code, st;
+    site_code = null;
+    if ((App.accounts != null) && App.accounts.models.length > 0) {
+      ref = App.accounts.models;
+      for (i = 0, len = ref.length; i < len; i++) {
+        acc = ref[i];
+        if ((acc.sites != null) && acc.sites.models.length > 0) {
+          ref1 = acc.sites.models;
+          for (j = 0, len1 = ref1.length; j < len1; j++) {
+            st = ref1[j];
+            if (("" + st.id) === ("" + id)) {
+              return st.get('abbrev');
+            }
+          }
+        }
+      }
+    }
+    return null;
+  };
+
   OPCManager.add_tags = function(conn, tags) {
     var added, c, exists, i, j, len, len1, nt, ref, t;
     c = this.connections[conn];
@@ -2822,24 +2863,24 @@ OPCManager = (function() {
 
   OPCManager.add_ref = function(conn) {
     var c;
-    c = this.refs[conn];
+    c = OPCManager.refs[conn];
     c = c != null ? c + 1 : 1;
     if (c >= 1) {
-      this.connections[conn].toggle_refresh(true);
+      OPCManager.connections[conn].toggle_refresh(true);
     }
-    this.refs[conn] = c;
+    OPCManager.refs[conn] = c;
     return c;
   };
 
   OPCManager.rem_ref = function(conn) {
     var c;
-    c = this.refs[conn];
+    c = OPCManager.refs[conn];
     c = c != null ? c - 1 : 0;
     if (c <= 0) {
       c = 0;
-      this.connections[conn].toggle_refresh(false);
+      OPCManager.connections[conn].toggle_refresh(false);
     }
-    this.refs[conn] = c;
+    OPCManager.refs[conn] = c;
     return c;
   };
 
@@ -3348,24 +3389,16 @@ DashboardSideView = (function(superClass) {
   };
 
   DashboardSideView.prototype.events = {
-    'click #dashboard-list': 'show_dash',
+    'click #dashboard-list': 'click_dash',
     'click #add_dash': 'show_add'
   };
 
-  DashboardSideView.prototype.show_add = function(e) {
-    var d;
-    if (e != null) {
-      e.preventDefault();
-    }
-    d = new Dashboard({
-      id: 0,
-      title: 'New Dashboard'
-    });
+  DashboardSideView.prototype.show_dash_modal = function(d, action) {
     this.dmv = new DashboardModalView({
       model: d
     });
     this.dmv.dashboards = this.collection;
-    this.dmv.action = 'add';
+    this.dmv.action = action;
     return App.layout.modal_region.show(this.dmv);
   };
 
@@ -3392,12 +3425,37 @@ DashboardSideView = (function(superClass) {
     }
   };
 
-  DashboardSideView.prototype.show_dash = function(e) {
-    debugger;
-    var d, dlink, i, len, ref, tgt;
+  DashboardSideView.prototype.click_dash = function(e) {
+    var link;
     e.preventDefault();
-    tgt = $(e.target);
-    dlink = tgt.closest('.dashboard-link');
+    link = $(e.target).closest('a');
+    if ((link == null) || link.length === 0) {
+      return null;
+    }
+    if (link.hasClass('dash_link')) {
+      this.show_link(e);
+    } else if (link.hasClass('edit')) {
+      this.edit_link(e);
+    } else if (link.hasClass('delete')) {
+      this.delete_link(e);
+    }
+    return this;
+  };
+
+  DashboardSideView.prototype.update_dash_links = function(id) {
+    $('li', this.ui.dashboard_list).removeClass('active');
+    if (id != null) {
+      return $("li.dashboard-link.d_" + id).addClass('active');
+    }
+  };
+
+  DashboardSideView.prototype.show_link = function(e) {
+    var d, dlink, i, len, link, ref;
+    if (e != null) {
+      e.preventDefault();
+    }
+    link = $(e.target).closest('a');
+    dlink = link.closest('.dashboard-link');
     if ((dlink == null) || dlink.length === 0) {
       return null;
     }
@@ -3413,28 +3471,63 @@ DashboardSideView = (function(superClass) {
         break;
       }
     }
-    return this;
+    return null;
   };
 
-  DashboardSideView.prototype.update_dash_links = function(id) {
-    $('li', this.ui.dashboard_list).removeClass('active');
-    if (id != null) {
-      return $("li.dashboard-link.d_" + id).addClass('active');
+  DashboardSideView.prototype.show_add = function(e) {
+    var d;
+    if (e != null) {
+      e.preventDefault();
     }
+    d = new Dashboard({
+      id: 99,
+      title: 'New Dashboard'
+    });
+    return this.show_dash_modal(d, 'add');
   };
 
   DashboardSideView.prototype.edit_link = function(e) {
+    var d, i, len, link, ref;
     if (e != null) {
       e.preventDefault();
     }
-    debugger;
+    link = $(e.target).closest('a');
+    ref = this.collection.models;
+    for (i = 0, len = ref.length; i < len; i++) {
+      d = ref[i];
+      if (link.hasClass("edit_" + d.id)) {
+        this.show_dash_modal(d, 'edit');
+        break;
+      }
+    }
+    return null;
   };
 
   DashboardSideView.prototype.delete_link = function(e) {
+    var d, i, len, link, ref;
     if (e != null) {
       e.preventDefault();
     }
-    debugger;
+    link = $(e.target).closest('a');
+    ref = this.collection.models;
+    for (i = 0, len = ref.length; i < len; i++) {
+      d = ref[i];
+      if (link.hasClass("delete_" + d.id)) {
+        App.uiutils.showModal({
+          title: 'Delete Dashboard?',
+          icon: 'warning',
+          type: 'warning',
+          body: 'Are you sure you want to delete this Dashboard? This cannot be undone and all Widget configurations for this Dashboard will be lost.',
+          on_save: (function(_this) {
+            return function() {
+              return _this.collection.remove(d);
+            };
+          })(this)
+        });
+        break;
+      }
+    }
+    return null;
   };
 
   DashboardSideView.prototype.onShow = function() {
@@ -3442,9 +3535,7 @@ DashboardSideView = (function(superClass) {
     $(this.el).attr('tabindex', '-1');
     return this.collection.on("update", (function(_this) {
       return function() {
-        _this.onDomRefresh();
-        _this.$('li.dashboard-link a.edit').click(_this.edit_dash);
-        return _this.$('li.dashboard-link a.delete').click(_this.delete_dash);
+        return _this.onDomRefresh();
       };
     })(this));
   };
@@ -3459,7 +3550,7 @@ DashboardSideView = (function(superClass) {
     results = [];
     for (i = 0, len = ref.length; i < len; i++) {
       d = ref[i];
-      hh = "<li class='dashboard-link d_" + d.id + "'>\n  <a href='#'><i class='fa fa-th-large'></i> <span>" + (d.get('title')) + "</span></a>\n  <div class='controls'>\n    <a href='#' id='edit_" + d.id + "' class='edit'><i class='fa fa-pencil-square'></i></a>\n    <a href='#' id='delete_" + d.id + "' class='delete'><i class='fa fa-times-circle'></i></a>\n  </div>\n</li>";
+      hh = "<li class='dashboard-link d_" + d.id + "'>\n  <a href='#' class='dash_link'><i class='fa fa-th-large'></i> <span>" + (d.get('title')) + "</span></a>\n  <div class='controls'>\n    <a href='#' class='edit edit_" + d.id + "'><i class='fa fa-pencil-square'></i></a>\n    <a href='#' class='delete delete_" + d.id + "'><i class='fa fa-times-circle'></i></a>\n  </div>\n</li>";
       dl = $(hh);
       results.push(this.ui.dashboard_list.append(dl));
     }
@@ -3527,7 +3618,7 @@ DashboardToolView = (function(superClass) {
 module.exports = DashboardToolView;
 
 },{}],32:[function(require,module,exports){
-var AlarmWidgetView, GateWidgetView, Marionette, UrlWidgetView, WeatherWidgetView, Widget, WidgetLayout, WidgetModalView, WidgetView,
+var AlarmWidgetView, GateWidgetView, Marionette, OPCManager, UrlWidgetView, WeatherWidgetView, Widget, WidgetLayout, WidgetModalView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -3547,6 +3638,8 @@ WeatherWidgetView = require('../widgets/weather_widget_view');
 UrlWidgetView = require('../widgets/url_widget_view');
 
 WidgetModalView = require('./widget_modal');
+
+OPCManager = require('../../opcmanager');
 
 WidgetLayout = (function(superClass) {
   extend(WidgetLayout, superClass);
@@ -3696,6 +3789,7 @@ WidgetLayout = (function(superClass) {
 
   WidgetLayout.prototype.onShow = function() {
     var i, idx, len, ref, w;
+    OPCManager.drop_connections();
     ref = this.model.widgets.models;
     for (idx = i = 0, len = ref.length; i < len; idx = ++i) {
       w = ref[idx];
@@ -3721,7 +3815,7 @@ WidgetLayout = (function(superClass) {
 
 module.exports = WidgetLayout;
 
-},{"../../models/widget":20,"../widgets/alarm_widget_view":43,"../widgets/gate_widget_view":44,"../widgets/url_widget_view":45,"../widgets/weather_widget_view":46,"../widgets/widget_view":47,"./widget_modal":33}],33:[function(require,module,exports){
+},{"../../models/widget":20,"../../opcmanager":22,"../widgets/alarm_widget_view":43,"../widgets/gate_widget_view":44,"../widgets/url_widget_view":45,"../widgets/weather_widget_view":46,"../widgets/widget_view":47,"./widget_modal":33}],33:[function(require,module,exports){
 var Marionette, WidgetModalView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4014,6 +4108,7 @@ SiteView = (function(superClass) {
     name: '#site_name',
     abbrev: '#site_abbrev',
     shortName: '#site_short',
+    opc: '#site_opc',
     isActive: {
       selector: 'i#site_active',
       elAttribute: 'class',
@@ -4545,7 +4640,7 @@ window.AlarmWidgetView = AlarmWidgetView;
 module.exports = AlarmWidgetView;
 
 },{"./widget_view":47}],44:[function(require,module,exports){
-var GateWidgetView, Marionette, WidgetView,
+var GateWidgetView, Marionette, OPCManager, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4553,6 +4648,8 @@ var GateWidgetView, Marionette, WidgetView,
 Marionette = require('marionette');
 
 WidgetView = require('./widget_view');
+
+OPCManager = require('../../opcmanager');
 
 GateWidgetView = (function(superClass) {
   extend(GateWidgetView, superClass);
@@ -4575,12 +4672,27 @@ GateWidgetView = (function(superClass) {
     wtitle: "h3.box-title",
     display: '.display',
     content: '.content',
-    docked: '#docked'
+    docked: '#docked',
+    site: 'select#site'
   };
 
   GateWidgetView.layout = {
     sx: 4,
     sy: 7
+  };
+
+  GateWidgetView.prototype.tags = {
+    pbb_plane_docked: 'PBB.PLANE_DOCKED',
+    pbb_in_oper_mode: 'PBB.PBB_IN_OPER_MODE',
+    pbb_maintok: 'PBB.MAINTOK',
+    pbb_has_warnings: 'PBB.Warning._HasWarnings',
+    pbb_autolevelmode: 'PBB.AUTOLEVELMODEFLAG',
+    gpu_rvoutavg: 'GPU.RVOUTAVG',
+    pbb_has_alarms: 'PBB.Alarm._HasAlarms',
+    pbb_estop: 'PBB.Alarm.E_STOP',
+    pbb_smoke: 'PBB.SMOKEDETECTOR',
+    pbb_canopy: 'PBB.Warning.CANOPYDOWN',
+    gpu_hoist: 'GPU.HZ400CABLEDEPLOYED'
   };
 
   GateWidgetView.prototype.modelEvents = {
@@ -4599,28 +4711,21 @@ GateWidgetView = (function(superClass) {
     var lbl, s, t, tags, tg;
     s = this.model.get("settings");
     if ((s != null) && (s.gate != null) && s.gate !== '') {
-      this.kill_updates("CID");
-      this.prefix = "\\\\opc.iopsnow.com\\RemoteSCADAHosting.Airport-CID.Airport.CID.Term1.Zone1.Gate C-" + s.gate + ".";
-      this.tags = {
-        pbb_plane_docked: 'PBB.PLANE_DOCKED',
-        pbb_in_oper_mode: 'PBB.PBB_IN_OPER_MODE',
-        pbb_maintok: 'PBB.MAINTOK',
-        pbb_has_warnings: 'PBB.Warning._HasWarnings',
-        pbb_autolevelmode: 'PBB.AUTOLEVELMODEFLAG',
-        gpu_rvoutavg: 'GPU.RVOUTAVG',
-        pbb_has_alarms: 'PBB.Alarm._HasAlarms',
-        pbb_estop: 'PBB.Alarm.E_STOP',
-        pbb_smoke: 'PBB.SMOKEDETECTOR',
-        pbb_canopy: 'PBB.Warning.CANOPYDOWN',
-        gpu_hoist: 'GPU.HZ400CABLEDEPLOYED'
-      };
+      this.site_code = OPCManager.get_site_code(s.site);
+      if (this.site_code == null) {
+        return null;
+      }
+      this.kill_updates(this.site_code);
+      OPCManager.rem_ref(this.site_code);
+      this.prefix = "\\\\opc.iopsnow.com\\RemoteSCADAHosting.Airport-" + this.site_code + ".Airport." + this.site_code + ".Term1.Zone1.Gate C-" + s.gate + ".";
       tags = [];
       for (tg in this.tags) {
         t = this.tags[tg];
         tags.push("" + this.prefix + t + ".Value");
       }
-      App.opc.add_tags("CID", tags);
-      this.watch_updates("CID");
+      App.opc.add_tags(this.site_code, tags);
+      this.watch_updates(this.site_code);
+      OPCManager.add_ref(this.site_code);
       lbl = "Gate C-" + s.gate;
       this.ui.wtitle.html(lbl);
       return this.$('#gate_label #txt').html(lbl);
@@ -4637,7 +4742,7 @@ GateWidgetView = (function(superClass) {
   };
 
   GateWidgetView.prototype.get_value = function(tag) {
-    return App.opc.connections["CID"].get_value("" + this.prefix + tag + ".Value");
+    return App.opc.connections[this.site_code].get_value("" + this.prefix + tag + ".Value");
   };
 
   GateWidgetView.prototype.mark_bad_data = function(q, el) {
@@ -4648,7 +4753,7 @@ GateWidgetView = (function(superClass) {
 
   GateWidgetView.prototype.data_q = function(tag) {
     var c, t;
-    c = App.opc.connections["CID"];
+    c = App.opc.connections[this.site_code];
     t = c.tags["" + this.prefix + tag];
     return t.props.Value.quality;
   };
@@ -4693,10 +4798,12 @@ GateWidgetView = (function(superClass) {
   };
 
   GateWidgetView.prototype.set_model = function() {
-    var gate, s;
+    var gate, s, site;
     s = _.clone(this.model.get("settings"));
     gate = this.ui.gate.val().trim();
     s.gate = gate;
+    site = this.ui.site.val().trim();
+    s.site = site;
     return this.model.set("settings", s);
   };
 
@@ -4706,20 +4813,38 @@ GateWidgetView = (function(superClass) {
   };
 
   GateWidgetView.prototype.onShow = function() {
-    var gate;
-    this.ui.gate.on("change", (function(_this) {
-      return function() {
-        var v;
-        v = _this.ui.gate.val().trim();
-        if (v !== '') {
-          _this.set_model();
-          return _this.toggle_settings();
-        }
-      };
-    })(this));
-    gate = this.model.get("settings").gate;
+    var acc, gate, i, j, len, len1, ms, opt, ref, ref1, s, settings, site, site_code;
+    this.ui.gate.on("change", this.set_model);
+    this.ui.site.on("change", this.set_model);
+    settings = this.model.get('settings');
+    gate = settings.gate;
     if ((gate == null) || gate === '') {
-      return this.toggle_settings();
+      this.toggle_settings();
+    }
+    site = settings.site;
+    site_code = OPCManager.get_site_code(site);
+    if (site_code != null) {
+      OPCManager.add_ref(site_code);
+    }
+    this.ui.site.empty();
+    this.ui.site.append($("<option value=''>Select a Site</option>"));
+    if ((App.accounts != null) && App.accounts.models.length > 0) {
+      ref = App.accounts.models;
+      for (i = 0, len = ref.length; i < len; i++) {
+        acc = ref[i];
+        if ((acc.sites != null) && acc.sites.models.length > 0) {
+          ref1 = acc.sites.models;
+          for (j = 0, len1 = ref1.length; j < len1; j++) {
+            s = ref1[j];
+            opt = $("<option value='" + s.id + "'>" + (s.get('name')) + "</option>");
+            this.ui.site.append(opt);
+          }
+        }
+      }
+    }
+    ms = this.model.get('settings');
+    if ((ms != null) && (ms.site != null)) {
+      return this.ui.site.val(ms.site);
     }
   };
 
@@ -4728,7 +4853,8 @@ GateWidgetView = (function(superClass) {
   };
 
   GateWidgetView.prototype.onDestroy = function(arg1, arg2) {
-    return this.kill_updates("CID");
+    this.kill_updates(this.site_code);
+    return OPCManager.rem_ref(this.site_code);
   };
 
   return GateWidgetView;
@@ -4739,7 +4865,7 @@ window.GateWidgetView = GateWidgetView;
 
 module.exports = GateWidgetView;
 
-},{"./widget_view":47}],45:[function(require,module,exports){
+},{"../../opcmanager":22,"./widget_view":47}],45:[function(require,module,exports){
 var Marionette, UrlWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },

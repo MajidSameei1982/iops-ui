@@ -6,6 +6,7 @@ AlarmWidgetView = require('../widgets/alarm_widget_view')
 WeatherWidgetView = require('../widgets/weather_widget_view')
 UrlWidgetView = require('../widgets/url_widget_view')
 WidgetModalView = require('./widget_modal')
+OPCManager = require('../../opcmanager')
 
 # ----------------------------------
 
@@ -114,6 +115,7 @@ class WidgetLayout extends Marionette.LayoutView
     wv.start()
 
   onShow: ()->
+    OPCManager.drop_connections()
     for w, idx in @model.widgets.models
       @draw_widget_view(w)
     @set_gridster()
