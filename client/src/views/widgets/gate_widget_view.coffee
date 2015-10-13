@@ -31,6 +31,7 @@ class GateWidgetView extends WidgetView
     pbb_smoke: 'PBB.SMOKEDETECTOR'
     pbb_canopy: 'PBB.Warning.CANOPYDOWN'
     gpu_hoist: 'GPU.HZ400CABLEDEPLOYED'
+    
 
   modelEvents:
     "change" : "update"
@@ -51,7 +52,7 @@ class GateWidgetView extends WidgetView
       OPCManager.rem_ref(@site_code)
       
       # build settings      
-      @prefix = "\\\\opc.iopsnow.com\\RemoteSCADAHosting.Airport-#{@site_code}.Airport.#{@site_code}.Term1.Zone1.Gate C-#{s.gate}."
+      @prefix = "\\\\opc.iopsnow.com\\RemoteSCADAHosting.Airport-#{@site_code}.Airport.#{@site_code}.Term1.Zone1.GateC#{s.gate}."
       tags = []
       for tg of @tags
         t = @tags[tg]
@@ -97,15 +98,16 @@ class GateWidgetView extends WidgetView
     @mark_bad_data q, @$('#pbb_status').html(pbb_status).toggleClass("ok", stat)
   
     # PBB MODE
-    q = @data_q(@tags.pbb_autolevelmode) && @data_q(@tags.pbb_maintok)
+    q = @data_q(@tags.pbb_autolevelmode) # && @data_q(@tags.pbb_maintok)
     mode = @get_bool(@vals.pbb_autolevelmode)
-    maint = @get_bool(@vals.pbb_maintok)
+    #maint = @get_bool(@vals.pbb_maintok)
     txt = "Logged Off"
     if mode
       txt = "Auto Level" 
-    else if maint
-      txt = "Manual Mode"
-    @mark_bad_data q, @$('#pbb_mode').html(txt).toggleClass("ok", mode && !maint).toggleClass('blue', maint)
+    #else if maint
+    #  txt = "Manual Mode"
+    @mark_bad_data q, @$('#pbb_mode').html(txt).toggleClass("ok", mode)
+    #@mark_bad_data q, @$('#pbb_mode').html(txt).toggleClass("ok", mode && !maint).toggleClass('blue', maint)
  
     # E-STOP
     q = @data_q(@tags.pbb_estop)
@@ -116,8 +118,8 @@ class GateWidgetView extends WidgetView
     # SMOKE DETECTOR
     q = @data_q(@tags.pbb_smoke)
     smoke = @get_bool(@vals.pbb_smoke)
-    txt = if smoke==false then "Activated" else "Ready/OK"
-    @mark_bad_data q, @$('#pbb_smoke').html(txt).toggleClass("err", (smoke==false && q))
+    txt = if smoke==true then "Activated" else "Ready/OK"
+    @mark_bad_data q, @$('#pbb_smoke').html(txt).toggleClass("err", (smoke==true && q))
   
     # CANOPY
     q = @data_q(@tags.pbb_canopy)

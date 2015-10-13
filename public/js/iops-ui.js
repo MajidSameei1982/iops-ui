@@ -4717,7 +4717,7 @@ GateWidgetView = (function(superClass) {
       }
       this.kill_updates(this.site_code);
       OPCManager.rem_ref(this.site_code);
-      this.prefix = "\\\\opc.iopsnow.com\\RemoteSCADAHosting.Airport-" + this.site_code + ".Airport." + this.site_code + ".Term1.Zone1.Gate C-" + s.gate + ".";
+      this.prefix = "\\\\opc.iopsnow.com\\RemoteSCADAHosting.Airport-" + this.site_code + ".Airport." + this.site_code + ".Term1.Zone1.GateC" + s.gate + ".";
       tags = [];
       for (tg in this.tags) {
         t = this.tags[tg];
@@ -4759,7 +4759,7 @@ GateWidgetView = (function(superClass) {
   };
 
   GateWidgetView.prototype.data_update = function(data) {
-    var canopy, estop, hoist, maint, mode, pbb_status, q, smoke, stat, tg, txt;
+    var canopy, estop, hoist, mode, pbb_status, q, smoke, stat, tg, txt;
     this.vals = {};
     for (tg in this.tags) {
       this.vals[tg] = this.get_value(this.tags[tg]);
@@ -4768,24 +4768,21 @@ GateWidgetView = (function(superClass) {
     stat = this.get_bool(this.vals.pbb_in_oper_mode);
     pbb_status = stat ? "Ready/OK" : "Not Ready";
     this.mark_bad_data(q, this.$('#pbb_status').html(pbb_status).toggleClass("ok", stat));
-    q = this.data_q(this.tags.pbb_autolevelmode) && this.data_q(this.tags.pbb_maintok);
+    q = this.data_q(this.tags.pbb_autolevelmode);
     mode = this.get_bool(this.vals.pbb_autolevelmode);
-    maint = this.get_bool(this.vals.pbb_maintok);
     txt = "Logged Off";
     if (mode) {
       txt = "Auto Level";
-    } else if (maint) {
-      txt = "Manual Mode";
     }
-    this.mark_bad_data(q, this.$('#pbb_mode').html(txt).toggleClass("ok", mode && !maint).toggleClass('blue', maint));
+    this.mark_bad_data(q, this.$('#pbb_mode').html(txt).toggleClass("ok", mode));
     q = this.data_q(this.tags.pbb_estop);
     estop = this.get_bool(this.vals.pbb_estop);
     txt = estop ? "Activated" : "Ready/OK";
     this.mark_bad_data(q, this.$('#pbb_estop').html(txt).toggleClass("err", estop));
     q = this.data_q(this.tags.pbb_smoke);
     smoke = this.get_bool(this.vals.pbb_smoke);
-    txt = smoke === false ? "Activated" : "Ready/OK";
-    this.mark_bad_data(q, this.$('#pbb_smoke').html(txt).toggleClass("err", smoke === false && q));
+    txt = smoke === true ? "Activated" : "Ready/OK";
+    this.mark_bad_data(q, this.$('#pbb_smoke').html(txt).toggleClass("err", smoke === true && q));
     q = this.data_q(this.tags.pbb_canopy);
     canopy = this.get_bool(this.vals.pbb_canopy);
     txt = canopy ? "Extended" : "Retracted";
