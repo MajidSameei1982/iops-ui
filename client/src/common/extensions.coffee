@@ -35,7 +35,22 @@ _.extend Marionette.View::,
       cls = cls.join(' ')
       "<div class='form-group #{cls}' for='#{id}'>#{label}#{field}#{feedback}</div>"
 
-    
-    
 
-
+    siteSelector: ({id, label, value})->
+      # TODO: check current user access to sites
+      sh = """
+        <div class='form-group' for='#{id}'>
+          <label>#{label}</label>
+          <select id='#{id}' class='form-control'>
+            <option value=''>Select a Site</option>
+      """
+      if App.accounts? && App.accounts.models.length > 0
+        for acc in App.accounts.models
+          if acc.sites? && acc.sites.models.length > 0
+            for s in acc.sites.models
+              txt = s.get('name')
+              code = s.get('abbrev')
+              if code? && code != '' then txt = "#{txt} (#{code})"
+              sel = if value? && "#{value}" == "#{s.id}" then 'selected' else ''
+              sh += "<option value='#{s.id}' #{sel}>#{txt}</option>"
+      "#{sh}</select></div>"  

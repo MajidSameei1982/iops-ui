@@ -49,7 +49,11 @@ class OPCManager
         if !exists
           c.config.watch_tags.push(nt)
           added = true
-      if added then c.init() else c.toggle_refresh(true)
+      if added
+        c.config.tags = []
+        c.init()
+      else 
+        c.toggle_refresh(true)
 
   @add_alarm: (conn, binding)->
     c = @connections[conn]

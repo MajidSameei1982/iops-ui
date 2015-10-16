@@ -1049,17 +1049,60 @@ window.JST["widgets/gate_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" id=\'content\'>\n  <div class="display contain">\n    <div id="gate_label"><h1><span id=\'txt\'></span> <span id="docked" style=\'display:none;\'><i class="fa fa-plane"></i></span></h1></div>\n    <table class=\'data\'>\n      <tr><td class=\'lbl\'>PBB Status</td><td id=\'pbb_status\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>PBB Mode</td><td id=\'pbb_mode\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>E-Stop</td><td id=\'pbb_estop\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Smoke Detector</td><td id=\'pbb_smoke\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Canopy</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Cable Hoist</td><td id=\'gpu_hoist\' class=\'val\'>LOADING...</td></tr>\n    </table>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    <div class="form-group">\n      <label>Site</label>\n      <select id=\'site\' class="form-control"></select>\n    </div>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" id=\'content\'>\n  <div class="display contain">\n    <div id="gate_label"><h1><span id=\'txt\'></span> <span id="docked" style=\'display:none;\'><i class="fa fa-plane"></i></span></h1></div>\n    <table class=\'data\'>\n      <tr><td class=\'lbl\'>PBB Status</td><td id=\'pbb_status\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>PBB Mode</td><td id=\'pbb_mode\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>E-Stop</td><td id=\'pbb_estop\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Smoke Detector</td><td id=\'pbb_smoke\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Canopy</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Cable Hoist</td><td id=\'gpu_hoist\' class=\'val\'>LOADING...</td></tr>\n    </table>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+    
+      _print(_safe(this.siteSelector({
+        id: 'site',
+        label: 'Site',
+        value: this.settings.site
+      })));
+    
+      _print(_safe('\n    <div class="row">\n      '));
+    
+      _print(_safe(this.formGroup({
+        id: 'terminal',
+        label: 'Terminal',
+        type: 'text',
+        placeholder: 'Terminal',
+        value: this.settings.terminal,
+        cls: 'col-md-6'
+      })));
+    
+      _print(_safe('\n      '));
+    
+      _print(_safe(this.formGroup({
+        id: 'zone',
+        label: 'Zone',
+        type: 'text',
+        placeholder: 'Zone',
+        value: this.settings.zone,
+        cls: 'col-md-6'
+      })));
+    
+      _print(_safe('\n    </div>\n    <div class="row">\n      '));
+    
+      _print(_safe(this.formGroup({
+        id: 'display_prefix',
+        label: 'Prefix',
+        type: 'text',
+        placeholder: 'Display Prefix',
+        value: this.settings.display_prefix,
+        cls: 'col-md-6'
+      })));
+    
+      _print(_safe('\n      '));
     
       _print(_safe(this.formGroup({
         id: 'gate',
+        label: 'Gate',
         type: 'text',
         feedback: 'plane',
         placeholder: 'Gate #',
-        value: this.settings.gate
+        value: this.settings.gate,
+        cls: 'col-md-6'
       })));
     
-      _print(_safe('\n  </div><!-- /.box-body -->\n</div><!-- /.box-body -->\n'));
+      _print(_safe('\n    </div>\n  </div><!-- /.box-body -->\n</div><!-- /.box-body -->\n'));
     
     }).call(this);
     
@@ -1939,6 +1982,31 @@ _.extend(Marionette.View.prototype, {
         }
         cls = cls.join(' ');
         return "<div class='form-group " + cls + "' for='" + id + "'>" + label + field + feedback + "</div>";
+      },
+      siteSelector: function(arg) {
+        var acc, code, i, id, j, label, len, len1, ref, ref1, s, sel, sh, txt, value;
+        id = arg.id, label = arg.label, value = arg.value;
+        sh = "<div class='form-group' for='" + id + "'>\n  <label>" + label + "</label>\n  <select id='" + id + "' class='form-control'>\n    <option value=''>Select a Site</option>";
+        if ((App.accounts != null) && App.accounts.models.length > 0) {
+          ref = App.accounts.models;
+          for (i = 0, len = ref.length; i < len; i++) {
+            acc = ref[i];
+            if ((acc.sites != null) && acc.sites.models.length > 0) {
+              ref1 = acc.sites.models;
+              for (j = 0, len1 = ref1.length; j < len1; j++) {
+                s = ref1[j];
+                txt = s.get('name');
+                code = s.get('abbrev');
+                if ((code != null) && code !== '') {
+                  txt = txt + " (" + code + ")";
+                }
+                sel = (value != null) && ("" + value) === ("" + s.id) ? 'selected' : '';
+                sh += "<option value='" + s.id + "' " + sel + ">" + txt + "</option>";
+              }
+            }
+          }
+        }
+        return sh + "</select></div>";
       }
     };
   }
@@ -2830,6 +2898,7 @@ OPCManager = (function() {
         }
       }
       if (added) {
+        c.config.tags = [];
         return c.init();
       } else {
         return c.toggle_refresh(true);
@@ -4668,12 +4737,15 @@ GateWidgetView = (function(superClass) {
   GateWidgetView.prototype.className = 'widget-outer box box-primary gate_widget';
 
   GateWidgetView.prototype.ui = {
+    terminal: 'input#terminal',
+    zone: 'input#zone',
+    display_prefix: 'input#display_prefix',
     gate: 'input#gate',
-    wtitle: "h3.box-title",
+    site: 'select#site',
+    wtitle: 'h3.box-title',
     display: '.display',
     content: '.content',
-    docked: '#docked',
-    site: 'select#site'
+    docked: '#docked'
   };
 
   GateWidgetView.layout = {
@@ -4708,7 +4780,7 @@ GateWidgetView = (function(superClass) {
   };
 
   GateWidgetView.prototype.update = function() {
-    var lbl, s, t, tags, tg;
+    var gate, lbl, s, t, tags, tg;
     s = this.model.get("settings");
     if ((s != null) && (s.gate != null) && s.gate !== '') {
       this.site_code = OPCManager.get_site_code(s.site);
@@ -4717,7 +4789,8 @@ GateWidgetView = (function(superClass) {
       }
       this.kill_updates(this.site_code);
       OPCManager.rem_ref(this.site_code);
-      this.prefix = "\\\\opc.iopsnow.com\\RemoteSCADAHosting.Airport-" + this.site_code + ".Airport." + this.site_code + ".Term1.Zone1.GateC" + s.gate + ".";
+      gate = s.display_prefix != null ? "" + s.display_prefix + s.gate : '#{s.gate}';
+      this.prefix = "\\\\opc.iopsnow.com\\RemoteSCADAHosting.Airport-" + this.site_code + ".Airport." + this.site_code + ".Term" + s.terminal + ".Zone" + s.zone + ".Gate" + gate + ".";
       tags = [];
       for (tg in this.tags) {
         t = this.tags[tg];
@@ -4726,7 +4799,7 @@ GateWidgetView = (function(superClass) {
       App.opc.add_tags(this.site_code, tags);
       this.watch_updates(this.site_code);
       OPCManager.add_ref(this.site_code);
-      lbl = "Gate C-" + s.gate;
+      lbl = "Gate " + gate;
       this.ui.wtitle.html(lbl);
       return this.$('#gate_label #txt').html(lbl);
     }
@@ -4795,12 +4868,13 @@ GateWidgetView = (function(superClass) {
   };
 
   GateWidgetView.prototype.set_model = function() {
-    var gate, s, site;
+    var s;
     s = _.clone(this.model.get("settings"));
-    gate = this.ui.gate.val().trim();
-    s.gate = gate;
-    site = this.ui.site.val().trim();
-    s.site = site;
+    s.gate = this.ui.gate.val().trim();
+    s.site = this.ui.site.val().trim();
+    s.terminal = this.ui.terminal.val().trim();
+    s.zone = this.ui.zone.val().trim();
+    s.display_prefix = this.ui.display_prefix.val().trim();
     return this.model.set("settings", s);
   };
 
@@ -4810,9 +4884,12 @@ GateWidgetView = (function(superClass) {
   };
 
   GateWidgetView.prototype.onShow = function() {
-    var acc, gate, i, j, len, len1, ms, opt, ref, ref1, s, settings, site, site_code;
+    var gate, ms, settings, site, site_code;
     this.ui.gate.on("change", this.set_model);
     this.ui.site.on("change", this.set_model);
+    this.ui.terminal.on("change", this.set_model);
+    this.ui.zone.on("change", this.set_model);
+    this.ui.display_prefix.on("change", this.set_model);
     settings = this.model.get('settings');
     gate = settings.gate;
     if ((gate == null) || gate === '') {
@@ -4822,22 +4899,6 @@ GateWidgetView = (function(superClass) {
     site_code = OPCManager.get_site_code(site);
     if (site_code != null) {
       OPCManager.add_ref(site_code);
-    }
-    this.ui.site.empty();
-    this.ui.site.append($("<option value=''>Select a Site</option>"));
-    if ((App.accounts != null) && App.accounts.models.length > 0) {
-      ref = App.accounts.models;
-      for (i = 0, len = ref.length; i < len; i++) {
-        acc = ref[i];
-        if ((acc.sites != null) && acc.sites.models.length > 0) {
-          ref1 = acc.sites.models;
-          for (j = 0, len1 = ref1.length; j < len1; j++) {
-            s = ref1[j];
-            opt = $("<option value='" + s.id + "'>" + (s.get('name')) + "</option>");
-            this.ui.site.append(opt);
-          }
-        }
-      }
     }
     ms = this.model.get('settings');
     if ((ms != null) && (ms.site != null)) {

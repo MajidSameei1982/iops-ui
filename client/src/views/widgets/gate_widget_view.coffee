@@ -8,30 +8,32 @@ class GateWidgetView extends WidgetView
   template:   "widgets/gate_widget"
   className: 'widget-outer box box-primary gate_widget'
   ui:
-    gate: 'input#gate'
-    wtitle: "h3.box-title"
-    display: '.display'
-    content: '.content'
-    docked: '#docked'
-    site: 'select#site'
+    terminal:       'input#terminal'
+    zone:           'input#zone'
+    display_prefix: 'input#display_prefix'
+    gate:           'input#gate'
+    site:           'select#site'
+    wtitle:         'h3.box-title'
+    display:        '.display'
+    content:        '.content'
+    docked:         '#docked'
 
   @layout:
     sx: 4
     sy: 7
 
   tags:
-    pbb_plane_docked : 'PBB.PLANE_DOCKED'
-    pbb_in_oper_mode : 'PBB.PBB_IN_OPER_MODE'
-    pbb_maintok : 'PBB.MAINTOK'
-    pbb_has_warnings : 'PBB.Warning._HasWarnings'
+    pbb_plane_docked :  'PBB.PLANE_DOCKED'
+    pbb_in_oper_mode :  'PBB.PBB_IN_OPER_MODE'
+    pbb_maintok :       'PBB.MAINTOK'
+    pbb_has_warnings :  'PBB.Warning._HasWarnings'
     pbb_autolevelmode : 'PBB.AUTOLEVELMODEFLAG'
-    gpu_rvoutavg : 'GPU.RVOUTAVG'
-    pbb_has_alarms : 'PBB.Alarm._HasAlarms'
-    pbb_estop: 'PBB.Alarm.E_STOP'
-    pbb_smoke: 'PBB.SMOKEDETECTOR'
-    pbb_canopy: 'PBB.Warning.CANOPYDOWN'
-    gpu_hoist: 'GPU.HZ400CABLEDEPLOYED'
-    
+    gpu_rvoutavg :      'GPU.RVOUTAVG'
+    pbb_has_alarms :    'PBB.Alarm._HasAlarms'
+    pbb_estop:          'PBB.Alarm.E_STOP'
+    pbb_smoke:          'PBB.SMOKEDETECTOR'
+    pbb_canopy:         'PBB.Warning.CANOPYDOWN'
+    gpu_hoist:          'GPU.HZ400CABLEDEPLOYED'
 
   modelEvents:
     "change" : "update"
@@ -50,9 +52,11 @@ class GateWidgetView extends WidgetView
 
       @kill_updates(@site_code)
       OPCManager.rem_ref(@site_code)
+
+      gate = if s.display_prefix? then "#{s.display_prefix}#{s.gate}" else '#{s.gate}'
       
       # build settings      
-      @prefix = "\\\\opc.iopsnow.com\\RemoteSCADAHosting.Airport-#{@site_code}.Airport.#{@site_code}.Term1.Zone1.GateC#{s.gate}."
+      @prefix = "\\\\opc.iopsnow.com\\RemoteSCADAHosting.Airport-#{@site_code}.Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{gate}."
       tags = []
       for tg of @tags
         t = @tags[tg]
@@ -63,7 +67,7 @@ class GateWidgetView extends WidgetView
       @watch_updates(@site_code)
       OPCManager.add_ref(@site_code)
       
-      lbl = "Gate C-#{s.gate}"
+      lbl = "Gate #{gate}"
       @ui.wtitle.html(lbl)
       @$('#gate_label #txt').html(lbl)
 
@@ -138,10 +142,11 @@ class GateWidgetView extends WidgetView
 
   set_model: ()=>
     s = _.clone(@model.get("settings"))
-    gate = @ui.gate.val().trim()
-    s.gate = gate
-    site = @ui.site.val().trim()
-    s.site = site
+    s.gate = @ui.gate.val().trim()
+    s.site = @ui.site.val().trim()
+    s.terminal = @ui.terminal.val().trim()
+    s.zone = @ui.zone.val().trim()
+    s.display_prefix = @ui.display_prefix.val().trim()
     @model.set("settings", s)
 
   toggle_settings: (e)->
@@ -151,6 +156,9 @@ class GateWidgetView extends WidgetView
   onShow: ()->
     @ui.gate.on "change", @set_model
     @ui.site.on "change", @set_model
+    @ui.terminal.on "change", @set_model
+    @ui.zone.on "change", @set_model
+    @ui.display_prefix.on "change", @set_model
 
     settings = @model.get('settings')
     gate = settings.gate
@@ -159,15 +167,6 @@ class GateWidgetView extends WidgetView
     site = settings.site
     site_code = OPCManager.get_site_code(site)
     if site_code? then OPCManager.add_ref(site_code)
-    
-    @ui.site.empty()
-    @ui.site.append($("<option value=''>Select a Site</option>"))
-    if App.accounts? && App.accounts.models.length > 0
-      for acc in App.accounts.models
-        if acc.sites? && acc.sites.models.length > 0
-          for s in acc.sites.models
-            opt = $("<option value='#{s.id}'>#{s.get('name')}</option>")
-            @ui.site.append(opt)
 
     ms = @model.get('settings')
     if ms? && ms.site? then @ui.site.val(ms.site)
