@@ -1024,6 +1024,51 @@ window.JST["forms/manage_permissions/roles_top"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
+window.JST["forms/manage_permissions/users"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div class="preamble">\n  <span id="add_user"><i class=\'fa fa-plus-square\'></i> Add New User</span>\n</div>\n'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
 window.JST["forms/profile"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
@@ -1631,7 +1676,7 @@ window.IOPS = (function() {
   return App;
 })();
 
-},{"./common/adminlte_lib":2,"./common/baseline_app":4,"./common/extensions":5,"./common/uiutils":6,"./iops_controller":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./opcmanager":24,"./router":25,"./views/iops_layout":47}],2:[function(require,module,exports){
+},{"./common/adminlte_lib":2,"./common/baseline_app":4,"./common/extensions":5,"./common/uiutils":6,"./iops_controller":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./opcmanager":24,"./router":25,"./views/iops_layout":48}],2:[function(require,module,exports){
 
 /*
  *
@@ -2479,7 +2524,7 @@ IopsController = (function(superClass) {
 
 module.exports = IopsController;
 
-},{"./models/dashboard":14,"./models/dashboard_collection":15,"./models/user":21,"./models/widget_collection":23,"./views/dashboard/content_view":27,"./views/dashboard/dashboard_layout":28,"./views/forms/manage_accounts/accounts_view":37,"./views/forms/manage_permissions/permissions_layout":40,"./views/forms/profile_view":46,"./views/login_view":48}],8:[function(require,module,exports){
+},{"./models/dashboard":14,"./models/dashboard_collection":15,"./models/user":21,"./models/widget_collection":23,"./views/dashboard/content_view":27,"./views/dashboard/dashboard_layout":28,"./views/forms/manage_accounts/accounts_view":37,"./views/forms/manage_permissions/permissions_layout":40,"./views/forms/profile_view":47,"./views/login_view":49}],8:[function(require,module,exports){
 var AppConfig, Backbone, BaseModel,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4194,7 +4239,7 @@ WidgetLayout = (function(superClass) {
 
 module.exports = WidgetLayout;
 
-},{"../../models/widget":22,"../../opcmanager":24,"../widgets/alarm_widget_view":49,"../widgets/gate_widget_view":50,"../widgets/url_widget_view":51,"../widgets/weather_widget_view":52,"../widgets/widget_view":53,"./widget_modal":35}],35:[function(require,module,exports){
+},{"../../models/widget":22,"../../opcmanager":24,"../widgets/alarm_widget_view":50,"../widgets/gate_widget_view":51,"../widgets/url_widget_view":52,"../widgets/weather_widget_view":53,"../widgets/widget_view":54,"./widget_modal":35}],35:[function(require,module,exports){
 var Marionette, WidgetModalView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4667,7 +4712,7 @@ PermissionView = (function(superClass) {
 module.exports = PermissionView;
 
 },{"../../../models/claim":12}],40:[function(require,module,exports){
-var Marionette, PermissionsLayout, PermissionsTopView, RolesTopView,
+var Marionette, PermissionsLayout, PermissionsTopView, RolesTopView, UsersView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -4676,6 +4721,8 @@ Marionette = require('marionette');
 PermissionsTopView = require('./permissions_top_view');
 
 RolesTopView = require('./roles_top_view');
+
+UsersView = require('./users_view');
 
 PermissionsLayout = (function(superClass) {
   extend(PermissionsLayout, superClass);
@@ -4692,11 +4739,34 @@ PermissionsLayout = (function(superClass) {
     permissions_region: '#permissions_region'
   };
 
+  PermissionsLayout.prototype.show_tab = function(tab) {
+    this.permissions_region.empty();
+    this.roles_region.empty();
+    this.users_region.empty();
+    switch (tab) {
+      case 'permissions':
+        this.pv = new PermissionsTopView;
+        return this.permissions_region.show(this.pv);
+      case 'roles':
+        this.rv = new RolesTopView;
+        return this.roles_region.show(this.rv);
+      case 'users':
+        this.uv = new UsersView({
+          collection: App.users
+        });
+        return this.users_region.show(this.uv);
+    }
+  };
+
   PermissionsLayout.prototype.onShow = function() {
-    this.pv = new PermissionsTopView;
-    this.permissions_region.show(this.pv);
-    this.rv = new RolesTopView;
-    return this.roles_region.show(this.rv);
+    this.$('a[data-toggle="tab"]').on('shown.bs.tab', (function(_this) {
+      return function(e) {
+        var tab;
+        tab = e.target.innerText.toLowerCase();
+        return _this.show_tab(tab);
+      };
+    })(this));
+    return this.show_tab('permissions');
   };
 
   return PermissionsLayout;
@@ -4705,7 +4775,7 @@ PermissionsLayout = (function(superClass) {
 
 module.exports = PermissionsLayout;
 
-},{"./permissions_top_view":41,"./roles_top_view":44}],41:[function(require,module,exports){
+},{"./permissions_top_view":41,"./roles_top_view":44,"./users_view":46}],41:[function(require,module,exports){
 var Marionette, PermissionsTopView, PermissionsView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4742,7 +4812,7 @@ PermissionsTopView = (function(superClass) {
     results = [];
     for (i = 0, len = ref.length; i < len; i++) {
       acc = ref[i];
-      acc_el = "<div id='acc_" + acc.id + "'>\n  <h3><i class='fa fa-fw fa-building-o'></i>" + (acc.get('name')) + "</h3>\n  <div id='sites_" + acc.id + "'></div>\n</div>";
+      acc_el = "<div id='acc_" + acc.id + "'>\n  <h3><i class='fa fa-fw fa-building-o'></i>" + (acc.get('name')) + "</h3>\n</div>";
       acc_el = $(acc_el);
       $(this.el).append(acc_el);
       results.push((function() {
@@ -4953,7 +5023,7 @@ RolesTopView = (function(superClass) {
     results = [];
     for (i = 0, len = ref.length; i < len; i++) {
       acc = ref[i];
-      acc_el = "<div id='acc_" + acc.id + "'>\n  <h3><i class='fa fa-fw fa-building-o'></i>" + (acc.get('name')) + "</h3>\n  <div id='sites_" + acc.id + "'></div>\n</div>";
+      acc_el = "<div id='acc_" + acc.id + "'>\n  <h3><i class='fa fa-fw fa-building-o'></i>" + (acc.get('name')) + "</h3>\n</div>";
       acc_el = $(acc_el);
       $(this.el).append(acc_el);
       results.push((function() {
@@ -5033,6 +5103,52 @@ RolesView = (function(superClass) {
 module.exports = RolesView;
 
 },{"./role_view":43}],46:[function(require,module,exports){
+var Marionette, UserView, UsersView,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+UserView = require('./role_view');
+
+UsersView = (function(superClass) {
+  extend(UsersView, superClass);
+
+  function UsersView() {
+    return UsersView.__super__.constructor.apply(this, arguments);
+  }
+
+  UsersView.prototype.template = "forms/manage_permissions/users";
+
+  UsersView.prototype.childViewContainer = '#users_list';
+
+  UsersView.prototype.childView = UserView;
+
+  UsersView.prototype.events = {
+    'click #add_user': 'add_user'
+  };
+
+  UsersView.prototype.add_user = function() {
+    var c, i, len, ref;
+    ref = this.collection.models;
+    for (i = 0, len = ref.length; i < len; i++) {
+      c = ref[i];
+      if ((c.id == null) || c.id === 0) {
+        return false;
+      }
+    }
+    return this.collection.add({}, {
+      at: 0
+    });
+  };
+
+  return UsersView;
+
+})(Marionette.CompositeView);
+
+module.exports = UsersView;
+
+},{"./role_view":43}],47:[function(require,module,exports){
 var Marionette, ProfileView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -5054,7 +5170,7 @@ ProfileView = (function(superClass) {
 
 module.exports = ProfileView;
 
-},{}],47:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 var IopsLayout, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -5081,7 +5197,7 @@ IopsLayout = (function(superClass) {
 
 module.exports = IopsLayout;
 
-},{}],48:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 var LoginView, Marionette, Session, UIUtils,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -5179,7 +5295,7 @@ LoginView = (function(superClass) {
 
 module.exports = LoginView;
 
-},{"../common/uiutils":6,"../models/session":18}],49:[function(require,module,exports){
+},{"../common/uiutils":6,"../models/session":18}],50:[function(require,module,exports){
 var AlarmWidgetView, Marionette, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -5298,7 +5414,7 @@ window.AlarmWidgetView = AlarmWidgetView;
 
 module.exports = AlarmWidgetView;
 
-},{"./widget_view":53}],50:[function(require,module,exports){
+},{"./widget_view":54}],51:[function(require,module,exports){
 var GateWidgetView, Marionette, OPCManager, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -5513,7 +5629,7 @@ window.GateWidgetView = GateWidgetView;
 
 module.exports = GateWidgetView;
 
-},{"../../opcmanager":24,"./widget_view":53}],51:[function(require,module,exports){
+},{"../../opcmanager":24,"./widget_view":54}],52:[function(require,module,exports){
 var Marionette, UrlWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -5605,7 +5721,7 @@ window.UrlWidgetView = UrlWidgetView;
 
 module.exports = UrlWidgetView;
 
-},{"./widget_view":53}],52:[function(require,module,exports){
+},{"./widget_view":54}],53:[function(require,module,exports){
 var Marionette, WeatherWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -5702,7 +5818,7 @@ window.WeatherWidgetView = WeatherWidgetView;
 
 module.exports = WeatherWidgetView;
 
-},{"./widget_view":53}],53:[function(require,module,exports){
+},{"./widget_view":54}],54:[function(require,module,exports){
 var Marionette, WidgetView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;

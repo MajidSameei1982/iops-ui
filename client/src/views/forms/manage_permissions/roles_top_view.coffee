@@ -17,7 +17,6 @@ class RolesTopView extends Marionette.LayoutView
       acc_el = """
         <div id='acc_#{acc.id}'>
           <h3><i class='fa fa-fw fa-building-o'></i>#{acc.get('name')}</h3>
-          <div id='sites_#{acc.id}'></div>
         </div>
       """
       acc_el = $(acc_el)
