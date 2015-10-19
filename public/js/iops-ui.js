@@ -950,7 +950,9 @@ window.JST["forms/manage_permissions/roles"] = function(__obj) {
       } else {
         _print(_safe('\n    <h4><i class="fa fa-fw fa-map-marker"></i>'));
         _print(this.name);
-        _print(_safe('</h4>\n  '));
+        _print(_safe('('));
+        _print(this.abbrev);
+        _print(_safe(')</h4>\n  '));
       }
     
       _print(_safe('\n  <span id="add_role"><i class=\'fa fa-plus-square\'></i> Add New Role</span>\n</div>\n<div id=\'roles_list\'></div>'));

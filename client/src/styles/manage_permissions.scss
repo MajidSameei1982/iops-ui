@@ -1,14 +1,14 @@
 // Permissions
-#permissions_region {
+#permissions_region, #roles_region {
   h4 {
     margin: 0px 0 0 -5px;
-    background-color: #eee;
-    padding: 5px 0 5px 8px;
+    background-color: #f6f6f6;
+    padding: 5px 0 5px 13px;
   }
   h3 {
     margin:0;
-    background-color:#ddd;
-    padding:5px 0;
+    background-color:#cbe1ee;
+    padding:5px 0 5px 5px;
   }
   #global_region{
     padding-bottom:20px;
@@ -48,27 +48,7 @@
 }
 
 // Roles
-#roles_region {
-  h4 {
-    margin: 0px 0 0 -5px;
-    background-color: #eee;
-    padding: 5px 0 5px 8px;
-  }
-  h3 {
-    margin:0;
-    background-color:#ddd;
-    padding:5px 0;
-  }
-  #global_region{
-    padding-bottom:20px;
-    h3 {
-      margin-left:-5px;
-    }
-  }
-  .site_item {
-    margin-bottom:10px;
-  }
-}
+
 #add_role { 
   cursor: pointer; 
   margin-left: 30px;

@@ -278,19 +278,19 @@ ul.gridster.widget-container {
   .site_container.rw #site_active {
     cursor: pointer; }
 
-#permissions_region h4 {
+#permissions_region h4, #roles_region h4 {
   margin: 0px 0 0 -5px;
-  background-color: #eee;
-  padding: 5px 0 5px 8px; }
-#permissions_region h3 {
+  background-color: #f6f6f6;
+  padding: 5px 0 5px 13px; }
+#permissions_region h3, #roles_region h3 {
   margin: 0;
-  background-color: #ddd;
-  padding: 5px 0; }
-#permissions_region #global_region {
+  background-color: #cbe1ee;
+  padding: 5px 0 5px 5px; }
+#permissions_region #global_region, #roles_region #global_region {
   padding-bottom: 20px; }
-  #permissions_region #global_region h3 {
+  #permissions_region #global_region h3, #roles_region #global_region h3 {
     margin-left: -5px; }
-#permissions_region .site_item {
+#permissions_region .site_item, #roles_region .site_item {
   margin-bottom: 10px; }
 
 #add_claim {
@@ -321,21 +321,6 @@ ul.gridster.widget-container {
     display: none; }
   .permission_container.rw #permission_buttons {
     display: inline !important; }
-
-#roles_region h4 {
-  margin: 0px 0 0 -5px;
-  background-color: #eee;
-  padding: 5px 0 5px 8px; }
-#roles_region h3 {
-  margin: 0;
-  background-color: #ddd;
-  padding: 5px 0; }
-#roles_region #global_region {
-  padding-bottom: 20px; }
-  #roles_region #global_region h3 {
-    margin-left: -5px; }
-#roles_region .site_item {
-  margin-bottom: 10px; }
 
 #add_role {
   cursor: pointer;
