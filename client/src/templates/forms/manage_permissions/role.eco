@@ -1,0 +1,18 @@
+<div class='col-md-12'>
+  <i class='fa fa-fw fa-group'></i>
+  <span id='role_label'><b><%= @name %></b></span>
+  <input type='text' id='role_name' value='<%- @name%>' size='50' placeholder='Role Name'/>
+
+  <span id='role_crud' class='crud_container'>
+    <span class='crud' id='edit_role'><i class="fa fa-pencil-square" title='Edit Role'></i></span>
+    <span class='crud' id='delete_role'><i class="fa fa-times-circle" title='Delete Role'></i></span>
+  </span>
+  <span id='role_buttons'>
+    <button class="btn btn-xs" id='cancel'><i class="fa fa-ban"></i> CANCEL</button>
+    <button class="btn btn-xs btn-success" id='save'><i class="fa fa-check-square"></i> SAVE</button>
+  </span>
+</div>
+<div class="col-md-12" id='role_desc_container'>
+  <span id='role_desc_label'><i><%= @description %></i></span>
+  <input type='text' id='role_desc' value='<%- @description%>' size='50' placeholder='Role Description'/>
+</div>

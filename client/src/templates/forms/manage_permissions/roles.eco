@@ -1,0 +1,9 @@
+<div class="preamble">
+  <% if @global :%>
+    <h3><i class="fa fa-fw fa-globe"></i><%= @name %></h3>
+  <% else :%>
+    <h4><i class="fa fa-fw fa-map-marker"></i><%= @name %></h4>
+  <% end %>
+  <span id="add_role"><i class='fa fa-plus-square'></i> Add New Role</span>
+</div>
+<div id='roles_list'></div>

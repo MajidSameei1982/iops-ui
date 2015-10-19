@@ -1,17 +1,41 @@
-#add_claim {
-  cursor: pointer;
+// Permissions
+#permissions_region {
+  h4 {
+    margin: 0px 0 0 -5px;
+    background-color: #eee;
+    padding: 5px 0 5px 8px;
+  }
+  h3 {
+    margin:0;
+    background-color:#ddd;
+    padding:5px 0;
+  }
+  #global_region{
+    padding-bottom:20px;
+    h3 {
+      margin-left:-5px;
+    }
+  }
+  .site_item {
+    margin-bottom:10px;
+  }
 }
-#permissions_list {
-  padding:0 0 0 20px;
+#add_claim { 
+  cursor: pointer; 
+  margin-left: 30px;
+  color: #00a65a;
 }
+#permissions_list { padding:0 0 0 10px; }
 .permission_container {
-  padding: 10px 0;
+  padding: 5px 0 5px 20px;
   width:100%;
   border-top: 1px dashed #ccc;
 
+  i.fa.fa-lock { color:#ccc; }
+
   #permission_label {font-size:18px;}
 
-  #permission_desc_container { }
+  #permission_desc_container { padding-left: 36px; }
 
   #permission_name, #permission_buttons, #permission_desc { display:none; }
 
@@ -20,5 +44,54 @@
     #permission_label, #permission_desc_label { display:none !important; }
     #permission_crud { display:none; }
     #permission_buttons { display:inline !important; }
+  }
+}
+
+// Roles
+#roles_region {
+  h4 {
+    margin: 0px 0 0 -5px;
+    background-color: #eee;
+    padding: 5px 0 5px 8px;
+  }
+  h3 {
+    margin:0;
+    background-color:#ddd;
+    padding:5px 0;
+  }
+  #global_region{
+    padding-bottom:20px;
+    h3 {
+      margin-left:-5px;
+    }
+  }
+  .site_item {
+    margin-bottom:10px;
+  }
+}
+#add_role { 
+  cursor: pointer; 
+  margin-left: 30px;
+  color: #00a65a;
+}
+#roles_list { padding:0 0 0 20px; }
+.role_container {
+  padding: 5px 0 5px 10px;
+  width:100%;
+  border-top: 1px dashed #ccc;
+
+  i.fa.fa-group { color:#ccc; }
+
+  #role_label {font-size:18px;}
+
+  #role_desc_container { padding-left: 36px; }
+
+  #role_name, #role_buttons, #role_desc { display:none; }
+
+  &.rw {
+    #role_name, #role_desc { display:inline !important; }
+    #role_label, #role_desc_label { display:none !important; }
+    #role_crud { display:none; }
+    #role_buttons { display:inline !important; }
   }
 }

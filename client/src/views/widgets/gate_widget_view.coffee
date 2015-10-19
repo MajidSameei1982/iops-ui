@@ -122,8 +122,8 @@ class GateWidgetView extends WidgetView
     # SMOKE DETECTOR
     q = @data_q(@tags.pbb_smoke)
     smoke = @get_bool(@vals.pbb_smoke)
-    txt = if smoke==true then "Activated" else "Ready/OK"
-    @mark_bad_data q, @$('#pbb_smoke').html(txt).toggleClass("err", (smoke==true && q))
+    txt = if smoke==false then "Activated" else "Ready/OK"
+    @mark_bad_data q, @$('#pbb_smoke').html(txt).toggleClass("err", (smoke==false && q))
   
     # CANOPY
     q = @data_q(@tags.pbb_canopy)

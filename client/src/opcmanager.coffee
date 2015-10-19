@@ -96,10 +96,11 @@ class OPCManager
         OPCManager.create abbrev,
           token:'7e61b230-481d-4551-b24b-ba9046e3d8f2'
           #interval:5000
-          max_tags_per_msg: 25
+          max_tags_per_msg: 50
           refresh_callback: (data)->
             OPCManager.notify @.abbrev, data
           serverURL : opc_addr
+          auto_start : false
       
 # ----------------------------------
 

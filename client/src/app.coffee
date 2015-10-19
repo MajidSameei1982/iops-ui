@@ -5,11 +5,12 @@ IopsController = require('./iops_controller')
 Router = require('./router')
 IopsLayout = require('./views/iops_layout')
 Session = require('./models/session')
-AccountCollection = require('./models/account_collection')
-ClaimCollection = require('./models/claim_collection')
 AdminLTE_lib = require('./common/adminlte_lib')
 UIUtils = require('./common/uiutils')
 OPCManager = require('./opcmanager')
+AccountCollection = require('./models/account_collection')
+ClaimCollection = require('./models/claim_collection')
+RoleCollection = require('./models/role_collection')
 
 # ----------------------------------
 window.IOPS = do()->
@@ -63,6 +64,7 @@ window.IOPS = do()->
     #   name: 'can_admin_permissions'
     #   description: 'Can add and modify Groups and Permissions'
     # ]
+    App.roles = new RoleCollection()
 
     # connect OPCManager
     @log('Initializing OPCManager')

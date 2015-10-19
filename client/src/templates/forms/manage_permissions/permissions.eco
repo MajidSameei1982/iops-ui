@@ -1,4 +1,9 @@
 <div class="preamble">
+  <% if @global :%>
+    <h3><i class="fa fa-fw fa-globe"></i><%= @name %></h3>
+  <% else :%>
+    <h4><i class="fa fa-fw fa-map-marker"></i><%= @name %>(<%= @abbrev %>)</h4>
+  <% end %>
   <span id="add_claim"><i class='fa fa-plus-square'></i> Add New Permission</span>
 </div>
 <div id='permissions_list'></div>

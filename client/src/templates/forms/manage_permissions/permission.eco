@@ -1,4 +1,5 @@
 <div class='col-md-12'>
+  <i class='fa fa-fw fa-lock'></i>
   <span id='permission_label'><b><%= @name %></b></span>
   <input type='text' id='permission_name' value='<%- @name%>' size='50' placeholder='Permission Name'/>
 
