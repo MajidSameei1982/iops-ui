@@ -37,21 +37,24 @@ class DashboardLayout extends Marionette.LayoutView
       view: v
 
   onShow: () ->
-    headerview = new DashboardHeaderView
+    @headerview = new DashboardHeaderView
       model: App.current_user
-    @header.show(headerview)
+    @header.show(@headerview)
 
-    sideview = new DashboardSideView
-      collection: @collection
-    @side.show(sideview)
+    @sideview = new DashboardSideView
+      collection: App.current_user.dashboards
+    @side.show(@sideview)
 
-    toolview = new DashboardToolView()
-    @tool.show(toolview)
+    @toolview = new DashboardToolView()
+    @tool.show(@toolview)
 
-    footerview = new DashboardFooterView()
-    @footer.show(footerview)
+    @footerview = new DashboardFooterView()
+    @footer.show(@footerview)
 
     App.AdminLTE_lib.reset()
+
+    App.vent.on 'dashboard:update', ()=>
+      App.vent.trigger "show:dashboard"
 
 # ----------------------------------
 

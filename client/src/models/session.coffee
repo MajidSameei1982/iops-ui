@@ -66,15 +66,7 @@ class Session extends BaseModel
         fullname: 'John Talarico'
         email: 'john@opcsystems.com'
         avatar: null
-        dashboards: [ 
-          id: 1
-          title: "Sample Dashboard"
-          widgets: []
-        ,
-          id: 2
-          title: "Another Dashboard"
-          widgets: []
-        ]
+        dashboards: []
       App.store.set('user', user)
     user
 

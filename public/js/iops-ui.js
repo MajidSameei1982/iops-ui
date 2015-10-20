@@ -2571,6 +2571,7 @@ IopsController = (function(superClass) {
       });
     }
     dl.show_widgets(dash);
+    App.current_dash = dash.id;
     App.vent.trigger("show:dashboard", dash.id);
     return this;
   };
@@ -2967,17 +2968,7 @@ Session = (function(superClass) {
         fullname: 'John Talarico',
         email: 'john@opcsystems.com',
         avatar: null,
-        dashboards: [
-          {
-            id: 1,
-            title: "Sample Dashboard",
-            widgets: []
-          }, {
-            id: 2,
-            title: "Another Dashboard",
-            widgets: []
-          }
-        ]
+        dashboards: []
       };
       App.store.set('user', user);
     }
@@ -3643,20 +3634,24 @@ DashboardLayout = (function(superClass) {
   };
 
   DashboardLayout.prototype.onShow = function() {
-    var footerview, headerview, sideview, toolview;
-    headerview = new DashboardHeaderView({
+    this.headerview = new DashboardHeaderView({
       model: App.current_user
     });
-    this.header.show(headerview);
-    sideview = new DashboardSideView({
-      collection: this.collection
+    this.header.show(this.headerview);
+    this.sideview = new DashboardSideView({
+      collection: App.current_user.dashboards
     });
-    this.side.show(sideview);
-    toolview = new DashboardToolView();
-    this.tool.show(toolview);
-    footerview = new DashboardFooterView();
-    this.footer.show(footerview);
-    return App.AdminLTE_lib.reset();
+    this.side.show(this.sideview);
+    this.toolview = new DashboardToolView();
+    this.tool.show(this.toolview);
+    this.footerview = new DashboardFooterView();
+    this.footer.show(this.footerview);
+    App.AdminLTE_lib.reset();
+    return App.vent.on('dashboard:update', (function(_this) {
+      return function() {
+        return App.vent.trigger("show:dashboard");
+      };
+    })(this));
   };
 
   return DashboardLayout;
@@ -3711,7 +3706,9 @@ DashboardModalView = (function(superClass) {
     })(this));
     this.ui.title.change((function(_this) {
       return function() {
-        return _this.model.set('title', _this.ui.title.val());
+        _this.model.set('title', _this.ui.title.val());
+        App.vent.trigger('user:update');
+        return App.vent.trigger('dashboard:update', _this.model);
       };
     })(this));
     return this.ui.save.click((function(_this) {
@@ -3911,8 +3908,10 @@ DashboardSideView = (function(superClass) {
   };
 
   DashboardSideView.prototype.update_dash_links = function(id) {
+    id = id != null ? id : App.current_dash;
     $('li', this.ui.dashboard_list).removeClass('active');
     if (id != null) {
+      App.current_dash = id;
       return $("li.dashboard-link.d_" + id).addClass('active');
     }
   };
@@ -4002,11 +4001,12 @@ DashboardSideView = (function(superClass) {
   DashboardSideView.prototype.onShow = function() {
     App.vent.on("show:dashboard", this.update_dash_links);
     $(this.el).attr('tabindex', '-1');
-    return this.collection.on("update", (function(_this) {
+    this.collection.on("update", (function(_this) {
       return function() {
         return _this.onDomRefresh();
       };
     })(this));
+    return App.vent.on("dashboard:update", this.onDomRefresh);
   };
 
   DashboardSideView.prototype.onDomRefresh = function() {

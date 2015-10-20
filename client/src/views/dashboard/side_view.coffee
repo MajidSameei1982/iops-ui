@@ -24,18 +24,6 @@ class DashboardSideView extends Marionette.ItemView
     @dmv.action = action
     App.layout.modal_region.show(@dmv)
 
-  # add_dash: (e)->
-  #   if e? then e.preventDefault()
-  #   doAdd = true
-  #   for d in @collection.models
-  #     if !d.id? || d.id == 0 then doAdd = false
-  #   if doAdd
-  #     @collection.add
-  #       id: Math.floor(Math.random() * 10000)+1
-  #       title: 'New Dashboard'
-  #     ,{at:0}
-  #     App.vent.trigger 'user:update'
-
   click_dash: (e)->
     e.preventDefault()
     link = $(e.target).closest('a')
@@ -49,9 +37,12 @@ class DashboardSideView extends Marionette.ItemView
     @
 
   update_dash_links: (id)=>
+    id = if id? then id else App.current_dash
     $('li', @ui.dashboard_list).removeClass('active')
     if id?
+      App.current_dash = id
       $("li.dashboard-link.d_#{id}").addClass('active')
+
 
   show_link: (e)->
     if e? then e.preventDefault()
@@ -103,6 +94,7 @@ class DashboardSideView extends Marionette.ItemView
     $(@el).attr('tabindex', '-1')
     @collection.on "update", ()=>
       @onDomRefresh()
+    App.vent.on "dashboard:update", @onDomRefresh
 
   onDomRefresh: ()=>
     if App.current_user? && App.current_user.get('avatar')? 

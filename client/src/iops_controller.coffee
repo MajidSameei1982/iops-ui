@@ -103,6 +103,7 @@ class IopsController extends Object
       dash = first
       App.router.navigate("dashboard/#{dash.id}", {trigger:false})
     dl.show_widgets(dash)
+    App.current_dash = dash.id
     App.vent.trigger "show:dashboard", dash.id
     @
 

@@ -26,6 +26,8 @@ class DashboardModalView extends Marionette.ItemView
       App.layout.modal_region.empty()
     @ui.title.change ()=>
       @model.set('title', @ui.title.val())
+      App.vent.trigger 'user:update'
+      App.vent.trigger 'dashboard:update', @model
     @ui.save.click (e)=>
       e.preventDefault()
       t = @ui.title.val().trim()
