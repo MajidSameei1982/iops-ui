@@ -1,4 +1,5 @@
 Marionette = require('marionette')
+Dashboard = require('../../models/dashboard')
 
 # ----------------------------------
 
@@ -14,13 +15,19 @@ class DashboardContentView extends Marionette.LayoutView
     else
       App.currentView = null
 
-  onDomRefresh: ()->
+    App.vent.on 'dashboard:update', (dash)=>
+      if @center_view.model instanceof Dashboard
+        if dash? && dash.id == @center_view.model.id then @onDomRefresh()
+
+  onDomRefresh: ()=>
     # set page title/subtitle
     t = if @title? then @title else 'Foo'
+    if @center_view.model instanceof Dashboard
+      t = @center_view.model.get('title')
     st = if @subtitle? then @subtitle else ''
     if @icon? then t = "<i class='fa fa-#{@icon}'></i> #{t}" 
     t = "#{t} <small>#{st}</small>"
-    $("#title").html(t)
+    @$("#title").html(t)
 
   	
 # ----------------------------------

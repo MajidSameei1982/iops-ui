@@ -3527,16 +3527,20 @@ ModalView = (function(superClass) {
 module.exports = ModalView;
 
 },{}],27:[function(require,module,exports){
-var DashboardContentView, Marionette,
+var Dashboard, DashboardContentView, Marionette,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
 Marionette = require('marionette');
 
+Dashboard = require('../../models/dashboard');
+
 DashboardContentView = (function(superClass) {
   extend(DashboardContentView, superClass);
 
   function DashboardContentView() {
+    this.onDomRefresh = bind(this.onDomRefresh, this);
     return DashboardContentView.__super__.constructor.apply(this, arguments);
   }
 
@@ -3549,21 +3553,33 @@ DashboardContentView = (function(superClass) {
   DashboardContentView.prototype.onShow = function() {
     if (this.center_view != null) {
       this.center.show(this.center_view);
-      return App.currentView = this.center_view;
+      App.currentView = this.center_view;
     } else {
-      return App.currentView = null;
+      App.currentView = null;
     }
+    return App.vent.on('dashboard:update', (function(_this) {
+      return function(dash) {
+        if (_this.center_view.model instanceof Dashboard) {
+          if ((dash != null) && dash.id === _this.center_view.model.id) {
+            return _this.onDomRefresh();
+          }
+        }
+      };
+    })(this));
   };
 
   DashboardContentView.prototype.onDomRefresh = function() {
     var st, t;
     t = this.title != null ? this.title : 'Foo';
+    if (this.center_view.model instanceof Dashboard) {
+      t = this.center_view.model.get('title');
+    }
     st = this.subtitle != null ? this.subtitle : '';
     if (this.icon != null) {
       t = "<i class='fa fa-" + this.icon + "'></i> " + t;
     }
     t = t + " <small>" + st + "</small>";
-    return $("#title").html(t);
+    return this.$("#title").html(t);
   };
 
   return DashboardContentView;
@@ -3572,7 +3588,7 @@ DashboardContentView = (function(superClass) {
 
 module.exports = DashboardContentView;
 
-},{}],28:[function(require,module,exports){
+},{"../../models/dashboard":14}],28:[function(require,module,exports){
 var DashboardContentView, DashboardFooterView, DashboardHeaderView, DashboardLayout, DashboardSideView, DashboardToolView, Marionette, WidgetLayout,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
