@@ -41,8 +41,7 @@ _.extend Marionette.View::,
       sh = """
         <div class='form-group' for='#{id}'>
           <label>#{label}</label>
-          <select id='#{id}' class='form-control'>
-            <option value=''>Select a Site</option>
+          <select id='#{id}' class='form-control' data-placeholder='Select a Site'>
       """
       if App.accounts? && App.accounts.models.length > 0
         for acc in App.accounts.models
@@ -54,3 +53,21 @@ _.extend Marionette.View::,
               sel = if value? && "#{value}" == "#{s.id}" then 'selected' else ''
               sh += "<option value='#{s.id}' #{sel}>#{txt}</option>"
       "#{sh}</select></div>"  
+
+    claimSelector: ({id, label, value, site_id})->
+      # TODO: check current user access to sites
+      ch = """
+        <div class='form-group' for='#{id}'>
+          <label>#{label}</label>
+          <select id='#{id}' class='form-control' multiple data-placeholder='Select Permissions'>
+      """
+      if App.accounts? && App.accounts.models.length > 0
+        for acc in App.accounts.models
+          if acc.sites? && acc.sites.models.length > 0
+            for s in acc.sites.models
+              continue if s.id != site_id
+              for c in s.claims.models
+                txt = c.get('name')
+                sel = if value? && "#{value}" == "#{c.id}" then 'selected' else ''
+                ch += "<option value='#{c.id}' #{sel}>#{txt}</option>"
+      "#{ch}</select></div>"  

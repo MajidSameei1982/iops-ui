@@ -65,11 +65,12 @@
   #role_label {font-size:18px;}
 
   #role_desc_container { padding-left: 36px; }
+  #role_claims_container { padding-left: 36px; }
 
-  #role_name, #role_buttons, #role_desc { display:none; }
+  #role_name, #role_buttons, #role_desc, #role_claims { display:none; }
 
   &.rw {
-    #role_name, #role_desc { display:inline !important; }
+    #role_name, #role_desc, #role_claims { display:inline !important; }
     #role_label, #role_desc_label { display:none !important; }
     #role_crud { display:none; }
     #role_buttons { display:inline !important; }

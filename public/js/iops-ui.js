@@ -896,7 +896,16 @@ window.JST["forms/manage_permissions/role"] = function(__obj) {
     
       _print(_safe(this.description));
     
-      _print(_safe('\' size=\'50\' placeholder=\'Role Description\'/>\n</div>\n'));
+      _print(_safe('\' size=\'50\' placeholder=\'Role Description\'/>\n</div>\n<div class="col-md-12" id=\'role_claims_container\'>\n  '));
+    
+      _print(_safe(this.claimSelector({
+        id: 'role_claims_' + this.id,
+        label: 'Permissions',
+        value: null,
+        site_id: this.site_id
+      })));
+    
+      _print(_safe('\n</div>\n'));
     
     }).call(this);
     
@@ -2258,7 +2267,7 @@ _.extend(Marionette.View.prototype, {
       siteSelector: function(arg) {
         var acc, code, i, id, j, label, len, len1, ref, ref1, s, sel, sh, txt, value;
         id = arg.id, label = arg.label, value = arg.value;
-        sh = "<div class='form-group' for='" + id + "'>\n  <label>" + label + "</label>\n  <select id='" + id + "' class='form-control'>\n    <option value=''>Select a Site</option>";
+        sh = "<div class='form-group' for='" + id + "'>\n  <label>" + label + "</label>\n  <select id='" + id + "' class='form-control' data-placeholder='Select a Site'>";
         if ((App.accounts != null) && App.accounts.models.length > 0) {
           ref = App.accounts.models;
           for (i = 0, len = ref.length; i < len; i++) {
@@ -2279,6 +2288,34 @@ _.extend(Marionette.View.prototype, {
           }
         }
         return sh + "</select></div>";
+      },
+      claimSelector: function(arg) {
+        var acc, c, ch, i, id, j, k, label, len, len1, len2, ref, ref1, ref2, s, sel, site_id, txt, value;
+        id = arg.id, label = arg.label, value = arg.value, site_id = arg.site_id;
+        ch = "<div class='form-group' for='" + id + "'>\n  <label>" + label + "</label>\n  <select id='" + id + "' class='form-control' multiple data-placeholder='Select Permissions'>";
+        if ((App.accounts != null) && App.accounts.models.length > 0) {
+          ref = App.accounts.models;
+          for (i = 0, len = ref.length; i < len; i++) {
+            acc = ref[i];
+            if ((acc.sites != null) && acc.sites.models.length > 0) {
+              ref1 = acc.sites.models;
+              for (j = 0, len1 = ref1.length; j < len1; j++) {
+                s = ref1[j];
+                if (s.id !== site_id) {
+                  continue;
+                }
+                ref2 = s.claims.models;
+                for (k = 0, len2 = ref2.length; k < len2; k++) {
+                  c = ref2[k];
+                  txt = c.get('name');
+                  sel = (value != null) && ("" + value) === ("" + c.id) ? 'selected' : '';
+                  ch += "<option value='" + c.id + "' " + sel + ">" + txt + "</option>";
+                }
+              }
+            }
+          }
+        }
+        return ch + "</select></div>";
       }
     };
   }
@@ -4980,6 +5017,10 @@ RoleView = (function(superClass) {
     }
   };
 
+  RoleView.prototype.onShow = function() {
+    return this.$('select').chosen();
+  };
+
   return RoleView;
 
 })(Marionette.ItemView);
@@ -5090,7 +5131,8 @@ RolesView = (function(superClass) {
     }
     return this.collection.add({
       name: '',
-      description: ''
+      description: '',
+      site_id: this.model.id
     }, {
       at: 0
     });
@@ -5586,7 +5628,10 @@ GateWidgetView = (function(superClass) {
 
   GateWidgetView.prototype.toggle_settings = function(e) {
     GateWidgetView.__super__.toggle_settings.call(this, e);
-    return this.ui.display.toggle(!this.settings_visible);
+    this.ui.display.toggle(!this.settings_visible);
+    if (this.settings_visible) {
+      return this.ui.site.chosen();
+    }
   };
 
   GateWidgetView.prototype.onShow = function() {

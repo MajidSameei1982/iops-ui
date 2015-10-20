@@ -340,9 +340,11 @@ ul.gridster.widget-container {
     font-size: 18px; }
   .role_container #role_desc_container {
     padding-left: 36px; }
-  .role_container #role_name, .role_container #role_buttons, .role_container #role_desc {
+  .role_container #role_claims_container {
+    padding-left: 36px; }
+  .role_container #role_name, .role_container #role_buttons, .role_container #role_desc, .role_container #role_claims {
     display: none; }
-  .role_container.rw #role_name, .role_container.rw #role_desc {
+  .role_container.rw #role_name, .role_container.rw #role_desc, .role_container.rw #role_claims {
     display: inline !important; }
   .role_container.rw #role_label, .role_container.rw #role_desc_label {
     display: none !important; }

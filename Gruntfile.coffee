@@ -109,6 +109,7 @@ module.exports = (grunt)->
           'client/assets/js/jquery.gridster.min.js'
           'client/requires/jsjws/jsrsasign-latest-all-min.js'
           'client/requires/basil.js/basil.js'
+          'client/requires/chosen/chosen.jquery.min.js'
           'client/requires/jquery-dateFormat/jquery-dateFormat.js'
           'client/assets/js/opc-lib.min.js'
         ]
@@ -120,6 +121,7 @@ module.exports = (grunt)->
           'client/assets/adminlte/dist/css/AdminLTE.css'
           'client/assets/adminlte/dist/css/skins/_all-skins.css'
           'client/assets/css/jquery.gridster.min.css'
+          'bower_components/chosen/chosen.min.css'
           'client/assets/css/opc-style.css'
           'client/assets/css/opc-alarm-style.css'
         ]
@@ -172,6 +174,11 @@ module.exports = (grunt)->
           cwd: 'client'
           src: ['**/*.html']
           dest: 'public'
+          expand: true
+        ,
+          cwd: 'bower_components/chosen'
+          src: ['*.png']
+          dest: 'public/css'
           expand: true
         ]
       vendor_static:
