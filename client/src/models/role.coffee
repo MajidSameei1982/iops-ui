@@ -11,11 +11,15 @@ class Role extends BaseModel
     description:  null
     isActive:     true
 
+  persist: ()=>
+    @attributes["claims"] = @claims.toJSON()
+    
   constructor: (data, opts)->
     super(data, opts)
     @claims = new ClaimCollection(@get('claims'))
-    @claims.on "update", ()=>
-      @attributes["claims"] = @claims.toJSON()
+    @claims.on "update", @persist
+    @claims.on "change", @persist
+      
     
 # ----------------------------------
 

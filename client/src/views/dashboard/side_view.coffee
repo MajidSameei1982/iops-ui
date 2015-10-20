@@ -24,12 +24,17 @@ class DashboardSideView extends Marionette.ItemView
     @dmv.action = action
     App.layout.modal_region.show(@dmv)
 
-  add_dash: (e)->
-    if e? then e.preventDefault()
-    doAdd = true
-    for d in @collection.models
-      if !d.id? || d.id == 0 then doAdd = false
-    if doAdd then @collection.add {id:0, title: 'New Dashboard'},{at:0}
+  # add_dash: (e)->
+  #   if e? then e.preventDefault()
+  #   doAdd = true
+  #   for d in @collection.models
+  #     if !d.id? || d.id == 0 then doAdd = false
+  #   if doAdd
+  #     @collection.add
+  #       id: Math.floor(Math.random() * 10000)+1
+  #       title: 'New Dashboard'
+  #     ,{at:0}
+  #     App.vent.trigger 'user:update'
 
   click_dash: (e)->
     e.preventDefault()
@@ -64,7 +69,7 @@ class DashboardSideView extends Marionette.ItemView
   show_add: (e)->
     if e? then e.preventDefault()
     d = new Dashboard
-      id:99
+      id: Math.floor(Math.random() * 10000)+1
       title: 'New Dashboard'
     @show_dash_modal(d, 'add')
 
@@ -89,7 +94,7 @@ class DashboardSideView extends Marionette.ItemView
           body: 'Are you sure you want to delete this Dashboard? This cannot be undone and all Widget configurations for this Dashboard will be lost.'
           on_save: ()=>
             @collection.remove(d)
-            # TODO: update user to persist removal
+            App.vent.trigger 'user:update'
         break
     null
 

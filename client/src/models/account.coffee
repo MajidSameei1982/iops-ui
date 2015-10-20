@@ -11,11 +11,14 @@ class Account extends BaseModel
 		isActive:	true
 		sites:		[]
 
+	persist: ()=>
+    @attributes["sites"] = @sites.toJSON()
+          
 	constructor: (data, opts) ->
 		super(data, opts)
 		@sites = new SiteCollection(@get('sites'))
-		@sites.on "update", ()=>
-			@attributes["sites"] = @sites.toJSON()
+		@sites.on "update", @persist
+		@sites.on "change", @persist
 
 # ----------------------------------
 

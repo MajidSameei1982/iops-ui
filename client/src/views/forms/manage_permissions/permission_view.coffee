@@ -43,13 +43,16 @@ class PermissionView extends Marionette.ItemView
       body: 'Are you sure you want to delete this Permission? This cannot be undone and all associated Users and Roles will lose this Permission'
       on_save: ()=>
         @model.collection.remove(@model)
+        App.vent.trigger "app:update"
 
   save: ()->
     # TODO: FIRE MODEL SAVE
     name = @model.get('name')
     return if !name? || name.trim() == ''
-    @model.id = 99
-    # TODO:
+    # TEMPORARY FIX - simulate ids
+    if !@model.id? then @model.set('id', Math.floor(Math.random() * 10000)+1)
+    
+    App.vent.trigger "app:update"
     @render()
  
   onRender: ()->

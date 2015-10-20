@@ -14,13 +14,6 @@ class DashboardModalView extends Marionette.ItemView
     save    : '#modal_save'
     body    : '.modal-body'
   
-  # select: (e)->
-  #   e.preventDefault()
-  #   sel = $(e.target)
-  #   wid = sel.attr("id")
-  #   if @model? && @model.view? then @model.view.add_widget(wid)
-  #   $('#app_modal').modal('hide')
-
   onShow: ()->
     if @action == 'add'
       @ui.modal_title.html('Add Dashboard')
@@ -39,6 +32,8 @@ class DashboardModalView extends Marionette.ItemView
       return false if t == ''
       if @action == 'add'
         @dashboards.add @model, {at:0}
+        App.vent.trigger 'user:update'
+        App.router.navigate("dashboard/#{@model.id}", {trigger:true})
 
 # ----------------------------------
 

@@ -899,10 +899,11 @@ window.JST["forms/manage_permissions/role"] = function(__obj) {
       _print(_safe('\' size=\'50\' placeholder=\'Role Description\'/>\n</div>\n<div class="col-md-12" id=\'role_claims_container\'>\n  '));
     
       _print(_safe(this.claimSelector({
-        id: 'role_claims_' + this.id,
+        id: 'role_claims',
         label: 'Permissions',
         value: null,
-        site_id: this.site_id
+        site_id: this.site_id,
+        global: this.global
       })));
     
       _print(_safe('\n</div>\n'));
@@ -1624,36 +1625,51 @@ window.IOPS = (function() {
     Session.restore();
     this.layout = new IopsLayout();
     this.uiutils = UIUtils;
-    App.accounts = new AccountCollection([
-      {
-        id: 1,
-        name: "Example Corporation, International",
-        isActive: true,
-        sites: [
-          {
-            id: 1,
-            name: "The Eastern Iowa Airport",
-            abbrev: "CID",
-            shortName: "Cedar Rapids",
-            opc: 'http://opc.iopsnow.com:58725'
-          }, {
-            id: 2,
-            name: 'Open Automation Systems',
-            abbrev: "OAS",
-            shortName: "OPCSystems.NET",
-            opc: 'http://www.opcsystems.com:58725'
-          }
-        ]
-      }
-    ]);
-    App.claims = new ClaimCollection();
-    App.roles = new RoleCollection();
+    App.accounts = new AccountCollection(App.store.get('accounts'));
+    if (App.accounts == null) {
+      App.accounts = new AccountCollection([
+        {
+          id: 1,
+          name: "Example Corporation, International",
+          isActive: true,
+          sites: [
+            {
+              id: 1,
+              name: "The Eastern Iowa Airport",
+              abbrev: "CID",
+              shortName: "Cedar Rapids",
+              opc: 'http://opc.iopsnow.com:58725'
+            }, {
+              id: 2,
+              name: 'Open Automation Systems',
+              abbrev: "OAS",
+              shortName: "OPCSystems.NET",
+              opc: 'http://www.opcsystems.com:58725'
+            }
+          ]
+        }
+      ]);
+    }
+    App.claims = new ClaimCollection(App.store.get('claims'));
+    App.roles = new RoleCollection(App.store.get('roles'));
     this.log('Initializing OPCManager');
     App.opc = OPCManager;
     App.opc.init(App);
-    this.log('Persisting user');
     App.vent.on("user:update", function() {
       return App.store.set("user", App.current_user);
+    });
+    App.vent.on("app:update", function() {
+      var aacc, acc, accounts, i, idx, len;
+      accounts = App.accounts.toJSON();
+      for (idx = i = 0, len = accounts.length; i < len; idx = ++i) {
+        acc = accounts[idx];
+        aacc = App.accounts.models[idx];
+        acc.sites = aacc.sites.toJSON();
+      }
+      App.store.set("accounts", accounts);
+      App.store.set("claims", App.claims);
+      App.store.set("roles", App.roles);
+      return App.store.set("users", App.users);
     });
     this.log('Setting system clock');
     dtfn = function() {
@@ -2290,30 +2306,34 @@ _.extend(Marionette.View.prototype, {
         return sh + "</select></div>";
       },
       claimSelector: function(arg) {
-        var acc, c, ch, i, id, j, k, label, len, len1, len2, ref, ref1, ref2, s, sel, site_id, txt, value;
-        id = arg.id, label = arg.label, value = arg.value, site_id = arg.site_id;
+        var acc, c, ch, claims, global, i, id, j, k, label, len, len1, len2, ref, ref1, ref2, s, sel, site_id, txt, value;
+        id = arg.id, label = arg.label, value = arg.value, site_id = arg.site_id, global = arg.global;
         ch = "<div class='form-group' for='" + id + "'>\n  <label>" + label + "</label>\n  <select id='" + id + "' class='form-control' multiple data-placeholder='Select Permissions'>";
-        if ((App.accounts != null) && App.accounts.models.length > 0) {
-          ref = App.accounts.models;
-          for (i = 0, len = ref.length; i < len; i++) {
-            acc = ref[i];
-            if ((acc.sites != null) && acc.sites.models.length > 0) {
-              ref1 = acc.sites.models;
-              for (j = 0, len1 = ref1.length; j < len1; j++) {
-                s = ref1[j];
-                if (s.id !== site_id) {
-                  continue;
-                }
-                ref2 = s.claims.models;
-                for (k = 0, len2 = ref2.length; k < len2; k++) {
-                  c = ref2[k];
-                  txt = c.get('name');
-                  sel = (value != null) && ("" + value) === ("" + c.id) ? 'selected' : '';
-                  ch += "<option value='" + c.id + "' " + sel + ">" + txt + "</option>";
+        claims = App.claims;
+        if (!global) {
+          if ((App.accounts != null) && App.accounts.models.length > 0) {
+            ref = App.accounts.models;
+            for (i = 0, len = ref.length; i < len; i++) {
+              acc = ref[i];
+              if ((acc.sites != null) && acc.sites.models.length > 0) {
+                ref1 = acc.sites.models;
+                for (j = 0, len1 = ref1.length; j < len1; j++) {
+                  s = ref1[j];
+                  if (s.id === site_id) {
+                    claims = s.claims;
+                    break;
+                  }
                 }
               }
             }
           }
+        }
+        ref2 = claims.models;
+        for (k = 0, len2 = ref2.length; k < len2; k++) {
+          c = ref2[k];
+          txt = c.get('name');
+          sel = (value != null) && ("" + value) === ("" + c.id) ? 'selected' : '';
+          ch += "<option value='" + c.id + "' " + sel + ">" + txt + "</option>";
         }
         return ch + "</select></div>";
       }
@@ -2631,6 +2651,7 @@ module.exports = BaseCollection;
 
 },{"../common/appconfig":3}],10:[function(require,module,exports){
 var Account, BaseModel, SiteCollection,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -2651,14 +2672,16 @@ Account = (function(superClass) {
     sites: []
   };
 
+  Account.prototype.persist = function() {
+    return this.attributes["sites"] = this.sites.toJSON();
+  };
+
   function Account(data, opts) {
+    this.persist = bind(this.persist, this);
     Account.__super__.constructor.call(this, data, opts);
     this.sites = new SiteCollection(this.get('sites'));
-    this.sites.on("update", (function(_this) {
-      return function() {
-        return _this.attributes["sites"] = _this.sites.toJSON();
-      };
-    })(this));
+    this.sites.on("update", this.persist);
+    this.sites.on("change", this.persist);
   }
 
   return Account;
@@ -2824,6 +2847,7 @@ module.exports = DashboardCollection;
 
 },{"./_base_collection":9,"./dashboard":14}],16:[function(require,module,exports){
 var BaseModel, ClaimCollection, Role,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -2844,14 +2868,16 @@ Role = (function(superClass) {
     isActive: true
   };
 
+  Role.prototype.persist = function() {
+    return this.attributes["claims"] = this.claims.toJSON();
+  };
+
   function Role(data, opts) {
+    this.persist = bind(this.persist, this);
     Role.__super__.constructor.call(this, data, opts);
     this.claims = new ClaimCollection(this.get('claims'));
-    this.claims.on("update", (function(_this) {
-      return function() {
-        return _this.attributes["claims"] = _this.claims.toJSON();
-      };
-    })(this));
+    this.claims.on("update", this.persist);
+    this.claims.on("change", this.persist);
   }
 
   return Role;
@@ -3025,6 +3051,7 @@ module.exports = Session;
 
 },{"./_base":8,"./user":21}],19:[function(require,module,exports){
 var BaseModel, ClaimCollection, RoleCollection, Site,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -3049,20 +3076,20 @@ Site = (function(superClass) {
     opc: null
   };
 
+  Site.prototype.persist = function() {
+    this.attributes["claims"] = this.claims.toJSON();
+    return this.attributes["roles"] = this.roles.toJSON();
+  };
+
   function Site(data, opts) {
+    this.persist = bind(this.persist, this);
     Site.__super__.constructor.call(this, data, opts);
     this.claims = new ClaimCollection(this.get('claims'));
-    this.claims.on("update", (function(_this) {
-      return function() {
-        return _this.attributes["claims"] = _this.claims.toJSON();
-      };
-    })(this));
+    this.claims.on("update", this.persist);
+    this.claims.on("change", this.persist);
     this.roles = new RoleCollection(this.get('roles'));
-    this.roles.on("update", (function(_this) {
-      return function() {
-        return _this.attributes["roles"] = _this.roles.toJSON();
-      };
-    })(this));
+    this.roles.on("update", this.persist);
+    this.roles.on("change", this.persist);
   }
 
   return Site;
@@ -3101,6 +3128,7 @@ module.exports = SiteCollection;
 
 },{"./_base_collection":9,"./site":19}],21:[function(require,module,exports){
 var BaseModel, DashboardCollection, User,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -3125,19 +3153,17 @@ User = (function(superClass) {
     dashboards: []
   };
 
+  User.prototype.persist = function() {
+    console.log('persisting user');
+    return this.attributes["dashboards"] = this.dashboards.toJSON();
+  };
+
   function User(config) {
+    this.persist = bind(this.persist, this);
     User.__super__.constructor.call(this, config);
     this.dashboards = new DashboardCollection(this.get('dashboards'));
-    this.dashboards.on("change", (function(_this) {
-      return function() {
-        return _this.set("dashboards", _this.dashboards.toJSON());
-      };
-    })(this));
-    this.dashboards.on("update", (function(_this) {
-      return function() {
-        return _this.set("dashboards", _this.dashboards.toJSON());
-      };
-    })(this));
+    this.dashboards.on("update", this.persist);
+    this.dashboards.on("change", this.persist);
   }
 
   return User;
@@ -3697,8 +3723,12 @@ DashboardModalView = (function(superClass) {
           return false;
         }
         if (_this.action === 'add') {
-          return _this.dashboards.add(_this.model, {
+          _this.dashboards.add(_this.model, {
             at: 0
+          });
+          App.vent.trigger('user:update');
+          return App.router.navigate("dashboard/" + _this.model.id, {
+            trigger: true
           });
         }
       };
@@ -3863,29 +3893,6 @@ DashboardSideView = (function(superClass) {
     return App.layout.modal_region.show(this.dmv);
   };
 
-  DashboardSideView.prototype.add_dash = function(e) {
-    var d, doAdd, i, len, ref;
-    if (e != null) {
-      e.preventDefault();
-    }
-    doAdd = true;
-    ref = this.collection.models;
-    for (i = 0, len = ref.length; i < len; i++) {
-      d = ref[i];
-      if ((d.id == null) || d.id === 0) {
-        doAdd = false;
-      }
-    }
-    if (doAdd) {
-      return this.collection.add({
-        id: 0,
-        title: 'New Dashboard'
-      }, {
-        at: 0
-      });
-    }
-  };
-
   DashboardSideView.prototype.click_dash = function(e) {
     var link;
     e.preventDefault();
@@ -3941,7 +3948,7 @@ DashboardSideView = (function(superClass) {
       e.preventDefault();
     }
     d = new Dashboard({
-      id: 99,
+      id: Math.floor(Math.random() * 10000) + 1,
       title: 'New Dashboard'
     });
     return this.show_dash_modal(d, 'add');
@@ -3981,7 +3988,8 @@ DashboardSideView = (function(superClass) {
           body: 'Are you sure you want to delete this Dashboard? This cannot be undone and all Widget configurations for this Dashboard will be lost.',
           on_save: (function(_this) {
             return function() {
-              return _this.collection.remove(d);
+              _this.collection.remove(d);
+              return App.vent.trigger('user:update');
             };
           })(this)
         });
@@ -4716,7 +4724,8 @@ PermissionView = (function(superClass) {
       body: 'Are you sure you want to delete this Permission? This cannot be undone and all associated Users and Roles will lose this Permission',
       on_save: (function(_this) {
         return function() {
-          return _this.model.collection.remove(_this.model);
+          _this.model.collection.remove(_this.model);
+          return App.vent.trigger("app:update");
         };
       })(this)
     });
@@ -4728,7 +4737,10 @@ PermissionView = (function(superClass) {
     if ((name == null) || name.trim() === '') {
       return;
     }
-    this.model.id = 99;
+    if (this.model.id == null) {
+      this.model.set('id', Math.floor(Math.random() * 10000) + 1);
+    }
+    App.vent.trigger("app:update");
     return this.render();
   };
 
@@ -4965,7 +4977,14 @@ RoleView = (function(superClass) {
   };
 
   RoleView.prototype.toggle_edit = function(rw) {
-    return $(this.el).toggleClass('rw', rw);
+    var claims;
+    $(this.el).toggleClass('rw', rw);
+    this.$('#role_claims_container').toggle(rw);
+    if (rw) {
+      claims = this.model.get('claims');
+      this.$('select#role_claims').val(claims);
+      return this.$('select#role_claims').chosen();
+    }
   };
 
   RoleView.prototype.show_edit = function(e) {
@@ -4978,7 +4997,6 @@ RoleView = (function(superClass) {
       this.model.collection.remove(this.model);
       return;
     }
-    this.toggle_edit(false);
     this.model = new Role(this.old_model);
     return this.render();
   };
@@ -4991,7 +5009,8 @@ RoleView = (function(superClass) {
       body: 'Are you sure you want to delete this Role? This cannot be undone and all associated Sites will lose this Role.',
       on_save: (function(_this) {
         return function() {
-          return _this.model.collection.remove(_this.model);
+          _this.model.collection.remove(_this.model);
+          return App.vent.trigger("app:update");
         };
       })(this)
     });
@@ -5003,22 +5022,24 @@ RoleView = (function(superClass) {
     if ((name == null) || name.trim() === '') {
       return;
     }
-    this.model.id = 99;
+    if (this.model.id == null) {
+      this.model.set('id', Math.floor(Math.random() * 10000) + 1);
+    }
+    this.model.set('claims', this.$('select#role_claims').val());
+    App.vent.trigger("app:update");
     return this.render();
   };
 
   RoleView.prototype.onRender = function() {
-    this.modelBinder.bind(this.model, this.el, this.bindings);
-    if ((this.model.id == null) || this.model.id < 1) {
-      this.$("#delete").hide();
-      return this.show_edit();
-    } else {
-      return this.toggle_edit(false);
-    }
+    this.toggle_edit(false);
+    return this.modelBinder.bind(this.model, this.el, this.bindings);
   };
 
   RoleView.prototype.onShow = function() {
-    return this.$('select').chosen();
+    if ((this.model.id == null) || this.model.id < 1) {
+      this.$("#delete").hide();
+      return this.show_edit();
+    }
   };
 
   return RoleView;
@@ -5050,13 +5071,14 @@ RolesTopView = (function(superClass) {
   };
 
   RolesTopView.prototype.onShow = function() {
-    var acc, acc_el, i, len, r, ref, results, s, site_el, srv;
+    var acc, acc_el, i, len, m, r, ref, results, s, site_el, srv;
+    m = new Backbone.Model({
+      id: 0,
+      name: 'Global Roles',
+      global: true
+    });
     this.rv = new RolesView({
-      model: new Backbone.Model({
-        id: 0,
-        name: 'Global Roles',
-        global: true
-      }),
+      model: m,
       collection: App.roles
     });
     this.global_region.show(this.rv);

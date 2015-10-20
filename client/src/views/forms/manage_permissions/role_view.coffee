@@ -22,17 +22,20 @@ class RoleView extends Marionette.ItemView
 
   toggle_edit: (rw)->
     $(@el).toggleClass('rw',rw)
+    @$('#role_claims_container').toggle(rw)
+    if rw
+      claims = @model.get('claims')
+      @$('select#role_claims').val(claims)
+      @$('select#role_claims').chosen()
 
   show_edit: (e)->
     @old_model = $.extend(true, {}, @model.attributes);
     @toggle_edit(true);
-    #@$('select').chosen()
-    
+
   cancel_edit: ()->
     if (!@model.id? || @model.id < 1)   
       @model.collection.remove(@model)
       return
-    @toggle_edit(false);
     @model = new Role(@old_model)
     @render()
 
@@ -44,26 +47,26 @@ class RoleView extends Marionette.ItemView
       body: 'Are you sure you want to delete this Role? This cannot be undone and all associated Sites will lose this Role.'
       on_save: ()=>
         @model.collection.remove(@model)
+        App.vent.trigger "app:update"
 
   save: ()->
     # TODO: FIRE MODEL SAVE
     name = @model.get('name')
     return if !name? || name.trim() == ''
-    @model.id = 99
-    # TODO:
+    if !@model.id? then @model.set('id', Math.floor(Math.random() * 10000)+1)
+    @model.set('claims', @$('select#role_claims').val())
+    App.vent.trigger "app:update"
     @render()
  
   onRender: ()->
+    @toggle_edit(false);
     @modelBinder.bind(@model, @el, @bindings)
+    
+  onShow: ()->
     if (!@model.id? || @model.id < 1)
       @$("#delete").hide()
       @show_edit()
-    else
-      @toggle_edit(false)
-
-  onShow: ()->
-    @$('select').chosen()
-
+    
 # ----------------------------------
 
 module.exports = RoleView

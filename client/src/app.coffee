@@ -29,52 +29,47 @@ window.IOPS = do()->
     @layout = new IopsLayout()
     @uiutils = UIUtils
 
-    # TODO: load from server
-    App.accounts = new AccountCollection [
-      id: 1
-      name : "Example Corporation, International"
-      isActive: true
-      sites: [
+    # TODO: load from server - all known Accounts, claims, Roles
+    App.accounts = new AccountCollection(App.store.get('accounts'))
+    if !App.accounts?
+      App.accounts = new AccountCollection [
         id: 1
-        name: "The Eastern Iowa Airport"
-        abbrev: "CID"
-        shortName: "Cedar Rapids"
-        opc: 'http://opc.iopsnow.com:58725'
-      ,
-        id: 2
-        name: 'Open Automation Systems'
-        abbrev: "OAS"
-        shortName: "OPCSystems.NET"
-        opc: 'http://www.opcsystems.com:58725'
+        name : "Example Corporation, International"
+        isActive: true
+        sites: [
+          id: 1
+          name: "The Eastern Iowa Airport"
+          abbrev: "CID"
+          shortName: "Cedar Rapids"
+          opc: 'http://opc.iopsnow.com:58725'
+        ,
+          id: 2
+          name: 'Open Automation Systems'
+          abbrev: "OAS"
+          shortName: "OPCSystems.NET"
+          opc: 'http://www.opcsystems.com:58725'
+        ]
       ]
-    ]
-    
-    # TODO: load from server - all known claims
-    App.claims = new ClaimCollection()
-    # App.claims = new ClaimCollection [
-    #   id: 1
-    #   name: 'can_admin_users'
-    #   description: 'Can add and modify Users'
-    # ,  
-    #   id: 2
-    #   name: 'can_admin_accounts'
-    #   description: 'Can add and modify Accounts and associated Sites'
-    # ,
-    #   id: 3
-    #   name: 'can_admin_permissions'
-    #   description: 'Can add and modify Groups and Permissions'
-    # ]
-    App.roles = new RoleCollection()
+    App.claims = new ClaimCollection(App.store.get('claims'))
+    App.roles = new RoleCollection(App.store.get('roles'))
 
     # connect OPCManager
     @log('Initializing OPCManager')
     App.opc = OPCManager
     App.opc.init(App)
 
-    # REMOVE WHEN API IS CONNECTED - persist user locally until db is connected
-    @log('Persisting user')
+    # REMOVE WHEN API IS CONNECTED - persist objects locally until db is connected
     App.vent.on "user:update", ()->
       App.store.set("user", App.current_user)
+    App.vent.on "app:update", ()->
+      accounts = App.accounts.toJSON()
+      for acc, idx in accounts
+        aacc = App.accounts.models[idx]
+        acc.sites = aacc.sites.toJSON()
+      App.store.set("accounts", accounts)
+      App.store.set("claims", App.claims)
+      App.store.set("roles", App.roles)
+      App.store.set("users", App.users)
 
     # setup app clock
     @log('Setting system clock')

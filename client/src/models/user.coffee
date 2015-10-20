@@ -15,13 +15,16 @@ class User extends BaseModel
     claims:			[]
     dashboards: []
 
+  persist: ()=>
+    console.log 'persisting user'
+    @attributes["dashboards"] = @dashboards.toJSON()
+
   constructor: (config)->
     super(config)
     @dashboards = new DashboardCollection(@get('dashboards'))
-    @dashboards.on "change", ()=>
-        @set("dashboards", @dashboards.toJSON())
-    @dashboards.on "update", ()=>
-        @set("dashboards", @dashboards.toJSON())
+    @dashboards.on "update", @persist
+    @dashboards.on "change", @persist
+
 # ----------------------------------
 
 module.exports = User

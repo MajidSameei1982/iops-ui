@@ -14,15 +14,19 @@ class Site extends BaseModel
     abbrev:			null
     opc:        null
 
+  persist: ()=>
+    @attributes["claims"] = @claims.toJSON()
+    @attributes["roles"] = @roles.toJSON()
+    
   constructor: (data, opts)->
     super(data, opts)
     @claims = new ClaimCollection(@get('claims'))
-    @claims.on "update", ()=>
-      @attributes["claims"] = @claims.toJSON()
-
+    @claims.on "update", @persist
+    @claims.on "change", @persist
+      
     @roles = new RoleCollection(@get('roles'))
-    @roles.on "update", ()=>
-      @attributes["roles"] = @roles.toJSON()
+    @roles.on "update", @persist
+    @roles.on "change", @persist
 
 # ----------------------------------
 

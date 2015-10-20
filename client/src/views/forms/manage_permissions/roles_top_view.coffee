@@ -9,8 +9,12 @@ class RolesTopView extends Marionette.LayoutView
     global_region  : '#global_region'
 
   onShow: ()->
+    m = new Backbone.Model
+      id:0 
+      name:'Global Roles'
+      global:true
     @rv = new RolesView
-      model: new Backbone.Model({id:0, name:'Global Roles', global:true})
+      model: m
       collection: App.roles
     @global_region.show(@rv)
     for acc in App.accounts.models
