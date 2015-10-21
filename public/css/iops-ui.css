@@ -207,6 +207,41 @@ ul.gridster.widget-container {
 .row .form-control-feedback {
   right: 15px; }
 
+ul.chosen-choices {
+  padding: 3px 5px !important;
+  border: solid 1px #d2d6de !important;
+  background-image: none !important; }
+  ul.chosen-choices li.search-choice {
+    background-image: none !important;
+    background-color: #3c8dbc !important;
+    border-color: #3c8dbc !important;
+    color: #fff !important;
+    box-shadow: none !important; }
+  ul.chosen-choices a.search-choice-close:after {
+    content: 'x';
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 10px;
+    color: #000 !important;
+    background-image: none !important;
+    background: none !important; }
+    ul.chosen-choices a.search-choice-close:after:hover {
+      color: #fff !important; }
+  ul.chosen-choices a.search-choice-close {
+    background-image: none !important;
+    background: none !important; }
+    ul.chosen-choices a.search-choice-close:hover {
+      color: #fff !important; }
+
+ul.chosen-results li.highlighted {
+  background-image: none !important;
+  background-color: #3c8dbc !important;
+  color: #fff !important; }
+
+.chosen-container-active ul.chosen-choices {
+  border-color: #3c8dbc !important;
+  box-shadow: none !important; }
+
 #add_account {
   margin-left: 20px;
   cursor: pointer; }
@@ -352,6 +387,33 @@ ul.gridster.widget-container {
     display: none; }
   .role_container.rw #role_buttons {
     display: inline !important; }
+
+.user_container {
+  padding: 20px 0 20px 10px;
+  border-top: 1px dashed #ccc; }
+  .user_container .edit {
+    display: none; }
+  .user_container.rw .edit {
+    display: block !important; }
+  .user_container.rw .display {
+    display: none !important; }
+  .user_container #user_label {
+    font-size: 18px;
+    color: #333;
+    font-weight: bold; }
+    .user_container #user_label small {
+      color: #666;
+      font-weight: normal; }
+  .user_container h3.account_name {
+    margin: 0 0 10px 0;
+    background-color: #cbe1ee;
+    padding: 5px 0 5px 5px; }
+  .user_container .account_container {
+    border: none !important;
+    padding: 0;
+    margin: 0; }
+  .user_container #user_buttons {
+    margin-left: 15px; }
 
 * {
   outline: none; }

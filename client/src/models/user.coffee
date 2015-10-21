@@ -8,11 +8,12 @@ class User extends BaseModel
 	urlRoot: '/user'
 	defaults:
     email: 			null
-    firstname: 	null
+    firstname: 	    null
     lastname:		null
     phone1:			null
     phone2:			null
-    claims:			[]
+    #claims:			[]
+    roles_global: []
     dashboards: []
 
   persist: ()=>

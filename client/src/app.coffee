@@ -11,6 +11,7 @@ OPCManager = require('./opcmanager')
 AccountCollection = require('./models/account_collection')
 ClaimCollection = require('./models/claim_collection')
 RoleCollection = require('./models/role_collection')
+UserCollection = require('./models/user_collection')
 
 # ----------------------------------
 window.IOPS = do()->
@@ -29,7 +30,9 @@ window.IOPS = do()->
     @layout = new IopsLayout()
     @uiutils = UIUtils
 
-    # TODO: load from server - all known Accounts, claims, Roles
+    ### 
+      TODO: load from server - all known Accounts, claims, Roles
+    ###
     App.accounts = new AccountCollection(App.store.get('accounts'))
     if !App.accounts?
       App.accounts = new AccountCollection [
@@ -52,6 +55,10 @@ window.IOPS = do()->
       ]
     App.claims = new ClaimCollection(App.store.get('claims'))
     App.roles = new RoleCollection(App.store.get('roles'))
+    App.users = new UserCollection(App.store.get('users'))
+    ###
+      END TODO:
+    ###
 
     # connect OPCManager
     @log('Initializing OPCManager')
@@ -69,6 +76,10 @@ window.IOPS = do()->
       App.store.set("accounts", accounts)
       App.store.set("claims", App.claims)
       App.store.set("roles", App.roles)
+      nuc = new UserCollection()
+      for u in App.users.models
+        if u.id? && u.id > 0 then nuc.add(u)
+      App.users = nuc
       App.store.set("users", App.users)
 
     # setup app clock
@@ -96,6 +107,9 @@ window.IOPS = do()->
   App.flush = ()->
     App.store.remove("user")
     App.store.remove("session")
+    App.store.remove("claims")
+    App.store.remove("roles")
+    App.store.remove("users")
     App.router.navigate('login', {trigger:true})
 
   App

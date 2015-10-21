@@ -28,3 +28,50 @@
 		right:15px;
 	}
 }
+
+ul.chosen-choices {
+	padding:3px 5px !important;
+	border:solid 1px #d2d6de !important;
+	background-image:none !important;
+	li.search-choice {
+		background-image:none !important;
+		// background-color:#cbe1ee !important;
+		background-color: #3c8dbc !important;
+		border-color:#3c8dbc !important;
+		color:#fff !important;
+		box-shadow:none !important;
+	}
+	a.search-choice-close:after {
+		content: 'x';
+		font-size: 14px;
+    font-weight: bold;
+    line-height: 10px;
+    color: #000 !important;
+		background-image: none !important;
+		background: none !important;
+		&:hover {
+    	color: #fff !important;
+    }
+	}
+	a.search-choice-close {
+		background-image: none !important;
+		background: none !important;
+    
+    &:hover {
+    	color: #fff !important;
+    }
+	}
+}
+ul.chosen-results {
+	li.highlighted {
+		background-image:none !important;
+		background-color:#3c8dbc !important;
+		color:#fff !important;
+	}
+}
+.chosen-container-active {
+	ul.chosen-choices {
+		border-color: #3c8dbc !important;
+		box-shadow: none !important;
+	}
+}

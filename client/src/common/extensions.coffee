@@ -54,10 +54,12 @@ _.extend Marionette.View::,
               sh += "<option value='#{s.id}' #{sel}>#{txt}</option>"
       "#{sh}</select></div>"  
 
-    claimSelector: ({id, label, value, site_id, global})->
+    claimSelector: ({id, label, value, site_id, global, cls})->
       # TODO: check current user access to sites
+      c = 'form-group'
+      c = if cls? then "#{c} #{cls}" else c
       ch = """
-        <div class='form-group' for='#{id}'>
+        <div class='#{c}' for='#{id}'>
           <label>#{label}</label>
           <select id='#{id}' class='form-control' multiple data-placeholder='Select Permissions'>
       """
@@ -75,3 +77,28 @@ _.extend Marionette.View::,
         sel = if value? && "#{value}" == "#{c.id}" then 'selected' else ''
         ch += "<option value='#{c.id}' #{sel}>#{txt}</option>"
       "#{ch}</select></div>"  
+
+    roleSelector: ({id, label, value, site_id, global, cls})->
+      # TODO: check current user access to sites
+      c = 'form-group'
+      c = if cls? then "#{c} #{cls}" else c
+      lbl = if label? then "<label>#{label}</label>" else ''
+      rh = """
+        <div class='#{c}' for='#{id}'>
+          #{lbl}
+          <select id='#{id}' class='form-control' multiple data-placeholder='Select Roles'>
+      """
+      roles = App.roles
+      if !global
+        if App.accounts? && App.accounts.models.length > 0
+          for acc in App.accounts.models
+            if acc.sites? && acc.sites.models.length > 0
+              for s in acc.sites.models
+                if s.id == site_id
+                  roles = s.roles
+                  break
+      for r in roles.models
+        txt = r.get('name')
+        sel = if value? && "#{value}" == "#{r.id}" then 'selected' else ''
+        rh += "<option value='#{r.id}' #{sel}>#{txt}</option>"
+      "#{rh}</select></div>"  

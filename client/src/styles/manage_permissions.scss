@@ -76,3 +76,41 @@
     #role_buttons { display:inline !important; }
   }
 }
+
+// Users
+
+.user_container {
+  padding: 20px 0 20px 10px;
+  // width: 100%;
+  border-top: 1px dashed #ccc;
+
+  .edit {display:none;}
+  &.rw {
+    .edit { display:block !important; }
+    .display { display:none !important; }
+  }
+
+  #user_label {
+    font-size:18px;
+    color:#333;
+    font-weight:bold;
+    small {
+      color:#666;
+      font-weight: normal;
+    }
+  }
+  h3.account_name {
+    margin:0 0 10px 0;
+    background-color: #cbe1ee;
+    padding: 5px 0 5px 5px;
+  }
+  .account_container {
+    border:none !important;
+    padding:0;
+    margin:0;
+  }
+
+  #user_buttons {
+    margin-left:15px;
+  }
+}
