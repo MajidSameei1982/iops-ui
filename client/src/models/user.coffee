@@ -16,7 +16,6 @@ class User extends BaseModel
     dashboards: []
 
   persist: ()=>
-    console.log 'persisting user'
     @attributes["dashboards"] = @dashboards.toJSON()
 
   constructor: (config)->

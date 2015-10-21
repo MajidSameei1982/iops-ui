@@ -101,10 +101,14 @@ class IopsController extends Object
         break
     if !dash? 
       dash = first
-      App.router.navigate("dashboard/#{dash.id}", {trigger:false})
-    dl.show_widgets(dash)
-    App.current_dash = dash.id
-    App.vent.trigger "show:dashboard", dash.id
+    did = if dash? then dash.id else null 
+    App.router.navigate("dashboard/#{did}", {trigger:false})
+    if dash? 
+      dl.show_widgets(dash)
+    else
+      dl.empty()
+    App.current_dash = did
+    App.vent.trigger "show:dashboard", did
     @
 
 # ----------------------------------

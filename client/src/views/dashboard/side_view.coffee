@@ -84,8 +84,10 @@ class DashboardSideView extends Marionette.ItemView
           type: 'warning'
           body: 'Are you sure you want to delete this Dashboard? This cannot be undone and all Widget configurations for this Dashboard will be lost.'
           on_save: ()=>
+            did = d.id
             @collection.remove(d)
             App.vent.trigger 'user:update'
+            if did == App.current_dash then App.router.navigate('', {trigger:true})
         break
     null
 

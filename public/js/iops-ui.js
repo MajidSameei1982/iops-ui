@@ -2544,7 +2544,7 @@ IopsController = (function(superClass) {
   };
 
   IopsController.prototype.dashboard = function(id) {
-    var d, dash, dl, first, i, len, ref;
+    var d, dash, did, dl, first, i, len, ref;
     App.log('route:dashboard');
     if (id == null) {
       return null;
@@ -2566,13 +2566,18 @@ IopsController = (function(superClass) {
     }
     if (dash == null) {
       dash = first;
-      App.router.navigate("dashboard/" + dash.id, {
-        trigger: false
-      });
     }
-    dl.show_widgets(dash);
-    App.current_dash = dash.id;
-    App.vent.trigger("show:dashboard", dash.id);
+    did = dash != null ? dash.id : null;
+    App.router.navigate("dashboard/" + did, {
+      trigger: false
+    });
+    if (dash != null) {
+      dl.show_widgets(dash);
+    } else {
+      dl.empty();
+    }
+    App.current_dash = did;
+    App.vent.trigger("show:dashboard", did);
     return this;
   };
 
@@ -3145,7 +3150,6 @@ User = (function(superClass) {
   };
 
   User.prototype.persist = function() {
-    console.log('persisting user');
     return this.attributes["dashboards"] = this.dashboards.toJSON();
   };
 
@@ -3649,6 +3653,10 @@ DashboardLayout = (function(superClass) {
     });
   };
 
+  DashboardLayout.prototype.empty = function() {
+    return this.content.empty();
+  };
+
   DashboardLayout.prototype.onShow = function() {
     this.headerview = new DashboardHeaderView({
       model: App.current_user
@@ -4003,8 +4011,15 @@ DashboardSideView = (function(superClass) {
           body: 'Are you sure you want to delete this Dashboard? This cannot be undone and all Widget configurations for this Dashboard will be lost.',
           on_save: (function(_this) {
             return function() {
+              var did;
+              did = d.id;
               _this.collection.remove(d);
-              return App.vent.trigger('user:update');
+              App.vent.trigger('user:update');
+              if (did === App.current_dash) {
+                return App.router.navigate('', {
+                  trigger: true
+                });
+              }
             };
           })(this)
         });

@@ -36,6 +36,9 @@ class DashboardLayout extends Marionette.LayoutView
       subtitle: ''
       view: v
 
+  empty: ()->
+    @content.empty()
+
   onShow: () ->
     @headerview = new DashboardHeaderView
       model: App.current_user
