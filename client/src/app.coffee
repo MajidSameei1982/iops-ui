@@ -34,7 +34,7 @@ window.IOPS = do()->
       TODO: load from server - all known Accounts, claims, Roles
     ###
     App.accounts = new AccountCollection(App.store.get('accounts'))
-    if !App.accounts?
+    if !App.accounts? || App.accounts.models.length == 0
       App.accounts = new AccountCollection [
         id: 1
         name : "Example Corporation, International"
