@@ -2875,6 +2875,32 @@ BaseCollection = (function(superClass) {
     this;
   }
 
+  BaseCollection.prototype.moveup = function(model) {
+    var index;
+    index = this.indexOf(model);
+    if (index > 0) {
+      this.remove(model, {
+        silent: true
+      });
+      return this.add(model, {
+        at: index - 1
+      });
+    }
+  };
+
+  BaseCollection.prototype.movedn = function(model) {
+    var index;
+    index = this.indexOf(model);
+    if (index < this.models.length) {
+      this.remove(model, {
+        silent: true
+      });
+      return this.add(model, {
+        at: index + 1
+      });
+    }
+  };
+
   return BaseCollection;
 
 })(Backbone.Collection);
@@ -4181,6 +4207,10 @@ DashboardSideView = (function(superClass) {
       this.edit_link(e);
     } else if (link.hasClass('delete')) {
       this.delete_link(e);
+    } else if (link.hasClass('moveup')) {
+      this.moveup_link(e);
+    } else if (link.hasClass('movedn')) {
+      this.movedn_link(e);
     }
     return this;
   };
@@ -4231,7 +4261,7 @@ DashboardSideView = (function(superClass) {
     return this.show_dash_modal(d, 'add');
   };
 
-  DashboardSideView.prototype.edit_link = function(e) {
+  DashboardSideView.prototype.resolve_dash = function(e, pre) {
     var d, i, len, link, ref;
     if (e != null) {
       e.preventDefault();
@@ -4240,47 +4270,69 @@ DashboardSideView = (function(superClass) {
     ref = this.collection.models;
     for (i = 0, len = ref.length; i < len; i++) {
       d = ref[i];
-      if (link.hasClass("edit_" + d.id)) {
-        this.show_dash_modal(d, 'edit');
-        break;
+      if (link.hasClass(pre + "_" + d.id)) {
+        return d;
       }
     }
     return null;
   };
 
+  DashboardSideView.prototype.moveup_link = function(e) {
+    var d;
+    d = this.resolve_dash(e, 'moveup');
+    if (d != null) {
+      this.collection.moveup(d);
+    }
+    this.update_dash_links();
+    return App.vent.trigger('user:update');
+  };
+
+  DashboardSideView.prototype.movedn_link = function(e) {
+    var d;
+    d = this.resolve_dash(e, 'movedn');
+    if (d != null) {
+      this.collection.movedn(d);
+    }
+    this.update_dash_links();
+    return App.vent.trigger('user:update');
+  };
+
+  DashboardSideView.prototype.edit_link = function(e) {
+    var d;
+    d = this.resolve_dash(e, 'edit');
+    if (d != null) {
+      return this.show_dash_modal(d, 'edit');
+    }
+  };
+
   DashboardSideView.prototype.delete_link = function(e) {
-    var d, i, len, link, ref;
-    if (e != null) {
-      e.preventDefault();
+    var d;
+    d = this.resolve_dash(e, 'delete');
+    if (d != null) {
+      return this.show_delete_modal(d);
     }
-    link = $(e.target).closest('a');
-    ref = this.collection.models;
-    for (i = 0, len = ref.length; i < len; i++) {
-      d = ref[i];
-      if (link.hasClass("delete_" + d.id)) {
-        App.uiutils.showModal({
-          title: 'Delete Dashboard?',
-          icon: 'warning',
-          type: 'warning',
-          body: 'Are you sure you want to delete this Dashboard? This cannot be undone and all Widget configurations for this Dashboard will be lost.',
-          on_save: (function(_this) {
-            return function() {
-              var did;
-              did = d.id;
-              _this.collection.remove(d);
-              App.vent.trigger('user:update');
-              if (did === App.current_dash) {
-                return App.router.navigate('', {
-                  trigger: true
-                });
-              }
-            };
-          })(this)
-        });
-        break;
-      }
-    }
-    return null;
+  };
+
+  DashboardSideView.prototype.show_delete_modal = function(d) {
+    return App.uiutils.showModal({
+      title: 'Delete Dashboard?',
+      icon: 'warning',
+      type: 'warning',
+      body: 'Are you sure you want to delete this Dashboard? This cannot be undone and all Widget configurations for this Dashboard will be lost.',
+      on_save: (function(_this) {
+        return function() {
+          var did;
+          did = d.id;
+          _this.collection.remove(d);
+          App.vent.trigger('user:update');
+          if (did === App.current_dash) {
+            return App.router.navigate('', {
+              trigger: true
+            });
+          }
+        };
+      })(this)
+    });
   };
 
   DashboardSideView.prototype.onShow = function() {
@@ -4295,16 +4347,16 @@ DashboardSideView = (function(superClass) {
   };
 
   DashboardSideView.prototype.onDomRefresh = function() {
-    var d, dl, hh, i, len, ref, results;
+    var d, dl, hh, i, idx, len, ref, results;
     if ((App.current_user != null) && (App.current_user.get('avatar') != null)) {
       this.ui.avatar.attr('src', App.current_user.get('avatar'));
     }
     $('li.dashboard-link', this.ui.dashboard_list).remove();
     ref = this.collection.models;
     results = [];
-    for (i = 0, len = ref.length; i < len; i++) {
-      d = ref[i];
-      hh = "<li class='dashboard-link d_" + d.id + "'>\n  <a href='#' class='dash_link'><i class='fa fa-th-large'></i> <span>" + (d.get('title')) + "</span></a>\n  <div class='controls'>\n    <a href='#' class='edit edit_" + d.id + "'><i class='fa fa-pencil-square'></i></a>\n    <a href='#' class='delete delete_" + d.id + "'><i class='fa fa-times-circle'></i></a>\n  </div>\n</li>";
+    for (idx = i = 0, len = ref.length; i < len; idx = ++i) {
+      d = ref[idx];
+      hh = "<li class='dashboard-link d_" + d.id + "'>\n  <a href='#' class='dash_link'><i class='fa fa-th-large'></i> <span>" + (d.get('title')) + "</span></a>\n  <div class='controls'>\n    <a href='#' class='moveup moveup_" + d.id + "'><i class='fa fa-caret-up'></i></a>\n    <a href='#' class='movedn movedn_" + d.id + "'><i class='fa fa-caret-down'></i></a>\n    <a href='#' class='edit edit_" + d.id + "'><i class='fa fa-pencil-square'></i></a>\n    <a href='#' class='delete delete_" + d.id + "'><i class='fa fa-times-circle'></i></a>\n  </div>\n</li>";
       dl = $(hh);
       results.push(this.ui.dashboard_list.append(dl));
     }

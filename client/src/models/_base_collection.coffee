@@ -13,6 +13,18 @@ class BaseCollection extends Backbone.Collection
 	  	if @url? then @url = "#{url}#{@url}" else url
   	@
 
+  moveup: (model)->
+    index = @indexOf(model)
+    if (index > 0) 
+      @remove model, {silent: true}
+      @add model, {at: index-1}
+
+  movedn: (model)->
+    index = @indexOf(model)
+    if (index < @models.length)
+      @remove(model, {silent: true})
+      @add(model, {at: index+1})
+      
 # ----------------------------------
 
 module.exports = BaseCollection

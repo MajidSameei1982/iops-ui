@@ -34,6 +34,10 @@ class DashboardSideView extends Marionette.ItemView
       @edit_link(e)
     else if link.hasClass('delete')
       @delete_link(e)
+    else if link.hasClass('moveup')
+      @moveup_link(e)
+    else if link.hasClass('movedn')
+      @movedn_link(e)
     @
 
   update_dash_links: (id)=>
@@ -42,7 +46,6 @@ class DashboardSideView extends Marionette.ItemView
     if id?
       App.current_dash = id
       $("li.dashboard-link.d_#{id}").addClass('active')
-
 
   show_link: (e)->
     if e? then e.preventDefault()
@@ -64,32 +67,45 @@ class DashboardSideView extends Marionette.ItemView
       title: 'New Dashboard'
     @show_dash_modal(d, 'add')
 
-  edit_link: (e)->
+  resolve_dash: (e, pre)->
     if e? then e.preventDefault()
     link = $(e.target).closest('a')
     for d in @collection.models
-      if link.hasClass("edit_#{d.id}")
-        @show_dash_modal(d, 'edit')
-        break
+      if link.hasClass("#{pre}_#{d.id}")
+        return d
     null
 
+  moveup_link: (e)->
+    d = @resolve_dash(e, 'moveup')
+    if d? then @collection.moveup(d)
+    @update_dash_links()
+    App.vent.trigger 'user:update'
+
+  movedn_link: (e)->
+    d = @resolve_dash(e, 'movedn')
+    if d? then @collection.movedn(d)
+    @update_dash_links()
+    App.vent.trigger 'user:update'
+
+  edit_link: (e)->
+    d = @resolve_dash(e, 'edit')
+    if d? then @show_dash_modal(d, 'edit')
+
   delete_link: (e)->
-    if e? then e.preventDefault()
-    link = $(e.target).closest('a')
-    for d in @collection.models
-      if link.hasClass("delete_#{d.id}")
-        App.uiutils.showModal
-          title: 'Delete Dashboard?'
-          icon: 'warning'
-          type: 'warning'
-          body: 'Are you sure you want to delete this Dashboard? This cannot be undone and all Widget configurations for this Dashboard will be lost.'
-          on_save: ()=>
-            did = d.id
-            @collection.remove(d)
-            App.vent.trigger 'user:update'
-            if did == App.current_dash then App.router.navigate('', {trigger:true})
-        break
-    null
+    d = @resolve_dash(e, 'delete')
+    if d? then @show_delete_modal(d)
+      
+  show_delete_modal: (d)->
+    App.uiutils.showModal
+      title: 'Delete Dashboard?'
+      icon: 'warning'
+      type: 'warning'
+      body: 'Are you sure you want to delete this Dashboard? This cannot be undone and all Widget configurations for this Dashboard will be lost.'
+      on_save: ()=>
+        did = d.id
+        @collection.remove(d)
+        App.vent.trigger 'user:update'
+        if did == App.current_dash then App.router.navigate('', {trigger:true})
 
   onShow: ()->
     App.vent.on "show:dashboard", @update_dash_links
@@ -103,11 +119,13 @@ class DashboardSideView extends Marionette.ItemView
       @ui.avatar.attr('src', App.current_user.get('avatar'))
 
     $('li.dashboard-link', @ui.dashboard_list).remove()
-    for d in @collection.models
+    for d, idx in @collection.models
       hh = """
       <li class='dashboard-link d_#{d.id}'>
         <a href='#' class='dash_link'><i class='fa fa-th-large'></i> <span>#{d.get('title')}</span></a>
         <div class='controls'>
+          <a href='#' class='moveup moveup_#{d.id}'><i class='fa fa-caret-up'></i></a>
+          <a href='#' class='movedn movedn_#{d.id}'><i class='fa fa-caret-down'></i></a>
           <a href='#' class='edit edit_#{d.id}'><i class='fa fa-pencil-square'></i></a>
           <a href='#' class='delete delete_#{d.id}'><i class='fa fa-times-circle'></i></a>
         </div>
