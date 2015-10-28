@@ -4,7 +4,7 @@
     <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> 
     <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>
   </div>
-</div><!-- /.box-header -->
+</div>
 <div class="box-body content" id='content'>
   <div class="display contain">
     <div id="gate_label"><h1><span id='txt'></span> <span id="docked" style='display:none;'><i class="fa fa-plane"></i></span></h1></div>
@@ -15,6 +15,8 @@
       <tr><td class='lbl'>Smoke Detector</td><td id='pbb_smoke' class='val'>LOADING...</td></tr>
       <tr><td class='lbl'>Canopy</td><td id='pbb_canopy' class='val'>LOADING...</td></tr>
       <tr><td class='lbl'>Cable Hoist</td><td id='gpu_hoist' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl'>Dock Time</td><td id='pbb_docktime' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl'>Undock Time</td><td id='pbb_undocktime' class='val'>LOADING...</td></tr>
     </table>
   </div>
   <div class="settings" style="display: none;">

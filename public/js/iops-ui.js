@@ -1494,7 +1494,7 @@ window.JST["widgets/gate_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" id=\'content\'>\n  <div class="display contain">\n    <div id="gate_label"><h1><span id=\'txt\'></span> <span id="docked" style=\'display:none;\'><i class="fa fa-plane"></i></span></h1></div>\n    <table class=\'data\'>\n      <tr><td class=\'lbl\'>PBB Status</td><td id=\'pbb_status\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>PBB Mode</td><td id=\'pbb_mode\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>E-Stop</td><td id=\'pbb_estop\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Smoke Detector</td><td id=\'pbb_smoke\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Canopy</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Cable Hoist</td><td id=\'gpu_hoist\' class=\'val\'>LOADING...</td></tr>\n    </table>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n<div class="box-body content" id=\'content\'>\n  <div class="display contain">\n    <div id="gate_label"><h1><span id=\'txt\'></span> <span id="docked" style=\'display:none;\'><i class="fa fa-plane"></i></span></h1></div>\n    <table class=\'data\'>\n      <tr><td class=\'lbl\'>PBB Status</td><td id=\'pbb_status\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>PBB Mode</td><td id=\'pbb_mode\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>E-Stop</td><td id=\'pbb_estop\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Smoke Detector</td><td id=\'pbb_smoke\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Canopy</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Cable Hoist</td><td id=\'gpu_hoist\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Dock Time</td><td id=\'pbb_docktime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Undock Time</td><td id=\'pbb_undocktime\' class=\'val\'>LOADING...</td></tr>\n    </table>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -2992,7 +2992,7 @@ Claim = (function(superClass) {
 
   Claim.prototype.service = 'accounts';
 
-  Claim.prototype.urlRoot = '/claim';
+  Claim.prototype.urlRoot = '/claims';
 
   Claim.prototype.defaults = {
     name: '',
@@ -6029,6 +6029,7 @@ GateWidgetView = (function(superClass) {
   function GateWidgetView() {
     this.set_model = bind(this.set_model, this);
     this.data_update = bind(this.data_update, this);
+    this.flash_alarm = bind(this.flash_alarm, this);
     this.data_q = bind(this.data_q, this);
     this.get_value = bind(this.get_value, this);
     this.get_bool = bind(this.get_bool, this);
@@ -6057,7 +6058,7 @@ GateWidgetView = (function(superClass) {
   };
 
   GateWidgetView.prototype.tags = {
-    pbb_plane_docked: 'PBB.PLANE_DOCKED',
+    pbb_plane_docked: 'PBB.AIRCRAFTDOCKEDCALCULATION',
     pbb_in_oper_mode: 'PBB.PBB_IN_OPER_MODE',
     pbb_maintok: 'PBB.MAINTOK',
     pbb_has_warnings: 'PBB.Warning._HasWarnings',
@@ -6067,6 +6068,8 @@ GateWidgetView = (function(superClass) {
     pbb_estop: 'PBB.Alarm.E_STOP',
     pbb_smoke: 'PBB.SMOKEDETECTOR',
     pbb_canopy: 'PBB.Warning.CANOPYDOWN',
+    pbb_docktime: 'PBB.DOCKTIME',
+    pbb_undocktime: 'PBB.UNDOCKTIME',
     gpu_hoist: 'GPU.HZ400CABLEDEPLOYED'
   };
 
@@ -6085,7 +6088,7 @@ GateWidgetView = (function(superClass) {
   GateWidgetView.prototype.update = function() {
     var gate, lbl, s, t, tags, tg;
     s = this.model.get("settings");
-    if ((s != null) && (s.gate != null) && s.gate !== '') {
+    if ((s != null) && !!s.gate) {
       this.site_code = OPCManager.get_site_code(s.site);
       if (this.site_code == null) {
         return null;
@@ -6093,7 +6096,7 @@ GateWidgetView = (function(superClass) {
       this.kill_updates(this.site_code);
       OPCManager.rem_ref(this.site_code);
       gate = s.display_prefix != null ? "" + s.display_prefix + s.gate : '#{s.gate}';
-      this.prefix = "\\\\opc.iopsnow.com\\RemoteSCADAHosting.Airport-" + this.site_code + ".Airport." + this.site_code + ".Term" + s.terminal + ".Zone" + s.zone + ".Gate" + gate + ".";
+      this.prefix = "RemoteSCADAHosting.Airport-" + this.site_code + ".Airport." + this.site_code + ".Term" + s.terminal + ".Zone" + s.zone + ".Gate" + gate + ".";
       tags = [];
       for (tg in this.tags) {
         t = this.tags[tg];
@@ -6121,8 +6124,9 @@ GateWidgetView = (function(superClass) {
     return App.opc.connections[this.site_code].get_value("" + this.prefix + tag + ".Value");
   };
 
-  GateWidgetView.prototype.mark_bad_data = function(q, el) {
-    var h;
+  GateWidgetView.prototype.mark_bad_data = function(tag, el) {
+    var h, q;
+    q = this.data_q(tag);
     h = !q ? 'BAD DATA' : $(el).html();
     return $(el).html(h).toggleClass("bad_data", !q);
   };
@@ -6134,40 +6138,58 @@ GateWidgetView = (function(superClass) {
     return t.props.Value.quality;
   };
 
+  GateWidgetView.prototype.flash_alarm = function(fl) {
+    var chg;
+    if ((this.fl_interval != null) && !fl) {
+      clearInterval(this.fl_interval);
+      $(this.el).removeClass('alarm');
+      this.fl_interval = null;
+    }
+    if (!this.fl_interval && fl) {
+      chg = (function(_this) {
+        return function() {
+          return $(_this.el).toggleClass('alarm');
+        };
+      })(this);
+      return this.fl_interval = setInterval(chg, 500);
+    }
+  };
+
   GateWidgetView.prototype.data_update = function(data) {
-    var canopy, estop, hoist, mode, pbb_status, q, smoke, stat, tg, txt;
+    var canopy, el, estop, hoist, mode, pbb_status, smoke, stat, tg, txt;
     this.vals = {};
     for (tg in this.tags) {
       this.vals[tg] = this.get_value(this.tags[tg]);
     }
-    q = this.data_q(this.tags.pbb_in_oper_mode);
     stat = this.get_bool(this.vals.pbb_in_oper_mode);
     pbb_status = stat ? "Ready/OK" : "Not Ready";
-    this.mark_bad_data(q, this.$('#pbb_status').html(pbb_status).toggleClass("ok", stat));
-    q = this.data_q(this.tags.pbb_autolevelmode);
+    el = this.$('#pbb_status').html(pbb_status).toggleClass("ok", stat);
+    this.mark_bad_data(this.tags.pbb_in_oper_mode, el);
     mode = this.get_bool(this.vals.pbb_autolevelmode);
-    txt = "Logged Off";
-    if (mode) {
-      txt = "Auto Level";
-    }
-    this.mark_bad_data(q, this.$('#pbb_mode').html(txt).toggleClass("ok", mode));
-    q = this.data_q(this.tags.pbb_estop);
+    txt = mode ? "Auto Level" : "Logged Off";
+    el = this.$('#pbb_mode').html(txt).toggleClass("ok", mode);
+    this.mark_bad_data(this.tags.pbb_autolevelmode, el);
     estop = this.get_bool(this.vals.pbb_estop);
     txt = estop ? "Activated" : "Ready/OK";
-    this.mark_bad_data(q, this.$('#pbb_estop').html(txt).toggleClass("err", estop));
-    q = this.data_q(this.tags.pbb_smoke);
+    el = this.$('#pbb_estop').html(txt).toggleClass("err", estop);
+    this.mark_bad_data(this.tags.pbb_estop, el);
     smoke = this.get_bool(this.vals.pbb_smoke);
     txt = smoke === false ? "Activated" : "Ready/OK";
-    this.mark_bad_data(q, this.$('#pbb_smoke').html(txt).toggleClass("err", smoke === false && q));
-    q = this.data_q(this.tags.pbb_canopy);
+    el = this.$('#pbb_smoke').html(txt).toggleClass("err", smoke === false && q);
+    this.mark_bad_data(this.tags.pbb_smoke, el);
     canopy = this.get_bool(this.vals.pbb_canopy);
     txt = canopy ? "Extended" : "Retracted";
-    this.mark_bad_data(q, this.$('#pbb_canopy').html(txt).toggleClass("ok", canopy));
-    q = this.data_q(this.tags.gpu_hoist);
+    el = this.$('#pbb_canopy').html(txt).toggleClass("ok", canopy);
+    this.mark_bad_data(this.tags.pbb_canopy, el);
     hoist = this.get_bool(this.vals.gpu_hoist);
     txt = hoist ? "Deployed" : "Retracted";
-    this.mark_bad_data(q, this.$('#gpu_hoist').html(txt).toggleClass("ok", hoist));
-    return this.ui.docked.toggle(this.get_bool(this.vals.pbb_plane_docked));
+    el = this.$('#gpu_hoist').html(txt).toggleClass("ok", hoist);
+    this.mark_bad_data(this.tags.gpu_hoist, el);
+    this.ui.docked.toggle(this.get_bool(this.vals.pbb_plane_docked));
+    el = this.$('#pbb_docktime').html(this.vals.pbb_docktime + " min.");
+    this.mark_bad_data(this.tags.pbb_docktime, el);
+    el = this.$('#pbb_undocktime').html(this.vals.pbb_undocktime + " min.");
+    return this.mark_bad_data(this.tags.pbb_undocktime, el);
   };
 
   GateWidgetView.prototype.set_model = function() {

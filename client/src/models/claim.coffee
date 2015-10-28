@@ -4,7 +4,7 @@ BaseModel = require('./_base')
 
 class Claim extends BaseModel
   service: 'accounts'
-  urlRoot: '/claim'
+  urlRoot: '/claims'
   defaults:
     name: ''
     description: ''

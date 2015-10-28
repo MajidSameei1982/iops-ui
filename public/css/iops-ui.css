@@ -442,4 +442,8 @@ li.dashboard-link {
   li.dashboard-link:hover .controls {
     display: block; }
 
+.gate_widget.alarm {
+  background-color: #c00;
+  color: #fff; }
+
 /*# sourceMappingURL=iops-ui.css.map */

@@ -4,43 +4,5 @@
 @import "forms";
 @import "manage_accounts";
 @import "manage_permissions";
-
-* {
-  // eliminate glow on webkit browsers
-  outline:none;
-}
-
-a.inline {
-  display:inline !important;
-  padding:0;
-  margin:0 0 0 10px;
-  border-left:none !important;
-  &:hover, &:focus {
-    border-left:none !important;
-    background-color:transparent !important;
-  }
-}
-
-li.dashboard-link {
-  position: relative;
-
-  .controls {
-    display:none;
-    position: absolute;
-    right: 0;
-    top: 13px;
-    z-index: 9999;
-    i.fa {
-      margin-right:5px;
-    }
-    a:hover {
-      color:#fff;
-    }
-  }
-
-  &:hover {
-    .controls {
-      display:block;
-    }
-  }
-}
+@import "dashboard";
+@import "gate_widget";
