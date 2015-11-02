@@ -27421,7 +27421,7 @@ var DateFormat = {};
 
   OPC = (function() {
 
-    OPC.version = '2.3.0';
+    OPC.version = '3.0.1';
 
     OPC.callback_id = 0;
 
@@ -28205,6 +28205,58 @@ var DateFormat = {};
       return tData;
     };
 
+    OPC.prototype.build_tag_json = function(tags) {
+      var nt, op, ot, pfound, pn, t, tData, tn, tp, _i, _j, _k, _len, _len1, _len2, _ref, _ref1;
+      tData = {
+        "tags": []
+      };
+      for (_i = 0, _len = tags.length; _i < _len; _i++) {
+        t = tags[_i];
+        tp = this.parse_tag_prop(t);
+        if (tp.length !== 2) {
+          continue;
+        }
+        tn = tp[0];
+        pn = tp[1];
+        nt = null;
+        _ref = tData.tags;
+        for (_j = 0, _len1 = _ref.length; _j < _len1; _j++) {
+          ot = _ref[_j];
+          if (ot.name === tn) {
+            nt = ot;
+            _ref1 = ot.props;
+            for (_k = 0, _len2 = _ref1.length; _k < _len2; _k++) {
+              op = _ref1[_k];
+              pfound = false;
+              if (op.name === pn) {
+                pfound = true;
+                break;
+              }
+              if (!pfound) {
+                ot.props.push({
+                  name: pn,
+                  val: null
+                });
+              }
+            }
+            break;
+          }
+        }
+        if (nt == null) {
+          tData.tags.push({
+            name: tn,
+            props: [
+              {
+                name: pn,
+                val: null
+              }
+            ]
+          });
+        }
+      }
+      return tData;
+    };
+
     OPC.prototype.refresh_data = function(data, cid) {
       if (this.debug_refresh) {
         this.log(data);
@@ -28215,6 +28267,18 @@ var DateFormat = {};
         this.refresh_callback(data, cid);
       }
       return true;
+    };
+
+    OPC.prototype.dummy_msg = function(tagset) {
+      var str, testmsg, testurl;
+      testmsg = {
+        status: 'OK',
+        message: '',
+        tags: tagset
+      };
+      str = JSON.stringify(testmsg);
+      testurl = "getdata?callback=opcwebcb_000000&_=0000000000000&message=" + encodeURI(str);
+      return testurl;
     };
 
     OPC.prototype.refresh = function() {
@@ -28279,6 +28343,59 @@ var DateFormat = {};
             })(cid)
           });
         }
+      }
+      d = null;
+      return true;
+    };
+
+    OPC.prototype.load_tags = function(tags, success, error) {
+      var cid, d, i, idx, j, t, tagset, tagsets, ts, _i, _j, _len, _len1, _ref,
+        _this = this;
+      j = this.build_tag_json(tags);
+      tagsets = [];
+      tagset = [];
+      _ref = j.tags;
+      for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
+        t = _ref[i];
+        if (tagset.length < this.max_tags_per_msg || this.max_tags_per_msg === 0) {
+          tagset.push(t);
+          if (tagset.length === this.max_tags_per_msg && i !== d.tags.length - 1) {
+            tagsets.push(tagset);
+            tagset = [];
+          }
+        }
+      }
+      if (tagset.length > 0) {
+        tagsets.push(tagset);
+      }
+      d = {};
+      for (idx = _j = 0, _len1 = tagsets.length; _j < _len1; idx = ++_j) {
+        ts = tagsets[idx];
+        d.tags = ts;
+        d.status = "OK";
+        d.message = "";
+        cid = OPC.callback_id++;
+        this.get({
+          url: '/getdata',
+          data: d,
+          cid: cid,
+          success: (function(cid) {
+            return function(data, xhr) {
+              if (success != null) {
+                success(data);
+              }
+              return true;
+            };
+          })(cid),
+          error: (function(cid) {
+            return function(res) {
+              if (error) {
+                error(res);
+              }
+              return true;
+            };
+          })(cid)
+        });
       }
       d = null;
       return true;
@@ -30108,7 +30225,7 @@ var DateFormat = {};
         cid: this.cid,
         success: (function(cid) {
           return function(data, xhr) {
-            //console.log(_this.connection.root_elem[0]);
+            console.log(_this.connection.root_elem[0]);
             _this.guid = data.alarminstanceguid;
             if (_this.doclear && (_this.requesttype != null) && _this.requesttype !== '' && _this.requesttype.indexOf('Data') >= 0) {
               _this.data_table.fnClearTable();

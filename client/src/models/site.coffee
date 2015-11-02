@@ -13,6 +13,7 @@ class Site extends BaseModel
     shortName:	null
     abbrev:			null
     opc:        null
+    opc_rate: 5
 
   persist: ()=>
     @attributes["claims"] = @claims.toJSON()

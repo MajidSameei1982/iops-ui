@@ -17,26 +17,34 @@ class GateWidgetView extends WidgetView
     display:        '.display'
     content:        '.content'
     docked:         '#docked'
+    alarms:         '#alarms'
 
   @layout:
     sx: 4
-    sy: 7
+    sy: 9
 
   tags:
-    pbb_plane_docked :  'PBB.AIRCRAFTDOCKEDCALCULATION'
-    pbb_in_oper_mode :  'PBB.PBB_IN_OPER_MODE'
-    pbb_maintok :       'PBB.MAINTOK'
-    pbb_has_warnings :  'PBB.Warning._HasWarnings'
-    pbb_autolevelmode : 'PBB.AUTOLEVELMODEFLAG'
-    gpu_rvoutavg :      'GPU.RVOUTAVG'
-    pbb_has_alarms :    'PBB.Alarm._HasAlarms'
-    pbb_estop:          'PBB.Alarm.E_STOP'
-    pbb_smoke:          'PBB.SMOKEDETECTOR'
+    # acffloor : AUTOLEVELING?
+    # limits: need a calculation tag (show alarm icon)
+    # autolevel alarm: AUTOLEVEL_FAIL_FLAG (flash red)
+
+
+    pbb_autolevelmode :  'PBB.AUTOLEVELMODEFLAG'
+    
+    #pbb_in_oper_mode :  'PBB.PBB_IN_OPER_MODE'
+    #pbb_autolevelok :   'PBB.AUTOLEVELOK'
     pbb_canopy:         'PBB.Warning.CANOPYDOWN'
+    pbb_acffloor:       'PBB.AUTOLEVELING'
+    gpu_hoist:          'GPU.HZ400CABLEDEPLOYED'
+    pbb_estop:          'PBB.Alarm.E_STOP'
+    # limits?
     pbb_docktime:       'PBB.DOCKTIME'
     pbb_undocktime:     'PBB.UNDOCKTIME'
-    gpu_hoist:          'GPU.HZ400CABLEDEPLOYED'
-
+    pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
+    
+    #pbb_has_warnings :  'PBB.Warning._HasWarnings'
+    pbb_has_alarms :    'PBB.Alarm._HasAlarms'
+    
   modelEvents:
     "change" : "update"
 
@@ -74,6 +82,9 @@ class GateWidgetView extends WidgetView
       @ui.wtitle.html(lbl)
       @$('#gate_label #txt').html(lbl)
 
+      @opc =  App.opc.connections[@site_code]
+      @set_descriptions(true)
+
   get_bool: (v)=>
     if v? && v.toUpperCase() == "TRUE"
       return true
@@ -82,7 +93,7 @@ class GateWidgetView extends WidgetView
     null
 
   get_value: (tag)=>
-    return App.opc.connections[@site_code].get_value("#{@prefix}#{tag}.Value")
+    return @opc.get_value("#{@prefix}#{tag}.Value")
 
   # get data quality and set view if bad
   mark_bad_data: (tag, el)->
@@ -95,7 +106,6 @@ class GateWidgetView extends WidgetView
     t = c.tags["#{@prefix}#{tag}"]
     t.props.Value.quality
 
-
   flash_alarm: (fl)=>
     if @fl_interval? && !fl
       clearInterval(@fl_interval)
@@ -106,56 +116,86 @@ class GateWidgetView extends WidgetView
         $(@el).toggleClass('alarm')
       @fl_interval = setInterval(chg, 500)
 
+  # load tag descriptions once for labels
+  set_descriptions: (force)=>
+    tds = []
+    
+    tlen = Object.keys(@tags).length
+    return if !force && @dcount? && @dcount >= tlen
+
+    @dcount = if force then 0 else @dcount
+    if !@dcount? then @dcount = 0
+
+    for t of @tags
+      tg = @tags[t]
+      tds.push "#{@prefix}#{tg}.Description"
+    @opc.load_tags tds, (data)=>
+      for t in data.tags
+        for tt, idx of @tags
+          ts = @tags[tt]
+          if "#{@prefix}#{ts}" == t.name
+            v = t.props[0].val
+            @$("##{tt}_lbl").html(v)
+            @dcount += 1
+            break      
+
+  render_row: (tag, tv, fv, tc, fc)->
+    v = @get_bool(@vals[tag])
+    txt = if v then tv else fv
+    el = @$("##{tag}").html(txt)
+    if tc? then el.toggleClass(tc, v)
+    if fc? then el.toggleClass(fc, !v)
+    @mark_bad_data @tags[tag], el
+
+
   # process data and update the view
   data_update: (data)=>
     @vals = {}
     for tg of @tags
       @vals[tg] = @get_value(@tags[tg])
 
-    # PBB STATUS
-    stat = @get_bool(@vals.pbb_in_oper_mode)
-    pbb_status = if stat then "Ready/OK" else "Not Ready"
-    el = @$('#pbb_status').html(pbb_status).toggleClass("ok", stat)
-    @mark_bad_data @tags.pbb_in_oper_mode, el
-  
-    # PBB MODE
-    mode = @get_bool(@vals.pbb_autolevelmode)
-    txt = if mode then "Auto Level" else "Logged Off"
-    el = @$('#pbb_mode').html(txt).toggleClass("ok", mode)
+    # DOCKED
+    v = @get_bool(@vals.pbb_autolevelmode)
+    txt = if v then "Docked" else "Undocked"
+    @$("#pbb_docked_lbl").html('PBB Status')
+    el = @$("#pbb_docked").html(txt).toggleClass('ok', v)
     @mark_bad_data @tags.pbb_autolevelmode, el
+    
+    # PBB STATUS
+    @render_row("pbb_autolevelmode", "On", "Off", "ok")
+
+    # Auto Level
+    #@render_row("pbb_autolevelok", "On", "Off", "ok")
+
+    # CANOPY
+    @render_row("pbb_canopy", "Down", "Up", "ok")
+
+    # ACFFLOOR
+    @render_row("pbb_acffloor", "On", "Off", "ok")
  
     # E-STOP
-    estop = @get_bool(@vals.pbb_estop)
-    txt = if estop then "Activated" else "Ready/OK"
-    el = @$('#pbb_estop').html(txt).toggleClass("err", estop)
-    @mark_bad_data @tags.pbb_estop, el
+    @render_row("pbb_estop", "Activated", "Ready/OK", "err")
   
-    # SMOKE DETECTOR
-    smoke = @get_bool(@vals.pbb_smoke)
-    txt = if smoke==false then "Activated" else "Ready/OK"
-    el = @$('#pbb_smoke').html(txt).toggleClass("err", (smoke==false && q))
-    @mark_bad_data @tags.pbb_smoke, el
-  
-    # CANOPY
-    canopy = @get_bool(@vals.pbb_canopy)
-    txt = if canopy then "Extended" else "Retracted"
-    el = @$('#pbb_canopy').html(txt).toggleClass("ok", canopy)
-    @mark_bad_data @tags.pbb_canopy, el
-
     # CABLE HOIST
-    hoist = @get_bool(@vals.gpu_hoist)
-    txt = if hoist then "Deployed" else "Retracted"
-    el = @$('#gpu_hoist').html(txt).toggleClass("ok", hoist)
-    @mark_bad_data @tags.gpu_hoist, el
-
+    @render_row("gpu_hoist", "Deployed", "Retracted", "ok")
+ 
+    # LIMITS ?
+        
+    # ALARMS
+    @ui.alarms.toggle(@get_bool(@vals.pbb_has_alarms))
     # DOCKED
-    @ui.docked.toggle(@get_bool(@vals.pbb_plane_docked))
+    @ui.docked.toggle(@get_bool(@vals.pbb_autolevelmode))
+    
+    # AUTOLEVELFAIL
+    @flash_alarm(@get_bool(@vals.pbb_autolevelfail))
 
     # DOCKTIME
     el = @$('#pbb_docktime').html("#{@vals.pbb_docktime} min.")
     @mark_bad_data @tags.pbb_docktime, el
     el = @$('#pbb_undocktime').html("#{@vals.pbb_undocktime} min.")
     @mark_bad_data @tags.pbb_undocktime, el
+
+    @set_descriptions()
 
   set_model: ()=>
     s = _.clone(@model.get("settings"))

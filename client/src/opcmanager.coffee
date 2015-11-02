@@ -92,14 +92,20 @@ class OPCManager
     for account in app.accounts.models
       for site in account.sites.models
         opc_addr = site.get("opc")
+        opc_rate = site.get("opc_rate")
+        if !opc_rate? then opc_rate = 5
+        opc_rate = parseInt(opc_rate) * 1000
         abbrev = site.get("abbrev")
         OPCManager.create abbrev,
           token:'7e61b230-481d-4551-b24b-ba9046e3d8f2'
           #interval:5000
           max_tags_per_msg: 50
+          max_callbacks: 10
+          callback_timeout: 10000
           refresh_callback: (data)->
             OPCManager.notify @.abbrev, data
           serverURL : opc_addr
+          interval: opc_rate
           auto_start : false
       
 # ----------------------------------

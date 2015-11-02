@@ -66,12 +66,14 @@ class AccountView extends Marionette.CompositeView
       body: 'Are you sure you want to delete this Account? This cannot be undone and all Account and associated Site data will be lost.'
       on_save: ()=>
         @model.collection.remove(@model)
+        App.vent.trigger "app:update"
 
   save: ()->
     # TODO: FIRE MODEL SAVE
     name = @model.get('name')
     return if !name? || name.trim() == ''
-    @model.id = 99
+    if !@model.id? then @model.set('id', Math.floor(Math.random() * 10000)+1)
+    App.vent.trigger "app:update"
     # TODO:
     @render()
  

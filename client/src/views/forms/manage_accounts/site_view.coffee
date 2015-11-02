@@ -23,6 +23,7 @@ class SiteView extends Marionette.ItemView
     abbrev    : '#site_abbrev'
     shortName : '#site_short'
     opc       : '#site_opc'
+    opc_rate  : '#site_opc_rate'
     isActive:
       selector: 'i#site_active'
       elAttribute: 'class'
@@ -59,12 +60,14 @@ class SiteView extends Marionette.ItemView
       body: 'Are you sure you want to delete this Site? This cannot be undone and all Site data will be lost.'
       on_save: ()=>
         @model.collection.remove(@model)
+        App.vent.trigger "app:update"
 
   save: ()->
     # TODO: FIRE MODEL SAVE
     name = @model.get('name')
     return if !name? || name.trim() == ''
-    @model.id = 99
+    if !@model.id? then @model.set('id', Math.floor(Math.random() * 10000)+1)
+    App.vent.trigger "app:update"
     # TODO:
     @render()
 

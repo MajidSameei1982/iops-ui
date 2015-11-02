@@ -625,7 +625,15 @@ window.JST["forms/manage_accounts/site"] = function(__obj) {
     
       _print(_safe(this.opc));
     
-      _print(_safe('\' size=\'40\' placeholder=\'OPCSystems Server URL\'/></div>\n\n  <span id=\'site_buttons\'>\n    <button class="btn btn-xs" id=\'cancel\'><i class="fa fa-ban"></i> CANCEL</button>\n    <button class="btn btn-xs btn-success" id=\'save\'><i class="fa fa-check-square"></i> SAVE</button>\n  </span>\n</div>\n'));
+      _print(_safe('\' size=\'40\' placeholder=\'OPCSystems Server URL\'/></div>\n  <div id=\'site_opc_rate_label\'><i>Refresh:</i> '));
+    
+      _print(this.opc_rate);
+    
+      _print(_safe(' seconds</div>\n  <div><input type=\'text\' id=\'site_opc_rate\' value=\''));
+    
+      _print(_safe(this.opc_rate));
+    
+      _print(_safe('\' size=\'40\' placeholder=\'OPCSystems Refresh Rate (seconds)\'/></div>\n\n  <span id=\'site_buttons\'>\n    <button class="btn btn-xs" id=\'cancel\'><i class="fa fa-ban"></i> CANCEL</button>\n    <button class="btn btn-xs btn-success" id=\'save\'><i class="fa fa-check-square"></i> SAVE</button>\n  </span>\n</div>\n'));
     
     }).call(this);
     
@@ -1494,7 +1502,7 @@ window.JST["widgets/gate_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n<div class="box-body content" id=\'content\'>\n  <div class="display contain">\n    <div id="gate_label"><h1><span id=\'txt\'></span> <span id="docked" style=\'display:none;\'><i class="fa fa-plane"></i></span></h1></div>\n    <table class=\'data\'>\n      <tr><td class=\'lbl\'>PBB Status</td><td id=\'pbb_status\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>PBB Mode</td><td id=\'pbb_mode\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>E-Stop</td><td id=\'pbb_estop\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Smoke Detector</td><td id=\'pbb_smoke\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Canopy</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Cable Hoist</td><td id=\'gpu_hoist\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Dock Time</td><td id=\'pbb_docktime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\'>Undock Time</td><td id=\'pbb_undocktime\' class=\'val\'>LOADING...</td></tr>\n    </table>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gate_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <span id="docked" style=\'display:none;\'><i class="fa fa-fw fa-plane"></i></span>\n        <span id="alarms" style=\'display:none;\'><i class="fa fa-fw fa-bell-o"></i></span>\n      </h1>\n    </div>\n    <table class=\'data\'>\n      <tr><td class=\'lbl\' id=\'pbb_docked_lbl\'>&nbsp;</td><td id=\'pbb_docked\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevelmode_lbl\'>&nbsp;</td><td id=\'pbb_autolevelmode\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopy_lbl\'>&nbsp;</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_acffloor_lbl\'>ACF Floor</td><td id=\'pbb_acffloor\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_hoist_lbl\'>&nbsp;</td><td id=\'gpu_hoist\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_estop_lbl\'>&nbsp;</td><td id=\'pbb_estop\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_limist_lbl\'>Limits</td><td id=\'pbb_limits\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_docktime_lbl\'>&nbsp;</td><td id=\'pbb_docktime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_undocktime_lbl\'>&nbsp;</td><td id=\'pbb_undocktime\' class=\'val\'>LOADING...</td></tr>\n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -1547,7 +1555,7 @@ window.JST["widgets/gate_widget"] = function(__obj) {
         cls: 'col-md-6'
       })));
     
-      _print(_safe('\n    </div>\n  </div><!-- /.box-body -->\n</div><!-- /.box-body -->\n'));
+      _print(_safe('\n    </div>\n  </div>\n\n</div>\n'));
     
     }).call(this);
     
@@ -3321,7 +3329,8 @@ Site = (function(superClass) {
     isActive: true,
     shortName: null,
     abbrev: null,
-    opc: null
+    opc: null,
+    opc_rate: 5
   };
 
   Site.prototype.persist = function() {
@@ -3650,7 +3659,7 @@ OPCManager = (function() {
   };
 
   OPCManager.init = function(app) {
-    var abbrev, account, i, len, opc_addr, ref, results, site;
+    var abbrev, account, i, len, opc_addr, opc_rate, ref, results, site;
     ref = app.accounts.models;
     results = [];
     for (i = 0, len = ref.length; i < len; i++) {
@@ -3662,14 +3671,22 @@ OPCManager = (function() {
         for (j = 0, len1 = ref1.length; j < len1; j++) {
           site = ref1[j];
           opc_addr = site.get("opc");
+          opc_rate = site.get("opc_rate");
+          if (opc_rate == null) {
+            opc_rate = 5;
+          }
+          opc_rate = parseInt(opc_rate) * 1000;
           abbrev = site.get("abbrev");
           results1.push(OPCManager.create(abbrev, {
             token: '7e61b230-481d-4551-b24b-ba9046e3d8f2',
             max_tags_per_msg: 50,
+            max_callbacks: 10,
+            callback_timeout: 10000,
             refresh_callback: function(data) {
               return OPCManager.notify(this.abbrev, data);
             },
             serverURL: opc_addr,
+            interval: opc_rate,
             auto_start: false
           }));
         }
@@ -4795,7 +4812,8 @@ AccountView = (function(superClass) {
       body: 'Are you sure you want to delete this Account? This cannot be undone and all Account and associated Site data will be lost.',
       on_save: (function(_this) {
         return function() {
-          return _this.model.collection.remove(_this.model);
+          _this.model.collection.remove(_this.model);
+          return App.vent.trigger("app:update");
         };
       })(this)
     });
@@ -4807,7 +4825,10 @@ AccountView = (function(superClass) {
     if ((name == null) || name.trim() === '') {
       return;
     }
-    this.model.id = 99;
+    if (this.model.id == null) {
+      this.model.set('id', Math.floor(Math.random() * 10000) + 1);
+    }
+    App.vent.trigger("app:update");
     return this.render();
   };
 
@@ -4915,6 +4936,7 @@ SiteView = (function(superClass) {
     abbrev: '#site_abbrev',
     shortName: '#site_short',
     opc: '#site_opc',
+    opc_rate: '#site_opc_rate',
     isActive: {
       selector: 'i#site_active',
       elAttribute: 'class',
@@ -4968,7 +4990,8 @@ SiteView = (function(superClass) {
       body: 'Are you sure you want to delete this Site? This cannot be undone and all Site data will be lost.',
       on_save: (function(_this) {
         return function() {
-          return _this.model.collection.remove(_this.model);
+          _this.model.collection.remove(_this.model);
+          return App.vent.trigger("app:update");
         };
       })(this)
     });
@@ -4980,7 +5003,10 @@ SiteView = (function(superClass) {
     if ((name == null) || name.trim() === '') {
       return;
     }
-    this.model.id = 99;
+    if (this.model.id == null) {
+      this.model.set('id', Math.floor(Math.random() * 10000) + 1);
+    }
+    App.vent.trigger("app:update");
     return this.render();
   };
 
@@ -6029,6 +6055,7 @@ GateWidgetView = (function(superClass) {
   function GateWidgetView() {
     this.set_model = bind(this.set_model, this);
     this.data_update = bind(this.data_update, this);
+    this.set_descriptions = bind(this.set_descriptions, this);
     this.flash_alarm = bind(this.flash_alarm, this);
     this.data_q = bind(this.data_q, this);
     this.get_value = bind(this.get_value, this);
@@ -6049,28 +6076,25 @@ GateWidgetView = (function(superClass) {
     wtitle: 'h3.box-title',
     display: '.display',
     content: '.content',
-    docked: '#docked'
+    docked: '#docked',
+    alarms: '#alarms'
   };
 
   GateWidgetView.layout = {
     sx: 4,
-    sy: 7
+    sy: 9
   };
 
   GateWidgetView.prototype.tags = {
-    pbb_plane_docked: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-    pbb_in_oper_mode: 'PBB.PBB_IN_OPER_MODE',
-    pbb_maintok: 'PBB.MAINTOK',
-    pbb_has_warnings: 'PBB.Warning._HasWarnings',
     pbb_autolevelmode: 'PBB.AUTOLEVELMODEFLAG',
-    gpu_rvoutavg: 'GPU.RVOUTAVG',
-    pbb_has_alarms: 'PBB.Alarm._HasAlarms',
-    pbb_estop: 'PBB.Alarm.E_STOP',
-    pbb_smoke: 'PBB.SMOKEDETECTOR',
     pbb_canopy: 'PBB.Warning.CANOPYDOWN',
+    pbb_acffloor: 'PBB.AUTOLEVELING',
+    gpu_hoist: 'GPU.HZ400CABLEDEPLOYED',
+    pbb_estop: 'PBB.Alarm.E_STOP',
     pbb_docktime: 'PBB.DOCKTIME',
     pbb_undocktime: 'PBB.UNDOCKTIME',
-    gpu_hoist: 'GPU.HZ400CABLEDEPLOYED'
+    pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
+    pbb_has_alarms: 'PBB.Alarm._HasAlarms'
   };
 
   GateWidgetView.prototype.modelEvents = {
@@ -6107,7 +6131,9 @@ GateWidgetView = (function(superClass) {
       OPCManager.add_ref(this.site_code);
       lbl = "Gate " + gate;
       this.ui.wtitle.html(lbl);
-      return this.$('#gate_label #txt').html(lbl);
+      this.$('#gate_label #txt').html(lbl);
+      this.opc = App.opc.connections[this.site_code];
+      return this.set_descriptions(true);
     }
   };
 
@@ -6121,7 +6147,7 @@ GateWidgetView = (function(superClass) {
   };
 
   GateWidgetView.prototype.get_value = function(tag) {
-    return App.opc.connections[this.site_code].get_value("" + this.prefix + tag + ".Value");
+    return this.opc.get_value("" + this.prefix + tag + ".Value");
   };
 
   GateWidgetView.prototype.mark_bad_data = function(tag, el) {
@@ -6155,41 +6181,90 @@ GateWidgetView = (function(superClass) {
     }
   };
 
+  GateWidgetView.prototype.set_descriptions = function(force) {
+    var t, tds, tg, tlen;
+    tds = [];
+    tlen = Object.keys(this.tags).length;
+    if (!force && (this.dcount != null) && this.dcount >= tlen) {
+      return;
+    }
+    this.dcount = force ? 0 : this.dcount;
+    if (this.dcount == null) {
+      this.dcount = 0;
+    }
+    for (t in this.tags) {
+      tg = this.tags[t];
+      tds.push("" + this.prefix + tg + ".Description");
+    }
+    return this.opc.load_tags(tds, (function(_this) {
+      return function(data) {
+        var i, idx, len, ref, results, ts, tt, v;
+        ref = data.tags;
+        results = [];
+        for (i = 0, len = ref.length; i < len; i++) {
+          t = ref[i];
+          results.push((function() {
+            var ref1, results1;
+            ref1 = this.tags;
+            results1 = [];
+            for (tt in ref1) {
+              idx = ref1[tt];
+              ts = this.tags[tt];
+              if (("" + this.prefix + ts) === t.name) {
+                v = t.props[0].val;
+                this.$("#" + tt + "_lbl").html(v);
+                this.dcount += 1;
+                break;
+              } else {
+                results1.push(void 0);
+              }
+            }
+            return results1;
+          }).call(_this));
+        }
+        return results;
+      };
+    })(this));
+  };
+
+  GateWidgetView.prototype.render_row = function(tag, tv, fv, tc, fc) {
+    var el, txt, v;
+    v = this.get_bool(this.vals[tag]);
+    txt = v ? tv : fv;
+    el = this.$("#" + tag).html(txt);
+    if (tc != null) {
+      el.toggleClass(tc, v);
+    }
+    if (fc != null) {
+      el.toggleClass(fc, !v);
+    }
+    return this.mark_bad_data(this.tags[tag], el);
+  };
+
   GateWidgetView.prototype.data_update = function(data) {
-    var canopy, el, estop, hoist, mode, pbb_status, smoke, stat, tg, txt;
+    var el, tg, txt, v;
     this.vals = {};
     for (tg in this.tags) {
       this.vals[tg] = this.get_value(this.tags[tg]);
     }
-    stat = this.get_bool(this.vals.pbb_in_oper_mode);
-    pbb_status = stat ? "Ready/OK" : "Not Ready";
-    el = this.$('#pbb_status').html(pbb_status).toggleClass("ok", stat);
-    this.mark_bad_data(this.tags.pbb_in_oper_mode, el);
-    mode = this.get_bool(this.vals.pbb_autolevelmode);
-    txt = mode ? "Auto Level" : "Logged Off";
-    el = this.$('#pbb_mode').html(txt).toggleClass("ok", mode);
+    v = this.get_bool(this.vals.pbb_autolevelmode);
+    txt = v ? "Docked" : "Undocked";
+    this.$("#pbb_docked_lbl").html('PBB Status');
+    el = this.$("#pbb_docked").html(txt).toggleClass('ok', v);
     this.mark_bad_data(this.tags.pbb_autolevelmode, el);
-    estop = this.get_bool(this.vals.pbb_estop);
-    txt = estop ? "Activated" : "Ready/OK";
-    el = this.$('#pbb_estop').html(txt).toggleClass("err", estop);
-    this.mark_bad_data(this.tags.pbb_estop, el);
-    smoke = this.get_bool(this.vals.pbb_smoke);
-    txt = smoke === false ? "Activated" : "Ready/OK";
-    el = this.$('#pbb_smoke').html(txt).toggleClass("err", smoke === false && q);
-    this.mark_bad_data(this.tags.pbb_smoke, el);
-    canopy = this.get_bool(this.vals.pbb_canopy);
-    txt = canopy ? "Extended" : "Retracted";
-    el = this.$('#pbb_canopy').html(txt).toggleClass("ok", canopy);
-    this.mark_bad_data(this.tags.pbb_canopy, el);
-    hoist = this.get_bool(this.vals.gpu_hoist);
-    txt = hoist ? "Deployed" : "Retracted";
-    el = this.$('#gpu_hoist').html(txt).toggleClass("ok", hoist);
-    this.mark_bad_data(this.tags.gpu_hoist, el);
-    this.ui.docked.toggle(this.get_bool(this.vals.pbb_plane_docked));
+    this.render_row("pbb_autolevelmode", "On", "Off", "ok");
+    this.render_row("pbb_canopy", "Down", "Up", "ok");
+    this.render_row("pbb_acffloor", "On", "Off", "ok");
+    this.render_row("pbb_estop", "Activated", "Ready/OK", "err");
+    this.render_row("gpu_hoist", "Deployed", "Retracted", "ok");
+    this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms));
+    this.ui.docked.toggle(this.get_bool(this.vals.pbb_autolevelmode));
+    this.flash_alarm(this.get_bool(this.vals.pbb_autolevelfail));
     el = this.$('#pbb_docktime').html(this.vals.pbb_docktime + " min.");
     this.mark_bad_data(this.tags.pbb_docktime, el);
     el = this.$('#pbb_undocktime').html(this.vals.pbb_undocktime + " min.");
-    return this.mark_bad_data(this.tags.pbb_undocktime, el);
+    this.mark_bad_data(this.tags.pbb_undocktime, el);
+    return this.set_descriptions();
   };
 
   GateWidgetView.prototype.set_model = function() {
