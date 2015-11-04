@@ -13,26 +13,27 @@
         line-height:48px;
         font-weight: bold;
         margin: 0 0 0 0;
+        i.fa {
+          margin-right:-5px;
+          padding: 5px;
+          border-radius: 10px;
+          font-size:26px !important;
+        }
+        i#docked {
+          color: #069;
+          background-color: #eee;
+        }
+        i#alarms {
+          color: #fff;
+          background-color: #c00;
+        }
+        i#warnings {
+          color: #f90;
+          background-color: #eee;
+        }
       }
     }
-    #docked {
-      i.fa.fa-plane {
-        color: #069;
-        padding: 5px;
-        background-color: #eee;
-        border-radius: 10px;
-        // margin-left: 5px;
-      }
-    }
-    #alarms {
-      i.fa.fa-bell-o {
-        color: #fff;
-        padding: 5px;
-        background-color: #c00;
-        border-radius: 10px;
-        // margin-left: 5px;
-      }
-    }
+    
   }
   table.data {
     width:100%;

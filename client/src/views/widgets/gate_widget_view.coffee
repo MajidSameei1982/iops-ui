@@ -16,8 +16,9 @@ class GateWidgetView extends WidgetView
     wtitle:         'h3.box-title'
     display:        '.display'
     content:        '.content'
-    docked:         '#docked'
-    alarms:         '#alarms'
+    docked:         'i#docked'
+    alarms:         'i#alarms'
+    warnings:       'i#warnings'
 
   @layout:
     sx: 4
@@ -42,8 +43,8 @@ class GateWidgetView extends WidgetView
     pbb_undocktime:     'PBB.UNDOCKTIME'
     pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
     
-    #pbb_has_warnings :  'PBB.Warning._HasWarnings'
-    pbb_has_alarms :    'PBB.Alarm._HasAlarms'
+    pbb_has_warnings :  'Warning._HasWarnings'
+    pbb_has_alarms :    'Alarm._HasAlarms'
     
   modelEvents:
     "change" : "update"
@@ -183,6 +184,8 @@ class GateWidgetView extends WidgetView
         
     # ALARMS
     @ui.alarms.toggle(@get_bool(@vals.pbb_has_alarms))
+    # WARNINGS
+    @ui.warnings.toggle(@get_bool(@vals.pbb_has_warnings))
     # DOCKED
     @ui.docked.toggle(@get_bool(@vals.pbb_autolevelmode))
     
@@ -190,9 +193,11 @@ class GateWidgetView extends WidgetView
     @flash_alarm(@get_bool(@vals.pbb_autolevelfail))
 
     # DOCKTIME
-    el = @$('#pbb_docktime').html("#{@vals.pbb_docktime} min.")
+    docktime = if @vals.pbb_docktime? && @vals.pbb_docktime != '' then parseFloat(@vals.pbb_docktime).toFixed(4) else ' -- ' 
+    el = @$('#pbb_docktime').html("#{docktime}")
     @mark_bad_data @tags.pbb_docktime, el
-    el = @$('#pbb_undocktime').html("#{@vals.pbb_undocktime} min.")
+    undocktime = if @vals.pbb_undocktime? && @vals.pbb_undocktime != '' then parseFloat(@vals.pbb_undocktime).toFixed(4) else ' -- ' 
+    el = @$('#pbb_undocktime').html("#{undocktime}")
     @mark_bad_data @tags.pbb_undocktime, el
 
     @set_descriptions()

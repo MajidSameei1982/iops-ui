@@ -410,16 +410,20 @@ li.dashboard-link {
       line-height: 48px;
       font-weight: bold;
       margin: 0 0 0 0; }
-  .gate_widget .display #docked i.fa.fa-plane {
-    color: #069;
-    padding: 5px;
-    background-color: #eee;
-    border-radius: 10px; }
-  .gate_widget .display #alarms i.fa.fa-bell-o {
-    color: #fff;
-    padding: 5px;
-    background-color: #c00;
-    border-radius: 10px; }
+      .gate_widget .display #gate_label h1 i.fa {
+        margin-right: -5px;
+        padding: 5px;
+        border-radius: 10px;
+        font-size: 26px !important; }
+      .gate_widget .display #gate_label h1 i#docked {
+        color: #069;
+        background-color: #eee; }
+      .gate_widget .display #gate_label h1 i#alarms {
+        color: #fff;
+        background-color: #c00; }
+      .gate_widget .display #gate_label h1 i#warnings {
+        color: #f90;
+        background-color: #eee; }
 .gate_widget table.data {
   width: 100%;
   border: solid 1px #999;

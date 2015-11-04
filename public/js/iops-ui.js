@@ -1502,7 +1502,7 @@ window.JST["widgets/gate_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gate_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <span id="docked" style=\'display:none;\'><i class="fa fa-fw fa-plane"></i></span>\n        <span id="alarms" style=\'display:none;\'><i class="fa fa-fw fa-bell-o"></i></span>\n      </h1>\n    </div>\n    <table class=\'data\'>\n      <tr><td class=\'lbl\' id=\'pbb_docked_lbl\'>&nbsp;</td><td id=\'pbb_docked\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevelmode_lbl\'>&nbsp;</td><td id=\'pbb_autolevelmode\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopy_lbl\'>&nbsp;</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_acffloor_lbl\'>ACF Floor</td><td id=\'pbb_acffloor\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_hoist_lbl\'>&nbsp;</td><td id=\'gpu_hoist\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_estop_lbl\'>&nbsp;</td><td id=\'pbb_estop\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_limist_lbl\'>Limits</td><td id=\'pbb_limits\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_docktime_lbl\'>&nbsp;</td><td id=\'pbb_docktime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_undocktime_lbl\'>&nbsp;</td><td id=\'pbb_undocktime\' class=\'val\'>LOADING...</td></tr>\n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gate_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table class=\'data\'>\n      <tr><td class=\'lbl\' id=\'pbb_docked_lbl\'>&nbsp;</td><td id=\'pbb_docked\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevelmode_lbl\'>&nbsp;</td><td id=\'pbb_autolevelmode\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopy_lbl\'>&nbsp;</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_acffloor_lbl\'>ACF Floor</td><td id=\'pbb_acffloor\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_hoist_lbl\'>&nbsp;</td><td id=\'gpu_hoist\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_estop_lbl\'>&nbsp;</td><td id=\'pbb_estop\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_limist_lbl\'>Limits</td><td id=\'pbb_limits\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_docktime_lbl\'>&nbsp;</td><td id=\'pbb_docktime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_undocktime_lbl\'>&nbsp;</td><td id=\'pbb_undocktime\' class=\'val\'>LOADING...</td></tr>\n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -6076,8 +6076,9 @@ GateWidgetView = (function(superClass) {
     wtitle: 'h3.box-title',
     display: '.display',
     content: '.content',
-    docked: '#docked',
-    alarms: '#alarms'
+    docked: 'i#docked',
+    alarms: 'i#alarms',
+    warnings: 'i#warnings'
   };
 
   GateWidgetView.layout = {
@@ -6094,7 +6095,8 @@ GateWidgetView = (function(superClass) {
     pbb_docktime: 'PBB.DOCKTIME',
     pbb_undocktime: 'PBB.UNDOCKTIME',
     pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
-    pbb_has_alarms: 'PBB.Alarm._HasAlarms'
+    pbb_has_warnings: 'Warning._HasWarnings',
+    pbb_has_alarms: 'Alarm._HasAlarms'
   };
 
   GateWidgetView.prototype.modelEvents = {
@@ -6242,7 +6244,7 @@ GateWidgetView = (function(superClass) {
   };
 
   GateWidgetView.prototype.data_update = function(data) {
-    var el, tg, txt, v;
+    var docktime, el, tg, txt, undocktime, v;
     this.vals = {};
     for (tg in this.tags) {
       this.vals[tg] = this.get_value(this.tags[tg]);
@@ -6258,11 +6260,14 @@ GateWidgetView = (function(superClass) {
     this.render_row("pbb_estop", "Activated", "Ready/OK", "err");
     this.render_row("gpu_hoist", "Deployed", "Retracted", "ok");
     this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms));
+    this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings));
     this.ui.docked.toggle(this.get_bool(this.vals.pbb_autolevelmode));
     this.flash_alarm(this.get_bool(this.vals.pbb_autolevelfail));
-    el = this.$('#pbb_docktime').html(this.vals.pbb_docktime + " min.");
+    docktime = (this.vals.pbb_docktime != null) && this.vals.pbb_docktime !== '' ? parseFloat(this.vals.pbb_docktime).toFixed(4) : ' -- ';
+    el = this.$('#pbb_docktime').html("" + docktime);
     this.mark_bad_data(this.tags.pbb_docktime, el);
-    el = this.$('#pbb_undocktime').html(this.vals.pbb_undocktime + " min.");
+    undocktime = (this.vals.pbb_undocktime != null) && this.vals.pbb_undocktime !== '' ? parseFloat(this.vals.pbb_undocktime).toFixed(4) : ' -- ';
+    el = this.$('#pbb_undocktime').html("" + undocktime);
     this.mark_bad_data(this.tags.pbb_undocktime, el);
     return this.set_descriptions();
   };

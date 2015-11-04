@@ -112,6 +112,7 @@ module.exports = (grunt)->
           'client/requires/chosen/chosen.jquery.min.js'
           'client/requires/jquery-dateFormat/jquery-dateFormat.js'
           'client/assets/js/opc-lib.min.js'
+          'client/assets/js/lz-string.min.js'
         ]
         dest: 'build/vendor.js'
       vendor_css:
