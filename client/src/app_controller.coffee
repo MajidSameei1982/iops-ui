@@ -12,7 +12,7 @@ WidgetCollection = require('./models/widget_collection')
 
 # ----------------------------------
 
-class IopsController extends Object
+class AppController extends Object
   constructor: ()->
     App.log('Initializing', 'Controller')
     # add more controller initialization code here
@@ -113,4 +113,4 @@ class IopsController extends Object
 
 # ----------------------------------
 
-module.exports = IopsController
+module.exports = AppController

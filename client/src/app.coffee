@@ -1,9 +1,9 @@
 Marionette = require('marionette')
 BaselineApp = require('./common/baseline_app')
 Extensions = require('./common/extensions')
-IopsController = require('./iops_controller')
+AppController = require('./app_controller')
 Router = require('./router')
-IopsLayout = require('./views/iops_layout')
+AppLayout = require('./views/app_layout')
 Session = require('./models/session')
 AdminLTE_lib = require('./common/adminlte_lib')
 UIUtils = require('./common/uiutils')
@@ -14,7 +14,7 @@ RoleCollection = require('./models/role_collection')
 UserCollection = require('./models/user_collection')
 
 # ----------------------------------
-window.IOPS = do()->
+window.App = do()->
   return window.App if window.App?
 
   App = window.App = new BaselineApp()
@@ -27,7 +27,7 @@ window.IOPS = do()->
   App.on "before:start", (options)->
     @log('Starting')
     Session.restore()
-    @layout = new IopsLayout()
+    @layout = new AppLayout()
     @uiutils = UIUtils
 
     ### 
@@ -95,7 +95,7 @@ window.IOPS = do()->
   App.on 'start', (options)->
     @log('Started')
     if (Backbone.history) 
-      @controller = new IopsController()
+      @controller = new AppController()
       @router = new Router
         controller: @controller
       @log('Backbone.history starting')

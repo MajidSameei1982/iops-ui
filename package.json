@@ -1,5 +1,5 @@
 {
-  "name": "iops-ui",
+  "name": "app-ui",
   "version": "0.0.1",
   "description": "iOPS front-end application",
   "devDependencies": {

@@ -5,7 +5,7 @@ Marionette = require('marionette')
 # with a single region
 # ----------------------------------
 
-class IopsLayout extends Marionette.LayoutView
+class AppLayout extends Marionette.LayoutView
   el: "html"
   regions:
     center_region : '#center-region'
@@ -13,4 +13,4 @@ class IopsLayout extends Marionette.LayoutView
 
 # ----------------------------------
 
-module.exports = IopsLayout
+module.exports = AppLayout
