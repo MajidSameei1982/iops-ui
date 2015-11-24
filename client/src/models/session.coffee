@@ -24,6 +24,8 @@ class Session extends BaseModel
     if App.session? then App.session.off "change"
     Session.set_token()
     App.store.remove('session')
+    App.store.remove('user_ts')
+    App.store.remove('user')
     App.session = null
     null
 
@@ -79,6 +81,18 @@ class Session extends BaseModel
     if !email? or email.trim() == '' or !password? or password.trim() == ''
       if error? then error()
     else
+      # debugger
+      # url = App.config.service_url('accounts')
+      # url = "#{url}/login"
+      # $.ajax
+      #   type: "POST"
+      #   url: url
+      #   data:
+      #     email: email
+      #     password: password
+      #   success: success
+      #   dataType: 'json'
+
       App.session = new Session
         email:email
         password:password

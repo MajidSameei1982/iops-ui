@@ -12,6 +12,8 @@ AccountCollection = require('./models/account_collection')
 ClaimCollection = require('./models/claim_collection')
 RoleCollection = require('./models/role_collection')
 UserCollection = require('./models/user_collection')
+AppConfig = require('./common/appconfig')
+require('./views/widgets/_manifest')
 
 # ----------------------------------
 window.App = do()->
@@ -23,6 +25,8 @@ window.App = do()->
   Object.defineProperty App, 'current_user',
     get: ()->
       if App.session? and App.session.user? then App.session.user else null
+
+  App.config = AppConfig
 
   App.on "before:start", (options)->
     @log('Starting')
@@ -67,6 +71,7 @@ window.App = do()->
 
     # REMOVE WHEN API IS CONNECTED - persist objects locally until db is connected
     App.vent.on "user:update", ()->
+      App.store.set("user_ts", new Date())
       App.store.set("user", App.current_user)
     App.vent.on "app:update", ()->
       accounts = App.accounts.toJSON()
@@ -87,10 +92,29 @@ window.App = do()->
     dtfn = ()->
       App.time = new Date()
       App.vent.trigger 'app:clock', App.time
+      App.vent.trigger 'check:timeout'
       App.time
 
     App.clock = setInterval(dtfn, 5000)
 
+    App.check_session = ()->
+      sto = App.config.session_timeout
+      return true if !App.current_user? || !sto? || sto <= 0
+      timeout = false
+      ts = App.store.get('user_ts')
+      if !ts? 
+        ts = new Date()
+        App.store.set('user_ts', ts)
+      else
+        ts = new Date(ts)
+      tsn = new Date()
+      if ((tsn - ts)/1000) > (sto * 60)
+        App.controller.logout()
+        return false
+      true
+
+    # check session_timeout to kick user
+    App.vent.on 'check:timeout', App.check_session
 
   App.on 'start', (options)->
     @log('Started')
@@ -103,6 +127,7 @@ window.App = do()->
 
     # new up and views and render for base app here...
     @log('Done starting and running!')
+
 
   App.flush = ()->
     App.store.remove("user")

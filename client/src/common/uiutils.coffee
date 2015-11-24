@@ -30,7 +30,7 @@ class UIUtils extends Object
   @showAlert: (el, {type, message, title, icon})->
     @clearAlerts(el)
     icn = if icon? then "<i class='icon fa fa-#{icon}'></i>" else ''
-    ttl = if title? then "<h4>#{icon}#{title}</h4>" else "#{icn}"
+    ttl = if title? then "<h4>#{icn}#{title}</h4>" else "#{icn}"
     html = """
       <div class="alert alert-#{type} alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>

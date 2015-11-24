@@ -10,6 +10,19 @@
 	box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2) !important;
 }
 
+.main-header {
+	a.logo {
+		.logo-mini img {
+			max-width: 41px;
+    	max-height: 41px;
+		}
+		.logo-lg img {
+			max-width: 200px;
+    	max-height: 41px;
+		}
+	}
+}
+
 .main-footer {
 	box-sizing: content;
 	height:30px !important;
@@ -17,12 +30,7 @@
 	span#logo {
 		img {
 			vertical-align:text-bottom;
-		}
-		img.iops {
-			height:22px;
-		}
-		img.jbt {
-			height:20px;
+			max-height: 22px;
 		}
 	}
 }
@@ -31,6 +39,12 @@
 	.tab-content {
 		padding:20px;
 	}
+}
+
+i.form-control-feedback {
+	display:block !important;
+	line-height:34px !important;
+	color:#ddd !important;
 }
 
 

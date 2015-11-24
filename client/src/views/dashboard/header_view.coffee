@@ -1,5 +1,4 @@
 Marionette = require('marionette')
-AppConfig = require('../../common/appconfig')
 
 # ----------------------------------
 
@@ -22,7 +21,7 @@ class DashboardHeaderView extends Marionette.ItemView
   	'click a#profile' : 'profile'
 
   set_clock: (dt)=>
-    @ui.clock.html($.format.date(dt, AppConfig.dt_format))
+    @ui.clock.html($.format.date(dt, App.config.dt_format))
     @
 
   logout: (e)->

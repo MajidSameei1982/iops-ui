@@ -7,11 +7,9 @@
     </div>
     <div class="modal-body">
       <div id='widget_selections'>
-        <a class='widget_select' id='default' href="#"><i class="fa fa-cubes"></i> Default Widget</a>
-        <a class='widget_select' id='url' href="#"><i class="fa fa-link"></i> URL Widget</a>
-        <a class='widget_select' id='gate' href="#"><i class="fa fa-plane"></i> Gate Widget</a>
-        <a class='widget_select' id='alarm' href="#"><i class="fa fa-bullhorn"></i> Alarm Widget</a>
-        <a class='widget_select' id='weather' href="#"><i class="fa fa-cloud"></i> Weather Widget</a>
+        <% for w in App.config.widgets :%>
+          <a class='widget_select' id='<%=w.id%>' href="#"><i class="fa fa-<%=w.icon%>"></i> <%=w.name%></a>
+        <% end %>
       </div>
     </div>
     <div class="modal-footer">

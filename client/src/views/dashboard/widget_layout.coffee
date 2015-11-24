@@ -1,10 +1,10 @@
 Marionette = require('marionette')
 Widget = require('../../models/widget')
-WidgetView = require('../widgets/widget_view')
-GateWidgetView = require('../widgets/gate_widget_view')
-AlarmWidgetView = require('../widgets/alarm_widget_view')
-WeatherWidgetView = require('../widgets/weather_widget_view')
-UrlWidgetView = require('../widgets/url_widget_view')
+WidgetView = require('./widget_view')
+# GateWidgetView = require('../widgets/gate_widget_view')
+# AlarmWidgetView = require('../widgets/alarm_widget_view')
+# WeatherWidgetView = require('../widgets/weather_widget_view')
+# UrlWidgetView = require('../widgets/url_widget_view')
 WidgetModalView = require('./widget_modal')
 OPCManager = require('../../opcmanager')
 
@@ -106,13 +106,14 @@ class WidgetLayout extends Marionette.LayoutView
     
     tpe = if w.get('type')? then w.get('type') else 'default'
     tpe = if tpe == 'default' then '' else tpe.charAt(0).toUpperCase() + tpe.slice(1)
-    wv = new window["#{tpe}WidgetView"]
-      model: w
-
-    # create the region and show widget
-    r = @addRegion(wid, "li##{wid}")
-    r.show(wv)
-    wv.start()
+    cls = "#{tpe}WidgetView"
+    if (window[cls])
+      wv = new window[cls]
+        model: w
+      # create the region and show widget
+      r = @addRegion(wid, "li##{wid}")
+      r.show(wv)
+      wv.start()
 
   onShow: ()->
     OPCManager.drop_connections()

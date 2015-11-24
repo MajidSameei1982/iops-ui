@@ -60,19 +60,28 @@
 .navbar-nav .dropdown-menu {
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2) !important; }
 
+.main-header a.logo .logo-mini img {
+  max-width: 41px;
+  max-height: 41px; }
+.main-header a.logo .logo-lg img {
+  max-width: 200px;
+  max-height: 41px; }
+
 .main-footer {
   box-sizing: content;
   height: 30px !important;
   padding: 3px 15px !important; }
   .main-footer span#logo img {
-    vertical-align: text-bottom; }
-  .main-footer span#logo img.iops {
-    height: 22px; }
-  .main-footer span#logo img.jbt {
-    height: 20px; }
+    vertical-align: text-bottom;
+    max-height: 22px; }
 
 .nav-tabs-custom .tab-content {
   padding: 20px; }
+
+i.form-control-feedback {
+  display: block !important;
+  line-height: 34px !important;
+  color: #ddd !important; }
 
 @media (max-width: 767px) {
   .skin-black .main-header > .logo {
@@ -369,6 +378,10 @@ ul.chosen-results li.highlighted {
     margin: 0; }
   .user_container #user_buttons {
     margin-left: 15px; }
+
+.login-box .login-logo img {
+  max-width: 300px;
+  height: auto; }
 
 * {
   outline: none; }

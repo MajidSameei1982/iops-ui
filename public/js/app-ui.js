@@ -213,7 +213,7 @@ window.JST["dashboard/footer"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="pull-right">\n\t<span id=\'logo\'><img src=\'img/logos/logo_lg.png\' class=\'iops\'/> powered by <img src=\'img/logos/jbt_sm.png\' class=\'jbt\'/></span>\n</div>\n\n'));
+      _print(_safe('<div class="pull-right">\n\t<span id=\'logo\'><img src=\'img/logos/logo_wide.png\'/> powered by <img src=\'img/logos/jbt_sm.png\'/></span>\n</div>\n\n'));
     
     }).call(this);
     
@@ -258,7 +258,7 @@ window.JST["dashboard/header"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<!-- Logo -->\n<a href="/" class="logo">\n  <span class="logo-mini"><img src=\'img/logos/logo_sm.png\' alt=\'JBT iOPS\' style=\'height:41px;\'/></span>\n  <span class="logo-lg"><img src=\'img/logos/logo_lg.png\' alt=\'JBT iOPS\' style=\'height:41px;\'/></span>\n</a>\n\n<!-- Header Navbar -->\n<nav class="navbar navbar-static-top" role="navigation">\n  <!-- Sidebar toggle button-->\n  <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">\n    <span class="sr-only">Toggle navigation</span>\n  </a>\n  <!-- Navbar Right Menu -->\n  <div class="navbar-custom-menu">\n    <ul class="nav navbar-nav">\n      <li class=\'user user-menu\'>\n        <div style=\'padding:15px\' id=\'clock\'>--, --- ---, ---- 00:00</div>\n      </li>\n      <!-- User Account Menu -->\n      <li class="dropdown user user-menu">\n        <!-- Menu Toggle Button -->\n        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n          <!-- The user image in the navbar-->\n          <img src="img/avatar.png" class="user-image" id=\'avatar\'/>\n          <!-- hidden-xs hides the username on small devices so only the image appears. -->\n          <span class="hidden-xs" id=\'fullname\'>'));
+      _print(_safe('<!-- Logo -->\n<a href="/" class="logo">\n  <span class="logo-mini"><img src=\'img/logos/logo_square.png\'/></span>\n  <span class="logo-lg"><img src=\'img/logos/logo_wide.png\'/></span>\n</a>\n\n<!-- Header Navbar -->\n<nav class="navbar navbar-static-top" role="navigation">\n  <!-- Sidebar toggle button-->\n  <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">\n    <span class="sr-only">Toggle navigation</span>\n  </a>\n  <!-- Navbar Right Menu -->\n  <div class="navbar-custom-menu">\n    <ul class="nav navbar-nav">\n      <li class=\'user user-menu\'>\n        <div style=\'padding:15px\' id=\'clock\'>--, --- ---, ---- 00:00</div>\n      </li>\n      <!-- User Account Menu -->\n      <li class="dropdown user user-menu">\n        <!-- Menu Toggle Button -->\n        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n          <!-- The user image in the navbar-->\n          <img src="img/avatar.png" class="user-image" id=\'avatar\'/>\n          <!-- hidden-xs hides the username on small devices so only the image appears. -->\n          <span class="hidden-xs" id=\'fullname\'>'));
     
       _print(this.fullname);
     
@@ -384,6 +384,51 @@ window.JST["dashboard/tool"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
+window.JST["dashboard/widget"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  Widget Body\n</div><!-- /.box-body -->\n'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
 window.JST["dashboard/widget_layout"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
@@ -450,7 +495,23 @@ window.JST["dashboard/widget_modal"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="modal-dialog">\n  <div class="modal-content">\n    <div class="modal-header">\n      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>\n      <h4 class="modal-title">Add a Widget</h4>\n      Select a widget below to add to the current dashboard.\n    </div>\n    <div class="modal-body">\n      <div id=\'widget_selections\'>\n        <a class=\'widget_select\' id=\'default\' href="#"><i class="fa fa-cubes"></i> Default Widget</a>\n        <a class=\'widget_select\' id=\'url\' href="#"><i class="fa fa-link"></i> URL Widget</a>\n        <a class=\'widget_select\' id=\'gate\' href="#"><i class="fa fa-plane"></i> Gate Widget</a>\n        <a class=\'widget_select\' id=\'alarm\' href="#"><i class="fa fa-bullhorn"></i> Alarm Widget</a>\n        <a class=\'widget_select\' id=\'weather\' href="#"><i class="fa fa-cloud"></i> Weather Widget</a>\n      </div>\n    </div>\n    <div class="modal-footer">\n      <button type="button" id=\'modal_cancel\' class="btn btn-outline pull-left" data-dismiss="modal">CANCEL</button>\n    </div>\n  </div><!-- /.modal-content -->\n</div><!-- /.modal-dialog -->\n'));
+      var i, len, ref, w;
+    
+      _print(_safe('<div class="modal-dialog">\n  <div class="modal-content">\n    <div class="modal-header">\n      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>\n      <h4 class="modal-title">Add a Widget</h4>\n      Select a widget below to add to the current dashboard.\n    </div>\n    <div class="modal-body">\n      <div id=\'widget_selections\'>\n        '));
+    
+      ref = App.config.widgets;
+      for (i = 0, len = ref.length; i < len; i++) {
+        w = ref[i];
+        _print(_safe('\n          <a class=\'widget_select\' id=\''));
+        _print(w.id);
+        _print(_safe('\' href="#"><i class="fa fa-'));
+        _print(w.icon);
+        _print(_safe('"></i> '));
+        _print(w.name);
+        _print(_safe('</a>\n        '));
+      }
+    
+      _print(_safe('\n      </div>\n    </div>\n    <div class="modal-footer">\n      <button type="button" id=\'modal_cancel\' class="btn btn-outline pull-left" data-dismiss="modal">CANCEL</button>\n    </div>\n  </div><!-- /.modal-content -->\n</div><!-- /.modal-dialog -->\n'));
     
     }).call(this);
     
@@ -1394,7 +1455,7 @@ window.JST["login"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-body" id="alert-container">\n</div>\n<div class="login-box">\n  <div class="login-logo">\n    <img src=\'img/logos/logo_login.png\' style="max-width:300px;"/>\n  </div><!-- /.login-logo -->\n  <div class="login-box-body">\n    <p class="login-box-msg">Sign in to start your session</p>\n    <form action="#" method="post">\n      \n      '));
+      _print(_safe('<div class="box-body" id="alert-container">\n</div>\n<div class="login-box">\n  <div class="login-logo"><img src=\'img/logos/logo_login.png\'/></div>\n  <div class="login-box-body">\n    <p class="login-box-msg">Sign in to start your session</p>\n    <form action="#" method="post">\n      \n      '));
     
       _print(_safe(this.formGroup({
         id: 'email',
@@ -1703,53 +1764,8 @@ window.JST["widgets/weather_widget"] = function(__obj) {
   })());
 };
 
-if (!window.JST) {
-  window.JST = {};
-}
-window.JST["widgets/widget"] = function(__obj) {
-  var _safe = function(value) {
-    if (typeof value === 'undefined' && value == null)
-      value = '';
-    var result = new String(value);
-    result.ecoSafe = true;
-    return result;
-  };
-  return (function() {
-    var __out = [], __self = this, _print = function(value) {
-      if (typeof value !== 'undefined' && value != null)
-        __out.push(value.ecoSafe ? value : __self.escape(value));
-    }, _capture = function(callback) {
-      var out = __out, result;
-      __out = [];
-      callback.call(this);
-      result = __out.join('');
-      __out = out;
-      return _safe(result);
-    };
-    (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  Widget Body\n</div><!-- /.box-body -->\n'));
-    
-    }).call(this);
-    
-    return __out.join('');
-  }).call((function() {
-    var obj = {
-      escape: function(value) {
-        return ('' + value)
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
-      },
-      safe: _safe
-    }, key;
-    for (key in __obj) obj[key] = __obj[key];
-    return obj;
-  })());
-};
-
 ;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var AccountCollection, AdminLTE_lib, AppController, AppLayout, BaselineApp, ClaimCollection, Extensions, Marionette, OPCManager, RoleCollection, Router, Session, UIUtils, UserCollection;
+var AccountCollection, AdminLTE_lib, AppConfig, AppController, AppLayout, BaselineApp, ClaimCollection, Extensions, Marionette, OPCManager, RoleCollection, Router, Session, UIUtils, UserCollection;
 
 Marionette = require('marionette');
 
@@ -1779,6 +1795,10 @@ RoleCollection = require('./models/role_collection');
 
 UserCollection = require('./models/user_collection');
 
+AppConfig = require('./common/appconfig');
+
+require('./views/widgets/_manifest');
+
 window.App = (function() {
   var App;
   if (window.App != null) {
@@ -1795,6 +1815,7 @@ window.App = (function() {
       }
     }
   });
+  App.config = AppConfig;
   App.on("before:start", function(options) {
     var dtfn;
     this.log('Starting');
@@ -1841,6 +1862,7 @@ window.App = (function() {
     App.opc = OPCManager;
     App.opc.init(App);
     App.vent.on("user:update", function() {
+      App.store.set("user_ts", new Date());
       return App.store.set("user", App.current_user);
     });
     App.vent.on("app:update", function() {
@@ -1869,9 +1891,32 @@ window.App = (function() {
     dtfn = function() {
       App.time = new Date();
       App.vent.trigger('app:clock', App.time);
+      App.vent.trigger('check:timeout');
       return App.time;
     };
-    return App.clock = setInterval(dtfn, 5000);
+    App.clock = setInterval(dtfn, 5000);
+    App.check_session = function() {
+      var sto, timeout, ts, tsn;
+      sto = App.config.session_timeout;
+      if ((App.current_user == null) || (sto == null) || sto <= 0) {
+        return true;
+      }
+      timeout = false;
+      ts = App.store.get('user_ts');
+      if (ts == null) {
+        ts = new Date();
+        App.store.set('user_ts', ts);
+      } else {
+        ts = new Date(ts);
+      }
+      tsn = new Date();
+      if (((tsn - ts) / 1000) > (sto * 60)) {
+        App.controller.logout();
+        return false;
+      }
+      return true;
+    };
+    return App.vent.on('check:timeout', App.check_session);
   });
   App.on('start', function(options) {
     this.log('Started');
@@ -1898,7 +1943,7 @@ window.App = (function() {
   return App;
 })();
 
-},{"./app_controller":2,"./common/adminlte_lib":3,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27}],2:[function(require,module,exports){
+},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27,"./views/widgets/_manifest":53}],2:[function(require,module,exports){
 var AccountsView, AppController, Dashboard, DashboardCollection, DashboardContentView, DashboardLayout, LoginView, Marionette, PermissionsLayout, ProfileView, User, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1938,6 +1983,10 @@ AppController = (function(superClass) {
     if ((cv != null) && cv instanceof DashboardLayout) {
       return cv;
     }
+    if (App.current_user == null) {
+      this.logout();
+      return null;
+    }
     dl = new DashboardLayout({
       collection: App.current_user.dashboards
     });
@@ -1974,6 +2023,7 @@ AppController = (function(superClass) {
     if (App.session != null) {
       App.session.clear();
     }
+    App.current_user = null;
     App.session = null;
     App.router.navigate('login', {
       trigger: true
@@ -2071,7 +2121,7 @@ AppController = (function(superClass) {
 
 module.exports = AppController;
 
-},{"./models/dashboard":14,"./models/dashboard_collection":15,"./models/user":21,"./models/widget_collection":24,"./views/dashboard/content_view":29,"./views/dashboard/dashboard_layout":30,"./views/forms/manage_accounts/accounts_view":39,"./views/forms/manage_permissions/permissions_layout":42,"./views/forms/profile_view":50,"./views/login_view":51}],3:[function(require,module,exports){
+},{"./models/dashboard":14,"./models/dashboard_collection":15,"./models/user":21,"./models/widget_collection":24,"./views/dashboard/content_view":29,"./views/dashboard/dashboard_layout":30,"./views/forms/manage_accounts/accounts_view":40,"./views/forms/manage_permissions/permissions_layout":43,"./views/forms/profile_view":51,"./views/login_view":52}],3:[function(require,module,exports){
 
 /*
  *
@@ -2534,11 +2584,17 @@ AppConfig = (function(superClass) {
     return AppConfig.__super__.constructor.apply(this, arguments);
   }
 
-  AppConfig.api_baseurl = 'http://{service}dev.iopsnj.com/v1';
+  AppConfig.api_baseurl = 'http://{service}.iopsnj.com/v1';
 
   AppConfig.dt_format = 'E, MMM D, yyyy HH:mm';
 
-  AppConfig.session_timeout = 1;
+  AppConfig.session_timeout = 0;
+
+  AppConfig.service_url = function(svc) {
+    return this.api_baseurl.replace('{service}', svc);
+  };
+
+  AppConfig.widgets = (window.app_config != null) && (window.app_config.widgets != null) ? window.app_config.widgets : [];
 
   return AppConfig;
 
@@ -2799,7 +2855,7 @@ UIUtils = (function(superClass) {
     type = arg.type, message = arg.message, title = arg.title, icon = arg.icon;
     this.clearAlerts(el);
     icn = icon != null ? "<i class='icon fa fa-" + icon + "'></i>" : '';
-    ttl = title != null ? "<h4>" + icon + title + "</h4>" : "" + icn;
+    ttl = title != null ? "<h4>" + icn + title + "</h4>" : "" + icn;
     html = "<div class=\"alert alert-" + type + " alert-dismissable\">\n  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">×</button>\n  " + ttl + message + "\n</div>";
     alert = $(html);
     $(el).prepend(alert);
@@ -3218,6 +3274,8 @@ Session = (function(superClass) {
     }
     Session.set_token();
     App.store.remove('session');
+    App.store.remove('user_ts');
+    App.store.remove('user');
     App.session = null;
     return null;
   };
@@ -3700,6 +3758,8 @@ OPCManager = (function() {
 
 })();
 
+window.OPCManager = OPCManager;
+
 module.exports = OPCManager;
 
 },{}],26:[function(require,module,exports){
@@ -3731,6 +3791,7 @@ Router = (function(superClass) {
     if (path === 'login' || path === 'logout' || path === 'flush') {
       return true;
     }
+    App.check_session();
     if (!App.session || (App.session.get('email') == null) || (App.current_user == null)) {
       App.router.navigate('login', {
         trigger: true
@@ -4113,14 +4174,12 @@ DashboardFooterView = (function(superClass) {
 module.exports = DashboardFooterView;
 
 },{}],33:[function(require,module,exports){
-var AppConfig, DashboardHeaderView, Marionette,
+var DashboardHeaderView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
 Marionette = require('marionette');
-
-AppConfig = require('../../common/appconfig');
 
 DashboardHeaderView = (function(superClass) {
   extend(DashboardHeaderView, superClass);
@@ -4154,7 +4213,7 @@ DashboardHeaderView = (function(superClass) {
   };
 
   DashboardHeaderView.prototype.set_clock = function(dt) {
-    this.ui.clock.html($.format.date(dt, AppConfig.dt_format));
+    this.ui.clock.html($.format.date(dt, App.config.dt_format));
     return this;
   };
 
@@ -4191,7 +4250,7 @@ DashboardHeaderView = (function(superClass) {
 
 module.exports = DashboardHeaderView;
 
-},{"../../common/appconfig":4}],34:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 var Dashboard, DashboardModalView, DashboardSideView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -4468,7 +4527,7 @@ DashboardToolView = (function(superClass) {
 module.exports = DashboardToolView;
 
 },{}],36:[function(require,module,exports){
-var AlarmWidgetView, GateWidgetView, Marionette, OPCManager, UrlWidgetView, WeatherWidgetView, Widget, WidgetLayout, WidgetModalView, WidgetView,
+var Marionette, OPCManager, Widget, WidgetLayout, WidgetModalView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4477,15 +4536,7 @@ Marionette = require('marionette');
 
 Widget = require('../../models/widget');
 
-WidgetView = require('../widgets/widget_view');
-
-GateWidgetView = require('../widgets/gate_widget_view');
-
-AlarmWidgetView = require('../widgets/alarm_widget_view');
-
-WeatherWidgetView = require('../widgets/weather_widget_view');
-
-UrlWidgetView = require('../widgets/url_widget_view');
+WidgetView = require('./widget_view');
 
 WidgetModalView = require('./widget_modal');
 
@@ -4607,7 +4658,7 @@ WidgetLayout = (function(superClass) {
   };
 
   WidgetLayout.prototype.draw_widget_view = function(w) {
-    var lo, r, s, tpe, wid, wli, wv;
+    var cls, lo, r, s, tpe, wid, wli, wv;
     wid = "widget_" + w.id;
     r = this.getRegion(wid);
     if ((r != null)) {
@@ -4629,12 +4680,15 @@ WidgetLayout = (function(superClass) {
     });
     tpe = w.get('type') != null ? w.get('type') : 'default';
     tpe = tpe === 'default' ? '' : tpe.charAt(0).toUpperCase() + tpe.slice(1);
-    wv = new window[tpe + "WidgetView"]({
-      model: w
-    });
-    r = this.addRegion(wid, "li#" + wid);
-    r.show(wv);
-    return wv.start();
+    cls = tpe + "WidgetView";
+    if (window[cls]) {
+      wv = new window[cls]({
+        model: w
+      });
+      r = this.addRegion(wid, "li#" + wid);
+      r.show(wv);
+      return wv.start();
+    }
   };
 
   WidgetLayout.prototype.onShow = function() {
@@ -4665,7 +4719,7 @@ WidgetLayout = (function(superClass) {
 
 module.exports = WidgetLayout;
 
-},{"../../models/widget":23,"../../opcmanager":25,"../widgets/alarm_widget_view":52,"../widgets/gate_widget_view":53,"../widgets/url_widget_view":54,"../widgets/weather_widget_view":55,"../widgets/widget_view":56,"./widget_modal":37}],37:[function(require,module,exports){
+},{"../../models/widget":23,"../../opcmanager":25,"./widget_modal":37,"./widget_view":38}],37:[function(require,module,exports){
 var Marionette, WidgetModalView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4726,6 +4780,64 @@ WidgetModalView = (function(superClass) {
 module.exports = WidgetModalView;
 
 },{}],38:[function(require,module,exports){
+var Marionette, WidgetView,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+WidgetView = (function(superClass) {
+  extend(WidgetView, superClass);
+
+  WidgetView.prototype.template = "widgets/widget";
+
+  WidgetView.prototype.className = 'widget-outer box box-primary';
+
+  WidgetView.prototype.events = {
+    "click #show_settings": "toggle_settings",
+    "click #remove": "remove_widget"
+  };
+
+  WidgetView.layout = {
+    sx: 4,
+    sy: 5
+  };
+
+  function WidgetView(config) {
+    WidgetView.__super__.constructor.call(this, config);
+    this.settings_visible = false;
+    this;
+  }
+
+  WidgetView.prototype.toggle_settings = function(e) {
+    if (e != null) {
+      e.preventDefault();
+    }
+    this.settings_visible = !this.settings_visible;
+    this.$(".settings").toggle(this.settings_visible);
+    return this.$(".display").toggle(!this.settings_visible);
+  };
+
+  WidgetView.prototype.remove_widget = function(e) {
+    if (e != null) {
+      e.preventDefault();
+      return this.model.collection.remove(this.model);
+    }
+  };
+
+  WidgetView.prototype.start = function() {
+    return console.log("not implemented");
+  };
+
+  return WidgetView;
+
+})(Marionette.ItemView);
+
+window.WidgetView = WidgetView;
+
+module.exports = WidgetView;
+
+},{}],39:[function(require,module,exports){
 var Account, AccountView, Marionette, SiteView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4875,7 +4987,7 @@ AccountView = (function(superClass) {
 
 module.exports = AccountView;
 
-},{"../../../models/account":10,"./site_view":40}],39:[function(require,module,exports){
+},{"../../../models/account":10,"./site_view":41}],40:[function(require,module,exports){
 var AccountView, AccountsView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4924,7 +5036,7 @@ AccountsView = (function(superClass) {
 
 module.exports = AccountsView;
 
-},{"./account_view":38}],40:[function(require,module,exports){
+},{"./account_view":39}],41:[function(require,module,exports){
 var Marionette, Site, SiteView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -5051,7 +5163,7 @@ SiteView = (function(superClass) {
 
 module.exports = SiteView;
 
-},{"../../../models/site":19}],41:[function(require,module,exports){
+},{"../../../models/site":19}],42:[function(require,module,exports){
 var Claim, Marionette, PermissionView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -5150,7 +5262,7 @@ PermissionView = (function(superClass) {
 
 module.exports = PermissionView;
 
-},{"../../../models/claim":12}],42:[function(require,module,exports){
+},{"../../../models/claim":12}],43:[function(require,module,exports){
 var Marionette, PermissionsLayout, PermissionsTopView, RolesTopView, UsersView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -5214,7 +5326,7 @@ PermissionsLayout = (function(superClass) {
 
 module.exports = PermissionsLayout;
 
-},{"./permissions_top_view":43,"./roles_top_view":46,"./users_view":49}],43:[function(require,module,exports){
+},{"./permissions_top_view":44,"./roles_top_view":47,"./users_view":50}],44:[function(require,module,exports){
 var Marionette, PermissionsTopView, PermissionsView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -5281,7 +5393,7 @@ PermissionsTopView = (function(superClass) {
 
 module.exports = PermissionsTopView;
 
-},{"./permissions_view":44}],44:[function(require,module,exports){
+},{"./permissions_view":45}],45:[function(require,module,exports){
 var Marionette, PermissionView, PermissionsView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -5330,7 +5442,7 @@ PermissionsView = (function(superClass) {
 
 module.exports = PermissionsView;
 
-},{"./permission_view":41}],45:[function(require,module,exports){
+},{"./permission_view":42}],46:[function(require,module,exports){
 var Marionette, Role, RoleView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -5438,7 +5550,7 @@ RoleView = (function(superClass) {
 
 module.exports = RoleView;
 
-},{"../../../models/role":16}],46:[function(require,module,exports){
+},{"../../../models/role":16}],47:[function(require,module,exports){
 var Marionette, RolesTopView, RolesView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -5506,7 +5618,7 @@ RolesTopView = (function(superClass) {
 
 module.exports = RolesTopView;
 
-},{"./roles_view":47}],47:[function(require,module,exports){
+},{"./roles_view":48}],48:[function(require,module,exports){
 var Marionette, RoleView, RolesView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -5556,7 +5668,7 @@ RolesView = (function(superClass) {
 
 module.exports = RolesView;
 
-},{"./role_view":45}],48:[function(require,module,exports){
+},{"./role_view":46}],49:[function(require,module,exports){
 var Marionette, User, UserView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -5728,7 +5840,7 @@ UserView = (function(superClass) {
 
 module.exports = UserView;
 
-},{"../../../models/user":21}],49:[function(require,module,exports){
+},{"../../../models/user":21}],50:[function(require,module,exports){
 var Marionette, UserCollection, UserView, UsersView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -5798,7 +5910,7 @@ UsersView = (function(superClass) {
 
 module.exports = UsersView;
 
-},{"../../../models/user_collection":22,"./user_view":48}],50:[function(require,module,exports){
+},{"../../../models/user_collection":22,"./user_view":49}],51:[function(require,module,exports){
 var Marionette, ProfileView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -5820,7 +5932,7 @@ ProfileView = (function(superClass) {
 
 module.exports = ProfileView;
 
-},{}],51:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 var LoginView, Marionette, Session, UIUtils,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -5918,7 +6030,16 @@ LoginView = (function(superClass) {
 
 module.exports = LoginView;
 
-},{"../common/uiutils":7,"../models/session":18}],52:[function(require,module,exports){
+},{"../common/uiutils":7,"../models/session":18}],53:[function(require,module,exports){
+require('./alarm_widget_view');
+
+require('./gate_widget_view');
+
+require('./url_widget_view');
+
+require('./weather_widget_view');
+
+},{"./alarm_widget_view":54,"./gate_widget_view":55,"./url_widget_view":56,"./weather_widget_view":57}],54:[function(require,module,exports){
 var AlarmWidgetView, Marionette, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -5926,7 +6047,7 @@ var AlarmWidgetView, Marionette, WidgetView,
 
 Marionette = require('marionette');
 
-WidgetView = require('./widget_view');
+WidgetView = require('../dashboard/widget_view');
 
 AlarmWidgetView = (function(superClass) {
   extend(AlarmWidgetView, superClass);
@@ -6037,17 +6158,15 @@ window.AlarmWidgetView = AlarmWidgetView;
 
 module.exports = AlarmWidgetView;
 
-},{"./widget_view":56}],53:[function(require,module,exports){
-var GateWidgetView, Marionette, OPCManager, WidgetView,
+},{"../dashboard/widget_view":38}],55:[function(require,module,exports){
+var GateWidgetView, Marionette, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
 Marionette = require('marionette');
 
-WidgetView = require('./widget_view');
-
-OPCManager = require('../../opcmanager');
+WidgetView = require('../dashboard/widget_view');
 
 GateWidgetView = (function(superClass) {
   extend(GateWidgetView, superClass);
@@ -6331,7 +6450,7 @@ window.GateWidgetView = GateWidgetView;
 
 module.exports = GateWidgetView;
 
-},{"../../opcmanager":25,"./widget_view":56}],54:[function(require,module,exports){
+},{"../dashboard/widget_view":38}],56:[function(require,module,exports){
 var Marionette, UrlWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -6339,7 +6458,7 @@ var Marionette, UrlWidgetView, WidgetView,
 
 Marionette = require('marionette');
 
-WidgetView = require('./widget_view');
+WidgetView = require('../dashboard/widget_view');
 
 UrlWidgetView = (function(superClass) {
   extend(UrlWidgetView, superClass);
@@ -6423,7 +6542,7 @@ window.UrlWidgetView = UrlWidgetView;
 
 module.exports = UrlWidgetView;
 
-},{"./widget_view":56}],55:[function(require,module,exports){
+},{"../dashboard/widget_view":38}],57:[function(require,module,exports){
 var Marionette, WeatherWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -6431,7 +6550,7 @@ var Marionette, WeatherWidgetView, WidgetView,
 
 Marionette = require('marionette');
 
-WidgetView = require('./widget_view');
+WidgetView = require('../dashboard/widget_view');
 
 WeatherWidgetView = (function(superClass) {
   extend(WeatherWidgetView, superClass);
@@ -6520,62 +6639,5 @@ window.WeatherWidgetView = WeatherWidgetView;
 
 module.exports = WeatherWidgetView;
 
-},{"./widget_view":56}],56:[function(require,module,exports){
-var Marionette, WidgetView,
-  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-  hasProp = {}.hasOwnProperty;
-
-Marionette = require('marionette');
-
-WidgetView = (function(superClass) {
-  extend(WidgetView, superClass);
-
-  WidgetView.prototype.template = "widgets/widget";
-
-  WidgetView.prototype.className = 'widget-outer box box-primary';
-
-  WidgetView.prototype.events = {
-    "click #show_settings": "toggle_settings",
-    "click #remove": "remove_widget"
-  };
-
-  WidgetView.layout = {
-    sx: 4,
-    sy: 5
-  };
-
-  function WidgetView(config) {
-    WidgetView.__super__.constructor.call(this, config);
-    this.settings_visible = false;
-    this;
-  }
-
-  WidgetView.prototype.toggle_settings = function(e) {
-    if (e != null) {
-      e.preventDefault();
-    }
-    this.settings_visible = !this.settings_visible;
-    return this.$(".settings").toggle(this.settings_visible);
-  };
-
-  WidgetView.prototype.remove_widget = function(e) {
-    if (e != null) {
-      e.preventDefault();
-      return this.model.collection.remove(this.model);
-    }
-  };
-
-  WidgetView.prototype.start = function() {
-    return console.log("not implemented");
-  };
-
-  return WidgetView;
-
-})(Marionette.ItemView);
-
-window.WidgetView = WidgetView;
-
-module.exports = WidgetView;
-
-},{}]},{},[1])
+},{"../dashboard/widget_view":38}]},{},[1])
 ;

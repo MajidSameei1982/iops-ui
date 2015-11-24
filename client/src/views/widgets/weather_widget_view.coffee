@@ -1,5 +1,5 @@
 Marionette = require('marionette')
-WidgetView = require('./widget_view')
+WidgetView = require('../dashboard/widget_view')
 
 # ----------------------------------
 

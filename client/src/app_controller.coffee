@@ -20,7 +20,9 @@ class AppController extends Object
   set_main_layout: ()->
     cv = App.layout.center_region.currentView
     return cv if cv? and cv instanceof DashboardLayout
-
+    if !App.current_user?
+      @logout() # fource logout in case we fall into here
+      return null
     dl = new DashboardLayout
       collection: App.current_user.dashboards
     App.layout.center_region.show(dl)
@@ -47,6 +49,7 @@ class AppController extends Object
   logout: ()->
     App.log('route:logout')
     if App.session? then App.session.clear()
+    App.current_user = null
     App.session = null
     App.router.navigate('login', {trigger:true})
     @

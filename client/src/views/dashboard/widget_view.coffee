@@ -23,6 +23,7 @@ class WidgetView extends Marionette.ItemView
     if e? then e.preventDefault()
     @settings_visible = !@settings_visible
     @$(".settings").toggle(@settings_visible)
+    @$(".display").toggle(!@settings_visible)
 
   remove_widget: (e)->
     if e?

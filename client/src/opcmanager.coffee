@@ -109,5 +109,5 @@ class OPCManager
           auto_start : false
       
 # ----------------------------------
-
+window.OPCManager = OPCManager
 module.exports = OPCManager

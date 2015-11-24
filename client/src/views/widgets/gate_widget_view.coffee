@@ -1,6 +1,6 @@
 Marionette = require('marionette')
-WidgetView = require('./widget_view')
-OPCManager = require('../../opcmanager')
+WidgetView = require('../dashboard/widget_view')
+# OPCManager = require('../../opcmanager')
 
 # ----------------------------------
 

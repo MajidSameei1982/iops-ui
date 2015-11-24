@@ -61,13 +61,17 @@ module.exports = (grunt)->
         files:
           'build/<%= pkg.name %>.js': ['build/src/app.js']
         options:
-          external: ['jquery', 'underscore', 'backbone', 'marionette', 'bootstrap']
+          external: ['jquery', 'underscore', 'backbone', 'marionette', 'bootstrap']      
+      # widgets:
+      #   files:
+      #     'build/core_widgets.js': ['build/src/views/widgets/*.js']    
         
     # compile eco templates into global JST
     eco:
       build:
         options:
           basePath: 'client/src/templates/'
+          jstGlobalCheck: true
         files:
           'build/templates.js': ['client/src/templates/**/*.eco']
 
@@ -89,11 +93,21 @@ module.exports = (grunt)->
         expand: true
         flatten: false
         cwd: 'client/src'
+        #src: ['**/*.coffee', '!views/widgets/*.coffee']
         src: ['**/*.coffee']
         dest: 'build/src'
         ext: '.js'
         options:
           bare: true
+      # core_widgets:
+      #   expand: true
+      #   flatten: false
+      #   cwd: 'client/src'
+      #   src: ['views/widgets/*.coffee']
+      #   dest: 'build/src'
+      #   ext: '.js'
+      #   options:
+      #     bare: true
         
     # concat files
     concat: 
@@ -150,6 +164,18 @@ module.exports = (grunt)->
           src: 'build/<%= pkg.name %>.js'
           dest: 'public/js/<%= pkg.name %>.js'
         ]
+      # widgets: 
+      #   files: [
+      #     src: 'build/core_widgets.js'
+      #     dest: 'public/js/core_widgets.js'
+      #   ]
+      demo_widget: 
+        files: [
+          cwd: 'client/assets/js/demo_widget'
+          src: ['*.js']
+          dest: 'public/js/demo_widget'
+          expand: true
+        ]
       vendor_js:
         files: [
           src: 'build/vendor.js'
@@ -180,6 +206,11 @@ module.exports = (grunt)->
           cwd: 'bower_components/chosen'
           src: ['*.png']
           dest: 'public/css'
+          expand: true
+        ,
+          cwd: 'client/assets/js'
+          src: ['app_config.js']
+          dest: 'public/js'
           expand: true
         ]
       vendor_static:
@@ -264,14 +295,15 @@ module.exports = (grunt)->
   grunt.registerTask('init:dev', ['clean', 'bower', 'build:vendor_js', 'build:js', 'build:css']);
   # build source
   grunt.registerTask('build:vendor_js', ['browserify:vendor']);
+  #grunt.registerTask('build:js', ['coffee:build', 'coffee:core_widgets', 'eco:build', 'browserify:app', 'browserify:widgets', 'concat:vendor_js', 'concat:js']);
   grunt.registerTask('build:js', ['coffee:build', 'eco:build', 'browserify:app', 'concat:vendor_js', 'concat:js']);
   grunt.registerTask('build:css', ['sass:build', 'sass:bootstrap', 'concat:vendor_css'])
   # copy to runtime destination
   grunt.registerTask('deploy:vendor', ['copy:vendor_js', 'copy:vendor_css', 'copy:vendor_static'])
-  grunt.registerTask('deploy:dev', ['copy:js', 'copy:css', 'copy:static'])
+  grunt.registerTask('deploy:dev', ['copy:js', 'copy:demo_widget', 'copy:css', 'copy:static'])
   
   # wipe the slate clean and start coding
-  grunt.registerTask('dev', ['copy:config_dev', 'init:dev', 'deploy:vendor', 'deploy:dev', 'open:dev', 'concurrent:dev']);
+  grunt.registerTask('dev', ['copy:config_dev', 'init:dev', 'deploy:vendor', 'deploy:dev', 'concurrent:dev']);
   # wipe clean and deploy test with minified resources
   grunt.registerTask('test', ['copy:config_test', 'init:dev', 'cssmin', 'uglify', 'deploy:vendor', 'deploy:dev']);
   # wipe clean and deploy prod with minified resources

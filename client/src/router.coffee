@@ -17,6 +17,8 @@ class Router extends Marionette.AppRouter
     # always allow login and logout paths
     return true if (path == 'login' || path == 'logout' || path == 'flush')
 
+    App.check_session()
+    
     # check for session on all others
     if !App.session || !App.session.get('email')? || !App.current_user?
       App.router.navigate('login', {trigger:true})
