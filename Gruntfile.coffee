@@ -172,7 +172,7 @@ module.exports = (grunt)->
       demo_widget: 
         files: [
           cwd: 'client/assets/js/demo_widget'
-          src: ['*.js']
+          src: ['*.js', '*.html']
           dest: 'public/js/demo_widget'
           expand: true
         ]

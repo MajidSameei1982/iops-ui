@@ -1797,7 +1797,13 @@ UserCollection = require('./models/user_collection');
 
 AppConfig = require('./common/appconfig');
 
-require('./views/widgets/_manifest');
+require('./views/widgets/alarm_widget_view');
+
+require('./views/widgets/gate_widget_view');
+
+require('./views/widgets/url_widget_view');
+
+require('./views/widgets/weather_widget_view');
 
 window.App = (function() {
   var App;
@@ -1943,7 +1949,7 @@ window.App = (function() {
   return App;
 })();
 
-},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27,"./views/widgets/_manifest":53}],2:[function(require,module,exports){
+},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27,"./views/widgets/alarm_widget_view":53,"./views/widgets/gate_widget_view":54,"./views/widgets/url_widget_view":55,"./views/widgets/weather_widget_view":56}],2:[function(require,module,exports){
 var AccountsView, AppController, Dashboard, DashboardCollection, DashboardContentView, DashboardLayout, LoginView, Marionette, PermissionsLayout, ProfileView, User, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4359,7 +4365,7 @@ DashboardSideView = (function(superClass) {
     }
     d = new Dashboard({
       id: Math.floor(Math.random() * 10000) + 1,
-      title: 'New Dashboard'
+      title: ''
     });
     return this.show_dash_modal(d, 'add');
   };
@@ -6031,15 +6037,6 @@ LoginView = (function(superClass) {
 module.exports = LoginView;
 
 },{"../common/uiutils":7,"../models/session":18}],53:[function(require,module,exports){
-require('./alarm_widget_view');
-
-require('./gate_widget_view');
-
-require('./url_widget_view');
-
-require('./weather_widget_view');
-
-},{"./alarm_widget_view":54,"./gate_widget_view":55,"./url_widget_view":56,"./weather_widget_view":57}],54:[function(require,module,exports){
 var AlarmWidgetView, Marionette, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -6158,7 +6155,7 @@ window.AlarmWidgetView = AlarmWidgetView;
 
 module.exports = AlarmWidgetView;
 
-},{"../dashboard/widget_view":38}],55:[function(require,module,exports){
+},{"../dashboard/widget_view":38}],54:[function(require,module,exports){
 var GateWidgetView, Marionette, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -6450,7 +6447,7 @@ window.GateWidgetView = GateWidgetView;
 
 module.exports = GateWidgetView;
 
-},{"../dashboard/widget_view":38}],56:[function(require,module,exports){
+},{"../dashboard/widget_view":38}],55:[function(require,module,exports){
 var Marionette, UrlWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -6542,7 +6539,7 @@ window.UrlWidgetView = UrlWidgetView;
 
 module.exports = UrlWidgetView;
 
-},{"../dashboard/widget_view":38}],57:[function(require,module,exports){
+},{"../dashboard/widget_view":38}],56:[function(require,module,exports){
 var Marionette, WeatherWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },

@@ -84,6 +84,11 @@ window.DemoWidgetView = DemoWidgetView;
 //   </div> \
 // </div>";
 
-var demo_widget_template = "<div class='box-header with-border'> \n  <div class='pull-left'><h3 class='box-title'></h3></div> \n  <div class='pull-right controls'> \n    <a href='#' id='show_settings'><i class='fa fa-cogs'></i></a> \n    <a href='#' id='remove'><i class='fa fa-times-circle'></i></a> \n  </div> \n</div> \n<div class='box-body content'> \n  <div class='display contain'> \n    <h1>DEMO WIDGET</h1> \n    <h3>Place content here</h3> \n  </div> \n  <div class='settings' style='display: none;''>\n    <h1>Settings</h1>\n    <h3>Place content here</h3>\n  </div> \n</div>";
+//var demo_widget_template = "<div class='box-header with-border'> \n  <div class='pull-left'><h3 class='box-title'></h3></div> \n  <div class='pull-right controls'> \n    <a href='#' id='show_settings'><i class='fa fa-cogs'></i></a> \n    <a href='#' id='remove'><i class='fa fa-times-circle'></i></a> \n  </div> \n</div> \n<div class='box-body content'> \n  <div class='display contain'> \n    <h1>DEMO WIDGET</h1> \n    <h3>Place content here</h3> \n  </div> \n  <div class='settings' style='display: none;''>\n    <h1>Settings</h1>\n    <h3>Place content here</h3>\n  </div> \n</div>";
 
-JST['widgets/demo_widget'] = _.template(demo_widget_template);
+//JST['widgets/demo_widget'] = _.template(demo_widget_template);
+
+
+$.get( "js/demo_widget/template.html", function( data ) {
+  JST['widgets/demo_widget'] = _.template(data);
+});

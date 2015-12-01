@@ -13,7 +13,11 @@ ClaimCollection = require('./models/claim_collection')
 RoleCollection = require('./models/role_collection')
 UserCollection = require('./models/user_collection')
 AppConfig = require('./common/appconfig')
-require('./views/widgets/_manifest')
+# forces inclusion of core widget classes
+require('./views/widgets/alarm_widget_view')
+require('./views/widgets/gate_widget_view')
+require('./views/widgets/url_widget_view')
+require('./views/widgets/weather_widget_view')
 
 # ----------------------------------
 window.App = do()->
