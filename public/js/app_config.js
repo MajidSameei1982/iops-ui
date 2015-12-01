@@ -11,8 +11,8 @@ window.app_config = {
       icon: "link"
     },
     {
-      id: "gate",
-      name: "Gate Widget",
+      id: "pbb",
+      name: "PBB Widget",
       icon: "plane"
     },
     {

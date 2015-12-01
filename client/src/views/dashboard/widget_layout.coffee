@@ -1,10 +1,6 @@
 Marionette = require('marionette')
 Widget = require('../../models/widget')
 WidgetView = require('./widget_view')
-# GateWidgetView = require('../widgets/gate_widget_view')
-# AlarmWidgetView = require('../widgets/alarm_widget_view')
-# WeatherWidgetView = require('../widgets/weather_widget_view')
-# UrlWidgetView = require('../widgets/url_widget_view')
 WidgetModalView = require('./widget_modal')
 OPCManager = require('../../opcmanager')
 

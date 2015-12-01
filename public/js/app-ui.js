@@ -1542,7 +1542,7 @@ window.JST["widgets/alarm_widget"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
-window.JST["widgets/gate_widget"] = function(__obj) {
+window.JST["widgets/pbb_widget"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
       value = '';
@@ -1563,7 +1563,7 @@ window.JST["widgets/gate_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gate_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table class=\'data\'>\n      <tr><td class=\'lbl\' id=\'pbb_docked_lbl\'>&nbsp;</td><td id=\'pbb_docked\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevelmode_lbl\'>&nbsp;</td><td id=\'pbb_autolevelmode\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopy_lbl\'>&nbsp;</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_acffloor_lbl\'>ACF Floor</td><td id=\'pbb_acffloor\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_hoist_lbl\'>&nbsp;</td><td id=\'gpu_hoist\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_estop_lbl\'>&nbsp;</td><td id=\'pbb_estop\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_limist_lbl\'>Limits</td><td id=\'pbb_limits\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_docktime_lbl\'>&nbsp;</td><td id=\'pbb_docktime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_undocktime_lbl\'>&nbsp;</td><td id=\'pbb_undocktime\' class=\'val\'>LOADING...</td></tr>\n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gate_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table class=\'data\'>\n      <tr><td class=\'lbl\' id=\'pbb_status_lbl\'>&nbsp;</td><td id=\'pbb_status\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevel_lbl\'>&nbsp;</td><td id=\'pbb_autolevel\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopy_lbl\'>&nbsp;</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_acffloor_lbl\'>ACF Floor</td><td id=\'pbb_acffloor\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_cablehoist_lbl\'>&nbsp;</td><td id=\'pbb_cablehoist\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_estop_lbl\'>&nbsp;</td><td id=\'pbb_estop\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_limits_lbl\'>Limits</td><td id=\'pbb_limits\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_docktime_lbl\'>&nbsp;</td><td id=\'pbb_docktime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_undocktime_lbl\'>&nbsp;</td><td id=\'pbb_undocktime\' class=\'val\'>LOADING...</td></tr>\n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -1799,7 +1799,7 @@ AppConfig = require('./common/appconfig');
 
 require('./views/widgets/alarm_widget_view');
 
-require('./views/widgets/gate_widget_view');
+require('./views/widgets/pbb_widget_view');
 
 require('./views/widgets/url_widget_view');
 
@@ -1949,7 +1949,7 @@ window.App = (function() {
   return App;
 })();
 
-},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27,"./views/widgets/alarm_widget_view":53,"./views/widgets/gate_widget_view":54,"./views/widgets/url_widget_view":55,"./views/widgets/weather_widget_view":56}],2:[function(require,module,exports){
+},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27,"./views/widgets/alarm_widget_view":53,"./views/widgets/pbb_widget_view":54,"./views/widgets/url_widget_view":55,"./views/widgets/weather_widget_view":56}],2:[function(require,module,exports){
 var AccountsView, AppController, Dashboard, DashboardCollection, DashboardContentView, DashboardLayout, LoginView, Marionette, PermissionsLayout, ProfileView, User, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -6156,7 +6156,7 @@ window.AlarmWidgetView = AlarmWidgetView;
 module.exports = AlarmWidgetView;
 
 },{"../dashboard/widget_view":38}],54:[function(require,module,exports){
-var GateWidgetView, Marionette, WidgetView,
+var Marionette, PbbWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -6165,10 +6165,10 @@ Marionette = require('marionette');
 
 WidgetView = require('../dashboard/widget_view');
 
-GateWidgetView = (function(superClass) {
-  extend(GateWidgetView, superClass);
+PbbWidgetView = (function(superClass) {
+  extend(PbbWidgetView, superClass);
 
-  function GateWidgetView() {
+  function PbbWidgetView() {
     this.set_model = bind(this.set_model, this);
     this.data_update = bind(this.data_update, this);
     this.set_descriptions = bind(this.set_descriptions, this);
@@ -6176,14 +6176,14 @@ GateWidgetView = (function(superClass) {
     this.data_q = bind(this.data_q, this);
     this.get_value = bind(this.get_value, this);
     this.get_bool = bind(this.get_bool, this);
-    return GateWidgetView.__super__.constructor.apply(this, arguments);
+    return PbbWidgetView.__super__.constructor.apply(this, arguments);
   }
 
-  GateWidgetView.prototype.template = "widgets/gate_widget";
+  PbbWidgetView.prototype.template = "widgets/pbb_widget";
 
-  GateWidgetView.prototype.className = 'widget-outer box box-primary gate_widget';
+  PbbWidgetView.prototype.className = 'widget-outer box box-primary gate_widget';
 
-  GateWidgetView.prototype.ui = {
+  PbbWidgetView.prototype.ui = {
     terminal: 'input#terminal',
     zone: 'input#zone',
     display_prefix: 'input#display_prefix',
@@ -6197,17 +6197,20 @@ GateWidgetView = (function(superClass) {
     warnings: 'i#warnings'
   };
 
-  GateWidgetView.layout = {
+  PbbWidgetView.layout = {
     sx: 4,
     sy: 9
   };
 
-  GateWidgetView.prototype.tags = {
-    pbb_autolevelmode: 'PBB.AUTOLEVELMODEFLAG',
+  PbbWidgetView.prototype.tags = {
+    pbb_status: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+    pbb_aircraft: 'PBB.AIRCRAFTSTATUS',
+    pbb_autolevel: 'PBB.AUTOLEVELMODEFLAG',
     pbb_canopy: 'PBB.Warning.CANOPYDOWN',
-    pbb_acffloor: 'PBB.AUTOLEVELING',
-    gpu_hoist: 'GPU.HZ400CABLEDEPLOYED',
+    pbb_acffloor: 'PBB.ACFFLOOR',
+    pbb_cablehoist: 'PBB.HZ400CABLEDEPLOYED',
     pbb_estop: 'PBB.Alarm.E_STOP',
+    pbb_limits: 'PBB.400HZ Pit',
     pbb_docktime: 'PBB.DOCKTIME',
     pbb_undocktime: 'PBB.UNDOCKTIME',
     pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
@@ -6215,19 +6218,19 @@ GateWidgetView = (function(superClass) {
     pbb_has_alarms: 'Alarm._HasAlarms'
   };
 
-  GateWidgetView.prototype.modelEvents = {
+  PbbWidgetView.prototype.modelEvents = {
     "change": "update"
   };
 
-  GateWidgetView.prototype.watch_updates = function(conn) {
+  PbbWidgetView.prototype.watch_updates = function(conn) {
     return App.vent.on("opc:data:" + conn, this.data_update);
   };
 
-  GateWidgetView.prototype.kill_updates = function(conn) {
+  PbbWidgetView.prototype.kill_updates = function(conn) {
     return App.vent.off("opc:data:" + conn, this.data_update);
   };
 
-  GateWidgetView.prototype.update = function() {
+  PbbWidgetView.prototype.update = function() {
     var gate, lbl, s, t, tags, tg;
     s = this.model.get("settings");
     if ((s != null) && !!s.gate) {
@@ -6255,7 +6258,7 @@ GateWidgetView = (function(superClass) {
     }
   };
 
-  GateWidgetView.prototype.get_bool = function(v) {
+  PbbWidgetView.prototype.get_bool = function(v) {
     if ((v != null) && v.toUpperCase() === "TRUE") {
       return true;
     } else if ((v != null) && v.toUpperCase() === "FALSE") {
@@ -6264,25 +6267,25 @@ GateWidgetView = (function(superClass) {
     return null;
   };
 
-  GateWidgetView.prototype.get_value = function(tag) {
+  PbbWidgetView.prototype.get_value = function(tag) {
     return this.opc.get_value("" + this.prefix + tag + ".Value");
   };
 
-  GateWidgetView.prototype.mark_bad_data = function(tag, el) {
+  PbbWidgetView.prototype.mark_bad_data = function(tag, el) {
     var h, q;
     q = this.data_q(tag);
     h = !q ? 'BAD DATA' : $(el).html();
     return $(el).html(h).toggleClass("bad_data", !q);
   };
 
-  GateWidgetView.prototype.data_q = function(tag) {
+  PbbWidgetView.prototype.data_q = function(tag) {
     var c, t;
     c = App.opc.connections[this.site_code];
     t = c.tags["" + this.prefix + tag];
     return t.props.Value.quality;
   };
 
-  GateWidgetView.prototype.flash_alarm = function(fl) {
+  PbbWidgetView.prototype.flash_alarm = function(fl) {
     var chg;
     if ((this.fl_interval != null) && !fl) {
       clearInterval(this.fl_interval);
@@ -6299,7 +6302,7 @@ GateWidgetView = (function(superClass) {
     }
   };
 
-  GateWidgetView.prototype.set_descriptions = function(force) {
+  PbbWidgetView.prototype.set_descriptions = function(force) {
     var t, tds, tg, tlen;
     tds = [];
     tlen = Object.keys(this.tags).length;
@@ -6345,7 +6348,7 @@ GateWidgetView = (function(superClass) {
     })(this));
   };
 
-  GateWidgetView.prototype.render_row = function(tag, tv, fv, tc, fc) {
+  PbbWidgetView.prototype.render_row = function(tag, tv, fv, tc, fc) {
     var el, txt, v;
     v = this.get_bool(this.vals[tag]);
     txt = v ? tv : fv;
@@ -6359,25 +6362,29 @@ GateWidgetView = (function(superClass) {
     return this.mark_bad_data(this.tags[tag], el);
   };
 
-  GateWidgetView.prototype.data_update = function(data) {
-    var docktime, el, tg, txt, undocktime, v;
+  PbbWidgetView.prototype.data_update = function(data) {
+    var aircraftstatus, docktime, el, tg, txt, undocktime, v;
     this.vals = {};
     for (tg in this.tags) {
       this.vals[tg] = this.get_value(this.tags[tg]);
     }
-    v = this.get_bool(this.vals.pbb_autolevelmode);
+    v = this.get_bool(this.vals.pbb_status);
     txt = v ? "Docked" : "Undocked";
     this.$("#pbb_docked_lbl").html('PBB Status');
     el = this.$("#pbb_docked").html(txt).toggleClass('ok', v);
-    this.mark_bad_data(this.tags.pbb_autolevelmode, el);
-    this.render_row("pbb_autolevelmode", "On", "Off", "ok");
+    this.mark_bad_data(this.tags.pbb_status, el);
+    this.render_row("pbb_status", "", "", "ok");
+    aircraftstatus = this.vals['pbb_aircraft'];
+    this.$('#pbb_status').html(aircraftstatus);
+    this.render_row("pbb_autolevel", "On", "Off", "ok");
     this.render_row("pbb_canopy", "Down", "Up", "ok");
     this.render_row("pbb_acffloor", "On", "Off", "ok");
     this.render_row("pbb_estop", "Activated", "Ready/OK", "err");
-    this.render_row("gpu_hoist", "Deployed", "Retracted", "ok");
+    this.render_row("pbb_cablehoist", "Deployed", "Retracted", "ok");
+    this.render_row("pbb_limits", "OK", "Active", "ok", "err");
     this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms));
     this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings));
-    this.ui.docked.toggle(this.get_bool(this.vals.pbb_autolevelmode));
+    this.ui.docked.toggle(this.get_bool(this.vals.pbb_status));
     this.flash_alarm(this.get_bool(this.vals.pbb_autolevelfail));
     docktime = (this.vals.pbb_docktime != null) && this.vals.pbb_docktime !== '' ? parseFloat(this.vals.pbb_docktime).toFixed(4) : ' -- ';
     el = this.$('#pbb_docktime').html("" + docktime);
@@ -6388,7 +6395,7 @@ GateWidgetView = (function(superClass) {
     return this.set_descriptions();
   };
 
-  GateWidgetView.prototype.set_model = function() {
+  PbbWidgetView.prototype.set_model = function() {
     var s;
     s = _.clone(this.model.get("settings"));
     s.gate = this.ui.gate.val().trim();
@@ -6399,15 +6406,15 @@ GateWidgetView = (function(superClass) {
     return this.model.set("settings", s);
   };
 
-  GateWidgetView.prototype.toggle_settings = function(e) {
-    GateWidgetView.__super__.toggle_settings.call(this, e);
+  PbbWidgetView.prototype.toggle_settings = function(e) {
+    PbbWidgetView.__super__.toggle_settings.call(this, e);
     this.ui.display.toggle(!this.settings_visible);
     if (this.settings_visible) {
       return this.ui.site.chosen();
     }
   };
 
-  GateWidgetView.prototype.onShow = function() {
+  PbbWidgetView.prototype.onShow = function() {
     var gate, ms, settings, site, site_code;
     this.ui.gate.on("change", this.set_model);
     this.ui.site.on("change", this.set_model);
@@ -6430,22 +6437,22 @@ GateWidgetView = (function(superClass) {
     }
   };
 
-  GateWidgetView.prototype.start = function() {
+  PbbWidgetView.prototype.start = function() {
     return this.update();
   };
 
-  GateWidgetView.prototype.onDestroy = function(arg1, arg2) {
+  PbbWidgetView.prototype.onDestroy = function(arg1, arg2) {
     this.kill_updates(this.site_code);
     return OPCManager.rem_ref(this.site_code);
   };
 
-  return GateWidgetView;
+  return PbbWidgetView;
 
 })(WidgetView);
 
-window.GateWidgetView = GateWidgetView;
+window.PbbWidgetView = PbbWidgetView;
 
-module.exports = GateWidgetView;
+module.exports = PbbWidgetView;
 
 },{"../dashboard/widget_view":38}],55:[function(require,module,exports){
 var Marionette, UrlWidgetView, WidgetView,

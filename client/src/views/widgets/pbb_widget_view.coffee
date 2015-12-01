@@ -4,8 +4,8 @@ WidgetView = require('../dashboard/widget_view')
 
 # ----------------------------------
 
-class GateWidgetView extends WidgetView
-  template:   "widgets/gate_widget"
+class PbbWidgetView extends WidgetView
+  template:   "widgets/pbb_widget"
   className: 'widget-outer box box-primary gate_widget'
   ui:
     terminal:       'input#terminal'
@@ -25,24 +25,20 @@ class GateWidgetView extends WidgetView
     sy: 9
 
   tags:
-    # acffloor : AUTOLEVELING?
-    # limits: need a calculation tag (show alarm icon)
-    # autolevel alarm: AUTOLEVEL_FAIL_FLAG (flash red)
-
-
-    pbb_autolevelmode :  'PBB.AUTOLEVELMODEFLAG'
-    
-    #pbb_in_oper_mode :  'PBB.PBB_IN_OPER_MODE'
-    #pbb_autolevelok :   'PBB.AUTOLEVELOK'
+    #Grid Tags
+    pbb_status :        'PBB.AIRCRAFTDOCKEDCALCULATION'
+    pbb_aircraft :        'PBB.AIRCRAFTSTATUS'
+    pbb_autolevel :     'PBB.AUTOLEVELMODEFLAG'
     pbb_canopy:         'PBB.Warning.CANOPYDOWN'
-    pbb_acffloor:       'PBB.AUTOLEVELING'
-    gpu_hoist:          'GPU.HZ400CABLEDEPLOYED'
+    pbb_acffloor:       'PBB.ACFFLOOR'
+    pbb_cablehoist:     'PBB.HZ400CABLEDEPLOYED'
     pbb_estop:          'PBB.Alarm.E_STOP'
-    # limits?
+    pbb_limits:         'PBB.400HZ Pit'
     pbb_docktime:       'PBB.DOCKTIME'
     pbb_undocktime:     'PBB.UNDOCKTIME'
-    pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
     
+    #Processing Tags
+    pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
     pbb_has_warnings :  'Warning._HasWarnings'
     pbb_has_alarms :    'Alarm._HasAlarms'
     
@@ -156,17 +152,21 @@ class GateWidgetView extends WidgetView
       @vals[tg] = @get_value(@tags[tg])
 
     # DOCKED
-    v = @get_bool(@vals.pbb_autolevelmode)
+    v = @get_bool(@vals.pbb_status)
     txt = if v then "Docked" else "Undocked"
     @$("#pbb_docked_lbl").html('PBB Status')
     el = @$("#pbb_docked").html(txt).toggleClass('ok', v)
-    @mark_bad_data @tags.pbb_autolevelmode, el
+    @mark_bad_data @tags.pbb_status, el
     
     # PBB STATUS
-    @render_row("pbb_autolevelmode", "On", "Off", "ok")
+    @render_row("pbb_status", "", "", "ok")
+
+    # PBB AIRCRAFT
+    aircraftstatus = @vals['pbb_aircraft']
+    @$('#pbb_status').html(aircraftstatus)
 
     # Auto Level
-    #@render_row("pbb_autolevelok", "On", "Off", "ok")
+    @render_row("pbb_autolevel", "On", "Off", "ok")
 
     # CANOPY
     @render_row("pbb_canopy", "Down", "Up", "ok")
@@ -178,16 +178,17 @@ class GateWidgetView extends WidgetView
     @render_row("pbb_estop", "Activated", "Ready/OK", "err")
   
     # CABLE HOIST
-    @render_row("gpu_hoist", "Deployed", "Retracted", "ok")
+    @render_row("pbb_cablehoist", "Deployed", "Retracted", "ok")
  
-    # LIMITS ?
+    # LIMITS
+    @render_row("pbb_limits", "OK", "Active", "ok", "err")
         
     # ALARMS
     @ui.alarms.toggle(@get_bool(@vals.pbb_has_alarms))
     # WARNINGS
     @ui.warnings.toggle(@get_bool(@vals.pbb_has_warnings))
     # DOCKED
-    @ui.docked.toggle(@get_bool(@vals.pbb_autolevelmode))
+    @ui.docked.toggle(@get_bool(@vals.pbb_status))
     
     # AUTOLEVELFAIL
     @flash_alarm(@get_bool(@vals.pbb_autolevelfail))
@@ -245,5 +246,5 @@ class GateWidgetView extends WidgetView
     
 # ----------------------------------
 
-window.GateWidgetView = GateWidgetView
-module.exports = GateWidgetView
+window.PbbWidgetView = PbbWidgetView
+module.exports = PbbWidgetView
