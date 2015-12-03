@@ -16,13 +16,13 @@ window.app_config = {
       icon: "plane"
     },
     {
-      id: "weather",
-      name: "Weather Widget",
-      icon: "cloud"
+      id: "pca",
+      name: "PCA/GPU Widget",
+      icon: "server"
     },
     {
-      id: "demo",
-      name: "Demo Widget",
+      id: "weather",
+      name: "Weather Widget",
       icon: "cloud"
     }
   ]

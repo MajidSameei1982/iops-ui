@@ -16,6 +16,7 @@ AppConfig = require('./common/appconfig')
 # forces inclusion of core widget classes
 require('./views/widgets/alarm_widget_view')
 require('./views/widgets/pbb_widget_view')
+require('./views/widgets/pca_widget_view')
 require('./views/widgets/url_widget_view')
 require('./views/widgets/weather_widget_view')
 
