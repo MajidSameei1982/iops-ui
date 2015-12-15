@@ -12,18 +12,19 @@ exports.X509 = X509;
 
 // ext/base64.js
 exports.b64tohex = b64tohex;
-exports.b64tohex = b64toBA;
+exports.b64toBA = b64toBA;
 
 // base64x.js
 exports.stoBA = stoBA;
-exports.stoBA = BAtos;
-exports.stoBA = BAtohex;
+exports.BAtos = BAtos;
+exports.BAtohex = BAtohex;
 exports.stohex = stohex;
 exports.stob64 = stob64;
 exports.stob64u = stob64u;
 exports.b64utos = b64utos;
 exports.b64tob64u = b64tob64u;
 exports.b64utob64 = b64utob64;
+exports.hex2b64 = hex2b64;
 exports.hextob64u = hextob64u;
 exports.b64utohex = b64utohex;
 exports.b64tohex = b64tohex;

@@ -132,7 +132,7 @@ module.exports = (grunt)->
       vendor_css:
         src: [
           'client/requires/bootstrap-sass/bootstrap.css'
-          'client/requires/font-awesome/font-awesome.css'
+          'bower_components/font-awesome/css/font-awesome.css'
           'client/assets/adminlte/dist/css/AdminLTE.css'
           'client/assets/adminlte/dist/css/skins/_all-skins.css'
           'client/assets/css/jquery.gridster.min.css'
@@ -225,7 +225,7 @@ module.exports = (grunt)->
           dest: 'public/fonts/bootstrap'
           expand: true
         ,
-          cwd: 'client/requires/font-awesome/'
+          cwd: 'bower_components/font-awesome/fonts'
           src: ['**/*-webfont.*']
           dest: 'public/fonts'
           expand: true

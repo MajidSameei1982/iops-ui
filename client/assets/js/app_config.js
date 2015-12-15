@@ -17,8 +17,13 @@ window.app_config = {
     },
     {
       id: "pca",
-      name: "PCA/GPU Widget",
+      name: "PCA Widget",
       icon: "server"
+    },
+    {
+      id: "gpu",
+      name: "GPU Widget",
+      icon: "battery-3"
     },
     {
       id: "weather",

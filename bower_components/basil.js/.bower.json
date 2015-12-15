@@ -1,6 +1,5 @@
 {
   "name": "basil.js",
-  "version": "0.4.1",
   "homepage": "https://github.com/Wisembly/basil.js",
   "authors": [
     "Mathieu Ghaleb <mathieu@wisembly.com>"
@@ -23,11 +22,12 @@
     "test",
     "tests"
   ],
-  "_release": "0.4.1",
+  "version": "0.4.3",
+  "_release": "0.4.3",
   "_resolution": {
     "type": "version",
-    "tag": "0.4.1",
-    "commit": "7097ad97c9ef2cb5478906b66a79c0b954a6e3c2"
+    "tag": "0.4.3",
+    "commit": "7288250e2274cd8858db6ec640f9cad2712b2aa1"
   },
   "_source": "git://github.com/Wisembly/basil.js.git",
   "_target": "*",

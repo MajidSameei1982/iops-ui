@@ -10,7 +10,7 @@
     "backbone.modelbinder": "git://github.com/theironcook/Backbone.ModelBinder.git",
     "backbone.mutators": "git://github.com/asciidisco/Backbone.Mutators.git",
     "bootstrap-sass": "~3.3.5",
-    "font-awesome": "~4.3.0",
+    "font-awesome": "~4.5.0",
     "jsjws": "https://github.com/kjur/jsrsasign.git#~4.8.3",
     "basil.js": "git://github.com/Wisembly/basil.js.git",
     "jquery-dateFormat": "https://github.com/phstc/jquery-dateFormat.git",
