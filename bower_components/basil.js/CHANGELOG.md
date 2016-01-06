@@ -1,5 +1,13 @@
 # Basil changelog
 
+## 0.4.3
+
+  - [BC Break] `_toStoredKey()` is now using '.' separator instead of ':' (#35)
+
+## 0.4.2
+
+  - [BC Break] Encode and decode cookie value on set and get (#30, #35)
+
 ## 0.4.1
 
   - Added HTTPS cookie option (#27)
