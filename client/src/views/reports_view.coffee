@@ -13,7 +13,7 @@ class ReportsView extends Marionette.ItemView
       templateUrl: '/ReportViewer/telerikReportViewerTemplate.html'
       reportSource:
         #report: "reportx.trdx", parameters: { CultureID: "en" }
-        report: "TelerikReportingREST.MyReportBook" 
+        report: "TelerikReportingREST.MyReportBook, TelerikReportingREST, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" 
 
   onDomRefresh: () ->
     #$('body').addClass('login-page')
