@@ -6321,7 +6321,7 @@ ReportsView = (function(superClass) {
       serviceUrl: "http://localhost:9213/api/reports/",
       templateUrl: '/ReportViewer/telerikReportViewerTemplate.html',
       reportSource: {
-        report: "Telerik.Reporting.Examples.CSharp.ProductCatalog, CSharp.ReportLibrary",
+        report: "reportx.trdx",
         parameters: {
           CultureID: "en"
         }
