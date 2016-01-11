@@ -12,7 +12,8 @@ class ReportsView extends Marionette.ItemView
       serviceUrl: "http://localhost:9213/api/reports/" # need to define running REST API
       templateUrl: '/ReportViewer/telerikReportViewerTemplate.html'
       reportSource:
-        report: "reportx.trdx", parameters: { CultureID: "en" }
+        #report: "reportx.trdx", parameters: { CultureID: "en" }
+        report: "TelerikReportingREST.MyReportBook, TelerikReportingREST" 
 
   onDomRefresh: () ->
     #$('body').addClass('login-page')

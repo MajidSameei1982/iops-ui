@@ -6321,10 +6321,7 @@ ReportsView = (function(superClass) {
       serviceUrl: "http://localhost:9213/api/reports/",
       templateUrl: '/ReportViewer/telerikReportViewerTemplate.html',
       reportSource: {
-        report: "reportx.trdx",
-        parameters: {
-          CultureID: "en"
-        }
+        report: "TelerikReportingREST.MyReportBook, TelerikReportingREST"
       }
     });
   };
