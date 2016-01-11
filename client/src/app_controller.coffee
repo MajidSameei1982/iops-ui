@@ -1,5 +1,6 @@
 Marionette = require('marionette')
 LoginView = require('./views/login_view')
+ReportsView = require('./views/reports_view')
 User = require('./models/user')
 ProfileView = require('./views/forms/profile_view')
 AccountsView = require('./views/forms/manage_accounts/accounts_view')
@@ -35,6 +36,12 @@ class AppController extends Object
     # default to first dashboard
     d = if dl? and dl.collection? and dl.collection.models.length > 0 then 1 else 0
     @dashboard(d)
+    @
+
+  reports: ()->
+    App.log('route:reports')
+    v = new ReportsView()
+    App.layout.center_region.show(v)
     @
 
   flush: ()->

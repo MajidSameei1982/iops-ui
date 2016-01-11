@@ -212,6 +212,11 @@ module.exports = (grunt)->
           src: ['app_config.js']
           dest: 'public/js'
           expand: true
+        ,
+          cwd: 'client/assets/ReportViewer'
+          src: ['*.js', '*.html']
+          dest: 'public/ReportViewer'
+          expand: true
         ]
       vendor_static:
         files: [
@@ -300,7 +305,8 @@ module.exports = (grunt)->
   grunt.registerTask('build:css', ['sass:build', 'sass:bootstrap', 'concat:vendor_css'])
   # copy to runtime destination
   grunt.registerTask('deploy:vendor', ['copy:vendor_js', 'copy:vendor_css', 'copy:vendor_static'])
-  grunt.registerTask('deploy:dev', ['copy:js', 'copy:demo_widget', 'copy:css', 'copy:static'])
+  #grunt.registerTask('deploy:dev', ['copy:js', 'copy:demo_widget', 'copy:css', 'copy:static'])
+  grunt.registerTask('deploy:dev', ['copy:js', 'copy:css', 'copy:static'])
   
   # wipe the slate clean and start coding
   grunt.registerTask('dev', ['copy:config_dev', 'init:dev', 'deploy:vendor', 'deploy:dev', 'concurrent:dev']);

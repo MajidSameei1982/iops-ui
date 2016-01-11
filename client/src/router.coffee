@@ -12,6 +12,7 @@ class Router extends Marionette.AppRouter
     'mgpermissions'   : 'mgpermissions'
     'dashboard/:id'	  : 'dashboard'
     'flush'           : 'flush'
+    'reports'         : 'reports'
 
   onRoute: (name, path, args)->
     # always allow login and logout paths
