@@ -6318,7 +6318,7 @@ ReportsView = (function(superClass) {
 
   ReportsView.prototype.onShow = function() {
     return this.$('#reportViewer1').telerik_ReportViewer({
-      serviceUrl: "http://localhost:9213/api/reports/",
+      serviceUrl: "http://testtelerik.iopsnow.com/api/reports/",
       templateUrl: '/ReportViewer/telerikReportViewerTemplate.html',
       reportSource: {
         report: "TelerikReportingREST.MyReportBook, TelerikReportingREST, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"

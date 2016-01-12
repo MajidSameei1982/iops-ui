@@ -9,7 +9,7 @@ class ReportsView extends Marionette.ItemView
 
   onShow: ()->
     @$('#reportViewer1').telerik_ReportViewer
-      serviceUrl: "http://localhost:9213/api/reports/" # need to define running REST API
+      serviceUrl: "http://testtelerik.iopsnow.com/api/reports/" # need to define running REST API
       templateUrl: '/ReportViewer/telerikReportViewerTemplate.html'
       reportSource:
         #report: "reportx.trdx", parameters: { CultureID: "en" }
