@@ -1,18 +1,18 @@
 <div class='site_container'>
   <i id='site_active' class="fa fa-fw"></i>
-  <span id='site_label'><%= @name %> <%= if @abbrev? && @abbrev!='' then "(#{@abbrev})" else '' %></span>
+  <span id='site_label'><%= @name %> <%= if @code? && @code!='' then "(#{@code})" else '' %></span>
   <input type='text' id='site_name' value='<%- @name%>' size='40' placeholder='Site Name'/>
-  <input type='text' id='site_abbrev' value='<%- @abbrev%>' size='5' placeholder='CODE'/>
+  <input type='text' id='site_code' value='<%- @acode%>' size='5' placeholder='CODE'/>
   <span id='site_crud' class='crud_container'>
     <span class='crud' id='edit_site'><i class="fa fa-pencil-square" title='Edit Site'></i></span>
     <span class='crud' id='delete_site'><i class="fa fa-times-circle" title='Delete Site'></i></span>
   </span>
   <div id='site_short_label'><%= @shortName %></div>
   <div><input type='text' id='site_short' value='<%- @shortName%>' size='40' placeholder='Short Name'/></div>
-  <div id='site_opc_label'><%= @opc %></div>
-  <div><input type='text' id='site_opc' value='<%- @opc%>' size='40' placeholder='OPCSystems Server URL'/></div>
-  <div id='site_opc_rate_label'><i>Refresh:</i> <%= @opc_rate %> seconds</div>
-  <div><input type='text' id='site_opc_rate' value='<%- @opc_rate%>' size='40' placeholder='OPCSystems Refresh Rate (seconds)'/></div>
+  <div id='site_url_label'><%= @serverUrl %></div>
+  <div><input type='text' id='site_url' value='<%- @serverUrl%>' size='40' placeholder='OPCSystems Server URL'/></div>
+  <div id='site_refresh_rate_label'><i>Refresh:</i> <%= @refreshRate %> seconds</div>
+  <div><input type='text' id='site_refresh_rate' value='<%- @refreshRate%>' size='40' placeholder='OPCSystems Refresh Rate (seconds)'/></div>
 
   <span id='site_buttons'>
     <button class="btn btn-xs" id='cancel'><i class="fa fa-ban"></i> CANCEL</button>

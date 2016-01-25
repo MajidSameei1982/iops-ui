@@ -45,24 +45,27 @@ window.App = do()->
       TODO: load from server - all known Accounts, claims, Roles
     ###
     #App.accounts = new AccountCollection(App.store.get('accounts'))
+    App.resource_count = 0
+
     App.accounts = new AccountCollection()
     @log('Fetching account data...')
     App.accounts.fetch
       success:(data)=>
-        acctcnt = App.accounts.length
+        App.resource_count += App.accounts.length
         for acct in App.accounts.models
           acct.sites.fetch
             success: ()=>
-              acctcnt = acctcnt - 1
-              if acctcnt == 0 then App.vent.trigger('app:resources_loaded')
+              App.vent.trigger('app:resources_loaded')
       error:()=>
         @log('ERROR LOADING ACCOUNTS')
         App.vent.trigger('app:resources_loaded')
 
 
-    App.claims = new ClaimCollection(App.store.get('claims'))
-    App.roles = new RoleCollection(App.store.get('roles'))
-    App.users = new UserCollection(App.store.get('users'))
+    #App.claims = new ClaimCollection(App.store.get('claims'))
+
+    #App.roles = new RoleCollection(App.store.get('roles'))
+    
+    #App.users = new UserCollection(App.store.get('users'))
     ###
       END TODO:
     ###
@@ -73,7 +76,9 @@ window.App = do()->
     App.opc.init(App)
 
     App.vent.on "app:resources_loaded", ()->
-      $('#loading_cover').fadeOut(100, ()-> $(@).hide())
+      App.resource_count -= 1
+      if App.resource_count <= 0
+        $('#loading_cover').fadeOut(100, ()-> $(@).hide())
 
     # REMOVE WHEN API IS CONNECTED - persist objects locally until db is connected
     App.vent.on "user:update", ()->

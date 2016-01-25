@@ -20,10 +20,10 @@ class SiteView extends Marionette.ItemView
 
   bindings:
     name      : '#site_name'
-    abbrev    : '#site_abbrev'
+    code      : '#site_code'
     shortName : '#site_short'
-    opc       : '#site_opc'
-    opc_rate  : '#site_opc_rate'
+    serverUrl : '#site_url'
+    refreshRate : '#site_refresh_rate'
     isActive:
       selector: 'i#site_active'
       elAttribute: 'class'

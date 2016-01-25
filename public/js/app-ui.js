@@ -660,15 +660,15 @@ window.JST["forms/manage_accounts/site"] = function(__obj) {
     
       _print(_safe(' '));
     
-      _print((this.abbrev != null) && this.abbrev !== '' ? "(" + this.abbrev + ")" : '');
+      _print((this.code != null) && this.code !== '' ? "(" + this.code + ")" : '');
     
       _print(_safe('</span>\n  <input type=\'text\' id=\'site_name\' value=\''));
     
       _print(_safe(this.name));
     
-      _print(_safe('\' size=\'40\' placeholder=\'Site Name\'/>\n  <input type=\'text\' id=\'site_abbrev\' value=\''));
+      _print(_safe('\' size=\'40\' placeholder=\'Site Name\'/>\n  <input type=\'text\' id=\'site_code\' value=\''));
     
-      _print(_safe(this.abbrev));
+      _print(_safe(this.acode));
     
       _print(_safe('\' size=\'5\' placeholder=\'CODE\'/>\n  <span id=\'site_crud\' class=\'crud_container\'>\n    <span class=\'crud\' id=\'edit_site\'><i class="fa fa-pencil-square" title=\'Edit Site\'></i></span>\n    <span class=\'crud\' id=\'delete_site\'><i class="fa fa-times-circle" title=\'Delete Site\'></i></span>\n  </span>\n  <div id=\'site_short_label\'>'));
     
@@ -678,21 +678,21 @@ window.JST["forms/manage_accounts/site"] = function(__obj) {
     
       _print(_safe(this.shortName));
     
-      _print(_safe('\' size=\'40\' placeholder=\'Short Name\'/></div>\n  <div id=\'site_opc_label\'>'));
+      _print(_safe('\' size=\'40\' placeholder=\'Short Name\'/></div>\n  <div id=\'site_url_label\'>'));
     
-      _print(this.opc);
+      _print(this.serverUrl);
     
-      _print(_safe('</div>\n  <div><input type=\'text\' id=\'site_opc\' value=\''));
+      _print(_safe('</div>\n  <div><input type=\'text\' id=\'site_url\' value=\''));
     
-      _print(_safe(this.opc));
+      _print(_safe(this.serverUrl));
     
-      _print(_safe('\' size=\'40\' placeholder=\'OPCSystems Server URL\'/></div>\n  <div id=\'site_opc_rate_label\'><i>Refresh:</i> '));
+      _print(_safe('\' size=\'40\' placeholder=\'OPCSystems Server URL\'/></div>\n  <div id=\'site_refresh_rate_label\'><i>Refresh:</i> '));
     
-      _print(this.opc_rate);
+      _print(this.refreshRate);
     
-      _print(_safe(' seconds</div>\n  <div><input type=\'text\' id=\'site_opc_rate\' value=\''));
+      _print(_safe(' seconds</div>\n  <div><input type=\'text\' id=\'site_refresh_rate\' value=\''));
     
-      _print(_safe(this.opc_rate));
+      _print(_safe(this.refreshRate));
     
       _print(_safe('\' size=\'40\' placeholder=\'OPCSystems Refresh Rate (seconds)\'/></div>\n\n  <span id=\'site_buttons\'>\n    <button class="btn btn-xs" id=\'cancel\'><i class="fa fa-ban"></i> CANCEL</button>\n    <button class="btn btn-xs btn-success" id=\'save\'><i class="fa fa-check-square"></i> SAVE</button>\n  </span>\n</div>\n'));
     
@@ -1980,23 +1980,21 @@ window.App = (function() {
     /* 
       TODO: load from server - all known Accounts, claims, Roles
      */
+    App.resource_count = 0;
     App.accounts = new AccountCollection();
     this.log('Fetching account data...');
     App.accounts.fetch({
       success: (function(_this) {
         return function(data) {
-          var acct, acctcnt, i, len, ref, results;
-          acctcnt = App.accounts.length;
+          var acct, i, len, ref, results;
+          App.resource_count += App.accounts.length;
           ref = App.accounts.models;
           results = [];
           for (i = 0, len = ref.length; i < len; i++) {
             acct = ref[i];
             results.push(acct.sites.fetch({
               success: function() {
-                acctcnt = acctcnt - 1;
-                if (acctcnt === 0) {
-                  return App.vent.trigger('app:resources_loaded');
-                }
+                return App.vent.trigger('app:resources_loaded');
               }
             }));
           }
@@ -2010,9 +2008,6 @@ window.App = (function() {
         };
       })(this)
     });
-    App.claims = new ClaimCollection(App.store.get('claims'));
-    App.roles = new RoleCollection(App.store.get('roles'));
-    App.users = new UserCollection(App.store.get('users'));
 
     /*
       END TODO:
@@ -2021,9 +2016,12 @@ window.App = (function() {
     App.opc = OPCManager;
     App.opc.init(App);
     App.vent.on("app:resources_loaded", function() {
-      return $('#loading_cover').fadeOut(100, function() {
-        return $(this).hide();
-      });
+      App.resource_count -= 1;
+      if (App.resource_count <= 0) {
+        return $('#loading_cover').fadeOut(100, function() {
+          return $(this).hide();
+        });
+      }
     });
     App.vent.on("user:update", function() {
       return Session.save_session();
@@ -5415,10 +5413,10 @@ SiteView = (function(superClass) {
 
   SiteView.prototype.bindings = {
     name: '#site_name',
-    abbrev: '#site_abbrev',
+    code: '#site_code',
     shortName: '#site_short',
-    opc: '#site_opc',
-    opc_rate: '#site_opc_rate',
+    serverUrl: '#site_url',
+    refreshRate: '#site_refresh_rate',
     isActive: {
       selector: 'i#site_active',
       elAttribute: 'class',
