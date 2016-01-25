@@ -26,7 +26,7 @@ class DashboardModalView extends Marionette.ItemView
       App.layout.modal_region.empty()
     @ui.title.change ()=>
       @model.set('title', @ui.title.val())
-      App.vent.trigger 'user:update'
+      App.save_user()
       App.vent.trigger 'dashboard:update', @model
     @ui.save.click (e)=>
       e.preventDefault()
@@ -34,7 +34,7 @@ class DashboardModalView extends Marionette.ItemView
       return false if t == ''
       if @action == 'add'
         @dashboards.add @model, {at:0}
-        App.vent.trigger 'user:update'
+        App.save_user()
         App.router.navigate("dashboard/#{@model.id}", {trigger:true})
 
 # ----------------------------------

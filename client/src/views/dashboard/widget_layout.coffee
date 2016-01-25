@@ -64,7 +64,7 @@ class WidgetLayout extends Marionette.LayoutView
           s.layout = layout
           wm.set("settings", s)
           #App.log s
-    App.vent.trigger("user:update")
+    App.save_user()
  
   # initialize gridster with default settings
   set_gridster: ()->

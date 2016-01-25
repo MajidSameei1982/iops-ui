@@ -8,12 +8,12 @@ class Site extends BaseModel
 	service: 'accounts'
 	urlRoot: '/sites'
 	defaults:
-    name:				null
-    isActive:		true
-    shortName:	null
-    abbrev:			null
-    opc:        null
-    opc_rate: 5
+    name:         null
+    isActive:     true
+    shortName:    null
+    abbrev:       null
+    url:          null
+    refreshRate:  5
 
   persist: ()=>
     @attributes["claims"] = @claims.toJSON()

@@ -9,4 +9,5 @@ class DashboardCollection extends BaseCollection
 
 # ----------------------------------
 
+window.DashboardCollection = DashboardCollection
 module.exports = DashboardCollection

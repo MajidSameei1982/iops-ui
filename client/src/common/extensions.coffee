@@ -11,9 +11,16 @@ Backbone.Marionette.Renderer.render = (template, data) ->
 # extend base View
 _.extend Marionette.View::,
 	# allows for methods within the template rendering engine
-  templateHelpers: ->  
+  templateHelpers: ->
 
-  	formGroup: ({id, type, label, placeholder, cls, feedback, value})->
+    fullName: ()->
+      fn = @['firstName']
+      ln = @['lastName']
+      fn = if fn? then fn else ''
+      fn = if ln? then "#{fn} #{ln}" else fn
+      fn
+
+    formGroup: ({id, type, label, placeholder, cls, feedback, value})->
       type ?= 'text'
       label ?= ''
       placeholder ?= ''

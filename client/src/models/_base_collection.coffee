@@ -9,7 +9,7 @@ class BaseCollection extends Backbone.Collection
   	if @local? and @local == true
   		url = ''
   	else
-	  	url = if @service? then "#{AppConfig.api_baseurl}".replace('{service}', "#{@service}.") else "#{AppConfig.api_baseurl}"
+	  	url = if @service? then "#{AppConfig.api_baseurl}".replace('{service}', "#{@service}") else "#{AppConfig.api_baseurl}"
 	  	if @url? then @url = "#{url}#{@url}" else url
   	@
 

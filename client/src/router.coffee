@@ -10,7 +10,8 @@ class Router extends Marionette.AppRouter
     'profile'         : 'profile'
     'mgaccounts'      : 'mgaccounts'
     'mgpermissions'   : 'mgpermissions'
-    'dashboard/:id'	  : 'dashboard'
+    'dashboard/:id'   : 'dashboard'
+    'dashboard'       : 'dashboard'
     'flush'           : 'flush'
     'reports'         : 'reports'
 
@@ -21,7 +22,7 @@ class Router extends Marionette.AppRouter
     App.check_session()
     
     # check for session on all others
-    if !App.session || !App.session.get('email')? || !App.current_user?
+    if !App.session? || !App.session.get('email')?
       App.router.navigate('login', {trigger:true})
       return false
     true

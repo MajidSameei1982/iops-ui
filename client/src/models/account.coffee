@@ -16,9 +16,10 @@ class Account extends BaseModel
           
 	constructor: (data, opts) ->
 		super(data, opts)
-		@sites = new SiteCollection(@get('sites'))
+		@sites = new SiteCollection(@get('sites'), {account:@id})
 		@sites.on "update", @persist
 		@sites.on "change", @persist
+
 
 # ----------------------------------
 

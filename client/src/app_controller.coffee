@@ -21,11 +21,11 @@ class AppController extends Object
   set_main_layout: ()->
     cv = App.layout.center_region.currentView
     return cv if cv? and cv instanceof DashboardLayout
-    if !App.current_user?
+    if !App.session?
       @logout() # fource logout in case we fall into here
       return null
     dl = new DashboardLayout
-      collection: App.current_user.dashboards
+      collection: App.session.dashboards
     App.layout.center_region.show(dl)
     dl
 
@@ -56,8 +56,6 @@ class AppController extends Object
   logout: ()->
     App.log('route:logout')
     if App.session? then App.session.clear()
-    App.current_user = null
-    App.session = null
     App.router.navigate('login', {trigger:true})
     @
 
@@ -69,7 +67,7 @@ class AppController extends Object
       subtitle: "Edit your user account profile below"
       icon: "user"
       view: new ProfileView
-        model : App.current_user
+        model : App.session
     App.vent.trigger "show:dashboard"
     @
 
@@ -98,21 +96,15 @@ class AppController extends Object
 
   dashboard: (id)->
     App.log('route:dashboard')
-    return null if !id?
-    id = parseInt(id)
+    id = if id? then parseInt(id) else null
     dl = @set_main_layout()
-    first = null
-    if dl.collection? && dl.collection.models? && dl.collection.models.length > 0
-      first = dl.collection.models[0]
-    dash = null
-    for d in dl.collection.models
-      if d.id == id
-        dash = d
-        break
-    if !dash? 
-      dash = first
-    did = if dash? then dash.id else null 
-    App.router.navigate("dashboard/#{did}", {trigger:false})
+    if dl.collection? && id?
+      first = dl.collection.first()
+      dash = dl.collection.where({id:id})
+      dash = if dash.length > 0 then dash[0] else null
+    dash = if !dash? then first else dash
+    did = if dash? then dash.id else null
+    App.router.navigate("dashboard#{if did? then '/'+did else ''}", {trigger:false})
     if dash? 
       dl.show_widgets(dash)
     else

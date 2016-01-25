@@ -62,9 +62,7 @@ class DashboardSideView extends Marionette.ItemView
 
   show_add: (e)->
     if e? then e.preventDefault()
-    d = new Dashboard
-      id: Math.floor(Math.random() * 10000)+1
-      title: ''
+    d = new Dashboard()
     @show_dash_modal(d, 'add')
 
   resolve_dash: (e, pre)->
@@ -79,13 +77,13 @@ class DashboardSideView extends Marionette.ItemView
     d = @resolve_dash(e, 'moveup')
     if d? then @collection.moveup(d)
     @update_dash_links()
-    App.vent.trigger 'user:update'
+    App.save_user()
 
   movedn_link: (e)->
     d = @resolve_dash(e, 'movedn')
     if d? then @collection.movedn(d)
     @update_dash_links()
-    App.vent.trigger 'user:update'
+    App.save_user()
 
   edit_link: (e)->
     d = @resolve_dash(e, 'edit')
@@ -104,7 +102,7 @@ class DashboardSideView extends Marionette.ItemView
       on_save: ()=>
         did = d.id
         @collection.remove(d)
-        App.vent.trigger 'user:update'
+        App.save_user()
         if did == App.current_dash then App.router.navigate('', {trigger:true})
 
   onShow: ()->
@@ -115,8 +113,8 @@ class DashboardSideView extends Marionette.ItemView
     App.vent.on "dashboard:update", @onDomRefresh
 
   onDomRefresh: ()=>
-    if App.current_user? && App.current_user.get('avatar')? 
-      @ui.avatar.attr('src', App.current_user.get('avatar'))
+    if App.session? && App.session.get('avatar')? 
+      @ui.avatar.attr('src', App.session.get('avatar'))
 
     $('li.dashboard-link', @ui.dashboard_list).remove()
     for d, idx in @collection.models

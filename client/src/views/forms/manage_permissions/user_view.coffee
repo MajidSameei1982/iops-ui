@@ -14,16 +14,16 @@ class UserView extends Marionette.ItemView
     'click #user_buttons>#save'    : 'save'
 
   bindings:
-    firstname: '#firstname'
-    lastname: '#lastname'
+    firstName: '#firstname'
+    lastName: '#lastname'
     email: '#email'
     phone1: '#phone1'
     phone2: '#phone2'
     roles_global: '#roles_global'
 
   ui:
-    firstname: 'input#firstname'
-    lastname: 'input#lastname'
+    firstName: 'input#firstname'
+    lastName: 'input#lastname'
     email: 'input#email'
     pw: 'input#password'
     pwc: 'input#password_confirmation'
@@ -74,11 +74,11 @@ class UserView extends Marionette.ItemView
     if !@valid_email(@model.get('email'))
       @ui.email.closest('.form-group').addClass('has-error')
       res = res && false
-    if !@model.get('lastname')? || @model.get('lastname').trim() == ''
-      @ui.lastname.closest('.form-group').addClass('has-error')
+    if !@model.get('lastName')? || @model.get('lastName').trim() == ''
+      @ui.lastName.closest('.form-group').addClass('has-error')
       res = res && false
-    if !@model.get('firstname')? || @model.get('firstname').trim() == ''
-      @ui.firstname.closest('.form-group').addClass('has-error')
+    if !@model.get('firstName')? || @model.get('firstName').trim() == ''
+      @ui.firstName.closest('.form-group').addClass('has-error')
       res = res && false
     pw = @ui.pw.val().trim()
     pwc = @ui.pwc.val().trim()

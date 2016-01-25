@@ -10,4 +10,5 @@ class AccountCollection extends BaseCollection
 
 # ----------------------------------
 
+window.AccountCollection = AccountCollection
 module.exports = AccountCollection

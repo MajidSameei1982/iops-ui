@@ -260,11 +260,11 @@ window.JST["dashboard/header"] = function(__obj) {
     (function() {
       _print(_safe('<!-- Logo -->\n<a href="/" class="logo">\n  <span class="logo-mini"><img src=\'img/logos/logo_square.png\'/></span>\n  <span class="logo-lg"><img src=\'img/logos/logo_wide.png\'/></span>\n</a>\n\n<!-- Header Navbar -->\n<nav class="navbar navbar-static-top" role="navigation">\n  <!-- Sidebar toggle button-->\n  <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">\n    <span class="sr-only">Toggle navigation</span>\n  </a>\n  <!-- Navbar Right Menu -->\n  <div class="navbar-custom-menu">\n    <ul class="nav navbar-nav">\n      <li class=\'user user-menu\'>\n        <div style=\'padding:15px\' id=\'clock\'>--, --- ---, ---- 00:00</div>\n      </li>\n      <!-- User Account Menu -->\n      <li class="dropdown user user-menu">\n        <!-- Menu Toggle Button -->\n        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n          <!-- The user image in the navbar-->\n          <img src="img/avatar.png" class="user-image" id=\'avatar\'/>\n          <!-- hidden-xs hides the username on small devices so only the image appears. -->\n          <span class="hidden-xs" id=\'fullname\'>'));
     
-      _print(this.fullname);
+      _print(this.fullName());
     
-      _print(_safe('</span>\n        </a>\n        <ul class="dropdown-menu">\n          <!-- The user image in the menu -->\n          <li class="user-header">\n            <img src="img/avatar.png" class="img-circle" id=\'avatar_full\' />\n            <p>\n              <span id=\'fullname_full\'>'));
+      _print(_safe('</span>\n        </a>\n        <ul class="dropdown-menu">\n          <!-- The user image in the menu -->\n          <li class="user-header">\n            <img src="img/avatar.png" class="img-circle" id=\'avatar_full\' />\n            <p>\n              <span id=\'fullName_full\'>'));
     
-      _print(this.fullname);
+      _print(this.fullName());
     
       _print(_safe('</span> <small id=\'email_full\'>'));
     
@@ -1908,7 +1908,7 @@ window.JST["widgets/weather_widget"] = function(__obj) {
 };
 
 ;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var AccountCollection, AdminLTE_lib, AppConfig, AppController, AppLayout, BaselineApp, ClaimCollection, Extensions, Marionette, OPCManager, RoleCollection, Router, Session, UIUtils, UserCollection;
+var AccountCollection, AdminLTE_lib, AppConfig, AppController, AppLayout, BaselineApp, ClaimCollection, Extensions, Marionette, OPCManager, RoleCollection, Router, Session, SiteCollection, UIUtils, UserCollection;
 
 Marionette = require('marionette');
 
@@ -1931,6 +1931,8 @@ UIUtils = require('./common/uiutils');
 OPCManager = require('./opcmanager');
 
 AccountCollection = require('./models/account_collection');
+
+SiteCollection = require('./models/site_collection');
 
 ClaimCollection = require('./models/claim_collection');
 
@@ -1959,8 +1961,8 @@ window.App = (function() {
   App.AdminLTE_lib = AdminLTE_lib;
   Object.defineProperty(App, 'current_user', {
     get: function() {
-      if ((App.session != null) && (App.session.user != null)) {
-        return App.session.user;
+      if (App.session != null) {
+        return App.session;
       } else {
         return null;
       }
@@ -1970,6 +1972,7 @@ window.App = (function() {
   App.on("before:start", function(options) {
     var dtfn;
     this.log('Starting');
+    $('#loading_cover').fadeTo(0, 0.8);
     Session.restore();
     this.layout = new AppLayout();
     this.uiutils = UIUtils;
@@ -1977,31 +1980,36 @@ window.App = (function() {
     /* 
       TODO: load from server - all known Accounts, claims, Roles
      */
-    App.accounts = new AccountCollection(App.store.get('accounts'));
-    if ((App.accounts == null) || App.accounts.models.length === 0) {
-      App.accounts = new AccountCollection([
-        {
-          id: 1,
-          name: "Example Corporation, International",
-          isActive: true,
-          sites: [
-            {
-              id: 1,
-              name: "The Eastern Iowa Airport",
-              abbrev: "CID",
-              shortName: "Cedar Rapids",
-              opc: 'http://opc.iopsnow.com:58725'
-            }, {
-              id: 2,
-              name: 'Open Automation Systems',
-              abbrev: "OAS",
-              shortName: "OPCSystems.NET",
-              opc: 'http://www.opcsystems.com:58725'
-            }
-          ]
-        }
-      ]);
-    }
+    App.accounts = new AccountCollection();
+    this.log('Fetching account data...');
+    App.accounts.fetch({
+      success: (function(_this) {
+        return function(data) {
+          var acct, acctcnt, i, len, ref, results;
+          acctcnt = App.accounts.length;
+          ref = App.accounts.models;
+          results = [];
+          for (i = 0, len = ref.length; i < len; i++) {
+            acct = ref[i];
+            results.push(acct.sites.fetch({
+              success: function() {
+                acctcnt = acctcnt - 1;
+                if (acctcnt === 0) {
+                  return App.vent.trigger('app:resources_loaded');
+                }
+              }
+            }));
+          }
+          return results;
+        };
+      })(this),
+      error: (function(_this) {
+        return function() {
+          _this.log('ERROR LOADING ACCOUNTS');
+          return App.vent.trigger('app:resources_loaded');
+        };
+      })(this)
+    });
     App.claims = new ClaimCollection(App.store.get('claims'));
     App.roles = new RoleCollection(App.store.get('roles'));
     App.users = new UserCollection(App.store.get('users'));
@@ -2012,9 +2020,13 @@ window.App = (function() {
     this.log('Initializing OPCManager');
     App.opc = OPCManager;
     App.opc.init(App);
+    App.vent.on("app:resources_loaded", function() {
+      return $('#loading_cover').fadeOut(100, function() {
+        return $(this).hide();
+      });
+    });
     App.vent.on("user:update", function() {
-      App.store.set("user_ts", new Date());
-      return App.store.set("user", App.current_user);
+      return Session.save_session();
     });
     App.vent.on("app:update", function() {
       var aacc, acc, accounts, i, idx, j, len, len1, nuc, ref, u;
@@ -2049,7 +2061,7 @@ window.App = (function() {
     App.check_session = function() {
       var sto, timeout, ts, tsn;
       sto = App.config.session_timeout;
-      if ((App.current_user == null) || (sto == null) || sto <= 0) {
+      if ((App.session == null) || (sto == null) || sto <= 0) {
         return true;
       }
       timeout = false;
@@ -2081,9 +2093,14 @@ window.App = (function() {
     }
     return this.log('Done starting and running!');
   });
+  App.save_user = function() {
+    return App.vent.trigger("user:update");
+  };
   App.flush = function() {
     App.store.remove("user");
+    App.store.remove("user_ts");
     App.store.remove("session");
+    App.session = null;
     App.store.remove("claims");
     App.store.remove("roles");
     App.store.remove("users");
@@ -2094,7 +2111,7 @@ window.App = (function() {
   return App;
 })();
 
-},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27,"./views/widgets/alarm_widget_view":54,"./views/widgets/pbb_widget_view":55,"./views/widgets/pca_widget_view":56,"./views/widgets/url_widget_view":57,"./views/widgets/weather_widget_view":58}],2:[function(require,module,exports){
+},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/site_collection":20,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27,"./views/widgets/alarm_widget_view":54,"./views/widgets/pbb_widget_view":55,"./views/widgets/pca_widget_view":56,"./views/widgets/url_widget_view":57,"./views/widgets/weather_widget_view":58}],2:[function(require,module,exports){
 var AccountsView, AppController, Dashboard, DashboardCollection, DashboardContentView, DashboardLayout, LoginView, Marionette, PermissionsLayout, ProfileView, ReportsView, User, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2136,12 +2153,12 @@ AppController = (function(superClass) {
     if ((cv != null) && cv instanceof DashboardLayout) {
       return cv;
     }
-    if (App.current_user == null) {
+    if (App.session == null) {
       this.logout();
       return null;
     }
     dl = new DashboardLayout({
-      collection: App.current_user.dashboards
+      collection: App.session.dashboards
     });
     App.layout.center_region.show(dl);
     return dl;
@@ -2184,8 +2201,6 @@ AppController = (function(superClass) {
     if (App.session != null) {
       App.session.clear();
     }
-    App.current_user = null;
-    App.session = null;
     App.router.navigate('login', {
       trigger: true
     });
@@ -2201,7 +2216,7 @@ AppController = (function(superClass) {
       subtitle: "Edit your user account profile below",
       icon: "user",
       view: new ProfileView({
-        model: App.current_user
+        model: App.session
       })
     });
     App.vent.trigger("show:dashboard");
@@ -2239,31 +2254,20 @@ AppController = (function(superClass) {
   };
 
   AppController.prototype.dashboard = function(id) {
-    var d, dash, did, dl, first, i, len, ref;
+    var dash, did, dl, first;
     App.log('route:dashboard');
-    if (id == null) {
-      return null;
-    }
-    id = parseInt(id);
+    id = id != null ? parseInt(id) : null;
     dl = this.set_main_layout();
-    first = null;
-    if ((dl.collection != null) && (dl.collection.models != null) && dl.collection.models.length > 0) {
-      first = dl.collection.models[0];
+    if ((dl.collection != null) && (id != null)) {
+      first = dl.collection.first();
+      dash = dl.collection.where({
+        id: id
+      });
+      dash = dash.length > 0 ? dash[0] : null;
     }
-    dash = null;
-    ref = dl.collection.models;
-    for (i = 0, len = ref.length; i < len; i++) {
-      d = ref[i];
-      if (d.id === id) {
-        dash = d;
-        break;
-      }
-    }
-    if (dash == null) {
-      dash = first;
-    }
+    dash = dash == null ? first : dash;
     did = dash != null ? dash.id : null;
-    App.router.navigate("dashboard/" + did, {
+    App.router.navigate("dashboard" + (did != null ? '/' + did : ''), {
       trigger: false
     });
     if (dash != null) {
@@ -2828,6 +2832,14 @@ Backbone.Marionette.Renderer.render = function(template, data) {
 _.extend(Marionette.View.prototype, {
   templateHelpers: function() {
     return {
+      fullName: function() {
+        var fn, ln;
+        fn = this['firstName'];
+        ln = this['lastName'];
+        fn = fn != null ? fn : '';
+        fn = ln != null ? fn + " " + ln : fn;
+        return fn;
+      },
       formGroup: function(arg) {
         var cls, feedback, field, id, label, placeholder, type, value;
         id = arg.id, type = arg.type, label = arg.label, placeholder = arg.placeholder, cls = arg.cls, feedback = arg.feedback, value = arg.value;
@@ -3145,13 +3157,34 @@ Backbone = require('backbone');
 BaseModel = (function(superClass) {
   extend(BaseModel, superClass);
 
+  BaseModel.prototype.idAttribute = '_id';
+
+  BaseModel.prototype.save = function(attrs, options) {
+    var i, k, len, ref;
+    attrs || (attrs = _.extend(this.attributes));
+    options || (options = {});
+    if (options.blacklist != null) {
+      ref = options.blacklist;
+      for (i = 0, len = ref.length; i < len; i++) {
+        k = ref[i];
+        delete attrs[k];
+      }
+      delete options.blacklist;
+    }
+    delete attrs.createdAt;
+    delete attrs.updatedAt;
+    options.data = JSON.stringify(attrs);
+    options.contentType = "application/json";
+    return BaseModel.__super__.save.call(this, attrs, options);
+  };
+
   function BaseModel(opts) {
     var url;
     BaseModel.__super__.constructor.apply(this, arguments);
     if ((this.local != null) && this.local === true) {
       url = '';
     } else {
-      url = this.service != null ? ("" + AppConfig.api_baseurl).replace('{service}', this.service + ".") : "" + AppConfig.api_baseurl;
+      url = this.service != null ? ("" + AppConfig.api_baseurl).replace('{service}', "" + this.service) : "" + AppConfig.api_baseurl;
       if (this.urlRoot != null) {
         this.urlRoot = "" + url + this.urlRoot;
       } else {
@@ -3185,7 +3218,7 @@ BaseCollection = (function(superClass) {
     if ((this.local != null) && this.local === true) {
       url = '';
     } else {
-      url = this.service != null ? ("" + AppConfig.api_baseurl).replace('{service}', this.service + ".") : "" + AppConfig.api_baseurl;
+      url = this.service != null ? ("" + AppConfig.api_baseurl).replace('{service}', "" + this.service) : "" + AppConfig.api_baseurl;
       if (this.url != null) {
         this.url = "" + url + this.url;
       } else {
@@ -3257,7 +3290,9 @@ Account = (function(superClass) {
   function Account(data, opts) {
     this.persist = bind(this.persist, this);
     Account.__super__.constructor.call(this, data, opts);
-    this.sites = new SiteCollection(this.get('sites'));
+    this.sites = new SiteCollection(this.get('sites'), {
+      account: this.id
+    });
     this.sites.on("update", this.persist);
     this.sites.on("change", this.persist);
   }
@@ -3293,6 +3328,8 @@ AccountCollection = (function(superClass) {
   return AccountCollection;
 
 })(BaseCollection);
+
+window.AccountCollection = AccountCollection;
 
 module.exports = AccountCollection;
 
@@ -3368,10 +3405,14 @@ Dashboard = (function(superClass) {
   Dashboard.prototype.local = true;
 
   Dashboard.prototype.defaults = {
-    widgets: []
+    widgets: [],
+    title: ''
   };
 
   function Dashboard(config) {
+    if (config != null) {
+      config._id = config._id != null ? config._id : Math.floor(Math.random() * 10000) + 1;
+    }
     Dashboard.__super__.constructor.call(this, config);
     this.widgets = new WidgetCollection(this.get('widgets'));
     this.widgets.on("update", (function(_this) {
@@ -3388,7 +3429,7 @@ Dashboard = (function(superClass) {
 
   Dashboard.prototype.set_widgets = function() {
     this.set("widgets", this.widgets.toJSON());
-    return App.vent.trigger("user:update");
+    return App.save_user();
   };
 
   return Dashboard;
@@ -3420,6 +3461,8 @@ DashboardCollection = (function(superClass) {
   return DashboardCollection;
 
 })(BaseCollection);
+
+window.DashboardCollection = DashboardCollection;
 
 module.exports = DashboardCollection;
 
@@ -3504,14 +3547,13 @@ User = require('./user');
 Session = (function(superClass) {
   extend(Session, superClass);
 
+  function Session() {
+    return Session.__super__.constructor.apply(this, arguments);
+  }
+
   Session.prototype.service = 'accounts';
 
-  Session.prototype.urlRoot = '/sessions';
-
-  function Session(config) {
-    Session.__super__.constructor.call(this, config);
-    this.user = new User(this.get('user'));
-  }
+  Session.prototype.urlRoot = '/login';
 
   Session.prototype.initialize = function() {
     this.on("change", this.persist);
@@ -3524,93 +3566,118 @@ Session = (function(superClass) {
     return this;
   };
 
+  Session.save_session = function() {
+    App.store.set("user_ts", new Date());
+    App.store.set("session", App.session);
+    return App.session.save();
+  };
+
   Session.clear = function() {
     if (App.session != null) {
       App.session.off("change");
     }
-    Session.set_token();
-    App.store.remove('session');
-    App.store.remove('user_ts');
-    App.store.remove('user');
-    App.session = null;
+    Session.set_session();
     return null;
   };
 
-  Session.get_dummy_user = function() {
-    var user;
-    user = App.store.get('user');
-    if (user == null) {
-      user = {
-        id: 1,
-        firstname: 'John',
-        lastname: 'Talarico',
-        fullname: 'John Talarico',
-        email: 'john@opcsystems.com',
-        avatar: null,
-        dashboards: []
-      };
-      App.store.set('user', user);
-    }
-    return user;
-  };
-
   Session.auth = function(arg) {
-    var email, error, password, success;
+    var e, email, error, oe, os, password, s, success;
     email = arg.email, password = arg.password, success = arg.success, error = arg.error;
     Session.clear();
-    if ((email == null) || email.trim() === '' || (password == null) || password.trim() === '') {
-      if (error != null) {
-        return error();
-      }
-    } else {
-      App.session = new Session({
-        email: email,
-        password: password,
-        token: 'foo',
-        user: this.get_dummy_user()
-      });
-      Session.set_token(App.session);
-      App.session.attributes['password'] = null;
-      if (success != null) {
-        return success();
-      }
+    App.session = new Session({
+      email: email,
+      password: password
+    });
+    s = (function(_this) {
+      return function(data, status, xhr) {
+        return Session.set_session(App.session);
+      };
+    })(this);
+    e = (function(_this) {
+      return function(xhr, status, error) {
+        return Session.clear();
+      };
+    })(this);
+    if (success != null) {
+      os = success;
+      s = (function(_this) {
+        return function(data, status, xhr) {
+          Session.set_session(App.session);
+          return os(data, status, xhr);
+        };
+      })(this);
     }
+    if (error != null) {
+      oe = error;
+      e = (function(_this) {
+        return function(xhr, status, error) {
+          Session.clear();
+          return oe(xhr, status, error);
+        };
+      })(this);
+    }
+    return App.session.save(null, {
+      success: s,
+      error: e,
+      timeout: 3000
+    });
   };
 
-  Session.set_token = function(session) {
-    var tk;
+  Session.set_header_token = function(token) {
+    $.ajaxSetup({
+      headers: {
+        'Authorization': "Bearer " + token
+      }
+    });
+    App.store.set("token", token);
+    return token;
+  };
+
+  Session.set_session = function(session) {
+    var ctk, tk, user;
     if (session != null) {
       tk = session.get("token");
-      $.ajaxSetup({
-        headers: {
-          'token': tk
-        }
-      });
+      this.set_header_token(tk);
+      tk = tk.split('.')[1];
+      ctk = CryptoJS.enc.Base64.parse(tk);
+      user = ctk.toString(CryptoJS.enc.Utf8);
+      user = JSON.parse(user);
+      delete user.createdAt;
+      delete user.updatedAt;
+      delete user.passwordHash;
+      delete user.iss;
+      delete user.iat;
+      delete user.exp;
+      user.dashboards = [];
+      delete App.session.attributes["password"];
+      App.session = new User(user);
+      App.save_user();
     } else {
       if ($.ajaxSettings.headers != null) {
-        delete $.ajaxSettings.headers["token"];
+        delete $.ajaxSettings.headers["Authorization"];
       }
+      App.store.remove('session');
+      App.store.remove('token');
+      App.store.remove('user_ts');
+      App.session = null;
     }
-    return session;
+    return App.session;
   };
 
   Session.restore = function() {
-    var s, u;
+    var s, tk;
     s = App.store.get('session');
-    u = Session.get_dummy_user();
+    tk = App.store.get('token');
     if (s != null) {
-      s.user = u;
-      this.create(s);
+      if (App.session != null) {
+        App.session.clear();
+      }
+      App.session = new User(s);
+    }
+    if (tk != null) {
+      this.set_header_token(tk);
     }
     return true;
-  };
-
-  Session.create = function(config) {
-    if (App.session != null) {
-      App.session.clear();
-    }
-    App.session = new Session(config);
-    return App.session;
   };
 
   return Session;
@@ -3643,8 +3710,8 @@ Site = (function(superClass) {
     isActive: true,
     shortName: null,
     abbrev: null,
-    opc: null,
-    opc_rate: 5
+    url: null,
+    refreshRate: 5
   };
 
   Site.prototype.persist = function() {
@@ -3681,15 +3748,20 @@ Site = require('./site');
 SiteCollection = (function(superClass) {
   extend(SiteCollection, superClass);
 
-  function SiteCollection() {
-    return SiteCollection.__super__.constructor.apply(this, arguments);
-  }
-
   SiteCollection.prototype.service = 'accounts';
 
-  SiteCollection.prototype.url = '/sites';
+  SiteCollection.prototype.url = '/accounts/{acct}/sites';
 
   SiteCollection.prototype.model = Site;
+
+  function SiteCollection(config, opts) {
+    if ((opts != null) && opts.account) {
+      this.url = this.url.replace('{acct}', opts.account);
+    } else {
+      this.url = '/sites';
+    }
+    SiteCollection.__super__.constructor.call(this, config);
+  }
 
   return SiteCollection;
 
@@ -3712,16 +3784,20 @@ User = (function(superClass) {
 
   User.prototype.service = 'accounts';
 
-  User.prototype.urlRoot = '/user';
+  User.prototype.urlRoot = '/users';
 
   User.prototype.defaults = {
     email: null,
-    firstname: null,
-    lastname: null,
-    phone1: null,
-    phone2: null,
-    roles_global: [],
+    firstName: null,
+    lastName: null,
+    settings: {},
     dashboards: []
+  };
+
+  User.prototype.save = function(attrs, options) {
+    options || (options = {});
+    options.blacklist = ["isActive", "dashboards"];
+    return User.__super__.save.call(this, attrs, options);
   };
 
   User.prototype.persist = function() {
@@ -4040,6 +4116,7 @@ Router = (function(superClass) {
     'mgaccounts': 'mgaccounts',
     'mgpermissions': 'mgpermissions',
     'dashboard/:id': 'dashboard',
+    'dashboard': 'dashboard',
     'flush': 'flush',
     'reports': 'reports'
   };
@@ -4049,7 +4126,7 @@ Router = (function(superClass) {
       return true;
     }
     App.check_session();
-    if (!App.session || (App.session.get('email') == null) || (App.current_user == null)) {
+    if ((App.session == null) || (App.session.get('email') == null)) {
       App.router.navigate('login', {
         trigger: true
       });
@@ -4301,11 +4378,11 @@ DashboardLayout = (function(superClass) {
 
   DashboardLayout.prototype.onShow = function() {
     this.headerview = new DashboardHeaderView({
-      model: App.current_user
+      model: App.session
     });
     this.header.show(this.headerview);
     this.sideview = new DashboardSideView({
-      collection: App.current_user.dashboards
+      collection: App.session.dashboards
     });
     this.side.show(this.sideview);
     this.toolview = new DashboardToolView();
@@ -4373,7 +4450,7 @@ DashboardModalView = (function(superClass) {
     this.ui.title.change((function(_this) {
       return function() {
         _this.model.set('title', _this.ui.title.val());
-        App.vent.trigger('user:update');
+        App.save_user();
         return App.vent.trigger('dashboard:update', _this.model);
       };
     })(this));
@@ -4389,7 +4466,7 @@ DashboardModalView = (function(superClass) {
           _this.dashboards.add(_this.model, {
             at: 0
           });
-          App.vent.trigger('user:update');
+          App.save_user();
           return App.router.navigate("dashboard/" + _this.model.id, {
             trigger: true
           });
@@ -4455,9 +4532,9 @@ DashboardHeaderView = (function(superClass) {
 
   DashboardHeaderView.prototype.ui = {
     avatar: '#avatar',
-    fullname: '#fullname',
+    fullName: '#fullname',
     avatar_full: '#avatar_full',
-    fullname_full: '#fullname_full',
+    fullName_full: '#fullname_full',
     email_full: '#email_full',
     profile: 'a#profile',
     logout: 'a#logout',
@@ -4489,9 +4566,9 @@ DashboardHeaderView = (function(superClass) {
   };
 
   DashboardHeaderView.prototype.onDomRefresh = function() {
-    if ((App.current_user != null) && (App.current_user.get('avatar') != null)) {
-      this.ui.avatar.attr('src', App.current_user.get('avatar'));
-      this.ui.avatar_full.attr('src', App.current_user.get('avatar'));
+    if (this.model.get('avatar') != null) {
+      this.ui.avatar.attr('src', this.model.get('avatar'));
+      this.ui.avatar_full.attr('src', this.model.get('avatar'));
     }
     App.vent.on('app:clock', this.set_clock);
     return this.set_clock(new Date());
@@ -4614,10 +4691,7 @@ DashboardSideView = (function(superClass) {
     if (e != null) {
       e.preventDefault();
     }
-    d = new Dashboard({
-      id: Math.floor(Math.random() * 10000) + 1,
-      title: ''
-    });
+    d = new Dashboard();
     return this.show_dash_modal(d, 'add');
   };
 
@@ -4644,7 +4718,7 @@ DashboardSideView = (function(superClass) {
       this.collection.moveup(d);
     }
     this.update_dash_links();
-    return App.vent.trigger('user:update');
+    return App.save_user();
   };
 
   DashboardSideView.prototype.movedn_link = function(e) {
@@ -4654,7 +4728,7 @@ DashboardSideView = (function(superClass) {
       this.collection.movedn(d);
     }
     this.update_dash_links();
-    return App.vent.trigger('user:update');
+    return App.save_user();
   };
 
   DashboardSideView.prototype.edit_link = function(e) {
@@ -4684,7 +4758,7 @@ DashboardSideView = (function(superClass) {
           var did;
           did = d.id;
           _this.collection.remove(d);
-          App.vent.trigger('user:update');
+          App.save_user();
           if (did === App.current_dash) {
             return App.router.navigate('', {
               trigger: true
@@ -4708,8 +4782,8 @@ DashboardSideView = (function(superClass) {
 
   DashboardSideView.prototype.onDomRefresh = function() {
     var d, dl, hh, i, idx, len, ref, results;
-    if ((App.current_user != null) && (App.current_user.get('avatar') != null)) {
-      this.ui.avatar.attr('src', App.current_user.get('avatar'));
+    if ((App.session != null) && (App.session.get('avatar') != null)) {
+      this.ui.avatar.attr('src', App.session.get('avatar'));
     }
     $('li.dashboard-link', this.ui.dashboard_list).remove();
     ref = this.collection.models;
@@ -4899,7 +4973,7 @@ WidgetLayout = (function(superClass) {
         }
       });
     }
-    return App.vent.trigger("user:update");
+    return App.save_user();
   };
 
   WidgetLayout.prototype.set_gridster = function() {
@@ -5230,11 +5304,14 @@ AccountView = (function(superClass) {
     if ((name == null) || name.trim() === '') {
       return;
     }
-    if (this.model.id == null) {
-      this.model.set('id', Math.floor(Math.random() * 10000) + 1);
-    }
-    App.vent.trigger("app:update");
-    return this.render();
+    return this.model.save(null, {
+      blacklist: ["users", "sites"],
+      success: (function(_this) {
+        return function(data) {
+          return _this.render();
+        };
+      })(this)
+    });
   };
 
   AccountView.prototype.onRender = function() {
@@ -5962,8 +6039,8 @@ UserView = (function(superClass) {
   };
 
   UserView.prototype.bindings = {
-    firstname: '#firstname',
-    lastname: '#lastname',
+    firstName: '#firstname',
+    lastName: '#lastname',
     email: '#email',
     phone1: '#phone1',
     phone2: '#phone2',
@@ -5971,8 +6048,8 @@ UserView = (function(superClass) {
   };
 
   UserView.prototype.ui = {
-    firstname: 'input#firstname',
-    lastname: 'input#lastname',
+    firstName: 'input#firstname',
+    lastName: 'input#lastname',
     email: 'input#email',
     pw: 'input#password',
     pwc: 'input#password_confirmation'
@@ -6047,12 +6124,12 @@ UserView = (function(superClass) {
       this.ui.email.closest('.form-group').addClass('has-error');
       res = res && false;
     }
-    if ((this.model.get('lastname') == null) || this.model.get('lastname').trim() === '') {
-      this.ui.lastname.closest('.form-group').addClass('has-error');
+    if ((this.model.get('lastName') == null) || this.model.get('lastName').trim() === '') {
+      this.ui.lastName.closest('.form-group').addClass('has-error');
       res = res && false;
     }
-    if ((this.model.get('firstname') == null) || this.model.get('firstname').trim() === '') {
-      this.ui.firstname.closest('.form-group').addClass('has-error');
+    if ((this.model.get('firstName') == null) || this.model.get('firstName').trim() === '') {
+      this.ui.firstName.closest('.form-group').addClass('has-error');
       res = res && false;
     }
     pw = this.ui.pw.val().trim();

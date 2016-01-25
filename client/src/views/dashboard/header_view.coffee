@@ -8,9 +8,9 @@ class DashboardHeaderView extends Marionette.ItemView
   className: "main-header"
   ui:
   	avatar: '#avatar'
-  	fullname: '#fullname'
+  	fullName: '#fullname'
   	avatar_full: '#avatar_full'
-  	fullname_full: '#fullname_full'
+  	fullName_full: '#fullname_full'
   	email_full: '#email_full'
   	profile: 'a#profile'
   	logout: 'a#logout'
@@ -35,9 +35,9 @@ class DashboardHeaderView extends Marionette.ItemView
     @
 
   onDomRefresh: ()=>
-    if App.current_user? and App.current_user.get('avatar')?
-      @ui.avatar.attr('src', App.current_user.get('avatar'))
-      @ui.avatar_full.attr('src', App.current_user.get('avatar'))
+    if @model.get('avatar')?
+      @ui.avatar.attr('src', @model.get('avatar'))
+      @ui.avatar_full.attr('src', @model.get('avatar'))
     App.vent.on 'app:clock', @set_clock
     @set_clock(new Date())
 

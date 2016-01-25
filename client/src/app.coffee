@@ -9,6 +9,7 @@ AdminLTE_lib = require('./common/adminlte_lib')
 UIUtils = require('./common/uiutils')
 OPCManager = require('./opcmanager')
 AccountCollection = require('./models/account_collection')
+SiteCollection = require('./models/site_collection')
 ClaimCollection = require('./models/claim_collection')
 RoleCollection = require('./models/role_collection')
 UserCollection = require('./models/user_collection')
@@ -29,12 +30,13 @@ window.App = do()->
   
   Object.defineProperty App, 'current_user',
     get: ()->
-      if App.session? and App.session.user? then App.session.user else null
+      if App.session? then App.session else null
 
   App.config = AppConfig
 
   App.on "before:start", (options)->
     @log('Starting')
+    $('#loading_cover').fadeTo(0,0.8)
     Session.restore()
     @layout = new AppLayout()
     @uiutils = UIUtils
@@ -42,26 +44,22 @@ window.App = do()->
     ### 
       TODO: load from server - all known Accounts, claims, Roles
     ###
-    App.accounts = new AccountCollection(App.store.get('accounts'))
-    if !App.accounts? || App.accounts.models.length == 0
-      App.accounts = new AccountCollection [
-        id: 1
-        name : "Example Corporation, International"
-        isActive: true
-        sites: [
-          id: 1
-          name: "The Eastern Iowa Airport"
-          abbrev: "CID"
-          shortName: "Cedar Rapids"
-          opc: 'http://opc.iopsnow.com:58725'
-        ,
-          id: 2
-          name: 'Open Automation Systems'
-          abbrev: "OAS"
-          shortName: "OPCSystems.NET"
-          opc: 'http://www.opcsystems.com:58725'
-        ]
-      ]
+    #App.accounts = new AccountCollection(App.store.get('accounts'))
+    App.accounts = new AccountCollection()
+    @log('Fetching account data...')
+    App.accounts.fetch
+      success:(data)=>
+        acctcnt = App.accounts.length
+        for acct in App.accounts.models
+          acct.sites.fetch
+            success: ()=>
+              acctcnt = acctcnt - 1
+              if acctcnt == 0 then App.vent.trigger('app:resources_loaded')
+      error:()=>
+        @log('ERROR LOADING ACCOUNTS')
+        App.vent.trigger('app:resources_loaded')
+
+
     App.claims = new ClaimCollection(App.store.get('claims'))
     App.roles = new RoleCollection(App.store.get('roles'))
     App.users = new UserCollection(App.store.get('users'))
@@ -74,10 +72,12 @@ window.App = do()->
     App.opc = OPCManager
     App.opc.init(App)
 
+    App.vent.on "app:resources_loaded", ()->
+      $('#loading_cover').fadeOut(100, ()-> $(@).hide())
+
     # REMOVE WHEN API IS CONNECTED - persist objects locally until db is connected
     App.vent.on "user:update", ()->
-      App.store.set("user_ts", new Date())
-      App.store.set("user", App.current_user)
+      Session.save_session()
     App.vent.on "app:update", ()->
       accounts = App.accounts.toJSON()
       for acc, idx in accounts
@@ -102,9 +102,10 @@ window.App = do()->
 
     App.clock = setInterval(dtfn, 5000)
 
+    # check user session timestamp for auto purging sessions
     App.check_session = ()->
       sto = App.config.session_timeout
-      return true if !App.current_user? || !sto? || sto <= 0
+      return true if !App.session? || !sto? || sto <= 0
       timeout = false
       ts = App.store.get('user_ts')
       if !ts? 
@@ -133,10 +134,14 @@ window.App = do()->
     # new up and views and render for base app here...
     @log('Done starting and running!')
 
-
+  App.save_user = ()->
+    App.vent.trigger("user:update")
+    
   App.flush = ()->
     App.store.remove("user")
+    App.store.remove("user_ts")
     App.store.remove("session")
+    App.session = null
     App.store.remove("claims")
     App.store.remove("roles")
     App.store.remove("users")

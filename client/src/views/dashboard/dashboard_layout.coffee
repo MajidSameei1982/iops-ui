@@ -41,11 +41,11 @@ class DashboardLayout extends Marionette.LayoutView
 
   onShow: () ->
     @headerview = new DashboardHeaderView
-      model: App.current_user
+      model: App.session
     @header.show(@headerview)
 
     @sideview = new DashboardSideView
-      collection: App.current_user.dashboards
+      collection: App.session.dashboards
     @side.show(@sideview)
 
     @toolview = new DashboardToolView()

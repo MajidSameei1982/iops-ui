@@ -69,13 +69,14 @@ class AccountView extends Marionette.CompositeView
         App.vent.trigger "app:update"
 
   save: ()->
-    # TODO: FIRE MODEL SAVE
     name = @model.get('name')
     return if !name? || name.trim() == ''
-    if !@model.id? then @model.set('id', Math.floor(Math.random() * 10000)+1)
-    App.vent.trigger "app:update"
-    # TODO:
-    @render()
+    @model.save null,
+      blacklist: ["users", "sites"]
+      success:(data)=>
+        @render()
+      # error: (err)=>
+      #   debugger
  
   onRender: ()->
     @modelBinder.bind(@model, @el, @bindings)
