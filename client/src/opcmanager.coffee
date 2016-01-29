@@ -7,7 +7,7 @@ class OPCManager
 
   @create: (conn, config)->
     c = new OPC(config)
-    c.abbrev = conn
+    c.code = conn
     @connections[conn] = c
     c
 
@@ -31,7 +31,7 @@ class OPCManager
         if acc.sites? && acc.sites.models.length > 0
           for st in acc.sites.models
             if "#{st.id}" == "#{id}"
-              return st.get('abbrev')
+              return st.get('code')
     null
 
   @add_tags: (conn, tags)->
@@ -91,21 +91,21 @@ class OPCManager
   @init: (app)->
     for account in app.accounts.models
       for site in account.sites.models
-        opc_addr = site.get("opc")
-        opc_rate = site.get("opc_rate")
+        siteUrl = site.get("siteUrl")
+        refreshRate = site.get("refreshRate")
         if !opc_rate? then opc_rate = 5
         opc_rate = parseInt(opc_rate) * 1000
-        abbrev = site.get("abbrev")
-        OPCManager.create abbrev,
+        code = site.get("code")
+        OPCManager.create code,
           token:'7e61b230-481d-4551-b24b-ba9046e3d8f2'
           #interval:5000
           max_tags_per_msg: 50
           max_callbacks: 10
           callback_timeout: 10000
           refresh_callback: (data)->
-            OPCManager.notify @.abbrev, data
-          serverURL : opc_addr
-          interval: opc_rate
+            OPCManager.notify @code, data
+          serverURL : siteUrl
+          interval: refreshRate
           auto_start : false
       
 # ----------------------------------

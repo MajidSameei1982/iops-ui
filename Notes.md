@@ -18,3 +18,11 @@ Users
 Top-level roles
 Site-specific roles
   + OPC roles
+
+
+Additions (1/26)
+- Site: bool:Cloud field
+- When Cloud, prefix tags with RemoteSCADAHosting...
+- Site: settings...
+    + Zones: []
+    + Gates: []

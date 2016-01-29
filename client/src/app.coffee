@@ -45,21 +45,8 @@ window.App = do()->
       TODO: load from server - all known Accounts, claims, Roles
     ###
     #App.accounts = new AccountCollection(App.store.get('accounts'))
-    App.resource_count = 0
 
-    App.accounts = new AccountCollection()
-    @log('Fetching account data...')
-    App.accounts.fetch
-      success:(data)=>
-        App.resource_count += App.accounts.length
-        for acct in App.accounts.models
-          acct.sites.fetch
-            success: ()=>
-              App.vent.trigger('app:resources_loaded')
-      error:()=>
-        @log('ERROR LOADING ACCOUNTS')
-        App.vent.trigger('app:resources_loaded')
-
+    App.refresh_accounts()
 
     #App.claims = new ClaimCollection(App.store.get('claims'))
 
@@ -75,28 +62,17 @@ window.App = do()->
     App.opc = OPCManager
     App.opc.init(App)
 
-    App.vent.on "app:resources_loaded", ()->
-      App.resource_count -= 1
-      if App.resource_count <= 0
-        $('#loading_cover').fadeOut(100, ()-> $(@).hide())
-
-    # REMOVE WHEN API IS CONNECTED - persist objects locally until db is connected
+    
     App.vent.on "user:update", ()->
       Session.save_session()
+
     App.vent.on "app:update", ()->
       accounts = App.accounts.toJSON()
       for acc, idx in accounts
         aacc = App.accounts.models[idx]
         acc.sites = aacc.sites.toJSON()
-      App.store.set("accounts", accounts)
-      App.store.set("claims", App.claims)
-      App.store.set("roles", App.roles)
-      nuc = new UserCollection()
-      for u in App.users.models
-        if u.id? && u.id > 0 then nuc.add(u)
-      App.users = nuc
-      App.store.set("users", App.users)
-
+      #App.store.set("accounts", accounts)
+      
     # setup app clock
     @log('Setting system clock')
     dtfn = ()->
@@ -130,26 +106,55 @@ window.App = do()->
   App.on 'start', (options)->
     @log('Started')
     if (Backbone.history) 
-      @controller = new AppController()
-      @router = new Router
-        controller: @controller
-      @log('Backbone.history starting')
-      Backbone.history.start()
+      App.vent.on "app:resources_loaded", ()=>
+        $('#loading_cover').fadeOut(100, ()-> $(@).hide())
+        App.vent.off "app:resources_loaded"
+        @controller = new AppController()
+        @router = new Router
+          controller: @controller
+        @log('Backbone.history starting')
+        Backbone.history.start()
 
     # new up and views and render for base app here...
     @log('Done starting and running!')
+
+  App.refresh_accounts = (cb)->
+    App.accounts = new AccountCollection()    
+    App.accounts.fetch
+      success:((cb) =>
+        (data, xhr)=>
+          cnt = App.accounts.models.length
+          completed = 0
+          for acct in App.accounts.models
+            acct.sites.fetch
+              success:((cb, cnt, completed) =>
+                (data, xhr)=>
+                  completed++
+                  if completed == cnt
+                    App.vent.trigger "app:resources_loaded"
+                    App.vent.trigger "app:update"
+                    if cb? then cb()
+                )(cb, cnt, completed)
+        )(cb)
+
+
+  App.refresh_claims = (cb)->
+    App.refresh_accounts ()->
+      # pull global claims
+      # iterate thru sites and pull claims
+
 
   App.save_user = ()->
     App.vent.trigger("user:update")
     
   App.flush = ()->
-    App.store.remove("user")
     App.store.remove("user_ts")
     App.store.remove("session")
     App.session = null
-    App.store.remove("claims")
-    App.store.remove("roles")
-    App.store.remove("users")
+    App.accounts = null
+    #App.store.remove("claims")
+    #App.store.remove("roles")
+    #App.store.remove("users")
     App.router.navigate('login', {trigger:true})
 
   App

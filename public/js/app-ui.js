@@ -654,7 +654,7 @@ window.JST["forms/manage_accounts/site"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class=\'site_container\'>\n  <i id=\'site_active\' class="fa fa-fw"></i>\n  <span id=\'site_label\'>'));
+      _print(_safe('<div class=\'site_container\'>\n  <div>\n    <span class=\'display\' id=\'site_label\'><b>'));
     
       _print(this.name);
     
@@ -662,39 +662,39 @@ window.JST["forms/manage_accounts/site"] = function(__obj) {
     
       _print((this.code != null) && this.code !== '' ? "(" + this.code + ")" : '');
     
-      _print(_safe('</span>\n  <input type=\'text\' id=\'site_name\' value=\''));
+      _print(_safe('</b></span>\n    <input class=\'edit\' type=\'text\' id=\'site_name\' value=\''));
     
       _print(_safe(this.name));
     
-      _print(_safe('\' size=\'40\' placeholder=\'Site Name\'/>\n  <input type=\'text\' id=\'site_code\' value=\''));
+      _print(_safe('\' size=\'40\' placeholder=\'Site Name\'/>\n    <input class=\'edit\' type=\'text\' id=\'site_code\' value=\''));
     
       _print(_safe(this.acode));
     
-      _print(_safe('\' size=\'5\' placeholder=\'CODE\'/>\n  <span id=\'site_crud\' class=\'crud_container\'>\n    <span class=\'crud\' id=\'edit_site\'><i class="fa fa-pencil-square" title=\'Edit Site\'></i></span>\n    <span class=\'crud\' id=\'delete_site\'><i class="fa fa-times-circle" title=\'Delete Site\'></i></span>\n  </span>\n  <div id=\'site_short_label\'>'));
+      _print(_safe('\' size=\'5\' placeholder=\'CODE\'/>\n    <span id=\'site_crud\' class=\'crud_container display\'>\n      <span class=\'crud\' id=\'edit_site\'><i class="fa fa-pencil-square" title=\'Edit Site\'></i></span>\n      <span class=\'crud\' id=\'delete_site\'><i class="fa fa-times-circle" title=\'Delete Site\'></i></span>\n    </span>\n  </div>\n  <div>\n    <span class=\'label left\'>Active</span>\n    <i id=\'site_active\' class="fa fa-fw"></i> <span id="site_active_label"></span>\n  </div>\n  <div>\n    <span class=\'label left\'>Short Name:</span>\n    <span class=\'display\' id=\'site_short_label\'>'));
     
       _print(this.shortName);
     
-      _print(_safe('</div>\n  <div><input type=\'text\' id=\'site_short\' value=\''));
+      _print(_safe('</span>\n    <input class=\'edit\' type=\'text\' id=\'site_short\' value=\''));
     
       _print(_safe(this.shortName));
     
-      _print(_safe('\' size=\'40\' placeholder=\'Short Name\'/></div>\n  <div id=\'site_url_label\'>'));
+      _print(_safe('\' size=\'40\' placeholder=\'Short Name\'/>\n  </div>\n  <div>\n    <span class=\'label left\'>Service URL:</span>\n    <span class=\'display\' id=\'site_url_label\'>'));
     
       _print(this.serverUrl);
     
-      _print(_safe('</div>\n  <div><input type=\'text\' id=\'site_url\' value=\''));
+      _print(_safe('</span>\n    <input class=\'edit\' type=\'text\' id=\'site_url\' value=\''));
     
       _print(_safe(this.serverUrl));
     
-      _print(_safe('\' size=\'40\' placeholder=\'OPCSystems Server URL\'/></div>\n  <div id=\'site_refresh_rate_label\'><i>Refresh:</i> '));
+      _print(_safe('\' size=\'40\' placeholder=\'OPCSystems Server URL\'/>\n  </div>\n  <div>\n    <span class=\'label left\'>Refresh:</span>\n    <span class=\'display\' id=\'site_refresh_rate_label\'>'));
     
       _print(this.refreshRate);
     
-      _print(_safe(' seconds</div>\n  <div><input type=\'text\' id=\'site_refresh_rate\' value=\''));
+      _print(_safe('</span>\n    <input class=\'edit\' type=\'text\' id=\'site_refresh_rate\' value=\''));
     
       _print(_safe(this.refreshRate));
     
-      _print(_safe('\' size=\'40\' placeholder=\'OPCSystems Refresh Rate (seconds)\'/></div>\n\n  <span id=\'site_buttons\'>\n    <button class="btn btn-xs" id=\'cancel\'><i class="fa fa-ban"></i> CANCEL</button>\n    <button class="btn btn-xs btn-success" id=\'save\'><i class="fa fa-check-square"></i> SAVE</button>\n  </span>\n</div>\n'));
+      _print(_safe('\' size=\'5\' placeholder=\'Rate\'/>\n    <i>&nbsp;sec.</i>\n  </div>\n  <div>\n    <span id="site_cloud_label" class=\'label left\'>Cloud Data</span>\n    <i id=\'site_cloud\' class="fa fa-fw"></i>\n  </div>\n  <div class=\'edit\'>\n    <i id=\'site_zones_label\' class=\'label left\'>Zones and Gates:</i><br/>\n    <textarea id=\'site_zones\' rows="10" cols="40" placeholder=\'{&#10;&nbsp;&nbsp;1:["C1", "C2"],&#10;&nbsp;&nbsp;2:["D1", "D2", "D3"]&#10;}\n\'></textarea>\n  </div>\n\n  <div id=\'site_buttons\' class=\'edit\'>\n    <button class="btn btn-xs" id=\'cancel\'><i class="fa fa-ban"></i> CANCEL</button>\n    <button class="btn btn-xs btn-success" id=\'save\'><i class="fa fa-check-square"></i> SAVE</button>\n  </div>\n</div>\n'));
     
     }).call(this);
     
@@ -904,7 +904,7 @@ window.JST["forms/manage_permissions/permissions_top"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div id=\'global_region\'></div>'));
+      _print(_safe('<div id=\'global_region\'>\n  <div class="loading"><i class="fa fa-spinner fa-pulse"></i> LOADING...</div>\n</div>\n'));
     
     }).call(this);
     
@@ -1290,7 +1290,7 @@ window.JST["forms/manage_permissions/users"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="preamble">\n  <span id="add_user"><i class=\'fa fa-plus-square\'></i> Add New User</span>\n</div>\n<div id=\'users_list\'></div>\n'));
+      _print(_safe('<div class="loading"><i class="fa fa-spinner fa-pulse"></i> LOADING...</div>\n<div class="preamble">\n  <span id="add_user"><i class=\'fa fa-plus-square\'></i> Add New User</span>\n</div>\n<div id=\'users_list\'></div>\n'));
     
     }).call(this);
     
@@ -1980,34 +1980,7 @@ window.App = (function() {
     /* 
       TODO: load from server - all known Accounts, claims, Roles
      */
-    App.resource_count = 0;
-    App.accounts = new AccountCollection();
-    this.log('Fetching account data...');
-    App.accounts.fetch({
-      success: (function(_this) {
-        return function(data) {
-          var acct, i, len, ref, results;
-          App.resource_count += App.accounts.length;
-          ref = App.accounts.models;
-          results = [];
-          for (i = 0, len = ref.length; i < len; i++) {
-            acct = ref[i];
-            results.push(acct.sites.fetch({
-              success: function() {
-                return App.vent.trigger('app:resources_loaded');
-              }
-            }));
-          }
-          return results;
-        };
-      })(this),
-      error: (function(_this) {
-        return function() {
-          _this.log('ERROR LOADING ACCOUNTS');
-          return App.vent.trigger('app:resources_loaded');
-        };
-      })(this)
-    });
+    App.refresh_accounts();
 
     /*
       END TODO:
@@ -2015,38 +1988,19 @@ window.App = (function() {
     this.log('Initializing OPCManager');
     App.opc = OPCManager;
     App.opc.init(App);
-    App.vent.on("app:resources_loaded", function() {
-      App.resource_count -= 1;
-      if (App.resource_count <= 0) {
-        return $('#loading_cover').fadeOut(100, function() {
-          return $(this).hide();
-        });
-      }
-    });
     App.vent.on("user:update", function() {
       return Session.save_session();
     });
     App.vent.on("app:update", function() {
-      var aacc, acc, accounts, i, idx, j, len, len1, nuc, ref, u;
+      var aacc, acc, accounts, i, idx, len, results;
       accounts = App.accounts.toJSON();
+      results = [];
       for (idx = i = 0, len = accounts.length; i < len; idx = ++i) {
         acc = accounts[idx];
         aacc = App.accounts.models[idx];
-        acc.sites = aacc.sites.toJSON();
+        results.push(acc.sites = aacc.sites.toJSON());
       }
-      App.store.set("accounts", accounts);
-      App.store.set("claims", App.claims);
-      App.store.set("roles", App.roles);
-      nuc = new UserCollection();
-      ref = App.users.models;
-      for (j = 0, len1 = ref.length; j < len1; j++) {
-        u = ref[j];
-        if ((u.id != null) && u.id > 0) {
-          nuc.add(u);
-        }
-      }
-      App.users = nuc;
-      return App.store.set("users", App.users);
+      return results;
     });
     this.log('Setting system clock');
     dtfn = function() {
@@ -2082,26 +2036,68 @@ window.App = (function() {
   App.on('start', function(options) {
     this.log('Started');
     if (Backbone.history) {
-      this.controller = new AppController();
-      this.router = new Router({
-        controller: this.controller
-      });
-      this.log('Backbone.history starting');
-      Backbone.history.start();
+      App.vent.on("app:resources_loaded", (function(_this) {
+        return function() {
+          $('#loading_cover').fadeOut(100, function() {
+            return $(this).hide();
+          });
+          App.vent.off("app:resources_loaded");
+          _this.controller = new AppController();
+          _this.router = new Router({
+            controller: _this.controller
+          });
+          _this.log('Backbone.history starting');
+          return Backbone.history.start();
+        };
+      })(this));
     }
     return this.log('Done starting and running!');
   });
+  App.refresh_accounts = function(cb) {
+    App.accounts = new AccountCollection();
+    return App.accounts.fetch({
+      success: ((function(_this) {
+        return function(cb) {
+          return function(data, xhr) {
+            var acct, cnt, completed, i, len, ref, results;
+            cnt = App.accounts.models.length;
+            completed = 0;
+            ref = App.accounts.models;
+            results = [];
+            for (i = 0, len = ref.length; i < len; i++) {
+              acct = ref[i];
+              results.push(acct.sites.fetch({
+                success: (function(cb, cnt, completed) {
+                  return function(data, xhr) {
+                    completed++;
+                    if (completed === cnt) {
+                      App.vent.trigger("app:resources_loaded");
+                      App.vent.trigger("app:update");
+                      if (cb != null) {
+                        return cb();
+                      }
+                    }
+                  };
+                })(cb, cnt, completed)
+              }));
+            }
+            return results;
+          };
+        };
+      })(this))(cb)
+    });
+  };
+  App.refresh_claims = function(cb) {
+    return App.refresh_accounts(function() {});
+  };
   App.save_user = function() {
     return App.vent.trigger("user:update");
   };
   App.flush = function() {
-    App.store.remove("user");
     App.store.remove("user_ts");
     App.store.remove("session");
     App.session = null;
-    App.store.remove("claims");
-    App.store.remove("roles");
-    App.store.remove("users");
+    App.accounts = null;
     return App.router.navigate('login', {
       trigger: true
     });
@@ -2890,7 +2886,7 @@ _.extend(Marionette.View.prototype, {
               for (j = 0, len1 = ref1.length; j < len1; j++) {
                 s = ref1[j];
                 txt = s.get('name');
-                code = s.get('abbrev');
+                code = s.get('code');
                 if ((code != null) && code !== '') {
                   txt = txt + " (" + code + ")";
                 }
@@ -3372,15 +3368,20 @@ Claim = require('./claim');
 ClaimCollection = (function(superClass) {
   extend(ClaimCollection, superClass);
 
-  function ClaimCollection() {
-    return ClaimCollection.__super__.constructor.apply(this, arguments);
-  }
-
   ClaimCollection.prototype.service = 'accounts';
 
-  ClaimCollection.prototype.url = '/claims';
+  ClaimCollection.prototype.url = '/sites/{site}/claims';
 
   ClaimCollection.prototype.model = Claim;
+
+  function ClaimCollection(config, opts) {
+    if ((opts != null) && opts.site) {
+      this.url = this.url.replace('{site}', opts.site);
+    } else {
+      this.url = '/claims';
+    }
+    ClaimCollection.__super__.constructor.call(this, config);
+  }
 
   return ClaimCollection;
 
@@ -3701,15 +3702,25 @@ Site = (function(superClass) {
 
   Site.prototype.service = 'accounts';
 
-  Site.prototype.urlRoot = '/sites';
+  Site.prototype.urlRoot = '/accounts/{acct}/sites';
 
   Site.prototype.defaults = {
+    accountId: null,
     name: null,
     isActive: true,
     shortName: null,
-    abbrev: null,
-    url: null,
-    refreshRate: 5
+    code: null,
+    serverUrl: null,
+    refreshRate: 5,
+    settings: {
+      cloud: false
+    }
+  };
+
+  Site.prototype.save = function(attrs, options) {
+    options || (options = {});
+    options.blacklist = ["isActive"];
+    return Site.__super__.save.call(this, attrs, options);
   };
 
   Site.prototype.persist = function() {
@@ -3717,9 +3728,12 @@ Site = (function(superClass) {
     return this.attributes["roles"] = this.roles.toJSON();
   };
 
-  function Site(data, opts) {
+  function Site(config, opts) {
     this.persist = bind(this.persist, this);
-    Site.__super__.constructor.call(this, data, opts);
+    if ((config != null) && config.accountId) {
+      this.urlRoot = this.urlRoot.replace('{acct}', config.accountId);
+    }
+    Site.__super__.constructor.call(this, config, opts);
     this.claims = new ClaimCollection(this.get('claims'));
     this.claims.on("update", this.persist);
     this.claims.on("change", this.persist);
@@ -3842,6 +3856,8 @@ UserCollection = (function(superClass) {
 
 })(BaseCollection);
 
+window.UserCollection = UserCollection;
+
 module.exports = UserCollection;
 
 },{"./_base_collection":9,"./user":21}],23:[function(require,module,exports){
@@ -3919,7 +3935,7 @@ OPCManager = (function() {
   OPCManager.create = function(conn, config) {
     var c;
     c = new OPC(config);
-    c.abbrev = conn;
+    c.code = conn;
     this.connections[conn] = c;
     return c;
   };
@@ -3952,7 +3968,7 @@ OPCManager = (function() {
           for (j = 0, len1 = ref1.length; j < len1; j++) {
             st = ref1[j];
             if (("" + st.id) === ("" + id)) {
-              return st.get('abbrev');
+              return st.get('code');
             }
           }
         }
@@ -4047,7 +4063,7 @@ OPCManager = (function() {
   };
 
   OPCManager.init = function(app) {
-    var abbrev, account, i, len, opc_addr, opc_rate, ref, results, site;
+    var account, code, i, len, opc_rate, ref, refreshRate, results, site, siteUrl;
     ref = app.accounts.models;
     results = [];
     for (i = 0, len = ref.length; i < len; i++) {
@@ -4058,23 +4074,23 @@ OPCManager = (function() {
         results1 = [];
         for (j = 0, len1 = ref1.length; j < len1; j++) {
           site = ref1[j];
-          opc_addr = site.get("opc");
-          opc_rate = site.get("opc_rate");
-          if (opc_rate == null) {
+          siteUrl = site.get("siteUrl");
+          refreshRate = site.get("refreshRate");
+          if (typeof opc_rate === "undefined" || opc_rate === null) {
             opc_rate = 5;
           }
           opc_rate = parseInt(opc_rate) * 1000;
-          abbrev = site.get("abbrev");
-          results1.push(OPCManager.create(abbrev, {
+          code = site.get("code");
+          results1.push(OPCManager.create(code, {
             token: '7e61b230-481d-4551-b24b-ba9046e3d8f2',
             max_tags_per_msg: 50,
             max_callbacks: 10,
             callback_timeout: 10000,
             refresh_callback: function(data) {
-              return OPCManager.notify(this.abbrev, data);
+              return OPCManager.notify(this.code, data);
             },
-            serverURL: opc_addr,
-            interval: opc_rate,
+            serverURL: siteUrl,
+            interval: refreshRate,
             auto_start: false
           }));
         }
@@ -5242,9 +5258,11 @@ AccountView = (function(superClass) {
     }
     return this.collection.add({
       name: '',
+      accountId: this.model.id,
       isActive: false,
-      abbrev: '',
-      shortName: ''
+      code: '',
+      shortName: '',
+      serverUrl: ''
     }, {
       at: 0
     });
@@ -5400,7 +5418,8 @@ SiteView = (function(superClass) {
   SiteView.prototype.className = '';
 
   SiteView.prototype.ui = {
-    container: '.site_container'
+    container: '.site_container',
+    cloud: 'i#site_cloud'
   };
 
   SiteView.prototype.events = {
@@ -5408,7 +5427,8 @@ SiteView = (function(superClass) {
     'click #delete_site': 'delete',
     'click #site_buttons>#cancel': 'cancel_edit',
     'click #site_buttons>#save': 'save',
-    'click #site_active': 'toggle_active'
+    'click #site_active': 'toggle_active',
+    'click #site_cloud': 'toggle_cloud'
   };
 
   SiteView.prototype.bindings = {
@@ -5439,6 +5459,26 @@ SiteView = (function(superClass) {
       return false;
     }
     return this.model.set('isActive', !this.model.get('isActive'));
+  };
+
+  SiteView.prototype.set_cloud = function() {
+    var c, settings;
+    settings = _.clone(this.model.get('settings'));
+    c = settings.cloud != null ? settings.cloud : true;
+    this.ui.cloud.toggleClass('fa-toggle-on', c);
+    return this.ui.cloud.toggleClass('fa-toggle-off', !c);
+  };
+
+  SiteView.prototype.toggle_cloud = function() {
+    var c, settings;
+    if (!this.ui.container.hasClass('rw')) {
+      return false;
+    }
+    settings = _.clone(this.model.get('settings'));
+    c = settings.cloud != null ? !settings.cloud : true;
+    settings.cloud = c;
+    this.model.set('settings', settings);
+    return this.set_cloud();
   };
 
   SiteView.prototype.toggle_edit = function(rw) {
@@ -5483,19 +5523,21 @@ SiteView = (function(superClass) {
     if ((name == null) || name.trim() === '') {
       return;
     }
-    if (this.model.id == null) {
-      this.model.set('id', Math.floor(Math.random() * 10000) + 1);
-    }
-    App.vent.trigger("app:update");
-    return this.render();
+    return this.model.save(null, {
+      success: function() {
+        this.render();
+        return App.vent.trigger("app:update");
+      }
+    });
   };
 
   SiteView.prototype.onRender = function() {
     this.modelBinder.bind(this.model, this.el, this.bindings);
     if ((this.model.id == null) || this.model.id < 1) {
       this.$("#delete").hide();
-      return this.show_edit();
+      this.show_edit();
     }
+    return this.set_cloud();
   };
 
   return SiteView;
@@ -5604,7 +5646,7 @@ PermissionView = (function(superClass) {
 module.exports = PermissionView;
 
 },{"../../../models/claim":12}],43:[function(require,module,exports){
-var Marionette, PermissionsLayout, PermissionsTopView, RolesTopView, UsersView,
+var Marionette, PermissionsLayout, PermissionsTopView, RolesTopView, UserCollection, UsersView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -5615,6 +5657,8 @@ PermissionsTopView = require('./permissions_top_view');
 RolesTopView = require('./roles_top_view');
 
 UsersView = require('./users_view');
+
+UserCollection = require('../../../models/user_collection');
 
 PermissionsLayout = (function(superClass) {
   extend(PermissionsLayout, superClass);
@@ -5644,7 +5688,7 @@ PermissionsLayout = (function(superClass) {
         return this.roles_region.show(this.rv);
       case 'users':
         this.uv = new UsersView({
-          collection: App.users
+          collection: new UserCollection([])
         });
         return this.users_region.show(this.uv);
     }
@@ -5667,8 +5711,9 @@ PermissionsLayout = (function(superClass) {
 
 module.exports = PermissionsLayout;
 
-},{"./permissions_top_view":44,"./roles_top_view":47,"./users_view":50}],44:[function(require,module,exports){
-var Marionette, PermissionsTopView, PermissionsView,
+},{"../../../models/user_collection":22,"./permissions_top_view":44,"./roles_top_view":47,"./users_view":50}],44:[function(require,module,exports){
+var ClaimCollection, Marionette, PermissionsTopView, PermissionsView,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -5676,10 +5721,13 @@ Marionette = require('marionette');
 
 PermissionsView = require('./permissions_view');
 
+ClaimCollection = require('../../../models/claim_collection');
+
 PermissionsTopView = (function(superClass) {
   extend(PermissionsTopView, superClass);
 
   function PermissionsTopView() {
+    this.rebuild_view = bind(this.rebuild_view, this);
     return PermissionsTopView.__super__.constructor.apply(this, arguments);
   }
 
@@ -5690,16 +5738,27 @@ PermissionsTopView = (function(superClass) {
   };
 
   PermissionsTopView.prototype.onShow = function() {
-    var acc, acc_el, i, len, r, ref, results, s, site_el, spv;
-    this.pv = new PermissionsView({
-      model: new Backbone.Model({
-        id: 0,
-        name: 'Global Permissions',
-        global: true
-      }),
-      collection: App.claims
+    return App.refresh_accounts(this.rebuild_view);
+  };
+
+  PermissionsTopView.prototype.rebuild_view = function() {
+    var acc, acc_el, app_claims, i, len, ref, results, s, sc, site_el;
+    app_claims = new ClaimCollection();
+    app_claims.fetch({
+      success: (function(_this) {
+        return function() {
+          _this.pv = new PermissionsView({
+            model: new Backbone.Model({
+              id: 0,
+              name: 'Global Permissions',
+              global: true
+            }),
+            collection: App.claims
+          });
+          return _this.global_region.show(_this.pv);
+        };
+      })(this)
     });
-    this.global_region.show(this.pv);
     ref = App.accounts.models;
     results = [];
     for (i = 0, len = ref.length; i < len; i++) {
@@ -5715,12 +5774,24 @@ PermissionsTopView = (function(superClass) {
           s = ref1[j];
           site_el = $("<div id='site_" + s.id + "' class='site_item'></div>");
           acc_el.append(site_el);
-          spv = new PermissionsView({
-            model: s,
-            collection: s.claims
+          sc = new ClaimCollection([], {
+            site: s.id
           });
-          r = this.addRegion("site_" + s.id, "#site_" + s.id);
-          results1.push(r.show(spv));
+          results1.push(sc.fetch({
+            success: ((function(_this) {
+              return function(site, claims) {
+                return function(data, xhr) {
+                  var r, spv;
+                  spv = new PermissionsView({
+                    model: site,
+                    collection: claims
+                  });
+                  r = _this.addRegion("site_" + site.id, "#site_" + site.id);
+                  return r.show(spv);
+                };
+              };
+            })(this))(s, sc)
+          }));
         }
         return results1;
       }).call(this));
@@ -5734,7 +5805,7 @@ PermissionsTopView = (function(superClass) {
 
 module.exports = PermissionsTopView;
 
-},{"./permissions_view":45}],45:[function(require,module,exports){
+},{"../../../models/claim_collection":13,"./permissions_view":45}],45:[function(require,module,exports){
 var Marionette, PermissionView, PermissionsView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -6039,10 +6110,7 @@ UserView = (function(superClass) {
   UserView.prototype.bindings = {
     firstName: '#firstname',
     lastName: '#lastname',
-    email: '#email',
-    phone1: '#phone1',
-    phone2: '#phone2',
-    roles_global: '#roles_global'
+    email: '#email'
   };
 
   UserView.prototype.ui = {
@@ -6054,6 +6122,7 @@ UserView = (function(superClass) {
   };
 
   UserView.prototype.initialize = function() {
+    debugger;
     return this.modelBinder = new Backbone.ModelBinder();
   };
 
@@ -6163,11 +6232,13 @@ UserView = (function(superClass) {
   };
 
   UserView.prototype.onRender = function() {
+    debugger;
     this.toggle_edit(false);
     return this.modelBinder.bind(this.model, this.el, this.bindings);
   };
 
   UserView.prototype.onShow = function() {
+    debugger;
     if ((this.model.id == null) || this.model.id < 1) {
       this.$("#delete").hide();
       this.show_edit();
@@ -6209,24 +6280,6 @@ UsersView = (function(superClass) {
     'click #add_user': 'add_user'
   };
 
-  UsersView.prototype.initialize = function() {
-    return this.flush_users;
-  };
-
-  UsersView.prototype.flush_users = function() {
-    var i, len, nuc, ref, u;
-    nuc = new UserCollection();
-    ref = App.users.models;
-    for (i = 0, len = ref.length; i < len; i++) {
-      u = ref[i];
-      if ((u.id != null) && u.id > 0) {
-        nuc.add(u);
-      }
-    }
-    App.users = nuc;
-    return App.store.set("users", App.users);
-  };
-
   UsersView.prototype.add_user = function() {
     var c, i, len, ref;
     ref = this.collection.models;
@@ -6241,8 +6294,22 @@ UsersView = (function(superClass) {
     });
   };
 
-  UsersView.prototype.onDestroy = function() {
-    return this.flush_users();
+  UsersView.prototype.onShow = function() {
+    this.$('.loading').show();
+    this.$('.preamble').hide();
+    return this.collection.fetch({
+      success: (function(_this) {
+        return function() {
+          _this.$('.loading').hide();
+          return _this.$('.preamble').show();
+        };
+      })(this),
+      error: (function(_this) {
+        return function() {
+          debugger;
+        };
+      })(this)
+    });
   };
 
   return UsersView;

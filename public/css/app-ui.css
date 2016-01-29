@@ -256,26 +256,42 @@ ul.chosen-results li.highlighted {
   border-top: dashed 1px #ccc;
   box-sizing: content-box;
   padding: 10px 0 0 10px; }
-  .site_container #site_active.fa-toggle-on {
-    color: #363; }
-  .site_container #site_active.fa-toggle-off {
-    color: #999; }
+  .site_container > div {
+    padding-left: 10px; }
+  .site_container .label {
+    color: #666;
+    font-style: italic;
+    display: inline-block;
+    text-align: left;
+    font-weight: normal;
+    font-size: 12px; }
+    .site_container .label.left {
+      min-width: 85px !important;
+      margin-right: 5px;
+      padding: 0 0 0 5px; }
+    .site_container .label.right {
+      padding: 0 0 0 0;
+      margin-left: 5px; }
+  .site_container .fa-toggle-on {
+    color: #363;
+    cursor: pointer; }
+  .site_container .fa-toggle-off {
+    color: #999;
+    cursor: pointer; }
   .site_container #site_name {
     max-width: 90%; }
-  .site_container #site_short, .site_container #site_short_label, .site_container #site_url_label, .site_container #site_url, .site_container #site_refresh_rate_label, .site_container #site_refresh_rate, .site_container #site_buttons {
-    margin-left: 21px; }
+  .site_container #site_refresh_rate {
+    text-align: right; }
   .site_container #site_buttons {
     margin-top: 10px; }
-  .site_container #site_name, .site_container #site_code, .site_container #site_short, .site_container #site_url, .site_container #site_refresh_rate, .site_container #site_buttons {
+  .site_container .edit {
     display: none; }
-  .site_container.rw #site_name, .site_container.rw #site_code, .site_container.rw #site_short, .site_container.rw #site_url, .site_container.rw #site_refresh_rate {
-    display: inline !important; }
-  .site_container.rw #site_label, .site_container.rw #site_short_label, .site_container.rw #site_crud, .site_container.rw #site_url_label, .site_container.rw #site_refresh_rate_label {
-    display: none; }
+  .site_container.rw .edit {
+    display: inline-block !important; }
+  .site_container.rw .display {
+    display: none !important; }
   .site_container.rw #site_buttons {
     display: block !important; }
-  .site_container.rw #site_active {
-    cursor: pointer; }
 
 #permissions_region h4, #roles_region h4 {
   margin: 0px 0 0 -5px;
@@ -409,6 +425,12 @@ li.dashboard-link {
       color: #fff; }
   li.dashboard-link:hover .controls {
     display: block; }
+
+.loading {
+  text-align: center;
+  font-size: 24px;
+  color: #ccc;
+  margin: 40px 0 40px; }
 
 .gate_widget.alarm {
   background-color: #c00;

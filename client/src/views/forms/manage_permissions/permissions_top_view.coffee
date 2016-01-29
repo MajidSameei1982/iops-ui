@@ -1,5 +1,6 @@
 Marionette = require('marionette')
 PermissionsView = require('./permissions_view')
+ClaimCollection = require('../../../models/claim_collection')
 
 # ----------------------------------
 
@@ -9,10 +10,18 @@ class PermissionsTopView extends Marionette.LayoutView
     global_region  : '#global_region'
 
   onShow: ()->
-    @pv = new PermissionsView
-      model: new Backbone.Model({id:0, name:'Global Permissions', global:true})
-      collection: App.claims
-    @global_region.show(@pv)
+    # fetch latest sites for account
+    App.refresh_accounts(@rebuild_view)
+
+  rebuild_view: ()=>
+    app_claims = new ClaimCollection()
+    app_claims.fetch
+      success: ()=>
+        @pv = new PermissionsView
+          model: new Backbone.Model({id:0, name:'Global Permissions', global:true})
+          collection: App.claims
+        @global_region.show(@pv)
+    
     for acc in App.accounts.models
       acc_el = """
         <div id='acc_#{acc.id}'>
@@ -21,16 +30,21 @@ class PermissionsTopView extends Marionette.LayoutView
       """
       acc_el = $(acc_el)
       $(@el).append(acc_el)
-
+      
+      # fetch latest claims for each site
       for s in acc.sites.models
         site_el = $("<div id='site_#{s.id}' class='site_item'></div>")
         acc_el.append(site_el)
-        spv = new PermissionsView
-          model: s
-          collection: s.claims
-        r = @addRegion("site_#{s.id}","#site_#{s.id}")
-        r.show(spv)
-
+        sc = new ClaimCollection [], {site: s.id}
+        sc.fetch
+          success:((site, claims) =>
+            (data, xhr)=>
+              spv = new PermissionsView
+                model: site
+                collection: claims
+              r = @addRegion("site_#{site.id}","#site_#{site.id}")
+              r.show(spv)
+            )(s, sc)
     
 # ----------------------------------
 

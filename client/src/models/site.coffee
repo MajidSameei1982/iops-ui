@@ -6,21 +6,31 @@ RoleCollection = require('./role_collection')
 
 class Site extends BaseModel
 	service: 'accounts'
-	urlRoot: '/sites'
+	urlRoot: '/accounts/{acct}/sites'
 	defaults:
+    accountId:    null
     name:         null
     isActive:     true
     shortName:    null
-    abbrev:       null
-    url:          null
+    code:         null
+    serverUrl:    null
     refreshRate:  5
+    settings:
+      cloud: false
+
+  save:(attrs, options)->
+    options || (options = {})
+    options.blacklist = ["isActive"]
+    super(attrs, options)
 
   persist: ()=>
     @attributes["claims"] = @claims.toJSON()
     @attributes["roles"] = @roles.toJSON()
     
-  constructor: (data, opts)->
-    super(data, opts)
+  constructor: (config, opts)->
+    if config? && config.accountId
+      @urlRoot = @urlRoot.replace('{acct}', config.accountId)
+    super(config, opts)
     @claims = new ClaimCollection(@get('claims'))
     @claims.on "update", @persist
     @claims.on "change", @persist

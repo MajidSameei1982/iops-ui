@@ -10,6 +10,7 @@ class SiteView extends Marionette.ItemView
 
   ui:
     container: '.site_container'
+    cloud: 'i#site_cloud'
 
   events:
     'click #edit_site'             : 'show_edit'
@@ -17,14 +18,15 @@ class SiteView extends Marionette.ItemView
     'click #site_buttons>#cancel'  : 'cancel_edit'
     'click #site_buttons>#save'    : 'save'
     'click #site_active'           : 'toggle_active'
+    'click #site_cloud'            : 'toggle_cloud'
 
   bindings:
-    name      : '#site_name'
-    code      : '#site_code'
-    shortName : '#site_short'
-    serverUrl : '#site_url'
+    name        : '#site_name'
+    code        : '#site_code'
+    shortName   : '#site_short'
+    serverUrl   : '#site_url'
     refreshRate : '#site_refresh_rate'
-    isActive:
+    isActive    :
       selector: 'i#site_active'
       elAttribute: 'class'
       converter: (action, value, field)->
@@ -36,6 +38,20 @@ class SiteView extends Marionette.ItemView
   toggle_active: ()->
     return false if !@ui.container.hasClass('rw')
     @model.set('isActive', !@model.get('isActive'))
+
+  set_cloud: ()->
+    settings = _.clone(@model.get('settings'))
+    c = if settings.cloud? then settings.cloud else true
+    @ui.cloud.toggleClass('fa-toggle-on',c)
+    @ui.cloud.toggleClass('fa-toggle-off',!c)
+
+  toggle_cloud: ()->
+    return false if !@ui.container.hasClass('rw')
+    settings = _.clone(@model.get('settings'))
+    c = if settings.cloud? then !settings.cloud else true
+    settings.cloud = c
+    @model.set('settings', settings)
+    @set_cloud()
 
   toggle_edit: (rw)->
     @ui.container.toggleClass('rw',rw)
@@ -63,19 +79,20 @@ class SiteView extends Marionette.ItemView
         App.vent.trigger "app:update"
 
   save: ()->
-    # TODO: FIRE MODEL SAVE
     name = @model.get('name')
     return if !name? || name.trim() == ''
-    if !@model.id? then @model.set('id', Math.floor(Math.random() * 10000)+1)
-    App.vent.trigger "app:update"
-    # TODO:
-    @render()
-
+    @model.save null,
+      success: ()->
+        @render()
+        App.vent.trigger "app:update"
+    
   onRender: ()->
     @modelBinder.bind(@model, @el, @bindings)
     if (!@model.id? || @model.id < 1)
       @$("#delete").hide()
       @show_edit()
+    @set_cloud()
+
 
 # ----------------------------------
 

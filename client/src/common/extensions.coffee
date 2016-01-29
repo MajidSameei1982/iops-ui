@@ -55,7 +55,7 @@ _.extend Marionette.View::,
           if acc.sites? && acc.sites.models.length > 0
             for s in acc.sites.models
               txt = s.get('name')
-              code = s.get('abbrev')
+              code = s.get('code')
               if code? && code != '' then txt = "#{txt} (#{code})"
               sel = if value? && "#{value}" == "#{s.id}" then 'selected' else ''
               sh += "<option value='#{s.id}' #{sel}>#{txt}</option>"

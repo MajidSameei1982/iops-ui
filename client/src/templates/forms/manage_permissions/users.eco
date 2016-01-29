@@ -1,3 +1,4 @@
+<div class="loading"><i class="fa fa-spinner fa-pulse"></i> LOADING...</div>
 <div class="preamble">
   <span id="add_user"><i class='fa fa-plus-square'></i> Add New User</span>
 </div>

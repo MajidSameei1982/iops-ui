@@ -10,4 +10,5 @@ class UserCollection extends BaseCollection
 
 # ----------------------------------
 
+window.UserCollection = UserCollection
 module.exports = UserCollection

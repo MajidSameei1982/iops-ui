@@ -17,9 +17,9 @@ class UserView extends Marionette.ItemView
     firstName: '#firstname'
     lastName: '#lastname'
     email: '#email'
-    phone1: '#phone1'
-    phone2: '#phone2'
-    roles_global: '#roles_global'
+    #phone1: '#phone1'
+    #phone2: '#phone2'
+    #roles_global: '#roles_global'
 
   ui:
     firstName: 'input#firstname'
@@ -29,6 +29,7 @@ class UserView extends Marionette.ItemView
     pwc: 'input#password_confirmation'
     
   initialize: ()->
+    debugger
     @modelBinder = new Backbone.ModelBinder()
 
   toggle_edit: (rw)->
@@ -100,10 +101,12 @@ class UserView extends Marionette.ItemView
     @render()
  
   onRender: ()->
+    debugger
     @toggle_edit(false);
     @modelBinder.bind(@model, @el, @bindings)
     
   onShow: ()->
+    debugger
     if (!@model.id? || @model.id < 1)
       @$("#delete").hide()
       @show_edit()
