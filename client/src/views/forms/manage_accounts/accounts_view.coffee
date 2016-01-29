@@ -7,6 +7,7 @@ class AccountsView extends Marionette.CompositeView
   template: "forms/manage_accounts/accounts"
   childViewContainer: '#account_list'
   childView: AccountView
+  viewComparator: 'name'
 
   events:
     'click #add_account' : 'add_account'

@@ -14,22 +14,22 @@ class UserView extends Marionette.ItemView
     'click #user_buttons>#save'    : 'save'
 
   bindings:
-    firstName: '#firstname'
-    lastName: '#lastname'
+    firstName: '#firstName'
+    lastName: '#lastName'
     email: '#email'
+    password: '#password'
     #phone1: '#phone1'
     #phone2: '#phone2'
     #roles_global: '#roles_global'
 
   ui:
-    firstName: 'input#firstname'
-    lastName: 'input#lastname'
+    firstName: 'input#firstName'
+    lastName: 'input#lastName'
     email: 'input#email'
     pw: 'input#password'
     pwc: 'input#password_confirmation'
     
   initialize: ()->
-    debugger
     @modelBinder = new Backbone.ModelBinder()
 
   toggle_edit: (rw)->
@@ -61,8 +61,10 @@ class UserView extends Marionette.ItemView
       type: 'warning'
       body: 'Are you sure you want to delete this User? This cannot be undone and all associated data will be lost21.'
       on_save: ()=>
-        @model.collection.remove(@model)
-        App.vent.trigger "app:update"
+        @model.destroy
+          success:()=>
+            @model.collection.remove(@model)
+            App.vent.trigger "app:update"
 
   valid_email: (eml)->
     return false if !eml? || eml.trim() == ''
@@ -92,21 +94,21 @@ class UserView extends Marionette.ItemView
   save: ()->
     # TODO: FIRE MODEL SAVE
     return if !@validate()
-    if !@model.id? then @model.set('id', Math.floor(Math.random() * 10000)+1)
-    @model.set('roles_global', @$('select#roles_global').val())
-    for acc in App.accounts.models
-      for s in acc.sites.models
-        @model.set("roles_#{s.id}", @$("select#roles_#{s.id}").val())
-    App.vent.trigger "app:update"
-    @render()
+    # if !@model.id? then @model.set('id', Math.floor(Math.random() * 10000)+1)
+    # @model.set('roles_global', @$('select#roles_global').val())
+    # for acc in App.accounts.models
+    #   for s in acc.sites.models
+    #     @model.set("roles_#{s.id}", @$("select#roles_#{s.id}").val())
+    # App.vent.trigger "app:update"
+    @model.save null,
+      success:()=>
+        @render()
  
   onRender: ()->
-    debugger
     @toggle_edit(false);
     @modelBinder.bind(@model, @el, @bindings)
     
   onShow: ()->
-    debugger
     if (!@model.id? || @model.id < 1)
       @$("#delete").hide()
       @show_edit()

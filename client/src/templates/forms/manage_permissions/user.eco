@@ -1,27 +1,27 @@
 <div class='col-md-12 display'>
   <span id='user_crud' class='crud_container'>
-    <span id='user_label'><%= "#{@lastname}, #{@firstname}" %> <small>(<%= @email %>)</small></span>
+    <span id='user_label'><%= "#{@lastName}, #{@firstName}" %> <small>(<%= @email %>)</small></span>
     <span class='crud' id='edit_user'><i class="fa fa-pencil-square" title='Edit User'></i></span>
     <span class='crud' id='delete_user'><i class="fa fa-times-circle" title='Delete User'></i></span>
   </span>
 </div>
 <div class='col-md-12 edit'>
   <%- @formGroup({id:'email', type:'email', placeholder:'Email', cls: 'col-sm-12', label: 'Email Address', value: @email}) %>
-  <%- @formGroup({id:'firstname', type:'text', placeholder:'First Name', cls: 'col-sm-6', label: 'Name', value: @firstname}) %>
-  <%- @formGroup({id:'lastname', type:'text', placeholder:'Last Name', cls: 'col-sm-6', label: '&nbsp;', value: @lastname}) %>
+  <%- @formGroup({id:'firstName', type:'text', placeholder:'First Name', cls: 'col-sm-6', label: 'Name', value: @firstName}) %>
+  <%- @formGroup({id:'lastName', type:'text', placeholder:'Last Name', cls: 'col-sm-6', label: '&nbsp;', value: @lastName}) %>
   <%- @formGroup({id:'phone1', type:'text', placeholder:'Primary Phone', cls: 'col-sm-6', label: 'Phone Numbers', value: @phone1}) %>
   <%- @formGroup({id:'phone2', type:'text', placeholder:'Secondary Phone', cls: 'col-sm-6', label: '&nbsp;', value: @phone2}) %>
   <%- @formGroup({id:'password', type:'password', placeholder:'new password', cls: 'col-sm-6', label: 'Reset Password'}) %>
   <%- @formGroup({id:'password_confirmation', type:'password', placeholder:'confirm new password', cls: 'col-sm-6', label: '&nbsp;' }) %>
 
   <h3 class='account_name col-md-12'><i class="fa fa-fw fa-globe"></i>Global Roles</h3>
-  <%- @roleSelector({id:'roles_global', label:null, value:null, site_id:null, global:true, cls:'col-md-12'})%>
+  <%- @roleSelector({id:'roles_global', label:null, value:null, site_id:null, cls:'col-md-12'})%>
   
   <% for acc in App.accounts.models: %>
     <div class='account_container col-md-12'>
       <h3 class='account_name'><i class="fa fa-fw fa-building-o"></i><%= acc.get('name') %> Roles</h3>
   <%    for s in acc.sites.models :%>
-        <%- @roleSelector({id:'roles_' + s.id , label:"#{s.get('name')} (#{s.get('abbrev')})", value:null, site_id:s.id, global:false, cls:'col-md-12'})%>
+        <%- @roleSelector({id:'roles_' + s.id , label:"#{s.get('name')} (#{s.get('code')})", value:null, site_id:s.id, cls:'col-md-12'})%>
   <%    end %>
     </div>
   <% end %>

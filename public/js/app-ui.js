@@ -855,7 +855,7 @@ window.JST["forms/manage_permissions/permissions"] = function(__obj) {
         _print(_safe('\n    <h4><i class="fa fa-fw fa-map-marker"></i>'));
         _print(this.name);
         _print(_safe('('));
-        _print(this.abbrev);
+        _print(this.code);
         _print(_safe(')</h4>\n  '));
       }
     
@@ -1030,7 +1030,7 @@ window.JST["forms/manage_permissions/roles"] = function(__obj) {
         _print(_safe('\n    <h4><i class="fa fa-fw fa-map-marker"></i>'));
         _print(this.name);
         _print(_safe('('));
-        _print(this.abbrev);
+        _print(this.code);
         _print(_safe(')</h4>\n  '));
       }
     
@@ -1128,7 +1128,7 @@ window.JST["forms/manage_permissions/user"] = function(__obj) {
     
       _print(_safe('<div class=\'col-md-12 display\'>\n  <span id=\'user_crud\' class=\'crud_container\'>\n    <span id=\'user_label\'>'));
     
-      _print(this.lastname + ", " + this.firstname);
+      _print(this.lastName + ", " + this.firstName);
     
       _print(_safe(' <small>('));
     
@@ -1148,23 +1148,23 @@ window.JST["forms/manage_permissions/user"] = function(__obj) {
       _print(_safe('\n  '));
     
       _print(_safe(this.formGroup({
-        id: 'firstname',
+        id: 'firstName',
         type: 'text',
         placeholder: 'First Name',
         cls: 'col-sm-6',
         label: 'Name',
-        value: this.firstname
+        value: this.firstName
       })));
     
       _print(_safe('\n  '));
     
       _print(_safe(this.formGroup({
-        id: 'lastname',
+        id: 'lastName',
         type: 'text',
         placeholder: 'Last Name',
         cls: 'col-sm-6',
         label: '&nbsp;',
-        value: this.lastname
+        value: this.lastName
       })));
     
       _print(_safe('\n  '));
@@ -1216,7 +1216,6 @@ window.JST["forms/manage_permissions/user"] = function(__obj) {
         label: null,
         value: null,
         site_id: null,
-        global: true,
         cls: 'col-md-12'
       })));
     
@@ -1234,10 +1233,9 @@ window.JST["forms/manage_permissions/user"] = function(__obj) {
           _print(_safe('\n        '));
           _print(_safe(this.roleSelector({
             id: 'roles_' + s.id,
-            label: (s.get('name')) + " (" + (s.get('abbrev')) + ")",
+            label: (s.get('name')) + " (" + (s.get('code')) + ")",
             value: null,
             site_id: s.id,
-            global: false,
             cls: 'col-md-12'
           })));
           _print(_safe('\n  '));
@@ -1269,7 +1267,7 @@ window.JST["forms/manage_permissions/user"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
-window.JST["forms/manage_permissions/users"] = function(__obj) {
+window.JST["forms/manage_permissions/users_layout"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
       value = '';
@@ -1290,7 +1288,7 @@ window.JST["forms/manage_permissions/users"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="loading"><i class="fa fa-spinner fa-pulse"></i> LOADING...</div>\n<div class="preamble">\n  <span id="add_user"><i class=\'fa fa-plus-square\'></i> Add New User</span>\n</div>\n<div id=\'users_list\'></div>\n'));
+      _print(_safe('<div class="loading"><i class="fa fa-spinner fa-pulse"></i> LOADING...</div>\n<div class="preamble">\n  <span id="add_user" class=\'button\'><i class=\'fa fa-plus-square\'></i> Add New User</span>\n  <input id=\'filter\' type=\'text\' placeholder=\'search users\' class=\'pull-right\'></input>\n</div>\n<div id=\'users_region\'></div>\n'));
     
     }).call(this);
     
@@ -2105,7 +2103,7 @@ window.App = (function() {
   return App;
 })();
 
-},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/site_collection":20,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27,"./views/widgets/alarm_widget_view":54,"./views/widgets/pbb_widget_view":55,"./views/widgets/pca_widget_view":56,"./views/widgets/url_widget_view":57,"./views/widgets/weather_widget_view":58}],2:[function(require,module,exports){
+},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/site_collection":20,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27,"./views/widgets/alarm_widget_view":55,"./views/widgets/pbb_widget_view":56,"./views/widgets/pca_widget_view":57,"./views/widgets/url_widget_view":58,"./views/widgets/weather_widget_view":59}],2:[function(require,module,exports){
 var AccountsView, AppController, Dashboard, DashboardCollection, DashboardContentView, DashboardLayout, LoginView, Marionette, PermissionsLayout, ProfileView, ReportsView, User, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2280,7 +2278,7 @@ AppController = (function(superClass) {
 
 module.exports = AppController;
 
-},{"./models/dashboard":14,"./models/dashboard_collection":15,"./models/user":21,"./models/widget_collection":24,"./views/dashboard/content_view":29,"./views/dashboard/dashboard_layout":30,"./views/forms/manage_accounts/accounts_view":40,"./views/forms/manage_permissions/permissions_layout":43,"./views/forms/profile_view":51,"./views/login_view":52,"./views/reports_view":53}],3:[function(require,module,exports){
+},{"./models/dashboard":14,"./models/dashboard_collection":15,"./models/user":21,"./models/widget_collection":24,"./views/dashboard/content_view":29,"./views/dashboard/dashboard_layout":30,"./views/forms/manage_accounts/accounts_view":40,"./views/forms/manage_permissions/permissions_layout":43,"./views/forms/profile_view":52,"./views/login_view":53,"./views/reports_view":54}],3:[function(require,module,exports){
 
 /*
  *
@@ -2933,19 +2931,19 @@ _.extend(Marionette.View.prototype, {
         return ch + "</select></div>";
       },
       roleSelector: function(arg) {
-        var acc, c, cls, global, i, id, j, k, label, lbl, len, len1, len2, r, ref, ref1, ref2, rh, roles, s, sel, site_id, txt, value;
-        id = arg.id, label = arg.label, value = arg.value, site_id = arg.site_id, global = arg.global, cls = arg.cls;
+        var acc, c, cls, i, id, j, k, label, lbl, len, len1, len2, r, ref, ref1, ref2, rh, roles, s, sel, site_id, txt, value;
+        id = arg.id, label = arg.label, value = arg.value, site_id = arg.site_id, cls = arg.cls;
         c = 'form-group';
         c = cls != null ? c + " " + cls : c;
         lbl = label != null ? "<label>" + label + "</label>" : '';
         rh = "<div class='" + c + "' for='" + id + "'>\n  " + lbl + "\n  <select id='" + id + "' class='form-control' multiple data-placeholder='Select Roles'>";
         roles = App.roles;
-        if (!global) {
+        if (site_id != null) {
           if ((App.accounts != null) && App.accounts.models.length > 0) {
             ref = App.accounts.models;
             for (i = 0, len = ref.length; i < len; i++) {
               acc = ref[i];
-              if ((acc.sites != null) && acc.sites.models.length > 0) {
+              if ((acc.sites != null) && (acc.sites.models != null)) {
                 ref1 = acc.sites.models;
                 for (j = 0, len1 = ref1.length; j < len1; j++) {
                   s = ref1[j];
@@ -2958,12 +2956,14 @@ _.extend(Marionette.View.prototype, {
             }
           }
         }
-        ref2 = roles.models;
-        for (k = 0, len2 = ref2.length; k < len2; k++) {
-          r = ref2[k];
-          txt = r.get('name');
-          sel = (value != null) && ("" + value) === ("" + r.id) ? 'selected' : '';
-          rh += "<option value='" + r.id + "' " + sel + ">" + txt + "</option>";
+        if ((roles != null) && (roles.models != null)) {
+          ref2 = roles.models;
+          for (k = 0, len2 = ref2.length; k < len2; k++) {
+            r = ref2[k];
+            txt = r.get('name');
+            sel = (value != null) && ("" + value) === ("" + r.id) ? 'selected' : '';
+            rh += "<option value='" + r.id + "' " + sel + ">" + txt + "</option>";
+          }
         }
         return rh + "</select></div>";
       }
@@ -5219,6 +5219,8 @@ AccountView = (function(superClass) {
 
   AccountView.prototype.childView = SiteView;
 
+  AccountView.prototype.viewComparator = 'name';
+
   AccountView.prototype.ui = {
     container: '.account_container'
   };
@@ -5367,6 +5369,8 @@ AccountsView = (function(superClass) {
   AccountsView.prototype.childViewContainer = '#account_list';
 
   AccountsView.prototype.childView = AccountView;
+
+  AccountsView.prototype.viewComparator = 'name';
 
   AccountsView.prototype.events = {
     'click #add_account': 'add_account'
@@ -5646,7 +5650,7 @@ PermissionView = (function(superClass) {
 module.exports = PermissionView;
 
 },{"../../../models/claim":12}],43:[function(require,module,exports){
-var Marionette, PermissionsLayout, PermissionsTopView, RolesTopView, UserCollection, UsersView,
+var Marionette, PermissionsLayout, PermissionsTopView, RolesTopView, UsersLayout,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -5656,9 +5660,7 @@ PermissionsTopView = require('./permissions_top_view');
 
 RolesTopView = require('./roles_top_view');
 
-UsersView = require('./users_view');
-
-UserCollection = require('../../../models/user_collection');
+UsersLayout = require('./users_layout');
 
 PermissionsLayout = (function(superClass) {
   extend(PermissionsLayout, superClass);
@@ -5687,9 +5689,7 @@ PermissionsLayout = (function(superClass) {
         this.rv = new RolesTopView;
         return this.roles_region.show(this.rv);
       case 'users':
-        this.uv = new UsersView({
-          collection: new UserCollection([])
-        });
+        this.uv = new UsersLayout();
         return this.users_region.show(this.uv);
     }
   };
@@ -5711,7 +5711,7 @@ PermissionsLayout = (function(superClass) {
 
 module.exports = PermissionsLayout;
 
-},{"../../../models/user_collection":22,"./permissions_top_view":44,"./roles_top_view":47,"./users_view":50}],44:[function(require,module,exports){
+},{"./permissions_top_view":44,"./roles_top_view":47,"./users_layout":50}],44:[function(require,module,exports){
 var ClaimCollection, Marionette, PermissionsTopView, PermissionsView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -5826,6 +5826,8 @@ PermissionsView = (function(superClass) {
   PermissionsView.prototype.childViewContainer = '#permissions_list';
 
   PermissionsView.prototype.childView = PermissionView;
+
+  PermissionsView.prototype.viewComparator = 'name';
 
   PermissionsView.prototype.events = {
     'click #add_claim': 'add_claim'
@@ -6052,6 +6054,8 @@ RolesView = (function(superClass) {
 
   RolesView.prototype.childView = RoleView;
 
+  RolesView.prototype.viewComparator = 'name';
+
   RolesView.prototype.events = {
     'click #add_role': 'add_role'
   };
@@ -6108,21 +6112,21 @@ UserView = (function(superClass) {
   };
 
   UserView.prototype.bindings = {
-    firstName: '#firstname',
-    lastName: '#lastname',
-    email: '#email'
+    firstName: '#firstName',
+    lastName: '#lastName',
+    email: '#email',
+    password: '#password'
   };
 
   UserView.prototype.ui = {
-    firstName: 'input#firstname',
-    lastName: 'input#lastname',
+    firstName: 'input#firstName',
+    lastName: 'input#lastName',
     email: 'input#email',
     pw: 'input#password',
     pwc: 'input#password_confirmation'
   };
 
   UserView.prototype.initialize = function() {
-    debugger;
     return this.modelBinder = new Backbone.ModelBinder();
   };
 
@@ -6167,8 +6171,12 @@ UserView = (function(superClass) {
       body: 'Are you sure you want to delete this User? This cannot be undone and all associated data will be lost21.',
       on_save: (function(_this) {
         return function() {
-          _this.model.collection.remove(_this.model);
-          return App.vent.trigger("app:update");
+          return _this.model.destroy({
+            success: function() {
+              _this.model.collection.remove(_this.model);
+              return App.vent.trigger("app:update");
+            }
+          });
         };
       })(this)
     });
@@ -6210,35 +6218,24 @@ UserView = (function(superClass) {
   };
 
   UserView.prototype.save = function() {
-    var acc, i, j, len, len1, ref, ref1, s;
     if (!this.validate()) {
       return;
     }
-    if (this.model.id == null) {
-      this.model.set('id', Math.floor(Math.random() * 10000) + 1);
-    }
-    this.model.set('roles_global', this.$('select#roles_global').val());
-    ref = App.accounts.models;
-    for (i = 0, len = ref.length; i < len; i++) {
-      acc = ref[i];
-      ref1 = acc.sites.models;
-      for (j = 0, len1 = ref1.length; j < len1; j++) {
-        s = ref1[j];
-        this.model.set("roles_" + s.id, this.$("select#roles_" + s.id).val());
-      }
-    }
-    App.vent.trigger("app:update");
-    return this.render();
+    return this.model.save(null, {
+      success: (function(_this) {
+        return function() {
+          return _this.render();
+        };
+      })(this)
+    });
   };
 
   UserView.prototype.onRender = function() {
-    debugger;
     this.toggle_edit(false);
     return this.modelBinder.bind(this.model, this.el, this.bindings);
   };
 
   UserView.prototype.onShow = function() {
-    debugger;
     if ((this.model.id == null) || this.model.id < 1) {
       this.$("#delete").hide();
       this.show_edit();
@@ -6253,6 +6250,105 @@ UserView = (function(superClass) {
 module.exports = UserView;
 
 },{"../../../models/user":21}],50:[function(require,module,exports){
+var Marionette, UserCollection, UsersLayout, UsersView,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+UsersView = require('./users_view');
+
+UserCollection = require('../../../models/user_collection');
+
+UsersLayout = (function(superClass) {
+  extend(UsersLayout, superClass);
+
+  function UsersLayout() {
+    this.update_filter = bind(this.update_filter, this);
+    return UsersLayout.__super__.constructor.apply(this, arguments);
+  }
+
+  UsersLayout.prototype.template = "forms/manage_permissions/users_layout";
+
+  UsersLayout.prototype.regions = {
+    users_region: '#users_region'
+  };
+
+  UsersLayout.prototype.ui = {
+    filter: 'input#filter'
+  };
+
+  UsersLayout.prototype.events = {
+    'click #add_user': 'add_user',
+    'keyup input#filter': 'update_filter'
+  };
+
+  UsersLayout.prototype.update_filter = function() {
+    var search;
+    if (this.usersview == null) {
+      return;
+    }
+    search = this.ui.filter.val();
+    if ((search != null) && search !== '') {
+      this.usersview.filter = function(child, index, collection) {
+        var rg;
+        rg = new RegExp(search, 'i');
+        return child.get('firstName').match(rg) || child.get('lastName').match(rg);
+      };
+    } else {
+      this.usersview.filter = null;
+    }
+    return this.usersview.render();
+  };
+
+  UsersLayout.prototype.add_user = function() {
+    var c, i, len, ref;
+    if ((this.users == null) || (this.users.models == null)) {
+      return;
+    }
+    ref = this.users.models;
+    for (i = 0, len = ref.length; i < len; i++) {
+      c = ref[i];
+      if ((c.id == null) || c.id === 0) {
+        return false;
+      }
+    }
+    return this.users.add({}, {
+      at: 0
+    });
+  };
+
+  UsersLayout.prototype.onShow = function() {
+    this.$('.loading').show();
+    this.$('.preamble').hide();
+    this.users = new UserCollection();
+    return this.users.fetch({
+      success: (function(_this) {
+        return function() {
+          _this.$('.loading').hide();
+          _this.$('.preamble').show();
+          _this.usersview = new UsersView({
+            collection: _this.users
+          });
+          return _this.users_region.show(_this.usersview);
+        };
+      })(this),
+      error: (function(_this) {
+        return function() {
+          return App.log('error loading Users');
+        };
+      })(this)
+    });
+  };
+
+  return UsersLayout;
+
+})(Marionette.LayoutView);
+
+module.exports = UsersLayout;
+
+},{"../../../models/user_collection":22,"./users_view":51}],51:[function(require,module,exports){
 var Marionette, UserCollection, UserView, UsersView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -6270,55 +6366,17 @@ UsersView = (function(superClass) {
     return UsersView.__super__.constructor.apply(this, arguments);
   }
 
-  UsersView.prototype.template = "forms/manage_permissions/users";
-
-  UsersView.prototype.childViewContainer = '#users_list';
-
   UsersView.prototype.childView = UserView;
 
-  UsersView.prototype.events = {
-    'click #add_user': 'add_user'
-  };
-
-  UsersView.prototype.add_user = function() {
-    var c, i, len, ref;
-    ref = this.collection.models;
-    for (i = 0, len = ref.length; i < len; i++) {
-      c = ref[i];
-      if ((c.id == null) || c.id === 0) {
-        return false;
-      }
-    }
-    return this.collection.add({}, {
-      at: 0
-    });
-  };
-
-  UsersView.prototype.onShow = function() {
-    this.$('.loading').show();
-    this.$('.preamble').hide();
-    return this.collection.fetch({
-      success: (function(_this) {
-        return function() {
-          _this.$('.loading').hide();
-          return _this.$('.preamble').show();
-        };
-      })(this),
-      error: (function(_this) {
-        return function() {
-          debugger;
-        };
-      })(this)
-    });
-  };
+  UsersView.prototype.viewComparator = 'lastName';
 
   return UsersView;
 
-})(Marionette.CompositeView);
+})(Marionette.CollectionView);
 
 module.exports = UsersView;
 
-},{"../../../models/user_collection":22,"./user_view":49}],51:[function(require,module,exports){
+},{"../../../models/user_collection":22,"./user_view":49}],52:[function(require,module,exports){
 var Marionette, ProfileView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -6340,7 +6398,7 @@ ProfileView = (function(superClass) {
 
 module.exports = ProfileView;
 
-},{}],52:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 var LoginView, Marionette, Session, UIUtils,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -6438,7 +6496,7 @@ LoginView = (function(superClass) {
 
 module.exports = LoginView;
 
-},{"../common/uiutils":7,"../models/session":18}],53:[function(require,module,exports){
+},{"../common/uiutils":7,"../models/session":18}],54:[function(require,module,exports){
 var Marionette, ReportsView, Session, UIUtils,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -6476,7 +6534,7 @@ ReportsView = (function(superClass) {
 
 module.exports = ReportsView;
 
-},{"../common/uiutils":7,"../models/session":18}],54:[function(require,module,exports){
+},{"../common/uiutils":7,"../models/session":18}],55:[function(require,module,exports){
 var AlarmWidgetView, Marionette, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -6595,7 +6653,7 @@ window.AlarmWidgetView = AlarmWidgetView;
 
 module.exports = AlarmWidgetView;
 
-},{"../dashboard/widget_view":38}],55:[function(require,module,exports){
+},{"../dashboard/widget_view":38}],56:[function(require,module,exports){
 var Marionette, PbbWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -6894,7 +6952,7 @@ window.PbbWidgetView = PbbWidgetView;
 
 module.exports = PbbWidgetView;
 
-},{"../dashboard/widget_view":38}],56:[function(require,module,exports){
+},{"../dashboard/widget_view":38}],57:[function(require,module,exports){
 var Marionette, PcaWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -7203,7 +7261,7 @@ window.PcaWidgetView = PcaWidgetView;
 
 module.exports = PcaWidgetView;
 
-},{"../dashboard/widget_view":38}],57:[function(require,module,exports){
+},{"../dashboard/widget_view":38}],58:[function(require,module,exports){
 var Marionette, UrlWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -7295,7 +7353,7 @@ window.UrlWidgetView = UrlWidgetView;
 
 module.exports = UrlWidgetView;
 
-},{"../dashboard/widget_view":38}],58:[function(require,module,exports){
+},{"../dashboard/widget_view":38}],59:[function(require,module,exports){
 var Marionette, WeatherWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },

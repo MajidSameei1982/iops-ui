@@ -85,7 +85,7 @@ _.extend Marionette.View::,
         ch += "<option value='#{c.id}' #{sel}>#{txt}</option>"
       "#{ch}</select></div>"  
 
-    roleSelector: ({id, label, value, site_id, global, cls})->
+    roleSelector: ({id, label, value, site_id, cls})->
       # TODO: check current user access to sites
       c = 'form-group'
       c = if cls? then "#{c} #{cls}" else c
@@ -96,16 +96,17 @@ _.extend Marionette.View::,
           <select id='#{id}' class='form-control' multiple data-placeholder='Select Roles'>
       """
       roles = App.roles
-      if !global
+      if site_id?
         if App.accounts? && App.accounts.models.length > 0
           for acc in App.accounts.models
-            if acc.sites? && acc.sites.models.length > 0
+            if acc.sites? && acc.sites.models?
               for s in acc.sites.models
                 if s.id == site_id
                   roles = s.roles
                   break
-      for r in roles.models
-        txt = r.get('name')
-        sel = if value? && "#{value}" == "#{r.id}" then 'selected' else ''
-        rh += "<option value='#{r.id}' #{sel}>#{txt}</option>"
+      if roles? && roles.models?
+        for r in roles.models
+          txt = r.get('name')
+          sel = if value? && "#{value}" == "#{r.id}" then 'selected' else ''
+          rh += "<option value='#{r.id}' #{sel}>#{txt}</option>"
       "#{rh}</select></div>"  

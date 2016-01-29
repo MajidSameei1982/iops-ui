@@ -10,6 +10,7 @@ class AccountView extends Marionette.CompositeView
   className: 'row'
   childViewContainer: '.site_list'
   childView: SiteView
+  viewComparator: 'name'
 
   ui:
     container: '.account_container'

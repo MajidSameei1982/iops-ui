@@ -7,6 +7,7 @@ class PermissionsView extends Marionette.CompositeView
   template: "forms/manage_permissions/permissions"
   childViewContainer: '#permissions_list'
   childView: PermissionView
+  viewComparator: 'name'
 
   events:
     'click #add_claim' : 'add_claim'

@@ -7,6 +7,7 @@ class RolesView extends Marionette.CompositeView
   template: "forms/manage_permissions/roles"
   childViewContainer: '#roles_list'
   childView: RoleView
+  viewComparator: 'name'
 
   events:
     'click #add_role' : 'add_role'

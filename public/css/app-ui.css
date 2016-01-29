@@ -161,6 +161,9 @@ ul.gridster.widget-container {
     .crud_container .crud:hover {
       color: #000; }
 
+.button, .link {
+  cursor: pointer; }
+
 .nav-tabs-custom {
   background-color: transparent !important;
   box-shadow: none; }

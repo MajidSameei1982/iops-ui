@@ -1,8 +1,7 @@
 Marionette = require('marionette')
 PermissionsTopView = require('./permissions_top_view')
 RolesTopView = require('./roles_top_view')
-UsersView = require('./users_view')
-UserCollection = require('../../../models/user_collection')
+UsersLayout = require('./users_layout')
 
 # ----------------------------------
 
@@ -25,8 +24,7 @@ class PermissionsLayout extends Marionette.LayoutView
         @rv = new RolesTopView
         @roles_region.show(@rv)
       when 'users'
-        @uv = new UsersView
-          collection: new UserCollection([])
+        @uv = new UsersLayout()
         @users_region.show(@uv)
 
   onShow: ()->
