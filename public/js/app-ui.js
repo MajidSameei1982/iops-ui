@@ -3518,15 +3518,20 @@ Role = require('./role');
 RoleCollection = (function(superClass) {
   extend(RoleCollection, superClass);
 
-  function RoleCollection() {
-    return RoleCollection.__super__.constructor.apply(this, arguments);
-  }
+  RoleCollection.prototype.service = 'accounts';
 
-  RoleCollection.prototype.service = 'roles';
-
-  RoleCollection.prototype.url = '/roles';
+  RoleCollection.prototype.url = '/sites/{site}/roles';
 
   RoleCollection.prototype.model = Role;
+
+  function RoleCollection(config, opts) {
+    if ((opts != null) && opts.site) {
+      this.url = this.url.replace('{site}', opts.site);
+    } else {
+      this.url = '/roles';
+    }
+    RoleCollection.__super__.constructor.call(this, config);
+  }
 
   return RoleCollection;
 
@@ -5742,9 +5747,9 @@ PermissionsTopView = (function(superClass) {
   };
 
   PermissionsTopView.prototype.rebuild_view = function() {
-    var acc, acc_el, app_claims, i, len, ref, results, s, sc, site_el;
-    app_claims = new ClaimCollection();
-    app_claims.fetch({
+    var acc, acc_el, i, len, ref, results, s, sc, site_el;
+    this.app_claims = new ClaimCollection();
+    this.app_claims.fetch({
       success: (function(_this) {
         return function() {
           _this.pv = new PermissionsView({
@@ -5753,7 +5758,7 @@ PermissionsTopView = (function(superClass) {
               name: 'Global Permissions',
               global: true
             }),
-            collection: App.claims
+            collection: _this.app_claims
           });
           return _this.global_region.show(_this.pv);
         };
@@ -5772,7 +5777,7 @@ PermissionsTopView = (function(superClass) {
         results1 = [];
         for (j = 0, len1 = ref1.length; j < len1; j++) {
           s = ref1[j];
-          site_el = $("<div id='site_" + s.id + "' class='site_item'></div>");
+          site_el = $("<div id='site_" + s.id + "' class='site_item'><div class='loading'><i class='fa fa-spinner fa-pulse'></i> LOADING...</div></div>");
           acc_el.append(site_el);
           sc = new ClaimCollection([], {
             site: s.id
@@ -5965,7 +5970,8 @@ RoleView = (function(superClass) {
 module.exports = RoleView;
 
 },{"../../../models/role":16}],47:[function(require,module,exports){
-var Marionette, RolesTopView, RolesView,
+var Marionette, RoleCollection, RolesTopView, RolesView,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -5973,10 +5979,13 @@ Marionette = require('marionette');
 
 RolesView = require('./roles_view');
 
+RoleCollection = require('../../../models/role_collection');
+
 RolesTopView = (function(superClass) {
   extend(RolesTopView, superClass);
 
   function RolesTopView() {
+    this.rebuild_view = bind(this.rebuild_view, this);
     return RolesTopView.__super__.constructor.apply(this, arguments);
   }
 
@@ -5987,17 +5996,27 @@ RolesTopView = (function(superClass) {
   };
 
   RolesTopView.prototype.onShow = function() {
-    var acc, acc_el, i, len, m, r, ref, results, s, site_el, srv;
-    m = new Backbone.Model({
-      id: 0,
-      name: 'Global Roles',
-      global: true
+    return App.refresh_accounts(this.rebuild_view);
+  };
+
+  RolesTopView.prototype.rebuild_view = function() {
+    var acc, acc_el, i, len, ref, results, s, site_el, sr;
+    this.app_roles = new RoleCollection();
+    this.app_roles.fetch({
+      success: (function(_this) {
+        return function() {
+          _this.pv = new RolesView({
+            model: new Backbone.Model({
+              id: 0,
+              name: 'Global Roles',
+              global: true
+            }),
+            collection: _this.app_claims
+          });
+          return _this.global_region.show(_this.pv);
+        };
+      })(this)
     });
-    this.rv = new RolesView({
-      model: m,
-      collection: App.roles
-    });
-    this.global_region.show(this.rv);
     ref = App.accounts.models;
     results = [];
     for (i = 0, len = ref.length; i < len; i++) {
@@ -6011,14 +6030,26 @@ RolesTopView = (function(superClass) {
         results1 = [];
         for (j = 0, len1 = ref1.length; j < len1; j++) {
           s = ref1[j];
-          site_el = $("<div id='site_" + s.id + "' class='site_item'></div>");
+          site_el = $("<div id='site_" + s.id + "' class='site_item'><div class='loading'><i class='fa fa-spinner fa-pulse'></i> LOADING...</div></div>");
           acc_el.append(site_el);
-          srv = new RolesView({
-            model: s,
-            collection: s.roles
+          sr = new RoleCollection([], {
+            site: s.id
           });
-          r = this.addRegion("site_" + s.id, "#site_" + s.id);
-          results1.push(r.show(srv));
+          results1.push(sr.fetch({
+            success: ((function(_this) {
+              return function(site, roles) {
+                return function(data, xhr) {
+                  var r, spv;
+                  spv = new RolesView({
+                    model: site,
+                    collection: roles
+                  });
+                  r = _this.addRegion("site_" + site.id, "#site_" + site.id);
+                  return r.show(spv);
+                };
+              };
+            })(this))(s, sr)
+          }));
         }
         return results1;
       }).call(this));
@@ -6032,7 +6063,7 @@ RolesTopView = (function(superClass) {
 
 module.exports = RolesTopView;
 
-},{"./roles_view":48}],48:[function(require,module,exports){
+},{"../../../models/role_collection":17,"./roles_view":48}],48:[function(require,module,exports){
 var Marionette, RoleView, RolesView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -6114,14 +6145,15 @@ UserView = (function(superClass) {
   UserView.prototype.bindings = {
     firstName: '#firstName',
     lastName: '#lastName',
-    email: '#email',
-    password: '#password'
+    email: '#email'
   };
 
   UserView.prototype.ui = {
     firstName: 'input#firstName',
     lastName: 'input#lastName',
     email: 'input#email',
+    phone1: 'input#phone1',
+    phone2: 'input#phone2',
     pw: 'input#password',
     pwc: 'input#password_confirmation'
   };
@@ -6218,9 +6250,15 @@ UserView = (function(superClass) {
   };
 
   UserView.prototype.save = function() {
+    var settings;
     if (!this.validate()) {
       return;
     }
+    settings = this.model.get('settings') || {};
+    settings = _.extend(settings);
+    settings.phone1 = this.ui.phone1.val();
+    settings.phone2 = this.ui.phone2.val();
+    this.model.set('settings', settings);
     return this.model.save(null, {
       success: (function(_this) {
         return function() {
@@ -6236,8 +6274,16 @@ UserView = (function(superClass) {
   };
 
   UserView.prototype.onShow = function() {
+    var settings;
     if ((this.model.id == null) || this.model.id < 1) {
       this.$("#delete").hide();
+      settings = this.model.get('settings') || {};
+      if (settings.phone1) {
+        this.ui.phone1.val(settings.phone1);
+      }
+      if (settings.phone2) {
+        this.ui.phone2.val(settings.phone2);
+      }
       this.show_edit();
     }
     return App.new_user = this.model;

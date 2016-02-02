@@ -17,15 +17,15 @@ class UserView extends Marionette.ItemView
     firstName: '#firstName'
     lastName: '#lastName'
     email: '#email'
-    password: '#password'
-    #phone1: '#phone1'
-    #phone2: '#phone2'
+    #password: '#password'
     #roles_global: '#roles_global'
 
   ui:
     firstName: 'input#firstName'
     lastName: 'input#lastName'
     email: 'input#email'
+    phone1: 'input#phone1'
+    phone2: 'input#phone2'
     pw: 'input#password'
     pwc: 'input#password_confirmation'
     
@@ -92,14 +92,12 @@ class UserView extends Marionette.ItemView
     res
 
   save: ()->
-    # TODO: FIRE MODEL SAVE
     return if !@validate()
-    # if !@model.id? then @model.set('id', Math.floor(Math.random() * 10000)+1)
-    # @model.set('roles_global', @$('select#roles_global').val())
-    # for acc in App.accounts.models
-    #   for s in acc.sites.models
-    #     @model.set("roles_#{s.id}", @$("select#roles_#{s.id}").val())
-    # App.vent.trigger "app:update"
+    settings = @model.get('settings') || {}
+    settings = _.extend(settings)
+    settings.phone1 = @ui.phone1.val()
+    settings.phone2 = @ui.phone2.val()
+    @model.set('settings', settings)
     @model.save null,
       success:()=>
         @render()
@@ -111,6 +109,9 @@ class UserView extends Marionette.ItemView
   onShow: ()->
     if (!@model.id? || @model.id < 1)
       @$("#delete").hide()
+      settings = @model.get('settings') || {}
+      if settings.phone1 then @ui.phone1.val(settings.phone1)
+      if settings.phone2 then @ui.phone2.val(settings.phone2)
       @show_edit()
     App.new_user = @model
 

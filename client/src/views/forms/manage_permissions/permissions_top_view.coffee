@@ -14,12 +14,12 @@ class PermissionsTopView extends Marionette.LayoutView
     App.refresh_accounts(@rebuild_view)
 
   rebuild_view: ()=>
-    app_claims = new ClaimCollection()
-    app_claims.fetch
+    @app_claims = new ClaimCollection()
+    @app_claims.fetch
       success: ()=>
         @pv = new PermissionsView
           model: new Backbone.Model({id:0, name:'Global Permissions', global:true})
-          collection: App.claims
+          collection: @app_claims
         @global_region.show(@pv)
     
     for acc in App.accounts.models
@@ -33,7 +33,7 @@ class PermissionsTopView extends Marionette.LayoutView
       
       # fetch latest claims for each site
       for s in acc.sites.models
-        site_el = $("<div id='site_#{s.id}' class='site_item'></div>")
+        site_el = $("<div id='site_#{s.id}' class='site_item'><div class='loading'><i class='fa fa-spinner fa-pulse'></i> LOADING...</div></div>")
         acc_el.append(site_el)
         sc = new ClaimCollection [], {site: s.id}
         sc.fetch
