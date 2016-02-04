@@ -57,21 +57,15 @@ window.App = do()->
       END TODO:
     ###
 
-    # connect OPCManager
-    @log('Initializing OPCManager')
-    App.opc = OPCManager
-    App.opc.init(App)
-
-    
     App.vent.on "user:update", ()->
       Session.save_session()
 
     App.vent.on "app:update", ()->
+      return null if !App.accounts?
       accounts = App.accounts.toJSON()
       for acc, idx in accounts
         aacc = App.accounts.models[idx]
         acc.sites = aacc.sites.toJSON()
-      #App.store.set("accounts", accounts)
       
     # setup app clock
     @log('Setting system clock')
@@ -107,8 +101,15 @@ window.App = do()->
     @log('Started')
     if (Backbone.history) 
       App.vent.on "app:resources_loaded", ()=>
-        $('#loading_cover').fadeOut(100, ()-> $(@).hide())
+        # ensure this only fires once
         App.vent.off "app:resources_loaded"
+        # connect OPC
+        @log('Initializing OPCManager')
+        App.opc = OPCManager
+        App.opc.init(App)
+        # make app available to UI
+        $('#loading_cover').fadeOut(100, ()-> $(@).hide())
+        # set up routing and controller
         @controller = new AppController()
         @router = new Router
           controller: @controller

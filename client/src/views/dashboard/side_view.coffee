@@ -62,7 +62,8 @@ class DashboardSideView extends Marionette.ItemView
 
   show_add: (e)->
     if e? then e.preventDefault()
-    d = new Dashboard()
+    d = new Dashboard
+      id: Math.floor(Math.random() * 10000) + 1,
     @show_dash_modal(d, 'add')
 
   resolve_dash: (e, pre)->

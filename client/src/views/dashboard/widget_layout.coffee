@@ -27,7 +27,7 @@ class WidgetLayout extends Marionette.LayoutView
       lo.sx = cls.layout.sx
       lo.sy = cls.layout.sy
     w = @model.widgets.add
-      id: id
+      _id: id
       type: type
       settings:
         layout: lo

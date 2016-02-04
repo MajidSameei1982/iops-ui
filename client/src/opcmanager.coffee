@@ -77,6 +77,7 @@ class OPCManager
     c
 
   @rem_ref: (conn)=>
+    return 0 if !conn?
     c = @refs[conn]
     c = if c? then c-1 else 0
     if c <= 0
@@ -91,7 +92,7 @@ class OPCManager
   @init: (app)->
     for account in app.accounts.models
       for site in account.sites.models
-        siteUrl = site.get("siteUrl")
+        siteUrl = site.get("serverUrl")
         refreshRate = site.get("refreshRate")
         if !opc_rate? then opc_rate = 5
         opc_rate = parseInt(opc_rate) * 1000

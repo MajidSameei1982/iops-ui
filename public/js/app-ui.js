@@ -859,7 +859,7 @@ window.JST["forms/manage_permissions/permissions"] = function(__obj) {
         _print(_safe(')</h4>\n  '));
       }
     
-      _print(_safe('\n  <span id="add_claim"><i class=\'fa fa-plus-square\'></i> Add New Permission</span>\n</div>\n<div id=\'permissions_list\'></div>'));
+      _print(_safe('\n  <span id="add_claim"><i class=\'fa fa-plus-square\'></i> Add New Permission</span>\n</div>\n<div id=\'permissions_list\'></div>\n'));
     
     }).call(this);
     
@@ -1983,14 +1983,14 @@ window.App = (function() {
     /*
       END TODO:
      */
-    this.log('Initializing OPCManager');
-    App.opc = OPCManager;
-    App.opc.init(App);
     App.vent.on("user:update", function() {
       return Session.save_session();
     });
     App.vent.on("app:update", function() {
       var aacc, acc, accounts, i, idx, len, results;
+      if (App.accounts == null) {
+        return null;
+      }
       accounts = App.accounts.toJSON();
       results = [];
       for (idx = i = 0, len = accounts.length; i < len; idx = ++i) {
@@ -2036,10 +2036,13 @@ window.App = (function() {
     if (Backbone.history) {
       App.vent.on("app:resources_loaded", (function(_this) {
         return function() {
+          App.vent.off("app:resources_loaded");
+          _this.log('Initializing OPCManager');
+          App.opc = OPCManager;
+          App.opc.init(App);
           $('#loading_cover').fadeOut(100, function() {
             return $(this).hide();
           });
-          App.vent.off("app:resources_loaded");
           _this.controller = new AppController();
           _this.router = new Router({
             controller: _this.controller
@@ -4053,6 +4056,9 @@ OPCManager = (function() {
 
   OPCManager.rem_ref = function(conn) {
     var c;
+    if (conn == null) {
+      return 0;
+    }
     c = OPCManager.refs[conn];
     c = c != null ? c - 1 : 0;
     if (c <= 0) {
@@ -4079,7 +4085,7 @@ OPCManager = (function() {
         results1 = [];
         for (j = 0, len1 = ref1.length; j < len1; j++) {
           site = ref1[j];
-          siteUrl = site.get("siteUrl");
+          siteUrl = site.get("serverUrl");
           refreshRate = site.get("refreshRate");
           if (typeof opc_rate === "undefined" || opc_rate === null) {
             opc_rate = 5;
@@ -4710,7 +4716,9 @@ DashboardSideView = (function(superClass) {
     if (e != null) {
       e.preventDefault();
     }
-    d = new Dashboard();
+    d = new Dashboard({
+      id: Math.floor(Math.random() * 10000) + 1
+    });
     return this.show_dash_modal(d, 'add');
   };
 
@@ -4943,7 +4951,7 @@ WidgetLayout = (function(superClass) {
       lo.sy = cls.layout.sy;
     }
     w = this.model.widgets.add({
-      id: id,
+      _id: id,
       type: type,
       settings: {
         layout: lo
