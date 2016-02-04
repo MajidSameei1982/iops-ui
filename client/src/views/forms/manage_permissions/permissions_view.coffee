@@ -15,7 +15,14 @@ class PermissionsView extends Marionette.CompositeView
   add_claim: ()->
     for c in @collection.models
       if !c.id? || c.id == 0 then return false
-    @collection.add {name: '', description: ''}, {at:0}
+    claim = 
+      name: ''
+      description: ''
+    if @collection.site? && @collection.site.id != 0 then claim.accountId = @collection.site.id
+    @collection.add claim, {at:0}
+
+  onShow:()->
+    if !@model.get('global') then @collection.site = @model
 
 # ----------------------------------
 

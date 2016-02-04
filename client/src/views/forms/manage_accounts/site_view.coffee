@@ -82,7 +82,6 @@ class SiteView extends Marionette.ItemView
       on_save: ()=>
         @model.destroy
           success: ()=>
-            #@model.collection.remove(@model)
             App.vent.trigger "app:update"
 
   clear_errors: ()->

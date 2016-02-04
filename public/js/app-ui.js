@@ -3343,18 +3343,21 @@ BaseModel = require('./_base');
 Claim = (function(superClass) {
   extend(Claim, superClass);
 
-  function Claim() {
-    return Claim.__super__.constructor.apply(this, arguments);
-  }
-
   Claim.prototype.service = 'accounts';
-
-  Claim.prototype.urlRoot = '/claims';
 
   Claim.prototype.defaults = {
     name: '',
     description: ''
   };
+
+  function Claim(config, opts) {
+    if ((config != null) && (config.accountId != null)) {
+      this.urlRoot = "/sites/" + config.accountId + "/claims";
+    } else {
+      this.urlRoot = '/claims';
+    }
+    Claim.__super__.constructor.call(this, config, opts);
+  }
 
   return Claim;
 
@@ -5684,8 +5687,11 @@ PermissionView = (function(superClass) {
       body: 'Are you sure you want to delete this Permission? This cannot be undone and all associated Users and Roles will lose this Permission',
       on_save: (function(_this) {
         return function() {
-          _this.model.collection.remove(_this.model);
-          return App.vent.trigger("app:update");
+          return _this.model.destroy({
+            success: function() {
+              return App.vent.trigger("app:update");
+            }
+          });
         };
       })(this)
     });
@@ -5697,11 +5703,14 @@ PermissionView = (function(superClass) {
     if ((name == null) || name.trim() === '') {
       return;
     }
-    if (this.model.id == null) {
-      this.model.set('id', Math.floor(Math.random() * 10000) + 1);
-    }
-    App.vent.trigger("app:update");
-    return this.render();
+    return this.model.save(null, {
+      success: (function(_this) {
+        return function() {
+          App.vent.trigger("app:update");
+          return _this.render();
+        };
+      })(this)
+    });
   };
 
   PermissionView.prototype.onRender = function() {
@@ -5905,7 +5914,7 @@ PermissionsView = (function(superClass) {
   };
 
   PermissionsView.prototype.add_claim = function() {
-    var c, i, len, ref;
+    var c, claim, i, len, ref;
     ref = this.collection.models;
     for (i = 0, len = ref.length; i < len; i++) {
       c = ref[i];
@@ -5913,12 +5922,22 @@ PermissionsView = (function(superClass) {
         return false;
       }
     }
-    return this.collection.add({
+    claim = {
       name: '',
       description: ''
-    }, {
+    };
+    if ((this.collection.site != null) && this.collection.site.id !== 0) {
+      claim.accountId = this.collection.site.id;
+    }
+    return this.collection.add(claim, {
       at: 0
     });
+  };
+
+  PermissionsView.prototype.onShow = function() {
+    if (!this.model.get('global')) {
+      return this.collection.site = this.model;
+    }
   };
 
   return PermissionsView;
