@@ -9,8 +9,13 @@ class SiteView extends Marionette.ItemView
   className: ''
 
   ui:
-    container: '.site_container'
-    cloud: 'i#site_cloud'
+    container   : '.site_container'
+    cloud       : 'i#site_cloud'
+    name        : '#site_name'
+    code        : '#site_code'
+    shortName   : '#site_short'
+    serverUrl   : '#site_url'
+    refreshRate : '#site_refresh_rate'
 
   events:
     'click #edit_site'             : 'show_edit'
@@ -68,23 +73,34 @@ class SiteView extends Marionette.ItemView
     @old_model = $.extend(true, {}, @model.attributes);
     @toggle_edit(true);
 
-  delete: ()->
+  delete: ()=>
     App.uiutils.showModal
       title: 'Delete Site?'
       icon: 'warning'
       type: 'warning'
       body: 'Are you sure you want to delete this Site? This cannot be undone and all Site data will be lost.'
       on_save: ()=>
-        @model.collection.remove(@model)
-        App.vent.trigger "app:update"
+        @model.destroy
+          success: ()=>
+            #@model.collection.remove(@model)
+            App.vent.trigger "app:update"
+
+  clear_errors: ()->
+    for k of @ui
+      @$(@ui[k]).removeClass('error')
 
   save: ()->
+    @clear_errors()
     name = @model.get('name')
     return if !name? || name.trim() == ''
     @model.save null,
-      success: ()->
+      success: ()=>
         @render()
         App.vent.trigger "app:update"
+      error: (site, err)=>
+        if err.responseJSON?
+          for k in err.responseJSON.validation.keys
+            @ui[k].addClass('error')
     
   onRender: ()->
     @modelBinder.bind(@model, @el, @bindings)

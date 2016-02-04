@@ -3157,37 +3157,40 @@ BaseModel = (function(superClass) {
   BaseModel.prototype.idAttribute = '_id';
 
   BaseModel.prototype.save = function(attrs, options) {
-    var i, k, len, ref;
+    var blacklist, i, k, len;
     attrs || (attrs = _.extend(this.attributes));
     options || (options = {});
+    blacklist = ['isActive', 'createdAt', 'updatedAt', 'lastErrorObject', 'ok', 'value'];
     if (options.blacklist != null) {
-      ref = options.blacklist;
-      for (i = 0, len = ref.length; i < len; i++) {
-        k = ref[i];
-        delete attrs[k];
-      }
+      blacklist = blacklist.concat(options.blacklist);
       delete options.blacklist;
     }
-    delete attrs.createdAt;
-    delete attrs.updatedAt;
+    for (i = 0, len = blacklist.length; i < len; i++) {
+      k = blacklist[i];
+      delete attrs[k];
+    }
     options.data = JSON.stringify(attrs);
     options.contentType = "application/json";
     return BaseModel.__super__.save.call(this, attrs, options);
   };
 
-  function BaseModel(opts) {
+  BaseModel.prototype.setUrl = function(root) {
     var url;
-    BaseModel.__super__.constructor.apply(this, arguments);
     if ((this.local != null) && this.local === true) {
-      url = '';
+      return url = '';
     } else {
       url = this.service != null ? ("" + AppConfig.api_baseurl).replace('{service}', "" + this.service) : "" + AppConfig.api_baseurl;
-      if (this.urlRoot != null) {
-        this.urlRoot = "" + url + this.urlRoot;
+      if (root != null) {
+        return this.urlRoot = "" + url + root;
       } else {
-        url;
+        return url;
       }
     }
+  };
+
+  function BaseModel(opts) {
+    BaseModel.__super__.constructor.apply(this, arguments);
+    this.setUrl(this.urlRoot);
     this;
   }
 
@@ -3710,8 +3713,6 @@ Site = (function(superClass) {
 
   Site.prototype.service = 'accounts';
 
-  Site.prototype.urlRoot = '/accounts/{acct}/sites';
-
   Site.prototype.defaults = {
     accountId: null,
     name: null,
@@ -3727,8 +3728,19 @@ Site = (function(superClass) {
 
   Site.prototype.save = function(attrs, options) {
     options || (options = {});
-    options.blacklist = ["isActive"];
+    options.blacklist = ["accountId"];
+    this.pickUrl();
     return Site.__super__.save.call(this, attrs, options);
+  };
+
+  Site.prototype.destroy = function(options) {
+    this.pickUrl(true);
+    return Site.__super__.destroy.call(this, options);
+  };
+
+  Site.prototype.fetch = function(options) {
+    this.pickUrl();
+    return Site.__super__.fetch.call(this, options);
   };
 
   Site.prototype.persist = function() {
@@ -3736,10 +3748,20 @@ Site = (function(superClass) {
     return this.attributes["roles"] = this.roles.toJSON();
   };
 
+  Site.prototype.pickUrl = function(destroy) {
+    if (!this.isNew() && !destroy) {
+      this.urlRoot = '/sites';
+    } else {
+      this.urlRoot = "/accounts/" + this.accountId + "/sites";
+    }
+    return this.setUrl(this.urlRoot);
+  };
+
   function Site(config, opts) {
     this.persist = bind(this.persist, this);
     if ((config != null) && config.accountId) {
-      this.urlRoot = this.urlRoot.replace('{acct}', config.accountId);
+      this.accountId = config.accountId;
+      this.setUrl(this.accountId);
     }
     Site.__super__.constructor.call(this, config, opts);
     this.claims = new ClaimCollection(this.get('claims'));
@@ -5414,6 +5436,7 @@ module.exports = AccountsView;
 
 },{"./account_view":39}],41:[function(require,module,exports){
 var Marionette, Site, SiteView,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -5425,6 +5448,7 @@ SiteView = (function(superClass) {
   extend(SiteView, superClass);
 
   function SiteView() {
+    this["delete"] = bind(this["delete"], this);
     return SiteView.__super__.constructor.apply(this, arguments);
   }
 
@@ -5436,7 +5460,12 @@ SiteView = (function(superClass) {
 
   SiteView.prototype.ui = {
     container: '.site_container',
-    cloud: 'i#site_cloud'
+    cloud: 'i#site_cloud',
+    name: '#site_name',
+    code: '#site_code',
+    shortName: '#site_short',
+    serverUrl: '#site_url',
+    refreshRate: '#site_refresh_rate'
   };
 
   SiteView.prototype.events = {
@@ -5527,24 +5556,53 @@ SiteView = (function(superClass) {
       body: 'Are you sure you want to delete this Site? This cannot be undone and all Site data will be lost.',
       on_save: (function(_this) {
         return function() {
-          _this.model.collection.remove(_this.model);
-          return App.vent.trigger("app:update");
+          return _this.model.destroy({
+            success: function() {
+              return App.vent.trigger("app:update");
+            }
+          });
         };
       })(this)
     });
   };
 
+  SiteView.prototype.clear_errors = function() {
+    var k, results;
+    results = [];
+    for (k in this.ui) {
+      results.push(this.$(this.ui[k]).removeClass('error'));
+    }
+    return results;
+  };
+
   SiteView.prototype.save = function() {
     var name;
+    this.clear_errors();
     name = this.model.get('name');
     if ((name == null) || name.trim() === '') {
       return;
     }
     return this.model.save(null, {
-      success: function() {
-        this.render();
-        return App.vent.trigger("app:update");
-      }
+      success: (function(_this) {
+        return function() {
+          _this.render();
+          return App.vent.trigger("app:update");
+        };
+      })(this),
+      error: (function(_this) {
+        return function(site, err) {
+          var i, k, len, ref, results;
+          if (err.responseJSON != null) {
+            ref = err.responseJSON.validation.keys;
+            results = [];
+            for (i = 0, len = ref.length; i < len; i++) {
+              k = ref[i];
+              results.push(_this.ui[k].addClass('error'));
+            }
+            return results;
+          }
+        };
+      })(this)
     });
   };
 

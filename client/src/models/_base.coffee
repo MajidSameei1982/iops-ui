@@ -9,24 +9,28 @@ class BaseModel extends Backbone.Model
   save:(attrs, options)->
     attrs || (attrs = _.extend(this.attributes))
     options || (options = {})
+    # prevent attribs from being sent up in save operations
+    blacklist = ['isActive', 'createdAt', 'updatedAt', 'lastErrorObject', 'ok', 'value']
     if options.blacklist?
-      for k in options.blacklist
-        delete attrs[k]
+      blacklist = blacklist.concat(options.blacklist)
       delete options.blacklist
-    #delete attrs._id
-    delete attrs.createdAt
-    delete attrs.updatedAt
+    for k in blacklist
+      delete attrs[k]
+
     options.data = JSON.stringify(attrs)
     options.contentType = "application/json" # super annoying b/c Backbone changes this on a PUT with altered data
     super(attrs, options)
-    
+
+  setUrl: (root)->
+    if @local? and @local == true
+      url = ''
+    else
+      url = if @service? then "#{AppConfig.api_baseurl}".replace('{service}', "#{@service}") else "#{AppConfig.api_baseurl}"
+      if root? then @urlRoot = "#{url}#{root}" else url
+
   constructor: (opts) ->
   	super
-  	if @local? and @local == true
-  		url = ''
-  	else
-	  	url = if @service? then "#{AppConfig.api_baseurl}".replace('{service}', "#{@service}") else "#{AppConfig.api_baseurl}"
-	  	if @urlRoot? then @urlRoot = "#{url}#{@urlRoot}" else url
+  	@setUrl(@urlRoot)
   	@
 
 # ----------------------------------

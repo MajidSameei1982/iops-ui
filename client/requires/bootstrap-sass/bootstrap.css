@@ -3540,6 +3540,12 @@ select[multiple].input-lg,
   color: #a94442;
 }
 
+input.error {
+  color: #a94442;
+  border-color: #a94442;
+  background-color: #f2dede;
+}
+
 .has-feedback label ~ .form-control-feedback {
   top: 25px;
 }
