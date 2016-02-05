@@ -1333,7 +1333,7 @@ window.JST["forms/profile"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="container">\n\t<div class="row">\n\t\t<div class="col-xs-12 col-sm-4" style=\'border-right:solid 1px #ccc;\'>\n\t\t\t<div style=\'border:solid 1px #ccc;width:200px;height:200px\'></div>\n\t\t</div>\n\t\t<div class="col-xs-12 col-sm-8">\n\t\t\t'));
+      _print(_safe('<div class="container">\n\t<div class="row">\n\t\t<!-- <div class="col-xs-12 col-sm-4" style=\'border-right:solid 1px #ccc;\'>\n\t\t\t<div style=\'border:solid 1px #ccc;width:200px;height:200px\'></div>\n\t\t</div> -->\n\n\t\t<div class="col-xs-12 col-sm-8">\n\t\t\t\n\t\t\t<div id="alertContainer"></div>\n\n\t\t\t'));
     
       _print(_safe(this.formGroup({
         id: 'email',
@@ -1347,23 +1347,23 @@ window.JST["forms/profile"] = function(__obj) {
       _print(_safe('\n\t\t\t'));
     
       _print(_safe(this.formGroup({
-        id: 'firstname',
+        id: 'firstName',
         type: 'text',
         placeholder: 'First Name',
         cls: 'col-sm-6',
         label: 'Name',
-        value: this.firstname
+        value: this.firstName
       })));
     
       _print(_safe('\n\t\t\t'));
     
       _print(_safe(this.formGroup({
-        id: 'lastname',
+        id: 'lastName',
         type: 'text',
         placeholder: 'Last Name',
         cls: 'col-sm-6',
         label: '&nbsp;',
-        value: this.lastname
+        value: this.lastName
       })));
     
       _print(_safe('\n\t\t\t'));
@@ -1374,7 +1374,7 @@ window.JST["forms/profile"] = function(__obj) {
         placeholder: 'Primary Phone',
         cls: 'col-sm-6',
         label: 'Phone Numbers',
-        value: this.phone1
+        value: this.settings.phone1
       })));
     
       _print(_safe('\n\t\t\t'));
@@ -1385,7 +1385,7 @@ window.JST["forms/profile"] = function(__obj) {
         placeholder: 'Secondary Phone',
         cls: 'col-sm-6',
         label: '&nbsp;',
-        value: this.phone2
+        value: this.settings.phone2
       })));
     
       _print(_safe('\n\t\t\t'));
@@ -1408,7 +1408,7 @@ window.JST["forms/profile"] = function(__obj) {
         label: '&nbsp;'
       })));
     
-      _print(_safe('\n\t\t\t<div class="col-xs-12"><button class="btn btn-primary">SAVE PROFILE</button></div>\n\t\t\t\n\t\t</div>\n\t</div>\n</div>'));
+      _print(_safe('\n\t\t\t<div class="col-xs-12"><button class="save btn btn-primary">SAVE PROFILE</button></div>\n\t\t\t\n\t\t</div>\n\t</div>\n</div>'));
     
     }).call(this);
     
@@ -3026,7 +3026,7 @@ UIUtils = (function(superClass) {
     this.clearAlerts(el);
     icn = icon != null ? "<i class='icon fa fa-" + icon + "'></i>" : '';
     ttl = title != null ? "<h4>" + icn + title + "</h4>" : "" + icn;
-    html = "<div class=\"alert alert-" + type + " alert-dismissable\">\n  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">×</button>\n  " + ttl + message + "\n</div>";
+    html = "<div class=\"alert alert-" + type + " alert-dismissable\">\n  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\" aria-label=\"Close\">&times;</button>\n  " + ttl + message + "\n</div>";
     alert = $(html);
     $(el).prepend(alert);
     return alert;
@@ -6508,11 +6508,13 @@ UsersView = (function(superClass) {
 module.exports = UsersView;
 
 },{"../../../models/user_collection":22,"./user_view":49}],52:[function(require,module,exports){
-var Marionette, ProfileView,
+var Marionette, ProfileView, UIUtils,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
 Marionette = require('marionette');
+
+UIUtils = require('../../common/uiutils');
 
 ProfileView = (function(superClass) {
   extend(ProfileView, superClass);
@@ -6523,13 +6525,130 @@ ProfileView = (function(superClass) {
 
   ProfileView.prototype.template = "forms/profile";
 
+  ProfileView.prototype.events = {
+    'click button.save': 'save'
+  };
+
+  ProfileView.prototype.bindings = {
+    firstName: '#firstName',
+    lastName: '#lastName',
+    email: '#email',
+    password: 'input#password'
+  };
+
+  ProfileView.prototype.ui = {
+    alertContainer: '#alertContainer',
+    firstName: 'input#firstName',
+    lastName: 'input#lastName',
+    email: 'input#email',
+    phone1: 'input#phone1',
+    phone2: 'input#phone2',
+    pw: 'input#password',
+    pwc: 'input#password_confirmation'
+  };
+
+  ProfileView.prototype.initialize = function() {
+    return this.modelBinder = new Backbone.ModelBinder();
+  };
+
+  ProfileView.prototype.onRender = function() {
+    return this.modelBinder.bind(this.model, this.el, this.bindings);
+  };
+
+  ProfileView.prototype.onShow = function() {
+    var settings;
+    settings = this.model.get('settings') || {};
+    if (settings.phone1) {
+      this.ui.phone1.val(settings.phone1);
+    }
+    if (settings.phone2) {
+      return this.ui.phone2.val(settings.phone2);
+    }
+  };
+
+  ProfileView.prototype.valid_email = function(eml) {
+    var e;
+    if ((eml == null) || eml.trim() === '') {
+      return false;
+    }
+    e = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    return e.test(eml);
+  };
+
+  ProfileView.prototype.validate = function() {
+    var pw, pwc, res;
+    this.$('.form-group').removeClass('has-error');
+    res = true;
+    if (!this.valid_email(this.model.get('email'))) {
+      this.ui.email.closest('.form-group').addClass('has-error');
+      res = res && false;
+    }
+    if ((this.model.get('lastName') == null) || this.model.get('lastName').trim() === '') {
+      this.ui.lastName.closest('.form-group').addClass('has-error');
+      res = res && false;
+    }
+    if ((this.model.get('firstName') == null) || this.model.get('firstName').trim() === '') {
+      this.ui.firstName.closest('.form-group').addClass('has-error');
+      res = res && false;
+    }
+    pw = this.ui.pw.val().trim();
+    pwc = this.ui.pwc.val().trim();
+    if (pw !== '' && pw !== pwc) {
+      this.ui.pw.closest('.form-group').addClass('has-error');
+      this.ui.pwc.closest('.form-group').addClass('has-error');
+      res = res && false;
+    }
+    return res;
+  };
+
+  ProfileView.prototype.save = function() {
+    var pw, settings;
+    UIUtils.clearAlerts(this.ui.alertContainer);
+    if (!this.validate()) {
+      return;
+    }
+    settings = this.model.get('settings') || {};
+    settings = _.extend(settings);
+    settings.phone1 = this.ui.phone1.val();
+    settings.phone2 = this.ui.phone2.val();
+    this.model.set('settings', settings);
+    pw = this.ui.pw.val();
+    if (pw.trim() === '') {
+      delete this.model.attributes['password'];
+    }
+    return this.model.save(null, {
+      success: (function(_this) {
+        return function() {
+          UIUtils.showAlert(_this.ui.alertContainer, {
+            title: "Profile Saved.",
+            message: "",
+            type: "success",
+            icon: "thumbs-up"
+          });
+          _this.ui.pw.val('');
+          return _this.ui.pwc.val('');
+        };
+      })(this),
+      error: (function(_this) {
+        return function(m, err) {
+          return UIUtils.showAlert(_this.ui.alertContainer, {
+            title: "ERROR!",
+            message: (err != null) && (err.responseJSON != null) ? err.responseJSON.message : '',
+            type: "error",
+            icon: "warning"
+          });
+        };
+      })(this)
+    });
+  };
+
   return ProfileView;
 
 })(Marionette.ItemView);
 
 module.exports = ProfileView;
 
-},{}],53:[function(require,module,exports){
+},{"../../common/uiutils":7}],53:[function(require,module,exports){
 var LoginView, Marionette, Session, UIUtils,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;

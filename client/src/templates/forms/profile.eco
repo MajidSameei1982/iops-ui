@@ -1,17 +1,21 @@
 <div class="container">
 	<div class="row">
-		<div class="col-xs-12 col-sm-4" style='border-right:solid 1px #ccc;'>
+		<!-- <div class="col-xs-12 col-sm-4" style='border-right:solid 1px #ccc;'>
 			<div style='border:solid 1px #ccc;width:200px;height:200px'></div>
-		</div>
+		</div> -->
+
 		<div class="col-xs-12 col-sm-8">
+			
+			<div id="alertContainer"></div>
+
 			<%- @formGroup({id:'email', type:'email', placeholder:'Email', cls: 'col-sm-12', label: 'Email Address', value: @email}) %>
-			<%- @formGroup({id:'firstname', type:'text', placeholder:'First Name', cls: 'col-sm-6', label: 'Name', value: @firstname}) %>
-			<%- @formGroup({id:'lastname', type:'text', placeholder:'Last Name', cls: 'col-sm-6', label: '&nbsp;', value: @lastname}) %>
-			<%- @formGroup({id:'phone1', type:'text', placeholder:'Primary Phone', cls: 'col-sm-6', label: 'Phone Numbers', value: @phone1}) %>
-			<%- @formGroup({id:'phone2', type:'text', placeholder:'Secondary Phone', cls: 'col-sm-6', label: '&nbsp;', value: @phone2}) %>
+			<%- @formGroup({id:'firstName', type:'text', placeholder:'First Name', cls: 'col-sm-6', label: 'Name', value: @firstName}) %>
+			<%- @formGroup({id:'lastName', type:'text', placeholder:'Last Name', cls: 'col-sm-6', label: '&nbsp;', value: @lastName}) %>
+			<%- @formGroup({id:'phone1', type:'text', placeholder:'Primary Phone', cls: 'col-sm-6', label: 'Phone Numbers', value: @settings.phone1}) %>
+			<%- @formGroup({id:'phone2', type:'text', placeholder:'Secondary Phone', cls: 'col-sm-6', label: '&nbsp;', value: @settings.phone2}) %>
 			<%- @formGroup({id:'password', type:'password', placeholder:'new password', cls: 'col-sm-6', label: 'Reset Password'}) %>
 			<%- @formGroup({id:'password_confirmation', type:'password', placeholder:'confirm new password', cls: 'col-sm-6', label: '&nbsp;' }) %>
-			<div class="col-xs-12"><button class="btn btn-primary">SAVE PROFILE</button></div>
+			<div class="col-xs-12"><button class="save btn btn-primary">SAVE PROFILE</button></div>
 			
 		</div>
 	</div>
