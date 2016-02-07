@@ -33,9 +33,8 @@
     <i id='site_cloud' class="fa fa-fw"></i>
   </div>
   <div class='edit'>
-    <i id='site_zones_label' class='label left'>Zones and Gates:</i><br/>
-    <textarea id='site_zones' rows="10" cols="40" placeholder='{&#10;&nbsp;&nbsp;1:["C1", "C2"],&#10;&nbsp;&nbsp;2:["D1", "D2", "D3"]&#10;}
-'></textarea>
+    <i id='site_zones_label' class='label left'>Terminals, Zones, Gates:</i><br/>
+    <textarea id='site_zones' rows="10" cols="40" placeholder='{&#10;&nbsp;&nbsp;"1" : {&#10;&nbsp;&nbsp;&nbsp;&nbsp;"1" : {"C1" : {}, "C2" : {}}&#10;&nbsp;&nbsp;}&#10;}'></textarea>
   </div>
 
   <div id='site_buttons' class='edit'>

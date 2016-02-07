@@ -24,14 +24,17 @@ class OPCManager
       oc.init()
     true
 
-  @get_site_code: (id)->
-    site_code = null
+  @get_site: (id)->
     if App.accounts? && App.accounts.models.length > 0
       for acc in App.accounts.models
         if acc.sites? && acc.sites.models.length > 0
           for st in acc.sites.models
-            if "#{st.id}" == "#{id}"
-              return st.get('code')
+            if "#{st.id}" == "#{id}" then return st
+    null
+
+  @get_site_code: (id)->
+    site = @get_site(id)
+    if site? then return site.get('code')
     null
 
   @add_tags: (conn, tags)->
@@ -94,8 +97,8 @@ class OPCManager
       for site in account.sites.models
         siteUrl = site.get("serverUrl")
         refreshRate = site.get("refreshRate")
-        if !opc_rate? then opc_rate = 5
-        opc_rate = parseInt(opc_rate) * 1000
+        if !refreshRate? then refreshRate = 5
+        refreshRate = parseInt(refreshRate) * 1000
         code = site.get("code")
         OPCManager.create code,
           token:'7e61b230-481d-4551-b24b-ba9046e3d8f2'

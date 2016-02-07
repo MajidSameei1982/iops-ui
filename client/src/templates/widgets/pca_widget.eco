@@ -33,7 +33,7 @@
 
   <div class="settings" style="display: none;">
     <h3>Settings</h3>
-    <%- @siteSelector({id:'site', label:'Site', value:@settings.site}) %>
+    <%- @siteSelector({id:'site', label:'Site', site:@settings.site}) %>
     <div class="row">
       <%- @formGroup({id:'terminal', label: 'Terminal', type:'text', placeholder:'Terminal', value:@settings.terminal, cls:'col-md-6'}) %>
       <%- @formGroup({id:'zone', label: 'Zone', type:'text', placeholder:'Zone', value:@settings.zone, cls:'col-md-6'}) %>

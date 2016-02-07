@@ -694,7 +694,7 @@ window.JST["forms/manage_accounts/site"] = function(__obj) {
     
       _print(_safe(this.refreshRate));
     
-      _print(_safe('\' size=\'5\' placeholder=\'Rate\'/>\n    <i>&nbsp;sec.</i>\n  </div>\n  <div>\n    <span id="site_cloud_label" class=\'label left\'>Cloud Data</span>\n    <i id=\'site_cloud\' class="fa fa-fw"></i>\n  </div>\n  <div class=\'edit\'>\n    <i id=\'site_zones_label\' class=\'label left\'>Zones and Gates:</i><br/>\n    <textarea id=\'site_zones\' rows="10" cols="40" placeholder=\'{&#10;&nbsp;&nbsp;1:["C1", "C2"],&#10;&nbsp;&nbsp;2:["D1", "D2", "D3"]&#10;}\n\'></textarea>\n  </div>\n\n  <div id=\'site_buttons\' class=\'edit\'>\n    <button class="btn btn-xs" id=\'cancel\'><i class="fa fa-ban"></i> CANCEL</button>\n    <button class="btn btn-xs btn-success" id=\'save\'><i class="fa fa-check-square"></i> SAVE</button>\n  </div>\n</div>\n'));
+      _print(_safe('\' size=\'5\' placeholder=\'Rate\'/>\n    <i>&nbsp;sec.</i>\n  </div>\n  <div>\n    <span id="site_cloud_label" class=\'label left\'>Cloud Data</span>\n    <i id=\'site_cloud\' class="fa fa-fw"></i>\n  </div>\n  <div class=\'edit\'>\n    <i id=\'site_zones_label\' class=\'label left\'>Terminals, Zones, Gates:</i><br/>\n    <textarea id=\'site_zones\' rows="10" cols="40" placeholder=\'{&#10;&nbsp;&nbsp;"1" : {&#10;&nbsp;&nbsp;&nbsp;&nbsp;"1" : {"C1" : {}, "C2" : {}}&#10;&nbsp;&nbsp;}&#10;}\'></textarea>\n  </div>\n\n  <div id=\'site_buttons\' class=\'edit\'>\n    <button class="btn btn-xs" id=\'cancel\'><i class="fa fa-ban"></i> CANCEL</button>\n    <button class="btn btn-xs btn-success" id=\'save\'><i class="fa fa-check-square"></i> SAVE</button>\n  </div>\n</div>\n'));
     
     }).call(this);
     
@@ -1585,6 +1585,51 @@ window.JST["widgets/alarm_widget"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
+window.JST["widgets/config_widget"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-cloud"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\' class=\'display\'>\n    DISPLAY\n  </div>\n  <div id="settings" class=\'settings\' style="display: none;">\n    SETTINGS\n  </div><!-- /.box-body -->\n</div><!-- /.box-body -->\n'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
 window.JST["widgets/pbb_widget"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
@@ -1611,55 +1656,10 @@ window.JST["widgets/pbb_widget"] = function(__obj) {
       _print(_safe(this.siteSelector({
         id: 'site',
         label: 'Site',
-        value: this.settings.site
+        site: this.settings.site
       })));
     
-      _print(_safe('\n    <div class="row">\n      '));
-    
-      _print(_safe(this.formGroup({
-        id: 'terminal',
-        label: 'Terminal',
-        type: 'text',
-        placeholder: 'Terminal',
-        value: this.settings.terminal,
-        cls: 'col-md-6'
-      })));
-    
-      _print(_safe('\n      '));
-    
-      _print(_safe(this.formGroup({
-        id: 'zone',
-        label: 'Zone',
-        type: 'text',
-        placeholder: 'Zone',
-        value: this.settings.zone,
-        cls: 'col-md-6'
-      })));
-    
-      _print(_safe('\n    </div>\n    <div class="row">\n      '));
-    
-      _print(_safe(this.formGroup({
-        id: 'display_prefix',
-        label: 'Prefix',
-        type: 'text',
-        placeholder: 'Display Prefix',
-        value: this.settings.display_prefix,
-        cls: 'col-md-6'
-      })));
-    
-      _print(_safe('\n      '));
-    
-      _print(_safe(this.formGroup({
-        id: 'gate',
-        label: 'Gate',
-        type: 'text',
-        feedback: 'plane',
-        placeholder: 'Gate #',
-        value: this.settings.gate,
-        cls: 'col-md-6'
-      })));
-    
-      _print(_safe('\n    </div>\n  </div>\n\n</div>\n'));
+      _print(_safe('\n    <div class="row">\n      <div id=\'terminals\' class=\'col-md-6\'></div>\n    </div>\n    <div class="row">\n      <div id=\'zones\' class=\'col-md-6\'></div>\n    </div>\n    <div class="row">\n      <div id=\'gates\' class=\'col-md-6\'></div>  \n    </div>\n  </div>\n\n</div>\n'));
     
     }).call(this);
     
@@ -1709,7 +1709,7 @@ window.JST["widgets/pca_widget"] = function(__obj) {
       _print(_safe(this.siteSelector({
         id: 'site',
         label: 'Site',
-        value: this.settings.site
+        site: this.settings.site
       })));
     
       _print(_safe('\n    <div class="row">\n      '));
@@ -1950,6 +1950,8 @@ require('./views/widgets/url_widget_view');
 
 require('./views/widgets/weather_widget_view');
 
+require('./views/widgets/config_widget_view');
+
 window.App = (function() {
   var App;
   if (window.App != null) {
@@ -2106,7 +2108,7 @@ window.App = (function() {
   return App;
 })();
 
-},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/site_collection":20,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27,"./views/widgets/alarm_widget_view":55,"./views/widgets/pbb_widget_view":56,"./views/widgets/pca_widget_view":57,"./views/widgets/url_widget_view":58,"./views/widgets/weather_widget_view":59}],2:[function(require,module,exports){
+},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/site_collection":20,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27,"./views/widgets/alarm_widget_view":55,"./views/widgets/config_widget_view":56,"./views/widgets/pbb_widget_view":57,"./views/widgets/pca_widget_view":58,"./views/widgets/url_widget_view":59,"./views/widgets/weather_widget_view":60}],2:[function(require,module,exports){
 var AccountsView, AppController, Dashboard, DashboardCollection, DashboardContentView, DashboardLayout, LoginView, Marionette, PermissionsLayout, ProfileView, ReportsView, User, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -2875,8 +2877,8 @@ _.extend(Marionette.View.prototype, {
         return "<div class='form-group " + cls + "' for='" + id + "'>" + label + field + feedback + "</div>";
       },
       siteSelector: function(arg) {
-        var acc, code, i, id, j, label, len, len1, ref, ref1, s, sel, sh, txt, value;
-        id = arg.id, label = arg.label, value = arg.value;
+        var acc, code, i, id, j, label, len, len1, ref, ref1, s, sel, sh, site, txt;
+        id = arg.id, label = arg.label, site = arg.site;
         sh = "<div class='form-group' for='" + id + "'>\n  <label>" + label + "</label>\n  <select id='" + id + "' class='form-control' data-placeholder='Select a Site'>";
         if ((App.accounts != null) && App.accounts.models.length > 0) {
           ref = App.accounts.models;
@@ -2891,9 +2893,72 @@ _.extend(Marionette.View.prototype, {
                 if ((code != null) && code !== '') {
                   txt = txt + " (" + code + ")";
                 }
-                sel = (value != null) && ("" + value) === ("" + s.id) ? 'selected' : '';
+                sel = (site != null) && ("" + site) === ("" + s.id) ? 'selected' : '';
                 sh += "<option value='" + s.id + "' " + sel + ">" + txt + "</option>";
               }
+            }
+          }
+        }
+        return sh + "</select></div>";
+      },
+      terminalSelector: function(arg) {
+        var id, label, s, sel, settings, sh, site, t, terminal, terminals;
+        id = arg.id, label = arg.label, site = arg.site, terminal = arg.terminal;
+        sh = "<div class='form-group' for='" + id + "'>\n  <label>" + label + "</label>\n  <select id='" + id + "' class='form-control' data-placeholder='Select a Terminal'>";
+        s = OPCManager.get_site(site);
+        if (s != null) {
+          settings = s.get('settings') || {};
+          terminals = settings.zones || {};
+        }
+        for (t in terminals) {
+          sel = (terminal != null) && ("" + terminal) === ("" + t) ? 'selected' : '';
+          sh += "<option value='" + t + "' " + sel + ">" + t + "</option>";
+        }
+        return sh + "</select></div>";
+      },
+      zoneSelector: function(arg) {
+        var id, label, s, sel, settings, sh, site, t, term, terminal, terminals, z, zone;
+        id = arg.id, label = arg.label, site = arg.site, terminal = arg.terminal, zone = arg.zone;
+        sh = "<div class='form-group' for='" + id + "'>\n  <label>" + label + "</label>\n  <select id='" + id + "' class='form-control' data-placeholder='Select a Zone'>";
+        s = OPCManager.get_site(site);
+        if (s != null) {
+          settings = s.get('settings') || {};
+          terminals = settings.zones || {};
+        }
+        for (t in terminals) {
+          if (t !== terminal) {
+            continue;
+          }
+          term = terminals[t];
+          for (z in term) {
+            sel = (zone != null) && ("" + zone) === ("" + z) ? 'selected' : '';
+            sh += "<option value='" + z + "' " + sel + ">" + z + "</option>";
+          }
+        }
+        return sh + "</select></div>";
+      },
+      gateSelector: function(arg) {
+        var g, gate, id, label, s, sel, settings, sh, site, t, term, terminal, terminals, z, zn, zone;
+        id = arg.id, label = arg.label, site = arg.site, terminal = arg.terminal, zone = arg.zone, gate = arg.gate;
+        sh = "<div class='form-group' for='" + id + "'>\n  <label>" + label + "</label>\n  <select id='" + id + "' class='form-control' data-placeholder='Select a Gate'>";
+        s = OPCManager.get_site(site);
+        if (s != null) {
+          settings = s.get('settings') || {};
+          terminals = settings.zones || {};
+        }
+        for (t in terminals) {
+          if (t !== terminal) {
+            continue;
+          }
+          term = terminals[t];
+          for (z in term) {
+            if (z !== zone) {
+              continue;
+            }
+            zn = term[z];
+            for (g in zn) {
+              sel = (gate != null) && ("" + gate) === ("" + g) ? 'selected' : '';
+              sh += "<option value='" + g + "' " + sel + ">" + g + "</option>";
             }
           }
         }
@@ -3815,7 +3880,7 @@ SiteCollection = (function(superClass) {
 module.exports = SiteCollection;
 
 },{"./_base_collection":9,"./site":19}],21:[function(require,module,exports){
-var BaseModel, DashboardCollection, User,
+var BaseModel, ClaimCollection, DashboardCollection, User,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -3823,6 +3888,8 @@ var BaseModel, DashboardCollection, User,
 BaseModel = require('./_base');
 
 DashboardCollection = require('./dashboard_collection');
+
+ClaimCollection = require('./claim_collection');
 
 User = (function(superClass) {
   extend(User, superClass);
@@ -3836,6 +3903,7 @@ User = (function(superClass) {
     firstName: null,
     lastName: null,
     settings: {},
+    claims: [],
     dashboards: []
   };
 
@@ -3851,11 +3919,25 @@ User = (function(superClass) {
 
   function User(config) {
     this.persist = bind(this.persist, this);
+    var c, typeIsArray;
+    typeIsArray = Array.isArray || function(value) {
+      return {}.toString.call(value) === '[object Array]';
+    };
     User.__super__.constructor.call(this, config);
     this.dashboards = new DashboardCollection(this.get('dashboards'));
     this.dashboards.on("update", this.persist);
     this.dashboards.on("change", this.persist);
+    c = this.get('claims');
+    c = typeIsArray(c) ? c : [];
+    this.claims = new ClaimCollection(c);
+    this.claims.on("update", this.persist);
+    this.claims.on("change", this.persist);
+    this;
   }
+
+  User.prototype.check_claim = function(claim, site) {
+    return true;
+  };
 
   return User;
 
@@ -3863,7 +3945,7 @@ User = (function(superClass) {
 
 module.exports = User;
 
-},{"./_base":8,"./dashboard_collection":15}],22:[function(require,module,exports){
+},{"./_base":8,"./claim_collection":13,"./dashboard_collection":15}],22:[function(require,module,exports){
 var BaseCollection, User, UserCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -3989,9 +4071,8 @@ OPCManager = (function() {
     return true;
   };
 
-  OPCManager.get_site_code = function(id) {
-    var acc, i, j, len, len1, ref, ref1, site_code, st;
-    site_code = null;
+  OPCManager.get_site = function(id) {
+    var acc, i, j, len, len1, ref, ref1, st;
     if ((App.accounts != null) && App.accounts.models.length > 0) {
       ref = App.accounts.models;
       for (i = 0, len = ref.length; i < len; i++) {
@@ -4001,11 +4082,20 @@ OPCManager = (function() {
           for (j = 0, len1 = ref1.length; j < len1; j++) {
             st = ref1[j];
             if (("" + st.id) === ("" + id)) {
-              return st.get('code');
+              return st;
             }
           }
         }
       }
+    }
+    return null;
+  };
+
+  OPCManager.get_site_code = function(id) {
+    var site;
+    site = this.get_site(id);
+    if (site != null) {
+      return site.get('code');
     }
     return null;
   };
@@ -4099,7 +4189,7 @@ OPCManager = (function() {
   };
 
   OPCManager.init = function(app) {
-    var account, code, i, len, opc_rate, ref, refreshRate, results, site, siteUrl;
+    var account, code, i, len, ref, refreshRate, results, site, siteUrl;
     ref = app.accounts.models;
     results = [];
     for (i = 0, len = ref.length; i < len; i++) {
@@ -4112,10 +4202,10 @@ OPCManager = (function() {
           site = ref1[j];
           siteUrl = site.get("serverUrl");
           refreshRate = site.get("refreshRate");
-          if (typeof opc_rate === "undefined" || opc_rate === null) {
-            opc_rate = 5;
+          if (refreshRate == null) {
+            refreshRate = 5;
           }
-          opc_rate = parseInt(opc_rate) * 1000;
+          refreshRate = parseInt(refreshRate) * 1000;
           code = site.get("code");
           results1.push(OPCManager.create(code, {
             token: '7e61b230-481d-4551-b24b-ba9046e3d8f2',
@@ -5173,6 +5263,7 @@ module.exports = WidgetModalView;
 
 },{}],38:[function(require,module,exports){
 var Marionette, WidgetView,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -5190,12 +5281,17 @@ WidgetView = (function(superClass) {
     "click #remove": "remove_widget"
   };
 
+  WidgetView.prototype.tags = {};
+
   WidgetView.layout = {
     sx: 4,
     sy: 5
   };
 
   function WidgetView(config) {
+    this.data_q = bind(this.data_q, this);
+    this.get_value = bind(this.get_value, this);
+    this.get_bool = bind(this.get_bool, this);
     WidgetView.__super__.constructor.call(this, config);
     this.settings_visible = false;
     this;
@@ -5206,8 +5302,17 @@ WidgetView = (function(superClass) {
       e.preventDefault();
     }
     this.settings_visible = !this.settings_visible;
-    this.$(".settings").toggle(this.settings_visible);
-    return this.$(".display").toggle(!this.settings_visible);
+    if (this.ui.display != null) {
+      this.ui.display.toggle(!this.settings_visible);
+    } else {
+      this.$(".display").toggle(!this.settings_visible);
+    }
+    if (this.ui.settings != null) {
+      this.ui.settings.toggle(this.settings_visible);
+    } else {
+      this.$(".settings").toggle(this.settings_visible);
+    }
+    return this;
   };
 
   WidgetView.prototype.remove_widget = function(e) {
@@ -5217,8 +5322,38 @@ WidgetView = (function(superClass) {
     }
   };
 
+  WidgetView.prototype.get_bool = function(v) {
+    if ((v != null) && v.toUpperCase() === "TRUE") {
+      return true;
+    } else if ((v != null) && v.toUpperCase() === "FALSE") {
+      return false;
+    }
+    return null;
+  };
+
+  WidgetView.prototype.get_value = function(tag) {
+    return this.opc.get_value("" + this.prefix + tag + ".Value");
+  };
+
+  WidgetView.prototype.mark_bad_data = function(tag, el) {
+    var h, q;
+    q = this.data_q(tag);
+    h = !q ? 'BAD DATA' : $(el).html();
+    return $(el).html(h).toggleClass("bad_data", !q);
+  };
+
+  WidgetView.prototype.data_q = function(tag) {
+    var c, t;
+    c = App.opc.connections[this.site_code];
+    t = c.tags["" + this.prefix + tag];
+    return t.props.Value.quality;
+  };
+
   WidgetView.prototype.start = function() {
-    return console.log("not implemented");
+    if (this.update) {
+      this.update();
+    }
+    return this;
   };
 
   return WidgetView;
@@ -5468,7 +5603,8 @@ SiteView = (function(superClass) {
     code: '#site_code',
     shortName: '#site_short',
     serverUrl: '#site_url',
-    refreshRate: '#site_refresh_rate'
+    refreshRate: '#site_refresh_rate',
+    zones: '#site_zones'
   };
 
   SiteView.prototype.events = {
@@ -5516,6 +5652,36 @@ SiteView = (function(superClass) {
     c = settings.cloud != null ? settings.cloud : true;
     this.ui.cloud.toggleClass('fa-toggle-on', c);
     return this.ui.cloud.toggleClass('fa-toggle-off', !c);
+  };
+
+  SiteView.prototype.set_settings = function() {
+    var settings;
+    this.set_cloud();
+    settings = _.clone(this.model.get('settings'));
+    if (settings.zones != null) {
+      return this.ui.zones.val(JSON.stringify(settings.zones, null, 2));
+    }
+  };
+
+  SiteView.prototype.apply_settings = function() {
+    var e, settings, zones;
+    settings = _.clone(this.model.get('settings'));
+    settings || (settings = {});
+    zones = this.ui.zones.val();
+    if ((zones != null) && zones.trim() !== '') {
+      this.ui.zones.removeClass('error');
+      try {
+        settings.zones = JSON.parse(zones);
+      } catch (_error) {
+        e = _error;
+        this.ui.zones.addClass('error');
+        return false;
+      }
+    } else {
+      delete settings.zones;
+    }
+    this.model.set('settings', settings);
+    return true;
   };
 
   SiteView.prototype.toggle_cloud = function() {
@@ -5585,7 +5751,10 @@ SiteView = (function(superClass) {
     if ((name == null) || name.trim() === '') {
       return;
     }
-    return this.model.save(null, {
+    if (!this.apply_settings()) {
+      return false;
+    }
+    this.model.save(null, {
       success: (function(_this) {
         return function() {
           _this.render();
@@ -5607,6 +5776,7 @@ SiteView = (function(superClass) {
         };
       })(this)
     });
+    return true;
   };
 
   SiteView.prototype.onRender = function() {
@@ -5615,7 +5785,7 @@ SiteView = (function(superClass) {
       this.$("#delete").hide();
       this.show_edit();
     }
-    return this.set_cloud();
+    return this.set_settings();
   };
 
   return SiteView;
@@ -6904,6 +7074,79 @@ window.AlarmWidgetView = AlarmWidgetView;
 module.exports = AlarmWidgetView;
 
 },{"../dashboard/widget_view":38}],56:[function(require,module,exports){
+var ConfigWidgetView, Marionette, WidgetView,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+WidgetView = require('../dashboard/widget_view');
+
+ConfigWidgetView = (function(superClass) {
+  extend(ConfigWidgetView, superClass);
+
+  function ConfigWidgetView() {
+    this.set_model = bind(this.set_model, this);
+    this.data_update = bind(this.data_update, this);
+    return ConfigWidgetView.__super__.constructor.apply(this, arguments);
+  }
+
+  ConfigWidgetView.prototype.template = "widgets/config_widget";
+
+  ConfigWidgetView.prototype.className = 'widget-outer box box-primary gate_widget';
+
+  ConfigWidgetView.prototype.ui = {
+    display: '#display',
+    settings: '#settings'
+  };
+
+  ConfigWidgetView.layout = {
+    sx: 4,
+    sy: 10
+  };
+
+  ConfigWidgetView.prototype.modelEvents = {
+    "change": "update"
+  };
+
+  ConfigWidgetView.prototype.watch_updates = function(conn) {
+    return App.vent.on("opc:data:" + conn, this.data_update);
+  };
+
+  ConfigWidgetView.prototype.kill_updates = function(conn) {
+    return App.vent.off("opc:data:" + conn, this.data_update);
+  };
+
+  ConfigWidgetView.prototype.update = function() {};
+
+  ConfigWidgetView.prototype.data_update = function(data) {};
+
+  ConfigWidgetView.prototype.set_model = function() {
+    var s;
+    s = _.clone(this.model.get("settings"));
+    return this.model.set("settings", s);
+  };
+
+  ConfigWidgetView.prototype.onShow = function() {
+    var settings;
+    return settings = this.model.get('settings');
+  };
+
+  ConfigWidgetView.prototype.onDestroy = function(arg1, arg2) {
+    this.kill_updates(this.site_code);
+    return OPCManager.rem_ref(this.site_code);
+  };
+
+  return ConfigWidgetView;
+
+})(WidgetView);
+
+window.ConfigWidgetView = ConfigWidgetView;
+
+module.exports = ConfigWidgetView;
+
+},{"../dashboard/widget_view":38}],57:[function(require,module,exports){
 var Marionette, PbbWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -6917,6 +7160,7 @@ PbbWidgetView = (function(superClass) {
   extend(PbbWidgetView, superClass);
 
   function PbbWidgetView() {
+    this.draw_selectors = bind(this.draw_selectors, this);
     this.set_model = bind(this.set_model, this);
     this.data_update = bind(this.data_update, this);
     this.set_descriptions = bind(this.set_descriptions, this);
@@ -6932,11 +7176,6 @@ PbbWidgetView = (function(superClass) {
   PbbWidgetView.prototype.className = 'widget-outer box box-primary gate_widget';
 
   PbbWidgetView.prototype.ui = {
-    terminal: 'input#terminal',
-    zone: 'input#zone',
-    display_prefix: 'input#display_prefix',
-    gate: 'input#gate',
-    site: 'select#site',
     wtitle: 'h3.box-title',
     display: '.display',
     content: '.content',
@@ -6947,7 +7186,7 @@ PbbWidgetView = (function(superClass) {
 
   PbbWidgetView.layout = {
     sx: 4,
-    sy: 9
+    sy: 10
   };
 
   PbbWidgetView.prototype.tags = {
@@ -6979,17 +7218,20 @@ PbbWidgetView = (function(superClass) {
   };
 
   PbbWidgetView.prototype.update = function() {
-    var gate, lbl, s, t, tags, tg;
+    var cloud, lbl, s, settings, t, tags, tg;
     s = this.model.get("settings");
     if ((s != null) && !!s.gate) {
-      this.site_code = OPCManager.get_site_code(s.site);
+      this.site = OPCManager.get_site(s.site);
+      this.site_code = this.site.get('code');
       if (this.site_code == null) {
         return null;
       }
       this.kill_updates(this.site_code);
       OPCManager.rem_ref(this.site_code);
-      gate = s.display_prefix != null ? "" + s.display_prefix + s.gate : '#{s.gate}';
-      this.prefix = "RemoteSCADAHosting.Airport-" + this.site_code + ".Airport." + this.site_code + ".Term" + s.terminal + ".Zone" + s.zone + ".Gate" + gate + ".";
+      settings = this.site.get('settings');
+      settings || (settings = {});
+      cloud = settings.cloud ? "RemoteSCADAHosting.Airport-" + this.site_code + "." : '';
+      this.prefix = cloud + "Airport." + this.site_code + ".Term" + s.terminal + ".Zone" + s.zone + ".Gate" + s.gate + ".";
       tags = [];
       for (tg in this.tags) {
         t = this.tags[tg];
@@ -6998,7 +7240,7 @@ PbbWidgetView = (function(superClass) {
       App.opc.add_tags(this.site_code, tags);
       this.watch_updates(this.site_code);
       OPCManager.add_ref(this.site_code);
-      lbl = "Gate " + gate;
+      lbl = "Gate " + s.gate;
       this.ui.wtitle.html(lbl);
       this.$('#gate_label #txt').html(lbl);
       this.opc = App.opc.connections[this.site_code];
@@ -7146,42 +7388,109 @@ PbbWidgetView = (function(superClass) {
   PbbWidgetView.prototype.set_model = function() {
     var s;
     s = _.clone(this.model.get("settings"));
-    s.gate = this.ui.gate.val().trim();
-    s.site = this.ui.site.val().trim();
-    s.terminal = this.ui.terminal.val().trim();
-    s.zone = this.ui.zone.val().trim();
-    s.display_prefix = this.ui.display_prefix.val().trim();
+    s.site = this.$('#site').val();
+    s.terminal = this.$('#terminal').val();
+    s.zone = this.$('#zone').val();
+    s.gate = this.$('#gate').val();
     return this.model.set("settings", s);
   };
 
   PbbWidgetView.prototype.toggle_settings = function(e) {
     PbbWidgetView.__super__.toggle_settings.call(this, e);
-    this.ui.display.toggle(!this.settings_visible);
-    if (this.settings_visible) {
-      return this.ui.site.chosen();
-    }
+    return this.ui.display.toggle(!this.settings_visible);
+  };
+
+  PbbWidgetView.prototype.draw_terminals = function(terminal) {
+    var site, ts;
+    site = this.$('#site').val();
+    this.$('#terminal').off("change");
+    this.$('#terminal').remove();
+    ts = $(this.templateHelpers().terminalSelector({
+      id: 'terminal',
+      label: 'Terminal',
+      site: site,
+      terminal: terminal
+    }));
+    this.$('#terminals').empty().append(ts);
+    return ts.on('change', (function(_this) {
+      return function() {
+        _this.draw_zones(null);
+        _this.draw_gates(null);
+        return _this.set_model();
+      };
+    })(this));
+  };
+
+  PbbWidgetView.prototype.draw_zones = function(zone) {
+    var site, terminal, zs;
+    site = this.$('#site').val();
+    terminal = this.$('#terminal').val();
+    this.$('#zone').off("change");
+    this.$('#zone').remove();
+    zs = $(this.templateHelpers().zoneSelector({
+      id: 'zone',
+      label: 'Zone',
+      site: site,
+      terminal: terminal,
+      zone: zone
+    }));
+    this.$('#zones').empty().append(zs);
+    return zs.on('change', (function(_this) {
+      return function() {
+        _this.draw_gates(null);
+        return _this.set_model();
+      };
+    })(this));
+  };
+
+  PbbWidgetView.prototype.draw_gates = function(gate) {
+    var gs, site, terminal, zone;
+    site = this.$('#site').val();
+    terminal = this.$('#terminal').val();
+    zone = this.$('#zone').val();
+    this.$('#gate').off("change");
+    this.$('#gate').remove();
+    gs = $(this.templateHelpers().gateSelector({
+      id: 'gate',
+      label: 'Gate',
+      site: site,
+      terminal: terminal,
+      zone: zone,
+      gate: gate
+    }));
+    this.$('#gates').empty().append(gs);
+    return gs.on('change', (function(_this) {
+      return function() {
+        return _this.set_model();
+      };
+    })(this));
+  };
+
+  PbbWidgetView.prototype.draw_selectors = function(terminal, zone, gate) {
+    this.draw_terminals(terminal);
+    this.draw_zones(zone);
+    this.draw_gates(gate);
+    return this;
   };
 
   PbbWidgetView.prototype.onShow = function() {
-    var gate, ms, settings, site, site_code;
-    this.ui.gate.on("change", this.set_model);
-    this.ui.site.on("change", this.set_model);
-    this.ui.terminal.on("change", this.set_model);
-    this.ui.zone.on("change", this.set_model);
-    this.ui.display_prefix.on("change", this.set_model);
+    var gate, settings, site_code;
     settings = this.model.get('settings');
+    settings || (settings = {});
+    this.draw_selectors(settings.terminal, settings.zone, settings.gate);
+    this.$('#site').on('change', (function(_this) {
+      return function() {
+        _this.draw_selectors();
+        return _this.set_model();
+      };
+    })(this));
     gate = settings.gate;
     if ((gate == null) || gate === '') {
       this.toggle_settings();
     }
-    site = settings.site;
-    site_code = OPCManager.get_site_code(site);
+    site_code = OPCManager.get_site_code(settings.site);
     if (site_code != null) {
-      OPCManager.add_ref(site_code);
-    }
-    ms = this.model.get('settings');
-    if ((ms != null) && (ms.site != null)) {
-      return this.ui.site.val(ms.site);
+      return OPCManager.add_ref(site_code);
     }
   };
 
@@ -7202,7 +7511,7 @@ window.PbbWidgetView = PbbWidgetView;
 
 module.exports = PbbWidgetView;
 
-},{"../dashboard/widget_view":38}],57:[function(require,module,exports){
+},{"../dashboard/widget_view":38}],58:[function(require,module,exports){
 var Marionette, PcaWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -7511,7 +7820,7 @@ window.PcaWidgetView = PcaWidgetView;
 
 module.exports = PcaWidgetView;
 
-},{"../dashboard/widget_view":38}],58:[function(require,module,exports){
+},{"../dashboard/widget_view":38}],59:[function(require,module,exports){
 var Marionette, UrlWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -7603,7 +7912,7 @@ window.UrlWidgetView = UrlWidgetView;
 
 module.exports = UrlWidgetView;
 
-},{"../dashboard/widget_view":38}],59:[function(require,module,exports){
+},{"../dashboard/widget_view":38}],60:[function(require,module,exports){
 var Marionette, WeatherWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },

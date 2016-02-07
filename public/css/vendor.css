@@ -3540,7 +3540,7 @@ select[multiple].input-lg,
   color: #a94442;
 }
 
-input.error {
+input.error, textarea.error {
   color: #a94442;
   border-color: #a94442;
   background-color: #f2dede;

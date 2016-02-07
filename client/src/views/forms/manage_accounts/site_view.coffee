@@ -16,6 +16,7 @@ class SiteView extends Marionette.ItemView
     shortName   : '#site_short'
     serverUrl   : '#site_url'
     refreshRate : '#site_refresh_rate'
+    zones       : '#site_zones'
 
   events:
     'click #edit_site'             : 'show_edit'
@@ -49,6 +50,28 @@ class SiteView extends Marionette.ItemView
     c = if settings.cloud? then settings.cloud else true
     @ui.cloud.toggleClass('fa-toggle-on',c)
     @ui.cloud.toggleClass('fa-toggle-off',!c)
+
+  set_settings: ()->
+    @set_cloud()
+    settings = _.clone(@model.get('settings'))
+    if settings.zones?
+      @ui.zones.val(JSON.stringify(settings.zones, null, 2))
+
+  apply_settings: ()->
+    settings = _.clone(@model.get('settings'))
+    settings || (settings = {})
+    zones = @ui.zones.val()
+    if zones? && zones.trim() != ''
+      @ui.zones.removeClass('error')      
+      try
+        settings.zones = JSON.parse(zones)
+      catch e
+        @ui.zones.addClass('error')
+        return false   
+    else
+      delete settings.zones
+    @model.set('settings', settings)
+    true
 
   toggle_cloud: ()->
     return false if !@ui.container.hasClass('rw')
@@ -92,6 +115,7 @@ class SiteView extends Marionette.ItemView
     @clear_errors()
     name = @model.get('name')
     return if !name? || name.trim() == ''
+    if !@apply_settings() then return false
     @model.save null,
       success: ()=>
         @render()
@@ -100,13 +124,14 @@ class SiteView extends Marionette.ItemView
         if err.responseJSON?
           for k in err.responseJSON.validation.keys
             @ui[k].addClass('error')
+    true
     
   onRender: ()->
     @modelBinder.bind(@model, @el, @bindings)
     if (!@model.id? || @model.id < 1)
       @$("#delete").hide()
       @show_edit()
-    @set_cloud()
+    @set_settings()
 
 
 # ----------------------------------

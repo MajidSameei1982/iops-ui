@@ -24,6 +24,12 @@ window.app_config = {
       id: "weather",
       name: "Weather Widget",
       icon: "cloud"
+    },
+    {
+      id: "config",
+      name: "Config Widget",
+      icon: "gears",
+      role: "global:admin"
     }
   ]
 };
