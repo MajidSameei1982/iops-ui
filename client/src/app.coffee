@@ -29,9 +29,9 @@ window.App = do()->
   App = window.App = new BaselineApp()
   App.AdminLTE_lib = AdminLTE_lib
   
-  Object.defineProperty App, 'current_user',
-    get: ()->
-      if App.session? then App.session else null
+  # Object.defineProperty App, 'current_user',
+  #   get: ()->
+  #     if App.session? then App.session else null
 
   App.config = AppConfig
 
@@ -42,25 +42,14 @@ window.App = do()->
     @layout = new AppLayout()
     @uiutils = UIUtils
 
-    ### 
-      TODO: load from server - all known Accounts, claims, Roles
-    ###
-    #App.accounts = new AccountCollection(App.store.get('accounts'))
-
+    # refresh server data surrounding accounts
     App.refresh_accounts()
 
-    #App.claims = new ClaimCollection(App.store.get('claims'))
-
-    #App.roles = new RoleCollection(App.store.get('roles'))
-    
-    #App.users = new UserCollection(App.store.get('users'))
-    ###
-      END TODO:
-    ###
-
+    # listen for changes on the user
     App.vent.on "user:update", ()->
       Session.save_session()
 
+    # listen for changes on the app
     App.vent.on "app:update", ()->
       return null if !App.accounts?
       accounts = App.accounts.toJSON()
@@ -117,6 +106,8 @@ window.App = do()->
         @log('Backbone.history starting')
         Backbone.history.start()
 
+        if !App.session? then App.controller.logout()
+
     # new up and views and render for base app here...
     @log('Done starting and running!')
 
@@ -145,7 +136,6 @@ window.App = do()->
       # pull global claims
       # iterate thru sites and pull claims
 
-
   App.save_user = ()->
     App.vent.trigger("user:update")
     
@@ -154,9 +144,6 @@ window.App = do()->
     App.store.remove("session")
     App.session = null
     App.accounts = null
-    #App.store.remove("claims")
-    #App.store.remove("roles")
-    #App.store.remove("users")
     App.router.navigate('login', {trigger:true})
 
   App

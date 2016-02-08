@@ -55,11 +55,20 @@ class UserView extends Marionette.ItemView
     @render()
 
   delete: ()->
+    if @model.id == App.session.id
+      App.uiutils.showModal
+        title: 'Cannot Delete Your Account!'
+        icon: 'warning'
+        type: 'danger'
+        body: 'Sorry, you cannot delete your own account. If you still wish to delete your account, please ask another system admin to log in and delete it.'
+        show_cancel: false
+      return
+
     App.uiutils.showModal
       title: 'Delete User?'
       icon: 'warning'
       type: 'warning'
-      body: 'Are you sure you want to delete this User? This cannot be undone and all associated data will be lost21.'
+      body: 'Are you sure you want to delete this User? This cannot be undone and all associated data will be lost.'
       on_save: ()=>
         @model.destroy
           success:()=>

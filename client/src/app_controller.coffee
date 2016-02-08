@@ -2,6 +2,7 @@ Marionette = require('marionette')
 LoginView = require('./views/login_view')
 ReportsView = require('./views/reports_view')
 User = require('./models/user')
+Session = require('./models/session')
 ProfileView = require('./views/forms/profile_view')
 AccountsView = require('./views/forms/manage_accounts/accounts_view')
 PermissionsLayout = require('./views/forms/manage_permissions/permissions_layout')
@@ -55,7 +56,7 @@ class AppController extends Object
 
   logout: ()->
     App.log('route:logout')
-    if App.session? then App.session.clear()
+    if App.session? then Session.clear()
     App.router.navigate('login', {trigger:true})
     @
 

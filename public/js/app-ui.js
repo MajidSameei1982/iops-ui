@@ -1959,15 +1959,6 @@ window.App = (function() {
   }
   App = window.App = new BaselineApp();
   App.AdminLTE_lib = AdminLTE_lib;
-  Object.defineProperty(App, 'current_user', {
-    get: function() {
-      if (App.session != null) {
-        return App.session;
-      } else {
-        return null;
-      }
-    }
-  });
   App.config = AppConfig;
   App.on("before:start", function(options) {
     var dtfn;
@@ -1976,15 +1967,7 @@ window.App = (function() {
     Session.restore();
     this.layout = new AppLayout();
     this.uiutils = UIUtils;
-
-    /* 
-      TODO: load from server - all known Accounts, claims, Roles
-     */
     App.refresh_accounts();
-
-    /*
-      END TODO:
-     */
     App.vent.on("user:update", function() {
       return Session.save_session();
     });
@@ -2050,7 +2033,10 @@ window.App = (function() {
             controller: _this.controller
           });
           _this.log('Backbone.history starting');
-          return Backbone.history.start();
+          Backbone.history.start();
+          if (App.session == null) {
+            return App.controller.logout();
+          }
         };
       })(this));
     }
@@ -2109,7 +2095,7 @@ window.App = (function() {
 })();
 
 },{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/site_collection":20,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27,"./views/widgets/alarm_widget_view":55,"./views/widgets/config_widget_view":56,"./views/widgets/pbb_widget_view":57,"./views/widgets/pca_widget_view":58,"./views/widgets/url_widget_view":59,"./views/widgets/weather_widget_view":60}],2:[function(require,module,exports){
-var AccountsView, AppController, Dashboard, DashboardCollection, DashboardContentView, DashboardLayout, LoginView, Marionette, PermissionsLayout, ProfileView, ReportsView, User, WidgetCollection,
+var AccountsView, AppController, Dashboard, DashboardCollection, DashboardContentView, DashboardLayout, LoginView, Marionette, PermissionsLayout, ProfileView, ReportsView, Session, User, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -2120,6 +2106,8 @@ LoginView = require('./views/login_view');
 ReportsView = require('./views/reports_view');
 
 User = require('./models/user');
+
+Session = require('./models/session');
 
 ProfileView = require('./views/forms/profile_view');
 
@@ -2196,7 +2184,7 @@ AppController = (function(superClass) {
   AppController.prototype.logout = function() {
     App.log('route:logout');
     if (App.session != null) {
-      App.session.clear();
+      Session.clear();
     }
     App.router.navigate('login', {
       trigger: true
@@ -2283,7 +2271,7 @@ AppController = (function(superClass) {
 
 module.exports = AppController;
 
-},{"./models/dashboard":14,"./models/dashboard_collection":15,"./models/user":21,"./models/widget_collection":24,"./views/dashboard/content_view":29,"./views/dashboard/dashboard_layout":30,"./views/forms/manage_accounts/accounts_view":40,"./views/forms/manage_permissions/permissions_layout":43,"./views/forms/profile_view":52,"./views/login_view":53,"./views/reports_view":54}],3:[function(require,module,exports){
+},{"./models/dashboard":14,"./models/dashboard_collection":15,"./models/session":18,"./models/user":21,"./models/widget_collection":24,"./views/dashboard/content_view":29,"./views/dashboard/dashboard_layout":30,"./views/forms/manage_accounts/accounts_view":40,"./views/forms/manage_permissions/permissions_layout":43,"./views/forms/profile_view":52,"./views/login_view":53,"./views/reports_view":54}],3:[function(require,module,exports){
 
 /*
  *
@@ -3748,9 +3736,15 @@ Session = (function(superClass) {
     tk = App.store.get('token');
     if (s != null) {
       if (App.session != null) {
-        App.session.clear();
+        Session.clear();
       }
       App.session = new User(s);
+      App.session.fetch({
+        success: function() {},
+        error: function() {
+          return Session.clear();
+        }
+      });
     }
     if (tk != null) {
       this.set_header_token(tk);
@@ -4360,7 +4354,13 @@ ModalView = (function(superClass) {
       $(this.el).removeClass('modal-primary').addClass("modal-" + o.type);
     }
     if (o.body != null) {
-      return this.ui.body.html(o.body);
+      this.ui.body.html(o.body);
+    }
+    if (o.show_cancel === false) {
+      this.$('#modal_cancel').hide();
+    }
+    if (o.show_save === false) {
+      return this.$('#modal_save').hide();
     }
   };
 
@@ -6451,11 +6451,21 @@ UserView = (function(superClass) {
   };
 
   UserView.prototype["delete"] = function() {
+    if (this.model.id === App.session.id) {
+      App.uiutils.showModal({
+        title: 'Cannot Delete Your Account!',
+        icon: 'warning',
+        type: 'danger',
+        body: 'Sorry, you cannot delete your own account. If you still wish to delete your account, please ask another system admin to log in and delete it.',
+        show_cancel: false
+      });
+      return;
+    }
     return App.uiutils.showModal({
       title: 'Delete User?',
       icon: 'warning',
       type: 'warning',
-      body: 'Are you sure you want to delete this User? This cannot be undone and all associated data will be lost21.',
+      body: 'Are you sure you want to delete this User? This cannot be undone and all associated data will be lost.',
       on_save: (function(_this) {
         return function() {
           return _this.model.destroy({

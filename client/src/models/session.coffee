@@ -7,10 +7,6 @@ class Session extends BaseModel
   service: 'accounts'
   urlRoot: '/login'
 
-  # constructor:(config)->
-  #   super config
-  #   @user = new User(@get('user'))
-
   initialize: ()->
     @on "change", @persist
     @persist()
@@ -108,8 +104,13 @@ class Session extends BaseModel
     s = App.store.get('session')
     tk = App.store.get('token')
     if s?
-      if App.session? then App.session.clear()
+      if App.session? then Session.clear()
       App.session = new User(s)
+      App.session.fetch
+        success: ()->
+          # proceed
+        error: ()->
+          Session.clear()
     if tk?
       @set_header_token(tk)
     true
