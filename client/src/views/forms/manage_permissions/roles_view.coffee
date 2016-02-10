@@ -15,7 +15,11 @@ class RolesView extends Marionette.CompositeView
   add_role: ()->
     for c in @collection.models
       if !c.id? || c.id == 0 then return false
-    @collection.add {name: '', description: '', site_id: @model.id}, {at:0}
+    role =
+      name: ''
+      description: '' 
+    if @model.id? && @model.id != 0 then role.siteId = @model.id
+    @collection.add role, {at:0}
 
 # ----------------------------------
 

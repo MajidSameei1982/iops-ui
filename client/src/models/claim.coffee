@@ -4,15 +4,16 @@ BaseModel = require('./_base')
 
 class Claim extends BaseModel
   service: 'accounts'
+  urlRoot: '/claims'
   defaults:
     name: ''
     description: ''
 
   constructor: (config, opts)->
-    if config? && config.accountId?
-      @urlRoot = "/sites/#{config.accountId}/claims"
-    else
-      @urlRoot = '/claims'
+    # if config? && config.accountId?
+    #   @urlRoot = "/sites/#{config.accountId}/claims"
+    # else
+    #   @urlRoot = '/claims'
     super(config, opts)
 
 # ----------------------------------

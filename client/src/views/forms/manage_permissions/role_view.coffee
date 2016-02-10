@@ -46,17 +46,18 @@ class RoleView extends Marionette.ItemView
       type: 'warning'
       body: 'Are you sure you want to delete this Role? This cannot be undone and all associated Sites will lose this Role.'
       on_save: ()=>
-        @model.collection.remove(@model)
-        App.vent.trigger "app:update"
+        @model.destroy
+          success: ()->
+            App.vent.trigger "app:update"
 
   save: ()->
-    # TODO: FIRE MODEL SAVE
     name = @model.get('name')
     return if !name? || name.trim() == ''
-    if !@model.id? then @model.set('id', Math.floor(Math.random() * 10000)+1)
     @model.set('claims', @$('select#role_claims').val())
-    App.vent.trigger "app:update"
-    @render()
+    @model.save null,
+      success: ()=>
+        App.vent.trigger "app:update"
+        @render()
  
   onRender: ()->
     @toggle_edit(false);

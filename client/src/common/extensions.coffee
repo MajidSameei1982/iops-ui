@@ -113,7 +113,7 @@ _.extend Marionette.View::,
             sh += "<option value='#{g}' #{sel}>#{g}</option>"
       "#{sh}</select></div>"
 
-    claimSelector: ({id, label, value, site_id, global, cls})->
+    claimSelector: ({id, label, value, site_id, cls})->
       c = 'form-group'
       c = if cls? then "#{c} #{cls}" else c
       ch = """
@@ -121,16 +121,16 @@ _.extend Marionette.View::,
           <label>#{label}</label>
           <select id='#{id}' class='form-control' multiple data-placeholder='Select Permissions'>
       """
-      claims = App.claims
-      if !global
-        if App.accounts? && App.accounts.models.length > 0
-          for acc in App.accounts.models
-            if acc.sites? && acc.sites.models.length > 0
-              for s in acc.sites.models
-                if s.id == site_id
-                  claims = s.claims
-                  break
-      for c in claims.models
+      claims = []
+      if App.claims?
+        for c in App.claims.models
+          sid = c.get("siteId")
+          sid = if !sid? then null else sid
+          site_id = if !site_id? then null else site_id
+          debugger
+          if site_id == sid then claims.push(c)
+
+      for c in claims
         txt = c.get('name')
         sel = if value? && "#{value}" == "#{c.id}" then 'selected' else ''
         ch += "<option value='#{c.id}' #{sel}>#{txt}</option>"
