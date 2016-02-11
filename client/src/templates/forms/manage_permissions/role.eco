@@ -17,5 +17,5 @@
   <input type='text' id='role_desc' value='<%- @description%>' size='50' placeholder='Role Description'/>
 </div>
 <div class="col-md-12" id='role_claims_container'>
-  <%- @claimSelector({id:'role_claims', label:'Permissions', value:null, site_id:@site_id})%>
+  <%- @claimSelector({id:'role_claims', label:'Permissions', value:@claims, site_id:@siteId})%>
 </div>

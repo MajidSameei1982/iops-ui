@@ -970,8 +970,8 @@ window.JST["forms/manage_permissions/role"] = function(__obj) {
       _print(_safe(this.claimSelector({
         id: 'role_claims',
         label: 'Permissions',
-        value: null,
-        site_id: this.site_id
+        value: this.claims,
+        site_id: this.siteId
       })));
     
       _print(_safe('\n</div>\n'));
@@ -1133,7 +1133,7 @@ window.JST["forms/manage_permissions/user"] = function(__obj) {
     
       _print(this.email);
     
-      _print(_safe(')</small></span>\n    <span class=\'crud\' id=\'edit_user\'><i class="fa fa-pencil-square" title=\'Edit User\'></i></span>\n    <span class=\'crud\' id=\'delete_user\'><i class="fa fa-times-circle" title=\'Delete User\'></i></span>\n  </span>\n</div>\n<div class=\'col-md-12 edit\'>\n  '));
+      _print(_safe(')</small></span>\n    <span class=\'crud\' id=\'edit_user\'><i class="fa fa-pencil-square" title=\'Edit User\'></i></span>\n    <span class=\'crud\' id=\'delete_user\'><i class="fa fa-times-circle" title=\'Delete User\'></i></span>\n  </span>\n</div>\n<div class=\'edit\'>\n  <div class="row">\n    '));
     
       _print(_safe(this.formGroup({
         id: 'email',
@@ -1144,7 +1144,7 @@ window.JST["forms/manage_permissions/user"] = function(__obj) {
         value: this.email
       })));
     
-      _print(_safe('\n  '));
+      _print(_safe('\n    '));
     
       _print(_safe(this.formGroup({
         id: 'firstName',
@@ -1155,7 +1155,7 @@ window.JST["forms/manage_permissions/user"] = function(__obj) {
         value: this.firstName
       })));
     
-      _print(_safe('\n  '));
+      _print(_safe('\n    '));
     
       _print(_safe(this.formGroup({
         id: 'lastName',
@@ -1166,7 +1166,7 @@ window.JST["forms/manage_permissions/user"] = function(__obj) {
         value: this.lastName
       })));
     
-      _print(_safe('\n  '));
+      _print(_safe('\n    '));
     
       _print(_safe(this.formGroup({
         id: 'phone1',
@@ -1177,7 +1177,7 @@ window.JST["forms/manage_permissions/user"] = function(__obj) {
         value: this.phone1
       })));
     
-      _print(_safe('\n  '));
+      _print(_safe('\n    '));
     
       _print(_safe(this.formGroup({
         id: 'phone2',
@@ -1188,7 +1188,7 @@ window.JST["forms/manage_permissions/user"] = function(__obj) {
         value: this.phone2
       })));
     
-      _print(_safe('\n  '));
+      _print(_safe('\n    '));
     
       _print(_safe(this.formGroup({
         id: 'password',
@@ -1198,7 +1198,7 @@ window.JST["forms/manage_permissions/user"] = function(__obj) {
         label: 'Reset Password'
       })));
     
-      _print(_safe('\n  '));
+      _print(_safe('\n    '));
     
       _print(_safe(this.formGroup({
         id: 'password_confirmation',
@@ -1208,17 +1208,17 @@ window.JST["forms/manage_permissions/user"] = function(__obj) {
         label: '&nbsp;'
       })));
     
-      _print(_safe('\n\n  <h3 class=\'account_name col-md-12\'><i class="fa fa-fw fa-globe"></i>Global Roles</h3>\n  '));
+      _print(_safe('\n  </div>\n\n  <div class="row">\n  <h3 class=\'account_name col-md-12\'><i class="fa fa-fw fa-globe"></i>Global Roles</h3>\n  '));
     
       _print(_safe(this.roleSelector({
         id: 'roles_global',
         label: null,
-        value: null,
+        value: this.roles,
         site_id: null,
         cls: 'col-md-12'
       })));
     
-      _print(_safe('\n  \n  '));
+      _print(_safe('\n  </div>\n\n  <div class="row">\n  '));
     
       ref = App.accounts.models;
       for (i = 0, len = ref.length; i < len; i++) {
@@ -1233,16 +1233,16 @@ window.JST["forms/manage_permissions/user"] = function(__obj) {
           _print(_safe(this.roleSelector({
             id: 'roles_' + s.id,
             label: (s.get('name')) + " (" + (s.get('code')) + ")",
-            value: null,
+            value: this.roles,
             site_id: s.id,
-            cls: 'col-md-12'
+            cls: 'col-md-12 roleselect'
           })));
           _print(_safe('\n  '));
         }
         _print(_safe('\n    </div>\n  '));
       }
     
-      _print(_safe('\n  <span id=\'user_buttons\'>\n    <button class="btn btn-xs" id=\'cancel\'><i class="fa fa-ban"></i> CANCEL</button>\n    <button class="btn btn-xs btn-success" id=\'save\'><i class="fa fa-check-square"></i> SAVE</button>\n  </span>\n</div>'));
+      _print(_safe('\n  </div>\n\n  <span id=\'user_buttons\'>\n    <button class="btn btn-xs" id=\'cancel\'><i class="fa fa-ban"></i> CANCEL</button>\n    <button class="btn btn-xs btn-success" id=\'save\'><i class="fa fa-check-square"></i> SAVE</button>\n  </span>\n</div>'));
     
     }).call(this);
     
@@ -2965,7 +2965,6 @@ _.extend(Marionette.View.prototype, {
             sid = c.get("siteId");
             sid = sid == null ? null : sid;
             site_id = site_id == null ? null : site_id;
-            debugger;
             if (site_id === sid) {
               claims.push(c);
             }
@@ -2980,39 +2979,30 @@ _.extend(Marionette.View.prototype, {
         return ch + "</select></div>";
       },
       roleSelector: function(arg) {
-        var acc, c, cls, i, id, j, k, label, lbl, len, len1, len2, r, ref, ref1, ref2, rh, roles, s, sel, site_id, txt, value;
+        var c, cls, i, id, j, label, lbl, len, len1, r, ref, rh, roles, sel, sid, site_id, txt, value;
         id = arg.id, label = arg.label, value = arg.value, site_id = arg.site_id, cls = arg.cls;
         c = 'form-group';
         c = cls != null ? c + " " + cls : c;
-        lbl = label != null ? "<label>" + label + "</label>" : '';
-        rh = "<div class='" + c + "' for='" + id + "'>\n  " + lbl + "\n  <select id='" + id + "' class='form-control' multiple data-placeholder='Select Roles'>";
-        roles = App.roles;
-        if (site_id != null) {
-          if ((App.accounts != null) && App.accounts.models.length > 0) {
-            ref = App.accounts.models;
-            for (i = 0, len = ref.length; i < len; i++) {
-              acc = ref[i];
-              if ((acc.sites != null) && (acc.sites.models != null)) {
-                ref1 = acc.sites.models;
-                for (j = 0, len1 = ref1.length; j < len1; j++) {
-                  s = ref1[j];
-                  if (s.id === site_id) {
-                    roles = s.roles;
-                    break;
-                  }
-                }
-              }
+        lbl = label != null ? "<label>" + label + "</label><br/>" : '';
+        rh = "<div class='" + c + "' for='" + id + "'>\n  " + lbl + "\n  <select id='" + id + "' class='form-control roleselect' multiple data-placeholder='Select Roles'>";
+        roles = [];
+        if (App.roles != null) {
+          ref = App.roles.models;
+          for (i = 0, len = ref.length; i < len; i++) {
+            r = ref[i];
+            sid = r.get("siteId");
+            sid = sid == null ? null : sid;
+            site_id = site_id == null ? null : site_id;
+            if (site_id === sid) {
+              roles.push(r);
             }
           }
         }
-        if ((roles != null) && (roles.models != null)) {
-          ref2 = roles.models;
-          for (k = 0, len2 = ref2.length; k < len2; k++) {
-            r = ref2[k];
-            txt = r.get('name');
-            sel = (value != null) && ("" + value) === ("" + r.id) ? 'selected' : '';
-            rh += "<option value='" + r.id + "' " + sel + ">" + txt + "</option>";
-          }
+        for (j = 0, len1 = roles.length; j < len1; j++) {
+          r = roles[j];
+          txt = r.get('name');
+          sel = (value != null) && ("" + value) === ("" + r.id) ? 'selected' : '';
+          rh += "<option value='" + r.id + "' " + sel + ">" + txt + "</option>";
         }
         return rh + "</select></div>";
       }
@@ -6521,7 +6511,7 @@ UserView = (function(superClass) {
   };
 
   UserView.prototype.save = function() {
-    var settings;
+    var roles, settings;
     if (!this.validate()) {
       return;
     }
@@ -6530,6 +6520,14 @@ UserView = (function(superClass) {
     settings.phone1 = this.ui.phone1.val();
     settings.phone2 = this.ui.phone2.val();
     this.model.set('settings', settings);
+    roles = [];
+    this.$('select.roleselect').each(function() {
+      var v;
+      v = $(this).val();
+      return roles = roles.concat(v);
+    });
+    this.model.set('roles', roles);
+    debugger;
     return this.model.save(null, {
       success: (function(_this) {
         return function() {
@@ -6567,7 +6565,7 @@ UserView = (function(superClass) {
 module.exports = UserView;
 
 },{"../../../models/user":21}],50:[function(require,module,exports){
-var Marionette, UserCollection, UsersLayout, UsersView,
+var Marionette, RoleCollection, UserCollection, UsersLayout, UsersView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -6578,10 +6576,14 @@ UsersView = require('./users_view');
 
 UserCollection = require('../../../models/user_collection');
 
+RoleCollection = require('../../../models/role_collection');
+
 UsersLayout = (function(superClass) {
   extend(UsersLayout, superClass);
 
   function UsersLayout() {
+    this.rebuild_view = bind(this.rebuild_view, this);
+    this.onShow = bind(this.onShow, this);
     this.update_filter = bind(this.update_filter, this);
     return UsersLayout.__super__.constructor.apply(this, arguments);
   }
@@ -6637,6 +6639,17 @@ UsersLayout = (function(superClass) {
   };
 
   UsersLayout.prototype.onShow = function() {
+    App.roles = new RoleCollection();
+    return App.roles.fetch({
+      success: (function(_this) {
+        return function() {
+          return _this.rebuild_view();
+        };
+      })(this)
+    });
+  };
+
+  UsersLayout.prototype.rebuild_view = function() {
     this.$('.loading').show();
     this.$('.preamble').hide();
     this.users = new UserCollection();
@@ -6665,7 +6678,7 @@ UsersLayout = (function(superClass) {
 
 module.exports = UsersLayout;
 
-},{"../../../models/user_collection":22,"./users_view":51}],51:[function(require,module,exports){
+},{"../../../models/role_collection":17,"../../../models/user_collection":22,"./users_view":51}],51:[function(require,module,exports){
 var Marionette, UserCollection, UserView, UsersView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;

@@ -1,6 +1,7 @@
 Marionette = require('marionette')
 UsersView = require('./users_view')
 UserCollection = require('../../../models/user_collection')
+RoleCollection = require('../../../models/role_collection')
 
 # ----------------------------------
 
@@ -33,7 +34,13 @@ class UsersLayout extends Marionette.LayoutView
       if !c.id? || c.id == 0 then return false
     @users.add {}, {at:0}
 
-  onShow: ()->
+  onShow: ()=>
+    App.roles = new RoleCollection()
+    App.roles.fetch
+      success: ()=>
+        @rebuild_view()
+
+  rebuild_view: ()=>
     @$('.loading').show()
     @$('.preamble').hide()
     @users = new UserCollection()
@@ -47,9 +54,6 @@ class UsersLayout extends Marionette.LayoutView
         
       error: ()=>
         App.log('error loading Users')
-
-  # onDestroy: ()->
-  #   @flush_users()
 
 # ----------------------------------
 

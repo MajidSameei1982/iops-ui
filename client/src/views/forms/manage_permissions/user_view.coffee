@@ -107,6 +107,12 @@ class UserView extends Marionette.ItemView
     settings.phone1 = @ui.phone1.val()
     settings.phone2 = @ui.phone2.val()
     @model.set('settings', settings)
+    roles = []
+    @$('select.roleselect').each ()->
+      v = $(this).val()
+      roles = roles.concat v
+    @model.set('roles', roles)
+    debugger
     @model.save null,
       success:()=>
         @render()

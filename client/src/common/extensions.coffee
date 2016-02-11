@@ -127,7 +127,6 @@ _.extend Marionette.View::,
           sid = c.get("siteId")
           sid = if !sid? then null else sid
           site_id = if !site_id? then null else site_id
-          debugger
           if site_id == sid then claims.push(c)
 
       for c in claims
@@ -137,27 +136,24 @@ _.extend Marionette.View::,
       "#{ch}</select></div>"  
 
     roleSelector: ({id, label, value, site_id, cls})->
-      # TODO: check current user access to sites
       c = 'form-group'
       c = if cls? then "#{c} #{cls}" else c
-      lbl = if label? then "<label>#{label}</label>" else ''
+      lbl = if label? then "<label>#{label}</label><br/>" else ''
       rh = """
         <div class='#{c}' for='#{id}'>
           #{lbl}
-          <select id='#{id}' class='form-control' multiple data-placeholder='Select Roles'>
+          <select id='#{id}' class='form-control roleselect' multiple data-placeholder='Select Roles'>
       """
-      roles = App.roles
-      if site_id?
-        if App.accounts? && App.accounts.models.length > 0
-          for acc in App.accounts.models
-            if acc.sites? && acc.sites.models?
-              for s in acc.sites.models
-                if s.id == site_id
-                  roles = s.roles
-                  break
-      if roles? && roles.models?
-        for r in roles.models
-          txt = r.get('name')
-          sel = if value? && "#{value}" == "#{r.id}" then 'selected' else ''
-          rh += "<option value='#{r.id}' #{sel}>#{txt}</option>"
+      roles = []
+      if App.roles?
+        for r in App.roles.models
+          sid = r.get("siteId")
+          sid = if !sid? then null else sid
+          site_id = if !site_id? then null else site_id
+          if site_id == sid then roles.push(r)
+      
+      for r in roles
+        txt = r.get('name')
+        sel = if value? && "#{value}" == "#{r.id}" then 'selected' else ''
+        rh += "<option value='#{r.id}' #{sel}>#{txt}</option>"
       "#{rh}</select></div>"  
