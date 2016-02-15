@@ -21,9 +21,9 @@ window.app_config = {
       icon: "server"
     },
     {
-      id: "gpu",
-      name: "GPU Widget",
-      icon: "battery-3"
+      id: "pbbdetail",
+      name: "PBB Detail Widget",
+      icon: "plane"
     },
     {
       id: "weather",

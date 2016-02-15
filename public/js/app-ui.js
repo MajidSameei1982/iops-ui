@@ -1542,7 +1542,7 @@ window.JST["widgets/alarm_widget"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
-window.JST["widgets/gpu_widget"] = function(__obj) {
+window.JST["widgets/pbb_widget"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
       value = '';
@@ -1563,7 +1563,7 @@ window.JST["widgets/gpu_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-battery-3"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gate_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table class=\'data\'>\n      <tr><td class=\'lbl\' id=\'pbb_status_lbl\'>&nbsp;</td><td id=\'pbb_status\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevel_lbl\'>&nbsp;</td><td id=\'pbb_autolevel\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopy_lbl\'>&nbsp;</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_acffloor_lbl\'>ACF Floor</td><td id=\'pbb_acffloor\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_cablehoist_lbl\'>&nbsp;</td><td id=\'pbb_cablehoist\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_estop_lbl\'>&nbsp;</td><td id=\'pbb_estop\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_limits_lbl\'>Limits</td><td id=\'pbb_limits\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_docktime_lbl\'>&nbsp;</td><td id=\'pbb_docktime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_undocktime_lbl\'>&nbsp;</td><td id=\'pbb_undocktime\' class=\'val\'>LOADING...</td></tr>\n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gate_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table class=\'data\' style="float: left; width:55%">     \n      <tr><td class=\'lbl\' id=\'pbb_statused_lbl\'>&nbsp;</td><td id=\'pbb_status\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevel_lbl\'>&nbsp;</td><td id=\'pbb_autolevel\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_estops_lbl\'>&nbsp;</td><td id=\'pbb_estop\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_smokedetector_lbl\'>&nbsp;</td><td id=\'pbb_smokedetector\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopys_lbl\'>&nbsp;</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_cablehoist_lbl\'>&nbsp;</td><td id=\'pbb_cablehoist\' class=\'val\'>LOADING...</td></tr>     \n      </table>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table class=\'data\' style="float: left; width:40%">\n      <tr><td class=\'lbl\' id=\'pbb_docked_lbl\'>&nbsp;</td><td id=\'pbb_docked\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevelon_lbl\'>&nbsp;</td><td id=\'pbb_autolevelon\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopydown_lbl\'>&nbsp;</td><td id=\'pbb_canopydown\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_acffloored_lbl\'>&nbsp;</td><td id=\'pbb_acfflooron\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_cabledhoist_lbl\'>&nbsp;</td><td id=\'pbb_cablehoiston\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_estoped_lbl\'>&nbsp;</td><td id=\'pbb_estopoff\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_limited_lbl\'>&nbsp;</td><td id=\'pbb_limitok\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_dockedtime_lbl\'>&nbsp;</td><td id=\'pbb_docktime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_undockedtime_lbl\'>&nbsp;</td><td id=\'pbb_undocktime\' class=\'val\'>LOADING...</td></tr>\n     \n      \n    </table>\n       \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -1640,7 +1640,7 @@ window.JST["widgets/gpu_widget"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
-window.JST["widgets/pbb_widget"] = function(__obj) {
+window.JST["widgets/pbbdetail_widget"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
       value = '';
@@ -1661,7 +1661,105 @@ window.JST["widgets/pbb_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gate_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table class=\'data\'>\n      <tr><td class=\'lbl\' id=\'pbb_status_lbl\'>&nbsp;</td><td id=\'pbb_status\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevel_lbl\'>&nbsp;</td><td id=\'pbb_autolevel\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopy_lbl\'>&nbsp;</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_acffloor_lbl\'>ACF Floor</td><td id=\'pbb_acffloor\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_cablehoist_lbl\'>&nbsp;</td><td id=\'pbb_cablehoist\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_estop_lbl\'>&nbsp;</td><td id=\'pbb_estop\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_limits_lbl\'>Limits</td><td id=\'pbb_limits\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_docktime_lbl\'>&nbsp;</td><td id=\'pbb_docktime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_undocktime_lbl\'>&nbsp;</td><td id=\'pbb_undocktime\' class=\'val\'>LOADING...</td></tr>\n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="pbbdetail_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n<table height="100%";width"100%">\n  <tr><td>\n    <table class=\'data1\'> \n     <tr><td style="width:300px; height:200px; ;text-align:center; vertical-align:middle">\n     <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB_Un-docked-400x400.gif" />   \n    </td></tr>         \n    </table>\n </td><td>\n    <table class=\'data2\'> \n       <tr><td id=\'pbb_undocked\' class=\'val\'>LOADING...</td><td id=\'pbb_undocktime\' class=\'val\'>LOADING...</td></tr>\n     <tr>\n      <td style="width:200px; height:150px; vertical-align:middle">\n        <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB-AutoLevel-Off-400x400.gif" />   \n      </td>\n      <td style="width:200px; height:150px; vertical-align:middle">\n        <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB-Canopy-Off-400x400.gif" />   \n      </td>\n     </tr>  \n     <tr><td id=\'pbb_autolevelstatusnok\' class=\'val\'>LOADING...</td><td id=\'pbb_canopystatusnok\' class=\'val\'>LOADING...</td></tr>     \n    </table>\n </td></tr><tr><td> \n  \n    <table class=\'data1\'> \n     <tr><td style="width:300px; height:200px; ;text-align:center; vertical-align:middle">\n     <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB_docked-400x400.gif" />   \n    </td></tr>         \n    </table>\n</td><td>\n    <table class=\'data2\' cellpadding="0" cellspacing="0"> \n     <tr><td id=\'pbb_docked\' class=\'val\'>LOADING...</td><td id=\'pbb_docktime\' class=\'val\'>LOADING...</td></tr>\n     <tr>\n      <td style="width:200px; height:150px; vertical-align:middle">\n        <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB-AutoLevel-On-400x400.gif" />   \n      </td>\n      <td style="width:200px; height:150px; vertical-align:middle">\n        <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB-Canopy-On-400x400.gif" />   \n      </td>\n     </tr>  \n    <tr><td id=\'pbb_autolevelstatusok\' class=\'val\'>LOADING...</td><td id=\'pbb_canopystatusok\' class=\'val\'>LOADING...</td></tr>         \n    </table>\n </td></tr></table> \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+    
+      _print(_safe(this.siteSelector({
+        id: 'site',
+        label: 'Site',
+        value: this.settings.site
+      })));
+    
+      _print(_safe('\n    <div class="row">\n      '));
+    
+      _print(_safe(this.formGroup({
+        id: 'terminal',
+        label: 'Terminal',
+        type: 'text',
+        placeholder: 'Terminal',
+        value: this.settings.terminal,
+        cls: 'col-md-6'
+      })));
+    
+      _print(_safe('\n      '));
+    
+      _print(_safe(this.formGroup({
+        id: 'zone',
+        label: 'Zone',
+        type: 'text',
+        placeholder: 'Zone',
+        value: this.settings.zone,
+        cls: 'col-md-6'
+      })));
+    
+      _print(_safe('\n    </div>\n    <div class="row">\n      '));
+    
+      _print(_safe(this.formGroup({
+        id: 'display_prefix',
+        label: 'Prefix',
+        type: 'text',
+        placeholder: 'Display Prefix',
+        value: this.settings.display_prefix,
+        cls: 'col-md-6'
+      })));
+    
+      _print(_safe('\n      '));
+    
+      _print(_safe(this.formGroup({
+        id: 'gate',
+        label: 'Gate',
+        type: 'text',
+        feedback: 'plane',
+        placeholder: 'Gate #',
+        value: this.settings.gate,
+        cls: 'col-md-6'
+      })));
+    
+      _print(_safe('\n    </div>\n  </div>\n\n</div>\n'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
+window.JST["widgets/pbbleveldetail_widget"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gate_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table class=\'data\' style="float: left; width:40%">\n      <tr><td class=\'lbl\' id=\'pbb_docked_lbl\'>&nbsp;</td><td id=\'pbb_docked\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevelon_lbl\'>&nbsp;</td><td id=\'pbb_autolevelon\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopydown_lbl\'>&nbsp;</td><td id=\'pbb_canopydown\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_acffloored_lbl\'>&nbsp;</td><td id=\'pbb_acfflooron\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_cabledhoist_lbl\'>&nbsp;</td><td id=\'pbb_cablehoiston\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_estoped_lbl\'>&nbsp;</td><td id=\'pbb_estopoff\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_limited_lbl\'>&nbsp;</td><td id=\'pbb_limitok\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_dockedtime_lbl\'>&nbsp;</td><td id=\'pbb_docktime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_undockedtime_lbl\'>&nbsp;</td><td id=\'pbb_undocktime\' class=\'val\'>LOADING...</td></tr>\n     \n      \n    </table>\n       \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -1997,13 +2095,13 @@ require('./views/widgets/alarm_widget_view');
 
 require('./views/widgets/pbb_widget_view');
 
+require('./views/widgets/pbbdetail_widget_view');
+
+require('./views/widgets/pbbleveldetail_widget_view');
+
 require('./views/widgets/pca_widget_view');
 
 require('./views/widgets/url_widget_view');
-
-require('./views/widgets/weather_widget_view');
-
-require('./views/widgets/gpu_widget_view');
 
 window.App = (function() {
   var App;
@@ -2048,6 +2146,18 @@ window.App = (function() {
               opc: 'http://opc.iopsnow.com:58725'
             }, {
               id: 2,
+              name: 'The Newark International Airport',
+              abbrev: "EWR",
+              shortName: "Newark",
+              opc: 'http://www.opcsystems.com:58725'
+            }, {
+              id: 3,
+              name: 'Southwest Airlines',
+              abbrev: "DAL",
+              shortName: "Southwest",
+              opc: 'http://www.opcsystems.com:58725'
+            }, {
+              id: 4,
               name: 'Open Automation Systems',
               abbrev: "OAS",
               shortName: "OPCSystems.NET",
@@ -2149,7 +2259,7 @@ window.App = (function() {
   return App;
 })();
 
-},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27,"./views/widgets/alarm_widget_view":53,"./views/widgets/gpu_widget_view":54,"./views/widgets/pbb_widget_view":55,"./views/widgets/pca_widget_view":56,"./views/widgets/url_widget_view":57,"./views/widgets/weather_widget_view":58}],2:[function(require,module,exports){
+},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27,"./views/widgets/alarm_widget_view":53,"./views/widgets/pbb_widget_view":54,"./views/widgets/pbbdetail_widget_view":55,"./views/widgets/pbbleveldetail_widget_view":56,"./views/widgets/pca_widget_view":57,"./views/widgets/url_widget_view":58}],2:[function(require,module,exports){
 var AccountsView, AppController, Dashboard, DashboardCollection, DashboardContentView, DashboardLayout, LoginView, Marionette, PermissionsLayout, ProfileView, User, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -6356,305 +6466,6 @@ window.AlarmWidgetView = AlarmWidgetView;
 module.exports = AlarmWidgetView;
 
 },{"../dashboard/widget_view":38}],54:[function(require,module,exports){
-var GpuWidgetView, Marionette, WidgetView,
-  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
-  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-  hasProp = {}.hasOwnProperty;
-
-Marionette = require('marionette');
-
-WidgetView = require('../dashboard/widget_view');
-
-GpuWidgetView = (function(superClass) {
-  extend(GpuWidgetView, superClass);
-
-  function GpuWidgetView() {
-    this.set_model = bind(this.set_model, this);
-    this.data_update = bind(this.data_update, this);
-    this.set_descriptions = bind(this.set_descriptions, this);
-    this.flash_alarm = bind(this.flash_alarm, this);
-    this.data_q = bind(this.data_q, this);
-    this.get_value = bind(this.get_value, this);
-    this.get_bool = bind(this.get_bool, this);
-    return GpuWidgetView.__super__.constructor.apply(this, arguments);
-  }
-
-  GpuWidgetView.prototype.template = "widgets/gpu_widget";
-
-  GpuWidgetView.prototype.className = 'widget-outer box box-primary gate_widget';
-
-  GpuWidgetView.prototype.ui = {
-    terminal: 'input#terminal',
-    zone: 'input#zone',
-    display_prefix: 'input#display_prefix',
-    gate: 'input#gate',
-    site: 'select#site',
-    wtitle: 'h3.box-title',
-    display: '.display',
-    content: '.content',
-    docked: 'i#docked',
-    alarms: 'i#alarms',
-    warnings: 'i#warnings'
-  };
-
-  GpuWidgetView.layout = {
-    sx: 4,
-    sy: 9
-  };
-
-  GpuWidgetView.prototype.tags = {
-    pbb_status: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-    pbb_aircraft: 'PBB.AIRCRAFTSTATUS',
-    pbb_autolevel: 'PBB.AUTOLEVELMODEFLAG',
-    pbb_canopy: 'PBB.Warning.CANOPYDOWN',
-    pbb_acffloor: 'PBB.ACFFLOOR',
-    pbb_cablehoist: 'PBB.HZ400CABLEDEPLOYED',
-    pbb_estop: 'PBB.Alarm.E_STOP',
-    pbb_limits: 'PBB.400HZ Pit',
-    pbb_docktime: 'PBB.DOCKTIME',
-    pbb_undocktime: 'PBB.UNDOCKTIME',
-    pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
-    pbb_has_warnings: 'Warning._HasWarnings',
-    pbb_has_alarms: 'Alarm._HasAlarms'
-  };
-
-  GpuWidgetView.prototype.modelEvents = {
-    "change": "update"
-  };
-
-  GpuWidgetView.prototype.watch_updates = function(conn) {
-    return App.vent.on("opc:data:" + conn, this.data_update);
-  };
-
-  GpuWidgetView.prototype.kill_updates = function(conn) {
-    return App.vent.off("opc:data:" + conn, this.data_update);
-  };
-
-  GpuWidgetView.prototype.update = function() {
-    var gate, lbl, s, t, tags, tg;
-    s = this.model.get("settings");
-    if ((s != null) && !!s.gate) {
-      this.site_code = OPCManager.get_site_code(s.site);
-      if (this.site_code == null) {
-        return null;
-      }
-      this.kill_updates(this.site_code);
-      OPCManager.rem_ref(this.site_code);
-      gate = s.display_prefix != null ? "" + s.display_prefix + s.gate : '#{s.gate}';
-      this.prefix = "RemoteSCADAHosting.Airport-" + this.site_code + ".Airport." + this.site_code + ".Term" + s.terminal + ".Zone" + s.zone + ".Gate" + gate + ".";
-      tags = [];
-      for (tg in this.tags) {
-        t = this.tags[tg];
-        tags.push("" + this.prefix + t + ".Value");
-      }
-      App.opc.add_tags(this.site_code, tags);
-      this.watch_updates(this.site_code);
-      OPCManager.add_ref(this.site_code);
-      lbl = "Gate " + gate;
-      this.ui.wtitle.html(lbl);
-      this.$('#gate_label #txt').html(lbl);
-      this.opc = App.opc.connections[this.site_code];
-      return this.set_descriptions(true);
-    }
-  };
-
-  GpuWidgetView.prototype.get_bool = function(v) {
-    if ((v != null) && v.toUpperCase() === "TRUE") {
-      return true;
-    } else if ((v != null) && v.toUpperCase() === "FALSE") {
-      return false;
-    }
-    return null;
-  };
-
-  GpuWidgetView.prototype.get_value = function(tag) {
-    return this.opc.get_value("" + this.prefix + tag + ".Value");
-  };
-
-  GpuWidgetView.prototype.mark_bad_data = function(tag, el) {
-    var h, q;
-    q = this.data_q(tag);
-    h = !q ? 'BAD DATA' : $(el).html();
-    return $(el).html(h).toggleClass("bad_data", !q);
-  };
-
-  GpuWidgetView.prototype.data_q = function(tag) {
-    var c, t;
-    c = App.opc.connections[this.site_code];
-    t = c.tags["" + this.prefix + tag];
-    return t.props.Value.quality;
-  };
-
-  GpuWidgetView.prototype.flash_alarm = function(fl) {
-    var chg;
-    if ((this.fl_interval != null) && !fl) {
-      clearInterval(this.fl_interval);
-      $(this.el).removeClass('alarm');
-      this.fl_interval = null;
-    }
-    if (!this.fl_interval && fl) {
-      chg = (function(_this) {
-        return function() {
-          return $(_this.el).toggleClass('alarm');
-        };
-      })(this);
-      return this.fl_interval = setInterval(chg, 500);
-    }
-  };
-
-  GpuWidgetView.prototype.set_descriptions = function(force) {
-    var t, tds, tg, tlen;
-    tds = [];
-    tlen = Object.keys(this.tags).length;
-    if (!force && (this.dcount != null) && this.dcount >= tlen) {
-      return;
-    }
-    this.dcount = force ? 0 : this.dcount;
-    if (this.dcount == null) {
-      this.dcount = 0;
-    }
-    for (t in this.tags) {
-      tg = this.tags[t];
-      tds.push("" + this.prefix + tg + ".Description");
-    }
-    return this.opc.load_tags(tds, (function(_this) {
-      return function(data) {
-        var i, idx, len, ref, results, ts, tt, v;
-        ref = data.tags;
-        results = [];
-        for (i = 0, len = ref.length; i < len; i++) {
-          t = ref[i];
-          results.push((function() {
-            var ref1, results1;
-            ref1 = this.tags;
-            results1 = [];
-            for (tt in ref1) {
-              idx = ref1[tt];
-              ts = this.tags[tt];
-              if (("" + this.prefix + ts) === t.name) {
-                v = t.props[0].val;
-                this.$("#" + tt + "_lbl").html(v);
-                this.dcount += 1;
-                break;
-              } else {
-                results1.push(void 0);
-              }
-            }
-            return results1;
-          }).call(_this));
-        }
-        return results;
-      };
-    })(this));
-  };
-
-  GpuWidgetView.prototype.render_row = function(tag, tv, fv, tc, fc) {
-    var el, txt, v;
-    v = this.get_bool(this.vals[tag]);
-    txt = v ? tv : fv;
-    el = this.$("#" + tag).html(txt);
-    if (tc != null) {
-      el.toggleClass(tc, v);
-    }
-    if (fc != null) {
-      el.toggleClass(fc, !v);
-    }
-    return this.mark_bad_data(this.tags[tag], el);
-  };
-
-  GpuWidgetView.prototype.data_update = function(data) {
-    var aircraftstatus, docktime, el, tg, txt, undocktime, v;
-    this.vals = {};
-    for (tg in this.tags) {
-      this.vals[tg] = this.get_value(this.tags[tg]);
-    }
-    v = this.get_bool(this.vals.pbb_status);
-    txt = v ? "Docked" : "Undocked";
-    this.$("#pbb_docked_lbl").html('PBB Status');
-    el = this.$("#pbb_docked").html(txt).toggleClass('ok', v);
-    this.mark_bad_data(this.tags.pbb_status, el);
-    this.render_row("pbb_status", "", "", "ok");
-    aircraftstatus = this.vals['pbb_aircraft'];
-    this.$('#pbb_status').html(aircraftstatus);
-    this.render_row("pbb_autolevel", "On", "Off", "ok");
-    this.render_row("pbb_canopy", "Down", "Up", "ok");
-    this.render_row("pbb_acffloor", "On", "Off", "ok");
-    this.render_row("pbb_estop", "Activated", "Ready/OK", "err");
-    this.render_row("pbb_cablehoist", "Deployed", "Retracted", "ok");
-    this.render_row("pbb_limits", "OK", "Active", "ok", "err");
-    this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms));
-    this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings));
-    this.ui.docked.toggle(this.get_bool(this.vals.pbb_status));
-    this.flash_alarm(this.get_bool(this.vals.pbb_autolevelfail));
-    docktime = (this.vals.pbb_docktime != null) && this.vals.pbb_docktime !== '' ? parseFloat(this.vals.pbb_docktime).toFixed(4) : ' -- ';
-    el = this.$('#pbb_docktime').html("" + docktime);
-    this.mark_bad_data(this.tags.pbb_docktime, el);
-    undocktime = (this.vals.pbb_undocktime != null) && this.vals.pbb_undocktime !== '' ? parseFloat(this.vals.pbb_undocktime).toFixed(4) : ' -- ';
-    el = this.$('#pbb_undocktime').html("" + undocktime);
-    this.mark_bad_data(this.tags.pbb_undocktime, el);
-    return this.set_descriptions();
-  };
-
-  GpuWidgetView.prototype.set_model = function() {
-    var s;
-    s = _.clone(this.model.get("settings"));
-    s.gate = this.ui.gate.val().trim();
-    s.site = this.ui.site.val().trim();
-    s.terminal = this.ui.terminal.val().trim();
-    s.zone = this.ui.zone.val().trim();
-    s.display_prefix = this.ui.display_prefix.val().trim();
-    return this.model.set("settings", s);
-  };
-
-  GpuWidgetView.prototype.toggle_settings = function(e) {
-    GpuWidgetView.__super__.toggle_settings.call(this, e);
-    this.ui.display.toggle(!this.settings_visible);
-    if (this.settings_visible) {
-      return this.ui.site.chosen();
-    }
-  };
-
-  GpuWidgetView.prototype.onShow = function() {
-    var gate, ms, settings, site, site_code;
-    this.ui.gate.on("change", this.set_model);
-    this.ui.site.on("change", this.set_model);
-    this.ui.terminal.on("change", this.set_model);
-    this.ui.zone.on("change", this.set_model);
-    this.ui.display_prefix.on("change", this.set_model);
-    settings = this.model.get('settings');
-    gate = settings.gate;
-    if ((gate == null) || gate === '') {
-      this.toggle_settings();
-    }
-    site = settings.site;
-    site_code = OPCManager.get_site_code(site);
-    if (site_code != null) {
-      OPCManager.add_ref(site_code);
-    }
-    ms = this.model.get('settings');
-    if ((ms != null) && (ms.site != null)) {
-      return this.ui.site.val(ms.site);
-    }
-  };
-
-  GpuWidgetView.prototype.start = function() {
-    return this.update();
-  };
-
-  GpuWidgetView.prototype.onDestroy = function(arg1, arg2) {
-    this.kill_updates(this.site_code);
-    return OPCManager.rem_ref(this.site_code);
-  };
-
-  return GpuWidgetView;
-
-})(WidgetView);
-
-window.GpuWidgetView = GpuWidgetView;
-
-module.exports = GpuWidgetView;
-
-},{"../dashboard/widget_view":38}],55:[function(require,module,exports){
 var Marionette, PbbWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -6697,7 +6508,7 @@ PbbWidgetView = (function(superClass) {
   };
 
   PbbWidgetView.layout = {
-    sx: 4,
+    sx: 9,
     sy: 9
   };
 
@@ -6712,6 +6523,17 @@ PbbWidgetView = (function(superClass) {
     pbb_limits: 'PBB.400HZ Pit',
     pbb_docktime: 'PBB.DOCKTIME',
     pbb_undocktime: 'PBB.UNDOCKTIME',
+    pbb_smokedetector: 'PBB.SMOKEDETECTOR',
+    pbb_heighttodisp: 'PBB.HEIGHTTODISP',
+    gpu_gpuoutputamps: 'GPU.RAOUTAVG',
+    gpu_gpuoutputvolts: 'GPU.RVOUTAVG',
+    pca_pcadischargetemp: 'PCA.TEMPDISCH',
+    gpu_gpustatuson: 'GPU.GPUSTATUS',
+    pca_pcastatuson: 'PCA.PCAON',
+    gpu_gpustatusoff: 'GPU.GPUSTATUS',
+    pca_pcastatusoff: 'PCA.PCAON',
+    pbb_canopydown: 'PBB.Warning.CANOPYDOWN',
+    pbb_canopyup: 'PBB.Warning.CANOPYDOWN',
     pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
     pbb_has_warnings: 'Warning._HasWarnings',
     pbb_has_alarms: 'Alarm._HasAlarms'
@@ -6862,35 +6684,78 @@ PbbWidgetView = (function(superClass) {
   };
 
   PbbWidgetView.prototype.data_update = function(data) {
-    var aircraftstatus, docktime, el, tg, txt, undocktime, v;
+    var a, aircraftstatus, c, docktime, e, el, f, gpuoutputamps, gpuoutputvoltsstatus, h, heighttodisp, l, pcadischargetemp, tg, txt, txta, txta1, txte, txtf, txth, txtl, undocktime, v;
     this.vals = {};
     for (tg in this.tags) {
       this.vals[tg] = this.get_value(this.tags[tg]);
     }
-    v = this.get_bool(this.vals.pbb_status);
-    txt = v ? "Docked" : "Undocked";
-    this.$("#pbb_docked_lbl").html('PBB Status');
-    el = this.$("#pbb_docked").html(txt).toggleClass('ok', v);
-    this.mark_bad_data(this.tags.pbb_status, el);
     this.render_row("pbb_status", "", "", "ok");
     aircraftstatus = this.vals['pbb_aircraft'];
     this.$('#pbb_status').html(aircraftstatus);
+    this.render_row("gpu_gpuoutputvolts", "", "", "ok");
+    gpuoutputvoltsstatus = this.vals['gpu_gpuoutputvolts'];
+    this.$('#gpu_gpuoutputvolts').html(gpuoutputvoltsstatus);
+    this.$("#pbb_statused_lbl").html('PBB Status');
+    this.$("#pbb_canopys_lbl").html('Canopy');
+    this.$("#pbb_estops_lbl").html('E-Stop');
+    v = this.get_bool(this.vals.pbb_status);
+    a = this.get_bool(this.vals.pbb_autolevel);
+    c = this.get_bool(this.vals.pbb_canopy);
+    f = this.get_bool(this.vals.pbb_acffloor);
+    h = this.get_bool(this.vals.pbb_cablehoist);
+    e = this.get_bool(this.vals.pbb_estop);
+    l = this.get_bool(this.vals.pbb_limits);
+    txt = v ? "Docked" : "Undocked";
+    this.$("#pbb_docked_lbl").html('PBB Status');
+    el = this.$("#pbb_docked").html(txt).toggleClass('ok', v);
+    txta = a ? "On " : "Off";
+    this.$("#pbb_autolevelon_lbl").html('Auto Level');
+    el = this.$("#pbb_autolevelon").html(txta).toggleClass('ok', a);
+    txta1 = c ? "Down " : "Up ";
+    this.$("#pbb_canopydown_lbl").html('Canopy');
+    el = this.$("#pbb_canopydown").html(txta1).toggleClass('ok', c);
+    txtf = f ? "On" : "Off";
+    this.$("#pbb_acffloored_lbl").html('ACF Floor');
+    el = this.$("#pbb_acfflooron").html(txtf).toggleClass('ok', f);
+    txth = h ? "Active" : "Off";
+    this.$("#pbb_cabledhoist_lbl").html('Cable Hoist Int.');
+    el = this.$("#pbb_cablehoiston").html(txth).toggleClass('ok', h);
+    txte = e ? "Off" : "On";
+    this.$("#pbb_estoped_lbl").html('E-Stop');
+    el = this.$("#pbb_estopoff").html(txte).toggleClass('ok', e);
+    txtl = l ? "Ok" : "Active";
+    this.$("#pbb_limited_lbl").html('Limits');
+    el = this.$("#pbb_limitok").html(txtl).toggleClass('ok', l);
     this.render_row("pbb_autolevel", "On", "Off", "ok");
     this.render_row("pbb_canopy", "Down", "Up", "ok");
-    this.render_row("pbb_acffloor", "On", "Off", "ok");
+    this.render_row("pbb_smokedetector", "Ready/OK", "Activated", " ", "err");
     this.render_row("pbb_estop", "Activated", "Ready/OK", "err");
     this.render_row("pbb_cablehoist", "Deployed", "Retracted", "ok");
-    this.render_row("pbb_limits", "OK", "Active", "ok", "err");
+    this.render_row("pca_pcastatuson", "On", "On", "ok", " ");
+    this.render_row("gpu_gpustatuson", "On", "On", "ok", " ");
+    this.render_row("pca_pcastatusoff", "Off", "Off", " ", "err");
+    this.render_row("gpu_gpustatusoff", "Off", "Off", " ", "err");
     this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms));
     this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings));
     this.ui.docked.toggle(this.get_bool(this.vals.pbb_status));
     this.flash_alarm(this.get_bool(this.vals.pbb_autolevelfail));
-    docktime = (this.vals.pbb_docktime != null) && this.vals.pbb_docktime !== '' ? parseFloat(this.vals.pbb_docktime).toFixed(4) : ' -- ';
-    el = this.$('#pbb_docktime').html("" + docktime);
+    this.$("#pbb_dockedtime_lbl").html('Dock Time');
+    docktime = (this.vals.pbb_docktime != null) && this.vals.pbb_docktime !== '' ? parseFloat(this.vals.pbb_docktime).toFixed(2) : ' -- ';
+    el = this.$('#pbb_docktime').html(docktime + " mins");
     this.mark_bad_data(this.tags.pbb_docktime, el);
-    undocktime = (this.vals.pbb_undocktime != null) && this.vals.pbb_undocktime !== '' ? parseFloat(this.vals.pbb_undocktime).toFixed(4) : ' -- ';
-    el = this.$('#pbb_undocktime').html("" + undocktime);
+    this.$("#pbb_undockedtime_lbl").html('Un-Dock Time');
+    undocktime = (this.vals.pbb_undocktime != null) && this.vals.pbb_undocktime !== '' ? parseFloat(this.vals.pbb_undocktime).toFixed(2) : ' -- ';
+    el = this.$('#pbb_undocktime').html(undocktime + " mins");
     this.mark_bad_data(this.tags.pbb_undocktime, el);
+    heighttodisp = (this.vals.pbb_heighttodisp != null) && this.vals.pbb_heighttodisp !== '' ? this.vals.pbb_heighttodisp : ' -- ';
+    el = this.$('#pbb_heighttodisp').html("" + heighttodisp);
+    this.mark_bad_data(this.tags.pbb_heighttodisp, el);
+    pcadischargetemp = (this.vals.pca_pcadischargetemp != null) && this.vals.pca_pcadischargetemp !== '' ? parseFloat(this.vals.pca_pcadischargetemp).toFixed(2) : ' --';
+    el = this.$('#pca_pcadischargetemp').html("" + pcadischargetemp);
+    this.mark_bad_data(this.tags.pca_pcadischargetemp, el);
+    gpuoutputamps = (this.vals.gpu_gpuoutputamps != null) && this.vals.gpu_gpuoutputamps !== '' ? parseFloat(this.vals.gpu_gpuoutputamps).toFixed(2) : ' --';
+    el = this.$('#gpu_gpuoutputamps').html("" + gpuoutputamps);
+    this.mark_bad_data(this.tags.gpu_gpuoutputamps, el);
     return this.set_descriptions();
   };
 
@@ -6953,7 +6818,696 @@ window.PbbWidgetView = PbbWidgetView;
 
 module.exports = PbbWidgetView;
 
+},{"../dashboard/widget_view":38}],55:[function(require,module,exports){
+var Marionette, PbbdetailWidgetView, WidgetView,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+WidgetView = require('../dashboard/widget_view');
+
+PbbdetailWidgetView = (function(superClass) {
+  extend(PbbdetailWidgetView, superClass);
+
+  function PbbdetailWidgetView() {
+    this.set_model = bind(this.set_model, this);
+    this.data_update = bind(this.data_update, this);
+    this.set_descriptions = bind(this.set_descriptions, this);
+    this.flash_alarm = bind(this.flash_alarm, this);
+    this.data_q = bind(this.data_q, this);
+    this.get_value = bind(this.get_value, this);
+    this.get_bool = bind(this.get_bool, this);
+    return PbbdetailWidgetView.__super__.constructor.apply(this, arguments);
+  }
+
+  PbbdetailWidgetView.prototype.template = "widgets/pbbdetail_widget";
+
+  PbbdetailWidgetView.prototype.className = 'widget-outer box box-primary pbbdetail_widget';
+
+  PbbdetailWidgetView.prototype.ui = {
+    terminal: 'input#terminal',
+    zone: 'input#zone',
+    display_prefix: 'input#display_prefix',
+    gate: 'input#gate',
+    site: 'select#site',
+    wtitle: 'h3.box-title',
+    display: '.display',
+    content: '.content',
+    docked: 'i#docked',
+    alarms: 'i#alarms',
+    warnings: 'i#warnings'
+  };
+
+  PbbdetailWidgetView.layout = {
+    sx: 11,
+    sy: 12
+  };
+
+  PbbdetailWidgetView.prototype.tags = {
+    pbb_status: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+    pbb_aircraft: 'PBB.AIRCRAFTSTATUS',
+    pbb_autolevel: 'PBB.AUTOLEVELMODEFLAG',
+    pbb_canopy: 'PBB.Warning.CANOPYDOWN',
+    pbb_acffloor: 'PBB.ACFFLOOR',
+    pbb_cablehoist: 'PBB.HZ400CABLEDEPLOYED',
+    pbb_estop: 'PBB.Alarm.E_STOP',
+    pbb_limits: 'PBB.400HZ Pit',
+    pbb_docktime: 'PBB.DOCKTIME',
+    pbb_undocktime: 'PBB.UNDOCKTIME',
+    pbb_smokedetector: 'PBB.SMOKEDETECTOR',
+    pbb_heighttodisp: 'PBB.HEIGHTTODISP',
+    gpu_gpuoutputamps: 'GPU.RAOUTAVG',
+    gpu_gpuoutputvolts: 'GPU.RVOUTAVG',
+    pca_pcadischargetemp: 'PCA.TEMPDISCH',
+    gpu_gpustatuson: 'GPU.GPUSTATUS',
+    pca_pcastatuson: 'PCA.PCAON',
+    gpu_gpustatusoff: 'GPU.GPUSTATUS',
+    pca_pcastatusoff: 'PCA.PCAON',
+    pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
+    pbb_has_warnings: 'Warning._HasWarnings',
+    pbb_has_alarms: 'Alarm._HasAlarms'
+  };
+
+  PbbdetailWidgetView.prototype.modelEvents = {
+    "change": "update"
+  };
+
+  PbbdetailWidgetView.prototype.watch_updates = function(conn) {
+    return App.vent.on("opc:data:" + conn, this.data_update);
+  };
+
+  PbbdetailWidgetView.prototype.kill_updates = function(conn) {
+    return App.vent.off("opc:data:" + conn, this.data_update);
+  };
+
+  PbbdetailWidgetView.prototype.update = function() {
+    var gate, lbl, s, t, tags, tg;
+    s = this.model.get("settings");
+    if ((s != null) && !!s.gate) {
+      this.site_code = OPCManager.get_site_code(s.site);
+      if (this.site_code == null) {
+        return null;
+      }
+      this.kill_updates(this.site_code);
+      OPCManager.rem_ref(this.site_code);
+      gate = s.display_prefix != null ? "" + s.display_prefix + s.gate : '#{s.gate}';
+      this.prefix = "RemoteSCADAHosting.Airport-" + this.site_code + ".Airport." + this.site_code + ".Term" + s.terminal + ".Zone" + s.zone + ".Gate" + gate + ".";
+      tags = [];
+      for (tg in this.tags) {
+        t = this.tags[tg];
+        tags.push("" + this.prefix + t + ".Value");
+      }
+      App.opc.add_tags(this.site_code, tags);
+      this.watch_updates(this.site_code);
+      OPCManager.add_ref(this.site_code);
+      lbl = "Gate " + gate;
+      this.ui.wtitle.html(lbl);
+      this.$('#pbbdetail_label #txt').html(lbl);
+      this.opc = App.opc.connections[this.site_code];
+      return this.set_descriptions(true);
+    }
+  };
+
+  PbbdetailWidgetView.prototype.get_bool = function(v) {
+    if ((v != null) && v.toUpperCase() === "TRUE") {
+      return true;
+    } else if ((v != null) && v.toUpperCase() === "FALSE") {
+      return false;
+    }
+    return null;
+  };
+
+  PbbdetailWidgetView.prototype.get_value = function(tag) {
+    return this.opc.get_value("" + this.prefix + tag + ".Value");
+  };
+
+  PbbdetailWidgetView.prototype.mark_bad_data = function(tag, el) {
+    var h, q;
+    q = this.data_q(tag);
+    h = !q ? 'BAD DATA' : $(el).html();
+    return $(el).html(h).toggleClass("bad_data", !q);
+  };
+
+  PbbdetailWidgetView.prototype.data_q = function(tag) {
+    var c, t;
+    c = App.opc.connections[this.site_code];
+    t = c.tags["" + this.prefix + tag];
+    return t.props.Value.quality;
+  };
+
+  PbbdetailWidgetView.prototype.flash_alarm = function(fl) {
+    var chg;
+    if ((this.fl_interval != null) && !fl) {
+      clearInterval(this.fl_interval);
+      $(this.el).removeClass('alarm');
+      this.fl_interval = null;
+    }
+    if (!this.fl_interval && fl) {
+      chg = (function(_this) {
+        return function() {
+          return $(_this.el).toggleClass('alarm');
+        };
+      })(this);
+      return this.fl_interval = setInterval(chg, 500);
+    }
+  };
+
+  PbbdetailWidgetView.prototype.set_descriptions = function(force) {
+    var t, tds, tg, tlen;
+    tds = [];
+    tlen = Object.keys(this.tags).length;
+    if (!force && (this.dcount != null) && this.dcount >= tlen) {
+      return;
+    }
+    this.dcount = force ? 0 : this.dcount;
+    if (this.dcount == null) {
+      this.dcount = 0;
+    }
+    for (t in this.tags) {
+      tg = this.tags[t];
+      tds.push("" + this.prefix + tg + ".Description");
+    }
+    return this.opc.load_tags(tds, (function(_this) {
+      return function(data) {
+        var i, idx, len, ref, results, ts, tt, v;
+        ref = data.tags;
+        results = [];
+        for (i = 0, len = ref.length; i < len; i++) {
+          t = ref[i];
+          results.push((function() {
+            var ref1, results1;
+            ref1 = this.tags;
+            results1 = [];
+            for (tt in ref1) {
+              idx = ref1[tt];
+              ts = this.tags[tt];
+              if (("" + this.prefix + ts) === t.name) {
+                v = t.props[0].val;
+                this.$("#" + tt + "_lbl").html(v);
+                this.dcount += 1;
+                break;
+              } else {
+                results1.push(void 0);
+              }
+            }
+            return results1;
+          }).call(_this));
+        }
+        return results;
+      };
+    })(this));
+  };
+
+  PbbdetailWidgetView.prototype.render_row = function(tag, tv, fv, tc, fc) {
+    var el, txt, v;
+    v = this.get_bool(this.vals[tag]);
+    txt = v ? tv : fv;
+    el = this.$("#" + tag).html(txt);
+    if (tc != null) {
+      el.toggleClass(tc, v);
+    }
+    if (fc != null) {
+      el.toggleClass(fc, !v);
+    }
+    return this.mark_bad_data(this.tags[tag], el);
+  };
+
+  PbbdetailWidgetView.prototype.data_update = function(data) {
+    var a, aircraftstatus, c, docktime, el, gpuoutputamps, gpuoutputvoltsstatus, heighttodisp, pcadischargetemp, tg, txt, txt1, txta, txta1, txta1n, txtan, undocktime, v;
+    this.vals = {};
+    for (tg in this.tags) {
+      this.vals[tg] = this.get_value(this.tags[tg]);
+    }
+    this.render_row("pbb_status", "", "", "ok");
+    aircraftstatus = this.vals['pbb_aircraft'];
+    this.$('#pbb_status').html(aircraftstatus);
+    this.render_row("gpu_gpuoutputvolts", "", "", "ok");
+    gpuoutputvoltsstatus = this.vals['gpu_gpuoutputvolts'];
+    this.$('#gpu_gpuoutputvolts').html(gpuoutputvoltsstatus);
+    v = this.get_bool(this.vals.pbb_status);
+    a = this.get_bool(this.vals.pbb_autolevel);
+    c = this.get_bool(this.vals.pbb_canopy);
+    txt = v ? "Docked" : "Docked";
+    this.$("#pbb_docked_lbl").html('PBB Status');
+    el = this.$("#pbb_docked").html(txt).toggleClass('ok', v);
+    txt1 = v ? "Undocked" : "Undocked";
+    el = this.$("#pbb_undocked").html(txt1).toggleClass('ok', !v);
+    txta = a ? "Auto-Level : On " : "Auto-Level : On";
+    el = this.$("#pbb_autolevelstatusok").html(txta).toggleClass('ok', a);
+    txta1 = c ? "Canopy : Down " : "Canopy : Down ";
+    el = this.$("#pbb_canopystatusok").html(txta1).toggleClass('ok', c);
+    txtan = a ? "Auto-Level : Off " : "Auto-Level : Off";
+    el = this.$("#pbb_autolevelstatusnok").html(txtan).toggleClass('ok', !a);
+    txta1n = c ? "Canopy : Up " : "Canopy : Up ";
+    el = this.$("#pbb_canopystatusnok").html(txta1n).toggleClass('ok', !c);
+    this.render_row("pbb_autolevel", "On", "Off", "ok");
+    this.render_row("pbb_canopy", "Down", "Up", "ok");
+    this.render_row("pbb_acffloor", "On", "Off", "ok");
+    this.render_row("pbb_smokedetector", "Ready/OK", "Activated", " ", "err");
+    this.render_row("pbb_estop", "Activated", "Ready/OK", "err");
+    this.render_row("pbb_cablehoist", "Deployed", "Retracted", "ok");
+    this.render_row("pbb_limits", "OK", "Active", "ok", "err");
+    this.render_row("pca_pcastatuson", "On", "On", "ok", " ");
+    this.render_row("gpu_gpustatuson", "On", "On", "ok", " ");
+    this.render_row("pca_pcastatusoff", "Off", "Off", " ", "err");
+    this.render_row("gpu_gpustatusoff", "Off", "Off", " ", "err");
+    this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms));
+    this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings));
+    this.ui.docked.toggle(this.get_bool(this.vals.pbb_status));
+    this.flash_alarm(this.get_bool(this.vals.pbb_autolevelfail));
+    docktime = (this.vals.pbb_docktime != null) && this.vals.pbb_docktime !== '' ? parseFloat(this.vals.pbb_docktime).toFixed(4) : ' -- ';
+    el = this.$('#pbb_docktime').html("" + docktime);
+    this.mark_bad_data(this.tags.pbb_docktime, el);
+    undocktime = (this.vals.pbb_undocktime != null) && this.vals.pbb_undocktime !== '' ? parseFloat(this.vals.pbb_undocktime).toFixed(4) : ' -- ';
+    el = this.$('#pbb_undocktime').html("" + undocktime);
+    this.mark_bad_data(this.tags.pbb_undocktime, el);
+    heighttodisp = (this.vals.pbb_heighttodisp != null) && this.vals.pbb_heighttodisp !== '' ? this.vals.pbb_heighttodisp : ' -- ';
+    el = this.$('#pbb_heighttodisp').html("" + heighttodisp);
+    this.mark_bad_data(this.tags.pbb_heighttodisp, el);
+    pcadischargetemp = (this.vals.pca_pcadischargetemp != null) && this.vals.pca_pcadischargetemp !== '' ? parseFloat(this.vals.pca_pcadischargetemp).toFixed(2) : ' --';
+    el = this.$('#pca_pcadischargetemp').html("" + pcadischargetemp);
+    this.mark_bad_data(this.tags.pca_pcadischargetemp, el);
+    gpuoutputamps = (this.vals.gpu_gpuoutputamps != null) && this.vals.gpu_gpuoutputamps !== '' ? parseFloat(this.vals.gpu_gpuoutputamps).toFixed(2) : ' --';
+    el = this.$('#gpu_gpuoutputamps').html("" + gpuoutputamps);
+    this.mark_bad_data(this.tags.gpu_gpuoutputamps, el);
+    return this.set_descriptions();
+  };
+
+  PbbdetailWidgetView.prototype.set_model = function() {
+    var s;
+    s = _.clone(this.model.get("settings"));
+    s.gate = this.ui.gate.val().trim();
+    s.site = this.ui.site.val().trim();
+    s.terminal = this.ui.terminal.val().trim();
+    s.zone = this.ui.zone.val().trim();
+    s.display_prefix = this.ui.display_prefix.val().trim();
+    return this.model.set("settings", s);
+  };
+
+  PbbdetailWidgetView.prototype.toggle_settings = function(e) {
+    PbbdetailWidgetView.__super__.toggle_settings.call(this, e);
+    this.ui.display.toggle(!this.settings_visible);
+    if (this.settings_visible) {
+      return this.ui.site.chosen();
+    }
+  };
+
+  PbbdetailWidgetView.prototype.onShow = function() {
+    var gate, ms, settings, site, site_code;
+    this.ui.gate.on("change", this.set_model);
+    this.ui.site.on("change", this.set_model);
+    this.ui.terminal.on("change", this.set_model);
+    this.ui.zone.on("change", this.set_model);
+    this.ui.display_prefix.on("change", this.set_model);
+    settings = this.model.get('settings');
+    gate = settings.gate;
+    if ((gate == null) || gate === '') {
+      this.toggle_settings();
+    }
+    site = settings.site;
+    site_code = OPCManager.get_site_code(site);
+    if (site_code != null) {
+      OPCManager.add_ref(site_code);
+    }
+    ms = this.model.get('settings');
+    if ((ms != null) && (ms.site != null)) {
+      return this.ui.site.val(ms.site);
+    }
+  };
+
+  PbbdetailWidgetView.prototype.start = function() {
+    return this.update();
+  };
+
+  PbbdetailWidgetView.prototype.onDestroy = function(arg1, arg2) {
+    this.kill_updates(this.site_code);
+    return OPCManager.rem_ref(this.site_code);
+  };
+
+  return PbbdetailWidgetView;
+
+})(WidgetView);
+
+window.PbbdetailWidgetView = PbbdetailWidgetView;
+
+module.exports = PbbdetailWidgetView;
+
 },{"../dashboard/widget_view":38}],56:[function(require,module,exports){
+var Marionette, PbbleveldetailWidgetView, WidgetView,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+WidgetView = require('../dashboard/widget_view');
+
+PbbleveldetailWidgetView = (function(superClass) {
+  extend(PbbleveldetailWidgetView, superClass);
+
+  function PbbleveldetailWidgetView() {
+    this.set_model = bind(this.set_model, this);
+    this.data_update = bind(this.data_update, this);
+    this.set_descriptions = bind(this.set_descriptions, this);
+    this.flash_alarm = bind(this.flash_alarm, this);
+    this.data_q = bind(this.data_q, this);
+    this.get_value = bind(this.get_value, this);
+    this.get_bool = bind(this.get_bool, this);
+    return PbbleveldetailWidgetView.__super__.constructor.apply(this, arguments);
+  }
+
+  PbbleveldetailWidgetView.prototype.template = "widgets/pbbleveldetail_widget";
+
+  PbbleveldetailWidgetView.prototype.className = 'widget-outer box box-primary pbbdetail_widget';
+
+  PbbleveldetailWidgetView.prototype.ui = {
+    terminal: 'input#terminal',
+    zone: 'input#zone',
+    display_prefix: 'input#display_prefix',
+    gate: 'input#gate',
+    site: 'select#site',
+    wtitle: 'h3.box-title',
+    display: '.display',
+    content: '.content',
+    docked: 'i#docked',
+    alarms: 'i#alarms',
+    warnings: 'i#warnings'
+  };
+
+  PbbleveldetailWidgetView.layout = {
+    sx: 9,
+    sy: 9
+  };
+
+  PbbleveldetailWidgetView.prototype.tags = {
+    pbb_status: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+    pbb_aircraft: 'PBB.AIRCRAFTSTATUS',
+    pbb_autolevel: 'PBB.AUTOLEVELMODEFLAG',
+    pbb_canopy: 'PBB.Warning.CANOPYDOWN',
+    pbb_acffloor: 'PBB.ACFFLOOR',
+    pbb_cablehoist: 'PBB.HZ400CABLEDEPLOYED',
+    pbb_estop: 'PBB.Alarm.E_STOP',
+    pbb_limits: 'PBB.400HZ Pit',
+    pbb_docktime: 'PBB.DOCKTIME',
+    pbb_undocktime: 'PBB.UNDOCKTIME',
+    pbb_smokedetector: 'PBB.SMOKEDETECTOR',
+    pbb_heighttodisp: 'PBB.HEIGHTTODISP',
+    gpu_gpuoutputamps: 'GPU.RAOUTAVG',
+    gpu_gpuoutputvolts: 'GPU.RVOUTAVG',
+    pca_pcadischargetemp: 'PCA.TEMPDISCH',
+    gpu_gpustatuson: 'GPU.GPUSTATUS',
+    pca_pcastatuson: 'PCA.PCAON',
+    gpu_gpustatusoff: 'GPU.GPUSTATUS',
+    pca_pcastatusoff: 'PCA.PCAON',
+    pbb_canopydown: 'PBB.Warning.CANOPYDOWN',
+    pbb_canopyup: 'PBB.Warning.CANOPYDOWN',
+    pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
+    pbb_has_warnings: 'Warning._HasWarnings',
+    pbb_has_alarms: 'Alarm._HasAlarms'
+  };
+
+  PbbleveldetailWidgetView.prototype.modelEvents = {
+    "change": "update"
+  };
+
+  PbbleveldetailWidgetView.prototype.watch_updates = function(conn) {
+    return App.vent.on("opc:data:" + conn, this.data_update);
+  };
+
+  PbbleveldetailWidgetView.prototype.kill_updates = function(conn) {
+    return App.vent.off("opc:data:" + conn, this.data_update);
+  };
+
+  PbbleveldetailWidgetView.prototype.update = function() {
+    var gate, lbl, s, t, tags, tg;
+    s = this.model.get("settings");
+    if ((s != null) && !!s.gate) {
+      this.site_code = OPCManager.get_site_code(s.site);
+      if (this.site_code == null) {
+        return null;
+      }
+      this.kill_updates(this.site_code);
+      OPCManager.rem_ref(this.site_code);
+      gate = s.display_prefix != null ? "" + s.display_prefix + s.gate : '#{s.gate}';
+      this.prefix = "RemoteSCADAHosting.Airport-" + this.site_code + ".Airport." + this.site_code + ".Term" + s.terminal + ".Zone" + s.zone + ".Gate" + gate + ".";
+      tags = [];
+      for (tg in this.tags) {
+        t = this.tags[tg];
+        tags.push("" + this.prefix + t + ".Value");
+      }
+      App.opc.add_tags(this.site_code, tags);
+      this.watch_updates(this.site_code);
+      OPCManager.add_ref(this.site_code);
+      lbl = "Gate " + gate;
+      this.ui.wtitle.html(lbl);
+      this.$('#gate_label #txt').html(lbl);
+      this.opc = App.opc.connections[this.site_code];
+      return this.set_descriptions(true);
+    }
+  };
+
+  PbbleveldetailWidgetView.prototype.get_bool = function(v) {
+    if ((v != null) && v.toUpperCase() === "TRUE") {
+      return true;
+    } else if ((v != null) && v.toUpperCase() === "FALSE") {
+      return false;
+    }
+    return null;
+  };
+
+  PbbleveldetailWidgetView.prototype.get_value = function(tag) {
+    return this.opc.get_value("" + this.prefix + tag + ".Value");
+  };
+
+  PbbleveldetailWidgetView.prototype.mark_bad_data = function(tag, el) {
+    var h, q;
+    q = this.data_q(tag);
+    h = !q ? 'BAD DATA' : $(el).html();
+    return $(el).html(h).toggleClass("bad_data", !q);
+  };
+
+  PbbleveldetailWidgetView.prototype.data_q = function(tag) {
+    var c, t;
+    c = App.opc.connections[this.site_code];
+    t = c.tags["" + this.prefix + tag];
+    return t.props.Value.quality;
+  };
+
+  PbbleveldetailWidgetView.prototype.flash_alarm = function(fl) {
+    var chg;
+    if ((this.fl_interval != null) && !fl) {
+      clearInterval(this.fl_interval);
+      $(this.el).removeClass('alarm');
+      this.fl_interval = null;
+    }
+    if (!this.fl_interval && fl) {
+      chg = (function(_this) {
+        return function() {
+          return $(_this.el).toggleClass('alarm');
+        };
+      })(this);
+      return this.fl_interval = setInterval(chg, 500);
+    }
+  };
+
+  PbbleveldetailWidgetView.prototype.set_descriptions = function(force) {
+    var t, tds, tg, tlen;
+    tds = [];
+    tlen = Object.keys(this.tags).length;
+    if (!force && (this.dcount != null) && this.dcount >= tlen) {
+      return;
+    }
+    this.dcount = force ? 0 : this.dcount;
+    if (this.dcount == null) {
+      this.dcount = 0;
+    }
+    for (t in this.tags) {
+      tg = this.tags[t];
+      tds.push("" + this.prefix + tg + ".Description");
+    }
+    return this.opc.load_tags(tds, (function(_this) {
+      return function(data) {
+        var i, idx, len, ref, results, ts, tt, v;
+        ref = data.tags;
+        results = [];
+        for (i = 0, len = ref.length; i < len; i++) {
+          t = ref[i];
+          results.push((function() {
+            var ref1, results1;
+            ref1 = this.tags;
+            results1 = [];
+            for (tt in ref1) {
+              idx = ref1[tt];
+              ts = this.tags[tt];
+              if (("" + this.prefix + ts) === t.name) {
+                v = t.props[0].val;
+                this.$("#" + tt + "_lbl").html(v);
+                this.dcount += 1;
+                break;
+              } else {
+                results1.push(void 0);
+              }
+            }
+            return results1;
+          }).call(_this));
+        }
+        return results;
+      };
+    })(this));
+  };
+
+  PbbleveldetailWidgetView.prototype.render_row = function(tag, tv, fv, tc, fc) {
+    var el, txt, v;
+    v = this.get_bool(this.vals[tag]);
+    txt = v ? tv : fv;
+    el = this.$("#" + tag).html(txt);
+    if (tc != null) {
+      el.toggleClass(tc, v);
+    }
+    if (fc != null) {
+      el.toggleClass(fc, !v);
+    }
+    return this.mark_bad_data(this.tags[tag], el);
+  };
+
+  PbbleveldetailWidgetView.prototype.data_update = function(data) {
+    var a, aircraftstatus, c, docktime, e, el, f, gpuoutputamps, gpuoutputvoltsstatus, h, heighttodisp, l, pcadischargetemp, tg, txt, txta, txta1, txte, txtf, txth, txtl, undocktime, v;
+    this.vals = {};
+    for (tg in this.tags) {
+      this.vals[tg] = this.get_value(this.tags[tg]);
+    }
+    this.render_row("pbb_status", "", "", "ok");
+    aircraftstatus = this.vals['pbb_aircraft'];
+    this.$('#pbb_status').html(aircraftstatus);
+    this.render_row("gpu_gpuoutputvolts", "", "", "ok");
+    gpuoutputvoltsstatus = this.vals['gpu_gpuoutputvolts'];
+    this.$('#gpu_gpuoutputvolts').html(gpuoutputvoltsstatus);
+    this.$("#pbb_statused_lbl").html('PBB Status');
+    this.$("#pbb_canopys_lbl").html('Canopy');
+    this.$("#pbb_estops_lbl").html('E-Stop');
+    v = this.get_bool(this.vals.pbb_status);
+    a = this.get_bool(this.vals.pbb_autolevel);
+    c = this.get_bool(this.vals.pbb_canopy);
+    f = this.get_bool(this.vals.pbb_acffloor);
+    h = this.get_bool(this.vals.pbb_cablehoist);
+    e = this.get_bool(this.vals.pbb_estop);
+    l = this.get_bool(this.vals.pbb_limits);
+    txt = v ? "Docked" : "Undocked";
+    this.$("#pbb_docked_lbl").html('PBB Status');
+    el = this.$("#pbb_docked").html(txt).toggleClass('ok', v);
+    txta = a ? "On " : "Off";
+    this.$("#pbb_autolevelon_lbl").html('Auto Level');
+    el = this.$("#pbb_autolevelon").html(txta).toggleClass('ok', a);
+    txta1 = c ? "Down " : "Up ";
+    this.$("#pbb_canopydown_lbl").html('Canopy');
+    el = this.$("#pbb_canopydown").html(txta1).toggleClass('ok', c);
+    txtf = f ? "On" : "Off";
+    this.$("#pbb_acffloored_lbl").html('ACF Floor');
+    el = this.$("#pbb_acfflooron").html(txtf).toggleClass('ok', f);
+    txth = h ? "Active" : "Off";
+    this.$("#pbb_cabledhoist_lbl").html('Cable Hoist Int.');
+    el = this.$("#pbb_cablehoiston").html(txth).toggleClass('ok', h);
+    txte = e ? "Off" : "On";
+    this.$("#pbb_estoped_lbl").html('E-Stop');
+    el = this.$("#pbb_estopoff").html(txte).toggleClass('ok', e);
+    txtl = l ? "Ok" : "Active";
+    this.$("#pbb_limited_lbl").html('Limits');
+    el = this.$("#pbb_limitok").html(txtl).toggleClass('ok', l);
+    this.render_row("pbb_autolevel", "On", "Off", "ok");
+    this.render_row("pbb_canopy", "Down", "Up", "ok");
+    this.render_row("pbb_smokedetector", "Ready/OK", "Activated", " ", "err");
+    this.render_row("pbb_estop", "Activated", "Ready/OK", "err");
+    this.render_row("pbb_cablehoist", "Deployed", "Retracted", "ok");
+    this.render_row("pca_pcastatuson", "On", "On", "ok", " ");
+    this.render_row("gpu_gpustatuson", "On", "On", "ok", " ");
+    this.render_row("pca_pcastatusoff", "Off", "Off", " ", "err");
+    this.render_row("gpu_gpustatusoff", "Off", "Off", " ", "err");
+    this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms));
+    this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings));
+    this.ui.docked.toggle(this.get_bool(this.vals.pbb_status));
+    this.flash_alarm(this.get_bool(this.vals.pbb_autolevelfail));
+    this.$("#pbb_dockedtime_lbl").html('Dock Time');
+    docktime = (this.vals.pbb_docktime != null) && this.vals.pbb_docktime !== '' ? parseFloat(this.vals.pbb_docktime).toFixed(2) : ' -- ';
+    el = this.$('#pbb_docktime').html(docktime + " mins");
+    this.mark_bad_data(this.tags.pbb_docktime, el);
+    this.$("#pbb_undockedtime_lbl").html('Un-Dock Time');
+    undocktime = (this.vals.pbb_undocktime != null) && this.vals.pbb_undocktime !== '' ? parseFloat(this.vals.pbb_undocktime).toFixed(2) : ' -- ';
+    el = this.$('#pbb_undocktime').html(undocktime + " mins");
+    this.mark_bad_data(this.tags.pbb_undocktime, el);
+    heighttodisp = (this.vals.pbb_heighttodisp != null) && this.vals.pbb_heighttodisp !== '' ? this.vals.pbb_heighttodisp : ' -- ';
+    el = this.$('#pbb_heighttodisp').html("" + heighttodisp);
+    this.mark_bad_data(this.tags.pbb_heighttodisp, el);
+    pcadischargetemp = (this.vals.pca_pcadischargetemp != null) && this.vals.pca_pcadischargetemp !== '' ? parseFloat(this.vals.pca_pcadischargetemp).toFixed(2) : ' --';
+    el = this.$('#pca_pcadischargetemp').html("" + pcadischargetemp);
+    this.mark_bad_data(this.tags.pca_pcadischargetemp, el);
+    gpuoutputamps = (this.vals.gpu_gpuoutputamps != null) && this.vals.gpu_gpuoutputamps !== '' ? parseFloat(this.vals.gpu_gpuoutputamps).toFixed(2) : ' --';
+    el = this.$('#gpu_gpuoutputamps').html("" + gpuoutputamps);
+    this.mark_bad_data(this.tags.gpu_gpuoutputamps, el);
+    return this.set_descriptions();
+  };
+
+  PbbleveldetailWidgetView.prototype.set_model = function() {
+    var s;
+    s = _.clone(this.model.get("settings"));
+    s.gate = this.ui.gate.val().trim();
+    s.site = this.ui.site.val().trim();
+    s.terminal = this.ui.terminal.val().trim();
+    s.zone = this.ui.zone.val().trim();
+    s.display_prefix = this.ui.display_prefix.val().trim();
+    return this.model.set("settings", s);
+  };
+
+  PbbleveldetailWidgetView.prototype.toggle_settings = function(e) {
+    PbbleveldetailWidgetView.__super__.toggle_settings.call(this, e);
+    this.ui.display.toggle(!this.settings_visible);
+    if (this.settings_visible) {
+      return this.ui.site.chosen();
+    }
+  };
+
+  PbbleveldetailWidgetView.prototype.onShow = function() {
+    var gate, ms, settings, site, site_code;
+    this.ui.gate.on("change", this.set_model);
+    this.ui.site.on("change", this.set_model);
+    this.ui.terminal.on("change", this.set_model);
+    this.ui.zone.on("change", this.set_model);
+    this.ui.display_prefix.on("change", this.set_model);
+    settings = this.model.get('settings');
+    gate = settings.gate;
+    if ((gate == null) || gate === '') {
+      this.toggle_settings();
+    }
+    site = settings.site;
+    site_code = OPCManager.get_site_code(site);
+    if (site_code != null) {
+      OPCManager.add_ref(site_code);
+    }
+    ms = this.model.get('settings');
+    if ((ms != null) && (ms.site != null)) {
+      return this.ui.site.val(ms.site);
+    }
+  };
+
+  PbbleveldetailWidgetView.prototype.start = function() {
+    return this.update();
+  };
+
+  PbbleveldetailWidgetView.prototype.onDestroy = function(arg1, arg2) {
+    this.kill_updates(this.site_code);
+    return OPCManager.rem_ref(this.site_code);
+  };
+
+  return PbbleveldetailWidgetView;
+
+})(WidgetView);
+
+window.PbbleveldetailWidgetView = PbbleveldetailWidgetView;
+
+module.exports = PbbleveldetailWidgetView;
+
+},{"../dashboard/widget_view":38}],57:[function(require,module,exports){
 var Marionette, PcaWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -7262,7 +7816,7 @@ window.PcaWidgetView = PcaWidgetView;
 
 module.exports = PcaWidgetView;
 
-},{"../dashboard/widget_view":38}],57:[function(require,module,exports){
+},{"../dashboard/widget_view":38}],58:[function(require,module,exports){
 var Marionette, UrlWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -7353,103 +7907,6 @@ UrlWidgetView = (function(superClass) {
 window.UrlWidgetView = UrlWidgetView;
 
 module.exports = UrlWidgetView;
-
-},{"../dashboard/widget_view":38}],58:[function(require,module,exports){
-var Marionette, WeatherWidgetView, WidgetView,
-  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
-  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-  hasProp = {}.hasOwnProperty;
-
-Marionette = require('marionette');
-
-WidgetView = require('../dashboard/widget_view');
-
-WeatherWidgetView = (function(superClass) {
-  extend(WeatherWidgetView, superClass);
-
-  function WeatherWidgetView() {
-    this.set_model = bind(this.set_model, this);
-    return WeatherWidgetView.__super__.constructor.apply(this, arguments);
-  }
-
-  WeatherWidgetView.prototype.template = "widgets/weather_widget";
-
-  WeatherWidgetView.prototype.className = 'widget-outer box box-primary';
-
-  WeatherWidgetView.prototype.ui = {
-    display: '#display',
-    title: 'input#title',
-    zip: 'input#zip',
-    wtitle: "h3.box-title"
-  };
-
-  WeatherWidgetView.prototype.modelEvents = {
-    "change": "update"
-  };
-
-  WeatherWidgetView.layout = {
-    sx: 3,
-    sy: 8
-  };
-
-  WeatherWidgetView.prototype.update = function() {
-    var city, img, parts, s, state;
-    s = this.model.get("settings");
-    state = "";
-    if ((s.name != null) && s.name !== '') {
-      parts = s.name.split(',');
-      if ((parts != null) && parts.length > 0) {
-        state = parts[parts.length - 1].trim();
-        city = parts[0].trim();
-      }
-    }
-    img = "<span style=\"display: block !important; width: 100%; text-align: center; font-family: sans-serif; font-size: 12px;\">\n  <a href=\"http://www.wunderground.com/cgi-bin/findweather/getForecast?query=zmw:" + s.zip + ".1.99999&bannertypeclick=wu_travel_jet1\" target=\"_blank\">\n  <img src=\"http://weathersticker.wunderground.com/weathersticker/cgi-bin/banner/ban/wxBanner?bannertype=wu_travel_jet1&airportcode=CID&ForcedCity=" + city + "&ForcedState=" + state + "&zip=" + s.zip + "&language=EN\" \n    alt=\"Find more about Weather\" style='width:100%;' />\n  </a>\n</span>";
-    this.ui.display.html(img);
-    return this.ui.wtitle.html("" + s.name);
-  };
-
-  WeatherWidgetView.prototype.set_model = function() {
-    var s;
-    s = _.clone(this.model.get("settings"));
-    s.zip = this.ui.zip.val().trim();
-    s.name = this.ui.title.val();
-    return this.model.set("settings", s);
-  };
-
-  WeatherWidgetView.prototype.toggle_settings = function(e) {
-    WeatherWidgetView.__super__.toggle_settings.call(this, e);
-    return this.ui.display.toggle(!this.settings_visible);
-  };
-
-  WeatherWidgetView.prototype.onShow = function() {
-    var zip;
-    this.ui.title.on("change", (function(_this) {
-      return function() {
-        return _this.set_model();
-      };
-    })(this));
-    this.ui.zip.on("change", (function(_this) {
-      return function() {
-        return _this.set_model();
-      };
-    })(this));
-    zip = this.model.get("settings").zip;
-    if ((zip == null) || zip === '') {
-      return this.toggle_settings();
-    }
-  };
-
-  WeatherWidgetView.prototype.start = function() {
-    return this.update();
-  };
-
-  return WeatherWidgetView;
-
-})(WidgetView);
-
-window.WeatherWidgetView = WeatherWidgetView;
-
-module.exports = WeatherWidgetView;
 
 },{"../dashboard/widget_view":38}]},{},[1])
 ;

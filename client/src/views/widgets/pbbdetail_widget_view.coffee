@@ -3,9 +3,9 @@ WidgetView = require('../dashboard/widget_view')
 # OPCManager = require('../../opcmanager')
 
 # ----------------------------------
-class GpuWidgetView extends WidgetView
-  template:   "widgets/gpu_widget"
-  className: 'widget-outer box box-primary gate_widget'
+class PbbdetailWidgetView extends WidgetView
+  template:   "widgets/pbbdetail_widget"
+  className: 'widget-outer box box-primary pbbdetail_widget'
   ui:
     terminal:       'input#terminal'
     zone:           'input#zone'
@@ -20,22 +20,31 @@ class GpuWidgetView extends WidgetView
     warnings:       'i#warnings'
 
   @layout:
-    sx: 4
-    sy: 9
+    sx: 11
+    sy: 12
 
   tags:
     #Grid Tags
-    pbb_status :        'PBB.AIRCRAFTDOCKEDCALCULATION'
+    pbb_status :          'PBB.AIRCRAFTDOCKEDCALCULATION'
     pbb_aircraft :        'PBB.AIRCRAFTSTATUS'
-    pbb_autolevel :     'PBB.AUTOLEVELMODEFLAG'
-    pbb_canopy:         'PBB.Warning.CANOPYDOWN'
-    pbb_acffloor:       'PBB.ACFFLOOR'
-    pbb_cablehoist:     'PBB.HZ400CABLEDEPLOYED'
-    pbb_estop:          'PBB.Alarm.E_STOP'
-    pbb_limits:         'PBB.400HZ Pit'
-    pbb_docktime:       'PBB.DOCKTIME'
-    pbb_undocktime:     'PBB.UNDOCKTIME'
-    
+    pbb_autolevel :       'PBB.AUTOLEVELMODEFLAG'
+    pbb_canopy:           'PBB.Warning.CANOPYDOWN'
+    pbb_acffloor:         'PBB.ACFFLOOR'
+    pbb_cablehoist:       'PBB.HZ400CABLEDEPLOYED'
+    pbb_estop:            'PBB.Alarm.E_STOP'
+    pbb_limits:           'PBB.400HZ Pit'
+    pbb_docktime:         'PBB.DOCKTIME'
+    pbb_undocktime:       'PBB.UNDOCKTIME'
+    pbb_smokedetector:    'PBB.SMOKEDETECTOR'
+    pbb_heighttodisp:     'PBB.HEIGHTTODISP'
+    gpu_gpuoutputamps:    'GPU.RAOUTAVG'
+    gpu_gpuoutputvolts:   'GPU.RVOUTAVG'
+    pca_pcadischargetemp: 'PCA.TEMPDISCH'
+    gpu_gpustatuson:      'GPU.GPUSTATUS'
+    pca_pcastatuson:      'PCA.PCAON'
+    gpu_gpustatusoff:     'GPU.GPUSTATUS'
+    pca_pcastatusoff:     'PCA.PCAON'
+
     #Processing Tags
     pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
     pbb_has_warnings :  'Warning._HasWarnings'
@@ -76,7 +85,7 @@ class GpuWidgetView extends WidgetView
       
       lbl = "Gate #{gate}"
       @ui.wtitle.html(lbl)
-      @$('#gate_label #txt').html(lbl)
+      @$('#pbbdetail_label #txt').html(lbl)
 
       @opc =  App.opc.connections[@site_code]
       @set_descriptions(true)
@@ -149,20 +158,35 @@ class GpuWidgetView extends WidgetView
     @vals = {}
     for tg of @tags
       @vals[tg] = @get_value(@tags[tg])
-
-    # DOCKED
-    v = @get_bool(@vals.pbb_status)
-    txt = if v then "Docked" else "Undocked"
-    @$("#pbb_docked_lbl").html('PBB Status')
-    el = @$("#pbb_docked").html(txt).toggleClass('ok', v)
-    @mark_bad_data @tags.pbb_status, el
     
-    # PBB STATUS
-    @render_row("pbb_status", "", "", "ok")
-
     # PBB AIRCRAFT
+    @render_row("pbb_status", "", "", "ok")
     aircraftstatus = @vals['pbb_aircraft']
     @$('#pbb_status').html(aircraftstatus)
+    @render_row("gpu_gpuoutputvolts", "", "", "ok")
+    gpuoutputvoltsstatus = @vals['gpu_gpuoutputvolts']
+    @$('#gpu_gpuoutputvolts').html(gpuoutputvoltsstatus)
+
+    # PBB STATUS
+    v = @get_bool(@vals.pbb_status)
+    a = @get_bool(@vals.pbb_autolevel)
+    c = @get_bool(@vals.pbb_canopy)
+
+    txt = if v then "Docked" else "Docked"
+    @$("#pbb_docked_lbl").html('PBB Status')
+    el = @$("#pbb_docked").html(txt).toggleClass('ok', v)   
+    txt1 = if v then "Undocked" else "Undocked"
+    el = @$("#pbb_undocked").html(txt1).toggleClass('ok', !v)
+    
+    txta = if a then "Auto-Level : On " else "Auto-Level : On"
+    el = @$("#pbb_autolevelstatusok").html(txta).toggleClass('ok', a)   
+    txta1 = if c then "Canopy : Down " else "Canopy : Down "
+    el = @$("#pbb_canopystatusok").html(txta1).toggleClass('ok', c)
+
+    txtan = if a then "Auto-Level : Off " else "Auto-Level : Off"
+    el = @$("#pbb_autolevelstatusnok").html(txtan).toggleClass('ok', !a)   
+    txta1n = if c then "Canopy : Up " else "Canopy : Up "
+    el = @$("#pbb_canopystatusnok").html(txta1n).toggleClass('ok', !c)
 
     # Auto Level
     @render_row("pbb_autolevel", "On", "Off", "ok")
@@ -172,7 +196,10 @@ class GpuWidgetView extends WidgetView
 
     # ACFFLOOR
     @render_row("pbb_acffloor", "On", "Off", "ok")
- 
+    
+    # SMOKEDETECTOR
+    @render_row("pbb_smokedetector", "Ready/OK", "Activated", " ","err")
+
     # E-STOP
     @render_row("pbb_estop", "Activated", "Ready/OK", "err")
   
@@ -181,7 +208,13 @@ class GpuWidgetView extends WidgetView
  
     # LIMITS
     @render_row("pbb_limits", "OK", "Active", "ok", "err")
-        
+
+    # STATUS
+    @render_row("pca_pcastatuson", "On", "On", "ok"," ")
+    @render_row("gpu_gpustatuson", "On", "On", "ok"," ") 
+    @render_row("pca_pcastatusoff", "Off", "Off"," ","err")
+    @render_row("gpu_gpustatusoff", "Off", "Off"," ","err") 
+
     # ALARMS
     @ui.alarms.toggle(@get_bool(@vals.pbb_has_alarms))
     # WARNINGS
@@ -196,11 +229,27 @@ class GpuWidgetView extends WidgetView
     docktime = if @vals.pbb_docktime? && @vals.pbb_docktime != '' then parseFloat(@vals.pbb_docktime).toFixed(4) else ' -- ' 
     el = @$('#pbb_docktime').html("#{docktime}")
     @mark_bad_data @tags.pbb_docktime, el
+
     undocktime = if @vals.pbb_undocktime? && @vals.pbb_undocktime != '' then parseFloat(@vals.pbb_undocktime).toFixed(4) else ' -- ' 
     el = @$('#pbb_undocktime').html("#{undocktime}")
     @mark_bad_data @tags.pbb_undocktime, el
 
+    heighttodisp = if @vals.pbb_heighttodisp? && @vals.pbb_heighttodisp != '' then @vals.pbb_heighttodisp else ' -- ' 
+    el =@$('#pbb_heighttodisp').html("#{heighttodisp}")
+    @mark_bad_data @tags.pbb_heighttodisp, el
+
+    pcadischargetemp = if @vals.pca_pcadischargetemp? && @vals.pca_pcadischargetemp != '' then parseFloat(@vals.pca_pcadischargetemp).toFixed(2)  else ' --'
+    el =@$('#pca_pcadischargetemp').html("#{pcadischargetemp}")
+    @mark_bad_data @tags.pca_pcadischargetemp, el
+
+    gpuoutputamps = if @vals.gpu_gpuoutputamps? && @vals.gpu_gpuoutputamps != '' then parseFloat(@vals.gpu_gpuoutputamps).toFixed(2)  else ' --'
+    el =@$('#gpu_gpuoutputamps').html("#{gpuoutputamps}")
+    @mark_bad_data @tags.gpu_gpuoutputamps, el
+
     @set_descriptions()
+
+    
+
 
   set_model: ()=>
     s = _.clone(@model.get("settings"))
@@ -245,5 +294,5 @@ class GpuWidgetView extends WidgetView
     
 # ----------------------------------
 
-window.GpuWidgetView = GpuWidgetView
-module.exports = GpuWidgetView
+window.PbbdetailWidgetView = PbbdetailWidgetView
+module.exports = PbbdetailWidgetView

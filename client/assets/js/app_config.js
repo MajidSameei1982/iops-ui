@@ -21,14 +21,14 @@ window.app_config = {
       icon: "server"
     },
     {
-      id: "gpu",
-      name: "GPU Widget",
-      icon: "battery-3"
+      id: "pbbdetail",
+      name: "PBB Detail Widget",
+      icon: "plane"
     },
     {
-      id: "weather",
-      name: "Weather Widget",
-      icon: "cloud"
+      id: "pbbleveldetail",
+      name: "PBB Level Detail Widget",
+      icon: "plane"
     }
   ]
 };

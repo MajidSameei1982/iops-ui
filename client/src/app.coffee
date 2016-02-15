@@ -16,10 +16,10 @@ AppConfig = require('./common/appconfig')
 # forces inclusion of core widget classes
 require('./views/widgets/alarm_widget_view')
 require('./views/widgets/pbb_widget_view')
+require('./views/widgets/pbbdetail_widget_view')
+require('./views/widgets/pbbleveldetail_widget_view')
 require('./views/widgets/pca_widget_view')
 require('./views/widgets/url_widget_view')
-require('./views/widgets/weather_widget_view')
-require('./views/widgets/gpu_widget_view')
 
 # ----------------------------------
 window.App = do()->
@@ -57,6 +57,18 @@ window.App = do()->
           opc: 'http://opc.iopsnow.com:58725'
         ,
           id: 2
+          name: 'The Newark International Airport'
+          abbrev: "EWR"
+          shortName: "Newark"
+          opc: 'http://www.opcsystems.com:58725'
+        ,
+          id: 3
+          name: 'Southwest Airlines'
+          abbrev: "DAL"
+          shortName: "Southwest"
+          opc: 'http://www.opcsystems.com:58725'
+        ,
+          id: 4
           name: 'Open Automation Systems'
           abbrev: "OAS"
           shortName: "OPCSystems.NET"

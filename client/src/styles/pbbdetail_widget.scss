@@ -1,4 +1,4 @@
-.gate_widget {
+.pbbdetail_widget {
   &.alarm {
     background-color: #c00;
     color: #fff;
@@ -7,7 +7,7 @@
     min-height: 100%;
     min-width: 100%;
     overflow: auto;
-    #gate_label {
+    #pbbdetail_label {
       margin-bottom: 3px;
       h1 {
         line-height:48px;
@@ -35,50 +35,12 @@
     }
     
   }
-  table.data {
-    width:40%;
-    border:solid 1px #999;
-    border-spacing: 1px;
-    border-collapse: separate;
-    td {
-      padding:3px 10px;
-      background-color: #eee;
-      color:#999;
-      &.lbl {
-        background-color:#fff;
-        font-style: italic;
-        color:#333;
-        border-bottom:solid 1px #ddd;
-      }
-      &.val {
-        font-weight: bold;
-      }
-      &.err {
-        color: #fe6;
-        background-color:#c33;
-      }
-      &.ok {
-        background-color: #090;
-        color:#fff;
-      }
-      &.blue {
-        background-color: #06c;
-        color:#fff; 
-      }
-      &.bad_data {
-        background-color: #fec;
-        color:#999;
-      }
-      &.img-circles {
-     border-radius: 10%; // set radius in percents
-      }
-    }
-  }
+  
 
    table.data1 {
      tr{
       &.dockundock {
-        background-color: #fec;
+        background-color: #090;
       }
     }
     
@@ -89,7 +51,11 @@
     border:solid 1px #999;
     border-spacing: 1px;
     border-collapse: separate;
-   
+    tr{
+        &.dockundock {
+        background-color: #090;
+        }
+      }
     td {
       padding:3px 10px;
       
@@ -106,7 +72,7 @@
       
       &.ok {
         
-        color:#c33;
+        color:#090;
       }
 
       &.blue {
