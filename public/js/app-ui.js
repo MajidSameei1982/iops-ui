@@ -1563,7 +1563,7 @@ window.JST["widgets/pbb_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gate_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table class=\'data\' style="float: left; width:55%">     \n      <tr><td class=\'lbl\' id=\'pbb_statused_lbl\'>&nbsp;</td><td id=\'pbb_status\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevel_lbl\'>&nbsp;</td><td id=\'pbb_autolevel\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_estops_lbl\'>&nbsp;</td><td id=\'pbb_estop\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_smokedetector_lbl\'>&nbsp;</td><td id=\'pbb_smokedetector\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopys_lbl\'>&nbsp;</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_cablehoist_lbl\'>&nbsp;</td><td id=\'pbb_cablehoist\' class=\'val\'>LOADING...</td></tr>     \n      </table>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table class=\'data\' style="float: left; width:40%">\n      <tr><td class=\'lbl\' id=\'pbb_docked_lbl\'>&nbsp;</td><td id=\'pbb_docked\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevelon_lbl\'>&nbsp;</td><td id=\'pbb_autolevelon\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopydown_lbl\'>&nbsp;</td><td id=\'pbb_canopydown\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_acffloored_lbl\'>&nbsp;</td><td id=\'pbb_acfflooron\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_cabledhoist_lbl\'>&nbsp;</td><td id=\'pbb_cablehoiston\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_estoped_lbl\'>&nbsp;</td><td id=\'pbb_estopoff\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_limited_lbl\'>&nbsp;</td><td id=\'pbb_limitok\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_dockedtime_lbl\'>&nbsp;</td><td id=\'pbb_docktime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_undockedtime_lbl\'>&nbsp;</td><td id=\'pbb_undocktime\' class=\'val\'>LOADING...</td></tr>\n     \n      \n    </table>\n       \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gate_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table class=\'data\' style="float: left; width:80%">     \n      <tr><td class=\'lbl\' id=\'pbb_statused_lbl\'>&nbsp;</td><td id=\'pbb_status\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevel_lbl\'>&nbsp;</td><td id=\'pbb_autolevel\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_estops_lbl\'>&nbsp;</td><td id=\'pbb_estop\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_smokedetector_lbl\'>&nbsp;</td><td id=\'pbb_smokedetector\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopys_lbl\'>&nbsp;</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_cablehoist_lbl\'>&nbsp;</td><td id=\'pbb_cablehoist\' class=\'val\'>LOADING...</td></tr>     \n      </table>\n    \n       \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -1759,7 +1759,7 @@ window.JST["widgets/pbbleveldetail_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gate_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table class=\'data\' style="float: left; width:40%">\n      <tr><td class=\'lbl\' id=\'pbb_docked_lbl\'>&nbsp;</td><td id=\'pbb_docked\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevelon_lbl\'>&nbsp;</td><td id=\'pbb_autolevelon\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopydown_lbl\'>&nbsp;</td><td id=\'pbb_canopydown\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_acffloored_lbl\'>&nbsp;</td><td id=\'pbb_acfflooron\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_cabledhoist_lbl\'>&nbsp;</td><td id=\'pbb_cablehoiston\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_estoped_lbl\'>&nbsp;</td><td id=\'pbb_estopoff\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_limited_lbl\'>&nbsp;</td><td id=\'pbb_limitok\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_dockedtime_lbl\'>&nbsp;</td><td id=\'pbb_docktime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_undockedtime_lbl\'>&nbsp;</td><td id=\'pbb_undocktime\' class=\'val\'>LOADING...</td></tr>\n     \n      \n    </table>\n       \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gate_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table class=\'data\' style="float: left; width:60%">\n      <tr><td class=\'lbl\' id=\'pbb_docked_lbl\'>&nbsp;</td><td id=\'pbb_docked\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevelon_lbl\'>&nbsp;</td><td id=\'pbb_autolevelon\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopydown_lbl\'>&nbsp;</td><td id=\'pbb_canopydown\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_acffloored_lbl\'>&nbsp;</td><td id=\'pbb_acfflooron\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_cabledhoist_lbl\'>&nbsp;</td><td id=\'pbb_cablehoiston\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_estoped_lbl\'>&nbsp;</td><td id=\'pbb_estopoff\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_limited_lbl\'>&nbsp;</td><td id=\'pbb_limitok\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_dockedtime_lbl\'>&nbsp;</td><td id=\'pbb_docktime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_undockedtime_lbl\'>&nbsp;</td><td id=\'pbb_undocktime\' class=\'val\'>LOADING...</td></tr>\n     \n      \n    </table>\n       \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -2103,6 +2103,8 @@ require('./views/widgets/pca_widget_view');
 
 require('./views/widgets/url_widget_view');
 
+require('./views/widgets/weather_widget_view');
+
 window.App = (function() {
   var App;
   if (window.App != null) {
@@ -2259,7 +2261,7 @@ window.App = (function() {
   return App;
 })();
 
-},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27,"./views/widgets/alarm_widget_view":53,"./views/widgets/pbb_widget_view":54,"./views/widgets/pbbdetail_widget_view":55,"./views/widgets/pbbleveldetail_widget_view":56,"./views/widgets/pca_widget_view":57,"./views/widgets/url_widget_view":58}],2:[function(require,module,exports){
+},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27,"./views/widgets/alarm_widget_view":53,"./views/widgets/pbb_widget_view":54,"./views/widgets/pbbdetail_widget_view":55,"./views/widgets/pbbleveldetail_widget_view":56,"./views/widgets/pca_widget_view":57,"./views/widgets/url_widget_view":58,"./views/widgets/weather_widget_view":59}],2:[function(require,module,exports){
 var AccountsView, AppController, Dashboard, DashboardCollection, DashboardContentView, DashboardLayout, LoginView, Marionette, PermissionsLayout, ProfileView, User, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -6508,7 +6510,7 @@ PbbWidgetView = (function(superClass) {
   };
 
   PbbWidgetView.layout = {
-    sx: 9,
+    sx: 6,
     sy: 9
   };
 
@@ -7180,7 +7182,7 @@ PbbleveldetailWidgetView = (function(superClass) {
 
   PbbleveldetailWidgetView.prototype.template = "widgets/pbbleveldetail_widget";
 
-  PbbleveldetailWidgetView.prototype.className = 'widget-outer box box-primary pbbdetail_widget';
+  PbbleveldetailWidgetView.prototype.className = 'widget-outer box box-primary gate_widget';
 
   PbbleveldetailWidgetView.prototype.ui = {
     terminal: 'input#terminal',
@@ -7197,7 +7199,7 @@ PbbleveldetailWidgetView = (function(superClass) {
   };
 
   PbbleveldetailWidgetView.layout = {
-    sx: 9,
+    sx: 6,
     sy: 9
   };
 
@@ -7907,6 +7909,103 @@ UrlWidgetView = (function(superClass) {
 window.UrlWidgetView = UrlWidgetView;
 
 module.exports = UrlWidgetView;
+
+},{"../dashboard/widget_view":38}],59:[function(require,module,exports){
+var Marionette, WeatherWidgetView, WidgetView,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+WidgetView = require('../dashboard/widget_view');
+
+WeatherWidgetView = (function(superClass) {
+  extend(WeatherWidgetView, superClass);
+
+  function WeatherWidgetView() {
+    this.set_model = bind(this.set_model, this);
+    return WeatherWidgetView.__super__.constructor.apply(this, arguments);
+  }
+
+  WeatherWidgetView.prototype.template = "widgets/weather_widget";
+
+  WeatherWidgetView.prototype.className = 'widget-outer box box-primary';
+
+  WeatherWidgetView.prototype.ui = {
+    display: '#display',
+    title: 'input#title',
+    zip: 'input#zip',
+    wtitle: "h3.box-title"
+  };
+
+  WeatherWidgetView.prototype.modelEvents = {
+    "change": "update"
+  };
+
+  WeatherWidgetView.layout = {
+    sx: 3,
+    sy: 8
+  };
+
+  WeatherWidgetView.prototype.update = function() {
+    var city, img, parts, s, state;
+    s = this.model.get("settings");
+    state = "";
+    if ((s.name != null) && s.name !== '') {
+      parts = s.name.split(',');
+      if ((parts != null) && parts.length > 0) {
+        state = parts[parts.length - 1].trim();
+        city = parts[0].trim();
+      }
+    }
+    img = "<span style=\"display: block !important; width: 100%; text-align: center; font-family: sans-serif; font-size: 12px;\">\n  <a href=\"http://www.wunderground.com/cgi-bin/findweather/getForecast?query=zmw:" + s.zip + ".1.99999&bannertypeclick=wu_travel_jet1\" target=\"_blank\">\n  <img src=\"http://weathersticker.wunderground.com/weathersticker/cgi-bin/banner/ban/wxBanner?bannertype=wu_travel_jet1&airportcode=CID&ForcedCity=" + city + "&ForcedState=" + state + "&zip=" + s.zip + "&language=EN\" \n    alt=\"Find more about Weather\" style='width:100%;' />\n  </a>\n</span>";
+    this.ui.display.html(img);
+    return this.ui.wtitle.html("" + s.name);
+  };
+
+  WeatherWidgetView.prototype.set_model = function() {
+    var s;
+    s = _.clone(this.model.get("settings"));
+    s.zip = this.ui.zip.val().trim();
+    s.name = this.ui.title.val();
+    return this.model.set("settings", s);
+  };
+
+  WeatherWidgetView.prototype.toggle_settings = function(e) {
+    WeatherWidgetView.__super__.toggle_settings.call(this, e);
+    return this.ui.display.toggle(!this.settings_visible);
+  };
+
+  WeatherWidgetView.prototype.onShow = function() {
+    var zip;
+    this.ui.title.on("change", (function(_this) {
+      return function() {
+        return _this.set_model();
+      };
+    })(this));
+    this.ui.zip.on("change", (function(_this) {
+      return function() {
+        return _this.set_model();
+      };
+    })(this));
+    zip = this.model.get("settings").zip;
+    if ((zip == null) || zip === '') {
+      return this.toggle_settings();
+    }
+  };
+
+  WeatherWidgetView.prototype.start = function() {
+    return this.update();
+  };
+
+  return WeatherWidgetView;
+
+})(WidgetView);
+
+window.WeatherWidgetView = WeatherWidgetView;
+
+module.exports = WeatherWidgetView;
 
 },{"../dashboard/widget_view":38}]},{},[1])
 ;

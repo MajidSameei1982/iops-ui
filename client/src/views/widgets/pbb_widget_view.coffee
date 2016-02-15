@@ -20,7 +20,7 @@ class PbbWidgetView extends WidgetView
     warnings:       'i#warnings'
 
   @layout:
-    sx: 9
+    sx: 6
     sy: 9
 
   tags:

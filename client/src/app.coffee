@@ -20,6 +20,7 @@ require('./views/widgets/pbbdetail_widget_view')
 require('./views/widgets/pbbleveldetail_widget_view')
 require('./views/widgets/pca_widget_view')
 require('./views/widgets/url_widget_view')
+require('./views/widgets/weather_widget_view')
 
 # ----------------------------------
 window.App = do()->

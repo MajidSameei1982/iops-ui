@@ -13,7 +13,7 @@ window.app_config = {
     {
       id: "pbb",
       name: "PBB Widget",
-      icon: "plane"
+      icon: "cloud"
     },
     {
       id: "pca",
@@ -26,9 +26,14 @@ window.app_config = {
       icon: "plane"
     },
     {
-      id: "pbbleveldetail",
+      id: "secondpbbleveldetail",
       name: "PBB Level Detail Widget",
       icon: "plane"
+    },
+    {
+      id: "weather",
+      name: "Weather weather Widget",
+      icon: "cloud"
     }
   ]
 };

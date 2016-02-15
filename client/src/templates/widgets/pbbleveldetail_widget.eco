@@ -19,7 +19,7 @@
     </div>
 
     <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>
-    <table class='data' style="float: left; width:40%">
+    <table class='data' style="float: left; width:60%">
       <tr><td class='lbl' id='pbb_docked_lbl'>&nbsp;</td><td id='pbb_docked' class='val'>LOADING...</td></tr>
       <tr><td class='lbl' id='pbb_autolevelon_lbl'>&nbsp;</td><td id='pbb_autolevelon' class='val'>LOADING...</td></tr>
       <tr><td class='lbl' id='pbb_canopydown_lbl'>&nbsp;</td><td id='pbb_canopydown' class='val'>LOADING...</td></tr>

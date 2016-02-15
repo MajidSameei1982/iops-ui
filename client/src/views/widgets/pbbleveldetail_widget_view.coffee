@@ -5,7 +5,7 @@ WidgetView = require('../dashboard/widget_view')
 # ----------------------------------
 class PbbleveldetailWidgetView extends WidgetView
   template:   "widgets/pbbleveldetail_widget"
-  className: 'widget-outer box box-primary pbbdetail_widget'
+  className: 'widget-outer box box-primary gate_widget'
   ui:
     terminal:       'input#terminal'
     zone:           'input#zone'
@@ -20,7 +20,7 @@ class PbbleveldetailWidgetView extends WidgetView
     warnings:       'i#warnings'
 
   @layout:
-    sx: 9
+    sx: 6
     sy: 9
 
   tags:
