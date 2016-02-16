@@ -3,8 +3,8 @@ WidgetView = require('../dashboard/widget_view')
 # OPCManager = require('../../opcmanager')
 
 # ----------------------------------
-class PbbWidgetView extends WidgetView
-  template:   "widgets/pbb_widget"
+class PbbleveldetailWidgetView extends WidgetView
+  template:   "widgets/pbbleveldetail_widget"
   className: 'widget-outer box box-primary gate_widget'
   ui:
     terminal:       'input#terminal'
@@ -321,5 +321,5 @@ class PbbWidgetView extends WidgetView
     
 # ----------------------------------
 
-window.PbbWidgetView = PbbWidgetView
-module.exports = PbbWidgetView
+window.PbbleveldetailWidgetView = PbbleveldetailWidgetView
+module.exports = PbbleveldetailWidgetView

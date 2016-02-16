@@ -3,9 +3,9 @@ WidgetView = require('../dashboard/widget_view')
 # OPCManager = require('../../opcmanager')
 
 # ----------------------------------
-class PbbWidgetView extends WidgetView
-  template:   "widgets/pbb_widget"
-  className: 'widget-outer box box-primary gate_widget'
+class PbbdetailWidgetView extends WidgetView
+  template:   "widgets/pbbdetail_widget"
+  className: 'widget-outer box box-primary pbbdetail_widget'
   ui:
     terminal:       'input#terminal'
     zone:           'input#zone'
@@ -20,8 +20,8 @@ class PbbWidgetView extends WidgetView
     warnings:       'i#warnings'
 
   @layout:
-    sx: 6
-    sy: 9
+    sx: 11
+    sy: 12
 
   tags:
     #Grid Tags
@@ -44,8 +44,6 @@ class PbbWidgetView extends WidgetView
     pca_pcastatuson:      'PCA.PCAON'
     gpu_gpustatusoff:     'GPU.GPUSTATUS'
     pca_pcastatusoff:     'PCA.PCAON'
-    pbb_canopydown:       'PBB.Warning.CANOPYDOWN'
-    pbb_canopyup:         'PBB.Warning.CANOPYDOWN'
 
     #Processing Tags
     pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
@@ -87,7 +85,7 @@ class PbbWidgetView extends WidgetView
       
       lbl = "Gate #{gate}"
       @ui.wtitle.html(lbl)
-      @$('#gate_label #txt').html(lbl)
+      @$('#pbbdetail_label #txt').html(lbl)
 
       @opc =  App.opc.connections[@site_code]
       @set_descriptions(true)
@@ -169,60 +167,35 @@ class PbbWidgetView extends WidgetView
     gpuoutputvoltsstatus = @vals['gpu_gpuoutputvolts']
     @$('#gpu_gpuoutputvolts').html(gpuoutputvoltsstatus)
 
-
-    @$("#pbb_statused_lbl").html('PBB Status')
-    @$("#pbb_canopys_lbl").html('Canopy')
-    @$("#pbb_estops_lbl").html('E-Stop')
-
     # PBB STATUS
     v = @get_bool(@vals.pbb_status)
     a = @get_bool(@vals.pbb_autolevel)
     c = @get_bool(@vals.pbb_canopy)
-    f = @get_bool(@vals.pbb_acffloor)
-    h = @get_bool(@vals.pbb_cablehoist)
-    e = @get_bool(@vals.pbb_estop)
-    l = @get_bool(@vals.pbb_limits)
 
-    #DOCK-UNDOCK
-    txt = if v then "Docked" else "Undocked"
+    txt = if v then "Docked" else "Docked"
     @$("#pbb_docked_lbl").html('PBB Status')
-    el = @$("#pbb_docked").html(txt).toggleClass('ok', v)  
+    el = @$("#pbb_docked").html(txt).toggleClass('ok', v)   
+    txt1 = if v then "Undocked" else "Undocked"
+    el = @$("#pbb_undocked").html(txt1).toggleClass('ok', !v)
     
-    #CANOPY-AUTOLEVEL
-    txta = if a then "On " else "Off"
-    @$("#pbb_autolevelon_lbl").html('Auto Level')
-    el = @$("#pbb_autolevelon").html(txta).toggleClass('ok', a)   
-    txta1 = if c then "Down " else "Up "
-    @$("#pbb_canopydown_lbl").html('Canopy')
-    el = @$("#pbb_canopydown").html(txta1).toggleClass('ok', c)  
+    txta = if a then "Auto-Level : On " else "Auto-Level : On"
+    el = @$("#pbb_autolevelstatusok").html(txta).toggleClass('ok', a)   
+    txta1 = if c then "Canopy : Down " else "Canopy : Down "
+    el = @$("#pbb_canopystatusok").html(txta1).toggleClass('ok', c)
 
-    #ACF FLOOR
-    txtf = if f then "On" else "Off"
-    @$("#pbb_acffloored_lbl").html('ACF Floor')
-    el = @$("#pbb_acfflooron").html(txtf).toggleClass('ok', f)   
-    
-
-    #CABLE HOIST
-    txth = if h then "Active" else "Off"
-    @$("#pbb_cabledhoist_lbl").html('Cable Hoist Int.')
-    el = @$("#pbb_cablehoiston").html(txth).toggleClass('ok', h)   
-
-
-    #E-STOP
-    txte = if e then "Off" else "On"
-    @$("#pbb_estoped_lbl").html('E-Stop')
-    el = @$("#pbb_estopoff").html(txte).toggleClass('ok', e) 
-
-    #LIMITS
-    txtl = if l then "Ok" else "Active"
-    @$("#pbb_limited_lbl").html('Limits')
-    el = @$("#pbb_limitok").html(txtl).toggleClass('ok', l)   
+    txtan = if a then "Auto-Level : Off " else "Auto-Level : Off"
+    el = @$("#pbb_autolevelstatusnok").html(txtan).toggleClass('ok', !a)   
+    txta1n = if c then "Canopy : Up " else "Canopy : Up "
+    el = @$("#pbb_canopystatusnok").html(txta1n).toggleClass('ok', !c)
 
     # Auto Level
     @render_row("pbb_autolevel", "On", "Off", "ok")
 
     # CANOPY
     @render_row("pbb_canopy", "Down", "Up", "ok")
+
+    # ACFFLOOR
+    @render_row("pbb_acffloor", "On", "Off", "ok")
     
     # SMOKEDETECTOR
     @render_row("pbb_smokedetector", "Ready/OK", "Activated", " ","err")
@@ -232,13 +205,15 @@ class PbbWidgetView extends WidgetView
   
     # CABLE HOIST
     @render_row("pbb_cablehoist", "Deployed", "Retracted", "ok")
+ 
+    # LIMITS
+    @render_row("pbb_limits", "OK", "Active", "ok", "err")
 
     # STATUS
     @render_row("pca_pcastatuson", "On", "On", "ok"," ")
     @render_row("gpu_gpustatuson", "On", "On", "ok"," ") 
     @render_row("pca_pcastatusoff", "Off", "Off"," ","err")
-    @render_row("gpu_gpustatusoff", "Off", "Off"," ","err")
-    
+    @render_row("gpu_gpustatusoff", "Off", "Off"," ","err") 
 
     # ALARMS
     @ui.alarms.toggle(@get_bool(@vals.pbb_has_alarms))
@@ -251,14 +226,12 @@ class PbbWidgetView extends WidgetView
     @flash_alarm(@get_bool(@vals.pbb_autolevelfail))
 
     # DOCKTIME
-    @$("#pbb_dockedtime_lbl").html('Dock Time')
-    docktime = if @vals.pbb_docktime? && @vals.pbb_docktime != '' then parseFloat(@vals.pbb_docktime).toFixed(2) else ' -- ' 
-    el = @$('#pbb_docktime').html("#{docktime} mins")
+    docktime = if @vals.pbb_docktime? && @vals.pbb_docktime != '' then parseFloat(@vals.pbb_docktime).toFixed(4) else ' -- ' 
+    el = @$('#pbb_docktime').html("#{docktime}")
     @mark_bad_data @tags.pbb_docktime, el
 
-    @$("#pbb_undockedtime_lbl").html('Un-Dock Time')
-    undocktime = if @vals.pbb_undocktime? && @vals.pbb_undocktime != '' then parseFloat(@vals.pbb_undocktime).toFixed(2) else ' -- '      
-    el = @$('#pbb_undocktime').html("#{undocktime} mins")
+    undocktime = if @vals.pbb_undocktime? && @vals.pbb_undocktime != '' then parseFloat(@vals.pbb_undocktime).toFixed(4) else ' -- ' 
+    el = @$('#pbb_undocktime').html("#{undocktime}")
     @mark_bad_data @tags.pbb_undocktime, el
 
     heighttodisp = if @vals.pbb_heighttodisp? && @vals.pbb_heighttodisp != '' then @vals.pbb_heighttodisp else ' -- ' 
@@ -321,5 +294,5 @@ class PbbWidgetView extends WidgetView
     
 # ----------------------------------
 
-window.PbbWidgetView = PbbWidgetView
-module.exports = PbbWidgetView
+window.PbbdetailWidgetView = PbbdetailWidgetView
+module.exports = PbbdetailWidgetView

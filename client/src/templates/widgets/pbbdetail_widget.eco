@@ -1,0 +1,76 @@
+<div class="box-header with-border">
+  <div class='pull-left'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>
+  <div class="pull-right controls">
+    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> 
+    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>
+  </div>
+</div>
+
+<div class="box-body content" id='content'>
+  
+  <div class="display contain">
+    <div id="pbbdetail_label">
+      <h1>
+        <span id='txt'></span> 
+        <i id='docked' class="fa fa-plane" title='Plane is DOCKED' style='display:none;'></i>
+        <i id='alarms' class="fa fa-bell-o" title='Gate has ALARMS' style='display:none;'></i>
+        <i id='warnings' class="fa fa-warning" title='Gate has WARNINGS' style='display:none;'></i>
+      </h1>
+    </div>
+<table height="100%";width"100%">
+  <tr><td>
+    <table class='data1'> 
+     <tr><td style="width:300px; height:200px; ;text-align:center; vertical-align:middle">
+     <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB_Un-docked-400x400.gif" />   
+    </td></tr>         
+    </table>
+ </td><td>
+    <table class='data2'> 
+       <tr><td id='pbb_undocked' class='val'>LOADING...</td><td id='pbb_undocktime' class='val'>LOADING...</td></tr>
+     <tr>
+      <td style="width:200px; height:150px; vertical-align:middle">
+        <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB-AutoLevel-Off-400x400.gif" />   
+      </td>
+      <td style="width:200px; height:150px; vertical-align:middle">
+        <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB-Canopy-Off-400x400.gif" />   
+      </td>
+     </tr>  
+     <tr><td id='pbb_autolevelstatusnok' class='val'>LOADING...</td><td id='pbb_canopystatusnok' class='val'>LOADING...</td></tr>     
+    </table>
+ </td></tr><tr><td> 
+  
+    <table class='data1'> 
+     <tr><td style="width:300px; height:200px; ;text-align:center; vertical-align:middle">
+     <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB_docked-400x400.gif" />   
+    </td></tr>         
+    </table>
+</td><td>
+    <table class='data2' cellpadding="0" cellspacing="0"> 
+     <tr><td id='pbb_docked' class='val'>LOADING...</td><td id='pbb_docktime' class='val'>LOADING...</td></tr>
+     <tr>
+      <td style="width:200px; height:150px; vertical-align:middle">
+        <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB-AutoLevel-On-400x400.gif" />   
+      </td>
+      <td style="width:200px; height:150px; vertical-align:middle">
+        <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB-Canopy-On-400x400.gif" />   
+      </td>
+     </tr>  
+    <tr><td id='pbb_autolevelstatusok' class='val'>LOADING...</td><td id='pbb_canopystatusok' class='val'>LOADING...</td></tr>         
+    </table>
+ </td></tr></table> 
+  </div>
+
+  <div class="settings" style="display: none;">
+    <h3>Settings</h3>
+    <%- @siteSelector({id:'site', label:'Site', value:@settings.site}) %>
+    <div class="row">
+      <%- @formGroup({id:'terminal', label: 'Terminal', type:'text', placeholder:'Terminal', value:@settings.terminal, cls:'col-md-6'}) %>
+      <%- @formGroup({id:'zone', label: 'Zone', type:'text', placeholder:'Zone', value:@settings.zone, cls:'col-md-6'}) %>
+    </div>
+    <div class="row">
+      <%- @formGroup({id:'display_prefix', label:'Prefix', type:'text', placeholder:'Display Prefix', value:@settings.display_prefix, cls:'col-md-6'}) %>
+      <%- @formGroup({id:'gate', label: 'Gate', type:'text', feedback:'plane', placeholder:'Gate #', value:@settings.gate, cls:'col-md-6'}) %>
+    </div>
+  </div>
+
+</div>

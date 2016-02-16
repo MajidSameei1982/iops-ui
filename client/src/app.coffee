@@ -17,6 +17,8 @@ AppConfig = require('./common/appconfig')
 # forces inclusion of core widget classes
 require('./views/widgets/alarm_widget_view')
 require('./views/widgets/pbb_widget_view')
+require('./views/widgets/pbbdetail_widget_view')
+require('./views/widgets/pbbleveldetail_widget_view')
 require('./views/widgets/pca_widget_view')
 require('./views/widgets/url_widget_view')
 require('./views/widgets/weather_widget_view')
@@ -44,6 +46,7 @@ window.App = do()->
     ### 
       TODO: load from server - all known Accounts, claims, Roles
     ###
+<<<<<<< HEAD
     #App.accounts = new AccountCollection(App.store.get('accounts'))
     App.accounts = new AccountCollection()
     @log('Fetching account data...')
@@ -60,6 +63,40 @@ window.App = do()->
         App.vent.trigger('app:resources_loaded')
 
 
+=======
+    App.accounts = new AccountCollection(App.store.get('accounts'))
+    if !App.accounts? || App.accounts.models.length == 0
+      App.accounts = new AccountCollection [
+        id: 1
+        name : "Example Corporation, International"
+        isActive: true
+        sites: [
+          id: 1
+          name: "The Eastern Iowa Airport"
+          abbrev: "CID"
+          shortName: "Cedar Rapids"
+          opc: 'http://opc.iopsnow.com:58725'
+        ,
+          id: 2
+          name: 'The Newark International Airport'
+          abbrev: "EWR"
+          shortName: "Newark"
+          opc: 'http://www.opcsystems.com:58725'
+        ,
+          id: 3
+          name: 'Southwest Airlines'
+          abbrev: "DAL"
+          shortName: "Southwest"
+          opc: 'http://www.opcsystems.com:58725'
+        ,
+          id: 4
+          name: 'Open Automation Systems'
+          abbrev: "OAS"
+          shortName: "OPCSystems.NET"
+          opc: 'http://www.opcsystems.com:58725'
+        ]
+      ]
+>>>>>>> 94d693ce29b33386048ca6d34899921e22faad1e
     App.claims = new ClaimCollection(App.store.get('claims'))
     App.roles = new RoleCollection(App.store.get('roles'))
     App.users = new UserCollection(App.store.get('users'))

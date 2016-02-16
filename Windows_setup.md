@@ -12,6 +12,8 @@ Git (https://git-scm.com/)
 * Download and install Git
 * Clone the project from the git bash console with the following command (choose a top level path first):
     git clone git@github.com:jbtc/iops-ui.git
+or
+    git clone https://github.com/jbtc/iops-ui.git
 * Navigate to the new iops-ui path and you should see (master) at the end of the prompt. This tells you which branch you're on. 
 * Create and checkout a new branch to experiment with:
     git checkout -b yourbranchname
