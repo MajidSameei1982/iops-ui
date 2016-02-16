@@ -32,7 +32,7 @@ class DashboardLayout extends Marionette.LayoutView
     v = new WidgetLayout
       model: dash
     @show_content
-      title: dash.get('title')
+      title: dash.get('name')
       subtitle: ''
       view: v
 
@@ -45,7 +45,7 @@ class DashboardLayout extends Marionette.LayoutView
     @header.show(@headerview)
 
     @sideview = new DashboardSideView
-      collection: App.session.dashboards
+      collection: App.dashboards
     @side.show(@sideview)
 
     @toolview = new DashboardToolView()

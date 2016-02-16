@@ -112,7 +112,6 @@ class UserView extends Marionette.ItemView
       v = $(this).val()
       roles = roles.concat v
     @model.set('roles', roles)
-    debugger
     @model.save null,
       success:()=>
         @render()

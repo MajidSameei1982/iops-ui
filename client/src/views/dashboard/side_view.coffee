@@ -62,8 +62,7 @@ class DashboardSideView extends Marionette.ItemView
 
   show_add: (e)->
     if e? then e.preventDefault()
-    d = new Dashboard
-      id: Math.floor(Math.random() * 10000) + 1,
+    d = new Dashboard()
     @show_dash_modal(d, 'add')
 
   resolve_dash: (e, pre)->
@@ -103,7 +102,8 @@ class DashboardSideView extends Marionette.ItemView
       on_save: ()=>
         did = d.id
         @collection.remove(d)
-        App.save_user()
+        d.destroy()
+        #App.save_user()
         if did == App.current_dash then App.router.navigate('', {trigger:true})
 
   onShow: ()->
@@ -121,7 +121,7 @@ class DashboardSideView extends Marionette.ItemView
     for d, idx in @collection.models
       hh = """
       <li class='dashboard-link d_#{d.id}'>
-        <a href='#' class='dash_link'><i class='fa fa-th-large'></i> <span>#{d.get('title')}</span></a>
+        <a href='#' class='dash_link'><i class='fa fa-th-large'></i> <span>#{d.get('name')}</span></a>
         <div class='controls'>
           <a href='#' class='moveup moveup_#{d.id}'><i class='fa fa-caret-up'></i></a>
           <a href='#' class='movedn movedn_#{d.id}'><i class='fa fa-caret-down'></i></a>

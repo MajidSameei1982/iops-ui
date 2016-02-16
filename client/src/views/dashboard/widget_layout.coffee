@@ -27,7 +27,8 @@ class WidgetLayout extends Marionette.LayoutView
       lo.sx = cls.layout.sx
       lo.sy = cls.layout.sy
     w = @model.widgets.add
-      _id: id
+      id: id
+      name: type
       type: type
       settings:
         layout: lo
@@ -38,6 +39,7 @@ class WidgetLayout extends Marionette.LayoutView
       @grid.add_widget(wli, lo.sx, lo.sy, lo.c, lo.r)
       @draw_widget_view(w)
       wli.append('<span class="gs-resize-handle gs-resize-handle-both"></span>')
+    @model.save()
     
   # show widget dialog
   show_add: (e)->

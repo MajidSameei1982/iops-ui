@@ -165,7 +165,7 @@ window.JST["dashboard/dashboard_modal"] = function(__obj) {
         placeholder: 'Dashboard Name',
         cls: 'col-sm-12',
         label: '',
-        value: this.title
+        value: this.name
       })));
     
       _print(_safe('\n      </div>\n    </div>\n    <div class="modal-footer">\n      <button type="button" id=\'modal_cancel\' class="btn btn-outline pull-left" data-dismiss="modal">CANCEL</button>      \n      <button type="button" id=\'modal_save\' class="btn btn-outline" data-dismiss="modal">SAVE</button>\n    </div>\n  </div><!-- /.modal-content -->\n</div><!-- /.modal-dialog -->\n'));
@@ -1959,14 +1959,44 @@ window.App = (function() {
   App = window.App = new BaselineApp();
   App.AdminLTE_lib = AdminLTE_lib;
   App.config = AppConfig;
+  App.loaded = false;
+  App.accounts_loaded = App.session_loaded = App.dash_loaded = false;
+  App.check_loaded = function() {
+    if (App.loaded) {
+      return;
+    }
+    if (App.accounts_loaded && App.session_loaded && App.dash_loaded) {
+      App.loaded = true;
+      if (Backbone.history) {
+        this.log('Initializing OPCManager');
+        App.opc = OPCManager;
+        App.opc.init(App);
+        $('#loading_cover').fadeOut(100, function() {
+          return $(this).hide();
+        });
+        this.controller = new AppController();
+        this.router = new Router({
+          controller: this.controller
+        });
+        this.log('Backbone.history starting');
+        Backbone.history.start();
+        if (App.session == null) {
+          return App.controller.logout();
+        }
+      }
+    }
+  };
   App.on("before:start", function(options) {
     var dtfn;
     this.log('Starting');
     $('#loading_cover').fadeTo(0, 0.8);
-    Session.restore();
     this.layout = new AppLayout();
     this.uiutils = UIUtils;
-    App.refresh_accounts();
+    App.refresh_accounts((function(_this) {
+      return function() {
+        return Session.restore();
+      };
+    })(this));
     App.vent.on("user:update", function() {
       return Session.save_session();
     });
@@ -2017,28 +2047,7 @@ window.App = (function() {
   });
   App.on('start', function(options) {
     this.log('Started');
-    if (Backbone.history) {
-      App.vent.on("app:resources_loaded", (function(_this) {
-        return function() {
-          App.vent.off("app:resources_loaded");
-          _this.log('Initializing OPCManager');
-          App.opc = OPCManager;
-          App.opc.init(App);
-          $('#loading_cover').fadeOut(100, function() {
-            return $(this).hide();
-          });
-          _this.controller = new AppController();
-          _this.router = new Router({
-            controller: _this.controller
-          });
-          _this.log('Backbone.history starting');
-          Backbone.history.start();
-          if (App.session == null) {
-            return App.controller.logout();
-          }
-        };
-      })(this));
-    }
+    App.check_loaded();
     return this.log('Done starting and running!');
   });
   App.refresh_accounts = function(cb) {
@@ -2059,8 +2068,8 @@ window.App = (function() {
                   return function(data, xhr) {
                     completed++;
                     if (completed === cnt) {
-                      App.vent.trigger("app:resources_loaded");
-                      App.vent.trigger("app:update");
+                      App.accounts_loaded = true;
+                      App.check_loaded();
                       if (cb != null) {
                         return cb();
                       }
@@ -2073,6 +2082,25 @@ window.App = (function() {
           };
         };
       })(this))(cb)
+    });
+  };
+  App.refresh_dashboards = function() {
+    if ((App.session == null) || (App.session.id == null)) {
+      App.dash_loaded = true;
+      App.check_loaded();
+      Session.restore();
+      return;
+    }
+    App.dashboards = new DashboardCollection({
+      userId: App.session.id
+    });
+    return App.dashboards.fetch({
+      success: (function(_this) {
+        return function(data, status, xhr) {
+          App.dash_loaded = true;
+          return App.check_loaded();
+        };
+      })(this)
     });
   };
   App.refresh_claims = function(cb) {
@@ -2142,7 +2170,7 @@ AppController = (function(superClass) {
       return null;
     }
     dl = new DashboardLayout({
-      collection: App.session.dashboards
+      collection: App.dashboards
     });
     App.layout.center_region.show(dl);
     return dl;
@@ -2238,29 +2266,45 @@ AppController = (function(superClass) {
   };
 
   AppController.prototype.dashboard = function(id) {
-    var dash, did, dl, first;
+    var show_dash;
     App.log('route:dashboard');
-    id = id != null ? parseInt(id) : null;
-    dl = this.set_main_layout();
-    if ((dl.collection != null) && (id != null)) {
-      first = dl.collection.first();
-      dash = dl.collection.where({
-        id: id
-      });
-      dash = dash.length > 0 ? dash[0] : null;
-    }
-    dash = dash == null ? first : dash;
-    did = dash != null ? dash.id : null;
-    App.router.navigate("dashboard" + (did != null ? '/' + did : ''), {
-      trigger: false
-    });
-    if (dash != null) {
-      dl.show_widgets(dash);
+    id = id != null ? id : null;
+    show_dash = (function(_this) {
+      return function() {
+        var dash, did, dl, first;
+        dl = _this.set_main_layout();
+        if (dl.collection != null) {
+          first = dl.collection.first();
+          if (id != null) {
+            dash = dl.collection.where({
+              _id: id
+            });
+            dash = dash.length > 0 ? dash[0] : null;
+          }
+        }
+        dash = dash == null ? first : dash;
+        did = dash != null ? dash.id : null;
+        App.router.navigate("dashboard" + (did != null ? '/' + did : ''), {
+          trigger: false
+        });
+        if (dash != null) {
+          dl.show_widgets(dash);
+        } else {
+          dl.empty();
+        }
+        App.current_dash = did;
+        return App.vent.trigger("show:dashboard", did);
+      };
+    })(this);
+    if (App.dashboards == null) {
+      Session.load_dashboards((function(_this) {
+        return function() {
+          return show_dash();
+        };
+      })(this));
     } else {
-      dl.empty();
+      show_dash();
     }
-    App.current_dash = did;
-    App.vent.trigger("show:dashboard", did);
     return this;
   };
 
@@ -3443,17 +3487,42 @@ WidgetCollection = require('./widget_collection');
 Dashboard = (function(superClass) {
   extend(Dashboard, superClass);
 
-  Dashboard.prototype.local = true;
+  Dashboard.prototype.service = 'accounts';
+
+  Dashboard.prototype.urlRoot = '/dashboards';
 
   Dashboard.prototype.defaults = {
     widgets: [],
-    title: ''
+    name: ''
+  };
+
+  Dashboard.prototype.pickUrl = function(destroy) {
+    if (this.isNew()) {
+      this.urlRoot = "/users/" + App.session.id + "/dashboards";
+    } else {
+      this.urlRoot = '/dashboards';
+    }
+    return this.setUrl(this.urlRoot);
+  };
+
+  Dashboard.prototype.save = function(attrs, options) {
+    options || (options = {});
+    options.blacklist = ["userId"];
+    this.pickUrl();
+    return Dashboard.__super__.save.call(this, attrs, options);
+  };
+
+  Dashboard.prototype.destroy = function(options) {
+    this.pickUrl(true);
+    return Dashboard.__super__.destroy.call(this, options);
+  };
+
+  Dashboard.prototype.fetch = function(options) {
+    this.pickUrl();
+    return Dashboard.__super__.fetch.call(this, options);
   };
 
   function Dashboard(config) {
-    if (config != null) {
-      config._id = config._id != null ? config._id : Math.floor(Math.random() * 10000) + 1;
-    }
     Dashboard.__super__.constructor.call(this, config);
     this.widgets = new WidgetCollection(this.get('widgets'));
     this.widgets.on("update", (function(_this) {
@@ -3470,7 +3539,7 @@ Dashboard = (function(superClass) {
 
   Dashboard.prototype.set_widgets = function() {
     this.set("widgets", this.widgets.toJSON());
-    return App.save_user();
+    return this.save();
   };
 
   return Dashboard;
@@ -3491,13 +3560,21 @@ Dashboard = require('./dashboard');
 DashboardCollection = (function(superClass) {
   extend(DashboardCollection, superClass);
 
-  function DashboardCollection() {
-    return DashboardCollection.__super__.constructor.apply(this, arguments);
-  }
+  DashboardCollection.prototype.service = 'accounts';
 
-  DashboardCollection.prototype.local = true;
+  DashboardCollection.prototype.url = '/users/{userId}/dashboards';
 
   DashboardCollection.prototype.model = Dashboard;
+
+  function DashboardCollection(config, opts) {
+    if ((config != null) && config.userId) {
+      this.url = this.url.replace('{userId}', config.userId);
+      delete config.userId;
+    } else {
+      this.url = '/dashboards';
+    }
+    DashboardCollection.__super__.constructor.call(this, config);
+  }
 
   return DashboardCollection;
 
@@ -3614,12 +3691,29 @@ Session = (function(superClass) {
     if (App.session != null) {
       App.session.off("change");
     }
+    App.dashboards = null;
     Session.set_session();
     return null;
   };
 
+  Session.load_dashboards = function(success) {
+    App.dashboards = new DashboardCollection({
+      userId: App.session.id
+    });
+    App.dashboards.fetch({
+      success: (function(_this) {
+        return function(data, status, xhr) {
+          if (success) {
+            return success(data, status, xhr);
+          }
+        };
+      })(this)
+    });
+    return this;
+  };
+
   Session.auth = function(arg) {
-    var e, email, error, oe, os, password, s, success;
+    var e, email, error, password, s, success;
     email = arg.email, password = arg.password, success = arg.success, error = arg.error;
     Session.clear();
     App.session = new Session({
@@ -3628,32 +3722,19 @@ Session = (function(superClass) {
     });
     s = (function(_this) {
       return function(data, status, xhr) {
-        return Session.set_session(App.session);
+        Session.set_session(App.session);
+        return Session.load_dashboards(success);
       };
     })(this);
     e = (function(_this) {
-      return function(xhr, status, error) {
-        return Session.clear();
+      return function(xhr, status, err) {
+        Session.clear();
+        App.dashboards = null;
+        if (error) {
+          return error(xhr, status, err);
+        }
       };
     })(this);
-    if (success != null) {
-      os = success;
-      s = (function(_this) {
-        return function(data, status, xhr) {
-          Session.set_session(App.session);
-          return os(data, status, xhr);
-        };
-      })(this);
-    }
-    if (error != null) {
-      oe = error;
-      e = (function(_this) {
-        return function(xhr, status, error) {
-          Session.clear();
-          return oe(xhr, status, error);
-        };
-      })(this);
-    }
     return App.session.save(null, {
       success: s,
       error: e,
@@ -3702,24 +3783,39 @@ Session = (function(superClass) {
     return App.session;
   };
 
-  Session.restore = function() {
+  Session.restore = function(success) {
     var s, tk;
-    s = App.store.get('session');
     tk = App.store.get('token');
+    if (tk != null) {
+      this.set_header_token(tk);
+    }
+    s = App.store.get('session');
     if (s != null) {
       if (App.session != null) {
         Session.clear();
       }
       App.session = new User(s);
       App.session.fetch({
-        success: function() {},
+        success: (function(_this) {
+          return function(data, status, xhr) {
+            if (success != null) {
+              success(data, status, xhr);
+            }
+            App.refresh_dashboards();
+            App.session_loaded = true;
+            return App.check_loaded();
+          };
+        })(this),
         error: function() {
-          return Session.clear();
+          Session.clear();
+          App.session_loaded = true;
+          return App.check_loaded();
         }
       });
-    }
-    if (tk != null) {
-      this.set_header_token(tk);
+    } else {
+      App.dash_loaded = true;
+      App.session_loaded = true;
+      App.check_loaded();
     }
     return true;
   };
@@ -3875,12 +3971,20 @@ User = (function(superClass) {
 
   User.prototype.save = function(attrs, options) {
     options || (options = {});
-    options.blacklist = ["isActive", "dashboards"];
+    options.blacklist = ["isActive"];
+    this.persist();
     return User.__super__.save.call(this, attrs, options);
   };
 
   User.prototype.persist = function() {
-    return this.attributes["dashboards"] = this.dashboards.toJSON();
+    var d, dashes, i, len, ref;
+    dashes = [];
+    ref = this.dashboards.models;
+    for (i = 0, len = ref.length; i < len; i++) {
+      d = ref[i];
+      dashes.push(d.id);
+    }
+    return this.attributes["dashboards"] = dashes;
   };
 
   function User(config) {
@@ -3902,7 +4006,21 @@ User = (function(superClass) {
   }
 
   User.prototype.check_claim = function(claim, site) {
-    return true;
+    var c, i, len, ref, s, sid;
+    s = site != null ? OPCManager.get_site(site) : null;
+    sid = s != null ? s.id : null;
+    ref = App.session.claims;
+    for (i = 0, len = ref.length; i < len; i++) {
+      c = ref[i];
+      if (c.get('name') === claim && (((site != null) && (c.siteId != null) && sid === c.siteId) || ((site == null) && (c.siteId == null)))) {
+        return true;
+      }
+    }
+    return false;
+  };
+
+  User.prototype.check_role = function(role, site) {
+    return false;
   };
 
   return User;
@@ -3951,14 +4069,7 @@ BaseModel = require('./_base');
 Widget = (function(superClass) {
   extend(Widget, superClass);
 
-  function Widget() {
-    return Widget.__super__.constructor.apply(this, arguments);
-  }
-
-  Widget.prototype.local = true;
-
   Widget.prototype.defaults = {
-    title: null,
     type: "default",
     settings: {
       layout: {
@@ -3971,9 +4082,30 @@ Widget = (function(superClass) {
     config: true
   };
 
+  function Widget(config, opts) {
+    var id, settings;
+    Widget.__super__.constructor.call(this, config, opts);
+    id = config.id != null ? config.id : null;
+    id = (id == null) && (config.settings != null) && (config.settings.id != null) ? config.settings.id : id;
+    settings = _.clone(this.get('settings'));
+    settings.id = id;
+    this.set('settings', settings);
+    this.set('id', id);
+    this.set('name', "widget_" + this.id);
+    this;
+  }
+
+  Widget.prototype.toJSON = function(options) {
+    var j;
+    j = Widget.__super__.toJSON.call(this, options);
+    delete j.id;
+    delete j._id;
+    return j;
+  };
+
   return Widget;
 
-})(BaseModel);
+})(Backbone.Model);
 
 module.exports = Widget;
 
@@ -4407,7 +4539,7 @@ DashboardContentView = (function(superClass) {
     var st, t;
     t = this.title != null ? this.title : 'Foo';
     if (this.center_view.model instanceof Dashboard) {
-      t = this.center_view.model.get('title');
+      t = this.center_view.model.get('name');
     }
     st = this.subtitle != null ? this.subtitle : '';
     if (this.icon != null) {
@@ -4478,7 +4610,7 @@ DashboardLayout = (function(superClass) {
       model: dash
     });
     return this.show_content({
-      title: dash.get('title'),
+      title: dash.get('name'),
       subtitle: '',
       view: v
     });
@@ -4494,7 +4626,7 @@ DashboardLayout = (function(superClass) {
     });
     this.header.show(this.headerview);
     this.sideview = new DashboardSideView({
-      collection: App.session.dashboards
+      collection: App.dashboards
     });
     this.side.show(this.sideview);
     this.toolview = new DashboardToolView();
@@ -4561,7 +4693,7 @@ DashboardModalView = (function(superClass) {
     })(this));
     this.ui.title.change((function(_this) {
       return function() {
-        _this.model.set('title', _this.ui.title.val());
+        _this.model.set('name', _this.ui.title.val());
         App.save_user();
         return App.vent.trigger('dashboard:update', _this.model);
       };
@@ -4578,11 +4710,15 @@ DashboardModalView = (function(superClass) {
           _this.dashboards.add(_this.model, {
             at: 0
           });
-          App.save_user();
-          return App.router.navigate("dashboard/" + _this.model.id, {
-            trigger: true
-          });
         }
+        return _this.model.save(null, {
+          success: function() {
+            App.vent.trigger("dashboard:update");
+            return App.router.navigate("dashboard/" + _this.model.id, {
+              trigger: true
+            });
+          }
+        });
       };
     })(this));
   };
@@ -4803,9 +4939,7 @@ DashboardSideView = (function(superClass) {
     if (e != null) {
       e.preventDefault();
     }
-    d = new Dashboard({
-      id: Math.floor(Math.random() * 10000) + 1
-    });
+    d = new Dashboard();
     return this.show_dash_modal(d, 'add');
   };
 
@@ -4872,7 +5006,7 @@ DashboardSideView = (function(superClass) {
           var did;
           did = d.id;
           _this.collection.remove(d);
-          App.save_user();
+          d.destroy();
           if (did === App.current_dash) {
             return App.router.navigate('', {
               trigger: true
@@ -4904,7 +5038,7 @@ DashboardSideView = (function(superClass) {
     results = [];
     for (idx = i = 0, len = ref.length; i < len; idx = ++i) {
       d = ref[idx];
-      hh = "<li class='dashboard-link d_" + d.id + "'>\n  <a href='#' class='dash_link'><i class='fa fa-th-large'></i> <span>" + (d.get('title')) + "</span></a>\n  <div class='controls'>\n    <a href='#' class='moveup moveup_" + d.id + "'><i class='fa fa-caret-up'></i></a>\n    <a href='#' class='movedn movedn_" + d.id + "'><i class='fa fa-caret-down'></i></a>\n    <a href='#' class='edit edit_" + d.id + "'><i class='fa fa-pencil-square'></i></a>\n    <a href='#' class='delete delete_" + d.id + "'><i class='fa fa-times-circle'></i></a>\n  </div>\n</li>";
+      hh = "<li class='dashboard-link d_" + d.id + "'>\n  <a href='#' class='dash_link'><i class='fa fa-th-large'></i> <span>" + (d.get('name')) + "</span></a>\n  <div class='controls'>\n    <a href='#' class='moveup moveup_" + d.id + "'><i class='fa fa-caret-up'></i></a>\n    <a href='#' class='movedn movedn_" + d.id + "'><i class='fa fa-caret-down'></i></a>\n    <a href='#' class='edit edit_" + d.id + "'><i class='fa fa-pencil-square'></i></a>\n    <a href='#' class='delete delete_" + d.id + "'><i class='fa fa-times-circle'></i></a>\n  </div>\n</li>";
       dl = $(hh);
       results.push(this.ui.dashboard_list.append(dl));
     }
@@ -5038,7 +5172,8 @@ WidgetLayout = (function(superClass) {
       lo.sy = cls.layout.sy;
     }
     w = this.model.widgets.add({
-      _id: id,
+      id: id,
+      name: type,
       type: type,
       settings: {
         layout: lo
@@ -5050,8 +5185,9 @@ WidgetLayout = (function(superClass) {
       this.$('ul.gridster').append(wli);
       this.grid.add_widget(wli, lo.sx, lo.sy, lo.c, lo.r);
       this.draw_widget_view(w);
-      return wli.append('<span class="gs-resize-handle gs-resize-handle-both"></span>');
+      wli.append('<span class="gs-resize-handle gs-resize-handle-both"></span>');
     }
+    return this.model.save();
   };
 
   WidgetLayout.prototype.show_add = function(e) {
@@ -6527,7 +6663,6 @@ UserView = (function(superClass) {
       return roles = roles.concat(v);
     });
     this.model.set('roles', roles);
-    debugger;
     return this.model.save(null, {
       success: (function(_this) {
         return function() {
@@ -6920,8 +7055,10 @@ LoginView = (function(superClass) {
       email: this.ui.email.val(),
       password: this.ui.password.val(),
       success: function(a, b, c) {
-        return App.router.navigate('', {
-          trigger: true
+        return App.refresh_accounts(function() {
+          return App.router.navigate('', {
+            trigger: true
+          });
         });
       },
       error: (function(_this) {

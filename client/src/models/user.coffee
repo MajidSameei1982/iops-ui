@@ -17,11 +17,15 @@ class User extends BaseModel
 
   save:(attrs, options)->
     options || (options = {})
-    options.blacklist = ["isActive", "dashboards"]
+    options.blacklist = ["isActive"]
+    @persist()
     super(attrs, options)
 
   persist: ()=>
-    @attributes["dashboards"] = @dashboards.toJSON()
+    dashes = []
+    for d in @dashboards.models
+      dashes.push(d.id)
+    @attributes["dashboards"] = dashes
 
   constructor: (config)->
     typeIsArray = Array.isArray || ( value ) -> return {}.toString.call( value ) is '[object Array]'
@@ -37,8 +41,17 @@ class User extends BaseModel
     @
 
   check_claim: (claim, site)->
+    s = if site? then OPCManager.get_site(site) else null
+    sid = if s? then s.id else null
 
-    true
+    for c in App.session.claims
+      if c.get('name') == claim && ((site? && c.siteId? && sid == c.siteId) || (!site? && !c.siteId?))
+        return true
+    false
+
+  check_role: (role, site)->
+    # check all user roles against requested role
+    false
 
 # ----------------------------------
 

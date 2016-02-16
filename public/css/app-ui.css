@@ -212,6 +212,9 @@ ul.chosen-results li.highlighted {
 .chosen-container.chosen-container-single {
   width: auto !important; }
 
+.chosen-container.chosen-container-multi {
+  width: 100% !important; }
+
 #add_account {
   margin-left: 20px;
   cursor: pointer; }

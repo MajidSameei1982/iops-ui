@@ -7,7 +7,7 @@
     </div>
     <div class="modal-body">
       <div class="row">
-        <%- @formGroup({id:'title', type:'text', placeholder:'Dashboard Name', cls: 'col-sm-12', label: '', value: @title}) %>
+        <%- @formGroup({id:'title', type:'text', placeholder:'Dashboard Name', cls: 'col-sm-12', label: '', value: @name}) %>
       </div>
     </div>
     <div class="modal-footer">

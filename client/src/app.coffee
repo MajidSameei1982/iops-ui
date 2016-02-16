@@ -29,21 +29,43 @@ window.App = do()->
   App = window.App = new BaselineApp()
   App.AdminLTE_lib = AdminLTE_lib
   
-  # Object.defineProperty App, 'current_user',
-  #   get: ()->
-  #     if App.session? then App.session else null
-
+  
   App.config = AppConfig
+  App.loaded = false
+  App.accounts_loaded = App.session_loaded = App.dash_loaded = false
+
+  App.check_loaded = ()->
+    return if App.loaded
+    if App.accounts_loaded && App.session_loaded && App.dash_loaded
+      App.loaded = true
+      if (Backbone.history) 
+        @log('Initializing OPCManager')
+        App.opc = OPCManager
+        App.opc.init(App)
+        # make app available to UI
+        $('#loading_cover').fadeOut(100, ()-> $(@).hide())
+        # set up routing and controller
+
+        @controller = new AppController()
+        @router = new Router
+          controller: @controller
+        @log('Backbone.history starting')
+        Backbone.history.start()
+
+        if !App.session? then App.controller.logout()
 
   App.on "before:start", (options)->
     @log('Starting')
     $('#loading_cover').fadeTo(0,0.8)
-    Session.restore()
     @layout = new AppLayout()
     @uiutils = UIUtils
 
+    
     # refresh server data surrounding accounts
-    App.refresh_accounts()
+    App.refresh_accounts ()=>
+      Session.restore()
+    # load session dashboards
+    #App.refresh_dashboards()
 
     # listen for changes on the user
     App.vent.on "user:update", ()->
@@ -89,30 +111,13 @@ window.App = do()->
 
   App.on 'start', (options)->
     @log('Started')
-    if (Backbone.history) 
-      App.vent.on "app:resources_loaded", ()=>
-        # ensure this only fires once
-        App.vent.off "app:resources_loaded"
-        # connect OPC
-        @log('Initializing OPCManager')
-        App.opc = OPCManager
-        App.opc.init(App)
-        # make app available to UI
-        $('#loading_cover').fadeOut(100, ()-> $(@).hide())
-        # set up routing and controller
-        @controller = new AppController()
-        @router = new Router
-          controller: @controller
-        @log('Backbone.history starting')
-        Backbone.history.start()
-
-        if !App.session? then App.controller.logout()
+    App.check_loaded()
 
     # new up and views and render for base app here...
     @log('Done starting and running!')
 
   App.refresh_accounts = (cb)->
-    App.accounts = new AccountCollection()    
+    App.accounts = new AccountCollection()
     App.accounts.fetch
       success:((cb) =>
         (data, xhr)=>
@@ -124,12 +129,24 @@ window.App = do()->
                 (data, xhr)=>
                   completed++
                   if completed == cnt
-                    App.vent.trigger "app:resources_loaded"
-                    App.vent.trigger "app:update"
+                    App.accounts_loaded = true
+                    App.check_loaded()
+                    #App.vent.trigger "app:update"
                     if cb? then cb()
                 )(cb, cnt, completed)
         )(cb)
 
+  App.refresh_dashboards = ()->
+    if !App.session? || !App.session.id?
+      App.dash_loaded = true
+      App.check_loaded()
+      Session.restore()
+      return
+    App.dashboards = new DashboardCollection({userId:App.session.id})
+    App.dashboards.fetch
+      success: (data, status, xhr)=>
+        App.dash_loaded = true
+        App.check_loaded()
 
   App.refresh_claims = (cb)->
     App.refresh_accounts ()->
