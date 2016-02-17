@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 var navigator = {};
 navigator.userAgent = false;
 
@@ -664,4 +662,3 @@ exports.newline_toDos = newline_toDos;
 exports.crypto = KJUR.crypto;
 exports.asn1 = KJUR.asn1;
 exports.jws = KJUR.jws;
->>>>>>> 94d693ce29b33386048ca6d34899921e22faad1e

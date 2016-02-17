@@ -15,13 +15,8 @@ class PbbWidgetView extends WidgetView
     warnings:       'i#warnings'
 
   @layout:
-<<<<<<< HEAD
     sx: 6
-    sy: 9
-=======
-    sx: 4
     sy: 10
->>>>>>> merger
 
   tags:
     #Grid Tags
@@ -276,9 +271,6 @@ class PbbWidgetView extends WidgetView
     @mark_bad_data @tags.gpu_gpuoutputamps, el
 
     @set_descriptions()
-
-    
-
 
   set_model: ()=>
     s = _.clone(@model.get("settings"))
