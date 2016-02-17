@@ -43,7 +43,7 @@
 				var tData = [];
 				switch(PLOT_TYPE.ID) {
 				    case RVAIN.ID:
-								tData.push({ label: "Amps Phase A", tag: "" data: (RVAIN.liveData) ? rain1_live : amps1, yaxis: 1, color: "#cc00cc", points: { symbol: "diamond", fillColor: "#cc00cc", show: true }, lines: { show: true } })
+								tData.push({ label: "Amps Phase A", data: (RVAIN.liveData) ? rain1_live : amps1, yaxis: 1, color: "#cc00cc", points: { symbol: "diamond", fillColor: "#cc00cc", show: true }, lines: { show: true } })
 								tData.push({ label: "Amps Phase B", data: (RVAIN.liveData) ? rain2_live : amps2, yaxis: 1, color: "#cc00ff", points: { symbol: "diamond", fillColor: "#cc00ff", show: true }, lines: {show:true } })
 								tData.push({ label: "Amps Phase C", data: (RVAIN.liveData) ? rain3_live : amps3, yaxis: 1, color: "#9933ff", points: { symbol: "diamond", fillColor: "#9933ff", show: true }, lines: { show: true } })
 								tData.push({ label: "Amps Phase Avg", data: (RVAIN.liveData) ? rain4_live : amps4, yaxis: 1, color: "#6600ff", points: { symbol: "triangle", fillColor: "#6600ff", show: true }, lines: { show: true } })
