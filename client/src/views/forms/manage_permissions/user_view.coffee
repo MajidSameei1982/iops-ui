@@ -114,6 +114,7 @@ class UserView extends Marionette.ItemView
     @model.set('roles', roles)
     @model.save null,
       success:()=>
+        delete @model.attributes['password']
         @render()
  
   onRender: ()->

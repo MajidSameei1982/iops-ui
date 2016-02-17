@@ -1712,60 +1712,15 @@ window.JST["widgets/pbbdetail_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="pbbdetail_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n<table height="100%";width"100%">\n  <tr><td>\n    <table class=\'data1\'> \n     <tr><td style="width:300px; height:200px; ;text-align:center; vertical-align:middle">\n     <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB_Un-docked-400x400.gif" />   \n    </td></tr>         \n    </table>\n </td><td>\n    <table class=\'data2\'> \n       <tr><td id=\'pbb_undocked\' class=\'val\'>LOADING...</td><td id=\'pbb_undocktime\' class=\'val\'>LOADING...</td></tr>\n     <tr>\n      <td style="width:200px; height:150px; vertical-align:middle">\n        <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB-AutoLevel-Off-400x400.gif" />   \n      </td>\n      <td style="width:200px; height:150px; vertical-align:middle">\n        <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB-Canopy-Off-400x400.gif" />   \n      </td>\n     </tr>  \n     <tr><td id=\'pbb_autolevelstatusnok\' class=\'val\'>LOADING...</td><td id=\'pbb_canopystatusnok\' class=\'val\'>LOADING...</td></tr>     \n    </table>\n </td></tr><tr><td> \n  \n    <table class=\'data1\'> \n     <tr><td style="width:300px; height:200px; ;text-align:center; vertical-align:middle">\n     <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB_docked-400x400.gif" />   \n    </td></tr>         \n    </table>\n</td><td>\n    <table class=\'data2\' cellpadding="0" cellspacing="0"> \n     <tr><td id=\'pbb_docked\' class=\'val\'>LOADING...</td><td id=\'pbb_docktime\' class=\'val\'>LOADING...</td></tr>\n     <tr>\n      <td style="width:200px; height:150px; vertical-align:middle">\n        <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB-AutoLevel-On-400x400.gif" />   \n      </td>\n      <td style="width:200px; height:150px; vertical-align:middle">\n        <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB-Canopy-On-400x400.gif" />   \n      </td>\n     </tr>  \n    <tr><td id=\'pbb_autolevelstatusok\' class=\'val\'>LOADING...</td><td id=\'pbb_canopystatusok\' class=\'val\'>LOADING...</td></tr>         \n    </table>\n </td></tr></table> \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="pbbdetail_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n\n    <table style="height:100%;width:100%">\n      <tr>\n        <td>\n          <table class=\'data1\'> \n            <tr>\n              <td style="width:300px; height:200px; ;text-align:center; vertical-align:middle">\n                <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB_Un-docked-400x400.gif" />\n              </td>\n            </tr>\n          </table>\n        </td>\n        <td>\n          <table class=\'data2\'>\n            <tr>\n              <td id=\'pbb_undocked\' class=\'val\'>LOADING...</td>\n              <td id=\'pbb_undocktime\' class=\'val\'>LOADING...</td>\n            </tr>\n            <tr>\n              <td style="width:200px; height:150px; vertical-align:middle">\n                <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB-AutoLevel-Off-400x400.gif" />\n              </td>\n              <td style="width:200px; height:150px; vertical-align:middle">\n                <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB-Canopy-Off-400x400.gif" />\n              </td>\n            </tr>\n            <tr>\n              <td id=\'pbb_autolevelstatusnok\' class=\'val\'>LOADING...</td>\n              <td id=\'pbb_canopystatusnok\' class=\'val\'>LOADING...</td>\n            </tr>\n          </table>\n        </td>\n      </tr>\n      <tr>\n        <td>\n          <table class=\'data1\'>\n            <tr>\n              <td style="width:300px; height:200px; ;text-align:center; vertical-align:middle">\n                <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB_docked-400x400.gif" />\n              </td>\n            </tr>\n          </table>\n        </td>\n        <td>\n          <table class=\'data2\' cellpadding="0" cellspacing="0">\n            <tr>\n              <td id=\'pbb_docked\' class=\'val\'>LOADING...</td>\n              <td id=\'pbb_docktime\' class=\'val\'>LOADING...</td>\n            </tr>\n            <tr>\n              <td style="width:200px; height:150px; vertical-align:middle">\n                <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB-AutoLevel-On-400x400.gif" />   \n              </td>\n              <td style="width:200px; height:150px; vertical-align:middle">\n                <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB-Canopy-On-400x400.gif" />\n              </td>\n            </tr>  \n            <tr>\n              <td id=\'pbb_autolevelstatusok\' class=\'val\'>LOADING...</td>\n              <td id=\'pbb_canopystatusok\' class=\'val\'>LOADING...</td>\n            </tr>\n          </table>\n        </td>\n      </tr>\n    </table> \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
         label: 'Site',
-        value: this.settings.site
+        site: this.settings.site
       })));
     
-      _print(_safe('\n    <div class="row">\n      '));
-    
-      _print(_safe(this.formGroup({
-        id: 'terminal',
-        label: 'Terminal',
-        type: 'text',
-        placeholder: 'Terminal',
-        value: this.settings.terminal,
-        cls: 'col-md-6'
-      })));
-    
-      _print(_safe('\n      '));
-    
-      _print(_safe(this.formGroup({
-        id: 'zone',
-        label: 'Zone',
-        type: 'text',
-        placeholder: 'Zone',
-        value: this.settings.zone,
-        cls: 'col-md-6'
-      })));
-    
-      _print(_safe('\n    </div>\n    <div class="row">\n      '));
-    
-      _print(_safe(this.formGroup({
-        id: 'display_prefix',
-        label: 'Prefix',
-        type: 'text',
-        placeholder: 'Display Prefix',
-        value: this.settings.display_prefix,
-        cls: 'col-md-6'
-      })));
-    
-      _print(_safe('\n      '));
-    
-      _print(_safe(this.formGroup({
-        id: 'gate',
-        label: 'Gate',
-        type: 'text',
-        feedback: 'plane',
-        placeholder: 'Gate #',
-        value: this.settings.gate,
-        cls: 'col-md-6'
-      })));
-    
-      _print(_safe('\n    </div>\n  </div>\n\n</div>\n'));
+      _print(_safe('\n    <div class="row">\n      <div id=\'terminals\' class=\'col-md-6\'></div>\n    </div>\n    <div class="row">\n      <div id=\'zones\' class=\'col-md-6\'></div>\n    </div>\n    <div class="row">\n      <div id=\'gates\' class=\'col-md-6\'></div>  \n    </div>\n  </div>\n\n</div>\n'));
     
     }).call(this);
     
@@ -1916,52 +1871,7 @@ window.JST["widgets/pca_widget"] = function(__obj) {
         site: this.settings.site
       })));
     
-      _print(_safe('\n    <div class="row">\n      '));
-    
-      _print(_safe(this.formGroup({
-        id: 'terminal',
-        label: 'Terminal',
-        type: 'text',
-        placeholder: 'Terminal',
-        value: this.settings.terminal,
-        cls: 'col-md-6'
-      })));
-    
-      _print(_safe('\n      '));
-    
-      _print(_safe(this.formGroup({
-        id: 'zone',
-        label: 'Zone',
-        type: 'text',
-        placeholder: 'Zone',
-        value: this.settings.zone,
-        cls: 'col-md-6'
-      })));
-    
-      _print(_safe('\n    </div>\n    <div class="row">\n      '));
-    
-      _print(_safe(this.formGroup({
-        id: 'display_prefix',
-        label: 'Prefix',
-        type: 'text',
-        placeholder: 'Display Prefix',
-        value: this.settings.display_prefix,
-        cls: 'col-md-6'
-      })));
-    
-      _print(_safe('\n      '));
-    
-      _print(_safe(this.formGroup({
-        id: 'gate',
-        label: 'Gate',
-        type: 'text',
-        feedback: 'plane',
-        placeholder: 'Gate #',
-        value: this.settings.gate,
-        cls: 'col-md-6'
-      })));
-    
-      _print(_safe('\n    </div>\n  </div>\n\n</div>\n'));
+      _print(_safe('\n    <div class="row">\n      <div id=\'terminals\' class=\'col-md-6\'></div>\n    </div>\n    <div class="row">\n      <div id=\'zones\' class=\'col-md-6\'></div>\n    </div>\n    <div class="row">\n      <div id=\'gates\' class=\'col-md-6\'></div>  \n    </div>\n  </div>\n\n</div>\n'));
     
     }).call(this);
     
@@ -5739,6 +5649,7 @@ WidgetView = (function(superClass) {
   };
 
   function WidgetView(config) {
+    this.draw_selectors = bind(this.draw_selectors, this);
     this.data_q = bind(this.data_q, this);
     this.get_value = bind(this.get_value, this);
     this.get_bool = bind(this.get_bool, this);
@@ -5803,6 +5714,79 @@ WidgetView = (function(superClass) {
     if (this.update) {
       this.update();
     }
+    return this;
+  };
+
+  WidgetView.prototype.draw_terminals = function(terminal) {
+    var site, ts;
+    site = this.$('#site').val();
+    this.$('#terminal').off("change");
+    this.$('#terminal').remove();
+    ts = $(this.templateHelpers().terminalSelector({
+      id: 'terminal',
+      label: 'Terminal',
+      site: site,
+      terminal: terminal
+    }));
+    this.$('#terminals').empty().append(ts);
+    return ts.on('change', (function(_this) {
+      return function() {
+        _this.draw_zones(null);
+        _this.draw_gates(null);
+        return _this.set_model();
+      };
+    })(this));
+  };
+
+  WidgetView.prototype.draw_zones = function(zone) {
+    var site, terminal, zs;
+    site = this.$('#site').val();
+    terminal = this.$('#terminal').val();
+    this.$('#zone').off("change");
+    this.$('#zone').remove();
+    zs = $(this.templateHelpers().zoneSelector({
+      id: 'zone',
+      label: 'Zone',
+      site: site,
+      terminal: terminal,
+      zone: zone
+    }));
+    this.$('#zones').empty().append(zs);
+    return zs.on('change', (function(_this) {
+      return function() {
+        _this.draw_gates(null);
+        return _this.set_model();
+      };
+    })(this));
+  };
+
+  WidgetView.prototype.draw_gates = function(gate) {
+    var gs, site, terminal, zone;
+    site = this.$('#site').val();
+    terminal = this.$('#terminal').val();
+    zone = this.$('#zone').val();
+    this.$('#gate').off("change");
+    this.$('#gate').remove();
+    gs = $(this.templateHelpers().gateSelector({
+      id: 'gate',
+      label: 'Gate',
+      site: site,
+      terminal: terminal,
+      zone: zone,
+      gate: gate
+    }));
+    this.$('#gates').empty().append(gs);
+    return gs.on('change', (function(_this) {
+      return function() {
+        return _this.set_model();
+      };
+    })(this));
+  };
+
+  WidgetView.prototype.draw_selectors = function(terminal, zone, gate) {
+    this.draw_terminals(terminal);
+    this.draw_zones(zone);
+    this.draw_gates(gate);
     return this;
   };
 
@@ -7010,6 +6994,7 @@ UserView = (function(superClass) {
     return this.model.save(null, {
       success: (function(_this) {
         return function() {
+          delete _this.model.attributes['password'];
           return _this.render();
         };
       })(this)
@@ -7210,8 +7195,7 @@ ProfileView = (function(superClass) {
   ProfileView.prototype.bindings = {
     firstName: '#firstName',
     lastName: '#lastName',
-    email: '#email',
-    password: 'input#password'
+    email: '#email'
   };
 
   ProfileView.prototype.ui = {
@@ -7293,6 +7277,8 @@ ProfileView = (function(superClass) {
     pw = this.ui.pw.val();
     if (pw.trim() === '') {
       delete this.model.attributes['password'];
+    } else {
+      this.model.set('password', pw);
     }
     return this.model.save(null, {
       success: (function(_this) {
@@ -7304,17 +7290,19 @@ ProfileView = (function(superClass) {
             icon: "thumbs-up"
           });
           _this.ui.pw.val('');
-          return _this.ui.pwc.val('');
+          _this.ui.pwc.val('');
+          return delete _this.model.attributes['password'];
         };
       })(this),
       error: (function(_this) {
         return function(m, err) {
-          return UIUtils.showAlert(_this.ui.alertContainer, {
+          UIUtils.showAlert(_this.ui.alertContainer, {
             title: "ERROR!",
             message: (err != null) && (err.responseJSON != null) ? err.responseJSON.message : '',
             type: "error",
             icon: "warning"
           });
+          return delete _this.model.attributes['password'];
         };
       })(this)
     });
@@ -7690,7 +7678,6 @@ PbbWidgetView = (function(superClass) {
   extend(PbbWidgetView, superClass);
 
   function PbbWidgetView() {
-    this.draw_selectors = bind(this.draw_selectors, this);
     this.set_model = bind(this.set_model, this);
     this.data_update = bind(this.data_update, this);
     this.set_descriptions = bind(this.set_descriptions, this);
@@ -7984,79 +7971,6 @@ PbbWidgetView = (function(superClass) {
     return this.ui.display.toggle(!this.settings_visible);
   };
 
-  PbbWidgetView.prototype.draw_terminals = function(terminal) {
-    var site, ts;
-    site = this.$('#site').val();
-    this.$('#terminal').off("change");
-    this.$('#terminal').remove();
-    ts = $(this.templateHelpers().terminalSelector({
-      id: 'terminal',
-      label: 'Terminal',
-      site: site,
-      terminal: terminal
-    }));
-    this.$('#terminals').empty().append(ts);
-    return ts.on('change', (function(_this) {
-      return function() {
-        _this.draw_zones(null);
-        _this.draw_gates(null);
-        return _this.set_model();
-      };
-    })(this));
-  };
-
-  PbbWidgetView.prototype.draw_zones = function(zone) {
-    var site, terminal, zs;
-    site = this.$('#site').val();
-    terminal = this.$('#terminal').val();
-    this.$('#zone').off("change");
-    this.$('#zone').remove();
-    zs = $(this.templateHelpers().zoneSelector({
-      id: 'zone',
-      label: 'Zone',
-      site: site,
-      terminal: terminal,
-      zone: zone
-    }));
-    this.$('#zones').empty().append(zs);
-    return zs.on('change', (function(_this) {
-      return function() {
-        _this.draw_gates(null);
-        return _this.set_model();
-      };
-    })(this));
-  };
-
-  PbbWidgetView.prototype.draw_gates = function(gate) {
-    var gs, site, terminal, zone;
-    site = this.$('#site').val();
-    terminal = this.$('#terminal').val();
-    zone = this.$('#zone').val();
-    this.$('#gate').off("change");
-    this.$('#gate').remove();
-    gs = $(this.templateHelpers().gateSelector({
-      id: 'gate',
-      label: 'Gate',
-      site: site,
-      terminal: terminal,
-      zone: zone,
-      gate: gate
-    }));
-    this.$('#gates').empty().append(gs);
-    return gs.on('change', (function(_this) {
-      return function() {
-        return _this.set_model();
-      };
-    })(this));
-  };
-
-  PbbWidgetView.prototype.draw_selectors = function(terminal, zone, gate) {
-    this.draw_terminals(terminal);
-    this.draw_zones(zone);
-    this.draw_gates(gate);
-    return this;
-  };
-
   PbbWidgetView.prototype.onShow = function() {
     var gate, settings, site_code;
     settings = this.model.get('settings');
@@ -8138,8 +8052,8 @@ PbbdetailWidgetView = (function(superClass) {
   };
 
   PbbdetailWidgetView.layout = {
-    sx: 11,
-    sy: 12
+    sx: 6,
+    sy: 10
   };
 
   PbbdetailWidgetView.prototype.tags = {
@@ -8180,17 +8094,20 @@ PbbdetailWidgetView = (function(superClass) {
   };
 
   PbbdetailWidgetView.prototype.update = function() {
-    var gate, lbl, s, t, tags, tg;
+    var cloud, lbl, s, settings, t, tags, tg;
     s = this.model.get("settings");
     if ((s != null) && !!s.gate) {
-      this.site_code = OPCManager.get_site_code(s.site);
+      this.site = OPCManager.get_site(s.site);
+      this.site_code = this.site.get('code');
       if (this.site_code == null) {
         return null;
       }
       this.kill_updates(this.site_code);
       OPCManager.rem_ref(this.site_code);
-      gate = s.display_prefix != null ? "" + s.display_prefix + s.gate : '#{s.gate}';
-      this.prefix = "RemoteSCADAHosting.Airport-" + this.site_code + ".Airport." + this.site_code + ".Term" + s.terminal + ".Zone" + s.zone + ".Gate" + gate + ".";
+      settings = this.site.get('settings');
+      settings || (settings = {});
+      cloud = settings.cloud ? "RemoteSCADAHosting.Airport-" + this.site_code + "." : '';
+      this.prefix = cloud + "Airport." + this.site_code + ".Term" + s.terminal + ".Zone" + s.zone + ".Gate" + s.gate + ".";
       tags = [];
       for (tg in this.tags) {
         t = this.tags[tg];
@@ -8199,7 +8116,7 @@ PbbdetailWidgetView = (function(superClass) {
       App.opc.add_tags(this.site_code, tags);
       this.watch_updates(this.site_code);
       OPCManager.add_ref(this.site_code);
-      lbl = "Gate " + gate;
+      lbl = "Gate " + s.gate;
       this.ui.wtitle.html(lbl);
       this.$('#pbbdetail_label #txt').html(lbl);
       this.opc = App.opc.connections[this.site_code];
@@ -8375,11 +8292,10 @@ PbbdetailWidgetView = (function(superClass) {
   PbbdetailWidgetView.prototype.set_model = function() {
     var s;
     s = _.clone(this.model.get("settings"));
-    s.gate = this.ui.gate.val().trim();
-    s.site = this.ui.site.val().trim();
-    s.terminal = this.ui.terminal.val().trim();
-    s.zone = this.ui.zone.val().trim();
-    s.display_prefix = this.ui.display_prefix.val().trim();
+    s.site = this.$('#site').val();
+    s.terminal = this.$('#terminal').val();
+    s.zone = this.$('#zone').val();
+    s.gate = this.$('#gate').val();
     return this.model.set("settings", s);
   };
 
@@ -8392,25 +8308,23 @@ PbbdetailWidgetView = (function(superClass) {
   };
 
   PbbdetailWidgetView.prototype.onShow = function() {
-    var gate, ms, settings, site, site_code;
-    this.ui.gate.on("change", this.set_model);
-    this.ui.site.on("change", this.set_model);
-    this.ui.terminal.on("change", this.set_model);
-    this.ui.zone.on("change", this.set_model);
-    this.ui.display_prefix.on("change", this.set_model);
+    var gate, settings, site_code;
     settings = this.model.get('settings');
+    settings || (settings = {});
+    this.draw_selectors(settings.terminal, settings.zone, settings.gate);
+    this.$('#site').on('change', (function(_this) {
+      return function() {
+        _this.draw_selectors();
+        return _this.set_model();
+      };
+    })(this));
     gate = settings.gate;
     if ((gate == null) || gate === '') {
       this.toggle_settings();
     }
-    site = settings.site;
-    site_code = OPCManager.get_site_code(site);
+    site_code = OPCManager.get_site_code(settings.site);
     if (site_code != null) {
-      OPCManager.add_ref(site_code);
-    }
-    ms = this.model.get('settings');
-    if ((ms != null) && (ms.site != null)) {
-      return this.ui.site.val(ms.site);
+      return OPCManager.add_ref(site_code);
     }
   };
 
@@ -8827,8 +8741,8 @@ PcaWidgetView = (function(superClass) {
   };
 
   PcaWidgetView.layout = {
-    sx: 4,
-    sy: 9
+    sx: 5,
+    sy: 10
   };
 
   PcaWidgetView.prototype.tags = {
@@ -8861,17 +8775,20 @@ PcaWidgetView = (function(superClass) {
   };
 
   PcaWidgetView.prototype.update = function() {
-    var gate, lbl, s, t, tags, tg;
+    var cloud, lbl, s, settings, t, tags, tg;
     s = this.model.get("settings");
     if ((s != null) && !!s.gate) {
-      this.site_code = OPCManager.get_site_code(s.site);
+      this.site = OPCManager.get_site(s.site);
+      this.site_code = this.site.get('code');
       if (this.site_code == null) {
         return null;
       }
       this.kill_updates(this.site_code);
       OPCManager.rem_ref(this.site_code);
-      gate = s.display_prefix != null ? "" + s.display_prefix + s.gate : '#{s.gate}';
-      this.prefix = "RemoteSCADAHosting.Airport-" + this.site_code + ".Airport." + this.site_code + ".Term" + s.terminal + ".Zone" + s.zone + ".Gate" + gate + ".";
+      settings = this.site.get('settings');
+      settings || (settings = {});
+      cloud = settings.cloud ? "RemoteSCADAHosting.Airport-" + this.site_code + "." : '';
+      this.prefix = cloud + "Airport." + this.site_code + ".Term" + s.terminal + ".Zone" + s.zone + ".Gate" + s.gate + ".";
       tags = [];
       for (tg in this.tags) {
         t = this.tags[tg];
@@ -8880,7 +8797,7 @@ PcaWidgetView = (function(superClass) {
       App.opc.add_tags(this.site_code, tags);
       this.watch_updates(this.site_code);
       OPCManager.add_ref(this.site_code);
-      lbl = "Gate " + gate;
+      lbl = "Gate " + s.gate;
       this.ui.wtitle.html(lbl);
       this.$('#gate_label #txt').html(lbl);
       this.opc = App.opc.connections[this.site_code];
@@ -9037,11 +8954,10 @@ PcaWidgetView = (function(superClass) {
   PcaWidgetView.prototype.set_model = function() {
     var s;
     s = _.clone(this.model.get("settings"));
-    s.gate = this.ui.gate.val().trim();
-    s.site = this.ui.site.val().trim();
-    s.terminal = this.ui.terminal.val().trim();
-    s.zone = this.ui.zone.val().trim();
-    s.display_prefix = this.ui.display_prefix.val().trim();
+    s.site = this.$('#site').val();
+    s.terminal = this.$('#terminal').val();
+    s.zone = this.$('#zone').val();
+    s.gate = this.$('#gate').val();
     return this.model.set("settings", s);
   };
 
@@ -9054,19 +8970,26 @@ PcaWidgetView = (function(superClass) {
   };
 
   PcaWidgetView.prototype.onShow = function() {
-    var gate, ms, settings, site, site_code;
+    var gate, ms, settings, site_code;
     this.ui.gate.on("change", this.set_model);
     this.ui.site.on("change", this.set_model);
     this.ui.terminal.on("change", this.set_model);
     this.ui.zone.on("change", this.set_model);
     this.ui.display_prefix.on("change", this.set_model);
     settings = this.model.get('settings');
+    settings || (settings = {});
+    this.draw_selectors(settings.terminal, settings.zone, settings.gate);
+    this.$('#site').on('change', (function(_this) {
+      return function() {
+        _this.draw_selectors();
+        return _this.set_model();
+      };
+    })(this));
     gate = settings.gate;
     if ((gate == null) || gate === '') {
       this.toggle_settings();
     }
-    site = settings.site;
-    site_code = OPCManager.get_site_code(site);
+    site_code = OPCManager.get_site_code(settings.site);
     if (site_code != null) {
       OPCManager.add_ref(site_code);
     }

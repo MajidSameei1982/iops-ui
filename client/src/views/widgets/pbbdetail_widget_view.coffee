@@ -20,8 +20,8 @@ class PbbdetailWidgetView extends WidgetView
     warnings:       'i#warnings'
 
   @layout:
-    sx: 11
-    sy: 12
+    sx: 6
+    sy: 10
 
   tags:
     #Grid Tags
@@ -62,17 +62,19 @@ class PbbdetailWidgetView extends WidgetView
     s = @model.get("settings")
    
     if s? && !!s.gate
-      @site_code = OPCManager.get_site_code(s.site)
+      @site = OPCManager.get_site(s.site)
+      @site_code = @site.get('code')
       if !@site_code? then return null
 
       # stop listening for updates
       @kill_updates(@site_code)
       OPCManager.rem_ref(@site_code)
-
-      gate = if s.display_prefix? then "#{s.display_prefix}#{s.gate}" else '#{s.gate}'
       
       # build settings      
-      @prefix = "RemoteSCADAHosting.Airport-#{@site_code}.Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{gate}."
+      settings = @site.get('settings')
+      settings || settings = {}
+      cloud = if settings.cloud then "RemoteSCADAHosting.Airport-#{@site_code}." else ''
+      @prefix = "#{cloud}Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}."
       tags = []
       for tg of @tags
         t = @tags[tg]
@@ -83,7 +85,7 @@ class PbbdetailWidgetView extends WidgetView
       @watch_updates(@site_code)
       OPCManager.add_ref(@site_code)
       
-      lbl = "Gate #{gate}"
+      lbl = "Gate #{s.gate}"
       @ui.wtitle.html(lbl)
       @$('#pbbdetail_label #txt').html(lbl)
 
@@ -248,16 +250,13 @@ class PbbdetailWidgetView extends WidgetView
 
     @set_descriptions()
 
-    
-
 
   set_model: ()=>
     s = _.clone(@model.get("settings"))
-    s.gate = @ui.gate.val().trim()
-    s.site = @ui.site.val().trim()
-    s.terminal = @ui.terminal.val().trim()
-    s.zone = @ui.zone.val().trim()
-    s.display_prefix = @ui.display_prefix.val().trim()
+    s.site = @$('#site').val()
+    s.terminal = @$('#terminal').val()
+    s.zone = @$('#zone').val()
+    s.gate = @$('#gate').val()
     @model.set("settings", s)
 
   toggle_settings: (e)->
@@ -265,23 +264,22 @@ class PbbdetailWidgetView extends WidgetView
     @ui.display.toggle(!@settings_visible)
     if @settings_visible then @ui.site.chosen()
 
-  onShow: ()->
-    @ui.gate.on "change", @set_model
-    @ui.site.on "change", @set_model
-    @ui.terminal.on "change", @set_model
-    @ui.zone.on "change", @set_model
-    @ui.display_prefix.on "change", @set_model
 
+  onShow: ()->
     settings = @model.get('settings')
+    settings || settings = {}
+    @draw_selectors(settings.terminal, settings.zone, settings.gate)
+
+    @$('#site').on 'change', ()=>
+      @draw_selectors()
+      @set_model()
+    
     gate = settings.gate
     if !gate? || gate == ''
       @toggle_settings()
-    site = settings.site
-    site_code = OPCManager.get_site_code(site)
-    if site_code? then OPCManager.add_ref(site_code)
 
-    ms = @model.get('settings')
-    if ms? && ms.site? then @ui.site.val(ms.site)
+    site_code = OPCManager.get_site_code(settings.site)
+    if site_code? then OPCManager.add_ref(site_code)
 
 
   start: ()->

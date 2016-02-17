@@ -13,7 +13,7 @@ class ProfileView extends Marionette.ItemView
     firstName: '#firstName'
     lastName: '#lastName'
     email: '#email'
-    password: 'input#password'
+    #password: 'input#password'
 
   ui:
     alertContainer: '#alertContainer'
@@ -73,6 +73,8 @@ class ProfileView extends Marionette.ItemView
     pw = @ui.pw.val()
     if pw.trim() == ''
       delete @model.attributes['password']
+    else
+      @model.set('password', pw)
     @model.save null,
       success:()=>
         UIUtils.showAlert @ui.alertContainer,
@@ -82,12 +84,14 @@ class ProfileView extends Marionette.ItemView
           icon: "thumbs-up"
         @ui.pw.val('')
         @ui.pwc.val('')
+        delete @model.attributes['password']
       error: (m, err)=>
         UIUtils.showAlert @ui.alertContainer,
           title: "ERROR!"
           message: if err? && err.responseJSON? then err.responseJSON.message else ''
           type: "error"
           icon: "warning"
+        delete @model.attributes['password']
 
 
 # ----------------------------------

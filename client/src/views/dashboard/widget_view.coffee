@@ -67,6 +67,65 @@ class WidgetView extends Marionette.ItemView
   start: ()->
     if @update then @update()
     @
+
+  # draw terminal selector
+  draw_terminals:(terminal)->
+    site = @$('#site').val()
+    @$('#terminal').off "change"
+    @$('#terminal').remove()
+    ts = $ @templateHelpers().terminalSelector
+      id: 'terminal'
+      label: 'Terminal'
+      site: site
+      terminal: terminal
+    @$('#terminals').empty().append(ts)
+    ts.on 'change', ()=>
+      @draw_zones(null)
+      @draw_gates(null)
+      @set_model()
+
+  # draw zone selector
+  draw_zones:(zone)->
+    site = @$('#site').val()
+    terminal = @$('#terminal').val()    
+    @$('#zone').off "change"
+    @$('#zone').remove()
+    zs = $ @templateHelpers().zoneSelector
+      id: 'zone'
+      label: 'Zone'
+      site: site
+      terminal: terminal
+      zone: zone
+    @$('#zones').empty().append(zs)
+    zs.on 'change', ()=>
+      @draw_gates(null)
+      @set_model()
+  
+  # draw gate selector
+  draw_gates:(gate)->
+    site = @$('#site').val()
+    terminal = @$('#terminal').val()
+    zone = @$('#zone').val()
+    @$('#gate').off "change"
+    @$('#gate').remove()
+    gs = $ @templateHelpers().gateSelector
+      id: 'gate'
+      label: 'Gate'
+      site: site
+      terminal: terminal
+      zone: zone
+      gate: gate
+
+    @$('#gates').empty().append(gs)
+    gs.on 'change', ()=>
+      @set_model()
+
+  # draw all selectors
+  draw_selectors:(terminal, zone, gate)=>
+    @draw_terminals(terminal)
+    @draw_zones(zone)
+    @draw_gates(gate)
+    @
   	
 # ----------------------------------
 

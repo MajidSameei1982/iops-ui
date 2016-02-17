@@ -21,21 +21,8 @@ class PcaWidgetView extends WidgetView
     warnings:       'i#warnings'
 
   @layout:
-    sx: 4
-    sy: 9
-
-    # <table class='data'>
-    #   <tr><td class='lbl' id='pbb_status_lbl'>&nbsp;</td><td id='pbb_status' class='val'>LOADING...</td></tr>
-    #   <tr><td class='lbl' id='pca_status_lbl'>&nbsp;</td><td id='pca_status' class='val'>LOADING...</td></tr>
-    #   <tr><td class='lbl' id='gpu_status_lbl'>&nbsp;</td><td id='gpu_status' class='val'>LOADING...</td></tr>
-    #   <tr><td class='lbl' id='pbb_docktime_lbl'>ACF Floor</td><td id='pbb_docktime' class='val'>LOADING...</td></tr>
-    #   <tr><td class='lbl' id='pbb_ontime_lbl'>&nbsp;</td><td id='pbb_ontime' class='val'>LOADING...</td></tr>
-    #   <tr><td class='lbl' id='pca_ontime_lbl'>&nbsp;</td><td id='pca_ontime' class='val'>LOADING...</td></tr>
-    #   <tr><td class='lbl' id='gpu_ontime_lbl'>Limits</td><td id='gpu_ontime' class='val'>LOADING...</td></tr>
-    #   <tr><td class='lbl' id='pca_dischargetemp_lbl'>&nbsp;</td><td id='pca_dischargetemp' class='val'>LOADING...</td></tr>
-    #   <tr><td class='lbl' id='gpu_outputamps_lbl'>&nbsp;</td><td id='gpu_outputamps' class='val'>LOADING...</td></tr>
-    #   <tr><td class='lbl' id='gpu_outputvolts_lbl'>&nbsp;</td><td id='gpu_outputvolts' class='val'>LOADING...</td></tr>
-    # </table>
+    sx: 5
+    sy: 10
 
   tags:
     #Grid Tags
@@ -68,17 +55,19 @@ class PcaWidgetView extends WidgetView
     s = @model.get("settings")
    
     if s? && !!s.gate
-      @site_code = OPCManager.get_site_code(s.site)
+      @site = OPCManager.get_site(s.site)
+      @site_code = @site.get('code')
       if !@site_code? then return null
 
       # stop listening for updates
       @kill_updates(@site_code)
       OPCManager.rem_ref(@site_code)
-
-      gate = if s.display_prefix? then "#{s.display_prefix}#{s.gate}" else '#{s.gate}'
       
       # build settings      
-      @prefix = "RemoteSCADAHosting.Airport-#{@site_code}.Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{gate}."
+      settings = @site.get('settings')
+      settings || settings = {}
+      cloud = if settings.cloud then "RemoteSCADAHosting.Airport-#{@site_code}." else ''
+      @prefix = "#{cloud}Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}."
       tags = []
       for tg of @tags
         t = @tags[tg]
@@ -89,7 +78,7 @@ class PcaWidgetView extends WidgetView
       @watch_updates(@site_code)
       OPCManager.add_ref(@site_code)
       
-      lbl = "Gate #{gate}"
+      lbl = "Gate #{s.gate}"
       @ui.wtitle.html(lbl)
       @$('#gate_label #txt').html(lbl)
 
@@ -251,11 +240,10 @@ class PcaWidgetView extends WidgetView
 
   set_model: ()=>
     s = _.clone(@model.get("settings"))
-    s.gate = @ui.gate.val().trim()
-    s.site = @ui.site.val().trim()
-    s.terminal = @ui.terminal.val().trim()
-    s.zone = @ui.zone.val().trim()
-    s.display_prefix = @ui.display_prefix.val().trim()
+    s.site = @$('#site').val()
+    s.terminal = @$('#terminal').val()
+    s.zone = @$('#zone').val()
+    s.gate = @$('#gate').val()
     @model.set("settings", s)
 
   toggle_settings: (e)->
@@ -271,16 +259,21 @@ class PcaWidgetView extends WidgetView
     @ui.display_prefix.on "change", @set_model
 
     settings = @model.get('settings')
+    settings || settings = {}
+    @draw_selectors(settings.terminal, settings.zone, settings.gate)
+
+    @$('#site').on 'change', ()=>
+      @draw_selectors()
+      @set_model()
+    
     gate = settings.gate
     if !gate? || gate == ''
       @toggle_settings()
-    site = settings.site
-    site_code = OPCManager.get_site_code(site)
+    site_code = OPCManager.get_site_code(settings.site)
     if site_code? then OPCManager.add_ref(site_code)
 
     ms = @model.get('settings')
     if ms? && ms.site? then @ui.site.val(ms.site)
-
 
   start: ()->
     @update()

@@ -469,7 +469,6 @@ li.dashboard-link {
         color: #f90;
         background-color: #eee; }
 .gate_widget table.data {
-  width: 40%;
   border: solid 1px #999;
   border-spacing: 1px;
   border-collapse: separate; }

@@ -284,60 +284,6 @@ class PbbWidgetView extends WidgetView
     super(e)
     @ui.display.toggle(!@settings_visible)
 
-  draw_terminals:(terminal)->
-    site = @$('#site').val()
-    @$('#terminal').off "change"
-    @$('#terminal').remove()
-    ts = $ @templateHelpers().terminalSelector
-      id: 'terminal'
-      label: 'Terminal'
-      site: site
-      terminal: terminal
-    @$('#terminals').empty().append(ts)
-    ts.on 'change', ()=>
-      @draw_zones(null)
-      @draw_gates(null)
-      @set_model()
-
-  draw_zones:(zone)->
-    site = @$('#site').val()
-    terminal = @$('#terminal').val()    
-    @$('#zone').off "change"
-    @$('#zone').remove()
-    zs = $ @templateHelpers().zoneSelector
-      id: 'zone'
-      label: 'Zone'
-      site: site
-      terminal: terminal
-      zone: zone
-    @$('#zones').empty().append(zs)
-    zs.on 'change', ()=>
-      @draw_gates(null)
-      @set_model()
-  
-  draw_gates:(gate)->
-    site = @$('#site').val()
-    terminal = @$('#terminal').val()
-    zone = @$('#zone').val()
-    @$('#gate').off "change"
-    @$('#gate').remove()
-    gs = $ @templateHelpers().gateSelector
-      id: 'gate'
-      label: 'Gate'
-      site: site
-      terminal: terminal
-      zone: zone
-      gate: gate
-
-    @$('#gates').empty().append(gs)
-    gs.on 'change', ()=>
-      @set_model()
-
-  draw_selectors:(terminal, zone, gate)=>
-    @draw_terminals(terminal)
-    @draw_zones(zone)
-    @draw_gates(gate)
-    @
 
   onShow: ()->
     settings = @model.get('settings')
