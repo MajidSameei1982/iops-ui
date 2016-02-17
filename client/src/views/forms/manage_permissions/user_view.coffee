@@ -36,11 +36,11 @@ class UserView extends Marionette.ItemView
     $(@el).toggleClass('rw',rw)
     #@$('#role_claims_container').toggle(rw)
     if rw
-      roles_global = @model.get('roles_global')
-      @$('select#roles_global').val(roles_global)
+      roles = @model.get('roles')
       for acc in App.accounts.models
         for s in acc.sites.models
-          @$("select#roles_#{s.id}").val(@model.get("roles_#{s.id}"))
+          @$("select#roles_#{s.id}").val(roles)
+      @$('select#roles_global').val(roles)
       @$('select').chosen()
 
   show_edit: (e)->
@@ -110,7 +110,7 @@ class UserView extends Marionette.ItemView
     roles = []
     @$('select.roleselect').each ()->
       v = $(this).val()
-      roles = roles.concat v
+      if v? && v.length > 0 then roles = roles.concat v
     @model.set('roles', roles)
     @model.save null,
       success:()=>

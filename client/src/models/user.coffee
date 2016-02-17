@@ -1,6 +1,7 @@
 BaseModel = require('./_base')
 DashboardCollection = require('./dashboard_collection')
 ClaimCollection = require('./claim_collection')
+RoleCollection = require('./role_collection')
 
 # ----------------------------------
 
@@ -14,6 +15,7 @@ class User extends BaseModel
     settings:       {}
     claims:            []
     dashboards: []
+    roles: []
 
   save:(attrs, options)->
     options || (options = {})
@@ -26,31 +28,62 @@ class User extends BaseModel
     for d in @dashboards.models
       dashes.push(d.id)
     @attributes["dashboards"] = dashes
+    roles = []
+    for r in @roles.models
+      roles.push(r.id)
+    @attributes["roles"] = roles
+    claims = []
+    for c in @claims.models
+      claims.push(c.id)
+    @attributes["claims"] = claims
+    @
 
-  constructor: (config)->
-    typeIsArray = Array.isArray || ( value ) -> return {}.toString.call( value ) is '[object Array]'
-    super(config)
+  set_properties: ()->
     @dashboards = new DashboardCollection(@get('dashboards'))
     @dashboards.on "update", @persist
     @dashboards.on "change", @persist
-    c = @get('claims')
-    c = if typeIsArray(c) then c else []
-    @claims = new ClaimCollection(c)
+    claims = []
+    for c in @get('claims')
+      claims.push {_id:c}
+    @claims = new ClaimCollection(claims)
     @claims.on "update", @persist
     @claims.on "change", @persist
+    roles = []
+    for r in @get('roles')
+      roles.push {_id:r}
+    @roles = new RoleCollection(roles)
+    @roles.on "update", @persist
+    @roles.on "change", @persist
+
+  constructor: (config)->
+    #typeIsArray = Array.isArray || ( value ) -> return {}.toString.call( value ) is '[object Array]'
+    super(config)
+    @set_properties()
+    @on "change:claims", @set_properties 
+    @on "change:roles", @set_properties 
+    @on "change:dashboards", @set_properties 
     @
 
   check_claim: (claim, site)->
     s = if site? then OPCManager.get_site(site) else null
     sid = if s? then s.id else null
-
-    for c in App.session.claims
-      if c.get('name') == claim && ((site? && c.siteId? && sid == c.siteId) || (!site? && !c.siteId?))
-        return true
+    return false if !App.claims?
+    for ac in App.claims.models
+      if (claim == ac.get('name') || claim == ac.id) && (site == ac.get('siteId'))
+        for uc in @claims.models
+          if ac.id == uc.id then return true
+        break
     false
 
   check_role: (role, site)->
-    # check all user roles against requested role
+    s = if site? then OPCManager.get_site(site) else null
+    sid = if s? then s.id else null
+    return false if !App.roles?
+    for ar in App.roles.models
+      if (role == ar.get('name') || role == ar.id) && (site == ar.get('siteId'))
+        for ur in @roles.models
+          if ar.id == ur.id then return true
+        break
     false
 
 # ----------------------------------

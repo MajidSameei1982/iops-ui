@@ -48,8 +48,12 @@ class DashboardLayout extends Marionette.LayoutView
       collection: App.dashboards
     @side.show(@sideview)
 
-    @toolview = new DashboardToolView()
-    @tool.show(@toolview)
+    pck = App.session.check_role('admin')
+    if pck
+      @toolview = new DashboardToolView()
+      @tool.show(@toolview)
+    else
+      $("#toolsmenu").hide()
 
     @footerview = new DashboardFooterView()
     @footer.show(@footerview)

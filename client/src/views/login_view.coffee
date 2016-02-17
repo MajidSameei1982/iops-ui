@@ -7,13 +7,28 @@ Session = require('../models/session')
 class LoginView extends Marionette.ItemView
   template: "login"
   events:
-    'submit form' : 'login'
+    'submit form'     : 'login'
+    'click #iforgot'  : 'iforgot'
+    'click #reset'    : 'reset'
   ui:
-    email:    "input#email"
-    password: "input#password"
-    remember: "input#remember"
-    login:    "button#login"
-    acontainer: "#alert-container"
+    email       : "input#email"
+    password    : "input#password"
+    remember    : "input#remember"
+    login       :"button#login"
+    acontainer  : "#alert-container"
+    loginform   : "#loginform"
+    forgotform  : "#forgotform"
+    forgotemail : "#forgotemail"
+    iforgot     : "#iforgot"
+    reset       : '#reset'
+
+  reset: (e)=>
+    e.preventDefault()
+    
+  iforgot: (e)=>
+    e.preventDefault()
+    @ui.loginform.hide()
+    @ui.forgotform.show()
 
   set_errors: ()->
     @ui.email.parent().addClass('has-error')

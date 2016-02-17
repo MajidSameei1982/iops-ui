@@ -3,30 +3,47 @@
 <div class="login-box">
   <div class="login-logo"><img src='img/logos/logo_login.png'/></div>
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
-    <form action="#" method="post">
-      
+
+    <form id="loginform" action="#" method="post">
+      <p class="login-box-msg">Sign in to start your session</p>
       <%- @formGroup({id:'email', type:'email', feedback:'envelope', placeholder:'Email'}) %>
-
       <%- @formGroup({id:'password', type:'password', feedback:'lock', placeholder:'Password'}) %>
-
       <div class="row">
         <div class="col-xs-8">
-          <div class="checkbox icheck">
+          <a href="#" id='iforgot'>I forgot my password</a>
+          <!-- <div class="checkbox icheck">
             <label>
               <input type="checkbox" id='remember' name='remember'> Remember Me
             </label>
-          </div>
-        </div><!-- /.col -->
+          </div> -->
+        </div>
         <div class="col-xs-4">
           <button type="submit" class="btn btn-primary btn-block btn-flat" id='login' name='login'>Log In</button>
-        </div><!-- /.col -->
+        </div>
       </div>
     </form>
-    
-    <a href="#">I forgot my password</a><br>
-    <a href="register.html" class="text-center">Register</a>
 
-  </div><!-- /.login-box-body -->
+    <form id="forgotform" style='display:none;' action="#" method="post">
+      <p class="login-box-msg">Enter account email to reset password</p>
+      <%- @formGroup({id:'forgotemail', type:'email', feedback:'envelope', placeholder:'Email'}) %>
+      <div class="row">
+        <div class="col-xs-4">
+          <a id="cancel" href="#">Cancel</a>
+        </div>
+        <div class="col-xs-8">
+          <button class="btn btn-primary btn-block btn-flat" id='reset' name='reset'>Reset Password</button>
+        </div>
+      </div>
+    </form>
+
+    <div id="forgotreply" style='display:none;'>
+      <div class="row">
+        <div class="col-xs-12">
+          A message has been sent to the email you provided with a new password. Please check your
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div><!-- /.login-box -->
 

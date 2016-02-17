@@ -34,11 +34,11 @@ window.App = do()->
   
   App.config = AppConfig
   App.loaded = false
-  App.accounts_loaded = App.session_loaded = App.dash_loaded = false
+  App.accounts_loaded = App.session_loaded = App.dash_loaded = App.roles_loaded = App.claims_loaded = false
 
   App.check_loaded = ()->
     return if App.loaded
-    if App.accounts_loaded && App.session_loaded && App.dash_loaded
+    if App.accounts_loaded && App.session_loaded && App.dash_loaded && App.roles_loaded && App.claims_loaded
       App.loaded = true
       if (Backbone.history) 
         @log('Initializing OPCManager')
@@ -62,11 +62,11 @@ window.App = do()->
     @layout = new AppLayout()
     @uiutils = UIUtils
     
-    # refresh server data surrounding accounts
+    # refresh server data
     App.refresh_accounts ()=>
       Session.restore()
-    # load session dashboards
-    #App.refresh_dashboards()
+    App.refresh_roles()
+    App.refresh_claims()
 
     # listen for changes on the user
     App.vent.on "user:update", ()->
@@ -90,23 +90,6 @@ window.App = do()->
 
     App.clock = setInterval(dtfn, 5000)
 
-    # check user session timestamp for auto purging sessions
-    App.check_session = ()->
-      sto = App.config.session_timeout
-      return true if !App.session? || !sto? || sto <= 0
-      timeout = false
-      ts = App.store.get('user_ts')
-      if !ts? 
-        ts = new Date()
-        App.store.set('user_ts', ts)
-      else
-        ts = new Date(ts)
-      tsn = new Date()
-      if ((tsn - ts)/1000) > (sto * 60)
-        App.controller.logout()
-        return false
-      true
-
     # check session_timeout to kick user
     App.vent.on 'check:timeout', App.check_session
 
@@ -116,6 +99,23 @@ window.App = do()->
 
     # new up and views and render for base app here...
     @log('Done starting and running!')
+  
+  # check user session timestamp for auto purging sessions
+  App.check_session = ()->
+    sto = App.config.session_timeout
+    return true if !App.session? || !sto? || sto <= 0
+    timeout = false
+    ts = App.store.get('user_ts')
+    if !ts? 
+      ts = new Date()
+      App.store.set('user_ts', ts)
+    else
+      ts = new Date(ts)
+    tsn = new Date()
+    if ((tsn - ts)/1000) > (sto * 60)
+      App.controller.logout()
+      return false
+    true
 
   App.refresh_accounts = (cb)->
     App.accounts = new AccountCollection()
@@ -149,10 +149,25 @@ window.App = do()->
         App.dash_loaded = true
         App.check_loaded()
 
+  App.refresh_roles = (cb)->
+    App.roles = new RoleCollection()
+    App.roles.fetch
+      success: ((cb) =>
+        (data, xhr)=>
+          App.roles_loaded = true
+          App.check_loaded()
+          if cb? then cb()
+        )(cb)
+
   App.refresh_claims = (cb)->
-    App.refresh_accounts ()->
-      # pull global claims
-      # iterate thru sites and pull claims
+    App.claims = new ClaimCollection()
+    App.claims.fetch
+      success: ((cb) =>
+        (data, xhr)=>
+          App.claims_loaded = true
+          App.check_loaded()
+          if cb? then cb()
+        )(cb)
 
   App.save_user = ()->
     App.vent.trigger("user:update")
@@ -162,6 +177,8 @@ window.App = do()->
     App.store.remove("session")
     App.session = null
     App.accounts = null
+    App.roles = null
+    App.claims = null
     App.router.navigate('login', {trigger:true})
 
   App

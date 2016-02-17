@@ -28,6 +28,7 @@ class Session extends BaseModel
     null
 
   @load_dashboards : (success)->
+    return if !App.session?
     App.dashboards = new DashboardCollection({userId:App.session.id})
     App.dashboards.fetch
       success: (data, status, xhr)=>

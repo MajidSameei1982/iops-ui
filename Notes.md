@@ -1,28 +1,7 @@
-Accounts
-========
-+ Sites
-
-Permissions
-===========
-Top-level claims
-Site-specific claims
-
-Roles
+TODO
 =====
-Top-level roles
-Site-specific roles
-  + OPC roles
 
-Users
-=====
-Top-level roles
-Site-specific roles
-  + OPC roles
-
-
-Additions (1/26)
-- Site: bool:Cloud field
-- When Cloud, prefix tags with RemoteSCADAHosting...
-- Site: settings...
-    + Zones: []
-    + Gates: []
+* implement forgot-password
+* BUG: all dashboards are coming back on users/{id}/dashboards call
+* BUG: setting password on user doesn't actually change it
+* 

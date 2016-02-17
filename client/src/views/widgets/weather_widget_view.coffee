@@ -28,12 +28,12 @@ class WeatherWidgetView extends WidgetView
         state = parts[parts.length-1].trim()
         city = parts[0].trim()
     img = """
-    <span style="display: block !important; width: 100%; text-align: center; font-family: sans-serif; font-size: 12px;">
-      <a href="http://www.wunderground.com/cgi-bin/findweather/getForecast?query=zmw:#{s.zip}.1.99999&bannertypeclick=wu_travel_jet1" target="_blank">
-      <img src="http://weathersticker.wunderground.com/weathersticker/cgi-bin/banner/ban/wxBanner?bannertype=wu_travel_jet1&airportcode=CID&ForcedCity=#{city}&ForcedState=#{state}&zip=#{s.zip}&language=EN" 
-        alt="Find more about Weather" style='width:100%;' />
-      </a>
-    </span>
+      <span style="display: block !important; width: 100%; text-align: center; font-family: sans-serif; font-size: 12px;">
+        <a href="http://www.wunderground.com/cgi-bin/findweather/getForecast?query=zmw:#{s.zip}.1.99999&bannertypeclick=wu_travel_jet1" target="_blank">
+        <img src="http://weathersticker.wunderground.com/weathersticker/cgi-bin/banner/ban/wxBanner?bannertype=wu_travel_jet1&airportcode=CID&ForcedCity=#{city}&ForcedState=#{state}&zip=#{s.zip}&language=EN" 
+          alt="Find more about Weather" style='width:100%;' />
+        </a>
+      </span>
     """
     @ui.display.html(img)
     @ui.wtitle.html("#{s.name}")

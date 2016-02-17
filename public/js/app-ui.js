@@ -258,7 +258,7 @@ window.JST["dashboard/header"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<!-- Logo -->\n<a href="/" class="logo">\n  <span class="logo-mini"><img src=\'img/logos/logo_square.png\'/></span>\n  <span class="logo-lg"><img src=\'img/logos/logo_wide.png\'/></span>\n</a>\n\n<!-- Header Navbar -->\n<nav class="navbar navbar-static-top" role="navigation">\n  <!-- Sidebar toggle button-->\n  <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">\n    <span class="sr-only">Toggle navigation</span>\n  </a>\n  <!-- Navbar Right Menu -->\n  <div class="navbar-custom-menu">\n    <ul class="nav navbar-nav">\n      <li class=\'user user-menu\'>\n        <div style=\'padding:15px\' id=\'clock\'>--, --- ---, ---- 00:00</div>\n      </li>\n      <!-- User Account Menu -->\n      <li class="dropdown user user-menu">\n        <!-- Menu Toggle Button -->\n        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n          <!-- The user image in the navbar-->\n          <img src="img/avatar.png" class="user-image" id=\'avatar\'/>\n          <!-- hidden-xs hides the username on small devices so only the image appears. -->\n          <span class="hidden-xs" id=\'fullname\'>'));
+      _print(_safe('<!-- Logo -->\n<a href="/" class="logo">\n  <span class="logo-mini"><img src=\'img/logos/logo_square.png\'/></span>\n  <span class="logo-lg"><img src=\'img/logos/logo_wide.png\'/></span>\n</a>\n\n<!-- Header Navbar -->\n<nav class="navbar navbar-static-top" role="navigation">\n  <!-- Sidebar toggle button-->\n  <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">\n    <span class="sr-only">Toggle navigation</span>\n  </a>\n  <!-- Navbar Right Menu -->\n  <div class="navbar-custom-menu">\n    <ul class="nav navbar-nav">\n      <li id=\'systemclock\' class=\'user user-menu\'>\n        <div style=\'padding:15px\' id=\'clock\'>--, --- ---, ---- 00:00</div>\n      </li>\n      <!-- User Account Menu -->\n      <li id = \'profilemenu\' class="dropdown user user-menu">\n        <!-- Menu Toggle Button -->\n        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n          <!-- The user image in the navbar-->\n          <img src="img/avatar.png" class="user-image" id=\'avatar\'/>\n          <!-- hidden-xs hides the username on small devices so only the image appears. -->\n          <span class="hidden-xs" id=\'fullname\'>'));
     
       _print(this.fullName());
     
@@ -270,7 +270,7 @@ window.JST["dashboard/header"] = function(__obj) {
     
       _print(this.email);
     
-      _print(_safe('</small>\n            </p>\n          </li>\n          <!-- Menu Body -->\n          <!-- <li class="user-body"></li> -->\n          <!-- Menu Footer-->\n          <li class="user-footer">\n            <div class="pull-left">\n              <a href="#" class="btn btn-default btn-flat" id=\'profile\'>Profile</a>\n            </div>\n            <div class="pull-right">\n              <a href="#" class="btn btn-default btn-flat" id=\'logout\'>Log Out</a>\n            </div>\n          </li>\n        </ul>\n      </li>\n      <!-- Control Sidebar Toggle Button -->\n      <li>\n        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>\n      </li>\n    </ul>\n  </div>\n</nav>'));
+      _print(_safe('</small>\n            </p>\n          </li>\n          <!-- Menu Body -->\n          <!-- <li class="user-body"></li> -->\n          <!-- Menu Footer-->\n          <li class="user-footer">\n            <div class="pull-left">\n              <a href="#" class="btn btn-default btn-flat" id=\'profile\'>Profile</a>\n            </div>\n            <div class="pull-right">\n              <a href="#" class="btn btn-default btn-flat" id=\'logout\'>Log Out</a>\n            </div>\n          </li>\n        </ul>\n      </li>\n      <!-- Control Sidebar Toggle Button -->\n      <li id=\'toolsmenu\'>\n        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>\n      </li>\n    </ul>\n  </div>\n</nav>'));
     
     }).call(this);
     
@@ -1452,7 +1452,7 @@ window.JST["login"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-body" id="alert-container">\n</div>\n<div class="login-box">\n  <div class="login-logo"><img src=\'img/logos/logo_login.png\'/></div>\n  <div class="login-box-body">\n    <p class="login-box-msg">Sign in to start your session</p>\n    <form action="#" method="post">\n      \n      '));
+      _print(_safe('<div class="box-body" id="alert-container">\n</div>\n<div class="login-box">\n  <div class="login-logo"><img src=\'img/logos/logo_login.png\'/></div>\n  <div class="login-box-body">\n\n    <form id="loginform" action="#" method="post">\n      <p class="login-box-msg">Sign in to start your session</p>\n      '));
     
       _print(_safe(this.formGroup({
         id: 'email',
@@ -1461,7 +1461,7 @@ window.JST["login"] = function(__obj) {
         placeholder: 'Email'
       })));
     
-      _print(_safe('\n\n      '));
+      _print(_safe('\n      '));
     
       _print(_safe(this.formGroup({
         id: 'password',
@@ -1470,7 +1470,16 @@ window.JST["login"] = function(__obj) {
         placeholder: 'Password'
       })));
     
-      _print(_safe('\n\n      <div class="row">\n        <div class="col-xs-8">\n          <div class="checkbox icheck">\n            <label>\n              <input type="checkbox" id=\'remember\' name=\'remember\'> Remember Me\n            </label>\n          </div>\n        </div><!-- /.col -->\n        <div class="col-xs-4">\n          <button type="submit" class="btn btn-primary btn-block btn-flat" id=\'login\' name=\'login\'>Log In</button>\n        </div><!-- /.col -->\n      </div>\n    </form>\n    \n    <a href="#">I forgot my password</a><br>\n    <a href="register.html" class="text-center">Register</a>\n\n  </div><!-- /.login-box-body -->\n</div><!-- /.login-box -->\n\n'));
+      _print(_safe('\n      <div class="row">\n        <div class="col-xs-8">\n          <a href="#" id=\'iforgot\'>I forgot my password</a>\n          <!-- <div class="checkbox icheck">\n            <label>\n              <input type="checkbox" id=\'remember\' name=\'remember\'> Remember Me\n            </label>\n          </div> -->\n        </div>\n        <div class="col-xs-4">\n          <button type="submit" class="btn btn-primary btn-block btn-flat" id=\'login\' name=\'login\'>Log In</button>\n        </div>\n      </div>\n    </form>\n\n    <form id="forgotform" style=\'display:none;\' action="#" method="post">\n      <p class="login-box-msg">Enter account email to reset password</p>\n      '));
+    
+      _print(_safe(this.formGroup({
+        id: 'forgotemail',
+        type: 'email',
+        feedback: 'envelope',
+        placeholder: 'Email'
+      })));
+    
+      _print(_safe('\n      <div class="row">\n        <div class="col-xs-4">\n          <a id="cancel" href="#">Cancel</a>\n        </div>\n        <div class="col-xs-8">\n          <button class="btn btn-primary btn-block btn-flat" id=\'reset\' name=\'reset\'>Reset Password</button>\n        </div>\n      </div>\n    </form>\n\n    <div id="forgotreply" style=\'display:none;\'>\n      <div class="row">\n        <div class="col-xs-12">\n          A message has been sent to the email you provided with a new password. Please check your\n        </div>\n      </div>\n    </div>\n\n  </div>\n</div><!-- /.login-box -->\n\n'));
     
     }).call(this);
     
@@ -2160,12 +2169,12 @@ window.App = (function() {
   App.AdminLTE_lib = AdminLTE_lib;
   App.config = AppConfig;
   App.loaded = false;
-  App.accounts_loaded = App.session_loaded = App.dash_loaded = false;
+  App.accounts_loaded = App.session_loaded = App.dash_loaded = App.roles_loaded = App.claims_loaded = false;
   App.check_loaded = function() {
     if (App.loaded) {
       return;
     }
-    if (App.accounts_loaded && App.session_loaded && App.dash_loaded) {
+    if (App.accounts_loaded && App.session_loaded && App.dash_loaded && App.roles_loaded && App.claims_loaded) {
       App.loaded = true;
       if (Backbone.history) {
         this.log('Initializing OPCManager');
@@ -2197,6 +2206,8 @@ window.App = (function() {
         return Session.restore();
       };
     })(this));
+    App.refresh_roles();
+    App.refresh_claims();
     App.vent.on("user:update", function() {
       return Session.save_session();
     });
@@ -2222,27 +2233,6 @@ window.App = (function() {
       return App.time;
     };
     App.clock = setInterval(dtfn, 5000);
-    App.check_session = function() {
-      var sto, timeout, ts, tsn;
-      sto = App.config.session_timeout;
-      if ((App.session == null) || (sto == null) || sto <= 0) {
-        return true;
-      }
-      timeout = false;
-      ts = App.store.get('user_ts');
-      if (ts == null) {
-        ts = new Date();
-        App.store.set('user_ts', ts);
-      } else {
-        ts = new Date(ts);
-      }
-      tsn = new Date();
-      if (((tsn - ts) / 1000) > (sto * 60)) {
-        App.controller.logout();
-        return false;
-      }
-      return true;
-    };
     return App.vent.on('check:timeout', App.check_session);
   });
   App.on('start', function(options) {
@@ -2250,6 +2240,27 @@ window.App = (function() {
     App.check_loaded();
     return this.log('Done starting and running!');
   });
+  App.check_session = function() {
+    var sto, timeout, ts, tsn;
+    sto = App.config.session_timeout;
+    if ((App.session == null) || (sto == null) || sto <= 0) {
+      return true;
+    }
+    timeout = false;
+    ts = App.store.get('user_ts');
+    if (ts == null) {
+      ts = new Date();
+      App.store.set('user_ts', ts);
+    } else {
+      ts = new Date(ts);
+    }
+    tsn = new Date();
+    if (((tsn - ts) / 1000) > (sto * 60)) {
+      App.controller.logout();
+      return false;
+    }
+    return true;
+  };
   App.refresh_accounts = function(cb) {
     App.accounts = new AccountCollection();
     return App.accounts.fetch({
@@ -2303,8 +2314,37 @@ window.App = (function() {
       })(this)
     });
   };
+  App.refresh_roles = function(cb) {
+    App.roles = new RoleCollection();
+    return App.roles.fetch({
+      success: ((function(_this) {
+        return function(cb) {
+          return function(data, xhr) {
+            App.roles_loaded = true;
+            App.check_loaded();
+            if (cb != null) {
+              return cb();
+            }
+          };
+        };
+      })(this))(cb)
+    });
+  };
   App.refresh_claims = function(cb) {
-    return App.refresh_accounts(function() {});
+    App.claims = new ClaimCollection();
+    return App.claims.fetch({
+      success: ((function(_this) {
+        return function(cb) {
+          return function(data, xhr) {
+            App.claims_loaded = true;
+            App.check_loaded();
+            if (cb != null) {
+              return cb();
+            }
+          };
+        };
+      })(this))(cb)
+    });
   };
   App.save_user = function() {
     return App.vent.trigger("user:update");
@@ -2314,6 +2354,8 @@ window.App = (function() {
     App.store.remove("session");
     App.session = null;
     App.accounts = null;
+    App.roles = null;
+    App.claims = null;
     return App.router.navigate('login', {
       trigger: true
     });
@@ -2438,6 +2480,12 @@ AppController = (function(superClass) {
   AppController.prototype.mgaccounts = function() {
     var dl;
     App.log('route:mgaccounts');
+    if (!App.session.check_role('admin')) {
+      App.router.navigate('', {
+        trigger: true
+      });
+      return;
+    }
     dl = this.set_main_layout();
     dl.show_content({
       title: 'Manage Accounts',
@@ -2454,6 +2502,12 @@ AppController = (function(superClass) {
   AppController.prototype.mgpermissions = function() {
     var dl;
     App.log('route:mgpermissions');
+    if (!App.session.check_role('admin')) {
+      App.router.navigate('', {
+        trigger: true
+      });
+      return;
+    }
     dl = this.set_main_layout();
     dl.show_content({
       title: 'Manage Permissions',
@@ -3223,7 +3277,7 @@ _.extend(Marionette.View.prototype, {
         return ch + "</select></div>";
       },
       roleSelector: function(arg) {
-        var c, cls, i, id, j, label, lbl, len, len1, r, ref, rh, roles, sel, sid, site_id, txt, value;
+        var c, cls, i, id, j, k, label, lbl, len, len1, len2, r, ref, rh, roles, sel, selected, sid, site_id, txt, v, value;
         id = arg.id, label = arg.label, value = arg.value, site_id = arg.site_id, cls = arg.cls;
         c = 'form-group';
         c = cls != null ? c + " " + cls : c;
@@ -3245,7 +3299,17 @@ _.extend(Marionette.View.prototype, {
         for (j = 0, len1 = roles.length; j < len1; j++) {
           r = roles[j];
           txt = r.get('name');
-          sel = (value != null) && ("" + value) === ("" + r.id) ? 'selected' : '';
+          selected = false;
+          if (value != null) {
+            for (k = 0, len2 = value.length; k < len2; k++) {
+              v = value[k];
+              if (v === r.id) {
+                selected = true;
+                break;
+              }
+            }
+          }
+          sel = selected ? 'selected="selected"' : '';
           rh += "<option value='" + r.id + "' " + sel + ">" + txt + "</option>";
         }
         return rh + "</select></div>";
@@ -3897,6 +3961,9 @@ Session = (function(superClass) {
   };
 
   Session.load_dashboards = function(success) {
+    if (App.session == null) {
+      return;
+    }
     App.dashboards = new DashboardCollection({
       userId: App.session.id
     });
@@ -4142,7 +4209,7 @@ SiteCollection = (function(superClass) {
 module.exports = SiteCollection;
 
 },{"./_base_collection":9,"./site":19}],21:[function(require,module,exports){
-var BaseModel, ClaimCollection, DashboardCollection, User,
+var BaseModel, ClaimCollection, DashboardCollection, RoleCollection, User,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4152,6 +4219,8 @@ BaseModel = require('./_base');
 DashboardCollection = require('./dashboard_collection');
 
 ClaimCollection = require('./claim_collection');
+
+RoleCollection = require('./role_collection');
 
 User = (function(superClass) {
   extend(User, superClass);
@@ -4166,7 +4235,8 @@ User = (function(superClass) {
     lastName: null,
     settings: {},
     claims: [],
-    dashboards: []
+    dashboards: [],
+    roles: []
   };
 
   User.prototype.save = function(attrs, options) {
@@ -4177,49 +4247,115 @@ User = (function(superClass) {
   };
 
   User.prototype.persist = function() {
-    var d, dashes, i, len, ref;
+    var c, claims, d, dashes, i, j, k, len, len1, len2, r, ref, ref1, ref2, roles;
     dashes = [];
     ref = this.dashboards.models;
     for (i = 0, len = ref.length; i < len; i++) {
       d = ref[i];
       dashes.push(d.id);
     }
-    return this.attributes["dashboards"] = dashes;
+    this.attributes["dashboards"] = dashes;
+    roles = [];
+    ref1 = this.roles.models;
+    for (j = 0, len1 = ref1.length; j < len1; j++) {
+      r = ref1[j];
+      roles.push(r.id);
+    }
+    this.attributes["roles"] = roles;
+    claims = [];
+    ref2 = this.claims.models;
+    for (k = 0, len2 = ref2.length; k < len2; k++) {
+      c = ref2[k];
+      claims.push(c.id);
+    }
+    this.attributes["claims"] = claims;
+    return this;
+  };
+
+  User.prototype.set_properties = function() {
+    var c, claims, i, j, len, len1, r, ref, ref1, roles;
+    this.dashboards = new DashboardCollection(this.get('dashboards'));
+    this.dashboards.on("update", this.persist);
+    this.dashboards.on("change", this.persist);
+    claims = [];
+    ref = this.get('claims');
+    for (i = 0, len = ref.length; i < len; i++) {
+      c = ref[i];
+      claims.push({
+        _id: c
+      });
+    }
+    this.claims = new ClaimCollection(claims);
+    this.claims.on("update", this.persist);
+    this.claims.on("change", this.persist);
+    roles = [];
+    ref1 = this.get('roles');
+    for (j = 0, len1 = ref1.length; j < len1; j++) {
+      r = ref1[j];
+      roles.push({
+        _id: r
+      });
+    }
+    this.roles = new RoleCollection(roles);
+    this.roles.on("update", this.persist);
+    return this.roles.on("change", this.persist);
   };
 
   function User(config) {
     this.persist = bind(this.persist, this);
-    var c, typeIsArray;
-    typeIsArray = Array.isArray || function(value) {
-      return {}.toString.call(value) === '[object Array]';
-    };
     User.__super__.constructor.call(this, config);
-    this.dashboards = new DashboardCollection(this.get('dashboards'));
-    this.dashboards.on("update", this.persist);
-    this.dashboards.on("change", this.persist);
-    c = this.get('claims');
-    c = typeIsArray(c) ? c : [];
-    this.claims = new ClaimCollection(c);
-    this.claims.on("update", this.persist);
-    this.claims.on("change", this.persist);
+    this.set_properties();
+    this.on("change:claims", this.set_properties);
+    this.on("change:roles", this.set_properties);
+    this.on("change:dashboards", this.set_properties);
     this;
   }
 
   User.prototype.check_claim = function(claim, site) {
-    var c, i, len, ref, s, sid;
+    var ac, i, j, len, len1, ref, ref1, s, sid, uc;
     s = site != null ? OPCManager.get_site(site) : null;
     sid = s != null ? s.id : null;
-    ref = App.session.claims;
+    if (App.claims == null) {
+      return false;
+    }
+    ref = App.claims.models;
     for (i = 0, len = ref.length; i < len; i++) {
-      c = ref[i];
-      if (c.get('name') === claim && (((site != null) && (c.siteId != null) && sid === c.siteId) || ((site == null) && (c.siteId == null)))) {
-        return true;
+      ac = ref[i];
+      if ((claim === ac.get('name') || claim === ac.id) && (site === ac.get('siteId'))) {
+        ref1 = this.claims.models;
+        for (j = 0, len1 = ref1.length; j < len1; j++) {
+          uc = ref1[j];
+          if (ac.id === uc.id) {
+            return true;
+          }
+        }
+        break;
       }
     }
     return false;
   };
 
   User.prototype.check_role = function(role, site) {
+    var ar, i, j, len, len1, ref, ref1, s, sid, ur;
+    s = site != null ? OPCManager.get_site(site) : null;
+    sid = s != null ? s.id : null;
+    if (App.roles == null) {
+      return false;
+    }
+    ref = App.roles.models;
+    for (i = 0, len = ref.length; i < len; i++) {
+      ar = ref[i];
+      if ((role === ar.get('name') || role === ar.id) && (site === ar.get('siteId'))) {
+        ref1 = this.roles.models;
+        for (j = 0, len1 = ref1.length; j < len1; j++) {
+          ur = ref1[j];
+          if (ar.id === ur.id) {
+            return true;
+          }
+        }
+        break;
+      }
+    }
     return false;
   };
 
@@ -4229,7 +4365,7 @@ User = (function(superClass) {
 
 module.exports = User;
 
-},{"./_base":8,"./claim_collection":13,"./dashboard_collection":15}],22:[function(require,module,exports){
+},{"./_base":8,"./claim_collection":13,"./dashboard_collection":15,"./role_collection":17}],22:[function(require,module,exports){
 var BaseCollection, User, UserCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4821,6 +4957,7 @@ DashboardLayout = (function(superClass) {
   };
 
   DashboardLayout.prototype.onShow = function() {
+    var pck;
     this.headerview = new DashboardHeaderView({
       model: App.session
     });
@@ -4829,8 +4966,13 @@ DashboardLayout = (function(superClass) {
       collection: App.dashboards
     });
     this.side.show(this.sideview);
-    this.toolview = new DashboardToolView();
-    this.tool.show(this.toolview);
+    pck = App.session.check_role('admin');
+    if (pck) {
+      this.toolview = new DashboardToolView();
+      this.tool.show(this.toolview);
+    } else {
+      $("#toolsmenu").hide();
+    }
     this.footerview = new DashboardFooterView();
     this.footer.show(this.footerview);
     App.AdminLTE_lib.reset();
@@ -6750,20 +6892,20 @@ UserView = (function(superClass) {
   };
 
   UserView.prototype.toggle_edit = function(rw) {
-    var acc, i, j, len, len1, ref, ref1, roles_global, s;
+    var acc, i, j, len, len1, ref, ref1, roles, s;
     $(this.el).toggleClass('rw', rw);
     if (rw) {
-      roles_global = this.model.get('roles_global');
-      this.$('select#roles_global').val(roles_global);
+      roles = this.model.get('roles');
       ref = App.accounts.models;
       for (i = 0, len = ref.length; i < len; i++) {
         acc = ref[i];
         ref1 = acc.sites.models;
         for (j = 0, len1 = ref1.length; j < len1; j++) {
           s = ref1[j];
-          this.$("select#roles_" + s.id).val(this.model.get("roles_" + s.id));
+          this.$("select#roles_" + s.id).val(roles);
         }
       }
+      this.$('select#roles_global').val(roles);
       return this.$('select').chosen();
     }
   };
@@ -6860,7 +7002,9 @@ UserView = (function(superClass) {
     this.$('select.roleselect').each(function() {
       var v;
       v = $(this).val();
-      return roles = roles.concat(v);
+      if ((v != null) && v.length > 0) {
+        return roles = roles.concat(v);
+      }
     });
     this.model.set('roles', roles);
     return this.model.save(null, {
@@ -7184,6 +7328,7 @@ module.exports = ProfileView;
 
 },{"../../common/uiutils":7}],53:[function(require,module,exports){
 var LoginView, Marionette, Session, UIUtils,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -7197,13 +7342,17 @@ LoginView = (function(superClass) {
   extend(LoginView, superClass);
 
   function LoginView() {
+    this.iforgot = bind(this.iforgot, this);
+    this.reset = bind(this.reset, this);
     return LoginView.__super__.constructor.apply(this, arguments);
   }
 
   LoginView.prototype.template = "login";
 
   LoginView.prototype.events = {
-    'submit form': 'login'
+    'submit form': 'login',
+    'click #iforgot': 'iforgot',
+    'click #reset': 'reset'
   };
 
   LoginView.prototype.ui = {
@@ -7211,7 +7360,22 @@ LoginView = (function(superClass) {
     password: "input#password",
     remember: "input#remember",
     login: "button#login",
-    acontainer: "#alert-container"
+    acontainer: "#alert-container",
+    loginform: "#loginform",
+    forgotform: "#forgotform",
+    forgotemail: "#forgotemail",
+    iforgot: "#iforgot",
+    reset: '#reset'
+  };
+
+  LoginView.prototype.reset = function(e) {
+    return e.preventDefault();
+  };
+
+  LoginView.prototype.iforgot = function(e) {
+    e.preventDefault();
+    this.ui.loginform.hide();
+    return this.ui.forgotform.show();
   };
 
   LoginView.prototype.set_errors = function() {

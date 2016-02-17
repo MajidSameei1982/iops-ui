@@ -4,9 +4,9 @@ Marionette = require('marionette')
 
 class Router extends Marionette.AppRouter
   appRoutes:
-    ''  						  : 'home'
-    'login' 				  : 'login'
-    'logout'				  :	'logout'
+    ''  			  : 'home'
+    'login' 		  : 'login'
+    'logout'		  :	'logout'
     'profile'         : 'profile'
     'mgaccounts'      : 'mgaccounts'
     'mgpermissions'   : 'mgpermissions'
@@ -18,7 +18,6 @@ class Router extends Marionette.AppRouter
   onRoute: (name, path, args)->
     # always allow login and logout paths
     return true if (path == 'login' || path == 'logout' || path == 'flush')
-
     App.check_session()
     
     # check for session on all others

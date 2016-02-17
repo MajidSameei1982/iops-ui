@@ -74,6 +74,9 @@ class AppController extends Object
 
   mgaccounts: ()->
     App.log('route:mgaccounts')
+    if !App.session.check_role('admin')
+      App.router.navigate('', {trigger:true})
+      return
     dl = @set_main_layout()
     dl.show_content
       title: 'Manage Accounts'
@@ -86,6 +89,9 @@ class AppController extends Object
 
   mgpermissions: ()->
     App.log('route:mgpermissions')
+    if !App.session.check_role('admin')
+      App.router.navigate('', {trigger:true})
+      return
     dl = @set_main_layout()
     dl.show_content
       title: 'Manage Permissions'
@@ -98,7 +104,6 @@ class AppController extends Object
   dashboard: (id)->
     App.log('route:dashboard')
     id = if id? then id else null
-
     show_dash = ()=>
       dl = @set_main_layout()
       if dl.collection?
@@ -115,7 +120,6 @@ class AppController extends Object
         dl.empty()
       App.current_dash = did
       App.vent.trigger "show:dashboard", did
-
 
     if !App.dashboards?
       Session.load_dashboards ()=>

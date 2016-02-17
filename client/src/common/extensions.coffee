@@ -154,6 +154,12 @@ _.extend Marionette.View::,
       
       for r in roles
         txt = r.get('name')
-        sel = if value? && "#{value}" == "#{r.id}" then 'selected' else ''
+        selected = false
+        if value?
+          for v in value
+            if v == r.id
+              selected = true
+              break
+        sel = if selected then 'selected="selected"' else ''
         rh += "<option value='#{r.id}' #{sel}>#{txt}</option>"
       "#{rh}</select></div>"  
