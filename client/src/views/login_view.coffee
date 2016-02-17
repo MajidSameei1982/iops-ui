@@ -47,7 +47,8 @@ class LoginView extends Marionette.ItemView
       email:@ui.email.val()
       password: @ui.password.val()
       success: (a,b,c)->
-        App.router.navigate('',{trigger:true})
+        App.refresh_accounts ()->
+          App.router.navigate('',{trigger:true})
       error: ()=>
         @show_login_error()
         @disable_ui(false)

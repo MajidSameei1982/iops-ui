@@ -23,7 +23,7 @@ class DashboardContentView extends Marionette.LayoutView
     # set page title/subtitle
     t = if @title? then @title else 'Foo'
     if @center_view.model instanceof Dashboard
-      t = @center_view.model.get('title')
+      t = @center_view.model.get('name')
     st = if @subtitle? then @subtitle else ''
     if @icon? then t = "<i class='fa fa-#{@icon}'></i> #{t}" 
     t = "#{t} <small>#{st}</small>"

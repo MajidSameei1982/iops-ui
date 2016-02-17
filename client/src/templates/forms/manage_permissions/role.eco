@@ -8,8 +8,8 @@
     <span class='crud' id='delete_role'><i class="fa fa-times-circle" title='Delete Role'></i></span>
   </span>
   <span id='role_buttons'>
-    <button class="btn btn-xs" id='cancel'><i class="fa fa-ban"></i> CANCEL</button>
-    <button class="btn btn-xs btn-success" id='save'><i class="fa fa-check-square"></i> SAVE</button>
+    <button class="btn btn-xs" id='cancel' tabindex=-1><i class="fa fa-ban"></i> CANCEL</button>
+    <button class="btn btn-xs btn-success" id='save' tabindex=-1><i class="fa fa-check-square"></i> SAVE</button>
   </span>
 </div>
 <div class="col-md-12" id='role_desc_container'>
@@ -17,5 +17,5 @@
   <input type='text' id='role_desc' value='<%- @description%>' size='50' placeholder='Role Description'/>
 </div>
 <div class="col-md-12" id='role_claims_container'>
-  <%- @claimSelector({id:'role_claims', label:'Permissions', value:null, site_id:@site_id, global:@global})%>
+  <%- @claimSelector({id:'role_claims', label:'Permissions', value:@claims, site_id:@siteId})%>
 </div>

@@ -9,6 +9,13 @@ class Claim extends BaseModel
     name: ''
     description: ''
 
+  constructor: (config, opts)->
+    # if config? && config.accountId?
+    #   @urlRoot = "/sites/#{config.accountId}/claims"
+    # else
+    #   @urlRoot = '/claims'
+    super(config, opts)
+
 # ----------------------------------
 
 module.exports = Claim

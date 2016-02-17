@@ -7,10 +7,6 @@ class Session extends BaseModel
   service: 'accounts'
   urlRoot: '/login'
 
-  # constructor:(config)->
-  #   super config
-  #   @user = new User(@get('user'))
-
   initialize: ()->
     @on "change", @persist
     @persist()
@@ -27,9 +23,16 @@ class Session extends BaseModel
 
   @clear: ()->
     if App.session? then App.session.off "change"
+    App.dashboards = null
     Session.set_session() # forces clearing of token
     null
 
+  @load_dashboards : (success)->
+    App.dashboards = new DashboardCollection({userId:App.session.id})
+    App.dashboards.fetch
+      success: (data, status, xhr)=>
+        if success then success(data, status, xhr)
+    @
   # perform authorization and set session token
   @auth: ({email, password, success, error})->
     Session.clear()
@@ -39,21 +42,11 @@ class Session extends BaseModel
 
     s = (data, status, xhr)=>
       Session.set_session(App.session)
-    e = (xhr, status, error)=>
+      Session.load_dashboards(success)
+    e = (xhr, status, err)=>
       Session.clear()
-
-    # chain any existing success/failure callbacks
-    if success?
-      os = success
-      s = (data, status, xhr)=>
-        Session.set_session(App.session)
-        os(data, status, xhr)
-
-    if error?
-      oe = error
-      e = (xhr, status, error)=>
-        Session.clear()
-        oe(xhr, status, error)
+      App.dashboards = null
+      if error then error(xhr, status, err)
 
     # execute actual call
     App.session.save null,
@@ -61,10 +54,6 @@ class Session extends BaseModel
       error: e
       timeout:3000
   
-  # validate: ()->
-  #   # ? run validation against claim to ensure the session is still valid and not timed out ?
-  #   true
-
   # apply session token to header for all subsequent requests
   @set_header_token:(token)->
     $.ajaxSetup
@@ -104,14 +93,27 @@ class Session extends BaseModel
     App.session
   
   # pull a session from local storage
-  @restore: ()->
-    s = App.store.get('session')
+  @restore: (success)->
     tk = App.store.get('token')
+    if tk? then @set_header_token(tk)
+    s = App.store.get('session')
     if s?
-      if App.session? then App.session.clear()
+      if App.session? then Session.clear()
       App.session = new User(s)
-    if tk?
-      @set_header_token(tk)
+      App.session.fetch
+        success: (data, status, xhr)=>
+          if success? then success(data, status, xhr)
+          App.refresh_dashboards()
+          App.session_loaded = true
+          App.check_loaded()
+        error: ()->
+          Session.clear()
+          App.session_loaded = true
+          App.check_loaded()
+    else
+      App.dash_loaded = true
+      App.session_loaded = true
+      App.check_loaded()
     true
 
 # ----------------------------------

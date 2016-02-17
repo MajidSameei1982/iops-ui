@@ -22,6 +22,7 @@ require('./views/widgets/pbbleveldetail_widget_view')
 require('./views/widgets/pca_widget_view')
 require('./views/widgets/url_widget_view')
 require('./views/widgets/weather_widget_view')
+require('./views/widgets/config_widget_view')
 
 # ----------------------------------
 window.App = do()->
@@ -30,105 +31,55 @@ window.App = do()->
   App = window.App = new BaselineApp()
   App.AdminLTE_lib = AdminLTE_lib
   
-  Object.defineProperty App, 'current_user',
-    get: ()->
-      if App.session? then App.session else null
-
+  
   App.config = AppConfig
+  App.loaded = false
+  App.accounts_loaded = App.session_loaded = App.dash_loaded = false
+
+  App.check_loaded = ()->
+    return if App.loaded
+    if App.accounts_loaded && App.session_loaded && App.dash_loaded
+      App.loaded = true
+      if (Backbone.history) 
+        @log('Initializing OPCManager')
+        App.opc = OPCManager
+        App.opc.init(App)
+        # make app available to UI
+        $('#loading_cover').fadeOut(100, ()-> $(@).hide())
+        # set up routing and controller
+
+        @controller = new AppController()
+        @router = new Router
+          controller: @controller
+        @log('Backbone.history starting')
+        Backbone.history.start()
+
+        if !App.session? then App.controller.logout()
 
   App.on "before:start", (options)->
     @log('Starting')
     $('#loading_cover').fadeTo(0,0.8)
-    Session.restore()
     @layout = new AppLayout()
     @uiutils = UIUtils
+    
+    # refresh server data surrounding accounts
+    App.refresh_accounts ()=>
+      Session.restore()
+    # load session dashboards
+    #App.refresh_dashboards()
 
-    ### 
-      TODO: load from server - all known Accounts, claims, Roles
-    ###
-<<<<<<< HEAD
-    #App.accounts = new AccountCollection(App.store.get('accounts'))
-    App.accounts = new AccountCollection()
-    @log('Fetching account data...')
-    App.accounts.fetch
-      success:(data)=>
-        acctcnt = App.accounts.length
-        for acct in App.accounts.models
-          acct.sites.fetch
-            success: ()=>
-              acctcnt = acctcnt - 1
-              if acctcnt == 0 then App.vent.trigger('app:resources_loaded')
-      error:()=>
-        @log('ERROR LOADING ACCOUNTS')
-        App.vent.trigger('app:resources_loaded')
-
-
-=======
-    App.accounts = new AccountCollection(App.store.get('accounts'))
-    if !App.accounts? || App.accounts.models.length == 0
-      App.accounts = new AccountCollection [
-        id: 1
-        name : "Example Corporation, International"
-        isActive: true
-        sites: [
-          id: 1
-          name: "The Eastern Iowa Airport"
-          abbrev: "CID"
-          shortName: "Cedar Rapids"
-          opc: 'http://opc.iopsnow.com:58725'
-        ,
-          id: 2
-          name: 'The Newark International Airport'
-          abbrev: "EWR"
-          shortName: "Newark"
-          opc: 'http://www.opcsystems.com:58725'
-        ,
-          id: 3
-          name: 'Southwest Airlines'
-          abbrev: "DAL"
-          shortName: "Southwest"
-          opc: 'http://www.opcsystems.com:58725'
-        ,
-          id: 4
-          name: 'Open Automation Systems'
-          abbrev: "OAS"
-          shortName: "OPCSystems.NET"
-          opc: 'http://www.opcsystems.com:58725'
-        ]
-      ]
->>>>>>> 94d693ce29b33386048ca6d34899921e22faad1e
-    App.claims = new ClaimCollection(App.store.get('claims'))
-    App.roles = new RoleCollection(App.store.get('roles'))
-    App.users = new UserCollection(App.store.get('users'))
-    ###
-      END TODO:
-    ###
-
-    # connect OPCManager
-    @log('Initializing OPCManager')
-    App.opc = OPCManager
-    App.opc.init(App)
-
-    App.vent.on "app:resources_loaded", ()->
-      $('#loading_cover').fadeOut(100, ()-> $(@).hide())
-
-    # REMOVE WHEN API IS CONNECTED - persist objects locally until db is connected
+    # listen for changes on the user
     App.vent.on "user:update", ()->
       Session.save_session()
+
+    # listen for changes on the app
     App.vent.on "app:update", ()->
+      return null if !App.accounts?
       accounts = App.accounts.toJSON()
       for acc, idx in accounts
         aacc = App.accounts.models[idx]
         acc.sites = aacc.sites.toJSON()
-      App.store.set("accounts", accounts)
-      App.store.set("claims", App.claims)
-      App.store.set("roles", App.roles)
-      nuc = new UserCollection()
-      for u in App.users.models
-        if u.id? && u.id > 0 then nuc.add(u)
-      App.users = nuc
-      App.store.set("users", App.users)
-
+      
     # setup app clock
     @log('Setting system clock')
     dtfn = ()->
@@ -161,27 +112,56 @@ window.App = do()->
 
   App.on 'start', (options)->
     @log('Started')
-    if (Backbone.history) 
-      @controller = new AppController()
-      @router = new Router
-        controller: @controller
-      @log('Backbone.history starting')
-      Backbone.history.start()
+    App.check_loaded()
 
     # new up and views and render for base app here...
     @log('Done starting and running!')
+
+  App.refresh_accounts = (cb)->
+    App.accounts = new AccountCollection()
+    App.accounts.fetch
+      success:((cb) =>
+        (data, xhr)=>
+          cnt = App.accounts.models.length
+          completed = 0
+          for acct in App.accounts.models
+            acct.sites.fetch
+              success:((cb, cnt, completed) =>
+                (data, xhr)=>
+                  completed++
+                  if completed == cnt
+                    App.accounts_loaded = true
+                    App.check_loaded()
+                    #App.vent.trigger "app:update"
+                    if cb? then cb()
+                )(cb, cnt, completed)
+        )(cb)
+
+  App.refresh_dashboards = ()->
+    if !App.session? || !App.session.id?
+      App.dash_loaded = true
+      App.check_loaded()
+      Session.restore()
+      return
+    App.dashboards = new DashboardCollection({userId:App.session.id})
+    App.dashboards.fetch
+      success: (data, status, xhr)=>
+        App.dash_loaded = true
+        App.check_loaded()
+
+  App.refresh_claims = (cb)->
+    App.refresh_accounts ()->
+      # pull global claims
+      # iterate thru sites and pull claims
 
   App.save_user = ()->
     App.vent.trigger("user:update")
     
   App.flush = ()->
-    App.store.remove("user")
     App.store.remove("user_ts")
     App.store.remove("session")
     App.session = null
-    App.store.remove("claims")
-    App.store.remove("roles")
-    App.store.remove("users")
+    App.accounts = null
     App.router.navigate('login', {trigger:true})
 
   App

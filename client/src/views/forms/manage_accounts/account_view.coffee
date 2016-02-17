@@ -10,6 +10,7 @@ class AccountView extends Marionette.CompositeView
   className: 'row'
   childViewContainer: '.site_list'
   childView: SiteView
+  viewComparator: 'name'
 
   ui:
     container: '.account_container'
@@ -33,7 +34,7 @@ class AccountView extends Marionette.CompositeView
   add_site: ()->
     for site in @collection.models
       if !site.id? || site.id == 0 then return false
-    @collection.add {name: '', isActive: false, abbrev:'', shortName: ''}, { at:0 }
+    @collection.add {name: '', accountId:@model.id, isActive: false, code:'', shortName: '', serverUrl:''}, { at:0 }
 
   initialize: ()->
     @collection = this.model.sites

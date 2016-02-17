@@ -29,6 +29,8 @@ class ModalView extends Marionette.ItemView
     @model.on_cancel = o.on_cancel
     if o.type? then $(@el).removeClass('modal-primary').addClass("modal-#{o.type}")
     if o.body? then @ui.body.html(o.body)
+    if o.show_cancel == false then @$('#modal_cancel').hide()
+    if o.show_save == false then @$('#modal_save').hide()
 
   do_save: ()=>
     if @model.on_save? then @model.on_save()

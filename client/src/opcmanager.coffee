@@ -7,7 +7,7 @@ class OPCManager
 
   @create: (conn, config)->
     c = new OPC(config)
-    c.abbrev = conn
+    c.code = conn
     @connections[conn] = c
     c
 
@@ -24,14 +24,17 @@ class OPCManager
       oc.init()
     true
 
-  @get_site_code: (id)->
-    site_code = null
+  @get_site: (id)->
     if App.accounts? && App.accounts.models.length > 0
       for acc in App.accounts.models
         if acc.sites? && acc.sites.models.length > 0
           for st in acc.sites.models
-            if "#{st.id}" == "#{id}"
-              return st.get('abbrev')
+            if "#{st.id}" == "#{id}" then return st
+    null
+
+  @get_site_code: (id)->
+    site = @get_site(id)
+    if site? then return site.get('code')
     null
 
   @add_tags: (conn, tags)->
@@ -77,6 +80,7 @@ class OPCManager
     c
 
   @rem_ref: (conn)=>
+    return 0 if !conn?
     c = @refs[conn]
     c = if c? then c-1 else 0
     if c <= 0
@@ -91,21 +95,21 @@ class OPCManager
   @init: (app)->
     for account in app.accounts.models
       for site in account.sites.models
-        opc_addr = site.get("opc")
-        opc_rate = site.get("opc_rate")
-        if !opc_rate? then opc_rate = 5
-        opc_rate = parseInt(opc_rate) * 1000
-        abbrev = site.get("abbrev")
-        OPCManager.create abbrev,
+        siteUrl = site.get("serverUrl")
+        refreshRate = site.get("refreshRate")
+        if !refreshRate? then refreshRate = 5
+        refreshRate = parseInt(refreshRate) * 1000
+        code = site.get("code")
+        OPCManager.create code,
           token:'7e61b230-481d-4551-b24b-ba9046e3d8f2'
           #interval:5000
           max_tags_per_msg: 50
           max_callbacks: 10
           callback_timeout: 10000
           refresh_callback: (data)->
-            OPCManager.notify @.abbrev, data
-          serverURL : opc_addr
-          interval: opc_rate
+            OPCManager.notify @code, data
+          serverURL : siteUrl
+          interval: refreshRate
           auto_start : false
       
 # ----------------------------------

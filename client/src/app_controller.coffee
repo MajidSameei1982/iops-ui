@@ -2,6 +2,7 @@ Marionette = require('marionette')
 LoginView = require('./views/login_view')
 ReportsView = require('./views/reports_view')
 User = require('./models/user')
+Session = require('./models/session')
 ProfileView = require('./views/forms/profile_view')
 AccountsView = require('./views/forms/manage_accounts/accounts_view')
 PermissionsLayout = require('./views/forms/manage_permissions/permissions_layout')
@@ -25,7 +26,7 @@ class AppController extends Object
       @logout() # fource logout in case we fall into here
       return null
     dl = new DashboardLayout
-      collection: App.session.dashboards
+      collection: App.dashboards
     App.layout.center_region.show(dl)
     dl
 
@@ -55,7 +56,7 @@ class AppController extends Object
 
   logout: ()->
     App.log('route:logout')
-    if App.session? then App.session.clear()
+    if App.session? then Session.clear()
     App.router.navigate('login', {trigger:true})
     @
 
@@ -96,21 +97,31 @@ class AppController extends Object
 
   dashboard: (id)->
     App.log('route:dashboard')
-    id = if id? then parseInt(id) else null
-    dl = @set_main_layout()
-    if dl.collection? && id?
-      first = dl.collection.first()
-      dash = dl.collection.where({id:id})
-      dash = if dash.length > 0 then dash[0] else null
-    dash = if !dash? then first else dash
-    did = if dash? then dash.id else null
-    App.router.navigate("dashboard#{if did? then '/'+did else ''}", {trigger:false})
-    if dash? 
-      dl.show_widgets(dash)
+    id = if id? then id else null
+
+    show_dash = ()=>
+      dl = @set_main_layout()
+      if dl.collection?
+        first = dl.collection.first()
+        if id?
+          dash = dl.collection.where({_id:id})
+          dash = if dash.length > 0 then dash[0] else null
+      dash = if !dash? then first else dash
+      did = if dash? then dash.id else null
+      App.router.navigate("dashboard#{if did? then '/'+did else ''}", {trigger:false})
+      if dash? 
+        dl.show_widgets(dash)
+      else
+        dl.empty()
+      App.current_dash = did
+      App.vent.trigger "show:dashboard", did
+
+
+    if !App.dashboards?
+      Session.load_dashboards ()=>
+        show_dash()
     else
-      dl.empty()
-    App.current_dash = did
-    App.vent.trigger "show:dashboard", did
+      show_dash()
     @
 
 # ----------------------------------

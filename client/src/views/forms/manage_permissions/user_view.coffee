@@ -14,17 +14,18 @@ class UserView extends Marionette.ItemView
     'click #user_buttons>#save'    : 'save'
 
   bindings:
-    firstName: '#firstname'
-    lastName: '#lastname'
+    firstName: '#firstName'
+    lastName: '#lastName'
     email: '#email'
-    phone1: '#phone1'
-    phone2: '#phone2'
-    roles_global: '#roles_global'
+    #password: '#password'
+    #roles_global: '#roles_global'
 
   ui:
-    firstName: 'input#firstname'
-    lastName: 'input#lastname'
+    firstName: 'input#firstName'
+    lastName: 'input#lastName'
     email: 'input#email'
+    phone1: 'input#phone1'
+    phone2: 'input#phone2'
     pw: 'input#password'
     pwc: 'input#password_confirmation'
     
@@ -54,14 +55,25 @@ class UserView extends Marionette.ItemView
     @render()
 
   delete: ()->
+    if @model.id == App.session.id
+      App.uiutils.showModal
+        title: 'Cannot Delete Your Account!'
+        icon: 'warning'
+        type: 'danger'
+        body: 'Sorry, you cannot delete your own account. If you still wish to delete your account, please ask another system admin to log in and delete it.'
+        show_cancel: false
+      return
+
     App.uiutils.showModal
       title: 'Delete User?'
       icon: 'warning'
       type: 'warning'
-      body: 'Are you sure you want to delete this User? This cannot be undone and all associated data will be lost21.'
+      body: 'Are you sure you want to delete this User? This cannot be undone and all associated data will be lost.'
       on_save: ()=>
-        @model.collection.remove(@model)
-        App.vent.trigger "app:update"
+        @model.destroy
+          success:()=>
+            @model.collection.remove(@model)
+            App.vent.trigger "app:update"
 
   valid_email: (eml)->
     return false if !eml? || eml.trim() == ''
@@ -89,15 +101,20 @@ class UserView extends Marionette.ItemView
     res
 
   save: ()->
-    # TODO: FIRE MODEL SAVE
     return if !@validate()
-    if !@model.id? then @model.set('id', Math.floor(Math.random() * 10000)+1)
-    @model.set('roles_global', @$('select#roles_global').val())
-    for acc in App.accounts.models
-      for s in acc.sites.models
-        @model.set("roles_#{s.id}", @$("select#roles_#{s.id}").val())
-    App.vent.trigger "app:update"
-    @render()
+    settings = @model.get('settings') || {}
+    settings = _.extend(settings)
+    settings.phone1 = @ui.phone1.val()
+    settings.phone2 = @ui.phone2.val()
+    @model.set('settings', settings)
+    roles = []
+    @$('select.roleselect').each ()->
+      v = $(this).val()
+      roles = roles.concat v
+    @model.set('roles', roles)
+    @model.save null,
+      success:()=>
+        @render()
  
   onRender: ()->
     @toggle_edit(false);
@@ -106,6 +123,9 @@ class UserView extends Marionette.ItemView
   onShow: ()->
     if (!@model.id? || @model.id < 1)
       @$("#delete").hide()
+      settings = @model.get('settings') || {}
+      if settings.phone1 then @ui.phone1.val(settings.phone1)
+      if settings.phone2 then @ui.phone2.val(settings.phone2)
       @show_edit()
     App.new_user = @model
 

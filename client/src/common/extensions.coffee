@@ -42,9 +42,7 @@ _.extend Marionette.View::,
       cls = cls.join(' ')
       "<div class='form-group #{cls}' for='#{id}'>#{label}#{field}#{feedback}</div>"
 
-
-    siteSelector: ({id, label, value})->
-      # TODO: check current user access to sites
+    siteSelector: ({id, label, site})->
       sh = """
         <div class='form-group' for='#{id}'>
           <label>#{label}</label>
@@ -55,14 +53,67 @@ _.extend Marionette.View::,
           if acc.sites? && acc.sites.models.length > 0
             for s in acc.sites.models
               txt = s.get('name')
-              code = s.get('abbrev')
+              code = s.get('code')
               if code? && code != '' then txt = "#{txt} (#{code})"
-              sel = if value? && "#{value}" == "#{s.id}" then 'selected' else ''
+              sel = if site? && "#{site}" == "#{s.id}" then 'selected' else ''
               sh += "<option value='#{s.id}' #{sel}>#{txt}</option>"
       "#{sh}</select></div>"  
 
-    claimSelector: ({id, label, value, site_id, global, cls})->
-      # TODO: check current user access to sites
+    terminalSelector: ({id, label, site, terminal})->
+      sh = """
+        <div class='form-group' for='#{id}'>
+          <label>#{label}</label>
+          <select id='#{id}' class='form-control' data-placeholder='Select a Terminal'>
+      """
+      s = OPCManager.get_site(site)
+      if s?
+        settings = s.get('settings') || {}
+        terminals = settings.zones || {}
+      for t of terminals
+        sel = if terminal? && "#{terminal}" == "#{t}" then 'selected' else ''
+        sh += "<option value='#{t}' #{sel}>#{t}</option>"
+      "#{sh}</select></div>"
+
+    zoneSelector: ({id, label, site, terminal, zone})->
+      sh = """
+        <div class='form-group' for='#{id}'>
+          <label>#{label}</label>
+          <select id='#{id}' class='form-control' data-placeholder='Select a Zone'>
+      """
+      s = OPCManager.get_site(site)
+      if s?
+        settings = s.get('settings') || {}
+        terminals = settings.zones || {}
+      for t of terminals
+        continue if t != terminal
+        term = terminals[t]
+        for z of term
+          sel = if zone? && "#{zone}" == "#{z}" then 'selected' else ''
+          sh += "<option value='#{z}' #{sel}>#{z}</option>"
+      "#{sh}</select></div>"
+
+    gateSelector: ({id, label, site, terminal, zone, gate})->
+      sh = """
+        <div class='form-group' for='#{id}'>
+          <label>#{label}</label>
+          <select id='#{id}' class='form-control' data-placeholder='Select a Gate'>
+      """
+      s = OPCManager.get_site(site)
+      if s?
+        settings = s.get('settings') || {}
+        terminals = settings.zones || {}
+      for t of terminals
+        continue if t != terminal
+        term = terminals[t]
+        for z of term
+          continue if z != zone
+          zn = term[z]
+          for g of zn
+            sel = if gate? && "#{gate}" == "#{g}" then 'selected' else ''
+            sh += "<option value='#{g}' #{sel}>#{g}</option>"
+      "#{sh}</select></div>"
+
+    claimSelector: ({id, label, value, site_id, cls})->
       c = 'form-group'
       c = if cls? then "#{c} #{cls}" else c
       ch = """
@@ -70,41 +121,38 @@ _.extend Marionette.View::,
           <label>#{label}</label>
           <select id='#{id}' class='form-control' multiple data-placeholder='Select Permissions'>
       """
-      claims = App.claims
-      if !global
-        if App.accounts? && App.accounts.models.length > 0
-          for acc in App.accounts.models
-            if acc.sites? && acc.sites.models.length > 0
-              for s in acc.sites.models
-                if s.id == site_id
-                  claims = s.claims
-                  break
-      for c in claims.models
+      claims = []
+      if App.claims?
+        for c in App.claims.models
+          sid = c.get("siteId")
+          sid = if !sid? then null else sid
+          site_id = if !site_id? then null else site_id
+          if site_id == sid then claims.push(c)
+
+      for c in claims
         txt = c.get('name')
         sel = if value? && "#{value}" == "#{c.id}" then 'selected' else ''
         ch += "<option value='#{c.id}' #{sel}>#{txt}</option>"
       "#{ch}</select></div>"  
 
-    roleSelector: ({id, label, value, site_id, global, cls})->
-      # TODO: check current user access to sites
+    roleSelector: ({id, label, value, site_id, cls})->
       c = 'form-group'
       c = if cls? then "#{c} #{cls}" else c
-      lbl = if label? then "<label>#{label}</label>" else ''
+      lbl = if label? then "<label>#{label}</label><br/>" else ''
       rh = """
         <div class='#{c}' for='#{id}'>
           #{lbl}
-          <select id='#{id}' class='form-control' multiple data-placeholder='Select Roles'>
+          <select id='#{id}' class='form-control roleselect' multiple data-placeholder='Select Roles'>
       """
-      roles = App.roles
-      if !global
-        if App.accounts? && App.accounts.models.length > 0
-          for acc in App.accounts.models
-            if acc.sites? && acc.sites.models.length > 0
-              for s in acc.sites.models
-                if s.id == site_id
-                  roles = s.roles
-                  break
-      for r in roles.models
+      roles = []
+      if App.roles?
+        for r in App.roles.models
+          sid = r.get("siteId")
+          sid = if !sid? then null else sid
+          site_id = if !site_id? then null else site_id
+          if site_id == sid then roles.push(r)
+      
+      for r in roles
         txt = r.get('name')
         sel = if value? && "#{value}" == "#{r.id}" then 'selected' else ''
         rh += "<option value='#{r.id}' #{sel}>#{txt}</option>"

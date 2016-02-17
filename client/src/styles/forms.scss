@@ -15,6 +15,10 @@
 	}
 }
 
+.button, .link {
+	cursor:pointer;
+}
+
 .nav-tabs-custom {
 	background-color: transparent !important;
 	box-shadow: none;
@@ -74,4 +78,12 @@ ul.chosen-results {
 		border-color: #3c8dbc !important;
 		box-shadow: none !important;
 	}
+}
+
+.chosen-container.chosen-container-single {
+	width:auto !important;
+}
+
+.chosen-container.chosen-container-multi {
+	width:100% !important;
 }
