@@ -26,7 +26,7 @@ class PbbWidgetView extends WidgetView
   tags:
     #Grid Tags
     pbb_status :        'PBB.AIRCRAFTDOCKEDCALCULATION'
-    pbb_aircraft :        'PBB.AIRCRAFTSTATUS'
+    pbb_aircraft :      'PBB.AIRCRAFTSTATUS'
     pbb_autolevel :     'PBB.AUTOLEVELMODEFLAG'
     pbb_canopy:         'PBB.Warning.CANOPYDOWN'
     pbb_acffloor:       'PBB.ACFFLOOR'
@@ -62,8 +62,14 @@ class PbbWidgetView extends WidgetView
 
       gate = if s.display_prefix? then "#{s.display_prefix}#{s.gate}" else '#{s.gate}'
       
+      # Temporary Client Eval until Settings are updated with the IsCloudServer (or equivelent flag)
+      switch @site_code
+        when "CID" then IsCloudServer = true
+        else IsCloudServer = false
+
       # build settings      
-      @prefix = "RemoteSCADAHosting.Airport-#{@site_code}.Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{gate}."
+      @prefix = if IsCloudServer then "RemoteSCADAHosting.Airport-#{@site_code}." else ""
+      @prefix = "#{@prefix}Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{gate}."
       tags = []
       for tg of @tags
         t = @tags[tg]
@@ -76,7 +82,7 @@ class PbbWidgetView extends WidgetView
       
       lbl = "Gate #{gate}"
       @ui.wtitle.html(lbl)
-      @$('#gate_label #txt').html(lbl)
+      @$('#display_label #txt').html(lbl)
 
       @opc =  App.opc.connections[@site_code]
       @set_descriptions(true)

@@ -5,7 +5,7 @@ WidgetView = require('../dashboard/widget_view')
 # ----------------------------------
 class GpuWidgetView extends WidgetView
   template:   "widgets/gpu_widget"
-  className: 'widget-outer box box-primary gate_widget'
+  className: 'widget-outer box box-primary gpu_widget'
   ui:
     terminal:       'input#terminal'
     zone:           'input#zone'
@@ -25,22 +25,30 @@ class GpuWidgetView extends WidgetView
 
   tags:
     #Grid Tags
-    pbb_status :        'PBB.AIRCRAFTDOCKEDCALCULATION'
-    pbb_aircraft :        'PBB.AIRCRAFTSTATUS'
-    pbb_autolevel :     'PBB.AUTOLEVELMODEFLAG'
-    pbb_canopy:         'PBB.Warning.CANOPYDOWN'
-    pbb_acffloor:       'PBB.ACFFLOOR'
-    pbb_cablehoist:     'PBB.HZ400CABLEDEPLOYED'
-    pbb_estop:          'PBB.Alarm.E_STOP'
-    pbb_limits:         'PBB.400HZ Pit'
-    pbb_docktime:       'PBB.DOCKTIME'
-    pbb_undocktime:     'PBB.UNDOCKTIME'
-    
-    #Processing Tags
-    pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
-    pbb_has_warnings :  'Warning._HasWarnings'
-    pbb_has_alarms :    'Alarm._HasAlarms'
-    
+    gpu_gpustatus:                  'GPU.GPUSTATUS'
+    gpu_contstatus:                 'GPU.CONTSTATUS'
+    gpu_bypass:                     'GPU.ByPass'
+    gpu_raoutavg:                   'GPU.RAOUTAVG'
+    gpu_rvoutavg:                   'GPU.RVOUTAVG'
+    gpu_ravinavg:                   'GPU.RAVINAVG'
+    gpu_rvinavg:                    'GPU.RVINAVG'
+    gpu_frequency:                  'GPU.Frequency'
+    gpu_pm_output_phasea_i:         'GPU.PM_OUTPUT_PHASEA_I'
+    gpu_pm_output_phaseb_i:         'GPU.PM_OUTPUT_PHASEB_I'
+    gpu_pm_output_phasec_i:         'GPU.PM_OUTPUT_PHASEC_I'
+    gpu_pm_output_phasea_v:         'GPU.PM_OUTPUT_PHASEA_V'
+    gpu_pm_output_phaseb_v:         'GPU.PM_OUTPUT_PHASEB_V'
+    gpu_pm_output_phasec_v:         'GPU.PM_OUTPUT_PHASEC_V'
+    gpu_pm_input_phasea_i:          'GPU.PM_INPUT_PHASEA_I'
+    gpu_pm_input_phaseb_i:          'GPU.PM_INPUT_PHASEB_I'
+    gpu_pm_input_phasec_i:          'GPU.PM_INPUT_PHASEC_I'
+    gpu_pm_input_phasea_v:          'GPU.PM_INPUT_PHASEA_V'
+    gpu_pm_input_phaseb_v:          'GPU.PM_INPUT_PHASEB_V'
+    gpu_pm_input_phasec_v:          'GPU.PM_INPUT_PHASEC_V'
+    gpu_gpustatus_triger_data_log:  'GPU.GPUSTATUS_TRIGER_DATA_LOG'
+    gpu_on_1:                       'GPU.ON 1'
+    gpu_on_2:                       'GPU.ON 2'
+
   modelEvents:
     "change" : "update"
 
@@ -62,8 +70,14 @@ class GpuWidgetView extends WidgetView
 
       gate = if s.display_prefix? then "#{s.display_prefix}#{s.gate}" else '#{s.gate}'
       
+      # Temporary Client Eval until Settings are updated with the IsCloudServer (or equivelent flag)
+      switch @site_code
+        when "CID" then IsCloudServer = true
+        else IsCloudServer = false
+
       # build settings      
-      @prefix = "RemoteSCADAHosting.Airport-#{@site_code}.Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{gate}."
+      @prefix = if IsCloudServer then "RemoteSCADAHosting.Airport-#{@site_code}." else ""
+      @prefix = "#{@prefix}Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{gate}."
       tags = []
       for tg of @tags
         t = @tags[tg]
@@ -74,9 +88,9 @@ class GpuWidgetView extends WidgetView
       @watch_updates(@site_code)
       OPCManager.add_ref(@site_code)
       
-      lbl = "Gate #{gate}"
+      lbl = "GPU #{gate} - Details"
       @ui.wtitle.html(lbl)
-      @$('#gate_label #txt').html(lbl)
+      @$('#gpu_label #txt').html(lbl)
 
       @opc =  App.opc.connections[@site_code]
       @set_descriptions(true)
@@ -143,6 +157,14 @@ class GpuWidgetView extends WidgetView
     if fc? then el.toggleClass(fc, !v)
     @mark_bad_data @tags[tag], el
 
+  render_value_row: (tag, IsNumeric, percision, suffix)->
+    if @vals[tag]? && @vals[tag] != '' 
+      set_value = if IsNumeric then parseFloat(@vals[tag]).toFixed(percision) else @vals[tag] 
+    else
+      set_value = ' -- ' 
+    suffix = if suffix? then " #{suffix}" else ""
+    el = @$("##{tag}").html("#{set_value}#{suffix}")
+    @mark_bad_data @tags[tag], el
 
   # process data and update the view
   data_update: (data)=>
@@ -150,56 +172,75 @@ class GpuWidgetView extends WidgetView
     for tg of @tags
       @vals[tg] = @get_value(@tags[tg])
 
-    # DOCKED
-    v = @get_bool(@vals.pbb_status)
-    txt = if v then "Docked" else "Undocked"
-    @$("#pbb_docked_lbl").html('PBB Status')
-    el = @$("#pbb_docked").html(txt).toggleClass('ok', v)
-    @mark_bad_data @tags.pbb_status, el
-    
-    # PBB STATUS
-    @render_row("pbb_status", "", "", "ok")
+    # GPU GPUSTATUS                   
+    @render_value_row("gpu_gpustatus", true, 1)
 
-    # PBB AIRCRAFT
-    aircraftstatus = @vals['pbb_aircraft']
-    @$('#pbb_status').html(aircraftstatus)
+    # GPU CONTSTATUS                  
+    @render_value_row("gpu_contstatus", true, 1)
 
-    # Auto Level
-    @render_row("pbb_autolevel", "On", "Off", "ok")
+    # GPU ByPass                      
+    @render_row("gpu_bypass", "Down", "Up", "ok")
 
-    # CANOPY
-    @render_row("pbb_canopy", "Down", "Up", "ok")
+    # GPU RAOUTAVG                    
+    @render_value_row("gpu_raoutavg", true, 1)
 
-    # ACFFLOOR
-    @render_row("pbb_acffloor", "On", "Off", "ok")
- 
-    # E-STOP
-    @render_row("pbb_estop", "Activated", "Ready/OK", "err")
-  
-    # CABLE HOIST
-    @render_row("pbb_cablehoist", "Deployed", "Retracted", "ok")
- 
-    # LIMITS
-    @render_row("pbb_limits", "OK", "Active", "ok", "err")
+    # GPU RVOUTAVG                    
+    @render_value_row("gpu_rvoutavg", true, 1)
+
+    # GPU RAVINAVG
+    @render_value_row("gpu_ravinavg", true, 1)
+
+    # GPU RVINAVG                     
+    @render_value_row("gpu_rvinavg", true, 1)
+
+    # GPU Frequency                   
+    @render_value_row("gpu_frequency", true, 1, "Hz")
+
+    # GPU PM_OUTPUT_PHASEA_I          
+    @render_value_row("gpu_pm_output_phasea_i", true, 1, "Amps")
+
+    # GPU PM_OUTPUT_PHASEB_I          
+    @render_value_row("gpu_pm_output_phaseb_i", true, 1, "Amps")
+
+    # GPU PM_OUTPUT_PHASEC_I          
+    @render_value_row("gpu_pm_output_phasec_i", true, 1, "Amps")
+
+    # GPU PM_OUTPUT_PHASEA_V          
+    @render_value_row("gpu_pm_output_phasea_v", true, 1, "Volts")
+
+    # GPU PM_OUTPUT_PHASEB_V          
+    @render_value_row("gpu_pm_output_phaseb_v", true, 1, "Volts")
+
+    # GPU PM_OUTPUT_PHASEC_V  
+    @render_value_row("gpu_pm_output_phasec_v", true, 1, "Volts")
+
+    # GPU PM_INPUT_PHASEA_I           
+    @render_value_row("gpu_pm_input_phasea_i", true, 1, "Amps")
+
+    # GPU PM_INPUT_PHASEB_I           
+    @render_value_row("gpu_pm_input_phaseb_i", true, 1, "Amps")
+
+    # GPU PM_INPUT_PHASEC_I           
+    @render_value_row("gpu_pm_input_phasec_i", true, 1, "Amps")
+
+    # GPU PM_INPUT_PHASEA_V           
+    @render_value_row("gpu_pm_input_phasea_v", true, 1, "Volts")
+
+    # GPU PM_INPUT_PHASEB_V           
+    @render_value_row("gpu_pm_input_phaseb_v", true, 1, "Volts")
+
+    # GPU PM_INPUT_PHASEC_V           
+    @render_value_row("gpu_pm_input_phasec_v", true, 1, "Volts")
+
+    # GPU GPUSTATUS_TRIGER_DATA_LOG   
+    @render_row("gpu_gpustatus_triger_data_log", "Down", "Up", "ok")
+
+    # GPU ON 1                        
+    @render_row("gpu_on_1", "Down", "Up", "ok")
+
+    # GPU ON 2                        
+    @render_row("gpu_on_2", "Down", "Up", "ok")
         
-    # ALARMS
-    @ui.alarms.toggle(@get_bool(@vals.pbb_has_alarms))
-    # WARNINGS
-    @ui.warnings.toggle(@get_bool(@vals.pbb_has_warnings))
-    # DOCKED
-    @ui.docked.toggle(@get_bool(@vals.pbb_status))
-    
-    # AUTOLEVELFAIL
-    @flash_alarm(@get_bool(@vals.pbb_autolevelfail))
-
-    # DOCKTIME
-    docktime = if @vals.pbb_docktime? && @vals.pbb_docktime != '' then parseFloat(@vals.pbb_docktime).toFixed(4) else ' -- ' 
-    el = @$('#pbb_docktime').html("#{docktime}")
-    @mark_bad_data @tags.pbb_docktime, el
-    undocktime = if @vals.pbb_undocktime? && @vals.pbb_undocktime != '' then parseFloat(@vals.pbb_undocktime).toFixed(4) else ' -- ' 
-    el = @$('#pbb_undocktime').html("#{undocktime}")
-    @mark_bad_data @tags.pbb_undocktime, el
-
     @set_descriptions()
 
   set_model: ()=>

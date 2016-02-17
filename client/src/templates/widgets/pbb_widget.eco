@@ -9,7 +9,7 @@
 <div class="box-body content" id='content'>
   
   <div class="display contain">
-    <div id="gate_label">
+    <div id="display_label">
       <h1>
         <span id='txt'></span> 
         <i id='docked' class="fa fa-plane" title='Plane is DOCKED' style='display:none;'></i>

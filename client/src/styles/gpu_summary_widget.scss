@@ -1,0 +1,226 @@
+/* GPU Summary Widget Styles */
+
+/*.gpu_summary_widget {
+  position: absolute;
+  min-height: 100px;
+  min-width: 100%;
+}*/
+
+
+.gpu_summary_widget {
+  &.alarm {
+    background-color: #c00;
+    color: #fff;
+  }
+  .display {
+    position: relative;
+    min-height: 100%;
+    min-width: 100%;
+    overflow: auto;
+    #gpu_summary_label {
+      margin-bottom: 3px;
+      h1 {
+        line-height:48px;
+        font-weight: bold;
+        margin: 0 0 0 0;
+        i.fa {
+          margin-right:-5px;
+          padding: 5px;
+          border-radius: 10px;
+          font-size:26px !important;
+        }
+        i#docked {
+          color: #069;
+          background-color: #eee;
+        }
+        i#alarms {
+          color: #fff;
+          background-color: #c00;
+        }
+        i#warnings {
+          color: #f90;
+          background-color: #eee;
+        }
+      }
+    }
+    div[id^='gauge_'] {
+      position: relative;
+      float: left;
+      width: 30%;
+      height: 100%;
+      & svg {
+        margin-top: 0px;
+      }
+    }
+    #gauge_volts_out {
+      //float: left;
+    }
+    #gauge_amps_out {
+      //float: left;
+
+    }
+    #gpu_image {
+      position: relative;
+      float: left;
+      background: url("../img/airport/Common/GPU-Graphic.png") no-repeat center center; 
+      background-size: contain;
+      height: 100%;
+      width: 40%;
+      //z-index: 100;
+    }
+    
+    /* Plot formatting */
+    //colors
+    $color_alto_approx: #ddd;
+    $white: #fff;
+    $color_black_haze_approx: #f6f6f6;
+    $black_15: rgba(0,0,0,0.15);
+
+    //.plot-container {
+    div[id^="view_"] {
+      //Instead of the line below you could use @include box-sizing($bs)
+      position: absolute;
+      box-sizing: border-box;
+      width: 100%;
+      height: calc(100% - 75px);
+      border: 1px solid $color_alto_approx;
+      background: $white;
+      background: linear-gradient($color_black_haze_approx 0, $white 50px);
+      //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+      box-shadow: 0 3px 10px $black_15;
+    }
+    .plot-placeholder div.xAxis div.tickLabel {
+      min-width: 90px;
+      margin: 35px 0px 0px 0px;
+      transform: rotate(270deg);
+      -ms-transform:rotate(270deg); /* IE 9 */
+      -moz-transform:rotate(270deg); /* Firefox */
+      -webkit-transform:rotate(270deg); /* Safari and Chrome */
+      -o-transform:rotate(270deg); /* Opera */
+      /*rotation:270deg;*/ /* CSS3 */
+    }
+
+    .plot-toggle {
+        position: absolute;
+        width: 82px;
+        height: 35px;
+        top: calc(100% - (100% - 32px));
+        right: calc(100% - (100% - 78px));
+        float: center;
+        /* border: 1px solid red; */
+    }
+    .toggle {
+      position: relative;
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    .plot-container {
+      box-sizing: border-box;
+      position: relative;
+      height: 100%;
+      min-height: 250 !important;
+      min-width: 625 !important;
+      width: 100%;
+      padding: 0px 0px 15px 0px;
+      margin: 0px 0px 0px 0px;
+      border: 1px solid #ddd;
+      background: #fff;
+      background: linear-gradient(#f6f6f6 0, #fff 50px);
+      background: -o-linear-gradient(#f6f6f6 0, #fff 50px);
+      background: -ms-linear-gradient(#f6f6f6 0, #fff 50px);
+      background: -moz-linear-gradient(#f6f6f6 0, #fff 50px);
+      background: -webkit-linear-gradient(#f6f6f6 0, #fff 50px);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+      -o-box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      -ms-box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      -moz-box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      -webkit-box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .plot-placeholder {
+      width: 100%;
+      height: 100%;
+      font-size: 14px;
+      line-height: 1.2em;
+    }
+
+    .legend table {
+      border-spacing: 5px;
+    }
+    /* Toggle Button Formats */
+    #bottom_buttons {
+      //colors
+      $color_picton_blue_approx: #3bb3e0;
+      $white: #fff;
+      $color_curious_blue_approx: rgb(44,160,202);
+      $color_scooter_approx: #2ab7ec;
+      $color_blumine_approx: #156785;
+      $color_mountain_mist_approx: #999;
+      $color_eastern_blue_approx: #2591b4;
+      $color_green_vogue_approx: #052756;
+      $color_viking_approx: #60c9f0;
+      $color_regal_blue_approx: #0e3871;
+      $color_jelly_bean_approx: #1a80a6;
+
+      //fonts
+      $font_0: Open Sans;
+      $font_1: sans-serif;
+
+      //urls
+      $url_0: url(../img/right_arrow.png);
+
+      position: absolute;
+      top: calc(100% - 52px);;
+      height: 36px;
+      min-width: 100%;
+      .toggle_button {
+        display: inline-block;
+        height: 36px; 
+        min-width: 32%;
+        background-color: $color_picton_blue_approx;
+        font-family: $font_0, $font_1;
+        font-size: 12px;
+        text-decoration: none;
+        color: $white;
+        position: relative;
+        padding: 10px 20px;
+        padding-right: 50px;
+        background-image: linear-gradient(bottom, $color_curious_blue_approx 0, $color_picton_blue_approx 100%);
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 5px;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: inset 0 1px 0 $color_scooter_approx, 0 5px 0 0 $color_blumine_approx, 0 10px 5px $color_mountain_mist_approx;
+        &:active {
+          top: 3px;
+          background-image: linear-gradient(bottom, $color_picton_blue_approx 0, $color_curious_blue_approx 100%);
+          //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+          box-shadow: inset 0 1px 0 $color_scooter_approx, 0 2px 0 0 $color_blumine_approx, 0 5px 3px $color_mountain_mist_approx;
+        }
+        &:active::before {
+          top: 50%;
+          margin-top: -12px;
+          //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+          box-shadow: inset 0 1px 0 $color_viking_approx, 0 3px 0 $color_regal_blue_approx, 0 6px 3px $color_jelly_bean_approx;
+        }
+      }
+      .toggle_button::before {
+        background-color: $color_eastern_blue_approx;
+        background-image: $url_0;
+        background-repeat: no-repeat;
+        background-position: center center;
+        content: "";
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        margin-top: -9px;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 50%;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: inset 0 1px 0 $color_green_vogue_approx, 0 1px 0 $color_viking_approx;
+      }
+    }
+  }
+}

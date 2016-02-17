@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>iOps-input Examples: GPU Input v/A Plot</title>
+
+		<!--<link href="../shared/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css">-->
+		<link href="iops-samples.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">-->
+		<link href="../../../bootstrap-toggle-master/css/bootstrap2-toggle.css" rel="stylesheet" type="text/css">
+
+		<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="../../excanvas.min.js"></script><![endif]-->
+		<script language="javascript" type="text/javascript" src="../../jquery-1-11.js"></script>
+		<!--<script language="javascript" type="text/javascript" src="../shared/jquery-ui/jquery-ui.min.js"></script>-->
+		<script language="javascript" type="text/javascript" src="../../jquery.flot.js"></script>
+		<script language="javascript" type="text/javascript" src="../../jquery.flot.time.js"></script>    
+		<!--<script language="javascript" type="text/javascript" src="../../jquery.flot.threshold.js"></script>-->
+		<script language="javascript" type="text/javascript" src="../../jquery.flot.symbol.js"></script>
+		<script language="javascript" type="text/javascript" src="../../jquery.flot.axislabels.js"></script>
+		<!--<script language="javascript" type="text/javascript" src="../../jquery.flot.resize.js"></script>-->
+		
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<script language="javascript" type="text/javascript" src="../../../bootstrap-toggle-master/js/bootstrap2-toggle.js"></script>
+		<script language="javascript" type="text/javascript" src="iops-samples-data.js"></script>
+		<script language="javascript" type="text/javascript" src="iops-samples-plot-config.js"></script>
+		
+		<script>
+			$(document).ready(function () {
+				$('#rvain-toggle-live').change(function() {
+					clearLiveData(RVAIN);
+					RVAIN.liveData = $(this).prop('checked');
+					update(RVAIN);
+				})
+				$('#rvout-toggle-live').change(function() {
+					clearLiveData(RVOUT);
+					RVOUT.liveData = $(this).prop('checked');
+					update(RVOUT);
+				})
+				$('#raout-toggle-live').change(function() {
+					clearLiveData(RAOUT);
+					RAOUT.liveData = $(this).prop('checked');
+					update(RAOUT);
+				})
+				update(RVAIN);
+				update(RVOUT);
+				update(RAOUT);
+			});
+			
+			function update(PLOT_TYPE) {
+				var tData = [];
+				clearTimeout(PLOT_TYPE.timerID);
+				tData = loadData(PLOT_TYPE);
+				tData = generateTestLiveData(PLOT_TYPE, tData);
+				switch(PLOT_TYPE.ID) {
+				    case RVAIN.ID:
+								PLOT_TYPE.plot = $.plot($("#rvain-plot"), tData, rvain_options);
+						    $("#rvain-plot").UseTooltip();
+				        break;
+				    case RVOUT.ID:
+								PLOT_TYPE.plot = $.plot($("#rvout-plot"), tData, rvout_options);
+						    $("#rvout-plot").UseTooltip();
+				        break;
+				    case RAOUT.ID:
+								PLOT_TYPE.plot = $.plot($("#raout-plot"), tData, raout_options);
+						    $("#raout-plot").UseTooltip();
+				        break;
+				}
+				if(PLOT_TYPE.liveData) {					
+					PLOT_TYPE.timerID = setTimeout(update, 6000, PLOT_TYPE);
+				}
+			}
+			
+			function generateTestLiveData(PLOT_TYPE, tData) {
+				if (!PLOT_TYPE.liveData) {
+					return tData;
+				}
+				var dt = fnUTC();
+				var newValTotal = 0;
+				var index;
+				for (index = 0; index < tData.length; ++index) {
+					var newVal = (index <= 3) ? getRandomInt(35, 50) : getRandomInt(108, 116) ;
+					if(index == 3 || index == 7)
+					{
+						newVal = Math.round(newValTotal/3);
+						newValTotal = 0;
+					}
+					else
+					{
+						newValTotal += newVal;
+					}
+				  tData[index].data.push([dt,newVal]);
+				}
+				return tData;
+			}
+			
+			function fnUTC2Date(d) {
+				var now = new Date();
+				//var d = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds(), now.getMilliseconds());
+				// obtain local UTC offset and convert to msec
+				localOffset = now.getTimezoneOffset() * 60000;
+				var c = new Date(d + localOffset);
+				return c.toLocaleString();    
+			}			
+			function fnUTC() {
+				var now = new Date();
+				var d = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds(), now.getMilliseconds());
+				return d;
+			}
+			
+			function getRandomInt(min, max) {
+				return Math.floor(Math.random() * (max - min + 1)) + min;
+			}
+			
+			
+		</script>
+	</head>
+	<body>
+		<p>
+			<div id="rvain-plot-container" class="plot-container">
+				<div id="rvain-plot" class="plot-placeholder"></div>
+				<div id="rvain-live-toggle" class="plot-toggle">
+					<input id="rvain-toggle-live" type="checkbox" data-toggle="toggle" data-on="Live" data-off="Today" data-onstyle="warning" data-offstyle="info"> 
+				</div>
+			</div>
+		</p>
+		<p>
+			<div id="rvout-plot-container" class="plot-container">
+				<div id="rvout-plot" class="plot-placeholder"></div>
+				<div id="rvout-live-toggle" class="plot-toggle">
+					<input id="rvout-toggle-live" type="checkbox" data-toggle="toggle" data-on="Live" data-off="Today" data-onstyle="warning" data-offstyle="info"> 
+				</div>
+			</div>
+		</p>
+		<p>
+			<div id="raout-plot-container" class="plot-container">
+				<div id="raout-plot" class="plot-placeholder"></div>
+				<div id="raout-live-toggle" class="plot-toggle">
+					<input id="raout-toggle-live" type="checkbox" data-toggle="toggle" data-on="Live" data-off="Today" data-onstyle="warning" data-offstyle="info"> 
+				</div>
+			</div>
+		</p>
+	
+	</body>
+</html>

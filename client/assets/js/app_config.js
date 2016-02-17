@@ -1,6 +1,11 @@
 window.app_config = {
   widgets: [
     {
+      id: "airport",
+      name: "Airport Widget",
+      icon: "bullhorn"
+    },
+    {
       id: "alarm",
       name: "Alarm Widget",
       icon: "bullhorn"
@@ -23,6 +28,11 @@ window.app_config = {
     {
       id: "gpu",
       name: "GPU Widget",
+      icon: "battery-3"
+    },
+    {
+      id: "gpusummary",
+      name: "GPU Summary Widget",
       icon: "battery-3"
     },
     {

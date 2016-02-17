@@ -127,6 +127,13 @@ module.exports = (grunt)->
           'client/requires/jquery-dateFormat/jquery-dateFormat.js'
           'client/assets/js/opc-lib.min.js'
           'client/assets/js/lz-string.min.js'
+          'client/assets/js/JustGage/raphael-2.1.4.min.js'
+          'client/assets/js/JustGage/justgage.js'
+          'client/assets/js/flot-master/jquery.flot.js'
+          'client/assets/js/flot-master/jquery.flot.time.js'
+          'client/assets/js/flot-master/jquery.flot.symbol.js'
+          'client/assets/js/flot-master/jquery.flot.axislabels.js'
+          'client/assets/js/bootstrap-toggle-master/js/bootstrap2-toggle.min.js'
         ]
         dest: 'build/vendor.js'
       vendor_css:
@@ -139,6 +146,7 @@ module.exports = (grunt)->
           'bower_components/chosen/chosen.min.css'
           'client/assets/css/opc-style.css'
           'client/assets/css/opc-alarm-style.css'
+          'client/assets/js/bootstrap-toggle-master/css/bootstrap2-toggle.min.css'
         ]
         dest: 'build/vendor.css'
       

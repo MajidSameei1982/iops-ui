@@ -6,7 +6,7 @@ WidgetView = require('../dashboard/widget_view')
 
 class PcaWidgetView extends WidgetView
   template:   "widgets/pca_widget"
-  className: 'widget-outer box box-primary gate_widget'
+  className: 'widget-outer box box-primary pca_widget'
   ui:
     terminal:       'input#terminal'
     zone:           'input#zone'
@@ -77,8 +77,14 @@ class PcaWidgetView extends WidgetView
 
       gate = if s.display_prefix? then "#{s.display_prefix}#{s.gate}" else '#{s.gate}'
       
+      # Temporary Client Eval until Settings are updated with the IsCloudServer (or equivelent flag)
+      switch @site_code
+        when "CID" then IsCloudServer = true
+        else IsCloudServer = false
+
       # build settings      
-      @prefix = "RemoteSCADAHosting.Airport-#{@site_code}.Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{gate}."
+      @prefix = if IsCloudServer then "RemoteSCADAHosting.Airport-#{@site_code}." else ""
+      @prefix = "#{@prefix}Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{gate}."
       tags = []
       for tg of @tags
         t = @tags[tg]
@@ -89,9 +95,9 @@ class PcaWidgetView extends WidgetView
       @watch_updates(@site_code)
       OPCManager.add_ref(@site_code)
       
-      lbl = "Gate #{gate}"
+      lbl = "PCA #{gate}"
       @ui.wtitle.html(lbl)
-      @$('#gate_label #txt').html(lbl)
+      @$('#display_label #txt').html(lbl)
 
       @opc =  App.opc.connections[@site_code]
       @set_descriptions(true)
@@ -292,5 +298,5 @@ class PcaWidgetView extends WidgetView
     
 # ----------------------------------
 
-window.PcaWidgetView = PcaWidgetView
-module.exports = PcaWidgetView
+window.AirportWidgetView = AirportWidgetView
+module.exports = AirportWidgetView
