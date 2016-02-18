@@ -23,19 +23,6 @@ class AirportWidgetView extends WidgetView
     sx: 9
     sy: 9
 
-    # <table class='data'>
-    #   <tr><td class='lbl' id='pbb_status_lbl'>&nbsp;</td><td id='pbb_status' class='val'>LOADING...</td></tr>
-    #   <tr><td class='lbl' id='pca_status_lbl'>&nbsp;</td><td id='pca_status' class='val'>LOADING...</td></tr>
-    #   <tr><td class='lbl' id='gpu_status_lbl'>&nbsp;</td><td id='gpu_status' class='val'>LOADING...</td></tr>
-    #   <tr><td class='lbl' id='pbb_docktime_lbl'>ACF Floor</td><td id='pbb_docktime' class='val'>LOADING...</td></tr>
-    #   <tr><td class='lbl' id='pbb_ontime_lbl'>&nbsp;</td><td id='pbb_ontime' class='val'>LOADING...</td></tr>
-    #   <tr><td class='lbl' id='pca_ontime_lbl'>&nbsp;</td><td id='pca_ontime' class='val'>LOADING...</td></tr>
-    #   <tr><td class='lbl' id='gpu_ontime_lbl'>Limits</td><td id='gpu_ontime' class='val'>LOADING...</td></tr>
-    #   <tr><td class='lbl' id='pca_dischargetemp_lbl'>&nbsp;</td><td id='pca_dischargetemp' class='val'>LOADING...</td></tr>
-    #   <tr><td class='lbl' id='gpu_outputamps_lbl'>&nbsp;</td><td id='gpu_outputamps' class='val'>LOADING...</td></tr>
-    #   <tr><td class='lbl' id='gpu_outputvolts_lbl'>&nbsp;</td><td id='gpu_outputvolts' class='val'>LOADING...</td></tr>
-    # </table>
-
   tags:
     #Grid Tags
     test: 'test'
