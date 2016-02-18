@@ -1,6 +1,5 @@
 Marionette = require('marionette')
 WidgetView = require('../dashboard/widget_view')
-# OPCManager = require('../../opcmanager')
 
 # ----------------------------------
 class PbbdetailWidgetView extends WidgetView

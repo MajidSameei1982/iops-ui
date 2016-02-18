@@ -1770,55 +1770,10 @@ window.JST["widgets/pbbleveldetail_widget"] = function(__obj) {
       _print(_safe(this.siteSelector({
         id: 'site',
         label: 'Site',
-        value: this.settings.site
+        site: this.settings.site
       })));
     
-      _print(_safe('\n    <div class="row">\n      '));
-    
-      _print(_safe(this.formGroup({
-        id: 'terminal',
-        label: 'Terminal',
-        type: 'text',
-        placeholder: 'Terminal',
-        value: this.settings.terminal,
-        cls: 'col-md-6'
-      })));
-    
-      _print(_safe('\n      '));
-    
-      _print(_safe(this.formGroup({
-        id: 'zone',
-        label: 'Zone',
-        type: 'text',
-        placeholder: 'Zone',
-        value: this.settings.zone,
-        cls: 'col-md-6'
-      })));
-    
-      _print(_safe('\n    </div>\n    <div class="row">\n      '));
-    
-      _print(_safe(this.formGroup({
-        id: 'display_prefix',
-        label: 'Prefix',
-        type: 'text',
-        placeholder: 'Display Prefix',
-        value: this.settings.display_prefix,
-        cls: 'col-md-6'
-      })));
-    
-      _print(_safe('\n      '));
-    
-      _print(_safe(this.formGroup({
-        id: 'gate',
-        label: 'Gate',
-        type: 'text',
-        feedback: 'plane',
-        placeholder: 'Gate #',
-        value: this.settings.gate,
-        cls: 'col-md-6'
-      })));
-    
-      _print(_safe('\n    </div>\n  </div>\n\n</div>\n'));
+      _print(_safe('\n    <div class="row">\n      <div id=\'terminals\' class=\'col-md-6\'></div>\n    </div>\n    <div class="row">\n      <div id=\'zones\' class=\'col-md-6\'></div>\n    </div>\n    <div class="row">\n      <div id=\'gates\' class=\'col-md-6\'></div>  \n    </div>\n  </div>\n\n</div>\n'));
     
     }).call(this);
     
@@ -8432,17 +8387,20 @@ PbbleveldetailWidgetView = (function(superClass) {
   };
 
   PbbleveldetailWidgetView.prototype.update = function() {
-    var gate, lbl, s, t, tags, tg;
+    var cloud, lbl, s, settings, t, tags, tg;
     s = this.model.get("settings");
     if ((s != null) && !!s.gate) {
-      this.site_code = OPCManager.get_site_code(s.site);
+      this.site = OPCManager.get_site(s.site);
+      this.site_code = this.site.get('code');
       if (this.site_code == null) {
         return null;
       }
       this.kill_updates(this.site_code);
       OPCManager.rem_ref(this.site_code);
-      gate = s.display_prefix != null ? "" + s.display_prefix + s.gate : '#{s.gate}';
-      this.prefix = "RemoteSCADAHosting.Airport-" + this.site_code + ".Airport." + this.site_code + ".Term" + s.terminal + ".Zone" + s.zone + ".Gate" + gate + ".";
+      settings = this.site.get('settings');
+      settings || (settings = {});
+      cloud = settings.cloud ? "RemoteSCADAHosting.Airport-" + this.site_code + "." : '';
+      this.prefix = cloud + "Airport." + this.site_code + ".Term" + s.terminal + ".Zone" + s.zone + ".Gate" + s.gate + ".";
       tags = [];
       for (tg in this.tags) {
         t = this.tags[tg];
@@ -8451,7 +8409,7 @@ PbbleveldetailWidgetView = (function(superClass) {
       App.opc.add_tags(this.site_code, tags);
       this.watch_updates(this.site_code);
       OPCManager.add_ref(this.site_code);
-      lbl = "Gate " + gate;
+      lbl = "Gate " + s.gate;
       this.ui.wtitle.html(lbl);
       this.$('#gate_label #txt').html(lbl);
       this.opc = App.opc.connections[this.site_code];
@@ -8642,11 +8600,10 @@ PbbleveldetailWidgetView = (function(superClass) {
   PbbleveldetailWidgetView.prototype.set_model = function() {
     var s;
     s = _.clone(this.model.get("settings"));
-    s.gate = this.ui.gate.val().trim();
-    s.site = this.ui.site.val().trim();
-    s.terminal = this.ui.terminal.val().trim();
-    s.zone = this.ui.zone.val().trim();
-    s.display_prefix = this.ui.display_prefix.val().trim();
+    s.site = this.$('#site').val();
+    s.terminal = this.$('#terminal').val();
+    s.zone = this.$('#zone').val();
+    s.gate = this.$('#gate').val();
     return this.model.set("settings", s);
   };
 
@@ -8659,25 +8616,23 @@ PbbleveldetailWidgetView = (function(superClass) {
   };
 
   PbbleveldetailWidgetView.prototype.onShow = function() {
-    var gate, ms, settings, site, site_code;
-    this.ui.gate.on("change", this.set_model);
-    this.ui.site.on("change", this.set_model);
-    this.ui.terminal.on("change", this.set_model);
-    this.ui.zone.on("change", this.set_model);
-    this.ui.display_prefix.on("change", this.set_model);
+    var gate, settings, site_code;
     settings = this.model.get('settings');
+    settings || (settings = {});
+    this.draw_selectors(settings.terminal, settings.zone, settings.gate);
+    this.$('#site').on('change', (function(_this) {
+      return function() {
+        _this.draw_selectors();
+        return _this.set_model();
+      };
+    })(this));
     gate = settings.gate;
     if ((gate == null) || gate === '') {
       this.toggle_settings();
     }
-    site = settings.site;
-    site_code = OPCManager.get_site_code(site);
+    site_code = OPCManager.get_site_code(settings.site);
     if (site_code != null) {
-      OPCManager.add_ref(site_code);
-    }
-    ms = this.model.get('settings');
-    if ((ms != null) && (ms.site != null)) {
-      return this.ui.site.val(ms.site);
+      return OPCManager.add_ref(site_code);
     }
   };
 

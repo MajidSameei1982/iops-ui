@@ -1,3 +1,14 @@
+/*
+
+  NOTE: This is where widgets are defined in the menu
+    id:     The unique identifier of the widget corresponding to the WidgetView class.
+            For example, if the id is "mything", the app will look for MythingWidgetView
+    name:   The display name in the menu
+    icon:   The FontAwesome icon to use (see https://fortawesome.github.io/Font-Awesome/)
+    role:   The user role required to see this option, in the form <site>:<role>
+            For example, CID:operator would only allow this option visible for users with the operator role in the CID site
+            Use global for global level roles
+*/
 window.app_config = {
   widgets: [
     {
@@ -26,7 +37,7 @@ window.app_config = {
       icon: "plane"
     },
     {
-      id: "secondpbbleveldetail",
+      id: "pbbleveldetail",
       name: "PBB Level Detail Widget",
       icon: "plane"
     },

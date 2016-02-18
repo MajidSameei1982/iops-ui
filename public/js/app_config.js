@@ -26,7 +26,7 @@ window.app_config = {
       icon: "plane"
     },
     {
-      id: "secondpbbleveldetail",
+      id: "pbbleveldetail",
       name: "PBB Level Detail Widget",
       icon: "plane"
     },
