@@ -27,8 +27,8 @@ class UrlWidgetView extends WidgetView
   set_model: ()=>
     s = _.clone(@model.get("settings"))
     url = @ui.url.val().trim()
-    if url.indexOf("http://") == -1 || url.indexOf("https://") == -1
-      url = "http://" + url
+    if url.indexOf("http://") == -1 && url.indexOf("https://") == -1
+      url = "http://#{url}"
     s.url = url
     s.name = @ui.title.val()
     @model.set("settings", s)

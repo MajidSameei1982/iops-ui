@@ -62,7 +62,7 @@ class DashboardSideView extends Marionette.ItemView
 
   show_add: (e)->
     if e? then e.preventDefault()
-    d = new Dashboard()
+    d = new Dashboard({userId:App.session.id})
     @show_dash_modal(d, 'add')
 
   resolve_dash: (e, pre)->
@@ -103,20 +103,20 @@ class DashboardSideView extends Marionette.ItemView
         did = d.id
         @collection.remove(d)
         d.destroy()
-        #App.save_user()
         if did == App.current_dash then App.router.navigate('', {trigger:true})
 
   onShow: ()->
     App.vent.on "show:dashboard", @update_dash_links
     $(@el).attr('tabindex', '-1')
     @collection.on "update", ()=>
-      @onDomRefresh()
-    App.vent.on "dashboard:update", @onDomRefresh
+      @build_list()
+    App.vent.on "dashboard:update", @build_list
 
-  onDomRefresh: ()=>
     if App.session? && App.session.get('avatar')? 
       @ui.avatar.attr('src', App.session.get('avatar'))
+    @build_list()
 
+  build_list: ()=>
     $('li.dashboard-link', @ui.dashboard_list).remove()
     for d, idx in @collection.models
       hh = """
@@ -131,7 +131,7 @@ class DashboardSideView extends Marionette.ItemView
       </li>
       """
       dl = $(hh)
-      @ui.dashboard_list.append(dl)
+      @$('#dashboard-list').append(dl)
 
 # ----------------------------------
 

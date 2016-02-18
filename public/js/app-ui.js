@@ -3879,10 +3879,10 @@ Dashboard = (function(superClass) {
   };
 
   Dashboard.prototype.pickUrl = function(destroy) {
-    if (this.isNew()) {
-      this.urlRoot = "/users/" + App.session.id + "/dashboards";
-    } else {
+    if ((this.id != null) && !destroy) {
       this.urlRoot = '/dashboards';
+    } else {
+      this.urlRoot = "/users/" + App.session.id + "/dashboards";
     }
     return this.setUrl(this.urlRoot);
   };
@@ -3900,7 +3900,8 @@ Dashboard = (function(superClass) {
   };
 
   Dashboard.prototype.fetch = function(options) {
-    this.pickUrl();
+    this.urlRoot = '/dashboards';
+    this.setUrl(this.urlRoot);
     return Dashboard.__super__.fetch.call(this, options);
   };
 
@@ -4353,37 +4354,29 @@ User = (function(superClass) {
     lastName: null,
     settings: {},
     claims: [],
-    dashboards: [],
     roles: []
   };
 
   User.prototype.save = function(attrs, options) {
     options || (options = {});
-    options.blacklist = ["isActive"];
+    options.blacklist = ["isActive", "dashboards"];
     this.persist();
     return User.__super__.save.call(this, attrs, options);
   };
 
   User.prototype.persist = function() {
-    var c, claims, d, dashes, i, j, k, len, len1, len2, r, ref, ref1, ref2, roles;
-    dashes = [];
-    ref = this.dashboards.models;
-    for (i = 0, len = ref.length; i < len; i++) {
-      d = ref[i];
-      dashes.push(d.id);
-    }
-    this.attributes["dashboards"] = dashes;
+    var c, claims, i, j, len, len1, r, ref, ref1, roles;
     roles = [];
-    ref1 = this.roles.models;
-    for (j = 0, len1 = ref1.length; j < len1; j++) {
-      r = ref1[j];
+    ref = this.roles.models;
+    for (i = 0, len = ref.length; i < len; i++) {
+      r = ref[i];
       roles.push(r.id);
     }
     this.attributes["roles"] = roles;
     claims = [];
-    ref2 = this.claims.models;
-    for (k = 0, len2 = ref2.length; k < len2; k++) {
-      c = ref2[k];
+    ref1 = this.claims.models;
+    for (j = 0, len1 = ref1.length; j < len1; j++) {
+      c = ref1[j];
       claims.push(c.id);
     }
     this.attributes["claims"] = claims;
@@ -4392,9 +4385,6 @@ User = (function(superClass) {
 
   User.prototype.set_properties = function() {
     var c, claims, i, j, len, len1, r, ref, ref1, roles;
-    this.dashboards = new DashboardCollection(this.get('dashboards'));
-    this.dashboards.on("update", this.persist);
-    this.dashboards.on("change", this.persist);
     claims = [];
     ref = this.get('claims');
     for (i = 0, len = ref.length; i < len; i++) {
@@ -5308,7 +5298,7 @@ DashboardSideView = (function(superClass) {
   extend(DashboardSideView, superClass);
 
   function DashboardSideView() {
-    this.onDomRefresh = bind(this.onDomRefresh, this);
+    this.build_list = bind(this.build_list, this);
     this.update_dash_links = bind(this.update_dash_links, this);
     return DashboardSideView.__super__.constructor.apply(this, arguments);
   }
@@ -5399,7 +5389,9 @@ DashboardSideView = (function(superClass) {
     if (e != null) {
       e.preventDefault();
     }
-    d = new Dashboard();
+    d = new Dashboard({
+      userId: App.session.id
+    });
     return this.show_dash_modal(d, 'add');
   };
 
@@ -5482,17 +5474,18 @@ DashboardSideView = (function(superClass) {
     $(this.el).attr('tabindex', '-1');
     this.collection.on("update", (function(_this) {
       return function() {
-        return _this.onDomRefresh();
+        return _this.build_list();
       };
     })(this));
-    return App.vent.on("dashboard:update", this.onDomRefresh);
-  };
-
-  DashboardSideView.prototype.onDomRefresh = function() {
-    var d, dl, hh, i, idx, len, ref, results;
+    App.vent.on("dashboard:update", this.build_list);
     if ((App.session != null) && (App.session.get('avatar') != null)) {
       this.ui.avatar.attr('src', App.session.get('avatar'));
     }
+    return this.build_list();
+  };
+
+  DashboardSideView.prototype.build_list = function() {
+    var d, dl, hh, i, idx, len, ref, results;
     $('li.dashboard-link', this.ui.dashboard_list).remove();
     ref = this.collection.models;
     results = [];
@@ -5500,7 +5493,7 @@ DashboardSideView = (function(superClass) {
       d = ref[idx];
       hh = "<li class='dashboard-link d_" + d.id + "'>\n  <a href='#' class='dash_link'><i class='fa fa-th-large'></i> <span>" + (d.get('name')) + "</span></a>\n  <div class='controls'>\n    <a href='#' class='moveup moveup_" + d.id + "'><i class='fa fa-caret-up'></i></a>\n    <a href='#' class='movedn movedn_" + d.id + "'><i class='fa fa-caret-down'></i></a>\n    <a href='#' class='edit edit_" + d.id + "'><i class='fa fa-pencil-square'></i></a>\n    <a href='#' class='delete delete_" + d.id + "'><i class='fa fa-times-circle'></i></a>\n  </div>\n</li>";
       dl = $(hh);
-      results.push(this.ui.dashboard_list.append(dl));
+      results.push(this.$('#dashboard-list').append(dl));
     }
     return results;
   };
@@ -10629,7 +10622,7 @@ UrlWidgetView = (function(superClass) {
     var s, url;
     s = _.clone(this.model.get("settings"));
     url = this.ui.url.val().trim();
-    if (url.indexOf("http://") === -1 || url.indexOf("https://") === -1) {
+    if (url.indexOf("http://") === -1 && url.indexOf("https://") === -1) {
       url = "http://" + url;
     }
     s.url = url;

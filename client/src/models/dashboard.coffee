@@ -12,10 +12,10 @@ class Dashboard extends BaseModel
     name: ''
 
   pickUrl:(destroy)->
-    if @isNew()
-      @urlRoot = "/users/#{App.session.id}/dashboards"
+    if @id? && !destroy
+      @urlRoot = '/dashboards'
     else
-       @urlRoot = '/dashboards'
+      @urlRoot = "/users/#{App.session.id}/dashboards"
     @setUrl(@urlRoot)
 
   save:(attrs, options)->
@@ -29,7 +29,9 @@ class Dashboard extends BaseModel
     super(options)
 
   fetch: (options)->
-    @pickUrl()
+    @urlRoot = '/dashboards'
+    @setUrl(@urlRoot)
+    #@pickUrl(true)
     super(options)
 
   constructor: (config)->

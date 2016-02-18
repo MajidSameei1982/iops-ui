@@ -14,20 +14,20 @@ class User extends BaseModel
     lastName:       null
     settings:       {}
     claims:            []
-    dashboards: []
+    # dashboards: []
     roles: []
 
   save:(attrs, options)->
     options || (options = {})
-    options.blacklist = ["isActive"]
+    options.blacklist = ["isActive", "dashboards"]
     @persist()
     super(attrs, options)
 
   persist: ()=>
-    dashes = []
-    for d in @dashboards.models
-      dashes.push(d.id)
-    @attributes["dashboards"] = dashes
+    # dashes = []
+    # for d in @dashboards.models
+    #   dashes.push(d.id)
+    # @attributes["dashboards"] = dashes
     roles = []
     for r in @roles.models
       roles.push(r.id)
@@ -39,9 +39,10 @@ class User extends BaseModel
     @
 
   set_properties: ()->
-    @dashboards = new DashboardCollection(@get('dashboards'))
-    @dashboards.on "update", @persist
-    @dashboards.on "change", @persist
+    # dashboards = []
+    # @dashboards = new DashboardCollection(@get('dashboards'))
+    # @dashboards.on "update", @persist
+    # @dashboards.on "change", @persist
     claims = []
     for c in @get('claims')
       claims.push {_id:c}
