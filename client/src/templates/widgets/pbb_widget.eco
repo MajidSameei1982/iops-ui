@@ -9,7 +9,7 @@
 <div class="box-body content" id='content'>
   
   <div class="display contain">
-    <div id="gate_label">
+    <div id="display_label">
       <h1>
         <span id='txt'></span> 
         <i id='docked' class="fa fa-plane" title='Plane is DOCKED' style='display:none;'></i>
@@ -33,13 +33,13 @@
     <h3>Settings</h3>
     <%- @siteSelector({id:'site', label:'Site', site:@settings.site}) %>
     <div class="row">
-      <div id='terminals' class='col-md-6'></div>
+      <div id='terminals' class='col-md-12'></div>
     </div>
     <div class="row">
-      <div id='zones' class='col-md-6'></div>
+      <div id='zones' class='col-md-12'></div>
     </div>
     <div class="row">
-      <div id='gates' class='col-md-6'></div>  
+      <div id='gates' class='col-md-12'></div>  
     </div>
   </div>
 

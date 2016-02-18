@@ -1,0 +1,75 @@
+/* PCA Widget Styles */
+.pca_widget {
+  &.alarm {
+    background-color: #c00;
+    color: #fff;
+  }
+  .display {
+    min-height: 100%;
+    min-width: 100%;
+    overflow: auto;
+    #display_label {
+      margin-bottom: 3px;
+      h1 {
+        line-height:48px;
+        font-weight: bold;
+        margin: 0 0 0 0;
+        i.fa {
+          margin-right:-5px;
+          padding: 5px;
+          border-radius: 10px;
+          font-size:26px !important;
+        }
+        i#docked {
+          color: #069;
+          background-color: #eee;
+        }
+        i#alarms {
+          color: #fff;
+          background-color: #c00;
+        }
+        i#warnings {
+          color: #f90;
+          background-color: #eee;
+        }
+      }
+    }
+    
+  }
+  table.data {
+    width:100%;
+    border:solid 1px #999;
+    border-spacing: 1px;
+    border-collapse: separate;
+    td {
+      padding:3px 10px;
+      background-color: #eee;
+      color:#999;
+      &.lbl {
+        background-color:#fff;
+        font-style: italic;
+        color:#333;
+        border-bottom:solid 1px #ddd;
+      }
+      &.val {
+        font-weight: bold;
+      }
+      &.err {
+        color: #fe6;
+        background-color:#c33;
+      }
+      &.ok {
+        background-color: #090;
+        color:#fff;
+      }
+      &.blue {
+        background-color: #06c;
+        color:#fff; 
+      }
+      &.bad_data {
+        background-color: #fec;
+        color:#999;
+      }
+    }
+  }
+}

@@ -1,0 +1,72 @@
+<div class="box-header with-border">
+  <div class='pull-left'><i class="fa fa-battery-3"></i> <h3 class="box-title"></h3></div>
+  <div class="pull-right controls">
+    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> 
+    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>
+  </div>
+</div>
+
+<div class="box-body content" id='content'>
+  
+  <div class="display contain">
+    <div id="gpu_summary_label">
+      <h1>
+        <i id='docked' class="fa fa-plane" title='Plane is DOCKED' style='display:none;'></i>
+        <i id='alarms' class="fa fa-bell-o" title='Gate has ALARMS' style='display:none;'></i>
+        <i id='warnings' class="fa fa-warning" title='Gate has WARNINGS' style='display:none;'></i>
+      </h1>
+    </div>
+    <div id="view_main" class=""  style="">
+      <div id="gpu_image" class=""></div>
+      <div id="power_indicator" Class="gpuon"></div>
+      <span id="txt_connected_time"></span>
+      <div id="gauge_volts_out" class="200x160px"></div>
+      <div id="gauge_amps_out" class="200x160px"></div>
+    </div>
+    <div id="view_volts_in" style="display: none;">
+        <div id="rvain-plot-container" class="plot-container">
+          <div id="rvain-plot" class="plot-placeholder"></div>
+          <div id="rvain-live-toggle" class="plot-toggle">
+            <input id="rvain-toggle-live" type="checkbox" data-toggle="toggle" data-on="Live" data-off="Today" data-onstyle="warning" data-offstyle="info"> 
+          </div>
+        </div>
+   </div>
+    <div id="view_volts_out" class="plot-container" style="display: none;">
+        <div id="rvout-plot-container" class="plot-container">
+          <div id="rvout-plot" class="plot-placeholder"></div>
+          <div id="rvout-live-toggle" class="plot-toggle">
+            <input id="rvout-toggle-live" type="checkbox" data-toggle="toggle" data-on="Live" data-off="Today" data-onstyle="warning" data-offstyle="info"> 
+          </div>
+        </div>
+    </div>
+    <div id="view_amps_out" class="plot-container" style="display: none;">
+        <div id="raout-plot-container" class="plot-container">
+          <div id="raout-plot" class="plot-placeholder"></div>
+          <div id="raout-live-toggle" class="plot-toggle">
+            <input id="raout-toggle-live" type="checkbox" data-toggle="toggle" data-on="Live" data-off="Today" data-onstyle="warning" data-offstyle="info"> 
+          </div>
+        </div>
+    </div>
+    <div id="bottom_buttons">
+      <a id="toggle_main" href="#" class="toggle_button" style="display: none;">Summary</a>
+      <a id="toggle_volts_in" href="#" class="toggle_button">Input Voltage</a>
+      <a id="toggle_volts_out" href="#" class="toggle_button">Output Voltage</a>
+      <a id="toggle_amps_out" href="#" class="toggle_button">Output Amperage</a>
+    </div>
+
+  </div>
+
+  <div class="settings" style="display: none;">
+    <h3>Settings</h3>
+    <%- @siteSelector({id:'site', label:'Site', value:@settings.site}) %>
+    <div class="row">
+      <%- @formGroup({id:'terminal', label: 'Terminal', type:'text', placeholder:'Terminal', value:@settings.terminal, cls:'col-md-6'}) %>
+      <%- @formGroup({id:'zone', label: 'Zone', type:'text', placeholder:'Zone', value:@settings.zone, cls:'col-md-6'}) %>
+    </div>
+    <div class="row">
+      <%- @formGroup({id:'display_prefix', label:'Prefix', type:'text', placeholder:'Display Prefix', value:@settings.display_prefix, cls:'col-md-6'}) %>
+      <%- @formGroup({id:'gate', label: 'Gate', type:'text', feedback:'plane', placeholder:'Gate #', value:@settings.gate, cls:'col-md-6'}) %>
+    </div>
+  </div>
+
+</div>

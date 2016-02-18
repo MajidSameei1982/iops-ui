@@ -1,0 +1,60 @@
+<div class="box-header with-border">
+  <div class='pull-left'><i class="fa fa-battery-3"></i> <h3 class="box-title"></h3></div>
+  <div class="pull-right controls">
+    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> 
+    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>
+  </div>
+</div>
+
+<div class="box-body content" id='content'>
+  
+  <div class="display contain">
+    <div id="display_label">
+      <h1>
+        <span id='txt'></span> 
+        <i id='docked' class="fa fa-plane" title='Plane is DOCKED' style='display:none;'></i>
+        <i id='alarms' class="fa fa-bell-o" title='Gate has ALARMS' style='display:none;'></i>
+        <i id='warnings' class="fa fa-warning" title='Gate has WARNINGS' style='display:none;'></i>
+      </h1>
+    </div>
+    <table class='data'>
+      <tr><td class='lbl' id='gpu_gpustatus_lbl'>&nbsp;</td><td id='gpu_gpustatus' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='gpu_contstatus_lbl'>&nbsp;</td><td id='gpu_contstatus' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='gpu_bypass_lbl'>&nbsp;</td><td id='gpu_bypass' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='gpu_raoutavg_lbl'>&nbsp;</td><td id='gpu_raoutavg' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='gpu_rvoutavg_lbl'>&nbsp;</td><td id='gpu_rvoutavg' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='gpu_ravinavg_lbl'>&nbsp;</td><td id='gpu_ravinavg' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='gpu_rvinavg_lbl'>&nbsp;</td><td id='gpu_rvinavg' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='gpu_frequency_lbl'>&nbsp;</td><td id='gpu_frequency' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='gpu_pm_output_phasea_i_lbl'>&nbsp;</td><td id='gpu_pm_output_phasea_i' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='gpu_pm_output_phaseb_i_lbl'>&nbsp;</td><td id='gpu_pm_output_phaseb_i' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='gpu_pm_output_phasec_i_lbl'>&nbsp;</td><td id='gpu_pm_output_phasec_i' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='gpu_pm_output_phasea_v_lbl'>&nbsp;</td><td id='gpu_pm_output_phasea_v' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='gpu_pm_output_phaseb_v_lbl'>&nbsp;</td><td id='gpu_pm_output_phaseb_v' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='gpu_pm_output_phasec_v_lbl'>&nbsp;</td><td id='gpu_pm_output_phasec_v' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='gpu_pm_input_phasea_i_lbl'>&nbsp;</td><td id='gpu_pm_input_phasea_i' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='gpu_pm_input_phaseb_i_lbl'>&nbsp;</td><td id='gpu_pm_input_phaseb_i' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='gpu_pm_input_phasec_i_lbl'>&nbsp;</td><td id='gpu_pm_input_phasec_i' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='gpu_pm_input_phasea_v_lbl'>&nbsp;</td><td id='gpu_pm_input_phasea_v' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='gpu_pm_input_phaseb_v_lbl'>&nbsp;</td><td id='gpu_pm_input_phaseb_v' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='gpu_pm_input_phasec_v_lbl'>&nbsp;</td><td id='gpu_pm_input_phasec_v' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='gpu_gpustatus_triger_data_log_lbl'>&nbsp;</td><td id='gpu_gpustatus_triger_data_log' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='gpu_on_1_lbl'>&nbsp;</td><td id='gpu_on_1' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='gpu_on_2_lbl'>&nbsp;</td><td id='gpu_on_2' class='val'>LOADING...</td></tr>
+    </table>
+  </div>
+
+  <div class="settings" style="display: none;">
+    <h3>Settings</h3>
+    <%- @siteSelector({id:'site', label:'Site', value:@settings.site}) %>
+    <div class="row">
+      <%- @formGroup({id:'terminal', label: 'Terminal', type:'text', placeholder:'Terminal', value:@settings.terminal, cls:'col-md-6'}) %>
+      <%- @formGroup({id:'zone', label: 'Zone', type:'text', placeholder:'Zone', value:@settings.zone, cls:'col-md-6'}) %>
+    </div>
+    <div class="row">
+      <%- @formGroup({id:'display_prefix', label:'Prefix', type:'text', placeholder:'Display Prefix', value:@settings.display_prefix, cls:'col-md-6'}) %>
+      <%- @formGroup({id:'gate', label: 'Gate', type:'text', feedback:'plane', placeholder:'Gate #', value:@settings.gate, cls:'col-md-6'}) %>
+    </div>
+  </div>
+
+</div>

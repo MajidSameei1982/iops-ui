@@ -1,3 +1,4 @@
+/* Gate Widget Styles */
 .gate_widget {
   &.alarm {
     background-color: #c00;
@@ -7,7 +8,7 @@
     min-height: 100%;
     min-width: 100%;
     overflow: auto;
-    #gate_label {
+    #display_label {
       margin-bottom: 3px;
       h1 {
         line-height:48px;

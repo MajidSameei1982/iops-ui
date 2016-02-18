@@ -6,7 +6,7 @@ WidgetView = require('../dashboard/widget_view')
 
 class PcaWidgetView extends WidgetView
   template:   "widgets/pca_widget"
-  className: 'widget-outer box box-primary gate_widget'
+  className: 'widget-outer box box-primary pca_widget'
   ui:
     terminal:       'input#terminal'
     zone:           'input#zone'
@@ -63,6 +63,11 @@ class PcaWidgetView extends WidgetView
       @kill_updates(@site_code)
       OPCManager.rem_ref(@site_code)
       
+      # Temporary Client Eval until Settings are updated with the IsCloudServer (or equivelent flag)
+      switch @site_code
+        when "CID" then IsCloudServer = true
+        else IsCloudServer = false
+
       # build settings      
       settings = @site.get('settings')
       settings || settings = {}
@@ -78,9 +83,9 @@ class PcaWidgetView extends WidgetView
       @watch_updates(@site_code)
       OPCManager.add_ref(@site_code)
       
-      lbl = "Gate #{s.gate}"
+      lbl = "PCA #{gate}"
       @ui.wtitle.html(lbl)
-      @$('#gate_label #txt').html(lbl)
+      @$('#display_label #txt').html(lbl)
 
       @opc =  App.opc.connections[@site_code]
       @set_descriptions(true)
@@ -285,5 +290,5 @@ class PcaWidgetView extends WidgetView
     
 # ----------------------------------
 
-window.PcaWidgetView = PcaWidgetView
-module.exports = PcaWidgetView
+window.AirportWidgetView = AirportWidgetView
+module.exports = AirportWidgetView

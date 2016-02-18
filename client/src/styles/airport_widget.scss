@@ -1,0 +1,57 @@
+/* Airport Widget Styles */
+.airport_widget {
+  &.alarm {
+    background-color: #c00;
+    color: #fff;
+  }
+
+ &.DAL_account {
+    $site_code: DAL;
+    $Gates: 10 12;
+    %div_defauls {
+        min-height: calc(100% - 25px);
+        min-width: 100%;
+        overflow: auto;
+        position: absolute;
+        top: 25px;
+        left: 0px;
+      }
+    .display {
+      #display_label {
+        display: none;
+      }
+      div[id^='Airport_Gate_'] {
+        @extend %div_defauls;
+        z-index: 1000;
+      }
+      #Airport_Overview {
+        @extend %div_defauls;
+        background: url("../img/airport/DAL/DAL_Term_Overview.png") no-repeat bottom center; 
+        background-size: contain;
+        z-index: 100;
+      }
+
+      $ClassSuffixs: _bad_data _idle _ac_docked _good _alarm _warning;
+      $ImagesPrefixs: "../img/airport/#{$site_code}/#{$site_code}_Gate_";  
+      $ImagesSuffixs: "_bad_data.png" ".png" "_Plane.png" "" "_Alarm.png" "_Warning.png";  
+
+      @each $Gate in $Gates {
+        $index: 1;
+        @each $cls in $ClassSuffixs {
+          .airport_gate_#{$Gate}#{$cls} {
+              @if $index != 4 
+              {
+                background: url("#{$ImagesPrefixs}#{$Gate}#{nth($ImagesSuffixs,$index)}") no-repeat bottom center;
+                background-size: contain;
+              }
+              @else
+              {
+                background: none;
+              }
+            }
+            $index: $index + 1;
+        }
+      }
+    }
+  }
+}

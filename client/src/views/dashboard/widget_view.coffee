@@ -125,6 +125,10 @@ class WidgetView extends Marionette.ItemView
     @draw_terminals(terminal)
     @draw_zones(zone)
     @draw_gates(gate)
+    @$("select#site").chosen()
+    @$("select#terminal").chosen()
+    @$("select#zone").chosen()
+    @$("select#gate").chosen()
     @
   	
 # ----------------------------------

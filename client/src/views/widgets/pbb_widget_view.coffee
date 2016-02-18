@@ -19,28 +19,17 @@ class PbbWidgetView extends WidgetView
 
   tags:
     #Grid Tags
-    pbb_status :          'PBB.AIRCRAFTDOCKEDCALCULATION'
-    pbb_aircraft :        'PBB.AIRCRAFTSTATUS'
-    pbb_autolevel :       'PBB.AUTOLEVELMODEFLAG'
-    pbb_canopy:           'PBB.Warning.CANOPYDOWN'
-    pbb_acffloor:         'PBB.ACFFLOOR'
-    pbb_cablehoist:       'PBB.HZ400CABLEDEPLOYED'
-    pbb_estop:            'PBB.Alarm.E_STOP'
-    pbb_limits:           'PBB.400HZ Pit'
-    pbb_docktime:         'PBB.DOCKTIME'
-    pbb_undocktime:       'PBB.UNDOCKTIME'
-    pbb_smokedetector:    'PBB.SMOKEDETECTOR'
-    pbb_heighttodisp:     'PBB.HEIGHTTODISP'
-    gpu_gpuoutputamps:    'GPU.RAOUTAVG'
-    gpu_gpuoutputvolts:   'GPU.RVOUTAVG'
-    pca_pcadischargetemp: 'PCA.TEMPDISCH'
-    gpu_gpustatuson:      'GPU.GPUSTATUS'
-    pca_pcastatuson:      'PCA.PCAON'
-    gpu_gpustatusoff:     'GPU.GPUSTATUS'
-    pca_pcastatusoff:     'PCA.PCAON'
-    pbb_canopydown:       'PBB.Warning.CANOPYDOWN'
-    pbb_canopyup:         'PBB.Warning.CANOPYDOWN'
-
+    pbb_status :        'PBB.AIRCRAFTDOCKEDCALCULATION'
+    pbb_aircraft :      'PBB.AIRCRAFTSTATUS'
+    pbb_autolevel :     'PBB.AUTOLEVELMODEFLAG'
+    pbb_canopy:         'PBB.Warning.CANOPYDOWN'
+    pbb_acffloor:       'PBB.ACFFLOOR'
+    pbb_cablehoist:     'PBB.HZ400CABLEDEPLOYED'
+    pbb_estop:          'PBB.Alarm.E_STOP'
+    pbb_limits:         'PBB.400HZ Pit'
+    pbb_docktime:       'PBB.DOCKTIME'
+    pbb_undocktime:     'PBB.UNDOCKTIME'
+    
     #Processing Tags
     pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
     pbb_has_warnings :  'Warning._HasWarnings'
@@ -83,7 +72,7 @@ class PbbWidgetView extends WidgetView
       
       lbl = "Gate #{s.gate}"
       @ui.wtitle.html(lbl)
-      @$('#gate_label #txt').html(lbl)
+      @$('#display_label #txt').html(lbl)
 
       @opc =  App.opc.connections[@site_code]
       @set_descriptions(true)
@@ -105,6 +94,8 @@ class PbbWidgetView extends WidgetView
     $(el).html(h).toggleClass("bad_data", !q)
 
   data_q: (tag)=>
+    if !tag?
+      debugger
     c = App.opc.connections[@site_code]
     t = c.tags["#{@prefix}#{tag}"]
     t.props.Value.quality
@@ -161,9 +152,9 @@ class PbbWidgetView extends WidgetView
     @render_row("pbb_status", "", "", "ok")
     aircraftstatus = @vals['pbb_aircraft']
     @$('#pbb_status').html(aircraftstatus)
-    @render_row("gpu_gpuoutputvolts", "", "", "ok")
-    gpuoutputvoltsstatus = @vals['gpu_gpuoutputvolts']
-    @$('#gpu_gpuoutputvolts').html(gpuoutputvoltsstatus)
+    # @render_row("gpu_gpuoutputvolts", "", "", "ok")
+    # gpuoutputvoltsstatus = @vals['gpu_gpuoutputvolts']
+    # @$('#gpu_gpuoutputvolts').html(gpuoutputvoltsstatus)
 
 
     @$("#pbb_statused_lbl").html('PBB Status')
@@ -221,7 +212,7 @@ class PbbWidgetView extends WidgetView
     @render_row("pbb_canopy", "Down", "Up", "ok")
     
     # SMOKEDETECTOR
-    @render_row("pbb_smokedetector", "Ready/OK", "Activated", " ","err")
+    #@render_row("pbb_smokedetector", "Ready/OK", "Activated", " ","err")
 
     # E-STOP
     @render_row("pbb_estop", "Activated", "Ready/OK", "err")
@@ -230,11 +221,10 @@ class PbbWidgetView extends WidgetView
     @render_row("pbb_cablehoist", "Deployed", "Retracted", "ok")
 
     # STATUS
-    @render_row("pca_pcastatuson", "On", "On", "ok"," ")
-    @render_row("gpu_gpustatuson", "On", "On", "ok"," ") 
-    @render_row("pca_pcastatusoff", "Off", "Off"," ","err")
-    @render_row("gpu_gpustatusoff", "Off", "Off"," ","err")
-    
+    #@render_row("pca_pcastatuson", "On", "On", "ok"," ")
+    #@render_row("gpu_gpustatuson", "On", "On", "ok"," ") 
+    #@render_row("pca_pcastatusoff", "Off", "Off"," ","err")
+    #@render_row("gpu_gpustatusoff", "Off", "Off"," ","err")
 
     # ALARMS
     @ui.alarms.toggle(@get_bool(@vals.pbb_has_alarms))
@@ -257,17 +247,17 @@ class PbbWidgetView extends WidgetView
     el = @$('#pbb_undocktime').html("#{undocktime} mins")
     @mark_bad_data @tags.pbb_undocktime, el
 
-    heighttodisp = if @vals.pbb_heighttodisp? && @vals.pbb_heighttodisp != '' then @vals.pbb_heighttodisp else ' -- ' 
-    el =@$('#pbb_heighttodisp').html("#{heighttodisp}")
-    @mark_bad_data @tags.pbb_heighttodisp, el
+    # heighttodisp = if @vals.pbb_heighttodisp? && @vals.pbb_heighttodisp != '' then @vals.pbb_heighttodisp else ' -- ' 
+    # el =@$('#pbb_heighttodisp').html("#{heighttodisp}")
+    # @mark_bad_data @tags.pbb_heighttodisp, el
 
-    pcadischargetemp = if @vals.pca_pcadischargetemp? && @vals.pca_pcadischargetemp != '' then parseFloat(@vals.pca_pcadischargetemp).toFixed(2)  else ' --'
-    el =@$('#pca_pcadischargetemp').html("#{pcadischargetemp}")
-    @mark_bad_data @tags.pca_pcadischargetemp, el
+    # pcadischargetemp = if @vals.pca_pcadischargetemp? && @vals.pca_pcadischargetemp != '' then parseFloat(@vals.pca_pcadischargetemp).toFixed(2)  else ' --'
+    # el =@$('#pca_pcadischargetemp').html("#{pcadischargetemp}")
+    # @mark_bad_data @tags.pca_pcadischargetemp, el
 
-    gpuoutputamps = if @vals.gpu_gpuoutputamps? && @vals.gpu_gpuoutputamps != '' then parseFloat(@vals.gpu_gpuoutputamps).toFixed(2)  else ' --'
-    el =@$('#gpu_gpuoutputamps').html("#{gpuoutputamps}")
-    @mark_bad_data @tags.gpu_gpuoutputamps, el
+    # gpuoutputamps = if @vals.gpu_gpuoutputamps? && @vals.gpu_gpuoutputamps != '' then parseFloat(@vals.gpu_gpuoutputamps).toFixed(2)  else ' --'
+    # el =@$('#gpu_gpuoutputamps').html("#{gpuoutputamps}")
+    # @mark_bad_data @tags.gpu_gpuoutputamps, el
 
     @set_descriptions()
 
