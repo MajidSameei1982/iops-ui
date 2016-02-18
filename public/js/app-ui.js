@@ -1717,55 +1717,10 @@ window.JST["widgets/gpu_summary_widget"] = function(__obj) {
       _print(_safe(this.siteSelector({
         id: 'site',
         label: 'Site',
-        value: this.settings.site
+        site: this.settings.site
       })));
     
-      _print(_safe('\n    <div class="row">\n      '));
-    
-      _print(_safe(this.formGroup({
-        id: 'terminal',
-        label: 'Terminal',
-        type: 'text',
-        placeholder: 'Terminal',
-        value: this.settings.terminal,
-        cls: 'col-md-6'
-      })));
-    
-      _print(_safe('\n      '));
-    
-      _print(_safe(this.formGroup({
-        id: 'zone',
-        label: 'Zone',
-        type: 'text',
-        placeholder: 'Zone',
-        value: this.settings.zone,
-        cls: 'col-md-6'
-      })));
-    
-      _print(_safe('\n    </div>\n    <div class="row">\n      '));
-    
-      _print(_safe(this.formGroup({
-        id: 'display_prefix',
-        label: 'Prefix',
-        type: 'text',
-        placeholder: 'Display Prefix',
-        value: this.settings.display_prefix,
-        cls: 'col-md-6'
-      })));
-    
-      _print(_safe('\n      '));
-    
-      _print(_safe(this.formGroup({
-        id: 'gate',
-        label: 'Gate',
-        type: 'text',
-        feedback: 'plane',
-        placeholder: 'Gate #',
-        value: this.settings.gate,
-        cls: 'col-md-6'
-      })));
-    
-      _print(_safe('\n    </div>\n  </div>\n\n</div>\n'));
+      _print(_safe('\n    <div class="row">\n      <div id=\'terminals\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row">\n      <div id=\'zones\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row">\n      <div id=\'gates\' class=\'col-md-12\'></div>  \n    </div>\n  </div>\n\n</div>\n'));
     
     }).call(this);
     
@@ -1815,55 +1770,10 @@ window.JST["widgets/gpu_widget"] = function(__obj) {
       _print(_safe(this.siteSelector({
         id: 'site',
         label: 'Site',
-        value: this.settings.site
+        site: this.settings.site
       })));
     
-      _print(_safe('\n    <div class="row">\n      '));
-    
-      _print(_safe(this.formGroup({
-        id: 'terminal',
-        label: 'Terminal',
-        type: 'text',
-        placeholder: 'Terminal',
-        value: this.settings.terminal,
-        cls: 'col-md-6'
-      })));
-    
-      _print(_safe('\n      '));
-    
-      _print(_safe(this.formGroup({
-        id: 'zone',
-        label: 'Zone',
-        type: 'text',
-        placeholder: 'Zone',
-        value: this.settings.zone,
-        cls: 'col-md-6'
-      })));
-    
-      _print(_safe('\n    </div>\n    <div class="row">\n      '));
-    
-      _print(_safe(this.formGroup({
-        id: 'display_prefix',
-        label: 'Prefix',
-        type: 'text',
-        placeholder: 'Display Prefix',
-        value: this.settings.display_prefix,
-        cls: 'col-md-6'
-      })));
-    
-      _print(_safe('\n      '));
-    
-      _print(_safe(this.formGroup({
-        id: 'gate',
-        label: 'Gate',
-        type: 'text',
-        feedback: 'plane',
-        placeholder: 'Gate #',
-        value: this.settings.gate,
-        cls: 'col-md-6'
-      })));
-    
-      _print(_safe('\n    </div>\n  </div>\n\n</div>\n'));
+      _print(_safe('\n    <div class="row">\n      <div id=\'terminals\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row">\n      <div id=\'zones\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row">\n      <div id=\'gates\' class=\'col-md-12\'></div>  \n    </div>\n  </div>\n\n</div>\n'));
     
     }).call(this);
     
@@ -2264,6 +2174,8 @@ require('./views/widgets/alarm_widget_view');
 
 require('./views/widgets/pbb_widget_view');
 
+require('./views/widgets/pbbdetail_widget_view');
+
 require('./views/widgets/pbbleveldetail_widget_view');
 
 require('./views/widgets/pca_widget_view');
@@ -2481,7 +2393,7 @@ window.App = (function() {
   return App;
 })();
 
-},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/site_collection":20,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27,"./views/widgets/airport_widget_view":55,"./views/widgets/alarm_widget_view":56,"./views/widgets/config_widget_view":57,"./views/widgets/gpu_summary_widget_view":58,"./views/widgets/gpu_widget_view":59,"./views/widgets/pbb_widget_view":60,"./views/widgets/pbbleveldetail_widget_view":61,"./views/widgets/pca_widget_view":62,"./views/widgets/url_widget_view":63,"./views/widgets/weather_widget_view":64}],2:[function(require,module,exports){
+},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/site_collection":20,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27,"./views/widgets/airport_widget_view":55,"./views/widgets/alarm_widget_view":56,"./views/widgets/config_widget_view":57,"./views/widgets/gpu_summary_widget_view":58,"./views/widgets/gpu_widget_view":59,"./views/widgets/pbb_widget_view":60,"./views/widgets/pbbdetail_widget_view":61,"./views/widgets/pbbleveldetail_widget_view":62,"./views/widgets/pca_widget_view":63,"./views/widgets/url_widget_view":64,"./views/widgets/weather_widget_view":65}],2:[function(require,module,exports){
 var AccountsView, AppController, Dashboard, DashboardCollection, DashboardContentView, DashboardLayout, LoginView, Marionette, PermissionsLayout, ProfileView, ReportsView, Session, User, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -8541,23 +8453,20 @@ GpusummaryWidgetView = (function(superClass) {
   };
 
   GpusummaryWidgetView.prototype.update = function() {
-    var IsCloudServer, gate, lbl, s, t, tags, tg;
+    var cloud, lbl, s, settings, t, tags, tg;
     s = this.model.get("settings");
     if ((s != null) && !!s.gate) {
-      this.site_code = OPCManager.get_site_code(s.site);
+      this.site = OPCManager.get_site(s.site);
+      this.site_code = this.site.get('code');
       if (this.site_code == null) {
         return null;
       }
       this.kill_updates(this.site_code);
       OPCManager.rem_ref(this.site_code);
-      gate = s.display_prefix != null ? "" + s.display_prefix + s.gate : '#{s.gate}';
-      switch (this.site_code) {
-        case "CID":
-          IsCloudServer = true;
-          break;
-        default:
-          IsCloudServer = false;
-      }
+      settings = this.site.get('settings');
+      settings || (settings = {});
+      cloud = settings.cloud ? "RemoteSCADAHosting.Airport-" + this.site_code + "." : '';
+      this.prefix = cloud + "Airport." + this.site_code + ".Term" + s.terminal + ".Zone" + s.zone + ".Gate" + s.gate + ".";
       $((function(_this) {
         return function() {
           $('.toggle_button').each(function(index) {
@@ -8590,8 +8499,6 @@ GpusummaryWidgetView = (function(superClass) {
           });
         };
       })(this));
-      this.prefix = IsCloudServer ? "RemoteSCADAHosting.Airport-" + this.site_code + "." : "";
-      this.prefix = this.prefix + "Airport." + this.site_code + ".Term" + s.terminal + ".Zone" + s.zone + ".Gate" + gate + ".";
       tags = [];
       for (tg in this.tags) {
         t = this.tags[tg];
@@ -8600,7 +8507,7 @@ GpusummaryWidgetView = (function(superClass) {
       App.opc.add_tags(this.site_code, tags);
       this.watch_updates(this.site_code);
       OPCManager.add_ref(this.site_code);
-      lbl = "GPU " + gate + " - Summary";
+      lbl = "GPU " + s.gate + " - Summary";
       this.ui.wtitle.html(lbl);
       this.$('#gpu_summary_label #txt').html(lbl);
       this.opc = App.opc.connections[this.site_code];
@@ -9077,6 +8984,7 @@ GpusummaryWidgetView = (function(superClass) {
         title: ' ',
         label: 'Output Voltage',
         value: parseInt(this.vals.gpu_rvoutavg),
+        parseTime: false,
         min: 0,
         max: 150,
         symbol: ' V',
@@ -9134,6 +9042,7 @@ GpusummaryWidgetView = (function(superClass) {
         title: ' ',
         label: 'Output Amperage',
         value: parseFloat(this.vals.gpu_raoutavg).toFixed(0),
+        parseTime: false,
         min: 0,
         max: 70,
         symbol: ' A',
@@ -9193,11 +9102,10 @@ GpusummaryWidgetView = (function(superClass) {
   GpusummaryWidgetView.prototype.set_model = function() {
     var s;
     s = _.clone(this.model.get("settings"));
-    s.gate = this.ui.gate.val().trim();
-    s.site = this.ui.site.val().trim();
-    s.terminal = this.ui.terminal.val().trim();
-    s.zone = this.ui.zone.val().trim();
-    s.display_prefix = this.ui.display_prefix.val().trim();
+    s.site = this.$('#site').val();
+    s.terminal = this.$('#terminal').val();
+    s.zone = this.$('#zone').val();
+    s.gate = this.$('#gate').val();
     return this.model.set("settings", s);
   };
 
@@ -9210,25 +9118,23 @@ GpusummaryWidgetView = (function(superClass) {
   };
 
   GpusummaryWidgetView.prototype.onShow = function() {
-    var gate, ms, settings, site, site_code;
-    this.ui.gate.on("change", this.set_model);
-    this.ui.site.on("change", this.set_model);
-    this.ui.terminal.on("change", this.set_model);
-    this.ui.zone.on("change", this.set_model);
-    this.ui.display_prefix.on("change", this.set_model);
+    var gate, settings, site_code;
     settings = this.model.get('settings');
+    settings || (settings = {});
+    this.draw_selectors(settings.terminal, settings.zone, settings.gate);
+    this.$('#site').on('change', (function(_this) {
+      return function() {
+        _this.draw_selectors();
+        return _this.set_model();
+      };
+    })(this));
     gate = settings.gate;
     if ((gate == null) || gate === '') {
       this.toggle_settings();
     }
-    site = settings.site;
-    site_code = OPCManager.get_site_code(site);
+    site_code = OPCManager.get_site_code(settings.site);
     if (site_code != null) {
-      OPCManager.add_ref(site_code);
-    }
-    ms = this.model.get('settings');
-    if ((ms != null) && (ms.site != null)) {
-      return this.ui.site.val(ms.site);
+      return OPCManager.add_ref(site_code);
     }
   };
 
@@ -9357,7 +9263,7 @@ GpuWidgetView = (function(superClass) {
       App.opc.add_tags(this.site_code, tags);
       this.watch_updates(this.site_code);
       OPCManager.add_ref(this.site_code);
-      lbl = "GPU " + gate + " - Details";
+      lbl = "GPU " + s.gate + " - Details";
       this.ui.wtitle.html(lbl);
       this.$('#gpu_label #txt').html(lbl);
       this.opc = App.opc.connections[this.site_code];
@@ -9380,6 +9286,9 @@ GpuWidgetView = (function(superClass) {
 
   GpuWidgetView.prototype.mark_bad_data = function(tag, el) {
     var h, q;
+    if (tag == null) {
+      debugger;
+    }
     q = this.data_q(tag);
     h = !q ? 'BAD DATA' : $(el).html();
     return $(el).html(h).toggleClass("bad_data", !q);
@@ -9482,17 +9391,11 @@ GpuWidgetView = (function(superClass) {
   };
 
   GpuWidgetView.prototype.data_update = function(data) {
-    var aircraftstatus, gpuoutputvoltsstatus, tg;
+    var tg;
     this.vals = {};
     for (tg in this.tags) {
       this.vals[tg] = this.get_value(this.tags[tg]);
     }
-    this.render_row("pbb_status", "", "", "ok");
-    aircraftstatus = this.vals['pbb_aircraft'];
-    this.$('#pbb_status').html(aircraftstatus);
-    this.render_row("gpu_gpuoutputvolts", "", "", "ok");
-    gpuoutputvoltsstatus = this.vals['gpu_gpuoutputvolts'];
-    this.$('#gpu_gpuoutputvolts').html(gpuoutputvoltsstatus);
     this.render_value_row("gpu_gpustatus", true, 1);
     this.render_value_row("gpu_contstatus", true, 1);
     this.render_row("gpu_bypass", "Down", "Up", "ok");
@@ -9698,9 +9601,6 @@ PbbWidgetView = (function(superClass) {
 
   PbbWidgetView.prototype.data_q = function(tag) {
     var c, t;
-    if (tag == null) {
-      debugger;
-    }
     c = App.opc.connections[this.site_code];
     t = c.tags["" + this.prefix + tag];
     return t.props.Value.quality;
@@ -9896,6 +9796,342 @@ window.PbbWidgetView = PbbWidgetView;
 module.exports = PbbWidgetView;
 
 },{"../dashboard/widget_view":38}],61:[function(require,module,exports){
+var Marionette, PbbdetailWidgetView, WidgetView,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+WidgetView = require('../dashboard/widget_view');
+
+PbbdetailWidgetView = (function(superClass) {
+  extend(PbbdetailWidgetView, superClass);
+
+  function PbbdetailWidgetView() {
+    this.set_model = bind(this.set_model, this);
+    this.data_update = bind(this.data_update, this);
+    this.set_descriptions = bind(this.set_descriptions, this);
+    this.flash_alarm = bind(this.flash_alarm, this);
+    this.data_q = bind(this.data_q, this);
+    this.get_value = bind(this.get_value, this);
+    this.get_bool = bind(this.get_bool, this);
+    return PbbdetailWidgetView.__super__.constructor.apply(this, arguments);
+  }
+
+  PbbdetailWidgetView.prototype.template = "widgets/pbbdetail_widget";
+
+  PbbdetailWidgetView.prototype.className = 'widget-outer box box-primary pbbdetail_widget';
+
+  PbbdetailWidgetView.prototype.ui = {
+    terminal: 'input#terminal',
+    zone: 'input#zone',
+    display_prefix: 'input#display_prefix',
+    gate: 'input#gate',
+    site: 'select#site',
+    wtitle: 'h3.box-title',
+    display: '.display',
+    content: '.content',
+    docked: 'i#docked',
+    alarms: 'i#alarms',
+    warnings: 'i#warnings'
+  };
+
+  PbbdetailWidgetView.layout = {
+    sx: 11,
+    sy: 12
+  };
+
+  PbbdetailWidgetView.prototype.tags = {
+    pbb_status: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+    pbb_aircraft: 'PBB.AIRCRAFTSTATUS',
+    pbb_autolevel: 'PBB.AUTOLEVELMODEFLAG',
+    pbb_canopy: 'PBB.Warning.CANOPYDOWN',
+    pbb_acffloor: 'PBB.ACFFLOOR',
+    pbb_cablehoist: 'PBB.HZ400CABLEDEPLOYED',
+    pbb_estop: 'PBB.Alarm.E_STOP',
+    pbb_limits: 'PBB.400HZ Pit',
+    pbb_docktime: 'PBB.DOCKTIME',
+    pbb_undocktime: 'PBB.UNDOCKTIME',
+    pbb_smokedetector: 'PBB.SMOKEDETECTOR',
+    pbb_heighttodisp: 'PBB.HEIGHTTODISP',
+    gpu_gpuoutputamps: 'GPU.RAOUTAVG',
+    gpu_gpuoutputvolts: 'GPU.RVOUTAVG',
+    pca_pcadischargetemp: 'PCA.TEMPDISCH',
+    gpu_gpustatuson: 'GPU.GPUSTATUS',
+    pca_pcastatuson: 'PCA.PCAON',
+    gpu_gpustatusoff: 'GPU.GPUSTATUS',
+    pca_pcastatusoff: 'PCA.PCAON',
+    pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
+    pbb_has_warnings: 'Warning._HasWarnings',
+    pbb_has_alarms: 'Alarm._HasAlarms'
+  };
+
+  PbbdetailWidgetView.prototype.modelEvents = {
+    "change": "update"
+  };
+
+  PbbdetailWidgetView.prototype.watch_updates = function(conn) {
+    return App.vent.on("opc:data:" + conn, this.data_update);
+  };
+
+  PbbdetailWidgetView.prototype.kill_updates = function(conn) {
+    return App.vent.off("opc:data:" + conn, this.data_update);
+  };
+
+  PbbdetailWidgetView.prototype.update = function() {
+    var cloud, lbl, s, settings, t, tags, tg;
+    s = this.model.get("settings");
+    if ((s != null) && !!s.gate) {
+      this.site = OPCManager.get_site(s.site);
+      this.site_code = this.site.get('code');
+      if (this.site_code == null) {
+        return null;
+      }
+      this.kill_updates(this.site_code);
+      OPCManager.rem_ref(this.site_code);
+      settings = this.site.get('settings');
+      settings || (settings = {});
+      cloud = settings.cloud ? "RemoteSCADAHosting.Airport-" + this.site_code + "." : '';
+      this.prefix = cloud + "Airport." + this.site_code + ".Term" + s.terminal + ".Zone" + s.zone + ".Gate" + s.gate + ".";
+      tags = [];
+      for (tg in this.tags) {
+        t = this.tags[tg];
+        tags.push("" + this.prefix + t + ".Value");
+      }
+      App.opc.add_tags(this.site_code, tags);
+      this.watch_updates(this.site_code);
+      OPCManager.add_ref(this.site_code);
+      lbl = "Gate " + s.gate;
+      this.ui.wtitle.html(lbl);
+      this.$('#pbbdetail_label #txt').html(lbl);
+      this.opc = App.opc.connections[this.site_code];
+      return this.set_descriptions(true);
+    }
+  };
+
+  PbbdetailWidgetView.prototype.get_bool = function(v) {
+    if ((v != null) && v.toUpperCase() === "TRUE") {
+      return true;
+    } else if ((v != null) && v.toUpperCase() === "FALSE") {
+      return false;
+    }
+    return null;
+  };
+
+  PbbdetailWidgetView.prototype.get_value = function(tag) {
+    return this.opc.get_value("" + this.prefix + tag + ".Value");
+  };
+
+  PbbdetailWidgetView.prototype.mark_bad_data = function(tag, el) {
+    var h, q;
+    q = this.data_q(tag);
+    h = !q ? 'BAD DATA' : $(el).html();
+    return $(el).html(h).toggleClass("bad_data", !q);
+  };
+
+  PbbdetailWidgetView.prototype.data_q = function(tag) {
+    var c, t;
+    c = App.opc.connections[this.site_code];
+    t = c.tags["" + this.prefix + tag];
+    return t.props.Value.quality;
+  };
+
+  PbbdetailWidgetView.prototype.flash_alarm = function(fl) {
+    var chg;
+    if ((this.fl_interval != null) && !fl) {
+      clearInterval(this.fl_interval);
+      $(this.el).removeClass('alarm');
+      this.fl_interval = null;
+    }
+    if (!this.fl_interval && fl) {
+      chg = (function(_this) {
+        return function() {
+          return $(_this.el).toggleClass('alarm');
+        };
+      })(this);
+      return this.fl_interval = setInterval(chg, 500);
+    }
+  };
+
+  PbbdetailWidgetView.prototype.set_descriptions = function(force) {
+    var t, tds, tg, tlen;
+    tds = [];
+    tlen = Object.keys(this.tags).length;
+    if (!force && (this.dcount != null) && this.dcount >= tlen) {
+      return;
+    }
+    this.dcount = force ? 0 : this.dcount;
+    if (this.dcount == null) {
+      this.dcount = 0;
+    }
+    for (t in this.tags) {
+      tg = this.tags[t];
+      tds.push("" + this.prefix + tg + ".Description");
+    }
+    return this.opc.load_tags(tds, (function(_this) {
+      return function(data) {
+        var i, idx, len, ref, results, ts, tt, v;
+        ref = data.tags;
+        results = [];
+        for (i = 0, len = ref.length; i < len; i++) {
+          t = ref[i];
+          results.push((function() {
+            var ref1, results1;
+            ref1 = this.tags;
+            results1 = [];
+            for (tt in ref1) {
+              idx = ref1[tt];
+              ts = this.tags[tt];
+              if (("" + this.prefix + ts) === t.name) {
+                v = t.props[0].val;
+                this.$("#" + tt + "_lbl").html(v);
+                this.dcount += 1;
+                break;
+              } else {
+                results1.push(void 0);
+              }
+            }
+            return results1;
+          }).call(_this));
+        }
+        return results;
+      };
+    })(this));
+  };
+
+  PbbdetailWidgetView.prototype.render_row = function(tag, tv, fv, tc, fc) {
+    var el, txt, v;
+    v = this.get_bool(this.vals[tag]);
+    txt = v ? tv : fv;
+    el = this.$("#" + tag).html(txt);
+    if (tc != null) {
+      el.toggleClass(tc, v);
+    }
+    if (fc != null) {
+      el.toggleClass(fc, !v);
+    }
+    return this.mark_bad_data(this.tags[tag], el);
+  };
+
+  PbbdetailWidgetView.prototype.data_update = function(data) {
+    var a, aircraftstatus, c, docktime, el, gpuoutputamps, gpuoutputvoltsstatus, heighttodisp, pcadischargetemp, tg, txt, txt1, txta, txta1, txta1n, txtan, undocktime, v;
+    this.vals = {};
+    for (tg in this.tags) {
+      this.vals[tg] = this.get_value(this.tags[tg]);
+    }
+    this.render_row("pbb_status", "", "", "ok");
+    aircraftstatus = this.vals['pbb_aircraft'];
+    this.$('#pbb_status').html(aircraftstatus);
+    this.render_row("gpu_gpuoutputvolts", "", "", "ok");
+    gpuoutputvoltsstatus = this.vals['gpu_gpuoutputvolts'];
+    this.$('#gpu_gpuoutputvolts').html(gpuoutputvoltsstatus);
+    v = this.get_bool(this.vals.pbb_status);
+    a = this.get_bool(this.vals.pbb_autolevel);
+    c = this.get_bool(this.vals.pbb_canopy);
+    txt = v ? "Docked" : "Docked";
+    this.$("#pbb_docked_lbl").html('PBB Status');
+    el = this.$("#pbb_docked").html(txt).toggleClass('ok', v);
+    txt1 = v ? "Undocked" : "Undocked";
+    el = this.$("#pbb_undocked").html(txt1).toggleClass('ok', !v);
+    txta = a ? "Auto-Level : On " : "Auto-Level : On";
+    el = this.$("#pbb_autolevelstatusok").html(txta).toggleClass('ok', a);
+    txta1 = c ? "Canopy : Down " : "Canopy : Down ";
+    el = this.$("#pbb_canopystatusok").html(txta1).toggleClass('ok', c);
+    txtan = a ? "Auto-Level : Off " : "Auto-Level : Off";
+    el = this.$("#pbb_autolevelstatusnok").html(txtan).toggleClass('ok', !a);
+    txta1n = c ? "Canopy : Up " : "Canopy : Up ";
+    el = this.$("#pbb_canopystatusnok").html(txta1n).toggleClass('ok', !c);
+    this.render_row("pbb_autolevel", "On", "Off", "ok");
+    this.render_row("pbb_canopy", "Down", "Up", "ok");
+    this.render_row("pbb_acffloor", "On", "Off", "ok");
+    this.render_row("pbb_smokedetector", "Ready/OK", "Activated", " ", "err");
+    this.render_row("pbb_estop", "Activated", "Ready/OK", "err");
+    this.render_row("pbb_cablehoist", "Deployed", "Retracted", "ok");
+    this.render_row("pbb_limits", "OK", "Active", "ok", "err");
+    this.render_row("pca_pcastatuson", "On", "On", "ok", " ");
+    this.render_row("gpu_gpustatuson", "On", "On", "ok", " ");
+    this.render_row("pca_pcastatusoff", "Off", "Off", " ", "err");
+    this.render_row("gpu_gpustatusoff", "Off", "Off", " ", "err");
+    this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms));
+    this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings));
+    this.ui.docked.toggle(this.get_bool(this.vals.pbb_status));
+    this.flash_alarm(this.get_bool(this.vals.pbb_autolevelfail));
+    docktime = (this.vals.pbb_docktime != null) && this.vals.pbb_docktime !== '' ? parseFloat(this.vals.pbb_docktime).toFixed(4) : ' -- ';
+    el = this.$('#pbb_docktime').html("" + docktime);
+    this.mark_bad_data(this.tags.pbb_docktime, el);
+    undocktime = (this.vals.pbb_undocktime != null) && this.vals.pbb_undocktime !== '' ? parseFloat(this.vals.pbb_undocktime).toFixed(4) : ' -- ';
+    el = this.$('#pbb_undocktime').html("" + undocktime);
+    this.mark_bad_data(this.tags.pbb_undocktime, el);
+    heighttodisp = (this.vals.pbb_heighttodisp != null) && this.vals.pbb_heighttodisp !== '' ? this.vals.pbb_heighttodisp : ' -- ';
+    el = this.$('#pbb_heighttodisp').html("" + heighttodisp);
+    this.mark_bad_data(this.tags.pbb_heighttodisp, el);
+    pcadischargetemp = (this.vals.pca_pcadischargetemp != null) && this.vals.pca_pcadischargetemp !== '' ? parseFloat(this.vals.pca_pcadischargetemp).toFixed(2) : ' --';
+    el = this.$('#pca_pcadischargetemp').html("" + pcadischargetemp);
+    this.mark_bad_data(this.tags.pca_pcadischargetemp, el);
+    gpuoutputamps = (this.vals.gpu_gpuoutputamps != null) && this.vals.gpu_gpuoutputamps !== '' ? parseFloat(this.vals.gpu_gpuoutputamps).toFixed(2) : ' --';
+    el = this.$('#gpu_gpuoutputamps').html("" + gpuoutputamps);
+    this.mark_bad_data(this.tags.gpu_gpuoutputamps, el);
+    return this.set_descriptions();
+  };
+
+  PbbdetailWidgetView.prototype.set_model = function() {
+    var s;
+    s = _.clone(this.model.get("settings"));
+    s.site = this.$('#site').val();
+    s.terminal = this.$('#terminal').val();
+    s.zone = this.$('#zone').val();
+    s.gate = this.$('#gate').val();
+    return this.model.set("settings", s);
+  };
+
+  PbbdetailWidgetView.prototype.toggle_settings = function(e) {
+    PbbdetailWidgetView.__super__.toggle_settings.call(this, e);
+    this.ui.display.toggle(!this.settings_visible);
+    if (this.settings_visible) {
+      return this.ui.site.chosen();
+    }
+  };
+
+  PbbdetailWidgetView.prototype.onShow = function() {
+    var gate, settings, site_code;
+    settings = this.model.get('settings');
+    settings || (settings = {});
+    this.draw_selectors(settings.terminal, settings.zone, settings.gate);
+    this.$('#site').on('change', (function(_this) {
+      return function() {
+        _this.draw_selectors();
+        return _this.set_model();
+      };
+    })(this));
+    gate = settings.gate;
+    if ((gate == null) || gate === '') {
+      this.toggle_settings();
+    }
+    site_code = OPCManager.get_site_code(settings.site);
+    if (site_code != null) {
+      return OPCManager.add_ref(site_code);
+    }
+  };
+
+  PbbdetailWidgetView.prototype.start = function() {
+    return this.update();
+  };
+
+  PbbdetailWidgetView.prototype.onDestroy = function(arg1, arg2) {
+    this.kill_updates(this.site_code);
+    return OPCManager.rem_ref(this.site_code);
+  };
+
+  return PbbdetailWidgetView;
+
+})(WidgetView);
+
+window.PbbdetailWidgetView = PbbdetailWidgetView;
+
+module.exports = PbbdetailWidgetView;
+
+},{"../dashboard/widget_view":38}],62:[function(require,module,exports){
 var Marionette, PbbleveldetailWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -10248,7 +10484,7 @@ window.PbbleveldetailWidgetView = PbbleveldetailWidgetView;
 
 module.exports = PbbleveldetailWidgetView;
 
-},{"../dashboard/widget_view":38}],62:[function(require,module,exports){
+},{"../dashboard/widget_view":38}],63:[function(require,module,exports){
 var Marionette, PcaWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -10573,7 +10809,7 @@ window.AirportWidgetView = AirportWidgetView;
 
 module.exports = AirportWidgetView;
 
-},{"../dashboard/widget_view":38}],63:[function(require,module,exports){
+},{"../dashboard/widget_view":38}],64:[function(require,module,exports){
 var Marionette, UrlWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -10665,7 +10901,7 @@ window.UrlWidgetView = UrlWidgetView;
 
 module.exports = UrlWidgetView;
 
-},{"../dashboard/widget_view":38}],64:[function(require,module,exports){
+},{"../dashboard/widget_view":38}],65:[function(require,module,exports){
 var Marionette, WeatherWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },

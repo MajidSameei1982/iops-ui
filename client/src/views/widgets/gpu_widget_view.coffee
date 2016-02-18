@@ -46,6 +46,7 @@ class GpuWidgetView extends WidgetView
     gpu_gpustatus_triger_data_log:  'GPU.GPUSTATUS_TRIGER_DATA_LOG'
     gpu_on_1:                       'GPU.ON 1'
     gpu_on_2:                       'GPU.ON 2'
+
   modelEvents:
     "change" : "update"
 
@@ -81,7 +82,7 @@ class GpuWidgetView extends WidgetView
       @watch_updates(@site_code)
       OPCManager.add_ref(@site_code)
       
-      lbl = "GPU #{gate} - Details"
+      lbl = "GPU #{s.gate} - Details"
       @ui.wtitle.html(lbl)
       @$('#gpu_label #txt').html(lbl)
 
@@ -100,6 +101,8 @@ class GpuWidgetView extends WidgetView
 
   # get data quality and set view if bad
   mark_bad_data: (tag, el)->
+    if !tag?
+      debugger
     q = @data_q(tag)
     h = if !q then 'BAD DATA' else $(el).html()
     $(el).html(h).toggleClass("bad_data", !q)
@@ -166,12 +169,12 @@ class GpuWidgetView extends WidgetView
       @vals[tg] = @get_value(@tags[tg])
     
     # PBB AIRCRAFT
-    @render_row("pbb_status", "", "", "ok")
-    aircraftstatus = @vals['pbb_aircraft']
-    @$('#pbb_status').html(aircraftstatus)
-    @render_row("gpu_gpuoutputvolts", "", "", "ok")
-    gpuoutputvoltsstatus = @vals['gpu_gpuoutputvolts']
-    @$('#gpu_gpuoutputvolts').html(gpuoutputvoltsstatus)
+    # @render_row("pbb_status", "", "", "ok")
+    # aircraftstatus = @vals['pbb_aircraft']
+    # @$('#pbb_status').html(aircraftstatus)
+    # @render_row("gpu_gpuoutputvolts", "", "", "ok")
+    # gpuoutputvoltsstatus = @vals['gpu_gpuoutputvolts']
+    # @$('#gpu_gpuoutputvolts').html(gpuoutputvoltsstatus)
 
     # GPU GPUSTATUS                   
     @render_value_row("gpu_gpustatus", true, 1)
@@ -257,7 +260,6 @@ class GpuWidgetView extends WidgetView
     super(e)
     @ui.display.toggle(!@settings_visible)
     if @settings_visible then @ui.site.chosen()
-
 
   onShow: ()->
     settings = @model.get('settings')
