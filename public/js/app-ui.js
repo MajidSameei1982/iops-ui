@@ -22,6 +22,7 @@ window.JST["common/modal"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="modal-dialog">\n  <div class="modal-content">\n    <div class="modal-header">\n      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>\n      <h4 class="modal-title"></h4>\n    </div>\n    <div class="modal-body"></div>\n    <div class="modal-footer">\n      <button type="button" id=\'modal_cancel\' class="btn btn-outline pull-left" data-dismiss="modal"></button>\n      <button type="button" id=\'modal_save\' class="btn btn-outline"></button>\n    </div>\n  </div><!-- /.modal-content -->\n</div><!-- /.modal-dialog -->\n\n\n\n'));
     
     }).call(this);
@@ -67,6 +68,7 @@ window.JST["dashboard/content"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<!-- Content Header (Page header) -->\n<section class="content-header">\n  <h1 id="title"></h1>\n</section>\n\n<!-- Main content -->\n<section id="center-region" class="content"></section>\n<!-- /.content -->'));
     
     }).call(this);
@@ -112,6 +114,7 @@ window.JST["dashboard/dashboard_layout"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="wrapper">\n\n  <!-- Main Header -->\n  <div id="header-region" tabindex="-1"></div>\n\n  <!-- Left side column. contains the logo and sidebar -->\n  <div id="side-region" tabindex="-1"></div>\n\n  <!-- Content Wrapper. Contains page content -->\n  <div id="content-region" class="content-wrapper" tabindex="-1"></div>\n  \n  <!-- Main Footer -->\n  <div id="footer-region" tabindex="-1"></div>\n  \n  <!-- Control Sidebar -->      \n  <div id="tool-region" tabindex="-1"></div>\n\n  <!-- Add the sidebar\'s background. This div must be placed\n       immediately after the control sidebar -->\n  <div class=\'control-sidebar-bg\' tabindex="-1"></div>\n\n</div><!-- ./wrapper -->\n<script src=\'adminlte/app.js\' type="text/javascript"></script>\n\n\n'));
     
     }).call(this);
@@ -157,6 +160,7 @@ window.JST["dashboard/dashboard_modal"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="modal-dialog">\n  <div class="modal-content">\n    <div class="modal-header">\n      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>\n      <h4 class="modal-title"></h4>\n      <div class="modal-subtitle"></div>\n    </div>\n    <div class="modal-body">\n      <div class="row">\n        '));
     
       _print(_safe(this.formGroup({
@@ -213,6 +217,7 @@ window.JST["dashboard/footer"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="pull-right">\n\t<span id=\'logo\'><img src=\'img/logos/logo_wide.png\'/> powered by <img src=\'img/logos/jbt_sm.png\'/></span>\n</div>\n\n'));
     
     }).call(this);
@@ -258,6 +263,7 @@ window.JST["dashboard/header"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<!-- Logo -->\n<a href="/" class="logo">\n  <span class="logo-mini"><img src=\'img/logos/logo_square.png\'/></span>\n  <span class="logo-lg"><img src=\'img/logos/logo_wide.png\'/></span>\n</a>\n\n<!-- Header Navbar -->\n<nav class="navbar navbar-static-top" role="navigation">\n  <!-- Sidebar toggle button-->\n  <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">\n    <span class="sr-only">Toggle navigation</span>\n  </a>\n  <!-- Navbar Right Menu -->\n  <div class="navbar-custom-menu">\n    <ul class="nav navbar-nav">\n      <li id=\'systemclock\' class=\'user user-menu\'>\n        <div style=\'padding:15px\' id=\'clock\'>--, --- ---, ---- 00:00</div>\n      </li>\n      <!-- User Account Menu -->\n      <li id = \'profilemenu\' class="dropdown user user-menu">\n        <!-- Menu Toggle Button -->\n        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n          <!-- The user image in the navbar-->\n          <img src="img/avatar.png" class="user-image" id=\'avatar\'/>\n          <!-- hidden-xs hides the username on small devices so only the image appears. -->\n          <span class="hidden-xs" id=\'fullname\'>'));
     
       _print(this.fullName());
@@ -315,6 +321,7 @@ window.JST["dashboard/side"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<!-- sidebar -->\n<section class="sidebar" tabindex=\'-1\'>\n  <!-- Sidebar Menu -->\n  <ul class="sidebar-menu" id=\'dashboard-list\' tabindex=\'-1\'>\n    <li class="header" tabindex=\'-1\'>DASHBOARDS  <a href=\'#\' id=\'add_dash\' class=\'inline\'><i class=\'fa fa-plus-square\'></i>Add</a></li>\n    <!-- <li class="header" tabindex=\'-1\'>DASHBOARDS </li> -->\n  </ul>\n  <!-- /.sidebar-menu -->\n</section>\n<!-- /.sidebar -->'));
     
     }).call(this);
@@ -360,6 +367,7 @@ window.JST["dashboard/tool"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<!-- sidebar -->\n<section class="sidebar" tabindex="-1">\n  <!-- Sidebar Menu -->\n  <ul class="sidebar-menu" id=\'dashboard-list\' tabindex=\'-1\'>\n    <li class="header">App Admin</li>\n    <li id="manage_accounts" class=\'tool_link\' data-toggle="control-sidebar" tabindex=\'-1\'><a href="#" tabindex=\'-1\'><i class=\'fa fa-building-o\'></i> <span>Manage Accounts</span></a></li>\n    <li id="manage_permissions" class=\'tool_link\' data-toggle="control-sidebar" tabindex=\'-1\'><a href="#" tabindex=\'-1\'><i class=\'fa fa-users\'></i> <span>Manage Permissions</span></a></li>\n    <li id="reports" class=\'tool_link\' data-toggle="control-sidebar" tabindex=\'-1\'><a href="#" tabindex=\'-1\'><i class=\'fa fa-bar-chart\'></i> <span>Reports</span></a></li>\n  </ul>\n  <!-- /.sidebar-menu -->\n</section>\n<!-- /.sidebar -->'));
     
     }).call(this);
@@ -405,6 +413,7 @@ window.JST["dashboard/widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  Widget Body\n</div><!-- /.box-body -->\n'));
     
     }).call(this);
@@ -450,6 +459,7 @@ window.JST["dashboard/widget_layout"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div><a id="add_widget" href="#"><i class=\'fa fa-plus-square\'></i> Add New Widget</a></div>\n<ul class=\'gridster widget-container\'></ul>\n'));
     
     }).call(this);
@@ -495,13 +505,13 @@ window.JST["dashboard/widget_modal"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      var i, len, ref, w;
+      var w, _i, _len, _ref;
     
       _print(_safe('<div class="modal-dialog">\n  <div class="modal-content">\n    <div class="modal-header">\n      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>\n      <h4 class="modal-title">Add a Widget</h4>\n      Select a widget below to add to the current dashboard.\n    </div>\n    <div class="modal-body">\n      <div id=\'widget_selections\'>\n        '));
     
-      ref = App.config.widgets;
-      for (i = 0, len = ref.length; i < len; i++) {
-        w = ref[i];
+      _ref = App.config.widgets;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        w = _ref[_i];
         _print(_safe('\n          <a class=\'widget_select\' id=\''));
         _print(w.id);
         _print(_safe('\' href="#"><i class="fa fa-'));
@@ -556,6 +566,7 @@ window.JST["forms/manage_accounts/account"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class=\'account_container\'>\n\t<div class=\'col-md-12 title\'>\n\t\t<i id=\'account_active\' class="fa fa-fw"></i>\n\t\t<span id=\'account_name_label\'>'));
     
       _print(this.name);
@@ -609,6 +620,7 @@ window.JST["forms/manage_accounts/accounts"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="preamble">\n\t<span id="add_account"><i class=\'fa fa-plus-square\'></i> Add New Account</span>\n</div>\n<div class="container" id="account_list"></div>'));
     
     }).call(this);
@@ -654,6 +666,7 @@ window.JST["forms/manage_accounts/site"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class=\'site_container\'>\n  <div>\n    <span class=\'display\' id=\'site_label\'><b>'));
     
       _print(this.name);
@@ -739,6 +752,7 @@ window.JST["forms/manage_permissions/layout"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="nav-tabs-custom">\n  <ul class="nav nav-tabs">\n    <li class=""><a href="#users_region" data-toggle="tab" aria-expanded="true">Users</a></li>\n    <li class=""><a href="#roles_region" data-toggle="tab" aria-expanded="false">Roles</a></li>\n    <li class="active"><a href="#permissions_region" data-toggle="tab" aria-expanded="false">Permissions</a></li>\n  </ul>\n  <div class="tab-content">\n    <div class="tab-pane" id="users_region"></div>\n    <div class="tab-pane" id="roles_region"></div>\n    <div class="tab-pane active" id="permissions_region"></div>\n  </div><!-- /.tab-content -->\n</div>'));
     
     }).call(this);
@@ -784,6 +798,7 @@ window.JST["forms/manage_permissions/permission"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class=\'col-md-12\'>\n  <i class=\'fa fa-fw fa-lock\'></i>\n  <span id=\'permission_label\'><b>'));
     
       _print(this.name);
@@ -845,6 +860,7 @@ window.JST["forms/manage_permissions/permissions"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="preamble">\n  '));
     
       if (this.global) {
@@ -904,6 +920,7 @@ window.JST["forms/manage_permissions/permissions_top"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div id=\'global_region\'>\n  <div class="loading"><i class="fa fa-spinner fa-pulse"></i> LOADING...</div>\n</div>\n'));
     
     }).call(this);
@@ -949,6 +966,7 @@ window.JST["forms/manage_permissions/role"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class=\'col-md-12\'>\n  <i class=\'fa fa-fw fa-group\'></i>\n  <span id=\'role_label\'><b>'));
     
       _print(this.name);
@@ -1019,6 +1037,7 @@ window.JST["forms/manage_permissions/roles"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="preamble">\n  '));
     
       if (this.global) {
@@ -1078,6 +1097,7 @@ window.JST["forms/manage_permissions/roles_top"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div id=\'global_region\'>\n  <div class="loading"><i class="fa fa-spinner fa-pulse"></i> LOADING...</div>\n</div>'));
     
     }).call(this);
@@ -1123,11 +1143,11 @@ window.JST["forms/manage_permissions/user"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      var acc, i, j, len, len1, ref, ref1, s;
+      var acc, s, _i, _j, _len, _len1, _ref, _ref1;
     
       _print(_safe('<div class=\'col-md-12 display\'>\n  <span id=\'user_crud\' class=\'crud_container\'>\n    <span id=\'user_label\'>'));
     
-      _print(this.lastName + ", " + this.firstName);
+      _print("" + this.lastName + ", " + this.firstName);
     
       _print(_safe(' <small>('));
     
@@ -1220,19 +1240,19 @@ window.JST["forms/manage_permissions/user"] = function(__obj) {
     
       _print(_safe('\n  </div>\n\n  <div class="row">\n  '));
     
-      ref = App.accounts.models;
-      for (i = 0, len = ref.length; i < len; i++) {
-        acc = ref[i];
+      _ref = App.accounts.models;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        acc = _ref[_i];
         _print(_safe('\n    <div class=\'account_container col-md-12\'>\n      <h3 class=\'account_name\'><i class="fa fa-fw fa-building-o"></i>'));
         _print(acc.get('name'));
         _print(_safe(' Roles</h3>\n  '));
-        ref1 = acc.sites.models;
-        for (j = 0, len1 = ref1.length; j < len1; j++) {
-          s = ref1[j];
+        _ref1 = acc.sites.models;
+        for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+          s = _ref1[_j];
           _print(_safe('\n        '));
           _print(_safe(this.roleSelector({
             id: 'roles_' + s.id,
-            label: (s.get('name')) + " (" + (s.get('code')) + ")",
+            label: "" + (s.get('name')) + " (" + (s.get('code')) + ")",
             value: this.roles,
             site_id: s.id,
             cls: 'col-md-12 roleselect'
@@ -1287,6 +1307,7 @@ window.JST["forms/manage_permissions/users_layout"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="loading"><i class="fa fa-spinner fa-pulse"></i> LOADING...</div>\n<div class="preamble">\n  <span id="add_user" class=\'button\'><i class=\'fa fa-plus-square\'></i> Add New User</span>\n  <input id=\'filter\' type=\'text\' placeholder=\'search users\' class=\'pull-right\'></input>\n</div>\n<div id=\'users_region\'></div>\n'));
     
     }).call(this);
@@ -1332,6 +1353,7 @@ window.JST["forms/profile"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="container">\n\t<div class="row">\n\t\t<!-- <div class="col-xs-12 col-sm-4" style=\'border-right:solid 1px #ccc;\'>\n\t\t\t<div style=\'border:solid 1px #ccc;width:200px;height:200px\'></div>\n\t\t</div> -->\n\n\t\t<div class="col-xs-12 col-sm-8">\n\t\t\t\n\t\t\t<div id="alertContainer"></div>\n\n\t\t\t'));
     
       _print(_safe(this.formGroup({
@@ -1452,6 +1474,7 @@ window.JST["login"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-body" id="alert-container">\n</div>\n<div class="login-box">\n  <div class="login-logo"><img src=\'img/logos/logo_login.png\'/></div>\n  <div class="login-box-body">\n\n    <form id="loginform" action="#" method="post">\n      <p class="login-box-msg">Sign in to start your session</p>\n      '));
     
       _print(_safe(this.formGroup({
@@ -1470,7 +1493,7 @@ window.JST["login"] = function(__obj) {
         placeholder: 'Password'
       })));
     
-      _print(_safe('\n      <div class="row">\n        <div class="col-xs-8">\n          <a href="#" id=\'iforgot\'>I forgot my password</a>\n          <!-- <div class="checkbox icheck">\n            <label>\n              <input type="checkbox" id=\'remember\' name=\'remember\'> Remember Me\n            </label>\n          </div> -->\n        </div>\n        <div class="col-xs-4">\n          <button type="submit" class="btn btn-primary btn-block btn-flat" id=\'login\' name=\'login\'>Log In</button>\n        </div>\n      </div>\n    </form>\n\n    <form id="forgotform" style=\'display:none;\' action="#" method="post">\n      <p class="login-box-msg">Enter account email to reset password</p>\n      '));
+      _print(_safe('\n      <div class="row">\n        <div class="col-xs-8">\n          <a href="#" id=\'iforgot\'>I forgot my password</a>\n          <!-- <div class="checkbox icheck">\n            <label>\n              <input type="checkbox" id=\'remember\' name=\'remember\'> Remember Me\n            </label>\n          </div> -->\n        </div>\n        <div class="col-xs-4">\n          <button type="submit" class="btn btn-primary btn-block btn-flat" id=\'login\' name=\'login\'>Log In</button>\n        </div>\n      </div>\n    </form>\n<<<<<<< HEAD\n<!-- <div class="checkbox icheck">-->\n=======\n\n    <!-- foo -->\n\n>>>>>>> master\n    <form id="forgotform" style=\'display:none;\' action="#" method="post">\n      <p class="login-box-msg">Enter account email to reset password</p>\n      '));
     
       _print(_safe(this.formGroup({
         id: 'forgotemail',
@@ -1524,6 +1547,7 @@ window.JST["reports"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<style>\n    #reportViewer1 {\n        position: absolute;\n        left: 5px;\n        right: 5px;\n        top: 5px;\n        bottom: 5px;\n        font-family: \'segoe ui\', \'ms sans serif\';\n        overflow: hidden;\n    }\n</style>\n<div id="reportViewer1" class="k-widget">\n    loading...\n</div>'));
     
     }).call(this);
@@ -1569,6 +1593,7 @@ window.JST["widgets/airport_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-server"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -1622,6 +1647,7 @@ window.JST["widgets/alarm_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-bullhorn"></i> <h3 class="box-title">Alarms</h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" id=\'content\'>\n  <div class="display contain">\n    \n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    \n  </div><!-- /.box-body -->\n</div><!-- /.box-body -->\n'));
     
     }).call(this);
@@ -1667,6 +1693,7 @@ window.JST["widgets/config_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-cloud"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\' class=\'display\'>\n    DISPLAY\n  </div>\n  <div id="settings" class=\'settings\' style="display: none;">\n    SETTINGS\n  </div><!-- /.box-body -->\n</div><!-- /.box-body -->\n'));
     
     }).call(this);
@@ -1712,6 +1739,7 @@ window.JST["widgets/gpu_summary_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-battery-3"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gpu_summary_label">\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <div id="view_main" class=""  style="">\n      <div id="gpu_image" class=""></div>\n      <div id="power_indicator" Class="gpuon"></div>\n      <span id="txt_connected_time"></span>\n      <div id="gauge_volts_out" class="200x160px"></div>\n      <div id="gauge_amps_out" class="200x160px"></div>\n    </div>\n    <div id="view_volts_in" style="display: none;">\n        <div id="rvain-plot-container" class="plot-container">\n          <div id="rvain-plot" class="plot-placeholder"></div>\n          <div id="rvain-live-toggle" class="plot-toggle">\n            <input id="rvain-toggle-live" type="checkbox" data-toggle="toggle" data-on="Live" data-off="Today" data-onstyle="warning" data-offstyle="info"> \n          </div>\n        </div>\n   </div>\n    <div id="view_volts_out" class="plot-container" style="display: none;">\n        <div id="rvout-plot-container" class="plot-container">\n          <div id="rvout-plot" class="plot-placeholder"></div>\n          <div id="rvout-live-toggle" class="plot-toggle">\n            <input id="rvout-toggle-live" type="checkbox" data-toggle="toggle" data-on="Live" data-off="Today" data-onstyle="warning" data-offstyle="info"> \n          </div>\n        </div>\n    </div>\n    <div id="view_amps_out" class="plot-container" style="display: none;">\n        <div id="raout-plot-container" class="plot-container">\n          <div id="raout-plot" class="plot-placeholder"></div>\n          <div id="raout-live-toggle" class="plot-toggle">\n            <input id="raout-toggle-live" type="checkbox" data-toggle="toggle" data-on="Live" data-off="Today" data-onstyle="warning" data-offstyle="info"> \n          </div>\n        </div>\n    </div>\n    <div id="bottom_buttons">\n      <a id="toggle_main" href="#" class="toggle_button" style="display: none;">Summary</a>\n      <a id="toggle_volts_in" href="#" class="toggle_button">Input Voltage</a>\n      <a id="toggle_volts_out" href="#" class="toggle_button">Output Voltage</a>\n      <a id="toggle_amps_out" href="#" class="toggle_button">Output Amperage</a>\n    </div>\n\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -1765,6 +1793,7 @@ window.JST["widgets/gpu_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-battery-3"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table class=\'data\'>\n      <tr><td class=\'lbl\' id=\'gpu_gpustatus_lbl\'>&nbsp;</td><td id=\'gpu_gpustatus\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_contstatus_lbl\'>&nbsp;</td><td id=\'gpu_contstatus\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_bypass_lbl\'>&nbsp;</td><td id=\'gpu_bypass\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_raoutavg_lbl\'>&nbsp;</td><td id=\'gpu_raoutavg\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_rvoutavg_lbl\'>&nbsp;</td><td id=\'gpu_rvoutavg\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_ravinavg_lbl\'>&nbsp;</td><td id=\'gpu_ravinavg\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_rvinavg_lbl\'>&nbsp;</td><td id=\'gpu_rvinavg\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_frequency_lbl\'>&nbsp;</td><td id=\'gpu_frequency\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phasea_i_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phasea_i\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phaseb_i_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phaseb_i\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phasec_i_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phasec_i\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phasea_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phasea_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phaseb_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phaseb_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phasec_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phasec_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_input_phasea_i_lbl\'>&nbsp;</td><td id=\'gpu_pm_input_phasea_i\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_input_phaseb_i_lbl\'>&nbsp;</td><td id=\'gpu_pm_input_phaseb_i\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_input_phasec_i_lbl\'>&nbsp;</td><td id=\'gpu_pm_input_phasec_i\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_input_phasea_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_input_phasea_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_input_phaseb_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_input_phaseb_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_input_phasec_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_input_phasec_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_gpustatus_triger_data_log_lbl\'>&nbsp;</td><td id=\'gpu_gpustatus_triger_data_log\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_on_1_lbl\'>&nbsp;</td><td id=\'gpu_on_1\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_on_2_lbl\'>&nbsp;</td><td id=\'gpu_on_2\' class=\'val\'>LOADING...</td></tr>\n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -1818,6 +1847,7 @@ window.JST["widgets/pbb_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n\n    <table class=\'data config1\' style="float: left; width:80%">     \n      <tr><td class=\'lbl\' id=\'pbb_statused_lbl\'>&nbsp;</td><td id=\'pbb_status\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevel_lbl\'>&nbsp;</td><td id=\'pbb_autolevel\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_estops_lbl\'>&nbsp;</td><td id=\'pbb_estop\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_smokedetector_lbl\'>&nbsp;</td><td id=\'pbb_smokedetector\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopys_lbl\'>&nbsp;</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_cablehoist_lbl\'>&nbsp;</td><td id=\'pbb_cablehoist\' class=\'val\'>LOADING...</td></tr>\n    </table>    \n       \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -1871,6 +1901,7 @@ window.JST["widgets/pbbdetail_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="pbbdetail_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n\n    <table style="height:100%;width:100%">\n      <tr>\n        <td>\n          <table class=\'data1\'> \n            <tr>\n              <td style="width:300px; height:200px; ;text-align:center; vertical-align:middle">\n                <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB_Un-docked-400x400.gif" />\n              </td>\n            </tr>\n          </table>\n        </td>\n        <td>\n          <table class=\'data2\'>\n            <tr>\n              <td id=\'pbb_undocked\' class=\'val\'>LOADING...</td>\n              <td id=\'pbb_undocktime\' class=\'val\'>LOADING...</td>\n            </tr>\n            <tr>\n              <td style="width:200px; height:150px; vertical-align:middle">\n                <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB-AutoLevel-Off-400x400.gif" />\n              </td>\n              <td style="width:200px; height:150px; vertical-align:middle">\n                <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB-Canopy-Off-400x400.gif" />\n              </td>\n            </tr>\n            <tr>\n              <td id=\'pbb_autolevelstatusnok\' class=\'val\'>LOADING...</td>\n              <td id=\'pbb_canopystatusnok\' class=\'val\'>LOADING...</td>\n            </tr>\n          </table>\n        </td>\n      </tr>\n      <tr>\n        <td>\n          <table class=\'data1\'>\n            <tr>\n              <td style="width:300px; height:200px; ;text-align:center; vertical-align:middle">\n                <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB_docked-400x400.gif" />\n              </td>\n            </tr>\n          </table>\n        </td>\n        <td>\n          <table class=\'data2\' cellpadding="0" cellspacing="0">\n            <tr>\n              <td id=\'pbb_docked\' class=\'val\'>LOADING...</td>\n              <td id=\'pbb_docktime\' class=\'val\'>LOADING...</td>\n            </tr>\n            <tr>\n              <td style="width:200px; height:150px; vertical-align:middle">\n                <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB-AutoLevel-On-400x400.gif" />   \n              </td>\n              <td style="width:200px; height:150px; vertical-align:middle">\n                <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB-Canopy-On-400x400.gif" />\n              </td>\n            </tr>  \n            <tr>\n              <td id=\'pbb_autolevelstatusok\' class=\'val\'>LOADING...</td>\n              <td id=\'pbb_canopystatusok\' class=\'val\'>LOADING...</td>\n            </tr>\n          </table>\n        </td>\n      </tr>\n    </table> \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -1924,6 +1955,7 @@ window.JST["widgets/pbbleveldetail_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gate_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table class=\'data\' style="float: left; width:60%">\n      <tr><td class=\'lbl\' id=\'pbb_docked_lbl\'>&nbsp;</td><td id=\'pbb_docked\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevelon_lbl\'>&nbsp;</td><td id=\'pbb_autolevelon\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopydown_lbl\'>&nbsp;</td><td id=\'pbb_canopydown\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_acffloored_lbl\'>&nbsp;</td><td id=\'pbb_acfflooron\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_cabledhoist_lbl\'>&nbsp;</td><td id=\'pbb_cablehoiston\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_estoped_lbl\'>&nbsp;</td><td id=\'pbb_estopoff\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_limited_lbl\'>&nbsp;</td><td id=\'pbb_limitok\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_dockedtime_lbl\'>&nbsp;</td><td id=\'pbb_docktime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_undockedtime_lbl\'>&nbsp;</td><td id=\'pbb_undocktime\' class=\'val\'>LOADING...</td></tr>\n     \n      \n    </table>\n       \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -1977,6 +2009,7 @@ window.JST["widgets/pca_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-server"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table class=\'data\'>\n      <tr><td class=\'lbl\' id=\'pbb_status_lbl\'>&nbsp;</td><td id=\'pbb_status\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_status_lbl\'>&nbsp;</td><td id=\'pca_status\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_status_lbl\'>&nbsp;</td><td id=\'gpu_status\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_docktime_lbl\'>ACF Floor</td><td id=\'pbb_docktime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_ontime_lbl\'>&nbsp;</td><td id=\'pbb_ontime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_ontime_lbl\'>&nbsp;</td><td id=\'pca_ontime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_ontime_lbl\'>Limits</td><td id=\'gpu_ontime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_dischargetemp_lbl\'>&nbsp;</td><td id=\'pca_dischargetemp\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_outputamps_lbl\'>&nbsp;</td><td id=\'gpu_outputamps\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_outputvolts_lbl\'>&nbsp;</td><td id=\'gpu_outputvolts\' class=\'val\'>LOADING...</td></tr>\n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -2030,6 +2063,7 @@ window.JST["widgets/url_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <iframe id=\'iframe\' src=""></iframe>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.formGroup({
@@ -2094,6 +2128,7 @@ window.JST["widgets/weather_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-cloud"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\'></div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.formGroup({
