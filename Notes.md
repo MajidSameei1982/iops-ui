@@ -6,3 +6,5 @@ TODO
 * BUG: setting password on user doesn't actually change it
 
 * BUG: Adding a site needs to refresh OPCManager connections
+* BUG: Set the widget site on initial creation, not just site:change event
+* 
