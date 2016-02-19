@@ -22,7 +22,13 @@
         </div>
       </div>
     </form>
+<<<<<<< HEAD
 <!-- <div class="checkbox icheck">-->
+=======
+
+    <!-- foo -->
+
+>>>>>>> master
     <form id="forgotform" style='display:none;' action="#" method="post">
       <p class="login-box-msg">Enter account email to reset password</p>
       <%- @formGroup({id:'forgotemail', type:'email', feedback:'envelope', placeholder:'Email'}) %>
