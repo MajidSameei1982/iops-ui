@@ -1479,7 +1479,7 @@ window.JST["login"] = function(__obj) {
         placeholder: 'Email'
       })));
     
-      _print(_safe('\n      <div class="row">\n        <div class="col-xs-4">\n          <a id="cancel" href="#">Cancel</a>\n        </div>\n        <div class="col-xs-8">\n          <button class="btn btn-primary btn-block btn-flat" id=\'reset\' name=\'reset\'>Reset Password</button>\n        </div>\n      </div>\n    </form>\n\n    <div id="forgotreply" style=\'display:none;\'>\n      <div class="row">\n        <div class="col-xs-12">\n          A message has been sent to the email you provided with a new password. Please check your\n        </div>\n      </div>\n    </div>\n\n  </div>\n</div><!-- /.login-box -->\n\n'));
+      _print(_safe('\n      <div class="row">\n        <div class="col-xs-4">\n          <a id="cancel" href="#">Cancel</a>\n        </div>\n        <div class="col-xs-8">\n          <button class="btn btn-primary btn-block btn-flat" id=\'reset\' name=\'reset\'>Reset Password</button>\n        </div>\n      </div>\n    </form>\n\n    <div id="forgotreply" style=\'display:none;\'>\n      <div class="row">\n        <div class="col-xs-12">\n          A message has been sent to the email you provided with a new password. Please check your\n        </div>\n      </div>\n    </div>\n\n  </div>\n</div>\n\n'));
     
     }).call(this);
     
