@@ -9,7 +9,7 @@
 <div class="box-body content" id='content'>
   
   <div class="display contain">
-    <div id="display_label">
+    <div id="gate_label">
       <h1>
         <span id='txt'></span> 
         <i id='docked' class="fa fa-plane" title='Plane is DOCKED' style='display:none;'></i>
@@ -17,15 +17,16 @@
         <i id='warnings' class="fa fa-warning" title='Gate has WARNINGS' style='display:none;'></i>
       </h1>
     </div>
-
-    <table class='data config1' style="float: left; width:80%">     
-      <tr><td class='lbl' id='pbb_statused_lbl'>&nbsp;</td><td id='pbb_status' class='val'>LOADING...</td></tr>
+    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>
+    <table class='data' style="float: left; width:80%">     
+      <tr><td class='lbl' id='pbb_docked_lbl'>&nbsp;</td><td id='pbb_docked' class='val'>LOADING...</td></tr>
       <tr><td class='lbl' id='pbb_autolevel_lbl'>&nbsp;</td><td id='pbb_autolevel' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_estops_lbl'>&nbsp;</td><td id='pbb_estop' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_smokedetector_lbl'>&nbsp;</td><td id='pbb_smokedetector' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pbb_estops_lbl'>&nbsp;</td><td id='pbb_estopoff' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pbb_smokedetectord_lbl'>&nbsp;</td><td id='pbb_smokedetector' class='val'>LOADING...</td></tr>
       <tr><td class='lbl' id='pbb_canopys_lbl'>&nbsp;</td><td id='pbb_canopy' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_cablehoist_lbl'>&nbsp;</td><td id='pbb_cablehoist' class='val'>LOADING...</td></tr>
-    </table>    
+      <tr><td class='lbl' id='pbb_cabledhoist_lbl'>&nbsp;</td><td id='pbb_cablehoiston' class='val'>LOADING...</td></tr>     
+      </table>
+    
        
   </div>
 

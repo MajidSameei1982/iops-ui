@@ -9,7 +9,7 @@
 <div class="box-body content" id='content'>
   
   <div class="display contain">
-    <div id="display_label">
+    <div id="gate_label">
       <h1>
         <span id='txt'></span> 
         <i id='docked' class="fa fa-plane" title='Plane is DOCKED' style='display:none;'></i>
@@ -17,17 +17,22 @@
         <i id='warnings' class="fa fa-warning" title='Gate has WARNINGS' style='display:none;'></i>
       </h1>
     </div>
-    <table class='data'>
-      <tr><td class='lbl' id='pbb_status_lbl'>&nbsp;</td><td id='pbb_status' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pca_status_lbl'>&nbsp;</td><td id='pca_status' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='gpu_status_lbl'>&nbsp;</td><td id='gpu_status' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_docktime_lbl'>ACF Floor</td><td id='pbb_docktime' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_ontime_lbl'>&nbsp;</td><td id='pbb_ontime' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pca_ontime_lbl'>&nbsp;</td><td id='pca_ontime' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='gpu_ontime_lbl'>Limits</td><td id='gpu_ontime' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pca_dischargetemp_lbl'>&nbsp;</td><td id='pca_dischargetemp' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='gpu_outputamps_lbl'>&nbsp;</td><td id='gpu_outputamps' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='gpu_outputvolts_lbl'>&nbsp;</td><td id='gpu_outputvolts' class='val'>LOADING...</td></tr>
+    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>
+    <table class='data' style="float: left; width:90%">
+    
+      <tr><td class='lbl' id='pca_pcastatuson_lbl'>&nbsp;</td><td id='pca_pcastatuson' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pca_pcadischargetemp_lbl'>&nbsp;</td><td id='pca_pcadischargetemp' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pca_pcacabintemp_lbl'>&nbsp;</td><td id='pca_pcacabintemp' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pca_pcaambienttemp_lbl'>&nbsp;</td><td id='pca_pcaambienttemp' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pca_pcapressureheadpr1_lbl'>&nbsp;</td><td id='pca_pcapressureheadpr1' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pca_pcapressureheadpr2_lbl'>&nbsp;</td><td id='pca_pcapressureheadpr2' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pca_pcapressureheadsec1_lbl'>&nbsp;</td><td id='pca_pcapressureheadsec1' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pca_pcapressureheadsec2_lbl'>&nbsp;</td><td id='pca_pcapressureheadsec2' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pca_pcapressuresucpr1_lbl'>&nbsp;</td><td id='pca_pcapressuresucpr1' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pca_pcapressuresucpr2_lbl'>&nbsp;</td><td id='pca_pcapressuresucpr2' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pca_pcapressuresucsec1_lbl'>&nbsp;</td><td id='pca_pcapressuresucsec1' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pca_pcapressuresucsec2_lbl'>&nbsp;</td><td id='pca_pcapressuresucsec2' class='val'>LOADING...</td></tr>
+    
     </table>
   </div>
 

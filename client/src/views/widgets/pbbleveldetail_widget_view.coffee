@@ -19,7 +19,7 @@ class PbbleveldetailWidgetView extends WidgetView
     warnings:       'i#warnings'
 
   @layout:
-    sx: 6
+    sx: 5
     sy: 9
 
   tags:
@@ -186,8 +186,8 @@ class PbbleveldetailWidgetView extends WidgetView
 
     #DOCK-UNDOCK
     txt = if v then "Docked" else "Undocked"
-    @$("#pbb_docked_lbl").html('PBB Status')
-    el = @$("#pbb_docked").html(txt).toggleClass('ok', v)  
+    @$("#pbb_dockedun_lbl").html('PBB Status')
+    el = @$("#pbb_dockedun").html(txt).toggleClass('ok', v)  
     
     #CANOPY-AUTOLEVEL
     txta = if a then "On " else "Off"

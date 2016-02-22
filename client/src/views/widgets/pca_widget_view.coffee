@@ -6,7 +6,7 @@ WidgetView = require('../dashboard/widget_view')
 
 class PcaWidgetView extends WidgetView
   template:   "widgets/pca_widget"
-  className: 'widget-outer box box-primary pca_widget'
+  className: 'widget-outer box box-primary gate_widget'
   ui:
     terminal:       'input#terminal'
     zone:           'input#zone'
@@ -26,17 +26,18 @@ class PcaWidgetView extends WidgetView
 
   tags:
     #Grid Tags
-    pbb_status :        'PBB.AIRCRAFTDOCKEDCALCULATION'
-    pbb_aircraft :      'PBB.AIRCRAFTSTATUS'
-    pca_status :        'PCA.PCAON'
-    gpu_status :        'GPU.GPUSTATUS'
-    pbb_docktime:       'PBB.DOCKTIME'
-    pbb_ontime:         'PBB.PBBTIMER'
-    pca_ontime:         'PCA.PCATIMER'
-    gpu_ontime:         'GPU.GPUTIMER'
-    pca_dischargetemp:  'PCA.TEMPDISCH'
-    gpu_outputamps:     'GPU.RAOUTAVG'
-    gpu_outputvolts:    'GPU.RVOUTAVG'
+    pca_pcacabintemp:       'PCA.TEMPCABIN'
+    pca_pcaambienttemp:     'PCA.TEMPAMB'
+    pca_pcadischargetemp:   'PCA.TEMPDISCH' 
+    pca_pcapressureheadpr1: 'PCA.PRESSHEADPRI1'
+    pca_pcapressureheadpr2: 'PCA.PRESSHEADPRI2'
+    pca_pcapressureheadsec1:'PCA.PRESSHEADSEC1'
+    pca_pcapressureheadsec2:'PCA.PRESSHEADSEC2'
+    pca_pcapressuresucpr1:  'PCA.PRESSSUCPRI1'
+    pca_pcapressuresucpr2:  'PCA.PRESSSUCPRI2'
+    pca_pcapressuresucsec1: 'PCA.PRESSSUCSEC1'
+    pca_pcapressuresucsec2: 'PCA.PRESSSUCSEC2'
+    pca_pcastatuson:        'PCA.PCAON'
     
     #Processing Tags
     pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
@@ -83,7 +84,7 @@ class PcaWidgetView extends WidgetView
       @watch_updates(@site_code)
       OPCManager.add_ref(@site_code)
       
-      lbl = "PCA #{gate}"
+      lbl = "PCA #{s.gate}"
       @ui.wtitle.html(lbl)
       @$('#display_label #txt').html(lbl)
 
@@ -168,15 +169,60 @@ class PcaWidgetView extends WidgetView
     for tg of @tags
       @vals[tg] = @get_value(@tags[tg])
 
-    # DOCKED
-    v = @get_bool(@vals.pbb_status)
-    txt = if v then "Docked" else "Undocked"
-    @$("#pbb_docked_lbl").html('PBB Status')
-    el = @$("#pbb_docked").html(txt).toggleClass('ok', v)
-    @mark_bad_data @tags.pbb_status, el
+    # STATUS
+    @render_row("pca_pcastatuson", "On", "Off", "ok"," ")
+    @$("#pca_pcastatuson_lbl").html('PCA Status')
     
-    # PBB STATUS
-    @render_row("pbb_status", "", "", "ok")
+
+    pcacabintemp = if @vals.pca_pcacabintemp? && @vals.pca_pcacabintemp != '' then parseFloat(@vals.pca_pcacabintemp).toFixed(2)  else ' --'
+    el =@$('#pca_pcacabintemp').html("#{pcacabintemp} F")
+    @mark_bad_data @tags.pca_pcacabintemp, el
+
+    pcaambienttemp = if @vals.pca_pcaambienttemp? && @vals.pca_pcaambienttemp != '' then parseFloat(@vals.pca_pcaambienttemp).toFixed(2)  else ' --'
+    el =@$('#pca_pcaambienttemp').html("#{pcaambienttemp} F")
+    @mark_bad_data @tags.pca_pcaambienttemp, el
+
+    pcadischargetemp = if @vals.pca_pcadischargetemp? && @vals.pca_pcadischargetemp != '' then parseFloat(@vals.pca_pcadischargetemp).toFixed(2)  else ' --'
+    el =@$('#pca_pcadischargetemp').html("#{pcadischargetemp} F")
+    @mark_bad_data @tags.pca_pcadischargetemp, el
+
+    pcapressureheadpr1 = if @vals.pca_pcapressureheadpr1? && @vals.pca_pcapressureheadpr1 != '' then parseFloat(@vals.pca_pcapressureheadpr1).toFixed(2)  else ' --'
+    el =@$('#pca_pcapressureheadpr1').html("#{pcapressureheadpr1} F")
+    @mark_bad_data @tags.pca_pcapressureheadpr1, el
+
+    pcapressureheadpr2 = if @vals.pca_pcapressureheadpr2? && @vals.pca_pcapressureheadpr2 != '' then parseFloat(@vals.pca_pcapressureheadpr2).toFixed(2)  else ' --'
+    el =@$('#pca_pcapressureheadpr2').html("#{pcapressureheadpr2} F")
+    @mark_bad_data @tags.pca_pcapressureheadpr2, el
+
+    pcapressureheadsec1 = if @vals.pca_pcapressureheadsec1? && @vals.pca_pcapressureheadsec1 != '' then parseFloat(@vals.pca_pcapressureheadsec1).toFixed(2)  else ' --'
+    el =@$('#pca_pcapressureheadsec1').html("#{pcapressureheadsec1} F")
+    @mark_bad_data @tags.pca_pcapressureheadsec1, el
+
+    pcapressureheadsec2 = if @vals.pca_pcapressureheadsec2? && @vals.pca_pcapressureheadsec2 != '' then parseFloat(@vals.pca_pcapressureheadsec2).toFixed(2)  else ' --'
+    el =@$('#pca_pcapressureheadsec2').html("#{pcapressureheadsec2} F")
+    @mark_bad_data @tags.pca_pcapressureheadsec2, el
+
+    pcapressuresucpr1 = if @vals.pca_pcapressuresucpr1? && @vals.pca_pcapressuresucpr1 != '' then parseFloat(@vals.pca_pcapressuresucpr1).toFixed(2)  else ' --'
+    el =@$('#pca_pcapressuresucpr1').html("#{pcapressuresucpr1} F")
+    @mark_bad_data @tags.pca_pcapressuresucpr1, el
+
+    pcapressuresucpr2 = if @vals.pca_pcapressuresucpr2? && @vals.pca_pcapressuresucpr2 != '' then parseFloat(@vals.pca_pcapressuresucpr2).toFixed(2)  else ' --'
+    el =@$('#pca_pcapressuresucpr2').html("#{pcapressuresucpr2} F")
+    @mark_bad_data @tags.pca_pcapressuresucpr2, el
+
+    pcapressuresucsec1 = if @vals.pca_pcapressuresucsec1? && @vals.pca_pcapressuresucsec1 != '' then parseFloat(@vals.pca_pcapressuresucsec1).toFixed(2)  else ' --'
+    el =@$('#pca_pcapressuresucsec1').html("#{pcapressuresucsec1} F")
+    @mark_bad_data @tags.pca_pcapressuresucsec1, el
+
+    pcapressuresucsec2 = if @vals.pca_pcapressuresucsec2? && @vals.pca_pcapressuresucsec2 != '' then parseFloat(@vals.pca_pcapressuresucsec2).toFixed(2)  else ' --'
+    el =@$('#pca_pcapressuresucsec2').html("#{pcapressuresucsec2} F")
+    @mark_bad_data @tags.pca_pcapressuresucsec2, el
+
+    gpuoutputamps = if @vals.gpu_gpuoutputamps? && @vals.gpu_gpuoutputamps != '' then parseFloat(@vals.gpu_gpuoutputamps).toFixed(2)  else ' --'
+    el =@$('#gpu_gpuoutputamps').html("#{gpuoutputamps}")
+    @mark_bad_data @tags.gpu_gpuoutputamps, el
+
+    @set_descriptions()
 
     # PBB AIRCRAFT
     aircraftstatus = @vals['pbb_aircraft']
@@ -290,5 +336,5 @@ class PcaWidgetView extends WidgetView
     
 # ----------------------------------
 
-window.AirportWidgetView = AirportWidgetView
-module.exports = AirportWidgetView
+window.PcaWidgetView = PcaWidgetView
+module.exports = PcaWidgetView

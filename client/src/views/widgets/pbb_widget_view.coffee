@@ -14,8 +14,8 @@ class PbbWidgetView extends WidgetView
     warnings:       'i#warnings'
 
   @layout:
-    sx: 6
-    sy: 10
+    sx: 5
+    sy: 7
 
   tags:
     #Grid Tags
@@ -72,7 +72,7 @@ class PbbWidgetView extends WidgetView
       
       lbl = "Gate #{s.gate}"
       @ui.wtitle.html(lbl)
-      @$('#display_label #txt').html(lbl)
+      @$('#pbbdetail_label #txt').html(lbl)
 
       @opc =  App.opc.connections[@site_code]
       @set_descriptions(true)
@@ -158,6 +158,7 @@ class PbbWidgetView extends WidgetView
     @$("#pbb_statused_lbl").html('PBB Status')
     @$("#pbb_canopys_lbl").html('Canopy')
     @$("#pbb_estops_lbl").html('E-Stop')
+    @$("#pbb_smokedetectord_lbl").html('Smoke Detector')
 
     # PBB STATUS
     v = @get_bool(@vals.pbb_status)
@@ -210,7 +211,7 @@ class PbbWidgetView extends WidgetView
     @render_row("pbb_canopy", "Down", "Up", "ok")
     
     # SMOKEDETECTOR
-    #@render_row("pbb_smokedetector", "Ready/OK", "Activated", " ","err")
+    @render_row("pbb_smokedetector","Activated","Ready/OK","err")
 
     # E-STOP
     @render_row("pbb_estop", "Activated", "Ready/OK", "err")
@@ -270,6 +271,7 @@ class PbbWidgetView extends WidgetView
   toggle_settings: (e)->
     super(e)
     @ui.display.toggle(!@settings_visible)
+    if @settings_visible then @ui.site.chosen()
 
   onShow: ()->
     settings = @model.get('settings')
@@ -286,6 +288,7 @@ class PbbWidgetView extends WidgetView
 
     site_code = OPCManager.get_site_code(settings.site)
     if site_code? then OPCManager.add_ref(site_code)
+
 
   start: ()->
     @update()

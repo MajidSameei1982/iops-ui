@@ -28,8 +28,19 @@ window.app_config = {
     },
     {
       id: "pbb",
-      name: "PBB Widget",
-      icon: "cloud"
+      name: "PBB Basic Widget",
+      icon: "plane"
+    },
+     {
+      id: "pbbdetail",
+      name: "PBB Overview Widget",
+      icon: "plane"
+    },
+    
+    {
+      id: "pbbleveldetail",
+      name: "PBB Detail Widget",
+      icon: "plane"
     },
     {
       id: "pca",
@@ -39,16 +50,6 @@ window.app_config = {
     {
       id: "gpu",
       name: "GPU Widget",
-      icon: "plane"
-    },
-    {
-      id: "pbbdetail",
-      name: "PBB Detail Widget",
-      icon: "plane"
-    },
-    {
-      id: "pbbleveldetail",
-      name: "PBB Level Detail Widget",
       icon: "plane"
     },
     {

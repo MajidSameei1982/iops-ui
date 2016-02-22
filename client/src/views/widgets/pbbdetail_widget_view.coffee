@@ -21,7 +21,7 @@ class PbbdetailWidgetView extends WidgetView
 
   @layout:
     sx: 11
-    sy: 12
+    sy: 8
 
   tags:
     #Grid Tags
@@ -174,21 +174,13 @@ class PbbdetailWidgetView extends WidgetView
     a = @get_bool(@vals.pbb_autolevel)
     c = @get_bool(@vals.pbb_canopy)
 
-    txt = if v then "Docked" else "Docked"
-    @$("#pbb_docked_lbl").html('PBB Status')
-    el = @$("#pbb_docked").html(txt).toggleClass('ok', v)   
-    txt1 = if v then "Undocked" else "Undocked"
-    el = @$("#pbb_undocked").html(txt1).toggleClass('ok', !v)
-    
-    txta = if a then "Auto-Level : On " else "Auto-Level : On"
-    el = @$("#pbb_autolevelstatusok").html(txta).toggleClass('ok', a)   
-    txta1 = if c then "Canopy : Down " else "Canopy : Down "
-    el = @$("#pbb_canopystatusok").html(txta1).toggleClass('ok', c)
+    txt = if v then "Docked" else "Undocked"
+    el = @$("#pbb_dockedunlbl").html(txt).toggleClass('ok', v)  
 
-    txtan = if a then "Auto-Level : Off " else "Auto-Level : Off"
-    el = @$("#pbb_autolevelstatusnok").html(txtan).toggleClass('ok', !a)   
-    txta1n = if c then "Canopy : Up " else "Canopy : Up "
-    el = @$("#pbb_canopystatusnok").html(txta1n).toggleClass('ok', !c)
+    txta = if a then "Auto-Level : On" else "Auto-Level : Off"
+    el = @$("#pbb_autolevelstatusok").html(txta).toggleClass('ok', a) 
+    txta1 = if c then "Canopy : Down" else "Canopy : Up "
+    el = @$("#pbb_canopystatusok").html(txta1).toggleClass('ok', c)
 
     # Auto Level
     @render_row("pbb_autolevel", "On", "Off", "ok")
@@ -228,12 +220,12 @@ class PbbdetailWidgetView extends WidgetView
     @flash_alarm(@get_bool(@vals.pbb_autolevelfail))
 
     # DOCKTIME
-    docktime = if @vals.pbb_docktime? && @vals.pbb_docktime != '' then parseFloat(@vals.pbb_docktime).toFixed(4) else ' -- ' 
-    el = @$('#pbb_docktime').html("#{docktime}")
+    docktime = if @vals.pbb_docktime? && @vals.pbb_docktime != '' then parseFloat(@vals.pbb_docktime).toFixed(2) else ' -- ' 
+    el = @$('#pbb_docktime').html("#{docktime} mins")
     @mark_bad_data @tags.pbb_docktime, el
 
-    undocktime = if @vals.pbb_undocktime? && @vals.pbb_undocktime != '' then parseFloat(@vals.pbb_undocktime).toFixed(4) else ' -- ' 
-    el = @$('#pbb_undocktime').html("#{undocktime}")
+    undocktime = if @vals.pbb_undocktime? && @vals.pbb_undocktime != '' then parseFloat(@vals.pbb_undocktime).toFixed(2) else ' -- ' 
+    el = @$('#pbb_undockordocktimeun').html("#{undocktime} mins")
     @mark_bad_data @tags.pbb_undocktime, el
 
     heighttodisp = if @vals.pbb_heighttodisp? && @vals.pbb_heighttodisp != '' then @vals.pbb_heighttodisp else ' -- ' 
