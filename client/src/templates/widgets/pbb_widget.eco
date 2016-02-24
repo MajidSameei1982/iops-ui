@@ -21,10 +21,10 @@
     <table class='data' style="float: left; width:80%">     
       <tr><td class='lbl' id='pbb_docked_lbl'>&nbsp;</td><td id='pbb_docked' class='val'>LOADING...</td></tr>
       <tr><td class='lbl' id='pbb_autolevel_lbl'>&nbsp;</td><td id='pbb_autolevel' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_estops_lbl'>&nbsp;</td><td id='pbb_estopoff' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_smokedetectord_lbl'>&nbsp;</td><td id='pbb_smokedetector' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_canopys_lbl'>&nbsp;</td><td id='pbb_canopy' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_cabledhoist_lbl'>&nbsp;</td><td id='pbb_cablehoiston' class='val'>LOADING...</td></tr>     
+      <tr><td class='lbl' id='pbb_estop_lbl'>&nbsp;</td><td id='pbb_estopoff' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pbb_smokedetector_lbl'>&nbsp;</td><td id='pbb_smokedetector' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pbb_canopy_lbl'>&nbsp;</td><td id='pbb_canopy' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pbb_cablehoist_lbl'>&nbsp;</td><td id='pbb_cablehoist' class='val'>LOADING...</td></tr>     
       </table>
     
        

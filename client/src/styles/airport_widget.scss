@@ -8,49 +8,80 @@
  &.DAL_account {
     $site_code: DAL;
     $Gates: 10 12;
-    %div_defauls {
-        min-height: calc(100% - 25px);
-        min-width: 100%;
-        overflow: auto;
-        position: absolute;
-        top: 25px;
-        left: 0px;
-      }
+    %div_defaults {
+      min-height: 100%;
+      min-width: 100%;
+      overflow: auto;
+      position: absolute;
+      top: 25px;
+      left: 0px;
+    }
     .display {
       #display_label {
         display: none;
       }
       div[id^='Airport_Gate_'] {
-        @extend %div_defauls;
+        @extend %div_defaults;
         z-index: 1000;
       }
       #Airport_Overview {
-        @extend %div_defauls;
-        background: url("../img/airport/DAL/DAL_Term_Overview.png") no-repeat bottom center; 
-        background-size: contain;
-        z-index: 100;
+        @extend %div_defaults;
+        // background: url("../img/airport/DAL/DAL_Term_Overview.png") no-repeat bottom center; 
+        // background-size: contain;
+        // z-index: 100;
+        #layout {
+          width:100%;
+          height:auto;
+        }
       }
 
+
       $ClassSuffixs: _bad_data _idle _ac_docked _good _alarm _warning;
-      $ImagesPrefixs: "../img/airport/#{$site_code}/#{$site_code}_Gate_";  
+      $ImagesPrefix: "../img/airport/#{$site_code}/#{$site_code}_Gate_";  
       $ImagesSuffixs: "_bad_data.png" ".png" "_Plane.png" "" "_Alarm.png" "_Warning.png";  
 
       @each $Gate in $Gates {
         $index: 1;
-        @each $cls in $ClassSuffixs {
-          .airport_gate_#{$Gate}#{$cls} {
-              @if $index != 4 
-              {
-                background: url("#{$ImagesPrefixs}#{$Gate}#{nth($ImagesSuffixs,$index)}") no-repeat bottom center;
-                background-size: contain;
-              }
-              @else
-              {
-                background: none;
-              }
-            }
-            $index: $index + 1;
+        #Airport_Gate_#{$Gate}_a {
+          background-repeat:no-repeat;
+          background-size: contain;
+          background-position: bottom center;
+          background-image: url("#{$ImagesPrefix}#{$Gate}.png");
+          width: 100% !important;
+          height: 100% !important;
+          top: 0;
+          left: 0;
+          &.docked {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_Plane.png");
+          }
+          &.bad_data {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_bad_data.png");
+          }
+          .icon {
+            bottom:50%;
+            left:50%;
+            width:30px;
+            height:30px;
+            background-color:#f00;
+            position:absolute;
+          }
         }
+
+      //   @each $cls in $ClassSuffixs {
+      //     .airport_gate_#{$Gate}#{$cls} {
+      //         @if $index != 4 
+      //         {
+      //           background: url("#{$ImagesPrefixs}#{$Gate}#{nth($ImagesSuffixs,$index)}") no-repeat bottom center;
+      //           background-size: contain;
+      //         }
+      //         @else
+      //         {
+      //           background: none;
+      //         }
+      //       }
+      //       $index: $index + 1;
+      //   }
+
       }
     }
   }

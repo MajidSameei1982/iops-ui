@@ -19,6 +19,10 @@ class Session extends BaseModel
   @save_session: ()->
     App.store.set("user_ts", new Date())
     App.store.set("session", App.session)
+    dashboards = []
+    # for d in App.dashboards.models
+    #   dj = d.toJSON()
+    App.session.attributes["dashboards"] = App.dashboards
     App.session.save()
 
   @clear: ()->

@@ -94,10 +94,13 @@ class UserView extends Marionette.ItemView
       res = res && false
     pw = @ui.pw.val().trim()
     pwc = @ui.pwc.val().trim()
-    if pw != '' && pw != pwc
-      @ui.pw.closest('.form-group').addClass('has-error')
-      @ui.pwc.closest('.form-group').addClass('has-error')
-      res = res && false
+    if pw != '' 
+      if pw != pwc
+        @ui.pw.closest('.form-group').addClass('has-error')
+        @ui.pwc.closest('.form-group').addClass('has-error')
+        res = res && false
+      else
+        @model.set("password",pw)
     res
 
   save: ()->

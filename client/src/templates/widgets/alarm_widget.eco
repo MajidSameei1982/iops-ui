@@ -9,8 +9,19 @@
   <div class="display contain">
     
   </div>
+  
   <div class="settings" style="display: none;">
     <h3>Settings</h3>
-    
-  </div><!-- /.box-body -->
+    <%- @siteSelector({id:'site', label:'Site', site:@settings.site}) %>
+    <div class="row">
+      <div id='terminals' class='col-md-12'></div>
+    </div>
+    <div class="row">
+      <div id='zones' class='col-md-12'></div>
+    </div>
+    <div class="row">
+      <div id='gates' class='col-md-12'></div>  
+    </div>
+  </div>
+  
 </div><!-- /.box-body -->

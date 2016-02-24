@@ -12,9 +12,6 @@ class WeatherWidgetView extends WidgetView
     zip: 'input#zip'
     wtitle: "h3.box-title"
 
-  modelEvents:
-    "change" : "update"
-
   @layout:
     sx: 3
     sy: 8

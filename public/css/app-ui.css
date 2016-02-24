@@ -134,6 +134,9 @@ ul.gridster.widget-container {
       max-width: 100%;
       max-height: 100%;
       overflow: auto; }
+    ul.gridster.widget-container li.widget .widget-outer .box-body .display h1 {
+      margin: 0 0 10px 0;
+      font-weight: bold; }
 
 #widget_selections a.widget_select {
   color: #fff;
@@ -446,7 +449,7 @@ li.dashboard-link {
   background-color: #c00;
   color: #fff; }
 .airport_widget.DAL_account .display div[id^='Airport_Gate_'], .airport_widget.DAL_account .display #Airport_Overview {
-  min-height: calc(100% - 25px);
+  min-height: 100%;
   min-width: 100%;
   overflow: auto;
   position: absolute;
@@ -456,44 +459,49 @@ li.dashboard-link {
   display: none; }
 .airport_widget.DAL_account .display div[id^='Airport_Gate_'] {
   z-index: 1000; }
-.airport_widget.DAL_account .display #Airport_Overview {
-  background: url("../img/airport/DAL/DAL_Term_Overview.png") no-repeat bottom center;
+.airport_widget.DAL_account .display #Airport_Overview #layout {
+  width: 100%;
+  height: auto; }
+.airport_widget.DAL_account .display #Airport_Gate_10_a {
+  background-repeat: no-repeat;
   background-size: contain;
-  z-index: 100; }
-.airport_widget.DAL_account .display .airport_gate_10_bad_data {
-  background: url("../img/airport/DAL/DAL_Gate_10_bad_data.png") no-repeat bottom center;
-  background-size: contain; }
-.airport_widget.DAL_account .display .airport_gate_10_idle {
-  background: url("../img/airport/DAL/DAL_Gate_10.png") no-repeat bottom center;
-  background-size: contain; }
-.airport_widget.DAL_account .display .airport_gate_10_ac_docked {
-  background: url("../img/airport/DAL/DAL_Gate_10_Plane.png") no-repeat bottom center;
-  background-size: contain; }
-.airport_widget.DAL_account .display .airport_gate_10_good {
-  background: none; }
-.airport_widget.DAL_account .display .airport_gate_10_alarm {
-  background: url("../img/airport/DAL/DAL_Gate_10_Alarm.png") no-repeat bottom center;
-  background-size: contain; }
-.airport_widget.DAL_account .display .airport_gate_10_warning {
-  background: url("../img/airport/DAL/DAL_Gate_10_Warning.png") no-repeat bottom center;
-  background-size: contain; }
-.airport_widget.DAL_account .display .airport_gate_12_bad_data {
-  background: url("../img/airport/DAL/DAL_Gate_12_bad_data.png") no-repeat bottom center;
-  background-size: contain; }
-.airport_widget.DAL_account .display .airport_gate_12_idle {
-  background: url("../img/airport/DAL/DAL_Gate_12.png") no-repeat bottom center;
-  background-size: contain; }
-.airport_widget.DAL_account .display .airport_gate_12_ac_docked {
-  background: url("../img/airport/DAL/DAL_Gate_12_Plane.png") no-repeat bottom center;
-  background-size: contain; }
-.airport_widget.DAL_account .display .airport_gate_12_good {
-  background: none; }
-.airport_widget.DAL_account .display .airport_gate_12_alarm {
-  background: url("../img/airport/DAL/DAL_Gate_12_Alarm.png") no-repeat bottom center;
-  background-size: contain; }
-.airport_widget.DAL_account .display .airport_gate_12_warning {
-  background: url("../img/airport/DAL/DAL_Gate_12_Warning.png") no-repeat bottom center;
-  background-size: contain; }
+  background-position: bottom center;
+  background-image: url("../img/airport/DAL/DAL_Gate_10.png");
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_widget.DAL_account .display #Airport_Gate_10_a.docked {
+    background-image: url("../img/airport/DAL/DAL_Gate_10_Plane.png"); }
+  .airport_widget.DAL_account .display #Airport_Gate_10_a.bad_data {
+    background-image: url("../img/airport/DAL/DAL_Gate_10_bad_data.png"); }
+  .airport_widget.DAL_account .display #Airport_Gate_10_a .icon {
+    bottom: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: #f00;
+    position: absolute; }
+.airport_widget.DAL_account .display #Airport_Gate_12_a {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: url("../img/airport/DAL/DAL_Gate_12.png");
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_widget.DAL_account .display #Airport_Gate_12_a.docked {
+    background-image: url("../img/airport/DAL/DAL_Gate_12_Plane.png"); }
+  .airport_widget.DAL_account .display #Airport_Gate_12_a.bad_data {
+    background-image: url("../img/airport/DAL/DAL_Gate_12_bad_data.png"); }
+  .airport_widget.DAL_account .display #Airport_Gate_12_a .icon {
+    bottom: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: #f00;
+    position: absolute; }
 
 /* Gate Widget Styles */
 .gate_widget.alarm {

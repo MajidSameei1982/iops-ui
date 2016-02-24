@@ -134,6 +134,7 @@ module.exports = (grunt)->
           'client/assets/js/flot-master/jquery.flot.symbol.js'
           'client/assets/js/flot-master/jquery.flot.axislabels.js'
           'client/assets/js/bootstrap-toggle-master/js/bootstrap2-toggle.min.js'
+          'client/assets/js/jquery.resize.min.js'
         ]
         dest: 'build/vendor.js'
       vendor_css:

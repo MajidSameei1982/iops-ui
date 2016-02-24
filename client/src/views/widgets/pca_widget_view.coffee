@@ -1,10 +1,9 @@
 Marionette = require('marionette')
-WidgetView = require('../dashboard/widget_view')
-# OPCManager = require('../../opcmanager')
+IOPSWidgetView = require('./iops_widget_view')
 
 # ----------------------------------
 
-class PcaWidgetView extends WidgetView
+class PcaWidgetView extends IOPSWidgetView
   template:   "widgets/pca_widget"
   className: 'widget-outer box box-primary gate_widget'
   ui:
@@ -44,14 +43,6 @@ class PcaWidgetView extends WidgetView
     pbb_has_warnings :  'Warning._HasWarnings'
     pbb_has_alarms :    'Alarm._HasAlarms'
     
-  modelEvents:
-    "change" : "update"
-
-  watch_updates: (conn)->
-    App.vent.on "opc:data:#{conn}", @data_update
-  kill_updates: (conn)->
-    App.vent.off "opc:data:#{conn}", @data_update
-
   update: ()->
     s = @model.get("settings")
    
@@ -62,7 +53,6 @@ class PcaWidgetView extends WidgetView
 
       # stop listening for updates
       @kill_updates(@site_code)
-      OPCManager.rem_ref(@site_code)
       
       # Temporary Client Eval until Settings are updated with the IsCloudServer (or equivelent flag)
       switch @site_code
@@ -82,7 +72,6 @@ class PcaWidgetView extends WidgetView
 
       # listen for updates
       @watch_updates(@site_code)
-      OPCManager.add_ref(@site_code)
       
       lbl = "PCA #{s.gate}"
       @ui.wtitle.html(lbl)
@@ -91,71 +80,10 @@ class PcaWidgetView extends WidgetView
       @opc =  App.opc.connections[@site_code]
       @set_descriptions(true)
 
-  get_bool: (v)=>
-    if v? && v.toUpperCase() == "TRUE"
-      return true
-    else if v? && v.toUpperCase() == "FALSE"
-      return false
-    null
 
-  get_value: (tag)=>
-    return @opc.get_value("#{@prefix}#{tag}.Value")
-
-  # get data quality and set view if bad
-  mark_bad_data: (tag, el)->
-    q = @data_q(tag)
-    h = if !q then 'BAD DATA' else $(el).html()
-    $(el).html(h).toggleClass("bad_data", !q)
-
-  data_q: (tag)=>
-    c = App.opc.connections[@site_code]
-    t = c.tags["#{@prefix}#{tag}"]
-    t.props.Value.quality
-
-  flash_alarm: (fl)=>
-    if @fl_interval? && !fl
-      clearInterval(@fl_interval)
-      $(@el).removeClass('alarm')
-      @fl_interval = null
-    if !@fl_interval && fl
-      chg = ()=>
-        $(@el).toggleClass('alarm')
-      @fl_interval = setInterval(chg, 500)
-
-  # load tag descriptions once for labels
-  set_descriptions: (force)=>
-    tds = []
-    
-    tlen = Object.keys(@tags).length
-    return if !force && @dcount? && @dcount >= tlen
-
-    @dcount = if force then 0 else @dcount
-    if !@dcount? then @dcount = 0
-
-    for t of @tags
-      tg = @tags[t]
-      tds.push "#{@prefix}#{tg}.Description"
-    @opc.load_tags tds, (data)=>
-      for t in data.tags
-        for tt, idx of @tags
-          ts = @tags[tt]
-          if "#{@prefix}#{ts}" == t.name
-            v = t.props[0].val
-            @$("##{tt}_lbl").html(v)
-            @dcount += 1
-            break      
-
-  render_row: (tag, tv, fv, tc, fc)->
-    v = @get_bool(@vals[tag])
-    txt = if v then tv else fv
-    el = @$("##{tag}").html(txt)
-    if tc? then el.toggleClass(tc, v)
-    if fc? then el.toggleClass(fc, !v)
-    @mark_bad_data @tags[tag], el
-
-  render_value_row: (tag, IsNumeric, percision, suffix)->
+  render_value_row: (tag, IsNumeric, precision, suffix)->
     if @vals[tag]? && @vals[tag] != '' 
-      set_value = if IsNumeric then parseFloat(@vals[tag]).toFixed(percision) else @vals[tag] 
+      set_value = if IsNumeric then parseFloat(@vals[tag]).toFixed(precision) else @vals[tag] 
     else
       set_value = ' -- ' 
     suffix = if suffix? then " #{suffix}" else ""
@@ -320,11 +248,9 @@ class PcaWidgetView extends WidgetView
     gate = settings.gate
     if !gate? || gate == ''
       @toggle_settings()
-    site_code = OPCManager.get_site_code(settings.site)
-    if site_code? then OPCManager.add_ref(site_code)
+    @site_code = OPCManager.get_site_code(settings.site)
+    if @site_code? then @watch_updates(@site_code)
 
-    ms = @model.get('settings')
-    if ms? && ms.site? then @ui.site.val(ms.site)
 
   start: ()->
     @update()
@@ -332,7 +258,6 @@ class PcaWidgetView extends WidgetView
   onDestroy: (arg1, arg2) ->
     # be sure to remove listener
     @kill_updates(@site_code)
-    OPCManager.rem_ref(@site_code)
     
 # ----------------------------------
 

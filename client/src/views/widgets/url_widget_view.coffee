@@ -12,9 +12,6 @@ class UrlWidgetView extends WidgetView
     url: 'input#url'
     wtitle: "h3.box-title"
 
-  modelEvents:
-    "change" : "update"
-
   @layout:
     sx: 4
     sy: 10

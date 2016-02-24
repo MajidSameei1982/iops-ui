@@ -19,7 +19,7 @@ class User extends BaseModel
 
   save:(attrs, options)->
     options || (options = {})
-    options.blacklist = ["isActive", "dashboards"]
+    options.blacklist = ["isActive"]
     @persist()
     super(attrs, options)
 

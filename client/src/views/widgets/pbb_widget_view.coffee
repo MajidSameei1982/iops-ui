@@ -1,8 +1,8 @@
 Marionette = require('marionette')
-WidgetView = require('../dashboard/widget_view')
+IOPSWidgetView = require('./iops_widget_view')
 
 # ----------------------------------
-class PbbWidgetView extends WidgetView
+class PbbWidgetView extends IOPSWidgetView
   template:   "widgets/pbb_widget"
   className: 'widget-outer box box-primary gate_widget'
   ui:
@@ -12,6 +12,7 @@ class PbbWidgetView extends WidgetView
     docked:         'i#docked'
     alarms:         'i#alarms'
     warnings:       'i#warnings'
+    site:           'select#site'
 
   @layout:
     sx: 5
@@ -35,46 +36,28 @@ class PbbWidgetView extends WidgetView
     pbb_has_warnings :  'Warning._HasWarnings'
     pbb_has_alarms :    'Alarm._HasAlarms'
     
-  modelEvents:
-    "change" : "update"
-
-  watch_updates: (conn)->
-    App.vent.on "opc:data:#{conn}", @data_update
-  kill_updates: (conn)->
-    App.vent.off "opc:data:#{conn}", @data_update
-
   update: ()->
+    @update_settings
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+    if !@site_code? then return null
+
     s = @model.get("settings")
    
-    if s? && !!s.gate
-      @site = OPCManager.get_site(s.site)
-      @site_code = @site.get('code')
-      if !@site_code? then return null
-
-      # stop listening for updates
-      @kill_updates(@site_code)
-      OPCManager.rem_ref(@site_code)
-
-      # build settings      
-      settings = @site.get('settings')
-      settings || settings = {}
-      cloud = if settings.cloud then "RemoteSCADAHosting.Airport-#{@site_code}." else ''
-      @prefix = "#{cloud}Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}."
+    if s? && !!s.site      
       tags = []
       for tg of @tags
         t = @tags[tg]
         tags.push "#{@prefix}#{t}.Value"
       App.opc.add_tags @site_code, tags
 
-      # listen for updates
-      @watch_updates(@site_code)
-      OPCManager.add_ref(@site_code)
-      
       lbl = "Gate #{s.gate}"
       @ui.wtitle.html(lbl)
-      @$('#pbbdetail_label #txt').html(lbl)
+      @$('#gate_label #txt').html(lbl)
 
       @opc =  App.opc.connections[@site_code]
+      # listen for updates
+      @watch_updates(@site_code)
       @set_descriptions(true)
 
   get_bool: (v)=>
@@ -154,11 +137,10 @@ class PbbWidgetView extends WidgetView
     # gpuoutputvoltsstatus = @vals['gpu_gpuoutputvolts']
     # @$('#gpu_gpuoutputvolts').html(gpuoutputvoltsstatus)
 
-
-    @$("#pbb_statused_lbl").html('PBB Status')
-    @$("#pbb_canopys_lbl").html('Canopy')
-    @$("#pbb_estops_lbl").html('E-Stop')
-    @$("#pbb_smokedetectord_lbl").html('Smoke Detector')
+    @$("#pbb_status_lbl").html('PBB Status')
+    @$("#pbb_canopy_lbl").html('Canopy')
+    @$("#pbb_estop_lbl").html('E-Stop')
+    # @$("#pbb_smokedetectord_lbl").html('Smoke Detector')
 
     # PBB STATUS
     v = @get_bool(@vals.pbb_status)
@@ -188,10 +170,10 @@ class PbbWidgetView extends WidgetView
     el = @$("#pbb_acfflooron").html(txtf).toggleClass('ok', f)   
     
 
-    #CABLE HOIST
-    txth = if h then "Active" else "Off"
-    @$("#pbb_cabledhoist_lbl").html('Cable Hoist Int.')
-    el = @$("#pbb_cablehoiston").html(txth).toggleClass('ok', h)   
+    # #CABLE HOIST
+    # txth = if h then "Active" else "Off"
+    # @$("#pbb_cablehoist_lbl").html('Cable Hoist Int.')
+    # el = @$("#pbb_cablehoist").html(txth).toggleClass('ok', h)   
 
 
     #E-STOP
@@ -211,19 +193,13 @@ class PbbWidgetView extends WidgetView
     @render_row("pbb_canopy", "Down", "Up", "ok")
     
     # SMOKEDETECTOR
-    @render_row("pbb_smokedetector","Activated","Ready/OK","err")
+    # @render_row("pbb_smokedetector","Activated","Ready/OK","err")
 
     # E-STOP
     @render_row("pbb_estop", "Activated", "Ready/OK", "err")
   
     # CABLE HOIST
     @render_row("pbb_cablehoist", "Deployed", "Retracted", "ok")
-
-    # STATUS
-    #@render_row("pca_pcastatuson", "On", "On", "ok"," ")
-    #@render_row("gpu_gpustatuson", "On", "On", "ok"," ") 
-    #@render_row("pca_pcastatusoff", "Off", "Off"," ","err")
-    #@render_row("gpu_gpustatusoff", "Off", "Off"," ","err")
 
     # ALARMS
     @ui.alarms.toggle(@get_bool(@vals.pbb_has_alarms))
@@ -246,17 +222,6 @@ class PbbWidgetView extends WidgetView
     el = @$('#pbb_undocktime').html("#{undocktime} mins")
     @mark_bad_data @tags.pbb_undocktime, el
 
-    # heighttodisp = if @vals.pbb_heighttodisp? && @vals.pbb_heighttodisp != '' then @vals.pbb_heighttodisp else ' -- ' 
-    # el =@$('#pbb_heighttodisp').html("#{heighttodisp}")
-    # @mark_bad_data @tags.pbb_heighttodisp, el
-
-    # pcadischargetemp = if @vals.pca_pcadischargetemp? && @vals.pca_pcadischargetemp != '' then parseFloat(@vals.pca_pcadischargetemp).toFixed(2)  else ' --'
-    # el =@$('#pca_pcadischargetemp').html("#{pcadischargetemp}")
-    # @mark_bad_data @tags.pca_pcadischargetemp, el
-
-    # gpuoutputamps = if @vals.gpu_gpuoutputamps? && @vals.gpu_gpuoutputamps != '' then parseFloat(@vals.gpu_gpuoutputamps).toFixed(2)  else ' --'
-    # el =@$('#gpu_gpuoutputamps').html("#{gpuoutputamps}")
-    # @mark_bad_data @tags.gpu_gpuoutputamps, el
 
     @set_descriptions()
 
@@ -286,8 +251,8 @@ class PbbWidgetView extends WidgetView
     if !gate? || gate == ''
       @toggle_settings()
 
-    site_code = OPCManager.get_site_code(settings.site)
-    if site_code? then OPCManager.add_ref(site_code)
+    @site_code = OPCManager.get_site_code(settings.site)
+    if @site_code? then @watch_updates(@site_code)
 
 
   start: ()->
@@ -296,7 +261,6 @@ class PbbWidgetView extends WidgetView
   onDestroy: (arg1, arg2) ->
     # be sure to remove listener
     @kill_updates(@site_code)
-    OPCManager.rem_ref(@site_code)
     
 # ----------------------------------
 

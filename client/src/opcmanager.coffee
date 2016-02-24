@@ -106,8 +106,10 @@ class OPCManager
           max_tags_per_msg: 50
           max_callbacks: 10
           callback_timeout: 10000
-          refresh_callback: (data)->
-            OPCManager.notify @code, data
+          refresh_callback: ((c)->
+            (data)->
+              OPCManager.notify c, data
+            )(code)
           serverURL : siteUrl
           interval: refreshRate
           auto_start : false

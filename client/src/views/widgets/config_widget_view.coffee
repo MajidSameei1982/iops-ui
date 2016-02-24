@@ -1,10 +1,9 @@
 Marionette = require('marionette')
-WidgetView = require('../dashboard/widget_view')
-# OPCManager = require('../../opcmanager')
+IOPSWidgetView = require('./iops_widget_view')
 
 # ----------------------------------
 
-class ConfigWidgetView extends WidgetView
+class ConfigWidgetView extends IOPSWidgetView
   template:   "widgets/config_widget"
   className: 'widget-outer box box-primary gate_widget'
   ui:
@@ -20,14 +19,6 @@ class ConfigWidgetView extends WidgetView
   #   pbb_has_warnings :  'Warning._HasWarnings'
   #   pbb_has_alarms :    'Alarm._HasAlarms'
     
-  modelEvents:
-    "change" : "update"
-
-  watch_updates: (conn)->
-    App.vent.on "opc:data:#{conn}", @data_update
-  kill_updates: (conn)->
-    App.vent.off "opc:data:#{conn}", @data_update
-
   update: ()->
     #fire when loaded or settings are updated
 
@@ -49,7 +40,6 @@ class ConfigWidgetView extends WidgetView
   onDestroy: (arg1, arg2) ->
     # be sure to remove listeners
     @kill_updates(@site_code)
-    OPCManager.rem_ref(@site_code)
     
 # ----------------------------------
 
