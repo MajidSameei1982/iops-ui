@@ -523,14 +523,14 @@ li.dashboard-link {
         border-radius: 10px;
         font-size: 26px !important; }
       .gate_widget .display #display_label h1 i#docked {
-        color: #069;
-        background-color: #eee; }
+        color: #069 !important;
+        background-color: #eee !important; }
       .gate_widget .display #display_label h1 i#alarms {
-        color: #fff;
-        background-color: #c00; }
+        color: #fff !important;
+        background-color: #c00 !important; }
       .gate_widget .display #display_label h1 i#warnings {
-        color: #f90;
-        background-color: #eee; }
+        color: #f90 !important;
+        background-color: #eee !important; }
 .gate_widget table.data {
   border: solid 1px #999;
   border-spacing: 1px;
