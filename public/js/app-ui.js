@@ -1569,7 +1569,7 @@ window.JST["widgets/airport_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-server"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1><span id=\'txt\'></span></h1>\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-road"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1><span id=\'txt\'></span></h1>\n    </div>\n    <div id="key">\n      <div class="key_row"><i class="fa fa-fw fa-plane"></i> Airplane at Gate</div>\n      <div class="key_row"><i class="fa fa-fw fa-warning alarm"></i> Critical Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-warning warning"></i> Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-check-circle-o perfect"></i> Perfect Hookup</div>\n      <div class="key_row"><i class="fa fa-fw fa-wrench alarm"></i> Out of Service</div>\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -7584,11 +7584,11 @@ AirportWidgetView = (function(superClass) {
         }
       }
       this.$("#Airport_Overview").remove();
-      this.$(".display").append("<div id='Airport_Overview' class='" + this.site_code + "_Term_Overview'>\n  <img id='layout' src='img/airport/" + this.site_code + "/" + this.site_code + "_Term_Overview.png'></img>\n</div>");
+      this.$(".display").append("<div id='Airport_Overview' class='" + this.site_code + "_Term_Overview'>\n  <div id='layout_container'>\n    <img id='layout' src='img/airport/" + this.site_code + "/" + this.site_code + "_Term_Overview.png'></img>\n  </div>\n</div>");
       ref = this.gateData;
       for (i = 0, len = ref.length; i < len; i++) {
         g = ref[i];
-        this.$("#Airport_Overview").append("<div id='Airport_Gate_" + g.Number + "_a'><div class='icon'></div></div>");
+        this.$("#layout_container").append("<div id='Airport_Gate_" + g.Number + "_a'><div class='icon'></div></div>");
       }
       App.opc.add_tags(this.site_code, tags);
       this.watch_updates(this.site_code);
@@ -7600,7 +7600,7 @@ AirportWidgetView = (function(superClass) {
   };
 
   AirportWidgetView.prototype.data_update = function(data) {
-    var alarm, bad_q, docked, g, i, len, qa, qd, qw, ref, warning;
+    var a, alarm, bad_q, docked, g, i, len, qa, qd, qw, ref, warning;
     ref = this.gateData;
     for (i = 0, len = ref.length; i < len; i++) {
       g = ref[i];
@@ -7612,6 +7612,22 @@ AirportWidgetView = (function(superClass) {
       qw = this.opc.tags["" + g.Tag_gate_warning].props.Value.quality;
       bad_q = !qa || !qw;
       this.$("#Airport_Gate_" + g.Number + "_a").toggleClass("docked", docked && qd).toggleClass("bad_data", !qd);
+      if (alarm === true) {
+        a = this.$("#Airport_Gate_" + g.Number + "_a .icon #alarm");
+        if ((a == null) || a.length === 0) {
+          this.$("#Airport_Gate_" + g.Number + "_a .icon").append("<i id='alarm' class='fa fa-warning alarm blink'></i>");
+        }
+      } else {
+        this.$("#Airport_Gate_" + g.Number + "_a .icon #alarm").remove();
+      }
+      if (warning === true) {
+        a = this.$("#Airport_Gate_" + g.Number + "_a .icon #warning");
+        if ((a == null) || a.length === 0) {
+          this.$("#Airport_Gate_" + g.Number + "_a .icon").append("<i id='warning' class='fa fa-warning warning'></i>");
+        }
+      } else {
+        this.$("#Airport_Gate_" + g.Number + "_a .icon #warning").remove();
+      }
     }
     return this;
   };
@@ -9816,7 +9832,7 @@ PbbleveldetailWidgetView = (function(superClass) {
   };
 
   PbbleveldetailWidgetView.prototype.data_update = function(data) {
-    var a, aircraftstatus, c, docktime, e, el, f, gpuoutputamps, gpuoutputvoltsstatus, h, heighttodisp, l, pcadischargetemp, tg, txt, txta, txta1, txte, txtf, txth, txtl, undocktime, v;
+    var a, aircraftstatus, aq, c, docktime, dq, e, el, f, fq, gpuoutputamps, gpuoutputvoltsstatus, h, heighttodisp, l, pcadischargetemp, tg, txt, txta, txta1, txte, txtf, txth, txtl, undocktime, v, wq;
     this.vals = {};
     for (tg in this.tags) {
       this.vals[tg] = this.get_value(this.tags[tg]);
@@ -9873,10 +9889,14 @@ PbbleveldetailWidgetView = (function(superClass) {
     this.render_row("gpu_gpustatuson", "On", "On", "ok", " ");
     this.render_row("pca_pcastatusoff", "Off", "Off", " ", "err");
     this.render_row("gpu_gpustatusoff", "Off", "Off", " ", "err");
-    this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms));
-    this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings));
-    this.ui.docked.toggle(this.get_bool(this.vals.pbb_status));
-    this.flash_alarm(this.get_bool(this.vals.pbb_autolevelfail));
+    aq = this.data_q(this.tags.pbb_has_alarms);
+    this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
+    wq = this.data_q(this.tags.pbb_has_warnings);
+    this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings) === true && wq);
+    dq = this.data_q(this.tags.pbb_status);
+    this.ui.docked.toggle(this.get_bool(this.vals.pbb_status) === true && dq);
+    fq = this.data_q(this.tags.pbb_autolevelfail);
+    this.flash_alarm(this.get_bool(this.vals.pbb_autolevelfail) === true && fq);
     this.$("#pbb_dockedtime_lbl").html('Dock Time');
     docktime = (this.vals.pbb_docktime != null) && this.vals.pbb_docktime !== '' ? parseFloat(this.vals.pbb_docktime).toFixed(2) : ' -- ';
     el = this.$('#pbb_docktime').html(docktime + " mins");

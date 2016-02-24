@@ -67,12 +67,14 @@ class AirportWidgetView extends IOPSWidgetView
       @$("#Airport_Overview").remove()
       @$(".display").append """
         <div id='Airport_Overview' class='#{@site_code}_Term_Overview'>
-          <img id='layout' src='img/airport/#{@site_code}/#{@site_code}_Term_Overview.png'></img>
+          <div id='layout_container'>
+            <img id='layout' src='img/airport/#{@site_code}/#{@site_code}_Term_Overview.png'></img>
+          </div>
         </div>
       """
       #@$(".gate_ac").remove()
       for g in @gateData
-        @$("#Airport_Overview").append "<div id='Airport_Gate_#{g.Number}_a'><div class='icon'></div></div>"
+        @$("#layout_container").append "<div id='Airport_Gate_#{g.Number}_a'><div class='icon'></div></div>"
         #$(".display").append "<div id='Airport_Gate_#{g.Number}_Status'></div>"
 
       # add tag list to the connection for monitoring
@@ -102,6 +104,20 @@ class AirportWidgetView extends IOPSWidgetView
       @$("#Airport_Gate_#{g.Number}_a")
       .toggleClass("docked", docked && qd)
       .toggleClass("bad_data", !qd)
+
+      if alarm == true 
+        a = @$("#Airport_Gate_#{g.Number}_a .icon #alarm")
+        if !a? || a.length == 0 then @$("#Airport_Gate_#{g.Number}_a .icon").append("<i id='alarm' class='fa fa-warning alarm blink'></i>")
+      else
+        @$("#Airport_Gate_#{g.Number}_a .icon #alarm").remove()
+
+      if warning == true 
+        a = @$("#Airport_Gate_#{g.Number}_a .icon #warning")
+        if !a? || a.length == 0 then @$("#Airport_Gate_#{g.Number}_a .icon").append("<i id='warning' class='fa fa-warning warning'></i>")
+      else
+        @$("#Airport_Gate_#{g.Number}_a .icon #warning").remove()
+
+      
 
       # @$("#Airport_Gate_#{g.Number}_a")
       # .toggleClass("airport_gate_#{g.Number}_ac_docked", docked && qd)

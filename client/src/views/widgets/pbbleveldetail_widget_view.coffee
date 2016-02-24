@@ -176,14 +176,18 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     
 
     # ALARMS
-    @ui.alarms.toggle(@get_bool(@vals.pbb_has_alarms))
+    aq = @data_q(@tags.pbb_has_alarms)
+    @ui.alarms.toggle(@get_bool(@vals.pbb_has_alarms)==true && aq)
     # WARNINGS
-    @ui.warnings.toggle(@get_bool(@vals.pbb_has_warnings))
+    wq = @data_q(@tags.pbb_has_warnings)
+    @ui.warnings.toggle(@get_bool(@vals.pbb_has_warnings)==true && wq)
     # DOCKED
-    @ui.docked.toggle(@get_bool(@vals.pbb_status))
+    dq = @data_q(@tags.pbb_status)
+    @ui.docked.toggle(@get_bool(@vals.pbb_status)==true && dq)
     
     # AUTOLEVELFAIL
-    @flash_alarm(@get_bool(@vals.pbb_autolevelfail))
+    fq = @data_q(@tags.pbb_autolevelfail)
+    @flash_alarm(@get_bool(@vals.pbb_autolevelfail)==true && fq)
 
     # DOCKTIME
     @$("#pbb_dockedtime_lbl").html('Dock Time')

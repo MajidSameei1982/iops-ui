@@ -1,5 +1,5 @@
 <div class="box-header with-border">
-  <div class='pull-left'><i class="fa fa-server"></i> <h3 class="box-title"></h3></div>
+  <div class='pull-left'><i class="fa fa-road"></i> <h3 class="box-title"></h3></div>
   <div class="pull-right controls">
     <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> 
     <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>
@@ -11,6 +11,13 @@
   <div class="display contain">
     <div id="display_label">
       <h1><span id='txt'></span></h1>
+    </div>
+    <div id="key">
+      <div class="key_row"><i class="fa fa-fw fa-plane"></i> Airplane at Gate</div>
+      <div class="key_row"><i class="fa fa-fw fa-warning alarm"></i> Critical Alarm</div>
+      <div class="key_row"><i class="fa fa-fw fa-warning warning"></i> Alarm</div>
+      <div class="key_row"><i class="fa fa-fw fa-check-circle-o perfect"></i> Perfect Hookup</div>
+      <div class="key_row"><i class="fa fa-fw fa-wrench alarm"></i> Out of Service</div>
     </div>
   </div>
 

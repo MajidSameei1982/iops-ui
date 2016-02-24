@@ -7,7 +7,9 @@
 
  &.DAL_account {
     $site_code: DAL;
-    $Gates: 10 12;
+    $Gates: 10, 12;
+    $posx: 52%, 59%;
+    $posy: 53%, 46%;
     %div_defaults {
       min-height: 100%;
       min-width: 100%;
@@ -17,6 +19,20 @@
       left: 0px;
     }
     .display {
+
+      #key {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        font-size: 18px;
+        background-color: rgba(255,255,255,0.5);
+        z-index: 9999;
+        border-radius: 10px;
+        padding: 10px;
+        .alarm { color:#c00; }
+        .warning { color:#f90; }
+        .perfect { color:#090; }
+      }
       #display_label {
         display: none;
       }
@@ -29,9 +45,14 @@
         // background: url("../img/airport/DAL/DAL_Term_Overview.png") no-repeat bottom center; 
         // background-size: contain;
         // z-index: 100;
+        margin-top:25px;
         #layout {
           width:100%;
           height:auto;
+        }
+        #layout_container {
+          position:absolute;
+          top:0;left:0;
         }
       }
 
@@ -40,8 +61,8 @@
       $ImagesPrefix: "../img/airport/#{$site_code}/#{$site_code}_Gate_";  
       $ImagesSuffixs: "_bad_data.png" ".png" "_Plane.png" "" "_Alarm.png" "_Warning.png";  
 
+      $index: 1;  
       @each $Gate in $Gates {
-        $index: 1;
         #Airport_Gate_#{$Gate}_a {
           background-repeat:no-repeat;
           background-size: contain;
@@ -58,14 +79,21 @@
             background-image: url("#{$ImagesPrefix}#{$Gate}_bad_data.png");
           }
           .icon {
-            bottom:50%;
-            left:50%;
-            width:30px;
-            height:30px;
-            background-color:#f00;
+            font-size:18px;
+            left: #{nth($posx,$index)};
+            top: #{nth($posy,$index)};
             position:absolute;
+            border-radius:3px;
+            padding:2px;
+            i {
+              text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
+              &.alarm { color:#c00; }
+              &.warning { color:#f90; }
+              &.perfect { color:#090; }
+            }
           }
         }
+        $index: $index + 1;
 
       //   @each $cls in $ClassSuffixs {
       //     .airport_gate_#{$Gate}#{$cls} {
