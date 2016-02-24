@@ -111,41 +111,47 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     h = @get_bool(@vals.pbb_cablehoist)
     e = @get_bool(@vals.pbb_estop)
     l = @get_bool(@vals.pbb_limits)
-
+    
     #DOCK-UNDOCK
     txt = if v then "Docked" else "Undocked"
     @$("#pbb_dockedun_lbl").html('PBB Status')
     el = @$("#pbb_dockedun").html(txt).toggleClass('ok', v)  
+    @mark_bad_data @tags.pbb_status, el
     
     #CANOPY-AUTOLEVEL
     txta = if a then "On " else "Off"
     @$("#pbb_autolevelon_lbl").html('Auto Level')
     el = @$("#pbb_autolevelon").html(txta).toggleClass('ok', a)   
+    @mark_bad_data @tags.pbb_autolevel, el
+
     txta1 = if c then "Down " else "Up "
     @$("#pbb_canopydown_lbl").html('Canopy')
     el = @$("#pbb_canopydown").html(txta1).toggleClass('ok', c)  
+    @mark_bad_data @tags.pbb_canopydown, el
 
     #ACF FLOOR
     txtf = if f then "On" else "Off"
     @$("#pbb_acffloored_lbl").html('ACF Floor')
     el = @$("#pbb_acfflooron").html(txtf).toggleClass('ok', f)   
-    
+    @mark_bad_data @tags.pbb_acffloor, el
 
     #CABLE HOIST
     txth = if h then "Active" else "Off"
     @$("#pbb_cabledhoist_lbl").html('Cable Hoist Int.')
-    el = @$("#pbb_cablehoiston").html(txth).toggleClass('ok', h)   
-
+    el = @$("#pbb_cablehoist").html(txth).toggleClass('ok', h)   
+    @mark_bad_data @tags.pbb_cablehoist, el
 
     #E-STOP
     txte = if e then "Off" else "On"
     @$("#pbb_estoped_lbl").html('E-Stop')
     el = @$("#pbb_estopoff").html(txte).toggleClass('ok', e) 
+    @mark_bad_data @tags.pbb_estop, el
 
     #LIMITS
     txtl = if l then "Ok" else "Active"
     @$("#pbb_limited_lbl").html('Limits')
     el = @$("#pbb_limitok").html(txtl).toggleClass('ok', l)   
+    @mark_bad_data @tags.pbb_limits, el
 
     # Auto Level
     @render_row("pbb_autolevel", "On", "Off", "ok")
@@ -159,8 +165,8 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     # E-STOP
     @render_row("pbb_estop", "Activated", "Ready/OK", "err")
   
-    # CABLE HOIST
-    @render_row("pbb_cablehoist", "Deployed", "Retracted", "ok")
+    # # CABLE HOIST
+    # @render_row("pbb_cablehoist", "Deployed", "Retracted", "ok")
 
     # STATUS
     @render_row("pca_pcastatuson", "On", "On", "ok"," ")

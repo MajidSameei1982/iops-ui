@@ -1932,7 +1932,7 @@ window.JST["widgets/pbbleveldetail_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gate_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table class=\'data\' style="float: left; width:80%">\n      <tr><td class=\'lbl\' id=\'pbb_dockedun_lbl\'>&nbsp;</td><td id=\'pbb_dockedun\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevelon_lbl\'>&nbsp;</td><td id=\'pbb_autolevelon\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopydown_lbl\'>&nbsp;</td><td id=\'pbb_canopydown\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_acffloored_lbl\'>&nbsp;</td><td id=\'pbb_acfflooron\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_cabledhoist_lbl\'>&nbsp;</td><td id=\'pbb_cablehoiston\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_estoped_lbl\'>&nbsp;</td><td id=\'pbb_estopoff\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_limited_lbl\'>&nbsp;</td><td id=\'pbb_limitok\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_dockedtime_lbl\'>&nbsp;</td><td id=\'pbb_docktime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_undockedtime_lbl\'>&nbsp;</td><td id=\'pbb_undocktime\' class=\'val\'>LOADING...</td></tr>\n     \n      \n    </table>\n       \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gate_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table class=\'data\' style="float: left; width:80%">\n      <tr><td class=\'lbl\' id=\'pbb_dockedun_lbl\'>&nbsp;</td><td id=\'pbb_dockedun\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevelon_lbl\'>&nbsp;</td><td id=\'pbb_autolevelon\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopydown_lbl\'>&nbsp;</td><td id=\'pbb_canopydown\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_acffloored_lbl\'>&nbsp;</td><td id=\'pbb_acfflooron\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_cabledhoist_lbl\'>&nbsp;</td><td id=\'pbb_cablehoist\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_estoped_lbl\'>&nbsp;</td><td id=\'pbb_estopoff\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_limited_lbl\'>&nbsp;</td><td id=\'pbb_limitok\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_dockedtime_lbl\'>&nbsp;</td><td id=\'pbb_docktime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_undockedtime_lbl\'>&nbsp;</td><td id=\'pbb_undocktime\' class=\'val\'>LOADING...</td></tr>\n     \n      \n    </table>\n       \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -9840,29 +9840,35 @@ PbbleveldetailWidgetView = (function(superClass) {
     txt = v ? "Docked" : "Undocked";
     this.$("#pbb_dockedun_lbl").html('PBB Status');
     el = this.$("#pbb_dockedun").html(txt).toggleClass('ok', v);
+    this.mark_bad_data(this.tags.pbb_status, el);
     txta = a ? "On " : "Off";
     this.$("#pbb_autolevelon_lbl").html('Auto Level');
     el = this.$("#pbb_autolevelon").html(txta).toggleClass('ok', a);
+    this.mark_bad_data(this.tags.pbb_autolevel, el);
     txta1 = c ? "Down " : "Up ";
     this.$("#pbb_canopydown_lbl").html('Canopy');
     el = this.$("#pbb_canopydown").html(txta1).toggleClass('ok', c);
+    this.mark_bad_data(this.tags.pbb_canopydown, el);
     txtf = f ? "On" : "Off";
     this.$("#pbb_acffloored_lbl").html('ACF Floor');
     el = this.$("#pbb_acfflooron").html(txtf).toggleClass('ok', f);
+    this.mark_bad_data(this.tags.pbb_acffloor, el);
     txth = h ? "Active" : "Off";
     this.$("#pbb_cabledhoist_lbl").html('Cable Hoist Int.');
-    el = this.$("#pbb_cablehoiston").html(txth).toggleClass('ok', h);
+    el = this.$("#pbb_cablehoist").html(txth).toggleClass('ok', h);
+    this.mark_bad_data(this.tags.pbb_cablehoist, el);
     txte = e ? "Off" : "On";
     this.$("#pbb_estoped_lbl").html('E-Stop');
     el = this.$("#pbb_estopoff").html(txte).toggleClass('ok', e);
+    this.mark_bad_data(this.tags.pbb_estop, el);
     txtl = l ? "Ok" : "Active";
     this.$("#pbb_limited_lbl").html('Limits');
     el = this.$("#pbb_limitok").html(txtl).toggleClass('ok', l);
+    this.mark_bad_data(this.tags.pbb_limits, el);
     this.render_row("pbb_autolevel", "On", "Off", "ok");
     this.render_row("pbb_canopy", "Down", "Up", "ok");
     this.render_row("pbb_smokedetector", "Ready/OK", "Activated", " ", "err");
     this.render_row("pbb_estop", "Activated", "Ready/OK", "err");
-    this.render_row("pbb_cablehoist", "Deployed", "Retracted", "ok");
     this.render_row("pca_pcastatuson", "On", "On", "ok", " ");
     this.render_row("gpu_gpustatuson", "On", "On", "ok", " ");
     this.render_row("pca_pcastatusoff", "Off", "Off", " ", "err");

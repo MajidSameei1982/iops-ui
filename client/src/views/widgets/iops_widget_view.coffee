@@ -77,6 +77,7 @@ class IOPSWidgetView extends WidgetView
 
   render_row: (tag, tv, fv, tc, fc)->
     v = @get_bool(@vals[tag])
+    #console.log "#{tag} : #{v}"
     txt = if v then tv else fv
     el = @$("##{tag}").html(txt)
     if tc? then el.toggleClass(tc, v)
