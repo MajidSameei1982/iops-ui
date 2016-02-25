@@ -3976,11 +3976,18 @@ Session = (function(superClass) {
   };
 
   Session.save_session = function() {
-    var dashboards;
+    var d, dashboards, i, len, ref;
     App.store.set("user_ts", new Date());
     App.store.set("session", App.session);
-    dashboards = [];
-    App.session.attributes["dashboards"] = App.dashboards;
+    if (App.dashboards != null) {
+      dashboards = [];
+      ref = App.dashboards.models;
+      for (i = 0, len = ref.length; i < len; i++) {
+        d = ref[i];
+        dashboards.push(d.id);
+      }
+      App.session.attributes["dashboards"] = dashboards;
+    }
     return App.session.save();
   };
 

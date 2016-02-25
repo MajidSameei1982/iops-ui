@@ -24,9 +24,9 @@ class User extends BaseModel
     super(attrs, options)
 
   persist: ()=>
-    # dashes = []
-    # for d in @dashboards.models
-    #   dashes.push(d.id)
+    # # dashes = []
+    # # for d in @dashboards.models
+    # #   dashes.push(d.id)
     # @attributes["dashboards"] = dashes
     roles = []
     for r in @roles.models
