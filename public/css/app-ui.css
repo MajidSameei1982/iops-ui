@@ -957,4 +957,127 @@ li.dashboard-link {
       background-color: #fec;
       color: #999; }
 
+@font-face {
+  font-family: 'weather';
+  src: url("/fonts/artill_clean_icons-webfont.eot");
+  src: url("/fonts/artill_clean_icons-webfont_ie.eot") format("embedded-opentype"), url("/fonts/artill_clean_icons-webfont.woff") format("woff"), url("/fonts/artill_clean_icons-webfont.ttf") format("truetype"), url("/fonts/artill_clean_icons-webfont.svg") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+i.weather {
+  font-family: weather;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1.0;
+  text-transform: none;
+  font-size: 1.8em; }
+  i.weather.icon-0:before {
+    content: ":"; }
+  i.weather.icon-1:before {
+    content: "p"; }
+  i.weather.icon-2:before {
+    content: "S"; }
+  i.weather.icon-3:before {
+    content: "Q"; }
+  i.weather.icon-4:before {
+    content: "S"; }
+  i.weather.icon-5:before {
+    content: "W"; }
+  i.weather.icon-6:before {
+    content: "W"; }
+  i.weather.icon-7:before {
+    content: "W"; }
+  i.weather.icon-8:before {
+    content: "W"; }
+  i.weather.icon-9:before {
+    content: "I"; }
+  i.weather.icon-10:before {
+    content: "W"; }
+  i.weather.icon-11:before {
+    content: "I"; }
+  i.weather.icon-12:before {
+    content: "I"; }
+  i.weather.icon-13:before {
+    content: "I"; }
+  i.weather.icon-14:before {
+    content: "I"; }
+  i.weather.icon-15:before {
+    content: "W"; }
+  i.weather.icon-16:before {
+    content: "I"; }
+  i.weather.icon-17:before {
+    content: "W"; }
+  i.weather.icon-18:before {
+    content: "U"; }
+  i.weather.icon-19:before {
+    content: "Z"; }
+  i.weather.icon-20:before {
+    content: "Z"; }
+  i.weather.icon-21:before {
+    content: "Z"; }
+  i.weather.icon-22:before {
+    content: "Z"; }
+  i.weather.icon-23:before {
+    content: "Z"; }
+  i.weather.icon-24:before {
+    content: "E"; }
+  i.weather.icon-25:before {
+    content: "E"; }
+  i.weather.icon-26:before {
+    content: "3"; }
+  i.weather.icon-27:before {
+    content: "a"; }
+  i.weather.icon-28:before {
+    content: "A"; }
+  i.weather.icon-29:before {
+    content: "a"; }
+  i.weather.icon-30:before {
+    content: "A"; }
+  i.weather.icon-31:before {
+    content: "6"; }
+  i.weather.icon-32:before {
+    content: "1"; }
+  i.weather.icon-33:before {
+    content: "6"; }
+  i.weather.icon-34:before {
+    content: "1"; }
+  i.weather.icon-35:before {
+    content: "W"; }
+  i.weather.icon-36:before {
+    content: "1"; }
+  i.weather.icon-37:before {
+    content: "S"; }
+  i.weather.icon-38:before {
+    content: "S"; }
+  i.weather.icon-39:before {
+    content: "S"; }
+  i.weather.icon-40:before {
+    content: "M"; }
+  i.weather.icon-41:before {
+    content: "W"; }
+  i.weather.icon-42:before {
+    content: "I"; }
+  i.weather.icon-43:before {
+    content: "W"; }
+  i.weather.icon-44:before {
+    content: "a"; }
+  i.weather.icon-45:before {
+    content: "S"; }
+  i.weather.icon-46:before {
+    content: "U"; }
+  i.weather.icon-47:before {
+    content: "S"; }
+
+.weather .box-body.content {
+  background-color: #adf; }
+  .weather .box-body.content #display h1 {
+    font-size: 50px !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    margin: 0 0 0 0 !important; }
+  .weather .box-body.content #display .details {
+    text-align: center; }
+    .weather .box-body.content #display .details .location {
+      display: block;
+      font-size: 18px; }
+
 /*# sourceMappingURL=app-ui.css.map */

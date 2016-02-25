@@ -105,6 +105,8 @@ class AirportWidgetView extends IOPSWidgetView
       .toggleClass("docked", docked && qd)
       .toggleClass("bad_data", !qd)
 
+      # aq = @opc.tags["#{g.Tag_gate_alarm}"]
+      # console.log aq
       if alarm == true 
         a = @$("#Airport_Gate_#{g.Number}_a .icon #alarm")
         if !a? || a.length == 0 then @$("#Airport_Gate_#{g.Number}_a .icon").append("<i id='alarm' class='fa fa-warning alarm blink'></i>")

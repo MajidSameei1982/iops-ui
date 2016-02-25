@@ -187,7 +187,7 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     # AUTOLEVELFAIL
     fq = @data_q(@tags.pbb_autolevelfail)
     show_alarms = (@get_bool(@vals.pbb_autolevelfail)==true && fq)
-    @ui.alarms.toggle(show_alarms).toggleClass("blink",show_alarms)
+    @ui.alarms.toggle(show_alarms).toggleClass("blink", show_alarms)
 
     # DOCKTIME
     @$("#pbb_dockedtime_lbl").html('Dock Time')

@@ -14,7 +14,7 @@ window.app_config = {
     {
       id: "airport",
       name: "Airport Widget",
-      icon: "bullhorn"
+      icon: "road"
     },
     {
       id: "alarm",

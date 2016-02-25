@@ -9,7 +9,6 @@
   <div id='display'></div>
   <div class="settings" style="display: none;">
     <h3>Settings</h3>
-    <%- @formGroup({id:'title', type:'text', placeholder:'Widget Title', value:@settings.name}) %>
-    <%- @formGroup({id:'zip', type:'text', placeholder:'ZIP', value:@settings.zip}) %>  
+    <%- @formGroup({id:'location', type:'text', placeholder:'Location ZIP or City', value:@settings.location}) %>  
   </div><!-- /.box-body -->
 </div><!-- /.box-body -->

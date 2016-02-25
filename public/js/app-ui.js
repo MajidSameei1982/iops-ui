@@ -2105,19 +2105,10 @@ window.JST["widgets/weather_widget"] = function(__obj) {
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-cloud"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\'></div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.formGroup({
-        id: 'title',
+        id: 'location',
         type: 'text',
-        placeholder: 'Widget Title',
-        value: this.settings.name
-      })));
-    
-      _print(_safe('\n    '));
-    
-      _print(_safe(this.formGroup({
-        id: 'zip',
-        type: 'text',
-        placeholder: 'ZIP',
-        value: this.settings.zip
+        placeholder: 'Location ZIP or City',
+        value: this.settings.location
       })));
     
       _print(_safe('  \n  </div><!-- /.box-body -->\n</div><!-- /.box-body -->\n'));
@@ -10200,41 +10191,51 @@ WeatherWidgetView = (function(superClass) {
 
   WeatherWidgetView.prototype.template = "widgets/weather_widget";
 
-  WeatherWidgetView.prototype.className = 'widget-outer box box-primary';
+  WeatherWidgetView.prototype.className = 'widget-outer box box-primary weather';
 
   WeatherWidgetView.prototype.ui = {
     display: '#display',
     title: 'input#title',
-    zip: 'input#zip',
+    location: 'input#location',
     wtitle: "h3.box-title"
   };
 
   WeatherWidgetView.layout = {
-    sx: 3,
-    sy: 8
+    sx: 4,
+    sy: 6
   };
 
   WeatherWidgetView.prototype.update = function() {
-    var city, img, parts, s, state;
+    var loc, s;
     s = this.model.get("settings");
-    state = "";
-    if ((s.name != null) && s.name !== '') {
-      parts = s.name.split(',');
-      if ((parts != null) && parts.length > 0) {
-        state = parts[parts.length - 1].trim();
-        city = parts[0].trim();
-      }
+    if ((s != null) && (s.location != null) && s.location.trim() !== '') {
+      loc = s.location.trim();
+      return $.simpleWeather({
+        location: loc,
+        woeid: '',
+        unit: 'f',
+        success: (function(_this) {
+          return function(w) {
+            var html;
+            html = "<h1><i class='weather icon-" + w.code + "'></i> " + w.temp + "&deg; " + w.units.temp + "</h1>\n<div class='details'>\n  <span class='location'><i class='fa fa-map-marker'></i> " + w.city + ", " + w.region + "</span>\n  <span class='currently'>" + w.currently + "</span>\n  <span class='wind'><i class='fa fa-flag-o'></i> " + w.wind.direction + " " + w.wind.speed + " " + w.units.speed + "</span>\n</div>";
+            _this.ui.display.html(html);
+            return _this.ui.wtitle.html("Weather: " + w.city + ", " + w.region);
+          };
+        })(this),
+        error: (function(_this) {
+          return function(error) {
+            _this.ui.display.html("<p>" + error + "</p>");
+            return _this.ui.wtitle.html("ERROR");
+          };
+        })(this)
+      });
     }
-    img = "<span style=\"display: block !important; width: 100%; text-align: center; font-family: sans-serif; font-size: 12px;\">\n  <a href=\"http://www.wunderground.com/cgi-bin/findweather/getForecast?query=zmw:" + s.zip + ".1.99999&bannertypeclick=wu_travel_jet1\" target=\"_blank\">\n  <img src=\"http://weathersticker.wunderground.com/weathersticker/cgi-bin/banner/ban/wxBanner?bannertype=wu_travel_jet1&airportcode=CID&ForcedCity=" + city + "&ForcedState=" + state + "&zip=" + s.zip + "&language=EN\" \n    alt=\"Find more about Weather\" style='width:100%;' />\n  </a>\n</span>";
-    this.ui.display.html(img);
-    return this.ui.wtitle.html("" + s.name);
   };
 
   WeatherWidgetView.prototype.set_model = function() {
     var s;
     s = _.clone(this.model.get("settings"));
-    s.zip = this.ui.zip.val().trim();
-    s.name = this.ui.title.val();
+    s.location = this.ui.location.val().trim();
     return this.model.set("settings", s);
   };
 
@@ -10244,19 +10245,14 @@ WeatherWidgetView = (function(superClass) {
   };
 
   WeatherWidgetView.prototype.onShow = function() {
-    var zip;
-    this.ui.title.on("change", (function(_this) {
+    var location;
+    this.ui.location.on("change", (function(_this) {
       return function() {
         return _this.set_model();
       };
     })(this));
-    this.ui.zip.on("change", (function(_this) {
-      return function() {
-        return _this.set_model();
-      };
-    })(this));
-    zip = this.model.get("settings").zip;
-    if ((zip == null) || zip === '') {
+    location = this.model.get("settings").location;
+    if ((location == null) || location === '') {
       return this.toggle_settings();
     }
   };

@@ -135,6 +135,7 @@ module.exports = (grunt)->
           'client/assets/js/flot-master/jquery.flot.axislabels.js'
           'client/assets/js/bootstrap-toggle-master/js/bootstrap2-toggle.min.js'
           'client/assets/js/jquery.resize.min.js'
+          'client/requires/simpleWeather/jquery.simpleWeather.js'
         ]
         dest: 'build/vendor.js'
       vendor_css:
@@ -252,6 +253,11 @@ module.exports = (grunt)->
           cwd: 'client/assets/adminlte/plugins/iCheck'
           src: ['**/*.*']
           dest: 'public/assets/adminlte/plugins/iCheck'
+          expand: true
+        ,
+          cwd: 'client/assets/fonts'
+          src: ['**/*.*']
+          dest: 'public/fonts/'
           expand: true
         ]
 
