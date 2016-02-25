@@ -7620,7 +7620,7 @@ AirportWidgetView = (function(superClass) {
       } else {
         this.$("#Airport_Gate_" + g.Number + "_a .icon #alarm").remove();
       }
-      if (warning === true) {
+      if (warning === true && alarm === false) {
         a = this.$("#Airport_Gate_" + g.Number + "_a .icon #warning");
         if ((a == null) || a.length === 0) {
           this.$("#Airport_Gate_" + g.Number + "_a .icon").append("<i id='warning' class='fa fa-warning warning'></i>");
@@ -8985,7 +8985,6 @@ IOPSWidgetView = (function(superClass) {
   function IOPSWidgetView() {
     this.draw_selectors = bind(this.draw_selectors, this);
     this.set_descriptions = bind(this.set_descriptions, this);
-    this.flash_alarm = bind(this.flash_alarm, this);
     this.data_update = bind(this.data_update, this);
     this.data_q = bind(this.data_q, this);
     this.get_value = bind(this.get_value, this);
@@ -9032,23 +9031,6 @@ IOPSWidgetView = (function(superClass) {
     console.log("kill : " + conn);
     App.vent.off("opc:data:" + conn, this.data_update);
     return OPCManager.rem_ref(conn);
-  };
-
-  IOPSWidgetView.prototype.flash_alarm = function(fl) {
-    var chg;
-    if ((this.fl_interval != null) && !fl) {
-      clearInterval(this.fl_interval);
-      $(this.el).removeClass('alarm');
-      this.fl_interval = null;
-    }
-    if (!this.fl_interval && fl) {
-      chg = (function(_this) {
-        return function() {
-          return $(_this.el).toggleClass('alarm');
-        };
-      })(this);
-      return this.fl_interval = setInterval(chg, 500);
-    }
   };
 
   IOPSWidgetView.prototype.set_descriptions = function(force) {
@@ -9244,11 +9226,6 @@ PbbWidgetView = (function(superClass) {
   function PbbWidgetView() {
     this.set_model = bind(this.set_model, this);
     this.data_update = bind(this.data_update, this);
-    this.set_descriptions = bind(this.set_descriptions, this);
-    this.flash_alarm = bind(this.flash_alarm, this);
-    this.data_q = bind(this.data_q, this);
-    this.get_value = bind(this.get_value, this);
-    this.get_bool = bind(this.get_bool, this);
     return PbbWidgetView.__super__.constructor.apply(this, arguments);
   }
 
@@ -9313,112 +9290,8 @@ PbbWidgetView = (function(superClass) {
     }
   };
 
-  PbbWidgetView.prototype.get_bool = function(v) {
-    if ((v != null) && v.toUpperCase() === "TRUE") {
-      return true;
-    } else if ((v != null) && v.toUpperCase() === "FALSE") {
-      return false;
-    }
-    return null;
-  };
-
-  PbbWidgetView.prototype.get_value = function(tag) {
-    return this.opc.get_value("" + this.prefix + tag + ".Value");
-  };
-
-  PbbWidgetView.prototype.mark_bad_data = function(tag, el) {
-    var h, q;
-    q = this.data_q(tag);
-    h = !q ? 'BAD DATA' : $(el).html();
-    return $(el).html(h).toggleClass("bad_data", !q);
-  };
-
-  PbbWidgetView.prototype.data_q = function(tag) {
-    var c, t;
-    c = App.opc.connections[this.site_code];
-    t = c.tags["" + this.prefix + tag];
-    return t.props.Value.quality;
-  };
-
-  PbbWidgetView.prototype.flash_alarm = function(fl) {
-    var chg;
-    if ((this.fl_interval != null) && !fl) {
-      clearInterval(this.fl_interval);
-      $(this.el).removeClass('alarm');
-      this.fl_interval = null;
-    }
-    if (!this.fl_interval && fl) {
-      chg = (function(_this) {
-        return function() {
-          return $(_this.el).toggleClass('alarm');
-        };
-      })(this);
-      return this.fl_interval = setInterval(chg, 500);
-    }
-  };
-
-  PbbWidgetView.prototype.set_descriptions = function(force) {
-    var t, tds, tg, tlen;
-    tds = [];
-    tlen = Object.keys(this.tags).length;
-    if (!force && (this.dcount != null) && this.dcount >= tlen) {
-      return;
-    }
-    this.dcount = force ? 0 : this.dcount;
-    if (this.dcount == null) {
-      this.dcount = 0;
-    }
-    for (t in this.tags) {
-      tg = this.tags[t];
-      tds.push("" + this.prefix + tg + ".Description");
-    }
-    return this.opc.load_tags(tds, (function(_this) {
-      return function(data) {
-        var i, idx, len, ref, results, ts, tt, v;
-        ref = data.tags;
-        results = [];
-        for (i = 0, len = ref.length; i < len; i++) {
-          t = ref[i];
-          results.push((function() {
-            var ref1, results1;
-            ref1 = this.tags;
-            results1 = [];
-            for (tt in ref1) {
-              idx = ref1[tt];
-              ts = this.tags[tt];
-              if (("" + this.prefix + ts) === t.name) {
-                v = t.props[0].val;
-                this.$("#" + tt + "_lbl").html(v);
-                this.dcount += 1;
-                break;
-              } else {
-                results1.push(void 0);
-              }
-            }
-            return results1;
-          }).call(_this));
-        }
-        return results;
-      };
-    })(this));
-  };
-
-  PbbWidgetView.prototype.render_row = function(tag, tv, fv, tc, fc) {
-    var el, txt, v;
-    v = this.get_bool(this.vals[tag]);
-    txt = v ? tv : fv;
-    el = this.$("#" + tag).html(txt);
-    if (tc != null) {
-      el.toggleClass(tc, v);
-    }
-    if (fc != null) {
-      el.toggleClass(fc, !v);
-    }
-    return this.mark_bad_data(this.tags[tag], el);
-  };
-
   PbbWidgetView.prototype.data_update = function(data) {
-    var a, aircraftstatus, c, docktime, e, el, f, h, l, tg, txt, txta, txta1, txte, txtf, txtl, undocktime, v;
+    var a, aircraftstatus, aq, c, docktime, dq, e, el, f, fq, h, l, show_alarms, tg, txt, txta, txta1, txte, txtf, txtl, undocktime, v, wq;
     this.vals = {};
     for (tg in this.tags) {
       this.vals[tg] = this.get_value(this.tags[tg]);
@@ -9458,10 +9331,15 @@ PbbWidgetView = (function(superClass) {
     this.render_row("pbb_canopy", "Down", "Up", "ok");
     this.render_row("pbb_estop", "Activated", "Ready/OK", "err");
     this.render_row("pbb_cablehoist", "Deployed", "Retracted", "ok");
-    this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms));
-    this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings));
-    this.ui.docked.toggle(this.get_bool(this.vals.pbb_status));
-    this.flash_alarm(this.get_bool(this.vals.pbb_autolevelfail));
+    aq = this.data_q(this.tags.pbb_has_alarms);
+    this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
+    wq = this.data_q(this.tags.pbb_has_warnings);
+    this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings) === true && wq);
+    dq = this.data_q(this.tags.pbb_status);
+    this.ui.docked.toggle(this.get_bool(this.vals.pbb_status) === true && dq);
+    fq = this.data_q(this.tags.pbb_autolevelfail);
+    show_alarms = this.get_bool(this.vals.pbb_autolevelfail) === true && fq;
+    this.ui.alarms.toggle(show_alarms).toggleClass("blink", show_alarms);
     this.$("#pbb_dockedtime_lbl").html('Dock Time');
     docktime = (this.vals.pbb_docktime != null) && this.vals.pbb_docktime !== '' ? parseFloat(this.vals.pbb_docktime).toFixed(2) : ' -- ';
     el = this.$('#pbb_docktime').html(docktime + " mins");
@@ -9625,7 +9503,7 @@ PbbdetailWidgetView = (function(superClass) {
   };
 
   PbbdetailWidgetView.prototype.data_update = function(data) {
-    var a, aircraftstatus, c, docktime, el, gpuoutputamps, gpuoutputvoltsstatus, heighttodisp, pcadischargetemp, tg, txt, txta, txta1, undocktime, v;
+    var a, aircraftstatus, aq, c, docktime, dq, el, fq, gpuoutputamps, gpuoutputvoltsstatus, heighttodisp, pcadischargetemp, show_alarms, tg, txt, txta, txta1, undocktime, v, wq;
     this.vals = {};
     for (tg in this.tags) {
       this.vals[tg] = this.get_value(this.tags[tg]);
@@ -9656,10 +9534,15 @@ PbbdetailWidgetView = (function(superClass) {
     this.render_row("gpu_gpustatuson", "On", "On", "ok", " ");
     this.render_row("pca_pcastatusoff", "Off", "Off", " ", "err");
     this.render_row("gpu_gpustatusoff", "Off", "Off", " ", "err");
-    this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms));
-    this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings));
-    this.ui.docked.toggle(this.get_bool(this.vals.pbb_status));
-    this.flash_alarm(this.get_bool(this.vals.pbb_autolevelfail));
+    aq = this.data_q(this.tags.pbb_has_alarms);
+    this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
+    wq = this.data_q(this.tags.pbb_has_warnings);
+    this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings) === true && wq);
+    dq = this.data_q(this.tags.pbb_status);
+    this.ui.docked.toggle(this.get_bool(this.vals.pbb_status) === true && dq);
+    fq = this.data_q(this.tags.pbb_autolevelfail);
+    show_alarms = this.get_bool(this.vals.pbb_autolevelfail) === true && fq;
+    this.ui.alarms.toggle(show_alarms).toggleClass("blink", show_alarms);
     docktime = (this.vals.pbb_docktime != null) && this.vals.pbb_docktime !== '' ? parseFloat(this.vals.pbb_docktime).toFixed(2) : ' -- ';
     el = this.$('#pbb_docktime').html(docktime + " mins");
     this.mark_bad_data(this.tags.pbb_docktime, el);
@@ -9832,7 +9715,7 @@ PbbleveldetailWidgetView = (function(superClass) {
   };
 
   PbbleveldetailWidgetView.prototype.data_update = function(data) {
-    var a, aircraftstatus, aq, c, docktime, dq, e, el, f, fq, gpuoutputamps, gpuoutputvoltsstatus, h, heighttodisp, l, pcadischargetemp, tg, txt, txta, txta1, txte, txtf, txth, txtl, undocktime, v, wq;
+    var a, aircraftstatus, aq, c, docktime, dq, e, el, f, fq, gpuoutputamps, gpuoutputvoltsstatus, h, heighttodisp, l, pcadischargetemp, show_alarms, tg, txt, txta, txta1, txte, txtf, txth, txtl, undocktime, v, wq;
     this.vals = {};
     for (tg in this.tags) {
       this.vals[tg] = this.get_value(this.tags[tg]);
@@ -9896,7 +9779,8 @@ PbbleveldetailWidgetView = (function(superClass) {
     dq = this.data_q(this.tags.pbb_status);
     this.ui.docked.toggle(this.get_bool(this.vals.pbb_status) === true && dq);
     fq = this.data_q(this.tags.pbb_autolevelfail);
-    this.flash_alarm(this.get_bool(this.vals.pbb_autolevelfail) === true && fq);
+    show_alarms = this.get_bool(this.vals.pbb_autolevelfail) === true && fq;
+    this.ui.alarms.toggle(show_alarms).toggleClass("blink", show_alarms);
     this.$("#pbb_dockedtime_lbl").html('Dock Time');
     docktime = (this.vals.pbb_docktime != null) && this.vals.pbb_docktime !== '' ? parseFloat(this.vals.pbb_docktime).toFixed(2) : ' -- ';
     el = this.$('#pbb_docktime').html(docktime + " mins");
@@ -10081,7 +9965,7 @@ PcaWidgetView = (function(superClass) {
   };
 
   PcaWidgetView.prototype.data_update = function(data) {
-    var aircraftstatus, el, gpuoutputamps, pcaambienttemp, pcacabintemp, pcadischargetemp, pcapressureheadpr1, pcapressureheadpr2, pcapressureheadsec1, pcapressureheadsec2, pcapressuresucpr1, pcapressuresucpr2, pcapressuresucsec1, pcapressuresucsec2, tg;
+    var aircraftstatus, aq, dq, el, fq, gpuoutputamps, pcaambienttemp, pcacabintemp, pcadischargetemp, pcapressureheadpr1, pcapressureheadpr2, pcapressureheadsec1, pcapressureheadsec2, pcapressuresucpr1, pcapressuresucpr2, pcapressuresucsec1, pcapressuresucsec2, show_alarms, tg, wq;
     this.vals = {};
     for (tg in this.tags) {
       this.vals[tg] = this.get_value(this.tags[tg]);
@@ -10136,10 +10020,15 @@ PcaWidgetView = (function(superClass) {
     this.render_value_row("pca_dischargetemp", true, 0, "Deg");
     this.render_value_row("gpu_outputamps", true, 0, "Amps");
     this.render_value_row("gpu_outputvolts", true, 0, "Volts");
-    this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms));
-    this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings));
-    this.ui.docked.toggle(this.get_bool(this.vals.pbb_status));
-    this.flash_alarm(this.get_bool(this.vals.pbb_autolevelfail));
+    aq = this.data_q(this.tags.pbb_has_alarms);
+    this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
+    wq = this.data_q(this.tags.pbb_has_warnings);
+    this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings) === true && wq);
+    dq = this.data_q(this.tags.pbb_status);
+    this.ui.docked.toggle(this.get_bool(this.vals.pbb_status) === true && dq);
+    fq = this.data_q(this.tags.pbb_autolevelfail);
+    show_alarms = this.get_bool(this.vals.pbb_autolevelfail) === true && fq;
+    this.ui.alarms.toggle(show_alarms).toggleClass("blink", show_alarms);
     return this.set_descriptions();
   };
 

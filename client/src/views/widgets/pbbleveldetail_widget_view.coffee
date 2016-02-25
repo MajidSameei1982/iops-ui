@@ -174,7 +174,6 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     @render_row("pca_pcastatusoff", "Off", "Off"," ","err")
     @render_row("gpu_gpustatusoff", "Off", "Off"," ","err")
     
-
     # ALARMS
     aq = @data_q(@tags.pbb_has_alarms)
     @ui.alarms.toggle(@get_bool(@vals.pbb_has_alarms)==true && aq)
@@ -187,7 +186,8 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     
     # AUTOLEVELFAIL
     fq = @data_q(@tags.pbb_autolevelfail)
-    @flash_alarm(@get_bool(@vals.pbb_autolevelfail)==true && fq)
+    show_alarms = (@get_bool(@vals.pbb_autolevelfail)==true && fq)
+    @ui.alarms.toggle(show_alarms).toggleClass("blink",show_alarms)
 
     # DOCKTIME
     @$("#pbb_dockedtime_lbl").html('Dock Time')
@@ -213,8 +213,6 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     @mark_bad_data @tags.gpu_gpuoutputamps, el
 
     @set_descriptions()
-
-    
 
 
   set_model: ()=>

@@ -42,16 +42,6 @@ class IOPSWidgetView extends WidgetView
     App.vent.off "opc:data:#{conn}", @data_update
     OPCManager.rem_ref(conn)
 
-  flash_alarm: (fl)=>
-    if @fl_interval? && !fl
-      clearInterval(@fl_interval)
-      $(@el).removeClass('alarm')
-      @fl_interval = null
-    if !@fl_interval && fl
-      chg = ()=>
-        $(@el).toggleClass('alarm')
-      @fl_interval = setInterval(chg, 500)
-
   # load tag descriptions once for labels
   set_descriptions: (force)=>
     tds = []

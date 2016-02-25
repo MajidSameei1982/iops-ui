@@ -204,16 +204,20 @@ class PcaWidgetView extends IOPSWidgetView
     # el = @$('#gpu_outputvolts').html("#{set_value}")
     # @mark_bad_data @tags.gpu_outputvolts, el
 
-
     # ALARMS
-    @ui.alarms.toggle(@get_bool(@vals.pbb_has_alarms))
+    aq = @data_q(@tags.pbb_has_alarms)
+    @ui.alarms.toggle(@get_bool(@vals.pbb_has_alarms)==true && aq)
     # WARNINGS
-    @ui.warnings.toggle(@get_bool(@vals.pbb_has_warnings))
+    wq = @data_q(@tags.pbb_has_warnings)
+    @ui.warnings.toggle(@get_bool(@vals.pbb_has_warnings)==true && wq)
     # DOCKED
-    @ui.docked.toggle(@get_bool(@vals.pbb_status))
+    dq = @data_q(@tags.pbb_status)
+    @ui.docked.toggle(@get_bool(@vals.pbb_status)==true && dq)
     
     # AUTOLEVELFAIL
-    @flash_alarm(@get_bool(@vals.pbb_autolevelfail))
+    fq = @data_q(@tags.pbb_autolevelfail)
+    show_alarms = (@get_bool(@vals.pbb_autolevelfail)==true && fq)
+    @ui.alarms.toggle(show_alarms).toggleClass("blink",show_alarms)
 
     @set_descriptions()
 

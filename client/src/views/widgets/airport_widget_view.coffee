@@ -111,35 +111,13 @@ class AirportWidgetView extends IOPSWidgetView
       else
         @$("#Airport_Gate_#{g.Number}_a .icon #alarm").remove()
 
-      if warning == true 
+      if warning == true && alarm == false
         a = @$("#Airport_Gate_#{g.Number}_a .icon #warning")
         if !a? || a.length == 0 then @$("#Airport_Gate_#{g.Number}_a .icon").append("<i id='warning' class='fa fa-warning warning'></i>")
       else
         @$("#Airport_Gate_#{g.Number}_a .icon #warning").remove()
 
-      
-
-      # @$("#Airport_Gate_#{g.Number}_a")
-      # .toggleClass("airport_gate_#{g.Number}_ac_docked", docked && qd)
-      # .toggleClass("airport_gate_#{g.Number}_ac_idle", !docked && qd)
-      # .toggleClass("airport_gate_#{g.Number}_bad_data", !qd)
-
-      # @$("#Airport_Gate_#{g.Number}_Status")
-      # .toggleClass("airport_gate_#{g.Number}_alarm", alarm && !bad_q)
-      # .toggleClass("airport_gate_#{g.Number}_warning", warning && !alarm && !bad_q)
-      # .toggleClass("airport_gate_#{g.Number}_good", !bad_q && !alarm && !warning)
-      # .toggleClass("airport_gate_#{g.Number}_bad_data", bad_q)
     @
-
-  # flash_alarm: (fl)=>
-  #   if @fl_interval? && !fl
-  #     clearInterval(@fl_interval)
-  #     $(@el).removeClass('alarm')
-  #     @fl_interval = null
-  #   if !@fl_interval && fl
-  #     chg = ()=>
-  #       $(@el).toggleClass('alarm')
-  #     @fl_interval = setInterval(chg, 500)
 
 
   set_model: ()=>

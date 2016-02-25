@@ -60,69 +60,6 @@ class PbbWidgetView extends IOPSWidgetView
       @watch_updates(@site_code)
       @set_descriptions(true)
 
-  get_bool: (v)=>
-    if v? && v.toUpperCase() == "TRUE"
-      return true
-    else if v? && v.toUpperCase() == "FALSE"
-      return false
-    null
-
-  get_value: (tag)=>
-    return @opc.get_value("#{@prefix}#{tag}.Value")
-
-  # get data quality and set view if bad
-  mark_bad_data: (tag, el)->
-    q = @data_q(tag)
-    h = if !q then 'BAD DATA' else $(el).html()
-    $(el).html(h).toggleClass("bad_data", !q)
-
-  data_q: (tag)=>
-    c = App.opc.connections[@site_code]
-    t = c.tags["#{@prefix}#{tag}"]
-    t.props.Value.quality
-
-  flash_alarm: (fl)=>
-    if @fl_interval? && !fl
-      clearInterval(@fl_interval)
-      $(@el).removeClass('alarm')
-      @fl_interval = null
-    if !@fl_interval && fl
-      chg = ()=>
-        $(@el).toggleClass('alarm')
-      @fl_interval = setInterval(chg, 500)
-
-  # load tag descriptions once for labels
-  set_descriptions: (force)=>
-    tds = []
-    
-    tlen = Object.keys(@tags).length
-    return if !force && @dcount? && @dcount >= tlen
-
-    @dcount = if force then 0 else @dcount
-    if !@dcount? then @dcount = 0
-
-    for t of @tags
-      tg = @tags[t]
-      tds.push "#{@prefix}#{tg}.Description"
-    @opc.load_tags tds, (data)=>
-      for t in data.tags
-        for tt, idx of @tags
-          ts = @tags[tt]
-          if "#{@prefix}#{ts}" == t.name
-            v = t.props[0].val
-            @$("##{tt}_lbl").html(v)
-            @dcount += 1
-            break      
-
-  render_row: (tag, tv, fv, tc, fc)->
-    v = @get_bool(@vals[tag])
-    txt = if v then tv else fv
-    el = @$("##{tag}").html(txt)
-    if tc? then el.toggleClass(tc, v)
-    if fc? then el.toggleClass(fc, !v)
-    @mark_bad_data @tags[tag], el
-
-
   # process data and update the view
   data_update: (data)=>
     @vals = {}
@@ -201,15 +138,20 @@ class PbbWidgetView extends IOPSWidgetView
     # CABLE HOIST
     @render_row("pbb_cablehoist", "Deployed", "Retracted", "ok")
 
-    # ALARMS
-    @ui.alarms.toggle(@get_bool(@vals.pbb_has_alarms))
+        # ALARMS
+    aq = @data_q(@tags.pbb_has_alarms)
+    @ui.alarms.toggle(@get_bool(@vals.pbb_has_alarms)==true && aq)
     # WARNINGS
-    @ui.warnings.toggle(@get_bool(@vals.pbb_has_warnings))
+    wq = @data_q(@tags.pbb_has_warnings)
+    @ui.warnings.toggle(@get_bool(@vals.pbb_has_warnings)==true && wq)
     # DOCKED
-    @ui.docked.toggle(@get_bool(@vals.pbb_status))
+    dq = @data_q(@tags.pbb_status)
+    @ui.docked.toggle(@get_bool(@vals.pbb_status)==true && dq)
     
     # AUTOLEVELFAIL
-    @flash_alarm(@get_bool(@vals.pbb_autolevelfail))
+    fq = @data_q(@tags.pbb_autolevelfail)
+    show_alarms = (@get_bool(@vals.pbb_autolevelfail)==true && fq)
+    @ui.alarms.toggle(show_alarms).toggleClass("blink",show_alarms)
 
     # DOCKTIME
     @$("#pbb_dockedtime_lbl").html('Dock Time')
