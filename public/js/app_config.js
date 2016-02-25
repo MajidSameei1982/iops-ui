@@ -58,7 +58,7 @@ window.app_config = {
     },
     {
       id: "weather",
-      name: "Weather weather Widget",
+      name: "Weather Widget",
       icon: "cloud"
     },
     {
