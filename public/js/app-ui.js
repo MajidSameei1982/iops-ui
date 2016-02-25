@@ -4077,7 +4077,6 @@ Session = (function(superClass) {
       user.dashboards = [];
       delete App.session.attributes["password"];
       App.session = new User(user);
-      App.save_user();
     } else {
       if ($.ajaxSettings.headers != null) {
         delete $.ajaxSettings.headers["Authorization"];
@@ -10192,7 +10191,9 @@ WeatherWidgetView = (function(superClass) {
   extend(WeatherWidgetView, superClass);
 
   function WeatherWidgetView() {
+    this.onDestroy = bind(this.onDestroy, this);
     this.set_model = bind(this.set_model, this);
+    this.update = bind(this.update, this);
     return WeatherWidgetView.__super__.constructor.apply(this, arguments);
   }
 
@@ -10226,13 +10227,19 @@ WeatherWidgetView = (function(superClass) {
             var html;
             html = "<h1><i class='weather icon-" + w.code + "'></i> " + w.temp + "&deg; " + w.units.temp + "</h1>\n<div class='details'>\n  <span class='location'><i class='fa fa-map-marker'></i> " + w.city + ", " + w.region + "</span>\n  <span class='currently'>" + w.currently + "</span>\n  <span class='wind'><i class='fa fa-flag-o'></i> " + w.wind.direction + " " + w.wind.speed + " " + w.units.speed + "</span>\n</div>";
             _this.ui.display.html(html);
-            return _this.ui.wtitle.html("Weather: " + w.city + ", " + w.region);
+            _this.ui.wtitle.html("Weather: " + w.city + ", " + w.region);
+            if (!_this.int) {
+              return _this.int = setInterval(_this.update, 600000);
+            }
           };
         })(this),
         error: (function(_this) {
           return function(error) {
             _this.ui.display.html("<p>" + error + "</p>");
-            return _this.ui.wtitle.html("ERROR");
+            _this.ui.wtitle.html("ERROR");
+            if (_this.int != null) {
+              return clearInterval(_this.int);
+            }
           };
         })(this)
       });
@@ -10261,6 +10268,12 @@ WeatherWidgetView = (function(superClass) {
     location = this.model.get("settings").location;
     if ((location == null) || location === '') {
       return this.toggle_settings();
+    }
+  };
+
+  WeatherWidgetView.prototype.onDestroy = function() {
+    if (this.int != null) {
+      return clearInterval(this.int);
     }
   };
 

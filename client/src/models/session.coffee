@@ -89,7 +89,7 @@ class Session extends BaseModel
       delete App.session.attributes["password"]
       # convert to a User
       App.session = new User(user)
-      App.save_user()
+      #App.save_user()
     else
       if $.ajaxSettings.headers? then delete $.ajaxSettings.headers["Authorization"]
       App.store.remove('session')

@@ -16,7 +16,7 @@ class WeatherWidgetView extends WidgetView
     sx: 4
     sy: 6
 
-  update: ()->
+  update: ()=>
     s = @model.get("settings")
     if s? && s.location? && s.location.trim() != ''
       loc = s.location.trim()
@@ -35,9 +35,14 @@ class WeatherWidgetView extends WidgetView
           """
           @ui.display.html(html)
           @ui.wtitle.html("Weather: #{w.city}, #{w.region}")
+
+          if !@int
+            @int = setInterval(@update,600000)
+
         error: (error)=>
           @ui.display.html("<p>#{error}</p>")
           @ui.wtitle.html("ERROR")
+          if @int? then clearInterval(@int)
 
 
   set_model: ()=>
@@ -54,6 +59,9 @@ class WeatherWidgetView extends WidgetView
     location = @model.get("settings").location
     if !location? || location == ''
       @toggle_settings()
+
+  onDestroy: ()=>
+    if @int? then clearInterval(@int)
 
   start:()->
     @update()
