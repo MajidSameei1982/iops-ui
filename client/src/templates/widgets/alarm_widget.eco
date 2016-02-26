@@ -7,7 +7,7 @@
 </div><!-- /.box-header -->
 <div class="box-body content" id='content'>
   <div class="display contain">
-    
+    <h3 id='alarm_lbl'></h3>
   </div>
   
   <div class="settings" style="display: none;">
@@ -21,6 +21,35 @@
     </div>
     <div class="row">
       <div id='gates' class='col-md-12'></div>  
+    </div>
+    <div class='row'>
+      <div class="col-md-12">
+        <div class="form-group" for='type'>
+          <label>Type</label>
+          <select id='type'>
+            <option value='all'>All Types</option>
+            <option value='PBB'>PBB</option>
+            <option value='PCA'>PCA</option>
+            <option value='GPU'>GPU</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group" for='priority'>
+          <label>Priority</label>
+          <span class='group_item'>
+            <input type="radio" id="p_alarms" name="priority" value="alarms" checked> Alarms
+          </span>
+          <span class='group_item'>
+            <input type="radio" id="p_notifications" name="priority" value="notifications"> Notifications
+          </span>
+          <span class='group_item'>
+            <input type="radio" id="p_all" name="priority" value="all"> All
+          </span>
+        </div>
+      </div>
     </div>
   </div>
   

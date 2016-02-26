@@ -64,10 +64,11 @@ class OPCManager
       c.toggle_refresh(false)
       exists = false 
       if !c.config.alarm_bindings? then c.config.alarm_bindings = []
-      for ab in c.config.alarm_bindings
+      for ab, index in c.config.alarm_bindings
         if ab.alarmid == binding.alarmid
           exists = true
-          ab = binding
+          c.config.alarm_bindings[index] = binding
+          break
       if !exists then c.config.alarm_bindings.push(binding)
       c.init()
 

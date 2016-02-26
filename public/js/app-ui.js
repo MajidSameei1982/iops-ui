@@ -1622,7 +1622,7 @@ window.JST["widgets/alarm_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-bullhorn"></i> <h3 class="box-title">Alarms</h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" id=\'content\'>\n  <div class="display contain">\n    \n  </div>\n  \n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-bullhorn"></i> <h3 class="box-title">Alarms</h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" id=\'content\'>\n  <div class="display contain">\n    <h3 id=\'alarm_lbl\'></h3>\n  </div>\n  \n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -1630,7 +1630,7 @@ window.JST["widgets/alarm_widget"] = function(__obj) {
         site: this.settings.site
       })));
     
-      _print(_safe('\n    <div class="row">\n      <div id=\'terminals\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row">\n      <div id=\'zones\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row">\n      <div id=\'gates\' class=\'col-md-12\'></div>  \n    </div>\n  </div>\n  \n</div><!-- /.box-body -->\n'));
+      _print(_safe('\n    <div class="row">\n      <div id=\'terminals\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row">\n      <div id=\'zones\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row">\n      <div id=\'gates\' class=\'col-md-12\'></div>  \n    </div>\n    <div class=\'row\'>\n      <div class="col-md-12">\n        <div class="form-group" for=\'type\'>\n          <label>Type</label>\n          <select id=\'type\'>\n            <option value=\'all\'>All Types</option>\n            <option value=\'PBB\'>PBB</option>\n            <option value=\'PCA\'>PCA</option>\n            <option value=\'GPU\'>GPU</option>\n          </select>\n        </div>\n      </div>\n    </div>\n    <div class="row">\n      <div class="col-md-12">\n        <div class="form-group" for=\'priority\'>\n          <label>Priority</label>\n          <span class=\'group_item\'>\n            <input type="radio" id="p_alarms" name="priority" value="alarms" checked> Alarms\n          </span>\n          <span class=\'group_item\'>\n            <input type="radio" id="p_notifications" name="priority" value="notifications"> Notifications\n          </span>\n          <span class=\'group_item\'>\n            <input type="radio" id="p_all" name="priority" value="all"> All\n          </span>\n        </div>\n      </div>\n    </div>\n  </div>\n  \n</div><!-- /.box-body -->\n'));
     
     }).call(this);
     
@@ -3193,7 +3193,7 @@ _.extend(Marionette.View.prototype, {
       siteSelector: function(arg) {
         var acc, code, i, id, j, label, len, len1, ref, ref1, s, sel, sh, site, txt;
         id = arg.id, label = arg.label, site = arg.site;
-        sh = "<div class='form-group' for='" + id + "'>\n  <label>" + label + "</label>\n  <select id='" + id + "' class='form-control' data-placeholder='Select a Site'>";
+        sh = "<div class='form-group' for='" + id + "'>\n  <label>" + label + "</label>\n  <select id='" + id + "' class='form-control' data-placeholder='Select a Site'>\n    <option value=''></option>";
         if ((App.accounts != null) && App.accounts.models.length > 0) {
           ref = App.accounts.models;
           for (i = 0, len = ref.length; i < len; i++) {
@@ -4597,7 +4597,7 @@ OPCManager = (function() {
   };
 
   OPCManager.add_alarm = function(conn, binding) {
-    var ab, c, exists, i, len, ref;
+    var ab, c, exists, i, index, len, ref;
     c = this.connections[conn];
     if (c != null) {
       c.toggle_refresh(false);
@@ -4606,11 +4606,12 @@ OPCManager = (function() {
         c.config.alarm_bindings = [];
       }
       ref = c.config.alarm_bindings;
-      for (i = 0, len = ref.length; i < len; i++) {
-        ab = ref[i];
+      for (index = i = 0, len = ref.length; i < len; index = ++i) {
+        ab = ref[index];
         if (ab.alarmid === binding.alarmid) {
           exists = true;
-          ab = binding;
+          c.config.alarm_bindings[index] = binding;
+          break;
         }
       }
       if (!exists) {
@@ -7570,8 +7571,8 @@ AirportWidgetView = (function(superClass) {
               Terminal: "" + t,
               Zone: "" + z,
               Tag_gate_alarm: "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".Alarm._HasAlarms",
-              Tag_gate_warning: "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".Warning._HasWarnings",
-              Tag_gate_docked: "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.AIRCRAFTDOCKEDCALCULATION"
+              Tag_gate_critical: "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.AUTOLEVEL_FAIL_FLAG",
+              Tag_gate_docked: "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.AUTOLEVELING"
             };
             this.gateData.push(gate);
             tags.push(gate.Tag_gate_alarm + ".Value");
@@ -7602,8 +7603,8 @@ AirportWidgetView = (function(superClass) {
     for (i = 0, len = ref.length; i < len; i++) {
       g = ref[i];
       docked = this.get_bool(this.opc.get_value(g.Tag_gate_docked + ".Value"));
-      alarm = this.get_bool(this.opc.get_value(g.Tag_gate_alarm + ".Value"));
-      warning = this.get_bool(this.opc.get_value(g.Tag_gate_warning + ".Value"));
+      warning = this.get_bool(this.opc.get_value(g.Tag_gate_alarm + ".Value"));
+      alarm = this.get_bool(this.opc.get_value(g.Tag_gate_critical + ".Value"));
       qd = this.opc.tags["" + g.Tag_gate_docked].props.Value.quality;
       qa = this.opc.tags["" + g.Tag_gate_alarm].props.Value.quality;
       qw = this.opc.tags["" + g.Tag_gate_warning].props.Value.quality;
@@ -7695,10 +7696,11 @@ AlarmWidgetView = (function(superClass) {
 
   AlarmWidgetView.prototype.template = "widgets/alarm_widget";
 
-  AlarmWidgetView.prototype.className = 'widget-outer box box-primary';
+  AlarmWidgetView.prototype.className = 'widget-outer box box-primary alarm_widget';
 
   AlarmWidgetView.prototype.ui = {
     site: 'select#site',
+    type: 'select#type',
     wtitle: "h3.box-title",
     display: '.display',
     content: '.content'
@@ -7710,7 +7712,7 @@ AlarmWidgetView = (function(superClass) {
   };
 
   AlarmWidgetView.prototype.update = function() {
-    var s;
+    var alarms, gpu, groups, notifications, p, pbb, pca, pre, s, t;
     if (this.site_code != null) {
       this.kill_updates(this.site_code);
     }
@@ -7721,12 +7723,44 @@ AlarmWidgetView = (function(superClass) {
       if (this.site_code == null) {
         return null;
       }
+      groups = [];
+      pre = "Airport_" + this.site_code + "_Term" + s.terminal + "_Zone" + s.zone + "_Gate" + s.gate + "_";
+      p = s.priority == null ? 'all' : s.priority;
+      t = s.type == null ? 'all' : s.type;
+      alarms = p === 'all' || p === 'alarms';
+      notifications = p === 'all' || p === 'notifications';
+      pbb = t === 'all' || t === 'PBB';
+      pca = t === 'all' || t === 'PCA';
+      gpu = t === 'all' || t === 'GPU';
+      if (alarms) {
+        if (pbb) {
+          groups.push(pre + "PBB_Alarms");
+        }
+        if (pca) {
+          groups.push(pre + "PCA_Alarms");
+        }
+        if (gpu) {
+          groups.push(pre + "GPU_Alarms");
+        }
+      }
+      if (notifications) {
+        if (pbb) {
+          groups.push(pre + "PBB_Warnings");
+        }
+        if (pca) {
+          groups.push(pre + "PCA_Warnings");
+        }
+        if (gpu) {
+          groups.push(pre + "GPU_Warnings");
+        }
+      }
       this.alarm_binding = {
         alarmid: "alarm_" + this.model.id,
         showSearch: false,
         showHistory: false,
         filter: {
-          alarmtypes: ["Digital", "High", "High High", "Low", "Low Low"]
+          alarmtypes: ["Digital"],
+          alarmgroups: groups
         },
         columns: [
           {
@@ -7737,13 +7771,6 @@ AlarmWidgetView = (function(superClass) {
             sort: 'desc',
             width: '130px',
             searchable: false
-          }, {
-            name: "Active",
-            text: "Active",
-            type: "boolean",
-            visible: true,
-            width: '50px',
-            align: 'center'
           }, {
             name: "AlarmValue",
             text: "Alarm Value",
@@ -7756,11 +7783,6 @@ AlarmWidgetView = (function(superClass) {
             type: "string",
             visible: true
           }, {
-            name: "AlarmType",
-            text: "Alarm Type",
-            type: "string",
-            visible: true
-          }, {
             name: "Acked",
             text: "Acked",
             type: "boolean",
@@ -7769,6 +7791,27 @@ AlarmWidgetView = (function(superClass) {
         ]
       };
       if (this.site_code != null) {
+        p = alarms ? "Alarms" : '';
+        if (notifications) {
+          if (p !== '') {
+            p += ' &amp; ';
+          }
+          p += "Notifications";
+        }
+        t = pbb ? "PBB" : '';
+        if (pca) {
+          if (t !== '') {
+            t += ', ';
+          }
+          t += 'PCA';
+        }
+        if (gpu) {
+          if (t !== '') {
+            t += ', ';
+          }
+          t += 'GPU';
+        }
+        $("#alarm_lbl").html(this.site_code + " Terminal " + s.terminal + " Zone " + s.zone + " <b>Gate " + s.gate + "</b> | <b>" + t + "</b> | <b>" + p + "</b>");
         App.opc.add_alarm(this.site_code, this.alarm_binding);
         return this.watch_updates(this.site_code);
       }
@@ -7778,10 +7821,12 @@ AlarmWidgetView = (function(superClass) {
   AlarmWidgetView.prototype.set_model = function() {
     var s;
     s = _.clone(this.model.get("settings"));
-    s.site = this.$('#site').val();
-    s.terminal = this.$('#terminal').val();
-    s.zone = this.$('#zone').val();
-    s.gate = this.$('#gate').val();
+    s.site = this.ui.site.val();
+    s.terminal = this.$("select#terminal").val();
+    s.zone = this.$("select#zone").val();
+    s.gate = this.$("select#gate").val();
+    s.type = this.ui.type.val();
+    s.priority = this.$("[name=priority]:checked").val();
     return this.model.set("settings", s);
   };
 
@@ -7789,12 +7834,13 @@ AlarmWidgetView = (function(superClass) {
     AlarmWidgetView.__super__.toggle_settings.call(this, e);
     this.ui.display.toggle(!this.settings_visible);
     if (this.settings_visible) {
-      return this.ui.site.chosen();
+      this.ui.site.chosen();
+      return this.ui.type.chosen();
     }
   };
 
   AlarmWidgetView.prototype.onShow = function() {
-    var a, gate, settings;
+    var a, gate, p, settings;
     a = this.$(".display #alarm_" + this.model.id);
     if ((a == null) || a.length === 0) {
       a = $("<div id='alarm_" + this.model.id + "'></div>");
@@ -7803,12 +7849,33 @@ AlarmWidgetView = (function(superClass) {
     settings = this.model.get('settings');
     settings || (settings = {});
     this.draw_selectors(settings.terminal, settings.zone, settings.gate);
-    this.$('#site').on('change', (function(_this) {
+    this.ui.site.on('change', (function(_this) {
       return function() {
         _this.draw_selectors();
         return _this.set_model();
       };
     })(this));
+    this.ui.type.on('change', (function(_this) {
+      return function() {
+        return _this.set_model();
+      };
+    })(this));
+    this.ui.type.val(settings.type);
+    this.$("[name=priority]").on('change', (function(_this) {
+      return function() {
+        return _this.set_model();
+      };
+    })(this));
+    p = settings.priority;
+    if ((p != null) && p === 'alarms') {
+      $("#p_alarms").prop("checked", true);
+    }
+    if ((p != null) && p === 'notifications') {
+      $("#p_notifications").prop("checked", true);
+    }
+    if ((p == null) || p === 'all') {
+      $("#p_all").prop("checked", true);
+    }
     gate = settings.gate;
     if ((gate == null) || gate === '') {
       this.toggle_settings();

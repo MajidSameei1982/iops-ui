@@ -55,8 +55,10 @@ class AirportWidgetView extends IOPSWidgetView
               Terminal: "#{t}"
               Zone: "#{z}"
               Tag_gate_alarm: "Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.Alarm._HasAlarms"
-              Tag_gate_warning: "Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.Warning._HasWarnings"
-              Tag_gate_docked: "Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB.AIRCRAFTDOCKEDCALCULATION"
+              #Tag_gate_warning: "Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.Warning._HasWarnings"
+              #Tag_gate_docked: "Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB.AIRCRAFTDOCKEDCALCULATION"
+              Tag_gate_critical: "Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB.AUTOLEVEL_FAIL_FLAG"
+              Tag_gate_docked: "Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB.AUTOLEVELING"
             @gateData.push gate
             # add tags to monitor
             tags.push "#{gate.Tag_gate_alarm}.Value"
@@ -94,8 +96,10 @@ class AirportWidgetView extends IOPSWidgetView
   data_update: (data)=>
     for g in @gateData
       docked = @get_bool(@opc.get_value("#{g.Tag_gate_docked}.Value"))
-      alarm = @get_bool(@opc.get_value("#{g.Tag_gate_alarm}.Value"))
-      warning = @get_bool(@opc.get_value("#{g.Tag_gate_warning}.Value"))
+      # alarm = @get_bool(@opc.get_value("#{g.Tag_gate_alarm}.Value"))
+      # warning = @get_bool(@opc.get_value("#{g.Tag_gate_warning}.Value"))
+      warning = @get_bool(@opc.get_value("#{g.Tag_gate_alarm}.Value"))
+      alarm = @get_bool(@opc.get_value("#{g.Tag_gate_critical}.Value"))
       qd = @opc.tags["#{g.Tag_gate_docked}"].props.Value.quality
       qa = @opc.tags["#{g.Tag_gate_alarm}"].props.Value.quality
       qw = @opc.tags["#{g.Tag_gate_warning}"].props.Value.quality
