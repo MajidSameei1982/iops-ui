@@ -69,8 +69,26 @@ class OPCManager
           exists = true
           c.config.alarm_bindings[index] = binding
           break
-      if !exists then c.config.alarm_bindings.push(binding)
+      if !exists
+        c.config.alarm_bindings.push(binding)
       c.init()
+    @
+
+  @rem_alarm: (conn, binding)->
+    c = @connections[conn]
+    if c?
+      c.toggle_refresh(false)
+      exists = false 
+      idx = -1
+      if !c.config.alarm_bindings? then c.config.alarm_bindings = []
+      for ab, index in c.config.alarm_bindings
+        if ab.alarmid == binding.alarmid
+          exists = true
+          idx = index
+          break
+      if idx != -1
+        c.config.alarm_bindings.splice(idx,1)
+        c.init()
 
   @add_ref: (conn)=>
     c = @refs[conn]

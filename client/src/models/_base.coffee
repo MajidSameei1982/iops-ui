@@ -7,7 +7,7 @@ class BaseModel extends Backbone.Model
   idAttribute : '_id'
   
   save:(attrs, options)->
-    attrs || (attrs = _.extend(this.attributes))
+    attrs || (attrs = $.extend(true, {}, this.attributes))
     options || (options = {})
     # prevent attribs from being sent up in save operations
     blacklist = ['isActive', 'createdAt', 'updatedAt', 'lastErrorObject', 'ok', 'value']

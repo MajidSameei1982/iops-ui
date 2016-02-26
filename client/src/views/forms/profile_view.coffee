@@ -66,7 +66,7 @@ class ProfileView extends Marionette.ItemView
     UIUtils.clearAlerts @ui.alertContainer
     return if !@validate()
     settings = @model.get('settings') || {}
-    settings = _.extend(settings)
+    settings = $.extend(true,{},settings)
     settings.phone1 = @ui.phone1.val()
     settings.phone2 = @ui.phone2.val()
     @model.set('settings', settings)

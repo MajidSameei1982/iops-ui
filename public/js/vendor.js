@@ -27676,8 +27676,7 @@ var DateFormat = {};
         if ((container == null) || container.length === 0 || (container.dataTable == null)) {
           continue;
         }
-        abc = new OPC.Alarm.Binding(ab, oc);
-        abs.push(abc);
+        abs.push(new OPC.Alarm.Binding(ab, oc));
       }
       oc.alarm_bindings = abs;
       return abs;
@@ -27696,9 +27695,7 @@ var DateFormat = {};
       }
       return -1;
     };
-
     return Alarm;
-
   })();
 
   OPC.Alarm.Binding = (function() {
@@ -27881,7 +27878,7 @@ var DateFormat = {};
       this.dateTimeFormat = c.dateTimeFormat ? c.dateTimeFormat : "mm/dd/yyyy hh:MM aa";
       this.dateFormat = c.dateFormat ? c.dateFormat : "mm/dd/yyyy";
       this.dateTimeHistorySelectionFormat = c.dateTimeHistorySelectionFormat ? dateTimeHistorySelectionFormat : "MM/dd/yyyy HH:mm:ss";
-      this.filter = OPC.Alarm.Binding.default_filter;
+      this.filter = $.extend(true, {}, OPC.Alarm.Binding.default_filter);
       if (c.filter != null) {
         if (c.filter.includealarmactive != null) {
           this.filter.includealarmactive = c.filter.includealarmactive;
@@ -27908,7 +27905,8 @@ var DateFormat = {};
           this.filter.alarmtypes = c.filter.alarmtypes;
         }
       }
-      this.columns = OPC.Alarm.Binding.default_columns;
+      
+      this.columns = $.extend(true,{},OPC.Alarm.Binding.default_columns);
       if (c.columns != null) {
         this.columns = c.columns;
         hasID = false;

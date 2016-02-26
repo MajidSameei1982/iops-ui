@@ -44,7 +44,7 @@ class AlarmWidgetView extends IOPSWidgetView
         if gpu then groups.push("#{pre}GPU_Warnings")
 
       @alarm_binding =
-        alarmid: "alarm_#{@model.id}"
+        alarmid: "#{@alarmid}"
         showSearch:false
         showHistory:false
         filter:
@@ -70,7 +70,7 @@ class AlarmWidgetView extends IOPSWidgetView
           if t != '' then t+= ', '
           t += 'GPU'
 
-        $("#alarm_lbl").html("#{@site_code} Terminal #{s.terminal} Zone #{s.zone} <b>Gate #{s.gate}</b> | <b>#{t}</b> | <b>#{p}</b>")
+        @$("#alarm_lbl").html("#{@site_code} Terminal #{s.terminal} Zone #{s.zone} <b>Gate #{s.gate}</b> | <b>#{t}</b> | <b>#{p}</b>")
         App.opc.add_alarm @site_code, @alarm_binding
         @watch_updates(@site_code)
 
@@ -81,7 +81,7 @@ class AlarmWidgetView extends IOPSWidgetView
     s.zone = @$("select#zone").val()
     s.gate = @$("select#gate").val()
     s.type = @ui.type.val()
-    s.priority = @$("[name=priority]:checked").val()
+    s.priority = @$("[name=priority_#{@cid}]:checked").val()
     @model.set("settings", s)
 
   toggle_settings: (e)->
@@ -92,9 +92,10 @@ class AlarmWidgetView extends IOPSWidgetView
       @ui.type.chosen()
 
   onShow: ()->
-    a = @$(".display #alarm_#{@model.id}")
+    @alarmid = "alarm_#{@model.id}_#{@cid}"
+    a = @$(".display ##{@alarmid}")
     if !a? || a.length == 0
-      a = $("<div id='alarm_#{@model.id}'></div>")
+      a = $("<div id='#{@alarmid}'></div>")
       @$('.display').append(a)
 
     settings = @model.get('settings')
@@ -109,7 +110,8 @@ class AlarmWidgetView extends IOPSWidgetView
       @set_model()
     @ui.type.val(settings.type)
 
-    @$("[name=priority]").on 'change', ()=>
+    @$("[name=priority]").attr('name', "priority_#{@cid}")
+    @$("[name=priority_#{@cid}]").on 'change', ()=>
       @set_model()
     p = settings.priority
     if p? && p=='alarms' then $("#p_alarms").prop("checked", true)
@@ -129,6 +131,7 @@ class AlarmWidgetView extends IOPSWidgetView
 
   onDestroy: (arg1, arg2) ->
     # be sure to remove listener
+    if @alarm_binding? then App.opc.rem_alarm @site_code, @alarm_binding
     @kill_updates(@site_code)
 
 

@@ -209,7 +209,7 @@ module.exports = (grunt)->
           expand: true
         ,
           cwd: 'client'
-          src: ['**/*.html']
+          src: ['**/*.html', 'favicon.ico']
           dest: 'public'
           expand: true
         ,

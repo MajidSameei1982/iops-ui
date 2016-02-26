@@ -3531,7 +3531,7 @@ BaseModel = (function(superClass) {
 
   BaseModel.prototype.save = function(attrs, options) {
     var blacklist, i, k, len;
-    attrs || (attrs = _.extend(this.attributes));
+    attrs || (attrs = $.extend(true, {}, this.attributes));
     options || (options = {});
     blacklist = ['isActive', 'createdAt', 'updatedAt', 'lastErrorObject', 'ok', 'value'];
     if (options.blacklist != null) {
@@ -4617,7 +4617,34 @@ OPCManager = (function() {
       if (!exists) {
         c.config.alarm_bindings.push(binding);
       }
-      return c.init();
+      c.init();
+    }
+    return this;
+  };
+
+  OPCManager.rem_alarm = function(conn, binding) {
+    var ab, c, exists, i, idx, index, len, ref;
+    c = this.connections[conn];
+    if (c != null) {
+      c.toggle_refresh(false);
+      exists = false;
+      idx = -1;
+      if (c.config.alarm_bindings == null) {
+        c.config.alarm_bindings = [];
+      }
+      ref = c.config.alarm_bindings;
+      for (index = i = 0, len = ref.length; i < len; index = ++i) {
+        ab = ref[index];
+        if (ab.alarmid === binding.alarmid) {
+          exists = true;
+          idx = index;
+          break;
+        }
+      }
+      if (idx !== -1) {
+        c.config.alarm_bindings.splice(idx, 1);
+        return c.init();
+      }
     }
   };
 
@@ -7004,7 +7031,7 @@ UserView = (function(superClass) {
       return;
     }
     settings = this.model.get('settings') || {};
-    settings = _.extend(settings);
+    settings = $.extend(true, {}, settings);
     settings.phone1 = this.ui.phone1.val();
     settings.phone2 = this.ui.phone2.val();
     this.model.set('settings', settings);
@@ -7296,7 +7323,7 @@ ProfileView = (function(superClass) {
       return;
     }
     settings = this.model.get('settings') || {};
-    settings = _.extend(settings);
+    settings = $.extend(true, {}, settings);
     settings.phone1 = this.ui.phone1.val();
     settings.phone2 = this.ui.phone2.val();
     this.model.set('settings', settings);
@@ -7755,7 +7782,7 @@ AlarmWidgetView = (function(superClass) {
         }
       }
       this.alarm_binding = {
-        alarmid: "alarm_" + this.model.id,
+        alarmid: "" + this.alarmid,
         showSearch: false,
         showHistory: false,
         filter: {
@@ -7811,7 +7838,7 @@ AlarmWidgetView = (function(superClass) {
           }
           t += 'GPU';
         }
-        $("#alarm_lbl").html(this.site_code + " Terminal " + s.terminal + " Zone " + s.zone + " <b>Gate " + s.gate + "</b> | <b>" + t + "</b> | <b>" + p + "</b>");
+        this.$("#alarm_lbl").html(this.site_code + " Terminal " + s.terminal + " Zone " + s.zone + " <b>Gate " + s.gate + "</b> | <b>" + t + "</b> | <b>" + p + "</b>");
         App.opc.add_alarm(this.site_code, this.alarm_binding);
         return this.watch_updates(this.site_code);
       }
@@ -7826,7 +7853,7 @@ AlarmWidgetView = (function(superClass) {
     s.zone = this.$("select#zone").val();
     s.gate = this.$("select#gate").val();
     s.type = this.ui.type.val();
-    s.priority = this.$("[name=priority]:checked").val();
+    s.priority = this.$("[name=priority_" + this.cid + "]:checked").val();
     return this.model.set("settings", s);
   };
 
@@ -7841,9 +7868,10 @@ AlarmWidgetView = (function(superClass) {
 
   AlarmWidgetView.prototype.onShow = function() {
     var a, gate, p, settings;
-    a = this.$(".display #alarm_" + this.model.id);
+    this.alarmid = "alarm_" + this.model.id + "_" + this.cid;
+    a = this.$(".display #" + this.alarmid);
     if ((a == null) || a.length === 0) {
-      a = $("<div id='alarm_" + this.model.id + "'></div>");
+      a = $("<div id='" + this.alarmid + "'></div>");
       this.$('.display').append(a);
     }
     settings = this.model.get('settings');
@@ -7861,7 +7889,8 @@ AlarmWidgetView = (function(superClass) {
       };
     })(this));
     this.ui.type.val(settings.type);
-    this.$("[name=priority]").on('change', (function(_this) {
+    this.$("[name=priority]").attr('name', "priority_" + this.cid);
+    this.$("[name=priority_" + this.cid + "]").on('change', (function(_this) {
       return function() {
         return _this.set_model();
       };
@@ -7891,6 +7920,9 @@ AlarmWidgetView = (function(superClass) {
   };
 
   AlarmWidgetView.prototype.onDestroy = function(arg1, arg2) {
+    if (this.alarm_binding != null) {
+      App.opc.rem_alarm(this.site_code, this.alarm_binding);
+    }
     return this.kill_updates(this.site_code);
   };
 
