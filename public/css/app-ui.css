@@ -638,6 +638,39 @@ li.dashboard-link {
   min-height: 100%;
   min-width: 100%;
   overflow: auto; }
+  .pbbdetail_widget .display #aircraft_img {
+    position: relative;
+    float: left;
+    background-image: url("../img/pbb/PBB_Un-docked-400x400.gif");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    height: 100%;
+    width: 100%; }
+    .pbbdetail_widget .display #aircraft_img.docked {
+      background-image: url("../img/pbb/PBB_docked-400x400.gif"); }
+  .pbbdetail_widget .display #autolevel_img {
+    position: relative;
+    float: left;
+    background-image: url("../img/pbb/PBB-AutoLevel-Off-400x400.gif");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    height: 100%;
+    width: 100%; }
+    .pbbdetail_widget .display #autolevel_img.autolevelon {
+      background-image: url("../img/pbb/PBB-AutoLevel-On-400x400.gif"); }
+  .pbbdetail_widget .display #canopy_img {
+    position: relative;
+    float: left;
+    background-image: url("../img/pbb/PBB-Canopy-Off-400x400.gif");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    height: 100%;
+    width: 100%; }
+    .pbbdetail_widget .display #canopy_img.canopyon {
+      background-image: url("../img/pbb/PBB-Canopy-On-400x400.gif"); }
   .pbbdetail_widget .display #pbbdetail_label {
     margin-bottom: 3px; }
     .pbbdetail_widget .display #pbbdetail_label h1 {

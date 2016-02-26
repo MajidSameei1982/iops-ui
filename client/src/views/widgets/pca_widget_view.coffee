@@ -150,59 +150,7 @@ class PcaWidgetView extends IOPSWidgetView
     el =@$('#gpu_gpuoutputamps').html("#{gpuoutputamps}")
     @mark_bad_data @tags.gpu_gpuoutputamps, el
 
-    @set_descriptions()
-
-    # PBB AIRCRAFT
-    aircraftstatus = @vals['pbb_aircraft']
-    @$('#pbb_status').html(aircraftstatus)
-
-    # PCA Status
-    @render_row("pca_status", "On", "Off", "ok", "err")
-
-    # GPU Status
-    @render_row("gpu_status", "On", "Off", "ok", "err")
-
-    # PBB DOCK TIME
-    @render_value_row("pbb_docktime", true, 4)
-    # set_value = if @vals.pbb_docktime? && @vals.pbb_docktime != '' then parseFloat(@vals.pbb_docktime).toFixed(4) else ' -- ' 
-    # el = @$('#pbb_docktime').html("#{set_value}")
-    # @mark_bad_data @tags.pbb_docktime, el
-
-    # PBB ON TIME
-    @render_value_row("pbb_ontime", true, 1, "min")
-    # set_value = if @vals.pbb_ontime? && @vals.pbb_ontime != '' then parseFloat(@vals.pbb_docktime).toFixed(4) else ' -- ' 
-    # el = @$('#pbb_ontime').html("#{set_value}")
-    # @mark_bad_data @tags.pbb_ontime, el
-
-    # PCA ON TIME
-    @render_value_row("pca_ontime", true, 1, "min")
-    # set_value = if @vals.pca_ontime? && @vals.pca_ontime != '' then parseFloat(@vals.pbb_docktime).toFixed(4) else ' -- ' 
-    # el = @$('#pca_ontime').html("#{set_value} Min")
-    # @mark_bad_data @tags.pca_ontime, el
-        
-    # GPU ON TIME
-    @render_value_row("gpu_ontime", true, 1, "min")
-    # set_value = if @vals.gpu_ontime? && @vals.gpu_ontime != '' then parseFloat(@vals.pbb_docktime).toFixed(4) else ' -- ' 
-    # el = @$('#gpu_ontime').html("#{set_value}")
-    # @mark_bad_data @tags.gpu_ontime, el
-
-    # PCA Discharge Time
-    @render_value_row("pca_dischargetemp", true, 0, "Deg")
-    # set_value = if @vals.pca_dischargetemp? && @vals.pca_dischargetemp != '' then parseFloat(@vals.pbb_docktime).toFixed(4) else ' -- ' 
-    # el = @$('#pca_dischargetemp').html("#{set_value}")
-    # @mark_bad_data @tags.pca_dischargetemp, el
-
-    # GPU Output Amps
-    @render_value_row("gpu_outputamps", true, 0, "Amps")
-    # set_value = if @vals.gpu_outputamps? && @vals.gpu_outputamps != '' then parseFloat(@vals.gpu_outputamps).toFixed(4) else ' -- ' 
-    # el = @$('#gpu_outputamps').html("#{set_value}")
-    # @mark_bad_data @tags.gpu_outputamps, el
-
-    # GPU Output Volts
-    @render_value_row("gpu_outputvolts", true, 0, "Volts")
-    # set_value = if @vals.gpu_outputvolts? && @vals.gpu_outputvolts != '' then parseFloat(@vals.gpu_outputvolts).toFixed(4) else ' -- ' 
-    # el = @$('#gpu_outputvolts').html("#{set_value}")
-    # @mark_bad_data @tags.gpu_outputvolts, el
+   
 
     # ALARMS
     aq = @data_q(@tags.pbb_has_alarms)
@@ -210,14 +158,7 @@ class PcaWidgetView extends IOPSWidgetView
     # WARNINGS
     wq = @data_q(@tags.pbb_has_warnings)
     @ui.warnings.toggle(@get_bool(@vals.pbb_has_warnings)==true && wq)
-    # DOCKED
-    dq = @data_q(@tags.pbb_status)
-    @ui.docked.toggle(@get_bool(@vals.pbb_status)==true && dq)
     
-    # AUTOLEVELFAIL
-    fq = @data_q(@tags.pbb_autolevelfail)
-    show_alarms = (@get_bool(@vals.pbb_autolevelfail)==true && fq)
-    @ui.alarms.toggle(show_alarms).toggleClass("blink",show_alarms)
 
     @set_descriptions()
 

@@ -26,7 +26,7 @@ class IOPSWidgetView extends WidgetView
   data_q: (tag)=>
     c = App.opc.connections[@site_code]
     t = c.tags["#{@prefix}#{tag}"]
-    t.props.Value.quality
+    t.props.Value.quality;
 
   data_update: (data)=>
     # override me

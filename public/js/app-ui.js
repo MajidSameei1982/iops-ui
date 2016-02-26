@@ -22,6 +22,7 @@ window.JST["common/modal"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="modal-dialog">\n  <div class="modal-content">\n    <div class="modal-header">\n      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>\n      <h4 class="modal-title"></h4>\n    </div>\n    <div class="modal-body"></div>\n    <div class="modal-footer">\n      <button type="button" id=\'modal_cancel\' class="btn btn-outline pull-left" data-dismiss="modal"></button>\n      <button type="button" id=\'modal_save\' class="btn btn-outline"></button>\n    </div>\n  </div><!-- /.modal-content -->\n</div><!-- /.modal-dialog -->\n\n\n\n'));
     
     }).call(this);
@@ -67,6 +68,7 @@ window.JST["dashboard/content"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<!-- Content Header (Page header) -->\n<section class="content-header">\n  <h1 id="title"></h1>\n</section>\n\n<!-- Main content -->\n<section id="center-region" class="content"></section>\n<!-- /.content -->'));
     
     }).call(this);
@@ -112,6 +114,7 @@ window.JST["dashboard/dashboard_layout"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="wrapper">\n\n  <!-- Main Header -->\n  <div id="header-region" tabindex="-1"></div>\n\n  <!-- Left side column. contains the logo and sidebar -->\n  <div id="side-region" tabindex="-1"></div>\n\n  <!-- Content Wrapper. Contains page content -->\n  <div id="content-region" class="content-wrapper" tabindex="-1"></div>\n  \n  <!-- Main Footer -->\n  <div id="footer-region" tabindex="-1"></div>\n  \n  <!-- Control Sidebar -->      \n  <div id="tool-region" tabindex="-1"></div>\n\n  <!-- Add the sidebar\'s background. This div must be placed\n       immediately after the control sidebar -->\n  <div class=\'control-sidebar-bg\' tabindex="-1"></div>\n\n</div><!-- ./wrapper -->\n<script src=\'adminlte/app.js\' type="text/javascript"></script>\n\n\n'));
     
     }).call(this);
@@ -157,6 +160,7 @@ window.JST["dashboard/dashboard_modal"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="modal-dialog">\n  <div class="modal-content">\n    <div class="modal-header">\n      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>\n      <h4 class="modal-title"></h4>\n      <div class="modal-subtitle"></div>\n    </div>\n    <div class="modal-body">\n      <div class="row">\n        '));
     
       _print(_safe(this.formGroup({
@@ -213,6 +217,7 @@ window.JST["dashboard/footer"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="pull-right">\n\t<span id=\'logo\'><img src=\'img/logos/logo_wide.png\'/> powered by <img src=\'img/logos/jbt_sm.png\'/></span>\n</div>\n\n'));
     
     }).call(this);
@@ -258,6 +263,7 @@ window.JST["dashboard/header"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<!-- Logo -->\n<a href="/" class="logo">\n  <span class="logo-mini"><img src=\'img/logos/logo_square.png\'/></span>\n  <span class="logo-lg"><img src=\'img/logos/logo_wide.png\'/></span>\n</a>\n\n<!-- Header Navbar -->\n<nav class="navbar navbar-static-top" role="navigation">\n  <!-- Sidebar toggle button-->\n  <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">\n    <span class="sr-only">Toggle navigation</span>\n  </a>\n  <!-- Navbar Right Menu -->\n  <div class="navbar-custom-menu">\n    <ul class="nav navbar-nav">\n      <li id=\'systemclock\' class=\'user user-menu\'>\n        <div style=\'padding:15px\' id=\'clock\'>--, --- ---, ---- 00:00</div>\n      </li>\n      <!-- User Account Menu -->\n      <li id = \'profilemenu\' class="dropdown user user-menu">\n        <!-- Menu Toggle Button -->\n        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n          <!-- The user image in the navbar-->\n          <img src="img/avatar.png" class="user-image" id=\'avatar\'/>\n          <!-- hidden-xs hides the username on small devices so only the image appears. -->\n          <span class="hidden-xs" id=\'fullname\'>'));
     
       _print(this.fullName());
@@ -315,6 +321,7 @@ window.JST["dashboard/side"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<!-- sidebar -->\n<section class="sidebar" tabindex=\'-1\'>\n  <!-- Sidebar Menu -->\n  <ul class="sidebar-menu" id=\'dashboard-list\' tabindex=\'-1\'>\n    <li class="header" tabindex=\'-1\'>DASHBOARDS  <a href=\'#\' id=\'add_dash\' class=\'inline\'><i class=\'fa fa-plus-square\'></i>Add</a></li>\n    <!-- <li class="header" tabindex=\'-1\'>DASHBOARDS </li> -->\n  </ul>\n  <!-- /.sidebar-menu -->\n</section>\n<!-- /.sidebar -->'));
     
     }).call(this);
@@ -360,6 +367,7 @@ window.JST["dashboard/tool"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<!-- sidebar -->\n<section class="sidebar" tabindex="-1">\n  <!-- Sidebar Menu -->\n  <ul class="sidebar-menu" id=\'dashboard-list\' tabindex=\'-1\'>\n    <li class="header">App Admin</li>\n    <li id="manage_accounts" class=\'tool_link\' data-toggle="control-sidebar" tabindex=\'-1\'><a href="#" tabindex=\'-1\'><i class=\'fa fa-building-o\'></i> <span>Manage Accounts</span></a></li>\n    <li id="manage_permissions" class=\'tool_link\' data-toggle="control-sidebar" tabindex=\'-1\'><a href="#" tabindex=\'-1\'><i class=\'fa fa-users\'></i> <span>Manage Permissions</span></a></li>\n    <li id="reports" class=\'tool_link\' data-toggle="control-sidebar" tabindex=\'-1\'><a href="#" tabindex=\'-1\'><i class=\'fa fa-bar-chart\'></i> <span>Reports</span></a></li>\n  </ul>\n  <!-- /.sidebar-menu -->\n</section>\n<!-- /.sidebar -->'));
     
     }).call(this);
@@ -405,6 +413,7 @@ window.JST["dashboard/widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  Widget Body\n</div><!-- /.box-body -->\n'));
     
     }).call(this);
@@ -450,6 +459,7 @@ window.JST["dashboard/widget_layout"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div><a id="add_widget" href="#"><i class=\'fa fa-plus-square\'></i> Add New Widget</a></div>\n<ul class=\'gridster widget-container\'></ul>\n'));
     
     }).call(this);
@@ -495,13 +505,13 @@ window.JST["dashboard/widget_modal"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      var i, len, ref, w;
+      var w, _i, _len, _ref;
     
       _print(_safe('<div class="modal-dialog">\n  <div class="modal-content">\n    <div class="modal-header">\n      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>\n      <h4 class="modal-title">Add a Widget</h4>\n      Select a widget below to add to the current dashboard.\n    </div>\n    <div class="modal-body">\n      <div id=\'widget_selections\'>\n        '));
     
-      ref = App.config.widgets;
-      for (i = 0, len = ref.length; i < len; i++) {
-        w = ref[i];
+      _ref = App.config.widgets;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        w = _ref[_i];
         _print(_safe('\n          <a class=\'widget_select\' id=\''));
         _print(w.id);
         _print(_safe('\' href="#"><i class="fa fa-'));
@@ -556,6 +566,7 @@ window.JST["forms/manage_accounts/account"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class=\'account_container\'>\n\t<div class=\'col-md-12 title\'>\n\t\t<i id=\'account_active\' class="fa fa-fw"></i>\n\t\t<span id=\'account_name_label\'>'));
     
       _print(this.name);
@@ -609,6 +620,7 @@ window.JST["forms/manage_accounts/accounts"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="preamble">\n\t<span id="add_account"><i class=\'fa fa-plus-square\'></i> Add New Account</span>\n</div>\n<div class="container" id="account_list"></div>'));
     
     }).call(this);
@@ -654,6 +666,7 @@ window.JST["forms/manage_accounts/site"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class=\'site_container\'>\n  <div>\n    <span class=\'display\' id=\'site_label\'><b>'));
     
       _print(this.name);
@@ -739,6 +752,7 @@ window.JST["forms/manage_permissions/layout"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="nav-tabs-custom">\n  <ul class="nav nav-tabs">\n    <li class=""><a href="#users_region" data-toggle="tab" aria-expanded="true">Users</a></li>\n    <li class=""><a href="#roles_region" data-toggle="tab" aria-expanded="false">Roles</a></li>\n    <li class="active"><a href="#permissions_region" data-toggle="tab" aria-expanded="false">Permissions</a></li>\n  </ul>\n  <div class="tab-content">\n    <div class="tab-pane" id="users_region"></div>\n    <div class="tab-pane" id="roles_region"></div>\n    <div class="tab-pane active" id="permissions_region"></div>\n  </div><!-- /.tab-content -->\n</div>'));
     
     }).call(this);
@@ -784,6 +798,7 @@ window.JST["forms/manage_permissions/permission"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class=\'col-md-12\'>\n  <i class=\'fa fa-fw fa-lock\'></i>\n  <span id=\'permission_label\'><b>'));
     
       _print(this.name);
@@ -845,6 +860,7 @@ window.JST["forms/manage_permissions/permissions"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="preamble">\n  '));
     
       if (this.global) {
@@ -904,6 +920,7 @@ window.JST["forms/manage_permissions/permissions_top"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div id=\'global_region\'>\n  <div class="loading"><i class="fa fa-spinner fa-pulse"></i> LOADING...</div>\n</div>\n'));
     
     }).call(this);
@@ -949,6 +966,7 @@ window.JST["forms/manage_permissions/role"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class=\'col-md-12\'>\n  <i class=\'fa fa-fw fa-group\'></i>\n  <span id=\'role_label\'><b>'));
     
       _print(this.name);
@@ -1019,6 +1037,7 @@ window.JST["forms/manage_permissions/roles"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="preamble">\n  '));
     
       if (this.global) {
@@ -1078,6 +1097,7 @@ window.JST["forms/manage_permissions/roles_top"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div id=\'global_region\'>\n  <div class="loading"><i class="fa fa-spinner fa-pulse"></i> LOADING...</div>\n</div>'));
     
     }).call(this);
@@ -1123,11 +1143,11 @@ window.JST["forms/manage_permissions/user"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      var acc, i, j, len, len1, ref, ref1, s;
+      var acc, s, _i, _j, _len, _len1, _ref, _ref1;
     
       _print(_safe('<div class=\'col-md-12 display\'>\n  <span id=\'user_crud\' class=\'crud_container\'>\n    <span id=\'user_label\'>'));
     
-      _print(this.lastName + ", " + this.firstName);
+      _print("" + this.lastName + ", " + this.firstName);
     
       _print(_safe(' <small>('));
     
@@ -1220,19 +1240,19 @@ window.JST["forms/manage_permissions/user"] = function(__obj) {
     
       _print(_safe('\n  </div>\n\n  <div class="row">\n  '));
     
-      ref = App.accounts.models;
-      for (i = 0, len = ref.length; i < len; i++) {
-        acc = ref[i];
+      _ref = App.accounts.models;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        acc = _ref[_i];
         _print(_safe('\n    <div class=\'account_container col-md-12\'>\n      <h3 class=\'account_name\'><i class="fa fa-fw fa-building-o"></i>'));
         _print(acc.get('name'));
         _print(_safe(' Roles</h3>\n  '));
-        ref1 = acc.sites.models;
-        for (j = 0, len1 = ref1.length; j < len1; j++) {
-          s = ref1[j];
+        _ref1 = acc.sites.models;
+        for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+          s = _ref1[_j];
           _print(_safe('\n        '));
           _print(_safe(this.roleSelector({
             id: 'roles_' + s.id,
-            label: (s.get('name')) + " (" + (s.get('code')) + ")",
+            label: "" + (s.get('name')) + " (" + (s.get('code')) + ")",
             value: this.roles,
             site_id: s.id,
             cls: 'col-md-12 roleselect'
@@ -1287,6 +1307,7 @@ window.JST["forms/manage_permissions/users_layout"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="loading"><i class="fa fa-spinner fa-pulse"></i> LOADING...</div>\n<div class="preamble">\n  <span id="add_user" class=\'button\'><i class=\'fa fa-plus-square\'></i> Add New User</span>\n  <input id=\'filter\' type=\'text\' placeholder=\'search users\' class=\'pull-right\'></input>\n</div>\n<div id=\'users_region\'></div>\n'));
     
     }).call(this);
@@ -1332,6 +1353,7 @@ window.JST["forms/profile"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="container">\n\t<div class="row">\n\t\t<!-- <div class="col-xs-12 col-sm-4" style=\'border-right:solid 1px #ccc;\'>\n\t\t\t<div style=\'border:solid 1px #ccc;width:200px;height:200px\'></div>\n\t\t</div> -->\n\n\t\t<div class="col-xs-12 col-sm-8">\n\t\t\t\n\t\t\t<div id="alertContainer"></div>\n\n\t\t\t'));
     
       _print(_safe(this.formGroup({
@@ -1452,6 +1474,7 @@ window.JST["login"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-body" id="alert-container">\n</div>\n<div class="login-box">\n  <div class="login-logo"><img src=\'img/logos/logo_login.png\'/></div>\n  <div class="login-box-body">\n\n    <form id="loginform" action="#" method="post">\n      <p class="login-box-msg">Sign in to start your session</p>\n      '));
     
       _print(_safe(this.formGroup({
@@ -1524,6 +1547,7 @@ window.JST["reports"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<style>\n    #reportViewer1 {\n        position: absolute;\n        left: 5px;\n        right: 5px;\n        top: 5px;\n        bottom: 5px;\n        font-family: \'segoe ui\', \'ms sans serif\';\n        overflow: hidden;\n    }\n</style>\n<div id="reportViewer1" class="k-widget">\n    loading...\n</div>'));
     
     }).call(this);
@@ -1569,6 +1593,7 @@ window.JST["widgets/airport_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-road"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1><span id=\'txt\'></span></h1>\n    </div>\n    <div id="key">\n      <div class="key_row"><i class="fa fa-fw fa-plane"></i> Airplane at Gate</div>\n      <div class="key_row"><i class="fa fa-fw fa-warning alarm"></i> Critical Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-warning warning"></i> Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-check-circle-o perfect"></i> Perfect Hookup</div>\n      <div class="key_row"><i class="fa fa-fw fa-wrench alarm"></i> Out of Service</div>\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -1622,6 +1647,7 @@ window.JST["widgets/alarm_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-bullhorn"></i> <h3 class="box-title">Alarms</h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" id=\'content\'>\n  <div class="display contain">\n    \n  </div>\n  \n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -1675,6 +1701,7 @@ window.JST["widgets/config_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-cloud"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\' class=\'display\'>\n    DISPLAY\n  </div>\n  <div id="settings" class=\'settings\' style="display: none;">\n    SETTINGS\n  </div><!-- /.box-body -->\n</div><!-- /.box-body -->\n'));
     
     }).call(this);
@@ -1720,6 +1747,7 @@ window.JST["widgets/gpu_summary_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-battery-3"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gpu_summary_label">\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <div id="view_main" class=""  style="">\n      <div id="gpu_image" class=""></div>\n      <div id="power_indicator" Class="gpuon"></div>\n      <span id="txt_connected_time"></span>\n      <div id="gauge_volts_out" class="200x160px"></div>\n      <div id="gauge_amps_out" class="200x160px"></div>\n    </div>\n    <div id="view_volts_in" style="display: none;">\n        <div id="rvain-plot-container" class="plot-container">\n          <div id="rvain-plot" class="plot-placeholder"></div>\n          <div id="rvain-live-toggle" class="plot-toggle">\n            <input id="rvain-toggle-live" type="checkbox" data-toggle="toggle" data-on="Live" data-off="Today" data-onstyle="warning" data-offstyle="info"> \n          </div>\n        </div>\n   </div>\n    <div id="view_volts_out" class="plot-container" style="display: none;">\n        <div id="rvout-plot-container" class="plot-container">\n          <div id="rvout-plot" class="plot-placeholder"></div>\n          <div id="rvout-live-toggle" class="plot-toggle">\n            <input id="rvout-toggle-live" type="checkbox" data-toggle="toggle" data-on="Live" data-off="Today" data-onstyle="warning" data-offstyle="info"> \n          </div>\n        </div>\n    </div>\n    <div id="view_amps_out" class="plot-container" style="display: none;">\n        <div id="raout-plot-container" class="plot-container">\n          <div id="raout-plot" class="plot-placeholder"></div>\n          <div id="raout-live-toggle" class="plot-toggle">\n            <input id="raout-toggle-live" type="checkbox" data-toggle="toggle" data-on="Live" data-off="Today" data-onstyle="warning" data-offstyle="info"> \n          </div>\n        </div>\n    </div>\n    <div id="bottom_buttons">\n      <a id="toggle_main" href="#" class="toggle_button" style="display: none;">Summary</a>\n      <a id="toggle_volts_in" href="#" class="toggle_button">Input Voltage</a>\n      <a id="toggle_volts_out" href="#" class="toggle_button">Output Voltage</a>\n      <a id="toggle_amps_out" href="#" class="toggle_button">Output Amperage</a>\n    </div>\n\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -1773,6 +1801,7 @@ window.JST["widgets/gpu_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-battery-3"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table class=\'data\'>\n      <tr><td class=\'lbl\' id=\'gpu_gpustatus_lbl\'>&nbsp;</td><td id=\'gpu_gpustatus\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_contstatus_lbl\'>&nbsp;</td><td id=\'gpu_contstatus\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_bypass_lbl\'>&nbsp;</td><td id=\'gpu_bypass\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_raoutavg_lbl\'>&nbsp;</td><td id=\'gpu_raoutavg\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_rvoutavg_lbl\'>&nbsp;</td><td id=\'gpu_rvoutavg\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_ravinavg_lbl\'>&nbsp;</td><td id=\'gpu_ravinavg\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_rvinavg_lbl\'>&nbsp;</td><td id=\'gpu_rvinavg\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_frequency_lbl\'>&nbsp;</td><td id=\'gpu_frequency\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phasea_i_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phasea_i\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phaseb_i_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phaseb_i\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phasec_i_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phasec_i\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phasea_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phasea_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phaseb_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phaseb_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phasec_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phasec_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_input_phasea_i_lbl\'>&nbsp;</td><td id=\'gpu_pm_input_phasea_i\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_input_phaseb_i_lbl\'>&nbsp;</td><td id=\'gpu_pm_input_phaseb_i\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_input_phasec_i_lbl\'>&nbsp;</td><td id=\'gpu_pm_input_phasec_i\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_input_phasea_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_input_phasea_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_input_phaseb_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_input_phaseb_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_input_phasec_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_input_phasec_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_gpustatus_triger_data_log_lbl\'>&nbsp;</td><td id=\'gpu_gpustatus_triger_data_log\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_on_1_lbl\'>&nbsp;</td><td id=\'gpu_on_1\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_on_2_lbl\'>&nbsp;</td><td id=\'gpu_on_2\' class=\'val\'>LOADING...</td></tr>\n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -1826,7 +1855,8 @@ window.JST["widgets/pbb_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table class=\'data\' style="float: left; width:80%">     \n      <tr><td class=\'lbl\' id=\'pbb_docked_lbl\'>&nbsp;</td><td id=\'pbb_docked\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevel_lbl\'>&nbsp;</td><td id=\'pbb_autolevel\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_estop_lbl\'>&nbsp;</td><td id=\'pbb_estopoff\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_smokedetector_lbl\'>&nbsp;</td><td id=\'pbb_smokedetector\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopy_lbl\'>&nbsp;</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_cablehoist_lbl\'>&nbsp;</td><td id=\'pbb_cablehoist\' class=\'val\'>LOADING...</td></tr>     \n      </table>\n    \n       \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+    
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table class=\'data\' style="float: left; width:80%">     \n      <tr><td class=\'lbl\' id=\'pbb_statused_lbl\'>&nbsp;</td><td id=\'pbb_status\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevel_lbl\'>&nbsp;</td><td id=\'pbb_autolevel\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_estoped_lbl\'>&nbsp;</td><td id=\'pbb_estop\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_smokedetector_lbl\'>&nbsp;</td><td id=\'pbb_smokedetector\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopy_lbl\'>&nbsp;</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_cablehoist_lbl\'>&nbsp;</td><td id=\'pbb_cablehoist\' class=\'val\'>LOADING...</td></tr>     \n      </table>\n    \n       \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -1879,7 +1909,8 @@ window.JST["widgets/pbbdetail_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n<table height="100%";width"100%">\n  <tr><td>\n    <table class=\'data1\'> \n     <tr><td style="width:300px; height:200px; ;text-align:center; vertical-align:middle">\n     <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB_Un-docked-400x400.gif" />   \n    </td></tr>         \n    </table>\n </td><td>\n    <table class=\'data2\'> \n       <tr><td id=\'pbb_dockedunlbl\' class=\'val\'>LOADING...</td><td id=\'pbb_undockordocktimeun\' class=\'val\'>LOADING...</td></tr>\n     <tr>\n      <td style="width:200px; height:150px; vertical-align:middle">\n        <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB-AutoLevel-Off-400x400.gif" />   \n      </td>\n      <td style="width:200px; height:150px; vertical-align:middle">\n        <img style="vertical-align: bottom;" width="100%" height="100%" src="img/pbb/PBB-Canopy-Off-400x400.gif" />   \n      </td>\n     </tr>  \n     <tr><td id=\'pbb_autolevelstatusok\' class=\'val\'>LOADING...</td><td id=\'pbb_canopystatusok\' class=\'val\'>LOADING...</td></tr>     \n    </table>\n </td></tr>\n </td></tr></table> \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+    
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n<table height="100%";width"100%">\n  <tr><td>\n    <table class=\'data1\'> \n     <tr><td style="width:300px; height:200px; ;text-align:center; vertical-align:middle">\n     <div id="aircraft_img" class=""></div>   \n    </td></tr>         \n    </table>\n </td><td>\n    <table class=\'data2\'> \n       <tr><td id=\'pbb_status\' class=\'val\'>LOADING...</td><td id=\'pbb_undockordocktimeun\' class=\'val\'>LOADING...</td></tr>\n     <tr>\n      <td style="width:200px; height:150px; vertical-align:middle">\n        <div id="autolevel_img" class=""></div>   \n      </td>\n      <td style="width:200px; height:150px; vertical-align:middle">\n       <div id="canopy_img" class=""></div>    \n      </td>\n     </tr>  \n     <tr><td id=\'pbb_autolevel\' class=\'val\'>LOADING...</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>     \n    </table>\n </td></tr>\n </td></tr></table> \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -1932,7 +1963,8 @@ window.JST["widgets/pbbleveldetail_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table class=\'data\' style="float: left; width:80%">\n      <tr><td class=\'lbl\' id=\'pbb_dockedun_lbl\'>&nbsp;</td><td id=\'pbb_dockedun\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevelon_lbl\'>&nbsp;</td><td id=\'pbb_autolevelon\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopydown_lbl\'>&nbsp;</td><td id=\'pbb_canopydown\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_acffloored_lbl\'>&nbsp;</td><td id=\'pbb_acfflooron\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_cabledhoist_lbl\'>&nbsp;</td><td id=\'pbb_cablehoist\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_estoped_lbl\'>&nbsp;</td><td id=\'pbb_estopoff\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_limited_lbl\'>&nbsp;</td><td id=\'pbb_limitok\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_dockedtime_lbl\'>&nbsp;</td><td id=\'pbb_docktime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_undockedtime_lbl\'>&nbsp;</td><td id=\'pbb_undocktime\' class=\'val\'>LOADING...</td></tr>\n     \n      \n    </table>\n       \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+    
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table class=\'data\' style="float: left; width:80%">\n      <tr><td class=\'lbl\' id=\'pbb_statused_lbl\'>&nbsp;</td><td id=\'pbb_status\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevel_lbl\'>&nbsp;</td><td id=\'pbb_autolevel\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopy_lbl\'>&nbsp;</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>   \n      <tr><td class=\'lbl\' id=\'pbb_cablehoist_lbl\'>&nbsp;</td><td id=\'pbb_cablehoist\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_estop_lbl\'>&nbsp;</td><td id=\'pbb_estop\' class=\'val\'>LOADING...</td></tr>   \n      <tr><td class=\'lbl\' id=\'pbb_dockedtime_lbl\'>&nbsp;</td><td id=\'pbb_docktime\' class=\'val\'>LOADING...</td></tr>\n     \n     \n      \n    </table>\n       \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -1985,6 +2017,7 @@ window.JST["widgets/pca_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-server"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gate_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table class=\'data\' style="float: left; width:90%">\n    \n      <tr><td class=\'lbl\' id=\'pca_pcastatuson_lbl\'>&nbsp;</td><td id=\'pca_pcastatuson\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcadischargetemp_lbl\'>&nbsp;</td><td id=\'pca_pcadischargetemp\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcacabintemp_lbl\'>&nbsp;</td><td id=\'pca_pcacabintemp\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcaambienttemp_lbl\'>&nbsp;</td><td id=\'pca_pcaambienttemp\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcapressureheadpr1_lbl\'>&nbsp;</td><td id=\'pca_pcapressureheadpr1\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcapressureheadpr2_lbl\'>&nbsp;</td><td id=\'pca_pcapressureheadpr2\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcapressureheadsec1_lbl\'>&nbsp;</td><td id=\'pca_pcapressureheadsec1\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcapressureheadsec2_lbl\'>&nbsp;</td><td id=\'pca_pcapressureheadsec2\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcapressuresucpr1_lbl\'>&nbsp;</td><td id=\'pca_pcapressuresucpr1\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcapressuresucpr2_lbl\'>&nbsp;</td><td id=\'pca_pcapressuresucpr2\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcapressuresucsec1_lbl\'>&nbsp;</td><td id=\'pca_pcapressuresucsec1\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcapressuresucsec2_lbl\'>&nbsp;</td><td id=\'pca_pcapressuresucsec2\' class=\'val\'>LOADING...</td></tr>\n    \n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -2038,6 +2071,7 @@ window.JST["widgets/url_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <iframe id=\'iframe\' src=""></iframe>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.formGroup({
@@ -2102,6 +2136,7 @@ window.JST["widgets/weather_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-cloud"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\'></div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.formGroup({
@@ -9249,13 +9284,14 @@ PbbWidgetView = (function(superClass) {
     pbb_status: 'PBB.AIRCRAFTDOCKEDCALCULATION',
     pbb_aircraft: 'PBB.AIRCRAFTSTATUS',
     pbb_autolevel: 'PBB.AUTOLEVELMODEFLAG',
-    pbb_canopy: 'PBB.Warning.CANOPYDOWN',
+    pbb_canopy: 'PBB.CANOPYDOWN',
     pbb_acffloor: 'PBB.ACFFLOOR',
-    pbb_cablehoist: 'PBB.HZ400CABLEDEPLOYED',
+    pbb_cablehoist: 'PBB.CABHOIST',
     pbb_estop: 'PBB.Alarm.E_STOP',
-    pbb_limits: 'PBB.400HZ Pit',
+    pbb_limits: 'PBB.HZ400CABLEDEPLOYED',
     pbb_docktime: 'PBB.DOCKTIME',
     pbb_undocktime: 'PBB.UNDOCKTIME',
+    pbb_smokedetector: 'PBB.SMOKEDETECTOR',
     pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
     pbb_has_warnings: 'Warning._HasWarnings',
     pbb_has_alarms: 'Alarm._HasAlarms'
@@ -9288,63 +9324,23 @@ PbbWidgetView = (function(superClass) {
   };
 
   PbbWidgetView.prototype.data_update = function(data) {
-    var a, aircraftstatus, aq, c, docktime, dq, e, el, f, fq, h, l, show_alarms, tg, txt, txta, txta1, txte, txtf, txtl, undocktime, v, wq;
+    var aq, tg, wq;
     this.vals = {};
     for (tg in this.tags) {
       this.vals[tg] = this.get_value(this.tags[tg]);
     }
-    this.render_row("pbb_status", "", "", "ok");
-    aircraftstatus = this.vals['pbb_aircraft'];
-    this.$('#pbb_status').html(aircraftstatus);
-    this.$("#pbb_status_lbl").html('PBB Status');
-    this.$("#pbb_canopy_lbl").html('Canopy');
-    this.$("#pbb_estop_lbl").html('E-Stop');
-    v = this.get_bool(this.vals.pbb_status);
-    a = this.get_bool(this.vals.pbb_autolevel);
-    c = this.get_bool(this.vals.pbb_canopy);
-    f = this.get_bool(this.vals.pbb_acffloor);
-    h = this.get_bool(this.vals.pbb_cablehoist);
-    e = this.get_bool(this.vals.pbb_estop);
-    l = this.get_bool(this.vals.pbb_limits);
-    txt = v ? "Docked" : "Undocked";
-    this.$("#pbb_docked_lbl").html('PBB Status');
-    el = this.$("#pbb_docked").html(txt).toggleClass('ok', v);
-    txta = a ? "On " : "Off";
-    this.$("#pbb_autolevelon_lbl").html('Auto Level');
-    el = this.$("#pbb_autolevelon").html(txta).toggleClass('ok', a);
-    txta1 = c ? "Down " : "Up ";
-    this.$("#pbb_canopydown_lbl").html('Canopy');
-    el = this.$("#pbb_canopydown").html(txta1).toggleClass('ok', c);
-    txtf = f ? "On" : "Off";
-    this.$("#pbb_acffloored_lbl").html('ACF Floor');
-    el = this.$("#pbb_acfflooron").html(txtf).toggleClass('ok', f);
-    txte = e ? "Off" : "On";
-    this.$("#pbb_estoped_lbl").html('E-Stop');
-    el = this.$("#pbb_estopoff").html(txte).toggleClass('ok', e);
-    txtl = l ? "Ok" : "Active";
-    this.$("#pbb_limited_lbl").html('Limits');
-    el = this.$("#pbb_limitok").html(txtl).toggleClass('ok', l);
+    this.render_row("pbb_status", "Docked", "UnDocked", "ok");
     this.render_row("pbb_autolevel", "On", "Off", "ok");
-    this.render_row("pbb_canopy", "Down", "Up", "ok");
     this.render_row("pbb_estop", "Activated", "Ready/OK", "err");
+    this.render_row("pbb_smokedetector", "Activated", "Ready/OK", "err");
+    this.render_row("pbb_canopy", "Down", "Up", "ok");
     this.render_row("pbb_cablehoist", "Deployed", "Retracted", "ok");
+    this.$("#pbb_statused_lbl").html('PBB Status');
+    this.$("#pbb_estoped_lbl").html('E-Stop');
     aq = this.data_q(this.tags.pbb_has_alarms);
     this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
     wq = this.data_q(this.tags.pbb_has_warnings);
     this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings) === true && wq);
-    dq = this.data_q(this.tags.pbb_status);
-    this.ui.docked.toggle(this.get_bool(this.vals.pbb_status) === true && dq);
-    fq = this.data_q(this.tags.pbb_autolevelfail);
-    show_alarms = this.get_bool(this.vals.pbb_autolevelfail) === true && fq;
-    this.ui.alarms.toggle(show_alarms).toggleClass("blink", show_alarms);
-    this.$("#pbb_dockedtime_lbl").html('Dock Time');
-    docktime = (this.vals.pbb_docktime != null) && this.vals.pbb_docktime !== '' ? parseFloat(this.vals.pbb_docktime).toFixed(2) : ' -- ';
-    el = this.$('#pbb_docktime').html(docktime + " mins");
-    this.mark_bad_data(this.tags.pbb_docktime, el);
-    this.$("#pbb_undockedtime_lbl").html('Un-Dock Time');
-    undocktime = (this.vals.pbb_undocktime != null) && this.vals.pbb_undocktime !== '' ? parseFloat(this.vals.pbb_undocktime).toFixed(2) : ' -- ';
-    el = this.$('#pbb_undocktime').html(undocktime + " mins");
-    this.mark_bad_data(this.tags.pbb_undocktime, el);
     return this.set_descriptions();
   };
 
@@ -9447,24 +9443,10 @@ PbbdetailWidgetView = (function(superClass) {
 
   PbbdetailWidgetView.prototype.tags = {
     pbb_status: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-    pbb_aircraft: 'PBB.AIRCRAFTSTATUS',
     pbb_autolevel: 'PBB.AUTOLEVELMODEFLAG',
-    pbb_canopy: 'PBB.Warning.CANOPYDOWN',
-    pbb_acffloor: 'PBB.ACFFLOOR',
-    pbb_cablehoist: 'PBB.HZ400CABLEDEPLOYED',
-    pbb_estop: 'PBB.Alarm.E_STOP',
-    pbb_limits: 'PBB.400HZ Pit',
+    pbb_canopy: 'PBB.CANOPYDOWN',
     pbb_docktime: 'PBB.DOCKTIME',
     pbb_undocktime: 'PBB.UNDOCKTIME',
-    pbb_smokedetector: 'PBB.SMOKEDETECTOR',
-    pbb_heighttodisp: 'PBB.HEIGHTTODISP',
-    gpu_gpuoutputamps: 'GPU.RAOUTAVG',
-    gpu_gpuoutputvolts: 'GPU.RVOUTAVG',
-    pca_pcadischargetemp: 'PCA.TEMPDISCH',
-    gpu_gpustatuson: 'GPU.GPUSTATUS',
-    pca_pcastatuson: 'PCA.PCAON',
-    gpu_gpustatusoff: 'GPU.GPUSTATUS',
-    pca_pcastatusoff: 'PCA.PCAON',
     pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
     pbb_has_warnings: 'Warning._HasWarnings',
     pbb_has_alarms: 'Alarm._HasAlarms'
@@ -9500,61 +9482,33 @@ PbbdetailWidgetView = (function(superClass) {
   };
 
   PbbdetailWidgetView.prototype.data_update = function(data) {
-    var a, aircraftstatus, aq, c, docktime, dq, el, fq, gpuoutputamps, gpuoutputvoltsstatus, heighttodisp, pcadischargetemp, show_alarms, tg, txt, txta, txta1, undocktime, v, wq;
+    var a, aq, auq, c, cq, el, fq, show_alarms, sq, tg, undockordocktimeun, v, wq;
     this.vals = {};
     for (tg in this.tags) {
       this.vals[tg] = this.get_value(this.tags[tg]);
     }
-    this.render_row("pbb_status", "", "", "ok");
-    aircraftstatus = this.vals['pbb_aircraft'];
-    this.$('#pbb_status').html(aircraftstatus);
-    this.render_row("gpu_gpuoutputvolts", "", "", "ok");
-    gpuoutputvoltsstatus = this.vals['gpu_gpuoutputvolts'];
-    this.$('#gpu_gpuoutputvolts').html(gpuoutputvoltsstatus);
     v = this.get_bool(this.vals.pbb_status);
     a = this.get_bool(this.vals.pbb_autolevel);
     c = this.get_bool(this.vals.pbb_canopy);
-    txt = v ? "Docked" : "Undocked";
-    el = this.$("#pbb_dockedunlbl").html(txt).toggleClass('ok', v);
-    txta = a ? "Auto-Level : On" : "Auto-Level : Off";
-    el = this.$("#pbb_autolevelstatusok").html(txta).toggleClass('ok', a);
-    txta1 = c ? "Canopy : Down" : "Canopy : Up ";
-    el = this.$("#pbb_canopystatusok").html(txta1).toggleClass('ok', c);
-    this.render_row("pbb_autolevel", "On", "Off", "ok");
-    this.render_row("pbb_canopy", "Down", "Up", "ok");
-    this.render_row("pbb_acffloor", "On", "Off", "ok");
-    this.render_row("pbb_smokedetector", "Ready/OK", "Activated", " ", "err");
-    this.render_row("pbb_estop", "Activated", "Ready/OK", "err");
-    this.render_row("pbb_cablehoist", "Deployed", "Retracted", "ok");
-    this.render_row("pbb_limits", "OK", "Active", "ok", "err");
-    this.render_row("pca_pcastatuson", "On", "On", "ok", " ");
-    this.render_row("gpu_gpustatuson", "On", "On", "ok", " ");
-    this.render_row("pca_pcastatusoff", "Off", "Off", " ", "err");
-    this.render_row("gpu_gpustatusoff", "Off", "Off", " ", "err");
+    sq = this.data_q(this.tags.pbb_status);
+    this.$("#aircraft_img").toggleClass('docked', v === true && sq);
+    auq = this.data_q(this.tags.pbb_autolevel);
+    this.$("#autolevel_img").toggleClass('autolevelon', a === true && auq);
+    cq = this.data_q(this.tags.pbb_canopy);
+    this.$("#canopy_img").toggleClass('canopyon', c === true && cq);
+    this.render_row("pbb_status", "Docked", "UnDocked", "ok");
+    this.render_row("pbb_autolevel", "Auto-Level : On", "Auto-Level : Off", "ok");
+    this.render_row("pbb_canopy", "Canopy : Down", "Canopy : Up", "ok");
     aq = this.data_q(this.tags.pbb_has_alarms);
     this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
     wq = this.data_q(this.tags.pbb_has_warnings);
     this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings) === true && wq);
-    dq = this.data_q(this.tags.pbb_status);
-    this.ui.docked.toggle(this.get_bool(this.vals.pbb_status) === true && dq);
     fq = this.data_q(this.tags.pbb_autolevelfail);
     show_alarms = this.get_bool(this.vals.pbb_autolevelfail) === true && fq;
     this.ui.alarms.toggle(show_alarms).toggleClass("blink", show_alarms);
-    docktime = (this.vals.pbb_docktime != null) && this.vals.pbb_docktime !== '' ? parseFloat(this.vals.pbb_docktime).toFixed(2) : ' -- ';
-    el = this.$('#pbb_docktime').html(docktime + " mins");
-    this.mark_bad_data(this.tags.pbb_docktime, el);
-    undocktime = (this.vals.pbb_undocktime != null) && this.vals.pbb_undocktime !== '' ? parseFloat(this.vals.pbb_undocktime).toFixed(2) : ' -- ';
-    el = this.$('#pbb_undockordocktimeun').html(undocktime + " mins");
-    this.mark_bad_data(this.tags.pbb_undocktime, el);
-    heighttodisp = (this.vals.pbb_heighttodisp != null) && this.vals.pbb_heighttodisp !== '' ? this.vals.pbb_heighttodisp : ' -- ';
-    el = this.$('#pbb_heighttodisp').html("" + heighttodisp);
-    this.mark_bad_data(this.tags.pbb_heighttodisp, el);
-    pcadischargetemp = (this.vals.pca_pcadischargetemp != null) && this.vals.pca_pcadischargetemp !== '' ? parseFloat(this.vals.pca_pcadischargetemp).toFixed(2) : ' --';
-    el = this.$('#pca_pcadischargetemp').html("" + pcadischargetemp);
-    this.mark_bad_data(this.tags.pca_pcadischargetemp, el);
-    gpuoutputamps = (this.vals.gpu_gpuoutputamps != null) && this.vals.gpu_gpuoutputamps !== '' ? parseFloat(this.vals.gpu_gpuoutputamps).toFixed(2) : ' --';
-    el = this.$('#gpu_gpuoutputamps').html("" + gpuoutputamps);
-    this.mark_bad_data(this.tags.gpu_gpuoutputamps, el);
+    undockordocktimeun = v && (this.vals.pbb_docktime != null) && this.vals.pbb_docktime !== '' ? parseFloat(this.vals.pbb_docktime).toFixed(2) : !v && (this.vals.pbb_undocktime != null) && this.vals.pbb_undocktime !== '' ? parseFloat(this.vals.pbb_undocktime).toFixed(2) : ' -- ';
+    el = this.$('#pbb_undockordocktimeun').html(undockordocktimeun + " mins");
+    this.mark_bad_data(this.tags.dockundocktime, el);
     return this.set_descriptions();
   };
 
@@ -9659,24 +9613,14 @@ PbbleveldetailWidgetView = (function(superClass) {
     pbb_status: 'PBB.AIRCRAFTDOCKEDCALCULATION',
     pbb_aircraft: 'PBB.AIRCRAFTSTATUS',
     pbb_autolevel: 'PBB.AUTOLEVELMODEFLAG',
-    pbb_canopy: 'PBB.Warning.CANOPYDOWN',
+    pbb_canopy: 'PBB.CANOPYDOWN',
     pbb_acffloor: 'PBB.ACFFLOOR',
-    pbb_cablehoist: 'PBB.HZ400CABLEDEPLOYED',
+    pbb_cablehoist: 'PBB.CABHOIST',
     pbb_estop: 'PBB.Alarm.E_STOP',
-    pbb_limits: 'PBB.400HZ Pit',
+    pbb_limits: 'PBB.HZ400CABLEDEPLOYED',
     pbb_docktime: 'PBB.DOCKTIME',
     pbb_undocktime: 'PBB.UNDOCKTIME',
     pbb_smokedetector: 'PBB.SMOKEDETECTOR',
-    pbb_heighttodisp: 'PBB.HEIGHTTODISP',
-    gpu_gpuoutputamps: 'GPU.RAOUTAVG',
-    gpu_gpuoutputvolts: 'GPU.RVOUTAVG',
-    pca_pcadischargetemp: 'PCA.TEMPDISCH',
-    gpu_gpustatuson: 'GPU.GPUSTATUS',
-    pca_pcastatuson: 'PCA.PCAON',
-    gpu_gpustatusoff: 'GPU.GPUSTATUS',
-    pca_pcastatusoff: 'PCA.PCAON',
-    pbb_canopydown: 'PBB.Warning.CANOPYDOWN',
-    pbb_canopyup: 'PBB.Warning.CANOPYDOWN',
     pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
     pbb_has_warnings: 'Warning._HasWarnings',
     pbb_has_alarms: 'Alarm._HasAlarms'
@@ -9712,89 +9656,30 @@ PbbleveldetailWidgetView = (function(superClass) {
   };
 
   PbbleveldetailWidgetView.prototype.data_update = function(data) {
-    var a, aircraftstatus, aq, c, docktime, dq, e, el, f, fq, gpuoutputamps, gpuoutputvoltsstatus, h, heighttodisp, l, pcadischargetemp, show_alarms, tg, txt, txta, txta1, txte, txtf, txth, txtl, undocktime, v, wq;
+    var aq, docktime, el, tg, wq;
     this.vals = {};
     for (tg in this.tags) {
       this.vals[tg] = this.get_value(this.tags[tg]);
     }
-    this.render_row("pbb_status", "", "", "ok");
-    aircraftstatus = this.vals['pbb_aircraft'];
-    this.$('#pbb_status').html(aircraftstatus);
-    this.render_row("gpu_gpuoutputvolts", "", "", "ok");
-    gpuoutputvoltsstatus = this.vals['gpu_gpuoutputvolts'];
-    this.$('#gpu_gpuoutputvolts').html(gpuoutputvoltsstatus);
-    this.$("#pbb_statused_lbl").html('PBB Status');
-    this.$("#pbb_canopys_lbl").html('Canopy');
-    this.$("#pbb_estops_lbl").html('E-Stop');
-    v = this.get_bool(this.vals.pbb_status);
-    a = this.get_bool(this.vals.pbb_autolevel);
-    c = this.get_bool(this.vals.pbb_canopy);
-    f = this.get_bool(this.vals.pbb_acffloor);
-    h = this.get_bool(this.vals.pbb_cablehoist);
-    e = this.get_bool(this.vals.pbb_estop);
-    l = this.get_bool(this.vals.pbb_limits);
-    txt = v ? "Docked" : "Undocked";
-    this.$("#pbb_dockedun_lbl").html('PBB Status');
-    el = this.$("#pbb_dockedun").html(txt).toggleClass('ok', v);
-    this.mark_bad_data(this.tags.pbb_status, el);
-    txta = a ? "On " : "Off";
-    this.$("#pbb_autolevelon_lbl").html('Auto Level');
-    el = this.$("#pbb_autolevelon").html(txta).toggleClass('ok', a);
-    this.mark_bad_data(this.tags.pbb_autolevel, el);
-    txta1 = c ? "Down " : "Up ";
-    this.$("#pbb_canopydown_lbl").html('Canopy');
-    el = this.$("#pbb_canopydown").html(txta1).toggleClass('ok', c);
-    this.mark_bad_data(this.tags.pbb_canopydown, el);
-    txtf = f ? "On" : "Off";
-    this.$("#pbb_acffloored_lbl").html('ACF Floor');
-    el = this.$("#pbb_acfflooron").html(txtf).toggleClass('ok', f);
-    this.mark_bad_data(this.tags.pbb_acffloor, el);
-    txth = h ? "Active" : "Off";
-    this.$("#pbb_cabledhoist_lbl").html('Cable Hoist Int.');
-    el = this.$("#pbb_cablehoist").html(txth).toggleClass('ok', h);
-    this.mark_bad_data(this.tags.pbb_cablehoist, el);
-    txte = e ? "Off" : "On";
-    this.$("#pbb_estoped_lbl").html('E-Stop');
-    el = this.$("#pbb_estopoff").html(txte).toggleClass('ok', e);
-    this.mark_bad_data(this.tags.pbb_estop, el);
-    txtl = l ? "Ok" : "Active";
-    this.$("#pbb_limited_lbl").html('Limits');
-    el = this.$("#pbb_limitok").html(txtl).toggleClass('ok', l);
-    this.mark_bad_data(this.tags.pbb_limits, el);
+    this.render_row("pbb_status", "Docked", "UnDocked", "ok");
     this.render_row("pbb_autolevel", "On", "Off", "ok");
+    this.render_row("pbb_estop", "Off", "On", "ok", "err");
+    this.render_row("pbb_smokedetector", "Activated", "Ready/OK", "err");
     this.render_row("pbb_canopy", "Down", "Up", "ok");
-    this.render_row("pbb_smokedetector", "Ready/OK", "Activated", " ", "err");
-    this.render_row("pbb_estop", "Activated", "Ready/OK", "err");
-    this.render_row("pca_pcastatuson", "On", "On", "ok", " ");
-    this.render_row("gpu_gpustatuson", "On", "On", "ok", " ");
-    this.render_row("pca_pcastatusoff", "Off", "Off", " ", "err");
-    this.render_row("gpu_gpustatusoff", "Off", "Off", " ", "err");
+    this.render_row("pbb_cablehoist", "Deployed", "Retracted", "ok");
+    this.render_row("pbb_acffloor", "On", "Off", "ok");
+    this.render_row("pbb_limits", "Ok", "Active", "ok", "err");
+    this.$("#pbb_statused_lbl").html('PBB Status');
+    this.$("#pbb_estoped_lbl").html('E-Stop');
+    this.$("#pbb_dockedtime_lbl").html('Dock Time');
+    this.$("#pbb_undockedtime_lbl").html('Un-dock Time');
+    docktime = (this.vals.pbb_docktime != null) && this.vals.pbb_docktime !== '' ? parseFloat(this.vals.pbb_docktime).toFixed(2) : ' -- ';
+    el = this.$('#pbb_docktime').html(docktime + " mins");
+    this.mark_bad_data(this.tags.docktime, el);
     aq = this.data_q(this.tags.pbb_has_alarms);
     this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
     wq = this.data_q(this.tags.pbb_has_warnings);
     this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings) === true && wq);
-    dq = this.data_q(this.tags.pbb_status);
-    this.ui.docked.toggle(this.get_bool(this.vals.pbb_status) === true && dq);
-    fq = this.data_q(this.tags.pbb_autolevelfail);
-    show_alarms = this.get_bool(this.vals.pbb_autolevelfail) === true && fq;
-    this.ui.alarms.toggle(show_alarms).toggleClass("blink", show_alarms);
-    this.$("#pbb_dockedtime_lbl").html('Dock Time');
-    docktime = (this.vals.pbb_docktime != null) && this.vals.pbb_docktime !== '' ? parseFloat(this.vals.pbb_docktime).toFixed(2) : ' -- ';
-    el = this.$('#pbb_docktime').html(docktime + " mins");
-    this.mark_bad_data(this.tags.pbb_docktime, el);
-    this.$("#pbb_undockedtime_lbl").html('Un-Dock Time');
-    undocktime = (this.vals.pbb_undocktime != null) && this.vals.pbb_undocktime !== '' ? parseFloat(this.vals.pbb_undocktime).toFixed(2) : ' -- ';
-    el = this.$('#pbb_undocktime').html(undocktime + " mins");
-    this.mark_bad_data(this.tags.pbb_undocktime, el);
-    heighttodisp = (this.vals.pbb_heighttodisp != null) && this.vals.pbb_heighttodisp !== '' ? this.vals.pbb_heighttodisp : ' -- ';
-    el = this.$('#pbb_heighttodisp').html("" + heighttodisp);
-    this.mark_bad_data(this.tags.pbb_heighttodisp, el);
-    pcadischargetemp = (this.vals.pca_pcadischargetemp != null) && this.vals.pca_pcadischargetemp !== '' ? parseFloat(this.vals.pca_pcadischargetemp).toFixed(2) : ' --';
-    el = this.$('#pca_pcadischargetemp').html("" + pcadischargetemp);
-    this.mark_bad_data(this.tags.pca_pcadischargetemp, el);
-    gpuoutputamps = (this.vals.gpu_gpuoutputamps != null) && this.vals.gpu_gpuoutputamps !== '' ? parseFloat(this.vals.gpu_gpuoutputamps).toFixed(2) : ' --';
-    el = this.$('#gpu_gpuoutputamps').html("" + gpuoutputamps);
-    this.mark_bad_data(this.tags.gpu_gpuoutputamps, el);
     return this.set_descriptions();
   };
 
@@ -9962,7 +9847,7 @@ PcaWidgetView = (function(superClass) {
   };
 
   PcaWidgetView.prototype.data_update = function(data) {
-    var aircraftstatus, aq, dq, el, fq, gpuoutputamps, pcaambienttemp, pcacabintemp, pcadischargetemp, pcapressureheadpr1, pcapressureheadpr2, pcapressureheadsec1, pcapressureheadsec2, pcapressuresucpr1, pcapressuresucpr2, pcapressuresucsec1, pcapressuresucsec2, show_alarms, tg, wq;
+    var aq, el, gpuoutputamps, pcaambienttemp, pcacabintemp, pcadischargetemp, pcapressureheadpr1, pcapressureheadpr2, pcapressureheadsec1, pcapressureheadsec2, pcapressuresucpr1, pcapressuresucpr2, pcapressuresucsec1, pcapressuresucsec2, tg, wq;
     this.vals = {};
     for (tg in this.tags) {
       this.vals[tg] = this.get_value(this.tags[tg]);
@@ -10005,27 +9890,10 @@ PcaWidgetView = (function(superClass) {
     gpuoutputamps = (this.vals.gpu_gpuoutputamps != null) && this.vals.gpu_gpuoutputamps !== '' ? parseFloat(this.vals.gpu_gpuoutputamps).toFixed(2) : ' --';
     el = this.$('#gpu_gpuoutputamps').html("" + gpuoutputamps);
     this.mark_bad_data(this.tags.gpu_gpuoutputamps, el);
-    this.set_descriptions();
-    aircraftstatus = this.vals['pbb_aircraft'];
-    this.$('#pbb_status').html(aircraftstatus);
-    this.render_row("pca_status", "On", "Off", "ok", "err");
-    this.render_row("gpu_status", "On", "Off", "ok", "err");
-    this.render_value_row("pbb_docktime", true, 4);
-    this.render_value_row("pbb_ontime", true, 1, "min");
-    this.render_value_row("pca_ontime", true, 1, "min");
-    this.render_value_row("gpu_ontime", true, 1, "min");
-    this.render_value_row("pca_dischargetemp", true, 0, "Deg");
-    this.render_value_row("gpu_outputamps", true, 0, "Amps");
-    this.render_value_row("gpu_outputvolts", true, 0, "Volts");
     aq = this.data_q(this.tags.pbb_has_alarms);
     this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
     wq = this.data_q(this.tags.pbb_has_warnings);
     this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings) === true && wq);
-    dq = this.data_q(this.tags.pbb_status);
-    this.ui.docked.toggle(this.get_bool(this.vals.pbb_status) === true && dq);
-    fq = this.data_q(this.tags.pbb_autolevelfail);
-    show_alarms = this.get_bool(this.vals.pbb_autolevelfail) === true && fq;
-    this.ui.alarms.toggle(show_alarms).toggleClass("blink", show_alarms);
     return this.set_descriptions();
   };
 
