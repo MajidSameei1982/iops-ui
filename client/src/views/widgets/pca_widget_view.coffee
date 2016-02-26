@@ -36,7 +36,7 @@ class PcaWidgetView extends IOPSWidgetView
     pca_pcapressuresucpr2:  'PCA.PRESSSUCPRI2'
     pca_pcapressuresucsec1: 'PCA.PRESSSUCSEC1'
     pca_pcapressuresucsec2: 'PCA.PRESSSUCSEC2'
-    pca_pcastatuson:        'PCA.PCAON'
+    pca_pcastatus:          'PCA.PCAON'
     
     #Processing Tags
     pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
@@ -98,59 +98,20 @@ class PcaWidgetView extends IOPSWidgetView
       @vals[tg] = @get_value(@tags[tg])
 
     # STATUS
-    @render_row("pca_pcastatuson", "On", "Off", "ok"," ")
-    @$("#pca_pcastatuson_lbl").html('PCA Status')
+    @render_row("pca_pcastatus", "On", "Off", "ok"," ")
+    @render_tagvalue("pca_pcadischargetemp")
+    @render_tagvalue("pca_pcacabintemp")
+    @render_tagvalue("pca_pcaambienttemp")
+    @render_tagvalue("pca_pcapressureheadpr1")
+    @render_tagvalue("pca_pcapressureheadpr2")
+    @render_tagvalue("pca_pcapressureheadsec1")
+    @render_tagvalue("pca_pcapressureheadsec2")
+    @render_tagvalue("pca_pcapressuresucpr1")
+    @render_tagvalue("pca_pcapressuresucpr2")
+    @render_tagvalue("pca_pcapressuresucsec1")
+    @render_tagvalue("pca_pcapressuresucsec2")
+
     
-
-    pcacabintemp = if @vals.pca_pcacabintemp? && @vals.pca_pcacabintemp != '' then parseFloat(@vals.pca_pcacabintemp).toFixed(2)  else ' --'
-    el =@$('#pca_pcacabintemp').html("#{pcacabintemp} F")
-    @mark_bad_data @tags.pca_pcacabintemp, el
-
-    pcaambienttemp = if @vals.pca_pcaambienttemp? && @vals.pca_pcaambienttemp != '' then parseFloat(@vals.pca_pcaambienttemp).toFixed(2)  else ' --'
-    el =@$('#pca_pcaambienttemp').html("#{pcaambienttemp} F")
-    @mark_bad_data @tags.pca_pcaambienttemp, el
-
-    pcadischargetemp = if @vals.pca_pcadischargetemp? && @vals.pca_pcadischargetemp != '' then parseFloat(@vals.pca_pcadischargetemp).toFixed(2)  else ' --'
-    el =@$('#pca_pcadischargetemp').html("#{pcadischargetemp} F")
-    @mark_bad_data @tags.pca_pcadischargetemp, el
-
-    pcapressureheadpr1 = if @vals.pca_pcapressureheadpr1? && @vals.pca_pcapressureheadpr1 != '' then parseFloat(@vals.pca_pcapressureheadpr1).toFixed(2)  else ' --'
-    el =@$('#pca_pcapressureheadpr1').html("#{pcapressureheadpr1} F")
-    @mark_bad_data @tags.pca_pcapressureheadpr1, el
-
-    pcapressureheadpr2 = if @vals.pca_pcapressureheadpr2? && @vals.pca_pcapressureheadpr2 != '' then parseFloat(@vals.pca_pcapressureheadpr2).toFixed(2)  else ' --'
-    el =@$('#pca_pcapressureheadpr2').html("#{pcapressureheadpr2} F")
-    @mark_bad_data @tags.pca_pcapressureheadpr2, el
-
-    pcapressureheadsec1 = if @vals.pca_pcapressureheadsec1? && @vals.pca_pcapressureheadsec1 != '' then parseFloat(@vals.pca_pcapressureheadsec1).toFixed(2)  else ' --'
-    el =@$('#pca_pcapressureheadsec1').html("#{pcapressureheadsec1} F")
-    @mark_bad_data @tags.pca_pcapressureheadsec1, el
-
-    pcapressureheadsec2 = if @vals.pca_pcapressureheadsec2? && @vals.pca_pcapressureheadsec2 != '' then parseFloat(@vals.pca_pcapressureheadsec2).toFixed(2)  else ' --'
-    el =@$('#pca_pcapressureheadsec2').html("#{pcapressureheadsec2} F")
-    @mark_bad_data @tags.pca_pcapressureheadsec2, el
-
-    pcapressuresucpr1 = if @vals.pca_pcapressuresucpr1? && @vals.pca_pcapressuresucpr1 != '' then parseFloat(@vals.pca_pcapressuresucpr1).toFixed(2)  else ' --'
-    el =@$('#pca_pcapressuresucpr1').html("#{pcapressuresucpr1} F")
-    @mark_bad_data @tags.pca_pcapressuresucpr1, el
-
-    pcapressuresucpr2 = if @vals.pca_pcapressuresucpr2? && @vals.pca_pcapressuresucpr2 != '' then parseFloat(@vals.pca_pcapressuresucpr2).toFixed(2)  else ' --'
-    el =@$('#pca_pcapressuresucpr2').html("#{pcapressuresucpr2} F")
-    @mark_bad_data @tags.pca_pcapressuresucpr2, el
-
-    pcapressuresucsec1 = if @vals.pca_pcapressuresucsec1? && @vals.pca_pcapressuresucsec1 != '' then parseFloat(@vals.pca_pcapressuresucsec1).toFixed(2)  else ' --'
-    el =@$('#pca_pcapressuresucsec1').html("#{pcapressuresucsec1} F")
-    @mark_bad_data @tags.pca_pcapressuresucsec1, el
-
-    pcapressuresucsec2 = if @vals.pca_pcapressuresucsec2? && @vals.pca_pcapressuresucsec2 != '' then parseFloat(@vals.pca_pcapressuresucsec2).toFixed(2)  else ' --'
-    el =@$('#pca_pcapressuresucsec2').html("#{pcapressuresucsec2} F")
-    @mark_bad_data @tags.pca_pcapressuresucsec2, el
-
-    gpuoutputamps = if @vals.gpu_gpuoutputamps? && @vals.gpu_gpuoutputamps != '' then parseFloat(@vals.gpu_gpuoutputamps).toFixed(2)  else ' --'
-    el =@$('#gpu_gpuoutputamps').html("#{gpuoutputamps}")
-    @mark_bad_data @tags.gpu_gpuoutputamps, el
-
-   
 
     # ALARMS
     aq = @data_q(@tags.pbb_has_alarms)

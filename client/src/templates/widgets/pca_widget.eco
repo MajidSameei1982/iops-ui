@@ -20,7 +20,7 @@
     <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>
     <table class='data' style="float: left; width:90%">
     
-      <tr><td class='lbl' id='pca_pcastatuson_lbl'>&nbsp;</td><td id='pca_pcastatuson' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pca_pcastatus_lbl'>&nbsp;</td><td id='pca_pcastatus' class='val'>LOADING...</td></tr>
       <tr><td class='lbl' id='pca_pcadischargetemp_lbl'>&nbsp;</td><td id='pca_pcadischargetemp' class='val'>LOADING...</td></tr>
       <tr><td class='lbl' id='pca_pcacabintemp_lbl'>&nbsp;</td><td id='pca_pcacabintemp' class='val'>LOADING...</td></tr>
       <tr><td class='lbl' id='pca_pcaambienttemp_lbl'>&nbsp;</td><td id='pca_pcaambienttemp' class='val'>LOADING...</td></tr>

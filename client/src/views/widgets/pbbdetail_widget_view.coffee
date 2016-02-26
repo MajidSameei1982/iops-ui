@@ -119,7 +119,7 @@ class PbbdetailWidgetView extends IOPSWidgetView
     undockordocktimeun = if v && @vals.pbb_docktime? && @vals.pbb_docktime != '' then parseFloat(@vals.pbb_docktime).toFixed(2) 
     else if  !v && @vals.pbb_undocktime? && @vals.pbb_undocktime != '' then parseFloat(@vals.pbb_undocktime).toFixed(2) else ' -- ' 
     el = @$('#pbb_undockordocktimeun').html("#{undockordocktimeun} mins")
-    @mark_bad_data @tags.dockundocktime, el
+    @mark_bad_data @tags.pbb_docktime, el
 
 
     @set_descriptions()

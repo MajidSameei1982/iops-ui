@@ -1964,7 +1964,7 @@ window.JST["widgets/pbbleveldetail_widget"] = function(__obj) {
     };
     (function() {
     
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table class=\'data\' style="float: left; width:80%">\n      <tr><td class=\'lbl\' id=\'pbb_statused_lbl\'>&nbsp;</td><td id=\'pbb_status\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevel_lbl\'>&nbsp;</td><td id=\'pbb_autolevel\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopy_lbl\'>&nbsp;</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>   \n      <tr><td class=\'lbl\' id=\'pbb_cablehoist_lbl\'>&nbsp;</td><td id=\'pbb_cablehoist\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_estop_lbl\'>&nbsp;</td><td id=\'pbb_estop\' class=\'val\'>LOADING...</td></tr>   \n      <tr><td class=\'lbl\' id=\'pbb_dockedtime_lbl\'>&nbsp;</td><td id=\'pbb_docktime\' class=\'val\'>LOADING...</td></tr>\n     \n     \n      \n    </table>\n       \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table class=\'data\' style="float: left; width:80%">\n      <tr><td class=\'lbl\' id=\'pbb_statused_lbl\'>&nbsp;</td><td id=\'pbb_status\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevel_lbl\'>&nbsp;</td><td id=\'pbb_autolevel\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopy_lbl\'>&nbsp;</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>   \n      <tr><td class=\'lbl\' id=\'pbb_cablehoist_lbl\'>&nbsp;</td><td id=\'pbb_cablehoist\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_estop_lbl\'>&nbsp;</td><td id=\'pbb_estop\' class=\'val\'>LOADING...</td></tr>   \n      <tr><td class=\'lbl\' id=\'pbb_dockedtime_lbl\'>&nbsp;</td><td id=\'pbb_docktime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_undockedtime_lbl\'>&nbsp;</td><td id=\'pbb_undocktime\' class=\'val\'>LOADING...</td></tr> \n      \n    </table>\n       \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -2018,7 +2018,7 @@ window.JST["widgets/pca_widget"] = function(__obj) {
     };
     (function() {
     
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-server"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gate_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table class=\'data\' style="float: left; width:90%">\n    \n      <tr><td class=\'lbl\' id=\'pca_pcastatuson_lbl\'>&nbsp;</td><td id=\'pca_pcastatuson\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcadischargetemp_lbl\'>&nbsp;</td><td id=\'pca_pcadischargetemp\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcacabintemp_lbl\'>&nbsp;</td><td id=\'pca_pcacabintemp\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcaambienttemp_lbl\'>&nbsp;</td><td id=\'pca_pcaambienttemp\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcapressureheadpr1_lbl\'>&nbsp;</td><td id=\'pca_pcapressureheadpr1\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcapressureheadpr2_lbl\'>&nbsp;</td><td id=\'pca_pcapressureheadpr2\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcapressureheadsec1_lbl\'>&nbsp;</td><td id=\'pca_pcapressureheadsec1\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcapressureheadsec2_lbl\'>&nbsp;</td><td id=\'pca_pcapressureheadsec2\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcapressuresucpr1_lbl\'>&nbsp;</td><td id=\'pca_pcapressuresucpr1\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcapressuresucpr2_lbl\'>&nbsp;</td><td id=\'pca_pcapressuresucpr2\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcapressuresucsec1_lbl\'>&nbsp;</td><td id=\'pca_pcapressuresucsec1\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcapressuresucsec2_lbl\'>&nbsp;</td><td id=\'pca_pcapressuresucsec2\' class=\'val\'>LOADING...</td></tr>\n    \n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-server"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gate_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table class=\'data\' style="float: left; width:90%">\n    \n      <tr><td class=\'lbl\' id=\'pca_pcastatus_lbl\'>&nbsp;</td><td id=\'pca_pcastatus\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcadischargetemp_lbl\'>&nbsp;</td><td id=\'pca_pcadischargetemp\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcacabintemp_lbl\'>&nbsp;</td><td id=\'pca_pcacabintemp\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcaambienttemp_lbl\'>&nbsp;</td><td id=\'pca_pcaambienttemp\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcapressureheadpr1_lbl\'>&nbsp;</td><td id=\'pca_pcapressureheadpr1\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcapressureheadpr2_lbl\'>&nbsp;</td><td id=\'pca_pcapressureheadpr2\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcapressureheadsec1_lbl\'>&nbsp;</td><td id=\'pca_pcapressureheadsec1\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcapressureheadsec2_lbl\'>&nbsp;</td><td id=\'pca_pcapressureheadsec2\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcapressuresucpr1_lbl\'>&nbsp;</td><td id=\'pca_pcapressuresucpr1\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcapressuresucpr2_lbl\'>&nbsp;</td><td id=\'pca_pcapressuresucpr2\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcapressuresucsec1_lbl\'>&nbsp;</td><td id=\'pca_pcapressuresucsec1\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcapressuresucsec2_lbl\'>&nbsp;</td><td id=\'pca_pcapressuresucsec2\' class=\'val\'>LOADING...</td></tr>\n    \n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -9125,6 +9125,13 @@ IOPSWidgetView = (function(superClass) {
     return this.mark_bad_data(this.tags[tag], el);
   };
 
+  IOPSWidgetView.prototype.render_tagvalue = function(tag) {
+    var a, el1;
+    a = (this.vals[tag] != null) && this.vals[tag] !== '' ? parseFloat(this.vals[tag]).toFixed(2) : ' --';
+    el1 = this.$("#" + tag).html("" + a);
+    return this.mark_bad_data(this.tags[tag], el1);
+  };
+
   IOPSWidgetView.prototype.render_value_row = function(tag, IsNumeric, precision, suffix) {
     var el, set_value;
     if ((this.vals[tag] != null) && this.vals[tag] !== '') {
@@ -9508,7 +9515,7 @@ PbbdetailWidgetView = (function(superClass) {
     this.ui.alarms.toggle(show_alarms).toggleClass("blink", show_alarms);
     undockordocktimeun = v && (this.vals.pbb_docktime != null) && this.vals.pbb_docktime !== '' ? parseFloat(this.vals.pbb_docktime).toFixed(2) : !v && (this.vals.pbb_undocktime != null) && this.vals.pbb_undocktime !== '' ? parseFloat(this.vals.pbb_undocktime).toFixed(2) : ' -- ';
     el = this.$('#pbb_undockordocktimeun').html(undockordocktimeun + " mins");
-    this.mark_bad_data(this.tags.dockundocktime, el);
+    this.mark_bad_data(this.tags.pbb_docktime, el);
     return this.set_descriptions();
   };
 
@@ -9656,7 +9663,7 @@ PbbleveldetailWidgetView = (function(superClass) {
   };
 
   PbbleveldetailWidgetView.prototype.data_update = function(data) {
-    var aq, docktime, el, tg, wq;
+    var aq, docktime, l1, l2, tg, undocktime, wq;
     this.vals = {};
     for (tg in this.tags) {
       this.vals[tg] = this.get_value(this.tags[tg]);
@@ -9674,8 +9681,11 @@ PbbleveldetailWidgetView = (function(superClass) {
     this.$("#pbb_dockedtime_lbl").html('Dock Time');
     this.$("#pbb_undockedtime_lbl").html('Un-dock Time');
     docktime = (this.vals.pbb_docktime != null) && this.vals.pbb_docktime !== '' ? parseFloat(this.vals.pbb_docktime).toFixed(2) : ' -- ';
-    el = this.$('#pbb_docktime').html(docktime + " mins");
-    this.mark_bad_data(this.tags.docktime, el);
+    l1 = this.$('#pbb_docktime').html(docktime + " mins");
+    this.mark_bad_data(this.tags.pbb_docktime, l1);
+    undocktime = (this.vals.pbb_undocktime != null) && this.vals.pbb_undocktime !== '' ? parseFloat(this.vals.pbb_undocktime).toFixed(2) : ' -- ';
+    l2 = this.$('#pbb_undocktime').html(undocktime + " mins");
+    this.mark_bad_data(this.tags.pbb_undocktime, l2);
     aq = this.data_q(this.tags.pbb_has_alarms);
     this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
     wq = this.data_q(this.tags.pbb_has_warnings);
@@ -9792,7 +9802,7 @@ PcaWidgetView = (function(superClass) {
     pca_pcapressuresucpr2: 'PCA.PRESSSUCPRI2',
     pca_pcapressuresucsec1: 'PCA.PRESSSUCSEC1',
     pca_pcapressuresucsec2: 'PCA.PRESSSUCSEC2',
-    pca_pcastatuson: 'PCA.PCAON',
+    pca_pcastatus: 'PCA.PCAON',
     pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
     pbb_has_warnings: 'Warning._HasWarnings',
     pbb_has_alarms: 'Alarm._HasAlarms'
@@ -9847,49 +9857,23 @@ PcaWidgetView = (function(superClass) {
   };
 
   PcaWidgetView.prototype.data_update = function(data) {
-    var aq, el, gpuoutputamps, pcaambienttemp, pcacabintemp, pcadischargetemp, pcapressureheadpr1, pcapressureheadpr2, pcapressureheadsec1, pcapressureheadsec2, pcapressuresucpr1, pcapressuresucpr2, pcapressuresucsec1, pcapressuresucsec2, tg, wq;
+    var aq, tg, wq;
     this.vals = {};
     for (tg in this.tags) {
       this.vals[tg] = this.get_value(this.tags[tg]);
     }
-    this.render_row("pca_pcastatuson", "On", "Off", "ok", " ");
-    this.$("#pca_pcastatuson_lbl").html('PCA Status');
-    pcacabintemp = (this.vals.pca_pcacabintemp != null) && this.vals.pca_pcacabintemp !== '' ? parseFloat(this.vals.pca_pcacabintemp).toFixed(2) : ' --';
-    el = this.$('#pca_pcacabintemp').html(pcacabintemp + " F");
-    this.mark_bad_data(this.tags.pca_pcacabintemp, el);
-    pcaambienttemp = (this.vals.pca_pcaambienttemp != null) && this.vals.pca_pcaambienttemp !== '' ? parseFloat(this.vals.pca_pcaambienttemp).toFixed(2) : ' --';
-    el = this.$('#pca_pcaambienttemp').html(pcaambienttemp + " F");
-    this.mark_bad_data(this.tags.pca_pcaambienttemp, el);
-    pcadischargetemp = (this.vals.pca_pcadischargetemp != null) && this.vals.pca_pcadischargetemp !== '' ? parseFloat(this.vals.pca_pcadischargetemp).toFixed(2) : ' --';
-    el = this.$('#pca_pcadischargetemp').html(pcadischargetemp + " F");
-    this.mark_bad_data(this.tags.pca_pcadischargetemp, el);
-    pcapressureheadpr1 = (this.vals.pca_pcapressureheadpr1 != null) && this.vals.pca_pcapressureheadpr1 !== '' ? parseFloat(this.vals.pca_pcapressureheadpr1).toFixed(2) : ' --';
-    el = this.$('#pca_pcapressureheadpr1').html(pcapressureheadpr1 + " F");
-    this.mark_bad_data(this.tags.pca_pcapressureheadpr1, el);
-    pcapressureheadpr2 = (this.vals.pca_pcapressureheadpr2 != null) && this.vals.pca_pcapressureheadpr2 !== '' ? parseFloat(this.vals.pca_pcapressureheadpr2).toFixed(2) : ' --';
-    el = this.$('#pca_pcapressureheadpr2').html(pcapressureheadpr2 + " F");
-    this.mark_bad_data(this.tags.pca_pcapressureheadpr2, el);
-    pcapressureheadsec1 = (this.vals.pca_pcapressureheadsec1 != null) && this.vals.pca_pcapressureheadsec1 !== '' ? parseFloat(this.vals.pca_pcapressureheadsec1).toFixed(2) : ' --';
-    el = this.$('#pca_pcapressureheadsec1').html(pcapressureheadsec1 + " F");
-    this.mark_bad_data(this.tags.pca_pcapressureheadsec1, el);
-    pcapressureheadsec2 = (this.vals.pca_pcapressureheadsec2 != null) && this.vals.pca_pcapressureheadsec2 !== '' ? parseFloat(this.vals.pca_pcapressureheadsec2).toFixed(2) : ' --';
-    el = this.$('#pca_pcapressureheadsec2').html(pcapressureheadsec2 + " F");
-    this.mark_bad_data(this.tags.pca_pcapressureheadsec2, el);
-    pcapressuresucpr1 = (this.vals.pca_pcapressuresucpr1 != null) && this.vals.pca_pcapressuresucpr1 !== '' ? parseFloat(this.vals.pca_pcapressuresucpr1).toFixed(2) : ' --';
-    el = this.$('#pca_pcapressuresucpr1').html(pcapressuresucpr1 + " F");
-    this.mark_bad_data(this.tags.pca_pcapressuresucpr1, el);
-    pcapressuresucpr2 = (this.vals.pca_pcapressuresucpr2 != null) && this.vals.pca_pcapressuresucpr2 !== '' ? parseFloat(this.vals.pca_pcapressuresucpr2).toFixed(2) : ' --';
-    el = this.$('#pca_pcapressuresucpr2').html(pcapressuresucpr2 + " F");
-    this.mark_bad_data(this.tags.pca_pcapressuresucpr2, el);
-    pcapressuresucsec1 = (this.vals.pca_pcapressuresucsec1 != null) && this.vals.pca_pcapressuresucsec1 !== '' ? parseFloat(this.vals.pca_pcapressuresucsec1).toFixed(2) : ' --';
-    el = this.$('#pca_pcapressuresucsec1').html(pcapressuresucsec1 + " F");
-    this.mark_bad_data(this.tags.pca_pcapressuresucsec1, el);
-    pcapressuresucsec2 = (this.vals.pca_pcapressuresucsec2 != null) && this.vals.pca_pcapressuresucsec2 !== '' ? parseFloat(this.vals.pca_pcapressuresucsec2).toFixed(2) : ' --';
-    el = this.$('#pca_pcapressuresucsec2').html(pcapressuresucsec2 + " F");
-    this.mark_bad_data(this.tags.pca_pcapressuresucsec2, el);
-    gpuoutputamps = (this.vals.gpu_gpuoutputamps != null) && this.vals.gpu_gpuoutputamps !== '' ? parseFloat(this.vals.gpu_gpuoutputamps).toFixed(2) : ' --';
-    el = this.$('#gpu_gpuoutputamps').html("" + gpuoutputamps);
-    this.mark_bad_data(this.tags.gpu_gpuoutputamps, el);
+    this.render_row("pca_pcastatus", "On", "Off", "ok", " ");
+    this.render_tagvalue("pca_pcadischargetemp");
+    this.render_tagvalue("pca_pcacabintemp");
+    this.render_tagvalue("pca_pcaambienttemp");
+    this.render_tagvalue("pca_pcapressureheadpr1");
+    this.render_tagvalue("pca_pcapressureheadpr2");
+    this.render_tagvalue("pca_pcapressureheadsec1");
+    this.render_tagvalue("pca_pcapressureheadsec2");
+    this.render_tagvalue("pca_pcapressuresucpr1");
+    this.render_tagvalue("pca_pcapressuresucpr2");
+    this.render_tagvalue("pca_pcapressuresucsec1");
+    this.render_tagvalue("pca_pcapressuresucsec2");
     aq = this.data_q(this.tags.pbb_has_alarms);
     this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
     wq = this.data_q(this.tags.pbb_has_warnings);

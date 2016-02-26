@@ -74,6 +74,11 @@ class IOPSWidgetView extends WidgetView
     if fc? then el.toggleClass(fc, !v)
     @mark_bad_data @tags[tag], el
 
+  render_tagvalue: (tag)->
+    a = if (@vals[tag])? && (@vals[tag]) != '' then parseFloat(@vals[tag]).toFixed(2)  else ' --'
+    el1 =  @$("##{tag}").html("#{a}")
+    @mark_bad_data @tags[tag], el1
+
   render_value_row: (tag, IsNumeric, precision, suffix)->
     if @vals[tag]? && @vals[tag] != '' 
       set_value = if IsNumeric then parseFloat(@vals[tag]).toFixed(precision) else @vals[tag] 

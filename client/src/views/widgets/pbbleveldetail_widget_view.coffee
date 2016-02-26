@@ -113,13 +113,13 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
 
     # DOCKTIME
     docktime = if @vals.pbb_docktime? && @vals.pbb_docktime != '' then parseFloat(@vals.pbb_docktime).toFixed(2)  else ' -- ' 
-    el = @$('#pbb_docktime').html("#{docktime} mins")
-    @mark_bad_data @tags.docktime, el
+    l1 = @$('#pbb_docktime').html("#{docktime} mins")
+    @mark_bad_data @tags.pbb_docktime, l1
 
     # UN-DOCKTIME
-    #undocktime = if @vals.pbb_undocktime? && @vals.pbb_undocktime != '' then parseFloat(@vals.pbb_undocktime).toFixed(2)  else ' -- ' 
-    #el = @$('#pbb_undocktime').html("#{undocktime} mins")
-    #@mark_bad_data @tags.undocktime, el
+    undocktime = if @vals.pbb_undocktime? && @vals.pbb_undocktime != '' then parseFloat(@vals.pbb_undocktime).toFixed(2)  else ' -- ' 
+    l2 = @$('#pbb_undocktime').html("#{undocktime} mins")
+    @mark_bad_data @tags.pbb_undocktime, l2
     
     # ALARMS
     aq = @data_q(@tags.pbb_has_alarms)

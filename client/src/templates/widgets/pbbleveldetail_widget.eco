@@ -26,8 +26,7 @@
       <tr><td class='lbl' id='pbb_cablehoist_lbl'>&nbsp;</td><td id='pbb_cablehoist' class='val'>LOADING...</td></tr>
       <tr><td class='lbl' id='pbb_estop_lbl'>&nbsp;</td><td id='pbb_estop' class='val'>LOADING...</td></tr>   
       <tr><td class='lbl' id='pbb_dockedtime_lbl'>&nbsp;</td><td id='pbb_docktime' class='val'>LOADING...</td></tr>
-     
-     
+      <tr><td class='lbl' id='pbb_undockedtime_lbl'>&nbsp;</td><td id='pbb_undocktime' class='val'>LOADING...</td></tr> 
       
     </table>
        
