@@ -20,16 +20,13 @@
 
     <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>
     <table class='data' style="float: left; width:80%">
-      <tr><td class='lbl' id='pbb_dockedun_lbl'>&nbsp;</td><td id='pbb_dockedun' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_autolevelon_lbl'>&nbsp;</td><td id='pbb_autolevelon' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_canopydown_lbl'>&nbsp;</td><td id='pbb_canopydown' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_acffloored_lbl'>&nbsp;</td><td id='pbb_acfflooron' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_cabledhoist_lbl'>&nbsp;</td><td id='pbb_cablehoist' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_estoped_lbl'>&nbsp;</td><td id='pbb_estopoff' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_limited_lbl'>&nbsp;</td><td id='pbb_limitok' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pbb_statused_lbl'>&nbsp;</td><td id='pbb_status' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pbb_autolevel_lbl'>&nbsp;</td><td id='pbb_autolevel' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pbb_canopy_lbl'>&nbsp;</td><td id='pbb_canopy' class='val'>LOADING...</td></tr>   
+      <tr><td class='lbl' id='pbb_cablehoist_lbl'>&nbsp;</td><td id='pbb_cablehoist' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pbb_estop_lbl'>&nbsp;</td><td id='pbb_estop' class='val'>LOADING...</td></tr>   
       <tr><td class='lbl' id='pbb_dockedtime_lbl'>&nbsp;</td><td id='pbb_docktime' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_undockedtime_lbl'>&nbsp;</td><td id='pbb_undocktime' class='val'>LOADING...</td></tr>
-     
+      <tr><td class='lbl' id='pbb_undockedtime_lbl'>&nbsp;</td><td id='pbb_undocktime' class='val'>LOADING...</td></tr> 
       
     </table>
        
