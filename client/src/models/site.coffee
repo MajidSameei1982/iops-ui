@@ -55,6 +55,7 @@ class Site extends BaseModel
     @roles.on "update", @persist
     @roles.on "change", @persist
 
+
 # ----------------------------------
 
 module.exports = Site

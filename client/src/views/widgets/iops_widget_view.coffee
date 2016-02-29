@@ -141,7 +141,7 @@ class IOPSWidgetView extends WidgetView
       @set_model()
   
   # draw gate selector
-  draw_gates:(gate)->
+  draw_gates:(gate, all)->
     site = @$('#site').val()
     terminal = @$('#terminal').val()
     zone = @$('#zone').val()

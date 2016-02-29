@@ -14,12 +14,20 @@
     <h3>Settings</h3>
     <%- @siteSelector({id:'site', label:'Site', site:@settings.site}) %>
     <div class="row">
+      <div id='all_gates_container' class='col-md-12'>
+        <div class="form-group" for='allgates'>
+          <label>ALL Gates</label>
+          <input type="checkbox" id="allgates"></input>
+        </div>        
+      </div>  
+    </div>
+    <div class="row gates">
       <div id='terminals' class='col-md-12'></div>
     </div>
-    <div class="row">
+    <div class="row gates">
       <div id='zones' class='col-md-12'></div>
     </div>
-    <div class="row">
+    <div class="row gates">
       <div id='gates' class='col-md-12'></div>  
     </div>
     <div class='row'>
