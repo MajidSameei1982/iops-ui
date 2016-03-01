@@ -1,5 +1,6 @@
 Marionette = require('marionette')
 IOPSWidgetView = require('./iops_widget_view')
+UIUtils = require('../../common/uiutils')
 
 # ----------------------------------
 class GpusummaryWidgetView extends IOPSWidgetView
@@ -20,8 +21,8 @@ class GpusummaryWidgetView extends IOPSWidgetView
     main_view:         'div#gpu_main_view'
     gpu_image:         'div#gpu_image'
     power_indicator:   'span#power_indicator'
-    gauge_volts_out:   'div#gauge_volts_out'
-    gauge_amps_out:    'div#gauge_amps_out'
+    # gauge_volts_out:   'div#gauge_volts_out'
+    # gauge_amps_out:    'div#gauge_amps_out'
     view_volts_in:     'div#view_volts_in'
     plot_volts_in:     'div#plot_volts_in'
     view_volts_out:    'div#view_volts_out'
@@ -39,7 +40,9 @@ class GpusummaryWidgetView extends IOPSWidgetView
 
   tags:
     #Grid Tags
+    gpu_time:                       'GPU.GPUTime'
     gpu_gpustatus:                  'GPU.GPUSTATUS'
+    gpu_gpustatusb:                 'GPU.GPUSTATUSBOOLEAN'
     gpu_contstatus:                 'GPU.CONTSTATUS'
     gpu_bypass:                     'GPU.ByPass'
     gpu_raoutavg:                   'GPU.RAOUTAVG'
@@ -828,28 +831,15 @@ class GpusummaryWidgetView extends IOPSWidgetView
 
 
   update: ()->
+    @update_settings
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+
+    if !@site_code? then return null
+
     s = @model.get("settings")
    
-    if s? && !!s.gate
-      @site = OPCManager.get_site(s.site)
-      @site_code = @site.get('code')
-      if !@site_code? then return null
-
-      # stop listening for updates
-      @kill_updates(@site_code)
-
-      # build settings      
-      settings = @site.get('settings')
-      settings || settings = {}
-      cloud = if settings.cloud then "RemoteSCADAHosting.Airport-#{@site_code}." else ''
-      @prefix = "#{cloud}Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}."
-      
-      #if $(".display #GPU_image").length == 0
-      #  $(".display").append "<div id='GPU_image' 
-      #                          style='background:
-      #                          url(\"img/airport/Common/GPU-Graphic.png\") no-repeat bottom center; background-size: contain;'>
-      #                        </div>"
-
+    if s? && !!s.gate    
       $ =>
         $('.toggle_button').each (index)->
           $(@).bind 'click', (event)->
@@ -894,7 +884,7 @@ class GpusummaryWidgetView extends IOPSWidgetView
       @$('#gpu_summary_label #txt').html(lbl)
 
       @opc =  App.opc.connections[@site_code]
-      @set_descriptions(true)
+      #@set_descriptions(true)
 
   update_plot: (PLOT_TYPE)->
     tData = []
@@ -1173,83 +1163,52 @@ class GpusummaryWidgetView extends IOPSWidgetView
     d = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds(), now.getMilliseconds())
     d
 
-  # process data and update the view
-  data_update: (data)=>
-    @vals = {}
-    for tg of @tags
-      @vals[tg] = @get_value(@tags[tg])
+  render_gauges: ()->
+    vid = "gauge_volts_out_#{@model.id}"
+    @$('#view_main').append("<div id='#{vid}'><div class='bad_data' style='display:none;'>BAD DATA</div></div>")
+    @g1 = new JustGage
+      id: vid
+      title: ' '
+      label: 'Output Voltage'
+      value: 0
+      parseTime: false
+      min: 0
+      max: 125
+      symbol: ' V'
+      relativeGaugeSize: true
+      shadowOpacity: 1
+      shadowSize: 5
+      shadowVerticalOffset: 10
+      pointer: true
+      pointerOptions: 
+        toplength: -5
+        bottomlength: 20
+        bottomwidth: 3
+        color: '#000'
+        stroke: '#ffffff'
+        stroke_width: 1
+        stroke_linecap: 'round'
+      gaugeWidthScale: 0.6
+      customSectors: [
+        {color: '#000000',lo: 0,hi: 2}
+        {color: '#ff3333',lo: 3,hi: 99}
+        {color: '#ffcc66',lo: 100,hi: 102}
+        {color: '#00b300',lo: 103,hi: 116}
+        {color: '#ffcc66',lo: 117,hi: 119}
+        {color: '#ff3333',lo: 120,hi: 150}
+      ]
+      counter: true
 
-    if $("#gauge_volts_out").find('svg').length == 0
-      @g1 = new JustGage(
-        id: 'gauge_volts_out'
+      aid = "gauge_amps_out_#{@model.id}"
+      @$('#view_main').append("<div id='#{aid}'><div class='bad_data' style='display:none;'>BAD DATA</div></div>")
+      @g2 = new JustGage
+        id: aid
         title: ' '
-        label: 'Output Voltage'
-        value: parseInt(@vals.gpu_rvoutavg)
+        label: 'Output Amperage'
+        value: 0
         parseTime: false
         min: 0
         max: 150
-        symbol: ' V'
-        relativeGaugeSize: true
-        shadowOpacity: 1
-        shadowSize: 5
-        shadowVerticalOffset: 10
-        pointer: true
-        pointerOptions: 
-          toplength: -5
-          bottomlength: 20
-          bottomwidth: 3
-          color: '#000'
-          stroke: '#ffffff'
-          stroke_width: 1
-          stroke_linecap: 'round'
-        gaugeWidthScale: 0.6
-        customSectors: [
-          {
-            color: '#000000'
-            lo: 0
-            hi: 2
-          }
-          {
-            color: '#ff3333'
-            lo: 3
-            hi: 99
-          }
-          {
-            color: '#ffcc66'
-            lo: 100
-            hi: 102
-          }
-          {
-            color: '#00b300'
-            lo: 103
-            hi: 116
-          }
-          {
-            color: '#ffcc66'
-            lo: 117
-            hi: 119
-          }
-          {
-            color: '#ff3333'
-            lo: 120
-            hi: 150
-          }
-        ]
-        counter: true
-        )
-    else
-      rvout = parseInt(@vals.gpu_rvoutavg)
-      @g1.refresh(rvout)
-
-    if $("#gauge_amps_out").find('svg').length == 0
-      @g2 = new JustGage(
-        id: 'gauge_amps_out'
-        title: ' '
-        label: 'Output Amperage'
-        value: parseFloat(@vals.gpu_raoutavg).toFixed(0)
-        parseTime: false
-        min: 0
-        max: 70
         symbol: ' A'
         relativeGaugeSize: true
         shadowOpacity: 1
@@ -1266,46 +1225,62 @@ class GpusummaryWidgetView extends IOPSWidgetView
           stroke_linecap: 'round'
         gaugeWidthScale: 0.6
         customSectors: [
-          {
-            color: '#000000'
-            lo: 0
-            hi: 1
-          }
-          {
-            color: '#ff3333'
-            lo: 2
-            hi: 23
-          }
-          {
-            color: '#ffcc66'
-            lo: 24
-            hi: 29
-          }
-          {
-            color: '#00b300'
-            lo: 30
-            hi: 40
-          }
-          {
-            color: '#ffcc66'
-            lo: 41
-            hi: 46
-          }
-          {
-            color: '#ff3333'
-            lo: 47
-            hi: 70
-          }
+          {color: '#000000',lo: 0,hi: 1}
+          {color: '#ff3333',lo: 2,hi: 23}
+          {color: '#ffcc66',lo: 24,hi: 29}
+          {color: '#00b300',lo: 30,hi: 40}
+          {color: '#ffcc66',lo: 41,hi: 46}
+          {color: '#ff3333',lo: 47,hi: 70}
         ]
         counter: true
-        )
-    else
-      raout = parseInt(@vals.gpu_raoutavg)
-      @g2.refresh(raout)
+        
 
-    @update_plot(@RVAIN)
-    @update_plot(@RVOUT)
-    @update_plot(@RAOUT)
+  # process data and update the view
+  data_update: (data)=>
+    # refresh gauges
+    @refresh_values()
+    vq = @data_q(@tags.gpu_rvoutavg)
+    @$("#gauge_volts_out_#{@model.id} .bad_data").toggle(!vq)
+    v = @vals.gpu_rvoutavg
+    if vq && !isNaN(v) && v != ''
+      @g1.refresh(parseInt(v))
+
+    aq = @data_q(@tags.gpu_raoutavg)
+    @$("#gauge_amps_out_#{@model.id} .bad_data").toggle(!aq)
+    v = @vals.gpu_raoutavg
+    if aq && !isNaN(v) && v != ''
+      v = parseInt(parseInt(v))
+      @g2.refresh(v)
+
+    # refresh status
+    sq = @data_q(@tags.gpu_gpustatusb)
+    stat = @get_bool(@vals.gpu_gpustatusb)
+    th = ""
+    icn = 'ban'
+    cls = 'inactive'
+    txt = 'BAD DATA'
+    if stat == true
+      cls = 'active'
+      txt = 'ON'
+      icn = 'circle'
+      t = parseFloat(@vals.gpu_time)
+      h = 0
+      m = Math.floor(t)
+      s = Math.floor((t-m)*60)
+      if m>59
+        h = Math.floor(m/60)
+        m = m-(h*60)
+      th = "<i class='fa fa-clock-o'></i> #{UIUtils.lpad(h,2,'0')}:#{UIUtils.lpad(m,2,'0')}:#{UIUtils.lpad(s,2,'0')}"
+    else if stat == false
+      cls = 'inactive'
+      icn = 'circle-thin'
+      txt = 'OFF'
+    @$("#power_indicator").html("<div class='#{cls}'><i class='fa fa-#{icn}'></i> #{txt}</div>")
+    @$("#txt_connected_time").html(th)
+
+    # @update_plot(@RVAIN)
+    # @update_plot(@RVOUT)
+    # @update_plot(@RAOUT)
     return
 
   set_model: ()=>
@@ -1336,6 +1311,8 @@ class GpusummaryWidgetView extends IOPSWidgetView
 
     @site_code = OPCManager.get_site_code(settings.site)
     if @site_code? then @watch_updates(@site_code)
+
+    @render_gauges()
 
 
   start: ()->

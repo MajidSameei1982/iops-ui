@@ -83,7 +83,7 @@ class AlarmWidgetView extends IOPSWidgetView
 
         tzg = if s.allgates then "<b>All Gates</b>" else "Terminal #{s.terminal} Zone #{s.zone} <b>Gate #{s.gate}</b>"
 
-        @$("#alarm_lbl").html("#{@site_code} #{tzg} | <b>#{t}</b> | <b>#{p}</b>")
+        @$("#alarm_lbl").html("<b>#{@site_code}</b> #{tzg} | <b>#{t}</b> | <b>#{p}</b>")
         App.opc.add_alarm @site_code, @alarm_binding
         @watch_updates(@site_code)
 

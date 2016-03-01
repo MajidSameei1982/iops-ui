@@ -54,7 +54,7 @@ window.app_config = {
     {
       id: "gpusummary",
       name: "GPU Summary Widget",
-      icon: "battery-3"
+      icon: "flash"
     },
     {
       id: "weather",

@@ -5,6 +5,11 @@ ModalView = require('../views/common/modal_view')
 
 class UIUtils extends Object
 
+  @lpad: (n,w,z)->
+    z = z || '0'
+    n = n + ''
+    return if n.length >= w then n else new Array(w - n.length + 1).join(z) + n
+
   @setICheck: (v)->
     el = if v? && v.el? then v.el else null
     $('input', el).iCheck

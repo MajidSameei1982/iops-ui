@@ -106,6 +106,13 @@ class IOPSWidgetView extends WidgetView
       cp = if @site_settings.cloud then cloud_prefix.replace('#{@site_code}', @site_code) else ''
       # @prefix = "#{cloud}Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}."
       @prefix = cp + prefix.replace('#{@site_code}', @site_code).replace('#{s.terminal}', s.terminal).replace('#{s.zone}', s.zone).replace('#{s.gate}', s.gate)
+    @
+  
+  refresh_values: ()->
+    @vals = {}
+    for tg of @tags
+      @vals[tg] = @get_value(@tags[tg])
+    @
 
   # draw terminal selector
   draw_terminals:(terminal)->
@@ -122,6 +129,7 @@ class IOPSWidgetView extends WidgetView
       @draw_zones(null)
       @draw_gates(null)
       @set_model()
+    @
 
   # draw zone selector
   draw_zones:(zone)->
@@ -139,6 +147,7 @@ class IOPSWidgetView extends WidgetView
     zs.on 'change', ()=>
       @draw_gates(null)
       @set_model()
+    @
   
   # draw gate selector
   draw_gates:(gate, all)->
@@ -158,6 +167,7 @@ class IOPSWidgetView extends WidgetView
     @$('#gates').empty().append(gs)
     gs.on 'change', ()=>
       @set_model()
+    @
 
   # draw all selectors
   draw_selectors:(terminal, zone, gate)=>

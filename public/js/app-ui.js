@@ -1720,7 +1720,7 @@ window.JST["widgets/gpu_summary_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-battery-3"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gpu_summary_label">\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <div id="view_main" class=""  style="">\n      <div id="gpu_image" class=""></div>\n      <div id="power_indicator" Class="gpuon"></div>\n      <span id="txt_connected_time"></span>\n      <div id="gauge_volts_out" class="200x160px"></div>\n      <div id="gauge_amps_out" class="200x160px"></div>\n    </div>\n    <div id="view_volts_in" style="display: none;">\n        <div id="rvain-plot-container" class="plot-container">\n          <div id="rvain-plot" class="plot-placeholder"></div>\n          <div id="rvain-live-toggle" class="plot-toggle">\n            <input id="rvain-toggle-live" type="checkbox" data-toggle="toggle" data-on="Live" data-off="Today" data-onstyle="warning" data-offstyle="info"> \n          </div>\n        </div>\n   </div>\n    <div id="view_volts_out" class="plot-container" style="display: none;">\n        <div id="rvout-plot-container" class="plot-container">\n          <div id="rvout-plot" class="plot-placeholder"></div>\n          <div id="rvout-live-toggle" class="plot-toggle">\n            <input id="rvout-toggle-live" type="checkbox" data-toggle="toggle" data-on="Live" data-off="Today" data-onstyle="warning" data-offstyle="info"> \n          </div>\n        </div>\n    </div>\n    <div id="view_amps_out" class="plot-container" style="display: none;">\n        <div id="raout-plot-container" class="plot-container">\n          <div id="raout-plot" class="plot-placeholder"></div>\n          <div id="raout-live-toggle" class="plot-toggle">\n            <input id="raout-toggle-live" type="checkbox" data-toggle="toggle" data-on="Live" data-off="Today" data-onstyle="warning" data-offstyle="info"> \n          </div>\n        </div>\n    </div>\n    <div id="bottom_buttons">\n      <a id="toggle_main" href="#" class="toggle_button" style="display: none;">Summary</a>\n      <a id="toggle_volts_in" href="#" class="toggle_button">Input Voltage</a>\n      <a id="toggle_volts_out" href="#" class="toggle_button">Output Voltage</a>\n      <a id="toggle_amps_out" href="#" class="toggle_button">Output Amperage</a>\n    </div>\n\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-flash"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gpu_summary_label">\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <div id="view_main">\n      <div id="gpu_image"></div>\n      <div id="power_indicator"></div>\n      <div id="txt_connected_time"></div>\n    </div>\n    <div id="view_volts_in" style="display: none;">\n        <div id="rvain-plot-container" class="plot-container">\n          <div id="rvain-plot" class="plot-placeholder"></div>\n          <div id="rvain-live-toggle" class="plot-toggle">\n            <input id="rvain-toggle-live" type="checkbox" data-toggle="toggle" data-on="Live" data-off="Today" data-onstyle="warning" data-offstyle="info"> \n          </div>\n        </div>\n   </div>\n    <div id="view_volts_out" class="plot-container" style="display: none;">\n        <div id="rvout-plot-container" class="plot-container">\n          <div id="rvout-plot" class="plot-placeholder"></div>\n          <div id="rvout-live-toggle" class="plot-toggle">\n            <input id="rvout-toggle-live" type="checkbox" data-toggle="toggle" data-on="Live" data-off="Today" data-onstyle="warning" data-offstyle="info"> \n          </div>\n        </div>\n    </div>\n    <div id="view_amps_out" class="plot-container" style="display: none;">\n        <div id="raout-plot-container" class="plot-container">\n          <div id="raout-plot" class="plot-placeholder"></div>\n          <div id="raout-live-toggle" class="plot-toggle">\n            <input id="raout-toggle-live" type="checkbox" data-toggle="toggle" data-on="Live" data-off="Today" data-onstyle="warning" data-offstyle="info"> \n          </div>\n        </div>\n    </div>\n    <div id="bottom_buttons">\n      <a id="toggle_main" href="#" class="toggle_button" style="display: none;">Summary</a>\n      <a id="toggle_volts_in" href="#" class="toggle_button">Input Voltage</a>\n      <a id="toggle_volts_out" href="#" class="toggle_button">Output Voltage</a>\n      <a id="toggle_amps_out" href="#" class="toggle_button">Output Amperage</a>\n    </div>\n\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -3362,6 +3362,16 @@ UIUtils = (function(superClass) {
   function UIUtils() {
     return UIUtils.__super__.constructor.apply(this, arguments);
   }
+
+  UIUtils.lpad = function(n, w, z) {
+    z = z || '0';
+    n = n + '';
+    if (n.length >= w) {
+      return n;
+    } else {
+      return new Array(w - n.length + 1).join(z) + n;
+    }
+  };
 
   UIUtils.setICheck = function(v) {
     var el;
@@ -7864,7 +7874,7 @@ AlarmWidgetView = (function(superClass) {
           t += 'GPU';
         }
         tzg = s.allgates ? "<b>All Gates</b>" : "Terminal " + s.terminal + " Zone " + s.zone + " <b>Gate " + s.gate + "</b>";
-        this.$("#alarm_lbl").html(this.site_code + " " + tzg + " | <b>" + t + "</b> | <b>" + p + "</b>");
+        this.$("#alarm_lbl").html("<b>" + this.site_code + "</b> " + tzg + " | <b>" + t + "</b> | <b>" + p + "</b>");
         App.opc.add_alarm(this.site_code, this.alarm_binding);
         return this.watch_updates(this.site_code);
       }
@@ -8036,7 +8046,7 @@ window.ConfigWidgetView = ConfigWidgetView;
 module.exports = ConfigWidgetView;
 
 },{"./iops_widget_view":60}],58:[function(require,module,exports){
-var GpusummaryWidgetView, IOPSWidgetView, Marionette,
+var GpusummaryWidgetView, IOPSWidgetView, Marionette, UIUtils,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -8044,6 +8054,8 @@ var GpusummaryWidgetView, IOPSWidgetView, Marionette,
 Marionette = require('marionette');
 
 IOPSWidgetView = require('./iops_widget_view');
+
+UIUtils = require('../../common/uiutils');
 
 GpusummaryWidgetView = (function(superClass) {
   extend(GpusummaryWidgetView, superClass);
@@ -8073,8 +8085,6 @@ GpusummaryWidgetView = (function(superClass) {
     main_view: 'div#gpu_main_view',
     gpu_image: 'div#gpu_image',
     power_indicator: 'span#power_indicator',
-    gauge_volts_out: 'div#gauge_volts_out',
-    gauge_amps_out: 'div#gauge_amps_out',
     view_volts_in: 'div#view_volts_in',
     plot_volts_in: 'div#plot_volts_in',
     view_volts_out: 'div#view_volts_out',
@@ -8092,7 +8102,9 @@ GpusummaryWidgetView = (function(superClass) {
   };
 
   GpusummaryWidgetView.prototype.tags = {
+    gpu_time: 'GPU.GPUTime',
     gpu_gpustatus: 'GPU.GPUSTATUS',
+    gpu_gpustatusb: 'GPU.GPUSTATUSBOOLEAN',
     gpu_contstatus: 'GPU.CONTSTATUS',
     gpu_bypass: 'GPU.ByPass',
     gpu_raoutavg: 'GPU.RAOUTAVG',
@@ -8339,19 +8351,16 @@ GpusummaryWidgetView = (function(superClass) {
   };
 
   GpusummaryWidgetView.prototype.update = function() {
-    var cloud, lbl, s, settings, t, tags, tg;
+    var lbl, s, t, tags, tg;
+    this.update_settings({
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+    });
+    if (this.site_code == null) {
+      return null;
+    }
     s = this.model.get("settings");
     if ((s != null) && !!s.gate) {
-      this.site = OPCManager.get_site(s.site);
-      this.site_code = this.site.get('code');
-      if (this.site_code == null) {
-        return null;
-      }
-      this.kill_updates(this.site_code);
-      settings = this.site.get('settings');
-      settings || (settings = {});
-      cloud = settings.cloud ? "RemoteSCADAHosting.Airport-" + this.site_code + "." : '';
-      this.prefix = cloud + "Airport." + this.site_code + ".Term" + s.terminal + ".Zone" + s.zone + ".Gate" + s.gate + ".";
       $((function(_this) {
         return function() {
           $('.toggle_button').each(function(index) {
@@ -8394,8 +8403,7 @@ GpusummaryWidgetView = (function(superClass) {
       lbl = "GPU " + s.gate + " - Summary";
       this.ui.wtitle.html(lbl);
       this.$('#gpu_summary_label #txt').html(lbl);
-      this.opc = App.opc.connections[this.site_code];
-      return this.set_descriptions(true);
+      return this.opc = App.opc.connections[this.site_code];
     }
   };
 
@@ -8740,131 +8748,159 @@ GpusummaryWidgetView = (function(superClass) {
     return d;
   };
 
+  GpusummaryWidgetView.prototype.render_gauges = function() {
+    var aid, vid;
+    vid = "gauge_volts_out_" + this.model.id;
+    this.$('#view_main').append("<div id='" + vid + "'><div class='bad_data' style='display:none;'>BAD DATA</div></div>");
+    return this.g1 = new JustGage({
+      id: vid,
+      title: ' ',
+      label: 'Output Voltage',
+      value: 0,
+      parseTime: false,
+      min: 0,
+      max: 125,
+      symbol: ' V',
+      relativeGaugeSize: true,
+      shadowOpacity: 1,
+      shadowSize: 5,
+      shadowVerticalOffset: 10,
+      pointer: true,
+      pointerOptions: {
+        toplength: -5,
+        bottomlength: 20,
+        bottomwidth: 3,
+        color: '#000',
+        stroke: '#ffffff',
+        stroke_width: 1,
+        stroke_linecap: 'round'
+      },
+      gaugeWidthScale: 0.6,
+      customSectors: [
+        {
+          color: '#000000',
+          lo: 0,
+          hi: 2
+        }, {
+          color: '#ff3333',
+          lo: 3,
+          hi: 99
+        }, {
+          color: '#ffcc66',
+          lo: 100,
+          hi: 102
+        }, {
+          color: '#00b300',
+          lo: 103,
+          hi: 116
+        }, {
+          color: '#ffcc66',
+          lo: 117,
+          hi: 119
+        }, {
+          color: '#ff3333',
+          lo: 120,
+          hi: 150
+        }
+      ],
+      counter: true
+    }, aid = "gauge_amps_out_" + this.model.id, this.$('#view_main').append("<div id='" + aid + "'><div class='bad_data' style='display:none;'>BAD DATA</div></div>"), this.g2 = new JustGage({
+      id: aid,
+      title: ' ',
+      label: 'Output Amperage',
+      value: 0,
+      parseTime: false,
+      min: 0,
+      max: 150,
+      symbol: ' A',
+      relativeGaugeSize: true,
+      shadowOpacity: 1,
+      shadowSize: 5,
+      shadowVerticalOffset: 10,
+      pointer: true,
+      pointerOptions: {
+        toplength: -5,
+        bottomlength: 20,
+        bottomwidth: 3,
+        color: '#000',
+        stroke: '#ffffff',
+        stroke_width: 1,
+        stroke_linecap: 'round'
+      },
+      gaugeWidthScale: 0.6,
+      customSectors: [
+        {
+          color: '#000000',
+          lo: 0,
+          hi: 1
+        }, {
+          color: '#ff3333',
+          lo: 2,
+          hi: 23
+        }, {
+          color: '#ffcc66',
+          lo: 24,
+          hi: 29
+        }, {
+          color: '#00b300',
+          lo: 30,
+          hi: 40
+        }, {
+          color: '#ffcc66',
+          lo: 41,
+          hi: 46
+        }, {
+          color: '#ff3333',
+          lo: 47,
+          hi: 70
+        }
+      ],
+      counter: true
+    }));
+  };
+
   GpusummaryWidgetView.prototype.data_update = function(data) {
-    var raout, rvout, tg;
-    this.vals = {};
-    for (tg in this.tags) {
-      this.vals[tg] = this.get_value(this.tags[tg]);
+    var aq, cls, h, icn, m, s, sq, stat, t, th, txt, v, vq;
+    this.refresh_values();
+    vq = this.data_q(this.tags.gpu_rvoutavg);
+    this.$("#gauge_volts_out_" + this.model.id + " .bad_data").toggle(!vq);
+    v = this.vals.gpu_rvoutavg;
+    if (vq && !isNaN(v) && v !== '') {
+      this.g1.refresh(parseInt(v));
     }
-    if ($("#gauge_volts_out").find('svg').length === 0) {
-      this.g1 = new JustGage({
-        id: 'gauge_volts_out',
-        title: ' ',
-        label: 'Output Voltage',
-        value: parseInt(this.vals.gpu_rvoutavg),
-        parseTime: false,
-        min: 0,
-        max: 150,
-        symbol: ' V',
-        relativeGaugeSize: true,
-        shadowOpacity: 1,
-        shadowSize: 5,
-        shadowVerticalOffset: 10,
-        pointer: true,
-        pointerOptions: {
-          toplength: -5,
-          bottomlength: 20,
-          bottomwidth: 3,
-          color: '#000',
-          stroke: '#ffffff',
-          stroke_width: 1,
-          stroke_linecap: 'round'
-        },
-        gaugeWidthScale: 0.6,
-        customSectors: [
-          {
-            color: '#000000',
-            lo: 0,
-            hi: 2
-          }, {
-            color: '#ff3333',
-            lo: 3,
-            hi: 99
-          }, {
-            color: '#ffcc66',
-            lo: 100,
-            hi: 102
-          }, {
-            color: '#00b300',
-            lo: 103,
-            hi: 116
-          }, {
-            color: '#ffcc66',
-            lo: 117,
-            hi: 119
-          }, {
-            color: '#ff3333',
-            lo: 120,
-            hi: 150
-          }
-        ],
-        counter: true
-      });
-    } else {
-      rvout = parseInt(this.vals.gpu_rvoutavg);
-      this.g1.refresh(rvout);
+    aq = this.data_q(this.tags.gpu_raoutavg);
+    this.$("#gauge_amps_out_" + this.model.id + " .bad_data").toggle(!aq);
+    v = this.vals.gpu_raoutavg;
+    if (aq && !isNaN(v) && v !== '') {
+      v = parseInt(parseInt(v));
+      this.g2.refresh(v);
     }
-    if ($("#gauge_amps_out").find('svg').length === 0) {
-      this.g2 = new JustGage({
-        id: 'gauge_amps_out',
-        title: ' ',
-        label: 'Output Amperage',
-        value: parseFloat(this.vals.gpu_raoutavg).toFixed(0),
-        parseTime: false,
-        min: 0,
-        max: 70,
-        symbol: ' A',
-        relativeGaugeSize: true,
-        shadowOpacity: 1,
-        shadowSize: 5,
-        shadowVerticalOffset: 10,
-        pointer: true,
-        pointerOptions: {
-          toplength: -5,
-          bottomlength: 20,
-          bottomwidth: 3,
-          color: '#000',
-          stroke: '#ffffff',
-          stroke_width: 1,
-          stroke_linecap: 'round'
-        },
-        gaugeWidthScale: 0.6,
-        customSectors: [
-          {
-            color: '#000000',
-            lo: 0,
-            hi: 1
-          }, {
-            color: '#ff3333',
-            lo: 2,
-            hi: 23
-          }, {
-            color: '#ffcc66',
-            lo: 24,
-            hi: 29
-          }, {
-            color: '#00b300',
-            lo: 30,
-            hi: 40
-          }, {
-            color: '#ffcc66',
-            lo: 41,
-            hi: 46
-          }, {
-            color: '#ff3333',
-            lo: 47,
-            hi: 70
-          }
-        ],
-        counter: true
-      });
-    } else {
-      raout = parseInt(this.vals.gpu_raoutavg);
-      this.g2.refresh(raout);
+    sq = this.data_q(this.tags.gpu_gpustatusb);
+    stat = this.get_bool(this.vals.gpu_gpustatusb);
+    th = "";
+    icn = 'ban';
+    cls = 'inactive';
+    txt = 'BAD DATA';
+    if (stat === true) {
+      cls = 'active';
+      txt = 'ON';
+      icn = 'circle';
+      t = parseFloat(this.vals.gpu_time);
+      h = 0;
+      m = Math.floor(t);
+      s = Math.floor((t - m) * 60);
+      if (m > 59) {
+        h = Math.floor(m / 60);
+        m = m - (h * 60);
+      }
+      th = "<i class='fa fa-clock-o'></i> " + (UIUtils.lpad(h, 2, '0')) + ":" + (UIUtils.lpad(m, 2, '0')) + ":" + (UIUtils.lpad(s, 2, '0'));
+    } else if (stat === false) {
+      cls = 'inactive';
+      icn = 'circle-thin';
+      txt = 'OFF';
     }
-    this.update_plot(this.RVAIN);
-    this.update_plot(this.RVOUT);
-    this.update_plot(this.RAOUT);
+    this.$("#power_indicator").html("<div class='" + cls + "'><i class='fa fa-" + icn + "'></i> " + txt + "</div>");
+    this.$("#txt_connected_time").html(th);
   };
 
   GpusummaryWidgetView.prototype.set_model = function() {
@@ -8902,8 +8938,9 @@ GpusummaryWidgetView = (function(superClass) {
     }
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
-      return this.watch_updates(this.site_code);
+      this.watch_updates(this.site_code);
     }
+    return this.render_gauges();
   };
 
   GpusummaryWidgetView.prototype.start = function() {
@@ -8922,7 +8959,7 @@ window.GpusummaryWidgetView = GpusummaryWidgetView;
 
 module.exports = GpusummaryWidgetView;
 
-},{"./iops_widget_view":60}],59:[function(require,module,exports){
+},{"../../common/uiutils":7,"./iops_widget_view":60}],59:[function(require,module,exports){
 var GpuWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -9265,8 +9302,18 @@ IOPSWidgetView = (function(superClass) {
       this.site_settings = this.site.get('settings');
       this.site_settings || (this.site_settings = {});
       cp = this.site_settings.cloud ? cloud_prefix.replace('#{@site_code}', this.site_code) : '';
-      return this.prefix = cp + prefix.replace('#{@site_code}', this.site_code).replace('#{s.terminal}', s.terminal).replace('#{s.zone}', s.zone).replace('#{s.gate}', s.gate);
+      this.prefix = cp + prefix.replace('#{@site_code}', this.site_code).replace('#{s.terminal}', s.terminal).replace('#{s.zone}', s.zone).replace('#{s.gate}', s.gate);
     }
+    return this;
+  };
+
+  IOPSWidgetView.prototype.refresh_values = function() {
+    var tg;
+    this.vals = {};
+    for (tg in this.tags) {
+      this.vals[tg] = this.get_value(this.tags[tg]);
+    }
+    return this;
   };
 
   IOPSWidgetView.prototype.draw_terminals = function(terminal) {
@@ -9281,13 +9328,14 @@ IOPSWidgetView = (function(superClass) {
       terminal: terminal
     }));
     this.$('#terminals').empty().append(ts);
-    return ts.on('change', (function(_this) {
+    ts.on('change', (function(_this) {
       return function() {
         _this.draw_zones(null);
         _this.draw_gates(null);
         return _this.set_model();
       };
     })(this));
+    return this;
   };
 
   IOPSWidgetView.prototype.draw_zones = function(zone) {
@@ -9304,12 +9352,13 @@ IOPSWidgetView = (function(superClass) {
       zone: zone
     }));
     this.$('#zones').empty().append(zs);
-    return zs.on('change', (function(_this) {
+    zs.on('change', (function(_this) {
       return function() {
         _this.draw_gates(null);
         return _this.set_model();
       };
     })(this));
+    return this;
   };
 
   IOPSWidgetView.prototype.draw_gates = function(gate, all) {
@@ -9328,11 +9377,12 @@ IOPSWidgetView = (function(superClass) {
       gate: gate
     }));
     this.$('#gates').empty().append(gs);
-    return gs.on('change', (function(_this) {
+    gs.on('change', (function(_this) {
       return function() {
         return _this.set_model();
       };
     })(this));
+    return this;
   };
 
   IOPSWidgetView.prototype.draw_selectors = function(terminal, zone, gate) {
