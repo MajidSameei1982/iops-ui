@@ -19,8 +19,8 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     warnings:       'i#warnings'
 
   @layout:
-    sx: 5
-    sy: 9
+    sx: 6
+    sy: 8
 
   tags:
     #Grid Tags
@@ -30,11 +30,13 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     pbb_canopy:           'PBB.CANOPYDOWN'
     pbb_acffloor:         'PBB.ACFFLOOR'
     pbb_cablehoist:       'PBB.CABHOIST'
-    pbb_estop:            'PBB.Alarm.E_STOP'
-    pbb_limits:           'PBB.HZ400CABLEDEPLOYED'
+    #pbb_estop:            'PBB.Alarm.E_STOP'
+    pbb_limits:           'PBB.BYPASSPB'
     pbb_docktime:         'PBB.DOCKTIME'
     pbb_undocktime:       'PBB.UNDOCKTIME'
     pbb_smokedetector:    'PBB.SMOKEDETECTOR'
+    pbb_dailyaircraftcount:'PBB.DAILYAIRCRAFTDOCKED'
+    pbb_lastdocktime:     'PBB.LASTDOCKTIME'
     
 
     #Processing Tags
@@ -67,7 +69,7 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
       # listen for updates
       @watch_updates(@site_code)
       
-      lbl = "Gate #{s.gate}"
+      lbl = "PBB #{s.gate} - Details"
       @ui.wtitle.html(lbl)
       @$('#display_label #txt').html(lbl)
 
@@ -87,8 +89,8 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
      # Auto Level
     @render_row("pbb_autolevel", "On", "Off", "ok")
 
-    # E-STOP
-    @render_row("pbb_estop", "Off", "On", "ok","err")
+    # LIMIT-BYPASSPB
+    @render_row("pbb_limits", "Active","Deactive","ok"," ")
 
     # SMOKEDETECTOR
     @render_row("pbb_smokedetector","Activated","Ready/OK","err")
@@ -120,6 +122,18 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     undocktime = if @vals.pbb_undocktime? && @vals.pbb_undocktime != '' then parseFloat(@vals.pbb_undocktime).toFixed(2)  else ' -- ' 
     l2 = @$('#pbb_undocktime').html("#{undocktime} mins")
     @mark_bad_data @tags.pbb_undocktime, l2
+
+    # LAST DOCK TIME
+    lastdocktime = if @vals.pbb_lastdocktime? && @vals.pbb_lastdocktime != '' then parseFloat(@vals.pbb_lastdocktime).toFixed(2)  else ' -- ' 
+    la1 = @$('#pbb_lastdocktime').html("#{lastdocktime} mins")
+    @mark_bad_data @tags.pbb_lastdocktime, la1
+
+    # DAILY DOCK TIME
+    dailydocktime = if @vals.pbb_dailyaircraftcount? && @vals.pbb_dailyaircraftcount != '' then (@vals.pbb_dailyaircraftcount)  else ' -- ' 
+    da1 = @$('#pbb_dailyaircraftcount').html("#{dailydocktime}")
+    @mark_bad_data @tags.pbb_dailyaircraftcount, da1
+
+    
     
     # ALARMS
     aq = @data_q(@tags.pbb_has_alarms)

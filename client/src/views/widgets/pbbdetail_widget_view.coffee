@@ -19,8 +19,8 @@ class PbbdetailWidgetView extends IOPSWidgetView
     warnings:       'i#warnings'
 
   @layout:
-    sx: 11
-    sy: 8
+    sx: 8
+    sy: 7
 
   tags:
     #Grid Tags
@@ -62,7 +62,7 @@ class PbbdetailWidgetView extends IOPSWidgetView
       # listen for updates
       @watch_updates(@site_code)
       
-      lbl = "Gate #{s.gate}"
+      lbl = "Gate #{s.gate} - Overview"
       @ui.wtitle.html(lbl)
       @$('#display_label #txt').html(lbl)
 

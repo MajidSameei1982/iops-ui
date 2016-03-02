@@ -15,8 +15,8 @@ class PbbWidgetView extends IOPSWidgetView
     site:           'select#site'
 
   @layout:
-    sx: 5
-    sy: 7
+    sx: 4
+    sy: 8
 
   tags:
     #Grid Tags
@@ -26,8 +26,8 @@ class PbbWidgetView extends IOPSWidgetView
     pbb_canopy:         'PBB.CANOPYDOWN'
     pbb_acffloor:       'PBB.ACFFLOOR'
     pbb_cablehoist:     'PBB.CABHOIST'
-    pbb_estop:          'PBB.Alarm.E_STOP'
-    pbb_limits:         'PBB.HZ400CABLEDEPLOYED'
+    #pbb_estop:          'PBB.Alarm.E_STOP'
+    #pbb_limits:         'PBB.HZ400CABLEDEPLOYED'
     pbb_docktime:       'PBB.DOCKTIME'
     pbb_undocktime:     'PBB.UNDOCKTIME'
     pbb_smokedetector:  'PBB.SMOKEDETECTOR'
@@ -74,7 +74,7 @@ class PbbWidgetView extends IOPSWidgetView
     @render_row("pbb_autolevel", "On", "Off", "ok")
 
     # E-STOP
-    @render_row("pbb_estop", "Activated", "Ready/OK", "err")
+    # @render_row("pbb_estop","On","Off","err","ok")
 
     # SMOKEDETECTOR
     @render_row("pbb_smokedetector","Activated","Ready/OK","err")
@@ -87,7 +87,7 @@ class PbbWidgetView extends IOPSWidgetView
 
 
     @$("#pbb_statused_lbl").html('PBB Status')
-    @$("#pbb_estoped_lbl").html('E-Stop')
+    #@$("#pbb_estoped_lbl").html('E-Stop')
     
     # ALARMS
     aq = @data_q(@tags.pbb_has_alarms)

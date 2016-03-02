@@ -9,7 +9,7 @@
 <div class="box-body content" id='content'>
   
   <div class="display contain">
-    <div>
+    <div id="display_label">
       <h1>
         <span id='txt'></span> 
         <i id='docked' class="fa fa-plane" title='Plane is DOCKED' style='display:none;'></i>
@@ -18,28 +18,31 @@
       </h1>
     </div>
     <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>
-<table height="100%";width"100%">
-  <tr><td>
-    <table class='data1'> 
-     <tr><td style="width:300px; height:200px; ;text-align:center; vertical-align:middle">
-     <div id="aircraft_img" class=""></div>   
-    </td></tr>         
+<table height="100%";width"100%"><tr>
+  <td>
+    <table class='data'> 
+        <tr><td style="width:200px; height:200px ;vertical-align:middle"><div id="pcaoverview_img" class=""></div></td></tr>
+        <tr><td id='pca_pcastatus' class='val'>LOADING...</td></tr> 
+        <tr><td id='pca_pcaambienttemp_lbl' class='val' >LOADING...</td></tr>    
+        <tr><td id='pca_pcaambienttemp' class='val' >LOADING...</td></tr>    
     </table>
- </td><td>
-    <table class='data2'> 
-       <tr><td id='pbb_status' class='val'>LOADING...</td><td id='pbb_undockordocktimeun' class='val'>LOADING...</td></tr>
-     <tr>
-      <td style="width:200px; height:150px; vertical-align:middle">
-        <div id="autolevel_img" class=""></div>   
-      </td>
-      <td style="width:200px; height:150px; vertical-align:middle">
-       <div id="canopy_img" class=""></div>    
-      </td>
-     </tr>  
-     <tr><td id='pbb_autolevel' class='val'>LOADING...</td><td id='pbb_canopy' class='val'>LOADING...</td></tr>     
+ </td>
+ <td>
+   <table class='data1'> 
+    <br><br>
+     <tr><td style="width:200px; height:200px; vertical-align:middle">
+     <div id="pcamain_img" class=""></div>   
+     <div id="blower_img" class=""></div>  
+     <div id="heatingstage1_img" class=""></div>  
+     <div id="heatingstage2_img" class=""></div>  
+     <div id="coolingstage1_img" class=""></div>  
+     <div id="coolingstage2_img" class=""></div>   
+     <div id="accool_img" class=""></div>  
+     <div id="bccool_img" class=""></div>    
+     </td></tr>         
     </table>
- </td></tr>
- </td></tr></table> 
+ </td>
+ </tr></table> 
   </div>
 
   <div class="settings" style="display: none;">

@@ -21,22 +21,26 @@ class PcaWidgetView extends IOPSWidgetView
 
   @layout:
     sx: 5
-    sy: 10
+    sy: 11
 
   tags:
     #Grid Tags
-    pca_pcacabintemp:       'PCA.TEMPCABIN'
+    #pca_pcacabintemp:       'PCA.TEMPCABIN'
     pca_pcaambienttemp:     'PCA.TEMPAMB'
     pca_pcadischargetemp:   'PCA.TEMPDISCH' 
-    pca_pcapressureheadpr1: 'PCA.PRESSHEADPRI1'
-    pca_pcapressureheadpr2: 'PCA.PRESSHEADPRI2'
-    pca_pcapressureheadsec1:'PCA.PRESSHEADSEC1'
-    pca_pcapressureheadsec2:'PCA.PRESSHEADSEC2'
-    pca_pcapressuresucpr1:  'PCA.PRESSSUCPRI1'
-    pca_pcapressuresucpr2:  'PCA.PRESSSUCPRI2'
-    pca_pcapressuresucsec1: 'PCA.PRESSSUCSEC1'
-    pca_pcapressuresucsec2: 'PCA.PRESSSUCSEC2'
-    pca_pcastatus:          'PCA.PCAON'
+    pca_heater1:            'PCA.HEATER1'
+    pca_heater2:            'PCA.HEATER2'
+    pca_compstage1:         'PCA.COMP_STAGE1_STAT'
+    pca_compstage2:         'PCA.COMP_STAGE2_STAT'
+    pca_bridgedamper:       'PCA.BRIDGE_DAMPER_POSITION'
+    pca_bridgeair:          'PCA.BRIDGE_AIR'
+    pca_dirtyfilter:        'PCA.DIRTY_FILTER'
+    pca_blower:             'PCA.BLOWER'
+    pca_sucpressure1:       'PCA.C1_SUCTION_PRESSURE'
+    pca_sucpressure2:       'PCA.C2_SUCTION_PRESSURE'
+    pca_hotgas1:            'PCA.C1_HOTGAS_CONTROL'
+    pca_hotgas2:            'PCA.C2_HOTGAS_CONTROL'
+    pca_pcastatus:          'PCA.PCA_ON'
     
     #Processing Tags
     pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
@@ -99,17 +103,20 @@ class PcaWidgetView extends IOPSWidgetView
 
     # STATUS
     @render_row("pca_pcastatus", "On", "Off", "ok"," ")
+    @render_row("pca_heater1", "On", "Off", "ok"," ")
+    @render_row("pca_heater2", "On", "Off", "ok"," ")
+    @render_row("pca_compstage1", "On", "Off", "ok"," ")
+    @render_row("pca_compstage2", "On", "Off", "ok"," ")
+    @render_row("pca_bridgedamper", "On", "Off", "ok"," ")
+    @render_row("pca_bridgeair", "On", "Off", "ok"," ")
+    @render_row("pca_dirtyfilter", "Yes", "No", "err"," ")
+    @render_row("pca_blower", "On", "Off", "ok"," ")
     @render_tagvalue("pca_pcadischargetemp")
-    @render_tagvalue("pca_pcacabintemp")
     @render_tagvalue("pca_pcaambienttemp")
-    @render_tagvalue("pca_pcapressureheadpr1")
-    @render_tagvalue("pca_pcapressureheadpr2")
-    @render_tagvalue("pca_pcapressureheadsec1")
-    @render_tagvalue("pca_pcapressureheadsec2")
-    @render_tagvalue("pca_pcapressuresucpr1")
-    @render_tagvalue("pca_pcapressuresucpr2")
-    @render_tagvalue("pca_pcapressuresucsec1")
-    @render_tagvalue("pca_pcapressuresucsec2")
+    @render_tagvalue("pca_sucpressure1")
+    @render_tagvalue("pca_sucpressure2")
+    @render_tagvalue("pca_hotgas1")
+    @render_tagvalue("pca_hotgas2")
 
     
 

@@ -47,6 +47,11 @@ window.app_config = {
       icon: "server"
     },
     {
+      id: "pcasummary",
+      name: "PCA Summary",
+      icon: "server"
+    },
+    {
       id: "gpu",
       name: "GPU Widget",
       icon: "plane"
