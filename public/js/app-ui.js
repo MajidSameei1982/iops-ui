@@ -4658,6 +4658,58 @@ OPCManager = (function() {
     }
   };
 
+  OPCManager.add_trend = function(conn, binding) {
+    var c, exists, i, index, len, ref, tb;
+    c = this.connections[conn];
+    if (c != null) {
+      c.toggle_refresh(false);
+      exists = false;
+      if (c.config.trend_bindings == null) {
+        c.config.trend_bindings = [];
+      }
+      ref = c.config.trend_bindings;
+      for (index = i = 0, len = ref.length; i < len; index = ++i) {
+        tb = ref[index];
+        if (tb.chartid === binding.chartid) {
+          exists = true;
+          c.config.trend_bindings[index] = binding;
+          break;
+        }
+      }
+      if (!exists) {
+        c.config.trend_bindings.push(binding);
+      }
+      c.init();
+    }
+    return this;
+  };
+
+  OPCManager.rem_trend = function(conn, binding) {
+    var c, exists, i, idx, index, len, ref, tb;
+    c = this.connections[conn];
+    if (c != null) {
+      c.toggle_refresh(false);
+      exists = false;
+      idx = -1;
+      if (c.config.trend_bindings == null) {
+        c.config.trend_bindings = [];
+      }
+      ref = c.config.trend_bindings;
+      for (index = i = 0, len = ref.length; i < len; index = ++i) {
+        tb = ref[index];
+        if (ab.chartid === binding.chartid) {
+          exists = true;
+          idx = index;
+          break;
+        }
+      }
+      if (idx !== -1) {
+        c.config.trend_bindings.splice(idx, 1);
+        return c.init();
+      }
+    }
+  };
+
   OPCManager.add_ref = function(conn) {
     var c;
     c = OPCManager.refs[conn];

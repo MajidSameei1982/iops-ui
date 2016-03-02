@@ -90,6 +90,39 @@ class OPCManager
         c.config.alarm_bindings.splice(idx,1)
         c.init()
 
+  @add_trend: (conn, binding)->
+    c = @connections[conn]
+    if c?
+      c.toggle_refresh(false)
+      exists = false 
+      if !c.config.trend_bindings? then c.config.trend_bindings = []
+      for tb, index in c.config.trend_bindings
+        if tb.chartid == binding.chartid
+          exists = true
+          c.config.trend_bindings[index] = binding
+          break
+      if !exists
+        c.config.trend_bindings.push(binding)
+      c.init()
+    @
+
+
+  @rem_trend: (conn, binding)->
+    c = @connections[conn]
+    if c?
+      c.toggle_refresh(false)
+      exists = false 
+      idx = -1
+      if !c.config.trend_bindings? then c.config.trend_bindings = []
+      for tb, index in c.config.trend_bindings
+        if ab.chartid == binding.chartid
+          exists = true
+          idx = index
+          break
+      if idx != -1
+        c.config.trend_bindings.splice(idx,1)
+        c.init()
+
   @add_ref: (conn)=>
     c = @refs[conn]
     c = if c? then c+1 else 1
