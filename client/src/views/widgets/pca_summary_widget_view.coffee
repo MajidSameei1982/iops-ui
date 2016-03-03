@@ -1,5 +1,6 @@
 Marionette = require('marionette')
 IOPSWidgetView = require('./iops_widget_view')
+UIUtils = require('../../common/uiutils')
 
 # ----------------------------------
 
@@ -18,25 +19,19 @@ class PcasummaryWidgetView extends IOPSWidgetView
     docked:         'i#docked'
     alarms:         'i#alarms'
     warnings:       'i#warnings'
+    power_indicator:   'span#power_indicator'
 
   @layout:
-    sx: 15
-    sy: 12
+    sx: 11
+    sy: 8
 
   tags:
     #Grid Tags
     pca_pcacabintemp:       'PCA.TEMPCABIN'
     pca_pcaambienttemp:     'PCA.TEMPAMB'
     pca_pcadischargetemp:   'PCA.TEMPDISCH' 
-    pca_pcapressureheadpr1: 'PCA.PRESSHEADPRI1'
-    pca_pcapressureheadpr2: 'PCA.PRESSHEADPRI2'
-    pca_pcapressureheadsec1:'PCA.PRESSHEADSEC1'
-    pca_pcapressureheadsec2:'PCA.PRESSHEADSEC2'
-    pca_pcapressuresucpr1:  'PCA.PRESSSUCPRI1'
-    pca_pcapressuresucpr2:  'PCA.PRESSSUCPRI2'
-    pca_pcapressuresucsec1: 'PCA.PRESSSUCSEC1'
-    pca_pcapressuresucsec2: 'PCA.PRESSSUCSEC2'
     pca_pcastatus:          'PCA.PCA_ON'
+    pca_time:               'PCA.PCATime'
     pca_blower:             'PCA.BLOWER'
     pca_heat1:              'PCA.HEATER1'
     pca_heat2:              'PCA.HEATER2'
@@ -44,6 +39,15 @@ class PcasummaryWidgetView extends IOPSWidgetView
     pca_compstage2:         'PCA.COMP_STAGE2_STAT'
     pca_bridgeair:          'PCA.BRIDGE_AIR'
     pca_bridgedamper:       'PCA.BRIDGE_DAMPER_POSITION'
+    pca_pumpcond:           'PCA.PUMPCOND'
+    pca_coildp:             'PCA.COIL_DP'
+    pca_vfdspeed:           'PCA.VFD_SPEED'
+    pca_ambhumidity:        'PCA.AMBHUMIDITY'
+    pca_sucpressure1:       'PCA.C1_SUCTION_PRESSURE'
+    pca_sucpressure2:       'PCA.C2_SUCTION_PRESSURE'
+    pca_hotgas1:            'PCA.C1_HOTGAS_CONTROL'
+    pca_hotgas2:            'PCA.C2_HOTGAS_CONTROL'
+    
 
     #Processing Tags
     pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
@@ -104,20 +108,72 @@ class PcasummaryWidgetView extends IOPSWidgetView
     for tg of @tags
       @vals[tg] = @get_value(@tags[tg])
 
+    # refresh status
+    sq = @data_q(@tags.pca_pcastatus)
+    stat = @get_bool(@vals.pca_pcastatus)
+    th = ""
+    icn = 'ban'
+    cls = 'inactive'
+    txt = 'BAD DATA'
+    if stat == true
+      cls = 'active'
+      txt = 'ON'
+      icn = 'circle'
+      t = parseFloat(@vals.pca_time)
+      h = 0
+      m = Math.floor(t)
+      s = Math.floor((t-m)*60)
+      if m>59
+        h = Math.floor(m/60)
+        m = m-(h*60)
+      th = "<i class='fa fa-clock-o'></i> #{UIUtils.lpad(h,2,'0')}:#{UIUtils.lpad(m,2,'0')}:#{UIUtils.lpad(s,2,'0')}"
+    else if stat == false
+      cls = 'inactive'
+      icn = 'circle-thin'
+      txt = 'OFF'
+    @$("#power_indicator").html("<div class='#{cls}'><i class='fa fa-#{icn}'></i> #{txt}</div>")
+    @$("#txt_connected_time").html(th)
     # STATUS
+ 
+    coildp = if @vals.pca_coildp? && @vals.pca_coildp != '' then parseFloat(@vals.pca_coildp).toFixed(2)  else ' -- ' 
+    cd = @$('#pca_coildp').html("COIL DP : #{coildp}")
+    @mark_bad_data @tags.pca_coildp, cd
+
+    vfdspeed = if @vals.pca_vfdspeed? && @vals.pca_vfdspeed != '' then parseFloat(@vals.pca_vfdspeed).toFixed(2)  else ' -- ' 
+    vfd = @$('#pca_vfdspeed').html("VFD : #{vfdspeed}")
+    @mark_bad_data @tags.pca_vfdspeed, vfd
+
+    ambhumidity = if @vals.pca_ambhumidity? && @vals.pca_ambhumidity != '' then parseFloat(@vals.pca_ambhumidity).toFixed(2)  else ' -- ' 
+    ambd = @$('#pca_ambhumidity').html("TEMPAMB : #{ambhumidity}")
+    @mark_bad_data @tags.pca_ambhumidity, ambd
+
+    sucpressure1 = if @vals.pca_sucpressure1? && @vals.pca_sucpressure1 != '' then parseFloat(@vals.pca_sucpressure1).toFixed(2)  else ' -- ' 
+    suc1d = @$('#pca_sucpressure1').html("SP1 : #{sucpressure1}")
+    @mark_bad_data @tags.pca_sucpressure1, suc1d
+
+    sucpressure2 = if @vals.pca_sucpressure2? && @vals.pca_sucpressure2 != '' then parseFloat(@vals.pca_sucpressure2).toFixed(2)  else ' -- ' 
+    suc2d = @$('#pca_sucpressure2').html("SP2 : #{sucpressure2}")
+    @mark_bad_data @tags.pca_sucpressure2, suc2d
+
+    hotgas1 = if @vals.pca_hotgas1? && @vals.pca_hotgas1 != '' then parseFloat(@vals.pca_hotgas1).toFixed(2)  else ' -- ' 
+    hot1d = @$('#pca_hotgas1').html("HP1 : #{hotgas1}")
+    @mark_bad_data @tags.pca_hotgas1, hot1d
+
+    hotgas2 = if @vals.pca_hotgas2? && @vals.pca_hotgas2 != '' then parseFloat(@vals.pca_hotgas2).toFixed(2)  else ' -- ' 
+    hot2d = @$('#pca_hotgas2').html("HP2 : #{hotgas2}")
+    @mark_bad_data @tags.pca_hotgas2, hot2d
+
+    pc = @get_bool(@vals.pca_pumpcond)
+    txt = if pc then 'ON' else 'OFF'
+    pcd = @$('#pca_pumpcond').html("Condensate Pump : #{txt}")
+    @mark_bad_data @tags.pca_pumpcond, pcd
+    
 
     @render_row("pca_pcastatus", "On", "Off", "ok"," ")
     @render_tagvalue("pca_pcadischargetemp")
     @render_tagvalue("pca_pcacabintemp")
     @render_tagvalue("pca_pcaambienttemp")
-    @render_tagvalue("pca_pcapressureheadpr1")
-    @render_tagvalue("pca_pcapressureheadpr2")
-    @render_tagvalue("pca_pcapressureheadsec1")
-    @render_tagvalue("pca_pcapressureheadsec2")
-    @render_tagvalue("pca_pcapressuresucpr1")
-    @render_tagvalue("pca_pcapressuresucpr2")
-    @render_tagvalue("pca_pcapressuresucsec1")
-    @render_tagvalue("pca_pcapressuresucsec2")
+
 
     c = @get_bool(@vals.pca_blower)
     p = @get_bool(@vals.pca_pcastatus)

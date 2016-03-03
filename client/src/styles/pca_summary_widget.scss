@@ -4,31 +4,133 @@
     background-color: #c00;
     color: #fff;
   }
+
+  .bad_data {
+    width: 100%;
+    
+    position: absolute;
+    top: 30%;
+    left: 0;
+    padding-top: 60%;
+    border-radius: 10px;
+    text-align: center;
+    color: #c00;
+    font-weight: bold;
+    font-size: 18px;
+    border: 0;
+  }
+  #pca_coildp {
+    position: absolute;
+    left: 45%;
+    top: 20%;
+    font-size: 12px;
+    font-weight: bold;
+    color:#333;
+  }
+  #pca_pumpcond{
+    position: absolute;
+    left: 78%;
+    top: 90%;
+    font-size: 12px;
+    font-weight: bold;
+    color:#333;
+  }
+    #pca_vfdspeed{
+    position: absolute;
+    left: 71%;
+    top: 40%;
+    font-size: 12px;
+    font-weight: bold;
+    color:#333;
+  }
+    #pca_ambhumidity{
+    position: absolute;
+    left: 85%;
+    top: 10%;
+    font-size: 12px;
+    font-weight: bold;
+    color:#333;
+  }
+    #pca_sucpressure1{
+    position: absolute;
+    left: 70%;
+    top: 65%;
+    font-size: 12px;
+    font-weight: bold;
+    color:#333;
+  }
+    #pca_sucpressure2{
+    position: absolute;
+    left: 80%;
+    top: 65%;
+    font-size: 12px;
+    font-weight: bold;
+    color:#333;
+  }
+    #pca_hotgas1{
+    position: absolute;
+    left: 70%;
+    top: 72%;
+    font-size: 12px;
+    font-weight: bold;
+    color:#333;
+  }
+    #pca_hotgas2{
+    position: absolute;
+    left: 80%;
+    top: 72%;
+    font-size: 12px;
+    font-weight: bold;
+    color:#333;
+  }
+  #power_indicator {
+    position: absolute;
+    top: 48%;
+    left: 6%;
+    font-size: 20px;
+    font-weight: bold;
+    .inactive {
+      color:#ccc;
+    }
+    .active {
+      color:#090;
+    }
+  }
+
+  #txt_connected_time {
+    position: absolute;
+    left: 20%;
+    top: 49%;
+    font-size: 16px;
+    color:#090;
+  }
   .display {
     min-height: 100%;
     min-width: 100%;
     overflow: auto;
 
     #pcaoverview_img {
-      position: relative;
-      float: left;
+      position: absolute;
+      top: 12%;
+      left: 3%;
       background-image: url("../img/pca/pcaoriginal.gif") ;
       background-repeat: no-repeat; 
       background-position: center center;
       background-size: contain;
-      height: 100%;
-      width: 100%;
+      height: 30%;
+      width: 30%;
     }
     
     #pcamain_img {
-      position: relative;
-      float: left;
+      position: absolute;
+      top: 7%;
+      left: 23.5%;
       background-image: url("../img/pca/Inet_PCAire-Main.gif") ;
       background-repeat: no-repeat; 
       background-position: center center;
       background-size: contain;
-      height: 200%;
-      width: 200%;
+      height: 80%;
+      width: 80%;
     }
 
     #backgroundgrey_img {
@@ -44,14 +146,14 @@
 
     #blower_img {
       position: absolute;
-      top: 11.8%;
-      left: 29.4%;
+      top: 8%;
+      left: 25.5%;
       background-image: none;
       background-repeat: no-repeat; 
       background-position: center center;
       background-size: contain;
-      height: 70%;
-      width: 70%;
+      height: 80%;
+      width: 80%;
       &.bloweron {
         background-image: url("../img/pca/Blower.gif");
       }
@@ -59,14 +161,14 @@
 
     #coolingstage1_img {
       position: absolute;
-      top: 11.8%;
-      left: 29.4%;
+      top: 6%;
+      left: 25%;
       background-image: none;
       background-repeat: no-repeat; 
       background-position: center center;
       background-size: contain;
-      height: 70%;
-      width: 70%;
+      height: 80%;
+      width: 80%;
       &.coolingstage1on {
         background-image: url("../img/pca/Cooling-Stage-1.gif");
       }
@@ -74,14 +176,14 @@
 
     #coolingstage2_img {
       position: absolute;
-      top: 11.8%;
-      left: 29.4%;
+      top: 6%;
+      left: 25%;
       background-image: none;
       background-repeat: no-repeat; 
       background-position: center center;
       background-size: contain;
-      height: 70%;
-      width: 70%;
+      height: 80%;
+      width: 80%;
       &.coolingstage2on {
         background-image: url("../img/pca/Cooling-Stage-2.gif");
       }
@@ -89,14 +191,14 @@
 
     #heatingstage1_img {
       position: absolute;
-      top: 11.8%;
-      left: 29.4%;
+      top: 8%;
+      left: 24.5%;
       background-image: none;
       background-repeat: no-repeat; 
       background-position: center center;
       background-size: contain;
-      height: 70%;
-      width: 70%;
+      height: 80%;
+      width: 80%;
       &.heatingstage1on {
         background-image: url("../img/pca/Heat-Stage-1.gif");
       }
@@ -104,14 +206,14 @@
 
     #heatingstage2_img {
       position: absolute;
-      top: 11.8%;
-      left: 29.4%;
+      top: 8%;
+      left: 24.5%;
       background-image: none;
       background-repeat: no-repeat; 
       background-position: center center;
       background-size: contain;
-      height: 70%;
-      width: 70%;
+      height: 80%;
+      width: 80%;
       &.heatingstage2on {
         background-image: url("../img/pca/Heat-Stage-2.gif");
       }
@@ -227,8 +329,7 @@
         border-bottom:solid 1px #ddd;
       }
       &.bad_data {
-        background-color: #fec;
-        color:#999;
+ 
       }
     }
   }

@@ -966,28 +966,114 @@ li.dashboard-link {
 .pca_summary_widget.alarm {
   background-color: #c00;
   color: #fff; }
+.pca_summary_widget .bad_data {
+  width: 100%;
+  position: absolute;
+  top: 30%;
+  left: 0;
+  padding-top: 60%;
+  border-radius: 10px;
+  text-align: center;
+  color: #c00;
+  font-weight: bold;
+  font-size: 18px;
+  border: 0; }
+.pca_summary_widget #pca_coildp {
+  position: absolute;
+  left: 45%;
+  top: 20%;
+  font-size: 12px;
+  font-weight: bold;
+  color: #333; }
+.pca_summary_widget #pca_pumpcond {
+  position: absolute;
+  left: 78%;
+  top: 90%;
+  font-size: 12px;
+  font-weight: bold;
+  color: #333; }
+.pca_summary_widget #pca_vfdspeed {
+  position: absolute;
+  left: 71%;
+  top: 40%;
+  font-size: 12px;
+  font-weight: bold;
+  color: #333; }
+.pca_summary_widget #pca_ambhumidity {
+  position: absolute;
+  left: 85%;
+  top: 10%;
+  font-size: 12px;
+  font-weight: bold;
+  color: #333; }
+.pca_summary_widget #pca_sucpressure1 {
+  position: absolute;
+  left: 70%;
+  top: 65%;
+  font-size: 12px;
+  font-weight: bold;
+  color: #333; }
+.pca_summary_widget #pca_sucpressure2 {
+  position: absolute;
+  left: 80%;
+  top: 65%;
+  font-size: 12px;
+  font-weight: bold;
+  color: #333; }
+.pca_summary_widget #pca_hotgas1 {
+  position: absolute;
+  left: 70%;
+  top: 72%;
+  font-size: 12px;
+  font-weight: bold;
+  color: #333; }
+.pca_summary_widget #pca_hotgas2 {
+  position: absolute;
+  left: 80%;
+  top: 72%;
+  font-size: 12px;
+  font-weight: bold;
+  color: #333; }
+.pca_summary_widget #power_indicator {
+  position: absolute;
+  top: 48%;
+  left: 6%;
+  font-size: 20px;
+  font-weight: bold; }
+  .pca_summary_widget #power_indicator .inactive {
+    color: #ccc; }
+  .pca_summary_widget #power_indicator .active {
+    color: #090; }
+.pca_summary_widget #txt_connected_time {
+  position: absolute;
+  left: 20%;
+  top: 49%;
+  font-size: 16px;
+  color: #090; }
 .pca_summary_widget .display {
   min-height: 100%;
   min-width: 100%;
   overflow: auto; }
   .pca_summary_widget .display #pcaoverview_img {
-    position: relative;
-    float: left;
+    position: absolute;
+    top: 12%;
+    left: 3%;
     background-image: url("../img/pca/pcaoriginal.gif");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
-    height: 100%;
-    width: 100%; }
+    height: 30%;
+    width: 30%; }
   .pca_summary_widget .display #pcamain_img {
-    position: relative;
-    float: left;
+    position: absolute;
+    top: 7%;
+    left: 23.5%;
     background-image: url("../img/pca/Inet_PCAire-Main.gif");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
-    height: 200%;
-    width: 200%; }
+    height: 80%;
+    width: 80%; }
   .pca_summary_widget .display #backgroundgrey_img {
     position: relative;
     float: left;
@@ -999,62 +1085,62 @@ li.dashboard-link {
     width: 50%; }
   .pca_summary_widget .display #blower_img {
     position: absolute;
-    top: 11.8%;
-    left: 29.4%;
+    top: 8%;
+    left: 25.5%;
     background-image: none;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
-    height: 70%;
-    width: 70%; }
+    height: 80%;
+    width: 80%; }
     .pca_summary_widget .display #blower_img.bloweron {
       background-image: url("../img/pca/Blower.gif"); }
   .pca_summary_widget .display #coolingstage1_img {
     position: absolute;
-    top: 11.8%;
-    left: 29.4%;
+    top: 6%;
+    left: 25%;
     background-image: none;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
-    height: 70%;
-    width: 70%; }
+    height: 80%;
+    width: 80%; }
     .pca_summary_widget .display #coolingstage1_img.coolingstage1on {
       background-image: url("../img/pca/Cooling-Stage-1.gif"); }
   .pca_summary_widget .display #coolingstage2_img {
     position: absolute;
-    top: 11.8%;
-    left: 29.4%;
+    top: 6%;
+    left: 25%;
     background-image: none;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
-    height: 70%;
-    width: 70%; }
+    height: 80%;
+    width: 80%; }
     .pca_summary_widget .display #coolingstage2_img.coolingstage2on {
       background-image: url("../img/pca/Cooling-Stage-2.gif"); }
   .pca_summary_widget .display #heatingstage1_img {
     position: absolute;
-    top: 11.8%;
-    left: 29.4%;
+    top: 8%;
+    left: 24.5%;
     background-image: none;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
-    height: 70%;
-    width: 70%; }
+    height: 80%;
+    width: 80%; }
     .pca_summary_widget .display #heatingstage1_img.heatingstage1on {
       background-image: url("../img/pca/Heat-Stage-1.gif"); }
   .pca_summary_widget .display #heatingstage2_img {
     position: absolute;
-    top: 11.8%;
-    left: 29.4%;
+    top: 8%;
+    left: 24.5%;
     background-image: none;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
-    height: 70%;
-    width: 70%; }
+    height: 80%;
+    width: 80%; }
     .pca_summary_widget .display #heatingstage2_img.heatingstage2on {
       background-image: url("../img/pca/Heat-Stage-2.gif"); }
   .pca_summary_widget .display #accool_img {
@@ -1143,9 +1229,6 @@ li.dashboard-link {
       font-style: italic;
       color: #333;
       border-bottom: solid 1px #ddd; }
-    .pca_summary_widget table.data1 td.bad_data {
-      background-color: #fec;
-      color: #999; }
 
 @font-face {
   font-family: 'weather';
