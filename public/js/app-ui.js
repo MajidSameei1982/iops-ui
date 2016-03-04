@@ -1985,7 +1985,7 @@ window.JST["widgets/pca_summary_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n<table height="100%";width"100%"><tr>\n  <td>\n    <table class=\'data\'> \n        <tr><td style="width:200px; height:200px ;vertical-align:middle"><div id="pcaoverview_img" class=""></div></td></tr>\n        <tr><td id=\'pca_pcastatus\' class=\'val\'>LOADING...</td></tr> \n        <tr><td id=\'pca_pcaambienttemp_lbl\' class=\'val\' >LOADING...</td></tr>    \n        <tr><td id=\'pca_pcaambienttemp\' class=\'val\' >LOADING...</td></tr>    \n    </table>\n </td>\n <td>\n   <table class=\'data1\'> \n    <br><br>\n     <tr><td style="width:200px; height:200px; vertical-align:middle">\n     <div id="pcamain_img" class=""></div>   \n     <div id="blower_img" class=""></div>  \n     <div id="heatingstage1_img" class=""></div>  \n     <div id="heatingstage2_img" class=""></div>  \n     <div id="coolingstage1_img" class=""></div>  \n     <div id="coolingstage2_img" class=""></div>   \n     <div id="accool_img" class=""></div>  \n     <div id="bccool_img" class=""></div>    \n     </td></tr>         \n    </table>\n </td>\n </tr></table> \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id=\'display_label\'>\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <div>\n      <div id="power_indicator"></div>\n      <div id="txt_connected_time"></div>\n    </div>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n<table height="100%";width"100%"><tr>\n  <td>\n    <table class=\'data\'> \n        <tr><td style="width:200px; height:200px ;vertical-align:middle"><div id="pcaoverview_img" class=""></div></td></tr>\n        <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    \n        <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    \n    </table>\n </td>\n <td>\n   <table class=\'data1\'> \n    <br><br>\n     <tr><td style="width:200px; height:200px; vertical-align:middle">\n     <div id="pcamain_img" class=""></div>   \n     <div id="blower_img" class=""></div>  \n     <div id="heatingstage1_img" class=""></div>  \n     <div id="heatingstage2_img" class=""></div>  \n     <div id="coolingstage1_img" class=""></div>  \n     <div id="coolingstage2_img" class=""></div>   \n     <div id="accool_img" class=""></div>  \n     <div id="bccool_img" class=""></div> \n     <div id="pca_coildp" class=""></div>   \n     <div id="pca_vfdspeed" class=""></div>\n     <div id="pca_ambhumidity" class=""></div>\n     <div id="pca_sucpressure1" class=""></div>\n     <div id="pca_sucpressure2" class=""></div>\n     <div id="pca_hotgas1" class=""></div>\n     <div id="pca_hotgas2" class=""></div>\n     <div id="pca_pumpcond" class=""></div>\n     \n     </td></tr>         \n    </table>\n </td>\n </tr></table> \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -8213,30 +8213,11 @@ GpusummaryWidgetView = (function(superClass) {
 
   GpusummaryWidgetView.prototype.tags = {
     gpu_time: 'GPU.GPUTime',
-    gpu_gpustatus: 'GPU.GPUSTATUS',
     gpu_gpustatusb: 'GPU.GPUSTATUSBOOLEAN',
-    gpu_contstatus: 'GPU.CONTSTATUS',
-    gpu_bypass: 'GPU.ByPass',
     gpu_raoutavg: 'GPU.RAOUTAVG',
     gpu_rvoutavg: 'GPU.RVOUTAVG',
     gpu_ravinavg: 'GPU.RAVINAVG',
-    gpu_rvinavg: 'GPU.RVINAVG',
-    gpu_frequency: 'GPU.Frequency',
-    gpu_pm_output_phasea_i: 'GPU.PM_OUTPUT_PHASEA_I',
-    gpu_pm_output_phaseb_i: 'GPU.PM_OUTPUT_PHASEB_I',
-    gpu_pm_output_phasec_i: 'GPU.PM_OUTPUT_PHASEC_I',
-    gpu_pm_output_phasea_v: 'GPU.PM_OUTPUT_PHASEA_V',
-    gpu_pm_output_phaseb_v: 'GPU.PM_OUTPUT_PHASEB_V',
-    gpu_pm_output_phasec_v: 'GPU.PM_OUTPUT_PHASEC_V',
-    gpu_pm_input_phasea_i: 'GPU.PM_INPUT_PHASEA_I',
-    gpu_pm_input_phaseb_i: 'GPU.PM_INPUT_PHASEB_I',
-    gpu_pm_input_phasec_i: 'GPU.PM_INPUT_PHASEC_I',
-    gpu_pm_input_phasea_v: 'GPU.PM_INPUT_PHASEA_V',
-    gpu_pm_input_phaseb_v: 'GPU.PM_INPUT_PHASEB_V',
-    gpu_pm_input_phasec_v: 'GPU.PM_INPUT_PHASEC_V',
-    gpu_gpustatus_triger_data_log: 'GPU.GPUSTATUS_TRIGER_DATA_LOG',
-    gpu_on_1: 'GPU.ON 1',
-    gpu_on_2: 'GPU.ON 2'
+    gpu_rvinavg: 'GPU.RVINAVG'
   };
 
   GpusummaryWidgetView.prototype.initialize = function() {};
@@ -9675,7 +9656,7 @@ window.PbbleveldetailWidgetView = PbbleveldetailWidgetView;
 module.exports = PbbleveldetailWidgetView;
 
 },{"./iops_widget_view":60}],64:[function(require,module,exports){
-var IOPSWidgetView, Marionette, PcasummaryWidgetView,
+var IOPSWidgetView, Marionette, PcasummaryWidgetView, UIUtils,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -9683,6 +9664,8 @@ var IOPSWidgetView, Marionette, PcasummaryWidgetView,
 Marionette = require('marionette');
 
 IOPSWidgetView = require('./iops_widget_view');
+
+UIUtils = require('../../common/uiutils');
 
 PcasummaryWidgetView = (function(superClass) {
   extend(PcasummaryWidgetView, superClass);
@@ -9708,27 +9691,21 @@ PcasummaryWidgetView = (function(superClass) {
     content: '.content',
     docked: 'i#docked',
     alarms: 'i#alarms',
-    warnings: 'i#warnings'
+    warnings: 'i#warnings',
+    power_indicator: 'span#power_indicator'
   };
 
   PcasummaryWidgetView.layout = {
-    sx: 15,
-    sy: 12
+    sx: 11,
+    sy: 8
   };
 
   PcasummaryWidgetView.prototype.tags = {
     pca_pcacabintemp: 'PCA.TEMPCABIN',
     pca_pcaambienttemp: 'PCA.TEMPAMB',
     pca_pcadischargetemp: 'PCA.TEMPDISCH',
-    pca_pcapressureheadpr1: 'PCA.PRESSHEADPRI1',
-    pca_pcapressureheadpr2: 'PCA.PRESSHEADPRI2',
-    pca_pcapressureheadsec1: 'PCA.PRESSHEADSEC1',
-    pca_pcapressureheadsec2: 'PCA.PRESSHEADSEC2',
-    pca_pcapressuresucpr1: 'PCA.PRESSSUCPRI1',
-    pca_pcapressuresucpr2: 'PCA.PRESSSUCPRI2',
-    pca_pcapressuresucsec1: 'PCA.PRESSSUCSEC1',
-    pca_pcapressuresucsec2: 'PCA.PRESSSUCSEC2',
     pca_pcastatus: 'PCA.PCA_ON',
+    pca_time: 'PCA.PCATime',
     pca_blower: 'PCA.BLOWER',
     pca_heat1: 'PCA.HEATER1',
     pca_heat2: 'PCA.HEATER2',
@@ -9736,6 +9713,14 @@ PcasummaryWidgetView = (function(superClass) {
     pca_compstage2: 'PCA.COMP_STAGE2_STAT',
     pca_bridgeair: 'PCA.BRIDGE_AIR',
     pca_bridgedamper: 'PCA.BRIDGE_DAMPER_POSITION',
+    pca_pumpcond: 'PCA.PUMPCOND',
+    pca_coildp: 'PCA.COIL_DP',
+    pca_vfdspeed: 'PCA.VFD_SPEED',
+    pca_ambhumidity: 'PCA.AMBHUMIDITY',
+    pca_sucpressure1: 'PCA.C1_SUCTION_PRESSURE',
+    pca_sucpressure2: 'PCA.C2_SUCTION_PRESSURE',
+    pca_hotgas1: 'PCA.C1_HOTGAS_CONTROL',
+    pca_hotgas2: 'PCA.C2_HOTGAS_CONTROL',
     pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
     pbb_has_warnings: 'Warning._HasWarnings',
     pbb_has_alarms: 'Alarm._HasAlarms'
@@ -9790,23 +9775,66 @@ PcasummaryWidgetView = (function(superClass) {
   };
 
   PcasummaryWidgetView.prototype.data_update = function(data) {
-    var aq, b, bd, bdq, bq, c, co1, co1q, co2, co2q, h1, h1q, h2, h2q, p, pq, sq, tg, wq;
+    var ambd, ambhumidity, aq, b, bd, bdq, bq, c, cd, cls, co1, co1q, co2, co2q, coildp, h, h1, h1q, h2, h2q, hot1d, hot2d, hotgas1, hotgas2, icn, m, p, pc, pcd, pq, s, sq, stat, suc1d, suc2d, sucpressure1, sucpressure2, t, tg, th, txt, vfd, vfdspeed, wq;
     this.vals = {};
     for (tg in this.tags) {
       this.vals[tg] = this.get_value(this.tags[tg]);
     }
+    sq = this.data_q(this.tags.pca_pcastatus);
+    stat = this.get_bool(this.vals.pca_pcastatus);
+    th = "";
+    icn = 'ban';
+    cls = 'inactive';
+    txt = 'BAD DATA';
+    if (stat === true) {
+      cls = 'active';
+      txt = 'ON';
+      icn = 'circle';
+      t = parseFloat(this.vals.pca_time);
+      h = 0;
+      m = Math.floor(t);
+      s = Math.floor((t - m) * 60);
+      if (m > 59) {
+        h = Math.floor(m / 60);
+        m = m - (h * 60);
+      }
+      th = "<i class='fa fa-clock-o'></i> " + (UIUtils.lpad(h, 2, '0')) + ":" + (UIUtils.lpad(m, 2, '0')) + ":" + (UIUtils.lpad(s, 2, '0'));
+    } else if (stat === false) {
+      cls = 'inactive';
+      icn = 'circle-thin';
+      txt = 'OFF';
+    }
+    this.$("#power_indicator").html("<div class='" + cls + "'><i class='fa fa-" + icn + "'></i> " + txt + "</div>");
+    this.$("#txt_connected_time").html(th);
+    coildp = (this.vals.pca_coildp != null) && this.vals.pca_coildp !== '' ? parseFloat(this.vals.pca_coildp).toFixed(2) : ' -- ';
+    cd = this.$('#pca_coildp').html("COIL DP : " + coildp);
+    this.mark_bad_data(this.tags.pca_coildp, cd);
+    vfdspeed = (this.vals.pca_vfdspeed != null) && this.vals.pca_vfdspeed !== '' ? parseFloat(this.vals.pca_vfdspeed).toFixed(2) : ' -- ';
+    vfd = this.$('#pca_vfdspeed').html("VFD : " + vfdspeed);
+    this.mark_bad_data(this.tags.pca_vfdspeed, vfd);
+    ambhumidity = (this.vals.pca_ambhumidity != null) && this.vals.pca_ambhumidity !== '' ? parseFloat(this.vals.pca_ambhumidity).toFixed(2) : ' -- ';
+    ambd = this.$('#pca_ambhumidity').html("TEMPAMB : " + ambhumidity);
+    this.mark_bad_data(this.tags.pca_ambhumidity, ambd);
+    sucpressure1 = (this.vals.pca_sucpressure1 != null) && this.vals.pca_sucpressure1 !== '' ? parseFloat(this.vals.pca_sucpressure1).toFixed(2) : ' -- ';
+    suc1d = this.$('#pca_sucpressure1').html("SP1 : " + sucpressure1);
+    this.mark_bad_data(this.tags.pca_sucpressure1, suc1d);
+    sucpressure2 = (this.vals.pca_sucpressure2 != null) && this.vals.pca_sucpressure2 !== '' ? parseFloat(this.vals.pca_sucpressure2).toFixed(2) : ' -- ';
+    suc2d = this.$('#pca_sucpressure2').html("SP2 : " + sucpressure2);
+    this.mark_bad_data(this.tags.pca_sucpressure2, suc2d);
+    hotgas1 = (this.vals.pca_hotgas1 != null) && this.vals.pca_hotgas1 !== '' ? parseFloat(this.vals.pca_hotgas1).toFixed(2) : ' -- ';
+    hot1d = this.$('#pca_hotgas1').html("HP1 : " + hotgas1);
+    this.mark_bad_data(this.tags.pca_hotgas1, hot1d);
+    hotgas2 = (this.vals.pca_hotgas2 != null) && this.vals.pca_hotgas2 !== '' ? parseFloat(this.vals.pca_hotgas2).toFixed(2) : ' -- ';
+    hot2d = this.$('#pca_hotgas2').html("HP2 : " + hotgas2);
+    this.mark_bad_data(this.tags.pca_hotgas2, hot2d);
+    pc = this.get_bool(this.vals.pca_pumpcond);
+    txt = pc ? 'ON' : 'OFF';
+    pcd = this.$('#pca_pumpcond').html("Condensate Pump : " + txt);
+    this.mark_bad_data(this.tags.pca_pumpcond, pcd);
     this.render_row("pca_pcastatus", "On", "Off", "ok", " ");
     this.render_tagvalue("pca_pcadischargetemp");
     this.render_tagvalue("pca_pcacabintemp");
     this.render_tagvalue("pca_pcaambienttemp");
-    this.render_tagvalue("pca_pcapressureheadpr1");
-    this.render_tagvalue("pca_pcapressureheadpr2");
-    this.render_tagvalue("pca_pcapressureheadsec1");
-    this.render_tagvalue("pca_pcapressureheadsec2");
-    this.render_tagvalue("pca_pcapressuresucpr1");
-    this.render_tagvalue("pca_pcapressuresucpr2");
-    this.render_tagvalue("pca_pcapressuresucsec1");
-    this.render_tagvalue("pca_pcapressuresucsec2");
     c = this.get_bool(this.vals.pca_blower);
     p = this.get_bool(this.vals.pca_pcastatus);
     h1 = this.get_bool(this.vals.pca_heat1);
@@ -9897,7 +9925,7 @@ window.PcasummaryWidgetView = PcasummaryWidgetView;
 
 module.exports = PcasummaryWidgetView;
 
-},{"./iops_widget_view":60}],65:[function(require,module,exports){
+},{"../../common/uiutils":7,"./iops_widget_view":60}],65:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PcaWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },

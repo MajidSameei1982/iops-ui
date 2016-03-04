@@ -9,22 +9,24 @@
 <div class="box-body content" id='content'>
   
   <div class="display contain">
-    <div id="display_label">
+    <div id='display_label'>
       <h1>
-        <span id='txt'></span> 
         <i id='docked' class="fa fa-plane" title='Plane is DOCKED' style='display:none;'></i>
         <i id='alarms' class="fa fa-bell-o" title='Gate has ALARMS' style='display:none;'></i>
         <i id='warnings' class="fa fa-warning" title='Gate has WARNINGS' style='display:none;'></i>
       </h1>
+    </div>
+    <div>
+      <div id="power_indicator"></div>
+      <div id="txt_connected_time"></div>
     </div>
     <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>
 <table height="100%";width"100%"><tr>
   <td>
     <table class='data'> 
         <tr><td style="width:200px; height:200px ;vertical-align:middle"><div id="pcaoverview_img" class=""></div></td></tr>
-        <tr><td id='pca_pcastatus' class='val'>LOADING...</td></tr> 
-        <tr><td id='pca_pcaambienttemp_lbl' class='val' >LOADING...</td></tr>    
-        <tr><td id='pca_pcaambienttemp' class='val' >LOADING...</td></tr>    
+        <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    
+        <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    
     </table>
  </td>
  <td>
@@ -38,7 +40,16 @@
      <div id="coolingstage1_img" class=""></div>  
      <div id="coolingstage2_img" class=""></div>   
      <div id="accool_img" class=""></div>  
-     <div id="bccool_img" class=""></div>    
+     <div id="bccool_img" class=""></div> 
+     <div id="pca_coildp" class=""></div>   
+     <div id="pca_vfdspeed" class=""></div>
+     <div id="pca_ambhumidity" class=""></div>
+     <div id="pca_sucpressure1" class=""></div>
+     <div id="pca_sucpressure2" class=""></div>
+     <div id="pca_hotgas1" class=""></div>
+     <div id="pca_hotgas2" class=""></div>
+     <div id="pca_pumpcond" class=""></div>
+     
      </td></tr>         
     </table>
  </td>
