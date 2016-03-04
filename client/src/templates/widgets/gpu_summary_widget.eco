@@ -21,29 +21,27 @@
       <div id="power_indicator"></div>
       <div id="txt_connected_time"></div>
     </div>
-    <div id="view_volts_in" style="display: none;">
-        <div id="rvain-plot-container" class="plot-container">
-          <div id="rvain-plot" class="plot-placeholder"></div>
-          <div id="rvain-live-toggle" class="plot-toggle">
-            <input id="rvain-toggle-live" type="checkbox" data-toggle="toggle" data-on="Live" data-off="Today" data-onstyle="warning" data-offstyle="info"> 
-          </div>
-        </div>
-   </div>
-    <div id="view_volts_out" class="plot-container" style="display: none;">
-        <div id="rvout-plot-container" class="plot-container">
-          <div id="rvout-plot" class="plot-placeholder"></div>
-          <div id="rvout-live-toggle" class="plot-toggle">
-            <input id="rvout-toggle-live" type="checkbox" data-toggle="toggle" data-on="Live" data-off="Today" data-onstyle="warning" data-offstyle="info"> 
-          </div>
-        </div>
-    </div>
-    <div id="view_amps_out" class="plot-container" style="display: none;">
-        <div id="raout-plot-container" class="plot-container">
-          <div id="raout-plot" class="plot-placeholder"></div>
-          <div id="raout-live-toggle" class="plot-toggle">
-            <input id="raout-toggle-live" type="checkbox" data-toggle="toggle" data-on="Live" data-off="Today" data-onstyle="warning" data-offstyle="info"> 
-          </div>
-        </div>
+    <div id="plots" style="display: none;">
+      <table id='plot_container' border="0">
+        <tr>
+          <td id='options'>
+            <div id='ptype_lbl'></div>
+
+            <div id='live_container'>
+              <label>Live Data</label>
+              <input id='live_data' type="checkbox" data-toggle="toggle" data-size="large">
+            </div>
+            
+            <div id="phases">
+              <a id="phase_a" class='plot_type' href="#">Phase A</a><br/>
+              <a id="phase_b" class='plot_type' href="#">Phase B</a><br/>
+              <a id="phase_c" class='plot_type' href="#">Phase C</a><br/>
+            </div>
+
+          </td>
+          <td id='plot_data'></td>
+        </tr>
+      </table>
     </div>
     <div id="bottom_buttons">
       <a id="toggle_main" href="#" class="toggle_button" style="display: none;">Summary</a>

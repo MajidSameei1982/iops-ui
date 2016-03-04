@@ -67,1101 +67,17 @@ class GpusummaryWidgetView extends IOPSWidgetView
     gpu_on_2:                       'GPU.ON 2'
 
   initialize: ()->
-    
-    #*********************************************************************************
-    #***** NOTE: This is test data.  Once the live version of loadData(PLOT_TYPE) 
-    #*****       is developed this can be deleted.
-    #*****
-    #*********************************************************************************
-    #*****  CSW: 20160213
-    #*********************************************************************************
-    #Amps Phase A
-    @amps1 = [
-      [
-        1455145200000
-        33
-      ]
-      [
-        1455145500000
-        33
-      ]
-      [
-        1455145800000
-        45
-      ]
-      [
-        1455146100000
-        42
-      ]
-      [
-        1455146400000
-        38
-      ]
-      [
-        1455146700000
-        34
-      ]
-      [
-        1455147000000
-        48
-      ]
-      [
-        1455147300000
-        43
-      ]
-      [
-        1455147600000
-        0
-      ]
-      [
-        1455147900000
-        0
-      ]
-      [
-        1455148200000
-        1
-      ]
-      [
-        1455148500000
-        0
-      ]
-      [
-        1455148800000
-        0
-      ]
-      [
-        1455149100000
-        34
-      ]
-      [
-        1455149400000
-        39
-      ]
-      [
-        1455149700000
-        32
-      ]
-    ]
-    #Amps Phase B
-    @amps2 = [
-      [
-        1455145200000
-        37
-      ]
-      [
-        1455145500000
-        34
-      ]
-      [
-        1455145800000
-        54
-      ]
-      [
-        1455146100000
-        65
-      ]
-      [
-        1455146400000
-        56
-      ]
-      [
-        1455146700000
-        46
-      ]
-      [
-        1455147000000
-        45
-      ]
-      [
-        1455147300000
-        65
-      ]
-      [
-        1455147600000
-        0
-      ]
-      [
-        1455147900000
-        0
-      ]
-      [
-        1455148200000
-        0
-      ]
-      [
-        1455148500000
-        0
-      ]
-      [
-        1455148800000
-        0
-      ]
-      [
-        1455149100000
-        53
-      ]
-      [
-        1455149400000
-        45
-      ]
-      [
-        1455149700000
-        53
-      ]
-    ]
-    #Amps Phase C
-    @amps3 = [
-      [
-        1455145200000
-        65
-      ]
-      [
-        1455145500000
-        45
-      ]
-      [
-        1455145800000
-        45
-      ]
-      [
-        1455146100000
-        64
-      ]
-      [
-        1455146400000
-        65
-      ]
-      [
-        1455146700000
-        65
-      ]
-      [
-        1455147000000
-        63
-      ]
-      [
-        1455147300000
-        54
-      ]
-      [
-        1455147600000
-        0
-      ]
-      [
-        1455147900000
-        0
-      ]
-      [
-        1455148200000
-        2
-      ]
-      [
-        1455148500000
-        0
-      ]
-      [
-        1455148800000
-        0
-      ]
-      [
-        1455149100000
-        39
-      ]
-      [
-        1455149400000
-        53
-      ]
-      [
-        1455149700000
-        65
-      ]
-    ]
-    #Amps Phase Avg
-    @amps4 = [
-      [
-        1455145200000
-        45
-      ]
-      [
-        1455145500000
-        37
-      ]
-      [
-        1455145800000
-        48
-      ]
-      [
-        1455146100000
-        57
-      ]
-      [
-        1455146400000
-        53
-      ]
-      [
-        1455146700000
-        48
-      ]
-      [
-        1455147000000
-        52
-      ]
-      [
-        1455147300000
-        54
-      ]
-      [
-        1455147600000
-        0
-      ]
-      [
-        1455147900000
-        0
-      ]
-      [
-        1455148200000
-        1
-      ]
-      [
-        1455148500000
-        0
-      ]
-      [
-        1455148800000
-        0
-      ]
-      [
-        1455149100000
-        42
-      ]
-      [
-        1455149400000
-        46
-      ]
-      [
-        1455149700000
-        50
-      ]
-    ]
-    #Volts Phase A
-    @volts1 = [
-      [
-        1455145200000
-        112
-      ]
-      [
-        1455145500000
-        109
-      ]
-      [
-        1455145800000
-        110
-      ]
-      [
-        1455146100000
-        111
-      ]
-      [
-        1455146400000
-        109
-      ]
-      [
-        1455146700000
-        110
-      ]
-      [
-        1455147000000
-        111
-      ]
-      [
-        1455147300000
-        109
-      ]
-      [
-        1455147600000
-        0
-      ]
-      [
-        1455147900000
-        0
-      ]
-      [
-        1455148200000
-        2
-      ]
-      [
-        1455148500000
-        0
-      ]
-      [
-        1455148800000
-        0
-      ]
-      [
-        1455149100000
-        109
-      ]
-      [
-        1455149400000
-        110
-      ]
-      [
-        1455149700000
-        111
-      ]
-    ]
-    #Volts Phase B
-    @volts2 = [
-      [
-        1455145200000
-        110
-      ]
-      [
-        1455145500000
-        111
-      ]
-      [
-        1455145800000
-        111
-      ]
-      [
-        1455146100000
-        111
-      ]
-      [
-        1455146400000
-        110
-      ]
-      [
-        1455146700000
-        111
-      ]
-      [
-        1455147000000
-        111
-      ]
-      [
-        1455147300000
-        111
-      ]
-      [
-        1455147600000
-        0
-      ]
-      [
-        1455147900000
-        0
-      ]
-      [
-        1455148200000
-        0
-      ]
-      [
-        1455148500000
-        0
-      ]
-      [
-        1455148800000
-        0
-      ]
-      [
-        1455149100000
-        90
-      ]
-      [
-        1455149400000
-        111
-      ]
-      [
-        1455149700000
-        111
-      ]
-    ]
-    #Volts Phase C
-    @volts3 = [
-      [
-        1455145200000
-        112
-      ]
-      [
-        1455145500000
-        112
-      ]
-      [
-        1455145800000
-        112
-      ]
-      [
-        1455146100000
-        113
-      ]
-      [
-        1455146400000
-        112
-      ]
-      [
-        1455146700000
-        111
-      ]
-      [
-        1455147000000
-        112
-      ]
-      [
-        1455147300000
-        113
-      ]
-      [
-        1455147600000
-        0
-      ]
-      [
-        1455147900000
-        0
-      ]
-      [
-        1455148200000
-        3
-      ]
-      [
-        1455148500000
-        0
-      ]
-      [
-        1455148800000
-        0
-      ]
-      [
-        1455149100000
-        80
-      ]
-      [
-        1455149400000
-        112
-      ]
-      [
-        1455149700000
-        112
-      ]
-    ]
-    #Volts Phase Avg
-    #JOHN: var volts4 = get This should be the call to the database to get all logged data for the day.  
-    @volts4 = [
-      [
-        1455145200000
-        111
-      ]
-      [
-        1455145500000
-        111
-      ]
-      [
-        1455145800000
-        111
-      ]
-      [
-        1455146100000
-        112
-      ]
-      [
-        1455146400000
-        110
-      ]
-      [
-        1455146700000
-        111
-      ]
-      [
-        1455147000000
-        111
-      ]
-      [
-        1455147300000
-        111
-      ]
-      [
-        1455147600000
-        0
-      ]
-      [
-        1455147900000
-        0
-      ]
-      [
-        1455148200000
-        2
-      ]
-      [
-        1455148500000
-        0
-      ]
-      [
-        1455148800000
-        0
-      ]
-      [
-        1455149100000
-        93
-      ]
-      [
-        1455149400000
-        111
-      ]
-      [
-        1455149700000
-        111
-      ]
-    ]
 
-    #************************************************
-    #*********** END OF TEST DATA *******************
-    #************************************************
+  # fnUTC2Date: (d)->
+  #   now = new Date
+  #   localOffset = now.getTimezoneOffset() * 60000
+  #   c = new Date(d + localOffset)
+  #   c.toLocaleString()
 
-    previousPoint = null
-    previousLabel = null
-
-    @RVAIN = 
-      ID: 'INPUT_VA'
-      liveData: false
-      timerID: 0
-      plot: null
-    @RVOUT = 
-      ID: 'OUTPUT_V'
-      liveData: false
-      timerID: 0
-      plot: null
-    @RAOUT = 
-      ID: 'OUTPUT_A'
-      liveData: false
-      timerID: 0
-      plot: null
-    @rain1_live = []
-    @rain2_live = []
-    @rain3_live = []
-    @rain4_live = []
-    @rvin1_live = []
-    @rvin2_live = []
-    @rvin3_live = []
-    @rvin4_live = []
-    @rvout1_live = []
-    @rvout2_live = []
-    @rvout3_live = []
-    @rvout4_live = []
-    @raout1_live = []
-    @raout2_live = []
-    @raout3_live = []
-    @raout4_live = []
-
-    #*********************************************************************************
-    #***** NOTE: It would be nice if we could locate this into another file and  
-    #*****       reference it in case we can reuse it for other plots.
-    #*****
-    #*********************************************************************************
-    #*****  CSW: 20160213
-    #*********************************************************************************
-    @rvain_options = 
-      xaxis:
-        mode: 'time'
-        timeformat: '%e/%m %I:%M %P'
-        timezone: 'Asia/Shanghai'
-        tickSize: [
-          5
-          'minute'
-        ]
-        axisLabel: ' '
-        axisLabelPadding: 25
-      yaxes: [
-        {
-          min: 25
-          max: 85
-          position: 'left'
-          color: 'black'
-          axisLabel: 'Amps'
-          axisLabelUseCanvas: true
-          axisLabelFontSizePixels: 12
-          axisLabelFontFamily: 'Verdana, Arial'
-          axisLabelPadding: 10
-        }
-        {
-          min: 95
-          max: 150
-          position: 'right'
-          color: 'black'
-          axisLabel: 'Volts'
-          axisLabelUseCanvas: true
-          axisLabelFontSizePixels: 12
-          axisLabelFontFamily: 'Verdana, Arial'
-          axisLabelPadding: 10
-        }
-      ]
-      legend:
-        show: true
-        noColumns: 4
-        labelFormatter: (label, series) ->
-          '<font color="white">' + label + '</font>'
-        backgroundColor: '#000'
-        backgroundOpacity: 0.9
-        labelBoxBorderColor: '#000000'
-        position: 'nw'
-      grid:
-        hoverable: true
-        borderWidth: 3
-        mouseActiveRadius: 50
-        backgroundColor: colors: [
-          '#ffffff'
-          '#EDF5FF'
-        ]
-    @rvout_options = 
-      xaxis:
-        mode: 'time'
-        timeformat: '%e/%m %I:%M %P'
-        timezone: 'Asia/Shanghai'
-        tickSize: [
-          5
-          'minute'
-        ]
-        axisLabel: ' '
-        axisLabelPadding: 25
-      yaxes: [ {
-        min: 95
-        max: 150
-        position: 'left'
-        color: 'black'
-        axisLabel: 'Volts'
-        axisLabelUseCanvas: true
-        axisLabelFontSizePixels: 12
-        axisLabelFontFamily: 'Verdana, Arial'
-        axisLabelPadding: 10
-      } ]
-      legend:
-        show: true
-        noColumns: 4
-        labelFormatter: (label, series) ->
-          '<font color="white">' + label + '</font>'
-        backgroundColor: '#000'
-        backgroundOpacity: 0.9
-        labelBoxBorderColor: '#000000'
-        position: 'nw'
-      grid:
-        hoverable: true
-        borderWidth: 3
-        mouseActiveRadius: 50
-        backgroundColor: colors: [
-          '#ffffff'
-          '#EDF5FF'
-        ]
-    @raout_options =  
-      xaxis:
-        mode: 'time'
-        timeformat: '%e/%m %I:%M %P'
-        timezone: 'Asia/Shanghai'
-        tickSize: [
-          5
-          'minute'
-        ]
-        axisLabel: ' '
-        axisLabelPadding: 25
-      yaxes: [ {
-        min: 25
-        max: 85
-        position: 'left'
-        color: 'black'
-        axisLabel: 'Amps'
-        axisLabelUseCanvas: true
-        axisLabelFontSizePixels: 12
-        axisLabelFontFamily: 'Verdana, Arial'
-        axisLabelPadding: 10
-      } ]
-      legend:
-        show: true
-        noColumns: 4
-        labelFormatter: (label, series) ->
-          '<font color="white">' + label + '</font>'
-        backgroundColor: '#000'
-        backgroundOpacity: 0.9
-        labelBoxBorderColor: '#000000'
-        position: 'nw'
-      grid:
-        hoverable: true
-        borderWidth: 3
-        mouseActiveRadius: 50
-        backgroundColor: colors: [
-          '#ffffff'
-          '#EDF5FF'
-        ]
-
-    $.fn.UseTooltip = ->
-      $(this).bind 'plothover', (event, pos, item) ->
-        if item
-          if previousLabel != item.series.label or previousPoint != item.dataIndex
-            now = new Date
-            localOffset = now.getTimezoneOffset() * 60000
-            previousPoint = item.dataIndex
-            previousLabel = item.series.label
-            $('#tooltip').remove()
-            #x = item.datapoint[0]
-            x = new Date(item.datapoint[0] + localOffset).toLocaleString()
-            y = item.datapoint[1]
-            #c.toLocaleString()
-            color = item.series.color
-            showTooltip item.pageX, item.pageY, color, '<strong>' + item.series.label + ':</strong> ' + x + ' = ' + y
-        else
-          $('#tooltip').remove()
-          previousPoint = null
-        return
-      return
-
-    showTooltip = (x, y, color, contents)->
-      $('<div id="tooltip">' + contents + '</div>').css(
-        position: 'absolute'
-        'z-index': 10000
-        display: 'none'
-        top: y - 40
-        left: x - 120
-        border: '2px solid ' + color
-        padding: '3px'
-        'font-size': '9px'
-        'border-radius': '5px'
-        'background-color': '#fff'
-        'font-family': 'Verdana, Arial, Helvetica, Tahoma, sans-serif'
-        opacity: 0.9).appendTo('body').fadeIn 200
-      return
-
-    return
-
-
-  update: ()->
-    @update_settings
-      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
-      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
-
-    if !@site_code? then return null
-
-    s = @model.get("settings")
-   
-    if s? && !!s.gate    
-      $ =>
-        $('.toggle_button').each (index)->
-          $(@).bind 'click', (event)->
-            $('.toggle_button').each (index)->
-                $($(@).attr('id').replace('toggle_','#view_')).hide()
-                $(@).show()
-                $('#toggle_main').hide()
-            $(@).toggle()
-            $($(@).attr('id').replace('toggle_','#view_')).toggle()
-            $('#toggle_main').toggle()
-            event.preventDefault()
-            return
-          return
-        $('#rvain-toggle-live').change ()=>
-          @clearLiveData(@RVAIN)
-          @RVAIN.liveData = $('#rvain-toggle-live').prop('checked')
-          @update_plot(@RVAIN)
-          return
-        $('#rvout-toggle-live').change ()=>
-          @clearLiveData(@RVOUT)
-          @RVOUT.liveData = $('#rvout-toggle-live').prop('checked')
-          @update_plot(@RVOUT)
-          return
-        $('#raout-toggle-live').change ()=>
-          @clearLiveData(@RAOUT)
-          @RAOUT.liveData = $('#raout-toggle-live').prop('checked')
-          @update_plot(@RAOUT)
-          return
-
-      # build settings      
-      tags = []
-      for tg of @tags
-        t = @tags[tg]
-        tags.push "#{@prefix}#{t}.Value"
-      App.opc.add_tags @site_code, tags
-
-      # listen for updates
-      @watch_updates(@site_code)
-      
-      lbl = "GPU #{s.gate} - Summary"
-      @ui.wtitle.html(lbl)
-      @$('#gpu_summary_label #txt').html(lbl)
-
-      @opc =  App.opc.connections[@site_code]
-      #@set_descriptions(true)
-
-  update_plot: (PLOT_TYPE)->
-    tData = []
-    clearTimeout(PLOT_TYPE.timerID)
-    tData = @loadData(PLOT_TYPE)
-    tData = @getLiveData(PLOT_TYPE, tData)
-    switch PLOT_TYPE.ID
-      when @RVAIN.ID
-        PLOT_TYPE.plot = $.plot($('#rvain-plot'), tData, @rvain_options)
-        $('#rvain-plot').UseTooltip()
-      when @RVOUT.ID
-        PLOT_TYPE.plot = $.plot($('#rvout-plot'), tData, @rvout_options)
-        $('#rvout-plot').UseTooltip()
-      when @RAOUT.ID
-        PLOT_TYPE.plot = $.plot($('#raout-plot'), tData, @raout_options)
-        $('#raout-plot').UseTooltip()
-    if PLOT_TYPE.liveData
-      PLOT_TYPE.timerID = setTimeout(@update_plot, 6000, PLOT_TYPE)
-    return
-
-  getRandomInt: (min, max)->
-    Math.floor(Math.random() * (max - min + 1)) + min
-
-  clearLiveData: (PLOT_TYPE)->
-    switch PLOT_TYPE.ID
-      when @RVAIN.ID
-        @rain1_live = []
-        @rain2_live = []
-        @rain3_live = []
-        @rain4_live = []
-        @rvin1_live = []
-        @rvin2_live = []
-        @rvin3_live = []
-        @rvin4_live = []
-      when @RVOUT.ID
-        @rvout1_live = []
-        @rvout2_live = []
-        @rvout3_live = []
-        @rvout4_live = []
-      when @RAOUT.ID
-        @raout1_live = []
-        @raout2_live = []
-        @raout3_live = []
-        @raout4_live = []
-      else
-        return false
-    return true
-
-  getLiveData: (PLOT_TYPE, tData)->
-    if !PLOT_TYPE.liveData
-      return tData
-
-    dt = @fnUTC()
-    #newValTotal = 0
-    index = 0
-    while index < tData.length
-      newVal = @get_value(tData[index].tag)
-      #newVal = if index <= 3 then getRandomInt(35, 50) else getRandomInt(108, 116)
-      #if index == 3 or index == 7
-      #  newVal = Math.round(newValTotal / 3)
-      #  newValTotal = 0
-      #else
-      #  newValTotal += newVal
-      tData[index].data.push [
-        dt
-        newVal
-      ]
-      ++index
-    tData
-
-  #*********************************************************************************
-  #***** NOTE: This is test function loadData(PLOT_TYPE) for the plot controls.  
-  #*****       The onlything that should have to be modified is the data: clause
-  #*****       of each tData.push.  The else clause of each should have the 
-  #*****       constant test data replaced with a call to the live data returned 
-  #*****       in the format of the test data declared above.  This call should 
-  #*****       contain all the logged data for that point from midnight until the 
-  #*****       current time.
-  #*****
-  #*********************************************************************************
-  #*****  CSW: 20160213
-  #*********************************************************************************
-  loadData: (PLOT_TYPE)->
-    tData = []
-
-    switch PLOT_TYPE.ID
-      when @RVAIN.ID
-        tData.push
-          label: 'Amps Phase A'
-          tag: 'GPU.PM_INPUT_PHASEB_I'
-          data: if @RVAIN.liveData then @rain1_live else @amps1  # <-  i.e. Change amps1 to GetLoggedData(gpu_pm_input_phasea_v);
-          yaxis: 1
-          color: '#cc00cc'
-          points:
-            symbol: 'diamond'
-            fillColor: '#cc00cc'
-            show: true
-          lines: show: true
-        tData.push
-          label: 'Amps Phase B'
-          tag: 'GPU.PM_INPUT_PHASEB_I'
-          data: if @RVAIN.liveData then @rain2_live else @amps2
-          yaxis: 1
-          color: '#cc00ff'
-          points:
-            symbol: 'diamond'
-            fillColor: '#cc00ff'
-            show: true
-          lines: show: true
-        tData.push
-          label: 'Amps Phase C'
-          tag: 'GPU.PM_INPUT_PHASEC_I'
-          data: if @RVAIN.liveData then @rain3_live else @amps3
-          yaxis: 1
-          color: '#9933ff'
-          points:
-            symbol: 'diamond'
-            fillColor: '#9933ff'
-            show: true
-          lines: show: true
-        tData.push
-          label: 'Amps Phase Avg'
-          tag: 'GPU.RAVINAVG'
-          data: if @RVAIN.liveData then @rain4_live else @amps4
-          yaxis: 1
-          color: '#6600ff'
-          points:
-            symbol: 'triangle'
-            fillColor: '#6600ff'
-            show: true
-          lines: show: true
-        tData.push
-          label: 'Volts Phase A'
-          tag: 'GPU.PM_INPUT_PHASEA_V'
-          data: if @RVAIN.liveData then @rvin1_live else @volts1
-          yaxis: 2
-          color: '#66b3ff'
-          points:
-            symbol: 'cross'
-            fillColor: '#66b3ff'
-            show: true
-          lines: show: true
-        tData.push
-          label: 'Volts Phase B'
-          tag: 'GPU.PM_INPUT_PHASEB_V'
-          data: if @RVAIN.liveData then @rvin2_live else @volts2
-          yaxis: 2
-          color: '#3399ff'
-          points:
-            symbol: 'cross'
-            fillColor: '#3399ff'
-            show: true
-          lines: show: true
-        tData.push
-          label: 'Volts Phase C'
-          tag: 'GPU.PM_INPUT_PHASEC_V'
-          data: if @RVAIN.liveData then @rvin3_live else @volts3
-          yaxis: 2
-          color: '#0099ff'
-          points:
-            symbol: 'cross'
-            fillColor: '#0099ff'
-            show: true
-          lines: show: true
-        tData.push
-          label: 'Volts Phase Avg'
-          tag: 'GPU.RVINAVG'
-          data: if @RVAIN.liveData then @rvin4_live else @volts4
-          yaxis: 2
-          color: '#0066cc'
-          points:
-            symbol: 'square'
-            fillColor: '#0066cc'
-            show: true
-          lines: show: true
-      when @RVOUT.ID
-        tData.push
-          label: 'Volts Phase A'
-          tag: 'GPU.PM_OUTPUT_PHASEA_V'
-          data: if @RVOUT.liveData then @rvout1_live else @volts1
-          yaxis: 2
-          color: '#66b3ff'
-          points:
-            symbol: 'cross'
-            fillColor: '#66b3ff'
-            show: true
-          lines: show: true
-        tData.push
-          label: 'Volts Phase B'
-          tag: 'GPU.PM_OUTPUT_PHASEB_V'
-          data: if @RVOUT.liveData then @rvout2_live else @volts2
-          yaxis: 2
-          color: '#3399ff'
-          points:
-            symbol: 'cross'
-            fillColor: '#3399ff'
-            show: true
-          lines: show: true
-        tData.push
-          label: 'Volts Phase C'
-          tag: 'GPU.PM_OUTPUT_PHASEC_V'
-          data: if @RVOUT.liveData then @rvout3_live else @volts3
-          yaxis: 2
-          color: '#0099ff'
-          points:
-            symbol: 'cross'
-            fillColor: '#0099ff'
-            show: true
-          lines: show: true
-        tData.push
-          label: 'Volts Phase Avg'
-          tag: 'GPU.RVOUTAVG'
-          data: if @RVOUT.liveData then @rvout4_live else @volts4
-          yaxis: 2
-          color: '#0066cc'
-          points:
-            symbol: 'square'
-            fillColor: '#0066cc'
-            show: true
-          lines: show: true
-      when @RAOUT.ID
-        tData.push
-          label: 'Amps Phase A'
-          tag: 'GPU.PM_OUTPUT_PHASEA_I'
-          data: if @RAOUT.liveData then @raout1_live else @amps1
-          yaxis: 1
-          color: '#cc00cc'
-          points:
-            symbol: 'diamond'
-            fillColor: '#cc00cc'
-            show: true
-          lines: show: true
-        tData.push
-          label: 'Amps Phase B'
-          tag: 'GPU.PM_OUTPUT_PHASEB_I'
-          data: if @RAOUT.liveData then @raout2_live else @amps2
-          yaxis: 1
-          color: '#cc00ff'
-          points:
-            symbol: 'diamond'
-            fillColor: '#cc00ff'
-            show: true
-          lines: show: true
-        tData.push
-          label: 'Amps Phase C'
-          tag: 'GPU.PM_OUTPUT_PHASEC_I'
-          data: if @RAOUT.liveData then @raout3_live else @amps3
-          yaxis: 1
-          color: '#9933ff'
-          points:
-            symbol: 'diamond'
-            fillColor: '#9933ff'
-            show: true
-          lines: show: true
-        tData.push
-          label: 'Amps Phase Avg'
-          tag: 'GPU.RAOUTAVG'
-          data: if @RAOUT.liveData then @raout4_live else @amps4
-          yaxis: 1
-          color: '#6600ff'
-          points:
-            symbol: 'triangle'
-            fillColor: '#6600ff'
-            show: true
-          lines: show: true
-    tData
-
-  fnUTC2Date: (d)->
-    now = new Date
-    localOffset = now.getTimezoneOffset() * 60000
-    c = new Date(d + localOffset)
-    c.toLocaleString()
-
-  fnUTC: ()->
-    now = new Date
-    d = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds(), now.getMilliseconds())
-    d
+  # fnUTC: ()->
+  #   now = new Date
+  #   d = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds(), now.getMilliseconds())
+  #   d
 
   render_gauges: ()->
     vid = "gauge_volts_out_#{@model.id}"
@@ -1233,7 +149,71 @@ class GpusummaryWidgetView extends IOPSWidgetView
           {color: '#ff3333',lo: 47,hi: 70}
         ]
         counter: true
-        
+
+  update: ()->
+    @update_settings
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+
+    if !@site_code? then return null
+
+    s = @model.get("settings")
+   
+    if s? && !!s.gate
+      # build settings      
+      tags = []
+      for tg of @tags
+        t = @tags[tg]
+        tags.push "#{@prefix}#{t}.Value"
+      App.opc.add_tags @site_code, tags
+      
+      lbl = "GPU #{s.gate} - Summary"
+      @ui.wtitle.html(lbl)
+      @$('#gpu_summary_label #txt').html(lbl)
+
+      @opc =  App.opc.connections[@site_code]
+
+      # listen for updates
+      @watch_updates(@site_code)
+
+  trend_callback: (data)=>
+    @$('#plot-placeholder').remove()
+
+    #skip plotting if in history mode in case data comes back
+    #return if !@initializing && !@$("#live_data").is(":checked")
+    
+    @tb = OPC.Trend.getTrendBinding(data)
+    #return null if !@tb.mode?
+
+    if @tb?
+      max = 150.0
+      if data.penvalues? && data.penvalues.length>0
+        for p in data.penvalues[0]
+          if p != '' && parseFloat(p) > max then max = parseFloat(p)
+      console.log max
+      @initializing = false
+      opts =
+        series: { shadowSize: 0}
+        lines:  { show: true, fill: true }
+        grid: {  hoverable: true, clickable:true, autoHighlight: false }
+        crosshair: { mode: "x"}
+        legend: { backgroundOpacity: 0.3}
+        xaxis:
+          mode: "time"
+          font: { size: 10, lineHeight: 10, family: "sans-serif", color:"#000000" }
+          tickSize: [2, "second"]
+          tickFormatter: (v, axis)=>
+            dt = new Date(v)
+            if (@tb.mode != "history" && dt.getSeconds() % 30 == 0)
+              return OPC.Util.formatDate(dt,"mm/dd hh:MM:ss")
+            return ""
+        yaxes:[
+          { position: 'left', min:0, max:max }
+        ]
+
+      fd = OPC.Flot.buildTrendData(data)
+      $.plot("##{@tb.chartid}", fd, opts)
+
 
   # process data and update the view
   data_update: (data)=>
@@ -1277,11 +257,110 @@ class GpusummaryWidgetView extends IOPSWidgetView
       txt = 'OFF'
     @$("#power_indicator").html("<div class='#{cls}'><i class='fa fa-#{icn}'></i> #{txt}</div>")
     @$("#txt_connected_time").html(th)
+    @
 
-    # @update_plot(@RVAIN)
-    # @update_plot(@RVOUT)
-    # @update_plot(@RAOUT)
-    return
+  show_plot: (p, live)=>
+    @initializing = true
+    @kill_updates(@site_code)
+    # set buttons
+    @$("#plots").toggle(p?)
+    @$("#view_main").toggle(!p?)
+
+    ph = ''
+    if p?
+      parts = p.split('_')
+      ph = if parts.length>1 then parts[1].toUpperCase() else ''
+      ptype = parts[0]
+
+    show_hist = p? && !live
+    switch p
+      when 'vin'
+        lbl = 'Input Voltage'
+        tags = [{tag: "#{@prefix}GPU.RVINAVG.Value", fill: true, color: "#0c0"}]
+      when 'vin_a', 'vin_b', 'vin_c'
+        lbl = "Input Voltage Phase #{ph}"
+        tags = [{tag: "#{@prefix}GPU.PM_INPUT_PHASE#{ph}_V.Value", fill: true, color: "#0c0"}]
+      when 'vout'
+        lbl = 'Output Voltage'
+        tags = [{tag: "#{@prefix}GPU.RVOUTAVG.Value", fill: true, color: "#00c"}]
+      when 'vout_a', 'vout_b', 'vout_c'
+        lbl = "Output Voltage Phase #{ph}"
+        tags = [{tag: "#{@prefix}GPU.PM_OUTPUT_PHASE#{ph}_V.Value", fill: true, color: "#00c"}]
+      when 'aout'
+        lbl = 'Output Amperage'
+        tags = [{tag: "#{@prefix}GPU.RAOUTAVG.Value", fill: true, color: "#909"}]
+      when 'aout_a', 'bout_b', 'cout_c'
+        lbl = "Output Amperage Phase #{ph}"
+        tags = [{tag: "#{@prefix}GPU.PM_OUTPUT_PHASE#{ph}_I.Value", fill: true, color: "#909"}]
+
+    @$('#ptype_lbl').html(lbl)
+    @$('#toggle_volts_in').toggle(ptype!='vin')
+    @$('#toggle_volts_out').toggle(ptype!='vout')
+    @$('#toggle_amps_out').toggle(ptype!='aout')
+    @$('#toggle_main').toggle(p?)
+    
+    @$('#plot-placeholder').remove()
+    @$("#plot_data").append """
+      <div id='plot-placeholder' style='background-color:#eee;position:absolute;top:0;left:0;width:100%;'>
+        <div style='text-align:center;color:#666;font-size:18px;margin-top:20%;'><i class="fa fa-spinner fa-pulse"></i> LOADING DATA...</div>
+      </div>
+    """
+    h = @$(".display").height()-90
+    @$("#plot-placeholder").css
+      "max-height": "#{h}px"
+      "height": "#{h}px"
+    
+    # clear out previous plots
+    if @tbinding
+      OPCManager.rem_trend(@site_code, @tbinding)
+      @$("##{@tbinding.chartid}").remove()
+
+    if p?
+      #build trend
+      pid = "#{p}_#{@model.id}"
+      @$("#plot_data").append("<div id='#{pid}' style='width:100%;height:100%;position:absolute;top:0;left:0;z-index:999;'></div>")
+      @tbinding = 
+        chartid:"#{pid}"
+        samplerate: 1
+        timeframe: 50
+        tags:tags
+        retain: 50
+        callback:@trend_callback
+      @$(".display").resize ()=>
+        @$("#plot_container").width('100%').height(@$(".display").height()-70)
+      @$("#plot_container").width('100%').height(@$(".display").height()-70)
+     
+      App.opc.add_trend @site_code, @tbinding
+
+      if show_hist
+        dtm = new Date()
+        sd = OPC.Util.formatDate(dtm,"mm/dd/yyyy 00:00:00")
+        ed = OPC.Util.formatDate(dtm,"mm/dd/yyyy 23:59:59")
+        OPC.Trend.getHistoryData("#{pid}", sd, ed)
+        @$("#live_data").off('change')
+        @$("#live_data").bootstrapToggle('off')
+        @$("#live_data").on 'change', (e)=>
+          lv = @$("#live_data").is(':checked')
+          @show_plot(@current_plot, lv)
+
+    @current_plot = p
+
+    @watch_updates(@site_code)
+
+  configure_buttons: ()=>
+    @$("#toggle_volts_in").click (e)=>
+      e.preventDefault()
+      @show_plot('vin')
+    @$("#toggle_volts_out").click (e)=>
+      e.preventDefault()
+      @show_plot('vout')
+    @$("#toggle_amps_out").click (e)=>
+      e.preventDefault()
+      @show_plot('aout')
+    @$("#toggle_main").click (e)=>
+      e.preventDefault()
+      @show_plot()
+
 
   set_model: ()=>
     s = _.clone(@model.get("settings"))
@@ -1312,6 +391,19 @@ class GpusummaryWidgetView extends IOPSWidgetView
     @site_code = OPCManager.get_site_code(settings.site)
     if @site_code? then @watch_updates(@site_code)
 
+    @$("#view_main .trend").remove()
+    @$('#live_data').bootstrapToggle
+      width:70
+      height:30
+    @$("a.plot_type").click (e)=>
+      e.preventDefault()
+      id = $(e.target).attr('id')
+      tpe = id.split('_')[1]
+      cp = @current_plot.split('_')[0]
+
+      @show_plot("#{cp}_#{tpe}", @$("#live_data").is(":checked"))
+    
+    @configure_buttons()
     @render_gauges()
 
 
@@ -1320,6 +412,7 @@ class GpusummaryWidgetView extends IOPSWidgetView
 
   onDestroy: (arg1, arg2)->
     # be sure to remove listener
+    if @tbinding then OPCManager.rem_trend(@site_code, @tbinding)
     @kill_updates(@site_code)
     
 # ----------------------------------

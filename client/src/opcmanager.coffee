@@ -106,7 +106,6 @@ class OPCManager
       c.init()
     @
 
-
   @rem_trend: (conn, binding)->
     c = @connections[conn]
     if c?
@@ -115,7 +114,7 @@ class OPCManager
       idx = -1
       if !c.config.trend_bindings? then c.config.trend_bindings = []
       for tb, index in c.config.trend_bindings
-        if ab.chartid == binding.chartid
+        if tb.chartid == binding.chartid
           exists = true
           idx = index
           break

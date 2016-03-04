@@ -796,6 +796,18 @@ li.dashboard-link {
   font-weight: bold;
   font-size: 18px;
   border: solid 4px #fff; }
+.gpu_summary_widget #plot_container #options {
+  min-width: 100px;
+  width: 18%;
+  font-size: 18px;
+  text-align: left; }
+.gpu_summary_widget #plot_container #plot_data {
+  width: 82%;
+  position: relative; }
+.gpu_summary_widget #ptype_lbl {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px; }
 .gpu_summary_widget #power_indicator {
   position: absolute;
   top: 5%;
@@ -887,10 +899,12 @@ li.dashboard-link {
     right: calc(100% - (100% - 78px));
     float: center;
     /* border: 1px solid red; */ }
-  .gpu_summary_widget .display .toggle {
-    position: relative;
-    width: 100% !important;
-    height: 100% !important; }
+  .gpu_summary_widget .display #live_container label {
+    font-size: 12px; }
+  .gpu_summary_widget .display #phases {
+    margin-top: 10px; }
+    .gpu_summary_widget .display #phases a {
+      font-size: 14px; }
   .gpu_summary_widget .display .plot-container {
     box-sizing: border-box;
     position: relative;

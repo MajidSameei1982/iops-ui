@@ -23,6 +23,25 @@
     border: solid 4px #fff;
   }
 
+  #plot_container {
+    #options {
+      min-width:100px;
+      width:18%;
+      font-size:18px;
+      text-align:left;
+    }
+    #plot_data {
+      width:82%;
+      position:relative;
+    }
+  }
+
+  #ptype_lbl {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
   #power_indicator {
     position: absolute;
     top: 5%;
@@ -139,11 +158,23 @@
         float: center;
         /* border: 1px solid red; */
     }
-    .toggle {
-      position: relative;
-      width: 100% !important;
-      height: 100% !important;
+
+    #live_container {
+      label {
+        font-size:12px;
+      }
     }
+    #phases {
+      margin-top:10px;
+      a {
+        font-size:14px;
+      }
+    }
+    // .toggle {
+    //   position: relative;
+    //   width: 100% !important;
+    //   height: 100% !important;
+    // }
 
     .plot-container {
       box-sizing: border-box;

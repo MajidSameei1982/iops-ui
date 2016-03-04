@@ -1720,7 +1720,7 @@ window.JST["widgets/gpu_summary_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-flash"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gpu_summary_label">\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <div id="view_main">\n      <div id="gpu_image"></div>\n      <div id="power_indicator"></div>\n      <div id="txt_connected_time"></div>\n    </div>\n    <div id="view_volts_in" style="display: none;">\n        <div id="rvain-plot-container" class="plot-container">\n          <div id="rvain-plot" class="plot-placeholder"></div>\n          <div id="rvain-live-toggle" class="plot-toggle">\n            <input id="rvain-toggle-live" type="checkbox" data-toggle="toggle" data-on="Live" data-off="Today" data-onstyle="warning" data-offstyle="info"> \n          </div>\n        </div>\n   </div>\n    <div id="view_volts_out" class="plot-container" style="display: none;">\n        <div id="rvout-plot-container" class="plot-container">\n          <div id="rvout-plot" class="plot-placeholder"></div>\n          <div id="rvout-live-toggle" class="plot-toggle">\n            <input id="rvout-toggle-live" type="checkbox" data-toggle="toggle" data-on="Live" data-off="Today" data-onstyle="warning" data-offstyle="info"> \n          </div>\n        </div>\n    </div>\n    <div id="view_amps_out" class="plot-container" style="display: none;">\n        <div id="raout-plot-container" class="plot-container">\n          <div id="raout-plot" class="plot-placeholder"></div>\n          <div id="raout-live-toggle" class="plot-toggle">\n            <input id="raout-toggle-live" type="checkbox" data-toggle="toggle" data-on="Live" data-off="Today" data-onstyle="warning" data-offstyle="info"> \n          </div>\n        </div>\n    </div>\n    <div id="bottom_buttons">\n      <a id="toggle_main" href="#" class="toggle_button" style="display: none;">Summary</a>\n      <a id="toggle_volts_in" href="#" class="toggle_button">Input Voltage</a>\n      <a id="toggle_volts_out" href="#" class="toggle_button">Output Voltage</a>\n      <a id="toggle_amps_out" href="#" class="toggle_button">Output Amperage</a>\n    </div>\n\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-flash"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gpu_summary_label">\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <div id="view_main">\n      <div id="gpu_image"></div>\n      <div id="power_indicator"></div>\n      <div id="txt_connected_time"></div>\n    </div>\n    <div id="plots" style="display: none;">\n      <table id=\'plot_container\' border="0">\n        <tr>\n          <td id=\'options\'>\n            <div id=\'ptype_lbl\'></div>\n\n            <div id=\'live_container\'>\n              <label>Live Data</label>\n              <input id=\'live_data\' type="checkbox" data-toggle="toggle" data-size="large">\n            </div>\n            \n            <div id="phases">\n              <a id="phase_a" class=\'plot_type\' href="#">Phase A</a><br/>\n              <a id="phase_b" class=\'plot_type\' href="#">Phase B</a><br/>\n              <a id="phase_c" class=\'plot_type\' href="#">Phase C</a><br/>\n            </div>\n\n          </td>\n          <td id=\'plot_data\'></td>\n        </tr>\n      </table>\n    </div>\n    <div id="bottom_buttons">\n      <a id="toggle_main" href="#" class="toggle_button" style="display: none;">Summary</a>\n      <a id="toggle_volts_in" href="#" class="toggle_button">Input Voltage</a>\n      <a id="toggle_volts_out" href="#" class="toggle_button">Output Voltage</a>\n      <a id="toggle_amps_out" href="#" class="toggle_button">Output Amperage</a>\n    </div>\n\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -4752,7 +4752,7 @@ OPCManager = (function() {
       ref = c.config.trend_bindings;
       for (index = i = 0, len = ref.length; i < len; index = ++i) {
         tb = ref[index];
-        if (ab.chartid === binding.chartid) {
+        if (tb.chartid === binding.chartid) {
           exists = true;
           idx = index;
           break;
@@ -8169,7 +8169,10 @@ GpusummaryWidgetView = (function(superClass) {
 
   function GpusummaryWidgetView() {
     this.set_model = bind(this.set_model, this);
+    this.configure_buttons = bind(this.configure_buttons, this);
+    this.show_plot = bind(this.show_plot, this);
     this.data_update = bind(this.data_update, this);
+    this.trend_callback = bind(this.trend_callback, this);
     return GpusummaryWidgetView.__super__.constructor.apply(this, arguments);
   }
 
@@ -8236,624 +8239,7 @@ GpusummaryWidgetView = (function(superClass) {
     gpu_on_2: 'GPU.ON 2'
   };
 
-  GpusummaryWidgetView.prototype.initialize = function() {
-    var previousLabel, previousPoint, showTooltip;
-    this.amps1 = [[1455145200000, 33], [1455145500000, 33], [1455145800000, 45], [1455146100000, 42], [1455146400000, 38], [1455146700000, 34], [1455147000000, 48], [1455147300000, 43], [1455147600000, 0], [1455147900000, 0], [1455148200000, 1], [1455148500000, 0], [1455148800000, 0], [1455149100000, 34], [1455149400000, 39], [1455149700000, 32]];
-    this.amps2 = [[1455145200000, 37], [1455145500000, 34], [1455145800000, 54], [1455146100000, 65], [1455146400000, 56], [1455146700000, 46], [1455147000000, 45], [1455147300000, 65], [1455147600000, 0], [1455147900000, 0], [1455148200000, 0], [1455148500000, 0], [1455148800000, 0], [1455149100000, 53], [1455149400000, 45], [1455149700000, 53]];
-    this.amps3 = [[1455145200000, 65], [1455145500000, 45], [1455145800000, 45], [1455146100000, 64], [1455146400000, 65], [1455146700000, 65], [1455147000000, 63], [1455147300000, 54], [1455147600000, 0], [1455147900000, 0], [1455148200000, 2], [1455148500000, 0], [1455148800000, 0], [1455149100000, 39], [1455149400000, 53], [1455149700000, 65]];
-    this.amps4 = [[1455145200000, 45], [1455145500000, 37], [1455145800000, 48], [1455146100000, 57], [1455146400000, 53], [1455146700000, 48], [1455147000000, 52], [1455147300000, 54], [1455147600000, 0], [1455147900000, 0], [1455148200000, 1], [1455148500000, 0], [1455148800000, 0], [1455149100000, 42], [1455149400000, 46], [1455149700000, 50]];
-    this.volts1 = [[1455145200000, 112], [1455145500000, 109], [1455145800000, 110], [1455146100000, 111], [1455146400000, 109], [1455146700000, 110], [1455147000000, 111], [1455147300000, 109], [1455147600000, 0], [1455147900000, 0], [1455148200000, 2], [1455148500000, 0], [1455148800000, 0], [1455149100000, 109], [1455149400000, 110], [1455149700000, 111]];
-    this.volts2 = [[1455145200000, 110], [1455145500000, 111], [1455145800000, 111], [1455146100000, 111], [1455146400000, 110], [1455146700000, 111], [1455147000000, 111], [1455147300000, 111], [1455147600000, 0], [1455147900000, 0], [1455148200000, 0], [1455148500000, 0], [1455148800000, 0], [1455149100000, 90], [1455149400000, 111], [1455149700000, 111]];
-    this.volts3 = [[1455145200000, 112], [1455145500000, 112], [1455145800000, 112], [1455146100000, 113], [1455146400000, 112], [1455146700000, 111], [1455147000000, 112], [1455147300000, 113], [1455147600000, 0], [1455147900000, 0], [1455148200000, 3], [1455148500000, 0], [1455148800000, 0], [1455149100000, 80], [1455149400000, 112], [1455149700000, 112]];
-    this.volts4 = [[1455145200000, 111], [1455145500000, 111], [1455145800000, 111], [1455146100000, 112], [1455146400000, 110], [1455146700000, 111], [1455147000000, 111], [1455147300000, 111], [1455147600000, 0], [1455147900000, 0], [1455148200000, 2], [1455148500000, 0], [1455148800000, 0], [1455149100000, 93], [1455149400000, 111], [1455149700000, 111]];
-    previousPoint = null;
-    previousLabel = null;
-    this.RVAIN = {
-      ID: 'INPUT_VA',
-      liveData: false,
-      timerID: 0,
-      plot: null
-    };
-    this.RVOUT = {
-      ID: 'OUTPUT_V',
-      liveData: false,
-      timerID: 0,
-      plot: null
-    };
-    this.RAOUT = {
-      ID: 'OUTPUT_A',
-      liveData: false,
-      timerID: 0,
-      plot: null
-    };
-    this.rain1_live = [];
-    this.rain2_live = [];
-    this.rain3_live = [];
-    this.rain4_live = [];
-    this.rvin1_live = [];
-    this.rvin2_live = [];
-    this.rvin3_live = [];
-    this.rvin4_live = [];
-    this.rvout1_live = [];
-    this.rvout2_live = [];
-    this.rvout3_live = [];
-    this.rvout4_live = [];
-    this.raout1_live = [];
-    this.raout2_live = [];
-    this.raout3_live = [];
-    this.raout4_live = [];
-    this.rvain_options = {
-      xaxis: {
-        mode: 'time',
-        timeformat: '%e/%m %I:%M %P',
-        timezone: 'Asia/Shanghai',
-        tickSize: [5, 'minute'],
-        axisLabel: ' ',
-        axisLabelPadding: 25
-      },
-      yaxes: [
-        {
-          min: 25,
-          max: 85,
-          position: 'left',
-          color: 'black',
-          axisLabel: 'Amps',
-          axisLabelUseCanvas: true,
-          axisLabelFontSizePixels: 12,
-          axisLabelFontFamily: 'Verdana, Arial',
-          axisLabelPadding: 10
-        }, {
-          min: 95,
-          max: 150,
-          position: 'right',
-          color: 'black',
-          axisLabel: 'Volts',
-          axisLabelUseCanvas: true,
-          axisLabelFontSizePixels: 12,
-          axisLabelFontFamily: 'Verdana, Arial',
-          axisLabelPadding: 10
-        }
-      ],
-      legend: {
-        show: true,
-        noColumns: 4,
-        labelFormatter: function(label, series) {
-          return '<font color="white">' + label + '</font>';
-        },
-        backgroundColor: '#000',
-        backgroundOpacity: 0.9,
-        labelBoxBorderColor: '#000000',
-        position: 'nw'
-      },
-      grid: {
-        hoverable: true,
-        borderWidth: 3,
-        mouseActiveRadius: 50,
-        backgroundColor: {
-          colors: ['#ffffff', '#EDF5FF']
-        }
-      }
-    };
-    this.rvout_options = {
-      xaxis: {
-        mode: 'time',
-        timeformat: '%e/%m %I:%M %P',
-        timezone: 'Asia/Shanghai',
-        tickSize: [5, 'minute'],
-        axisLabel: ' ',
-        axisLabelPadding: 25
-      },
-      yaxes: [
-        {
-          min: 95,
-          max: 150,
-          position: 'left',
-          color: 'black',
-          axisLabel: 'Volts',
-          axisLabelUseCanvas: true,
-          axisLabelFontSizePixels: 12,
-          axisLabelFontFamily: 'Verdana, Arial',
-          axisLabelPadding: 10
-        }
-      ],
-      legend: {
-        show: true,
-        noColumns: 4,
-        labelFormatter: function(label, series) {
-          return '<font color="white">' + label + '</font>';
-        },
-        backgroundColor: '#000',
-        backgroundOpacity: 0.9,
-        labelBoxBorderColor: '#000000',
-        position: 'nw'
-      },
-      grid: {
-        hoverable: true,
-        borderWidth: 3,
-        mouseActiveRadius: 50,
-        backgroundColor: {
-          colors: ['#ffffff', '#EDF5FF']
-        }
-      }
-    };
-    this.raout_options = {
-      xaxis: {
-        mode: 'time',
-        timeformat: '%e/%m %I:%M %P',
-        timezone: 'Asia/Shanghai',
-        tickSize: [5, 'minute'],
-        axisLabel: ' ',
-        axisLabelPadding: 25
-      },
-      yaxes: [
-        {
-          min: 25,
-          max: 85,
-          position: 'left',
-          color: 'black',
-          axisLabel: 'Amps',
-          axisLabelUseCanvas: true,
-          axisLabelFontSizePixels: 12,
-          axisLabelFontFamily: 'Verdana, Arial',
-          axisLabelPadding: 10
-        }
-      ],
-      legend: {
-        show: true,
-        noColumns: 4,
-        labelFormatter: function(label, series) {
-          return '<font color="white">' + label + '</font>';
-        },
-        backgroundColor: '#000',
-        backgroundOpacity: 0.9,
-        labelBoxBorderColor: '#000000',
-        position: 'nw'
-      },
-      grid: {
-        hoverable: true,
-        borderWidth: 3,
-        mouseActiveRadius: 50,
-        backgroundColor: {
-          colors: ['#ffffff', '#EDF5FF']
-        }
-      }
-    };
-    $.fn.UseTooltip = function() {
-      $(this).bind('plothover', function(event, pos, item) {
-        var color, localOffset, now, x, y;
-        if (item) {
-          if (previousLabel !== item.series.label || previousPoint !== item.dataIndex) {
-            now = new Date;
-            localOffset = now.getTimezoneOffset() * 60000;
-            previousPoint = item.dataIndex;
-            previousLabel = item.series.label;
-            $('#tooltip').remove();
-            x = new Date(item.datapoint[0] + localOffset).toLocaleString();
-            y = item.datapoint[1];
-            color = item.series.color;
-            showTooltip(item.pageX, item.pageY, color, '<strong>' + item.series.label + ':</strong> ' + x + ' = ' + y);
-          }
-        } else {
-          $('#tooltip').remove();
-          previousPoint = null;
-        }
-      });
-    };
-    showTooltip = function(x, y, color, contents) {
-      $('<div id="tooltip">' + contents + '</div>').css({
-        position: 'absolute',
-        'z-index': 10000,
-        display: 'none',
-        top: y - 40,
-        left: x - 120,
-        border: '2px solid ' + color,
-        padding: '3px',
-        'font-size': '9px',
-        'border-radius': '5px',
-        'background-color': '#fff',
-        'font-family': 'Verdana, Arial, Helvetica, Tahoma, sans-serif',
-        opacity: 0.9
-      }).appendTo('body').fadeIn(200);
-    };
-  };
-
-  GpusummaryWidgetView.prototype.update = function() {
-    var lbl, s, t, tags, tg;
-    this.update_settings({
-      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
-      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
-    });
-    if (this.site_code == null) {
-      return null;
-    }
-    s = this.model.get("settings");
-    if ((s != null) && !!s.gate) {
-      $((function(_this) {
-        return function() {
-          $('.toggle_button').each(function(index) {
-            $(this).bind('click', function(event) {
-              $('.toggle_button').each(function(index) {
-                $($(this).attr('id').replace('toggle_', '#view_')).hide();
-                $(this).show();
-                return $('#toggle_main').hide();
-              });
-              $(this).toggle();
-              $($(this).attr('id').replace('toggle_', '#view_')).toggle();
-              $('#toggle_main').toggle();
-              event.preventDefault();
-            });
-          });
-          $('#rvain-toggle-live').change(function() {
-            _this.clearLiveData(_this.RVAIN);
-            _this.RVAIN.liveData = $('#rvain-toggle-live').prop('checked');
-            _this.update_plot(_this.RVAIN);
-          });
-          $('#rvout-toggle-live').change(function() {
-            _this.clearLiveData(_this.RVOUT);
-            _this.RVOUT.liveData = $('#rvout-toggle-live').prop('checked');
-            _this.update_plot(_this.RVOUT);
-          });
-          return $('#raout-toggle-live').change(function() {
-            _this.clearLiveData(_this.RAOUT);
-            _this.RAOUT.liveData = $('#raout-toggle-live').prop('checked');
-            _this.update_plot(_this.RAOUT);
-          });
-        };
-      })(this));
-      tags = [];
-      for (tg in this.tags) {
-        t = this.tags[tg];
-        tags.push("" + this.prefix + t + ".Value");
-      }
-      App.opc.add_tags(this.site_code, tags);
-      this.watch_updates(this.site_code);
-      lbl = "GPU " + s.gate + " - Summary";
-      this.ui.wtitle.html(lbl);
-      this.$('#gpu_summary_label #txt').html(lbl);
-      return this.opc = App.opc.connections[this.site_code];
-    }
-  };
-
-  GpusummaryWidgetView.prototype.update_plot = function(PLOT_TYPE) {
-    var tData;
-    tData = [];
-    clearTimeout(PLOT_TYPE.timerID);
-    tData = this.loadData(PLOT_TYPE);
-    tData = this.getLiveData(PLOT_TYPE, tData);
-    switch (PLOT_TYPE.ID) {
-      case this.RVAIN.ID:
-        PLOT_TYPE.plot = $.plot($('#rvain-plot'), tData, this.rvain_options);
-        $('#rvain-plot').UseTooltip();
-        break;
-      case this.RVOUT.ID:
-        PLOT_TYPE.plot = $.plot($('#rvout-plot'), tData, this.rvout_options);
-        $('#rvout-plot').UseTooltip();
-        break;
-      case this.RAOUT.ID:
-        PLOT_TYPE.plot = $.plot($('#raout-plot'), tData, this.raout_options);
-        $('#raout-plot').UseTooltip();
-    }
-    if (PLOT_TYPE.liveData) {
-      PLOT_TYPE.timerID = setTimeout(this.update_plot, 6000, PLOT_TYPE);
-    }
-  };
-
-  GpusummaryWidgetView.prototype.getRandomInt = function(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  };
-
-  GpusummaryWidgetView.prototype.clearLiveData = function(PLOT_TYPE) {
-    switch (PLOT_TYPE.ID) {
-      case this.RVAIN.ID:
-        this.rain1_live = [];
-        this.rain2_live = [];
-        this.rain3_live = [];
-        this.rain4_live = [];
-        this.rvin1_live = [];
-        this.rvin2_live = [];
-        this.rvin3_live = [];
-        this.rvin4_live = [];
-        break;
-      case this.RVOUT.ID:
-        this.rvout1_live = [];
-        this.rvout2_live = [];
-        this.rvout3_live = [];
-        this.rvout4_live = [];
-        break;
-      case this.RAOUT.ID:
-        this.raout1_live = [];
-        this.raout2_live = [];
-        this.raout3_live = [];
-        this.raout4_live = [];
-        break;
-      default:
-        return false;
-    }
-    return true;
-  };
-
-  GpusummaryWidgetView.prototype.getLiveData = function(PLOT_TYPE, tData) {
-    var dt, index, newVal;
-    if (!PLOT_TYPE.liveData) {
-      return tData;
-    }
-    dt = this.fnUTC();
-    index = 0;
-    while (index < tData.length) {
-      newVal = this.get_value(tData[index].tag);
-      tData[index].data.push([dt, newVal]);
-      ++index;
-    }
-    return tData;
-  };
-
-  GpusummaryWidgetView.prototype.loadData = function(PLOT_TYPE) {
-    var tData;
-    tData = [];
-    switch (PLOT_TYPE.ID) {
-      case this.RVAIN.ID:
-        tData.push({
-          label: 'Amps Phase A',
-          tag: 'GPU.PM_INPUT_PHASEB_I',
-          data: this.RVAIN.liveData ? this.rain1_live : this.amps1,
-          yaxis: 1,
-          color: '#cc00cc',
-          points: {
-            symbol: 'diamond',
-            fillColor: '#cc00cc',
-            show: true
-          },
-          lines: {
-            show: true
-          }
-        });
-        tData.push({
-          label: 'Amps Phase B',
-          tag: 'GPU.PM_INPUT_PHASEB_I',
-          data: this.RVAIN.liveData ? this.rain2_live : this.amps2,
-          yaxis: 1,
-          color: '#cc00ff',
-          points: {
-            symbol: 'diamond',
-            fillColor: '#cc00ff',
-            show: true
-          },
-          lines: {
-            show: true
-          }
-        });
-        tData.push({
-          label: 'Amps Phase C',
-          tag: 'GPU.PM_INPUT_PHASEC_I',
-          data: this.RVAIN.liveData ? this.rain3_live : this.amps3,
-          yaxis: 1,
-          color: '#9933ff',
-          points: {
-            symbol: 'diamond',
-            fillColor: '#9933ff',
-            show: true
-          },
-          lines: {
-            show: true
-          }
-        });
-        tData.push({
-          label: 'Amps Phase Avg',
-          tag: 'GPU.RAVINAVG',
-          data: this.RVAIN.liveData ? this.rain4_live : this.amps4,
-          yaxis: 1,
-          color: '#6600ff',
-          points: {
-            symbol: 'triangle',
-            fillColor: '#6600ff',
-            show: true
-          },
-          lines: {
-            show: true
-          }
-        });
-        tData.push({
-          label: 'Volts Phase A',
-          tag: 'GPU.PM_INPUT_PHASEA_V',
-          data: this.RVAIN.liveData ? this.rvin1_live : this.volts1,
-          yaxis: 2,
-          color: '#66b3ff',
-          points: {
-            symbol: 'cross',
-            fillColor: '#66b3ff',
-            show: true
-          },
-          lines: {
-            show: true
-          }
-        });
-        tData.push({
-          label: 'Volts Phase B',
-          tag: 'GPU.PM_INPUT_PHASEB_V',
-          data: this.RVAIN.liveData ? this.rvin2_live : this.volts2,
-          yaxis: 2,
-          color: '#3399ff',
-          points: {
-            symbol: 'cross',
-            fillColor: '#3399ff',
-            show: true
-          },
-          lines: {
-            show: true
-          }
-        });
-        tData.push({
-          label: 'Volts Phase C',
-          tag: 'GPU.PM_INPUT_PHASEC_V',
-          data: this.RVAIN.liveData ? this.rvin3_live : this.volts3,
-          yaxis: 2,
-          color: '#0099ff',
-          points: {
-            symbol: 'cross',
-            fillColor: '#0099ff',
-            show: true
-          },
-          lines: {
-            show: true
-          }
-        });
-        tData.push({
-          label: 'Volts Phase Avg',
-          tag: 'GPU.RVINAVG',
-          data: this.RVAIN.liveData ? this.rvin4_live : this.volts4,
-          yaxis: 2,
-          color: '#0066cc',
-          points: {
-            symbol: 'square',
-            fillColor: '#0066cc',
-            show: true
-          },
-          lines: {
-            show: true
-          }
-        });
-        break;
-      case this.RVOUT.ID:
-        tData.push({
-          label: 'Volts Phase A',
-          tag: 'GPU.PM_OUTPUT_PHASEA_V',
-          data: this.RVOUT.liveData ? this.rvout1_live : this.volts1,
-          yaxis: 2,
-          color: '#66b3ff',
-          points: {
-            symbol: 'cross',
-            fillColor: '#66b3ff',
-            show: true
-          },
-          lines: {
-            show: true
-          }
-        });
-        tData.push({
-          label: 'Volts Phase B',
-          tag: 'GPU.PM_OUTPUT_PHASEB_V',
-          data: this.RVOUT.liveData ? this.rvout2_live : this.volts2,
-          yaxis: 2,
-          color: '#3399ff',
-          points: {
-            symbol: 'cross',
-            fillColor: '#3399ff',
-            show: true
-          },
-          lines: {
-            show: true
-          }
-        });
-        tData.push({
-          label: 'Volts Phase C',
-          tag: 'GPU.PM_OUTPUT_PHASEC_V',
-          data: this.RVOUT.liveData ? this.rvout3_live : this.volts3,
-          yaxis: 2,
-          color: '#0099ff',
-          points: {
-            symbol: 'cross',
-            fillColor: '#0099ff',
-            show: true
-          },
-          lines: {
-            show: true
-          }
-        });
-        tData.push({
-          label: 'Volts Phase Avg',
-          tag: 'GPU.RVOUTAVG',
-          data: this.RVOUT.liveData ? this.rvout4_live : this.volts4,
-          yaxis: 2,
-          color: '#0066cc',
-          points: {
-            symbol: 'square',
-            fillColor: '#0066cc',
-            show: true
-          },
-          lines: {
-            show: true
-          }
-        });
-        break;
-      case this.RAOUT.ID:
-        tData.push({
-          label: 'Amps Phase A',
-          tag: 'GPU.PM_OUTPUT_PHASEA_I',
-          data: this.RAOUT.liveData ? this.raout1_live : this.amps1,
-          yaxis: 1,
-          color: '#cc00cc',
-          points: {
-            symbol: 'diamond',
-            fillColor: '#cc00cc',
-            show: true
-          },
-          lines: {
-            show: true
-          }
-        });
-        tData.push({
-          label: 'Amps Phase B',
-          tag: 'GPU.PM_OUTPUT_PHASEB_I',
-          data: this.RAOUT.liveData ? this.raout2_live : this.amps2,
-          yaxis: 1,
-          color: '#cc00ff',
-          points: {
-            symbol: 'diamond',
-            fillColor: '#cc00ff',
-            show: true
-          },
-          lines: {
-            show: true
-          }
-        });
-        tData.push({
-          label: 'Amps Phase C',
-          tag: 'GPU.PM_OUTPUT_PHASEC_I',
-          data: this.RAOUT.liveData ? this.raout3_live : this.amps3,
-          yaxis: 1,
-          color: '#9933ff',
-          points: {
-            symbol: 'diamond',
-            fillColor: '#9933ff',
-            show: true
-          },
-          lines: {
-            show: true
-          }
-        });
-        tData.push({
-          label: 'Amps Phase Avg',
-          tag: 'GPU.RAOUTAVG',
-          data: this.RAOUT.liveData ? this.raout4_live : this.amps4,
-          yaxis: 1,
-          color: '#6600ff',
-          points: {
-            symbol: 'triangle',
-            fillColor: '#6600ff',
-            show: true
-          },
-          lines: {
-            show: true
-          }
-        });
-    }
-    return tData;
-  };
-
-  GpusummaryWidgetView.prototype.fnUTC2Date = function(d) {
-    var c, localOffset, now;
-    now = new Date;
-    localOffset = now.getTimezoneOffset() * 60000;
-    c = new Date(d + localOffset);
-    return c.toLocaleString();
-  };
-
-  GpusummaryWidgetView.prototype.fnUTC = function() {
-    var d, now;
-    now = new Date;
-    d = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds(), now.getMilliseconds());
-    return d;
-  };
+  GpusummaryWidgetView.prototype.initialize = function() {};
 
   GpusummaryWidgetView.prototype.render_gauges = function() {
     var aid, vid;
@@ -8966,6 +8352,100 @@ GpusummaryWidgetView = (function(superClass) {
     }));
   };
 
+  GpusummaryWidgetView.prototype.update = function() {
+    var lbl, s, t, tags, tg;
+    this.update_settings({
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+    });
+    if (this.site_code == null) {
+      return null;
+    }
+    s = this.model.get("settings");
+    if ((s != null) && !!s.gate) {
+      tags = [];
+      for (tg in this.tags) {
+        t = this.tags[tg];
+        tags.push("" + this.prefix + t + ".Value");
+      }
+      App.opc.add_tags(this.site_code, tags);
+      lbl = "GPU " + s.gate + " - Summary";
+      this.ui.wtitle.html(lbl);
+      this.$('#gpu_summary_label #txt').html(lbl);
+      this.opc = App.opc.connections[this.site_code];
+      return this.watch_updates(this.site_code);
+    }
+  };
+
+  GpusummaryWidgetView.prototype.trend_callback = function(data) {
+    var fd, i, len, max, opts, p, ref;
+    this.$('#plot-placeholder').remove();
+    this.tb = OPC.Trend.getTrendBinding(data);
+    if (this.tb != null) {
+      max = 150.0;
+      if ((data.penvalues != null) && data.penvalues.length > 0) {
+        ref = data.penvalues[0];
+        for (i = 0, len = ref.length; i < len; i++) {
+          p = ref[i];
+          if (p !== '' && parseFloat(p) > max) {
+            max = parseFloat(p);
+          }
+        }
+      }
+      console.log(max);
+      this.initializing = false;
+      opts = {
+        series: {
+          shadowSize: 0
+        },
+        lines: {
+          show: true,
+          fill: true
+        },
+        grid: {
+          hoverable: true,
+          clickable: true,
+          autoHighlight: false
+        },
+        crosshair: {
+          mode: "x"
+        },
+        legend: {
+          backgroundOpacity: 0.3
+        },
+        xaxis: {
+          mode: "time",
+          font: {
+            size: 10,
+            lineHeight: 10,
+            family: "sans-serif",
+            color: "#000000"
+          },
+          tickSize: [2, "second"],
+          tickFormatter: (function(_this) {
+            return function(v, axis) {
+              var dt;
+              dt = new Date(v);
+              if (_this.tb.mode !== "history" && dt.getSeconds() % 30 === 0) {
+                return OPC.Util.formatDate(dt, "mm/dd hh:MM:ss");
+              }
+              return "";
+            };
+          })(this)
+        },
+        yaxes: [
+          {
+            position: 'left',
+            min: 0,
+            max: max
+          }
+        ]
+      };
+      fd = OPC.Flot.buildTrendData(data);
+      return $.plot("#" + this.tb.chartid, fd, opts);
+    }
+  };
+
   GpusummaryWidgetView.prototype.data_update = function(data) {
     var aq, cls, h, icn, m, s, sq, stat, t, th, txt, v, vq;
     this.refresh_values();
@@ -9008,6 +8488,168 @@ GpusummaryWidgetView = (function(superClass) {
     }
     this.$("#power_indicator").html("<div class='" + cls + "'><i class='fa fa-" + icn + "'></i> " + txt + "</div>");
     this.$("#txt_connected_time").html(th);
+    return this;
+  };
+
+  GpusummaryWidgetView.prototype.show_plot = function(p, live) {
+    var dtm, ed, h, lbl, parts, ph, pid, ptype, sd, show_hist, tags;
+    this.initializing = true;
+    this.kill_updates(this.site_code);
+    this.$("#plots").toggle(p != null);
+    this.$("#view_main").toggle(p == null);
+    ph = '';
+    if (p != null) {
+      parts = p.split('_');
+      ph = parts.length > 1 ? parts[1].toUpperCase() : '';
+      ptype = parts[0];
+    }
+    show_hist = (p != null) && !live;
+    switch (p) {
+      case 'vin':
+        lbl = 'Input Voltage';
+        tags = [
+          {
+            tag: this.prefix + "GPU.RVINAVG.Value",
+            fill: true,
+            color: "#0c0"
+          }
+        ];
+        break;
+      case 'vin_a':
+      case 'vin_b':
+      case 'vin_c':
+        lbl = "Input Voltage Phase " + ph;
+        tags = [
+          {
+            tag: this.prefix + "GPU.PM_INPUT_PHASE" + ph + "_V.Value",
+            fill: true,
+            color: "#0c0"
+          }
+        ];
+        break;
+      case 'vout':
+        lbl = 'Output Voltage';
+        tags = [
+          {
+            tag: this.prefix + "GPU.RVOUTAVG.Value",
+            fill: true,
+            color: "#00c"
+          }
+        ];
+        break;
+      case 'vout_a':
+      case 'vout_b':
+      case 'vout_c':
+        lbl = "Output Voltage Phase " + ph;
+        tags = [
+          {
+            tag: this.prefix + "GPU.PM_OUTPUT_PHASE" + ph + "_V.Value",
+            fill: true,
+            color: "#00c"
+          }
+        ];
+        break;
+      case 'aout':
+        lbl = 'Output Amperage';
+        tags = [
+          {
+            tag: this.prefix + "GPU.RAOUTAVG.Value",
+            fill: true,
+            color: "#909"
+          }
+        ];
+        break;
+      case 'aout_a':
+      case 'bout_b':
+      case 'cout_c':
+        lbl = "Output Amperage Phase " + ph;
+        tags = [
+          {
+            tag: this.prefix + "GPU.PM_OUTPUT_PHASE" + ph + "_I.Value",
+            fill: true,
+            color: "#909"
+          }
+        ];
+    }
+    this.$('#ptype_lbl').html(lbl);
+    this.$('#toggle_volts_in').toggle(ptype !== 'vin');
+    this.$('#toggle_volts_out').toggle(ptype !== 'vout');
+    this.$('#toggle_amps_out').toggle(ptype !== 'aout');
+    this.$('#toggle_main').toggle(p != null);
+    this.$('#plot-placeholder').remove();
+    this.$("#plot_data").append("<div id='plot-placeholder' style='background-color:#eee;position:absolute;top:0;left:0;width:100%;'>\n  <div style='text-align:center;color:#666;font-size:18px;margin-top:20%;'><i class=\"fa fa-spinner fa-pulse\"></i> LOADING DATA...</div>\n</div>");
+    h = this.$(".display").height() - 90;
+    this.$("#plot-placeholder").css({
+      "max-height": h + "px",
+      "height": h + "px"
+    });
+    if (this.tbinding) {
+      OPCManager.rem_trend(this.site_code, this.tbinding);
+      this.$("#" + this.tbinding.chartid).remove();
+    }
+    if (p != null) {
+      pid = p + "_" + this.model.id;
+      this.$("#plot_data").append("<div id='" + pid + "' style='width:100%;height:100%;position:absolute;top:0;left:0;z-index:999;'></div>");
+      this.tbinding = {
+        chartid: "" + pid,
+        samplerate: 1,
+        timeframe: 50,
+        tags: tags,
+        retain: 50,
+        callback: this.trend_callback
+      };
+      this.$(".display").resize((function(_this) {
+        return function() {
+          return _this.$("#plot_container").width('100%').height(_this.$(".display").height() - 70);
+        };
+      })(this));
+      this.$("#plot_container").width('100%').height(this.$(".display").height() - 70);
+      App.opc.add_trend(this.site_code, this.tbinding);
+      if (show_hist) {
+        dtm = new Date();
+        sd = OPC.Util.formatDate(dtm, "mm/dd/yyyy 00:00:00");
+        ed = OPC.Util.formatDate(dtm, "mm/dd/yyyy 23:59:59");
+        OPC.Trend.getHistoryData("" + pid, sd, ed);
+        this.$("#live_data").off('change');
+        this.$("#live_data").bootstrapToggle('off');
+        this.$("#live_data").on('change', (function(_this) {
+          return function(e) {
+            var lv;
+            lv = _this.$("#live_data").is(':checked');
+            return _this.show_plot(_this.current_plot, lv);
+          };
+        })(this));
+      }
+    }
+    this.current_plot = p;
+    return this.watch_updates(this.site_code);
+  };
+
+  GpusummaryWidgetView.prototype.configure_buttons = function() {
+    this.$("#toggle_volts_in").click((function(_this) {
+      return function(e) {
+        e.preventDefault();
+        return _this.show_plot('vin');
+      };
+    })(this));
+    this.$("#toggle_volts_out").click((function(_this) {
+      return function(e) {
+        e.preventDefault();
+        return _this.show_plot('vout');
+      };
+    })(this));
+    this.$("#toggle_amps_out").click((function(_this) {
+      return function(e) {
+        e.preventDefault();
+        return _this.show_plot('aout');
+      };
+    })(this));
+    return this.$("#toggle_main").click((function(_this) {
+      return function(e) {
+        e.preventDefault();
+        return _this.show_plot();
+      };
+    })(this));
   };
 
   GpusummaryWidgetView.prototype.set_model = function() {
@@ -9047,6 +8689,22 @@ GpusummaryWidgetView = (function(superClass) {
     if (this.site_code != null) {
       this.watch_updates(this.site_code);
     }
+    this.$("#view_main .trend").remove();
+    this.$('#live_data').bootstrapToggle({
+      width: 70,
+      height: 30
+    });
+    this.$("a.plot_type").click((function(_this) {
+      return function(e) {
+        var cp, id, tpe;
+        e.preventDefault();
+        id = $(e.target).attr('id');
+        tpe = id.split('_')[1];
+        cp = _this.current_plot.split('_')[0];
+        return _this.show_plot(cp + "_" + tpe, _this.$("#live_data").is(":checked"));
+      };
+    })(this));
+    this.configure_buttons();
     return this.render_gauges();
   };
 
@@ -9055,6 +8713,9 @@ GpusummaryWidgetView = (function(superClass) {
   };
 
   GpusummaryWidgetView.prototype.onDestroy = function(arg1, arg2) {
+    if (this.tbinding) {
+      OPCManager.rem_trend(this.site_code, this.tbinding);
+    }
     return this.kill_updates(this.site_code);
   };
 
