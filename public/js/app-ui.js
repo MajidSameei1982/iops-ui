@@ -5751,6 +5751,7 @@ WidgetLayout = (function(superClass) {
       return this.grid;
     }
     grid = this.$('ul.gridster').gridster({
+      max_size_x: 20,
       widget_base_dimensions: [50, 25],
       autogrow_cols: true,
       resize: {
