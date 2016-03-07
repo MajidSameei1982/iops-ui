@@ -805,7 +805,7 @@ li.dashboard-link {
   width: 82%;
   position: relative; }
 .gpu_summary_widget #ptype_lbl {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bold;
   margin-bottom: 10px; }
 .gpu_summary_widget #power_indicator {
@@ -872,11 +872,8 @@ li.dashboard-link {
     position: absolute;
     box-sizing: border-box;
     width: 100%;
-    height: calc(100% - 75px);
-    border: 1px solid #ddd;
-    background: #fff;
-    background: linear-gradient(#f6f6f6 0, #fff 50px);
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15); }
+    height: 100%;
+    background: #fff; }
   .gpu_summary_widget .display .plot-placeholder div.xAxis div.tickLabel {
     min-width: 90px;
     margin: 35px 0px 0px 0px;
@@ -891,20 +888,17 @@ li.dashboard-link {
     /* Opera */
     /*rotation:270deg;*/
     /* CSS3 */ }
-  .gpu_summary_widget .display .plot-toggle {
-    position: absolute;
-    width: 82px;
-    height: 35px;
-    top: calc(100% - (100% - 32px));
-    right: calc(100% - (100% - 78px));
-    float: center;
-    /* border: 1px solid red; */ }
   .gpu_summary_widget .display #live_container label {
-    font-size: 12px; }
+    font-size: 12px;
+    margin-bottom: 0 !important; }
   .gpu_summary_widget .display #phases {
     margin-top: 10px; }
     .gpu_summary_widget .display #phases a {
-      font-size: 14px; }
+      font-size: 12px;
+      font-weight: bold;
+      display: block;
+      line-height: 18px;
+      margin: 0 0 0 0; }
   .gpu_summary_widget .display .plot-container {
     box-sizing: border-box;
     position: relative;

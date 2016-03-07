@@ -158,8 +158,11 @@ class GpusummaryWidgetView extends IOPSWidgetView
     if !@site_code? then return null
 
     s = @model.get("settings")
+
+    show_opts = s? && !!s.gate
+    @$('#mode').toggle(show_opts)
    
-    if s? && !!s.gate
+    if show_opts
       # build settings      
       tags = []
       for tg of @tags
@@ -167,7 +170,7 @@ class GpusummaryWidgetView extends IOPSWidgetView
         tags.push "#{@prefix}#{t}.Value"
       App.opc.add_tags @site_code, tags
       
-      lbl = "GPU #{s.gate} - Summary"
+      lbl = "GPU #{s.gate} "
       @ui.wtitle.html(lbl)
       @$('#gpu_summary_label #txt').html(lbl)
 
@@ -190,12 +193,31 @@ class GpusummaryWidgetView extends IOPSWidgetView
       if data.penvalues? && data.penvalues.length>0
         for p in data.penvalues[0]
           if p != '' && parseFloat(p) > max then max = parseFloat(p)
-      console.log max
+      # console.log max
+      markings = []
+      fd = OPC.Flot.buildTrendData(data)
+      
+      tm1 = fd[0].data[0][0].getTime()
+      tm2 = fd[0].data[fd[0].data.length-1][0].getTime()
+      span = Math.floor((tm2-tm1)/24)
+      
+      for y in [0..Math.floor(max)+100] by 25
+        markings.push { yaxis: { from: y, to: y }, color:"#eee", lineWidth:1 }
+      for x in [tm1..tm2] by span
+        markings.push { xaxis: { from: x, to: x }, color:"#eee", lineWidth:1 }
+
       @initializing = false
       opts =
         series: { shadowSize: 0}
         lines:  { show: true, fill: true }
-        grid: {  hoverable: true, clickable:true, autoHighlight: false }
+        grid:
+          hoverable: true 
+          clickable:true
+          autoHighlight: false
+          color:"transparent"
+          borderColor: "#666"
+          borderWidth: 1
+          markings: markings
         crosshair: { mode: "x"}
         legend: { backgroundOpacity: 0.3}
         xaxis:
@@ -211,7 +233,7 @@ class GpusummaryWidgetView extends IOPSWidgetView
           { position: 'left', min:0, max:max }
         ]
 
-      fd = OPC.Flot.buildTrendData(data)
+      # = OPC.Flot.buildTrendData(data)
       $.plot("##{@tb.chartid}", fd, opts)
 
 
@@ -273,25 +295,26 @@ class GpusummaryWidgetView extends IOPSWidgetView
       ptype = parts[0]
 
     show_hist = p? && !live
+    plot_color = "#80C3FF"
     switch p
       when 'vin'
         lbl = 'Input Voltage'
-        tags = [{tag: "#{@prefix}GPU.RVINAVG.Value", fill: true, color: "#0c0"}]
+        tags = [{tag: "#{@prefix}GPU.RVINAVG.Value", fill: true, color: plot_color}]
       when 'vin_a', 'vin_b', 'vin_c'
         lbl = "Input Voltage Phase #{ph}"
-        tags = [{tag: "#{@prefix}GPU.PM_INPUT_PHASE#{ph}_V.Value", fill: true, color: "#0c0"}]
+        tags = [{tag: "#{@prefix}GPU.PM_INPUT_PHASE#{ph}_V.Value", fill: true, color: plot_color}]
       when 'vout'
         lbl = 'Output Voltage'
-        tags = [{tag: "#{@prefix}GPU.RVOUTAVG.Value", fill: true, color: "#00c"}]
+        tags = [{tag: "#{@prefix}GPU.RVOUTAVG.Value", fill: true, color: plot_color}]
       when 'vout_a', 'vout_b', 'vout_c'
         lbl = "Output Voltage Phase #{ph}"
-        tags = [{tag: "#{@prefix}GPU.PM_OUTPUT_PHASE#{ph}_V.Value", fill: true, color: "#00c"}]
+        tags = [{tag: "#{@prefix}GPU.PM_OUTPUT_PHASE#{ph}_V.Value", fill: true, color: plot_color}]
       when 'aout'
         lbl = 'Output Amperage'
-        tags = [{tag: "#{@prefix}GPU.RAOUTAVG.Value", fill: true, color: "#909"}]
+        tags = [{tag: "#{@prefix}GPU.RAOUTAVG.Value", fill: true, color: plot_color}]
       when 'aout_a', 'bout_b', 'cout_c'
         lbl = "Output Amperage Phase #{ph}"
-        tags = [{tag: "#{@prefix}GPU.PM_OUTPUT_PHASE#{ph}_I.Value", fill: true, color: "#909"}]
+        tags = [{tag: "#{@prefix}GPU.PM_OUTPUT_PHASE#{ph}_I.Value", fill: true, color: plot_color}]
 
     @$('#ptype_lbl').html(lbl)
     @$('#toggle_volts_in').toggle(ptype!='vin')
@@ -305,7 +328,8 @@ class GpusummaryWidgetView extends IOPSWidgetView
         <div style='text-align:center;color:#666;font-size:18px;margin-top:20%;'><i class="fa fa-spinner fa-pulse"></i> LOADING DATA...</div>
       </div>
     """
-    h = @$(".display").height()-90
+    #h = @$(".display").height()-90 # with bottom buttons
+    h = @$(".display").height()
     @$("#plot-placeholder").css
       "max-height": "#{h}px"
       "height": "#{h}px"
@@ -327,8 +351,10 @@ class GpusummaryWidgetView extends IOPSWidgetView
         retain: 50
         callback:@trend_callback
       @$(".display").resize ()=>
-        @$("#plot_container").width('100%').height(@$(".display").height()-70)
-      @$("#plot_container").width('100%').height(@$(".display").height()-70)
+        @$("#plot_container").width('100%').height(@$(".display").height()-20)
+        #@$("#plot_container").width('100%').height(@$(".display").height()-70)
+      @$("#plot_container").width('100%').height(@$(".display").height()-20)
+      # @$("#plot_container").width('100%').height(@$(".display").height()-70)
      
       App.opc.add_trend @site_code, @tbinding
 
@@ -348,19 +374,23 @@ class GpusummaryWidgetView extends IOPSWidgetView
     @watch_updates(@site_code)
 
   configure_buttons: ()=>
-    @$("#toggle_volts_in").click (e)=>
-      e.preventDefault()
-      @show_plot('vin')
-    @$("#toggle_volts_out").click (e)=>
-      e.preventDefault()
-      @show_plot('vout')
-    @$("#toggle_amps_out").click (e)=>
-      e.preventDefault()
-      @show_plot('aout')
-    @$("#toggle_main").click (e)=>
-      e.preventDefault()
-      @show_plot()
+    # @$("#toggle_volts_in").click (e)=>
+    #   e.preventDefault()
+    #   @show_plot('vin')
+    # @$("#toggle_volts_out").click (e)=>
+    #   e.preventDefault()
+    #   @show_plot('vout')
+    # @$("#toggle_amps_out").click (e)=>
+    #   e.preventDefault()
+    #   @show_plot('aout')
+    # @$("#toggle_main").click (e)=>
+    #   e.preventDefault()
+    #   @show_plot()
 
+    @$('#mode').change (e)=>
+      sel = @$('#mode').val()
+      sel = if sel=='' then null else sel
+      @show_plot(sel)
 
   set_model: ()=>
     s = _.clone(@model.get("settings"))
@@ -393,8 +423,8 @@ class GpusummaryWidgetView extends IOPSWidgetView
 
     @$("#view_main .trend").remove()
     @$('#live_data').bootstrapToggle
-      width:70
-      height:30
+      width:50
+      height:25
     @$("a.plot_type").click (e)=>
       e.preventDefault()
       id = $(e.target).attr('id')

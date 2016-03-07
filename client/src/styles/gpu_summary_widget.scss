@@ -37,7 +37,7 @@
   }
 
   #ptype_lbl {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
     margin-bottom: 10px;
   }
@@ -131,12 +131,13 @@
       position: absolute;
       box-sizing: border-box;
       width: 100%;
-      height: calc(100% - 75px);
-      border: 1px solid $color_alto_approx;
+      height: 100%;
+      // height: calc(100% - 75px);
+      // border: 1px solid $color_alto_approx;
       background: $white;
-      background: linear-gradient($color_black_haze_approx 0, $white 50px);
+      // background: linear-gradient($color_black_haze_approx 0, $white 50px);
       //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-      box-shadow: 0 3px 10px $black_15;
+      // box-shadow: 0 3px 10px $black_15;
     }
     .plot-placeholder div.xAxis div.tickLabel {
       min-width: 90px;
@@ -149,25 +150,30 @@
       /*rotation:270deg;*/ /* CSS3 */
     }
 
-    .plot-toggle {
-        position: absolute;
-        width: 82px;
-        height: 35px;
-        top: calc(100% - (100% - 32px));
-        right: calc(100% - (100% - 78px));
-        float: center;
-        /* border: 1px solid red; */
-    }
+    // .plot-toggle {
+    //     position: absolute;
+    //     width: 82px;
+    //     height: 35px;
+    //     top: calc(100% - (100% - 32px));
+    //     right: calc(100% - (100% - 78px));
+    //     float: center;
+    //     /* border: 1px solid red; */
+    // }
 
     #live_container {
       label {
         font-size:12px;
+        margin-bottom:0 !important;
       }
     }
     #phases {
       margin-top:10px;
       a {
-        font-size:14px;
+        font-size:12px;
+        font-weight:bold;
+        display:block;
+        line-height:18px;
+        margin:0 0 0 0;
       }
     }
     // .toggle {

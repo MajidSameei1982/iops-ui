@@ -1720,7 +1720,7 @@ window.JST["widgets/gpu_summary_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-flash"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gpu_summary_label">\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <div id="view_main">\n      <div id="gpu_image"></div>\n      <div id="power_indicator"></div>\n      <div id="txt_connected_time"></div>\n    </div>\n    <div id="plots" style="display: none;">\n      <table id=\'plot_container\' border="0">\n        <tr>\n          <td id=\'options\'>\n            <div id=\'ptype_lbl\'></div>\n\n            <div id=\'live_container\'>\n              <label>Live Data</label>\n              <input id=\'live_data\' type="checkbox" data-toggle="toggle" data-size="large">\n            </div>\n            \n            <div id="phases">\n              <a id="phase_a" class=\'plot_type\' href="#">Phase A</a><br/>\n              <a id="phase_b" class=\'plot_type\' href="#">Phase B</a><br/>\n              <a id="phase_c" class=\'plot_type\' href="#">Phase C</a><br/>\n            </div>\n\n          </td>\n          <td id=\'plot_data\'></td>\n        </tr>\n      </table>\n    </div>\n    <div id="bottom_buttons">\n      <a id="toggle_main" href="#" class="toggle_button" style="display: none;">Summary</a>\n      <a id="toggle_volts_in" href="#" class="toggle_button">Input Voltage</a>\n      <a id="toggle_volts_out" href="#" class="toggle_button">Output Voltage</a>\n      <a id="toggle_amps_out" href="#" class="toggle_button">Output Amperage</a>\n    </div>\n\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'>\n    <i class="fa fa-flash"></i> <h3 class="box-title"></h3>\n    <select id="mode" style=\'display:none;\'>\n      <option value=\'\'>Summary</option>\n      <option value=\'vin\'>Input Voltage</option>\n      <option value=\'vout\'>Output Voltage</option>\n      <option value=\'aout\'>Output Amperage</option>\n    </select>\n  </div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gpu_summary_label">\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <div id="view_main">\n      <div id="gpu_image"></div>\n      <div id="power_indicator"></div>\n      <div id="txt_connected_time"></div>\n    </div>\n    <div id="plots" style="display: none;">\n      <table id=\'plot_container\' border="0">\n        <tr>\n          <td id=\'options\'>\n            <div id=\'ptype_lbl\'></div>\n\n            <div id=\'live_container\'>\n              <label>Live Data</label>\n              <input id=\'live_data\' type="checkbox" data-toggle="toggle" >\n            </div>\n            \n            <div id="phases">\n              <a id="phase_a" class=\'plot_type\' href="#">Phase A</a>\n              <a id="phase_b" class=\'plot_type\' href="#">Phase B</a>\n              <a id="phase_c" class=\'plot_type\' href="#">Phase C</a>\n            </div>\n\n          </td>\n          <td id=\'plot_data\'></td>\n        </tr>\n      </table>\n    </div>\n    <!-- <div id="bottom_buttons">\n      <a id="toggle_main" href="#" class="toggle_button" style="display: none;">Summary</a>\n      <a id="toggle_volts_in" href="#" class="toggle_button">Input Voltage</a>\n      <a id="toggle_volts_out" href="#" class="toggle_button">Output Voltage</a>\n      <a id="toggle_amps_out" href="#" class="toggle_button">Output Amperage</a>\n    </div> -->\n\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -8334,7 +8334,7 @@ GpusummaryWidgetView = (function(superClass) {
   };
 
   GpusummaryWidgetView.prototype.update = function() {
-    var lbl, s, t, tags, tg;
+    var lbl, s, show_opts, t, tags, tg;
     this.update_settings({
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
@@ -8343,14 +8343,16 @@ GpusummaryWidgetView = (function(superClass) {
       return null;
     }
     s = this.model.get("settings");
-    if ((s != null) && !!s.gate) {
+    show_opts = (s != null) && !!s.gate;
+    this.$('#mode').toggle(show_opts);
+    if (show_opts) {
       tags = [];
       for (tg in this.tags) {
         t = this.tags[tg];
         tags.push("" + this.prefix + t + ".Value");
       }
       App.opc.add_tags(this.site_code, tags);
-      lbl = "GPU " + s.gate + " - Summary";
+      lbl = "GPU " + s.gate + " ";
       this.ui.wtitle.html(lbl);
       this.$('#gpu_summary_label #txt').html(lbl);
       this.opc = App.opc.connections[this.site_code];
@@ -8359,7 +8361,7 @@ GpusummaryWidgetView = (function(superClass) {
   };
 
   GpusummaryWidgetView.prototype.trend_callback = function(data) {
-    var fd, i, len, max, opts, p, ref;
+    var fd, i, j, k, len, markings, max, opts, p, ref, ref1, ref2, ref3, ref4, span, tm1, tm2, x, y;
     this.$('#plot-placeholder').remove();
     this.tb = OPC.Trend.getTrendBinding(data);
     if (this.tb != null) {
@@ -8373,7 +8375,31 @@ GpusummaryWidgetView = (function(superClass) {
           }
         }
       }
-      console.log(max);
+      markings = [];
+      fd = OPC.Flot.buildTrendData(data);
+      tm1 = fd[0].data[0][0].getTime();
+      tm2 = fd[0].data[fd[0].data.length - 1][0].getTime();
+      span = Math.floor((tm2 - tm1) / 24);
+      for (y = j = 0, ref1 = Math.floor(max) + 100; j <= ref1; y = j += 25) {
+        markings.push({
+          yaxis: {
+            from: y,
+            to: y
+          },
+          color: "#eee",
+          lineWidth: 1
+        });
+      }
+      for (x = k = ref2 = tm1, ref3 = tm2, ref4 = span; ref4 > 0 ? k <= ref3 : k >= ref3; x = k += ref4) {
+        markings.push({
+          xaxis: {
+            from: x,
+            to: x
+          },
+          color: "#eee",
+          lineWidth: 1
+        });
+      }
       this.initializing = false;
       opts = {
         series: {
@@ -8386,7 +8412,11 @@ GpusummaryWidgetView = (function(superClass) {
         grid: {
           hoverable: true,
           clickable: true,
-          autoHighlight: false
+          autoHighlight: false,
+          color: "transparent",
+          borderColor: "#666",
+          borderWidth: 1,
+          markings: markings
         },
         crosshair: {
           mode: "x"
@@ -8422,7 +8452,6 @@ GpusummaryWidgetView = (function(superClass) {
           }
         ]
       };
-      fd = OPC.Flot.buildTrendData(data);
       return $.plot("#" + this.tb.chartid, fd, opts);
     }
   };
@@ -8473,7 +8502,7 @@ GpusummaryWidgetView = (function(superClass) {
   };
 
   GpusummaryWidgetView.prototype.show_plot = function(p, live) {
-    var dtm, ed, h, lbl, parts, ph, pid, ptype, sd, show_hist, tags;
+    var dtm, ed, h, lbl, parts, ph, pid, plot_color, ptype, sd, show_hist, tags;
     this.initializing = true;
     this.kill_updates(this.site_code);
     this.$("#plots").toggle(p != null);
@@ -8485,6 +8514,7 @@ GpusummaryWidgetView = (function(superClass) {
       ptype = parts[0];
     }
     show_hist = (p != null) && !live;
+    plot_color = "#80C3FF";
     switch (p) {
       case 'vin':
         lbl = 'Input Voltage';
@@ -8492,7 +8522,7 @@ GpusummaryWidgetView = (function(superClass) {
           {
             tag: this.prefix + "GPU.RVINAVG.Value",
             fill: true,
-            color: "#0c0"
+            color: plot_color
           }
         ];
         break;
@@ -8504,7 +8534,7 @@ GpusummaryWidgetView = (function(superClass) {
           {
             tag: this.prefix + "GPU.PM_INPUT_PHASE" + ph + "_V.Value",
             fill: true,
-            color: "#0c0"
+            color: plot_color
           }
         ];
         break;
@@ -8514,7 +8544,7 @@ GpusummaryWidgetView = (function(superClass) {
           {
             tag: this.prefix + "GPU.RVOUTAVG.Value",
             fill: true,
-            color: "#00c"
+            color: plot_color
           }
         ];
         break;
@@ -8526,7 +8556,7 @@ GpusummaryWidgetView = (function(superClass) {
           {
             tag: this.prefix + "GPU.PM_OUTPUT_PHASE" + ph + "_V.Value",
             fill: true,
-            color: "#00c"
+            color: plot_color
           }
         ];
         break;
@@ -8536,7 +8566,7 @@ GpusummaryWidgetView = (function(superClass) {
           {
             tag: this.prefix + "GPU.RAOUTAVG.Value",
             fill: true,
-            color: "#909"
+            color: plot_color
           }
         ];
         break;
@@ -8548,7 +8578,7 @@ GpusummaryWidgetView = (function(superClass) {
           {
             tag: this.prefix + "GPU.PM_OUTPUT_PHASE" + ph + "_I.Value",
             fill: true,
-            color: "#909"
+            color: plot_color
           }
         ];
     }
@@ -8559,7 +8589,7 @@ GpusummaryWidgetView = (function(superClass) {
     this.$('#toggle_main').toggle(p != null);
     this.$('#plot-placeholder').remove();
     this.$("#plot_data").append("<div id='plot-placeholder' style='background-color:#eee;position:absolute;top:0;left:0;width:100%;'>\n  <div style='text-align:center;color:#666;font-size:18px;margin-top:20%;'><i class=\"fa fa-spinner fa-pulse\"></i> LOADING DATA...</div>\n</div>");
-    h = this.$(".display").height() - 90;
+    h = this.$(".display").height();
     this.$("#plot-placeholder").css({
       "max-height": h + "px",
       "height": h + "px"
@@ -8581,10 +8611,10 @@ GpusummaryWidgetView = (function(superClass) {
       };
       this.$(".display").resize((function(_this) {
         return function() {
-          return _this.$("#plot_container").width('100%').height(_this.$(".display").height() - 70);
+          return _this.$("#plot_container").width('100%').height(_this.$(".display").height() - 20);
         };
       })(this));
-      this.$("#plot_container").width('100%').height(this.$(".display").height() - 70);
+      this.$("#plot_container").width('100%').height(this.$(".display").height() - 20);
       App.opc.add_trend(this.site_code, this.tbinding);
       if (show_hist) {
         dtm = new Date();
@@ -8607,28 +8637,12 @@ GpusummaryWidgetView = (function(superClass) {
   };
 
   GpusummaryWidgetView.prototype.configure_buttons = function() {
-    this.$("#toggle_volts_in").click((function(_this) {
+    return this.$('#mode').change((function(_this) {
       return function(e) {
-        e.preventDefault();
-        return _this.show_plot('vin');
-      };
-    })(this));
-    this.$("#toggle_volts_out").click((function(_this) {
-      return function(e) {
-        e.preventDefault();
-        return _this.show_plot('vout');
-      };
-    })(this));
-    this.$("#toggle_amps_out").click((function(_this) {
-      return function(e) {
-        e.preventDefault();
-        return _this.show_plot('aout');
-      };
-    })(this));
-    return this.$("#toggle_main").click((function(_this) {
-      return function(e) {
-        e.preventDefault();
-        return _this.show_plot();
+        var sel;
+        sel = _this.$('#mode').val();
+        sel = sel === '' ? null : sel;
+        return _this.show_plot(sel);
       };
     })(this));
   };
@@ -8672,8 +8686,8 @@ GpusummaryWidgetView = (function(superClass) {
     }
     this.$("#view_main .trend").remove();
     this.$('#live_data').bootstrapToggle({
-      width: 70,
-      height: 30
+      width: 50,
+      height: 25
     });
     this.$("a.plot_type").click((function(_this) {
       return function(e) {

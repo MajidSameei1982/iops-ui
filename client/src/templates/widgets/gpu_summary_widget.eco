@@ -1,5 +1,13 @@
 <div class="box-header with-border">
-  <div class='pull-left'><i class="fa fa-flash"></i> <h3 class="box-title"></h3></div>
+  <div class='pull-left'>
+    <i class="fa fa-flash"></i> <h3 class="box-title"></h3>
+    <select id="mode" style='display:none;'>
+      <option value=''>Summary</option>
+      <option value='vin'>Input Voltage</option>
+      <option value='vout'>Output Voltage</option>
+      <option value='aout'>Output Amperage</option>
+    </select>
+  </div>
   <div class="pull-right controls">
     <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> 
     <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>
@@ -29,13 +37,13 @@
 
             <div id='live_container'>
               <label>Live Data</label>
-              <input id='live_data' type="checkbox" data-toggle="toggle" data-size="large">
+              <input id='live_data' type="checkbox" data-toggle="toggle" >
             </div>
             
             <div id="phases">
-              <a id="phase_a" class='plot_type' href="#">Phase A</a><br/>
-              <a id="phase_b" class='plot_type' href="#">Phase B</a><br/>
-              <a id="phase_c" class='plot_type' href="#">Phase C</a><br/>
+              <a id="phase_a" class='plot_type' href="#">Phase A</a>
+              <a id="phase_b" class='plot_type' href="#">Phase B</a>
+              <a id="phase_c" class='plot_type' href="#">Phase C</a>
             </div>
 
           </td>
@@ -43,12 +51,12 @@
         </tr>
       </table>
     </div>
-    <div id="bottom_buttons">
+    <!-- <div id="bottom_buttons">
       <a id="toggle_main" href="#" class="toggle_button" style="display: none;">Summary</a>
       <a id="toggle_volts_in" href="#" class="toggle_button">Input Voltage</a>
       <a id="toggle_volts_out" href="#" class="toggle_button">Output Voltage</a>
       <a id="toggle_amps_out" href="#" class="toggle_button">Output Amperage</a>
-    </div>
+    </div> -->
 
   </div>
 
