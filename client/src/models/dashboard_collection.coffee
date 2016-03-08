@@ -16,6 +16,10 @@ class DashboardCollection extends BaseCollection
     else
       @url = '/dashboards'
     super(config)
+
+  # fetch: (opts)->
+  #   debugger
+  #   super(opts)
     
 # ----------------------------------
 

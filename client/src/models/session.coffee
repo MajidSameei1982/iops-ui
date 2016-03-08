@@ -68,14 +68,18 @@ class Session extends BaseModel
     App.store.set("token", token)
     token
 
+  @parse_token:(token)->
+    tk = token.split('.')[1]
+    ctk = CryptoJS.enc.Base64.parse(tk)
+    user = ctk.toString(CryptoJS.enc.Utf8)
+    user = JSON.parse(user)
+    user
+
   @set_session: (session)->
     if session?
       tk = session.get("token")
       @set_header_token(tk)
-      tk = tk.split('.')[1]
-      ctk = CryptoJS.enc.Base64.parse(tk)
-      user = ctk.toString(CryptoJS.enc.Utf8)
-      user = JSON.parse(user)
+      user = Session.parse_token(tk)
       # clean out unused token fields
       delete user.createdAt
       delete user.updatedAt
@@ -105,7 +109,8 @@ class Session extends BaseModel
     s = App.store.get('session')
     if s?
       if App.session? then Session.clear()
-      App.session = new User(s)
+      user = Session.parse_token(s.token)
+      App.session = new User(user)
       App.session.fetch
         success: (data, status, xhr)=>
           if success? then success(data, status, xhr)

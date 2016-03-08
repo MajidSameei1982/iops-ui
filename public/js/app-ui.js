@@ -4124,15 +4124,21 @@ Session = (function(superClass) {
     return token;
   };
 
-  Session.set_session = function(session) {
+  Session.parse_token = function(token) {
     var ctk, tk, user;
+    tk = token.split('.')[1];
+    ctk = CryptoJS.enc.Base64.parse(tk);
+    user = ctk.toString(CryptoJS.enc.Utf8);
+    user = JSON.parse(user);
+    return user;
+  };
+
+  Session.set_session = function(session) {
+    var tk, user;
     if (session != null) {
       tk = session.get("token");
       this.set_header_token(tk);
-      tk = tk.split('.')[1];
-      ctk = CryptoJS.enc.Base64.parse(tk);
-      user = ctk.toString(CryptoJS.enc.Utf8);
-      user = JSON.parse(user);
+      user = Session.parse_token(tk);
       delete user.createdAt;
       delete user.updatedAt;
       delete user.passwordHash;
@@ -4155,7 +4161,7 @@ Session = (function(superClass) {
   };
 
   Session.restore = function(success) {
-    var s, tk;
+    var s, tk, user;
     tk = App.store.get('token');
     if (tk != null) {
       this.set_header_token(tk);
@@ -4165,7 +4171,8 @@ Session = (function(superClass) {
       if (App.session != null) {
         Session.clear();
       }
-      App.session = new User(s);
+      user = Session.parse_token(s.token);
+      App.session = new User(user);
       App.session.fetch({
         success: (function(_this) {
           return function(data, status, xhr) {
