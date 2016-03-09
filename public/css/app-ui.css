@@ -1036,7 +1036,7 @@ li.dashboard-link {
   color: #333; }
 .pca_summary_widget #power_indicator {
   position: absolute;
-  top: 48%;
+  top: 28%;
   left: 6%;
   font-size: 20px;
   font-weight: bold; }
@@ -1047,7 +1047,7 @@ li.dashboard-link {
 .pca_summary_widget #txt_connected_time {
   position: absolute;
   left: 20%;
-  top: 49%;
+  top: 29%;
   font-size: 16px;
   color: #090; }
 .pca_summary_widget .display {
