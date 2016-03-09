@@ -24,7 +24,7 @@
 <table height="100%";width"100%"><tr>
   <td>
     <table class='data'> 
-        <tr><td style="width:200px; height:200px ;vertical-align:middle"><div id="pcaoverview_img" class=""></div></td></tr>
+        <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr> 
         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    
         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    
     </table>

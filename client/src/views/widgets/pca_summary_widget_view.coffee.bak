@@ -47,6 +47,7 @@ class PcasummaryWidgetView extends IOPSWidgetView
     pca_sucpressure2:       'PCA.C2_SUCTION_PRESSURE'
     pca_hotgas1:            'PCA.C1_HOTGAS_CONTROL'
     pca_hotgas2:            'PCA.C2_HOTGAS_CONTROL'
+    gpu_rvoutavg:           'GPU.RVOUTAVG'
     
 
     #Processing Tags
@@ -101,9 +102,48 @@ class PcasummaryWidgetView extends IOPSWidgetView
     el = @$("##{tag}").html("#{set_value}#{suffix}")
     @mark_bad_data @tags[tag], el
 
-
+ render_gauges: ()->
+    vid = "gauge_volts_out_#{@model.id}"
+    @$('#view_main').append("<div id='#{vid}'><div class='bad_data' style='display:none;'>BAD DATA</div></div>")
+    @g1 = new JustGage
+      id: vid
+      title: ' '
+      label: 'Output Voltage'
+      value: 0
+      parseTime: false
+      min: 0
+      max: 125
+      symbol: ' V'
+      relativeGaugeSize: true
+      shadowOpacity: 1
+      shadowSize: 5
+      shadowVerticalOffset: 10
+      pointer: true
+      pointerOptions: 
+        toplength: -5
+        bottomlength: 20
+        bottomwidth: 3
+        color: '#000'
+        stroke: '#ffffff'
+        stroke_width: 1
+        stroke_linecap: 'round'
+      gaugeWidthScale: 0.6
+      customSectors: [
+        {color: '#000000',lo: 0,hi: 2}
+        {color: '#ff3333',lo: 3,hi: 99}
+        {color: '#ffcc66',lo: 100,hi: 102}
+        {color: '#00b300',lo: 103,hi: 116}
+        {color: '#ffcc66',lo: 117,hi: 119}
+        {color: '#ff3333',lo: 120,hi: 150}
+      ]
+      counter: true
   # process data and update the view
   data_update: (data)=>
+    vq = @data_q(@tags.gpu_rvoutavg)
+    @$("#gauge_volts_out_#{@model.id} .bad_data").toggle(!vq)
+    v = @vals.gpu_rvoutavg
+    if vq && !isNaN(v) && v != ''
+      @g1.refresh(parseInt(v))
     @vals = {}
     for tg of @tags
       @vals[tg] = @get_value(@tags[tg])
@@ -134,40 +174,38 @@ class PcasummaryWidgetView extends IOPSWidgetView
     @$("#power_indicator").html("<div class='#{cls}'><i class='fa fa-#{icn}'></i> #{txt}</div>")
     @$("#txt_connected_time").html(th)
     # STATUS
-    v = @get_bool(@vals.pca_pcastatus)
-    sq = @data_q(@tags.pca_pcastatus)
-
+ 
     coildp = if @vals.pca_coildp? && @vals.pca_coildp != '' then parseFloat(@vals.pca_coildp).toFixed(2)  else ' -- ' 
-    cd = if v==true && sq then @$('#pca_coildp').html("COIL DP : #{coildp}") else @$('#pca_coildp').html(" ")
+    cd = @$('#pca_coildp').html("COIL DP : #{coildp}")
     @mark_bad_data @tags.pca_coildp, cd
 
     vfdspeed = if @vals.pca_vfdspeed? && @vals.pca_vfdspeed != '' then parseFloat(@vals.pca_vfdspeed).toFixed(2)  else ' -- ' 
-    vfd = if v==true && sq then @$('#pca_vfdspeed').html("VFD : #{vfdspeed}") else @$('#pca_vfdspeed').html(" ")
+    vfd = @$('#pca_vfdspeed').html("VFD : #{vfdspeed}")
     @mark_bad_data @tags.pca_vfdspeed, vfd
 
     ambhumidity = if @vals.pca_ambhumidity? && @vals.pca_ambhumidity != '' then parseFloat(@vals.pca_ambhumidity).toFixed(2)  else ' -- ' 
-    ambd = if v==true && sq then @$('#pca_ambhumidity').html("TEMPAMB : #{ambhumidity}") else @$('#pca_ambhumidity').html(" ")
+    ambd = @$('#pca_ambhumidity').html("TEMPAMB : #{ambhumidity}")
     @mark_bad_data @tags.pca_ambhumidity, ambd
 
     sucpressure1 = if @vals.pca_sucpressure1? && @vals.pca_sucpressure1 != '' then parseFloat(@vals.pca_sucpressure1).toFixed(2)  else ' -- ' 
-    suc1d = if v==true && sq then @$('#pca_sucpressure1').html("SP1 : #{sucpressure1}") else @$('#pca_sucpressure1').html(" ")
+    suc1d = @$('#pca_sucpressure1').html("SP1 : #{sucpressure1}")
     @mark_bad_data @tags.pca_sucpressure1, suc1d
 
     sucpressure2 = if @vals.pca_sucpressure2? && @vals.pca_sucpressure2 != '' then parseFloat(@vals.pca_sucpressure2).toFixed(2)  else ' -- ' 
-    suc2d = if v==true && sq then @$('#pca_sucpressure2').html("SP2 : #{sucpressure2}") else @$('#pca_sucpressure2').html(" ")
+    suc2d = @$('#pca_sucpressure2').html("SP2 : #{sucpressure2}")
     @mark_bad_data @tags.pca_sucpressure2, suc2d
 
     hotgas1 = if @vals.pca_hotgas1? && @vals.pca_hotgas1 != '' then parseFloat(@vals.pca_hotgas1).toFixed(2)  else ' -- ' 
-    hot1d = if v==true && sq then @$('#pca_hotgas1').html("HP1 : #{hotgas1}") else @$('#pca_hotgas1').html(" ")
+    hot1d = @$('#pca_hotgas1').html("HP1 : #{hotgas1}")
     @mark_bad_data @tags.pca_hotgas1, hot1d
 
     hotgas2 = if @vals.pca_hotgas2? && @vals.pca_hotgas2 != '' then parseFloat(@vals.pca_hotgas2).toFixed(2)  else ' -- ' 
-    hot2d = if v==true && sq then @$('#pca_hotgas2').html("HP2 : #{hotgas2}") else @$('#pca_hotgas2').html(" ")
+    hot2d = @$('#pca_hotgas2').html("HP2 : #{hotgas2}")
     @mark_bad_data @tags.pca_hotgas2, hot2d
 
     pc = @get_bool(@vals.pca_pumpcond)
     txt = if pc then 'ON' else 'OFF'
-    pcd = if v==true && sq then @$('#pca_pumpcond').html("Condensate Pump : #{txt}") else @$('#pca_pumpcond').html(" ")
+    pcd = @$('#pca_pumpcond').html("Condensate Pump : #{txt}")
     @mark_bad_data @tags.pca_pumpcond, pcd
     
 
@@ -253,7 +291,7 @@ class PcasummaryWidgetView extends IOPSWidgetView
     @site_code = OPCManager.get_site_code(settings.site)
     if @site_code? then @watch_updates(@site_code)
 
-
+    @render_gauges()
   start: ()->
     @update()
 

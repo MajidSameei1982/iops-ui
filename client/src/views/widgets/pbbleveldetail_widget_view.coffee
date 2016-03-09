@@ -20,7 +20,7 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
 
   @layout:
     sx: 6
-    sy: 8
+    sy: 7
 
   tags:
     #Grid Tags
@@ -93,7 +93,7 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     @render_row("pbb_limits", "Active","Deactive","ok"," ")
 
     # SMOKEDETECTOR
-    @render_row("pbb_smokedetector","Activated","Ready/OK","err")
+    @render_row("pbb_smokedetector","Ready/OK","Activated","","err")
   
     # CANOPY
     @render_row("pbb_canopy", "Down", "Up", "ok")
