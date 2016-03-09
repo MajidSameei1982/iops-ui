@@ -1985,7 +1985,7 @@ window.JST["widgets/pca_summary_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id=\'display_label\'>\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <div>\n      <div id="power_indicator"></div>\n      <div id="txt_connected_time"></div>\n    </div>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n<table height="100%";width"100%"><tr>\n  <td>\n    <table class=\'data\'> \n        <tr><td style="width:200px; height:200px ;vertical-align:middle"><div id="pcaoverview_img" class=""></div></td></tr>\n        <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    \n        <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    \n    </table>\n </td>\n <td>\n   <table class=\'data1\'> \n    <br><br>\n     <tr><td style="width:200px; height:200px; vertical-align:middle">\n     <div id="pcamain_img" class=""></div>   \n     <div id="blower_img" class=""></div>  \n     <div id="heatingstage1_img" class=""></div>  \n     <div id="heatingstage2_img" class=""></div>  \n     <div id="coolingstage1_img" class=""></div>  \n     <div id="coolingstage2_img" class=""></div>   \n     <div id="accool_img" class=""></div>  \n     <div id="bccool_img" class=""></div> \n     <div id="pca_coildp" class=""></div>   \n     <div id="pca_vfdspeed" class=""></div>\n     <div id="pca_ambhumidity" class=""></div>\n     <div id="pca_sucpressure1" class=""></div>\n     <div id="pca_sucpressure2" class=""></div>\n     <div id="pca_hotgas1" class=""></div>\n     <div id="pca_hotgas2" class=""></div>\n     <div id="pca_pumpcond" class=""></div>\n     \n     </td></tr>         \n    </table>\n </td>\n </tr></table> \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id=\'display_label\'>\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <div>\n      <div id="power_indicator"></div>\n      <div id="txt_connected_time"></div>\n    </div>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n<table height="100%";width"100%"><tr>\n  <td>\n    <table class=\'data\'> \n        <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr> \n        <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    \n        <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    \n    </table>\n </td>\n <td>\n   <table class=\'data1\'> \n    <br><br>\n     <tr><td style="width:200px; height:200px; vertical-align:middle">\n     <div id="pcamain_img" class=""></div>   \n     <div id="blower_img" class=""></div>  \n     <div id="heatingstage1_img" class=""></div>  \n     <div id="heatingstage2_img" class=""></div>  \n     <div id="coolingstage1_img" class=""></div>  \n     <div id="coolingstage2_img" class=""></div>   \n     <div id="accool_img" class=""></div>  \n     <div id="bccool_img" class=""></div> \n     <div id="pca_coildp" class=""></div>   \n     <div id="pca_vfdspeed" class=""></div>\n     <div id="pca_ambhumidity" class=""></div>\n     <div id="pca_sucpressure1" class=""></div>\n     <div id="pca_sucpressure2" class=""></div>\n     <div id="pca_hotgas1" class=""></div>\n     <div id="pca_hotgas2" class=""></div>\n     <div id="pca_pumpcond" class=""></div>\n     \n     </td></tr>         \n    </table>\n </td>\n </tr></table> \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -9210,7 +9210,7 @@ PbbWidgetView = (function(superClass) {
 
   PbbWidgetView.layout = {
     sx: 4,
-    sy: 8
+    sy: 7
   };
 
   PbbWidgetView.prototype.tags = {
@@ -9262,7 +9262,7 @@ PbbWidgetView = (function(superClass) {
     }
     this.render_row("pbb_status", "Docked", "UnDocked", "ok");
     this.render_row("pbb_autolevel", "On", "Off", "ok");
-    this.render_row("pbb_smokedetector", "Activated", "Ready/OK", "err");
+    this.render_row("pbb_smokedetector", "Ready/OK", "Activated", "", "err");
     this.render_row("pbb_canopy", "Down", "Up", "ok");
     this.render_row("pbb_cablehoist", "Deployed", "Retracted", "ok");
     this.$("#pbb_statused_lbl").html('PBB Status');
@@ -9535,7 +9535,7 @@ PbbleveldetailWidgetView = (function(superClass) {
 
   PbbleveldetailWidgetView.layout = {
     sx: 6,
-    sy: 8
+    sy: 7
   };
 
   PbbleveldetailWidgetView.prototype.tags = {
@@ -9594,7 +9594,7 @@ PbbleveldetailWidgetView = (function(superClass) {
     this.render_row("pbb_status", "Docked", "UnDocked", "ok");
     this.render_row("pbb_autolevel", "On", "Off", "ok");
     this.render_row("pbb_limits", "Active", "Deactive", "ok", " ");
-    this.render_row("pbb_smokedetector", "Activated", "Ready/OK", "err");
+    this.render_row("pbb_smokedetector", "Ready/OK", "Activated", "", "err");
     this.render_row("pbb_canopy", "Down", "Up", "ok");
     this.render_row("pbb_cablehoist", "Deployed", "Retracted", "ok");
     this.render_row("pbb_acffloor", "On", "Off", "ok");
@@ -9797,7 +9797,7 @@ PcasummaryWidgetView = (function(superClass) {
   };
 
   PcasummaryWidgetView.prototype.data_update = function(data) {
-    var ambd, ambhumidity, aq, b, bd, bdq, bq, c, cd, cls, co1, co1q, co2, co2q, coildp, h, h1, h1q, h2, h2q, hot1d, hot2d, hotgas1, hotgas2, icn, m, p, pc, pcd, pq, s, sq, stat, suc1d, suc2d, sucpressure1, sucpressure2, t, tg, th, txt, vfd, vfdspeed, wq;
+    var ambd, ambhumidity, aq, b, bd, bdq, bq, c, cd, cls, co1, co1q, co2, co2q, coildp, h, h1, h1q, h2, h2q, hot1d, hot2d, hotgas1, hotgas2, icn, m, p, pc, pcd, pq, s, sq, stat, suc1d, suc2d, sucpressure1, sucpressure2, t, tg, th, txt, v, vfd, vfdspeed, wq;
     this.vals = {};
     for (tg in this.tags) {
       this.vals[tg] = this.get_value(this.tags[tg]);
@@ -9828,30 +9828,32 @@ PcasummaryWidgetView = (function(superClass) {
     }
     this.$("#power_indicator").html("<div class='" + cls + "'><i class='fa fa-" + icn + "'></i> " + txt + "</div>");
     this.$("#txt_connected_time").html(th);
+    v = this.get_bool(this.vals.pca_pcastatus);
+    sq = this.data_q(this.tags.pca_pcastatus);
     coildp = (this.vals.pca_coildp != null) && this.vals.pca_coildp !== '' ? parseFloat(this.vals.pca_coildp).toFixed(2) : ' -- ';
-    cd = this.$('#pca_coildp').html("COIL DP : " + coildp);
+    cd = v === true && sq ? this.$('#pca_coildp').html("COIL DP : " + coildp) : this.$('#pca_coildp').html(" ");
     this.mark_bad_data(this.tags.pca_coildp, cd);
     vfdspeed = (this.vals.pca_vfdspeed != null) && this.vals.pca_vfdspeed !== '' ? parseFloat(this.vals.pca_vfdspeed).toFixed(2) : ' -- ';
-    vfd = this.$('#pca_vfdspeed').html("VFD : " + vfdspeed);
+    vfd = v === true && sq ? this.$('#pca_vfdspeed').html("VFD : " + vfdspeed) : this.$('#pca_vfdspeed').html(" ");
     this.mark_bad_data(this.tags.pca_vfdspeed, vfd);
     ambhumidity = (this.vals.pca_ambhumidity != null) && this.vals.pca_ambhumidity !== '' ? parseFloat(this.vals.pca_ambhumidity).toFixed(2) : ' -- ';
-    ambd = this.$('#pca_ambhumidity').html("TEMPAMB : " + ambhumidity);
+    ambd = v === true && sq ? this.$('#pca_ambhumidity').html("TEMPAMB : " + ambhumidity) : this.$('#pca_ambhumidity').html(" ");
     this.mark_bad_data(this.tags.pca_ambhumidity, ambd);
     sucpressure1 = (this.vals.pca_sucpressure1 != null) && this.vals.pca_sucpressure1 !== '' ? parseFloat(this.vals.pca_sucpressure1).toFixed(2) : ' -- ';
-    suc1d = this.$('#pca_sucpressure1').html("SP1 : " + sucpressure1);
+    suc1d = v === true && sq ? this.$('#pca_sucpressure1').html("SP1 : " + sucpressure1) : this.$('#pca_sucpressure1').html(" ");
     this.mark_bad_data(this.tags.pca_sucpressure1, suc1d);
     sucpressure2 = (this.vals.pca_sucpressure2 != null) && this.vals.pca_sucpressure2 !== '' ? parseFloat(this.vals.pca_sucpressure2).toFixed(2) : ' -- ';
-    suc2d = this.$('#pca_sucpressure2').html("SP2 : " + sucpressure2);
+    suc2d = v === true && sq ? this.$('#pca_sucpressure2').html("SP2 : " + sucpressure2) : this.$('#pca_sucpressure2').html(" ");
     this.mark_bad_data(this.tags.pca_sucpressure2, suc2d);
     hotgas1 = (this.vals.pca_hotgas1 != null) && this.vals.pca_hotgas1 !== '' ? parseFloat(this.vals.pca_hotgas1).toFixed(2) : ' -- ';
-    hot1d = this.$('#pca_hotgas1').html("HP1 : " + hotgas1);
+    hot1d = v === true && sq ? this.$('#pca_hotgas1').html("HP1 : " + hotgas1) : this.$('#pca_hotgas1').html(" ");
     this.mark_bad_data(this.tags.pca_hotgas1, hot1d);
     hotgas2 = (this.vals.pca_hotgas2 != null) && this.vals.pca_hotgas2 !== '' ? parseFloat(this.vals.pca_hotgas2).toFixed(2) : ' -- ';
-    hot2d = this.$('#pca_hotgas2').html("HP2 : " + hotgas2);
+    hot2d = v === true && sq ? this.$('#pca_hotgas2').html("HP2 : " + hotgas2) : this.$('#pca_hotgas2').html(" ");
     this.mark_bad_data(this.tags.pca_hotgas2, hot2d);
     pc = this.get_bool(this.vals.pca_pumpcond);
     txt = pc ? 'ON' : 'OFF';
-    pcd = this.$('#pca_pumpcond').html("Condensate Pump : " + txt);
+    pcd = v === true && sq ? this.$('#pca_pumpcond').html("Condensate Pump : " + txt) : this.$('#pca_pumpcond').html(" ");
     this.mark_bad_data(this.tags.pca_pumpcond, pcd);
     this.render_row("pca_pcastatus", "On", "Off", "ok", " ");
     this.render_tagvalue("pca_pcadischargetemp");
