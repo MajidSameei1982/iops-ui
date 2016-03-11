@@ -20,12 +20,14 @@
 
     <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>
     <table class='data' style="float: left; width:90%">
-      <tr><td class='lbl' id='pbb_statused_lbl'>&nbsp;</td><td id='pbb_status' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_autolevel_lbl'>&nbsp;</td><td id='pbb_autolevel' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pbb_autolevelkey_lbl'>&nbsp;</td><td id='pbb_autolevelkey' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pbb_autolevelmode_lbl'>&nbsp;</td><td id='pbb_autolevelmode' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pbb_autolevelling_lbl'>&nbsp;</td><td id='pbb_autolevelling' class='val'>LOADING...</td></tr>     
       <tr><td class='lbl' id='pbb_canopy_lbl'>&nbsp;</td><td id='pbb_canopy' class='val'>LOADING...</td></tr>   
-      <tr><td class='lbl' id='pbb_cablehoist_lbl'>&nbsp;</td><td id='pbb_cablehoist' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_dockedtime_lbl'>&nbsp;</td><td id='pbb_docktime' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_undockedtime_lbl'>&nbsp;</td><td id='pbb_undocktime' class='val'>LOADING...</td></tr> 
+      <tr><td class='lbl' id='pbb_limits_lbl'>&nbsp;</td><td id='pbb_limits' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pbb_smokedetector_lbl'>&nbsp;</td><td id='pbb_smokedetector' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pbb_cabinfloordeicer_lbl'>&nbsp;</td><td id='pbb_cabinfloordeicer' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pbb_terminaldoor_lbl'>&nbsp;</td><td id='pbb_terminaldoor' class='val'>LOADING...</td></tr>
       <tr><td class='lbl' id='pbb_lastdocktime_lbl'>&nbsp;</td><td id='pbb_lastdocktime' class='val'>LOADING...</td></tr>
       <tr><td class='lbl' id='pbb_dailyaircraftcount_lbl'>&nbsp;</td><td id='pbb_dailyaircraftcount' class='val'>LOADING...</td></tr>   
     </table>
