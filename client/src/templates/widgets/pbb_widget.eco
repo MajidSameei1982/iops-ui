@@ -22,7 +22,7 @@
     <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>
     <table class='data' style="float: left; width:90%"> 
       <tr><td class='lbl' id='pbb_statused_lbl'>&nbsp;</td><td id='pbb_status' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_autolevel_lbl'>&nbsp;</td><td id='pbb_autolevel' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pbb_autolevelmode_lbl'>&nbsp;</td><td id='pbb_autolevelmode' class='val'>LOADING...</td></tr>
       <tr><td class='lbl' id='pbb_smokedetector_lbl'>&nbsp;</td><td id='pbb_smokedetector' class='val'>LOADING...</td></tr>
       <tr><td class='lbl' id='pbb_canopy_lbl'>&nbsp;</td><td id='pbb_canopy' class='val'>LOADING...</td></tr>
       <tr><td class='lbl' id='pbb_cablehoist_lbl'>&nbsp;</td><td id='pbb_cablehoist' class='val'>LOADING...</td></tr>     

@@ -21,8 +21,8 @@ class PbbWidgetView extends IOPSWidgetView
   tags:
     #Grid Tags
     pbb_status :        'PBB.AIRCRAFTDOCKEDCALCULATION'
+    pbb_autolevelmode :   'PBB.AUTOLEVELMODEFLAG'
     pbb_aircraft :      'PBB.AIRCRAFTSTATUS'
-    pbb_autolevel :     'PBB.AUTOLEVELMODEFLAG'
     pbb_canopy:         'PBB.CANOPYDOWN'
     pbb_acffloor:       'PBB.ACFFLOOR'
     pbb_cablehoist:     'PBB.CABHOIST'
@@ -71,13 +71,14 @@ class PbbWidgetView extends IOPSWidgetView
     @render_row("pbb_status", "Docked", "UnDocked", "ok")
 
      # Auto Level
-    @render_row("pbb_autolevel", "On", "Off", "ok")
+    @render_row("pbb_autolevelmode", "On", "Off", "ok")
+
 
     # E-STOP
     # @render_row("pbb_estop","On","Off","err","ok")
 
     # SMOKEDETECTOR
-    @render_row("pbb_smokedetector","Ready/OK","Activated","","err")
+    @render_row("pbb_smokedetector","Off","On","","err")
   
     # CANOPY
     @render_row("pbb_canopy", "Down", "Up", "ok")

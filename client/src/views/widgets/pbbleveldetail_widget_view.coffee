@@ -20,16 +20,16 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
 
   @layout:
     sx: 6
-    sy: 7
+    sy: 8
 
   tags:
     #Grid Tags
     pbb_status :          'PBB.AIRCRAFTDOCKEDCALCULATION'
     pbb_aircraft :        'PBB.AIRCRAFTSTATUS'
-    pbb_autolevel :       'PBB.AUTOLEVELMODEFLAG'
+    pbb_autolevelmode :   'PBB.AUTOLEVELMODEFLAG'
     pbb_canopy:           'PBB.CANOPYDOWN'
-    pbb_acffloor:         'PBB.ACFFLOOR'
-    pbb_cablehoist:       'PBB.CABHOIST'
+    pbb_autolevelkey :    'PBB.AUTOLEVELKEY'
+    pbb_autolevelling:    'PBB.AUTOLEVELING'
     #pbb_estop:            'PBB.Alarm.E_STOP'
     pbb_limits:           'PBB.BYPASSPB'
     pbb_docktime:         'PBB.DOCKTIME'
@@ -37,6 +37,8 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     pbb_smokedetector:    'PBB.SMOKEDETECTOR'
     pbb_dailyaircraftcount:'PBB.DAILYAIRCRAFTDOCKED'
     pbb_lastdocktime:     'PBB.LASTDOCKTIME'
+    pbb_cabinfloordeicer: 'PBB.CABFLOORDEICER'
+    pbb_terminaldoor:     'PBB.TERMINALDOOR'
     
 
     #Processing Tags
@@ -87,31 +89,36 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     @render_row("pbb_status", "Docked", "UnDocked", "ok")
 
      # Auto Level
-    @render_row("pbb_autolevel", "On", "Off", "ok")
+    @render_row("pbb_autolevelmode", "On", "Off", "ok")
 
     # LIMIT-BYPASSPB
     @render_row("pbb_limits", "Active","Deactive","ok"," ")
 
     # SMOKEDETECTOR
-    @render_row("pbb_smokedetector","Ready/OK","Activated","","err")
+    @render_row("pbb_smokedetector","Off","On","","err")
   
     # CANOPY
     @render_row("pbb_canopy", "Down", "Up", "ok")
 
-    # CABLE HOIST
-    @render_row("pbb_cablehoist", "Deployed", "Retracted", "ok")
-
-    # ACF FLOOR
-    @render_row("pbb_acffloor", "On", "Off", "ok")
-
     # LIMITS
-    @render_row("pbb_limits", "Ok", "Active", "ok","err")
+    @render_row("pbb_limits", "Normal", "ByPass", "ok")
+
+    # AUTO-lEVEL KEY
+    @render_row("pbb_autolevelkey", "On", "Off", "ok")
+
+    # AUTOLEVELLING
+    @render_row("pbb_autolevelling", "On", "Off", "ok")
+
+    # CABIN FLOOR DEICER
+    @render_row("pbb_cabinfloordeicer", "On", "Off", "ok")
+
+    # TERMINAL DOOR
+    @render_row("pbb_terminaldoor", "Open", "Close", "ok")
 
 
     @$("#pbb_statused_lbl").html('PBB Status')
     @$("#pbb_estoped_lbl").html('E-Stop')
-    @$("#pbb_dockedtime_lbl").html('Dock Time')
-    @$("#pbb_undockedtime_lbl").html('Un-dock Time')
+
 
     # DOCKTIME
     docktime = if @vals.pbb_docktime? && @vals.pbb_docktime != '' then parseFloat(@vals.pbb_docktime).toFixed(2)  else ' -- ' 

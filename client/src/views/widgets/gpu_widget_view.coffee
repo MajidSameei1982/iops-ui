@@ -20,17 +20,15 @@ class GpuWidgetView extends IOPSWidgetView
 
   @layout:
     sx: 6
-    sy: 10
+    sy: 14
 
   tags:
-    gpu_gpustatus:                  'GPU.GPUSTATUS'
-    gpu_contstatus:                 'GPU.CONTSTATUS'
+    gpu_gpustatus:                  'GPU.GPUSTATUSBOOLEAN'
     gpu_bypass:                     'GPU.ByPass'
     gpu_raoutavg:                   'GPU.RAOUTAVG'
     gpu_rvoutavg:                   'GPU.RVOUTAVG'
-    gpu_ravinavg:                   'GPU.RAVINAVG'
+    gpu_ravinavg:                   'GPU.RAINAVG'
     gpu_rvinavg:                    'GPU.RVINAVG'
-    gpu_frequency:                  'GPU.Frequency'
     gpu_pm_output_phasea_i:         'GPU.PM_OUTPUT_PHASEA_I'
     gpu_pm_output_phaseb_i:         'GPU.PM_OUTPUT_PHASEB_I'
     gpu_pm_output_phasec_i:         'GPU.PM_OUTPUT_PHASEC_I'
@@ -43,7 +41,6 @@ class GpuWidgetView extends IOPSWidgetView
     gpu_pm_input_phasea_v:          'GPU.PM_INPUT_PHASEA_V'
     gpu_pm_input_phaseb_v:          'GPU.PM_INPUT_PHASEB_V'
     gpu_pm_input_phasec_v:          'GPU.PM_INPUT_PHASEC_V'
-    gpu_gpustatus_triger_data_log:  'GPU.GPUSTATUS_TRIGER_DATA_LOG'
     gpu_on_1:                       'GPU.ON 1'
     gpu_on_2:                       'GPU.ON 2'
 
@@ -94,29 +91,23 @@ class GpuWidgetView extends IOPSWidgetView
     # gpuoutputvoltsstatus = @vals['gpu_gpuoutputvolts']
     # @$('#gpu_gpuoutputvolts').html(gpuoutputvoltsstatus)
 
-    # GPU GPUSTATUS                   
-    @render_value_row("gpu_gpustatus", true, 1)
-
-    # GPU CONTSTATUS                  
-    @render_value_row("gpu_contstatus", true, 1)
+    # GPU GPUSTATUS 
+    @render_row("gpu_gpustatus", "On", "Off", "ok")                  
 
     # GPU ByPass                      
     @render_row("gpu_bypass", "Down", "Up", "ok")
 
     # GPU RAOUTAVG                    
-    @render_value_row("gpu_raoutavg", true, 1)
+    @render_value_row("gpu_raoutavg", true, 1,"Amps")
 
     # GPU RVOUTAVG                    
-    @render_value_row("gpu_rvoutavg", true, 1)
+    @render_value_row("gpu_rvoutavg", true, 1,"Volts")
 
     # GPU RAVINAVG
-    @render_value_row("gpu_ravinavg", true, 1)
+    @render_value_row("gpu_ravinavg", true, 1,"Amps")
 
     # GPU RVINAVG                     
-    @render_value_row("gpu_rvinavg", true, 1)
-
-    # GPU Frequency                   
-    @render_value_row("gpu_frequency", true, 1, "Hz")
+    @render_value_row("gpu_rvinavg", true, 1,"Volts")
 
     # GPU PM_OUTPUT_PHASEA_I          
     @render_value_row("gpu_pm_output_phasea_i", true, 1, "Amps")
@@ -154,14 +145,13 @@ class GpuWidgetView extends IOPSWidgetView
     # GPU PM_INPUT_PHASEC_V           
     @render_value_row("gpu_pm_input_phasec_v", true, 1, "Volts")
 
-    # GPU GPUSTATUS_TRIGER_DATA_LOG   
-    @render_row("gpu_gpustatus_triger_data_log", "Down", "Up", "ok")
-
     # GPU ON 1                        
-    @render_row("gpu_on_1", "Down", "Up", "ok")
+    @render_row("gpu_on_1", "On", "Off","ok")
 
     # GPU ON 2                        
-    @render_row("gpu_on_2", "Down", "Up", "ok")
+    @render_row("gpu_on_2", "On", "Off", "ok")
+
+    @$("#gpu_statused_lbl").html('GPU Status')
         
     @set_descriptions()
 

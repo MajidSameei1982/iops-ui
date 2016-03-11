@@ -1802,7 +1802,7 @@ window.JST["widgets/gpu_widget"] = function(__obj) {
     };
     (function() {
     
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-battery-3"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table class=\'data\'>\n      <tr><td class=\'lbl\' id=\'gpu_gpustatus_lbl\'>&nbsp;</td><td id=\'gpu_gpustatus\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_contstatus_lbl\'>&nbsp;</td><td id=\'gpu_contstatus\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_bypass_lbl\'>&nbsp;</td><td id=\'gpu_bypass\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_raoutavg_lbl\'>&nbsp;</td><td id=\'gpu_raoutavg\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_rvoutavg_lbl\'>&nbsp;</td><td id=\'gpu_rvoutavg\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_ravinavg_lbl\'>&nbsp;</td><td id=\'gpu_ravinavg\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_rvinavg_lbl\'>&nbsp;</td><td id=\'gpu_rvinavg\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_frequency_lbl\'>&nbsp;</td><td id=\'gpu_frequency\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phasea_i_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phasea_i\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phaseb_i_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phaseb_i\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phasec_i_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phasec_i\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phasea_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phasea_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phaseb_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phaseb_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phasec_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phasec_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_input_phasea_i_lbl\'>&nbsp;</td><td id=\'gpu_pm_input_phasea_i\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_input_phaseb_i_lbl\'>&nbsp;</td><td id=\'gpu_pm_input_phaseb_i\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_input_phasec_i_lbl\'>&nbsp;</td><td id=\'gpu_pm_input_phasec_i\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_input_phasea_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_input_phasea_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_input_phaseb_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_input_phaseb_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_input_phasec_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_input_phasec_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_gpustatus_triger_data_log_lbl\'>&nbsp;</td><td id=\'gpu_gpustatus_triger_data_log\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_on_1_lbl\'>&nbsp;</td><td id=\'gpu_on_1\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_on_2_lbl\'>&nbsp;</td><td id=\'gpu_on_2\' class=\'val\'>LOADING...</td></tr>\n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-battery-3"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table class=\'data\'>\n      <tr><td class=\'lbl\' id=\'gpu_statused_lbl\'>&nbsp;</td><td id=\'gpu_gpustatus\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_bypass_lbl\'>&nbsp;</td><td id=\'gpu_bypass\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_raoutavg_lbl\'>&nbsp;</td><td id=\'gpu_raoutavg\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_rvoutavg_lbl\'>&nbsp;</td><td id=\'gpu_rvoutavg\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_ravinavg_lbl\'>&nbsp;</td><td id=\'gpu_ravinavg\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_rvinavg_lbl\'>&nbsp;</td><td id=\'gpu_rvinavg\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phasea_i_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phasea_i\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phaseb_i_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phaseb_i\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phasec_i_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phasec_i\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phasea_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phasea_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phaseb_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phaseb_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phasec_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phasec_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_input_phasea_i_lbl\'>&nbsp;</td><td id=\'gpu_pm_input_phasea_i\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_input_phaseb_i_lbl\'>&nbsp;</td><td id=\'gpu_pm_input_phaseb_i\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_input_phasec_i_lbl\'>&nbsp;</td><td id=\'gpu_pm_input_phasec_i\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_input_phasea_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_input_phasea_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_input_phaseb_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_input_phaseb_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_input_phasec_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_input_phasec_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_on_1_lbl\'>&nbsp;</td><td id=\'gpu_on_1\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_on_2_lbl\'>&nbsp;</td><td id=\'gpu_on_2\' class=\'val\'>LOADING...</td></tr>\n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -1856,7 +1856,7 @@ window.JST["widgets/pbb_widget"] = function(__obj) {
     };
     (function() {
     
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div>\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table class=\'data\' style="float: left; width:90%"> \n      <tr><td class=\'lbl\' id=\'pbb_statused_lbl\'>&nbsp;</td><td id=\'pbb_status\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevel_lbl\'>&nbsp;</td><td id=\'pbb_autolevel\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_smokedetector_lbl\'>&nbsp;</td><td id=\'pbb_smokedetector\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopy_lbl\'>&nbsp;</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_cablehoist_lbl\'>&nbsp;</td><td id=\'pbb_cablehoist\' class=\'val\'>LOADING...</td></tr>     \n      </table>\n    \n       \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div>\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table class=\'data\' style="float: left; width:90%"> \n      <tr><td class=\'lbl\' id=\'pbb_statused_lbl\'>&nbsp;</td><td id=\'pbb_status\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevelmode_lbl\'>&nbsp;</td><td id=\'pbb_autolevelmode\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_smokedetector_lbl\'>&nbsp;</td><td id=\'pbb_smokedetector\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopy_lbl\'>&nbsp;</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_cablehoist_lbl\'>&nbsp;</td><td id=\'pbb_cablehoist\' class=\'val\'>LOADING...</td></tr>     \n      </table>\n    \n       \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -1964,7 +1964,7 @@ window.JST["widgets/pbbleveldetail_widget"] = function(__obj) {
     };
     (function() {
     
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div>\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table class=\'data\' style="float: left; width:90%">\n      <tr><td class=\'lbl\' id=\'pbb_statused_lbl\'>&nbsp;</td><td id=\'pbb_status\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevel_lbl\'>&nbsp;</td><td id=\'pbb_autolevel\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopy_lbl\'>&nbsp;</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>   \n      <tr><td class=\'lbl\' id=\'pbb_cablehoist_lbl\'>&nbsp;</td><td id=\'pbb_cablehoist\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_dockedtime_lbl\'>&nbsp;</td><td id=\'pbb_docktime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_undockedtime_lbl\'>&nbsp;</td><td id=\'pbb_undocktime\' class=\'val\'>LOADING...</td></tr> \n      <tr><td class=\'lbl\' id=\'pbb_lastdocktime_lbl\'>&nbsp;</td><td id=\'pbb_lastdocktime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_dailyaircraftcount_lbl\'>&nbsp;</td><td id=\'pbb_dailyaircraftcount\' class=\'val\'>LOADING...</td></tr>   \n    </table>\n       \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div>\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table class=\'data\' style="float: left; width:90%">\n      <tr><td class=\'lbl\' id=\'pbb_autolevelkey_lbl\'>&nbsp;</td><td id=\'pbb_autolevelkey\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevelmode_lbl\'>&nbsp;</td><td id=\'pbb_autolevelmode\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevelling_lbl\'>&nbsp;</td><td id=\'pbb_autolevelling\' class=\'val\'>LOADING...</td></tr>     \n      <tr><td class=\'lbl\' id=\'pbb_canopy_lbl\'>&nbsp;</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>   \n      <tr><td class=\'lbl\' id=\'pbb_limits_lbl\'>&nbsp;</td><td id=\'pbb_limits\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_smokedetector_lbl\'>&nbsp;</td><td id=\'pbb_smokedetector\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_cabinfloordeicer_lbl\'>&nbsp;</td><td id=\'pbb_cabinfloordeicer\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_terminaldoor_lbl\'>&nbsp;</td><td id=\'pbb_terminaldoor\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_lastdocktime_lbl\'>&nbsp;</td><td id=\'pbb_lastdocktime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_dailyaircraftcount_lbl\'>&nbsp;</td><td id=\'pbb_dailyaircraftcount\' class=\'val\'>LOADING...</td></tr>   \n    </table>\n       \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -9141,18 +9141,16 @@ GpuWidgetView = (function(superClass) {
 
   GpuWidgetView.layout = {
     sx: 6,
-    sy: 10
+    sy: 14
   };
 
   GpuWidgetView.prototype.tags = {
-    gpu_gpustatus: 'GPU.GPUSTATUS',
-    gpu_contstatus: 'GPU.CONTSTATUS',
+    gpu_gpustatus: 'GPU.GPUSTATUSBOOLEAN',
     gpu_bypass: 'GPU.ByPass',
     gpu_raoutavg: 'GPU.RAOUTAVG',
     gpu_rvoutavg: 'GPU.RVOUTAVG',
-    gpu_ravinavg: 'GPU.RAVINAVG',
+    gpu_ravinavg: 'GPU.RAINAVG',
     gpu_rvinavg: 'GPU.RVINAVG',
-    gpu_frequency: 'GPU.Frequency',
     gpu_pm_output_phasea_i: 'GPU.PM_OUTPUT_PHASEA_I',
     gpu_pm_output_phaseb_i: 'GPU.PM_OUTPUT_PHASEB_I',
     gpu_pm_output_phasec_i: 'GPU.PM_OUTPUT_PHASEC_I',
@@ -9165,7 +9163,6 @@ GpuWidgetView = (function(superClass) {
     gpu_pm_input_phasea_v: 'GPU.PM_INPUT_PHASEA_V',
     gpu_pm_input_phaseb_v: 'GPU.PM_INPUT_PHASEB_V',
     gpu_pm_input_phasec_v: 'GPU.PM_INPUT_PHASEC_V',
-    gpu_gpustatus_triger_data_log: 'GPU.GPUSTATUS_TRIGER_DATA_LOG',
     gpu_on_1: 'GPU.ON 1',
     gpu_on_2: 'GPU.ON 2'
   };
@@ -9205,14 +9202,12 @@ GpuWidgetView = (function(superClass) {
     for (tg in this.tags) {
       this.vals[tg] = this.get_value(this.tags[tg]);
     }
-    this.render_value_row("gpu_gpustatus", true, 1);
-    this.render_value_row("gpu_contstatus", true, 1);
+    this.render_row("gpu_gpustatus", "On", "Off", "ok");
     this.render_row("gpu_bypass", "Down", "Up", "ok");
-    this.render_value_row("gpu_raoutavg", true, 1);
-    this.render_value_row("gpu_rvoutavg", true, 1);
-    this.render_value_row("gpu_ravinavg", true, 1);
-    this.render_value_row("gpu_rvinavg", true, 1);
-    this.render_value_row("gpu_frequency", true, 1, "Hz");
+    this.render_value_row("gpu_raoutavg", true, 1, "Amps");
+    this.render_value_row("gpu_rvoutavg", true, 1, "Volts");
+    this.render_value_row("gpu_ravinavg", true, 1, "Amps");
+    this.render_value_row("gpu_rvinavg", true, 1, "Volts");
     this.render_value_row("gpu_pm_output_phasea_i", true, 1, "Amps");
     this.render_value_row("gpu_pm_output_phaseb_i", true, 1, "Amps");
     this.render_value_row("gpu_pm_output_phasec_i", true, 1, "Amps");
@@ -9225,9 +9220,9 @@ GpuWidgetView = (function(superClass) {
     this.render_value_row("gpu_pm_input_phasea_v", true, 1, "Volts");
     this.render_value_row("gpu_pm_input_phaseb_v", true, 1, "Volts");
     this.render_value_row("gpu_pm_input_phasec_v", true, 1, "Volts");
-    this.render_row("gpu_gpustatus_triger_data_log", "Down", "Up", "ok");
-    this.render_row("gpu_on_1", "Down", "Up", "ok");
-    this.render_row("gpu_on_2", "Down", "Up", "ok");
+    this.render_row("gpu_on_1", "On", "Off", "ok");
+    this.render_row("gpu_on_2", "On", "Off", "ok");
+    this.$("#gpu_statused_lbl").html('GPU Status');
     return this.set_descriptions();
   };
 
@@ -9587,8 +9582,8 @@ PbbWidgetView = (function(superClass) {
 
   PbbWidgetView.prototype.tags = {
     pbb_status: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+    pbb_autolevelmode: 'PBB.AUTOLEVELMODEFLAG',
     pbb_aircraft: 'PBB.AIRCRAFTSTATUS',
-    pbb_autolevel: 'PBB.AUTOLEVELMODEFLAG',
     pbb_canopy: 'PBB.CANOPYDOWN',
     pbb_acffloor: 'PBB.ACFFLOOR',
     pbb_cablehoist: 'PBB.CABHOIST',
@@ -9633,8 +9628,8 @@ PbbWidgetView = (function(superClass) {
       this.vals[tg] = this.get_value(this.tags[tg]);
     }
     this.render_row("pbb_status", "Docked", "UnDocked", "ok");
-    this.render_row("pbb_autolevel", "On", "Off", "ok");
-    this.render_row("pbb_smokedetector", "Ready/OK", "Activated", "", "err");
+    this.render_row("pbb_autolevelmode", "On", "Off", "ok");
+    this.render_row("pbb_smokedetector", "Off", "On", "", "err");
     this.render_row("pbb_canopy", "Down", "Up", "ok");
     this.render_row("pbb_cablehoist", "Deployed", "Retracted", "ok");
     this.$("#pbb_statused_lbl").html('PBB Status');
@@ -9907,22 +9902,24 @@ PbbleveldetailWidgetView = (function(superClass) {
 
   PbbleveldetailWidgetView.layout = {
     sx: 6,
-    sy: 7
+    sy: 8
   };
 
   PbbleveldetailWidgetView.prototype.tags = {
     pbb_status: 'PBB.AIRCRAFTDOCKEDCALCULATION',
     pbb_aircraft: 'PBB.AIRCRAFTSTATUS',
-    pbb_autolevel: 'PBB.AUTOLEVELMODEFLAG',
+    pbb_autolevelmode: 'PBB.AUTOLEVELMODEFLAG',
     pbb_canopy: 'PBB.CANOPYDOWN',
-    pbb_acffloor: 'PBB.ACFFLOOR',
-    pbb_cablehoist: 'PBB.CABHOIST',
+    pbb_autolevelkey: 'PBB.AUTOLEVELKEY',
+    pbb_autolevelling: 'PBB.AUTOLEVELING',
     pbb_limits: 'PBB.BYPASSPB',
     pbb_docktime: 'PBB.DOCKTIME',
     pbb_undocktime: 'PBB.UNDOCKTIME',
     pbb_smokedetector: 'PBB.SMOKEDETECTOR',
     pbb_dailyaircraftcount: 'PBB.DAILYAIRCRAFTDOCKED',
     pbb_lastdocktime: 'PBB.LASTDOCKTIME',
+    pbb_cabinfloordeicer: 'PBB.CABFLOORDEICER',
+    pbb_terminaldoor: 'PBB.TERMINALDOOR',
     pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
     pbb_has_warnings: 'Warning._HasWarnings',
     pbb_has_alarms: 'Alarm._HasAlarms'
@@ -9964,17 +9961,17 @@ PbbleveldetailWidgetView = (function(superClass) {
       this.vals[tg] = this.get_value(this.tags[tg]);
     }
     this.render_row("pbb_status", "Docked", "UnDocked", "ok");
-    this.render_row("pbb_autolevel", "On", "Off", "ok");
+    this.render_row("pbb_autolevelmode", "On", "Off", "ok");
     this.render_row("pbb_limits", "Active", "Deactive", "ok", " ");
-    this.render_row("pbb_smokedetector", "Ready/OK", "Activated", "", "err");
+    this.render_row("pbb_smokedetector", "Off", "On", "", "err");
     this.render_row("pbb_canopy", "Down", "Up", "ok");
-    this.render_row("pbb_cablehoist", "Deployed", "Retracted", "ok");
-    this.render_row("pbb_acffloor", "On", "Off", "ok");
-    this.render_row("pbb_limits", "Ok", "Active", "ok", "err");
+    this.render_row("pbb_limits", "Normal", "ByPass", "ok");
+    this.render_row("pbb_autolevelkey", "On", "Off", "ok");
+    this.render_row("pbb_autolevelling", "On", "Off", "ok");
+    this.render_row("pbb_cabinfloordeicer", "On", "Off", "ok");
+    this.render_row("pbb_terminaldoor", "Open", "Close", "ok");
     this.$("#pbb_statused_lbl").html('PBB Status');
     this.$("#pbb_estoped_lbl").html('E-Stop');
-    this.$("#pbb_dockedtime_lbl").html('Dock Time');
-    this.$("#pbb_undockedtime_lbl").html('Un-dock Time');
     docktime = (this.vals.pbb_docktime != null) && this.vals.pbb_docktime !== '' ? parseFloat(this.vals.pbb_docktime).toFixed(2) : ' -- ';
     l1 = this.$('#pbb_docktime').html(docktime + " mins");
     this.mark_bad_data(this.tags.pbb_docktime, l1);
