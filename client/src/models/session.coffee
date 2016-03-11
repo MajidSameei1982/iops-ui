@@ -69,14 +69,16 @@ class Session extends BaseModel
     token
 
   @parse_token:(token)->
-    tk = token.split('.')[1]
-    ctk = CryptoJS.enc.Base64.parse(tk)
-    user = ctk.toString(CryptoJS.enc.Utf8)
-    user = JSON.parse(user)
+    user = null
+    if token?
+      tk = token.split('.')[1]
+      ctk = CryptoJS.enc.Base64.parse(tk)
+      user = ctk.toString(CryptoJS.enc.Utf8)
+      user = JSON.parse(user)
     user
 
   @set_session: (session)->
-    if session?
+    if session? && session.get("token")?
       tk = session.get("token")
       @set_header_token(tk)
       user = Session.parse_token(tk)
@@ -107,7 +109,7 @@ class Session extends BaseModel
     tk = App.store.get('token')
     if tk? then @set_header_token(tk)
     s = App.store.get('session')
-    if s?
+    if s? && s.token?
       if App.session? then Session.clear()
       user = Session.parse_token(s.token)
       App.session = new User(user)

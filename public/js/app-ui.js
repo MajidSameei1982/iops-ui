@@ -4126,16 +4126,19 @@ Session = (function(superClass) {
 
   Session.parse_token = function(token) {
     var ctk, tk, user;
-    tk = token.split('.')[1];
-    ctk = CryptoJS.enc.Base64.parse(tk);
-    user = ctk.toString(CryptoJS.enc.Utf8);
-    user = JSON.parse(user);
+    user = null;
+    if (token != null) {
+      tk = token.split('.')[1];
+      ctk = CryptoJS.enc.Base64.parse(tk);
+      user = ctk.toString(CryptoJS.enc.Utf8);
+      user = JSON.parse(user);
+    }
     return user;
   };
 
   Session.set_session = function(session) {
     var tk, user;
-    if (session != null) {
+    if ((session != null) && (session.get("token") != null)) {
       tk = session.get("token");
       this.set_header_token(tk);
       user = Session.parse_token(tk);
@@ -4167,7 +4170,7 @@ Session = (function(superClass) {
       this.set_header_token(tk);
     }
     s = App.store.get('session');
-    if (s != null) {
+    if ((s != null) && (s.token != null)) {
       if (App.session != null) {
         Session.clear();
       }
