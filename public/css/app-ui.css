@@ -110,6 +110,8 @@ ul.gridster.widget-container {
       ul.gridster.widget-container li.widget .widget-outer .box-header .controls a {
         color: #fff;
         margin-left: 10px; }
+      ul.gridster.widget-container li.widget .widget-outer .box-header select {
+        color: #333 !important; }
     ul.gridster.widget-container li.widget .widget-outer .box-body.content {
       width: 100%;
       box-sizing: border-box;
