@@ -555,6 +555,18 @@ li.dashboard-link {
   min-height: 100%;
   min-width: 100%;
   overflow: auto; }
+  .gate_widget .display #aircraft_img {
+    position: absolute;
+    left: 45%;
+    top: 20%;
+    background-image: url("../img/pbb/DockingPlane.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    height: 100%;
+    width: 100%; }
+    .gate_widget .display #aircraft_img.docked {
+      background-image: url("../img/pbb/DockingPlane.png"); }
   .gate_widget .display #display_label {
     margin-bottom: 3px; }
     .gate_widget .display #display_label h1 {
@@ -987,58 +999,58 @@ li.dashboard-link {
   color: #333; }
 .pca_summary_widget #pca_pumpcond {
   position: absolute;
-  left: 78%;
+  left: 74%;
   top: 90%;
   font-size: 12px;
   font-weight: bold;
   color: #333; }
 .pca_summary_widget #pca_vfdspeed {
   position: absolute;
-  left: 71%;
-  top: 40%;
+  left: 72%;
+  top: 41%;
   font-size: 12px;
   font-weight: bold;
   color: #333; }
-.pca_summary_widget #pca_ambhumidity {
+.pca_summary_widget #pca_pcaambhumidity {
   position: absolute;
-  left: 85%;
+  left: 79%;
   top: 10%;
   font-size: 12px;
   font-weight: bold;
   color: #333; }
 .pca_summary_widget #pca_sucpressure1 {
   position: absolute;
-  left: 70%;
+  left: 72%;
   top: 65%;
   font-size: 12px;
   font-weight: bold;
   color: #333; }
 .pca_summary_widget #pca_sucpressure2 {
   position: absolute;
-  left: 80%;
+  left: 85%;
   top: 65%;
   font-size: 12px;
   font-weight: bold;
   color: #333; }
 .pca_summary_widget #pca_hotgas1 {
   position: absolute;
-  left: 70%;
+  left: 72%;
   top: 72%;
   font-size: 12px;
   font-weight: bold;
   color: #333; }
 .pca_summary_widget #pca_hotgas2 {
   position: absolute;
-  left: 80%;
+  left: 85%;
   top: 72%;
   font-size: 12px;
   font-weight: bold;
   color: #333; }
 .pca_summary_widget #power_indicator {
   position: absolute;
-  top: 28%;
+  top: 14%;
   left: 6%;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold; }
   .pca_summary_widget #power_indicator .inactive {
     color: #ccc; }
@@ -1047,9 +1059,21 @@ li.dashboard-link {
 .pca_summary_widget #txt_connected_time {
   position: absolute;
   left: 20%;
-  top: 29%;
-  font-size: 16px;
+  top: 15%;
+  font-size: 18px;
   color: #090; }
+.pca_summary_widget div[id^='gauge_'] {
+  position: absolute;
+  bottom: 11%;
+  left: 4%;
+  width: 30%;
+  height: 100%; }
+.pca_summary_widget div[id^='amps_'] {
+  position: absolute;
+  top: 25%;
+  left: 4%;
+  width: 30%;
+  height: 100%; }
 .pca_summary_widget .display {
   min-height: 100%;
   min-width: 100%;
@@ -1066,8 +1090,8 @@ li.dashboard-link {
     width: 30%; }
   .pca_summary_widget .display #pcamain_img {
     position: absolute;
-    top: 7%;
-    left: 23.5%;
+    top: 7.5%;
+    left: 23%;
     background-image: url("../img/pca/Inet_PCAire-Main.gif");
     background-repeat: no-repeat;
     background-position: center center;
@@ -1097,8 +1121,8 @@ li.dashboard-link {
       background-image: url("../img/pca/Blower.gif"); }
   .pca_summary_widget .display #coolingstage1_img {
     position: absolute;
-    top: 6%;
-    left: 25%;
+    top: 7%;
+    left: 25.5%;
     background-image: none;
     background-repeat: no-repeat;
     background-position: center center;
@@ -1109,8 +1133,8 @@ li.dashboard-link {
       background-image: url("../img/pca/Cooling-Stage-1.gif"); }
   .pca_summary_widget .display #coolingstage2_img {
     position: absolute;
-    top: 6%;
-    left: 25%;
+    top: 7%;
+    left: 25.5%;
     background-image: none;
     background-repeat: no-repeat;
     background-position: center center;
@@ -1145,7 +1169,7 @@ li.dashboard-link {
       background-image: url("../img/pca/Heat-Stage-2.gif"); }
   .pca_summary_widget .display #accool_img {
     position: absolute;
-    top: 5%;
+    top: 6%;
     left: 24%;
     background-image: none;
     background-repeat: no-repeat;
@@ -1157,7 +1181,7 @@ li.dashboard-link {
       background-image: url("../img/pca/AC-Cool.gif"); }
   .pca_summary_widget .display #bccool_img {
     position: absolute;
-    top: 6%;
+    top: 7%;
     left: 24%;
     background-image: none;
     background-repeat: no-repeat;

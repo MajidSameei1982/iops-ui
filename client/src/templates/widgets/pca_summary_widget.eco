@@ -16,7 +16,7 @@
         <i id='warnings' class="fa fa-warning" title='Gate has WARNINGS' style='display:none;'></i>
       </h1>
     </div>
-    <div>
+    <div id="view_main">
       <div id="power_indicator"></div>
       <div id="txt_connected_time"></div>
     </div>
@@ -43,7 +43,7 @@
      <div id="bccool_img" class=""></div> 
      <div id="pca_coildp" class=""></div>   
      <div id="pca_vfdspeed" class=""></div>
-     <div id="pca_ambhumidity" class=""></div>
+     <div id="pca_pcaambhumidity" class=""></div>
      <div id="pca_sucpressure1" class=""></div>
      <div id="pca_sucpressure2" class=""></div>
      <div id="pca_hotgas1" class=""></div>

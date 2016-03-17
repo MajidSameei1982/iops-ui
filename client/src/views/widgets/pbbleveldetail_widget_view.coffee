@@ -20,7 +20,7 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
 
   @layout:
     sx: 6
-    sy: 8
+    sy: 9
 
   tags:
     #Grid Tags
@@ -30,7 +30,7 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     pbb_canopy:           'PBB.CANOPYDOWN'
     pbb_autolevelkey :    'PBB.AUTOLEVELKEY'
     pbb_autolevelling:    'PBB.AUTOLEVELING'
-    #pbb_estop:            'PBB.Alarm.E_STOP'
+    pbb_estop:            'PBB.Alarm.RedWord2[4]'
     pbb_limits:           'PBB.BYPASSPB'
     pbb_docktime:         'PBB.DOCKTIME'
     pbb_undocktime:       'PBB.UNDOCKTIME'
@@ -85,6 +85,11 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     for tg of @tags
       @vals[tg] = @get_value(@tags[tg])
     
+    v = @get_bool(@vals.pbb_status)
+
+    sq = @data_q(@tags.pbb_status)
+    @$("#aircraft_img").toggleClass('docked', v==true && sq)
+
     # PBB AIRCRAFT
     @render_row("pbb_status", "Docked", "UnDocked", "ok")
 
@@ -115,6 +120,8 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     # TERMINAL DOOR
     @render_row("pbb_terminaldoor", "Open", "Close", "ok")
 
+    # AUTOLEVELLING
+    @render_row("pbb_estop", "On", "Off", "err")
 
     @$("#pbb_statused_lbl").html('PBB Status')
     @$("#pbb_estoped_lbl").html('E-Stop')
