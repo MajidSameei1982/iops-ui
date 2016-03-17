@@ -8,6 +8,21 @@
     min-height: 100%;
     min-width: 100%;
     overflow: auto;
+
+    #aircraft_img {
+      position: absolute;
+      left: 45%;
+      top: 20%;
+      background-image: url("../img/pbb/DockingPlane.png") ;
+      background-repeat: no-repeat; 
+      background-position: center center;
+      background-size: contain;
+      height: 100%;
+      width: 100%;
+      &.docked {
+        background-image: url("../img/pbb/DockingPlane.png");
+      }
+    }
     #display_label {
       margin-bottom: 3px;
       h1 {

@@ -22,12 +22,12 @@ class PcasummaryWidgetView extends IOPSWidgetView
     power_indicator:   'span#power_indicator'
 
   @layout:
-    sx: 11
+    sx: 9
     sy: 8
 
   tags:
     #Grid Tags
-    pca_pcacabintemp:       'PCA.TEMPCABIN'
+    pca_pcaambhumidity:     'PCA.AMBHUMIDITY'
     pca_pcaambienttemp:     'PCA.TEMPAMB'
     pca_pcadischargetemp:   'PCA.TEMPDISCH' 
     pca_pcastatus:          'PCA.PCA_ON'
@@ -92,21 +92,23 @@ class PcasummaryWidgetView extends IOPSWidgetView
       @set_descriptions(true)
 
 
-  render_value_row: (tag, IsNumeric, precision, suffix)->
-    if @vals[tag]? && @vals[tag] != '' 
-      set_value = if IsNumeric then parseFloat(@vals[tag]).toFixed(precision) else @vals[tag] 
-    else
-      set_value = ' -- ' 
-    suffix = if suffix? then " #{suffix}" else ""
-    el = @$("##{tag}").html("#{set_value}#{suffix}")
-    @mark_bad_data @tags[tag], el
-
-
   # process data and update the view
   data_update: (data)=>
-    @vals = {}
-    for tg of @tags
-      @vals[tg] = @get_value(@tags[tg])
+    # refresh gauges
+    @refresh_values()
+    vq = @data_q(@tags.pca_pcadischargetemp)
+    @$("#gauge_volts_out_#{@model.id} .bad_data").toggle(!vq)
+    v = @vals.pca_pcadischargetemp
+    if vq && !isNaN(v) && v != ''
+      @g1.refresh(parseInt(v))
+
+    aq = @data_q(@tags.pca_pcaambienttemp)
+    @$("#amps_out_#{@model.id} .bad_data").toggle(!aq)
+    v = @vals.pca_pcaambienttemp
+    if aq && !isNaN(v) && v != ''
+      v = parseInt(parseInt(v))
+      @g2.refresh(v)
+
 
     # refresh status
     sq = @data_q(@tags.pca_pcastatus)
@@ -145,9 +147,9 @@ class PcasummaryWidgetView extends IOPSWidgetView
     vfd = if v==true && sq then @$('#pca_vfdspeed').html("VFD : #{vfdspeed}") else @$('#pca_vfdspeed').html(" ")
     @mark_bad_data @tags.pca_vfdspeed, vfd
 
-    ambhumidity = if @vals.pca_ambhumidity? && @vals.pca_ambhumidity != '' then parseFloat(@vals.pca_ambhumidity).toFixed(2)  else ' -- ' 
-    ambd = if v==true && sq then @$('#pca_ambhumidity').html("TEMPAMB : #{ambhumidity}") else @$('#pca_ambhumidity').html(" ")
-    @mark_bad_data @tags.pca_ambhumidity, ambd
+    ambhumidity = if @vals.pca_pcaambhumidity? && @vals.pca_pcaambhumidity != '' then parseFloat(@vals.pca_pcaambhumidity).toFixed(2)  else ' -- ' 
+    ambd = if v==true && sq then @$('#pca_pcaambhumidity').html("AMBHUMIDITY : #{ambhumidity}") else @$('#pca_pcaambhumidity').html(" ")
+    @mark_bad_data @tags.pca_pcaambhumidity, ambd
 
     sucpressure1 = if @vals.pca_sucpressure1? && @vals.pca_sucpressure1 != '' then parseFloat(@vals.pca_sucpressure1).toFixed(2)  else ' -- ' 
     suc1d = if v==true && sq then @$('#pca_sucpressure1').html("SP1 : #{sucpressure1}") else @$('#pca_sucpressure1').html(" ")
@@ -172,9 +174,8 @@ class PcasummaryWidgetView extends IOPSWidgetView
     
 
     @render_row("pca_pcastatus", "On", "Off", "ok"," ")
-    @render_tagvalue("pca_pcadischargetemp")
-    @render_tagvalue("pca_pcacabintemp")
-    @render_tagvalue("pca_pcaambienttemp")
+    #@render_tagvalue("pca_pcadischargetemp")
+    #@render_tagvalue("pca_pcaambienttemp")
 
 
     c = @get_bool(@vals.pca_blower)
@@ -232,6 +233,77 @@ class PcasummaryWidgetView extends IOPSWidgetView
     @ui.display.toggle(!@settings_visible)
     if @settings_visible then @ui.site.chosen()
 
+
+  render_gauges: ()->
+    vid = "gauge_volts_out_#{@model.id}"
+    @$('#view_main').append("<div id='#{vid}'><div class='bad_data' style='display:none;'>BAD DATA</div></div>")
+    @g1 = new JustGage
+      id: vid
+      title: ' '
+      label: 'Discharge Temperature'
+      value: 0
+      parseTime: false
+      min: 0
+      max: 125
+      symbol: ' F'
+      relativeGaugeSize: true
+      shadowOpacity: 1
+      shadowSize: 5
+      shadowVerticalOffset: 10
+      pointer: true
+      pointerOptions: 
+        toplength: -5
+        bottomlength: 20
+        bottomwidth: 3
+        color: '#000'
+        stroke: '#ffffff'
+        stroke_width: 1
+        stroke_linecap: 'round'
+      gaugeWidthScale: 0.6
+      customSectors: [
+          {color: '#000000',lo: 0,hi: 1}
+          {color: '#ff3333',lo: 2,hi: 23}
+          {color: '#ffcc66',lo: 24,hi: 29}
+          {color: '#00b300',lo: 30,hi: 40}
+          {color: '#ffcc66',lo: 41,hi: 46}
+          {color: '#ff3333',lo: 47,hi: 70}
+      ]
+      counter: true
+
+      aid = "amps_out_#{@model.id}"
+      @$('#view_main').append("<div id='#{aid}'><div class='bad_data' style='display:none;'>BAD DATA</div></div>")
+      @g2 = new JustGage
+        id: aid
+        title: ' '
+        label: 'Ambient Temperature'
+        value: 0
+        parseTime: false
+        min: 0
+        max: 150
+        symbol: ' F'
+        relativeGaugeSize: true
+        shadowOpacity: 1
+        shadowSize: 5
+        shadowVerticalOffset: 10
+        pointer: true
+        pointerOptions: 
+          toplength: -5
+          bottomlength: 20
+          bottomwidth: 3
+          color: '#000'
+          stroke: '#ffffff'
+          stroke_width: 1
+          stroke_linecap: 'round'
+        gaugeWidthScale: 0.6
+        customSectors: [
+          {color: '#000000',lo: 0,hi: 1}
+          {color: '#ff3333',lo: 2,hi: 23}
+          {color: '#ffcc66',lo: 24,hi: 29}
+          {color: '#00b300',lo: 30,hi: 40}
+          {color: '#ffcc66',lo: 41,hi: 46}
+          {color: '#ff3333',lo: 47,hi: 70}
+        ]
+        counter: true
   onShow: ()->
     @ui.gate.on "change", @set_model
     @ui.site.on "change", @set_model
@@ -253,6 +325,7 @@ class PcasummaryWidgetView extends IOPSWidgetView
     @site_code = OPCManager.get_site_code(settings.site)
     if @site_code? then @watch_updates(@site_code)
 
+    @render_gauges()
 
   start: ()->
     @update()
