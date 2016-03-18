@@ -21,8 +21,6 @@ class GpusummaryWidgetView extends IOPSWidgetView
     main_view:         'div#gpu_main_view'
     gpu_image:         'div#gpu_image'
     power_indicator:   'span#power_indicator'
-    # gauge_volts_out:   'div#gauge_volts_out'
-    # gauge_amps_out:    'div#gauge_amps_out'
     view_volts_in:     'div#view_volts_in'
     plot_volts_in:     'div#plot_volts_in'
     view_volts_out:    'div#view_volts_out'
@@ -41,43 +39,14 @@ class GpusummaryWidgetView extends IOPSWidgetView
   tags:
     #Grid Tags
     gpu_time:                       'GPU.GPUTime'
-    #gpu_gpustatus:                  'GPU.GPUSTATUS'
     gpu_gpustatusb:                 'GPU.GPUSTATUSBOOLEAN'
-    #gpu_contstatus:                 'GPU.CONTSTATUS'
-    #gpu_bypass:                     'GPU.ByPass'
     gpu_raoutavg:                   'GPU.RAOUTAVG'
     gpu_rvoutavg:                   'GPU.RVOUTAVG'
     gpu_ravinavg:                   'GPU.RAVINAVG'
     gpu_rvinavg:                    'GPU.RVINAVG'
-    #gpu_frequency:                  'GPU.Frequency'
-    #gpu_pm_output_phasea_i:         'GPU.PM_OUTPUT_PHASEA_I'
-    #gpu_pm_output_phaseb_i:         'GPU.PM_OUTPUT_PHASEB_I'
-    #gpu_pm_output_phasec_i:         'GPU.PM_OUTPUT_PHASEC_I'
-    #gpu_pm_output_phasea_v:         'GPU.PM_OUTPUT_PHASEA_V'
-    #gpu_pm_output_phaseb_v:         'GPU.PM_OUTPUT_PHASEB_V'
-    #gpu_pm_output_phasec_v:         'GPU.PM_OUTPUT_PHASEC_V'
-    #gpu_pm_input_phasea_i:          'GPU.PM_INPUT_PHASEA_I'
-    #gpu_pm_input_phaseb_i:          'GPU.PM_INPUT_PHASEB_I'
-    #gpu_pm_input_phasec_i:          'GPU.PM_INPUT_PHASEC_I'
-    #gpu_pm_input_phasea_v:          'GPU.PM_INPUT_PHASEA_V'
-    #gpu_pm_input_phaseb_v:          'GPU.PM_INPUT_PHASEB_V'
-    #gpu_pm_input_phasec_v:          'GPU.PM_INPUT_PHASEC_V'
-    #gpu_gpustatus_triger_data_log:  'GPU.GPUSTATUS_TRIGER_DATA_LOG'
-    #gpu_on_1:                       'GPU.ON 1'
-    #gpu_on_2:                       'GPU.ON 2'
-
+    
   initialize: ()->
-
-  # fnUTC2Date: (d)->
-  #   now = new Date
-  #   localOffset = now.getTimezoneOffset() * 60000
-  #   c = new Date(d + localOffset)
-  #   c.toLocaleString()
-
-  # fnUTC: ()->
-  #   now = new Date
-  #   d = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds(), now.getMilliseconds())
-  #   d
+    #
 
   render_gauges: ()->
     vid = "gauge_volts_out_#{@model.id}"
@@ -352,10 +321,8 @@ class GpusummaryWidgetView extends IOPSWidgetView
         callback:@trend_callback
       @$(".display").resize ()=>
         @$("#plot_container").width('100%').height(@$(".display").height()-20)
-        #@$("#plot_container").width('100%').height(@$(".display").height()-70)
       @$("#plot_container").width('100%').height(@$(".display").height()-20)
-      # @$("#plot_container").width('100%').height(@$(".display").height()-70)
-     
+      
       App.opc.add_trend @site_code, @tbinding
 
       if show_hist
@@ -374,19 +341,6 @@ class GpusummaryWidgetView extends IOPSWidgetView
     @watch_updates(@site_code)
 
   configure_buttons: ()=>
-    # @$("#toggle_volts_in").click (e)=>
-    #   e.preventDefault()
-    #   @show_plot('vin')
-    # @$("#toggle_volts_out").click (e)=>
-    #   e.preventDefault()
-    #   @show_plot('vout')
-    # @$("#toggle_amps_out").click (e)=>
-    #   e.preventDefault()
-    #   @show_plot('aout')
-    # @$("#toggle_main").click (e)=>
-    #   e.preventDefault()
-    #   @show_plot()
-
     @$('#mode').change (e)=>
       sel = @$('#mode').val()
       sel = if sel=='' then null else sel

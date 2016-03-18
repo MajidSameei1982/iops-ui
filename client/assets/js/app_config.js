@@ -47,6 +47,11 @@ window.app_config = {
       icon: "server"
     },
     {
+      id: "pcadischarge",
+      name: "PCA Discharge Widget",
+      icon: "server"
+    },
+    {
       id: "pcasummary",
       name: "PCA Summary",
       icon: "server"

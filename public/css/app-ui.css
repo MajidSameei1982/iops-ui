@@ -1393,4 +1393,11 @@ i.weather {
 .alarm_widget .group_item {
   margin: 0 5px; }
 
+.pcad_widget .zone_list {
+  margin-left: 10px; }
+  .pcad_widget .zone_list .gate_list {
+    margin-left: 10px; }
+    .pcad_widget .zone_list .gate_list .gate_span {
+      margin-right: 10px; }
+
 /*# sourceMappingURL=app-ui.css.map */
