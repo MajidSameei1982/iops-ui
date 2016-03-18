@@ -9782,7 +9782,11 @@ PcadischargeWidgetView = (function(superClass) {
     cooling: 'PCA.MODE_COOLING.Value',
     heating: 'PCA.MODE_COOLING.Value',
     cool_set: "PCA.SET_COOLINGPOINT.Value",
-    heat_set: "PCA.SET_HEATINGPOINT.Value"
+    heat_set: "PCA.SET_HEATINGPOINT.Value",
+    alarm_cool: "PCA.ALARM_COOLINGRUN_BOOLEAN.Value",
+    alarm_heat: "PCA.ALARM_HEATINGRUN_BOOLEAN.Value",
+    timer_cool: "PCA.SET_COOLINGPOINT_TIMER.Value",
+    timer_heat: "PCA.SET_HEATINGPOINT_TIMER.Value"
   };
 
   PcadischargeWidgetView.prototype.max_gates = 6;
@@ -9820,7 +9824,7 @@ PcadischargeWidgetView = (function(superClass) {
   };
 
   PcadischargeWidgetView.prototype.data_update = function(data) {
-    var bad_q, cnt, color, cool, cool_set, cooling, cv, g, gate, gp, heat_set, heating, hot, hv, idx, j, k, l, len, len1, markings, offc, onv, options, p, pre, ref, ref1, ref2, results, s, series, temp, term, tg, ticks, zone;
+    var alarm_cool, alarm_heat, bad_q, cnt, color, cool, cool_set, cooling, cv, g, gate, gp, heat_set, heating, hot, hv, idx, index, j, k, l, len, len1, markings, offc, onv, options, p, pre, ref, ref1, ref2, results, s, series, temp, term, tg, ticks, timer_cool, timer_heat, timers, zone;
     s = this.model.get("settings");
     if ((s == null) || (s.gates == null) || s.gates.length === 0) {
       return;
@@ -9839,6 +9843,7 @@ PcadischargeWidgetView = (function(superClass) {
     offc = '#cccccc';
     bad_q = '#ffcc99';
     markings = [];
+    timers = [];
     ref1 = s.gates;
     for (idx = k = 0, len1 = ref1.length; k < len1; idx = ++k) {
       g = ref1[idx];
@@ -9854,6 +9859,11 @@ PcadischargeWidgetView = (function(superClass) {
       heating = this.vals["" + pre + this.tags.heating];
       cool_set = this.vals["" + pre + this.tags.cool_set];
       heat_set = this.vals["" + pre + this.tags.heat_set];
+      alarm_heat = this.vals["" + pre + this.tags.alarm_heat];
+      alarm_cool = this.vals["" + pre + this.tags.alarm_cool];
+      timer_heat = this.vals["" + pre + this.tags.timer_heat];
+      timer_cool = this.vals["" + pre + this.tags.timer_cool];
+      timers.push([alarm_heat, timer_heat, alarm_cool, timer_cool]);
       if ((cool_set != null) && cool_set !== '') {
         cv = parseFloat(cool_set);
         markings.push({
@@ -9932,17 +9942,18 @@ PcadischargeWidgetView = (function(superClass) {
       }
     };
     p = $.plot(this.$("#chart"), data, options);
+    index = 0;
     results = [];
     for (series = l = 0, ref2 = cnt - 1; 0 <= ref2 ? l <= ref2 : l >= ref2; series = 0 <= ref2 ? ++l : --l) {
-      results.push($.each(p.getData()[series].data, function(i, el) {
-        var o, w, wu;
+      $.each(p.getData()[series].data, function(i, el) {
+        var blink, ct, ht, o, timer, v, w, wu;
         o = p.pointOffset({
           x: el[0],
           y: el[1]
         });
         wu = p.getOptions().series.bars.barWidth;
         w = wu * p.getXAxes()[0].scale;
-        return $('<div class="data-point-label">' + el[1] + '°</div>').css({
+        $('<div class="data-point-label">' + el[1] + '°</div>').css({
           position: 'absolute',
           left: o.left - w / 2,
           top: o.top - 20,
@@ -9950,7 +9961,25 @@ PcadischargeWidgetView = (function(superClass) {
           textAlign: "center",
           fontWeight: "bold"
         }).appendTo(p.getPlaceholder());
-      }));
+        timer = timers[index];
+        ht = (timer[1] != null) && timer[1] !== '0' ? parseFloat(timer[1]) : 0;
+        ct = (timer[3] != null) && timer[3] !== '0' ? parseFloat(timer[3]) : 0;
+        if (ht > 0 || ct > 0) {
+          v = ht > 0 ? ht : ct;
+          blink = ((timer[0] != null) && timer[0].toUpperCase() === "TRUE") || ((timer[2] != null) && timer[2].toUpperCase() === "TRUE") ? "blink" : "";
+          return $("<div class='timer-label " + blink + "' style='padding:5px;'>" + v + "</div>").css({
+            position: 'absolute',
+            left: o.left - w / 2,
+            top: o.top + 20,
+            width: w + "px",
+            textAlign: "center",
+            fontWeight: "bold",
+            backgroundColor: "#FC0",
+            color: "#C00"
+          }).appendTo(p.getPlaceholder());
+        }
+      });
+      results.push(index++);
     }
     return results;
   };

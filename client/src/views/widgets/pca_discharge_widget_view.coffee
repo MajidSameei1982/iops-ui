@@ -26,30 +26,12 @@ class PcadischargeWidgetView extends IOPSWidgetView
     heating: 'PCA.MODE_COOLING.Value'
     cool_set: "PCA.SET_COOLINGPOINT.Value"
     heat_set: "PCA.SET_HEATINGPOINT.Value"
-    # gpu_hookuptime: "GPU.HOOKUPTIME"
-    # gpu_hookuptime_b: "GPU.HOOKUPTIME_BOOLEAN"
-    # pbb_hookuptime: "PBB.HOOKUPTIME"
-    # pbb_hookuptime_b: "PBB.HOOKUPTIME_BOOLEAN"
-    # pca_hookuptime: "PCA.HOOKUPTIME"
-    # pca_hookuptime_b: "PCA.HOOKUPTIME_BOOLEAN"
-    # pca_mode_cooling: "PCA.MODE_COOLING"
-    # pca_mode_cooling_timer: "PCA.MODE_COOLING_TIMER"
-    # pca_mode_heating: "PCA.MODE_HEATING"
-    # pca_mode_heating_timer: "PCA.MODE_HEATING_TIMER"
-    # pca_mode_vent: "PCA.MODE_VENT"
-    # # Ø  Setpoint.Cooling.Run (Fixed Setpoint Temperature from application)
-    # pca_set_cooling: "PCA.SET_COOLINGPOINT"
-    # # Ø  Setpoint.Heating.Run (Fixed Setpoint Temperature set from application)
-    # pca_set_heating: "PCA.SET_HEATINGPOINT"
-    # # Ø  Setpoint.Cooling.Run.Time (Fixed Time set from application)
-    # pca_set_cooling_timer: "PCA.SET_COOLINGPOINT_TIMER"
-    # # Ø  Setpoint.Heating.Run.Time (Fixed Time set from application)
-    # pca_set_heating_timer: "PCA.SET_HEATINGPOINT_TIMER"
-    # # Ø  Alarm/Timer.Cooling.Run (PCA.PCA_ON Time >= Setpoint.Cooling.Run.Time  and  Setpoint.Cooling.Run >= PCA.TEMPDISCH )
-    # pca_alarm_cooling: "PCA.ALARM_COOLINGRUN"
-    # # Ø  Alarm/Timer.Heating.Run (PCA.PCA_ON Time >= Setpoint.Heating.Run.Time  and  Setpoint.Heating.Run <= PCA.TEMPDISCH )
-    # pca_alarm_heating: "PCA.ALARM_HEATINGRUN"
-
+    alarm_cool: "PCA.ALARM_COOLINGRUN_BOOLEAN.Value"
+    alarm_heat: "PCA.ALARM_HEATINGRUN_BOOLEAN.Value"
+    timer_cool: "PCA.SET_COOLINGPOINT_TIMER.Value"
+    timer_heat: "PCA.SET_HEATINGPOINT_TIMER.Value"
+    
+ 
   max_gates: 6
     
   update: ()->
@@ -72,7 +54,6 @@ class PcadischargeWidgetView extends IOPSWidgetView
           @cktags.push "#{@prefix}#{gate}#{t}"
 
       App.opc.add_tags @site_code, @cktags
-
       @opc =  App.opc.connections[@site_code]
       # listen for updates
       @watch_updates(@site_code)
@@ -96,6 +77,7 @@ class PcadischargeWidgetView extends IOPSWidgetView
     bad_q = '#ffcc99' #bad quality data
 
     markings = []
+    timers = []
     for g, idx in s.gates
       gp = g.split(':')
       term = gp[0]
@@ -110,6 +92,11 @@ class PcadischargeWidgetView extends IOPSWidgetView
       heating = @vals["#{pre}#{@tags.heating}"]
       cool_set = @vals["#{pre}#{@tags.cool_set}"]
       heat_set = @vals["#{pre}#{@tags.heat_set}"]
+      alarm_heat = @vals["#{pre}#{@tags.alarm_heat}"]
+      alarm_cool = @vals["#{pre}#{@tags.alarm_cool}"]
+      timer_heat = @vals["#{pre}#{@tags.timer_heat}"]
+      timer_cool = @vals["#{pre}#{@tags.timer_cool}"]
+      timers.push [alarm_heat, timer_heat, alarm_cool, timer_cool]
       #console.log "#{gate}: c: #{cool_set} h: #{heat_set}"
       if cool_set? && cool_set != ''
         cv = parseFloat(cool_set) 
@@ -164,6 +151,7 @@ class PcadischargeWidgetView extends IOPSWidgetView
     p = $.plot(@$("#chart"), data, options)
 
     # draw values above bars
+    index = 0
     for series in [0..cnt-1]
       $.each p.getData()[series].data, (i, el)->
         o = p.pointOffset({x: el[0], y: el[1]})
@@ -177,6 +165,24 @@ class PcadischargeWidgetView extends IOPSWidgetView
           textAlign: "center"
           fontWeight: "bold"
         .appendTo(p.getPlaceholder())
+
+        timer = timers[index]
+        ht = if timer[1]? && timer[1] != '0' then parseFloat(timer[1]) else 0
+        ct = if timer[3]? && timer[3] != '0' then parseFloat(timer[3]) else 0
+        if ht > 0 || ct > 0
+          v = if ht>0 then ht else ct
+          blink = if (timer[0]? && timer[0].toUpperCase() == "TRUE") || (timer[2]? && timer[2].toUpperCase() == "TRUE") then "blink" else ""
+          $("<div class='timer-label #{blink}' style='padding:5px;'>#{v}</div>").css
+            position: 'absolute'
+            left: o.left - w/2
+            top: o.top + 20
+            width: "#{w}px"
+            textAlign: "center"
+            fontWeight: "bold"
+            backgroundColor: "#FC0"
+            color: "#C00"
+          .appendTo(p.getPlaceholder())
+      index++
     
   set_model: ()=>
     s = _.clone(@model.get("settings"))
