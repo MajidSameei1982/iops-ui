@@ -1964,6 +1964,59 @@ window.JST["widgets/pbbleveldetail_widget"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
+window.JST["widgets/pca_discharge_widget"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-server"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain" style=\'width:100%;height:100%;\'>\n    <div id="chart" style="width:100%;height:100%;"></div>     \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+    
+      _print(_safe(this.siteSelector({
+        id: 'site',
+        label: 'Site',
+        site: this.settings.site
+      })));
+    
+      _print(_safe('\n    <div class="row">\n      <div id=\'gate_cks\' class=\'col-md-12\'></div>  \n    </div>\n  </div>\n\n</div>\n'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
 window.JST["widgets/pca_summary_widget"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
@@ -2244,6 +2297,8 @@ require('./views/widgets/gpu_summary_widget_view');
 
 require('./views/widgets/pca_summary_widget_view');
 
+require('./views/widgets/pca_discharge_widget_view');
+
 window.App = (function() {
   var App;
   if (window.App != null) {
@@ -2447,7 +2502,7 @@ window.App = (function() {
   return App;
 })();
 
-},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/site_collection":20,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27,"./views/widgets/airport_widget_view":55,"./views/widgets/alarm_widget_view":56,"./views/widgets/config_widget_view":57,"./views/widgets/gpu_summary_widget_view":58,"./views/widgets/gpu_widget_view":59,"./views/widgets/pbb_widget_view":61,"./views/widgets/pbbdetail_widget_view":62,"./views/widgets/pbbleveldetail_widget_view":63,"./views/widgets/pca_summary_widget_view":64,"./views/widgets/pca_widget_view":65,"./views/widgets/url_widget_view":66,"./views/widgets/weather_widget_view":67}],2:[function(require,module,exports){
+},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/site_collection":20,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27,"./views/widgets/airport_widget_view":55,"./views/widgets/alarm_widget_view":56,"./views/widgets/config_widget_view":57,"./views/widgets/gpu_summary_widget_view":58,"./views/widgets/gpu_widget_view":59,"./views/widgets/pbb_widget_view":61,"./views/widgets/pbbdetail_widget_view":62,"./views/widgets/pbbleveldetail_widget_view":63,"./views/widgets/pca_discharge_widget_view":64,"./views/widgets/pca_summary_widget_view":65,"./views/widgets/pca_widget_view":66,"./views/widgets/url_widget_view":67,"./views/widgets/weather_widget_view":68}],2:[function(require,module,exports){
 var AccountsView, AppController, Dashboard, DashboardCollection, DashboardContentView, DashboardLayout, LoginView, Marionette, PermissionsLayout, ProfileView, ReportsView, Session, User, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4354,7 +4409,7 @@ User = (function(superClass) {
 
   User.prototype.save = function(attrs, options) {
     options || (options = {});
-    options.blacklist = ["isActive"];
+    options.blacklist = ["isActive", "passwordHash", "iss", "iat", "exp"];
     this.persist();
     return User.__super__.save.call(this, attrs, options);
   };
@@ -9678,6 +9733,351 @@ window.PbbleveldetailWidgetView = PbbleveldetailWidgetView;
 module.exports = PbbleveldetailWidgetView;
 
 },{"./iops_widget_view":60}],64:[function(require,module,exports){
+var IOPSWidgetView, Marionette, PcadischargeWidgetView,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+IOPSWidgetView = require('./iops_widget_view');
+
+PcadischargeWidgetView = (function(superClass) {
+  extend(PcadischargeWidgetView, superClass);
+
+  function PcadischargeWidgetView() {
+    this.set_model = bind(this.set_model, this);
+    this.data_update = bind(this.data_update, this);
+    return PcadischargeWidgetView.__super__.constructor.apply(this, arguments);
+  }
+
+  PcadischargeWidgetView.prototype.template = "widgets/pca_discharge_widget";
+
+  PcadischargeWidgetView.prototype.className = 'widget-outer box box-primary pcad_widget';
+
+  PcadischargeWidgetView.prototype.ui = {
+    wtitle: 'h3.box-title',
+    display: '.display',
+    content: '.content',
+    docked: 'i#docked',
+    alarms: 'i#alarms',
+    warnings: 'i#warnings',
+    site: 'select#site',
+    gates: '#gate_cks'
+  };
+
+  PcadischargeWidgetView.layout = {
+    sx: 8,
+    sy: 6
+  };
+
+  PcadischargeWidgetView.prototype.tags = {
+    temp: 'PCA.TEMPDISCH.Value',
+    on: 'PCA.PCASTATUS.Value',
+    cooling: 'PCA.MODE_COOLING.Value',
+    heating: 'PCA.MODE_COOLING.Value',
+    cool_set: "PCA.SET_COOLINGPOINT.Value",
+    heat_set: "PCA.SET_HEATINGPOINT.Value"
+  };
+
+  PcadischargeWidgetView.prototype.max_gates = 6;
+
+  PcadischargeWidgetView.prototype.update = function() {
+    var btg, g, gate, gp, j, len, ref, s, t;
+    this.update_settings({
+      prefix: 'Airport.#{@site_code}.',
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+    });
+    if (this.site_code == null) {
+      return null;
+    }
+    this.$('h3.box-title').html("PCA Discharge (" + this.site_code + ")");
+    s = this.model.get("settings");
+    this.cktags = [];
+    if ((s != null) && !!s.site) {
+      if (!s.gates || s.gates.length === 0) {
+        return;
+      }
+      for (btg in this.tags) {
+        t = this.tags[btg];
+        ref = s.gates;
+        for (j = 0, len = ref.length; j < len; j++) {
+          g = ref[j];
+          gp = g.split(':');
+          gate = "Term" + gp[0] + ".Zone" + gp[1] + ".Gate" + gp[2] + ".";
+          this.cktags.push("" + this.prefix + gate + t);
+        }
+      }
+      App.opc.add_tags(this.site_code, this.cktags);
+      this.opc = App.opc.connections[this.site_code];
+      return this.watch_updates(this.site_code);
+    }
+  };
+
+  PcadischargeWidgetView.prototype.data_update = function(data) {
+    var bad_q, cnt, color, cool, cool_set, cooling, cv, g, gate, gp, heat_set, heating, hot, hv, idx, j, k, l, len, len1, markings, offc, onv, options, p, pre, ref, ref1, ref2, results, s, series, temp, term, tg, ticks, zone;
+    s = this.model.get("settings");
+    if ((s == null) || (s.gates == null) || s.gates.length === 0) {
+      return;
+    }
+    this.vals = {};
+    ref = this.cktags;
+    for (j = 0, len = ref.length; j < len; j++) {
+      tg = ref[j];
+      this.vals[tg] = this.opc.get_value(tg);
+    }
+    cnt = 0;
+    data = [];
+    ticks = [];
+    hot = '#cc0000';
+    cool = '#0066cc';
+    offc = '#cccccc';
+    bad_q = '#ffcc99';
+    markings = [];
+    ref1 = s.gates;
+    for (idx = k = 0, len1 = ref1.length; k < len1; idx = ++k) {
+      g = ref1[idx];
+      gp = g.split(':');
+      term = gp[0];
+      zone = gp[1];
+      gate = gp[2];
+      pre = this.prefix + "Term" + gp[0] + ".Zone" + gp[1] + ".Gate" + gp[2] + ".";
+      temp = this.vals["" + pre + this.tags.temp];
+      temp = (temp != null) && temp !== '' ? parseFloat(temp) : 0;
+      onv = this.vals["" + pre + this.tags.on];
+      cooling = this.vals["" + pre + this.tags.cooling];
+      heating = this.vals["" + pre + this.tags.heating];
+      cool_set = this.vals["" + pre + this.tags.cool_set];
+      heat_set = this.vals["" + pre + this.tags.heat_set];
+      if ((cool_set != null) && cool_set !== '') {
+        cv = parseFloat(cool_set);
+        markings.push({
+          color: '#6666cc',
+          lineWidth: 1,
+          yaxis: {
+            from: cv - 0.25,
+            to: cv
+          }
+        });
+      }
+      if ((heat_set != null) && heat_set !== '') {
+        hv = parseFloat(heat_set);
+        markings.push({
+          color: '#cc6666',
+          lineWidth: 1,
+          yaxis: {
+            from: hv - 0.25,
+            to: hv
+          }
+        });
+      }
+      color = bad_q;
+      if ((onv != null) && onv.toUpperCase() === "FALSE") {
+        color = offc;
+      } else {
+        if ((cooling != null) && cooling.toUpperCase() === "TRUE") {
+          color = cool;
+        }
+        if ((heating != null) && heating.toUpperCase() === "TRUE") {
+          color = hot;
+        }
+      }
+      ticks.push([idx, "Gate " + gate]);
+      data.push({
+        data: [[idx, temp]],
+        color: color
+      });
+      cnt++;
+    }
+    options = {
+      series: {
+        bars: {
+          show: true
+        }
+      },
+      bars: {
+        align: "center",
+        barWidth: 0.5
+      },
+      xaxis: {
+        axisLabel: "Gates",
+        axisLabelUseCanvas: true,
+        axisLabelFontSizePixels: 14,
+        axisLabelFontFamily: 'Verdana, Arial',
+        axisLabelPadding: 10,
+        ticks: ticks,
+        autoscaleMargin: .10
+      },
+      yaxis: {
+        axisLabel: "Temperature",
+        axisLabelUseCanvas: true,
+        axisLabelFontSizePixels: 12,
+        axisLabelFontFamily: 'Verdana, Arial',
+        axisLabelPadding: 3
+      },
+      legend: {
+        noColumns: 0,
+        labelBoxBorderColor: "#000000",
+        position: "nw"
+      },
+      grid: {
+        hoverable: true,
+        borderWidth: 1,
+        markings: markings
+      }
+    };
+    p = $.plot(this.$("#chart"), data, options);
+    results = [];
+    for (series = l = 0, ref2 = cnt - 1; 0 <= ref2 ? l <= ref2 : l >= ref2; series = 0 <= ref2 ? ++l : --l) {
+      results.push($.each(p.getData()[series].data, function(i, el) {
+        var o, w, wu;
+        o = p.pointOffset({
+          x: el[0],
+          y: el[1]
+        });
+        wu = p.getOptions().series.bars.barWidth;
+        w = wu * p.getXAxes()[0].scale;
+        return $('<div class="data-point-label">' + el[1] + '°</div>').css({
+          position: 'absolute',
+          left: o.left - w / 2,
+          top: o.top - 20,
+          width: w + "px",
+          textAlign: "center",
+          fontWeight: "bold"
+        }).appendTo(p.getPlaceholder());
+      }));
+    }
+    return results;
+  };
+
+  PcadischargeWidgetView.prototype.set_model = function() {
+    var s;
+    s = _.clone(this.model.get("settings"));
+    s.site = this.$('#site').val();
+    this.gates = [];
+    this.$('.gate_check').each((function(_this) {
+      return function(idx, el) {
+        if ($(el).is(":checked")) {
+          return _this.gates.push($(el).attr("value"));
+        }
+      };
+    })(this));
+    s.gates = this.gates;
+    return this.model.set("settings", s);
+  };
+
+  PcadischargeWidgetView.prototype.toggle_settings = function(e) {
+    PcadischargeWidgetView.__super__.toggle_settings.call(this, e);
+    this.ui.display.toggle(!this.settings_visible);
+    if (this.settings_visible) {
+      this.ui.site.chosen();
+      return this.draw_gate_checks();
+    }
+  };
+
+  PcadischargeWidgetView.prototype.draw_gate_checks = function() {
+    var checked, g, gate, gates, j, len, ms, prev_t, prev_z, s, settings, sh, site, t, term, terminals, z, zn;
+    this.ui.gates.empty();
+    site = this.$('#site').val();
+    sh = '';
+    s = OPCManager.get_site(site);
+    if (s != null) {
+      settings = s.get('settings') || {};
+      terminals = settings.zones || {};
+      prev_t = '';
+      prev_z = '';
+      ms = this.model.get("settings");
+      gates = (ms != null) && ms.gates ? ms.gates : [];
+      for (t in terminals) {
+        if (t !== prev_t) {
+          prev_t = t;
+          sh += "<div class='term_list'><b>Terminal: " + t + "</b>";
+        }
+        term = terminals[t];
+        for (z in term) {
+          if (prev_z !== (t + ":" + z)) {
+            prev_z = t + ":" + z;
+            sh += "<div class='zone_list'><b>Zone: " + z + "</b>";
+            sh += "  <div class='gate_list'>";
+          }
+          zn = term[z];
+          for (g in zn) {
+            checked = '';
+            for (j = 0, len = gates.length; j < len; j++) {
+              gate = gates[j];
+              if (gate === (t + ":" + z + ":" + g)) {
+                checked = "checked='checked'";
+                break;
+              }
+            }
+            sh += "<span class='gate_span'><input type='checkbox' class='gate_check' " + checked + " value='" + t + ":" + z + ":" + g + "'> " + g + "</span>";
+          }
+          sh += "</div></div>";
+        }
+        sh += "</div>";
+      }
+    }
+    this.ui.gates.html(sh);
+    return this.$(".gate_check").change((function(_this) {
+      return function() {
+        var do_set;
+        _this.gates = [];
+        do_set = true;
+        _this.$('.gate_check').each(function(idx, el) {
+          if ($(el).is(":checked")) {
+            if (_this.gates.length < _this.max_gates) {
+              return _this.gates.push($(el).attr("value"));
+            } else {
+              do_set = false;
+              return $(el).prop("checked", false);
+            }
+          }
+        });
+        if (do_set) {
+          return _this.set_model();
+        }
+      };
+    })(this));
+  };
+
+  PcadischargeWidgetView.prototype.onShow = function() {
+    var gates, settings;
+    settings = this.model.get('settings');
+    settings || (settings = {});
+    this.draw_selectors(settings.terminal, settings.zone, settings.gate);
+    this.$('#site').on('change', (function(_this) {
+      return function() {
+        _this.draw_gate_checks();
+        return _this.set_model();
+      };
+    })(this));
+    gates = settings.gates;
+    if ((gates == null) || gates.length === 0) {
+      this.toggle_settings();
+    }
+    this.site_code = OPCManager.get_site_code(settings.site);
+    if (this.site_code != null) {
+      return this.watch_updates(this.site_code);
+    }
+  };
+
+  PcadischargeWidgetView.prototype.start = function() {
+    return this.update();
+  };
+
+  PcadischargeWidgetView.prototype.onDestroy = function(arg1, arg2) {
+    return this.kill_updates(this.site_code);
+  };
+
+  return PcadischargeWidgetView;
+
+})(IOPSWidgetView);
+
+window.PcadischargeWidgetView = PcadischargeWidgetView;
+
+module.exports = PcadischargeWidgetView;
+
+},{"./iops_widget_view":60}],65:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PcasummaryWidgetView, UIUtils,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -9949,7 +10349,7 @@ window.PcasummaryWidgetView = PcasummaryWidgetView;
 
 module.exports = PcasummaryWidgetView;
 
-},{"../../common/uiutils":7,"./iops_widget_view":60}],65:[function(require,module,exports){
+},{"../../common/uiutils":7,"./iops_widget_view":60}],66:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PcaWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -10148,7 +10548,7 @@ window.PcaWidgetView = PcaWidgetView;
 
 module.exports = PcaWidgetView;
 
-},{"./iops_widget_view":60}],66:[function(require,module,exports){
+},{"./iops_widget_view":60}],67:[function(require,module,exports){
 var Marionette, UrlWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -10236,7 +10636,7 @@ window.UrlWidgetView = UrlWidgetView;
 
 module.exports = UrlWidgetView;
 
-},{"../dashboard/widget_view":38}],67:[function(require,module,exports){
+},{"../dashboard/widget_view":38}],68:[function(require,module,exports){
 var Marionette, WeatherWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
