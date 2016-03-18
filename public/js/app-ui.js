@@ -9966,8 +9966,9 @@ PcadischargeWidgetView = (function(superClass) {
         ct = (timer[3] != null) && timer[3] !== '0' ? parseFloat(timer[3]) : 0;
         if (ht > 0 || ct > 0) {
           v = ht > 0 ? ht : ct;
+          v = v.toFixed(2);
           blink = ((timer[0] != null) && timer[0].toUpperCase() === "TRUE") || ((timer[2] != null) && timer[2].toUpperCase() === "TRUE") ? "blink" : "";
-          return $("<div class='timer-label " + blink + "' style='padding:5px;'>" + v + "</div>").css({
+          return $("<div class='timer-label " + blink + "' style='padding:5px;'>" + v + " min.</div>").css({
             position: 'absolute',
             left: o.left - w / 2,
             top: o.top + 20,

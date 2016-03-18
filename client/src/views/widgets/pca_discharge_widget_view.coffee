@@ -171,8 +171,9 @@ class PcadischargeWidgetView extends IOPSWidgetView
         ct = if timer[3]? && timer[3] != '0' then parseFloat(timer[3]) else 0
         if ht > 0 || ct > 0
           v = if ht>0 then ht else ct
+          v = v.toFixed(2)
           blink = if (timer[0]? && timer[0].toUpperCase() == "TRUE") || (timer[2]? && timer[2].toUpperCase() == "TRUE") then "blink" else ""
-          $("<div class='timer-label #{blink}' style='padding:5px;'>#{v}</div>").css
+          $("<div class='timer-label #{blink}' style='padding:5px;'>#{v} min.</div>").css
             position: 'absolute'
             left: o.left - w/2
             top: o.top + 20
