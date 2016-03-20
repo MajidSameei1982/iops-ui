@@ -8427,11 +8427,11 @@ GpusummaryWidgetView = (function(superClass) {
   };
 
   GpusummaryWidgetView.prototype.trend_callback = function(data) {
-    var fd, i, j, k, len, markings, max, opts, p, ref, ref1, ref2, ref3, ref4, span, tm1, tm2, x, y;
+    var fd, i, j, k, len, markings, max, opts, p, ref, ref1, ref2, ref3, ref4, span, tm1, tm2, tt, x, y;
     this.$('#plot-placeholder').remove();
     this.tb = OPC.Trend.getTrendBinding(data);
     if (this.tb != null) {
-      max = 150.0;
+      max = 0;
       if ((data.penvalues != null) && data.penvalues.length > 0) {
         ref = data.penvalues[0];
         for (i = 0, len = ref.length; i < len; i++) {
@@ -8441,6 +8441,7 @@ GpusummaryWidgetView = (function(superClass) {
           }
         }
       }
+      max = max * 1.1;
       markings = [];
       fd = OPC.Flot.buildTrendData(data);
       tm1 = fd[0].data[0][0].getTime();
@@ -8466,7 +8467,6 @@ GpusummaryWidgetView = (function(superClass) {
           lineWidth: 1
         });
       }
-      this.initializing = false;
       opts = {
         series: {
           shadowSize: 0
@@ -8518,7 +8518,40 @@ GpusummaryWidgetView = (function(superClass) {
           }
         ]
       };
-      return $.plot("#" + this.tb.chartid, fd, opts);
+      $.plot("#" + this.tb.chartid, fd, opts);
+      if (this.initializing) {
+        tt = $("<div id='plot_tooltip'></div>");
+        tt.css({
+          position: "absolute",
+          border: "1px solid #666",
+          padding: "2px",
+          "background-color": "#fff",
+          "border-radius": "5px",
+          "box-shadow": "3px 3px 3px 0 rgba(0,0,0,0.1)",
+          "z-index": 9999,
+          opacity: 0.90
+        }).appendTo("#plot_data");
+        this.$("#" + this.tb.chartid).bind("plothover", (function(_this) {
+          return function(e, pos, item) {
+            var dt, dts;
+            if (item == null) {
+              return _this.$("#plot_tooltip").hide();
+            } else {
+              x = item.datapoint[0];
+              y = item.datapoint[1].toFixed(2);
+              dt = new Date(x);
+              dts = (dt.getMonth() + 1) + "/" + (dt.getDate()) + "/" + (dt.getFullYear()) + "<br/>" + (dt.getHours()) + ":" + (dt.getMinutes()) + ":" + (dt.getSeconds());
+              _this.$("#plot_tooltip").html(dts + "<br/><b>" + y + "</b>");
+              _this.$("#plot_tooltip").css({
+                top: item.pageY - 230,
+                left: item.pageX - 515
+              });
+              return _this.$("#plot_tooltip").show();
+            }
+          };
+        })(this));
+      }
+      return this.initializing = false;
     }
   };
 

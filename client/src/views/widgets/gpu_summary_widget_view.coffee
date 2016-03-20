@@ -158,10 +158,11 @@ class GpusummaryWidgetView extends IOPSWidgetView
     #return null if !@tb.mode?
 
     if @tb?
-      max = 150.0
+      max = 0
       if data.penvalues? && data.penvalues.length>0
         for p in data.penvalues[0]
           if p != '' && parseFloat(p) > max then max = parseFloat(p)
+      max = max * 1.1
       # console.log max
       markings = []
       fd = OPC.Flot.buildTrendData(data)
@@ -175,13 +176,12 @@ class GpusummaryWidgetView extends IOPSWidgetView
       for x in [tm1..tm2] by span
         markings.push { xaxis: { from: x, to: x }, color:"#eee", lineWidth:1 }
 
-      @initializing = false
       opts =
         series: { shadowSize: 0}
         lines:  { show: true, fill: true }
         grid:
           hoverable: true 
-          clickable:true
+          clickable: true
           autoHighlight: false
           color:"transparent"
           borderColor: "#666"
@@ -204,7 +204,32 @@ class GpusummaryWidgetView extends IOPSWidgetView
 
       # = OPC.Flot.buildTrendData(data)
       $.plot("##{@tb.chartid}", fd, opts)
-
+      if @initializing
+        tt = $("<div id='plot_tooltip'></div>")
+        tt.css
+          position: "absolute"
+          # display: "none"
+          border: "1px solid #666"
+          padding: "2px"
+          "background-color": "#fff"
+          "border-radius": "5px"
+          "box-shadow": "3px 3px 3px 0 rgba(0,0,0,0.1)"
+          "z-index": 9999
+          opacity: 0.90
+        .appendTo("#plot_data")
+        @$("##{@tb.chartid}").bind "plothover", (e, pos, item)=>
+          if !item?
+            @$("#plot_tooltip").hide()
+          else
+            x = item.datapoint[0]
+            y = item.datapoint[1].toFixed(2)
+            dt =  new Date(x)
+            dts = "#{dt.getMonth()+1}/#{dt.getDate()}/#{dt.getFullYear()}<br/>#{dt.getHours()}:#{dt.getMinutes()}:#{dt.getSeconds()}"
+            @$("#plot_tooltip").html("#{dts}<br/><b>#{y}</b>")
+            @$("#plot_tooltip").css({top: item.pageY-230, left: item.pageX-515})
+            @$("#plot_tooltip").show()
+          
+      @initializing = false
 
   # process data and update the view
   data_update: (data)=>
@@ -302,6 +327,7 @@ class GpusummaryWidgetView extends IOPSWidgetView
     @$("#plot-placeholder").css
       "max-height": "#{h}px"
       "height": "#{h}px"
+  
     
     # clear out previous plots
     if @tbinding

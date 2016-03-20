@@ -10,10 +10,6 @@ Config Widget
 =============
 - set points for PCA discharge
 
-PCA Discharge
-=============
-- settings: pick up to 6 gates to display
-
 Charts:
 =======
 
