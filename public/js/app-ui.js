@@ -3312,6 +3312,9 @@ _.extend(Marionette.View.prototype, {
               ref1 = acc.sites.models;
               for (j = 0, len1 = ref1.length; j < len1; j++) {
                 s = ref1[j];
+                if (!App.session.has_site(s.id)) {
+                  continue;
+                }
                 txt = s.get('name');
                 code = s.get('code');
                 if ((code != null) && code !== '') {
@@ -4468,6 +4471,77 @@ User = (function(superClass) {
     this.on("change:dashboards", this.set_properties);
     this;
   }
+
+  User.prototype.has_role = function(roleid) {
+    var i, len, r, ref;
+    ref = this.roles.models;
+    for (i = 0, len = ref.length; i < len; i++) {
+      r = ref[i];
+      if (r.id === roleid) {
+        return true;
+      }
+    }
+    return false;
+  };
+
+  User.prototype.is_global_admin = function() {
+    var ar, i, len, ref;
+    ref = App.roles.models;
+    for (i = 0, len = ref.length; i < len; i++) {
+      ar = ref[i];
+      if (!ar.get("siteId") && ar.get("name") === "admin" && this.has_role(ar.id)) {
+        return true;
+        break;
+      }
+    }
+    return false;
+  };
+
+  User.prototype.has_site = function(sid) {
+    var i, len, ref, s;
+    ref = this.sites();
+    for (i = 0, len = ref.length; i < len; i++) {
+      s = ref[i];
+      if (s === sid) {
+        return true;
+      }
+    }
+    return false;
+  };
+
+  User.prototype.sites = function() {
+    var acc, ar, i, isadmin, j, k, l, len, len1, len2, len3, ref, ref1, ref2, ref3, s, sid, sites, ur;
+    sites = [];
+    isadmin = this.is_global_admin();
+    ref = App.accounts.models;
+    for (i = 0, len = ref.length; i < len; i++) {
+      acc = ref[i];
+      ref1 = acc.sites.models;
+      for (j = 0, len1 = ref1.length; j < len1; j++) {
+        s = ref1[j];
+        if (isadmin) {
+          sites.push(s.id);
+        } else {
+          ref2 = this.roles.models;
+          for (k = 0, len2 = ref2.length; k < len2; k++) {
+            ur = ref2[k];
+            ref3 = App.roles.models;
+            for (l = 0, len3 = ref3.length; l < len3; l++) {
+              ar = ref3[l];
+              if (ar.id === ur.id) {
+                sid = ar.get('siteId');
+                if ((sid != null) && s.id === sid) {
+                  sites.push(s.id);
+                  break;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return sites;
+  };
 
   User.prototype.check_claim = function(claim, site) {
     var ac, i, j, len, len1, ref, ref1, s, sid, uc;

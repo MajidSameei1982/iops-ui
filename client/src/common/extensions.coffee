@@ -53,6 +53,7 @@ _.extend Marionette.View::,
         for acc in App.accounts.models
           if acc.sites? && acc.sites.models.length > 0
             for s in acc.sites.models
+              continue if !App.session.has_site(s.id)
               txt = s.get('name')
               code = s.get('code')
               if code? && code != '' then txt = "#{txt} (#{code})"

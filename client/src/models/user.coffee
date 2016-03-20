@@ -65,6 +65,41 @@ class User extends BaseModel
     @on "change:dashboards", @set_properties 
     @
 
+  has_role: (roleid)->
+    for r in @roles.models
+      if r.id == roleid then return true
+    false
+
+  is_global_admin: ()->
+    # check global admin
+    for ar in App.roles.models
+      if !ar.get("siteId") && ar.get("name") == "admin" && @has_role(ar.id)
+        return true
+        break
+    false
+
+  has_site: (sid)->
+    for s in @sites()
+      if s == sid then return true
+    false
+
+  sites: ()->
+    sites = []
+    isadmin = @is_global_admin()    
+    for acc in App.accounts.models
+      for s in acc.sites.models
+        if isadmin
+          sites.push(s.id)
+        else
+          for ur in @roles.models
+            for ar in App.roles.models
+              if ar.id == ur.id
+                sid = ar.get('siteId')
+                if sid? && s.id == sid
+                  sites.push(s.id)
+                  break          
+    sites
+
   check_claim: (claim, site)->
     s = if site? then OPCManager.get_site(site) else null
     sid = if s? then s.id else null
