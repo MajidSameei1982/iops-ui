@@ -49,7 +49,9 @@
      <div id="pca_hotgas1" class=""></div>
      <div id="pca_hotgas2" class=""></div>
      <div id="pca_pumpcond" class=""></div>
-     
+     <div id="pca_aircraftdamper" class=""></div>
+     <div id="pca_bridgedamper" class=""></div>
+       
      </td></tr>         
     </table>
  </td>

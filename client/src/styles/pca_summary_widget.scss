@@ -27,9 +27,25 @@
     font-weight: bold;
     color:#333;
   }
+  #pca_aircraftdamper{
+    position: absolute;
+    left: 27%;
+    top: 70%;
+    font-size: 12px;
+    font-weight: bold;
+    color:#333;
+  }
+  #pca_bridgedamper{
+    position: absolute;
+    left: 26%;
+    top: 30%;
+    font-size: 12px;
+    font-weight: bold;
+    color:#333;
+  }
   #pca_pumpcond{
     position: absolute;
-    left: 74%;
+    left: 77%;
     top: 90%;
     font-size: 12px;
     font-weight: bold;
@@ -45,8 +61,8 @@
   }
     #pca_pcaambhumidity{
     position: absolute;
-    left: 79%;
-    top: 10%;
+    left: 77%;
+    top: 84%;
     font-size: 12px;
     font-weight: bold;
     color:#333;
@@ -108,7 +124,7 @@
   div[id^='gauge_'] {
     position: absolute;
     bottom: 11%;
-    left: 4%;
+    left: 1.5%;
       width: 30%;
       height: 100%;
 
@@ -116,8 +132,8 @@
 
      div[id^='amps_'] {
      position: absolute;
-     top: 25%;
-     left: 4%;
+     top: 23%;
+     left: 1.5%;
       width: 30%;
       height: 100%;
  
