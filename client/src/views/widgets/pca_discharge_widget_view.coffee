@@ -78,6 +78,7 @@ class PcadischargeWidgetView extends IOPSWidgetView
 
     markings = []
     timers = []
+    max = 0
     for g, idx in s.gates
       gp = g.split(':')
       term = gp[0]
@@ -86,6 +87,7 @@ class PcadischargeWidgetView extends IOPSWidgetView
       pre = "#{@prefix}Term#{gp[0]}.Zone#{gp[1]}.Gate#{gp[2]}."
       temp = @vals["#{pre}#{@tags.temp}"]
       temp = if temp? && temp != '' then parseFloat(temp) else 0
+      max = if temp > max then temp else max
 
       onv = @vals["#{pre}#{@tags.on}"]
       cooling = @vals["#{pre}#{@tags.cooling}"]
@@ -97,13 +99,12 @@ class PcadischargeWidgetView extends IOPSWidgetView
       timer_heat = @vals["#{pre}#{@tags.timer_heat}"]
       timer_cool = @vals["#{pre}#{@tags.timer_cool}"]
       timers.push [alarm_heat, timer_heat, alarm_cool, timer_cool]
-      #console.log "#{gate}: c: #{cool_set} h: #{heat_set}"
       if cool_set? && cool_set != ''
         cv = parseFloat(cool_set) 
-        markings.push { color: '#6666cc', lineWidth: 1, yaxis: { from: cv-0.25, to: cv } }
+        markings.push { color: '#6666cc', lineWidth: 2, yaxis: { from: cv, to: cv } }
       if heat_set? && heat_set != ''
         hv = parseFloat(heat_set) 
-        markings.push { color: '#cc6666', lineWidth: 1, yaxis: { from: hv-0.25, to: hv } }
+        markings.push { color: '#cc6666', lineWidth: 2, yaxis: { from: hv, to: hv } }
 
       color = bad_q
       if onv? && onv.toUpperCase() == "FALSE"
@@ -139,6 +140,7 @@ class PcadischargeWidgetView extends IOPSWidgetView
         axisLabelFontSizePixels: 12
         axisLabelFontFamily: 'Verdana, Arial'
         axisLabelPadding: 3
+        max: max + 20
       legend: 
         noColumns: 0
         labelBoxBorderColor: "#000000"
@@ -150,14 +152,14 @@ class PcadischargeWidgetView extends IOPSWidgetView
 
     p = $.plot(@$("#chart"), data, options)
 
-    # draw values above bars
+    # draw values above bars and timer on bars
     index = 0
     for series in [0..cnt-1]
       $.each p.getData()[series].data, (i, el)->
         o = p.pointOffset({x: el[0], y: el[1]})
         wu = p.getOptions().series.bars.barWidth
         w = wu * p.getXAxes()[0].scale
-        $('<div class="data-point-label">' + el[1] + '°</div>').css
+        $('<div class="data-point-label"><span style="background-color:rgba(255,255,255,0.8);padding:0px 5px;">' + el[1] + '°</span></div>').css
           position: 'absolute'
           left: o.left - w/2
           top: o.top - 20
@@ -172,17 +174,19 @@ class PcadischargeWidgetView extends IOPSWidgetView
         if ht > 0 || ct > 0
           v = if ht>0 then ht else ct
           v = v.toFixed(2)
-          blink = if (timer[0]? && timer[0].toUpperCase() == "TRUE") || (timer[2]? && timer[2].toUpperCase() == "TRUE") then "blink" else ""
-          $("<div class='timer-label #{blink}' style='padding:5px;'>#{v} min.</div>").css
-            position: 'absolute'
-            left: o.left - w/2
-            top: o.top + 20
-            width: "#{w}px"
-            textAlign: "center"
-            fontWeight: "bold"
-            backgroundColor: "#FC0"
-            color: "#C00"
-          .appendTo(p.getPlaceholder())
+          showTimer = (timer[0]? && timer[0].toUpperCase() == "TRUE") || (timer[2]? && timer[2].toUpperCase() == "TRUE")
+          blink = if showTimer then "blink" else ""
+          if showTimer
+            $("<div class='timer-label #{blink}' style='padding:5px;'>#{v} min.</div>").css
+              position: 'absolute'
+              left: o.left - w/2
+              top: o.top + 20
+              width: "#{w}px"
+              textAlign: "center"
+              fontWeight: "bold"
+              backgroundColor: "#FC0"
+              color: "#C00"
+            .appendTo(p.getPlaceholder())
       index++
     
   set_model: ()=>
@@ -198,7 +202,6 @@ class PcadischargeWidgetView extends IOPSWidgetView
     super(e)
     @ui.display.toggle(!@settings_visible)
     if @settings_visible
-      @ui.site.chosen()
       @draw_gate_checks()
 
   draw_gate_checks: ()->

@@ -221,9 +221,6 @@ ul.chosen-results li.highlighted {
   border-color: #3c8dbc !important;
   box-shadow: none !important; }
 
-.chosen-container.chosen-container-single {
-  width: auto !important; }
-
 .chosen-container.chosen-container-multi {
   width: 100% !important; }
 

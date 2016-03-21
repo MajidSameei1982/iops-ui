@@ -100,6 +100,25 @@ class User extends BaseModel
                   break          
     sites
 
+  # check widget roles against user's roles for access to widgets
+  check_widget_roles:(sroles)->
+    for r in sroles
+      rp = r.split(':')
+      type = rp[0]
+      role = rp[1]
+      app_role = null
+      for ar in App.roles.models
+        if ar.get('name') == role
+          if (type == 'global' && !ar.get('siteId')?) || (type == 'site' && ar.get('siteId'))
+            app_role = ar
+            break
+      if app_role
+        for ur in @roles.models
+          if ur.id == app_role.id
+            return true
+    false
+
+  # check a specific claim against user's claims
   check_claim: (claim, site)->
     s = if site? then OPCManager.get_site(site) else null
     sid = if s? then s.id else null
@@ -111,6 +130,7 @@ class User extends BaseModel
         break
     false
 
+  # check a specific role against user's roles
   check_role: (role, site)->
     s = if site? then OPCManager.get_site(site) else null
     sid = if s? then s.id else null

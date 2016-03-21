@@ -51,13 +51,6 @@
         </tr>
       </table>
     </div>
-    <!-- <div id="bottom_buttons">
-      <a id="toggle_main" href="#" class="toggle_button" style="display: none;">Summary</a>
-      <a id="toggle_volts_in" href="#" class="toggle_button">Input Voltage</a>
-      <a id="toggle_volts_out" href="#" class="toggle_button">Output Voltage</a>
-      <a id="toggle_amps_out" href="#" class="toggle_button">Output Amperage</a>
-    </div> -->
-
   </div>
 
   <div class="settings" style="display: none;">

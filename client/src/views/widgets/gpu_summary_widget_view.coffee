@@ -162,7 +162,7 @@ class GpusummaryWidgetView extends IOPSWidgetView
       if data.penvalues? && data.penvalues.length>0
         for p in data.penvalues[0]
           if p != '' && parseFloat(p) > max then max = parseFloat(p)
-      max = max * 1.1
+      max = max * 1.25
       # console.log max
       markings = []
       fd = OPC.Flot.buildTrendData(data)
@@ -383,7 +383,6 @@ class GpusummaryWidgetView extends IOPSWidgetView
   toggle_settings: (e)->
     super(e)
     @ui.display.toggle(!@settings_visible)
-    if @settings_visible then @ui.site.chosen()
 
   onShow: ()->
     settings = @model.get('settings')

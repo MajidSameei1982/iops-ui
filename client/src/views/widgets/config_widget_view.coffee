@@ -12,31 +12,98 @@ class ConfigWidgetView extends IOPSWidgetView
   
   @layout:
     sx: 4
-    sy: 10
+    sy: 5
 
-  # tags:
-  #   pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
-  #   pbb_has_warnings :  'Warning._HasWarnings'
-  #   pbb_has_alarms :    'Alarm._HasAlarms'
+  tags:
+    cooling_pt:  'PCA.SET_COOLINGPOINT.Value'
+    heating_pt:  'PCA.SET_HEATINGPOINT.Value'
+
+  base_tags: []
     
   update: ()->
-    #fire when loaded or settings are updated
+    if @site_code? then @kill_updates(@site_code)
+    s = @model.get("settings")
+   
+    if s? && !!s.site
+      @site = OPCManager.get_site(s.site)
+      @site_code = @site.get('code')
+      if !@site_code? then return null
 
+    @$('h3.box-title').html("Configure (#{@site_code})")
+    # @update_settings
+    #   prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
+    #   cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+    @base_tags = []
+    if @site?
+      settings = @site.get('settings') || {}
+      terminals = settings.zones || {}
+      for t of terminals
+        term = terminals[t]
+        for z of term
+          zn = term[z]
+          for g of zn
+            pre = "Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}."
+            for tg of @tags
+              tag = @tags[tg]
+              @base_tags.push "#{pre}#{tag}"
+    if @base_tags.length > 0
+      App.opc.add_tags @site_code, @base_tags
+      @opc =  App.opc.connections[@site_code]
+      @watch_updates(@site_code)
+      
   data_update: (data)=>
-    # process data and update the view
+    # kill after first read - no need to poll any more
+    if data? && data.tags? && data.tags.length > 0
+      cool = 0
+      heat = 0
+      for t in data.tags
+        if t.name.endsWith("PCA.SET_COOLINGPOINT")
+          v = t.props[0].val
+          v = if v? && v != '' then parseFloat(v) else 0
+          cool = if v > cool then v else cool
+        if t.name.endsWith("PCA.SET_HEATINGPOINT")
+          v = t.props[0].val
+          v = if v? && v != '' then parseFloat(v) else 0
+          heat = if v > heat then v else heat
+      @$('input#heat_set').val(heat)
+      @$('input#cool_set').val(cool)
+    @kill_updates(@site_code)
+
+  set_points: (e)=>
+    e.preventDefault()
+    if @site?
+      settings = @site.get('settings') || {}
+      terminals = settings.zones || {}
+      for t of terminals
+        term = terminals[t]
+        for z of term
+          zn = term[z]
+          for g of zn
+            pre = "Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}."
+            @opc.set_value("#{pre}#{@tags.cooling_pt}", @$('input#cool_set').val())
+            @opc.set_value("#{pre}#{@tags.heating_pt}", @$('input#heat_set').val())
+    
 
   set_model: ()=>
     s = _.clone(@model.get("settings"))
-    # update settings n model
+    s.site = @$('#site').val()
     @model.set("settings", s)
 
-  # toggle_settings: (e)->
-  #   super(e)
-  #   if @settings_visible then @ui.site.chosen()
+  toggle_settings: (e)->
+    super(e)
+    @ui.display.toggle(!@settings_visible)
 
   onShow: ()->
     settings = @model.get('settings')
-
+    settings || settings = {}
+    site = settings.site
+    if !site? || site == ''
+      @toggle_settings()
+    @draw_selectors(settings.terminal, settings.zone, settings.gate)
+    @$('#site').on 'change', ()=>
+      @set_model()
+    @$('#set_pca_points').click @set_points
+    
   onDestroy: (arg1, arg2) ->
     # be sure to remove listeners
     @kill_updates(@site_code)

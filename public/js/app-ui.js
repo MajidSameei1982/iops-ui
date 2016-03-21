@@ -495,23 +495,7 @@ window.JST["dashboard/widget_modal"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      var i, len, ref, w;
-    
-      _print(_safe('<div class="modal-dialog">\n  <div class="modal-content">\n    <div class="modal-header">\n      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>\n      <h4 class="modal-title">Add a Widget</h4>\n      Select a widget below to add to the current dashboard.\n    </div>\n    <div class="modal-body">\n      <div id=\'widget_selections\'>\n        '));
-    
-      ref = App.config.widgets;
-      for (i = 0, len = ref.length; i < len; i++) {
-        w = ref[i];
-        _print(_safe('\n          <a class=\'widget_select\' id=\''));
-        _print(w.id);
-        _print(_safe('\' href="#"><i class="fa fa-'));
-        _print(w.icon);
-        _print(_safe('"></i> '));
-        _print(w.name);
-        _print(_safe('</a>\n        '));
-      }
-    
-      _print(_safe('\n      </div>\n    </div>\n    <div class="modal-footer">\n      <button type="button" id=\'modal_cancel\' class="btn btn-outline pull-left" data-dismiss="modal">CANCEL</button>\n    </div>\n  </div><!-- /.modal-content -->\n</div><!-- /.modal-dialog -->\n'));
+      _print(_safe('<div class="modal-dialog">\n  <div class="modal-content">\n    <div class="modal-header">\n      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>\n      <h4 class="modal-title">Add a Widget</h4>\n      Select a widget below to add to the current dashboard.\n    </div>\n    <div class="modal-body">\n      <div id=\'widget_selections\'>\n        \n      </div>\n    </div>\n    <div class="modal-footer">\n      <button type="button" id=\'modal_cancel\' class="btn btn-outline pull-left" data-dismiss="modal">CANCEL</button>\n    </div>\n  </div><!-- /.modal-content -->\n</div><!-- /.modal-dialog -->\n'));
     
     }).call(this);
     
@@ -1675,7 +1659,15 @@ window.JST["widgets/config_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-cloud"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\' class=\'display\'>\n    DISPLAY\n  </div>\n  <div id="settings" class=\'settings\' style="display: none;">\n    SETTINGS\n  </div><!-- /.box-body -->\n</div><!-- /.box-body -->\n'));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-gear"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\' class=\'display\'>\n    <b style=\'margin-bottom:10px;\'>PCA SET POINTS</b>\n    <div><b style=\'color:#cc6666;\'>Heat:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set\'>°</div>\n    <div><b style=\'color:#6666cc;\'>Cool:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set\'>°</div>\n    <div style=\'margin:10px 0;\'><button id=\'set_pca_points\'>UPDATE SET POINTS</button></div>\n  </div>\n  <div id="settings" class=\'settings\' style="display: none;">\n    <h3>Settings</h3>\n    '));
+    
+      _print(_safe(this.siteSelector({
+        id: 'site',
+        label: 'Site',
+        site: this.settings.site
+      })));
+    
+      _print(_safe('\n  </div><!-- /.box-body -->\n</div><!-- /.box-body -->\n'));
     
     }).call(this);
     
@@ -1720,7 +1712,7 @@ window.JST["widgets/gpu_summary_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'>\n    <i class="fa fa-flash"></i> <h3 class="box-title"></h3>\n    <select id="mode" style=\'display:none;\'>\n      <option value=\'\'>Summary</option>\n      <option value=\'vin\'>Input Voltage</option>\n      <option value=\'vout\'>Output Voltage</option>\n      <option value=\'aout\'>Output Amperage</option>\n    </select>\n  </div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gpu_summary_label">\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <div id="view_main">\n      <div id="gpu_image"></div>\n      <div id="power_indicator"></div>\n      <div id="txt_connected_time"></div>\n    </div>\n    <div id="plots" style="display: none;">\n      <table id=\'plot_container\' border="0">\n        <tr>\n          <td id=\'options\'>\n            <div id=\'ptype_lbl\'></div>\n\n            <div id=\'live_container\'>\n              <label>Live Data</label>\n              <input id=\'live_data\' type="checkbox" data-toggle="toggle" >\n            </div>\n            \n            <div id="phases">\n              <a id="phase_a" class=\'plot_type\' href="#">Phase A</a>\n              <a id="phase_b" class=\'plot_type\' href="#">Phase B</a>\n              <a id="phase_c" class=\'plot_type\' href="#">Phase C</a>\n            </div>\n\n          </td>\n          <td id=\'plot_data\'></td>\n        </tr>\n      </table>\n    </div>\n    <!-- <div id="bottom_buttons">\n      <a id="toggle_main" href="#" class="toggle_button" style="display: none;">Summary</a>\n      <a id="toggle_volts_in" href="#" class="toggle_button">Input Voltage</a>\n      <a id="toggle_volts_out" href="#" class="toggle_button">Output Voltage</a>\n      <a id="toggle_amps_out" href="#" class="toggle_button">Output Amperage</a>\n    </div> -->\n\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'>\n    <i class="fa fa-flash"></i> <h3 class="box-title"></h3>\n    <select id="mode" style=\'display:none;\'>\n      <option value=\'\'>Summary</option>\n      <option value=\'vin\'>Input Voltage</option>\n      <option value=\'vout\'>Output Voltage</option>\n      <option value=\'aout\'>Output Amperage</option>\n    </select>\n  </div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gpu_summary_label">\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <div id="view_main">\n      <div id="gpu_image"></div>\n      <div id="power_indicator"></div>\n      <div id="txt_connected_time"></div>\n    </div>\n    <div id="plots" style="display: none;">\n      <table id=\'plot_container\' border="0">\n        <tr>\n          <td id=\'options\'>\n            <div id=\'ptype_lbl\'></div>\n\n            <div id=\'live_container\'>\n              <label>Live Data</label>\n              <input id=\'live_data\' type="checkbox" data-toggle="toggle" >\n            </div>\n            \n            <div id="phases">\n              <a id="phase_a" class=\'plot_type\' href="#">Phase A</a>\n              <a id="phase_b" class=\'plot_type\' href="#">Phase B</a>\n              <a id="phase_c" class=\'plot_type\' href="#">Phase C</a>\n            </div>\n\n          </td>\n          <td id=\'plot_data\'></td>\n        </tr>\n      </table>\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -3303,7 +3295,7 @@ _.extend(Marionette.View.prototype, {
       siteSelector: function(arg) {
         var acc, code, i, id, j, label, len, len1, ref, ref1, s, sel, sh, site, txt;
         id = arg.id, label = arg.label, site = arg.site;
-        sh = "<div class='form-group' for='" + id + "'>\n  <label>" + label + "</label>\n  <select id='" + id + "' class='form-control' data-placeholder='Select a Site'>\n    <option value=''></option>";
+        sh = "<div class='form-group' for='" + id + "' style='width:95%;'>\n  <label>" + label + "</label>\n  <select id='" + id + "' class='form-control' style='width:95%;' data-placeholder='Select a Site'>\n    <option value=''></option>";
         if ((App.accounts != null) && App.accounts.models.length > 0) {
           ref = App.accounts.models;
           for (i = 0, len = ref.length; i < len; i++) {
@@ -4541,6 +4533,37 @@ User = (function(superClass) {
       }
     }
     return sites;
+  };
+
+  User.prototype.check_widget_roles = function(sroles) {
+    var app_role, ar, i, j, k, len, len1, len2, r, ref, ref1, role, rp, type, ur;
+    for (i = 0, len = sroles.length; i < len; i++) {
+      r = sroles[i];
+      rp = r.split(':');
+      type = rp[0];
+      role = rp[1];
+      app_role = null;
+      ref = App.roles.models;
+      for (j = 0, len1 = ref.length; j < len1; j++) {
+        ar = ref[j];
+        if (ar.get('name') === role) {
+          if ((type === 'global' && (ar.get('siteId') == null)) || (type === 'site' && ar.get('siteId'))) {
+            app_role = ar;
+            break;
+          }
+        }
+      }
+      if (app_role) {
+        ref1 = this.roles.models;
+        for (k = 0, len2 = ref1.length; k < len2; k++) {
+          ur = ref1[k];
+          if (ur.id === app_role.id) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
   };
 
   User.prototype.check_claim = function(claim, site) {
@@ -5970,6 +5993,7 @@ module.exports = WidgetLayout;
 
 },{"../../models/widget":23,"../../opcmanager":25,"./widget_modal":37,"./widget_view":38}],37:[function(require,module,exports){
 var Marionette, WidgetModalView,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -5979,6 +6003,7 @@ WidgetModalView = (function(superClass) {
   extend(WidgetModalView, superClass);
 
   function WidgetModalView() {
+    this.select = bind(this.select, this);
     return WidgetModalView.__super__.constructor.apply(this, arguments);
   }
 
@@ -5995,10 +6020,6 @@ WidgetModalView = (function(superClass) {
     body: '.modal-body'
   };
 
-  WidgetModalView.prototype.events = {
-    'click #widget_selections>a.widget_select': "select"
-  };
-
   WidgetModalView.prototype.select = function(e) {
     var sel, wid;
     e.preventDefault();
@@ -6011,8 +6032,9 @@ WidgetModalView = (function(superClass) {
   };
 
   WidgetModalView.prototype.onShow = function() {
+    var i, len, ref, w;
     this.m = $('#app_modal').modal();
-    return this.m.on("hidden.bs.modal", (function(_this) {
+    this.m.on("hidden.bs.modal", (function(_this) {
       return function() {
         if ((_this.model != null) && (_this.model.on_cancel != null)) {
           _this.model.on_cancel();
@@ -6020,6 +6042,15 @@ WidgetModalView = (function(superClass) {
         return App.layout.modal_region.empty();
       };
     })(this));
+    ref = App.config.widgets;
+    for (i = 0, len = ref.length; i < len; i++) {
+      w = ref[i];
+      if ((w.roles != null) && !App.session.check_widget_roles(w.roles)) {
+        continue;
+      }
+      this.$('#widget_selections').append("<a class='widget_select' id='" + w.id + "' href='#'><i class='fa fa-" + w.icon + "'></i> " + w.name + "</a>");
+    }
+    return this.$('a.widget_select').click(this.select);
   };
 
   return WidgetModalView;
@@ -7925,7 +7956,9 @@ AirportWidgetView = (function(superClass) {
     AirportWidgetView.__super__.toggle_settings.call(this, e);
     this.ui.display.toggle(!this.settings_visible);
     if (this.settings_visible) {
-      return this.ui.site.chosen();
+      return this.ui.site.chosen({
+        width: '95%'
+      });
     }
   };
 
@@ -8147,7 +8180,6 @@ AlarmWidgetView = (function(superClass) {
     AlarmWidgetView.__super__.toggle_settings.call(this, e);
     this.ui.display.toggle(!this.settings_visible);
     if (this.settings_visible) {
-      this.ui.site.chosen();
       this.ui.type.chosen();
     }
     checked = this.$("#allgates").is(':checked');
@@ -8247,6 +8279,7 @@ ConfigWidgetView = (function(superClass) {
 
   function ConfigWidgetView() {
     this.set_model = bind(this.set_model, this);
+    this.set_points = bind(this.set_points, this);
     this.data_update = bind(this.data_update, this);
     return ConfigWidgetView.__super__.constructor.apply(this, arguments);
   }
@@ -8262,22 +8295,139 @@ ConfigWidgetView = (function(superClass) {
 
   ConfigWidgetView.layout = {
     sx: 4,
-    sy: 10
+    sy: 5
   };
 
-  ConfigWidgetView.prototype.update = function() {};
+  ConfigWidgetView.prototype.tags = {
+    cooling_pt: 'PCA.SET_COOLINGPOINT.Value',
+    heating_pt: 'PCA.SET_HEATINGPOINT.Value'
+  };
 
-  ConfigWidgetView.prototype.data_update = function(data) {};
+  ConfigWidgetView.prototype.base_tags = [];
+
+  ConfigWidgetView.prototype.update = function() {
+    var g, pre, s, settings, t, tag, term, terminals, tg, z, zn;
+    if (this.site_code != null) {
+      this.kill_updates(this.site_code);
+    }
+    s = this.model.get("settings");
+    if ((s != null) && !!s.site) {
+      this.site = OPCManager.get_site(s.site);
+      this.site_code = this.site.get('code');
+      if (this.site_code == null) {
+        return null;
+      }
+    }
+    this.$('h3.box-title').html("Configure (" + this.site_code + ")");
+    this.base_tags = [];
+    if (this.site != null) {
+      settings = this.site.get('settings') || {};
+      terminals = settings.zones || {};
+      for (t in terminals) {
+        term = terminals[t];
+        for (z in term) {
+          zn = term[z];
+          for (g in zn) {
+            pre = "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".";
+            for (tg in this.tags) {
+              tag = this.tags[tg];
+              this.base_tags.push("" + pre + tag);
+            }
+          }
+        }
+      }
+    }
+    if (this.base_tags.length > 0) {
+      App.opc.add_tags(this.site_code, this.base_tags);
+      this.opc = App.opc.connections[this.site_code];
+      return this.watch_updates(this.site_code);
+    }
+  };
+
+  ConfigWidgetView.prototype.data_update = function(data) {
+    var cool, heat, i, len, ref, t, v;
+    if ((data != null) && (data.tags != null) && data.tags.length > 0) {
+      cool = 0;
+      heat = 0;
+      ref = data.tags;
+      for (i = 0, len = ref.length; i < len; i++) {
+        t = ref[i];
+        if (t.name.endsWith("PCA.SET_COOLINGPOINT")) {
+          v = t.props[0].val;
+          v = (v != null) && v !== '' ? parseFloat(v) : 0;
+          cool = v > cool ? v : cool;
+        }
+        if (t.name.endsWith("PCA.SET_HEATINGPOINT")) {
+          v = t.props[0].val;
+          v = (v != null) && v !== '' ? parseFloat(v) : 0;
+          heat = v > heat ? v : heat;
+        }
+      }
+      this.$('input#heat_set').val(heat);
+      this.$('input#cool_set').val(cool);
+    }
+    return this.kill_updates(this.site_code);
+  };
+
+  ConfigWidgetView.prototype.set_points = function(e) {
+    var g, pre, results, settings, t, term, terminals, z, zn;
+    e.preventDefault();
+    if (this.site != null) {
+      settings = this.site.get('settings') || {};
+      terminals = settings.zones || {};
+      results = [];
+      for (t in terminals) {
+        term = terminals[t];
+        results.push((function() {
+          var results1;
+          results1 = [];
+          for (z in term) {
+            zn = term[z];
+            results1.push((function() {
+              var results2;
+              results2 = [];
+              for (g in zn) {
+                pre = "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".";
+                this.opc.set_value("" + pre + this.tags.cooling_pt, this.$('input#cool_set').val());
+                results2.push(this.opc.set_value("" + pre + this.tags.heating_pt, this.$('input#heat_set').val()));
+              }
+              return results2;
+            }).call(this));
+          }
+          return results1;
+        }).call(this));
+      }
+      return results;
+    }
+  };
 
   ConfigWidgetView.prototype.set_model = function() {
     var s;
     s = _.clone(this.model.get("settings"));
+    s.site = this.$('#site').val();
     return this.model.set("settings", s);
   };
 
+  ConfigWidgetView.prototype.toggle_settings = function(e) {
+    ConfigWidgetView.__super__.toggle_settings.call(this, e);
+    return this.ui.display.toggle(!this.settings_visible);
+  };
+
   ConfigWidgetView.prototype.onShow = function() {
-    var settings;
-    return settings = this.model.get('settings');
+    var settings, site;
+    settings = this.model.get('settings');
+    settings || (settings = {});
+    site = settings.site;
+    if ((site == null) || site === '') {
+      this.toggle_settings();
+    }
+    this.draw_selectors(settings.terminal, settings.zone, settings.gate);
+    this.$('#site').on('change', (function(_this) {
+      return function() {
+        return _this.set_model();
+      };
+    })(this));
+    return this.$('#set_pca_points').click(this.set_points);
   };
 
   ConfigWidgetView.prototype.onDestroy = function(arg1, arg2) {
@@ -8515,7 +8665,7 @@ GpusummaryWidgetView = (function(superClass) {
           }
         }
       }
-      max = max * 1.1;
+      max = max * 1.25;
       markings = [];
       fd = OPC.Flot.buildTrendData(data);
       tm1 = fd[0].data[0][0].getTime();
@@ -8832,10 +8982,7 @@ GpusummaryWidgetView = (function(superClass) {
 
   GpusummaryWidgetView.prototype.toggle_settings = function(e) {
     GpusummaryWidgetView.__super__.toggle_settings.call(this, e);
-    this.ui.display.toggle(!this.settings_visible);
-    if (this.settings_visible) {
-      return this.ui.site.chosen();
-    }
+    return this.ui.display.toggle(!this.settings_visible);
   };
 
   GpusummaryWidgetView.prototype.onShow = function() {
@@ -9031,10 +9178,7 @@ GpuWidgetView = (function(superClass) {
 
   GpuWidgetView.prototype.toggle_settings = function(e) {
     GpuWidgetView.__super__.toggle_settings.call(this, e);
-    this.ui.display.toggle(!this.settings_visible);
-    if (this.settings_visible) {
-      return this.ui.site.chosen();
-    }
+    return this.ui.display.toggle(!this.settings_visible);
   };
 
   GpuWidgetView.prototype.onShow = function() {
@@ -9320,10 +9464,22 @@ IOPSWidgetView = (function(superClass) {
     this.draw_terminals(terminal);
     this.draw_zones(zone);
     this.draw_gates(gate);
-    this.$("select#site").chosen();
-    this.$("select#terminal").chosen();
-    this.$("select#zone").chosen();
-    this.$("select#gate").chosen();
+    this.$("select#site").chosen({
+      disable_search: true,
+      width: '150px'
+    });
+    this.$("select#terminal").chosen({
+      disable_search: true,
+      width: '50px'
+    });
+    this.$("select#zone").chosen({
+      disable_search: true,
+      width: '50px'
+    });
+    this.$("select#gate").chosen({
+      disable_search: true,
+      width: '50px'
+    });
     return this;
   };
 
@@ -9445,10 +9601,7 @@ PbbWidgetView = (function(superClass) {
 
   PbbWidgetView.prototype.toggle_settings = function(e) {
     PbbWidgetView.__super__.toggle_settings.call(this, e);
-    this.ui.display.toggle(!this.settings_visible);
-    if (this.settings_visible) {
-      return this.ui.site.chosen();
-    }
+    return this.ui.display.toggle(!this.settings_visible);
   };
 
   PbbWidgetView.prototype.onShow = function() {
@@ -9613,10 +9766,7 @@ PbbdetailWidgetView = (function(superClass) {
 
   PbbdetailWidgetView.prototype.toggle_settings = function(e) {
     PbbdetailWidgetView.__super__.toggle_settings.call(this, e);
-    this.ui.display.toggle(!this.settings_visible);
-    if (this.settings_visible) {
-      return this.ui.site.chosen();
-    }
+    return this.ui.display.toggle(!this.settings_visible);
   };
 
   PbbdetailWidgetView.prototype.onShow = function() {
@@ -9801,10 +9951,7 @@ PbbleveldetailWidgetView = (function(superClass) {
 
   PbbleveldetailWidgetView.prototype.toggle_settings = function(e) {
     PbbleveldetailWidgetView.__super__.toggle_settings.call(this, e);
-    this.ui.display.toggle(!this.settings_visible);
-    if (this.settings_visible) {
-      return this.ui.site.chosen();
-    }
+    return this.ui.display.toggle(!this.settings_visible);
   };
 
   PbbleveldetailWidgetView.prototype.onShow = function() {
@@ -9931,7 +10078,7 @@ PcadischargeWidgetView = (function(superClass) {
   };
 
   PcadischargeWidgetView.prototype.data_update = function(data) {
-    var alarm_cool, alarm_heat, bad_q, cnt, color, cool, cool_set, cooling, cv, g, gate, gp, heat_set, heating, hot, hv, idx, index, j, k, l, len, len1, markings, offc, onv, options, p, pre, ref, ref1, ref2, results, s, series, temp, term, tg, ticks, timer_cool, timer_heat, timers, zone;
+    var alarm_cool, alarm_heat, bad_q, cnt, color, cool, cool_set, cooling, cv, g, gate, gp, heat_set, heating, hot, hv, idx, index, j, k, l, len, len1, markings, max, offc, onv, options, p, pre, ref, ref1, ref2, results, s, series, temp, term, tg, ticks, timer_cool, timer_heat, timers, zone;
     s = this.model.get("settings");
     if ((s == null) || (s.gates == null) || s.gates.length === 0) {
       return;
@@ -9951,6 +10098,7 @@ PcadischargeWidgetView = (function(superClass) {
     bad_q = '#ffcc99';
     markings = [];
     timers = [];
+    max = 0;
     ref1 = s.gates;
     for (idx = k = 0, len1 = ref1.length; k < len1; idx = ++k) {
       g = ref1[idx];
@@ -9961,6 +10109,7 @@ PcadischargeWidgetView = (function(superClass) {
       pre = this.prefix + "Term" + gp[0] + ".Zone" + gp[1] + ".Gate" + gp[2] + ".";
       temp = this.vals["" + pre + this.tags.temp];
       temp = (temp != null) && temp !== '' ? parseFloat(temp) : 0;
+      max = temp > max ? temp : max;
       onv = this.vals["" + pre + this.tags.on];
       cooling = this.vals["" + pre + this.tags.cooling];
       heating = this.vals["" + pre + this.tags.heating];
@@ -9975,9 +10124,9 @@ PcadischargeWidgetView = (function(superClass) {
         cv = parseFloat(cool_set);
         markings.push({
           color: '#6666cc',
-          lineWidth: 1,
+          lineWidth: 2,
           yaxis: {
-            from: cv - 0.25,
+            from: cv,
             to: cv
           }
         });
@@ -9986,9 +10135,9 @@ PcadischargeWidgetView = (function(superClass) {
         hv = parseFloat(heat_set);
         markings.push({
           color: '#cc6666',
-          lineWidth: 1,
+          lineWidth: 2,
           yaxis: {
-            from: hv - 0.25,
+            from: hv,
             to: hv
           }
         });
@@ -10035,7 +10184,8 @@ PcadischargeWidgetView = (function(superClass) {
         axisLabelUseCanvas: true,
         axisLabelFontSizePixels: 12,
         axisLabelFontFamily: 'Verdana, Arial',
-        axisLabelPadding: 3
+        axisLabelPadding: 3,
+        max: max + 20
       },
       legend: {
         noColumns: 0,
@@ -10053,14 +10203,14 @@ PcadischargeWidgetView = (function(superClass) {
     results = [];
     for (series = l = 0, ref2 = cnt - 1; 0 <= ref2 ? l <= ref2 : l >= ref2; series = 0 <= ref2 ? ++l : --l) {
       $.each(p.getData()[series].data, function(i, el) {
-        var blink, ct, ht, o, timer, v, w, wu;
+        var blink, ct, ht, o, showTimer, timer, v, w, wu;
         o = p.pointOffset({
           x: el[0],
           y: el[1]
         });
         wu = p.getOptions().series.bars.barWidth;
         w = wu * p.getXAxes()[0].scale;
-        $('<div class="data-point-label">' + el[1] + '°</div>').css({
+        $('<div class="data-point-label"><span style="background-color:rgba(255,255,255,0.8);padding:0px 5px;">' + el[1] + '°</span></div>').css({
           position: 'absolute',
           left: o.left - w / 2,
           top: o.top - 20,
@@ -10074,17 +10224,20 @@ PcadischargeWidgetView = (function(superClass) {
         if (ht > 0 || ct > 0) {
           v = ht > 0 ? ht : ct;
           v = v.toFixed(2);
-          blink = ((timer[0] != null) && timer[0].toUpperCase() === "TRUE") || ((timer[2] != null) && timer[2].toUpperCase() === "TRUE") ? "blink" : "";
-          return $("<div class='timer-label " + blink + "' style='padding:5px;'>" + v + " min.</div>").css({
-            position: 'absolute',
-            left: o.left - w / 2,
-            top: o.top + 20,
-            width: w + "px",
-            textAlign: "center",
-            fontWeight: "bold",
-            backgroundColor: "#FC0",
-            color: "#C00"
-          }).appendTo(p.getPlaceholder());
+          showTimer = ((timer[0] != null) && timer[0].toUpperCase() === "TRUE") || ((timer[2] != null) && timer[2].toUpperCase() === "TRUE");
+          blink = showTimer ? "blink" : "";
+          if (showTimer) {
+            return $("<div class='timer-label " + blink + "' style='padding:5px;'>" + v + " min.</div>").css({
+              position: 'absolute',
+              left: o.left - w / 2,
+              top: o.top + 20,
+              width: w + "px",
+              textAlign: "center",
+              fontWeight: "bold",
+              backgroundColor: "#FC0",
+              color: "#C00"
+            }).appendTo(p.getPlaceholder());
+          }
         }
       });
       results.push(index++);
@@ -10112,7 +10265,6 @@ PcadischargeWidgetView = (function(superClass) {
     PcadischargeWidgetView.__super__.toggle_settings.call(this, e);
     this.ui.display.toggle(!this.settings_visible);
     if (this.settings_visible) {
-      this.ui.site.chosen();
       return this.draw_gate_checks();
     }
   };
@@ -10438,10 +10590,7 @@ PcasummaryWidgetView = (function(superClass) {
 
   PcasummaryWidgetView.prototype.toggle_settings = function(e) {
     PcasummaryWidgetView.__super__.toggle_settings.call(this, e);
-    this.ui.display.toggle(!this.settings_visible);
-    if (this.settings_visible) {
-      return this.ui.site.chosen();
-    }
+    return this.ui.display.toggle(!this.settings_visible);
   };
 
   PcasummaryWidgetView.prototype.render_gauges = function() {
@@ -10749,10 +10898,7 @@ PcaWidgetView = (function(superClass) {
 
   PcaWidgetView.prototype.toggle_settings = function(e) {
     PcaWidgetView.__super__.toggle_settings.call(this, e);
-    this.ui.display.toggle(!this.settings_visible);
-    if (this.settings_visible) {
-      return this.ui.site.chosen();
-    }
+    return this.ui.display.toggle(!this.settings_visible);
   };
 
   PcaWidgetView.prototype.onShow = function() {

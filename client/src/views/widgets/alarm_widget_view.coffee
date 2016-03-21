@@ -103,7 +103,6 @@ class AlarmWidgetView extends IOPSWidgetView
     super(e)
     @ui.display.toggle(!@settings_visible)
     if @settings_visible
-      @ui.site.chosen()
       @ui.type.chosen()
     checked = @$("#allgates").is(':checked')
     @$(".gates").toggle(!checked)

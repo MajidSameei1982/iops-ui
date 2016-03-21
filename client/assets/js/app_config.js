@@ -5,8 +5,8 @@
             For example, if the id is "mything", the app will look for MythingWidgetView
     name:   The display name in the menu
     icon:   The FontAwesome icon to use (see https://fortawesome.github.io/Font-Awesome/)
-    role:   The user role required to see this option, in the form <site>:<role>
-            For example, CID:operator would only allow this option visible for users with the operator role in the CID site
+    roles:  The user roles required to see this option, in the form <site|global>:<role>
+            For example, site:operator would allow this option visible for users with the operator role in any site
             Use global for global level roles
 */
 window.app_config = {
@@ -74,8 +74,8 @@ window.app_config = {
     {
       id: "config",
       name: "Config Widget",
-      icon: "gears",
-      role: "global:admin"
+      icon: "gear",
+      roles: ["global:admin", "site:admin"]
     }
   ]
 };

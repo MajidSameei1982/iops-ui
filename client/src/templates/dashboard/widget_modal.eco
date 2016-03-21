@@ -7,9 +7,7 @@
     </div>
     <div class="modal-body">
       <div id='widget_selections'>
-        <% for w in App.config.widgets :%>
-          <a class='widget_select' id='<%=w.id%>' href="#"><i class="fa fa-<%=w.icon%>"></i> <%=w.name%></a>
-        <% end %>
+        
       </div>
     </div>
     <div class="modal-footer">
