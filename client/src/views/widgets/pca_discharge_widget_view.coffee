@@ -23,7 +23,7 @@ class PcadischargeWidgetView extends IOPSWidgetView
     temp: 'PCA.TEMPDISCH.Value'
     on: 'PCA.PCASTATUS.Value'
     cooling: 'PCA.MODE_COOLING.Value'
-    heating: 'PCA.MODE_COOLING.Value'
+    heating: 'PCA.MODE_HEATING.Value'
     cool_set: "PCA.SET_COOLINGPOINT.Value"
     heat_set: "PCA.SET_HEATINGPOINT.Value"
     alarm_cool: "PCA.ALARM_COOLINGRUN_BOOLEAN.Value"
@@ -102,9 +102,11 @@ class PcadischargeWidgetView extends IOPSWidgetView
       if cool_set? && cool_set != ''
         cv = parseFloat(cool_set) 
         markings.push { color: '#6666cc', lineWidth: 2, yaxis: { from: cv, to: cv } }
+        if cv > max then max = cv
       if heat_set? && heat_set != ''
         hv = parseFloat(heat_set) 
         markings.push { color: '#cc6666', lineWidth: 2, yaxis: { from: hv, to: hv } }
+        if hv > max then max = hv
 
       color = bad_q
       if onv? && onv.toUpperCase() == "FALSE"
@@ -140,7 +142,7 @@ class PcadischargeWidgetView extends IOPSWidgetView
         axisLabelFontSizePixels: 12
         axisLabelFontFamily: 'Verdana, Arial'
         axisLabelPadding: 3
-        max: max + 20
+        max: max + 5
       legend: 
         noColumns: 0
         labelBoxBorderColor: "#000000"

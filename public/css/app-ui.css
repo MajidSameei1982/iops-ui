@@ -554,18 +554,62 @@ li.dashboard-link {
   min-height: 100%;
   min-width: 100%;
   overflow: auto; }
+  .gate_widget .display #pbb_cabangledisp {
+    position: absolute;
+    left: 46%;
+    top: 24%;
+    font-size: 13px;
+    color: mediumblue;
+    background: transparent; }
+  .gate_widget .display #pbb_slopedeg {
+    position: absolute;
+    left: 67%;
+    top: 29%;
+    font-size: 13px;
+    color: mediumblue;
+    background: transparent; }
+  .gate_widget .display #pbb_swingangledisp {
+    position: absolute;
+    left: 82%;
+    top: 33%;
+    font-size: 13px;
+    color: mediumblue;
+    background: transparent; }
+  .gate_widget .display #pbb_heighttodisp {
+    position: absolute;
+    left: 51%;
+    top: 51%;
+    font-size: 13px;
+    color: mediumblue;
+    background: transparent; }
+  .gate_widget .display #pbb_wheelangledeg {
+    position: absolute;
+    left: 52%;
+    top: 59%;
+    font-size: 13px;
+    color: mediumblue;
+    background: transparent; }
+  .gate_widget .display #pbb_tunnellength {
+    position: absolute;
+    left: 72%;
+    top: 52%;
+    font-size: 12px;
+    color: mediumblue;
+    background: transparent; }
   .gate_widget .display #aircraft_img {
     position: absolute;
-    left: 45%;
-    top: 20%;
-    background-image: url("../img/pbb/DockingPlane.png");
+    top: 10%;
+    left: 1%;
+    background-image: url("../img/pbb/Docking_Plane_Not-at-Gate.png");
     background-repeat: no-repeat;
+    background-size: 100% 100%;
     background-position: center center;
-    background-size: contain;
+    margin: auto auto;
+    display: block;
     height: 100%;
     width: 100%; }
     .gate_widget .display #aircraft_img.docked {
-      background-image: url("../img/pbb/DockingPlane.png"); }
+      background-image: url("../img/pbb/Docking_Plane_at-Gate.png"); }
   .gate_widget .display #display_label {
     margin-bottom: 3px; }
     .gate_widget .display #display_label h1 {
@@ -618,27 +662,35 @@ li.dashboard-link {
 .gate_widget table.data1 tr.dockundock {
   background-color: #fec; }
 .gate_widget table.data2 {
-  border: solid 1px #999;
-  border-spacing: 1px;
-  border-collapse: separate; }
+  border-collapse: collapse;
+  border: solid 1px #999; }
   .gate_widget table.data2 td {
     padding: 3px 10px;
-    color: #999; }
+    background: transparent; }
     .gate_widget table.data2 td.lbl {
-      background-color: #fff;
+      background: transparent;
       font-style: italic;
       color: #333;
-      border-bottom: solid 1px #ddd; }
+      border-bottom: solid 1px #ddd;
+      border-right: solid 1px #ddd; }
     .gate_widget table.data2 td.val {
-      font-weight: bold; }
+      font-weight: bold;
+      border-bottom: solid 1px #ddd; }
+    .gate_widget table.data2 td.err {
+      color: #ff3333;
+      background: transparent;
+      border-bottom: solid 1px #ddd; }
     .gate_widget table.data2 td.ok {
-      color: #c33; }
+      background: transparent;
+      color: #090;
+      border-bottom: solid 1px #ddd; }
     .gate_widget table.data2 td.blue {
-      background-color: #06c;
+      background: transparent;
       color: #fff; }
     .gate_widget table.data2 td.bad_data {
-      background-color: #fec;
-      color: #999; }
+      background: transparent;
+      color: #999;
+      border-bottom: solid 1px #ddd; }
     .gate_widget table.data2 td.img-circles {
       border-radius: 10%; }
 
@@ -1004,9 +1056,23 @@ li.dashboard-link {
   font-size: 12px;
   font-weight: bold;
   color: #333; }
+.pca_summary_widget #pca_aircraftdamper {
+  position: absolute;
+  left: 27%;
+  top: 70%;
+  font-size: 12px;
+  font-weight: bold;
+  color: #333; }
+.pca_summary_widget #pca_bridgedamper {
+  position: absolute;
+  left: 26%;
+  top: 30%;
+  font-size: 12px;
+  font-weight: bold;
+  color: #333; }
 .pca_summary_widget #pca_pumpcond {
   position: absolute;
-  left: 74%;
+  left: 77%;
   top: 90%;
   font-size: 12px;
   font-weight: bold;
@@ -1020,8 +1086,8 @@ li.dashboard-link {
   color: #333; }
 .pca_summary_widget #pca_pcaambhumidity {
   position: absolute;
-  left: 79%;
-  top: 10%;
+  left: 77%;
+  top: 84%;
   font-size: 12px;
   font-weight: bold;
   color: #333; }
@@ -1072,13 +1138,13 @@ li.dashboard-link {
 .pca_summary_widget div[id^='gauge_'] {
   position: absolute;
   bottom: 11%;
-  left: 4%;
+  left: 1.5%;
   width: 30%;
   height: 100%; }
 .pca_summary_widget div[id^='amps_'] {
   position: absolute;
-  top: 25%;
-  left: 4%;
+  top: 23%;
+  left: 1.5%;
   width: 30%;
   height: 100%; }
 .pca_summary_widget .display {
