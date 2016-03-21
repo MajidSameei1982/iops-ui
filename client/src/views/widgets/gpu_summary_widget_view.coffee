@@ -226,7 +226,7 @@ class GpusummaryWidgetView extends IOPSWidgetView
             dt =  new Date(x)
             dts = "#{dt.getMonth()+1}/#{dt.getDate()}/#{dt.getFullYear()}<br/>#{dt.getHours()}:#{dt.getMinutes()}:#{dt.getSeconds()}"
             @$("#plot_tooltip").html("#{dts}<br/><b>#{y}</b>")
-            @$("#plot_tooltip").css({top: item.pageY-230, left: item.pageX-515})
+            @$("#plot_tooltip").css({top: item.pageY-240, left: item.pageX-440})
             @$("#plot_tooltip").show()
           
       @initializing = false

@@ -8767,8 +8767,8 @@ GpusummaryWidgetView = (function(superClass) {
               dts = (dt.getMonth() + 1) + "/" + (dt.getDate()) + "/" + (dt.getFullYear()) + "<br/>" + (dt.getHours()) + ":" + (dt.getMinutes()) + ":" + (dt.getSeconds());
               _this.$("#plot_tooltip").html(dts + "<br/><b>" + y + "</b>");
               _this.$("#plot_tooltip").css({
-                top: item.pageY - 230,
-                left: item.pageX - 515
+                top: item.pageY - 240,
+                left: item.pageX - 440
               });
               return _this.$("#plot_tooltip").show();
             }
