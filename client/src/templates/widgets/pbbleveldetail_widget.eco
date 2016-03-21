@@ -9,7 +9,7 @@
 <div class="box-body content" id='content'>
   
   <div class="display contain">
-    <div>
+    <div id="aircraft_img" class="">
     <div>
       <h1>
         <span id='txt'></span> 
@@ -18,9 +18,7 @@
         <i id='warnings' class="fa fa-warning" title='Gate has WARNINGS' style='display:none;'></i>
       </h1>
     </div>
-
-    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>
-    <table class='data' style="float: left; width:90%">
+    <table class='data2' style="float:left; width:39%; position:absolute; top:5%; left:1%;">
       <tr><td class='lbl' id='pbb_autolevelkey_lbl'>&nbsp;</td><td id='pbb_autolevelkey' class='val'>LOADING...</td></tr>
       <tr><td class='lbl' id='pbb_estoped_lbl'>&nbsp;</td><td id='pbb_estop' class='val'>LOADING...</td></tr>
       <tr><td class='lbl' id='pbb_autolevelmode_lbl'>&nbsp;</td><td id='pbb_autolevelmode' class='val'>LOADING...</td></tr>
@@ -33,7 +31,13 @@
       <tr><td class='lbl' id='pbb_lastdocktime_lbl'>&nbsp;</td><td id='pbb_lastdocktime' class='val'>LOADING...</td></tr>
       <tr><td class='lbl' id='pbb_dailyaircraftcount_lbl'>&nbsp;</td><td id='pbb_dailyaircraftcount' class='val'>LOADING...</td></tr> 
     </table>
-       
+     <div id="pbb_cabangledisp" class=""></div>  
+     <div id="pbb_slopedeg" class=""></div> 
+     <div id="pbb_swingangledisp" class=""></div>   
+     <div id="pbb_heighttodisp" class=""></div>
+     <div id="pca_pcaambhumidity" class=""></div>
+     <div id="pbb_wheelangledeg" class=""></div>
+     <div id="pbb_tunnellength" class=""></div> 
   </div></div>
 
   <div class="settings" style="display: none;">

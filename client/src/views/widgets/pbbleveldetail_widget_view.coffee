@@ -19,26 +19,32 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     warnings:       'i#warnings'
 
   @layout:
-    sx: 6
+    sx: 12
     sy: 9
 
   tags:
     #Grid Tags
-    pbb_status :          'PBB.AIRCRAFTDOCKEDCALCULATION'
-    pbb_aircraft :        'PBB.AIRCRAFTSTATUS'
-    pbb_autolevelmode :   'PBB.AUTOLEVELMODEFLAG'
-    pbb_canopy:           'PBB.CANOPYDOWN'
-    pbb_autolevelkey :    'PBB.AUTOLEVELKEY'
-    pbb_autolevelling:    'PBB.AUTOLEVELING'
-    pbb_estop:            'PBB.Alarm.RedWord2[4]'
-    pbb_limits:           'PBB.BYPASSPB'
-    pbb_docktime:         'PBB.DOCKTIME'
-    pbb_undocktime:       'PBB.UNDOCKTIME'
-    pbb_smokedetector:    'PBB.SMOKEDETECTOR'
+    pbb_status :           'PBB.AIRCRAFTDOCKEDCALCULATION'
+    pbb_aircraft :         'PBB.AIRCRAFTSTATUS'
+    pbb_autolevelmode :    'PBB.AUTOLEVELMODEFLAG'
+    pbb_canopy:            'PBB.CANOPYDOWN'
+    pbb_autolevelkey :     'PBB.AUTOLEVELKEY'
+    pbb_autolevelling:     'PBB.AUTOLEVELING'
+    pbb_estop:             'PBB.Alarm.RedWord2[4]'
+    pbb_limits:            'PBB.BYPASSPB'
+    pbb_docktime:          'PBB.DOCKTIME'
+    pbb_undocktime:        'PBB.UNDOCKTIME'
+    pbb_smokedetector:     'PBB.SMOKEDETECTOR'
     pbb_dailyaircraftcount:'PBB.DAILYAIRCRAFTDOCKED'
-    pbb_lastdocktime:     'PBB.LASTDOCKTIME'
-    pbb_cabinfloordeicer: 'PBB.CABFLOORDEICER'
-    pbb_terminaldoor:     'PBB.TERMINALDOOR'
+    pbb_lastdocktime:      'PBB.LASTDOCKTIME'
+    pbb_cabinfloordeicer:  'PBB.CABFLOORDEICER'
+    pbb_terminaldoor:      'PBB.TERMINALDOOR'
+    pbb_cabangledisp:      'PBB.CABANGLEDISP'
+    pbb_slopedeg:          'PBB.SLOPEDEG'
+    pbb_swingangledisp:    'PBB.SWINGANGLEDISP'
+    pbb_heighttodisp:      'PBB.HEIGHTTODISP'
+    pbb_wheelangledeg:     'PBB.WHEELANGLEDEG'
+    pbb_tunnellength:      'PBB.HORIZTODISP'
     
 
     #Processing Tags
@@ -147,7 +153,36 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     da1 = @$('#pbb_dailyaircraftcount').html("#{dailydocktime}")
     @mark_bad_data @tags.pbb_dailyaircraftcount, da1
 
-    
+    #WHEEL ANGLE DEG
+    wheelangledeg = if @vals.pbb_wheelangledeg? && @vals.pbb_wheelangledeg != '' then parseFloat(@vals.pbb_wheelangledeg).toFixed(2)  else ' -- ' 
+    wa1 = @$('#pbb_wheelangledeg').html("Wheel Bogie Angle : #{wheelangledeg}")
+    @mark_bad_data @tags.pbb_wheelangledeg, wa1
+
+    #SLOPE DEG
+    slopedeg = if @vals.pbb_slopedeg? && @vals.pbb_slopedeg != '' then parseFloat(@vals.pbb_slopedeg).toFixed(2)  else ' -- ' 
+    s2 = @$('#pbb_slopedeg').html("Slope : #{slopedeg}")
+    @mark_bad_data @tags.pbb_slopedeg, s2
+
+    # CAB ANGLE DISP
+    cabangledisp = if @vals.pbb_cabangledisp? && @vals.pbb_cabangledisp != '' then (@vals.pbb_cabangledisp)  else ' -- ' 
+    ca1 = @$('#pbb_cabangledisp').html("Cab Angle : #{cabangledisp}")
+    @mark_bad_data @tags.pbb_cabangledisp, ca1
+
+    # SWING ANGLE DISP
+    swingangledisp = if @vals.pbb_swingangledisp? && @vals.pbb_swingangledisp != '' then (@vals.pbb_swingangledisp)  else ' -- ' 
+    swa1 = @$('#pbb_swingangledisp').html("Bridge Rotation :#{swingangledisp}")
+    @mark_bad_data @tags.pbb_swingangledisp, swa1
+
+    # HEIGHT TO DISP
+    heighttodisp = if @vals.pbb_heighttodisp? && @vals.pbb_heighttodisp != '' then (@vals.pbb_heighttodisp)  else ' -- ' 
+    hd1 = @$('#pbb_heighttodisp').html("Height : #{heighttodisp}")
+    @mark_bad_data @tags.pbb_heighttodisp, hd1
+
+    # TUNNEL LENGTH
+    tunnellength = if @vals.pbb_tunnellength? && @vals.pbb_tunnellength != '' then (@vals.pbb_tunnellength)  else ' -- ' 
+    tl = @$('#pbb_tunnellength').html("Tunnel Length : #{tunnellength}")
+    @mark_bad_data @tags.pbb_tunnellength, tl
+
     
     # ALARMS
     aq = @data_q(@tags.pbb_has_alarms)

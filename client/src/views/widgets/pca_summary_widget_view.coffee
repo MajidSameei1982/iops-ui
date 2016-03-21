@@ -23,7 +23,7 @@ class PcasummaryWidgetView extends IOPSWidgetView
 
   @layout:
     sx: 9
-    sy: 8
+    sy: 7
 
   tags:
     #Grid Tags
@@ -37,8 +37,8 @@ class PcasummaryWidgetView extends IOPSWidgetView
     pca_heat2:              'PCA.HEATER2'
     pca_compstage1:         'PCA.COMP_STAGE1_STAT'
     pca_compstage2:         'PCA.COMP_STAGE2_STAT'
-    pca_bridgeair:          'PCA.BRIDGE_AIR'
-    pca_bridgedamper:       'PCA.BRIDGE_DAMPER_POSITION'
+    pca_aircraftdamper:     'PCA.BRIDGE_DAMPER_POSITION'
+    pca_bridgedamper:       'PCA.BRIDGE_AIR'
     pca_pumpcond:           'PCA.PUMPCOND'
     pca_coildp:             'PCA.COIL_DP'
     pca_vfdspeed:           'PCA.VFD_SPEED'
@@ -148,7 +148,7 @@ class PcasummaryWidgetView extends IOPSWidgetView
     @mark_bad_data @tags.pca_vfdspeed, vfd
 
     ambhumidity = if @vals.pca_pcaambhumidity? && @vals.pca_pcaambhumidity != '' then parseFloat(@vals.pca_pcaambhumidity).toFixed(2)  else ' -- ' 
-    ambd = if v==true && sq then @$('#pca_pcaambhumidity').html("AMBHUMIDITY : #{ambhumidity}") else @$('#pca_pcaambhumidity').html(" ")
+    ambd = if v==true && sq then @$('#pca_pcaambhumidity').html("Amb Humidity : #{ambhumidity}") else @$('#pca_pcaambhumidity').html(" ")
     @mark_bad_data @tags.pca_pcaambhumidity, ambd
 
     sucpressure1 = if @vals.pca_sucpressure1? && @vals.pca_sucpressure1 != '' then parseFloat(@vals.pca_sucpressure1).toFixed(2)  else ' -- ' 
@@ -167,13 +167,22 @@ class PcasummaryWidgetView extends IOPSWidgetView
     hot2d = if v==true && sq then @$('#pca_hotgas2').html("HP2 : #{hotgas2}") else @$('#pca_hotgas2').html(" ")
     @mark_bad_data @tags.pca_hotgas2, hot2d
 
+    ad = @get_bool(@vals.pca_aircraftdamper)
+    txta = if ad then 'Open' else 'Close'
+    add = if v==true && sq then @$('#pca_aircraftdamper').html("Aircraft Damper : #{txta}") else @$('#pca_aircraftdamper').html(" ")
+    @mark_bad_data @tags.pca_aircraftdamper, add
+    
+    bd = @get_bool(@vals.pca_bridgedamper)
+    txtb = if bd then 'Open' else 'Close'
+    bdd = if v==true && sq then @$('#pca_bridgedamper').html("Bridge Damper : #{txtb}") else @$('#pca_bridgedamper').html(" ")
+    @mark_bad_data @tags.pca_pumpcond, bdd
+
     pc = @get_bool(@vals.pca_pumpcond)
-    txt = if pc then 'ON' else 'OFF'
+    txt = if pc then 'On' else 'Off'
     pcd = if v==true && sq then @$('#pca_pumpcond').html("Condensate Pump : #{txt}") else @$('#pca_pumpcond').html(" ")
     @mark_bad_data @tags.pca_pumpcond, pcd
-    
-
     @render_row("pca_pcastatus", "On", "Off", "ok"," ")
+
     #@render_tagvalue("pca_pcadischargetemp")
     #@render_tagvalue("pca_pcaambienttemp")
 
@@ -184,7 +193,7 @@ class PcasummaryWidgetView extends IOPSWidgetView
     h2 = @get_bool(@vals.pca_heat2)
     co1 = @get_bool(@vals.pca_compstage1)
     co2 = @get_bool(@vals.pca_compstage2)
-    b = @get_bool(@vals.pca_bridgeair)
+    b = @get_bool(@vals.pca_aircraftdamper)
     bd = @get_bool(@vals.pca_bridgedamper)
 
     sq = @data_q(@tags.pca_blower)
@@ -202,7 +211,7 @@ class PcasummaryWidgetView extends IOPSWidgetView
     co2q = @data_q(@tags.pca_compstage2)
     @$("#coolingstage2_img").toggleClass('coolingstage2on', co2==true && co2q)
 
-    bq = @data_q(@tags.pca_bridgeair)
+    bq = @data_q(@tags.pca_aircraftdamper)
     pq = @data_q(@tags.pca_pcastatus)
     @$("#accool_img").toggleClass('accoolon', p==true && b==true && pq && bq)
 
@@ -261,11 +270,9 @@ class PcasummaryWidgetView extends IOPSWidgetView
       gaugeWidthScale: 0.6
       customSectors: [
           {color: '#000000',lo: 0,hi: 1}
-          {color: '#ff3333',lo: 2,hi: 23}
-          {color: '#ffcc66',lo: 24,hi: 29}
-          {color: '#00b300',lo: 30,hi: 40}
-          {color: '#ffcc66',lo: 41,hi: 46}
-          {color: '#ff3333',lo: 47,hi: 70}
+          {color: '#ffcc66',lo: 2,hi: 49}
+          {color: '#00b300',lo: 50,hi: 99}
+          {color: '#ff3333',lo: 100,hi: 125}
       ]
       counter: true
 
@@ -296,11 +303,8 @@ class PcasummaryWidgetView extends IOPSWidgetView
         gaugeWidthScale: 0.6
         customSectors: [
           {color: '#000000',lo: 0,hi: 1}
-          {color: '#ff3333',lo: 2,hi: 23}
-          {color: '#ffcc66',lo: 24,hi: 29}
-          {color: '#00b300',lo: 30,hi: 40}
-          {color: '#ffcc66',lo: 41,hi: 46}
-          {color: '#ff3333',lo: 47,hi: 70}
+          {color: '#00b300',lo: 2,hi: 99}
+          {color: '#ff3333',lo: 100,hi: 150}
         ]
         counter: true
   onShow: ()->
