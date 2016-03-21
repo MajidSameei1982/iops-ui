@@ -174,10 +174,18 @@ class IOPSWidgetView extends WidgetView
     @draw_terminals(terminal)
     @draw_zones(zone)
     @draw_gates(gate)
-    @$("select#site").chosen()
-    @$("select#terminal").chosen()
-    @$("select#zone").chosen()
-    @$("select#gate").chosen()
+    @$("select#site").chosen
+      disable_search:true
+      width:'150px'
+    @$("select#terminal").chosen
+      disable_search:true
+      width:'50px'
+    @$("select#zone").chosen
+      disable_search:true
+      width:'50px'
+    @$("select#gate").chosen
+      disable_search:true
+      width:'50px'
     @
     
 # ----------------------------------

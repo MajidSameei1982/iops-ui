@@ -27,6 +27,7 @@ require('./views/widgets/config_widget_view')
 require('./views/widgets/gpu_widget_view')
 require('./views/widgets/gpu_summary_widget_view')
 require('./views/widgets/pca_summary_widget_view')
+require('./views/widgets/pca_discharge_widget_view')
 
 # ----------------------------------
 window.App = do()->

@@ -44,15 +44,16 @@ _.extend Marionette.View::,
 
     siteSelector: ({id, label, site})->
       sh = """
-        <div class='form-group' for='#{id}'>
+        <div class='form-group' for='#{id}' style='width:95%;'>
           <label>#{label}</label>
-          <select id='#{id}' class='form-control' data-placeholder='Select a Site'>
+          <select id='#{id}' class='form-control' style='width:95%;' data-placeholder='Select a Site'>
             <option value=''></option>
       """
       if App.accounts? && App.accounts.models.length > 0
         for acc in App.accounts.models
           if acc.sites? && acc.sites.models.length > 0
             for s in acc.sites.models
+              continue if !App.session.has_site(s.id)
               txt = s.get('name')
               code = s.get('code')
               if code? && code != '' then txt = "#{txt} (#{code})"

@@ -21,8 +21,6 @@ class GpusummaryWidgetView extends IOPSWidgetView
     main_view:         'div#gpu_main_view'
     gpu_image:         'div#gpu_image'
     power_indicator:   'span#power_indicator'
-    # gauge_volts_out:   'div#gauge_volts_out'
-    # gauge_amps_out:    'div#gauge_amps_out'
     view_volts_in:     'div#view_volts_in'
     plot_volts_in:     'div#plot_volts_in'
     view_volts_out:    'div#view_volts_out'
@@ -41,43 +39,14 @@ class GpusummaryWidgetView extends IOPSWidgetView
   tags:
     #Grid Tags
     gpu_time:                       'GPU.GPUTime'
-    #gpu_gpustatus:                  'GPU.GPUSTATUS'
     gpu_gpustatusb:                 'GPU.GPUSTATUSBOOLEAN'
-    #gpu_contstatus:                 'GPU.CONTSTATUS'
-    #gpu_bypass:                     'GPU.ByPass'
     gpu_raoutavg:                   'GPU.RAOUTAVG'
     gpu_rvoutavg:                   'GPU.RVOUTAVG'
     gpu_ravinavg:                   'GPU.RAVINAVG'
     gpu_rvinavg:                    'GPU.RVINAVG'
-    #gpu_frequency:                  'GPU.Frequency'
-    #gpu_pm_output_phasea_i:         'GPU.PM_OUTPUT_PHASEA_I'
-    #gpu_pm_output_phaseb_i:         'GPU.PM_OUTPUT_PHASEB_I'
-    #gpu_pm_output_phasec_i:         'GPU.PM_OUTPUT_PHASEC_I'
-    #gpu_pm_output_phasea_v:         'GPU.PM_OUTPUT_PHASEA_V'
-    #gpu_pm_output_phaseb_v:         'GPU.PM_OUTPUT_PHASEB_V'
-    #gpu_pm_output_phasec_v:         'GPU.PM_OUTPUT_PHASEC_V'
-    #gpu_pm_input_phasea_i:          'GPU.PM_INPUT_PHASEA_I'
-    #gpu_pm_input_phaseb_i:          'GPU.PM_INPUT_PHASEB_I'
-    #gpu_pm_input_phasec_i:          'GPU.PM_INPUT_PHASEC_I'
-    #gpu_pm_input_phasea_v:          'GPU.PM_INPUT_PHASEA_V'
-    #gpu_pm_input_phaseb_v:          'GPU.PM_INPUT_PHASEB_V'
-    #gpu_pm_input_phasec_v:          'GPU.PM_INPUT_PHASEC_V'
-    #gpu_gpustatus_triger_data_log:  'GPU.GPUSTATUS_TRIGER_DATA_LOG'
-    #gpu_on_1:                       'GPU.ON 1'
-    #gpu_on_2:                       'GPU.ON 2'
-
+    
   initialize: ()->
-
-  # fnUTC2Date: (d)->
-  #   now = new Date
-  #   localOffset = now.getTimezoneOffset() * 60000
-  #   c = new Date(d + localOffset)
-  #   c.toLocaleString()
-
-  # fnUTC: ()->
-  #   now = new Date
-  #   d = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds(), now.getMilliseconds())
-  #   d
+    #
 
   render_gauges: ()->
     vid = "gauge_volts_out_#{@model.id}"
@@ -189,10 +158,11 @@ class GpusummaryWidgetView extends IOPSWidgetView
     #return null if !@tb.mode?
 
     if @tb?
-      max = 150.0
+      max = 0
       if data.penvalues? && data.penvalues.length>0
         for p in data.penvalues[0]
           if p != '' && parseFloat(p) > max then max = parseFloat(p)
+      max = max * 1.25
       # console.log max
       markings = []
       fd = OPC.Flot.buildTrendData(data)
@@ -206,13 +176,12 @@ class GpusummaryWidgetView extends IOPSWidgetView
       for x in [tm1..tm2] by span
         markings.push { xaxis: { from: x, to: x }, color:"#eee", lineWidth:1 }
 
-      @initializing = false
       opts =
         series: { shadowSize: 0}
         lines:  { show: true, fill: true }
         grid:
           hoverable: true 
-          clickable:true
+          clickable: true
           autoHighlight: false
           color:"transparent"
           borderColor: "#666"
@@ -235,7 +204,32 @@ class GpusummaryWidgetView extends IOPSWidgetView
 
       # = OPC.Flot.buildTrendData(data)
       $.plot("##{@tb.chartid}", fd, opts)
-
+      if @initializing
+        tt = $("<div id='plot_tooltip'></div>")
+        tt.css
+          position: "absolute"
+          # display: "none"
+          border: "1px solid #666"
+          padding: "2px"
+          "background-color": "#fff"
+          "border-radius": "5px"
+          "box-shadow": "3px 3px 3px 0 rgba(0,0,0,0.1)"
+          "z-index": 9999
+          opacity: 0.90
+        .appendTo("#plot_data")
+        @$("##{@tb.chartid}").bind "plothover", (e, pos, item)=>
+          if !item?
+            @$("#plot_tooltip").hide()
+          else
+            x = item.datapoint[0]
+            y = item.datapoint[1].toFixed(2)
+            dt =  new Date(x)
+            dts = "#{dt.getMonth()+1}/#{dt.getDate()}/#{dt.getFullYear()}<br/>#{dt.getHours()}:#{dt.getMinutes()}:#{dt.getSeconds()}"
+            @$("#plot_tooltip").html("#{dts}<br/><b>#{y}</b>")
+            @$("#plot_tooltip").css({top: item.pageY-240, left: item.pageX-440})
+            @$("#plot_tooltip").show()
+          
+      @initializing = false
 
   # process data and update the view
   data_update: (data)=>
@@ -333,6 +327,7 @@ class GpusummaryWidgetView extends IOPSWidgetView
     @$("#plot-placeholder").css
       "max-height": "#{h}px"
       "height": "#{h}px"
+  
     
     # clear out previous plots
     if @tbinding
@@ -352,10 +347,8 @@ class GpusummaryWidgetView extends IOPSWidgetView
         callback:@trend_callback
       @$(".display").resize ()=>
         @$("#plot_container").width('100%').height(@$(".display").height()-20)
-        #@$("#plot_container").width('100%').height(@$(".display").height()-70)
       @$("#plot_container").width('100%').height(@$(".display").height()-20)
-      # @$("#plot_container").width('100%').height(@$(".display").height()-70)
-     
+      
       App.opc.add_trend @site_code, @tbinding
 
       if show_hist
@@ -374,19 +367,6 @@ class GpusummaryWidgetView extends IOPSWidgetView
     @watch_updates(@site_code)
 
   configure_buttons: ()=>
-    # @$("#toggle_volts_in").click (e)=>
-    #   e.preventDefault()
-    #   @show_plot('vin')
-    # @$("#toggle_volts_out").click (e)=>
-    #   e.preventDefault()
-    #   @show_plot('vout')
-    # @$("#toggle_amps_out").click (e)=>
-    #   e.preventDefault()
-    #   @show_plot('aout')
-    # @$("#toggle_main").click (e)=>
-    #   e.preventDefault()
-    #   @show_plot()
-
     @$('#mode').change (e)=>
       sel = @$('#mode').val()
       sel = if sel=='' then null else sel
@@ -403,7 +383,6 @@ class GpusummaryWidgetView extends IOPSWidgetView
   toggle_settings: (e)->
     super(e)
     @ui.display.toggle(!@settings_visible)
-    if @settings_visible then @ui.site.chosen()
 
   onShow: ()->
     settings = @model.get('settings')

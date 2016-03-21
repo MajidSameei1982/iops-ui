@@ -19,7 +19,7 @@ class User extends BaseModel
 
   save:(attrs, options)->
     options || (options = {})
-    options.blacklist = ["isActive"]
+    options.blacklist = ["isActive", "passwordHash", "iss", "iat", "exp"]
     @persist()
     super(attrs, options)
 
@@ -65,6 +65,60 @@ class User extends BaseModel
     @on "change:dashboards", @set_properties 
     @
 
+  has_role: (roleid)->
+    for r in @roles.models
+      if r.id == roleid then return true
+    false
+
+  is_global_admin: ()->
+    # check global admin
+    for ar in App.roles.models
+      if !ar.get("siteId") && ar.get("name") == "admin" && @has_role(ar.id)
+        return true
+        break
+    false
+
+  has_site: (sid)->
+    for s in @sites()
+      if s == sid then return true
+    false
+
+  sites: ()->
+    sites = []
+    isadmin = @is_global_admin()    
+    for acc in App.accounts.models
+      for s in acc.sites.models
+        if isadmin
+          sites.push(s.id)
+        else
+          for ur in @roles.models
+            for ar in App.roles.models
+              if ar.id == ur.id
+                sid = ar.get('siteId')
+                if sid? && s.id == sid
+                  sites.push(s.id)
+                  break          
+    sites
+
+  # check widget roles against user's roles for access to widgets
+  check_widget_roles:(sroles)->
+    for r in sroles
+      rp = r.split(':')
+      type = rp[0]
+      role = rp[1]
+      app_role = null
+      for ar in App.roles.models
+        if ar.get('name') == role
+          if (type == 'global' && !ar.get('siteId')?) || (type == 'site' && ar.get('siteId'))
+            app_role = ar
+            break
+      if app_role
+        for ur in @roles.models
+          if ur.id == app_role.id
+            return true
+    false
+
+  # check a specific claim against user's claims
   check_claim: (claim, site)->
     s = if site? then OPCManager.get_site(site) else null
     sid = if s? then s.id else null
@@ -76,6 +130,7 @@ class User extends BaseModel
         break
     false
 
+  # check a specific role against user's roles
   check_role: (role, site)->
     s = if site? then OPCManager.get_site(site) else null
     sid = if s? then s.id else null

@@ -112,7 +112,6 @@ class PbbWidgetView extends IOPSWidgetView
   toggle_settings: (e)->
     super(e)
     @ui.display.toggle(!@settings_visible)
-    if @settings_visible then @ui.site.chosen()
 
   onShow: ()->
     settings = @model.get('settings')
