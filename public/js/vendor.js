@@ -27460,6 +27460,7 @@ var DateFormat = {};
         _this = this;
       tags = [];
       historytags = [];
+      if (!tb.tags) {return;}
       _ref = tb.tags;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         tn = _ref[_i];
