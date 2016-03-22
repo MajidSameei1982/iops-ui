@@ -205,18 +205,20 @@ class GpusummaryWidgetView extends IOPSWidgetView
       # = OPC.Flot.buildTrendData(data)
       $.plot("##{@tb.chartid}", fd, opts)
       if @initializing
-        tt = $("<div id='plot_tooltip'></div>")
-        tt.css
-          position: "absolute"
-          # display: "none"
-          border: "1px solid #666"
-          padding: "2px"
-          "background-color": "#fff"
-          "border-radius": "5px"
-          "box-shadow": "3px 3px 3px 0 rgba(0,0,0,0.1)"
-          "z-index": 9999
-          opacity: 0.90
-        .appendTo("#plot_data")
+        tt = @$("#plot_tooltip")
+        if !tt? || tt.length == 0
+          tt = $("<div id='plot_tooltip'></div>")
+          tt.css
+            position: "absolute"
+            # display: "none"
+            border: "1px solid #666"
+            padding: "2px"
+            "background-color": "#fff"
+            "border-radius": "5px"
+            "box-shadow": "3px 3px 3px 0 rgba(0,0,0,0.1)"
+            "z-index": 9999
+            opacity: 0.90
+          .appendTo("#plot_data")
         @$("##{@tb.chartid}").bind "plothover", (e, pos, item)=>
           if !item?
             @$("#plot_tooltip").hide()

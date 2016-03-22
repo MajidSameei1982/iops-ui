@@ -8744,17 +8744,20 @@ GpusummaryWidgetView = (function(superClass) {
       };
       $.plot("#" + this.tb.chartid, fd, opts);
       if (this.initializing) {
-        tt = $("<div id='plot_tooltip'></div>");
-        tt.css({
-          position: "absolute",
-          border: "1px solid #666",
-          padding: "2px",
-          "background-color": "#fff",
-          "border-radius": "5px",
-          "box-shadow": "3px 3px 3px 0 rgba(0,0,0,0.1)",
-          "z-index": 9999,
-          opacity: 0.90
-        }).appendTo("#plot_data");
+        tt = this.$("#plot_tooltip");
+        if ((tt == null) || tt.length === 0) {
+          tt = $("<div id='plot_tooltip'></div>");
+          tt.css({
+            position: "absolute",
+            border: "1px solid #666",
+            padding: "2px",
+            "background-color": "#fff",
+            "border-radius": "5px",
+            "box-shadow": "3px 3px 3px 0 rgba(0,0,0,0.1)",
+            "z-index": 9999,
+            opacity: 0.90
+          }).appendTo("#plot_data");
+        }
         this.$("#" + this.tb.chartid).bind("plothover", (function(_this) {
           return function(e, pos, item) {
             var dt, dts;
