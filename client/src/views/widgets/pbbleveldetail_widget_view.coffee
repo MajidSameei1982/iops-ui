@@ -134,24 +134,18 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
 
 
     # DOCKTIME
-    docktime = if @vals.pbb_docktime? && @vals.pbb_docktime != '' then parseFloat(@vals.pbb_docktime).toFixed(2)  else ' -- ' 
-    l1 = @$('#pbb_docktime').html("#{docktime} mins")
-    @mark_bad_data @tags.pbb_docktime, l1
+    @render_value_row("pbb_docktime", true, 2," mins")
+
 
     # UN-DOCKTIME
-    undocktime = if @vals.pbb_undocktime? && @vals.pbb_undocktime != '' then parseFloat(@vals.pbb_undocktime).toFixed(2)  else ' -- ' 
-    l2 = @$('#pbb_undocktime').html("#{undocktime} mins")
-    @mark_bad_data @tags.pbb_undocktime, l2
+    @render_value_row("pbb_undocktime", true, 2," mins")
+
 
     # LAST DOCK TIME
-    lastdocktime = if @vals.pbb_lastdocktime? && @vals.pbb_lastdocktime != '' then parseFloat(@vals.pbb_lastdocktime).toFixed(2)  else ' -- ' 
-    la1 = @$('#pbb_lastdocktime').html("#{lastdocktime} mins")
-    @mark_bad_data @tags.pbb_lastdocktime, la1
+    @render_value_row("pbb_lastdocktime", true, 2," mins")
 
     # DAILY DOCK TIME
-    dailydocktime = if @vals.pbb_dailyaircraftcount? && @vals.pbb_dailyaircraftcount != '' then (@vals.pbb_dailyaircraftcount)  else ' -- ' 
-    da1 = @$('#pbb_dailyaircraftcount').html("#{dailydocktime}")
-    @mark_bad_data @tags.pbb_dailyaircraftcount, da1
+    @render_value_row("pbb_dailyaircraftcount", false)
 
     #WHEEL ANGLE DEG
     wheelangledeg = if @vals.pbb_wheelangledeg? && @vals.pbb_wheelangledeg != '' then parseFloat(@vals.pbb_wheelangledeg).toFixed(2)  else ' -- ' 

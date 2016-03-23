@@ -2,8 +2,8 @@ Marionette = require('marionette')
 IOPSWidgetView = require('./iops_widget_view')
 
 # ----------------------------------
-class PbbWidgetView extends IOPSWidgetView
-  template:   "widgets/pbb_widget"
+class PbbpcagpuWidgetView extends IOPSWidgetView
+  template:   "widgets/pbb_pca_gpu_basic_widget"
   className: 'widget-outer box box-primary gate_widget'
   ui:
     wtitle:         'h3.box-title'
@@ -15,22 +15,22 @@ class PbbWidgetView extends IOPSWidgetView
     site:           'select#site'
 
   @layout:
-    sx: 4
-    sy: 6
+    sx: 5
+    sy: 8
 
   tags:
     #Grid Tags
-    pbb_status :        'PBB.AIRCRAFTDOCKEDCALCULATION'
-    pbb_autolevelmode :   'PBB.AUTOLEVELMODEFLAG'
-    pbb_aircraft :      'PBB.AIRCRAFTSTATUS'
-    pbb_canopy:         'PBB.CANOPYDOWN'
-    pbb_acffloor:       'PBB.ACFFLOOR'
-    pbb_cablehoist:     'PBB.CABHOIST'
-    #pbb_estop:          'PBB.Alarm.E_STOP'
-    #pbb_limits:         'PBB.HZ400CABLEDEPLOYED'
-    pbb_docktime:       'PBB.DOCKTIME'
-    pbb_undocktime:     'PBB.UNDOCKTIME'
-    pbb_smokedetector:  'PBB.SMOKEDETECTOR'
+    pbb_status :         'PBB.AIRCRAFTDOCKEDCALCULATION'
+    pca_pcastatus:       'PCA.PCASTATUS'
+    gpu_gpustatus:       'GPU.GPUSTATUSBOOLEAN'
+    pbb_docktime:        'PBB.DOCKTIME'
+    pbb_hookup:          'PBB.HOOKUPTIME'
+    pca_hookup:          'PCA.HOOKUPTIME'
+    gpu_hookup:          'GPU.HOOKUPTIME'
+    pca_pcadischargetemp:'PCA.TEMPDISCH' 
+    gpu_raoutavg:        'GPU.RAOUTAVG'
+    gpu_rvoutavg:        'GPU.RVOUTAVG'
+
     
     #Processing Tags
     pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
@@ -52,7 +52,7 @@ class PbbWidgetView extends IOPSWidgetView
         tags.push "#{@prefix}#{t}.Value"
       App.opc.add_tags @site_code, tags
 
-      lbl = "Gate #{s.gate}"
+      lbl = "PBB/PCA/GPU #{s.gate}"
       @ui.wtitle.html(lbl)
       @$('#display_label #txt').html(lbl)
 
@@ -68,27 +68,40 @@ class PbbWidgetView extends IOPSWidgetView
       @vals[tg] = @get_value(@tags[tg])
     
     # PBB AIRCRAFT
-    @render_row("pbb_status", "Docked", "UnDocked", "ok")
+    @render_row("pbb_status", "Docked", "UnDocked", "ok","err")
 
-     # Auto Level
-    @render_row("pbb_autolevelmode", "On", "Off", "ok")
+    # PCA STATUS
+    @render_row("pca_pcastatus", "On", "Off", "ok","err")
 
+    # GPU STATUS
+    @render_row("gpu_gpustatus", "On", "Off", "ok","err")
 
-    # E-STOP
-    # @render_row("pbb_estop","On","Off","err","ok")
+    # DOCKTIME
+    @render_value_row("pbb_docktime", true, 2," mins")
+    
+    # PBB ON TIME
+    @render_value_row("pbb_hookup", true, 2," mins")
 
-    # SMOKEDETECTOR
-    @render_row("pbb_smokedetector","Off","On","","err")
-  
-    # CANOPY
-    @render_row("pbb_canopy", "Down", "Up", "ok")
+    # PCA ON TIME
+    @render_value_row("pca_hookup", true, 2," mins")
 
-    # CABLE HOIST
-    @render_row("pbb_cablehoist", "Deployed", "Retracted", "ok")
+    # GPU ON TIME
+    @render_value_row("gpu_hookup", true, 2," mins")
 
+    # PCA DISCHARGE TEMP
+    @render_value_row("pca_pcadischargetemp", true, 2," F")
+
+    # GPU RAOUTAVG                    
+    @render_value_row("gpu_raoutavg", true, 1,"Amps")
+
+    # GPU RVOUTAVG                    
+    @render_value_row("gpu_rvoutavg", true, 1,"Volts")
 
     @$("#pbb_statused_lbl").html('PBB Status')
-    #@$("#pbb_estoped_lbl").html('E-Stop')
+    @$("#pbb_dockedtime_lbl").html('PBB Dock Time')
+    @$("#pca_discharge_lbl").html('PCA Discharge Temp')
+    @$("#gpu_raout_lbl").html('GPU Output Amps')
+    @$("#gpu_rvout_lbl").html('GPU Output Volts')
     
     # ALARMS
     aq = @data_q(@tags.pbb_has_alarms)
@@ -139,5 +152,5 @@ class PbbWidgetView extends IOPSWidgetView
     
 # ----------------------------------
 
-window.PbbWidgetView = PbbWidgetView
-module.exports = PbbWidgetView
+window.PbbpcagpuWidgetView = PbbpcagpuWidgetView
+module.exports = PbbpcagpuWidgetView

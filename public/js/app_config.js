@@ -27,8 +27,13 @@ window.app_config = {
       icon: "link"
     },
     {
+      id: "pbbpcagpu",
+      name: "PBB/PCA/GPU Basic Widget",
+      icon: "tasks"
+    },
+    {
       id: "pbb",
-      name: "PBB Basic Widget",
+      name: "PBB Widget",
       icon: "plane"
     },
      {
@@ -38,7 +43,7 @@ window.app_config = {
     },
      {
       id: "pbbleveldetail",
-      name: "PBB Detail Widget",
+      name: "PBB Bridge Widget",
       icon: "plane"
     },
     {
@@ -53,13 +58,13 @@ window.app_config = {
     },
     {
       id: "pcasummary",
-      name: "PCA Summary",
+      name: "PCA Overview Widget",
       icon: "server"
     },
     {
       id: "gpu",
       name: "GPU Widget",
-      icon: "plane"
+      icon: "flash"
     },
     {
       id: "gpusummary",

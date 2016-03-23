@@ -18,7 +18,7 @@
       </h1>
     </div>
     <table class='data'>
-      <tr><td class='lbl' id='gpu_statused_lbl'>&nbsp;</td><td id='gpu_gpustatus' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='gpu_gpustatus_lbl'>&nbsp;</td><td id='gpu_gpustatus' class='val'>LOADING...</td></tr>
       <tr><td class='lbl' id='gpu_bypass_lbl'>&nbsp;</td><td id='gpu_bypass' class='val'>LOADING...</td></tr>
       <tr><td class='lbl' id='gpu_raoutavg_lbl'>&nbsp;</td><td id='gpu_raoutavg' class='val'>LOADING...</td></tr>
       <tr><td class='lbl' id='gpu_rvoutavg_lbl'>&nbsp;</td><td id='gpu_rvoutavg' class='val'>LOADING...</td></tr>

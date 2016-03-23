@@ -30,7 +30,7 @@ class PcasummaryWidgetView extends IOPSWidgetView
     pca_pcaambhumidity:     'PCA.AMBHUMIDITY'
     pca_pcaambienttemp:     'PCA.TEMPAMB'
     pca_pcadischargetemp:   'PCA.TEMPDISCH' 
-    pca_pcastatus:          'PCA.PCA_ON'
+    pca_pcastatus:          'PCA.PCASTATUS'
     pca_time:               'PCA.PCATime'
     pca_blower:             'PCA.BLOWER'
     pca_heat1:              'PCA.HEATER1'

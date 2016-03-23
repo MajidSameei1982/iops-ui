@@ -19,7 +19,7 @@ class GpuWidgetView extends IOPSWidgetView
     warnings:       'i#warnings'
 
   @layout:
-    sx: 6
+    sx: 5
     sy: 14
 
   tags:
@@ -150,8 +150,6 @@ class GpuWidgetView extends IOPSWidgetView
 
     # GPU ON 2                        
     @render_row("gpu_on_2", "On", "Off", "ok")
-
-    @$("#gpu_statused_lbl").html('GPU Status')
         
     @set_descriptions()
 

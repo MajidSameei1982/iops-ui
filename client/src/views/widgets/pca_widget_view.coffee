@@ -40,7 +40,7 @@ class PcaWidgetView extends IOPSWidgetView
     pca_sucpressure2:       'PCA.C2_SUCTION_PRESSURE'
     pca_hotgas1:            'PCA.C1_HOTGAS_CONTROL'
     pca_hotgas2:            'PCA.C2_HOTGAS_CONTROL'
-    pca_pcastatus:          'PCA.PCA_ON'
+    pca_pcastatus:          'PCA.PCASTATUS'
     
     #Processing Tags
     pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
@@ -117,7 +117,7 @@ class PcaWidgetView extends IOPSWidgetView
     @render_tagvalue("pca_sucpressure2")
     @render_tagvalue("pca_hotgas1")
     @render_tagvalue("pca_hotgas2")
-
+    
     
 
     # ALARMS
