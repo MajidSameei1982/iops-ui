@@ -8300,7 +8300,9 @@ ConfigWidgetView = (function(superClass) {
 
   ConfigWidgetView.prototype.tags = {
     cooling_pt: 'PCA.SET_COOLINGPOINT.Value',
-    heating_pt: 'PCA.SET_HEATINGPOINT.Value'
+    heating_pt: 'PCA.SET_HEATINGPOINT.Value',
+    cooling_tm: 'PCA.SET_COOLINGPOINT.Value',
+    heating_tm: 'PCA.SET_HEATINGPOINT.Value'
   };
 
   ConfigWidgetView.prototype.base_tags = [];
@@ -8760,14 +8762,17 @@ GpusummaryWidgetView = (function(superClass) {
         }
         this.$("#" + this.tb.chartid).bind("plothover", (function(_this) {
           return function(e, pos, item) {
-            var dt, dts;
+            var dt, dts, hours, minutes, seconds;
             if (item == null) {
               return _this.$("#plot_tooltip").hide();
             } else {
               x = item.datapoint[0];
               y = item.datapoint[1].toFixed(2);
               dt = new Date(x);
-              dts = (dt.getMonth() + 1) + "/" + (dt.getDate()) + "/" + (dt.getFullYear()) + "<br/>" + (dt.getHours()) + ":" + (dt.getMinutes()) + ":" + (dt.getSeconds());
+              hours = UIUtils.lpad(dt.getHours(), 2, '0');
+              minutes = UIUtils.lpad(dt.getMinutes(), 2, '0');
+              seconds = UIUtils.lpad(dt.getSeconds(), 2, '0');
+              dts = (dt.getMonth() + 1) + "/" + (dt.getDate()) + "/" + (dt.getFullYear()) + "<br/>" + hours + ":" + minutes + ":" + seconds;
               _this.$("#plot_tooltip").html(dts + "<br/><b>" + y + "</b>");
               _this.$("#plot_tooltip").css({
                 top: item.pageY - 240,
@@ -8828,7 +8833,7 @@ GpusummaryWidgetView = (function(superClass) {
   };
 
   GpusummaryWidgetView.prototype.show_plot = function(p, live) {
-    var dtm, ed, h, lbl, parts, ph, pid, plot_color, ptype, sd, show_hist, tags;
+    var dtm, ed, h, lbl, now, parts, ph, pid, plot_color, ptype, sd, show_hist, tags;
     this.initializing = true;
     this.kill_updates(this.site_code);
     this.$("#plots").toggle(p != null);
@@ -8945,7 +8950,8 @@ GpusummaryWidgetView = (function(superClass) {
       if (show_hist) {
         dtm = new Date();
         sd = OPC.Util.formatDate(dtm, "mm/dd/yyyy 00:00:00");
-        ed = OPC.Util.formatDate(dtm, "mm/dd/yyyy 23:59:59");
+        now = new Date();
+        ed = OPC.Util.formatDate(dtm, "mm/dd/yyyy " + (now.getHours()) + ":" + (now.getMinutes()) + ":" + (now.getSeconds()));
         OPC.Trend.getHistoryData("" + pid, sd, ed);
         this.$("#live_data").off('change');
         this.$("#live_data").bootstrapToggle('off');

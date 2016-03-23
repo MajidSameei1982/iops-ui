@@ -17,6 +17,8 @@ class ConfigWidgetView extends IOPSWidgetView
   tags:
     cooling_pt:  'PCA.SET_COOLINGPOINT.Value'
     heating_pt:  'PCA.SET_HEATINGPOINT.Value'
+    cooling_tm:  'PCA.SET_COOLINGPOINT.Value'
+    heating_tm:  'PCA.SET_HEATINGPOINT.Value'
 
   base_tags: []
     

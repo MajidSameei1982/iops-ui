@@ -226,7 +226,10 @@ class GpusummaryWidgetView extends IOPSWidgetView
             x = item.datapoint[0]
             y = item.datapoint[1].toFixed(2)
             dt =  new Date(x)
-            dts = "#{dt.getMonth()+1}/#{dt.getDate()}/#{dt.getFullYear()}<br/>#{dt.getHours()}:#{dt.getMinutes()}:#{dt.getSeconds()}"
+            hours = UIUtils.lpad(dt.getHours(),2,'0')
+            minutes = UIUtils.lpad(dt.getMinutes(),2,'0')
+            seconds = UIUtils.lpad(dt.getSeconds(),2,'0')
+            dts = "#{dt.getMonth()+1}/#{dt.getDate()}/#{dt.getFullYear()}<br/>#{hours}:#{minutes}:#{seconds}"
             @$("#plot_tooltip").html("#{dts}<br/><b>#{y}</b>")
             @$("#plot_tooltip").css({top: item.pageY-240, left: item.pageX-440})
             @$("#plot_tooltip").show()
@@ -356,7 +359,8 @@ class GpusummaryWidgetView extends IOPSWidgetView
       if show_hist
         dtm = new Date()
         sd = OPC.Util.formatDate(dtm,"mm/dd/yyyy 00:00:00")
-        ed = OPC.Util.formatDate(dtm,"mm/dd/yyyy 23:59:59")
+        now = new Date()
+        ed = OPC.Util.formatDate(dtm,"mm/dd/yyyy #{now.getHours()}:#{now.getMinutes()}:#{now.getSeconds()}")
         OPC.Trend.getHistoryData("#{pid}", sd, ed)
         @$("#live_data").off('change')
         @$("#live_data").bootstrapToggle('off')
