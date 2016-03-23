@@ -1659,7 +1659,7 @@ window.JST["widgets/config_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-gear"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\' class=\'display\'>\n    <b style=\'margin-bottom:10px;\'>PCA SET POINTS</b>\n    <div><b style=\'color:#cc6666;\'>Heat:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set\'>°</div>\n    <div><b style=\'color:#cc6666;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_time\'>min.</div>\n    <div><b style=\'color:#6666cc;\'>Cool:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set\'>°</div>\n    <div><b style=\'color:#6666cc;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_time\'>min.</div>\n    <div style=\'margin:10px 0;\'><button id=\'set_pca_points\'>UPDATE CONFIGURATION</button></div>\n  </div>\n  <div id="settings" class=\'settings\' style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-gear"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\' class=\'display\'>\n    <b style=\'margin-bottom:10px;\'>PCA SET POINTS</b>\n    <div><b style=\'color:#cc6666;\'>Heat:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set\'>°</div>\n    <div><b style=\'color:#cc6666;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set_tm\'>min.</div>\n    <div><b style=\'color:#6666cc;\'>Cool:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set\'>°</div>\n    <div><b style=\'color:#6666cc;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set_tm\'>min.</div>\n    <div style=\'margin:10px 0;\'><button id=\'set_pca_points\'>UPDATE CONFIGURATION</button></div>\n  </div>\n  <div id="settings" class=\'settings\' style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -8301,8 +8301,8 @@ ConfigWidgetView = (function(superClass) {
   ConfigWidgetView.prototype.tags = {
     cooling_pt: 'PCA.SET_COOLINGPOINT.Value',
     heating_pt: 'PCA.SET_HEATINGPOINT.Value',
-    cooling_tm: 'PCA.SET_COOLINGPOINT.Value',
-    heating_tm: 'PCA.SET_HEATINGPOINT.Value'
+    cooling_tm: 'PCA.SET_COOLINGPOINT_TIMER.Value',
+    heating_tm: 'PCA.SET_HEATINGPOINT_TIMER.Value'
   };
 
   ConfigWidgetView.prototype.base_tags = [];
@@ -8347,10 +8347,12 @@ ConfigWidgetView = (function(superClass) {
   };
 
   ConfigWidgetView.prototype.data_update = function(data) {
-    var cool, heat, i, len, ref, t, v;
+    var cool, cool_tm, heat, heat_tm, i, len, ref, t, v;
     if ((data != null) && (data.tags != null) && data.tags.length > 0) {
       cool = 0;
       heat = 0;
+      cool_tm = 0;
+      heat_tm = 0;
       ref = data.tags;
       for (i = 0, len = ref.length; i < len; i++) {
         t = ref[i];
@@ -8359,14 +8361,26 @@ ConfigWidgetView = (function(superClass) {
           v = (v != null) && v !== '' ? parseFloat(v) : 0;
           cool = v > cool ? v : cool;
         }
+        if (t.name.endsWith("PCA.SET_COOLINGPOINT_TIMER")) {
+          v = t.props[0].val;
+          v = (v != null) && v !== '' ? parseFloat(v) : 0;
+          cool_tm = v > cool_tm ? v : cool_tm;
+        }
         if (t.name.endsWith("PCA.SET_HEATINGPOINT")) {
           v = t.props[0].val;
           v = (v != null) && v !== '' ? parseFloat(v) : 0;
           heat = v > heat ? v : heat;
         }
+        if (t.name.endsWith("PCA.SET_HEATINGPOINT_TIMER")) {
+          v = t.props[0].val;
+          v = (v != null) && v !== '' ? parseFloat(v) : 0;
+          heat_tm = v > heat_tm ? v : heat_tm;
+        }
       }
-      this.$('input#heat_set').val(heat);
       this.$('input#cool_set').val(cool);
+      this.$('input#heat_set').val(heat);
+      this.$('input#cool_set_tm').val(cool_tm);
+      this.$('input#heat_set_tm').val(heat_tm);
     }
     return this.kill_updates(this.site_code);
   };
@@ -8391,7 +8405,9 @@ ConfigWidgetView = (function(superClass) {
               for (g in zn) {
                 pre = "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".";
                 this.opc.set_value("" + pre + this.tags.cooling_pt, this.$('input#cool_set').val());
-                results2.push(this.opc.set_value("" + pre + this.tags.heating_pt, this.$('input#heat_set').val()));
+                this.opc.set_value("" + pre + this.tags.heating_pt, this.$('input#heat_set').val());
+                this.opc.set_value("" + pre + this.tags.cooling_tm, this.$('input#cool_set_tm').val());
+                results2.push(this.opc.set_value("" + pre + this.tags.heating_tm, this.$('input#heat_set_tm').val()));
               }
               return results2;
             }).call(this));

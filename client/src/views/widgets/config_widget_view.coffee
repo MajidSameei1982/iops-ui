@@ -17,8 +17,8 @@ class ConfigWidgetView extends IOPSWidgetView
   tags:
     cooling_pt:  'PCA.SET_COOLINGPOINT.Value'
     heating_pt:  'PCA.SET_HEATINGPOINT.Value'
-    cooling_tm:  'PCA.SET_COOLINGPOINT.Value'
-    heating_tm:  'PCA.SET_HEATINGPOINT.Value'
+    cooling_tm:  'PCA.SET_COOLINGPOINT_TIMER.Value'
+    heating_tm:  'PCA.SET_HEATINGPOINT_TIMER.Value'
 
   base_tags: []
     
@@ -58,17 +58,29 @@ class ConfigWidgetView extends IOPSWidgetView
     if data? && data.tags? && data.tags.length > 0
       cool = 0
       heat = 0
+      cool_tm = 0
+      heat_tm = 0
       for t in data.tags
         if t.name.endsWith("PCA.SET_COOLINGPOINT")
           v = t.props[0].val
           v = if v? && v != '' then parseFloat(v) else 0
           cool = if v > cool then v else cool
+        if t.name.endsWith("PCA.SET_COOLINGPOINT_TIMER")
+          v = t.props[0].val
+          v = if v? && v != '' then parseFloat(v) else 0
+          cool_tm = if v > cool_tm then v else cool_tm
         if t.name.endsWith("PCA.SET_HEATINGPOINT")
           v = t.props[0].val
           v = if v? && v != '' then parseFloat(v) else 0
           heat = if v > heat then v else heat
-      @$('input#heat_set').val(heat)
+        if t.name.endsWith("PCA.SET_HEATINGPOINT_TIMER")
+          v = t.props[0].val
+          v = if v? && v != '' then parseFloat(v) else 0
+          heat_tm = if v > heat_tm then v else heat_tm
       @$('input#cool_set').val(cool)
+      @$('input#heat_set').val(heat)
+      @$('input#cool_set_tm').val(cool_tm)
+      @$('input#heat_set_tm').val(heat_tm)
     @kill_updates(@site_code)
 
   set_points: (e)=>
@@ -84,6 +96,8 @@ class ConfigWidgetView extends IOPSWidgetView
             pre = "Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}."
             @opc.set_value("#{pre}#{@tags.cooling_pt}", @$('input#cool_set').val())
             @opc.set_value("#{pre}#{@tags.heating_pt}", @$('input#heat_set').val())
+            @opc.set_value("#{pre}#{@tags.cooling_tm}", @$('input#cool_set_tm').val())
+            @opc.set_value("#{pre}#{@tags.heating_tm}", @$('input#heat_set_tm').val())
     
 
   set_model: ()=>
