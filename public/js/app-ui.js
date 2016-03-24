@@ -7698,21 +7698,22 @@ AirportWidgetView = (function(superClass) {
   AirportWidgetView.prototype.tags = {};
 
   AirportWidgetView.prototype.update = function() {
-    var $w, classList, g, gate, i, lbl, len, ref, s, t, tags, term, terminals, z, zone;
+    var g, gate, i, lbl, len, ref, s, t, tags, term, terminals, z, zone;
     this.update_settings({
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
     });
     s = this.model.get("settings");
     if ((s != null) && !!s.site) {
-      $w = $("div.airport_widget");
-      classList = $w.attr('class').split(/\s+/);
-      $.each(classList, function(index, item) {
-        if (item.match(/\b\w+(_account\b)/) !== null) {
-          $w.removeClass(item);
-        }
-      });
-      $w.addClass(this.site_code + "_account");
+      $("div.airport_widget").each((function(_this) {
+        return function(index, element) {
+          var $w;
+          $w = $(element);
+          if ($w.attr('class').match(/\b\w+(_account\b)/) === null) {
+            return $w.addClass(_this.site_code + "_account");
+          }
+        };
+      })(this));
       this.gateData = [];
       tags = [];
       terminals = this.site_settings.zones;
@@ -7726,8 +7727,8 @@ AirportWidgetView = (function(superClass) {
               Terminal: "" + t,
               Zone: "" + z,
               Tag_gate_alarm: "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".Alarm._HasAlarms",
-              Tag_gate_critical: "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.AUTOLEVEL_FAIL_FLAG",
-              Tag_gate_docked: "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.AUTOLEVELING"
+              Tag_gate_docked: "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.AIRCRAFTDOCKEDCALCULATION",
+              Tag_gate_critical: "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.AUTOLEVEL_FAIL_FLAG"
             };
             this.gateData.push(gate);
             tags.push(gate.Tag_gate_alarm + ".Value");
