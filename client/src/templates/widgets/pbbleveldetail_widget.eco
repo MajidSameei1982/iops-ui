@@ -11,14 +11,11 @@
   <div class="display contain">
     <div id="aircraft_img" class="">
     <div>
-      <h1>
-        <span id='txt'></span> 
-        <i id='docked' class="fa fa-plane" title='Plane is DOCKED' style='display:none;'></i>
-        <i id='alarms' class="fa fa-bell-o" title='Gate has ALARMS' style='display:none;'></i>
-        <i id='warnings' class="fa fa-warning" title='Gate has WARNINGS' style='display:none;'></i>
-      </h1>
+ 
     </div>
+
     <table class='data2' style="float:left; width:39%; position:absolute; top:5%; left:1%;">
+      <br>
       <tr><td class='lbl' id='pbb_autolevelkey_lbl'>&nbsp;</td><td id='pbb_autolevelkey' class='val'>LOADING...</td></tr>
       <tr><td class='lbl' id='pbb_estoped_lbl'>&nbsp;</td><td id='pbb_estop' class='val'>LOADING...</td></tr>
       <tr><td class='lbl' id='pbb_autolevelmode_lbl'>&nbsp;</td><td id='pbb_autolevelmode' class='val'>LOADING...</td></tr>
