@@ -7979,7 +7979,7 @@ AirportWidgetView = (function(superClass) {
       qa = this.opc.tags["" + g.Tag_gate_alarm].props.Value.quality;
       qw = this.opc.tags["" + g.Tag_gate_warning].props.Value.quality;
       bad_q = !qa || !qw;
-      this.$("#Airport_Gate_" + g.Number + "_a").toggleClass("docked", docked && qd).toggleClass("bad_data", !qd);
+      this.$("#Airport_Gate_" + g.Number + "_a").toggleClass("docked", docked === true && qd).toggleClass("bad_data", !qd);
       if (alarm === true) {
         a = this.$("#Airport_Gate_" + g.Number + "_a .icon #alarm");
         if ((a == null) || a.length === 0) {

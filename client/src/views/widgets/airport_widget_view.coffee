@@ -103,7 +103,7 @@ class AirportWidgetView extends IOPSWidgetView
       bad_q = !qa || !qw
 
       @$("#Airport_Gate_#{g.Number}_a")
-      .toggleClass("docked", docked && qd)
+      .toggleClass("docked", docked==true && qd)
       .toggleClass("bad_data", !qd)
 
       # aq = @opc.tags["#{g.Tag_gate_alarm}"]
