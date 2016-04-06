@@ -103,9 +103,9 @@ class IOPSWidgetView extends WidgetView
       @site_settings = @site.get('settings')
       @site_settings || @site_settings = {}
       # cloud = if settings.cloud then "RemoteSCADAHosting.Airport-#{@site_code}." else ''
-      cp = if @site_settings.cloud then cloud_prefix.replace('#{@site_code}', @site_code) else ''
+      @cloud_prefix = if @site_settings.cloud then cloud_prefix.replace('#{@site_code}', @site_code) else ''
       # @prefix = "#{cloud}Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}."
-      @prefix = cp + prefix.replace('#{@site_code}', @site_code).replace('#{s.terminal}', s.terminal).replace('#{s.zone}', s.zone).replace('#{s.gate}', s.gate)
+      @prefix = @cloud_prefix + prefix.replace('#{@site_code}', @site_code).replace('#{s.terminal}', s.terminal).replace('#{s.zone}', s.zone).replace('#{s.gate}', s.gate)
     @
   
   refresh_values: ()->

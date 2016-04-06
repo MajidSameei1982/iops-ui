@@ -32,10 +32,10 @@ class AirportWidgetView extends IOPSWidgetView
     s = @model.get("settings")
     if s? && !!s.site
       # clear out lingering top-level <code>_account classes
-      $("div.airport_widget").each (index, element) => 
-        $w = $(element)
-        if $w.attr('class').match(/\b\w+(_account\b)/) == null
-          $w.addClass("#{@site_code}_account")
+      classList = $(@el).attr('class').split(/\s+/)
+      for c in classList
+        if c.endsWith('_account') then $(@el).removeClass(c)
+      $(@el).addClass("#{@site_code}_account")
 
 
       # generate list of gates
@@ -51,10 +51,10 @@ class AirportWidgetView extends IOPSWidgetView
               Number: "#{g}"
               Terminal: "#{t}"
               Zone: "#{z}"
-              Tag_gate_alarm: "Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.Alarm._HasAlarms"
+              Tag_gate_alarm: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.Alarm._HasAlarms"
               #Tag_gate_warning: "Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.Warning._HasWarnings"
-              Tag_gate_docked: "Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB.AIRCRAFTDOCKEDCALCULATION"
-              Tag_gate_critical: "Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB.AUTOLEVEL_FAIL_FLAG"
+              Tag_gate_docked: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB.AIRCRAFTDOCKEDCALCULATION"
+              Tag_gate_critical: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB.AUTOLEVEL_FAIL_FLAG"
               #Tag_gate_docked: "Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB.AUTOLEVELING"
             @gateData.push gate
             # add tags to monitor

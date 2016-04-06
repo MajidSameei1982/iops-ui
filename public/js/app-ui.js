@@ -7913,22 +7913,21 @@ AirportWidgetView = (function(superClass) {
   AirportWidgetView.prototype.tags = {};
 
   AirportWidgetView.prototype.update = function() {
-    var g, gate, i, lbl, len, ref, s, t, tags, term, terminals, z, zone;
+    var c, classList, g, gate, i, j, lbl, len, len1, ref, s, t, tags, term, terminals, z, zone;
     this.update_settings({
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
     });
     s = this.model.get("settings");
     if ((s != null) && !!s.site) {
-      $("div.airport_widget").each((function(_this) {
-        return function(index, element) {
-          var $w;
-          $w = $(element);
-          if ($w.attr('class').match(/\b\w+(_account\b)/) === null) {
-            return $w.addClass(_this.site_code + "_account");
-          }
-        };
-      })(this));
+      classList = $(this.el).attr('class').split(/\s+/);
+      for (i = 0, len = classList.length; i < len; i++) {
+        c = classList[i];
+        if (c.endsWith('_account')) {
+          $(this.el).removeClass(c);
+        }
+      }
+      $(this.el).addClass(this.site_code + "_account");
       this.gateData = [];
       tags = [];
       terminals = this.site_settings.zones;
@@ -7941,9 +7940,9 @@ AirportWidgetView = (function(superClass) {
               Number: "" + g,
               Terminal: "" + t,
               Zone: "" + z,
-              Tag_gate_alarm: "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".Alarm._HasAlarms",
-              Tag_gate_docked: "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.AIRCRAFTDOCKEDCALCULATION",
-              Tag_gate_critical: "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.AUTOLEVEL_FAIL_FLAG"
+              Tag_gate_alarm: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".Alarm._HasAlarms",
+              Tag_gate_docked: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.AIRCRAFTDOCKEDCALCULATION",
+              Tag_gate_critical: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.AUTOLEVEL_FAIL_FLAG"
             };
             this.gateData.push(gate);
             tags.push(gate.Tag_gate_alarm + ".Value");
@@ -7955,8 +7954,8 @@ AirportWidgetView = (function(superClass) {
       this.$("#Airport_Overview").remove();
       this.$(".display").append("<div id='Airport_Overview' class='" + this.site_code + "_Term_Overview'>\n  <div id='layout_container'>\n    <img id='layout' src='img/airport/" + this.site_code + "/" + this.site_code + "_Term_Overview.png'></img>\n  </div>\n</div>");
       ref = this.gateData;
-      for (i = 0, len = ref.length; i < len; i++) {
-        g = ref[i];
+      for (j = 0, len1 = ref.length; j < len1; j++) {
+        g = ref[j];
         this.$("#layout_container").append("<div id='Airport_Gate_" + g.Number + "_a'><div class='icon'></div></div>");
       }
       App.opc.add_tags(this.site_code, tags);
@@ -9442,7 +9441,7 @@ IOPSWidgetView = (function(superClass) {
   };
 
   IOPSWidgetView.prototype.update_settings = function(arg) {
-    var cloud_prefix, cp, prefix, s;
+    var cloud_prefix, prefix, s;
     prefix = arg.prefix, cloud_prefix = arg.cloud_prefix;
     s = this.model.get("settings");
     if ((s != null) && !!s.site) {
@@ -9456,8 +9455,8 @@ IOPSWidgetView = (function(superClass) {
       }
       this.site_settings = this.site.get('settings');
       this.site_settings || (this.site_settings = {});
-      cp = this.site_settings.cloud ? cloud_prefix.replace('#{@site_code}', this.site_code) : '';
-      this.prefix = cp + prefix.replace('#{@site_code}', this.site_code).replace('#{s.terminal}', s.terminal).replace('#{s.zone}', s.zone).replace('#{s.gate}', s.gate);
+      this.cloud_prefix = this.site_settings.cloud ? cloud_prefix.replace('#{@site_code}', this.site_code) : '';
+      this.prefix = this.cloud_prefix + prefix.replace('#{@site_code}', this.site_code).replace('#{s.terminal}', s.terminal).replace('#{s.zone}', s.zone).replace('#{s.gate}', s.gate);
     }
     return this;
   };
