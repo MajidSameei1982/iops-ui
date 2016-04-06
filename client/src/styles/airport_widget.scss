@@ -57,7 +57,7 @@
 
       $ClassSuffixs: _bad_data _idle _ac_docked _good _alarm _warning;
       $ImagesPrefix: "../img/airport/#{$site_code}/#{$site_code}_Gate_";  
-      $ImagesSuffixs: "_bad_data.png" ".png" "_Plane.png" "" "_Alarm.png" "_Warning.png";  
+      $ImagesSuffixs: "_Bad_Data.png" ".png" "_Plane.png" "" "_Alarm.png" "_Warning.png";  
 
       $index: 1;  
       @each $Gate in $Gates {
@@ -166,7 +166,7 @@
 
       $ClassSuffixs: _bad_data _idle _ac_docked _good _alarm _warning;
       $ImagesPrefix: "../img/airport/#{$site_code}/#{$site_code}_Gate_";  
-      $ImagesSuffixs: "_bad_data.png" ".png" "_Plane.png" "" "_Alarm.png" "_Warning.png";  
+      $ImagesSuffixs: "_Bad_Data.png" ".png" "_Plane.png" "" "_Alarm.png" "_Warning.png";  
 
       $index: 1;  
       @each $Gate in $Gates {
@@ -275,7 +275,7 @@
 
       $ClassSuffixs: _bad_data _idle _ac_docked _good _alarm _warning;
       $ImagesPrefix: "../img/airport/#{$site_code}/#{$site_code}_Gate_";  
-      $ImagesSuffixs: "_bad_data.png" ".png" "_Plane.png" "" "_Alarm.png" "_Warning.png";  
+      $ImagesSuffixs: "_Bad_Data.png" ".png" "_Plane.png" "" "_Alarm.png" "_Warning.png";  
 
       $index: 1;  
       @each $Gate in $Gates {
