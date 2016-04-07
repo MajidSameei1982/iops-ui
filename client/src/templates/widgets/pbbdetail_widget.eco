@@ -12,9 +12,6 @@
     <div>
       <h1>
         <span id='txt'></span> 
-        <i id='docked' class="fa fa-plane" title='Plane is DOCKED' style='display:none;'></i>
-        <i id='alarms' class="fa fa-bell-o" title='Gate has ALARMS' style='display:none;'></i>
-        <i id='warnings' class="fa fa-warning" title='Gate has WARNINGS' style='display:none;'></i>
       </h1>
     </div>
     <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>

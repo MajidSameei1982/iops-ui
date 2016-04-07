@@ -493,7 +493,6 @@ li.dashboard-link {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom center;
-  background-image: url("../img/airport/CID/CID_Gate_C1.png");
   width: 100% !important;
   height: 100% !important;
   top: 0;
@@ -521,7 +520,6 @@ li.dashboard-link {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom center;
-  background-image: url("../img/airport/CID/CID_Gate_C2.png");
   width: 100% !important;
   height: 100% !important;
   top: 0;
@@ -549,7 +547,6 @@ li.dashboard-link {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom center;
-  background-image: url("../img/airport/CID/CID_Gate_C3.png");
   width: 100% !important;
   height: 100% !important;
   top: 0;
@@ -577,7 +574,6 @@ li.dashboard-link {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom center;
-  background-image: url("../img/airport/CID/CID_Gate_C4.png");
   width: 100% !important;
   height: 100% !important;
   top: 0;
@@ -605,7 +601,6 @@ li.dashboard-link {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom center;
-  background-image: url("../img/airport/CID/CID_Gate_C5.png");
   width: 100% !important;
   height: 100% !important;
   top: 0;
@@ -633,7 +628,6 @@ li.dashboard-link {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom center;
-  background-image: url("../img/airport/CID/CID_Gate_C6.png");
   width: 100% !important;
   height: 100% !important;
   top: 0;
@@ -938,7 +932,8 @@ li.dashboard-link {
       color: #333;
       border-bottom: solid 1px #ddd; }
     .gate_widget table.data td.val {
-      font-weight: bold; }
+      font-weight: bold;
+      color: #333; }
     .gate_widget table.data td.err {
       color: #fe6;
       background-color: #c33; }
@@ -952,6 +947,35 @@ li.dashboard-link {
       background-color: #fec;
       color: #999; }
     .gate_widget table.data td.img-circles {
+      border-radius: 10%; }
+.gate_widget table.data4 {
+  border: solid 1px #999;
+  border-spacing: 1px;
+  border-collapse: separate; }
+  .gate_widget table.data4 td {
+    padding: 3px 10px;
+    background-color: #eee;
+    color: #999; }
+    .gate_widget table.data4 td.lbl {
+      background-color: #fff;
+      font-style: italic;
+      color: #333;
+      border-bottom: solid 1px #ddd; }
+    .gate_widget table.data4 td.val {
+      font-weight: bold;
+      color: #333; }
+    .gate_widget table.data4 td.err {
+      color: #999; }
+    .gate_widget table.data4 td.ok {
+      background-color: #090;
+      color: #fff; }
+    .gate_widget table.data4 td.blue {
+      background-color: #06c;
+      color: #fff; }
+    .gate_widget table.data4 td.bad_data {
+      background-color: #fec;
+      color: #999; }
+    .gate_widget table.data4 td.img-circles {
       border-radius: 10%; }
 .gate_widget table.data1 tr.dockundock {
   background-color: #fec; }
@@ -1065,7 +1089,8 @@ li.dashboard-link {
       color: #333;
       border-bottom: solid 1px #ddd; }
     .pbbdetail_widget table.data2 td.val {
-      font-weight: bold; }
+      font-weight: bold;
+      color: #333; }
     .pbbdetail_widget table.data2 td.ok {
       color: #090; }
     .pbbdetail_widget table.data2 td.blue {

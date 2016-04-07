@@ -12,18 +12,15 @@
     <div>
       <h1>
         <span id='txt'></span> 
-        <i id='docked' class="fa fa-plane" title='Plane is DOCKED' style='display:none;'></i>
-        <i id='alarms' class="fa fa-bell-o" title='Gate has ALARMS' style='display:none;'></i>
-        <i id='warnings' class="fa fa-warning" title='Gate has WARNINGS' style='display:none;'></i>
+        
       </h1>
     </div>
     <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>
-    <table class='data' style="float: left; width:92%"> 
+    <table class='data4' style="float: left; width:92%"> 
       <tr><td class='lbl' id='pbb_statused_lbl'>&nbsp;</td><td id='pbb_status' class='val'>LOADING...</td></tr>
       <tr><td class='lbl' id='pca_pcastatus_lbl'>&nbsp;</td><td id='pca_pcastatus' class='val'>LOADING...</td></tr>
       <tr><td class='lbl' id='gpu_gpustatus_lbl'>&nbsp;</td><td id='gpu_gpustatus' class='val'>LOADING...</td></tr> 
-      <tr><td class='lbl' id='pbb_dockedtime_lbl'>&nbsp;</td><td id='pbb_docktime' class='val'>LOADING...</td></tr> 
-      <tr><td class='lbl' id='pbb_hookup_lbl'>&nbsp;</td><td id='pbb_hookup' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pbb_dockedtime_lbl'>&nbsp;</td><td id='pbb_docktime' class='val'>LOADING...</td></tr>
       <tr><td class='lbl' id='pca_hookup_lbl'>&nbsp;</td><td id='pca_hookup' class='val'>LOADING...</td></tr>
       <tr><td class='lbl' id='gpu_hookup_lbl'>&nbsp;</td><td id='gpu_hookup' class='val'>LOADING...</td></tr>  
       <tr><td class='lbl' id='pca_discharge_lbl'>&nbsp;</td><td id='pca_pcadischargetemp' class='val'>LOADING...</td></tr>  

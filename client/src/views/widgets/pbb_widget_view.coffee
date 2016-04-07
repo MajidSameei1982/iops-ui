@@ -16,7 +16,7 @@ class PbbWidgetView extends IOPSWidgetView
 
   @layout:
     sx: 4
-    sy: 7
+    sy: 6
 
   tags:
     #Grid Tags
