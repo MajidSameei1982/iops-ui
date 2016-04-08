@@ -226,12 +226,13 @@ class GpusummaryWidgetView extends IOPSWidgetView
             x = item.datapoint[0]
             y = item.datapoint[1].toFixed(2)
             dt =  new Date(x)
+            ofs = @$("#plot_data").offset()
             hours = UIUtils.lpad(dt.getHours(),2,'0')
             minutes = UIUtils.lpad(dt.getMinutes(),2,'0')
             seconds = UIUtils.lpad(dt.getSeconds(),2,'0')
             dts = "#{dt.getMonth()+1}/#{dt.getDate()}/#{dt.getFullYear()}<br/>#{hours}:#{minutes}:#{seconds}"
             @$("#plot_tooltip").html("#{dts}<br/><b>#{y}</b>")
-            @$("#plot_tooltip").css({top: item.pageY-240, left: item.pageX-440})
+            @$("#plot_tooltip").css({top: item.pageY-64-ofs.top, left: item.pageX-60-ofs.left})
             @$("#plot_tooltip").show()
           
       @initializing = false
@@ -311,7 +312,7 @@ class GpusummaryWidgetView extends IOPSWidgetView
       when 'aout'
         lbl = 'Output Amperage'
         tags = [{tag: "#{@prefix}GPU.RAOUTAVG.Value", fill: true, color: plot_color}]
-      when 'aout_a', 'bout_b', 'cout_c'
+      when 'aout_a', 'aout_b', 'aout_c'
         lbl = "Output Amperage Phase #{ph}"
         tags = [{tag: "#{@prefix}GPU.PM_OUTPUT_PHASE#{ph}_I.Value", fill: true, color: plot_color}]
 

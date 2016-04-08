@@ -8833,21 +8833,22 @@ GpusummaryWidgetView = (function(superClass) {
         }
         this.$("#" + this.tb.chartid).bind("plothover", (function(_this) {
           return function(e, pos, item) {
-            var dt, dts, hours, minutes, seconds;
+            var dt, dts, hours, minutes, ofs, seconds;
             if (item == null) {
               return _this.$("#plot_tooltip").hide();
             } else {
               x = item.datapoint[0];
               y = item.datapoint[1].toFixed(2);
               dt = new Date(x);
+              ofs = _this.$("#plot_data").offset();
               hours = UIUtils.lpad(dt.getHours(), 2, '0');
               minutes = UIUtils.lpad(dt.getMinutes(), 2, '0');
               seconds = UIUtils.lpad(dt.getSeconds(), 2, '0');
               dts = (dt.getMonth() + 1) + "/" + (dt.getDate()) + "/" + (dt.getFullYear()) + "<br/>" + hours + ":" + minutes + ":" + seconds;
               _this.$("#plot_tooltip").html(dts + "<br/><b>" + y + "</b>");
               _this.$("#plot_tooltip").css({
-                top: item.pageY - 240,
-                left: item.pageX - 440
+                top: item.pageY - 64 - ofs.top,
+                left: item.pageX - 60 - ofs.left
               });
               return _this.$("#plot_tooltip").show();
             }
@@ -8973,8 +8974,8 @@ GpusummaryWidgetView = (function(superClass) {
         ];
         break;
       case 'aout_a':
-      case 'bout_b':
-      case 'cout_c':
+      case 'aout_b':
+      case 'aout_c':
         lbl = "Output Amperage Phase " + ph;
         tags = [
           {
