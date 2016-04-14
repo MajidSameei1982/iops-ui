@@ -30,6 +30,8 @@ class PcadischargeWidgetView extends IOPSWidgetView
     alarm_heat: "PCA.ALARM_HEATINGRUN_BOOLEAN.Value"
     timer_cool: "PCA.SET_COOLINGPOINT_TIMER.Value"
     timer_heat: "PCA.SET_HEATINGPOINT_TIMER.Value"
+    alarm_cool_timer: "PCA.COOLINGTIMERCALC.Value"
+    alarm_heat_timer: "PCA.HEATINGTIMERCALC.Value"
     
  
   max_gates: 6
@@ -96,9 +98,11 @@ class PcadischargeWidgetView extends IOPSWidgetView
       heat_set = @vals["#{pre}#{@tags.heat_set}"]
       alarm_heat = @vals["#{pre}#{@tags.alarm_heat}"]
       alarm_cool = @vals["#{pre}#{@tags.alarm_cool}"]
+      alarm_heat_timer = @vals["#{pre}#{@tags.alarm_heat_timer}"]
+      alarm_cool_timer = @vals["#{pre}#{@tags.alarm_cool_timer}"]
       timer_heat = @vals["#{pre}#{@tags.timer_heat}"]
       timer_cool = @vals["#{pre}#{@tags.timer_cool}"]
-      timers.push [alarm_heat, timer_heat, alarm_cool, timer_cool]
+      timers.push [alarm_heat, timer_heat, alarm_cool, timer_cool,alarm_heat_timer,alarm_cool_timer]
       if cool_set? && cool_set != ''
         cv = parseFloat(cool_set) 
         markings.push { color: '#6666cc', lineWidth: 2, yaxis: { from: cv, to: cv } }
@@ -171,8 +175,8 @@ class PcadischargeWidgetView extends IOPSWidgetView
         .appendTo(p.getPlaceholder())
 
         timer = timers[index]
-        ht = if timer[1]? && timer[1] != '0' then parseFloat(timer[1]) else 0
-        ct = if timer[3]? && timer[3] != '0' then parseFloat(timer[3]) else 0
+        ht = if timer[5]? && timer[5] != '0' then parseFloat(timer[5]) else 0
+        ct = if timer[6]? && timer[6] != '0' then parseFloat(timer[6]) else 0
         if ht > 0 || ct > 0
           v = if ht>0 then ht else ct
           v = v.toFixed(2)

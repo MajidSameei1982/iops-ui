@@ -56,6 +56,7 @@ class ConfigWidgetView extends IOPSWidgetView
   data_update: (data)=>
     # kill after first read - no need to poll any more
     if data? && data.tags? && data.tags.length > 0
+      debugger;
       cool = 0
       heat = 0
       cool_tm = 0
