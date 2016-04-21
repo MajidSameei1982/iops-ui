@@ -454,7 +454,7 @@ li.dashboard-link {
 .airport_widget.alarm {
   background-color: #c00;
   color: #fff; }
-.airport_widget.CID_account .display div[id^='Airport_Gate_'], .airport_widget.CID_account .display #Airport_Overview, .airport_widget.DAL_account .display .airport_widget.CID_account div[id^='Airport_Gate_'], .airport_widget.DAL_account .display .airport_widget.CID_account #Airport_Overview, .airport_widget.EWR_account .display .airport_widget.CID_account div[id^='Airport_Gate_'], .airport_widget.EWR_account .display .airport_widget.CID_account #Airport_Overview {
+.airport_widget.CID_account .display div[id^='Airport_Gate_'], .airport_widget.CID_account .display #Airport_Overview, .airport_widget.DAL_account .display .airport_widget.CID_account div[id^='Airport_Gate_'], .airport_widget.DAL_account .display .airport_widget.CID_account #Airport_Overview, .airport_widget.JFK_account .display .airport_widget.CID_account div[id^='Airport_Gate_'], .airport_widget.JFK_account .display .airport_widget.CID_account #Airport_Overview, .airport_widget.EWR_account .display .airport_widget.CID_account div[id^='Airport_Gate_'], .airport_widget.EWR_account .display .airport_widget.CID_account #Airport_Overview {
   min-height: 100%;
   min-width: 100%;
   overflow: auto;
@@ -651,7 +651,7 @@ li.dashboard-link {
         color: #f90; }
       .airport_widget.CID_account .display #Airport_Gate_C6_a .icon i.perfect {
         color: #090; }
-.airport_widget.CID_account .display .airport_widget.DAL_account div[id^='Airport_Gate_'], .airport_widget.CID_account .display .airport_widget.DAL_account #Airport_Overview, .airport_widget.DAL_account .display div[id^='Airport_Gate_'], .airport_widget.DAL_account .display #Airport_Overview, .airport_widget.EWR_account .display .airport_widget.DAL_account div[id^='Airport_Gate_'], .airport_widget.EWR_account .display .airport_widget.DAL_account #Airport_Overview {
+.airport_widget.CID_account .display .airport_widget.DAL_account div[id^='Airport_Gate_'], .airport_widget.CID_account .display .airport_widget.DAL_account #Airport_Overview, .airport_widget.DAL_account .display div[id^='Airport_Gate_'], .airport_widget.DAL_account .display #Airport_Overview, .airport_widget.JFK_account .display .airport_widget.DAL_account div[id^='Airport_Gate_'], .airport_widget.JFK_account .display .airport_widget.DAL_account #Airport_Overview, .airport_widget.EWR_account .display .airport_widget.DAL_account div[id^='Airport_Gate_'], .airport_widget.EWR_account .display .airport_widget.DAL_account #Airport_Overview {
   min-height: 100%;
   min-width: 100%;
   overflow: auto;
@@ -742,7 +742,126 @@ li.dashboard-link {
         color: #f90; }
       .airport_widget.DAL_account .display #Airport_Gate_12_a .icon i.perfect {
         color: #090; }
-.airport_widget.CID_account .display .airport_widget.EWR_account div[id^='Airport_Gate_'], .airport_widget.CID_account .display .airport_widget.EWR_account #Airport_Overview, .airport_widget.DAL_account .display .airport_widget.EWR_account div[id^='Airport_Gate_'], .airport_widget.DAL_account .display .airport_widget.EWR_account #Airport_Overview, .airport_widget.EWR_account .display div[id^='Airport_Gate_'], .airport_widget.EWR_account .display #Airport_Overview {
+.airport_widget.CID_account .display .airport_widget.JFK_account div[id^='Airport_Gate_'], .airport_widget.CID_account .display .airport_widget.JFK_account #Airport_Overview, .airport_widget.DAL_account .display .airport_widget.JFK_account div[id^='Airport_Gate_'], .airport_widget.DAL_account .display .airport_widget.JFK_account #Airport_Overview, .airport_widget.JFK_account .display div[id^='Airport_Gate_'], .airport_widget.JFK_account .display #Airport_Overview, .airport_widget.EWR_account .display .airport_widget.JFK_account div[id^='Airport_Gate_'], .airport_widget.EWR_account .display .airport_widget.JFK_account #Airport_Overview {
+  min-height: 100%;
+  min-width: 100%;
+  overflow: auto;
+  position: absolute;
+  top: 25px;
+  left: 0px; }
+.airport_widget.JFK_account .display #key {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 18px;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 9999;
+  border-radius: 10px;
+  padding: 10px; }
+  .airport_widget.JFK_account .display #key .alarm {
+    color: #c00; }
+  .airport_widget.JFK_account .display #key .warning {
+    color: #f90; }
+  .airport_widget.JFK_account .display #key .perfect {
+    color: #090; }
+.airport_widget.JFK_account .display #display_label {
+  display: none; }
+.airport_widget.JFK_account .display div[id^='Airport_Gate_'] {
+  z-index: 1000; }
+.airport_widget.JFK_account .display #Airport_Overview {
+  margin-top: 25px; }
+  .airport_widget.JFK_account .display #Airport_Overview #layout {
+    width: 100%;
+    height: auto; }
+  .airport_widget.JFK_account .display #Airport_Overview #layout_container {
+    position: absolute;
+    top: 0;
+    left: 0; }
+.airport_widget.JFK_account .display #Airport_Gate_A5_a {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: url("../img/airport/JFK/JFK_Gate_A5.png");
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_widget.JFK_account .display #Airport_Gate_A5_a.docked {
+    background-image: url("../img/airport/JFK/JFK_Gate_A5_Plane.png"); }
+  .airport_widget.JFK_account .display #Airport_Gate_A5_a.bad_data {
+    background-image: url("../img/airport/JFK/JFK_Gate_A5_bad_data.png"); }
+  .airport_widget.JFK_account .display #Airport_Gate_A5_a .icon {
+    font-size: 18px;
+    left: 52%;
+    top: 53%;
+    position: absolute;
+    border-radius: 3px;
+    padding: 2px; }
+    .airport_widget.JFK_account .display #Airport_Gate_A5_a .icon i {
+      text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff; }
+      .airport_widget.JFK_account .display #Airport_Gate_A5_a .icon i.alarm {
+        color: #c00; }
+      .airport_widget.JFK_account .display #Airport_Gate_A5_a .icon i.warning {
+        color: #f90; }
+      .airport_widget.JFK_account .display #Airport_Gate_A5_a .icon i.perfect {
+        color: #090; }
+.airport_widget.JFK_account .display #Airport_Gate_B25L1_a {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: url("../img/airport/JFK/JFK_Gate_B25L1.png");
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_widget.JFK_account .display #Airport_Gate_B25L1_a.docked {
+    background-image: url("../img/airport/JFK/JFK_Gate_B25L1_Plane.png"); }
+  .airport_widget.JFK_account .display #Airport_Gate_B25L1_a.bad_data {
+    background-image: url("../img/airport/JFK/JFK_Gate_B25L1_bad_data.png"); }
+  .airport_widget.JFK_account .display #Airport_Gate_B25L1_a .icon {
+    font-size: 18px;
+    left: 59%;
+    top: 46%;
+    position: absolute;
+    border-radius: 3px;
+    padding: 2px; }
+    .airport_widget.JFK_account .display #Airport_Gate_B25L1_a .icon i {
+      text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff; }
+      .airport_widget.JFK_account .display #Airport_Gate_B25L1_a .icon i.alarm {
+        color: #c00; }
+      .airport_widget.JFK_account .display #Airport_Gate_B25L1_a .icon i.warning {
+        color: #f90; }
+      .airport_widget.JFK_account .display #Airport_Gate_B25L1_a .icon i.perfect {
+        color: #090; }
+.airport_widget.JFK_account .display #Airport_Gate_B27_a {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: url("../img/airport/JFK/JFK_Gate_B27.png");
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_widget.JFK_account .display #Airport_Gate_B27_a.docked {
+    background-image: url("../img/airport/JFK/JFK_Gate_B27_Plane.png"); }
+  .airport_widget.JFK_account .display #Airport_Gate_B27_a.bad_data {
+    background-image: url("../img/airport/JFK/JFK_Gate_B27_bad_data.png"); }
+  .airport_widget.JFK_account .display #Airport_Gate_B27_a .icon {
+    font-size: 18px;
+    left: 62%;
+    top: 62%;
+    position: absolute;
+    border-radius: 3px;
+    padding: 2px; }
+    .airport_widget.JFK_account .display #Airport_Gate_B27_a .icon i {
+      text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff; }
+      .airport_widget.JFK_account .display #Airport_Gate_B27_a .icon i.alarm {
+        color: #c00; }
+      .airport_widget.JFK_account .display #Airport_Gate_B27_a .icon i.warning {
+        color: #f90; }
+      .airport_widget.JFK_account .display #Airport_Gate_B27_a .icon i.perfect {
+        color: #090; }
+.airport_widget.CID_account .display .airport_widget.EWR_account div[id^='Airport_Gate_'], .airport_widget.CID_account .display .airport_widget.EWR_account #Airport_Overview, .airport_widget.DAL_account .display .airport_widget.EWR_account div[id^='Airport_Gate_'], .airport_widget.DAL_account .display .airport_widget.EWR_account #Airport_Overview, .airport_widget.JFK_account .display .airport_widget.EWR_account div[id^='Airport_Gate_'], .airport_widget.JFK_account .display .airport_widget.EWR_account #Airport_Overview, .airport_widget.EWR_account .display div[id^='Airport_Gate_'], .airport_widget.EWR_account .display #Airport_Overview {
   min-height: 100%;
   min-width: 100%;
   overflow: auto;
