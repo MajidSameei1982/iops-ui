@@ -30,7 +30,8 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     pbb_canopy:            'PBB.CANOPYDOWN'
     pbb_autolevelkey :     'PBB.AUTOLEVELKEY'
     pbb_autolevelling:     'PBB.AUTOLEVELING'
-    pbb_estop:             'PBB.Alarm.RedWord2[4]'
+    pbb_estop:             'PBB.Alarm.E_STOP'  
+    pbb_estopRW:           'PBB.Alarm.RedWord2[4]'
     pbb_limits:            'PBB.BYPASSPB'
     pbb_docktime:          'PBB.DOCKTIME'
     pbb_undocktime:        'PBB.UNDOCKTIME'
@@ -127,7 +128,11 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     @render_row("pbb_terminaldoor", "Open", "Close", "ok")
 
     # AUTOLEVELLING
-    @render_row("pbb_estop", "On", "Off", "err")
+    if @vals.pbb_estop? && @vals.pbb_estop != '' 
+      @render_row("pbb_estop", "On", "Off", "err")
+    else if @vals.pbb_estopRW? && @vals.pbb_estopRW != ''
+      @render_row("pbb_estopRW", "On", "Off", "err")
+    
 
     @$("#pbb_statused_lbl").html('PBB Status')
     @$("#pbb_estoped_lbl").html('E-Stop')
