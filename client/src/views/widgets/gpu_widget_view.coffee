@@ -20,29 +20,22 @@ class GpuWidgetView extends IOPSWidgetView
 
   @layout:
     sx: 5
-    sy: 14
+    sy: 10
 
   tags:
     gpu_gpustatus:                  'GPU.GPUSTATUSBOOLEAN'
-    gpu_bypass:                     'GPU.ByPass'
     gpu_raoutavg:                   'GPU.RAOUTAVG'
     gpu_rvoutavg:                   'GPU.RVOUTAVG'
-    gpu_ravinavg:                   'GPU.RAINAVG'
     gpu_rvinavg:                    'GPU.RVINAVG'
-    gpu_pm_output_phasea_i:         'GPU.PM_OUTPUT_PHASEA_I'
-    gpu_pm_output_phaseb_i:         'GPU.PM_OUTPUT_PHASEB_I'
-    gpu_pm_output_phasec_i:         'GPU.PM_OUTPUT_PHASEC_I'
-    gpu_pm_output_phasea_v:         'GPU.PM_OUTPUT_PHASEA_V'
-    gpu_pm_output_phaseb_v:         'GPU.PM_OUTPUT_PHASEB_V'
-    gpu_pm_output_phasec_v:         'GPU.PM_OUTPUT_PHASEC_V'
-    gpu_pm_input_phasea_i:          'GPU.PM_INPUT_PHASEA_I'
-    gpu_pm_input_phaseb_i:          'GPU.PM_INPUT_PHASEB_I'
-    gpu_pm_input_phasec_i:          'GPU.PM_INPUT_PHASEC_I'
-    gpu_pm_input_phasea_v:          'GPU.PM_INPUT_PHASEA_V'
-    gpu_pm_input_phaseb_v:          'GPU.PM_INPUT_PHASEB_V'
-    gpu_pm_input_phasec_v:          'GPU.PM_INPUT_PHASEC_V'
-    gpu_on_1:                       'GPU.ON 1'
-    gpu_on_2:                       'GPU.ON 2'
+    gpu_pm_output_phasea_i:         'GPU.RAOUTA'
+    gpu_pm_output_phaseb_i:         'GPU.RAOUTB'
+    gpu_pm_output_phasec_i:         'GPU.RAOUTC'
+    gpu_pm_output_phasea_v:         'GPU.RVOUTA'
+    gpu_pm_output_phaseb_v:         'GPU.RVOUTB'
+    gpu_pm_output_phasec_v:         'GPU.RVOUTC'
+    gpu_pm_input_phasea_v:          'GPU.RVINA'
+    gpu_pm_input_phaseb_v:          'GPU.RVINB'
+    gpu_pm_input_phasec_v:          'GPU.RVINC'
 
   update: ()->
     s = @model.get("settings")
@@ -95,7 +88,7 @@ class GpuWidgetView extends IOPSWidgetView
     @render_row("gpu_gpustatus", "On", "Off", "ok")                  
 
     # GPU ByPass                      
-    @render_row("gpu_bypass", "Down", "Up", "ok")
+    #@render_row("gpu_bypass", "Down", "Up", "ok")
 
     # GPU RAOUTAVG                    
     @render_value_row("gpu_raoutavg", true, 1,"Amps")
@@ -104,7 +97,7 @@ class GpuWidgetView extends IOPSWidgetView
     @render_value_row("gpu_rvoutavg", true, 1,"Volts")
 
     # GPU RAVINAVG
-    @render_value_row("gpu_ravinavg", true, 1,"Amps")
+    #@render_value_row("gpu_ravinavg", true, 1,"Amps")
 
     # GPU RVINAVG                     
     @render_value_row("gpu_rvinavg", true, 1,"Volts")
@@ -128,13 +121,13 @@ class GpuWidgetView extends IOPSWidgetView
     @render_value_row("gpu_pm_output_phasec_v", true, 1, "Volts")
 
     # GPU PM_INPUT_PHASEA_I           
-    @render_value_row("gpu_pm_input_phasea_i", true, 1, "Amps")
+    #@render_value_row("gpu_pm_input_phasea_i", true, 1, "Amps")
 
     # GPU PM_INPUT_PHASEB_I           
-    @render_value_row("gpu_pm_input_phaseb_i", true, 1, "Amps")
+    #@render_value_row("gpu_pm_input_phaseb_i", true, 1, "Amps")
 
     # GPU PM_INPUT_PHASEC_I           
-    @render_value_row("gpu_pm_input_phasec_i", true, 1, "Amps")
+    #@render_value_row("gpu_pm_input_phasec_i", true, 1, "Amps")
 
     # GPU PM_INPUT_PHASEA_V           
     @render_value_row("gpu_pm_input_phasea_v", true, 1, "Volts")
@@ -146,10 +139,10 @@ class GpuWidgetView extends IOPSWidgetView
     @render_value_row("gpu_pm_input_phasec_v", true, 1, "Volts")
 
     # GPU ON 1                        
-    @render_row("gpu_on_1", "On", "Off","ok")
+    #@render_row("gpu_on_1", "On", "Off","ok")
 
     # GPU ON 2                        
-    @render_row("gpu_on_2", "On", "Off", "ok")
+    #@render_row("gpu_on_2", "On", "Off", "ok")
         
     @set_descriptions()
 
