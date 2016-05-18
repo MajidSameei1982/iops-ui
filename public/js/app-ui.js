@@ -8085,7 +8085,7 @@ AlarmWidgetView = (function(superClass) {
   };
 
   AlarmWidgetView.prototype.update = function() {
-    var alarms, gate, gates, gpu, groups, notifications, obj, obj1, obj2, p, pbb, pca, pre, s, t, term, terminals, tzg, zone, zones;
+    var alarms, gate, gates, gpu, groups, net_node, notifications, obj, obj1, obj2, p, pbb, pca, pre, s, t, term, terminals, tzg, zone, zones;
     if (this.site_code != null) {
       this.kill_updates(this.site_code);
     }
@@ -8112,6 +8112,10 @@ AlarmWidgetView = (function(superClass) {
       );
       if (s.allgates) {
         terminals = this.site.get('settings').zones;
+      }
+      net_node = (this.site.get('settings').cloud != null) && this.site.get('settings').cloud === true;
+      if (net_node) {
+        net_node = ["RemoteSCADAHosting.localhost.RemoteSCADAHost.Airport-" + this.site_code];
       }
       for (term in terminals) {
         zones = terminals[term];
@@ -8180,6 +8184,11 @@ AlarmWidgetView = (function(superClass) {
             type: "string",
             visible: true
           }, {
+            name: "Group",
+            text: "Text",
+            type: "string",
+            visible: true
+          }, {
             name: "Acked",
             text: "Acked",
             type: "boolean",
@@ -8187,6 +8196,9 @@ AlarmWidgetView = (function(superClass) {
           }
         ]
       };
+      if (net_node) {
+        this.alarm_binding.networkNodes = net_node;
+      }
       if (this.site_code != null) {
         p = alarms ? "Alarms" : '';
         if (notifications) {

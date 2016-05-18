@@ -21,7 +21,7 @@ class AlarmWidgetView extends IOPSWidgetView
     if @site_code? then @kill_updates(@site_code)
 
     s = @model.get("settings")
-   
+
     if s? && !!s.gate
       @site = OPCManager.get_site(s.site)
       @site_code = @site.get('code')
@@ -31,6 +31,9 @@ class AlarmWidgetView extends IOPSWidgetView
       terminals = {"#{s.terminal}" : {"#{s.zone}": {"#{s.gate}": {}}}}
 
       if s.allgates then terminals = @site.get('settings').zones
+      net_node = @site.get('settings').cloud? && @site.get('settings').cloud == true
+      if net_node
+        net_node = ["RemoteSCADAHosting.localhost.RemoteSCADAHost.Airport-#{@site_code}"]
 
       for term of terminals
         zones = terminals[term]
@@ -65,8 +68,11 @@ class AlarmWidgetView extends IOPSWidgetView
           { name: "AlarmDateTime", text: "Alarm Date/Time", type: "datetime", visible: true, sort: 'desc', width: '130px', searchable: false }
           { name: "AlarmValue", text: "Alarm Value", type: "string", visible: false, align: 'right' }
           { name: "Text", text: "Text", type: "string", visible: true }
+          { name: "Group", text: "Text", type: "string", visible: true }
           { name: "Acked", text: "Acked", type: "boolean", visible: false }
         ]
+      if net_node then @alarm_binding.networkNodes = net_node
+
       if @site_code?
         p = if alarms then "Alarms" else ''
         if notifications
