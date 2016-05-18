@@ -8187,7 +8187,7 @@ AlarmWidgetView = (function(superClass) {
             name: "Group",
             text: "Text",
             type: "string",
-            visible: true
+            visible: false
           }, {
             name: "Acked",
             text: "Acked",

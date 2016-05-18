@@ -68,7 +68,7 @@ class AlarmWidgetView extends IOPSWidgetView
           { name: "AlarmDateTime", text: "Alarm Date/Time", type: "datetime", visible: true, sort: 'desc', width: '130px', searchable: false }
           { name: "AlarmValue", text: "Alarm Value", type: "string", visible: false, align: 'right' }
           { name: "Text", text: "Text", type: "string", visible: true }
-          { name: "Group", text: "Text", type: "string", visible: true }
+          { name: "Group", text: "Text", type: "string", visible: false }
           { name: "Acked", text: "Acked", type: "boolean", visible: false }
         ]
       if net_node then @alarm_binding.networkNodes = net_node
