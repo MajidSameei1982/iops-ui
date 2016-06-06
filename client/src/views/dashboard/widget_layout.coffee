@@ -26,19 +26,20 @@ class WidgetLayout extends Marionette.LayoutView
     if cls
       lo.sx = cls.layout.sx
       lo.sy = cls.layout.sy
-    w = @model.widgets.add
-      id: id
-      name: type
-      type: type
-      settings:
-        layout: lo
-      config:     true
-    if @grid
-      wli = $("<li id='widget_#{id}' class='widget'></li>")
-      @$('ul.gridster').append(wli)
-      @grid.add_widget(wli, lo.sx, lo.sy, lo.c, lo.r)
-      @draw_widget_view(w)
-      wli.append('<span class="gs-resize-handle gs-resize-handle-both"></span>')
+      w = @model.widgets.add
+        id: id
+        name: type
+        type: type
+        settings:
+          layout: lo
+        config:     true
+      if @grid
+        wli = $("<li id='widget_#{id}' class='widget'></li>")
+        @$('ul.gridster').append(wli)
+        @grid.add_widget(wli, lo.sx, lo.sy, lo.c, lo.r)
+        wv = @draw_widget_view(w)
+        wli.append('<span class="gs-resize-handle gs-resize-handle-both"></span>')
+        if wv.onGridster? then wv.onGridster()
     @model.save()
     
   # show widget dialog
@@ -66,7 +67,8 @@ class WidgetLayout extends Marionette.LayoutView
           s.layout = layout
           wm.set("settings", s)
           #App.log s
-    App.save_user()
+    @model.save()
+    #App.save_user()
  
   # initialize gridster with default settings
   set_gridster: ()->
@@ -113,12 +115,17 @@ class WidgetLayout extends Marionette.LayoutView
       r = @addRegion(wid, "li##{wid}")
       r.show(wv)
       wv.start()
+      return wv
 
   onShow: ()->
     OPCManager.drop_connections()
+    wvs = []
     for w, idx in @model.widgets.models
-      @draw_widget_view(w)
+      wvs.push @draw_widget_view(w)
     @set_gridster()
+    for wv in wvs
+      if wv.onGridster then wv.onGridster()
+    
     @model.widgets.on "remove", (w, b)=>
       cid = @.cid
       rg = "widget_#{w.id}"

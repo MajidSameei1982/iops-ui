@@ -82,5 +82,11 @@ window.app_config = {
       icon: "gear",
       roles: ["global:admin", "site:admin"]
     }
+    // ,
+    // {
+    //   id: "asset",
+    //   name: "Asset Widget",
+    //   icon: "gear"
+    // }
   ]
 };

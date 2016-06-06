@@ -1638,6 +1638,70 @@ window.JST["widgets/alarm_widget"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
+window.JST["widgets/asset_widget"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div class="display" style="position:relative;min-height:100%;min-width:100%;">\n    <div id="map" style=\'position:absolute;top:0;left:0;height:100%;width:100%;\'></div>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+    
+      _print(_safe(this.formGroup({
+        id: 'title',
+        type: 'text',
+        placeholder: 'Widget Title',
+        value: this.settings.name
+      })));
+    
+      _print(_safe('\n    '));
+    
+      _print(_safe(this.formGroup({
+        id: 'url',
+        type: 'text',
+        feedback: 'link',
+        placeholder: 'URL',
+        value: this.settings.url
+      })));
+    
+      _print(_safe('  \n  </div><!-- /.box-body -->\n</div><!-- /.box-body -->\n'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
 window.JST["widgets/config_widget"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
@@ -2346,6 +2410,8 @@ require('./views/widgets/pca_discharge_widget_view');
 
 require('./views/widgets/pbb_pca_gpu_basic_widget_view');
 
+require('./views/widgets/asset_widget_view');
+
 window.App = (function() {
   var App;
   if (window.App != null) {
@@ -2549,7 +2615,7 @@ window.App = (function() {
   return App;
 })();
 
-},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/site_collection":20,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27,"./views/widgets/airport_widget_view":55,"./views/widgets/alarm_widget_view":56,"./views/widgets/config_widget_view":57,"./views/widgets/gpu_summary_widget_view":58,"./views/widgets/gpu_widget_view":59,"./views/widgets/pbb_pca_gpu_basic_widget_view":61,"./views/widgets/pbb_widget_view":62,"./views/widgets/pbbdetail_widget_view":63,"./views/widgets/pbbleveldetail_widget_view":64,"./views/widgets/pca_discharge_widget_view":65,"./views/widgets/pca_summary_widget_view":66,"./views/widgets/pca_widget_view":67,"./views/widgets/url_widget_view":68,"./views/widgets/weather_widget_view":69}],2:[function(require,module,exports){
+},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/site_collection":20,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27,"./views/widgets/airport_widget_view":55,"./views/widgets/alarm_widget_view":56,"./views/widgets/asset_widget_view":57,"./views/widgets/config_widget_view":58,"./views/widgets/gpu_summary_widget_view":59,"./views/widgets/gpu_widget_view":60,"./views/widgets/pbb_pca_gpu_basic_widget_view":62,"./views/widgets/pbb_widget_view":63,"./views/widgets/pbbdetail_widget_view":64,"./views/widgets/pbbleveldetail_widget_view":65,"./views/widgets/pca_discharge_widget_view":66,"./views/widgets/pca_summary_widget_view":67,"./views/widgets/pca_widget_view":68,"./views/widgets/url_widget_view":69,"./views/widgets/weather_widget_view":70}],2:[function(require,module,exports){
 var AccountsView, AppController, Dashboard, DashboardCollection, DashboardContentView, DashboardLayout, LoginView, Marionette, PermissionsLayout, ProfileView, ReportsView, Session, User, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -5885,7 +5951,7 @@ WidgetLayout = (function(superClass) {
   };
 
   WidgetLayout.prototype.add_widget = function(type) {
-    var cls, i, id, len, lo, m, ref, tc, w, wli;
+    var cls, i, id, len, lo, m, ref, tc, w, wli, wv;
     id = 0;
     ref = this.model.widgets.models;
     for (i = 0, len = ref.length; i < len; i++) {
@@ -5906,22 +5972,25 @@ WidgetLayout = (function(superClass) {
     if (cls) {
       lo.sx = cls.layout.sx;
       lo.sy = cls.layout.sy;
-    }
-    w = this.model.widgets.add({
-      id: id,
-      name: type,
-      type: type,
-      settings: {
-        layout: lo
-      },
-      config: true
-    });
-    if (this.grid) {
-      wli = $("<li id='widget_" + id + "' class='widget'></li>");
-      this.$('ul.gridster').append(wli);
-      this.grid.add_widget(wli, lo.sx, lo.sy, lo.c, lo.r);
-      this.draw_widget_view(w);
-      wli.append('<span class="gs-resize-handle gs-resize-handle-both"></span>');
+      w = this.model.widgets.add({
+        id: id,
+        name: type,
+        type: type,
+        settings: {
+          layout: lo
+        },
+        config: true
+      });
+      if (this.grid) {
+        wli = $("<li id='widget_" + id + "' class='widget'></li>");
+        this.$('ul.gridster').append(wli);
+        this.grid.add_widget(wli, lo.sx, lo.sy, lo.c, lo.r);
+        wv = this.draw_widget_view(w);
+        wli.append('<span class="gs-resize-handle gs-resize-handle-both"></span>');
+        if (wv.onGridster != null) {
+          wv.onGridster();
+        }
+      }
     }
     return this.model.save();
   };
@@ -5959,7 +6028,7 @@ WidgetLayout = (function(superClass) {
         }
       });
     }
-    return App.save_user();
+    return this.model.save();
   };
 
   WidgetLayout.prototype.set_gridster = function() {
@@ -6014,19 +6083,27 @@ WidgetLayout = (function(superClass) {
       });
       r = this.addRegion(wid, "li#" + wid);
       r.show(wv);
-      return wv.start();
+      wv.start();
+      return wv;
     }
   };
 
   WidgetLayout.prototype.onShow = function() {
-    var i, idx, len, ref, w;
+    var i, idx, j, len, len1, ref, w, wv, wvs;
     OPCManager.drop_connections();
+    wvs = [];
     ref = this.model.widgets.models;
     for (idx = i = 0, len = ref.length; i < len; idx = ++i) {
       w = ref[idx];
-      this.draw_widget_view(w);
+      wvs.push(this.draw_widget_view(w));
     }
     this.set_gridster();
+    for (j = 0, len1 = wvs.length; j < len1; j++) {
+      wv = wvs[j];
+      if (wv.onGridster) {
+        wv.onGridster();
+      }
+    }
     this.model.widgets.on("remove", (function(_this) {
       return function(w, b) {
         var cid, rg;
@@ -8048,7 +8125,7 @@ window.AirportWidgetView = AirportWidgetView;
 
 module.exports = AirportWidgetView;
 
-},{"./iops_widget_view":60}],56:[function(require,module,exports){
+},{"./iops_widget_view":61}],56:[function(require,module,exports){
 var AlarmWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -8331,7 +8408,76 @@ window.AlarmWidgetView = AlarmWidgetView;
 
 module.exports = AlarmWidgetView;
 
-},{"./iops_widget_view":60}],57:[function(require,module,exports){
+},{"./iops_widget_view":61}],57:[function(require,module,exports){
+var AssetWidgetView, IOPSWidgetView, Marionette,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+IOPSWidgetView = require('./iops_widget_view');
+
+AssetWidgetView = (function(superClass) {
+  extend(AssetWidgetView, superClass);
+
+  function AssetWidgetView() {
+    this.set_model = bind(this.set_model, this);
+    return AssetWidgetView.__super__.constructor.apply(this, arguments);
+  }
+
+  AssetWidgetView.prototype.template = "widgets/asset_widget";
+
+  AssetWidgetView.prototype.className = 'widget-outer box box-primary';
+
+  AssetWidgetView.prototype.ui = {
+    iframe: 'iframe#iframe',
+    title: 'input#title',
+    url: 'input#url',
+    wtitle: "h3.box-title"
+  };
+
+  AssetWidgetView.layout = {
+    sx: 10,
+    sy: 6
+  };
+
+  AssetWidgetView.prototype.update = function() {};
+
+  AssetWidgetView.prototype.set_model = function() {};
+
+  AssetWidgetView.prototype.toggle_settings = function(e) {
+    AssetWidgetView.__super__.toggle_settings.call(this, e);
+    return this.ui.iframe.toggle(!this.settings_visible);
+  };
+
+  AssetWidgetView.prototype.onShow = function() {};
+
+  AssetWidgetView.prototype.onGridster = function() {
+    debugger;
+    var h, m, map, w;
+    m = this.$("#map");
+    w = m.width();
+    h = m.height();
+    m.width(w);
+    m.height(h);
+    map = L.map('map').setView([29.987772, -95.350803], 16);
+    return L.esri.basemapLayer('Imagery').addTo(map);
+  };
+
+  AssetWidgetView.prototype.start = function() {
+    return this.update();
+  };
+
+  return AssetWidgetView;
+
+})(IOPSWidgetView);
+
+window.AssetWidgetView = AssetWidgetView;
+
+module.exports = AssetWidgetView;
+
+},{"./iops_widget_view":61}],58:[function(require,module,exports){
 var ConfigWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -8527,7 +8673,7 @@ window.ConfigWidgetView = ConfigWidgetView;
 
 module.exports = ConfigWidgetView;
 
-},{"./iops_widget_view":60}],58:[function(require,module,exports){
+},{"./iops_widget_view":61}],59:[function(require,module,exports){
 var GpusummaryWidgetView, IOPSWidgetView, Marionette, UIUtils,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -9135,7 +9281,7 @@ window.GpusummaryWidgetView = GpusummaryWidgetView;
 
 module.exports = GpusummaryWidgetView;
 
-},{"../../common/uiutils":7,"./iops_widget_view":60}],59:[function(require,module,exports){
+},{"../../common/uiutils":7,"./iops_widget_view":61}],60:[function(require,module,exports){
 var GpuWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -9296,7 +9442,7 @@ window.GpuWidgetView = GpuWidgetView;
 
 module.exports = GpuWidgetView;
 
-},{"./iops_widget_view":60}],60:[function(require,module,exports){
+},{"./iops_widget_view":61}],61:[function(require,module,exports){
 var IOPSWidgetView, Marionette, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -9569,7 +9715,7 @@ window.IOPSWidgetView = IOPSWidgetView;
 
 module.exports = IOPSWidgetView;
 
-},{"../dashboard/widget_view":38}],61:[function(require,module,exports){
+},{"../dashboard/widget_view":38}],62:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbpcagpuWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -9729,7 +9875,7 @@ window.PbbpcagpuWidgetView = PbbpcagpuWidgetView;
 
 module.exports = PbbpcagpuWidgetView;
 
-},{"./iops_widget_view":60}],62:[function(require,module,exports){
+},{"./iops_widget_view":61}],63:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -9879,7 +10025,7 @@ window.PbbWidgetView = PbbWidgetView;
 
 module.exports = PbbWidgetView;
 
-},{"./iops_widget_view":60}],63:[function(require,module,exports){
+},{"./iops_widget_view":61}],64:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbdetailWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -10044,7 +10190,7 @@ window.PbbdetailWidgetView = PbbdetailWidgetView;
 
 module.exports = PbbdetailWidgetView;
 
-},{"./iops_widget_view":60}],64:[function(require,module,exports){
+},{"./iops_widget_view":61}],65:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbleveldetailWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -10250,7 +10396,7 @@ window.PbbleveldetailWidgetView = PbbleveldetailWidgetView;
 
 module.exports = PbbleveldetailWidgetView;
 
-},{"./iops_widget_view":60}],65:[function(require,module,exports){
+},{"./iops_widget_view":61}],66:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PcadischargeWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -10640,7 +10786,7 @@ window.PcadischargeWidgetView = PcadischargeWidgetView;
 
 module.exports = PcadischargeWidgetView;
 
-},{"./iops_widget_view":60}],66:[function(require,module,exports){
+},{"./iops_widget_view":61}],67:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PcasummaryWidgetView, UIUtils,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -11004,7 +11150,7 @@ window.PcasummaryWidgetView = PcasummaryWidgetView;
 
 module.exports = PcasummaryWidgetView;
 
-},{"../../common/uiutils":7,"./iops_widget_view":60}],67:[function(require,module,exports){
+},{"../../common/uiutils":7,"./iops_widget_view":61}],68:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PcaWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -11200,7 +11346,7 @@ window.PcaWidgetView = PcaWidgetView;
 
 module.exports = PcaWidgetView;
 
-},{"./iops_widget_view":60}],68:[function(require,module,exports){
+},{"./iops_widget_view":61}],69:[function(require,module,exports){
 var Marionette, UrlWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -11288,7 +11434,7 @@ window.UrlWidgetView = UrlWidgetView;
 
 module.exports = UrlWidgetView;
 
-},{"../dashboard/widget_view":38}],69:[function(require,module,exports){
+},{"../dashboard/widget_view":38}],70:[function(require,module,exports){
 var Marionette, WeatherWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
