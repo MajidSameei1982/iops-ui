@@ -1,15 +1,15 @@
-machine:
-  services:
-    - docker
+# machine:
+#   services:
+#     - docker
 
-notify:
-  webhooks:
-    - url: https://dashboard.tutum.co/api/v1/service/6dc456b9-abc7-4649-88cd-e70769e19f31/trigger/05c63fd8-5590-4777-b845-5ddf1e3589fb/call/
+# notify:
+#   webhooks:
+#     - url: https://dashboard.tutum.co/api/v1/service/6dc456b9-abc7-4649-88cd-e70769e19f31/trigger/05c63fd8-5590-4777-b845-5ddf1e3589fb/call/
 
-deployment:
-  production:
-    branch: master
-    commands:
-      - docker login -e $TUTUM_EML -u $TUTUM_USER -p $TUTUM_PW tutum.co
-      - docker build -t tutum.co/iops/ui .
-      - docker push tutum.co/iops/ui
+# deployment:
+#   production:
+#     branch: master
+#     commands:
+#       - docker login -e $TUTUM_EML -u $TUTUM_USER -p $TUTUM_PW tutum.co
+#       - docker build -t tutum.co/iops/ui .
+#       - docker push tutum.co/iops/ui
