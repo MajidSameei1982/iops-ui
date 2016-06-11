@@ -1,0 +1,16 @@
+<div class="box-header with-border">
+  <div class='pull-left'><h3 class="box-title"></h3></div>
+  <div class="pull-right controls">
+    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> 
+    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>
+  </div>
+</div><!-- /.box-header -->
+<div class="box-body content">
+  <div class="display" style="position:relative;min-height:100%;min-width:100%;">
+    <div id="map" style='position:absolute;top:0;left:0;height:100%;width:100%;'></div>
+  </div>
+  <div class="settings" style="display: none;">
+    <h3>Settings</h3>
+    <%- @siteSelector({id:'site', label:'Site', site:@settings.site}) %>
+  </div>
+</div><!-- /.box-body -->

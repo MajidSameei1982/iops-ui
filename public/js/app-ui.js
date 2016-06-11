@@ -2232,6 +2232,59 @@ window.JST["widgets/pca_widget"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
+window.JST["widgets/report_widget"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div class="display" style="position:relative;min-height:100%;min-width:100%;">\n    <div id="map" style=\'position:absolute;top:0;left:0;height:100%;width:100%;\'></div>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+    
+      _print(_safe(this.siteSelector({
+        id: 'site',
+        label: 'Site',
+        site: this.settings.site
+      })));
+    
+      _print(_safe('\n  </div>\n</div><!-- /.box-body -->\n'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
 window.JST["widgets/url_widget"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
@@ -2411,6 +2464,8 @@ require('./views/widgets/pca_discharge_widget_view');
 require('./views/widgets/pbb_pca_gpu_basic_widget_view');
 
 require('./views/widgets/asset_widget_view');
+
+require('./views/widgets/report_widget_view');
 
 window.App = (function() {
   var App;
@@ -2615,7 +2670,7 @@ window.App = (function() {
   return App;
 })();
 
-},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/site_collection":20,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27,"./views/widgets/airport_widget_view":55,"./views/widgets/alarm_widget_view":56,"./views/widgets/asset_widget_view":57,"./views/widgets/config_widget_view":58,"./views/widgets/gpu_summary_widget_view":59,"./views/widgets/gpu_widget_view":60,"./views/widgets/pbb_pca_gpu_basic_widget_view":62,"./views/widgets/pbb_widget_view":63,"./views/widgets/pbbdetail_widget_view":64,"./views/widgets/pbbleveldetail_widget_view":65,"./views/widgets/pca_discharge_widget_view":66,"./views/widgets/pca_summary_widget_view":67,"./views/widgets/pca_widget_view":68,"./views/widgets/url_widget_view":69,"./views/widgets/weather_widget_view":70}],2:[function(require,module,exports){
+},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/site_collection":20,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27,"./views/widgets/airport_widget_view":55,"./views/widgets/alarm_widget_view":56,"./views/widgets/asset_widget_view":57,"./views/widgets/config_widget_view":58,"./views/widgets/gpu_summary_widget_view":59,"./views/widgets/gpu_widget_view":60,"./views/widgets/pbb_pca_gpu_basic_widget_view":62,"./views/widgets/pbb_widget_view":63,"./views/widgets/pbbdetail_widget_view":64,"./views/widgets/pbbleveldetail_widget_view":65,"./views/widgets/pca_discharge_widget_view":66,"./views/widgets/pca_summary_widget_view":67,"./views/widgets/pca_widget_view":68,"./views/widgets/report_widget_view":69,"./views/widgets/url_widget_view":70,"./views/widgets/weather_widget_view":71}],2:[function(require,module,exports){
 var AccountsView, AppController, Dashboard, DashboardCollection, DashboardContentView, DashboardLayout, LoginView, Marionette, PermissionsLayout, ProfileView, ReportsView, Session, User, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -11347,6 +11402,63 @@ window.PcaWidgetView = PcaWidgetView;
 module.exports = PcaWidgetView;
 
 },{"./iops_widget_view":61}],69:[function(require,module,exports){
+var IOPSWidgetView, Marionette, ReportWidgetView,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+IOPSWidgetView = require('./iops_widget_view');
+
+ReportWidgetView = (function(superClass) {
+  extend(ReportWidgetView, superClass);
+
+  function ReportWidgetView() {
+    this.set_model = bind(this.set_model, this);
+    return ReportWidgetView.__super__.constructor.apply(this, arguments);
+  }
+
+  ReportWidgetView.prototype.template = "widgets/report_widget";
+
+  ReportWidgetView.prototype.className = 'widget-outer box box-primary';
+
+  ReportWidgetView.prototype.ui = {
+    iframe: 'iframe#iframe',
+    title: 'input#title',
+    url: 'input#url',
+    wtitle: "h3.box-title"
+  };
+
+  ReportWidgetView.layout = {
+    sx: 10,
+    sy: 6
+  };
+
+  ReportWidgetView.prototype.update = function() {};
+
+  ReportWidgetView.prototype.set_model = function() {};
+
+  ReportWidgetView.prototype.toggle_settings = function(e) {
+    ReportWidgetView.__super__.toggle_settings.call(this, e);
+    return this.ui.iframe.toggle(!this.settings_visible);
+  };
+
+  ReportWidgetView.prototype.onShow = function() {};
+
+  ReportWidgetView.prototype.start = function() {
+    return this.update();
+  };
+
+  return ReportWidgetView;
+
+})(IOPSWidgetView);
+
+window.ReportWidgetView = ReportWidgetView;
+
+module.exports = ReportWidgetView;
+
+},{"./iops_widget_view":61}],70:[function(require,module,exports){
 var Marionette, UrlWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -11434,7 +11546,7 @@ window.UrlWidgetView = UrlWidgetView;
 
 module.exports = UrlWidgetView;
 
-},{"../dashboard/widget_view":38}],70:[function(require,module,exports){
+},{"../dashboard/widget_view":38}],71:[function(require,module,exports){
 var Marionette, WeatherWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },

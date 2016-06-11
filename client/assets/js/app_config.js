@@ -77,6 +77,11 @@ window.app_config = {
       icon: "cloud"
     },
     {
+      id: "report",
+      name: "Report Widget",
+      icon: "bar-chart"
+    },
+    {
       id: "config",
       name: "Config Widget",
       icon: "gear",
@@ -88,5 +93,6 @@ window.app_config = {
     //   name: "Asset Widget",
     //   icon: "gear"
     // }
+    
   ]
 };
