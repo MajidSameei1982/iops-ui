@@ -11424,10 +11424,10 @@ ReportWidgetView = (function(superClass) {
   ReportWidgetView.prototype.className = 'widget-outer box box-primary';
 
   ReportWidgetView.prototype.ui = {
-    iframe: 'iframe#iframe',
-    title: 'input#title',
-    url: 'input#url',
-    wtitle: "h3.box-title"
+    site: 'select#site',
+    wtitle: '.box-title',
+    display: '.display',
+    content: '.content'
   };
 
   ReportWidgetView.layout = {
@@ -11435,16 +11435,35 @@ ReportWidgetView = (function(superClass) {
     sy: 6
   };
 
-  ReportWidgetView.prototype.update = function() {};
-
-  ReportWidgetView.prototype.set_model = function() {};
-
-  ReportWidgetView.prototype.toggle_settings = function(e) {
-    ReportWidgetView.__super__.toggle_settings.call(this, e);
-    return this.ui.iframe.toggle(!this.settings_visible);
+  ReportWidgetView.prototype.update = function() {
+    var code, s;
+    s = this.model.get("settings");
+    this.site_code = null;
+    this.site = OPCManager.get_site(s.site);
+    if (this.site != null) {
+      this.site_code = this.site.get('code');
+    }
+    code = this.site_code != null ? this.site_code : '...';
+    return this.ui.wtitle.html("Reports for " + code);
   };
 
-  ReportWidgetView.prototype.onShow = function() {};
+  ReportWidgetView.prototype.set_model = function() {
+    var s;
+    s = _.clone(this.model.get("settings"));
+    s.site = this.ui.site.val();
+    return this.model.set("settings", s);
+  };
+
+  ReportWidgetView.prototype.onShow = function() {
+    this.ui.site.on('change', (function(_this) {
+      return function() {
+        return _this.set_model();
+      };
+    })(this));
+    if ((this.ui.site.val() == null) || this.ui.site.val() === '') {
+      return this.toggle_settings();
+    }
+  };
 
   ReportWidgetView.prototype.start = function() {
     return this.update();
