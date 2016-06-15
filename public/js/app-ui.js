@@ -2253,7 +2253,7 @@ window.JST["widgets/report_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div class="display" style="position:relative;min-height:100%;min-width:100%;">\n    <div id="map" style=\'position:absolute;top:0;left:0;height:100%;width:100%;\'></div>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" style=\'overflow:auto !important;\'>\n  <div class="display">\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -3349,6 +3349,8 @@ AppConfig = (function(superClass) {
   };
 
   AppConfig.widgets = (window.app_config != null) && (window.app_config.widgets != null) ? window.app_config.widgets : [];
+
+  AppConfig.report_server = 'http://test-reporting.iopsnow.com/';
 
   return AppConfig;
 
@@ -11431,12 +11433,12 @@ ReportWidgetView = (function(superClass) {
   };
 
   ReportWidgetView.layout = {
-    sx: 10,
+    sx: 5,
     sy: 6
   };
 
   ReportWidgetView.prototype.update = function() {
-    var code, s;
+    var code, s, url;
     s = this.model.get("settings");
     this.site_code = null;
     this.site = OPCManager.get_site(s.site);
@@ -11444,7 +11446,26 @@ ReportWidgetView = (function(superClass) {
       this.site_code = this.site.get('code');
     }
     code = this.site_code != null ? this.site_code : '...';
-    return this.ui.wtitle.html("Reports for " + code);
+    this.ui.wtitle.html("Reports for " + code);
+    this.ui.display.empty();
+    url = this.rurl + "/api/reports?airport=" + this.site_code;
+    if ((this.site_code != null)) {
+      return $.ajax({
+        type: 'GET',
+        url: url,
+        success: (function(_this) {
+          return function(data) {
+            var i, len, r, results;
+            results = [];
+            for (i = 0, len = data.length; i < len; i++) {
+              r = data[i];
+              results.push(_this.ui.display.append("<div class='rlink'><a href='" + _this.rurl + r.ReportUrl + "' target='_new'>" + r.ReportTitle + "</a></div>"));
+            }
+            return results;
+          };
+        })(this)
+      });
+    }
   };
 
   ReportWidgetView.prototype.set_model = function() {
@@ -11466,6 +11487,7 @@ ReportWidgetView = (function(superClass) {
   };
 
   ReportWidgetView.prototype.start = function() {
+    this.rurl = App.config.report_server;
     return this.update();
   };
 

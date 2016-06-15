@@ -13,7 +13,7 @@ class ReportWidgetView extends IOPSWidgetView
     content: '.content'
 
   @layout:
-    sx: 10
+    sx: 5
     sy: 6
 
   update: ()->
@@ -24,9 +24,17 @@ class ReportWidgetView extends IOPSWidgetView
       @site_code = @site.get('code')
     code = if @site_code? then @site_code else '...'
     @ui.wtitle.html("Reports for #{code}")
-    #
-    # CALL TO REPORT SERVER FOR LINKS
-    #
+
+    @ui.display.empty()
+    url = "#{@rurl}/api/reports?airport=#{@site_code}"
+    if (@site_code?)
+      $.ajax
+        type: 'GET'
+        #dataType: 'json'
+        url: url
+        success: (data)=>
+          for r in data
+            @ui.display.append("<div class='rlink'><a href='#{@rurl}#{r.ReportUrl}' target='_new'>#{r.ReportTitle}</a></div>")
 
   set_model: ()=>
     s = _.clone(@model.get("settings"))
@@ -40,6 +48,7 @@ class ReportWidgetView extends IOPSWidgetView
       @toggle_settings()
 
   start:()->
+    @rurl = App.config.report_server
     @update()
     
 # ----------------------------------

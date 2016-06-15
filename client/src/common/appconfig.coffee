@@ -10,6 +10,8 @@ class AppConfig extends Object
 
   @widgets: if window.app_config? && window.app_config.widgets? then window.app_config.widgets else []
 
+  @report_server: 'http://test-reporting.iopsnow.com/'
+
 # ----------------------------------
 
 module.exports = AppConfig
