@@ -2467,6 +2467,10 @@ require('./views/widgets/asset_widget_view');
 
 require('./views/widgets/report_widget_view');
 
+String.prototype.endsWith = function(suffix) {
+  return this.indexOf(suffix, this.length - suffix.length) !== -1;
+};
+
 window.App = (function() {
   var App;
   if (window.App != null) {

@@ -33,6 +33,13 @@ require('./views/widgets/asset_widget_view')
 require('./views/widgets/report_widget_view')
 
 # ----------------------------------
+
+# IE SUPPORT
+String.prototype.endsWith = (suffix)->
+  this.indexOf(suffix, this.length - suffix.length) != -1
+
+# ----------------------------------
+
 window.App = do()->
   return window.App if window.App?
 
