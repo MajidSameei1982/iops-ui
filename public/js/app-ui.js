@@ -2147,7 +2147,7 @@ window.JST["widgets/pca_summary_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id=\'display_label\'>\n      <h1>\n       \n      </h1>\n    </div>\n    <div id="view_main">\n      <div id="power_indicator"></div>\n      <div id="txt_connected_time"></div>\n    </div>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n<table height="100%";width"100%"><tr>\n  <td>\n    <table class=\'data\'> \n        <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr> \n        <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    \n        <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    \n    </table>\n </td>\n <td>\n   <table class=\'data1\'> \n    <br><br>\n     <tr><td style="width:200px; height:200px; vertical-align:middle">\n     <div id="pcamain_img" class=""></div>   \n     <div id="blower_img" class=""></div>  \n     <div id="heatingstage1_img" class=""></div>  \n     <div id="heatingstage2_img" class=""></div>  \n     <div id="coolingstage1_img" class=""></div>  \n     <div id="coolingstage2_img" class=""></div>   \n     <div id="accool_img" class=""></div>  \n     <div id="bccool_img" class=""></div> \n     <div id="pca_coildp" class=""></div>   \n     <div id="pca_vfdspeed" class=""></div>\n     <div id="pca_pcaambhumidity" class=""></div>\n     <div id="pca_sucpressure1" class=""></div>\n     <div id="pca_sucpressure2" class=""></div>\n     <div id="pca_hotgas1" class=""></div>\n     <div id="pca_hotgas2" class=""></div>\n     <div id="pca_pumpcond" class=""></div>\n     <div id="pca_aircraftdamper" class=""></div>\n     <div id="pca_bridgedamper" class=""></div>\n       \n     </td></tr>         \n    </table>\n </td>\n </tr></table> \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'>\n    <i class="fa fa-plane"></i> <h3 class="box-title"></h3>\n    <select id="mode" style=\'display:none;\'>\n      <option value=\'\'>Summary</option>\n      <option value=\'ambient\'>Ambient Temp.</option>\n      <option value=\'discharge\'>Discharge Temp.</option>\n    </select>\n  </div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id=\'display_label\'><h1></h1></div>\n    <div id="summary">\n      <div id="view_main">\n        <div id="power_indicator"></div>\n        <div id="txt_connected_time"></div>\n      </div>\n      <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n      <table height="100%";width"100%">\n        <tr>\n          <td>\n            <table class=\'data\'> \n              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr> \n              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    \n              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    \n            </table>\n          </td>\n          <td>\n            <table class=\'data1\'> \n              <tr>\n                <td style="width:200px; height:200px; vertical-align:middle">\n                  <div id="pcamain_img" class=""></div>   \n                  <div id="blower_img" class=""></div>  \n                  <div id="heatingstage1_img" class=""></div>  \n                  <div id="heatingstage2_img" class=""></div>  \n                  <div id="coolingstage1_img" class=""></div>  \n                  <div id="coolingstage2_img" class=""></div>   \n                  <div id="accool_img" class=""></div>  \n                  <div id="bccool_img" class=""></div> \n                  <div id="pca_coildp" class=""></div>   \n                  <div id="pca_vfdspeed" class=""></div>\n                  <div id="pca_pcaambhumidity" class=""></div>\n                  <div id="pca_sucpressure1" class=""></div>\n                  <div id="pca_sucpressure2" class=""></div>\n                  <div id="pca_hotgas1" class=""></div>\n                  <div id="pca_hotgas2" class=""></div>\n                  <div id="pca_pumpcond" class=""></div>\n                  <div id="pca_aircraftdamper" class=""></div>\n                  <div id="pca_bridgedamper" class=""></div>\n                </td>\n              </tr>         \n            </table>\n          </td>\n        </tr>\n      </table> \n    </div>\n    <div id="plots" style="display: none;">\n      <table id=\'plot_container\' border="0">\n        <tr>\n          <td id=\'options\'>\n            <div id=\'ptype_lbl\'></div>\n\n            <div id=\'live_container\'>\n              <label>Live Data</label>\n              <div>\n                <input id=\'live_data\' type="checkbox" data-toggle="toggle" >\n              </div>\n            </div>\n            \n          </td>\n          <td id=\'plot_data\'></td>\n        </tr>\n      </table>\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -10863,6 +10863,9 @@ PcasummaryWidgetView = (function(superClass) {
   extend(PcasummaryWidgetView, superClass);
 
   function PcasummaryWidgetView() {
+    this.trend_callback = bind(this.trend_callback, this);
+    this.show_plot = bind(this.show_plot, this);
+    this.configure_buttons = bind(this.configure_buttons, this);
     this.set_model = bind(this.set_model, this);
     this.data_update = bind(this.data_update, this);
     return PcasummaryWidgetView.__super__.constructor.apply(this, arguments);
@@ -10919,22 +10922,21 @@ PcasummaryWidgetView = (function(superClass) {
   };
 
   PcasummaryWidgetView.prototype.update = function() {
-    var IsCloudServer, cloud, lbl, s, settings, t, tags, tg;
+    var cloud, lbl, s, settings, show_opts, t, tags, tg;
     s = this.model.get("settings");
+    this.update_settings({
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+    });
     if ((s != null) && !!s.gate) {
       this.site = OPCManager.get_site(s.site);
       this.site_code = this.site.get('code');
       if (this.site_code == null) {
         return null;
       }
+      show_opts = (s != null) && !!s.gate;
+      this.$('#mode').toggle(show_opts);
       this.kill_updates(this.site_code);
-      switch (this.site_code) {
-        case "CID":
-          IsCloudServer = true;
-          break;
-        default:
-          IsCloudServer = false;
-      }
       settings = this.site.get('settings');
       settings || (settings = {});
       cloud = settings.cloud ? "RemoteSCADAHosting.Airport-" + this.site_code + "." : '';
@@ -11192,7 +11194,241 @@ PcasummaryWidgetView = (function(superClass) {
     if (this.site_code != null) {
       this.watch_updates(this.site_code);
     }
+    this.configure_buttons();
     return this.render_gauges();
+  };
+
+  PcasummaryWidgetView.prototype.configure_buttons = function() {
+    this.$('#mode').change((function(_this) {
+      return function(e) {
+        var sel;
+        sel = _this.$('#mode').val();
+        sel = sel === '' ? null : sel;
+        return _this.show_plot(sel);
+      };
+    })(this));
+    return this.$('#live_data').bootstrapToggle({
+      width: 50,
+      height: 25
+    });
+  };
+
+  PcasummaryWidgetView.prototype.show_plot = function(p, live) {
+    var dtm, ed, h, lbl, now, pid, plot_color, sd, show_hist, tags;
+    this.initializing = true;
+    this.kill_updates(this.site_code);
+    this.$("#plots").toggle(p != null);
+    this.$("#summary").toggle(p == null);
+    show_hist = (p != null) && !live;
+    plot_color = "#80C3FF";
+    switch (p) {
+      case 'ambient':
+        lbl = 'Ambient Temp';
+        tags = [
+          {
+            tag: this.prefix + "PCA.TEMPAMB.Value",
+            fill: true,
+            color: plot_color
+          }
+        ];
+        break;
+      case 'discharge':
+        lbl = "Discharge Temp";
+        tags = [
+          {
+            tag: this.prefix + "PCA.TEMPDISCH.Value",
+            fill: true,
+            color: plot_color
+          }
+        ];
+    }
+    this.$('#ptype_lbl').html(lbl);
+    this.$('#toggle_main').toggle(p != null);
+    this.$('#plot-placeholder').remove();
+    this.$("#plot_data").append("<div id='plot-placeholder' style='background-color:#eee;position:absolute;top:0;left:0;width:100%;'>\n  <div style='text-align:center;color:#666;font-size:18px;margin-top:20%;'><i class=\"fa fa-spinner fa-pulse\"></i> LOADING DATA...</div>\n</div>");
+    h = this.$(".display").height();
+    this.$("#plot-placeholder").css({
+      "max-height": h + "px",
+      "height": h + "px"
+    });
+    if (this.tbinding) {
+      OPCManager.rem_trend(this.site_code, this.tbinding);
+      this.$("#" + this.tbinding.chartid).remove();
+    }
+    if (p != null) {
+      pid = p + "_" + this.model.id;
+      this.$("#plot_data").append("<div id='" + pid + "' style='width:100%;height:100%;position:absolute;top:0;left:0;z-index:999;'></div>");
+      this.tbinding = {
+        chartid: "" + pid,
+        samplerate: 1,
+        timeframe: 50,
+        tags: tags,
+        retain: 50,
+        callback: this.trend_callback
+      };
+      this.$(".display").resize((function(_this) {
+        return function() {
+          return _this.$("#plot_container").width('100%').height(_this.$(".display").height() - 20);
+        };
+      })(this));
+      this.$("#plot_container").width('100%').height(this.$(".display").height() - 20);
+      App.opc.add_trend(this.site_code, this.tbinding);
+      if (show_hist) {
+        dtm = new Date();
+        sd = OPC.Util.formatDate(dtm, "mm/dd/yyyy 00:00:00");
+        now = new Date();
+        ed = OPC.Util.formatDate(dtm, "mm/dd/yyyy " + (now.getHours()) + ":" + (now.getMinutes()) + ":" + (now.getSeconds()));
+        OPC.Trend.getHistoryData("" + pid, sd, ed);
+        this.$("#live_data").off('change');
+        this.$("#live_data").bootstrapToggle('off');
+        this.$("#live_data").on('change', (function(_this) {
+          return function(e) {
+            var lv;
+            lv = _this.$("#live_data").is(':checked');
+            return _this.show_plot(_this.current_plot, lv);
+          };
+        })(this));
+      }
+    }
+    this.current_plot = p;
+    return this.watch_updates(this.site_code);
+  };
+
+  PcasummaryWidgetView.prototype.trend_callback = function(data) {
+    var fd, i, j, k, len, markings, max, opts, p, ref, ref1, ref2, ref3, ref4, span, tm1, tm2, tt, x, y;
+    this.$('#plot-placeholder').remove();
+    this.tb = OPC.Trend.getTrendBinding(data);
+    console.log(data);
+    if (this.tb != null) {
+      max = 0;
+      if ((data.penvalues != null) && data.penvalues.length > 0) {
+        ref = data.penvalues[0];
+        for (i = 0, len = ref.length; i < len; i++) {
+          p = ref[i];
+          if (p !== '' && parseFloat(p) > max) {
+            max = parseFloat(p);
+          }
+        }
+      }
+      max = max * 1.25;
+      markings = [];
+      fd = OPC.Flot.buildTrendData(data);
+      tm1 = fd[0].data[0][0].getTime();
+      tm2 = fd[0].data[fd[0].data.length - 1][0].getTime();
+      span = Math.floor((tm2 - tm1) / 24);
+      for (y = j = 0, ref1 = Math.floor(max) + 100; j <= ref1; y = j += 25) {
+        markings.push({
+          yaxis: {
+            from: y,
+            to: y
+          },
+          color: "#eee",
+          lineWidth: 1
+        });
+      }
+      for (x = k = ref2 = tm1, ref3 = tm2, ref4 = span; ref4 > 0 ? k <= ref3 : k >= ref3; x = k += ref4) {
+        markings.push({
+          xaxis: {
+            from: x,
+            to: x
+          },
+          color: "#eee",
+          lineWidth: 1
+        });
+      }
+      opts = {
+        series: {
+          shadowSize: 0
+        },
+        lines: {
+          show: true,
+          fill: true
+        },
+        grid: {
+          hoverable: true,
+          clickable: true,
+          autoHighlight: false,
+          color: "transparent",
+          borderColor: "#666",
+          borderWidth: 1,
+          markings: markings
+        },
+        crosshair: {
+          mode: "x"
+        },
+        legend: {
+          backgroundOpacity: 0.3
+        },
+        xaxis: {
+          mode: "time",
+          font: {
+            size: 10,
+            lineHeight: 10,
+            family: "sans-serif",
+            color: "#000000"
+          },
+          tickSize: [2, "second"],
+          tickFormatter: (function(_this) {
+            return function(v, axis) {
+              var dt;
+              dt = new Date(v);
+              if (_this.tb.mode !== "history" && dt.getSeconds() % 30 === 0) {
+                return OPC.Util.formatDate(dt, "mm/dd hh:MM:ss");
+              }
+              return "";
+            };
+          })(this)
+        },
+        yaxes: [
+          {
+            position: 'left',
+            min: 0,
+            max: max
+          }
+        ]
+      };
+      $.plot("#" + this.tb.chartid, fd, opts);
+      if (this.initializing) {
+        tt = this.$("#plot_tooltip");
+        if ((tt == null) || tt.length === 0) {
+          tt = $("<div id='plot_tooltip'></div>");
+          tt.css({
+            position: "absolute",
+            border: "1px solid #666",
+            padding: "2px",
+            "background-color": "#fff",
+            "border-radius": "5px",
+            "box-shadow": "3px 3px 3px 0 rgba(0,0,0,0.1)",
+            "z-index": 9999,
+            opacity: 0.90
+          }).appendTo("#plot_data");
+        }
+        this.$("#" + this.tb.chartid).bind("plothover", (function(_this) {
+          return function(e, pos, item) {
+            var dt, dts, hours, minutes, ofs, seconds;
+            if (item == null) {
+              return _this.$("#plot_tooltip").hide();
+            } else {
+              x = item.datapoint[0];
+              y = item.datapoint[1].toFixed(2);
+              dt = new Date(x);
+              ofs = _this.$("#plot_data").offset();
+              hours = UIUtils.lpad(dt.getHours(), 2, '0');
+              minutes = UIUtils.lpad(dt.getMinutes(), 2, '0');
+              seconds = UIUtils.lpad(dt.getSeconds(), 2, '0');
+              dts = (dt.getMonth() + 1) + "/" + (dt.getDate()) + "/" + (dt.getFullYear()) + "<br/>" + hours + ":" + minutes + ":" + seconds;
+              _this.$("#plot_tooltip").html(dts + "<br/><b>" + y + "</b>");
+              _this.$("#plot_tooltip").css({
+                top: item.pageY - 64 - ofs.top,
+                left: item.pageX - 60 - ofs.left
+              });
+              return _this.$("#plot_tooltip").show();
+            }
+          };
+        })(this));
+      }
+      return this.initializing = false;
+    }
   };
 
   PcasummaryWidgetView.prototype.start = function() {

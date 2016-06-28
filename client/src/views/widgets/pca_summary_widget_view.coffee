@@ -56,19 +56,24 @@ class PcasummaryWidgetView extends IOPSWidgetView
     
   update: ()->
     s = @model.get("settings")
+
+    @update_settings
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+
    
     if s? && !!s.gate
       @site = OPCManager.get_site(s.site)
       @site_code = @site.get('code')
       if !@site_code? then return null
 
+      show_opts = s? && !!s.gate
+      @$('#mode').toggle(show_opts)
+
       # stop listening for updates
       @kill_updates(@site_code)
       
-      # Temporary Client Eval until Settings are updated with the IsCloudServer (or equivelent flag)
-      switch @site_code
-        when "CID" then IsCloudServer = true
-        else IsCloudServer = false
+
 
       # build settings      
       settings = @site.get('settings')
@@ -328,7 +333,182 @@ class PcasummaryWidgetView extends IOPSWidgetView
     @site_code = OPCManager.get_site_code(settings.site)
     if @site_code? then @watch_updates(@site_code)
 
+    @configure_buttons()
     @render_gauges()
+
+  configure_buttons: ()=>
+    @$('#mode').change (e)=>
+      sel = @$('#mode').val()
+      sel = if sel=='' then null else sel
+      @show_plot(sel)
+
+    @$('#live_data').bootstrapToggle
+      width:50
+      height:25
+
+  show_plot: (p, live)=>
+    @initializing = true
+    @kill_updates(@site_code)
+    # set buttons
+    @$("#plots").toggle(p?)
+    @$("#summary").toggle(!p?)
+
+    
+    show_hist = p? && !live
+    plot_color = "#80C3FF"
+
+    switch p
+      when 'ambient'
+        lbl = 'Ambient Temp'
+        tags = [{tag: "#{@prefix}PCA.TEMPAMB.Value", fill: true, color: plot_color}]
+      when 'discharge'
+        lbl = "Discharge Temp"
+        tags = [{tag: "#{@prefix}PCA.TEMPDISCH.Value", fill: true, color: plot_color}]
+
+    @$('#ptype_lbl').html(lbl)
+    @$('#toggle_main').toggle(p?)
+    
+    @$('#plot-placeholder').remove()
+    @$("#plot_data").append """
+      <div id='plot-placeholder' style='background-color:#eee;position:absolute;top:0;left:0;width:100%;'>
+        <div style='text-align:center;color:#666;font-size:18px;margin-top:20%;'><i class="fa fa-spinner fa-pulse"></i> LOADING DATA...</div>
+      </div>
+    """
+    h = @$(".display").height()
+    @$("#plot-placeholder").css
+      "max-height": "#{h}px"
+      "height": "#{h}px"
+  
+    
+    # # clear out previous plots
+    if @tbinding
+      OPCManager.rem_trend(@site_code, @tbinding)
+      @$("##{@tbinding.chartid}").remove()
+
+    if p?
+      #build trend
+      pid = "#{p}_#{@model.id}"
+      @$("#plot_data").append("<div id='#{pid}' style='width:100%;height:100%;position:absolute;top:0;left:0;z-index:999;'></div>")
+      @tbinding = 
+        chartid:"#{pid}"
+        samplerate: 1
+        timeframe: 50
+        tags:tags
+        retain: 50
+        callback:@trend_callback
+      @$(".display").resize ()=>
+        @$("#plot_container").width('100%').height(@$(".display").height()-20)
+      @$("#plot_container").width('100%').height(@$(".display").height()-20)
+      
+      App.opc.add_trend @site_code, @tbinding
+
+      if show_hist
+        dtm = new Date()
+        sd = OPC.Util.formatDate(dtm,"mm/dd/yyyy 00:00:00")
+        now = new Date()
+        ed = OPC.Util.formatDate(dtm,"mm/dd/yyyy #{now.getHours()}:#{now.getMinutes()}:#{now.getSeconds()}")
+        OPC.Trend.getHistoryData("#{pid}", sd, ed)
+        @$("#live_data").off('change')
+        @$("#live_data").bootstrapToggle('off')
+        @$("#live_data").on 'change', (e)=>
+          lv = @$("#live_data").is(':checked')
+          @show_plot(@current_plot, lv)
+
+    @current_plot = p
+
+    @watch_updates(@site_code)
+
+  trend_callback: (data)=>
+    @$('#plot-placeholder').remove()
+
+    #skip plotting if in history mode in case data comes back
+    #return if !@initializing && !@$("#live_data").is(":checked")
+    
+    @tb = OPC.Trend.getTrendBinding(data)
+    #return null if !@tb.mode?
+
+    console.log data
+
+    if @tb?
+      max = 0
+      if data.penvalues? && data.penvalues.length>0
+        for p in data.penvalues[0]
+          if p != '' && parseFloat(p) > max then max = parseFloat(p)
+      max = max * 1.25
+      # console.log max
+      markings = []
+      fd = OPC.Flot.buildTrendData(data)
+      
+      tm1 = fd[0].data[0][0].getTime()
+      tm2 = fd[0].data[fd[0].data.length-1][0].getTime()
+      span = Math.floor((tm2-tm1)/24)
+      
+      for y in [0..Math.floor(max)+100] by 25
+        markings.push { yaxis: { from: y, to: y }, color:"#eee", lineWidth:1 }
+      for x in [tm1..tm2] by span
+        markings.push { xaxis: { from: x, to: x }, color:"#eee", lineWidth:1 }
+
+      opts =
+        series: { shadowSize: 0}
+        lines:  { show: true, fill: true }
+        grid:
+          hoverable: true 
+          clickable: true
+          autoHighlight: false
+          color:"transparent"
+          borderColor: "#666"
+          borderWidth: 1
+          markings: markings
+        crosshair: { mode: "x"}
+        legend: { backgroundOpacity: 0.3}
+        xaxis:
+          mode: "time"
+          font: { size: 10, lineHeight: 10, family: "sans-serif", color:"#000000" }
+          tickSize: [2, "second"]
+          tickFormatter: (v, axis)=>
+            dt = new Date(v)
+            if (@tb.mode != "history" && dt.getSeconds() % 30 == 0)
+              return OPC.Util.formatDate(dt,"mm/dd hh:MM:ss")
+            return ""
+        yaxes:[
+          { position: 'left', min:0, max:max }
+        ]
+
+      # = OPC.Flot.buildTrendData(data)
+      $.plot("##{@tb.chartid}", fd, opts)
+      if @initializing
+        tt = @$("#plot_tooltip")
+        if !tt? || tt.length == 0
+          tt = $("<div id='plot_tooltip'></div>")
+          tt.css
+            position: "absolute"
+            # display: "none"
+            border: "1px solid #666"
+            padding: "2px"
+            "background-color": "#fff"
+            "border-radius": "5px"
+            "box-shadow": "3px 3px 3px 0 rgba(0,0,0,0.1)"
+            "z-index": 9999
+            opacity: 0.90
+          .appendTo("#plot_data")
+        @$("##{@tb.chartid}").bind "plothover", (e, pos, item)=>
+          if !item?
+            @$("#plot_tooltip").hide()
+          else
+            x = item.datapoint[0]
+            y = item.datapoint[1].toFixed(2)
+            dt =  new Date(x)
+            ofs = @$("#plot_data").offset()
+            hours = UIUtils.lpad(dt.getHours(),2,'0')
+            minutes = UIUtils.lpad(dt.getMinutes(),2,'0')
+            seconds = UIUtils.lpad(dt.getSeconds(),2,'0')
+            dts = "#{dt.getMonth()+1}/#{dt.getDate()}/#{dt.getFullYear()}<br/>#{hours}:#{minutes}:#{seconds}"
+            @$("#plot_tooltip").html("#{dts}<br/><b>#{y}</b>")
+            @$("#plot_tooltip").css({top: item.pageY-64-ofs.top, left: item.pageX-60-ofs.left})
+            @$("#plot_tooltip").show()
+          
+      @initializing = false
+
 
   start: ()->
     @update()

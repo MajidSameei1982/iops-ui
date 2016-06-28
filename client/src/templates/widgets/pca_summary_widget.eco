@@ -1,5 +1,12 @@
 <div class="box-header with-border">
-  <div class='pull-left'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>
+  <div class='pull-left'>
+    <i class="fa fa-plane"></i> <h3 class="box-title"></h3>
+    <select id="mode" style='display:none;'>
+      <option value=''>Summary</option>
+      <option value='ambient'>Ambient Temp.</option>
+      <option value='discharge'>Discharge Temp.</option>
+    </select>
+  </div>
   <div class="pull-right controls">
     <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> 
     <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>
@@ -9,51 +16,69 @@
 <div class="box-body content" id='content'>
   
   <div class="display contain">
-    <div id='display_label'>
-      <h1>
-       
-      </h1>
+    <div id='display_label'><h1></h1></div>
+    <div id="summary">
+      <div id="view_main">
+        <div id="power_indicator"></div>
+        <div id="txt_connected_time"></div>
+      </div>
+      <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>
+      <table height="100%";width"100%">
+        <tr>
+          <td>
+            <table class='data'> 
+              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr> 
+              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    
+              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    
+            </table>
+          </td>
+          <td>
+            <table class='data1'> 
+              <tr>
+                <td style="width:200px; height:200px; vertical-align:middle">
+                  <div id="pcamain_img" class=""></div>   
+                  <div id="blower_img" class=""></div>  
+                  <div id="heatingstage1_img" class=""></div>  
+                  <div id="heatingstage2_img" class=""></div>  
+                  <div id="coolingstage1_img" class=""></div>  
+                  <div id="coolingstage2_img" class=""></div>   
+                  <div id="accool_img" class=""></div>  
+                  <div id="bccool_img" class=""></div> 
+                  <div id="pca_coildp" class=""></div>   
+                  <div id="pca_vfdspeed" class=""></div>
+                  <div id="pca_pcaambhumidity" class=""></div>
+                  <div id="pca_sucpressure1" class=""></div>
+                  <div id="pca_sucpressure2" class=""></div>
+                  <div id="pca_hotgas1" class=""></div>
+                  <div id="pca_hotgas2" class=""></div>
+                  <div id="pca_pumpcond" class=""></div>
+                  <div id="pca_aircraftdamper" class=""></div>
+                  <div id="pca_bridgedamper" class=""></div>
+                </td>
+              </tr>         
+            </table>
+          </td>
+        </tr>
+      </table> 
     </div>
-    <div id="view_main">
-      <div id="power_indicator"></div>
-      <div id="txt_connected_time"></div>
+    <div id="plots" style="display: none;">
+      <table id='plot_container' border="0">
+        <tr>
+          <td id='options'>
+            <div id='ptype_lbl'></div>
+
+            <div id='live_container'>
+              <label>Live Data</label>
+              <div>
+                <input id='live_data' type="checkbox" data-toggle="toggle" >
+              </div>
+            </div>
+            
+          </td>
+          <td id='plot_data'></td>
+        </tr>
+      </table>
     </div>
-    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>
-<table height="100%";width"100%"><tr>
-  <td>
-    <table class='data'> 
-        <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr> 
-        <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    
-        <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    
-    </table>
- </td>
- <td>
-   <table class='data1'> 
-    <br><br>
-     <tr><td style="width:200px; height:200px; vertical-align:middle">
-     <div id="pcamain_img" class=""></div>   
-     <div id="blower_img" class=""></div>  
-     <div id="heatingstage1_img" class=""></div>  
-     <div id="heatingstage2_img" class=""></div>  
-     <div id="coolingstage1_img" class=""></div>  
-     <div id="coolingstage2_img" class=""></div>   
-     <div id="accool_img" class=""></div>  
-     <div id="bccool_img" class=""></div> 
-     <div id="pca_coildp" class=""></div>   
-     <div id="pca_vfdspeed" class=""></div>
-     <div id="pca_pcaambhumidity" class=""></div>
-     <div id="pca_sucpressure1" class=""></div>
-     <div id="pca_sucpressure2" class=""></div>
-     <div id="pca_hotgas1" class=""></div>
-     <div id="pca_hotgas2" class=""></div>
-     <div id="pca_pumpcond" class=""></div>
-     <div id="pca_aircraftdamper" class=""></div>
-     <div id="pca_bridgedamper" class=""></div>
-       
-     </td></tr>         
-    </table>
- </td>
- </tr></table> 
   </div>
 
   <div class="settings" style="display: none;">
