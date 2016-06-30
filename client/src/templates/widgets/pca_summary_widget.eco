@@ -3,8 +3,7 @@
     <i class="fa fa-plane"></i> <h3 class="box-title"></h3>
     <select id="mode" style='display:none;'>
       <option value=''>Summary</option>
-      <option value='ambient'>Ambient Temp.</option>
-      <option value='discharge'>Discharge Temp.</option>
+      <option value='plots'>Temp. Data</option>
     </select>
   </div>
   <div class="pull-right controls">
@@ -65,7 +64,18 @@
       <table id='plot_container' border="0">
         <tr>
           <td id='options'>
-            <div id='ptype_lbl'></div>
+            <div id='ptype_lbl'>
+              <table>
+                <tr>
+                  <td>Ambient Temp:</td>
+                  <td><div style='width:14px;height:14px;background-color:#80C3FF;'></div></td>
+                </tr>
+                <tr>
+                  <td>Discharge Temp:</td>
+                  <td><div style='width:14px;height:14px;background-color:#FF8C1A;'></div></td>
+                </tr>
+              </table>
+            </div>
 
             <div id='live_container'>
               <label>Live Data</label>

@@ -678,7 +678,19 @@ window.JST["forms/manage_accounts/site"] = function(__obj) {
     
       _print(_safe(this.refreshRate));
     
-      _print(_safe('\' size=\'5\' placeholder=\'Rate\'/>\n    <i>&nbsp;sec.</i>\n  </div>\n  <div>\n    <span id="site_cloud_label" class=\'label left\'>Cloud Data</span>\n    <i id=\'site_cloud\' class="fa fa-fw"></i>\n  </div>\n  <div class=\'edit\'>\n    <i id=\'site_zones_label\' class=\'label left\'>Terminals, Zones, Gates:</i><br/>\n    <textarea id=\'site_zones\' rows="10" cols="40" placeholder=\'{&#10;&nbsp;&nbsp;"1" : {&#10;&nbsp;&nbsp;&nbsp;&nbsp;"1" : {"C1" : {}, "C2" : {}}&#10;&nbsp;&nbsp;}&#10;}\'></textarea>\n  </div>\n\n  <div id=\'site_buttons\' class=\'edit\'>\n    <button class="btn btn-xs" id=\'cancel\'><i class="fa fa-ban"></i> CANCEL</button>\n    <button class="btn btn-xs btn-success" id=\'save\'><i class="fa fa-check-square"></i> SAVE</button>\n  </div>\n</div>\n'));
+      _print(_safe('\' size=\'5\' placeholder=\'Rate\'/>\n    <i>&nbsp;sec.</i>\n  </div>\n  <div>\n    <span id="site_cloud_label" class=\'label left\'>Cloud Data</span>\n    <i id=\'site_cloud\' class="fa fa-fw"></i>\n  </div>\n  <div>\n    <span class=\'label left\'>Location:</span>\n    <span class=\'display\' id=\'site_lat_label\'>'));
+    
+      _print((this.settings.lat != null) && (this.settings.lon != null) ? this.settings.lat + ", " + this.settings.lon : '');
+    
+      _print(_safe('</span>\n    <input class=\'edit\' type=\'text\' id=\'site_lat\' value=\''));
+    
+      _print(_safe(this.lat));
+    
+      _print(_safe('\' size=\'40\' placeholder=\'Latitude\'/>\n    <input class=\'edit\' type=\'text\' id=\'site_lon\' value=\''));
+    
+      _print(_safe(this.lon));
+    
+      _print(_safe('\' size=\'40\' placeholder=\'Longitude\'/>\n  </div>\n  <div class=\'edit\'>\n    <i id=\'site_zones_label\' class=\'label left\'>Terminals, Zones, Gates:</i><br/>\n    <textarea id=\'site_zones\' rows="10" cols="40" placeholder=\'{&#10;&nbsp;&nbsp;"1" : {&#10;&nbsp;&nbsp;&nbsp;&nbsp;"1" : {"C1" : {}, "C2" : {}}&#10;&nbsp;&nbsp;}&#10;}\'></textarea>\n  </div>\n\n  <div id=\'site_buttons\' class=\'edit\'>\n    <button class="btn btn-xs" id=\'cancel\'><i class="fa fa-ban"></i> CANCEL</button>\n    <button class="btn btn-xs btn-success" id=\'save\'><i class="fa fa-check-square"></i> SAVE</button>\n  </div>\n</div>\n'));
     
     }).call(this);
     
@@ -2147,7 +2159,7 @@ window.JST["widgets/pca_summary_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'>\n    <i class="fa fa-plane"></i> <h3 class="box-title"></h3>\n    <select id="mode" style=\'display:none;\'>\n      <option value=\'\'>Summary</option>\n      <option value=\'ambient\'>Ambient Temp.</option>\n      <option value=\'discharge\'>Discharge Temp.</option>\n    </select>\n  </div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id=\'display_label\'><h1></h1></div>\n    <div id="summary">\n      <div id="view_main">\n        <div id="power_indicator"></div>\n        <div id="txt_connected_time"></div>\n      </div>\n      <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n      <table height="100%";width"100%">\n        <tr>\n          <td>\n            <table class=\'data\'> \n              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr> \n              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    \n              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    \n            </table>\n          </td>\n          <td>\n            <table class=\'data1\'> \n              <tr>\n                <td style="width:200px; height:200px; vertical-align:middle">\n                  <div id="pcamain_img" class=""></div>   \n                  <div id="blower_img" class=""></div>  \n                  <div id="heatingstage1_img" class=""></div>  \n                  <div id="heatingstage2_img" class=""></div>  \n                  <div id="coolingstage1_img" class=""></div>  \n                  <div id="coolingstage2_img" class=""></div>   \n                  <div id="accool_img" class=""></div>  \n                  <div id="bccool_img" class=""></div> \n                  <div id="pca_coildp" class=""></div>   \n                  <div id="pca_vfdspeed" class=""></div>\n                  <div id="pca_pcaambhumidity" class=""></div>\n                  <div id="pca_sucpressure1" class=""></div>\n                  <div id="pca_sucpressure2" class=""></div>\n                  <div id="pca_hotgas1" class=""></div>\n                  <div id="pca_hotgas2" class=""></div>\n                  <div id="pca_pumpcond" class=""></div>\n                  <div id="pca_aircraftdamper" class=""></div>\n                  <div id="pca_bridgedamper" class=""></div>\n                </td>\n              </tr>         \n            </table>\n          </td>\n        </tr>\n      </table> \n    </div>\n    <div id="plots" style="display: none;">\n      <table id=\'plot_container\' border="0">\n        <tr>\n          <td id=\'options\'>\n            <div id=\'ptype_lbl\'></div>\n\n            <div id=\'live_container\'>\n              <label>Live Data</label>\n              <div>\n                <input id=\'live_data\' type="checkbox" data-toggle="toggle" >\n              </div>\n            </div>\n            \n          </td>\n          <td id=\'plot_data\'></td>\n        </tr>\n      </table>\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'>\n    <i class="fa fa-plane"></i> <h3 class="box-title"></h3>\n    <select id="mode" style=\'display:none;\'>\n      <option value=\'\'>Summary</option>\n      <option value=\'plots\'>Temp. Data</option>\n    </select>\n  </div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id=\'display_label\'><h1></h1></div>\n    <div id="summary">\n      <div id="view_main">\n        <div id="power_indicator"></div>\n        <div id="txt_connected_time"></div>\n      </div>\n      <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n      <table height="100%";width"100%">\n        <tr>\n          <td>\n            <table class=\'data\'> \n              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr> \n              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    \n              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    \n            </table>\n          </td>\n          <td>\n            <table class=\'data1\'> \n              <tr>\n                <td style="width:200px; height:200px; vertical-align:middle">\n                  <div id="pcamain_img" class=""></div>   \n                  <div id="blower_img" class=""></div>  \n                  <div id="heatingstage1_img" class=""></div>  \n                  <div id="heatingstage2_img" class=""></div>  \n                  <div id="coolingstage1_img" class=""></div>  \n                  <div id="coolingstage2_img" class=""></div>   \n                  <div id="accool_img" class=""></div>  \n                  <div id="bccool_img" class=""></div> \n                  <div id="pca_coildp" class=""></div>   \n                  <div id="pca_vfdspeed" class=""></div>\n                  <div id="pca_pcaambhumidity" class=""></div>\n                  <div id="pca_sucpressure1" class=""></div>\n                  <div id="pca_sucpressure2" class=""></div>\n                  <div id="pca_hotgas1" class=""></div>\n                  <div id="pca_hotgas2" class=""></div>\n                  <div id="pca_pumpcond" class=""></div>\n                  <div id="pca_aircraftdamper" class=""></div>\n                  <div id="pca_bridgedamper" class=""></div>\n                </td>\n              </tr>         \n            </table>\n          </td>\n        </tr>\n      </table> \n    </div>\n    <div id="plots" style="display: none;">\n      <table id=\'plot_container\' border="0">\n        <tr>\n          <td id=\'options\'>\n            <div id=\'ptype_lbl\'>\n              <table>\n                <tr>\n                  <td>Ambient Temp:</td>\n                  <td><div style=\'width:14px;height:14px;background-color:#80C3FF;\'></div></td>\n                </tr>\n                <tr>\n                  <td>Discharge Temp:</td>\n                  <td><div style=\'width:14px;height:14px;background-color:#FF8C1A;\'></div></td>\n                </tr>\n              </table>\n            </div>\n\n            <div id=\'live_container\'>\n              <label>Live Data</label>\n              <div>\n                <input id=\'live_data\' type="checkbox" data-toggle="toggle" >\n              </div>\n            </div>\n            \n          </td>\n          <td id=\'plot_data\'></td>\n        </tr>\n      </table>\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -2370,16 +2382,15 @@ window.JST["widgets/weather_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-cloud"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\'></div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-cloud"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\'>\n    <div id=\'loading\' style=\'display:none;\'>Loading Weather Data...</div>\n    <div id=\'weather\' style=\'display:none;\'>\n      <table style=\'width:100%;text-align:center;\'>\n        <tr>\n          <td width="50%">\n            <canvas id=\'wicon\' width="200" height="200" style="width:100px;margin-right:10px;"></canvas>\n          </td>\n          <td width="50%">\n            <div id=\'temp\' style=\'\n    font-size: 80px;\n    font-weight: bold;\n    line-height: 72px;\n    text-align:left;\n\'></div>\n            <div id="summ" style=\'\n    font-size: 24px;\n    font-weight: normal;\n    line-height: 32px;\n    text-align:left;\n\'></div>\n          </td>\n        </tr>\n        <tr>\n          <td colspan="2">\n            <div id="forecast"></div>\n          </td>\n        </tr>\n        <tr>\n          <td colspan="2">\n            <div id="precip" class=\'col\' style=\'float:left;width:33%;\'>\n              <div class="label">Precipitation</div>\n              <div class="val"></div>\n            </div>\n            <div id="humid" class=\'col\' style=\'float:left;width:33%;\'>\n              <div class="label">Humidity</div>\n              <div class="val"></div>\n            </div>\n            <div id="cover" class=\'col\' style=\'float:left;width:33%;\'>\n              <div class="label">Cloud Cover</div>\n              <div class="val"></div>\n            </div>\n            <div style=\'clear:both;\'></div>\n          </td>\n        </tr>\n      </table>\n    </div>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
-      _print(_safe(this.formGroup({
-        id: 'location',
-        type: 'text',
-        placeholder: 'Location ZIP or City',
-        value: this.settings.location
+      _print(_safe(this.siteSelector({
+        id: 'site',
+        label: 'Site',
+        site: this.settings.site
       })));
     
-      _print(_safe('  \n  </div><!-- /.box-body -->\n</div><!-- /.box-body -->\n'));
+      _print(_safe('\n  </div>\n</div><!-- /.box-body -->\n\n\n\n'));
     
     }).call(this);
     
@@ -3355,6 +3366,8 @@ AppConfig = (function(superClass) {
   AppConfig.widgets = (window.app_config != null) && (window.app_config.widgets != null) ? window.app_config.widgets : [];
 
   AppConfig.report_server = 'http://test-reporting.iopsnow.com/';
+
+  AppConfig.weather_api_key = '4a8303c06b8aaa3866c85fd37f32b5c9';
 
   return AppConfig;
 
@@ -6567,6 +6580,8 @@ SiteView = (function(superClass) {
     code: '#site_code',
     shortName: '#site_short',
     serverUrl: '#site_url',
+    lat: '#site_lat',
+    lon: '#site_lon',
     refreshRate: '#site_refresh_rate',
     zones: '#site_zones'
   };
@@ -6623,7 +6638,13 @@ SiteView = (function(superClass) {
     this.set_cloud();
     settings = _.clone(this.model.get('settings'));
     if (settings.zones != null) {
-      return this.ui.zones.val(JSON.stringify(settings.zones, null, 2));
+      this.ui.zones.val(JSON.stringify(settings.zones, null, 2));
+    }
+    if (settings.lat != null) {
+      this.ui.lat.val(settings.lat);
+    }
+    if (settings.lon != null) {
+      return this.ui.lon.val(settings.lon);
     }
   };
 
@@ -6644,6 +6665,8 @@ SiteView = (function(superClass) {
     } else {
       delete settings.zones;
     }
+    settings.lat = this.ui.lat.val();
+    settings.lon = this.ui.lon.val();
     this.model.set('settings', settings);
     return true;
   };
@@ -11214,13 +11237,14 @@ PcasummaryWidgetView = (function(superClass) {
   };
 
   PcasummaryWidgetView.prototype.show_plot = function(p, live) {
-    var dtm, ed, h, lbl, now, pid, plot_color, sd, show_hist, tags;
+    var dtm, ed, h, lbl, now, pid, plot2_color, plot_color, sd, show_hist, tags;
     this.initializing = true;
     this.kill_updates(this.site_code);
     this.$("#plots").toggle(p != null);
     this.$("#summary").toggle(p == null);
     show_hist = (p != null) && !live;
     plot_color = "#80C3FF";
+    plot2_color = "#ff8c1a";
     switch (p) {
       case 'ambient':
         lbl = 'Ambient Temp';
@@ -11241,8 +11265,21 @@ PcasummaryWidgetView = (function(superClass) {
             color: plot_color
           }
         ];
+        break;
+      case 'plots':
+        lbl = 'Ambient/Discharge Temps';
+        tags = [
+          {
+            tag: this.prefix + "PCA.TEMPAMB.Value",
+            fill: true,
+            color: plot_color
+          }, {
+            tag: this.prefix + "PCA.TEMPDISCH.Value",
+            fill: true,
+            color: plot2_color
+          }
+        ];
     }
-    this.$('#ptype_lbl').html(lbl);
     this.$('#toggle_main').toggle(p != null);
     this.$('#plot-placeholder').remove();
     this.$("#plot_data").append("<div id='plot-placeholder' style='background-color:#eee;position:absolute;top:0;left:0;width:100%;'>\n  <div style='text-align:center;color:#666;font-size:18px;margin-top:20%;'><i class=\"fa fa-spinner fa-pulse\"></i> LOADING DATA...</div>\n</div>");
@@ -11843,6 +11880,8 @@ WeatherWidgetView = (function(superClass) {
   function WeatherWidgetView() {
     this.onDestroy = bind(this.onDestroy, this);
     this.set_model = bind(this.set_model, this);
+    this.update_weather = bind(this.update_weather, this);
+    this.refresh_data = bind(this.refresh_data, this);
     this.update = bind(this.update, this);
     return WeatherWidgetView.__super__.constructor.apply(this, arguments);
   }
@@ -11854,52 +11893,87 @@ WeatherWidgetView = (function(superClass) {
   WeatherWidgetView.prototype.ui = {
     display: '#display',
     title: 'input#title',
-    location: 'input#location',
+    site: '#site',
     wtitle: "h3.box-title"
   };
 
   WeatherWidgetView.layout = {
-    sx: 4,
-    sy: 6
+    sx: 6,
+    sy: 8
   };
 
   WeatherWidgetView.prototype.update = function() {
-    var loc, s;
+    return this.refresh_data();
+  };
+
+  WeatherWidgetView.prototype.refresh_data = function() {
+    var s;
     s = this.model.get("settings");
-    if ((s != null) && (s.location != null) && s.location.trim() !== '') {
-      loc = s.location.trim();
-      return $.simpleWeather({
-        location: loc,
-        woeid: '',
-        unit: 'f',
-        success: (function(_this) {
-          return function(w) {
-            var html;
-            html = "<h1><i class='weather icon-" + w.code + "'></i> " + w.temp + "&deg; " + w.units.temp + "</h1>\n<div class='details'>\n  <span class='location'><i class='fa fa-map-marker'></i> " + w.city + ", " + w.region + "</span>\n  <span class='currently'>" + w.currently + "</span>\n  <span class='wind'><i class='fa fa-flag-o'></i> " + w.wind.direction + " " + w.wind.speed + " " + w.units.speed + "</span>\n</div>";
-            _this.ui.display.html(html);
-            _this.ui.wtitle.html("Weather: " + w.city + ", " + w.region);
-            if (!_this.int) {
-              return _this.int = setInterval(_this.update, 600000);
-            }
-          };
-        })(this),
-        error: (function(_this) {
-          return function(error) {
-            _this.ui.display.html("<p>" + error + "</p>");
-            _this.ui.wtitle.html("ERROR");
-            if (_this.int != null) {
-              return clearInterval(_this.int);
-            }
-          };
-        })(this)
-      });
+    if ((s != null) && (s.site != null)) {
+      this.site = OPCManager.get_site(s.site);
+      this.ui.wtitle.html("Weather for " + (this.site.get('code')));
+      if (typeof site !== "undefined" && site !== null) {
+        return this.site.fetch({
+          success: (function(_this) {
+            return function(data) {
+              var is_stale, ss;
+              ss = _this.site.get('settings');
+              is_stale = false;
+              if (ss.weather_refresh != null) {
+                is_stale = ((new Date) - (new Date(ss.weather_refresh))) > _this.ONE_HOUR;
+              }
+              if ((ss.weather_refresh == null) || is_stale) {
+                return $.ajax({
+                  dataType: "jsonp",
+                  url: "https://api.forecast.io/forecast/" + App.config.weather_api_key + "/" + ss.lat + "," + ss.lon,
+                  success: function(data) {
+                    var settings;
+                    settings = _.clone(_this.site.get('settings'));
+                    settings.weather_refresh = new Date();
+                    settings.weather_data = data;
+                    _this.site.set('settings', settings);
+                    _this.site.save();
+                    return _this.update_weather(settings.weather_data);
+                  }
+                });
+              } else {
+                return _this.update_weather(ss.weather_data);
+              }
+            };
+          })(this)
+        });
+      }
+    } else {
+      return this.site = null;
     }
+  };
+
+  WeatherWidgetView.prototype.update_weather = function(data) {
+    var cover, feels, forecast, humid, precip, summ, temp;
+    this.skycons.remove(this.$('#wicon')[0]);
+    this.skycons.add(this.$('#wicon')[0], data.currently.icon);
+    this.skycons.play();
+    temp = Math.round(data.currently.temperature);
+    feels = Math.round(data.currently.apparentTemperature);
+    this.$('#temp').html(temp + "&deg;<sup>F</sup>");
+    summ = data.currently.summary;
+    this.$('#summ').html(summ + "<br/>Feels like " + feels + "&deg;");
+    forecast = data.daily.summary;
+    this.$('#forecast').html(forecast);
+    precip = Math.round(data.currently.precipProbability * 100);
+    this.$('#precip .val').html(precip + "<sup>%</sup>");
+    humid = Math.round(data.currently.humidity * 100);
+    this.$('#humid .val').html(humid + "<sup>%</sup>");
+    cover = Math.round(data.currently.cloudCover * 100);
+    this.$('#cover .val').html(cover + "<sup>%</sup>");
+    this.$('#weather').show();
+    return this.$('#loading').hide();
   };
 
   WeatherWidgetView.prototype.set_model = function() {
     var s;
     s = _.clone(this.model.get("settings"));
-    s.location = this.ui.location.val().trim();
+    s.site = this.ui.site.val();
     return this.model.set("settings", s);
   };
 
@@ -11909,19 +11983,25 @@ WeatherWidgetView = (function(superClass) {
   };
 
   WeatherWidgetView.prototype.onShow = function() {
-    var location;
-    this.ui.location.on("change", (function(_this) {
+    var s;
+    this.HOUR = 60 * 60 * 1000;
+    this.timer = setInterval(this.refresh_data, this.HOUR / 4);
+    this.skycons = new Skycons();
+    this.$('#site').on('change', (function(_this) {
       return function() {
         return _this.set_model();
       };
     })(this));
-    location = this.model.get("settings").location;
-    if ((location == null) || location === '') {
+    s = this.model.get("settings");
+    if ((s == null) || (s.site == null)) {
       return this.toggle_settings();
     }
   };
 
   WeatherWidgetView.prototype.onDestroy = function() {
+    if (this.timer) {
+      clearInterval(this.timer);
+    }
     if (this.int != null) {
       return clearInterval(this.int);
     }

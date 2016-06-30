@@ -12,6 +12,9 @@ class AppConfig extends Object
 
   @report_server: 'http://test-reporting.iopsnow.com/'
 
+  @weather_api_key: '4a8303c06b8aaa3866c85fd37f32b5c9'
+  # https://api.forecast.io/forecast/4a8303c06b8aaa3866c85fd37f32b5c9/37.8267,-122.423
+
 # ----------------------------------
 
 module.exports = AppConfig

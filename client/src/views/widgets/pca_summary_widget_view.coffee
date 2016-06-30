@@ -356,6 +356,7 @@ class PcasummaryWidgetView extends IOPSWidgetView
     
     show_hist = p? && !live
     plot_color = "#80C3FF"
+    plot2_color = "#ff8c1a"
 
     switch p
       when 'ambient'
@@ -364,8 +365,14 @@ class PcasummaryWidgetView extends IOPSWidgetView
       when 'discharge'
         lbl = "Discharge Temp"
         tags = [{tag: "#{@prefix}PCA.TEMPDISCH.Value", fill: true, color: plot_color}]
+      when 'plots'
+        lbl = 'Ambient/Discharge Temps'
+        tags = [
+          {tag: "#{@prefix}PCA.TEMPAMB.Value", fill: true, color: plot_color}
+          {tag: "#{@prefix}PCA.TEMPDISCH.Value", fill: true, color: plot2_color}
+        ]
 
-    @$('#ptype_lbl').html(lbl)
+    #@$('#ptype_lbl').html(lbl)
     @$('#toggle_main').toggle(p?)
     
     @$('#plot-placeholder').remove()

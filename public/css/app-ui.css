@@ -1891,17 +1891,32 @@ i.weather {
     content: "S"; }
 
 .weather .box-body.content {
-  background-color: #adf; }
+  background-color: #fff; }
   .weather .box-body.content #display h1 {
     font-size: 50px !important;
     font-weight: bold !important;
     text-align: center !important;
     margin: 0 0 0 0 !important; }
+  .weather .box-body.content #display sup {
+    font-size: 0.55em;
+    font-weight: normal !important; }
   .weather .box-body.content #display .details {
     text-align: center; }
     .weather .box-body.content #display .details .location {
       display: block;
       font-size: 18px; }
+  .weather .box-body.content #display #forecast {
+    padding: 15px 10px; }
+  .weather .box-body.content #display .col .label {
+    color: #666;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 14px; }
+  .weather .box-body.content #display .col .val {
+    color: #999;
+    font-size: 42px;
+    line-height: 40px;
+    font-weight: bold; }
 
 .alarm_widget #alarm_lbl {
   margin: 0 0 10px 0;

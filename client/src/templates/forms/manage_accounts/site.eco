@@ -32,6 +32,12 @@
     <span id="site_cloud_label" class='label left'>Cloud Data</span>
     <i id='site_cloud' class="fa fa-fw"></i>
   </div>
+  <div>
+    <span class='label left'>Location:</span>
+    <span class='display' id='site_lat_label'><%= if @settings.lat? && @settings.lon? then "#{@settings.lat}, #{@settings.lon}" else '' %></span>
+    <input class='edit' type='text' id='site_lat' value='<%- @lat%>' size='40' placeholder='Latitude'/>
+    <input class='edit' type='text' id='site_lon' value='<%- @lon%>' size='40' placeholder='Longitude'/>
+  </div>
   <div class='edit'>
     <i id='site_zones_label' class='label left'>Terminals, Zones, Gates:</i><br/>
     <textarea id='site_zones' rows="10" cols="40" placeholder='{&#10;&nbsp;&nbsp;"1" : {&#10;&nbsp;&nbsp;&nbsp;&nbsp;"1" : {"C1" : {}, "C2" : {}}&#10;&nbsp;&nbsp;}&#10;}'></textarea>
