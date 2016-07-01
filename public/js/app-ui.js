@@ -1873,6 +1873,59 @@ window.JST["widgets/gpu_widget"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
+window.JST["widgets/kpi_widget"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" style=\'overflow:auto !important;\'>\n  <div class="display">\n  </div>\n  <div id="lineitemchart" style="height: 250px;"></div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+    
+      _print(_safe(this.siteSelector({
+        id: 'site',
+        label: 'Site',
+        site: this.settings.site
+      })));
+    
+      _print(_safe('\n  </div>\n</div><!-- /.box-body -->\n'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
 window.JST["widgets/pbb_pca_gpu_basic_widget"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
@@ -2478,6 +2531,8 @@ require('./views/widgets/asset_widget_view');
 
 require('./views/widgets/report_widget_view');
 
+require('./views/widgets/kpi_widget_view');
+
 String.prototype.endsWith = function(suffix) {
   return this.indexOf(suffix, this.length - suffix.length) !== -1;
 };
@@ -2685,7 +2740,7 @@ window.App = (function() {
   return App;
 })();
 
-},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/site_collection":20,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27,"./views/widgets/airport_widget_view":55,"./views/widgets/alarm_widget_view":56,"./views/widgets/asset_widget_view":57,"./views/widgets/config_widget_view":58,"./views/widgets/gpu_summary_widget_view":59,"./views/widgets/gpu_widget_view":60,"./views/widgets/pbb_pca_gpu_basic_widget_view":62,"./views/widgets/pbb_widget_view":63,"./views/widgets/pbbdetail_widget_view":64,"./views/widgets/pbbleveldetail_widget_view":65,"./views/widgets/pca_discharge_widget_view":66,"./views/widgets/pca_summary_widget_view":67,"./views/widgets/pca_widget_view":68,"./views/widgets/report_widget_view":69,"./views/widgets/url_widget_view":70,"./views/widgets/weather_widget_view":71}],2:[function(require,module,exports){
+},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/site_collection":20,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27,"./views/widgets/airport_widget_view":55,"./views/widgets/alarm_widget_view":56,"./views/widgets/asset_widget_view":57,"./views/widgets/config_widget_view":58,"./views/widgets/gpu_summary_widget_view":59,"./views/widgets/gpu_widget_view":60,"./views/widgets/kpi_widget_view":62,"./views/widgets/pbb_pca_gpu_basic_widget_view":63,"./views/widgets/pbb_widget_view":64,"./views/widgets/pbbdetail_widget_view":65,"./views/widgets/pbbleveldetail_widget_view":66,"./views/widgets/pca_discharge_widget_view":67,"./views/widgets/pca_summary_widget_view":68,"./views/widgets/pca_widget_view":69,"./views/widgets/report_widget_view":70,"./views/widgets/url_widget_view":71,"./views/widgets/weather_widget_view":72}],2:[function(require,module,exports){
 var AccountsView, AppController, Dashboard, DashboardCollection, DashboardContentView, DashboardLayout, LoginView, Marionette, PermissionsLayout, ProfileView, ReportsView, Session, User, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -9800,6 +9855,102 @@ window.IOPSWidgetView = IOPSWidgetView;
 module.exports = IOPSWidgetView;
 
 },{"../dashboard/widget_view":38}],62:[function(require,module,exports){
+var IOPSWidgetView, KpiWidgetView, Marionette,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+IOPSWidgetView = require('./iops_widget_view');
+
+KpiWidgetView = (function(superClass) {
+  extend(KpiWidgetView, superClass);
+
+  function KpiWidgetView() {
+    this.set_model = bind(this.set_model, this);
+    return KpiWidgetView.__super__.constructor.apply(this, arguments);
+  }
+
+  KpiWidgetView.prototype.template = "widgets/kpi_widget";
+
+  KpiWidgetView.prototype.className = 'widget-outer box box-primary';
+
+  KpiWidgetView.prototype.ui = {
+    site: 'select#site',
+    wtitle: '.box-title',
+    display: '.display',
+    content: '.content'
+  };
+
+  KpiWidgetView.layout = {
+    sx: 10,
+    sy: 10
+  };
+
+  KpiWidgetView.prototype.update = function() {
+    var code, s, url;
+    s = this.model.get("settings");
+    this.site_code = null;
+    this.site = OPCManager.get_site(s.site);
+    if (this.site != null) {
+      this.site_code = this.site.get('code');
+    }
+    code = this.site_code != null ? this.site_code : '...';
+    this.ui.wtitle.html("KPI for " + code);
+    this.ui.display.empty();
+    url = this.rurl + "/api/KPI";
+    if ((this.site_code != null)) {
+      return $.ajax({
+        type: 'GET',
+        url: url,
+        success: (function(_this) {
+          return function(data) {
+            return new Morris.Line({
+              element: 'lineitemchart',
+              data: data,
+              xkey: 'TimeStamp',
+              ykeys: ['Value'],
+              labels: ['Value']
+            });
+          };
+        })(this)
+      });
+    }
+  };
+
+  KpiWidgetView.prototype.set_model = function() {
+    var s;
+    s = _.clone(this.model.get("settings"));
+    s.site = this.ui.site.val();
+    return this.model.set("settings", s);
+  };
+
+  KpiWidgetView.prototype.onShow = function() {
+    this.ui.site.on('change', (function(_this) {
+      return function() {
+        return _this.set_model();
+      };
+    })(this));
+    if ((this.ui.site.val() == null) || this.ui.site.val() === '') {
+      return this.toggle_settings();
+    }
+  };
+
+  KpiWidgetView.prototype.start = function() {
+    this.rurl = App.config.report_server;
+    return this.update();
+  };
+
+  return KpiWidgetView;
+
+})(IOPSWidgetView);
+
+window.KpiWidgetView = KpiWidgetView;
+
+module.exports = KpiWidgetView;
+
+},{"./iops_widget_view":61}],63:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbpcagpuWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -9959,7 +10110,7 @@ window.PbbpcagpuWidgetView = PbbpcagpuWidgetView;
 
 module.exports = PbbpcagpuWidgetView;
 
-},{"./iops_widget_view":61}],63:[function(require,module,exports){
+},{"./iops_widget_view":61}],64:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -10109,7 +10260,7 @@ window.PbbWidgetView = PbbWidgetView;
 
 module.exports = PbbWidgetView;
 
-},{"./iops_widget_view":61}],64:[function(require,module,exports){
+},{"./iops_widget_view":61}],65:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbdetailWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -10274,7 +10425,7 @@ window.PbbdetailWidgetView = PbbdetailWidgetView;
 
 module.exports = PbbdetailWidgetView;
 
-},{"./iops_widget_view":61}],65:[function(require,module,exports){
+},{"./iops_widget_view":61}],66:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbleveldetailWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -10480,7 +10631,7 @@ window.PbbleveldetailWidgetView = PbbleveldetailWidgetView;
 
 module.exports = PbbleveldetailWidgetView;
 
-},{"./iops_widget_view":61}],66:[function(require,module,exports){
+},{"./iops_widget_view":61}],67:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PcadischargeWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -10870,7 +11021,7 @@ window.PcadischargeWidgetView = PcadischargeWidgetView;
 
 module.exports = PcadischargeWidgetView;
 
-},{"./iops_widget_view":61}],67:[function(require,module,exports){
+},{"./iops_widget_view":61}],68:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PcasummaryWidgetView, UIUtils,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -11484,7 +11635,7 @@ window.PcasummaryWidgetView = PcasummaryWidgetView;
 
 module.exports = PcasummaryWidgetView;
 
-},{"../../common/uiutils":7,"./iops_widget_view":61}],68:[function(require,module,exports){
+},{"../../common/uiutils":7,"./iops_widget_view":61}],69:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PcaWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -11680,7 +11831,7 @@ window.PcaWidgetView = PcaWidgetView;
 
 module.exports = PcaWidgetView;
 
-},{"./iops_widget_view":61}],69:[function(require,module,exports){
+},{"./iops_widget_view":61}],70:[function(require,module,exports){
 var IOPSWidgetView, Marionette, ReportWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -11776,7 +11927,7 @@ window.ReportWidgetView = ReportWidgetView;
 
 module.exports = ReportWidgetView;
 
-},{"./iops_widget_view":61}],70:[function(require,module,exports){
+},{"./iops_widget_view":61}],71:[function(require,module,exports){
 var Marionette, UrlWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -11864,7 +12015,7 @@ window.UrlWidgetView = UrlWidgetView;
 
 module.exports = UrlWidgetView;
 
-},{"../dashboard/widget_view":38}],71:[function(require,module,exports){
+},{"../dashboard/widget_view":38}],72:[function(require,module,exports){
 var Marionette, WeatherWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },

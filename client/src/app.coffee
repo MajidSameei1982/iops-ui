@@ -31,6 +31,7 @@ require('./views/widgets/pca_discharge_widget_view')
 require('./views/widgets/pbb_pca_gpu_basic_widget_view')
 require('./views/widgets/asset_widget_view')
 require('./views/widgets/report_widget_view')
+require('./views/widgets/kpi_widget_view')
 
 # ----------------------------------
 
