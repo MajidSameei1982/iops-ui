@@ -62,6 +62,11 @@ window.app_config = {
       icon: "server"
     },
     {
+      id: "video",
+      name: "VIDEO Widget",
+      icon: "flash"
+    },
+    {
       id: "gpu",
       name: "GPU Widget",
       icon: "flash"
