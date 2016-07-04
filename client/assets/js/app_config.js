@@ -87,6 +87,11 @@ window.app_config = {
       icon: "bar-chart"
     },
     {
+      id: "kpi",
+      name: "Kpi Widget",
+      icon: "bar-chart"
+    },
+    {
       id: "config",
       name: "Config Widget",
       icon: "gear",
