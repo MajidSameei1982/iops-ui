@@ -8,7 +8,6 @@
 <div class="box-body content" style='overflow:auto !important;'>
   <div class="display">
   </div>
-  <div id="lineitemchart" style="height: 250px;"></div>
   <div class="settings" style="display: none;">
     <h3>Settings</h3>
     <%- @siteSelector({id:'site', label:'Site', site:@settings.site}) %>

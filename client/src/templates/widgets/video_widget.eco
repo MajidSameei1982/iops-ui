@@ -7,13 +7,6 @@
 </div>
 <div class="box-body content" id='content' style='overflow:auto !important;'>
   <div class="display contain">
-    <div id="videoRep"></div>
-    <div id="imageRep" ><img id="image" src="http://192.168.1.3:8008" height="600" width="800"></div>
-    <select id="videoFiles">
-      <option value="http://192.168.1.3:8008" selected="selected">test stream Lab</option>
-      <option value="http://test-reporting.iopsnow.com/motion/image.jpg">test image</option>
-    </select>
-    <button class="cmdVideoChange" >Click to change content!</button>
   </div>
   <div class="settings" style="display: none;">
     <h3>Settings</h3>

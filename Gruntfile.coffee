@@ -138,6 +138,7 @@ module.exports = (grunt)->
           'client/assets/js/skycons.js'
           'client/requires/simpleWeather/jquery.simpleWeather.js'
           'client/assets/js/morris.js'
+          'client/assets/js/jquery.flot.tooltip.js'
           'client/assets/js/raphael.js'
         ]
         dest: 'build/vendor.js'
