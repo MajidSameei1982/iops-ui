@@ -127,6 +127,7 @@ module.exports = (grunt)->
           'client/requires/jquery-dateFormat/jquery-dateFormat.js'
           'client/assets/js/opc-lib.min.js'
           'client/assets/js/lz-string.min.js'
+          #'client/assets/js/raphael.js'
           'client/assets/js/JustGage/raphael-2.1.4.min.js'
           'client/assets/js/JustGage/justgage.js'
           'client/assets/js/flot-master/jquery.flot.js'
@@ -138,7 +139,7 @@ module.exports = (grunt)->
           'client/assets/js/skycons.js'
           'client/requires/simpleWeather/jquery.simpleWeather.js'
           'client/assets/js/morris.js'
-          'client/assets/js/raphael.js'
+          
         ]
         dest: 'build/vendor.js'
       vendor_css:
