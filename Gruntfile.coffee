@@ -137,9 +137,7 @@ module.exports = (grunt)->
           'client/assets/js/jquery.resize.min.js'
           'client/assets/js/skycons.js'
           'client/requires/simpleWeather/jquery.simpleWeather.js'
-          'client/assets/js/morris.js'
           'client/assets/js/jquery.flot.tooltip.js'
-          'client/assets/js/raphael.js'
         ]
         dest: 'build/vendor.js'
       vendor_css:
@@ -153,7 +151,6 @@ module.exports = (grunt)->
           'client/assets/css/opc-style.css'
           'client/assets/css/opc-alarm-style.css'
           'client/assets/js/bootstrap-toggle-master/css/bootstrap2-toggle.min.css'
-          'client/assets/css/morris.css'
         ]
         dest: 'build/vendor.css'
       

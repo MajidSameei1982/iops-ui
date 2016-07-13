@@ -10028,9 +10028,7 @@ KpiWidgetView = (function(superClass) {
     var s;
     s = _.clone(this.model.get("settings"));
     s.site = this.ui.site.val();
-    this.model.set("settings", s);
-    this.toggle_settings();
-    return this.plotGraph();
+    return this.model.set("settings", s);
   };
 
   KpiWidgetView.prototype.onShow = function() {
@@ -10046,7 +10044,8 @@ KpiWidgetView = (function(superClass) {
 
   KpiWidgetView.prototype.start = function() {
     this.rurl = App.config.report_server;
-    return this.update();
+    this.update();
+    return this.plotGraph();
   };
 
   return KpiWidgetView;
@@ -12167,14 +12166,12 @@ VideoWidgetView = (function(superClass) {
       this.site_code = this.site.get('code');
     }
     code = this.site_code != null ? this.site_code : '...';
-    this.ui.wtitle.html(" " + code);
-    return this.set_descriptions();
+    return this.ui.wtitle.html(" " + code);
   };
 
-  VideoWidgetView.prototype.renderImagery = function() {
+  VideoWidgetView.prototype.getImagery = function() {
     var img, uri;
     uri = this.rurl + "/api/VideoService";
-    console.log(uri);
     img = $("#image_" + this.model.id);
     img.src = this.rurl + "/motion/image.jpg";
     return $.ajax({
@@ -12190,7 +12187,7 @@ VideoWidgetView = (function(superClass) {
             console.log(r.fileDate);
             xSelection = $("#videoFiles_" + _this.model.id);
             ovalue = (_this.rurl + "/motion/") + formatItem2(r);
-            results.push(_this.selector.append($("<option></option>").attr("value", formatItem(r)).text(ovalue)));
+            results.push(_this.selector.append($("<option></option>").attr("value", ovalue).text(formatItem(r))));
           }
           return results;
         };
@@ -12210,8 +12207,7 @@ VideoWidgetView = (function(superClass) {
     var s;
     s = _.clone(this.model.get("settings"));
     s.site = this.ui.site.val();
-    this.model.set("settings", s);
-    return this.renderImagery();
+    return this.model.set("settings", s);
   };
 
   VideoWidgetView.prototype.onShow = function() {
@@ -12227,17 +12223,35 @@ VideoWidgetView = (function(superClass) {
 
   VideoWidgetView.prototype.start = function() {
     this.rurl = App.config.report_server;
-    this.buttonClassSelector = "#cmdVideoChange_" + this.model.id;
     this.videoFilesSelectorId = "#videoFiles_" + this.model.id;
     this.ui.display.empty();
     this.videoRepresentation = $("<div id='videoRep_" + this.model.id + "'></div>");
     this.imageRepresentation = $("<div id='imageRep_" + this.model.id + "' ><img id='image_" + this.model.id + "' src='http://192.168.1.3:8008' height='600' width='800'></div>");
-    this.selector = $("<select id='videoFiles_" + this.model.id + "'><option value='http://192.168.1.3:8008' selected='selected'>test stream Lab</option><option value='" + this.rurl + "/motion/image.jpg'>test image</option></select>");
-    this.button = $("<div id='buttondiv_" + this.model.id + "'><button id='cmdVideoChange_" + this.model.id + "'>Click to change content!</button></div>");
+    this.selector = $("<select id='videoFiles_" + this.model.id + "'><option value='" + this.rurl + "/motion/image.jpg' selected='selected'>test image</option><option value='http://192.168.1.3:8008'>test stream Lab</option></select>");
+    this.button = $("<button id='cmdVideoChange_" + this.model.id + "'>Click to change content!</button>");
+    this.button.click((function(_this) {
+      return function() {
+        var drpdown, value;
+        drpdown = $("#videoFiles_" + _this.model.id + " option:selected");
+        value = drpdown.val();
+        console.log(value);
+        if (value.indexOf('mp4') !== -1) {
+          $("#videoRep_" + _this.model.id).html("<video height='600' width='800' autoplay controls loop ><source src=" + value + " type='video/mp4'>Your browser does not support HTML5 video.</video>");
+          $("#imageRep_" + _this.model.id).hide();
+          return $("#videoRep_" + _this.model.id).show();
+        } else {
+          $("#image_" + _this.model.id).attr('src', value);
+          $("#imageRep_" + _this.model.id).show();
+          return $("#videoRep_" + _this.model.id).hide();
+        }
+      };
+    })(this));
     this.ui.display.append(this.videoRepresentation);
     this.ui.display.append(this.imageRepresentation);
     this.ui.display.append(this.selector);
     this.ui.display.append(this.button);
+    this.getImagery();
+    $("#image_" + this.model.id).attr('src', this.rurl + "/motion/image.jpg");
     return this.update();
   };
 

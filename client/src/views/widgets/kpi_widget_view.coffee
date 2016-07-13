@@ -74,8 +74,6 @@ class KpiWidgetView extends IOPSWidgetView
             result[i].Value
           ]
           i++
-        #$.plot "#plotplaceholder_" + @modelIdVal, [ d3 ], chartOptions
-        #@plotArea
         $.plot $(plotareaid) , [ d3 ], chartOptions
     @plotheader.html("Plot for #{parameters}")
     setTimeout 'plotGraph()', 300000
@@ -90,8 +88,7 @@ class KpiWidgetView extends IOPSWidgetView
     s = _.clone(@model.get("settings"))
     s.site = @ui.site.val()
     @model.set("settings", s)
-    @toggle_settings()
-    @plotGraph()
+
 
   onShow: ()->
     @ui.site.on 'change', ()=>
@@ -102,7 +99,7 @@ class KpiWidgetView extends IOPSWidgetView
   start:()->
     @rurl = App.config.report_server
     @update()
-    
+    @plotGraph()
 # ----------------------------------
 
 window.KpiWidgetView = KpiWidgetView
