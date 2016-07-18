@@ -4,7 +4,7 @@ IOPSWidgetView = require('./iops_widget_view')
 # ----------------------------------
 class PcadischargeWidgetView extends IOPSWidgetView
   template:   "widgets/pca_discharge_widget"
-  className: 'widget-outer box box-primary pcad_widget'
+  className: 'widget-outer box box-primary pca_discharge_widget'
   ui:
     wtitle:         'h3.box-title'
     display:        '.display'
@@ -19,19 +19,9 @@ class PcadischargeWidgetView extends IOPSWidgetView
     sx: 8
     sy: 6
 
-  tags:
-    temp: 'PCA.TEMPDISCH.Value'
-    on: 'PCA.PCASTATUS.Value'
-    cooling: 'PCA.MODE_COOLING.Value'
-    heating: 'PCA.MODE_HEATING.Value'
-    cool_set: "PCA.SET_COOLINGPOINT.Value"
-    heat_set: "PCA.SET_HEATINGPOINT.Value"
-    alarm_cool: "PCA.ALARM_COOLINGRUN_BOOLEAN.Value"
-    alarm_heat: "PCA.ALARM_HEATINGRUN_BOOLEAN.Value"
-    timer_cool: "PCA.SET_COOLINGPOINT_TIMER.Value"
-    timer_heat: "PCA.SET_HEATINGPOINT_TIMER.Value"
-    alarm_cool_timer: "PCA.COOLINGTIMERCALC.Value"
-    alarm_heat_timer: "PCA.HEATINGTIMERCALC.Value"
+  tags = []
+
+  tagData = []
     
  
   max_gates: 6
@@ -40,6 +30,7 @@ class PcadischargeWidgetView extends IOPSWidgetView
     @update_settings
       prefix: 'Airport.#{@site_code}.'
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+
     if !@site_code? then return null
     @$('h3.box-title').html("PCA Discharge (#{@site_code})")
     s = @model.get("settings")
@@ -47,6 +38,26 @@ class PcadischargeWidgetView extends IOPSWidgetView
     @cktags = []
     if s? && !!s.site   
       return if !s.gates || s.gates.length == 0   
+
+      # stop listening for updates
+      @kill_updates(@site_code)
+
+      tagConfig = null
+      @tagData = null
+      $('.pbb_pca_gpu_basic_widget #widgetData tbody').empty();
+      tagConfig = new App.tagconfig {'pbb_pca_gpu_basic_widget'}, null, @site_code, s
+      @tagData = tagConfig.TagData
+
+      tags = []
+
+      for tag, tagData of @tagData
+        switch tagData.Element.Type
+          when 'TableRow'
+            if $(".pbb_pca_gpu_basic_widget #{tagData.Element.ParentID} td[id*='#{tag}']").length == 0
+              $(".pbb_pca_gpu_basic_widget " + tagData.Element.ParentID).find("tbody:last").append("'<tr><td class='lbl' id='#{tag}_lbl'>&nbsp;</td><td id='#{tag}' class='val'>Loading...</td></tr>'")
+          else null
+
+        tags.push "#{@prefix}#{tagData.Tag}.Value"
 
       for btg of @tags
         t = @tags[btg]

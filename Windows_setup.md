@@ -55,3 +55,21 @@ Starting Development
 --------------------
 * Open a console, navigate to the project directory and execute:
     grunt dev
+
+
+HTTP-SERVER
+-----------
+* In some cases you may not be able to run the ./public/index.html file due to security settings.  This is espcially notable
+* in Chrome.  You may also be devloping from a Virtual Machine and may want to run the website on your local machine for 
+* performance testing and environment tuning.
+*
+* http-server is a simple, zero-configuration command-line http server. It is powerful enough for production usage, but it's 
+* simple and hackable enough to be used for testing, local development, and learning.
+*   https://www.npmjs.com/package/http-server
+*
+* Once installed and executed you can access the site from http://[IpAddress]:8080 
+* (Unless you modified the default settings, in which case use the url for the setting you entered.)
+* To install, navigate to the root of your project folder and execute the following commands:
+    npm install http-server -g
+    http-server
+

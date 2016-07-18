@@ -69,7 +69,7 @@ i.weather {
 
 .weather {
   .box-body.content {
-    background-color:#adf;
+    background-color:#fff;
     #display {
       h1 {
         font-size: 50px !important;
@@ -77,11 +77,32 @@ i.weather {
         text-align: center !important;
         margin:0 0 0 0 !important;
       }
+      sup {
+        font-size: 0.55em;
+        font-weight: normal !important;
+      }
       .details {
         text-align:center;
         .location {
           display:block;
           font-size:18px;
+        }
+      }
+      #forecast {
+        padding:15px 10px;
+      }
+      .col {
+        .label {
+          color:#666;
+          font-size:12px;
+          font-weight:normal;
+          line-height: 14px;
+        }
+        .val {
+          color:#999;
+          font-size:42px;
+          line-height: 40px;
+          font-weight: bold;
         }
       }
     }

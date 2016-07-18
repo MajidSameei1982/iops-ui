@@ -15,6 +15,8 @@ class SiteView extends Marionette.ItemView
     code        : '#site_code'
     shortName   : '#site_short'
     serverUrl   : '#site_url'
+    lat         : '#site_lat'
+    lon         : '#site_lon'
     refreshRate : '#site_refresh_rate'
     zones       : '#site_zones'
 
@@ -56,6 +58,10 @@ class SiteView extends Marionette.ItemView
     settings = _.clone(@model.get('settings'))
     if settings.zones?
       @ui.zones.val(JSON.stringify(settings.zones, null, 2))
+    if settings.lat?
+      @ui.lat.val(settings.lat)
+    if settings.lon?
+      @ui.lon.val(settings.lon)
 
   apply_settings: ()->
     settings = _.clone(@model.get('settings'))
@@ -70,6 +76,8 @@ class SiteView extends Marionette.ItemView
         return false   
     else
       delete settings.zones
+    settings.lat = @ui.lat.val()
+    settings.lon = @ui.lon.val()
     @model.set('settings', settings)
     true
 

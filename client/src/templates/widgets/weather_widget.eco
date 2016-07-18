@@ -6,9 +6,59 @@
   </div>
 </div><!-- /.box-header -->
 <div class="box-body content">
-  <div id='display'></div>
+  <div id='display'>
+    <div id='loading' style='display:none;'>Loading Weather Data...</div>
+    <div id='weather' style='display:none;'>
+      <table style='width:100%;text-align:center;'>
+        <tr>
+          <td width="50%">
+            <canvas id='wicon' width="200" height="200" style="width:100px;margin-right:10px;"></canvas>
+          </td>
+          <td width="50%">
+            <div id='temp' style='
+    font-size: 80px;
+    font-weight: bold;
+    line-height: 72px;
+    text-align:left;
+'></div>
+            <div id="summ" style='
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 32px;
+    text-align:left;
+'></div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <div id="forecast"></div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <div id="precip" class='col' style='float:left;width:33%;'>
+              <div class="label">Precipitation</div>
+              <div class="val"></div>
+            </div>
+            <div id="humid" class='col' style='float:left;width:33%;'>
+              <div class="label">Humidity</div>
+              <div class="val"></div>
+            </div>
+            <div id="cover" class='col' style='float:left;width:33%;'>
+              <div class="label">Cloud Cover</div>
+              <div class="val"></div>
+            </div>
+            <div style='clear:both;'></div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
   <div class="settings" style="display: none;">
     <h3>Settings</h3>
-    <%- @formGroup({id:'location', type:'text', placeholder:'Location ZIP or City', value:@settings.location}) %>  
-  </div><!-- /.box-body -->
+    <%- @siteSelector({id:'site', label:'Site', site:@settings.site}) %>
+  </div>
 </div><!-- /.box-body -->
+
+
+

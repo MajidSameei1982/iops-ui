@@ -1,0 +1,72 @@
+<div class="box-header with-border">
+  <div class='pull-left'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>
+  <div class="pull-right controls">
+    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> 
+    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>
+  </div>
+</div>
+
+<div class="box-body content" id='content'>
+  
+  <div class="display contain">
+    <div id='display_label'>
+      <h1>
+       
+      </h1>
+    </div>
+    <div id="view_main">
+      <div id="power_indicator"></div>
+      <div id="txt_connected_time"></div>
+    </div>
+    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>
+<table height="100%";width"100%"><tr>
+  <td>
+    <table class='data'> 
+        <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr> 
+        <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    
+        <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    
+    </table>
+ </td>
+ <td>
+   <table class='data1'> 
+    <br><br>
+     <tr><td style="width:200px; height:200px; vertical-align:middle">
+     <div id="pcamain_img" class=""></div>   
+     <div id="blower_img" class=""></div>  
+     <div id="heatingstage1_img" class=""></div>  
+     <div id="heatingstage2_img" class=""></div>  
+     <div id="coolingstage1_img" class=""></div>  
+     <div id="coolingstage2_img" class=""></div>   
+     <div id="accool_img" class=""></div>  
+     <div id="bccool_img" class=""></div> 
+     <div id="pca_coil_dp" class=""></div>   
+     <div id="pca_vfd_speed" class=""></div>
+     <div id="pca_ambient_humidity" class=""></div>
+     <div id="pca_suction_pressure_1" class=""></div>
+     <div id="pca_suction_pressure_2" class=""></div>
+     <div id="pca_hot_gas_1" class=""></div>
+     <div id="pca_hot_gas_2" class=""></div>
+     <div id="pca_pump_cond" class=""></div>
+     <div id="pca_bridge_damper" class=""></div>
+     <div id="pca_bridge_air" class=""></div>
+     </td></tr>         
+    </table>
+ </td>
+ </tr></table> 
+  </div>
+
+  <div class="settings" style="display: none;">
+    <h3>Settings</h3>
+    <%- @siteSelector({id:'site', label:'Site', site:@settings.site}) %>
+    <div class="row">
+      <div id='terminals' class='col-md-6'></div>
+    </div>
+    <div class="row">
+      <div id='zones' class='col-md-6'></div>
+    </div>
+    <div class="row">
+      <div id='gates' class='col-md-6'></div>  
+    </div>
+  </div>
+
+</div>

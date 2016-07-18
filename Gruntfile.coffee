@@ -135,6 +135,7 @@ module.exports = (grunt)->
           'client/assets/js/flot-master/jquery.flot.axislabels.js'
           'client/assets/js/bootstrap-toggle-master/js/bootstrap2-toggle.min.js'
           'client/assets/js/jquery.resize.min.js'
+          'client/assets/js/skycons.js'
           'client/requires/simpleWeather/jquery.simpleWeather.js'
         ]
         dest: 'build/vendor.js'

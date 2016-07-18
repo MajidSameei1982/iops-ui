@@ -1,0 +1,372 @@
+/* PCA Widget Styles */
+.pca_summary_widget {
+  &.alarm {
+    background-color: #c00;
+    color: #fff;
+  }
+
+  .bad_data {
+    width: 100%;
+    
+    position: absolute;
+    top: 30%;
+    left: 0;
+    padding-top: 60%;
+    border-radius: 10px;
+    text-align: center;
+    color: #c00;
+    font-weight: bold;
+    font-size: 18px;
+    border: 0;
+  }   
+
+  #pca_coil_dp {
+    position: absolute;
+    left: 45%;
+    top: 20%;
+    font-size: 12px;
+    font-weight: bold;
+    color:#333;
+  }
+  #pca_bridge_damper{
+    position: absolute;
+    left: 27%;
+    top: 70%;
+    font-size: 12px;
+    font-weight: bold;
+    color:#333;
+  }
+  #pca_bridge_air{
+    position: absolute;
+    left: 26%;
+    top: 30%;
+    font-size: 12px;
+    font-weight: bold;
+    color:#333;
+  }
+  #pca_pump_cond{
+    position: absolute;
+    left: 77%;
+    top: 90%;
+    font-size: 12px;
+    font-weight: bold;
+    color:#333;
+  }
+  #pca_vfd_speed{
+    position: absolute;
+    left: 72%;
+    top: 41%;
+    font-size: 12px;
+    font-weight: bold;
+    color:#333;
+  }
+  #pca_ambient_humidity{
+    position: absolute;
+    left: 77%;
+    top: 84%;
+    font-size: 12px;
+    font-weight: bold;
+    color:#333;
+  }
+  #pca_suction_pressure_1{
+    position: absolute;
+    left: 72%;
+    top: 65%;
+    font-size: 12px;
+    font-weight: bold;
+    color:#333;
+  }
+  #pca_suction_pressure_2{
+    position: absolute;
+    left: 85%;
+    top: 65%;
+    font-size: 12px;
+    font-weight: bold;
+    color:#333;
+  }
+  #pca_hot_gas_1{
+    position: absolute;
+    left: 72%;
+    top: 72%;
+    font-size: 12px;
+    font-weight: bold;
+    color:#333;
+  }
+  #pca_hot_gas_2{
+    position: absolute;
+    left: 85%;
+    top: 72%;
+    font-size: 12px;
+    font-weight: bold;
+    color:#333;
+  }
+  #power_indicator {
+    position: absolute;
+    top: 14%;
+    left: 6%;
+    font-size: 22px;
+    font-weight: bold;
+    .inactive {
+      color:#ccc;
+    }
+    .active {
+      color:#090;
+    }
+  }
+
+  #txt_connected_time {
+    position: absolute;
+    left: 20%;
+    top: 15%;
+    font-size: 18px;
+    color:#090;
+  }
+
+  div[id^='gauge_'] {
+    position: absolute;
+    bottom: 11%;
+    left: 1.5%;
+      width: 30%;
+      height: 100%;
+
+    }
+
+     div[id^='amps_'] {
+     position: absolute;
+     top: 23%;
+     left: 1.5%;
+      width: 30%;
+      height: 100%;
+ 
+    } 
+
+  .display {
+    min-height: 100%;
+    min-width: 100%;
+    overflow: auto;
+
+    #pcaoverview_img {
+      position: absolute;
+      top: 12%;
+      left: 3%;
+      background-image: url("../img/pca/pcaoriginal.gif") ;
+      background-repeat: no-repeat; 
+      background-position: center center;
+      background-size: contain;
+      height: 30%;
+      width: 30%;
+    }
+    
+    #pcamain_img {
+      position: absolute;
+      top: 7.5%;
+      left: 23%;
+      background-image: url("../img/pca/Inet_PCAire-Main.gif") ;
+      background-repeat: no-repeat; 
+      background-position: center center;
+      background-size: contain;
+      height: 80%;
+      width: 80%;
+    }
+
+    #backgroundgrey_img {
+      position: relative;
+      float: left;
+      background-image: url("../img/pca/backgroundgrey.gif") ;
+      background-repeat: no-repeat; 
+      background-position: center center;
+      background-size: contain;
+      height: 50%;
+      width: 50%;
+    }
+
+    #blower_img {
+      position: absolute;
+      top: 8%;
+      left: 25.5%;
+      background-image: none;
+      background-repeat: no-repeat; 
+      background-position: center center;
+      background-size: contain;
+      height: 80%;
+      width: 80%;
+      &.bloweron {
+        background-image: url("../img/pca/Blower.gif");
+      }
+    }
+
+    #coolingstage1_img {
+      position: absolute;
+      top: 7%;
+      left: 25.5%;
+      background-image: none;
+      background-repeat: no-repeat; 
+      background-position: center center;
+      background-size: contain;
+      height: 80%;
+      width: 80%;
+      &.coolingstage1on {
+        background-image: url("../img/pca/Cooling-Stage-1.gif");
+      }
+    }
+
+    #coolingstage2_img {
+      position: absolute;
+      top: 7%;
+      left: 25.5%;
+      background-image: none;
+      background-repeat: no-repeat; 
+      background-position: center center;
+      background-size: contain;
+      height: 80%;
+      width: 80%;
+      &.coolingstage2on {
+        background-image: url("../img/pca/Cooling-Stage-2.gif");
+      }
+    }
+
+    #heatingstage1_img {
+      position: absolute;
+      top: 8%;
+      left: 24.5%;
+      background-image: none;
+      background-repeat: no-repeat; 
+      background-position: center center;
+      background-size: contain;
+      height: 80%;
+      width: 80%;
+      &.heatingstage1on {
+        background-image: url("../img/pca/Heat-Stage-1.gif");
+      }
+    }
+
+    #heatingstage2_img {
+      position: absolute;
+      top: 8%;
+      left: 24.5%;
+      background-image: none;
+      background-repeat: no-repeat; 
+      background-position: center center;
+      background-size: contain;
+      height: 80%;
+      width: 80%;
+      &.heatingstage2on {
+        background-image: url("../img/pca/Heat-Stage-2.gif");
+      }
+    }
+
+    #accool_img {
+      position: absolute;
+      top: 6%;
+      left: 24%;
+      background-image: none;
+      background-repeat: no-repeat; 
+      background-position: center center;
+      background-size: contain;
+      height: 80%;
+      width: 80%;
+      &.accoolon {
+        background-image: url("../img/pca/AC-Cool.gif");
+      }
+    }
+
+     #bccool_img {
+      position: absolute;
+      top: 7%;
+      left: 24%;
+      background-image: none;
+      background-repeat: no-repeat; 
+      background-position: center center;
+      background-size: contain;
+      height: 80%;
+      width: 80%;
+      &.bccoolon {
+        background-image: url("../img/pca/BC-Cool.gif");
+      }
+    }
+
+    #display_label {
+      margin-bottom: 3px;
+      h1 {
+        line-height:48px;
+        font-weight: bold;
+        margin: 0 0 0 0;
+        i.fa {
+          margin-right:-5px;
+          padding: 5px;
+          border-radius: 10px;
+          font-size:26px !important;
+        }
+        i#docked {
+          color: #069;
+          background-color: #eee;
+        }
+        i#alarms {
+          color: #fff;
+          background-color: #c00;
+        }
+        i#warnings {
+          color: #f90;
+          background-color: #eee;
+        }
+      }
+    }
+    
+  }
+  table.data {
+    width:100%;
+    border:0;
+    border-spacing: 0;
+    border-collapse: separate;
+    td {
+      padding:3px 10px;
+      background-color: #fff;
+      color:#999;
+      &.lbl {
+        background-color:#fff;
+        font-style: italic;
+        color:#333;
+        border-bottom:solid 1px #ddd;
+      }
+      &.val {
+        font-weight: bold;
+      }
+      &.err {
+        color: #fe6;
+        background-color:#c33;
+      }
+      &.ok {
+        background-color: #090;
+        color:#fff;
+      }
+      &.blue {
+        background-color: #06c;
+        color:#fff; 
+      }
+      &.bad_data {
+        background-color: #fec;
+        color:#999;
+      }
+    }
+  }
+  table.data1 {
+    width:200%;
+    border:0;
+    border-spacing: 0;
+    border-collapse: separate;
+    td {
+      padding:3px 10px;
+      background-color: #fff;
+      color:#999;
+      &.lbl {
+        background-color:#fff;
+        font-style: italic;
+        color:#333;
+        border-bottom:solid 1px #ddd;
+      }
+      &.bad_data {
+ 
+      }
+    }
+  }
+}

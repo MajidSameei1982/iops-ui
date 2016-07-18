@@ -14,23 +14,35 @@ ClaimCollection = require('./models/claim_collection')
 RoleCollection = require('./models/role_collection')
 UserCollection = require('./models/user_collection')
 AppConfig = require('./common/appconfig')
+TagConfig = require('./common/tagconfig')
 # forces inclusion of core widget classes
 require('./views/widgets/airport_widget_view')
 require('./views/widgets/alarm_widget_view')
 require('./views/widgets/pbb_widget_view')
-require('./views/widgets/pbbdetail_widget_view')
-require('./views/widgets/pbbleveldetail_widget_view')
+require('./views/widgets/pbb_detail_widget_view')
+require('./views/widgets/pbb_level_detail_widget_view')
 require('./views/widgets/pca_widget_view')
 require('./views/widgets/url_widget_view')
 require('./views/widgets/weather_widget_view')
 require('./views/widgets/config_widget_view')
 require('./views/widgets/gpu_widget_view')
 require('./views/widgets/gpu_summary_widget_view')
+require('./views/widgets/video_widget_view')
 require('./views/widgets/pca_summary_widget_view')
 require('./views/widgets/pca_discharge_widget_view')
 require('./views/widgets/pbb_pca_gpu_basic_widget_view')
+require('./views/widgets/asset_widget_view')
+require('./views/widgets/report_widget_view')
+require('./views/widgets/kpi_widget_view')
 
 # ----------------------------------
+
+# IE SUPPORT
+String.prototype.endsWith = (suffix)->
+  this.indexOf(suffix, this.length - suffix.length) != -1
+
+# ----------------------------------
+
 window.App = do()->
   return window.App if window.App?
 
@@ -39,6 +51,7 @@ window.App = do()->
   
   
   App.config = AppConfig
+  App.tagconfig = TagConfig
   App.loaded = false
   App.accounts_loaded = App.session_loaded = App.dash_loaded = App.roles_loaded = App.claims_loaded = false
 

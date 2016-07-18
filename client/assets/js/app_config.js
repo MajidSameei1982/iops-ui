@@ -62,6 +62,11 @@ window.app_config = {
       icon: "server"
     },
     {
+      id: "video",
+      name: "VIDEO Widget",
+      icon: "flash"
+    },
+    {
       id: "gpu",
       name: "GPU Widget",
       icon: "flash"
@@ -75,6 +80,16 @@ window.app_config = {
       id: "weather",
       name: "Weather Widget",
       icon: "cloud"
+    },
+    {
+      id: "report",
+      name: "Report Widget",
+      icon: "bar-chart"
+    },
+    {
+      id: "kpi",
+      name: "Kpi Widget",
+      icon: "bar-chart"
     },
     {
       id: "config",

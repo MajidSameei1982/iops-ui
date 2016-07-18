@@ -31,19 +31,23 @@ class GpusummaryWidgetView extends IOPSWidgetView
     toggle_volts_out:  'a#toggle_volts_out'
     toggle_amps_out:   'a#toggle_amps_out'
 
-
   @layout:
     sx: 8
     sy: 9
 
+  tags = []
+  ###*********************************************************
   tags:
     #Grid Tags
     gpu_time:                       'GPU.GPUTime'
     gpu_gpustatusb:                 'GPU.GPUSTATUSBOOLEAN'
     gpu_raoutavg:                   'GPU.RAOUTAVG'
-    gpu_rvoutavg:                   'GPU.RVOUTAVG'
+    gpu_rv_out_avg:                   'GPU.RVOUTAVG'
     gpu_ravinavg:                   'GPU.RAVINAVG'
     gpu_rvinavg:                    'GPU.RVINAVG'
+  *********************************************************###
+
+  tagData = []
     
   initialize: ()->
     #
@@ -132,14 +136,32 @@ class GpusummaryWidgetView extends IOPSWidgetView
     @$('#mode').toggle(show_opts)
    
     if show_opts
-      # build settings      
+      # stop listening for updates
+      @kill_updates(@site_code)
+
+      tagConfig = null
+      @tagData = null
+      tagConfig = new App.tagconfig {'gpu_summary_widget'}, null, @site_code, s
+      @tagData = tagConfig.TagData
+
       tags = []
+
+      for tag, tagData of @tagData
+        switch tagData.Element.Type
+          when 'TableRow'
+            if $(".pbb_pca_gpu_basic_widget #{tagData.Element.ParentID} td[id*='#{tag}']").length == 0
+              $(".pbb_pca_gpu_basic_widget " + tagData.Element.ParentID).find("tbody:last").append("'<tr><td class='lbl' id='#{tag}_lbl'>&nbsp;</td><td id='#{tag}' class='val'>Loading...</td></tr>'")
+          else null
+
+        tags.push "#{@prefix}#{tagData.Tag}.Value"
+
       for tg of @tags
         t = @tags[tg]
         tags.push "#{@prefix}#{t}.Value"
+
       App.opc.add_tags @site_code, tags
       
-      lbl = "GPU #{s.gate} "
+      lbl = "#{@site_code}: Gate #{s.gate} - GPU Summary"
       @ui.wtitle.html(lbl)
       @$('#gpu_summary_label #txt').html(lbl)
 
@@ -241,13 +263,13 @@ class GpusummaryWidgetView extends IOPSWidgetView
   data_update: (data)=>
     # refresh gauges
     @refresh_values()
-    vq = @data_q(@tags.gpu_rvoutavg)
+    vq = @data_q(@tagData.gpu_rv_out_avg.Tag)
     @$("#gauge_volts_out_#{@model.id} .bad_data").toggle(!vq)
-    v = @vals.gpu_rvoutavg
+    v = @vals.gpu_rv_out_avg
     if vq && !isNaN(v) && v != ''
       @g1.refresh(parseInt(v))
 
-    aq = @data_q(@tags.gpu_raoutavg)
+    aq = @data_q(@tagData.gpu_ra_out_avg.Tag)
     @$("#gauge_amps_out_#{@model.id} .bad_data").toggle(!aq)
     v = @vals.gpu_raoutavg
     if aq && !isNaN(v) && v != ''
@@ -255,8 +277,8 @@ class GpusummaryWidgetView extends IOPSWidgetView
       @g2.refresh(v)
 
     # refresh status
-    sq = @data_q(@tags.gpu_gpustatusb)
-    stat = @get_bool(@vals.gpu_gpustatusb)
+    sq = @data_q(@tagData.gpu_status.Tag)
+    stat = @get_bool(@vals.gpu_status)
     th = ""
     icn = 'ban'
     cls = 'inactive'
@@ -299,22 +321,40 @@ class GpusummaryWidgetView extends IOPSWidgetView
     switch p
       when 'vin'
         lbl = 'Input Voltage'
-        tags = [{tag: "#{@prefix}GPU.RVINAVG.Value", fill: true, color: plot_color}]
+        tags = [{tag: "#{@prefix}#{@tagData.gpu_rv_in_avg.Tag}.Value", fill: true, color: plot_color}]
       when 'vin_a', 'vin_b', 'vin_c'
         lbl = "Input Voltage Phase #{ph}"
-        tags = [{tag: "#{@prefix}GPU.PM_INPUT_PHASE#{ph}_V.Value", fill: true, color: plot_color}]
+        switch ph
+          when 'A'
+            tags = [{tag: "#{@prefix}#{@tagData.gpu_pm_input_phasea_v.Tag}.Value", fill: true, color: plot_color}]
+          when 'B'
+            tags = [{tag: "#{@prefix}#{@tagData.gpu_pm_input_phaseb_v.Tag}.Value", fill: true, color: plot_color}]
+          when 'C'
+            tags = [{tag: "#{@prefix}#{@tagData.gpu_pm_input_phasec_v.Tag}.Value", fill: true, color: plot_color}]
       when 'vout'
         lbl = 'Output Voltage'
-        tags = [{tag: "#{@prefix}GPU.RVOUTAVG.Value", fill: true, color: plot_color}]
+        tags = [{tag: "#{@prefix}#{@tagData.gpu_rv_out_avg.Tag}.Value", fill: true, color: plot_color}]
       when 'vout_a', 'vout_b', 'vout_c'
         lbl = "Output Voltage Phase #{ph}"
-        tags = [{tag: "#{@prefix}GPU.PM_OUTPUT_PHASE#{ph}_V.Value", fill: true, color: plot_color}]
+        switch ph
+          when 'A'
+            tags = [{tag: "#{@prefix}#{@tagData.gpu_pm_output_phasea_v.Tag}.Value", fill: true, color: plot_color}]
+          when 'B'
+            tags = [{tag: "#{@prefix}#{@tagData.gpu_pm_output_phaseb_v.Tag}.Value", fill: true, color: plot_color}]
+          when 'C'
+            tags = [{tag: "#{@prefix}#{@tagData.gpu_pm_output_phasec_v.Tag}.Value", fill: true, color: plot_color}]
       when 'aout'
         lbl = 'Output Amperage'
-        tags = [{tag: "#{@prefix}GPU.RAOUTAVG.Value", fill: true, color: plot_color}]
+        tags = [{tag: "#{@prefix}#{@tagData.gpu_ra_out_avg.Tag}.Value", fill: true, color: plot_color}]
       when 'aout_a', 'aout_b', 'aout_c'
         lbl = "Output Amperage Phase #{ph}"
-        tags = [{tag: "#{@prefix}GPU.PM_OUTPUT_PHASE#{ph}_I.Value", fill: true, color: plot_color}]
+        switch ph
+          when 'A'
+            tags = [{tag: "#{@prefix}#{@tagData.gpu_pm_output_phasea_i.Tag}.Value", fill: true, color: plot_color}]
+          when 'B'
+            tags = [{tag: "#{@prefix}#{@tagData.gpu_pm_output_phaseb_i.Tag}.Value", fill: true, color: plot_color}]
+          when 'C'
+            tags = [{tag: "#{@prefix}#{@tagData.gpu_pm_output_phasec_i.Tag}.Value", fill: true, color: plot_color}]
 
     @$('#ptype_lbl').html(lbl)
     @$('#toggle_volts_in').toggle(ptype!='vin')

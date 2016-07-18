@@ -4,7 +4,7 @@ IOPSWidgetView = require('./iops_widget_view')
 # ----------------------------------
 class PbbWidgetView extends IOPSWidgetView
   template:   "widgets/pbb_widget"
-  className: 'widget-outer box box-primary gate_widget'
+  className: 'widget-outer box box-primary pbb_widget'
   ui:
     wtitle:         'h3.box-title'
     display:        '.display'
@@ -19,44 +19,62 @@ class PbbWidgetView extends IOPSWidgetView
     sy: 6
 
   tags:
-    #Grid Tags
-    pbb_status :        'PBB.AIRCRAFTDOCKEDCALCULATION'
-    pbb_autolevelmode :   'PBB.AUTOLEVELMODEFLAG'
-    pbb_aircraft :      'PBB.AIRCRAFTSTATUS'
-    pbb_canopy:         'PBB.CANOPYDOWN'
-    pbb_acffloor:       'PBB.ACFFLOOR'
-    pbb_cablehoist:     'PBB.CABHOIST'
-    #pbb_estop:          'PBB.Alarm.E_STOP'
-    #pbb_limits:         'PBB.HZ400CABLEDEPLOYED'
-    pbb_docktime:       'PBB.DOCKTIME'
-    pbb_undocktime:     'PBB.UNDOCKTIME'
-    pbb_smokedetector:  'PBB.SMOKEDETECTOR'
-    
     #Processing Tags
     pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
     pbb_has_warnings :  'Warning._HasWarnings'
     pbb_has_alarms :    'Alarm._HasAlarms'
-    
+  
+  tagData = []
+
   update: ()->
     @update_settings
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+    
     if !@site_code? then return null
 
     s = @model.get("settings")
    
-    if s? && !!s.site      
+    if s? && !!s.site
+      # stop listening for updates
+      @kill_updates(@site_code)
+
+      # build settings      
+      #settings = @site.get('settings')
+      #settings || settings = {}
+      #cloud = if settings.cloud then @cloud_prefix else ''
+      #@prefix = "#{cloud}Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}."
+
+      tagConfig = null
+      @tagData = null
+      $('.pbb_widget #widgetData tbody').empty();
+      tagConfig = new App.tagconfig {'pbb_widget'}, null, @site_code, s
+      @tagData = tagConfig.TagData
+
       tags = []
+
+      for tag, tagData of @tagData
+        switch tagData.Element.Type
+          when 'TableRow'
+            if $(".pbb_widget #{tagData.Element.ParentID} td[id*='#{tag}']").length == 0
+              $(".pbb_widget " + tagData.Element.ParentID).find("tbody:last").append("'<tr><td class='lbl' id='#{tag}_lbl'>&nbsp;</td><td id='#{tag}' class='val'>Loading...</td></tr>'")
+          else null
+
+        tags.push "#{@prefix}#{tagData.Tag}.Value"
+
       for tg of @tags
         t = @tags[tg]
         tags.push "#{@prefix}#{t}.Value"
+
       App.opc.add_tags @site_code, tags
 
-      lbl = "Gate #{s.gate}"
+      lbl = "#{@site_code}: Gate #{s.gate}"
       @ui.wtitle.html(lbl)
       @$('#display_label #txt').html(lbl)
 
       @opc =  App.opc.connections[@site_code]
+      ref = s.layout
+
       # listen for updates
       @watch_updates(@site_code)
       @set_descriptions(true)
@@ -67,37 +85,27 @@ class PbbWidgetView extends IOPSWidgetView
     for tg of @tags
       @vals[tg] = @get_value(@tags[tg])
     
-    # PBB AIRCRAFT
-    @render_row("pbb_status", "Docked", "UnDocked", "ok")
+    for tag, tagData of @tagData
+      @vals[tag] =  @get_value(tagData.Tag)
+      switch tagData.DataType.toLowerCase()
+        when 'boolean'
+          @render_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004, tagData.Parameters.Parm005)
+        when 'float'
+          @render_value_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm00)
+        when 'value'
+          @render_value_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004)
+        #when 'byte' null
+        #when 'int' null
+        #when 'string' null
+        #when 'double' null
+        else null
 
-     # Auto Level
-    @render_row("pbb_autolevelmode", "On", "Off", "ok")
-
-
-    # E-STOP
-    # @render_row("pbb_estop","On","Off","err","ok")
-
-    # SMOKEDETECTOR
-    @render_row("pbb_smokedetector","Off","On","","err")
-  
-    # CANOPY
-    @render_row("pbb_canopy", "Down", "Up", "ok")
-
-    # CABLE HOIST
-    @render_row("pbb_cablehoist", "Deployed", "Retracted", "ok")
-
-
-    @$("#pbb_statused_lbl").html('PBB Status')
-    #@$("#pbb_estoped_lbl").html('E-Stop')
-    
     # ALARMS
     aq = @data_q(@tags.pbb_has_alarms)
     @ui.alarms.toggle(@get_bool(@vals.pbb_has_alarms)==true && aq)
     # WARNINGS
     wq = @data_q(@tags.pbb_has_warnings)
     @ui.warnings.toggle(@get_bool(@vals.pbb_has_warnings)==true && wq)
- 
-
 
     @set_descriptions()
 
@@ -138,6 +146,5 @@ class PbbWidgetView extends IOPSWidgetView
     @kill_updates(@site_code)
     
 # ----------------------------------
-
 window.PbbWidgetView = PbbWidgetView
 module.exports = PbbWidgetView

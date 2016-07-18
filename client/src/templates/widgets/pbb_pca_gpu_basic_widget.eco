@@ -1,5 +1,5 @@
 <div class="box-header with-border">
-  <div class='pull-left'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>
+  <div class="pull-left"><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>
   <div class="pull-right controls">
     <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> 
     <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>
@@ -11,24 +11,15 @@
   <div class="display contain">
     <div>
       <h1>
-        <span id='txt'></span> 
+        <span id="txt"></span> 
         
       </h1>
     </div>
     <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>
-    <table class='data4' style="float: left; width:92%"> 
-      <tr><td class='lbl' id='pbb_statused_lbl'>&nbsp;</td><td id='pbb_status' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pca_pcastatus_lbl'>&nbsp;</td><td id='pca_pcastatus' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='gpu_gpustatus_lbl'>&nbsp;</td><td id='gpu_gpustatus' class='val'>LOADING...</td></tr> 
-      <tr><td class='lbl' id='pbb_dockedtime_lbl'>&nbsp;</td><td id='pbb_docktime' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pca_hookup_lbl'>&nbsp;</td><td id='pca_hookup' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='gpu_hookup_lbl'>&nbsp;</td><td id='gpu_hookup' class='val'>LOADING...</td></tr>  
-      <tr><td class='lbl' id='pca_discharge_lbl'>&nbsp;</td><td id='pca_pcadischargetemp' class='val'>LOADING...</td></tr>  
-      <tr><td class='lbl' id='gpu_raout_lbl'>&nbsp;</td><td id='gpu_raoutavg' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='gpu_rvout_lbl'>&nbsp;</td><td id='gpu_rvoutavg' class='val'>LOADING...</td></tr>
-      </table>
-    
-       
+    <table id="widgetData" class="data4" style="float: left; width:92%"> 
+      <tbody>
+      </tbody>
+    </table>
   </div>
 
   <div class="settings" style="display: none;">

@@ -3,8 +3,8 @@ IOPSWidgetView = require('./iops_widget_view')
 
 # ----------------------------------
 class PbbdetailWidgetView extends IOPSWidgetView
-  template:   "widgets/pbbdetail_widget"
-  className: 'widget-outer box box-primary pbbdetail_widget'
+  template:   "widgets/pbb_detail_widget"
+  className: 'widget-outer box box-primary pbb_detail_widget'
   ui:
     terminal:       'input#terminal'
     zone:           'input#zone'
@@ -62,7 +62,7 @@ class PbbdetailWidgetView extends IOPSWidgetView
       # listen for updates
       @watch_updates(@site_code)
       
-      lbl = "Gate #{s.gate} - Overview"
+      lbl = "#{@site_code}: Gate #{s.gate} - Overview"
       @ui.wtitle.html(lbl)
       @$('#display_label #txt').html(lbl)
 

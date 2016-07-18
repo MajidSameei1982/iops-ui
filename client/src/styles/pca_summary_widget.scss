@@ -1,5 +1,32 @@
 /* PCA Widget Styles */
 .pca_summary_widget {
+  #plot_container {
+    #options {
+      min-width:100px;
+      width:18%;
+      font-size:18px;
+      text-align:left;
+    }
+    #plot_data {
+      width:82%;
+      position:relative;
+    }
+  }
+
+  #ptype_lbl {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  #live_container {
+    label {
+      font-size:12px !important;
+      margin-bottom:0 !important;
+    }
+  }
+
+
   &.alarm {
     background-color: #c00;
     color: #fff;
@@ -18,8 +45,9 @@
     font-weight: bold;
     font-size: 18px;
     border: 0;
-  }
-  #pca_coildp {
+  }   
+
+  #pca_coil_dp {
     position: absolute;
     left: 45%;
     top: 20%;
@@ -27,7 +55,7 @@
     font-weight: bold;
     color:#333;
   }
-  #pca_aircraftdamper{
+  #pca_bridge_damper{
     position: absolute;
     left: 27%;
     top: 70%;
@@ -35,7 +63,7 @@
     font-weight: bold;
     color:#333;
   }
-  #pca_bridgedamper{
+  #pca_bridge_air{
     position: absolute;
     left: 26%;
     top: 30%;
@@ -43,7 +71,7 @@
     font-weight: bold;
     color:#333;
   }
-  #pca_pumpcond{
+  #pca_pump_cond{
     position: absolute;
     left: 77%;
     top: 90%;
@@ -51,7 +79,7 @@
     font-weight: bold;
     color:#333;
   }
-    #pca_vfdspeed{
+  #pca_vfd_speed{
     position: absolute;
     left: 72%;
     top: 41%;
@@ -59,7 +87,7 @@
     font-weight: bold;
     color:#333;
   }
-    #pca_pcaambhumidity{
+  #pca_ambient_humidity{
     position: absolute;
     left: 77%;
     top: 84%;
@@ -67,7 +95,7 @@
     font-weight: bold;
     color:#333;
   }
-    #pca_sucpressure1{
+  #pca_suction_pressure_1{
     position: absolute;
     left: 72%;
     top: 65%;
@@ -75,7 +103,7 @@
     font-weight: bold;
     color:#333;
   }
-    #pca_sucpressure2{
+  #pca_suction_pressure_2{
     position: absolute;
     left: 85%;
     top: 65%;
@@ -83,7 +111,7 @@
     font-weight: bold;
     color:#333;
   }
-    #pca_hotgas1{
+  #pca_hot_gas_1{
     position: absolute;
     left: 72%;
     top: 72%;
@@ -91,7 +119,7 @@
     font-weight: bold;
     color:#333;
   }
-    #pca_hotgas2{
+  #pca_hot_gas_2{
     position: absolute;
     left: 85%;
     top: 72%;
@@ -348,7 +376,7 @@
       }
     }
   }
-    table.data1 {
+  table.data1 {
     width:200%;
     border:0;
     border-spacing: 0;
