@@ -41,6 +41,10 @@ class PcasummaryWidgetView extends IOPSWidgetView
     s = @model.get("settings")
     
     if s? && !!s.site      
+
+      show_opts = s? && !!s.gate
+      @$('#mode').toggle(show_opts)
+
       # stop listening for updates
       @kill_updates(@site_code)
 
@@ -404,15 +408,15 @@ class PcasummaryWidgetView extends IOPSWidgetView
     switch p
       when 'ambient'
         lbl = 'Ambient Temp'
-        tags = [{tag: "#{@prefix}#(@tagData..pca_ambient_temp.Tag).Value", fill: true, color: plot_color}]
+        tags = [{tag: "#{@prefix}#(@tagData.pca_ambient_temp.Tag).Value", fill: true, color: plot_color}]
       when 'discharge'
         lbl = "Discharge Temp"
-        tags = [{tag: "#{@prefix}#(@tagData..pca_discharge_temp.Tag).Value", fill: true, color: plot_color}]
+        tags = [{tag: "#{@prefix}#(@tagData.pca_discharge_temp.Tag).Value", fill: true, color: plot_color}]
       when 'plots'
         lbl = 'Ambient/Discharge Temps'
         tags = [
-          {tag: "#{@prefix}#(@tagData..pca_ambient_temp.Tag).Value", fill: true, color: plot_color}
-          {tag: "#{@prefix}#(@tagData..pca_discharge_temp.Tag).Value", fill: true, color: plot2_color}
+          {tag: "#{@prefix}#(@tagData.pca_ambient_temp.Tag).Value", fill: true, color: plot_color}
+          {tag: "#{@prefix}#(@tagData.pca_discharge_temp.Tag).Value", fill: true, color: plot2_color}
         ]
 
     #@$('#ptype_lbl').html(lbl)

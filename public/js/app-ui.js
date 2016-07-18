@@ -2250,7 +2250,7 @@ window.JST["widgets/pca_summary_widget"] = function(__obj) {
     };
     (function() {
     
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'>\n    <i class="fa fa-plane"></i> <h3 class="box-title"></h3>\n    <select id="mode" style=\'display:none;\'>\n      <option value=\'\'>Summary</option>\n      <option value=\'plots\'>Temp. Data</option>\n    </select>\n  </div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id=\'display_label\'>\n\t\t<h1>\n\n\t\t</h1>\n\t</div>\n    <div id="summary">\n      <div id="view_main">\n        <div id="power_indicator"></div>\n        <div id="txt_connected_time"></div>\n      </div>\n      <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n      <table height="100%";width"100%">\n        <tr>\n          <td>\n            <table class=\'data\'> \n              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr> \n              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    \n              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    \n            </table>\n          </td>\n          <td>\n            <table class=\'data1\'> \n              <tr>\n                <td style="width:200px; height:200px; vertical-align:middle">\n                  <div id="pcamain_img" class=""></div>   \n                  <div id="blower_img" class=""></div>  \n                  <div id="heatingstage1_img" class=""></div>  \n                  <div id="heatingstage2_img" class=""></div>  \n                  <div id="coolingstage1_img" class=""></div>  \n                  <div id="coolingstage2_img" class=""></div>   \n                  <div id="accool_img" class=""></div>  \n                  <div id="bccool_img" class=""></div> \n                  <div id="pca_coil_dp" class=""></div>   \n                  <div id="pca_vfd_speed" class=""></div>\n                  <div id="pca_ambient_humidity" class=""></div>\n                  <div id="pca_suction_pressure_1" class=""></div>\n                  <div id="pca_suction_pressure_2" class=""></div>\n                  <div id="pca_hot_gas_1" class=""></div>\n                  <div id="pca_hot_gas_2" class=""></div>\n                  <div id="pca_pump_cond" class=""></div>\n                  <div id="pca_bridge_damper" class=""></div>\n                  <div id="pca_bridge_air" class=""></div>\n                </td>\n              </tr>         \n            </table>\n          </td>\n        </tr>\n      </table> \n    </div>\n    <div id="plots" style="display: none;">\n      <table id=\'plot_container\' border="0">\n        <tr>\n          <td id=\'options\'>\n            <div id=\'ptype_lbl\'>\n              <table>\n                <tr>\n                  <td>Ambient Temp:</td>\n                  <td><div style=\'width:14px;height:14px;background-color:#80C3FF;\'></div></td>\n                </tr>\n                <tr>\n                  <td>Discharge Temp:</td>\n                  <td><div style=\'width:14px;height:14px;background-color:#FF8C1A;\'></div></td>\n                </tr>\n              </table>\n            </div>\n\n            <div id=\'live_container\'>\n              <label>Live Data</label>\n              <div>\n                <input id=\'live_data\' type="checkbox" data-toggle="toggle" >\n              </div>\n            </div>\n            \n          </td>\n          <td id=\'plot_data\'></td>\n        </tr>\n      </table>\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'>\n    <i class="fa fa-plane"></i> <h3 class="box-title"></h3>\n    <select id="mode" style=\'display:none;\'>\n      <option value=\'\'>Summary</option>\n      <option value=\'plots\'>Temp. Data</option>\n    </select>\n  </div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id=\'display_label\'>\n\t\t<h1>\n\n\t\t</h1>\n\t</div>\n    <div id="summary">\n      <div id="view_main">\n        <div id="power_indicator"></div>\n        <div id="txt_connected_time"></div>\n      </div>\n      <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n      <table height="100%";width"100%">\n        <tr>\n          <td>\n            <table class=\'data\'> \n              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr> \n              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    \n              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    \n            </table>\n          </td>\n          <td>\n            <table class=\'data1\'> \n              <tr>\n                <td style="width:200px; height:200px; vertical-align:middle">\n                  <div id="pcamain_img" class=""></div>   \n                  <div id="blower_img" class=""></div>  \n                  <div id="heatingstage1_img" class=""></div>  \n                  <div id="heatingstage2_img" class=""></div>  \n                  <div id="coolingstage1_img" class=""></div>  \n                  <div id="coolingstage2_img" class=""></div>   \n                  <div id="accool_img" class=""></div>  \n                  <div id="bccool_img" class=""></div> \n                  <div id="pca_coil_dp" class=""></div>   \n                  <div id="pca_vfd_speed" class=""></div>\n                  <div id="pca_ambient_humidity" class=""></div>\n                  <div id="pca_suction_pressure_1" class=""></div>\n                  <div id="pca_suction_pressure_2" class=""></div>\n                  <div id="pca_hot_gas_1" class=""></div>\n                  <div id="pca_hot_gas_2" class=""></div>\n                  <div id="pca_pump_cond" class=""></div>\n                  <div id="pca_bridge_damper" class=""></div>\n                  <div id="pca_bridge_air" class=""></div>\n                </td>\n              </tr>         \n            </table>\n          </td>\n        </tr>\n      </table> \n    </div>\n    <div id="plots" style="display: none;">\n      <table id=\'plot_container\' border="0">\n        <tr>\n          <td id=\'options\'>\n            <div id=\'ptype_lbl\'>\n              <table>\n                <tr>\n                  <td>Ambient Temp:</td>\n                  <td><div style=\'width:14px;height:14px;background-color:#80C3FF;\'></div></td>\n                </tr>\n                <tr>\n                  <td>Discharge Temp:</td>\n                  <td><div style=\'width:14px;height:14px;background-color:#FF8C1A;\'></div></td>\n                </tr>\n              </table>\n            </div>\n\n            <div id=\'live_container\'>\n              <label>Live Data</label>\n              <div>\n                <input id=\'live_data\' type="checkbox" data-toggle="toggle" >\n              </div>\n            </div>\n            \n          </td>\n          <td id=\'plot_data\'></td>\n        </tr>\n      </table>\n    </div>\n     <div id="pca_coil_dp" class=""></div>   \n     <div id="pca_vfd_speed" class=""></div>\n     <div id="pca_ambient_humidity" class=""></div>\n     <div id="pca_suction_pressure_1" class=""></div>\n     <div id="pca_suction_pressure_2" class=""></div>\n     <div id="pca_hot_gas_1" class=""></div>\n     <div id="pca_hot_gas_2" class=""></div>\n     <div id="pca_pump_cond" class=""></div>\n     <div id="pca_bridge_damper" class=""></div>\n     <div id="pca_bridge_air" class=""></div>\n\n     </td></tr>         \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -14053,7 +14053,7 @@ PcasummaryWidgetView = (function(superClass) {
   };
 
   PcasummaryWidgetView.prototype.update = function() {
-    var lbl, ref, s, t, tag, tagConfig, tagData, tags, tg;
+    var lbl, ref, s, show_opts, t, tag, tagConfig, tagData, tags, tg;
     this.update_settings({
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
@@ -14063,6 +14063,8 @@ PcasummaryWidgetView = (function(superClass) {
     }
     s = this.model.get("settings");
     if ((s != null) && !!s.site) {
+      show_opts = (s != null) && !!s.gate;
+      this.$('#mode').toggle(show_opts);
       this.kill_updates(this.site_code);
       tagConfig = null;
       this.tagData = null;
@@ -14443,7 +14445,7 @@ PcasummaryWidgetView = (function(superClass) {
         lbl = 'Ambient Temp';
         tags = [
           {
-            tag: this.prefix + "#(@tagData..pca_ambient_temp.Tag).Value",
+            tag: this.prefix + "#(@tagData.pca_ambient_temp.Tag).Value",
             fill: true,
             color: plot_color
           }
@@ -14453,7 +14455,7 @@ PcasummaryWidgetView = (function(superClass) {
         lbl = "Discharge Temp";
         tags = [
           {
-            tag: this.prefix + "#(@tagData..pca_discharge_temp.Tag).Value",
+            tag: this.prefix + "#(@tagData.pca_discharge_temp.Tag).Value",
             fill: true,
             color: plot_color
           }
@@ -14463,11 +14465,11 @@ PcasummaryWidgetView = (function(superClass) {
         lbl = 'Ambient/Discharge Temps';
         tags = [
           {
-            tag: this.prefix + "#(@tagData..pca_ambient_temp.Tag).Value",
+            tag: this.prefix + "#(@tagData.pca_ambient_temp.Tag).Value",
             fill: true,
             color: plot_color
           }, {
-            tag: this.prefix + "#(@tagData..pca_discharge_temp.Tag).Value",
+            tag: this.prefix + "#(@tagData.pca_discharge_temp.Tag).Value",
             fill: true,
             color: plot2_color
           }
