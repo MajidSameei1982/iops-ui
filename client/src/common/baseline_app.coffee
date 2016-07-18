@@ -1,6 +1,6 @@
 Marionette = require('marionette')
 AppConfig = require('./appconfig')
-
+TagConfig = require('./tagconfig')
 # ----------------------------------
 
 class BaselineApp extends Marionette.Application
@@ -12,6 +12,7 @@ class BaselineApp extends Marionette.Application
 		@silent = false
 		@store = new Basil()
 		@config = AppConfig
+		@tagconfig = TagConfig
 
 		@vent.on 'app:log', (msg, src='App', lvl='DEBUG')=>
 	  	if !@silent

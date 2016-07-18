@@ -1131,14 +1131,14 @@ li.dashboard-link {
     .gate_widget table.data2 td.img-circles {
       border-radius: 10%; }
 
-.pbbdetail_widget.alarm {
+.pbb_detail_widget.alarm {
   background-color: #c00;
   color: #fff; }
-.pbbdetail_widget .display {
+.pbb_detail_widget .display {
   min-height: 100%;
   min-width: 100%;
   overflow: auto; }
-  .pbbdetail_widget .display #aircraft_img {
+  .pbb_detail_widget .display #aircraft_img {
     position: relative;
     float: left;
     background-image: url("../img/pbb/PBB_Un-docked-400x400.gif");
@@ -1147,9 +1147,9 @@ li.dashboard-link {
     background-size: contain;
     height: 100%;
     width: 100%; }
-    .pbbdetail_widget .display #aircraft_img.docked {
+    .pbb_detail_widget .display #aircraft_img.docked {
       background-image: url("../img/pbb/PBB_docked-400x400.gif"); }
-  .pbbdetail_widget .display #autolevel_img {
+  .pbb_detail_widget .display #autolevel_img {
     position: relative;
     float: left;
     background-image: url("../img/pbb/PBB-AutoLevel-Off-400x400.gif");
@@ -1158,9 +1158,9 @@ li.dashboard-link {
     background-size: contain;
     height: 100%;
     width: 100%; }
-    .pbbdetail_widget .display #autolevel_img.autolevelon {
+    .pbb_detail_widget .display #autolevel_img.autolevelon {
       background-image: url("../img/pbb/PBB-AutoLevel-On-400x400.gif"); }
-  .pbbdetail_widget .display #canopy_img {
+  .pbb_detail_widget .display #canopy_img {
     position: relative;
     float: left;
     background-image: url("../img/pbb/PBB-Canopy-Off-400x400.gif");
@@ -1169,57 +1169,65 @@ li.dashboard-link {
     background-size: contain;
     height: 100%;
     width: 100%; }
-    .pbbdetail_widget .display #canopy_img.canopyon {
+    .pbb_detail_widget .display #canopy_img.canopyon {
       background-image: url("../img/pbb/PBB-Canopy-On-400x400.gif"); }
-  .pbbdetail_widget .display #pbbdetail_label {
+  .pbb_detail_widget .display #pbbdetail_label {
     margin-bottom: 3px; }
-    .pbbdetail_widget .display #pbbdetail_label h1 {
+    .pbb_detail_widget .display #pbbdetail_label h1 {
       line-height: 48px;
       font-weight: bold;
       margin: 0 0 0 0; }
-      .pbbdetail_widget .display #pbbdetail_label h1 i.fa {
+      .pbb_detail_widget .display #pbbdetail_label h1 i.fa {
         margin-right: -5px;
         padding: 5px;
         border-radius: 10px;
         font-size: 26px !important; }
-      .pbbdetail_widget .display #pbbdetail_label h1 i#docked {
+      .pbb_detail_widget .display #pbbdetail_label h1 i#docked {
         color: #069;
         background-color: #eee; }
-      .pbbdetail_widget .display #pbbdetail_label h1 i#alarms {
+      .pbb_detail_widget .display #pbbdetail_label h1 i#alarms {
         color: #fff;
         background-color: #c00; }
-      .pbbdetail_widget .display #pbbdetail_label h1 i#warnings {
+      .pbb_detail_widget .display #pbbdetail_label h1 i#warnings {
         color: #f90;
         background-color: #eee; }
-.pbbdetail_widget table.data1 tr.dockundock {
+.pbb_detail_widget table.data1 tr.dockundock {
   background-color: #090; }
-.pbbdetail_widget table.data2 {
+.pbb_detail_widget table.data2 {
   border: solid 1px #999;
   border-spacing: 1px;
   border-collapse: separate; }
-  .pbbdetail_widget table.data2 tr.dockundock {
+  .pbb_detail_widget table.data2 tr.dockundock {
     background-color: #090; }
-  .pbbdetail_widget table.data2 td {
+  .pbb_detail_widget table.data2 td {
     padding: 3px 10px;
     color: #999; }
-    .pbbdetail_widget table.data2 td.lbl {
+    .pbb_detail_widget table.data2 td.lbl {
       background-color: #fff;
       font-style: italic;
       color: #333;
       border-bottom: solid 1px #ddd; }
-    .pbbdetail_widget table.data2 td.val {
+    .pbb_detail_widget table.data2 td.val {
       font-weight: bold;
       color: #333; }
-    .pbbdetail_widget table.data2 td.ok {
+    .pbb_detail_widget table.data2 td.ok {
       color: #090; }
-    .pbbdetail_widget table.data2 td.blue {
+    .pbb_detail_widget table.data2 td.blue {
       background-color: #06c;
       color: #fff; }
-    .pbbdetail_widget table.data2 td.bad_data {
+    .pbb_detail_widget table.data2 td.bad_data {
       background-color: #fec;
       color: #999; }
-    .pbbdetail_widget table.data2 td.img-circles {
+    .pbb_detail_widget table.data2 td.img-circles {
       border-radius: 10%; }
+
+.pbb_level_detail_widget.alarm {
+  background-color: #c00;
+  color: #fff; }
+.pbb_level_detail_widget .display {
+  min-height: 100%;
+  min-width: 100%;
+  overflow: auto; }
 
 /* GPU Widget Styles */
 .gpu_widget.alarm {
@@ -1502,70 +1510,70 @@ li.dashboard-link {
   font-weight: bold;
   font-size: 18px;
   border: 0; }
-.pca_summary_widget #pca_coildp {
+.pca_summary_widget #pca_coil_dp {
   position: absolute;
   left: 45%;
   top: 20%;
   font-size: 12px;
   font-weight: bold;
   color: #333; }
-.pca_summary_widget #pca_aircraftdamper {
+.pca_summary_widget #pca_bridge_damper {
   position: absolute;
   left: 27%;
   top: 70%;
   font-size: 12px;
   font-weight: bold;
   color: #333; }
-.pca_summary_widget #pca_bridgedamper {
+.pca_summary_widget #pca_bridge_air {
   position: absolute;
   left: 26%;
   top: 30%;
   font-size: 12px;
   font-weight: bold;
   color: #333; }
-.pca_summary_widget #pca_pumpcond {
+.pca_summary_widget #pca_pump_cond {
   position: absolute;
   left: 77%;
   top: 90%;
   font-size: 12px;
   font-weight: bold;
   color: #333; }
-.pca_summary_widget #pca_vfdspeed {
+.pca_summary_widget #pca_vfd_speed {
   position: absolute;
   left: 72%;
   top: 41%;
   font-size: 12px;
   font-weight: bold;
   color: #333; }
-.pca_summary_widget #pca_pcaambhumidity {
+.pca_summary_widget #pca_ambient_humidity {
   position: absolute;
   left: 77%;
   top: 84%;
   font-size: 12px;
   font-weight: bold;
   color: #333; }
-.pca_summary_widget #pca_sucpressure1 {
+.pca_summary_widget #pca_suction_pressure_1 {
   position: absolute;
   left: 72%;
   top: 65%;
   font-size: 12px;
   font-weight: bold;
   color: #333; }
-.pca_summary_widget #pca_sucpressure2 {
+.pca_summary_widget #pca_suction_pressure_2 {
   position: absolute;
   left: 85%;
   top: 65%;
   font-size: 12px;
   font-weight: bold;
   color: #333; }
-.pca_summary_widget #pca_hotgas1 {
+.pca_summary_widget #pca_hot_gas_1 {
   position: absolute;
   left: 72%;
   top: 72%;
   font-size: 12px;
   font-weight: bold;
   color: #333; }
-.pca_summary_widget #pca_hotgas2 {
+.pca_summary_widget #pca_hot_gas_2 {
   position: absolute;
   left: 85%;
   top: 72%;

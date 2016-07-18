@@ -5,7 +5,7 @@ WidgetView = require('../dashboard/widget_view')
 
 class WeatherWidgetView extends WidgetView
   template:   "widgets/weather_widget"
-  className: 'widget-outer box box-primary weather'
+  className: 'widget-outer box box-primary weather_widget'
   ui:
     display: '#display'
     title: 'input#title'

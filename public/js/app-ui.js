@@ -1872,7 +1872,7 @@ window.JST["widgets/gpu_widget"] = function(__obj) {
     };
     (function() {
     
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-battery-3"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table class=\'data\'>\n      <tr><td class=\'lbl\' id=\'gpu_gpustatus_lbl\'>&nbsp;</td><td id=\'gpu_gpustatus\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_raoutavg_lbl\'>&nbsp;</td><td id=\'gpu_raoutavg\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_rvoutavg_lbl\'>&nbsp;</td><td id=\'gpu_rvoutavg\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_rvinavg_lbl\'>&nbsp;</td><td id=\'gpu_rvinavg\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phasea_i_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phasea_i\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phaseb_i_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phaseb_i\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phasec_i_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phasec_i\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phasea_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phasea_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phaseb_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phaseb_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_output_phasec_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_output_phasec_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_input_phasea_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_input_phasea_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_input_phaseb_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_input_phaseb_v\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_pm_input_phasec_v_lbl\'>&nbsp;</td><td id=\'gpu_pm_input_phasec_v\' class=\'val\'>LOADING...</td></tr>\n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-battery-3"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table id="widgetData" class=\'data\'>\n      <tbody>\n      </tbody>\n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -1958,115 +1958,7 @@ window.JST["widgets/kpi_widget"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
-window.JST["widgets/pbb_pca_gpu_basic_widget"] = function(__obj) {
-  var _safe = function(value) {
-    if (typeof value === 'undefined' && value == null)
-      value = '';
-    var result = new String(value);
-    result.ecoSafe = true;
-    return result;
-  };
-  return (function() {
-    var __out = [], __self = this, _print = function(value) {
-      if (typeof value !== 'undefined' && value != null)
-        __out.push(value.ecoSafe ? value : __self.escape(value));
-    }, _capture = function(callback) {
-      var out = __out, result;
-      __out = [];
-      callback.call(this);
-      result = __out.join('');
-      __out = out;
-      return _safe(result);
-    };
-    (function() {
-    
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div>\n      <h1>\n        <span id=\'txt\'></span> \n        \n      </h1>\n    </div>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table class=\'data4\' style="float: left; width:92%"> \n      <tr><td class=\'lbl\' id=\'pbb_statused_lbl\'>&nbsp;</td><td id=\'pbb_status\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcastatus_lbl\'>&nbsp;</td><td id=\'pca_pcastatus\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_gpustatus_lbl\'>&nbsp;</td><td id=\'gpu_gpustatus\' class=\'val\'>LOADING...</td></tr> \n      <tr><td class=\'lbl\' id=\'pbb_dockedtime_lbl\'>&nbsp;</td><td id=\'pbb_docktime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_hookup_lbl\'>&nbsp;</td><td id=\'pca_hookup\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_hookup_lbl\'>&nbsp;</td><td id=\'gpu_hookup\' class=\'val\'>LOADING...</td></tr>  \n      <tr><td class=\'lbl\' id=\'pca_discharge_lbl\'>&nbsp;</td><td id=\'pca_pcadischargetemp\' class=\'val\'>LOADING...</td></tr>  \n      <tr><td class=\'lbl\' id=\'gpu_raout_lbl\'>&nbsp;</td><td id=\'gpu_raoutavg\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'gpu_rvout_lbl\'>&nbsp;</td><td id=\'gpu_rvoutavg\' class=\'val\'>LOADING...</td></tr>\n      </table>\n    \n       \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
-    
-      _print(_safe(this.siteSelector({
-        id: 'site',
-        label: 'Site',
-        site: this.settings.site
-      })));
-    
-      _print(_safe('\n    <div class="row">\n      <div id=\'terminals\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row">\n      <div id=\'zones\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row">\n      <div id=\'gates\' class=\'col-md-12\'></div>  \n    </div>\n  </div>\n\n</div>\n'));
-    
-    }).call(this);
-    
-    return __out.join('');
-  }).call((function() {
-    var obj = {
-      escape: function(value) {
-        return ('' + value)
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
-      },
-      safe: _safe
-    }, key;
-    for (key in __obj) obj[key] = __obj[key];
-    return obj;
-  })());
-};
-
-if (!window.JST) {
-  window.JST = {};
-}
-window.JST["widgets/pbb_widget"] = function(__obj) {
-  var _safe = function(value) {
-    if (typeof value === 'undefined' && value == null)
-      value = '';
-    var result = new String(value);
-    result.ecoSafe = true;
-    return result;
-  };
-  return (function() {
-    var __out = [], __self = this, _print = function(value) {
-      if (typeof value !== 'undefined' && value != null)
-        __out.push(value.ecoSafe ? value : __self.escape(value));
-    }, _capture = function(callback) {
-      var out = __out, result;
-      __out = [];
-      callback.call(this);
-      result = __out.join('');
-      __out = out;
-      return _safe(result);
-    };
-    (function() {
-    
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div>\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table class=\'data\' style="float: left; width:95%"> \n      <tr><td class=\'lbl\' id=\'pbb_statused_lbl\'>&nbsp;</td><td id=\'pbb_status\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevelmode_lbl\'>&nbsp;</td><td id=\'pbb_autolevelmode\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_smokedetector_lbl\'>&nbsp;</td><td id=\'pbb_smokedetector\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_canopy_lbl\'>&nbsp;</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_cablehoist_lbl\'>&nbsp;</td><td id=\'pbb_cablehoist\' class=\'val\'>LOADING...</td></tr>     \n      </table>\n    \n       \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
-    
-      _print(_safe(this.siteSelector({
-        id: 'site',
-        label: 'Site',
-        site: this.settings.site
-      })));
-    
-      _print(_safe('\n    <div class="row">\n      <div id=\'terminals\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row">\n      <div id=\'zones\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row">\n      <div id=\'gates\' class=\'col-md-12\'></div>  \n    </div>\n  </div>\n\n</div>\n'));
-    
-    }).call(this);
-    
-    return __out.join('');
-  }).call((function() {
-    var obj = {
-      escape: function(value) {
-        return ('' + value)
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
-      },
-      safe: _safe
-    }, key;
-    for (key in __obj) obj[key] = __obj[key];
-    return obj;
-  })());
-};
-
-if (!window.JST) {
-  window.JST = {};
-}
-window.JST["widgets/pbbdetail_widget"] = function(__obj) {
+window.JST["widgets/pbb_detail_widget"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
       value = '';
@@ -2120,7 +2012,7 @@ window.JST["widgets/pbbdetail_widget"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
-window.JST["widgets/pbbleveldetail_widget"] = function(__obj) {
+window.JST["widgets/pbb_level_detail_widget"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
       value = '';
@@ -2143,6 +2035,114 @@ window.JST["widgets/pbbleveldetail_widget"] = function(__obj) {
     (function() {
     
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="aircraft_img" class="">\n    <div>\n \n    </div>\n\n    <table class=\'data2\' style="float:left; width:39%; position:absolute; top:5%; left:1%;">\n      <br>\n      <tr><td class=\'lbl\' id=\'pbb_autolevelkey_lbl\'>&nbsp;</td><td id=\'pbb_autolevelkey\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_estoped_lbl\'>&nbsp;</td><td id=\'pbb_estop\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevelmode_lbl\'>&nbsp;</td><td id=\'pbb_autolevelmode\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_autolevelling_lbl\'>&nbsp;</td><td id=\'pbb_autolevelling\' class=\'val\'>LOADING...</td></tr>     \n      <tr><td class=\'lbl\' id=\'pbb_canopy_lbl\'>&nbsp;</td><td id=\'pbb_canopy\' class=\'val\'>LOADING...</td></tr>   \n      <tr><td class=\'lbl\' id=\'pbb_limits_lbl\'>&nbsp;</td><td id=\'pbb_limits\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_smokedetector_lbl\'>&nbsp;</td><td id=\'pbb_smokedetector\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_cabinfloordeicer_lbl\'>&nbsp;</td><td id=\'pbb_cabinfloordeicer\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_terminaldoor_lbl\'>&nbsp;</td><td id=\'pbb_terminaldoor\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_lastdocktime_lbl\'>&nbsp;</td><td id=\'pbb_lastdocktime\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pbb_dailyaircraftcount_lbl\'>&nbsp;</td><td id=\'pbb_dailyaircraftcount\' class=\'val\'>LOADING...</td></tr> \n    </table>\n     <div id="pbb_cabangledisp" class=""></div>  \n     <div id="pbb_slopedeg" class=""></div> \n     <div id="pbb_swingangledisp" class=""></div>   \n     <div id="pbb_heighttodisp" class=""></div>\n     <div id="pca_pcaambhumidity" class=""></div>\n     <div id="pbb_wheelangledeg" class=""></div>\n     <div id="pbb_tunnellength" class=""></div> \n  </div></div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+    
+      _print(_safe(this.siteSelector({
+        id: 'site',
+        label: 'Site',
+        site: this.settings.site
+      })));
+    
+      _print(_safe('\n    <div class="row">\n      <div id=\'terminals\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row">\n      <div id=\'zones\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row">\n      <div id=\'gates\' class=\'col-md-12\'></div>  \n    </div>\n  </div>\n\n</div>\n'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
+window.JST["widgets/pbb_pca_gpu_basic_widget"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+    
+      _print(_safe('<div class="box-header with-border">\n  <div class="pull-left"><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div>\n      <h1>\n        <span id="txt"></span> \n        \n      </h1>\n    </div>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table id="widgetData" class="data4" style="float: left; width:92%"> \n      <tbody>\n      </tbody>\n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+    
+      _print(_safe(this.siteSelector({
+        id: 'site',
+        label: 'Site',
+        site: this.settings.site
+      })));
+    
+      _print(_safe('\n    <div class="row">\n      <div id=\'terminals\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row">\n      <div id=\'zones\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row">\n      <div id=\'gates\' class=\'col-md-12\'></div>  \n    </div>\n  </div>\n\n</div>\n'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
+window.JST["widgets/pbb_widget"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+    
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div>\n      <h1>\n        <span id=\'txt\'></span> \n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table id="widgetData" class="data4" style="float: left; width:92%"> \n      <tbody>\n      </tbody>\n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -2250,7 +2250,7 @@ window.JST["widgets/pca_summary_widget"] = function(__obj) {
     };
     (function() {
     
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'>\n    <i class="fa fa-plane"></i> <h3 class="box-title"></h3>\n    <select id="mode" style=\'display:none;\'>\n      <option value=\'\'>Summary</option>\n      <option value=\'plots\'>Temp. Data</option>\n    </select>\n  </div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id=\'display_label\'><h1></h1></div>\n    <div id="summary">\n      <div id="view_main">\n        <div id="power_indicator"></div>\n        <div id="txt_connected_time"></div>\n      </div>\n      <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n      <table height="100%";width"100%">\n        <tr>\n          <td>\n            <table class=\'data\'> \n              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr> \n              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    \n              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    \n            </table>\n          </td>\n          <td>\n            <table class=\'data1\'> \n              <tr>\n                <td style="width:200px; height:200px; vertical-align:middle">\n                  <div id="pcamain_img" class=""></div>   \n                  <div id="blower_img" class=""></div>  \n                  <div id="heatingstage1_img" class=""></div>  \n                  <div id="heatingstage2_img" class=""></div>  \n                  <div id="coolingstage1_img" class=""></div>  \n                  <div id="coolingstage2_img" class=""></div>   \n                  <div id="accool_img" class=""></div>  \n                  <div id="bccool_img" class=""></div> \n                  <div id="pca_coildp" class=""></div>   \n                  <div id="pca_vfdspeed" class=""></div>\n                  <div id="pca_pcaambhumidity" class=""></div>\n                  <div id="pca_sucpressure1" class=""></div>\n                  <div id="pca_sucpressure2" class=""></div>\n                  <div id="pca_hotgas1" class=""></div>\n                  <div id="pca_hotgas2" class=""></div>\n                  <div id="pca_pumpcond" class=""></div>\n                  <div id="pca_aircraftdamper" class=""></div>\n                  <div id="pca_bridgedamper" class=""></div>\n                </td>\n              </tr>         \n            </table>\n          </td>\n        </tr>\n      </table> \n    </div>\n    <div id="plots" style="display: none;">\n      <table id=\'plot_container\' border="0">\n        <tr>\n          <td id=\'options\'>\n            <div id=\'ptype_lbl\'>\n              <table>\n                <tr>\n                  <td>Ambient Temp:</td>\n                  <td><div style=\'width:14px;height:14px;background-color:#80C3FF;\'></div></td>\n                </tr>\n                <tr>\n                  <td>Discharge Temp:</td>\n                  <td><div style=\'width:14px;height:14px;background-color:#FF8C1A;\'></div></td>\n                </tr>\n              </table>\n            </div>\n\n            <div id=\'live_container\'>\n              <label>Live Data</label>\n              <div>\n                <input id=\'live_data\' type="checkbox" data-toggle="toggle" >\n              </div>\n            </div>\n            \n          </td>\n          <td id=\'plot_data\'></td>\n        </tr>\n      </table>\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'>\n    <i class="fa fa-plane"></i> <h3 class="box-title"></h3>\n    <select id="mode" style=\'display:none;\'>\n      <option value=\'\'>Summary</option>\n      <option value=\'plots\'>Temp. Data</option>\n    </select>\n  </div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id=\'display_label\'>\n\t\t<h1>\n\n\t\t</h1>\n\t</div>\n    <div id="summary">\n      <div id="view_main">\n        <div id="power_indicator"></div>\n        <div id="txt_connected_time"></div>\n      </div>\n      <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n      <table height="100%";width"100%">\n        <tr>\n          <td>\n            <table class=\'data\'> \n              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr> \n              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    \n              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    \n            </table>\n          </td>\n          <td>\n            <table class=\'data1\'> \n              <tr>\n                <td style="width:200px; height:200px; vertical-align:middle">\n                  <div id="pcamain_img" class=""></div>   \n                  <div id="blower_img" class=""></div>  \n                  <div id="heatingstage1_img" class=""></div>  \n                  <div id="heatingstage2_img" class=""></div>  \n                  <div id="coolingstage1_img" class=""></div>  \n                  <div id="coolingstage2_img" class=""></div>   \n                  <div id="accool_img" class=""></div>  \n                  <div id="bccool_img" class=""></div> \n                  <div id="pca_coil_dp" class=""></div>   \n                  <div id="pca_vfd_speed" class=""></div>\n                  <div id="pca_ambient_humidity" class=""></div>\n                  <div id="pca_suction_pressure_1" class=""></div>\n                  <div id="pca_suction_pressure_2" class=""></div>\n                  <div id="pca_hot_gas_1" class=""></div>\n                  <div id="pca_hot_gas_2" class=""></div>\n                  <div id="pca_pump_cond" class=""></div>\n                  <div id="pca_bridge_damper" class=""></div>\n                  <div id="pca_bridge_air" class=""></div>\n                </td>\n              </tr>         \n            </table>\n          </td>\n        </tr>\n      </table> \n    </div>\n    <div id="plots" style="display: none;">\n      <table id=\'plot_container\' border="0">\n        <tr>\n          <td id=\'options\'>\n            <div id=\'ptype_lbl\'>\n              <table>\n                <tr>\n                  <td>Ambient Temp:</td>\n                  <td><div style=\'width:14px;height:14px;background-color:#80C3FF;\'></div></td>\n                </tr>\n                <tr>\n                  <td>Discharge Temp:</td>\n                  <td><div style=\'width:14px;height:14px;background-color:#FF8C1A;\'></div></td>\n                </tr>\n              </table>\n            </div>\n\n            <div id=\'live_container\'>\n              <label>Live Data</label>\n              <div>\n                <input id=\'live_data\' type="checkbox" data-toggle="toggle" >\n              </div>\n            </div>\n            \n          </td>\n          <td id=\'plot_data\'></td>\n        </tr>\n      </table>\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -2304,7 +2304,7 @@ window.JST["widgets/pca_widget"] = function(__obj) {
     };
     (function() {
     
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-server"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gate_label">\n      <h1>\n        <span id=\'txt\'></span> \n       \n      </h1>\n    </div>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table class=\'data\' style="float: left; width:90%">\n    \n      <tr><td class=\'lbl\' id=\'pca_pcastatus_lbl\'>&nbsp;</td><td id=\'pca_pcastatus\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_heater1_lbl\'>&nbsp;</td><td id=\'pca_heater1\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_heater2_lbl\'>&nbsp;</td><td id=\'pca_heater2\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_compstage1_lbl\'>&nbsp;</td><td id=\'pca_compstage1\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_compstage2_lbl\'>&nbsp;</td><td id=\'pca_compstage2\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_bridgedamper_lbl\'>&nbsp;</td><td id=\'pca_bridgedamper\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_bridgeair_lbl\'>&nbsp;</td><td id=\'pca_bridgeair\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_dirtyfilter_lbl\'>&nbsp;</td><td id=\'pca_dirtyfilter\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_blower_lbl\'>&nbsp;</td><td id=\'pca_blower\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcadischargetemp_lbl\'>&nbsp;</td><td id=\'pca_pcadischargetemp\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_pcaambienttemp_lbl\'>&nbsp;</td><td id=\'pca_pcaambienttemp\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_sucpressure1_lbl\'>&nbsp;</td><td id=\'pca_sucpressure1\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_sucpressure2_lbl\'>&nbsp;</td><td id=\'pca_sucpressure2\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_hotgas1_lbl\'>&nbsp;</td><td id=\'pca_hotgas1\' class=\'val\'>LOADING...</td></tr>\n      <tr><td class=\'lbl\' id=\'pca_hotgas2_lbl\'>&nbsp;</td><td id=\'pca_hotgas2\' class=\'val\'>LOADING...</td></tr>\n    \n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-server"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  <div class="display contain">\n    <div id="gate_label">\n      <h1>\n        <span id=\'txt\'></span> \n      </h1>\n    </div>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table id="widgetData" class="data4" style="float: left; width:92%"> \n      <tbody>\n      </tbody>\n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -2561,7 +2561,7 @@ window.JST["widgets/weather_widget"] = function(__obj) {
 };
 
 ;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var AccountCollection, AdminLTE_lib, AppConfig, AppController, AppLayout, BaselineApp, ClaimCollection, Extensions, Marionette, OPCManager, RoleCollection, Router, Session, SiteCollection, UIUtils, UserCollection;
+var AccountCollection, AdminLTE_lib, AppConfig, AppController, AppLayout, BaselineApp, ClaimCollection, Extensions, Marionette, OPCManager, RoleCollection, Router, Session, SiteCollection, TagConfig, UIUtils, UserCollection;
 
 Marionette = require('marionette');
 
@@ -2595,15 +2595,17 @@ UserCollection = require('./models/user_collection');
 
 AppConfig = require('./common/appconfig');
 
+TagConfig = require('./common/tagconfig');
+
 require('./views/widgets/airport_widget_view');
 
 require('./views/widgets/alarm_widget_view');
 
 require('./views/widgets/pbb_widget_view');
 
-require('./views/widgets/pbbdetail_widget_view');
+require('./views/widgets/pbb_detail_widget_view');
 
-require('./views/widgets/pbbleveldetail_widget_view');
+require('./views/widgets/pbb_level_detail_widget_view');
 
 require('./views/widgets/pca_widget_view');
 
@@ -2643,6 +2645,7 @@ window.App = (function() {
   App = window.App = new BaselineApp();
   App.AdminLTE_lib = AdminLTE_lib;
   App.config = AppConfig;
+  App.tagconfig = TagConfig;
   App.loaded = false;
   App.accounts_loaded = App.session_loaded = App.dash_loaded = App.roles_loaded = App.claims_loaded = false;
   App.check_loaded = function() {
@@ -2838,7 +2841,7 @@ window.App = (function() {
   return App;
 })();
 
-},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/uiutils":7,"./models/account_collection":11,"./models/claim_collection":13,"./models/role_collection":17,"./models/session":18,"./models/site_collection":20,"./models/user_collection":22,"./opcmanager":25,"./router":26,"./views/app_layout":27,"./views/widgets/airport_widget_view":55,"./views/widgets/alarm_widget_view":56,"./views/widgets/asset_widget_view":57,"./views/widgets/config_widget_view":58,"./views/widgets/gpu_summary_widget_view":59,"./views/widgets/gpu_widget_view":60,"./views/widgets/kpi_widget_view":62,"./views/widgets/pbb_pca_gpu_basic_widget_view":63,"./views/widgets/pbb_widget_view":64,"./views/widgets/pbbdetail_widget_view":65,"./views/widgets/pbbleveldetail_widget_view":66,"./views/widgets/pca_discharge_widget_view":67,"./views/widgets/pca_summary_widget_view":68,"./views/widgets/pca_widget_view":69,"./views/widgets/report_widget_view":70,"./views/widgets/url_widget_view":71,"./views/widgets/video_widget_view":72,"./views/widgets/weather_widget_view":73}],2:[function(require,module,exports){
+},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/tagconfig":7,"./common/uiutils":8,"./models/account_collection":12,"./models/claim_collection":14,"./models/role_collection":18,"./models/session":19,"./models/site_collection":21,"./models/user_collection":23,"./opcmanager":26,"./router":27,"./views/app_layout":28,"./views/widgets/airport_widget_view":56,"./views/widgets/alarm_widget_view":57,"./views/widgets/asset_widget_view":58,"./views/widgets/config_widget_view":59,"./views/widgets/gpu_summary_widget_view":60,"./views/widgets/gpu_widget_view":61,"./views/widgets/kpi_widget_view":63,"./views/widgets/pbb_detail_widget_view":64,"./views/widgets/pbb_level_detail_widget_view":65,"./views/widgets/pbb_pca_gpu_basic_widget_view":66,"./views/widgets/pbb_widget_view":67,"./views/widgets/pca_discharge_widget_view":68,"./views/widgets/pca_summary_widget_view":69,"./views/widgets/pca_widget_view":70,"./views/widgets/report_widget_view":71,"./views/widgets/url_widget_view":72,"./views/widgets/video_widget_view":73,"./views/widgets/weather_widget_view":74}],2:[function(require,module,exports){
 var AccountsView, AppController, Dashboard, DashboardCollection, DashboardContentView, DashboardLayout, LoginView, Marionette, PermissionsLayout, ProfileView, ReportsView, Session, User, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -3043,7 +3046,7 @@ AppController = (function(superClass) {
 
 module.exports = AppController;
 
-},{"./models/dashboard":14,"./models/dashboard_collection":15,"./models/session":18,"./models/user":21,"./models/widget_collection":24,"./views/dashboard/content_view":29,"./views/dashboard/dashboard_layout":30,"./views/forms/manage_accounts/accounts_view":40,"./views/forms/manage_permissions/permissions_layout":43,"./views/forms/profile_view":52,"./views/login_view":53,"./views/reports_view":54}],3:[function(require,module,exports){
+},{"./models/dashboard":15,"./models/dashboard_collection":16,"./models/session":19,"./models/user":22,"./models/widget_collection":25,"./views/dashboard/content_view":30,"./views/dashboard/dashboard_layout":31,"./views/forms/manage_accounts/accounts_view":41,"./views/forms/manage_permissions/permissions_layout":44,"./views/forms/profile_view":53,"./views/login_view":54,"./views/reports_view":55}],3:[function(require,module,exports){
 
 /*
  *
@@ -3529,7 +3532,7 @@ AppConfig = (function(superClass) {
 module.exports = AppConfig;
 
 },{}],5:[function(require,module,exports){
-var AppConfig, BaselineApp, Marionette,
+var AppConfig, BaselineApp, Marionette, TagConfig,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -3537,6 +3540,8 @@ var AppConfig, BaselineApp, Marionette,
 Marionette = require('marionette');
 
 AppConfig = require('./appconfig');
+
+TagConfig = require('./tagconfig');
 
 BaselineApp = (function(superClass) {
   extend(BaselineApp, superClass);
@@ -3555,6 +3560,7 @@ BaselineApp = (function(superClass) {
     this.silent = false;
     this.store = new Basil();
     this.config = AppConfig;
+    this.tagconfig = TagConfig;
     this.vent.on('app:log', (function(_this) {
       return function(msg, src, lvl) {
         if (src == null) {
@@ -3578,7 +3584,7 @@ BaselineApp = (function(superClass) {
 
 module.exports = BaselineApp;
 
-},{"./appconfig":4}],6:[function(require,module,exports){
+},{"./appconfig":4,"./tagconfig":7}],6:[function(require,module,exports){
 
 /* MODS */
 Backbone.Marionette.Renderer.render = function(template, data) {
@@ -3801,6 +3807,2640 @@ _.extend(Marionette.View.prototype, {
 });
 
 },{}],7:[function(require,module,exports){
+
+/*
+This is the class definition
+ */
+var TagConfig,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+TagConfig = (function(superClass) {
+  extend(TagConfig, superClass);
+
+  TagConfig.tags = {
+
+    /***************************************************
+    		*** GPU Tags
+    		**************************************************
+     */
+
+    /****************
+    		Name: Tag:'Tag', Label: '', DataType:''
+    									, Parameters: {Parm001: '', Parm002: '', Parm003: '', Parm004: '', }
+    									, Element: {Type: 'TableRow', ParentID:'#widgetData', Object: null}
+    		***************
+     */
+    gpu_by_pass: {
+      Tag: 'GPU.ByPass',
+      Label: 'ByPass',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Down',
+        Parm002: 'Up',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    gpu_status: {
+      Tag: 'GPU.GPUSTATUSBOOLEAN',
+      Label: 'GPU Status',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'On',
+        Parm002: 'Off',
+        Parm003: 'ok',
+        Parm004: 'err',
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    gpu_on_1: {
+      Tag: 'GPU.ON 1',
+      Label: 'ON 1',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'On',
+        Parm002: 'Off',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    gpu_on_2: {
+      Tag: 'GPU.ON 2',
+      Label: 'ON 2',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'On',
+        Parm002: 'Off',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    gpu_pm_input_phasea_i: {
+      Tag: 'GPU.PM_INPUT_PHASEA_I',
+      Label: 'Input - Phase A Amps',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Amps',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    gpu_pm_input_phasea_v: {
+      Tag: 'GPU.PM_INPUT_PHASEA_V',
+      Label: 'Input - Phase A Volts',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Volts',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    gpu_pm_input_phaseb_i: {
+      Tag: 'GPU.PM_INPUT_PHASEB_I',
+      Label: 'Input - Phase B Amps',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Amps',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    gpu_pm_input_phaseb_v: {
+      Tag: 'GPU.PM_INPUT_PHASEB_V',
+      Label: 'Input - Phase B Volts',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Volts',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    gpu_pm_input_phasec_i: {
+      Tag: 'GPU.PM_INPUT_PHASEC_I',
+      Label: 'Input - Phase C Amps',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Amps',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    gpu_pm_input_phasec_v: {
+      Tag: 'GPU.PM_INPUT_PHASEC_V',
+      Label: 'Input - Phase C Volts',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Volts',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    gpu_pm_output_phasea_i: {
+      Tag: 'GPU.PM_OUTPUT_PHASEA_I',
+      Label: 'Output - Phase A Amps',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Amps',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    gpu_pm_output_phasea_v: {
+      Tag: 'GPU.PM_OUTPUT_PHASEA_V',
+      Label: 'Output - Phase A Volts',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Volts',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    gpu_pm_output_phaseb_i: {
+      Tag: 'GPU.PM_OUTPUT_PHASEB_I',
+      Label: 'Output - Phase B Amps',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Amps',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    gpu_pm_output_phaseb_v: {
+      Tag: 'GPU.PM_OUTPUT_PHASEB_V',
+      Label: 'Output - Phase B Volts',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Volts',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    gpu_pm_output_phasec_i: {
+      Tag: 'GPU.PM_OUTPUT_PHASEC_I',
+      Label: 'Output - Phase C Amps',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Amps',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    gpu_pm_output_phasec_v: {
+      Tag: 'GPU.PM_OUTPUT_PHASEC_V',
+      Label: 'Output - Phase C Volts',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Volts',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    gpu_ra_in_avg: {
+      Tag: 'GPU.RAINAVG',
+      Label: 'Average Input - Amps',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: '',
+        Parm003: 'Amps',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    gpu_ra_out_avg: {
+      Tag: 'GPU.RAOUTAVG',
+      Label: 'Average Output - Amps',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Amps',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    gpu_rv_in_avg: {
+      Tag: 'GPU.RVINAVG',
+      Label: 'Average Input - Volts',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Volts',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    gpu_rv_out_avg: {
+      Tag: 'GPU.RVOUTAVG',
+      Label: 'Average Output - Volts',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Volts',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    gpu_time: {
+      Tag: 'GPU.GPUTime',
+      Label: 'GPUTime',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: 'mins',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+
+      /***************************************************
+      		*** PBB Tags
+      		**************************************************
+       */
+    },
+    pbb_autolevel_fail: {
+      Tag: 'PBB.AUTOLEVEL_FAIL_FLAG',
+      Label: 'Auto Level Fail Flag',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'err',
+        Parm004: 'ok',
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pbb_autolevel_key: {
+      Tag: 'PBB.AUTOLEVELKEY',
+      Label: 'Auto Level Key',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'On',
+        Parm002: 'Off',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pbb_autoleveling: {
+      Tag: 'PBB.AUTOLEVELING',
+      Label: 'Auto Leveling',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'On',
+        Parm002: 'Off',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pbb_autolevel_mode: {
+      Tag: 'PBB.AUTOLEVELMODEFLAG',
+      Label: 'PBB Mode',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'On',
+        Parm002: 'Off',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pbb_cab_angle_disp: {
+      Tag: 'PBB.CABANGLEDISP',
+      Label: 'Cab Angle',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: 'Cab Angle : #{1}',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pbb_cabin_floor_deicer: {
+      Tag: 'PBB.CABFLOORDEICER',
+      Label: 'Cabin Floor Deicer',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'On',
+        Parm002: 'Off',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pbb_cable_hoist: {
+      Tag: 'PBB.CABHOIST',
+      Label: 'Cab Hoist',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Deployed',
+        Parm002: 'Retracted',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pbb_canopy: {
+      Tag: 'PBB.CANOPYDOWN',
+      Label: 'Canopy',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Down',
+        Parm002: 'Up',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pbb_daily_aircraft_count: {
+      Tag: 'PBB.DAILYAIRCRAFTDOCKED',
+      Label: 'Daily Aircraft Docked Count',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: false,
+        Parm002: null,
+        Parm003: null,
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pbb_dock_time: {
+      Tag: 'PBB.DOCKTIME',
+      Label: 'Aircraft Docked Time (Minutes)',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: 'mins',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pbb_estop: {
+      Tag: 'PBB.Alarm.E_STOP',
+      Label: 'Emergency Stop',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'On',
+        Parm002: 'Off',
+        Parm003: 'err',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pbb_estop_rw: {
+      Tag: 'PBB.Alarm.RedWord2[4]',
+      Label: 'Emergency Stop',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'On',
+        Parm002: 'Off',
+        Parm003: 'err',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pbb_height_to_disp: {
+      Tag: 'PBB.HEIGHTTODISP',
+      Label: 'Height',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: 'Height : #{1}',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pbb_hookup_time: {
+      Tag: 'PBB.HOOKUPTIME',
+      Label: 'PBB On Time',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: 'mins',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pbb_last_dock_time: {
+      Tag: 'PBB.LASTDOCKTIME',
+      Label: 'Daily Aircraft Docked Time',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: 'mins',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pbb_limits: {
+      Tag: 'PBB.BYPASSPB',
+      Label: 'Limit Bypass PB',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Normal',
+        Parm002: 'ByPass',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pbb_slope_deg: {
+      Tag: 'PBB.SLOPEDEG',
+      Label: 'Slope',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: 'Slope : #{1}',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pbb_smoke_detector: {
+      Tag: 'PBB.SMOKEDETECTOR',
+      Label: 'Smoke Detector',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Off',
+        Parm002: 'On',
+        Parm003: null,
+        Parm004: 'err',
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pbb_status: {
+      Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+      Label: 'PBB Status',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Docked',
+        Parm002: 'UnDocked',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pbb_swing_angle_disp: {
+      Tag: 'PBB.SWINGANGLEDISP',
+      Label: 'Bridge Rotation',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: 'Bridge Rotation :#{1}',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pbb_terminal_door: {
+      Tag: 'PBB.TERMINALDOOR',
+      Label: 'Terminal Door',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Open',
+        Parm002: 'Close',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pbb_tunnel_length: {
+      Tag: 'PBB.HORIZTODISP',
+      Label: 'Tunnel Length',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: 'Tunnel Length : #{1}',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pbb_undock_time: {
+      Tag: 'PBB.UNDOCKTIME',
+      Label: 'UN-Dock Time (Minutes)',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: 'mins',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pbb_wheel_angle_deg: {
+      Tag: 'PBB.WHEELANGLEDEG',
+      Label: 'Wheel Bogie Angle',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: 'Wheel Bogie Angle : #{1}',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+
+      /***************************************************
+      		*** PCA Tags
+      		**************************************************
+       */
+    },
+    pca_alarm_cooling_run: {
+      Tag: 'PCA.ALARM_COOLINGRUN_BOOLEAN',
+      Label: 'Cooling Run Alarm',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'On',
+        Parm002: 'Off',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_alarm_heating_run: {
+      Tag: 'PCA.ALARM_HEATINGRUN_BOOLEAN',
+      Label: 'Heating Run Alarm',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'On',
+        Parm002: 'Off',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_ambient_humidity: {
+      Tag: 'PCA.AMBHUMIDITY',
+      Label: 'Ambient Humidity',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: 'Amb Humidity : #{1}',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_ambient_temp: {
+      Tag: 'PCA.TEMPAMB',
+      Label: 'Ambient Air Temperature',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: false,
+        Parm002: null,
+        Parm003: null,
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_blower: {
+      Tag: 'PCA.BLOWER',
+      Label: 'Blower Status',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'On',
+        Parm002: 'Off',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_bridge_air: {
+      Tag: 'PCA.BRIDGE_AIR',
+      Label: 'Bridge Damper',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'On',
+        Parm002: 'Off',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_bridge_damper: {
+      Tag: 'PCA.BRIDGE_DAMPER_POSITION',
+      Label: 'Aircraft Damper',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'On',
+        Parm002: 'Off',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_cabin_temp: {
+      Tag: 'PCA.TEMPCABIN',
+      Label: 'Cabin Air Temperature',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: '#{1} F',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_coil_dp: {
+      Tag: 'PCA.COIL_DP',
+      Label: 'Coil DP',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: 'COIL DP : #{1}',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_comp_stage_1: {
+      Tag: 'PCA.COMP_STAGE1_STAT',
+      Label: 'Primary compressor #1 is running',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'On',
+        Parm002: 'Off',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_comp_stage_2: {
+      Tag: 'PCA.COMP_STAGE2_STAT',
+      Label: 'Primary compressor #2 is running',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'On',
+        Parm002: 'Off',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_cooling_pt: {
+      Tag: 'PCA.SET_COOLINGPOINT',
+      Label: 'Cooling Setpoint',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: '#{1} F',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_cooling_tm: {
+      Tag: 'PCA.SET_COOLINGPOINT_TIMER',
+      Label: 'Cooling Timer',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: '#{1} F',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_dirty_filter: {
+      Tag: 'PCA.DIRTY_FILTER',
+      Label: 'Dirty Filter',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Yes',
+        Parm002: 'No',
+        Parm003: 'err',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_discharge_temp: {
+      Tag: 'PCA.TEMPDISCH',
+      Label: 'Discharge Air Temperature',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: '#{1} F',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_heater_1: {
+      Tag: 'PCA.HEATER1',
+      Label: 'Heater #1 is running',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'On',
+        Parm002: 'Off',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_heater_2: {
+      Tag: 'PCA.HEATER2',
+      Label: 'Heater #2 is running',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'On',
+        Parm002: 'Off',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_heating_pt: {
+      Tag: 'PCA.SET_HEATINGPOINT',
+      Label: 'Heating Setpoint',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: '#{1} F',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_heating_tm: {
+      Tag: 'PCA.SET_HEATINGPOINT_TIMER',
+      Label: 'Heating Timer',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: '#{1} F',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_hot_gas_1: {
+      Tag: 'PCA.C1_HOTGAS_CONTROL',
+      Label: 'Hot Gas Controller, Primary compressor #1',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: false,
+        Parm002: null,
+        Parm003: null,
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_hot_gas_2: {
+      Tag: 'PCA.C2_HOTGAS_CONTROL',
+      Label: 'Hot Gas Controller, Primary compressor #2',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: false,
+        Parm002: null,
+        Parm003: null,
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_mode_cooling: {
+      Tag: 'PCA.MODE_COOLING',
+      Label: 'Cooling Mode',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'On',
+        Parm002: 'Off',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_mode_heating: {
+      Tag: 'PCA.MODE_HEATING',
+      Label: 'Heating Mode',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'On',
+        Parm002: 'Off',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_status: {
+      Tag: 'PCA.PCASTATUS',
+      Label: 'PCA status',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'On',
+        Parm002: 'Off',
+        Parm003: 'ok',
+        Parm004: 'err',
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_pump_cond: {
+      Tag: 'PCA.PUMPCOND',
+      Label: 'Condensate pump is running',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: 'On',
+        Parm002: 'Off',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: 'Condensate Pump : #{txt}'
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_suction_pressure_1: {
+      Tag: 'PCA.C1_SUCTION_PRESSURE',
+      Label: 'Suction pressure, primary compressor #1',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: false,
+        Parm002: null,
+        Parm003: null,
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_suction_pressure_2: {
+      Tag: 'PCA.C2_SUCTION_PRESSURE',
+      Label: 'Suction pressure, primary compressor #2',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: false,
+        Parm002: null,
+        Parm003: null,
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_time: {
+      Tag: 'PCA.PCATime',
+      Label: 'PCA Time',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: 'mins',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_vfd_speed: {
+      Tag: 'PCA.VFD_SPEED',
+      Label: 'VFD Speed',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: 'VFD : #{1}',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_inet_dischargetemp: {
+      Tag: 'PCA.INET_TEMPDISCH',
+      Label: 'PCA Discharge Temp',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: 'F',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_inet_hookuptime: {
+      Tag: 'PCA.INET_hookuptime',
+      Label: 'PCA hookup time',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: 'F',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_inet_ambient_temp: {
+      Tag: 'PCA.INET_ambient_temp',
+      Label: 'PCA ambient_temp',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: 'F',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_inet_blower_01: {
+      Tag: 'PCA.INET_blower_01',
+      Label: 'PCA Discharge Temp',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: 'F',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_inet_blower_02: {
+      Tag: 'PCA.INET_blower_02',
+      Label: 'PCA Discharge Temp',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: 'F',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_inet_blower_03: {
+      Tag: 'PCA.INET_blower_03',
+      Label: 'PCA Discharge Temp',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: 'F',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    },
+    pca_inet_blower_04: {
+      Tag: 'PCA.INET_blower_04',
+      Label: 'PCA Discharge Temp',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: 'F',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Object: null
+      }
+    }
+  };
+
+  TagConfig.groups = {
+
+    /***************************************************
+    		*** Widget Tag Groups
+    		**************************************************
+     */
+    config_widget: {
+      'pca_cooling_pt': 'pca_cooling_pt',
+      'pca_heating_pt': 'pca_heating_pt',
+      'pca_cooling_tm': 'pca_cooling_tm',
+      'pca_heating_tm': 'pca_heating_tm'
+    },
+    gpu_summary_widget: {
+      'gpu_status': 'gpu_status',
+      'gpu_time': 'gpu_time',
+      'gpu_ra_out_avg': 'gpu_ra_out_avg',
+      'gpu_rv_out_avg': 'gpu_rv_out_avg',
+      'gpu_ra_in_avg': 'gpu_ra_in_avg',
+      'gpu_rv_in_avg': 'gpu_rv_in_avg'
+    },
+    gpu_widget: {
+      'gpu_status': 'gpu_status',
+      'gpu_by_pass': 'gpu_by_pass',
+      'gpu_ra_out_avg': 'gpu_ra_out_avg',
+      'gpu_rv_out_avg': 'gpu_rv_out_avg',
+      'gpu_ra_in_avg': 'gpu_ra_in_avg',
+      'gpu_rv_in_avg': 'gpu_rv_in_avg',
+      'gpu_pm_output_phasea_i': 'gpu_pm_output_phasea_i',
+      'gpu_pm_output_phaseb_i': 'gpu_pm_output_phaseb_i',
+      'gpu_pm_output_phasec_i': 'gpu_pm_output_phasec_i',
+      'gpu_pm_output_phasea_v': 'gpu_pm_output_phasea_v',
+      'gpu_pm_output_phaseb_v': 'gpu_pm_output_phaseb_v',
+      'gpu_pm_output_phasec_v': 'gpu_pm_output_phasec_v',
+      'gpu_pm_input_phasea_i': 'gpu_pm_input_phasea_i',
+      'gpu_pm_input_phaseb_i': 'gpu_pm_input_phaseb_i',
+      'gpu_pm_input_phasec_i': 'gpu_pm_input_phasec_i',
+      'gpu_pm_input_phasea_v': 'gpu_pm_input_phasea_v',
+      'gpu_pm_input_phaseb_v': 'gpu_pm_input_phaseb_v',
+      'gpu_pm_input_phasec_v': 'gpu_pm_input_phasec_v',
+      'gpu_on_1': 'gpu_on_1',
+      'gpu_on_2': 'gpu_on_2'
+    },
+    pbb_widget: {
+      'pbb_status': 'pbb_status',
+      'pbb_autolevel_mode': 'pbb_autolevel_mode',
+      'pbb_canopy': 'pbb_canopy',
+      'pbb_dock_time': 'pbb_dock_time',
+      'pbb_undock_time': 'pbb_undock_time'
+    },
+    pbb_pca_gpu_basic_widget: {
+      'pbb_status': 'pbb_status',
+      'pca_status': 'pca_status',
+      'gpu_status': 'gpu_status',
+      'pbb_dock_time': 'pbb_dock_time',
+      'pbb_hookup_time': 'pbb_hookup_time',
+      'pca_time': 'pca_time',
+      'gpu_time': 'gpu_time',
+      'pca_discharge_temp': 'pca_discharge_temp',
+      'gpu_ra_out_avg': 'gpu_ra_out_avg',
+      'gpu_rv_out_avg': 'gpu_rv_out_avg'
+    },
+    pbb_widget: {
+      'pbb_status': 'pbb_status',
+      'pbb_autolevel_mode': 'pbb_autolevel_mode',
+      'pbb_canopy': 'pbb_canopy',
+      'pbb_autolevel_key': 'pbb_autolevel_key',
+      'pbb_autoleveling': 'pbb_autoleveling',
+      'pbb_estop_rw': 'pbb_estop_rw',
+      'pbb_limits': 'pbb_limits',
+      'pbb_dock_time': 'pbb_dock_time',
+      'pbb_undock_time': 'pbb_undock_time',
+      'pbb_smoke_detector': 'pbb_smoke_detector',
+      'pbb_daily_aircraft_count': 'pbb_daily_aircraft_count',
+      'pbb_last_dock_time': 'pbb_last_dock_time',
+      'pbb_cabin_floor_deicer': 'pbb_cabin_floor_deicer',
+      'pbb_terminal_door': 'pbb_terminal_door',
+      'pbb_cab_angle_disp': 'pbb_cab_angle_disp',
+      'pbb_slope_deg': 'pbb_slope_deg',
+      'pbb_swing_angle_disp': 'pbb_swing_angle_disp',
+      'pbb_height_to_disp': 'pbb_height_to_disp',
+      'pbb_wheel_angle_deg': 'pbb_wheel_angle_deg',
+      'pbb_tunnel_length': 'pbb_tunnel_length'
+    },
+    pca_discharge_widget: {
+      'pca_discharge_temp': 'pca_discharge_temp',
+      'pca_status': 'pca_status',
+      'pca_mode_cooling': 'pca_mode_cooling',
+      'pca_mode_heating': 'pca_mode_heating',
+      'pca_cooling_pt': 'pca_cooling_pt',
+      'pca_heating_pt': 'pca_heating_pt',
+      'pca_alarm_cooling_run': 'pca_alarm_cooling_run',
+      'pca_alarm_heating_run': 'pca_alarm_heating_run',
+      'pca_cooling_tm': 'pca_cooling_tm',
+      'pca_heating_tm': 'pca_heating_tm'
+    },
+    pca_summary_widget: {
+      'pca_ambient_humidity': 'pca_ambient_humidity',
+      'pca_ambient_temp': 'pca_ambient_temp',
+      'pca_discharge_temp': 'pca_discharge_temp',
+      'pca_status': 'pca_status',
+      'pca_time': 'pca_time',
+      'pca_blower': 'pca_blower',
+      'pca_heater_1': 'pca_heater_1',
+      'pca_heater_2': 'pca_heater_2',
+      'pca_comp_stage_1': 'pca_comp_stage_1',
+      'pca_comp_stage_2': 'pca_comp_stage_2',
+      'pca_bridge_damper': 'pca_bridge_damper',
+      'pca_bridge_air': 'pca_bridge_air',
+      'pca_pump_cond': 'pca_pump_cond',
+      'pca_coil_dp': 'pca_coil_dp',
+      'pca_vfd_speed': 'pca_vfd_speed',
+      'pca_suction_pressure_1': 'pca_suction_pressure_1',
+      'pca_suction_pressure_2': 'pca_suction_pressure_2',
+      'pca_hot_gas_1': 'pca_hot_gas_1',
+      'pca_hot_gas_2': 'pca_hot_gas_2'
+    },
+    pca_widget: {
+      'pca_cabin_temp': 'pca_cabin_temp',
+      'pca_ambient_temp': 'pca_ambient_temp',
+      'pca_discharge_temp': 'pca_discharge_temp',
+      'pca_heater_1': 'pca_heater_1',
+      'pca_heater_2': 'pca_heater_2',
+      'pca_comp_stage_1': 'pca_comp_stage_1',
+      'pca_comp_stage_2': 'pca_comp_stage_2',
+      'pca_bridge_damper': 'pca_bridge_damper',
+      'pca_bridge_air': 'pca_bridge_air',
+      'pca_dirty_filter': 'pca_dirty_filter',
+      'pca_blower': 'pca_blower',
+      'pca_suction_pressure_1': 'pca_suction_pressure_1',
+      'pca_suction_pressure_2': 'pca_suction_pressure_2',
+      'pca_hot_gas_1': 'pca_hot_gas_1',
+      'pca_hot_gas_2': 'pca_hot_gas_2',
+      'pca_status': 'pca_status'
+    }
+
+    /***************************************************
+    		*** Equipment Tag Groups
+    		**************************************************
+     */
+
+    /***************************************************
+    		*** Modification Tag Groups
+    		**************************************************
+     */
+
+    /*
+    		pbb_pca_gpu_basic_widget_10T: {'gpu_10TStatus'}
+    		pca_jetway10T: {'','',...}
+    		gpu_basic_widget: {'gpu_gpustatus','gpu_hookup','gpu_ra_out_avg','gpu_rv_out_avg'}
+    		pbb_basic_widget: {'pbb_status','pbb_docktime','pbb_hookup'}
+    		pca_basic_widget: {'pca_pcastatus','pca_hookup','pca_pcadischargetemp'}
+    		gpu_gpustatus: {'gpu_gpustatus'}
+    		gpu_hookup: {'gpu_hookup'}
+    		gpu_ra_out_avg: {'gpu_ra_out_avg'}
+    		gpu_rv_out_avg: {'gpu_rv_out_avg'}
+    		pbb_status: {'pbb_status'}
+    		pbb_docktime: {'pbb_docktime'}
+    		pbb_hookup: {'pbb_hookup'}
+    		pca_pcastatus: {'pca_pcastatus'}
+    		pca_hookup: {'pca_hookup'}
+    		pca_pcadischargetemp: {'pca_pcadischargetemp'}
+    		pca_inet_rev_1_0_00: {'','','',...}
+    		pca_jw_50T_rev_1_0_00: {'pca_jw_dischargetemp','pca_jw_hookuptime','pca_jw_ambient_temp'}
+    		pca_inet_50T_rev_1_0_00: {'pca_inet_dischargetemp','pca_inet_hookuptime','pca_inet_ambient_temp','pca_inet_blower_01','pca_inet_blower_02','pca_inet_blower_03','pca_inet_blower_04',}
+     */
+  };
+
+  TagConfig.clients = {
+
+    /* _CLIENT Example for developers configuration
+    		[Client Abbreviation]:
+    			add_tags: 
+    			remove_tags:
+    			update_tags:
+    			use_tags:
+    			zones:
+    				add_tags: 
+    				remove_tags:
+    				update_tags:
+    				use_tags:
+    				[Terminal ID]:
+    					add_tags: 
+    					remove_tags:
+    					update_tags:
+    					use_tags:
+    					[Zone ID]:
+    						add_tags: 
+    						remove_tags:
+    						update_tags:
+    						use_tags:
+    						[Gate ID]:
+    							add_tags: 
+    							remove_tags:
+    							update_tags
+    
+    		**********************************************
+     */
+    CID: {
+      pbb_widget: {
+        remove_tags: {
+          'pbb_autolevel_key': 'pbb_autolevel_key',
+          'pbb_estop_rw': 'pbb_estop_rw',
+          'pbb_terminal_door': 'pbb_terminal_door'
+        },
+        add_tags: {
+          pbb_estop: {
+            Tag: 'PBB.Alarm.E_STOP',
+            Label: 'Emergency Stop',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: '',
+              Parm002: '',
+              Parm003: '',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Object: null
+            }
+          }
+        }
+      },
+      pca_discharge_widget: {
+        1: {
+          1: {
+            C3: {
+              remove_tags: {
+                'pca_discharge_temp': 'pca_discharge_temp',
+                'pca_mode_cooling': 'pca_mode_cooling',
+                'pca_mode_heating': 'pca_mode_heating',
+                'pca_cooling_pt': 'pca_cooling_pt',
+                'pca_heating_pt': 'pca_heating_pt',
+                'pca_alarm_cooling_run': 'pca_alarm_cooling_run',
+                'pca_alarm_heating_run': 'pca_alarm_heating_run',
+                'pca_cooling_tm': 'pca_cooling_tm',
+                'pca_heating_tm': 'pca_heating_tm'
+              }
+            }
+          }
+        }
+      },
+      pca_summary_widget: {
+        remove_tags: {
+          'pca_ambient_humidity': 'pca_ambient_humidity',
+          'pca_coil_dp': 'pca_coil_dp',
+          'pca_vfd_speed': 'pca_vfd_speed',
+          'pca_ambient_humidity': 'pca_ambient_humidity',
+          'pca_hot_gas_1': 'pca_hot_gas_1',
+          'pca_hot_gas_2': 'pca_hot_gas_2'
+        },
+        update_tags: {
+          pca_heater_1: {
+            Tag: "PCA.HEAT1",
+            Label: "Heater #1is running",
+            DataType: "Boolean",
+            Parameters: {
+              Parm001: "On",
+              Parm002: "Off",
+              Parm003: "ok",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          pca_heater_2: {
+            Tag: "PCA.HEAT2",
+            Label: "Heater #2 is running",
+            DataType: "Boolean",
+            Parameters: {
+              Parm001: "On",
+              Parm002: "Off",
+              Parm003: "ok",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          pca_comp_stage_1: {
+            Tag: "PCA.COMPPRI1",
+            Label: "Primary compressor #1 is running",
+            DataType: "Boolean",
+            Parameters: {
+              Parm001: "On",
+              Parm002: "Off",
+              Parm003: "ok",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          pca_comp_stage_2: {
+            Tag: "PCA.COMPPRI2",
+            Label: "Primary compressor #2 is running",
+            DataType: "Boolean",
+            Parameters: {
+              Parm001: "On",
+              Parm002: "Off",
+              Parm003: "ok",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          pca_suction_pressure_1: {
+            Tag: "PCA.PRESSSUCPRI1",
+            Label: "Suction pressure,primary compressor #1",
+            DataType: "Float",
+            Parameters: {
+              Parm001: "",
+              Parm002: "",
+              Parm003: "",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          pca_suction_pressure_2: {
+            Tag: "PCA.PRESSSUCPRI2",
+            Label: "Suction pressure,primary compressor #2",
+            DataType: "Float",
+            Parameters: {
+              Parm001: "",
+              Parm002: "",
+              Parm003: "",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          }
+        },
+        add_tags: {
+          pbb_estop: {
+            Tag: 'PBB.Alarm.E_STOP',
+            Label: 'Emergency Stop',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: '',
+              Parm002: '',
+              Parm003: '',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Object: null
+            }
+          },
+          pca_heater_3: {
+            Tag: "PCA.HEAT3",
+            Label: "Heater #3 is running",
+            DataType: "Boolean",
+            Parameters: {
+              Parm001: "On",
+              Parm002: "Off",
+              Parm003: "ok",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          pca_heater_4: {
+            Tag: "PCA.HEAT4",
+            Label: "Heater #4 is running",
+            DataType: "Boolean",
+            Parameters: {
+              Parm001: "On",
+              Parm002: "Off",
+              Parm003: "ok",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          pca_heater_5: {
+            Tag: "PCA.HEAT5",
+            Label: "Heater #5 is running",
+            DataType: "Boolean",
+            Parameters: {
+              Parm001: "On",
+              Parm002: "Off",
+              Parm003: "ok",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          pca_comp_sec_Stage_1: {
+            Tag: "PCA.COMPSEC1",
+            Label: "Secondary compressor #1 is running",
+            DataType: "Boolean",
+            Parameters: {
+              Parm001: "On",
+              Parm002: "Off",
+              Parm003: "ok",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          pca_comp_sec_Stage_2: {
+            Tag: "PCA.COMPSEC2",
+            Label: "Secondary compressor #2 is running",
+            DataType: "Boolean",
+            Parameters: {
+              Parm001: "On",
+              Parm002: "Off",
+              Parm003: "ok",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          pca_suction_pressure_sec_1: {
+            Tag: "PCA.PRESSSUCPRI1",
+            Label: "Suction pressure,secondary compressor #1",
+            DataType: "Float",
+            Parameters: {
+              Parm001: "",
+              Parm002: "",
+              Parm003: "",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          pca_suction_pressure_sec_2: {
+            Tag: "PCA.PRESSSUCPRI2",
+            Label: "Suction pressure,secondary compressor #2",
+            DataType: "Float",
+            Parameters: {
+              Parm001: "",
+              Parm002: "",
+              Parm003: "",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          }
+        }
+      },
+      pca_widget: {
+        remove_tags: {
+          'pca_hot_gas_1': 'pca_hot_gas_1',
+          'pca_hot_gas_2': 'pca_hot_gas_2'
+        },
+        update_tags: {
+          pca_heater_1: {
+            Tag: "PCA.HEAT1",
+            Label: "Heater #1 is running",
+            DataType: "Boolean",
+            Parameters: {
+              Parm001: "On",
+              Parm002: "Off",
+              Parm003: "ok",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          pca_heater_2: {
+            Tag: "PCA.HEAT2",
+            Label: "Heater #2 is running",
+            DataType: "Boolean",
+            Parameters: {
+              Parm001: "On",
+              Parm002: "Off",
+              Parm003: "ok",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          pca_comp_stage_1: {
+            Tag: "PCA.COMPPRI1",
+            Label: "Primary compressor #1 is running",
+            DataType: "Boolean",
+            Parameters: {
+              Parm001: "On",
+              Parm002: "Off",
+              Parm003: "ok",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          pca_comp_stage_2: {
+            Tag: "PCA.COMPPRI2",
+            Label: "Primary compressor #2 is running",
+            DataType: "Boolean",
+            Parameters: {
+              Parm001: "On",
+              Parm002: "Off",
+              Parm003: "ok",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          pca_suction_pressure_1: {
+            Tag: "PCA.PRESSSUCPRI1",
+            Label: "Suction pressure, primary compressor #1",
+            DataType: "Float",
+            Parameters: {
+              Parm001: "",
+              Parm002: "",
+              Parm003: "",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          pca_suction_pressure_2: {
+            Tag: "PCA.PRESSSUCPRI2",
+            Label: "Suction pressure, primary compressor #2",
+            DataType: "Float",
+            Parameters: {
+              Parm001: "",
+              Parm002: "",
+              Parm003: "",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          }
+        },
+        add_tags: {
+          pca_heater_3: {
+            Tag: "PCA.HEAT3",
+            Label: "Heater #3 is running",
+            DataType: "Boolean",
+            Parameters: {
+              Parm001: "On",
+              Parm002: "Off",
+              Parm003: "ok",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          pca_heater_4: {
+            Tag: "PCA.HEAT4",
+            Label: "Heater #4 is running",
+            DataType: "Boolean",
+            Parameters: {
+              Parm001: "On",
+              Parm002: "Off",
+              Parm003: "ok",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          pca_heater_5: {
+            Tag: "PCA.HEAT5",
+            Label: "Heater #5 is running",
+            DataType: "Boolean",
+            Parameters: {
+              Parm001: "On",
+              Parm002: "Off",
+              Parm003: "ok",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          pca_comp_sec_Stage_1: {
+            Tag: "PCA.COMPSEC1",
+            Label: "Secondary compressor #1 is running",
+            DataType: "Boolean",
+            Parameters: {
+              Parm001: "On",
+              Parm002: "Off",
+              Parm003: "ok",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          pca_comp_sec_Stage_2: {
+            Tag: "PCA.COMPSEC2",
+            Label: "Secondary compressor #2 is running",
+            DataType: "Boolean",
+            Parameters: {
+              Parm001: "On",
+              Parm002: "Off",
+              Parm003: "ok",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          pca_suction_pressure_sec_1: {
+            Tag: "PCA.PRESSSUCPRI1",
+            Label: "Suction pressure, secondary compressor #1",
+            DataType: "Float",
+            Parameters: {
+              Parm001: "",
+              Parm002: "",
+              Parm003: "",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          pca_suction_pressure_sec_2: {
+            Tag: "PCA.PRESSSUCPRI1",
+            Label: "Suction pressure, secondary compressor #2",
+            DataType: "Float",
+            Parameters: {
+              Parm001: "",
+              Parm002: "",
+              Parm003: "",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          }
+        }
+      },
+      gpu_summary_widget: {
+        remove_tags: {
+          'gpu_ra_in_avg': 'gpu_ra_in_avg'
+        }
+      },
+      gpu_widget: {
+        remove_tags: {
+          'gpu_by_pass': 'gpu_by_pass',
+          'gpu_ra_in_avg': 'gpu_ra_in_avg',
+          'gpu_pm_input_phasea_i': 'gpu_pm_input_phasea_i',
+          'gpu_pm_input_phaseb_i': 'gpu_pm_input_phaseb_i',
+          'gpu_pm_input_phasec_i': 'gpu_pm_input_phasec_i',
+          'gpu_on_1': 'gpu_on_1',
+          'gpu_on_2': 'gpu_on_2'
+        },
+        update_tags: {
+          gpu_pm_output_phasea_i: {
+            Tag: "GPU.RAOUTA",
+            Label: "Amps Out Phase A",
+            DataType: "Float",
+            Parameters: {
+              Parm001: "TRUE",
+              Parm002: "1",
+              Parm003: "Amps",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          gpu_pm_output_phaseb_i: {
+            Tag: "GPU.RAOUTA",
+            Label: "Amps Out Phase B",
+            DataType: "Float",
+            Parameters: {
+              Parm001: "TRUE",
+              Parm002: "1",
+              Parm003: "Amps",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          gpu_pm_output_phasec_i: {
+            Tag: "GPU.RAOUTA",
+            Label: "Amps Out Phase C",
+            DataType: "Float",
+            Parameters: {
+              Parm001: "TRUE",
+              Parm002: "1",
+              Parm003: "Amps",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          gpu_pm_output_phasea_v: {
+            Tag: "GPU.RVOUTA",
+            Label: "Volts Out Phase A",
+            DataType: "Float",
+            Parameters: {
+              Parm001: "TRUE",
+              Parm002: "1",
+              Parm003: "Volts",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          gpu_pm_output_phaseb_v: {
+            Tag: "GPU.RVOUTA",
+            Label: "Volts Out Phase B",
+            DataType: "Float",
+            Parameters: {
+              Parm001: "TRUE",
+              Parm002: "1",
+              Parm003: "Volts",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          gpu_pm_output_phasec_v: {
+            Tag: "GPU.RVOUTA",
+            Label: "Volts Out Phase C",
+            DataType: "Float",
+            Parameters: {
+              Parm001: "TRUE",
+              Parm002: "1",
+              Parm003: "Volts",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          gpu_pm_input_phasea_v: {
+            Tag: "GPU.RVINA",
+            Label: "Volts In Phase A",
+            DataType: "Float",
+            Parameters: {
+              Parm001: "TRUE",
+              Parm002: "1",
+              Parm003: "Volts",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          gpu_pm_input_phaseb_v: {
+            Tag: "GPU.RVINA",
+            Label: "Volts In Phase A",
+            DataType: "Float",
+            Parameters: {
+              Parm001: "TRUE",
+              Parm002: "1",
+              Parm003: "Volts",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          },
+          gpu_pm_input_phasec_v: {
+            Tag: "GPU.RVINA",
+            Label: "Volts In Phase A",
+            DataType: "Float",
+            Parameters: {
+              Parm001: "TRUE",
+              Parm002: "1",
+              Parm003: "Volts",
+              Parm004: ""
+            },
+            Element: {
+              Type: "TableRow",
+              ParentID: "#widgetData",
+              Object: null
+            }
+          }
+        }
+      },
+      pbb_pca_gpu_basic_widget: {
+        1: {
+          1: {
+            C3: {
+              remove_tags: {
+                'pca_discharge_temp': 'pca_discharge_temp',
+                'gpu_ra_out_avg': 'gpu_ra_out_avg',
+                'gpu_rv_out_avg': 'gpu_rv_out_avg'
+              }
+            }
+          }
+        }
+      }
+
+      /******************************************************************************************8
+      			example_widget:
+      				add_groups: {'gpu_basic_widget','pbb_basic_widget','pca_inet_50T_rev_1_0_00'}
+      				remove_groups: {'pbb_pca_gpu_basic_widget'}
+      				use_groups: {'pbb_pca_gpu_basic_widget'}
+      				add_tags: { 
+      					csw_tag001:{Tag:"CSW.TAG001",Label:"CSW TAG001 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData",Object:null}},
+      					csw_tag002:{Tag:"CSW.TAG002",Label:"CSW TAG002 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData",Object:null}},
+      				}
+      				remove_tags:  { 'csw_tag002','gpu_gpustatus','gpu_hookup','gpu_ra_out_avg','gpu_rv_out_avg' }
+      				update_tags:  { 
+      					csw_tag001:{Tag:"CSW.TAG001a",Label:"CSW TAG001a Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData",Object:null}},
+      				}
+      				use_tags: {}
+      				#terminal:
+      				1: 
+      					add_groups: {'gpu_hookup','pbb_docktime'}
+      					remove_groups: {'pbb_docktime', 'gpu_hookup'}
+      					use_groups: {'pca_hookup'}
+      					add_tags: { 
+      						csw_tag003:{Tag:"CSW.TAG003",Label:"CSW TAG003 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData",Object:null}},
+      						csw_tag004:{Tag:"CSW.TAG004",Label:"CSW TAG004 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData",Object:null}},
+      					} 
+      					remove_tags:  { 'csw_tag004' }
+      					update_tags:  { 
+      						csw_tag003:{Tag:"CSW.TAG003a",Label:"CSW TAG003a Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData",Object:null}},
+      					}
+      					use_tags: {}
+      					#zone:
+      					1:
+      						add_groups: {'gpu_ra_out_avg','pbb_hookup'}
+      						remove_groups: {'pbb_hookup'}
+      						use_groups: {'gpu_gpustatus'}
+      						add_tags: { 
+      							csw_tag005:{Tag:"CSW.TAG005",Label:"CSW TAG005 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData",Object:null}},
+      							csw_tag006:{Tag:"CSW.TAG006",Label:"CSW TAG006 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData",Object:null}},
+      						} 
+      						remove_tags:  { 'csw_tag006'}
+      						update_tags:  { 
+      							csw_tag005:{Tag:"CSW.TAG005a",Label:"CSW TAG005a Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData",Object:null}},
+      						}
+      						use_tags: {}
+      						#gate:
+      						C1:
+      							add_groups: {'gpu_status','gpu_rv_out_avg','pca_pcastatus'}
+      							remove_groups: {'pca_pcastatus'}
+      							use_groups: {'pbb_status'}
+      							add_tags: { 
+      								csw_tag007:{Tag:"CSW.TAG007",Label:"CSW TAG007 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData",Object:null}},
+      								csw_tag008:{Tag:"CSW.TAG008",Label:"CSW TAG008 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData",Object:null}},
+      							} 
+      							remove_tags:  { 'csw_tag008' }
+      							update_tags:  {
+      								csw_tag007:{Tag:"CSW.TAG007a",Label:"CSW TAG007a Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData",Object:null}},
+      							}
+      							use_tags: {}
+      			*************************************************************************************
+       */
+    },
+    DAL: {
+      futute: {
+        'future': 'future'
+      }
+    },
+    EWR: {
+      pbb_pca_gpu_basic_widget: {
+        add_groups: {
+          'pbb_pca_gpu_basic_widget': 'pbb_pca_gpu_basic_widget'
+        }
+      }
+    },
+    JFK: {
+      pbb_pca_gpu_basic_widget: {
+        add_groups: {
+          'pbb_pca_gpu_basic_widget': 'pbb_pca_gpu_basic_widget'
+        }
+      }
+    }
+  };
+
+  function TagConfig(Groups, Tags, Site_Code, Site) {
+    var Data, Group, GroupData, Tag, addGroups, addTags, data, gateData, gateMod, groupData, groupMod, i, j, key, len, len1, ref, removeTags, termData, termMod, useGroups, useTags, zoneData, zoneMod;
+    this.TagData = [];
+    if ((Site_Code != null ? Site_Code.length : void 0) > 0) {
+      addGroups = [];
+      addTags = [];
+      removeTags = [];
+      useGroups = [];
+      useTags = [];
+      if ((Groups != null) && Object.keys(Groups).length > 0) {
+        addGroups = Groups;
+      }
+      if ((Tags != null) && Object.keys(Tags).length > 0) {
+        addTags = Tags;
+      }
+      ref = this.constructor.clients[Site_Code];
+      for (Group in ref) {
+        GroupData = ref[Group];
+        console.log('Group:' + Group + ' GroupData: ' + GroupData);
+        if (Object.keys(addGroups).indexOf(Group) > -1) {
+          for (groupMod in GroupData) {
+            groupData = GroupData[groupMod];
+            console.log('groupMod:' + groupMod + ' groupData: ' + groupData);
+            switch (groupMod) {
+              case 'add_groups':
+                console.log('groupMod: ' + groupMod + '->add_groups');
+                for (key in groupData) {
+                  data = groupData[key];
+                  addGroups[key] = data;
+                }
+                break;
+              case 'remove_groups':
+                console.log('groupMod: ' + groupMod + '->remove_groups');
+                for (key in groupData) {
+                  data = groupData[key];
+                  delete addGroups[key];
+                }
+                break;
+              case 'use_groups':
+                console.log('groupMod: ' + groupMod + '->use_groups');
+                useGroups = groupData;
+                break;
+              case 'add_tags':
+                console.log('groupMod: ' + groupMod + '->add_tags');
+                for (key in groupData) {
+                  data = groupData[key];
+                  addTags[key] = data;
+                }
+                break;
+              case 'remove_tags':
+                console.log('groupMod: ' + groupMod + '->remove_tags');
+                for (key in groupData) {
+                  data = groupData[key];
+                  removeTags[key] = data;
+                }
+                break;
+              case 'update_tags':
+                console.log('groupMod: ' + groupMod + '->update_tags');
+                for (key in groupData) {
+                  data = groupData[key];
+                  addTags[key] = data;
+                }
+                break;
+              case 'use_tags':
+                console.log('groupMod: ' + groupMod + '->use_tags');
+                useTags = groupData;
+                break;
+              case Site.terminal:
+                for (termMod in groupData) {
+                  termData = groupData[termMod];
+                  console.log('termMod:' + termMod + ' termData: ' + termData);
+                  switch (termMod) {
+                    case 'add_groups':
+                      console.log('termMod: ' + termMod + '->add_groups');
+                      for (key in termData) {
+                        data = termData[key];
+                        addGroups[key] = data;
+                      }
+                      break;
+                    case 'remove_groups':
+                      console.log('termMod: ' + termMod + '->remove_groups');
+                      for (key in termData) {
+                        data = termData[key];
+                        delete addGroups[key];
+                      }
+                      break;
+                    case 'use_groups':
+                      console.log('termMod: ' + termMod + '->use_groups');
+                      useGroups = termData;
+                      break;
+                    case 'add_tags':
+                      console.log('termMod: ' + termMod + '->add_tags');
+                      for (key in termData) {
+                        data = termData[key];
+                        addTags[key] = data;
+                      }
+                      break;
+                    case 'remove_tags':
+                      console.log('termMod: ' + termMod + '->remove_tags');
+                      for (key in termData) {
+                        data = termData[key];
+                        removeTags[key] = data;
+                      }
+                      break;
+                    case 'update_tags':
+                      console.log('termMod: ' + termMod + '->update_tags');
+                      for (key in termData) {
+                        data = termData[key];
+                        addTags[key] = data;
+                      }
+                      break;
+                    case 'use_tags':
+                      console.log('termMod: ' + termMod + '->use_tags');
+                      useTags = termData;
+                      break;
+                    case Site.zone:
+                      for (zoneMod in termData) {
+                        zoneData = termData[zoneMod];
+                        console.log('zoneMod:' + zoneMod + ' zoneData: ' + zoneData);
+                        switch (zoneMod) {
+                          case 'add_groups':
+                            console.log('zoneMod: ' + zoneMod + '->add_groups');
+                            for (key in zoneData) {
+                              data = zoneData[key];
+                              addGroups[key] = data;
+                            }
+                            break;
+                          case 'remove_groups':
+                            console.log('zoneMod: ' + zoneMod + '->remove_groups');
+                            for (data = i = 0, len = zoneData.length; i < len; data = ++i) {
+                              key = zoneData[data];
+                              delete addGroups[key];
+                            }
+                            break;
+                          case 'use_groups':
+                            console.log('zoneMod: ' + zoneMod + '->use_groups');
+                            useGroups = zoneData;
+                            break;
+                          case 'add_tags':
+                            console.log('zoneMod: ' + zoneMod + '->add_tags');
+                            for (key in zoneData) {
+                              data = zoneData[key];
+                              addTags[key] = data;
+                            }
+                            break;
+                          case 'remove_tags':
+                            console.log('zoneMod: ' + zoneMod + '->remove_tags');
+                            for (key in zoneData) {
+                              data = zoneData[key];
+                              removeTags[key] = data;
+                            }
+                            break;
+                          case 'update_tags':
+                            console.log('zoneMod: ' + zoneMod + '->update_tags');
+                            for (key in zoneData) {
+                              data = zoneData[key];
+                              addTags[key] = data;
+                            }
+                            break;
+                          case 'use_tags':
+                            console.log('zoneMod: ' + zoneMod + '->use_tags');
+                            useTags = zoneData;
+                            break;
+                          case Site.gate:
+                            for (gateMod in zoneData) {
+                              gateData = zoneData[gateMod];
+                              console.log('gateMod:' + gateMod + ' data: ' + gateData);
+                              switch (gateMod) {
+                                case 'add_groups':
+                                  console.log('gateMod: ' + gateMod + '->add_groups');
+                                  for (key in gateData) {
+                                    data = gateData[key];
+                                    addGroups[key] = data;
+                                  }
+                                  break;
+                                case 'remove_groups':
+                                  console.log('gateMod: ' + gateMod + '->remove_groups');
+                                  for (key in gateData) {
+                                    data = gateData[key];
+                                    delete addGroups[key];
+                                  }
+                                  break;
+                                case 'use_groups':
+                                  console.log('gateMod: ' + gateMod + '->use_groups');
+                                  useGroups = gateData;
+                                  break;
+                                case 'add_tags':
+                                  console.log('gateMod: ' + gateMod + '->add_tags');
+                                  for (key in gateData) {
+                                    data = gateData[key];
+                                    addTags[key] = data;
+                                  }
+                                  break;
+                                case 'remove_tags':
+                                  console.log('gateMod: ' + gateMod + '->remove_tags');
+                                  for (key in gateData) {
+                                    data = gateData[key];
+                                    removeTags[key] = data;
+                                  }
+                                  break;
+                                case 'update_tags':
+                                  console.log('gateMod: ' + gateMod + '->update_tags');
+                                  for (key in gateData) {
+                                    data = gateData[key];
+                                    addTags[key] = data;
+                                  }
+                                  break;
+                                case 'use_tags':
+                                  console.log('gateMod: ' + gateMod + '->use_tags');
+                                  useTags = gateData;
+                              }
+                            }
+                        }
+                      }
+                  }
+                }
+            }
+          }
+        }
+      }
+      if (Object.keys(addGroups).length > 0) {
+        for (key in addGroups) {
+          data = addGroups[key];
+          for (Tag in this.constructor.groups[key]) {
+            this.TagData[Tag] = this.constructor.tags[Tag];
+          }
+        }
+      }
+      if (Object.keys(addTags).length > 0) {
+        for (Tag in addTags) {
+          Data = addTags[Tag];
+          this.TagData[Tag] = Data;
+        }
+      }
+      if (Object.keys(removeTags).length > 0) {
+        for (Tag in removeTags) {
+          Data = removeTags[Tag];
+          delete this.TagData[Tag];
+        }
+      }
+    } else if ((Groups != null ? Groups.length : void 0) > 0) {
+      for (j = 0, len1 = Groups.length; j < len1; j++) {
+        Group = Groups[j];
+        for (Tag in this.constructor.groups[Group]) {
+          this.TagData[Tag] = this.constructor.tags[Tag];
+        }
+      }
+    } else {
+      for (Tag in Tags) {
+        Data = Tags[Tag];
+        this.TagData[Tag] = Data;
+      }
+    }
+  }
+
+  TagConfig.prototype.addTags = function(Tags) {
+    var Data, Tag, results;
+    results = [];
+    for (Tag in Tags) {
+      Data = Tags[Tag];
+      results.push(this.TagData[Tag] = Data);
+    }
+    return results;
+  };
+
+  TagConfig.prototype.removeTags = function(Tags) {
+    var Tag, i, len, results;
+    results = [];
+    for (i = 0, len = Tags.length; i < len; i++) {
+      Tag = Tags[i];
+      results.push(delete this.TagData[Tag]);
+    }
+    return results;
+  };
+
+  TagConfig.prototype.updateTag = function(Tag, Data) {
+    return this.TagData[Tag] = Data;
+  };
+
+  return TagConfig;
+
+})(Object);
+
+module.exports = TagConfig;
+
+
+/*
+This is the usage of the above class
+ */
+
+
+/*
+$ ->
+  newData = {
+	csw_tag001: {Tag: "CSW.TAG001",Label:"CSW TAG001 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData", Object: null} } ,
+	csw_tag002: {Tag: "CSW.TAG002",Label:"CSW TAG002 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData", Object: null} } ,
+	csw_tag003: {Tag: "CSW.TAG003",Label:"CSW TAG003 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData", Object: null} } ,
+	csw_tag004: {Tag: "CSW.TAG004",Label:"CSW TAG004 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData", Object: null} }
+	max_tag001: {Tag: "MAX.TAG001",Label:"MAX TAG001 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData", Object: null} } ,
+	max_tag002: {Tag: "MAX.TAG002",Label:"MAX TAG002 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData", Object: null} } ,
+  }
+  addData = {
+	csw_tag005: {Tag: "CSW.TAG005",Label:"CSW TAG005 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData", Object: null} } ,
+	csw_tag006: {Tag: "CSW.TAG006",Label:"CSW TAG006 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData", Object: null} } ,
+  }
+
+	#loadTags = []
+  #['pbb_pca_gpu_basic_widget']
+  tagConfig = new TagConfig(null, newData)
+  tagConfig.addTags addData
+  tagConfig.removeTags ['max_tag001','max_tag002']
+  tagConfig.updateTag 'csw_tag005', {Tag: "CSW.TAG005a",Label:"CSW TAG005a Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData", Object: null} }
+  console.log tagConfig.TagData
+  console.log tagConfig.TagData.csw_tag001.Label
+ */
+
+},{}],8:[function(require,module,exports){
 var Marionette, ModalView, UIUtils,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -3978,7 +6618,7 @@ UIUtils = (function(superClass) {
 
 module.exports = UIUtils;
 
-},{"../views/common/modal_view":28}],8:[function(require,module,exports){
+},{"../views/common/modal_view":29}],9:[function(require,module,exports){
 var AppConfig, Backbone, BaseModel,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4036,7 +6676,7 @@ BaseModel = (function(superClass) {
 
 module.exports = BaseModel;
 
-},{"../common/appconfig":4}],9:[function(require,module,exports){
+},{"../common/appconfig":4}],10:[function(require,module,exports){
 var AppConfig, Backbone, BaseCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4096,7 +6736,7 @@ BaseCollection = (function(superClass) {
 
 module.exports = BaseCollection;
 
-},{"../common/appconfig":4}],10:[function(require,module,exports){
+},{"../common/appconfig":4}],11:[function(require,module,exports){
 var Account, BaseModel, SiteCollection,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -4139,7 +6779,7 @@ Account = (function(superClass) {
 
 module.exports = Account;
 
-},{"./_base":8,"./site_collection":20}],11:[function(require,module,exports){
+},{"./_base":9,"./site_collection":21}],12:[function(require,module,exports){
 var Account, AccountCollection, BaseCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4169,7 +6809,7 @@ window.AccountCollection = AccountCollection;
 
 module.exports = AccountCollection;
 
-},{"./_base_collection":9,"./account":10}],12:[function(require,module,exports){
+},{"./_base_collection":10,"./account":11}],13:[function(require,module,exports){
 var BaseModel, Claim,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4198,7 +6838,7 @@ Claim = (function(superClass) {
 
 module.exports = Claim;
 
-},{"./_base":8}],13:[function(require,module,exports){
+},{"./_base":9}],14:[function(require,module,exports){
 var BaseCollection, Claim, ClaimCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4231,7 +6871,7 @@ ClaimCollection = (function(superClass) {
 
 module.exports = ClaimCollection;
 
-},{"./_base_collection":9,"./claim":12}],14:[function(require,module,exports){
+},{"./_base_collection":10,"./claim":13}],15:[function(require,module,exports){
 var BaseModel, Dashboard, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4305,7 +6945,7 @@ Dashboard = (function(superClass) {
 
 module.exports = Dashboard;
 
-},{"./_base":8,"./widget_collection":24}],15:[function(require,module,exports){
+},{"./_base":9,"./widget_collection":25}],16:[function(require,module,exports){
 var BaseCollection, Dashboard, DashboardCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4341,7 +6981,7 @@ window.DashboardCollection = DashboardCollection;
 
 module.exports = DashboardCollection;
 
-},{"./_base_collection":9,"./dashboard":14}],16:[function(require,module,exports){
+},{"./_base_collection":10,"./dashboard":15}],17:[function(require,module,exports){
 var BaseModel, ClaimCollection, Role,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4374,7 +7014,7 @@ Role = (function(superClass) {
 
 module.exports = Role;
 
-},{"./_base":8,"./claim_collection":13}],17:[function(require,module,exports){
+},{"./_base":9,"./claim_collection":14}],18:[function(require,module,exports){
 var BaseCollection, Role, RoleCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4407,7 +7047,7 @@ RoleCollection = (function(superClass) {
 
 module.exports = RoleCollection;
 
-},{"./_base_collection":9,"./role":16}],18:[function(require,module,exports){
+},{"./_base_collection":10,"./role":17}],19:[function(require,module,exports){
 var BaseModel, Session, User,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4605,7 +7245,7 @@ Session = (function(superClass) {
 
 module.exports = Session;
 
-},{"./_base":8,"./user":21}],19:[function(require,module,exports){
+},{"./_base":9,"./user":22}],20:[function(require,module,exports){
 var BaseModel, ClaimCollection, RoleCollection, Site,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -4687,7 +7327,7 @@ Site = (function(superClass) {
 
 module.exports = Site;
 
-},{"./_base":8,"./claim_collection":13,"./role_collection":17}],20:[function(require,module,exports){
+},{"./_base":9,"./claim_collection":14,"./role_collection":18}],21:[function(require,module,exports){
 var BaseCollection, Site, SiteCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4720,7 +7360,7 @@ SiteCollection = (function(superClass) {
 
 module.exports = SiteCollection;
 
-},{"./_base_collection":9,"./site":19}],21:[function(require,module,exports){
+},{"./_base_collection":10,"./site":20}],22:[function(require,module,exports){
 var BaseModel, ClaimCollection, DashboardCollection, RoleCollection, User,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -4968,7 +7608,7 @@ User = (function(superClass) {
 
 module.exports = User;
 
-},{"./_base":8,"./claim_collection":13,"./dashboard_collection":15,"./role_collection":17}],22:[function(require,module,exports){
+},{"./_base":9,"./claim_collection":14,"./dashboard_collection":16,"./role_collection":18}],23:[function(require,module,exports){
 var BaseCollection, User, UserCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4998,7 +7638,7 @@ window.UserCollection = UserCollection;
 
 module.exports = UserCollection;
 
-},{"./_base_collection":9,"./user":21}],23:[function(require,module,exports){
+},{"./_base_collection":10,"./user":22}],24:[function(require,module,exports){
 var BaseModel, Widget,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -5048,7 +7688,7 @@ Widget = (function(superClass) {
 
 module.exports = Widget;
 
-},{"./_base":8}],24:[function(require,module,exports){
+},{"./_base":9}],25:[function(require,module,exports){
 var BaseCollection, Widget, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -5074,7 +7714,7 @@ WidgetCollection = (function(superClass) {
 
 module.exports = WidgetCollection;
 
-},{"./_base_collection":9,"./widget":23}],25:[function(require,module,exports){
+},{"./_base_collection":10,"./widget":24}],26:[function(require,module,exports){
 var OPCManager;
 
 OPCManager = (function() {
@@ -5353,7 +7993,7 @@ window.OPCManager = OPCManager;
 
 module.exports = OPCManager;
 
-},{}],26:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 var Marionette, Router,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -5400,7 +8040,7 @@ Router = (function(superClass) {
 
 module.exports = Router;
 
-},{}],27:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 var AppLayout, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -5427,7 +8067,7 @@ AppLayout = (function(superClass) {
 
 module.exports = AppLayout;
 
-},{}],28:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 var Marionette, ModalView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -5514,7 +8154,7 @@ ModalView = (function(superClass) {
 
 module.exports = ModalView;
 
-},{}],29:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 var Dashboard, DashboardContentView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -5576,7 +8216,7 @@ DashboardContentView = (function(superClass) {
 
 module.exports = DashboardContentView;
 
-},{"../../models/dashboard":14}],30:[function(require,module,exports){
+},{"../../models/dashboard":15}],31:[function(require,module,exports){
 var DashboardContentView, DashboardFooterView, DashboardHeaderView, DashboardLayout, DashboardSideView, DashboardToolView, Marionette, WidgetLayout,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -5674,7 +8314,7 @@ DashboardLayout = (function(superClass) {
 
 module.exports = DashboardLayout;
 
-},{"./content_view":29,"./footer_view":32,"./header_view":33,"./side_view":34,"./tool_view":35,"./widget_layout":36}],31:[function(require,module,exports){
+},{"./content_view":30,"./footer_view":33,"./header_view":34,"./side_view":35,"./tool_view":36,"./widget_layout":37}],32:[function(require,module,exports){
 var DashboardModalView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -5755,7 +8395,7 @@ DashboardModalView = (function(superClass) {
 
 module.exports = DashboardModalView;
 
-},{}],32:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 var DashboardFooterView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -5781,7 +8421,7 @@ DashboardFooterView = (function(superClass) {
 
 module.exports = DashboardFooterView;
 
-},{}],33:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 var DashboardHeaderView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -5858,7 +8498,7 @@ DashboardHeaderView = (function(superClass) {
 
 module.exports = DashboardHeaderView;
 
-},{}],34:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 var Dashboard, DashboardModalView, DashboardSideView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -6080,7 +8720,7 @@ DashboardSideView = (function(superClass) {
 
 module.exports = DashboardSideView;
 
-},{"../../models/dashboard":14,"./dashboard_modal":31}],35:[function(require,module,exports){
+},{"../../models/dashboard":15,"./dashboard_modal":32}],36:[function(require,module,exports){
 var DashboardToolView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -6143,7 +8783,7 @@ DashboardToolView = (function(superClass) {
 
 module.exports = DashboardToolView;
 
-},{}],36:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 var Marionette, OPCManager, Widget, WidgetLayout, WidgetModalView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -6350,7 +8990,7 @@ WidgetLayout = (function(superClass) {
 
 module.exports = WidgetLayout;
 
-},{"../../models/widget":23,"../../opcmanager":25,"./widget_modal":37,"./widget_view":38}],37:[function(require,module,exports){
+},{"../../models/widget":24,"../../opcmanager":26,"./widget_modal":38,"./widget_view":39}],38:[function(require,module,exports){
 var Marionette, WidgetModalView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -6418,7 +9058,7 @@ WidgetModalView = (function(superClass) {
 
 module.exports = WidgetModalView;
 
-},{}],38:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 var Marionette, WidgetView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -6494,7 +9134,7 @@ window.WidgetView = WidgetView;
 
 module.exports = WidgetView;
 
-},{}],39:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 var Account, AccountView, Marionette, SiteView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -6651,7 +9291,7 @@ AccountView = (function(superClass) {
 
 module.exports = AccountView;
 
-},{"../../../models/account":10,"./site_view":41}],40:[function(require,module,exports){
+},{"../../../models/account":11,"./site_view":42}],41:[function(require,module,exports){
 var AccountView, AccountsView, Marionette,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -6702,7 +9342,7 @@ AccountsView = (function(superClass) {
 
 module.exports = AccountsView;
 
-},{"./account_view":39}],41:[function(require,module,exports){
+},{"./account_view":40}],42:[function(require,module,exports){
 var Marionette, Site, SiteView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -6934,7 +9574,7 @@ SiteView = (function(superClass) {
 
 module.exports = SiteView;
 
-},{"../../../models/site":19}],42:[function(require,module,exports){
+},{"../../../models/site":20}],43:[function(require,module,exports){
 var Claim, Marionette, PermissionView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -7039,7 +9679,7 @@ PermissionView = (function(superClass) {
 
 module.exports = PermissionView;
 
-},{"../../../models/claim":12}],43:[function(require,module,exports){
+},{"../../../models/claim":13}],44:[function(require,module,exports){
 var Marionette, PermissionsLayout, PermissionsTopView, RolesTopView, UsersLayout,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -7101,7 +9741,7 @@ PermissionsLayout = (function(superClass) {
 
 module.exports = PermissionsLayout;
 
-},{"./permissions_top_view":44,"./roles_top_view":47,"./users_layout":50}],44:[function(require,module,exports){
+},{"./permissions_top_view":45,"./roles_top_view":48,"./users_layout":51}],45:[function(require,module,exports){
 var ClaimCollection, Marionette, PermissionsTopView, PermissionsView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -7195,7 +9835,7 @@ PermissionsTopView = (function(superClass) {
 
 module.exports = PermissionsTopView;
 
-},{"../../../models/claim_collection":13,"./permissions_view":45}],45:[function(require,module,exports){
+},{"../../../models/claim_collection":14,"./permissions_view":46}],46:[function(require,module,exports){
 var Marionette, PermissionView, PermissionsView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -7257,7 +9897,7 @@ PermissionsView = (function(superClass) {
 
 module.exports = PermissionsView;
 
-},{"./permission_view":42}],46:[function(require,module,exports){
+},{"./permission_view":43}],47:[function(require,module,exports){
 var Marionette, Role, RoleView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -7371,7 +10011,7 @@ RoleView = (function(superClass) {
 
 module.exports = RoleView;
 
-},{"../../../models/role":16}],47:[function(require,module,exports){
+},{"../../../models/role":17}],48:[function(require,module,exports){
 var ClaimCollection, Marionette, RoleCollection, RolesTopView, RolesView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -7479,7 +10119,7 @@ RolesTopView = (function(superClass) {
 
 module.exports = RolesTopView;
 
-},{"../../../models/claim_collection":13,"../../../models/role_collection":17,"./roles_view":48}],48:[function(require,module,exports){
+},{"../../../models/claim_collection":14,"../../../models/role_collection":18,"./roles_view":49}],49:[function(require,module,exports){
 var Marionette, RoleView, RolesView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -7534,7 +10174,7 @@ RolesView = (function(superClass) {
 
 module.exports = RolesView;
 
-},{"./role_view":46}],49:[function(require,module,exports){
+},{"./role_view":47}],50:[function(require,module,exports){
 var Marionette, User, UserView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -7738,7 +10378,7 @@ UserView = (function(superClass) {
 
 module.exports = UserView;
 
-},{"../../../models/user":21}],50:[function(require,module,exports){
+},{"../../../models/user":22}],51:[function(require,module,exports){
 var Marionette, RoleCollection, UserCollection, UsersLayout, UsersView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -7852,7 +10492,7 @@ UsersLayout = (function(superClass) {
 
 module.exports = UsersLayout;
 
-},{"../../../models/role_collection":17,"../../../models/user_collection":22,"./users_view":51}],51:[function(require,module,exports){
+},{"../../../models/role_collection":18,"../../../models/user_collection":23,"./users_view":52}],52:[function(require,module,exports){
 var Marionette, UserCollection, UserView, UsersView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -7880,7 +10520,7 @@ UsersView = (function(superClass) {
 
 module.exports = UsersView;
 
-},{"../../../models/user_collection":22,"./user_view":49}],52:[function(require,module,exports){
+},{"../../../models/user_collection":23,"./user_view":50}],53:[function(require,module,exports){
 var Marionette, ProfileView, UIUtils,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -8024,7 +10664,7 @@ ProfileView = (function(superClass) {
 
 module.exports = ProfileView;
 
-},{"../../common/uiutils":7}],53:[function(require,module,exports){
+},{"../../common/uiutils":8}],54:[function(require,module,exports){
 var LoginView, Marionette, Session, UIUtils,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -8144,7 +10784,7 @@ LoginView = (function(superClass) {
 
 module.exports = LoginView;
 
-},{"../common/uiutils":7,"../models/session":18}],54:[function(require,module,exports){
+},{"../common/uiutils":8,"../models/session":19}],55:[function(require,module,exports){
 var Marionette, ReportsView, Session, UIUtils,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -8182,7 +10822,7 @@ ReportsView = (function(superClass) {
 
 module.exports = ReportsView;
 
-},{"../common/uiutils":7,"../models/session":18}],55:[function(require,module,exports){
+},{"../common/uiutils":8,"../models/session":19}],56:[function(require,module,exports){
 var AirportWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -8362,7 +11002,7 @@ window.AirportWidgetView = AirportWidgetView;
 
 module.exports = AirportWidgetView;
 
-},{"./iops_widget_view":61}],56:[function(require,module,exports){
+},{"./iops_widget_view":62}],57:[function(require,module,exports){
 var AlarmWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -8645,7 +11285,7 @@ window.AlarmWidgetView = AlarmWidgetView;
 
 module.exports = AlarmWidgetView;
 
-},{"./iops_widget_view":61}],57:[function(require,module,exports){
+},{"./iops_widget_view":62}],58:[function(require,module,exports){
 var AssetWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -8714,7 +11354,7 @@ window.AssetWidgetView = AssetWidgetView;
 
 module.exports = AssetWidgetView;
 
-},{"./iops_widget_view":61}],58:[function(require,module,exports){
+},{"./iops_widget_view":62}],59:[function(require,module,exports){
 var ConfigWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -8736,7 +11376,7 @@ ConfigWidgetView = (function(superClass) {
 
   ConfigWidgetView.prototype.template = "widgets/config_widget";
 
-  ConfigWidgetView.prototype.className = 'widget-outer box box-primary gate_widget';
+  ConfigWidgetView.prototype.className = 'widget-outer box box-primary config_widget';
 
   ConfigWidgetView.prototype.ui = {
     display: '#display',
@@ -8910,7 +11550,7 @@ window.ConfigWidgetView = ConfigWidgetView;
 
 module.exports = ConfigWidgetView;
 
-},{"./iops_widget_view":61}],59:[function(require,module,exports){
+},{"./iops_widget_view":62}],60:[function(require,module,exports){
 var GpusummaryWidgetView, IOPSWidgetView, Marionette, UIUtils,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -8923,6 +11563,8 @@ IOPSWidgetView = require('./iops_widget_view');
 UIUtils = require('../../common/uiutils');
 
 GpusummaryWidgetView = (function(superClass) {
+  var tagData, tags;
+
   extend(GpusummaryWidgetView, superClass);
 
   function GpusummaryWidgetView() {
@@ -8969,14 +11611,22 @@ GpusummaryWidgetView = (function(superClass) {
     sy: 9
   };
 
-  GpusummaryWidgetView.prototype.tags = {
-    gpu_time: 'GPU.GPUTime',
-    gpu_gpustatusb: 'GPU.GPUSTATUSBOOLEAN',
-    gpu_raoutavg: 'GPU.RAOUTAVG',
-    gpu_rvoutavg: 'GPU.RVOUTAVG',
-    gpu_ravinavg: 'GPU.RAVINAVG',
-    gpu_rvinavg: 'GPU.RVINAVG'
-  };
+  tags = [];
+
+
+  /**********************************************************
+  tags:
+    #Grid Tags
+    gpu_time:                       'GPU.GPUTime'
+    gpu_gpustatusb:                 'GPU.GPUSTATUSBOOLEAN'
+    gpu_raoutavg:                   'GPU.RAOUTAVG'
+    gpu_rv_out_avg:                   'GPU.RVOUTAVG'
+    gpu_ravinavg:                   'GPU.RAVINAVG'
+    gpu_rvinavg:                    'GPU.RVINAVG'
+  *********************************************************
+   */
+
+  tagData = [];
 
   GpusummaryWidgetView.prototype.initialize = function() {};
 
@@ -9092,7 +11742,7 @@ GpusummaryWidgetView = (function(superClass) {
   };
 
   GpusummaryWidgetView.prototype.update = function() {
-    var lbl, s, show_opts, t, tags, tg;
+    var lbl, ref, s, show_opts, t, tag, tagConfig, tg;
     this.update_settings({
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
@@ -9104,13 +11754,34 @@ GpusummaryWidgetView = (function(superClass) {
     show_opts = (s != null) && !!s.gate;
     this.$('#mode').toggle(show_opts);
     if (show_opts) {
+      this.kill_updates(this.site_code);
+      tagConfig = null;
+      this.tagData = null;
+      tagConfig = new App.tagconfig({
+        'gpu_summary_widget': 'gpu_summary_widget'
+      }, null, this.site_code, s);
+      this.tagData = tagConfig.TagData;
       tags = [];
+      ref = this.tagData;
+      for (tag in ref) {
+        tagData = ref[tag];
+        switch (tagData.Element.Type) {
+          case 'TableRow':
+            if ($(".pbb_pca_gpu_basic_widget " + tagData.Element.ParentID + " td[id*='" + tag + "']").length === 0) {
+              $(".pbb_pca_gpu_basic_widget " + tagData.Element.ParentID).find("tbody:last").append("'<tr><td class='lbl' id='" + tag + "_lbl'>&nbsp;</td><td id='" + tag + "' class='val'>Loading...</td></tr>'");
+            }
+            break;
+          default:
+            null;
+        }
+        tags.push("" + this.prefix + tagData.Tag + ".Value");
+      }
       for (tg in this.tags) {
         t = this.tags[tg];
         tags.push("" + this.prefix + t + ".Value");
       }
       App.opc.add_tags(this.site_code, tags);
-      lbl = "GPU " + s.gate + " ";
+      lbl = this.site_code + ": Gate " + s.gate + " - GPU Summary";
       this.ui.wtitle.html(lbl);
       this.$('#gpu_summary_label #txt').html(lbl);
       this.opc = App.opc.connections[this.site_code];
@@ -9257,21 +11928,21 @@ GpusummaryWidgetView = (function(superClass) {
   GpusummaryWidgetView.prototype.data_update = function(data) {
     var aq, cls, h, icn, m, s, sq, stat, t, th, txt, v, vq;
     this.refresh_values();
-    vq = this.data_q(this.tags.gpu_rvoutavg);
+    vq = this.data_q(this.tagData.gpu_rv_out_avg.Tag);
     this.$("#gauge_volts_out_" + this.model.id + " .bad_data").toggle(!vq);
-    v = this.vals.gpu_rvoutavg;
+    v = this.vals.gpu_rv_out_avg;
     if (vq && !isNaN(v) && v !== '') {
       this.g1.refresh(parseInt(v));
     }
-    aq = this.data_q(this.tags.gpu_raoutavg);
+    aq = this.data_q(this.tagData.gpu_ra_out_avg.Tag);
     this.$("#gauge_amps_out_" + this.model.id + " .bad_data").toggle(!aq);
     v = this.vals.gpu_raoutavg;
     if (aq && !isNaN(v) && v !== '') {
       v = parseInt(parseInt(v));
       this.g2.refresh(v);
     }
-    sq = this.data_q(this.tags.gpu_gpustatusb);
-    stat = this.get_bool(this.vals.gpu_gpustatusb);
+    sq = this.data_q(this.tagData.gpu_status.Tag);
+    stat = this.get_bool(this.vals.gpu_status);
     th = "";
     icn = 'ban';
     cls = 'inactive';
@@ -9300,7 +11971,7 @@ GpusummaryWidgetView = (function(superClass) {
   };
 
   GpusummaryWidgetView.prototype.show_plot = function(p, live) {
-    var dtm, ed, h, lbl, now, parts, ph, pid, plot_color, ptype, sd, show_hist, tags;
+    var dtm, ed, h, lbl, now, parts, ph, pid, plot_color, ptype, sd, show_hist;
     this.initializing = true;
     this.kill_updates(this.site_code);
     this.$("#plots").toggle(p != null);
@@ -9318,7 +11989,7 @@ GpusummaryWidgetView = (function(superClass) {
         lbl = 'Input Voltage';
         tags = [
           {
-            tag: this.prefix + "GPU.RVINAVG.Value",
+            tag: "" + this.prefix + this.tagData.gpu_rv_in_avg.Tag + ".Value",
             fill: true,
             color: plot_color
           }
@@ -9328,19 +11999,40 @@ GpusummaryWidgetView = (function(superClass) {
       case 'vin_b':
       case 'vin_c':
         lbl = "Input Voltage Phase " + ph;
-        tags = [
-          {
-            tag: this.prefix + "GPU.PM_INPUT_PHASE" + ph + "_V.Value",
-            fill: true,
-            color: plot_color
-          }
-        ];
+        switch (ph) {
+          case 'A':
+            tags = [
+              {
+                tag: "" + this.prefix + this.tagData.gpu_pm_input_phasea_v.Tag + ".Value",
+                fill: true,
+                color: plot_color
+              }
+            ];
+            break;
+          case 'B':
+            tags = [
+              {
+                tag: "" + this.prefix + this.tagData.gpu_pm_input_phaseb_v.Tag + ".Value",
+                fill: true,
+                color: plot_color
+              }
+            ];
+            break;
+          case 'C':
+            tags = [
+              {
+                tag: "" + this.prefix + this.tagData.gpu_pm_input_phasec_v.Tag + ".Value",
+                fill: true,
+                color: plot_color
+              }
+            ];
+        }
         break;
       case 'vout':
         lbl = 'Output Voltage';
         tags = [
           {
-            tag: this.prefix + "GPU.RVOUTAVG.Value",
+            tag: "" + this.prefix + this.tagData.gpu_rv_out_avg.Tag + ".Value",
             fill: true,
             color: plot_color
           }
@@ -9350,19 +12042,40 @@ GpusummaryWidgetView = (function(superClass) {
       case 'vout_b':
       case 'vout_c':
         lbl = "Output Voltage Phase " + ph;
-        tags = [
-          {
-            tag: this.prefix + "GPU.PM_OUTPUT_PHASE" + ph + "_V.Value",
-            fill: true,
-            color: plot_color
-          }
-        ];
+        switch (ph) {
+          case 'A':
+            tags = [
+              {
+                tag: "" + this.prefix + this.tagData.gpu_pm_output_phasea_v.Tag + ".Value",
+                fill: true,
+                color: plot_color
+              }
+            ];
+            break;
+          case 'B':
+            tags = [
+              {
+                tag: "" + this.prefix + this.tagData.gpu_pm_output_phaseb_v.Tag + ".Value",
+                fill: true,
+                color: plot_color
+              }
+            ];
+            break;
+          case 'C':
+            tags = [
+              {
+                tag: "" + this.prefix + this.tagData.gpu_pm_output_phasec_v.Tag + ".Value",
+                fill: true,
+                color: plot_color
+              }
+            ];
+        }
         break;
       case 'aout':
         lbl = 'Output Amperage';
         tags = [
           {
-            tag: this.prefix + "GPU.RAOUTAVG.Value",
+            tag: "" + this.prefix + this.tagData.gpu_ra_out_avg.Tag + ".Value",
             fill: true,
             color: plot_color
           }
@@ -9372,13 +12085,34 @@ GpusummaryWidgetView = (function(superClass) {
       case 'aout_b':
       case 'aout_c':
         lbl = "Output Amperage Phase " + ph;
-        tags = [
-          {
-            tag: this.prefix + "GPU.PM_OUTPUT_PHASE" + ph + "_I.Value",
-            fill: true,
-            color: plot_color
-          }
-        ];
+        switch (ph) {
+          case 'A':
+            tags = [
+              {
+                tag: "" + this.prefix + this.tagData.gpu_pm_output_phasea_i.Tag + ".Value",
+                fill: true,
+                color: plot_color
+              }
+            ];
+            break;
+          case 'B':
+            tags = [
+              {
+                tag: "" + this.prefix + this.tagData.gpu_pm_output_phaseb_i.Tag + ".Value",
+                fill: true,
+                color: plot_color
+              }
+            ];
+            break;
+          case 'C':
+            tags = [
+              {
+                tag: "" + this.prefix + this.tagData.gpu_pm_output_phasec_i.Tag + ".Value",
+                fill: true,
+                color: plot_color
+              }
+            ];
+        }
     }
     this.$('#ptype_lbl').html(lbl);
     this.$('#toggle_volts_in').toggle(ptype !== 'vin');
@@ -9518,7 +12252,7 @@ window.GpusummaryWidgetView = GpusummaryWidgetView;
 
 module.exports = GpusummaryWidgetView;
 
-},{"../../common/uiutils":7,"./iops_widget_view":61}],60:[function(require,module,exports){
+},{"../../common/uiutils":8,"./iops_widget_view":62}],61:[function(require,module,exports){
 var GpuWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -9529,6 +12263,8 @@ Marionette = require('marionette');
 IOPSWidgetView = require('./iops_widget_view');
 
 GpuWidgetView = (function(superClass) {
+  var tags;
+
   extend(GpuWidgetView, superClass);
 
   function GpuWidgetView() {
@@ -9560,70 +12296,81 @@ GpuWidgetView = (function(superClass) {
     sy: 10
   };
 
-  GpuWidgetView.prototype.tags = {
-    gpu_gpustatus: 'GPU.GPUSTATUSBOOLEAN',
-    gpu_raoutavg: 'GPU.RAOUTAVG',
-    gpu_rvoutavg: 'GPU.RVOUTAVG',
-    gpu_rvinavg: 'GPU.RVINAVG',
-    gpu_pm_output_phasea_i: 'GPU.RAOUTA',
-    gpu_pm_output_phaseb_i: 'GPU.RAOUTB',
-    gpu_pm_output_phasec_i: 'GPU.RAOUTC',
-    gpu_pm_output_phasea_v: 'GPU.RVOUTA',
-    gpu_pm_output_phaseb_v: 'GPU.RVOUTB',
-    gpu_pm_output_phasec_v: 'GPU.RVOUTC',
-    gpu_pm_input_phasea_v: 'GPU.RVINA',
-    gpu_pm_input_phaseb_v: 'GPU.RVINB',
-    gpu_pm_input_phasec_v: 'GPU.RVINC'
-  };
+  tags = [];
 
   GpuWidgetView.prototype.update = function() {
-    var cloud, lbl, s, settings, t, tags, tg;
+    var lbl, ref, ref1, s, t, tag, tagConfig, tagData, tg;
+    this.update_settings({
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+    });
+    if (this.site_code == null) {
+      return null;
+    }
     s = this.model.get("settings");
-    if ((s != null) && !!s.gate) {
-      this.site = OPCManager.get_site(s.site);
-      this.site_code = this.site.get('code');
-      if (this.site_code == null) {
-        return null;
-      }
+    if ((s != null) && !!s.site) {
       this.kill_updates(this.site_code);
-      settings = this.site.get('settings');
-      settings || (settings = {});
-      cloud = settings.cloud ? "RemoteSCADAHosting.Airport-" + this.site_code + "." : '';
-      this.prefix = cloud + "Airport." + this.site_code + ".Term" + s.terminal + ".Zone" + s.zone + ".Gate" + s.gate + ".";
+      tagConfig = null;
+      this.tagData = null;
+      $('.gpu_widget #widgetData tbody').empty();
+      tagConfig = new App.tagconfig({
+        'gpu_widget': 'gpu_widget'
+      }, null, this.site_code, s);
+      this.tagData = tagConfig.TagData;
       tags = [];
+      ref1 = this.tagData;
+      for (tag in ref1) {
+        tagData = ref1[tag];
+        switch (tagData.Element.Type) {
+          case 'TableRow':
+            if ($(".gpu_widget " + tagData.Element.ParentID + " td[id*='" + tag + "']").length === 0) {
+              $(".gpu_widget " + tagData.Element.ParentID).find("tbody:last").append("'<tr><td class='lbl' id='" + tag + "_lbl'>&nbsp;</td><td id='" + tag + "' class='val'>Loading...</td></tr>'");
+            }
+            break;
+          default:
+            null;
+        }
+        tags.push("" + this.prefix + tagData.Tag + ".Value");
+      }
       for (tg in this.tags) {
         t = this.tags[tg];
         tags.push("" + this.prefix + t + ".Value");
       }
       App.opc.add_tags(this.site_code, tags);
-      this.watch_updates(this.site_code);
-      lbl = "GPU " + s.gate + " - Details";
+      lbl = this.site_code + ": Gate " + s.gate + " - GPU";
       this.ui.wtitle.html(lbl);
-      this.$('#gpu_label #txt').html(lbl);
+      this.$('#display_label #txt').html(lbl);
       this.opc = App.opc.connections[this.site_code];
+      ref = s.layout;
+      this.watch_updates(this.site_code);
       return this.set_descriptions(true);
     }
   };
 
   GpuWidgetView.prototype.data_update = function(data) {
-    var tg;
-    this.vals = {};
-    for (tg in this.tags) {
-      this.vals[tg] = this.get_value(this.tags[tg]);
+    var aq, ref1, tag, tagData, wq;
+    this.refresh_values();
+    ref1 = this.tagData;
+    for (tag in ref1) {
+      tagData = ref1[tag];
+      switch (tagData.DataType.toLowerCase()) {
+        case 'boolean':
+          this.render_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004, tagData.Parameters.Parm005);
+          break;
+        case 'float':
+          this.render_value_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004);
+          break;
+        case 'value':
+          this.render_value_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004);
+          break;
+        default:
+          null;
+      }
     }
-    this.render_row("gpu_gpustatus", "On", "Off", "ok");
-    this.render_value_row("gpu_raoutavg", true, 1, "Amps");
-    this.render_value_row("gpu_rvoutavg", true, 1, "Volts");
-    this.render_value_row("gpu_rvinavg", true, 1, "Volts");
-    this.render_value_row("gpu_pm_output_phasea_i", true, 1, "Amps");
-    this.render_value_row("gpu_pm_output_phaseb_i", true, 1, "Amps");
-    this.render_value_row("gpu_pm_output_phasec_i", true, 1, "Amps");
-    this.render_value_row("gpu_pm_output_phasea_v", true, 1, "Volts");
-    this.render_value_row("gpu_pm_output_phaseb_v", true, 1, "Volts");
-    this.render_value_row("gpu_pm_output_phasec_v", true, 1, "Volts");
-    this.render_value_row("gpu_pm_input_phasea_v", true, 1, "Volts");
-    this.render_value_row("gpu_pm_input_phaseb_v", true, 1, "Volts");
-    this.render_value_row("gpu_pm_input_phasec_v", true, 1, "Volts");
+    aq = this.data_q(this.tags.pbb_has_alarms);
+    this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
+    wq = this.data_q(this.tags.pbb_has_warnings);
+    this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings) === true && wq);
     return this.set_descriptions();
   };
 
@@ -9679,7 +12426,7 @@ window.GpuWidgetView = GpuWidgetView;
 
 module.exports = GpuWidgetView;
 
-},{"./iops_widget_view":61}],61:[function(require,module,exports){
+},{"./iops_widget_view":62}],62:[function(require,module,exports){
 var IOPSWidgetView, Marionette, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -9726,7 +12473,11 @@ IOPSWidgetView = (function(superClass) {
     var c, t;
     c = App.opc.connections[this.site_code];
     t = c.tags["" + this.prefix + tag];
-    return t.props.Value.quality;
+    if (t != null) {
+      return t.props.Value.quality;
+    } else {
+      return false;
+    }
   };
 
   IOPSWidgetView.prototype.data_update = function(data) {};
@@ -9744,7 +12495,7 @@ IOPSWidgetView = (function(superClass) {
   };
 
   IOPSWidgetView.prototype.set_descriptions = function(force) {
-    var t, tds, tg, tlen;
+    var d, ref, ref1, t, tds, tg, tlen;
     tds = [];
     tlen = Object.keys(this.tags).length;
     if (!force && (this.dcount != null) && this.dcount >= tlen) {
@@ -9754,26 +12505,53 @@ IOPSWidgetView = (function(superClass) {
     if (this.dcount == null) {
       this.dcount = 0;
     }
-    for (t in this.tags) {
+    ref = this.tags;
+    for (t in ref) {
+      d = ref[t];
       tg = this.tags[t];
-      tds.push("" + this.prefix + tg + ".Description");
+      tds.push("" + this.prefix + d + ".Description");
+    }
+    ref1 = this.tagData;
+    for (t in ref1) {
+      d = ref1[t];
+      tds.push("" + this.prefix + d.Tag + ".Description");
     }
     return this.opc.load_tags(tds, (function(_this) {
       return function(data) {
-        var i, idx, len, ref, results, ts, tt, v;
-        ref = data.tags;
+        var i, idx, len, ref2, ref3, ref4, results, tt, v, vals;
+        vals = [];
+        ref2 = _this.tags;
+        for (t in ref2) {
+          d = ref2[t];
+          tg = _this.tags[t];
+          vals[t] = {
+            "Tag": "" + tg,
+            "Label": null
+          };
+        }
+        ref3 = _this.tagData;
+        for (t in ref3) {
+          d = ref3[t];
+          vals[t] = {
+            "Tag": "" + d.Tag,
+            "Label": "" + d.Label
+          };
+        }
+        ref4 = data.tags;
         results = [];
-        for (i = 0, len = ref.length; i < len; i++) {
-          t = ref[i];
+        for (i = 0, len = ref4.length; i < len; i++) {
+          t = ref4[i];
           results.push((function() {
-            var ref1, results1;
-            ref1 = this.tags;
+            var results1;
             results1 = [];
-            for (tt in ref1) {
-              idx = ref1[tt];
-              ts = this.tags[tt];
-              if (("" + this.prefix + ts) === t.name) {
-                v = t.props[0].val;
+            for (tt in vals) {
+              idx = vals[tt];
+              if (("" + this.prefix + idx.Tag) === t.name) {
+                if ((t.props != null) && t.props[0].val !== "") {
+                  v = t.props[0].val;
+                } else {
+                  v = idx.Label;
+                }
                 this.$("#" + tt + "_lbl").html(v);
                 this.dcount += 1;
                 break;
@@ -9789,10 +12567,13 @@ IOPSWidgetView = (function(superClass) {
     })(this));
   };
 
-  IOPSWidgetView.prototype.render_row = function(tag, tv, fv, tc, fc) {
-    var el, txt, v;
+  IOPSWidgetView.prototype.render_row = function(tag, tv, fv, tc, fc, format) {
+    var el, tagValue, txt, v;
     v = this.get_bool(this.vals[tag]);
     txt = v ? tv : fv;
+    if (format != null) {
+      txt = format.replace(/#{1}/, ("" + txt).replace(/^\s+|\s+$/g, ""));
+    }
     el = this.$("#" + tag).html(txt);
     if (tc != null) {
       el.toggleClass(tc, v);
@@ -9800,26 +12581,58 @@ IOPSWidgetView = (function(superClass) {
     if (fc != null) {
       el.toggleClass(fc, !v);
     }
-    return this.mark_bad_data(this.tags[tag], el);
+    tagValue = null;
+    if (this.tags[tag] != null) {
+      tagValue = this.tags[tag];
+    } else if (this.tagData[tag] != null) {
+      tagValue = this.tagData[tag].Tag;
+    }
+    return this.mark_bad_data(tagValue, el);
   };
 
   IOPSWidgetView.prototype.render_tagvalue = function(tag) {
-    var a, el1;
+    var a, el1, tagValue;
     a = (this.vals[tag] != null) && this.vals[tag] !== '' ? parseFloat(this.vals[tag]).toFixed(2) : ' --';
     el1 = this.$("#" + tag).html("" + a);
-    return this.mark_bad_data(this.tags[tag], el1);
+    tagValue = null;
+    if (this.tags[tag] != null) {
+      tagValue = this.tags[tag];
+    } else if (this.tagData[tag] != null) {
+      tagValue = this.tagData[tag].Tag;
+    }
+    return this.mark_bad_data(tagValue, el1);
   };
 
-  IOPSWidgetView.prototype.render_value_row = function(tag, IsNumeric, precision, suffix) {
-    var el, set_value;
+  IOPSWidgetView.prototype.render_value_row = function(tag, IsNumeric, precision, format) {
+
+    /*********************************************************
+    ** format: If no #{1} is found in string treat as suffix
+    **         otherwise replace #{1} with the #{set_value} 
+    ********************************************************
+     */
+    var displayValue, el, set_value, tagValue;
     if ((this.vals[tag] != null) && this.vals[tag] !== '') {
       set_value = IsNumeric ? parseFloat(this.vals[tag]).toFixed(precision) : this.vals[tag];
     } else {
       set_value = ' -- ';
     }
-    suffix = suffix != null ? " " + suffix : "";
-    el = this.$("#" + tag).html("" + set_value + suffix);
-    return this.mark_bad_data(this.tags[tag], el);
+    displayValue = ("" + set_value).replace(/^\s+|\s+$/g, "");
+    if (format != null) {
+      displayValue = '';
+      if (format.search(/#{1}/) > -1) {
+        displayValue = format.replace(/#{1}/, ("" + set_value).replace(/^\s+|\s+$/g, ""));
+      } else {
+        displayValue = (set_value + " " + format).replace(/^\s+|\s+$/g, "");
+      }
+    }
+    el = this.$("#" + tag).html(displayValue);
+    tagValue = null;
+    if (this.tags[tag] != null) {
+      tagValue = this.tags[tag];
+    } else if (this.tagData[tag] != null) {
+      tagValue = this.tagData[tag].Tag;
+    }
+    return this.mark_bad_data(tagValue, el);
   };
 
   IOPSWidgetView.prototype.update_settings = function(arg) {
@@ -9844,10 +12657,17 @@ IOPSWidgetView = (function(superClass) {
   };
 
   IOPSWidgetView.prototype.refresh_values = function() {
-    var tg;
+    var d, ref, ref1, t;
     this.vals = {};
-    for (tg in this.tags) {
-      this.vals[tg] = this.get_value(this.tags[tg]);
+    ref = this.tags;
+    for (t in ref) {
+      d = ref[t];
+      this.vals[t] = this.get_value(d);
+    }
+    ref1 = this.tagData;
+    for (t in ref1) {
+      d = ref1[t];
+      this.vals[t] = this.get_value(d.Tag);
     }
     return this;
   };
@@ -9952,7 +12772,7 @@ window.IOPSWidgetView = IOPSWidgetView;
 
 module.exports = IOPSWidgetView;
 
-},{"../dashboard/widget_view":38}],62:[function(require,module,exports){
+},{"../dashboard/widget_view":39}],63:[function(require,module,exports){
 var IOPSWidgetView, KpiWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -10048,317 +12868,7 @@ window.KpiWidgetView = KpiWidgetView;
 
 module.exports = KpiWidgetView;
 
-},{"./iops_widget_view":61}],63:[function(require,module,exports){
-var IOPSWidgetView, Marionette, PbbpcagpuWidgetView,
-  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
-  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-  hasProp = {}.hasOwnProperty;
-
-Marionette = require('marionette');
-
-IOPSWidgetView = require('./iops_widget_view');
-
-PbbpcagpuWidgetView = (function(superClass) {
-  extend(PbbpcagpuWidgetView, superClass);
-
-  function PbbpcagpuWidgetView() {
-    this.set_model = bind(this.set_model, this);
-    this.data_update = bind(this.data_update, this);
-    return PbbpcagpuWidgetView.__super__.constructor.apply(this, arguments);
-  }
-
-  PbbpcagpuWidgetView.prototype.template = "widgets/pbb_pca_gpu_basic_widget";
-
-  PbbpcagpuWidgetView.prototype.className = 'widget-outer box box-primary gate_widget';
-
-  PbbpcagpuWidgetView.prototype.ui = {
-    wtitle: 'h3.box-title',
-    display: '.display',
-    content: '.content',
-    docked: 'i#docked',
-    alarms: 'i#alarms',
-    warnings: 'i#warnings',
-    site: 'select#site'
-  };
-
-  PbbpcagpuWidgetView.layout = {
-    sx: 5,
-    sy: 8
-  };
-
-  PbbpcagpuWidgetView.prototype.tags = {
-    pbb_status: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-    pca_pcastatus: 'PCA.PCASTATUS',
-    gpu_gpustatus: 'GPU.GPUSTATUSBOOLEAN',
-    pbb_docktime: 'PBB.DOCKTIME',
-    pbb_hookup: 'PBB.HOOKUPTIME',
-    pca_hookup: 'PCA.PCATime',
-    gpu_hookup: 'GPU.GPUTime',
-    pca_pcadischargetemp: 'PCA.TEMPDISCH',
-    gpu_raoutavg: 'GPU.RAOUTAVG',
-    gpu_rvoutavg: 'GPU.RVOUTAVG',
-    pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
-    pbb_has_warnings: 'Warning._HasWarnings',
-    pbb_has_alarms: 'Alarm._HasAlarms'
-  };
-
-  PbbpcagpuWidgetView.prototype.update = function() {
-    var lbl, s, t, tags, tg;
-    this.update_settings({
-      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
-      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
-    });
-    if (this.site_code == null) {
-      return null;
-    }
-    s = this.model.get("settings");
-    if ((s != null) && !!s.site) {
-      tags = [];
-      for (tg in this.tags) {
-        t = this.tags[tg];
-        tags.push("" + this.prefix + t + ".Value");
-      }
-      App.opc.add_tags(this.site_code, tags);
-      lbl = "PBB/PCA/GPU " + s.gate;
-      this.ui.wtitle.html(lbl);
-      this.$('#display_label #txt').html(lbl);
-      this.opc = App.opc.connections[this.site_code];
-      this.watch_updates(this.site_code);
-      return this.set_descriptions(true);
-    }
-  };
-
-  PbbpcagpuWidgetView.prototype.data_update = function(data) {
-    var aq, tg, wq;
-    this.vals = {};
-    for (tg in this.tags) {
-      this.vals[tg] = this.get_value(this.tags[tg]);
-    }
-    this.render_row("pbb_status", "Docked", "UnDocked", "ok", "err");
-    this.render_row("pca_pcastatus", "On", "Off", "ok", "err");
-    this.render_row("gpu_gpustatus", "On", "Off", "ok", "err");
-    this.render_value_row("pbb_docktime", true, 2, " mins");
-    this.render_value_row("pbb_hookup", true, 2, " mins");
-    this.render_value_row("pca_hookup", true, 2, " mins");
-    this.render_value_row("gpu_hookup", true, 2, " mins");
-    this.render_value_row("pca_pcadischargetemp", true, 2, " F");
-    this.render_value_row("gpu_raoutavg", true, 1, "Amps");
-    this.render_value_row("gpu_rvoutavg", true, 1, "Volts");
-    this.$("#pbb_statused_lbl").html('PBB Status');
-    this.$("#pbb_dockedtime_lbl").html('PBB Dock Time');
-    this.$("#pca_discharge_lbl").html('PCA Discharge Temp');
-    this.$("#gpu_raout_lbl").html('GPU Output Amps');
-    this.$("#gpu_rvout_lbl").html('GPU Output Volts');
-    aq = this.data_q(this.tags.pbb_has_alarms);
-    this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
-    wq = this.data_q(this.tags.pbb_has_warnings);
-    this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings) === true && wq);
-    return this.set_descriptions();
-  };
-
-  PbbpcagpuWidgetView.prototype.set_model = function() {
-    var s;
-    s = _.clone(this.model.get("settings"));
-    s.site = this.$('#site').val();
-    s.terminal = this.$('#terminal').val();
-    s.zone = this.$('#zone').val();
-    s.gate = this.$('#gate').val();
-    return this.model.set("settings", s);
-  };
-
-  PbbpcagpuWidgetView.prototype.toggle_settings = function(e) {
-    PbbpcagpuWidgetView.__super__.toggle_settings.call(this, e);
-    return this.ui.display.toggle(!this.settings_visible);
-  };
-
-  PbbpcagpuWidgetView.prototype.onShow = function() {
-    var gate, settings;
-    settings = this.model.get('settings');
-    settings || (settings = {});
-    this.draw_selectors(settings.terminal, settings.zone, settings.gate);
-    this.$('#site').on('change', (function(_this) {
-      return function() {
-        _this.draw_selectors();
-        return _this.set_model();
-      };
-    })(this));
-    gate = settings.gate;
-    if ((gate == null) || gate === '') {
-      this.toggle_settings();
-    }
-    this.site_code = OPCManager.get_site_code(settings.site);
-    if (this.site_code != null) {
-      return this.watch_updates(this.site_code);
-    }
-  };
-
-  PbbpcagpuWidgetView.prototype.start = function() {
-    return this.update();
-  };
-
-  PbbpcagpuWidgetView.prototype.onDestroy = function(arg1, arg2) {
-    return this.kill_updates(this.site_code);
-  };
-
-  return PbbpcagpuWidgetView;
-
-})(IOPSWidgetView);
-
-window.PbbpcagpuWidgetView = PbbpcagpuWidgetView;
-
-module.exports = PbbpcagpuWidgetView;
-
-},{"./iops_widget_view":61}],64:[function(require,module,exports){
-var IOPSWidgetView, Marionette, PbbWidgetView,
-  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
-  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-  hasProp = {}.hasOwnProperty;
-
-Marionette = require('marionette');
-
-IOPSWidgetView = require('./iops_widget_view');
-
-PbbWidgetView = (function(superClass) {
-  extend(PbbWidgetView, superClass);
-
-  function PbbWidgetView() {
-    this.set_model = bind(this.set_model, this);
-    this.data_update = bind(this.data_update, this);
-    return PbbWidgetView.__super__.constructor.apply(this, arguments);
-  }
-
-  PbbWidgetView.prototype.template = "widgets/pbb_widget";
-
-  PbbWidgetView.prototype.className = 'widget-outer box box-primary gate_widget';
-
-  PbbWidgetView.prototype.ui = {
-    wtitle: 'h3.box-title',
-    display: '.display',
-    content: '.content',
-    docked: 'i#docked',
-    alarms: 'i#alarms',
-    warnings: 'i#warnings',
-    site: 'select#site'
-  };
-
-  PbbWidgetView.layout = {
-    sx: 4,
-    sy: 6
-  };
-
-  PbbWidgetView.prototype.tags = {
-    pbb_status: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-    pbb_autolevelmode: 'PBB.AUTOLEVELMODEFLAG',
-    pbb_aircraft: 'PBB.AIRCRAFTSTATUS',
-    pbb_canopy: 'PBB.CANOPYDOWN',
-    pbb_acffloor: 'PBB.ACFFLOOR',
-    pbb_cablehoist: 'PBB.CABHOIST',
-    pbb_docktime: 'PBB.DOCKTIME',
-    pbb_undocktime: 'PBB.UNDOCKTIME',
-    pbb_smokedetector: 'PBB.SMOKEDETECTOR',
-    pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
-    pbb_has_warnings: 'Warning._HasWarnings',
-    pbb_has_alarms: 'Alarm._HasAlarms'
-  };
-
-  PbbWidgetView.prototype.update = function() {
-    var lbl, s, t, tags, tg;
-    this.update_settings({
-      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
-      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
-    });
-    if (this.site_code == null) {
-      return null;
-    }
-    s = this.model.get("settings");
-    if ((s != null) && !!s.site) {
-      tags = [];
-      for (tg in this.tags) {
-        t = this.tags[tg];
-        tags.push("" + this.prefix + t + ".Value");
-      }
-      App.opc.add_tags(this.site_code, tags);
-      lbl = "Gate " + s.gate;
-      this.ui.wtitle.html(lbl);
-      this.$('#display_label #txt').html(lbl);
-      this.opc = App.opc.connections[this.site_code];
-      this.watch_updates(this.site_code);
-      return this.set_descriptions(true);
-    }
-  };
-
-  PbbWidgetView.prototype.data_update = function(data) {
-    var aq, tg, wq;
-    this.vals = {};
-    for (tg in this.tags) {
-      this.vals[tg] = this.get_value(this.tags[tg]);
-    }
-    this.render_row("pbb_status", "Docked", "UnDocked", "ok");
-    this.render_row("pbb_autolevelmode", "On", "Off", "ok");
-    this.render_row("pbb_smokedetector", "Off", "On", "", "err");
-    this.render_row("pbb_canopy", "Down", "Up", "ok");
-    this.render_row("pbb_cablehoist", "Deployed", "Retracted", "ok");
-    this.$("#pbb_statused_lbl").html('PBB Status');
-    aq = this.data_q(this.tags.pbb_has_alarms);
-    this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
-    wq = this.data_q(this.tags.pbb_has_warnings);
-    this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings) === true && wq);
-    return this.set_descriptions();
-  };
-
-  PbbWidgetView.prototype.set_model = function() {
-    var s;
-    s = _.clone(this.model.get("settings"));
-    s.site = this.$('#site').val();
-    s.terminal = this.$('#terminal').val();
-    s.zone = this.$('#zone').val();
-    s.gate = this.$('#gate').val();
-    return this.model.set("settings", s);
-  };
-
-  PbbWidgetView.prototype.toggle_settings = function(e) {
-    PbbWidgetView.__super__.toggle_settings.call(this, e);
-    return this.ui.display.toggle(!this.settings_visible);
-  };
-
-  PbbWidgetView.prototype.onShow = function() {
-    var gate, settings;
-    settings = this.model.get('settings');
-    settings || (settings = {});
-    this.draw_selectors(settings.terminal, settings.zone, settings.gate);
-    this.$('#site').on('change', (function(_this) {
-      return function() {
-        _this.draw_selectors();
-        return _this.set_model();
-      };
-    })(this));
-    gate = settings.gate;
-    if ((gate == null) || gate === '') {
-      this.toggle_settings();
-    }
-    this.site_code = OPCManager.get_site_code(settings.site);
-    if (this.site_code != null) {
-      return this.watch_updates(this.site_code);
-    }
-  };
-
-  PbbWidgetView.prototype.start = function() {
-    return this.update();
-  };
-
-  PbbWidgetView.prototype.onDestroy = function(arg1, arg2) {
-    return this.kill_updates(this.site_code);
-  };
-
-  return PbbWidgetView;
-
-})(IOPSWidgetView);
-
-window.PbbWidgetView = PbbWidgetView;
-
-module.exports = PbbWidgetView;
-
-},{"./iops_widget_view":61}],65:[function(require,module,exports){
+},{"./iops_widget_view":62}],64:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbdetailWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -10377,9 +12887,9 @@ PbbdetailWidgetView = (function(superClass) {
     return PbbdetailWidgetView.__super__.constructor.apply(this, arguments);
   }
 
-  PbbdetailWidgetView.prototype.template = "widgets/pbbdetail_widget";
+  PbbdetailWidgetView.prototype.template = "widgets/pbb_detail_widget";
 
-  PbbdetailWidgetView.prototype.className = 'widget-outer box box-primary pbbdetail_widget';
+  PbbdetailWidgetView.prototype.className = 'widget-outer box box-primary pbb_detail_widget';
 
   PbbdetailWidgetView.prototype.ui = {
     terminal: 'input#terminal',
@@ -10432,7 +12942,7 @@ PbbdetailWidgetView = (function(superClass) {
       }
       App.opc.add_tags(this.site_code, tags);
       this.watch_updates(this.site_code);
-      lbl = "Gate " + s.gate + " - Overview";
+      lbl = this.site_code + ": Gate " + s.gate + " - Overview";
       this.ui.wtitle.html(lbl);
       this.$('#display_label #txt').html(lbl);
       this.opc = App.opc.connections[this.site_code];
@@ -10523,7 +13033,7 @@ window.PbbdetailWidgetView = PbbdetailWidgetView;
 
 module.exports = PbbdetailWidgetView;
 
-},{"./iops_widget_view":61}],66:[function(require,module,exports){
+},{"./iops_widget_view":62}],65:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbleveldetailWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -10542,9 +13052,9 @@ PbbleveldetailWidgetView = (function(superClass) {
     return PbbleveldetailWidgetView.__super__.constructor.apply(this, arguments);
   }
 
-  PbbleveldetailWidgetView.prototype.template = "widgets/pbbleveldetail_widget";
+  PbbleveldetailWidgetView.prototype.template = "widgets/pbb_level_detail_widget";
 
-  PbbleveldetailWidgetView.prototype.className = 'widget-outer box box-primary gate_widget';
+  PbbleveldetailWidgetView.prototype.className = 'widget-outer box box-primary pbb_level_detail_widget';
 
   PbbleveldetailWidgetView.prototype.ui = {
     terminal: 'input#terminal',
@@ -10567,7 +13077,6 @@ PbbleveldetailWidgetView = (function(superClass) {
 
   PbbleveldetailWidgetView.prototype.tags = {
     pbb_status: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-    pbb_aircraft: 'PBB.AIRCRAFTSTATUS',
     pbb_autolevelmode: 'PBB.AUTOLEVELMODEFLAG',
     pbb_canopy: 'PBB.CANOPYDOWN',
     pbb_autolevelkey: 'PBB.AUTOLEVELKEY',
@@ -10729,7 +13238,363 @@ window.PbbleveldetailWidgetView = PbbleveldetailWidgetView;
 
 module.exports = PbbleveldetailWidgetView;
 
-},{"./iops_widget_view":61}],67:[function(require,module,exports){
+},{"./iops_widget_view":62}],66:[function(require,module,exports){
+var IOPSWidgetView, Marionette, PbbpcagpuWidgetView,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+IOPSWidgetView = require('./iops_widget_view');
+
+PbbpcagpuWidgetView = (function(superClass) {
+  var tagData;
+
+  extend(PbbpcagpuWidgetView, superClass);
+
+  function PbbpcagpuWidgetView() {
+    this.set_model = bind(this.set_model, this);
+    this.data_update = bind(this.data_update, this);
+    return PbbpcagpuWidgetView.__super__.constructor.apply(this, arguments);
+  }
+
+  PbbpcagpuWidgetView.prototype.template = "widgets/pbb_pca_gpu_basic_widget";
+
+  PbbpcagpuWidgetView.prototype.className = 'widget-outer box box-primary pbb_pca_gpu_basic_widget';
+
+  PbbpcagpuWidgetView.prototype.ui = {
+    wtitle: 'h3.box-title',
+    display: '.display',
+    content: '.content',
+    docked: 'i#docked',
+    alarms: 'i#alarms',
+    warnings: 'i#warnings',
+    site: 'select#site'
+  };
+
+  PbbpcagpuWidgetView.layout = {
+    sx: 5,
+    sy: 8
+  };
+
+  PbbpcagpuWidgetView.prototype.tags = {
+    pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
+    pbb_has_warnings: 'Warning._HasWarnings',
+    pbb_has_alarms: 'Alarm._HasAlarms'
+  };
+
+  tagData = [];
+
+  PbbpcagpuWidgetView.prototype.update = function() {
+    var lbl, ref, ref1, s, t, tag, tagConfig, tags, tg;
+    this.update_settings({
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+    });
+    if (this.site_code == null) {
+      return null;
+    }
+    s = this.model.get("settings");
+    if ((s != null) && !!s.site) {
+      this.kill_updates(this.site_code);
+      tagConfig = null;
+      this.tagData = null;
+      $('.pbb_pca_gpu_basic_widget #widgetData tbody').empty();
+      tagConfig = new App.tagconfig({
+        'pbb_pca_gpu_basic_widget': 'pbb_pca_gpu_basic_widget'
+      }, null, this.site_code, s);
+      this.tagData = tagConfig.TagData;
+      tags = [];
+      ref1 = this.tagData;
+      for (tag in ref1) {
+        tagData = ref1[tag];
+        switch (tagData.Element.Type) {
+          case 'TableRow':
+            if ($(".pbb_pca_gpu_basic_widget " + tagData.Element.ParentID + " td[id*='" + tag + "']").length === 0) {
+              $(".pbb_pca_gpu_basic_widget " + tagData.Element.ParentID).find("tbody:last").append("'<tr><td class='lbl' id='" + tag + "_lbl'>&nbsp;</td><td id='" + tag + "' class='val'>Loading...</td></tr>'");
+            }
+            break;
+          default:
+            null;
+        }
+        tags.push("" + this.prefix + tagData.Tag + ".Value");
+      }
+      for (tg in this.tags) {
+        t = this.tags[tg];
+        tags.push("" + this.prefix + t + ".Value");
+      }
+      App.opc.add_tags(this.site_code, tags);
+      lbl = this.site_code + ": Gate " + s.gate + " PBB/PCA/GPU";
+      this.ui.wtitle.html(lbl);
+      this.$('#display_label #txt').html(lbl);
+      this.opc = App.opc.connections[this.site_code];
+      ref = s.layout;
+      this.watch_updates(this.site_code);
+      return this.set_descriptions(true);
+    }
+  };
+
+  PbbpcagpuWidgetView.prototype.data_update = function(data) {
+    var aq, ref1, tag, wq;
+    this.refresh_values();
+    ref1 = this.tagData;
+    for (tag in ref1) {
+      tagData = ref1[tag];
+      switch (tagData.DataType.toLowerCase()) {
+        case 'boolean':
+          this.render_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004, tagData.Parameters.Parm005);
+          break;
+        case 'float':
+          this.render_value_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004);
+          break;
+        case 'value':
+          this.render_value_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004);
+          break;
+        default:
+          null;
+      }
+    }
+    aq = this.data_q(this.tags.pbb_has_alarms);
+    this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
+    wq = this.data_q(this.tags.pbb_has_warnings);
+    this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings) === true && wq);
+    return this.set_descriptions();
+  };
+
+  PbbpcagpuWidgetView.prototype.set_model = function() {
+    var s;
+    s = _.clone(this.model.get("settings"));
+    s.site = this.$('#site').val();
+    s.terminal = this.$('#terminal').val();
+    s.zone = this.$('#zone').val();
+    s.gate = this.$('#gate').val();
+    return this.model.set("settings", s);
+  };
+
+  PbbpcagpuWidgetView.prototype.toggle_settings = function(e) {
+    PbbpcagpuWidgetView.__super__.toggle_settings.call(this, e);
+    return this.ui.display.toggle(!this.settings_visible);
+  };
+
+  PbbpcagpuWidgetView.prototype.onShow = function() {
+    var gate, settings;
+    settings = this.model.get('settings');
+    settings || (settings = {});
+    this.draw_selectors(settings.terminal, settings.zone, settings.gate);
+    this.$('#site').on('change', (function(_this) {
+      return function() {
+        _this.draw_selectors();
+        return _this.set_model();
+      };
+    })(this));
+    gate = settings.gate;
+    if ((gate == null) || gate === '') {
+      this.toggle_settings();
+    }
+    this.site_code = OPCManager.get_site_code(settings.site);
+    if (this.site_code != null) {
+      return this.watch_updates(this.site_code);
+    }
+  };
+
+  PbbpcagpuWidgetView.prototype.start = function() {
+    return this.update();
+  };
+
+  PbbpcagpuWidgetView.prototype.onDestroy = function(arg1, arg2) {
+    return this.kill_updates(this.site_code);
+  };
+
+  return PbbpcagpuWidgetView;
+
+})(IOPSWidgetView);
+
+window.PbbpcagpuWidgetView = PbbpcagpuWidgetView;
+
+module.exports = PbbpcagpuWidgetView;
+
+},{"./iops_widget_view":62}],67:[function(require,module,exports){
+var IOPSWidgetView, Marionette, PbbWidgetView,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+IOPSWidgetView = require('./iops_widget_view');
+
+PbbWidgetView = (function(superClass) {
+  var tagData;
+
+  extend(PbbWidgetView, superClass);
+
+  function PbbWidgetView() {
+    this.set_model = bind(this.set_model, this);
+    this.data_update = bind(this.data_update, this);
+    return PbbWidgetView.__super__.constructor.apply(this, arguments);
+  }
+
+  PbbWidgetView.prototype.template = "widgets/pbb_widget";
+
+  PbbWidgetView.prototype.className = 'widget-outer box box-primary pbb_widget';
+
+  PbbWidgetView.prototype.ui = {
+    wtitle: 'h3.box-title',
+    display: '.display',
+    content: '.content',
+    docked: 'i#docked',
+    alarms: 'i#alarms',
+    warnings: 'i#warnings',
+    site: 'select#site'
+  };
+
+  PbbWidgetView.layout = {
+    sx: 4,
+    sy: 6
+  };
+
+  PbbWidgetView.prototype.tags = {
+    pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
+    pbb_has_warnings: 'Warning._HasWarnings',
+    pbb_has_alarms: 'Alarm._HasAlarms'
+  };
+
+  tagData = [];
+
+  PbbWidgetView.prototype.update = function() {
+    var lbl, ref, ref1, s, t, tag, tagConfig, tags, tg;
+    this.update_settings({
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+    });
+    if (this.site_code == null) {
+      return null;
+    }
+    s = this.model.get("settings");
+    if ((s != null) && !!s.site) {
+      this.kill_updates(this.site_code);
+      tagConfig = null;
+      this.tagData = null;
+      $('.pbb_widget #widgetData tbody').empty();
+      tagConfig = new App.tagconfig({
+        'pbb_widget': 'pbb_widget'
+      }, null, this.site_code, s);
+      this.tagData = tagConfig.TagData;
+      tags = [];
+      ref1 = this.tagData;
+      for (tag in ref1) {
+        tagData = ref1[tag];
+        switch (tagData.Element.Type) {
+          case 'TableRow':
+            if ($(".pbb_widget " + tagData.Element.ParentID + " td[id*='" + tag + "']").length === 0) {
+              $(".pbb_widget " + tagData.Element.ParentID).find("tbody:last").append("'<tr><td class='lbl' id='" + tag + "_lbl'>&nbsp;</td><td id='" + tag + "' class='val'>Loading...</td></tr>'");
+            }
+            break;
+          default:
+            null;
+        }
+        tags.push("" + this.prefix + tagData.Tag + ".Value");
+      }
+      for (tg in this.tags) {
+        t = this.tags[tg];
+        tags.push("" + this.prefix + t + ".Value");
+      }
+      App.opc.add_tags(this.site_code, tags);
+      lbl = this.site_code + ": Gate " + s.gate;
+      this.ui.wtitle.html(lbl);
+      this.$('#display_label #txt').html(lbl);
+      this.opc = App.opc.connections[this.site_code];
+      ref = s.layout;
+      this.watch_updates(this.site_code);
+      return this.set_descriptions(true);
+    }
+  };
+
+  PbbWidgetView.prototype.data_update = function(data) {
+    var aq, ref1, tag, tg, wq;
+    this.vals = {};
+    for (tg in this.tags) {
+      this.vals[tg] = this.get_value(this.tags[tg]);
+    }
+    ref1 = this.tagData;
+    for (tag in ref1) {
+      tagData = ref1[tag];
+      this.vals[tag] = this.get_value(tagData.Tag);
+      switch (tagData.DataType.toLowerCase()) {
+        case 'boolean':
+          this.render_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004, tagData.Parameters.Parm005);
+          break;
+        case 'float':
+          this.render_value_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm00);
+          break;
+        case 'value':
+          this.render_value_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004);
+          break;
+        default:
+          null;
+      }
+    }
+    aq = this.data_q(this.tags.pbb_has_alarms);
+    this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
+    wq = this.data_q(this.tags.pbb_has_warnings);
+    this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings) === true && wq);
+    return this.set_descriptions();
+  };
+
+  PbbWidgetView.prototype.set_model = function() {
+    var s;
+    s = _.clone(this.model.get("settings"));
+    s.site = this.$('#site').val();
+    s.terminal = this.$('#terminal').val();
+    s.zone = this.$('#zone').val();
+    s.gate = this.$('#gate').val();
+    return this.model.set("settings", s);
+  };
+
+  PbbWidgetView.prototype.toggle_settings = function(e) {
+    PbbWidgetView.__super__.toggle_settings.call(this, e);
+    return this.ui.display.toggle(!this.settings_visible);
+  };
+
+  PbbWidgetView.prototype.onShow = function() {
+    var gate, settings;
+    settings = this.model.get('settings');
+    settings || (settings = {});
+    this.draw_selectors(settings.terminal, settings.zone, settings.gate);
+    this.$('#site').on('change', (function(_this) {
+      return function() {
+        _this.draw_selectors();
+        return _this.set_model();
+      };
+    })(this));
+    gate = settings.gate;
+    if ((gate == null) || gate === '') {
+      this.toggle_settings();
+    }
+    this.site_code = OPCManager.get_site_code(settings.site);
+    if (this.site_code != null) {
+      return this.watch_updates(this.site_code);
+    }
+  };
+
+  PbbWidgetView.prototype.start = function() {
+    return this.update();
+  };
+
+  PbbWidgetView.prototype.onDestroy = function(arg1, arg2) {
+    return this.kill_updates(this.site_code);
+  };
+
+  return PbbWidgetView;
+
+})(IOPSWidgetView);
+
+window.PbbWidgetView = PbbWidgetView;
+
+module.exports = PbbWidgetView;
+
+},{"./iops_widget_view":62}],68:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PcadischargeWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -10740,6 +13605,8 @@ Marionette = require('marionette');
 IOPSWidgetView = require('./iops_widget_view');
 
 PcadischargeWidgetView = (function(superClass) {
+  var tagData, tags;
+
   extend(PcadischargeWidgetView, superClass);
 
   function PcadischargeWidgetView() {
@@ -10750,7 +13617,7 @@ PcadischargeWidgetView = (function(superClass) {
 
   PcadischargeWidgetView.prototype.template = "widgets/pca_discharge_widget";
 
-  PcadischargeWidgetView.prototype.className = 'widget-outer box box-primary pcad_widget';
+  PcadischargeWidgetView.prototype.className = 'widget-outer box box-primary pca_discharge_widget';
 
   PcadischargeWidgetView.prototype.ui = {
     wtitle: 'h3.box-title',
@@ -10768,25 +13635,14 @@ PcadischargeWidgetView = (function(superClass) {
     sy: 6
   };
 
-  PcadischargeWidgetView.prototype.tags = {
-    temp: 'PCA.TEMPDISCH.Value',
-    on: 'PCA.PCASTATUS.Value',
-    cooling: 'PCA.MODE_COOLING.Value',
-    heating: 'PCA.MODE_HEATING.Value',
-    cool_set: "PCA.SET_COOLINGPOINT.Value",
-    heat_set: "PCA.SET_HEATINGPOINT.Value",
-    alarm_cool: "PCA.ALARM_COOLINGRUN_BOOLEAN.Value",
-    alarm_heat: "PCA.ALARM_HEATINGRUN_BOOLEAN.Value",
-    timer_cool: "PCA.SET_COOLINGPOINT_TIMER.Value",
-    timer_heat: "PCA.SET_HEATINGPOINT_TIMER.Value",
-    alarm_cool_timer: "PCA.COOLINGTIMERCALC.Value",
-    alarm_heat_timer: "PCA.HEATINGTIMERCALC.Value"
-  };
+  tags = [];
+
+  tagData = [];
 
   PcadischargeWidgetView.prototype.max_gates = 6;
 
   PcadischargeWidgetView.prototype.update = function() {
-    var btg, g, gate, gp, j, len, ref, s, t;
+    var btg, g, gate, gp, j, len, ref, ref1, s, t, tag, tagConfig;
     this.update_settings({
       prefix: 'Airport.#{@site_code}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
@@ -10801,11 +13657,34 @@ PcadischargeWidgetView = (function(superClass) {
       if (!s.gates || s.gates.length === 0) {
         return;
       }
+      this.kill_updates(this.site_code);
+      tagConfig = null;
+      this.tagData = null;
+      $('.pbb_pca_gpu_basic_widget #widgetData tbody').empty();
+      tagConfig = new App.tagconfig({
+        'pbb_pca_gpu_basic_widget': 'pbb_pca_gpu_basic_widget'
+      }, null, this.site_code, s);
+      this.tagData = tagConfig.TagData;
+      tags = [];
+      ref = this.tagData;
+      for (tag in ref) {
+        tagData = ref[tag];
+        switch (tagData.Element.Type) {
+          case 'TableRow':
+            if ($(".pbb_pca_gpu_basic_widget " + tagData.Element.ParentID + " td[id*='" + tag + "']").length === 0) {
+              $(".pbb_pca_gpu_basic_widget " + tagData.Element.ParentID).find("tbody:last").append("'<tr><td class='lbl' id='" + tag + "_lbl'>&nbsp;</td><td id='" + tag + "' class='val'>Loading...</td></tr>'");
+            }
+            break;
+          default:
+            null;
+        }
+        tags.push("" + this.prefix + tagData.Tag + ".Value");
+      }
       for (btg in this.tags) {
         t = this.tags[btg];
-        ref = s.gates;
-        for (j = 0, len = ref.length; j < len; j++) {
-          g = ref[j];
+        ref1 = s.gates;
+        for (j = 0, len = ref1.length; j < len; j++) {
+          g = ref1[j];
           gp = g.split(':');
           gate = "Term" + gp[0] + ".Zone" + gp[1] + ".Gate" + gp[2] + ".";
           this.cktags.push("" + this.prefix + gate + t);
@@ -11119,7 +13998,7 @@ window.PcadischargeWidgetView = PcadischargeWidgetView;
 
 module.exports = PcadischargeWidgetView;
 
-},{"./iops_widget_view":61}],68:[function(require,module,exports){
+},{"./iops_widget_view":62}],69:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PcasummaryWidgetView, UIUtils,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -11168,62 +14047,55 @@ PcasummaryWidgetView = (function(superClass) {
   };
 
   PcasummaryWidgetView.prototype.tags = {
-    pca_pcaambhumidity: 'PCA.AMBHUMIDITY',
-    pca_pcaambienttemp: 'PCA.TEMPAMB',
-    pca_pcadischargetemp: 'PCA.TEMPDISCH',
-    pca_pcastatus: 'PCA.PCASTATUS',
-    pca_time: 'PCA.PCATime',
-    pca_blower: 'PCA.BLOWER',
-    pca_heat1: 'PCA.HEATER1',
-    pca_heat2: 'PCA.HEATER2',
-    pca_compstage1: 'PCA.COMP_STAGE1_STAT',
-    pca_compstage2: 'PCA.COMP_STAGE2_STAT',
-    pca_aircraftdamper: 'PCA.BRIDGE_DAMPER_POSITION',
-    pca_bridgedamper: 'PCA.BRIDGE_AIR',
-    pca_pumpcond: 'PCA.PUMPCOND',
-    pca_coildp: 'PCA.COIL_DP',
-    pca_vfdspeed: 'PCA.VFD_SPEED',
-    pca_ambhumidity: 'PCA.AMBHUMIDITY',
-    pca_sucpressure1: 'PCA.C1_SUCTION_PRESSURE',
-    pca_sucpressure2: 'PCA.C2_SUCTION_PRESSURE',
-    pca_hotgas1: 'PCA.C1_HOTGAS_CONTROL',
-    pca_hotgas2: 'PCA.C2_HOTGAS_CONTROL',
     pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
     pbb_has_warnings: 'Warning._HasWarnings',
     pbb_has_alarms: 'Alarm._HasAlarms'
   };
 
   PcasummaryWidgetView.prototype.update = function() {
-    var cloud, lbl, s, settings, show_opts, t, tags, tg;
-    s = this.model.get("settings");
+    var lbl, ref, s, t, tag, tagConfig, tagData, tags, tg;
     this.update_settings({
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
     });
-    if ((s != null) && !!s.gate) {
-      this.site = OPCManager.get_site(s.site);
-      this.site_code = this.site.get('code');
-      if (this.site_code == null) {
-        return null;
-      }
-      show_opts = (s != null) && !!s.gate;
-      this.$('#mode').toggle(show_opts);
+    if (this.site_code == null) {
+      return null;
+    }
+    s = this.model.get("settings");
+    if ((s != null) && !!s.site) {
       this.kill_updates(this.site_code);
-      settings = this.site.get('settings');
-      settings || (settings = {});
-      cloud = settings.cloud ? "RemoteSCADAHosting.Airport-" + this.site_code + "." : '';
-      this.prefix = cloud + "Airport." + this.site_code + ".Term" + s.terminal + ".Zone" + s.zone + ".Gate" + s.gate + ".";
+      tagConfig = null;
+      this.tagData = null;
+      $('.pca_summary_widget #widgetData tbody').empty();
+      tagConfig = new App.tagconfig({
+        'pca_summary_widget': 'pca_summary_widget'
+      }, null, this.site_code, s);
+      this.tagData = tagConfig.TagData;
       tags = [];
+      ref = this.tagData;
+      for (tag in ref) {
+        tagData = ref[tag];
+        switch (tagData.Element.Type) {
+          case 'TableRow':
+            if ($(".pca_summary_widget " + tagData.Element.ParentID + " td[id*='" + tag + "']").length === 0) {
+              $(".pca_summary_widget " + tagData.Element.ParentID).find("tbody:last").append("'<tr><td class='lbl' id='" + tag + "_lbl'>&nbsp;</td><td id='" + tag + "' class='val'>Loading...</td></tr>'");
+            }
+            break;
+          default:
+            null;
+        }
+        tags.push("" + this.prefix + tagData.Tag + ".Value");
+      }
       for (tg in this.tags) {
         t = this.tags[tg];
         tags.push("" + this.prefix + t + ".Value");
       }
       App.opc.add_tags(this.site_code, tags);
-      this.watch_updates(this.site_code);
-      lbl = "PCA " + s.gate + " - Overview";
+      lbl = this.site_code + ": Gate " + s.gate + " PCA - Overview";
       this.ui.wtitle.html(lbl);
       this.$('#display_label #txt').html(lbl);
       this.opc = App.opc.connections[this.site_code];
+      this.watch_updates(this.site_code);
       return this.set_descriptions(true);
     }
   };
@@ -11231,21 +14103,21 @@ PcasummaryWidgetView = (function(superClass) {
   PcasummaryWidgetView.prototype.data_update = function(data) {
     var ad, add, ambd, ambhumidity, aq, b, bd, bdd, bdq, bq, c, cd, cls, co1, co1q, co2, co2q, coildp, h, h1, h1q, h2, h2q, hot1d, hot2d, hotgas1, hotgas2, icn, m, p, pc, pcd, pq, s, sq, stat, suc1d, suc2d, sucpressure1, sucpressure2, t, th, txt, txta, txtb, v, vfd, vfdspeed, vq, wq;
     this.refresh_values();
-    vq = this.data_q(this.tags.pca_pcadischargetemp);
+    vq = this.data_q(this.tagData.pca_discharge_temp.Tag);
     this.$("#gauge_volts_out_" + this.model.id + " .bad_data").toggle(!vq);
-    v = this.vals.pca_pcadischargetemp;
+    v = this.vals.pca_discharge_temp;
     if (vq && !isNaN(v) && v !== '') {
       this.g1.refresh(parseInt(v));
     }
-    aq = this.data_q(this.tags.pca_pcaambienttemp);
+    aq = this.data_q(this.tagData.pca_ambient_temp.Tag);
     this.$("#amps_out_" + this.model.id + " .bad_data").toggle(!aq);
-    v = this.vals.pca_pcaambienttemp;
+    v = this.vals.pca_ambient_temp;
     if (aq && !isNaN(v) && v !== '') {
       v = parseInt(parseInt(v));
       this.g2.refresh(v);
     }
-    sq = this.data_q(this.tags.pca_pcastatus);
-    stat = this.get_bool(this.vals.pca_pcastatus);
+    sq = this.data_q(this.tagData.pca_status.Tag);
+    stat = this.get_bool(this.vals.pca_status);
     th = "";
     icn = 'ban';
     cls = 'inactive';
@@ -11270,65 +14142,137 @@ PcasummaryWidgetView = (function(superClass) {
     }
     this.$("#power_indicator").html("<div class='" + cls + "'><i class='fa fa-" + icn + "'></i> " + txt + "</div>");
     this.$("#txt_connected_time").html(th);
-    v = this.get_bool(this.vals.pca_pcastatus);
-    sq = this.data_q(this.tags.pca_pcastatus);
-    coildp = (this.vals.pca_coildp != null) && this.vals.pca_coildp !== '' ? parseFloat(this.vals.pca_coildp).toFixed(2) : ' -- ';
-    cd = v === true && sq ? this.$('#pca_coildp').html("COIL DP : " + coildp) : this.$('#pca_coildp').html(" ");
-    this.mark_bad_data(this.tags.pca_coildp, cd);
-    vfdspeed = (this.vals.pca_vfdspeed != null) && this.vals.pca_vfdspeed !== '' ? parseFloat(this.vals.pca_vfdspeed).toFixed(2) : ' -- ';
-    vfd = v === true && sq ? this.$('#pca_vfdspeed').html("VFD : " + vfdspeed) : this.$('#pca_vfdspeed').html(" ");
-    this.mark_bad_data(this.tags.pca_vfdspeed, vfd);
-    ambhumidity = (this.vals.pca_pcaambhumidity != null) && this.vals.pca_pcaambhumidity !== '' ? parseFloat(this.vals.pca_pcaambhumidity).toFixed(2) : ' -- ';
-    ambd = v === true && sq ? this.$('#pca_pcaambhumidity').html("Amb Humidity : " + ambhumidity) : this.$('#pca_pcaambhumidity').html(" ");
-    this.mark_bad_data(this.tags.pca_pcaambhumidity, ambd);
-    sucpressure1 = (this.vals.pca_sucpressure1 != null) && this.vals.pca_sucpressure1 !== '' ? parseFloat(this.vals.pca_sucpressure1).toFixed(2) : ' -- ';
-    suc1d = v === true && sq ? this.$('#pca_sucpressure1').html("SP1 : " + sucpressure1) : this.$('#pca_sucpressure1').html(" ");
-    this.mark_bad_data(this.tags.pca_sucpressure1, suc1d);
-    sucpressure2 = (this.vals.pca_sucpressure2 != null) && this.vals.pca_sucpressure2 !== '' ? parseFloat(this.vals.pca_sucpressure2).toFixed(2) : ' -- ';
-    suc2d = v === true && sq ? this.$('#pca_sucpressure2').html("SP2 : " + sucpressure2) : this.$('#pca_sucpressure2').html(" ");
-    this.mark_bad_data(this.tags.pca_sucpressure2, suc2d);
-    hotgas1 = (this.vals.pca_hotgas1 != null) && this.vals.pca_hotgas1 !== '' ? parseFloat(this.vals.pca_hotgas1).toFixed(2) : ' -- ';
-    hot1d = v === true && sq ? this.$('#pca_hotgas1').html("HP1 : " + hotgas1) : this.$('#pca_hotgas1').html(" ");
-    this.mark_bad_data(this.tags.pca_hotgas1, hot1d);
-    hotgas2 = (this.vals.pca_hotgas2 != null) && this.vals.pca_hotgas2 !== '' ? parseFloat(this.vals.pca_hotgas2).toFixed(2) : ' -- ';
-    hot2d = v === true && sq ? this.$('#pca_hotgas2').html("HP2 : " + hotgas2) : this.$('#pca_hotgas2').html(" ");
-    this.mark_bad_data(this.tags.pca_hotgas2, hot2d);
-    ad = this.get_bool(this.vals.pca_aircraftdamper);
-    txta = ad ? 'Open' : 'Close';
-    add = v === true && sq ? this.$('#pca_aircraftdamper').html("Aircraft Damper : " + txta) : this.$('#pca_aircraftdamper').html(" ");
-    this.mark_bad_data(this.tags.pca_aircraftdamper, add);
-    bd = this.get_bool(this.vals.pca_bridgedamper);
-    txtb = bd ? 'Open' : 'Close';
-    bdd = v === true && sq ? this.$('#pca_bridgedamper').html("Bridge Damper : " + txtb) : this.$('#pca_bridgedamper').html(" ");
-    this.mark_bad_data(this.tags.pca_pumpcond, bdd);
-    pc = this.get_bool(this.vals.pca_pumpcond);
-    txt = pc ? 'On' : 'Off';
-    pcd = v === true && sq ? this.$('#pca_pumpcond').html("Condensate Pump : " + txt) : this.$('#pca_pumpcond').html(" ");
-    this.mark_bad_data(this.tags.pca_pumpcond, pcd);
-    this.render_row("pca_pcastatus", "On", "Off", "ok", " ");
-    c = this.get_bool(this.vals.pca_blower);
-    p = this.get_bool(this.vals.pca_pcastatus);
-    h1 = this.get_bool(this.vals.pca_heat1);
-    h2 = this.get_bool(this.vals.pca_heat2);
-    co1 = this.get_bool(this.vals.pca_compstage1);
-    co2 = this.get_bool(this.vals.pca_compstage2);
-    b = this.get_bool(this.vals.pca_aircraftdamper);
-    bd = this.get_bool(this.vals.pca_bridgedamper);
-    sq = this.data_q(this.tags.pca_blower);
-    this.$("#blower_img").toggleClass('bloweron', c === true && sq);
-    h1q = this.data_q(this.tags.pca_heat1);
-    this.$("#heatingstage1_img").toggleClass('heatingstage1on', h1 === true && h1q);
-    h2q = this.data_q(this.tags.pca_heat2);
-    this.$("#heatingstage2_img").toggleClass('heatingstage2on', h2 === true && h2q);
-    co1q = this.data_q(this.tags.pca_compstage1);
-    this.$("#coolingstage1_img").toggleClass('coolingstage1on', co1 === true && co1q);
-    co2q = this.data_q(this.tags.pca_compstage2);
-    this.$("#coolingstage2_img").toggleClass('coolingstage2on', co2 === true && co2q);
-    bq = this.data_q(this.tags.pca_aircraftdamper);
-    pq = this.data_q(this.tags.pca_pcastatus);
-    this.$("#accool_img").toggleClass('accoolon', p === true && b === true && pq && bq);
-    bdq = this.data_q(this.tags.pca_bridgedamper);
-    this.$("#bccool_img").toggleClass('bccoolon', bd === true && bdq);
+    if (this.tagData.pca_status != null) {
+      v = this.get_bool(this.vals.pca_status);
+      sq = this.data_q(this.tagData.pca_status.Tag);
+    }
+    if (this.tagData.pca_coil_dp != null) {
+      coildp = (this.vals.pca_coil_dp != null) && this.vals.pca_coil_dp !== '' ? parseFloat(this.vals.pca_coil_dp).toFixed(2) : ' -- ';
+      cd = v === true && sq ? this.$('#pca_coil_dp').html("COIL DP : " + coildp) : this.$('#pca_coil_dp').html(" ");
+      this.mark_bad_data(this.tagData.pca_coil_dp.Tag, cd);
+    } else {
+      this.$('#pca_coil_dp').html(" ");
+    }
+    if (this.tagData.pca_vfd_speed != null) {
+      vfdspeed = (this.vals.pca_vfd_speed != null) && this.vals.pca_vfdspeed !== '' ? parseFloat(this.vals.pca_vfdspeed).toFixed(2) : ' -- ';
+      vfd = v === true && sq ? this.$('#pca_vfd_speed').html("VFD : " + vfdspeed) : this.$('#pca_vfd_speed').html(" ");
+      this.mark_bad_data(this.tagData.pca_vfd_speed.Tag, vfd);
+    } else {
+      this.$('#pca_vfd_speed').html(" ");
+    }
+    if (this.tagData.pca_ambient_humidity != null) {
+      ambhumidity = (this.vals.pca_ambient_humidity != null) && this.vals.pca_ambient_humidity !== '' ? parseFloat(this.vals.pca_ambient_humidity).toFixed(2) : ' -- ';
+      ambd = v === true && sq ? this.$('#pca_ambient_humidity').html("Amb Humidity : " + ambhumidity) : this.$('#pca_ambient_humidity').html(" ");
+      this.mark_bad_data(this.tagData.pca_ambient_humidity.Tag, ambd);
+    } else {
+      this.$('#pca_ambient_humidity').html(" ");
+    }
+    if (this.tagData.pca_suction_pressure_1 != null) {
+      sucpressure1 = (this.vals.pca_suction_pressure_1 != null) && this.vals.pca_suction_pressure_1 !== '' ? parseFloat(this.vals.pca_suction_pressure_1).toFixed(2) : ' -- ';
+      suc1d = v === true && sq ? this.$('#pca_suction_pressure_1').html("SP1 : " + sucpressure1) : this.$('#pca_suction_pressure_1').html(" ");
+      this.mark_bad_data(this.tagData.pca_suction_pressure_1.Tag, suc1d);
+    } else {
+      this.$('#pca_suction_pressure_1').html(" ");
+    }
+    if (this.tagData.pca_suction_pressure_2 != null) {
+      sucpressure2 = (this.vals.pca_suction_pressure_2 != null) && this.vals.pca_suction_pressure_2 !== '' ? parseFloat(this.vals.pca_suction_pressure_2).toFixed(2) : ' -- ';
+      suc2d = v === true && sq ? this.$('#pca_suction_pressure_2').html("SP2 : " + sucpressure2) : this.$('#pca_suction_pressure_2').html(" ");
+      this.mark_bad_data(this.tagData.pca_suction_pressure_2.Tag, suc2d);
+    } else {
+      this.$('#pca_suction_pressure_2').html(" ");
+    }
+    if (this.tagData.pca_hot_gas_1 != null) {
+      hotgas1 = (this.vals.pca_hot_gas_1 != null) && this.vals.pca_hot_gas_1 !== '' ? parseFloat(this.vals.pca_hot_gas_1).toFixed(2) : ' -- ';
+      hot1d = v === true && sq ? this.$('#pca_hot_gas_1').html("HP1 : " + hotgas1) : this.$('#pca_hot_gas_1').html(" ");
+      this.mark_bad_data(this.tagData.pca_hot_gas_1.Tag, hot1d);
+    } else {
+      this.$('#pca_hot_gas_1').html(" ");
+    }
+    if (this.tagData.pca_hot_gas_2 != null) {
+      hotgas2 = (this.vals.pca_hot_gas_2 != null) && this.vals.pca_hot_gas_2 !== '' ? parseFloat(this.vals.pca_hot_gas_2).toFixed(2) : ' -- ';
+      hot2d = v === true && sq ? this.$('#pca_hot_gas_2').html("HP2 : " + hotgas2) : this.$('#pca_hot_gas_2').html(" ");
+      this.mark_bad_data(this.tagData.pca_hot_gas_2.Tag, hot2d);
+    } else {
+      this.$('#pca_hot_gas_2').html(" ");
+    }
+    if (this.tagData.pca_coil_dp != null) {
+      ad = this.get_bool(this.vals.pca_bridge_damper);
+      txta = ad ? 'Open' : 'Close';
+      add = v === true && sq ? this.$('#pca_bridge_damper').html("Aircraft Damper : " + txta) : this.$('#pca_bridge_damper').html(" ");
+      this.mark_bad_data(this.tagData.pca_bridge_damper.Tag, add);
+    } else {
+      this.$('#pca_bridge_damper').html(" ");
+    }
+    if (this.tagData.pca_bridge_air != null) {
+      bd = this.get_bool(this.vals.pca_bridge_air);
+      txtb = bd ? 'Open' : 'Close';
+      bdd = v === true && sq ? this.$('#pca_bridge_air').html("Bridge Damper : " + txtb) : this.$('#pca_bridge_air').html(" ");
+      this.mark_bad_data(this.tagData.pca_bridge_air.Tag, bdd);
+    } else {
+      this.$('#pca_bridge_air').html(" ");
+    }
+    if (this.tagData.pca_pump_cond != null) {
+      pc = this.get_bool(this.vals.pca_pump_cond);
+      txt = pc ? 'On' : 'Off';
+      pcd = v === true && sq ? this.$('#pca_pump_cond').html("Condensate Pump : " + txt) : this.$('#pca_pump_cond').html(" ");
+      this.mark_bad_data(this.tagData.pca_pump_cond.Tag, pcd);
+    } else {
+      this.$('#pca_pump_cond').html(" ");
+    }
+    if (this.tagData.pca_status != null) {
+      this.render_row("pca_status", "On", "Off", "ok", " ");
+    }
+    c = this.tagData.pca_blower != null ? this.get_bool(this.vals.pca_blower) : false;
+    p = this.tagData.pca_status != null ? this.get_bool(this.vals.pca_status) : false;
+    h1 = this.tagData.pca_heater_1 != null ? this.get_bool(this.vals.pca_heater_1) : false;
+    h2 = this.tagData.pca_heater_2 != null ? this.get_bool(this.vals.pca_heater_2) : false;
+    co1 = this.tagData.pca_comp_stage_1 != null ? this.get_bool(this.vals.pca_comp_stage_1) : false;
+    co2 = this.tagData.pca_comp_stage_2 != null ? this.get_bool(this.vals.pca_comp_stage_2) : false;
+    b = this.tagData.pca_bridge_damper != null ? this.get_bool(this.vals.pca_bridge_damper) : false;
+    bd = this.tagData.pca_bridge_air != null ? this.get_bool(this.vals.pca_bridge_air) : false;
+    if (this.tagData.pca_blower != null) {
+      sq = this.data_q(this.tagData.pca_blower.Tag);
+      this.$("#blower_img").toggleClass('bloweron', c === true && sq);
+    } else {
+      this.$("#blower_img").toggleClass('bloweron', false);
+    }
+    if (this.tagData.pca_heater_1 != null) {
+      h1q = this.data_q(this.tagData.pca_heater_1.Tag);
+      this.$("#heatingstage1_img").toggleClass('heatingstage1on', h1 === true && h1q);
+    } else {
+      this.$("#heatingstage1_img").toggleClass('heatingstage1on', false);
+    }
+    if (this.tagData.pca_heater_2 != null) {
+      h2q = this.data_q(this.tagData.pca_heater_2.Tag);
+      this.$("#heatingstage2_img").toggleClass('heatingstage2on', h2 === true && h2q);
+    } else {
+      this.$("#heatingstage2_img").toggleClass('heatingstage2on', false);
+    }
+    if (this.tagData.pca_comp_stage_1 != null) {
+      co1q = this.data_q(this.tagData.pca_comp_stage_1.Tag);
+      this.$("#coolingstage1_img").toggleClass('coolingstage1on', co1 === true && co1q);
+    } else {
+      this.$("#coolingstage1_img").toggleClass('coolingstage1on', false);
+    }
+    if (this.tagData.pca_comp_stage_2 != null) {
+      co2q = this.data_q(this.tagData.pca_comp_stage_2.Tag);
+      this.$("#coolingstage2_img").toggleClass('coolingstage2on', co2 === true && co2q);
+    } else {
+      this.$("#coolingstage2_img").toggleClass('coolingstage2on', false);
+    }
+    if ((this.tagData.pca_bridge_damper != null) && (this.tagData.pca_status != null)) {
+      bq = this.data_q(this.tagData.pca_bridge_damper.Tag);
+      pq = this.data_q(this.tagData.pca_status.Tag);
+      this.$("#accool_img").toggleClass('accoolon', p === true && b === true && pq && bq);
+    } else {
+      this.$("#accool_img").toggleClass('accoolon', false);
+    }
+    if (this.tagData.pca_bridge_air != null) {
+      bdq = this.data_q(this.tagData.pca_bridge_air.Tag);
+      this.$("#bccool_img").toggleClass('bccoolon', bd === true && bdq);
+    } else {
+      this.$("#bccool_img").toggleClass('bccoolon', false);
+    }
     aq = this.data_q(this.tags.pbb_has_alarms);
     this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
     wq = this.data_q(this.tags.pbb_has_warnings);
@@ -11499,7 +14443,7 @@ PcasummaryWidgetView = (function(superClass) {
         lbl = 'Ambient Temp';
         tags = [
           {
-            tag: this.prefix + "PCA.TEMPAMB.Value",
+            tag: this.prefix + "#(@tagData..pca_ambient_temp.Tag).Value",
             fill: true,
             color: plot_color
           }
@@ -11509,7 +14453,7 @@ PcasummaryWidgetView = (function(superClass) {
         lbl = "Discharge Temp";
         tags = [
           {
-            tag: this.prefix + "PCA.TEMPDISCH.Value",
+            tag: this.prefix + "#(@tagData..pca_discharge_temp.Tag).Value",
             fill: true,
             color: plot_color
           }
@@ -11519,11 +14463,11 @@ PcasummaryWidgetView = (function(superClass) {
         lbl = 'Ambient/Discharge Temps';
         tags = [
           {
-            tag: this.prefix + "PCA.TEMPAMB.Value",
+            tag: this.prefix + "#(@tagData..pca_ambient_temp.Tag).Value",
             fill: true,
             color: plot_color
           }, {
-            tag: this.prefix + "PCA.TEMPDISCH.Value",
+            tag: this.prefix + "#(@tagData..pca_discharge_temp.Tag).Value",
             fill: true,
             color: plot2_color
           }
@@ -11733,7 +14677,7 @@ window.PcasummaryWidgetView = PcasummaryWidgetView;
 
 module.exports = PcasummaryWidgetView;
 
-},{"../../common/uiutils":7,"./iops_widget_view":61}],69:[function(require,module,exports){
+},{"../../common/uiutils":8,"./iops_widget_view":62}],70:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PcaWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -11744,6 +14688,8 @@ Marionette = require('marionette');
 IOPSWidgetView = require('./iops_widget_view');
 
 PcaWidgetView = (function(superClass) {
+  var tagData;
+
   extend(PcaWidgetView, superClass);
 
   function PcaWidgetView() {
@@ -11754,7 +14700,7 @@ PcaWidgetView = (function(superClass) {
 
   PcaWidgetView.prototype.template = "widgets/pca_widget";
 
-  PcaWidgetView.prototype.className = 'widget-outer box box-primary gate_widget';
+  PcaWidgetView.prototype.className = 'widget-outer box box-primary pca_widget';
 
   PcaWidgetView.prototype.ui = {
     terminal: 'input#terminal',
@@ -11776,95 +14722,86 @@ PcaWidgetView = (function(superClass) {
   };
 
   PcaWidgetView.prototype.tags = {
-    pca_pcaambienttemp: 'PCA.TEMPAMB',
-    pca_pcadischargetemp: 'PCA.TEMPDISCH',
-    pca_heater1: 'PCA.HEATER1',
-    pca_heater2: 'PCA.HEATER2',
-    pca_compstage1: 'PCA.COMP_STAGE1_STAT',
-    pca_compstage2: 'PCA.COMP_STAGE2_STAT',
-    pca_bridgedamper: 'PCA.BRIDGE_DAMPER_POSITION',
-    pca_bridgeair: 'PCA.BRIDGE_AIR',
-    pca_dirtyfilter: 'PCA.DIRTY_FILTER',
-    pca_blower: 'PCA.BLOWER',
-    pca_sucpressure1: 'PCA.C1_SUCTION_PRESSURE',
-    pca_sucpressure2: 'PCA.C2_SUCTION_PRESSURE',
-    pca_hotgas1: 'PCA.C1_HOTGAS_CONTROL',
-    pca_hotgas2: 'PCA.C2_HOTGAS_CONTROL',
-    pca_pcastatus: 'PCA.PCASTATUS',
     pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
     pbb_has_warnings: 'Warning._HasWarnings',
     pbb_has_alarms: 'Alarm._HasAlarms'
   };
 
+  tagData = [];
+
   PcaWidgetView.prototype.update = function() {
-    var IsCloudServer, cloud, lbl, s, settings, t, tags, tg;
+    var lbl, ref, ref1, s, t, tag, tagConfig, tags, tg;
+    this.update_settings({
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+    });
+    if (this.site_code == null) {
+      return null;
+    }
     s = this.model.get("settings");
     if ((s != null) && !!s.gate) {
-      this.site = OPCManager.get_site(s.site);
-      this.site_code = this.site.get('code');
-      if (this.site_code == null) {
-        return null;
-      }
       this.kill_updates(this.site_code);
-      switch (this.site_code) {
-        case "CID":
-          IsCloudServer = true;
-          break;
-        default:
-          IsCloudServer = false;
-      }
-      settings = this.site.get('settings');
-      settings || (settings = {});
-      cloud = settings.cloud ? "RemoteSCADAHosting.Airport-" + this.site_code + "." : '';
-      this.prefix = cloud + "Airport." + this.site_code + ".Term" + s.terminal + ".Zone" + s.zone + ".Gate" + s.gate + ".";
+      tagConfig = null;
+      this.tagData = null;
+      $('.pca_widget #widgetData tbody').empty();
+      tagConfig = new App.tagconfig({
+        'pca_widget': 'pca_widget'
+      }, null, this.site_code, s);
+      this.tagData = tagConfig.TagData;
       tags = [];
+      ref1 = this.tagData;
+      for (tag in ref1) {
+        tagData = ref1[tag];
+        switch (tagData.Element.Type) {
+          case 'TableRow':
+            if ($(".pca_widget " + tagData.Element.ParentID + " td[id*='" + tag + "']").length === 0) {
+              $(".pca_widget " + tagData.Element.ParentID).find("tbody:last").append("'<tr><td class='lbl' id='" + tag + "_lbl'>&nbsp;</td><td id='" + tag + "' class='val'>Loading...</td></tr>'");
+            }
+            break;
+          default:
+            null;
+        }
+        tags.push("" + this.prefix + tagData.Tag + ".Value");
+      }
       for (tg in this.tags) {
         t = this.tags[tg];
         tags.push("" + this.prefix + t + ".Value");
       }
       App.opc.add_tags(this.site_code, tags);
-      this.watch_updates(this.site_code);
-      lbl = "PCA " + s.gate;
+      lbl = this.site_code + ": Gate " + s.gate + " PCA";
       this.ui.wtitle.html(lbl);
       this.$('#display_label #txt').html(lbl);
       this.opc = App.opc.connections[this.site_code];
+      ref = s.layout;
+      this.watch_updates(this.site_code);
       return this.set_descriptions(true);
     }
   };
 
-  PcaWidgetView.prototype.render_value_row = function(tag, IsNumeric, precision, suffix) {
-    var el, set_value;
-    if ((this.vals[tag] != null) && this.vals[tag] !== '') {
-      set_value = IsNumeric ? parseFloat(this.vals[tag]).toFixed(precision) : this.vals[tag];
-    } else {
-      set_value = ' -- ';
-    }
-    suffix = suffix != null ? " " + suffix : "";
-    el = this.$("#" + tag).html("" + set_value + suffix);
-    return this.mark_bad_data(this.tags[tag], el);
-  };
-
   PcaWidgetView.prototype.data_update = function(data) {
-    var aq, tg, wq;
+    var aq, ref1, tag, tg, wq;
     this.vals = {};
     for (tg in this.tags) {
       this.vals[tg] = this.get_value(this.tags[tg]);
     }
-    this.render_row("pca_pcastatus", "On", "Off", "ok", " ");
-    this.render_row("pca_heater1", "On", "Off", "ok", " ");
-    this.render_row("pca_heater2", "On", "Off", "ok", " ");
-    this.render_row("pca_compstage1", "On", "Off", "ok", " ");
-    this.render_row("pca_compstage2", "On", "Off", "ok", " ");
-    this.render_row("pca_bridgedamper", "On", "Off", "ok", " ");
-    this.render_row("pca_bridgeair", "On", "Off", "ok", " ");
-    this.render_row("pca_dirtyfilter", "Yes", "No", "err", " ");
-    this.render_row("pca_blower", "On", "Off", "ok", " ");
-    this.render_tagvalue("pca_pcadischargetemp");
-    this.render_tagvalue("pca_pcaambienttemp");
-    this.render_tagvalue("pca_sucpressure1");
-    this.render_tagvalue("pca_sucpressure2");
-    this.render_tagvalue("pca_hotgas1");
-    this.render_tagvalue("pca_hotgas2");
+    ref1 = this.tagData;
+    for (tag in ref1) {
+      tagData = ref1[tag];
+      this.vals[tag] = this.get_value(tagData.Tag);
+      switch (tagData.DataType.toLowerCase()) {
+        case 'boolean':
+          this.render_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004, tagData.Parameters.Parm005);
+          break;
+        case 'float':
+          this.render_value_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004);
+          break;
+        case 'value':
+          this.render_value_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004);
+          break;
+        default:
+          null;
+      }
+    }
     aq = this.data_q(this.tags.pbb_has_alarms);
     this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
     wq = this.data_q(this.tags.pbb_has_warnings);
@@ -11929,7 +14866,7 @@ window.PcaWidgetView = PcaWidgetView;
 
 module.exports = PcaWidgetView;
 
-},{"./iops_widget_view":61}],70:[function(require,module,exports){
+},{"./iops_widget_view":62}],71:[function(require,module,exports){
 var IOPSWidgetView, Marionette, ReportWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -12025,7 +14962,7 @@ window.ReportWidgetView = ReportWidgetView;
 
 module.exports = ReportWidgetView;
 
-},{"./iops_widget_view":61}],71:[function(require,module,exports){
+},{"./iops_widget_view":62}],72:[function(require,module,exports){
 var Marionette, UrlWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -12045,7 +14982,7 @@ UrlWidgetView = (function(superClass) {
 
   UrlWidgetView.prototype.template = "widgets/url_widget";
 
-  UrlWidgetView.prototype.className = 'widget-outer box box-primary';
+  UrlWidgetView.prototype.className = 'widget-outer box box-primary url_widget';
 
   UrlWidgetView.prototype.ui = {
     iframe: 'iframe#iframe',
@@ -12113,7 +15050,7 @@ window.UrlWidgetView = UrlWidgetView;
 
 module.exports = UrlWidgetView;
 
-},{"../dashboard/widget_view":38}],72:[function(require,module,exports){
+},{"../dashboard/widget_view":39}],73:[function(require,module,exports){
 var IOPSWidgetView, Marionette, VideoWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -12246,7 +15183,7 @@ window.VideoWidgetView = VideoWidgetView;
 
 module.exports = VideoWidgetView;
 
-},{"./iops_widget_view":61}],73:[function(require,module,exports){
+},{"./iops_widget_view":62}],74:[function(require,module,exports){
 var Marionette, WeatherWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -12270,7 +15207,7 @@ WeatherWidgetView = (function(superClass) {
 
   WeatherWidgetView.prototype.template = "widgets/weather_widget";
 
-  WeatherWidgetView.prototype.className = 'widget-outer box box-primary weather';
+  WeatherWidgetView.prototype.className = 'widget-outer box box-primary weather_widget';
 
   WeatherWidgetView.prototype.ui = {
     display: '#display',
@@ -12401,5 +15338,5 @@ window.WeatherWidgetView = WeatherWidgetView;
 
 module.exports = WeatherWidgetView;
 
-},{"../dashboard/widget_view":38}]},{},[1])
+},{"../dashboard/widget_view":39}]},{},[1])
 ;

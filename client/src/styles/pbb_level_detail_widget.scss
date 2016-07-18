@@ -1,0 +1,13 @@
+.pbb_level_detail_widget {
+  &.alarm {
+    background-color: #c00;
+    color: #fff;
+  }
+  .display {
+    min-height: 100%;
+    min-width: 100%;
+    overflow: auto;
+
+  }
+  
+}

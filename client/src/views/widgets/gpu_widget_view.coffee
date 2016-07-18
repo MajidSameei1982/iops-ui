@@ -22,130 +22,86 @@ class GpuWidgetView extends IOPSWidgetView
     sx: 5
     sy: 10
 
-  tags:
-    gpu_gpustatus:                  'GPU.GPUSTATUSBOOLEAN'
-    gpu_raoutavg:                   'GPU.RAOUTAVG'
-    gpu_rvoutavg:                   'GPU.RVOUTAVG'
-    gpu_rvinavg:                    'GPU.RVINAVG'
-    gpu_pm_output_phasea_i:         'GPU.RAOUTA'
-    gpu_pm_output_phaseb_i:         'GPU.RAOUTB'
-    gpu_pm_output_phasec_i:         'GPU.RAOUTC'
-    gpu_pm_output_phasea_v:         'GPU.RVOUTA'
-    gpu_pm_output_phaseb_v:         'GPU.RVOUTB'
-    gpu_pm_output_phasec_v:         'GPU.RVOUTC'
-    gpu_pm_input_phasea_v:          'GPU.RVINA'
-    gpu_pm_input_phaseb_v:          'GPU.RVINB'
-    gpu_pm_input_phasec_v:          'GPU.RVINC'
-
+  tags = []
+  
   update: ()->
-    s = @model.get("settings")
-   
-    if s? && !!s.gate
-      @site = OPCManager.get_site(s.site)
-      @site_code = @site.get('code')
-      if !@site_code? then return null
+    @update_settings
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
 
+    if !@site_code? then return null
+
+    s = @model.get("settings")
+    
+    if s? && !!s.site      
       # stop listening for updates
       @kill_updates(@site_code)
 
-      # build settings      
-      settings = @site.get('settings')
-      settings || settings = {}
-      cloud = if settings.cloud then "RemoteSCADAHosting.Airport-#{@site_code}." else ''
-      @prefix = "#{cloud}Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}."
+      tagConfig = null
+      @tagData = null
+      $('.gpu_widget #widgetData tbody').empty();
+      tagConfig = new App.tagconfig {'gpu_widget'}, null, @site_code, s
+      @tagData = tagConfig.TagData
+
       tags = []
+
+      for tag, tagData of @tagData
+        switch tagData.Element.Type
+          when 'TableRow'
+            if $(".gpu_widget #{tagData.Element.ParentID} td[id*='#{tag}']").length == 0
+              $(".gpu_widget " + tagData.Element.ParentID).find("tbody:last").append("'<tr><td class='lbl' id='#{tag}_lbl'>&nbsp;</td><td id='#{tag}' class='val'>Loading...</td></tr>'")
+          else null
+
+        tags.push "#{@prefix}#{tagData.Tag}.Value"
+
       for tg of @tags
         t = @tags[tg]
         tags.push "#{@prefix}#{t}.Value"
+      
       App.opc.add_tags @site_code, tags
+
+      lbl = "#{@site_code}: Gate #{s.gate} - GPU"
+      @ui.wtitle.html(lbl)
+      @$('#display_label #txt').html(lbl)
+
+      @opc =  App.opc.connections[@site_code]
+      ref = s.layout
 
       # listen for updates
       @watch_updates(@site_code)
-      
-      lbl = "GPU #{s.gate} - Details"
-      @ui.wtitle.html(lbl)
-      @$('#gpu_label #txt').html(lbl)
-
-      @opc =  App.opc.connections[@site_code]
       @set_descriptions(true)
-
 
   # process data and update the view
   data_update: (data)=>
-    @vals = {}
-    for tg of @tags
-      @vals[tg] = @get_value(@tags[tg])
+    @refresh_values()
+    #@vals = {}
+    #for tg of @tags
+    #  @vals[tg] = @get_value(@tags[tg])
     
-    # PBB AIRCRAFT
-    # @render_row("pbb_status", "", "", "ok")
-    # aircraftstatus = @vals['pbb_aircraft']
-    # @$('#pbb_status').html(aircraftstatus)
-    # @render_row("gpu_gpuoutputvolts", "", "", "ok")
-    # gpuoutputvoltsstatus = @vals['gpu_gpuoutputvolts']
-    # @$('#gpu_gpuoutputvolts').html(gpuoutputvoltsstatus)
+    for tag, tagData of @tagData
+      #@vals[tag] =  @get_value(tagData.Tag)
+      switch tagData.DataType.toLowerCase()
+        when 'boolean'
+          @render_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004, tagData.Parameters.Parm005)
+        when 'float'
+          @render_value_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004)
+        when 'value'
+          @render_value_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004)
+        #when 'byte' null
+        #when 'int' null
+        #when 'string' null
+        #when 'double' null
+        else null
 
-    # GPU GPUSTATUS 
-    @render_row("gpu_gpustatus", "On", "Off", "ok")                  
+    # ALARMS
+    aq = @data_q(@tags.pbb_has_alarms)
+    @ui.alarms.toggle(@get_bool(@vals.pbb_has_alarms)==true && aq)
 
-    # GPU ByPass                      
-    #@render_row("gpu_bypass", "Down", "Up", "ok")
+    # WARNINGS
+    wq = @data_q(@tags.pbb_has_warnings)
+    @ui.warnings.toggle(@get_bool(@vals.pbb_has_warnings)==true && wq)
 
-    # GPU RAOUTAVG                    
-    @render_value_row("gpu_raoutavg", true, 1,"Amps")
-
-    # GPU RVOUTAVG                    
-    @render_value_row("gpu_rvoutavg", true, 1,"Volts")
-
-    # GPU RAVINAVG
-    #@render_value_row("gpu_ravinavg", true, 1,"Amps")
-
-    # GPU RVINAVG                     
-    @render_value_row("gpu_rvinavg", true, 1,"Volts")
-
-    # GPU PM_OUTPUT_PHASEA_I          
-    @render_value_row("gpu_pm_output_phasea_i", true, 1, "Amps")
-
-    # GPU PM_OUTPUT_PHASEB_I          
-    @render_value_row("gpu_pm_output_phaseb_i", true, 1, "Amps")
-
-    # GPU PM_OUTPUT_PHASEC_I          
-    @render_value_row("gpu_pm_output_phasec_i", true, 1, "Amps")
-
-    # GPU PM_OUTPUT_PHASEA_V          
-    @render_value_row("gpu_pm_output_phasea_v", true, 1, "Volts")
-
-    # GPU PM_OUTPUT_PHASEB_V          
-    @render_value_row("gpu_pm_output_phaseb_v", true, 1, "Volts")
-
-    # GPU PM_OUTPUT_PHASEC_V  
-    @render_value_row("gpu_pm_output_phasec_v", true, 1, "Volts")
-
-    # GPU PM_INPUT_PHASEA_I           
-    #@render_value_row("gpu_pm_input_phasea_i", true, 1, "Amps")
-
-    # GPU PM_INPUT_PHASEB_I           
-    #@render_value_row("gpu_pm_input_phaseb_i", true, 1, "Amps")
-
-    # GPU PM_INPUT_PHASEC_I           
-    #@render_value_row("gpu_pm_input_phasec_i", true, 1, "Amps")
-
-    # GPU PM_INPUT_PHASEA_V           
-    @render_value_row("gpu_pm_input_phasea_v", true, 1, "Volts")
-
-    # GPU PM_INPUT_PHASEB_V           
-    @render_value_row("gpu_pm_input_phaseb_v", true, 1, "Volts")
-
-    # GPU PM_INPUT_PHASEC_V           
-    @render_value_row("gpu_pm_input_phasec_v", true, 1, "Volts")
-
-    # GPU ON 1                        
-    #@render_row("gpu_on_1", "On", "Off","ok")
-
-    # GPU ON 2                        
-    #@render_row("gpu_on_2", "On", "Off", "ok")
-        
     @set_descriptions()
-
 
   set_model: ()=>
     s = _.clone(@model.get("settings"))
@@ -175,14 +131,13 @@ class GpuWidgetView extends IOPSWidgetView
     @site_code = OPCManager.get_site_code(settings.site)
     if @site_code? then @watch_updates(@site_code)
 
-
   start: ()->
     @update()
 
   onDestroy: (arg1, arg2) ->
     # be sure to remove listener
     @kill_updates(@site_code)
-    
+
 # ----------------------------------
 
 window.GpuWidgetView = GpuWidgetView

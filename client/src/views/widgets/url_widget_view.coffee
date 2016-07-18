@@ -5,7 +5,7 @@ WidgetView = require('../dashboard/widget_view')
 
 class UrlWidgetView extends WidgetView
   template:   "widgets/url_widget"
-  className: 'widget-outer box box-primary'
+  className: 'widget-outer box box-primary url_widget'
   ui:
     iframe: 'iframe#iframe'
     title: 'input#title'

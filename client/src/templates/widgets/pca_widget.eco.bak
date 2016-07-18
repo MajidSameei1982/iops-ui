@@ -1,0 +1,56 @@
+<div class="box-header with-border">
+  <div class='pull-left'><i class="fa fa-server"></i> <h3 class="box-title"></h3></div>
+  <div class="pull-right controls">
+    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> 
+    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>
+  </div>
+</div>
+
+<div class="box-body content" id='content'>
+  <div class="display contain">
+    <div id="gate_label">
+      <h1>
+        <span id='txt'></span> 
+      </h1>
+    </div>
+    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>
+    <table id="widgetData" class="data4" style="float: left; width:92%"> 
+      <tbody>
+      </tbody>
+    </table>
+    <!--
+    <table class='data' style="float: left; width:90%">
+      <tr><td class='lbl' id='pca_pcastatus_lbl'>&nbsp;</td><td id='pca_pcastatus' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pca_heater1_lbl'>&nbsp;</td><td id='pca_heater1' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pca_heater2_lbl'>&nbsp;</td><td id='pca_heater2' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pca_compstage1_lbl'>&nbsp;</td><td id='pca_compstage1' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pca_compstage2_lbl'>&nbsp;</td><td id='pca_compstage2' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pca_bridgedamper_lbl'>&nbsp;</td><td id='pca_bridgedamper' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pca_bridgeair_lbl'>&nbsp;</td><td id='pca_bridgeair' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pca_dirtyfilter_lbl'>&nbsp;</td><td id='pca_dirtyfilter' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pca_blower_lbl'>&nbsp;</td><td id='pca_blower' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pca_pcadischargetemp_lbl'>&nbsp;</td><td id='pca_pcadischargetemp' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pca_pcaambienttemp_lbl'>&nbsp;</td><td id='pca_pcaambienttemp' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pca_sucpressure1_lbl'>&nbsp;</td><td id='pca_sucpressure1' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pca_sucpressure2_lbl'>&nbsp;</td><td id='pca_sucpressure2' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pca_hotgas1_lbl'>&nbsp;</td><td id='pca_hotgas1' class='val'>LOADING...</td></tr>
+      <tr><td class='lbl' id='pca_hotgas2_lbl'>&nbsp;</td><td id='pca_hotgas2' class='val'>LOADING...</td></tr>
+    </table>
+    -->
+  </div>
+
+  <div class="settings" style="display: none;">
+    <h3>Settings</h3>
+    <%- @siteSelector({id:'site', label:'Site', site:@settings.site}) %>
+    <div class="row">
+      <div id='terminals' class='col-md-12'></div>
+    </div>
+    <div class="row">
+      <div id='zones' class='col-md-12'></div>
+    </div>
+    <div class="row">
+      <div id='gates' class='col-md-12'></div>  
+    </div>
+  </div>
+
+</div>

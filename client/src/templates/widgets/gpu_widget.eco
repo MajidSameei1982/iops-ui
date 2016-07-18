@@ -17,20 +17,9 @@
         <i id='warnings' class="fa fa-warning" title='Gate has WARNINGS' style='display:none;'></i>
       </h1>
     </div>
-    <table class='data'>
-      <tr><td class='lbl' id='gpu_gpustatus_lbl'>&nbsp;</td><td id='gpu_gpustatus' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='gpu_raoutavg_lbl'>&nbsp;</td><td id='gpu_raoutavg' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='gpu_rvoutavg_lbl'>&nbsp;</td><td id='gpu_rvoutavg' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='gpu_rvinavg_lbl'>&nbsp;</td><td id='gpu_rvinavg' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='gpu_pm_output_phasea_i_lbl'>&nbsp;</td><td id='gpu_pm_output_phasea_i' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='gpu_pm_output_phaseb_i_lbl'>&nbsp;</td><td id='gpu_pm_output_phaseb_i' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='gpu_pm_output_phasec_i_lbl'>&nbsp;</td><td id='gpu_pm_output_phasec_i' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='gpu_pm_output_phasea_v_lbl'>&nbsp;</td><td id='gpu_pm_output_phasea_v' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='gpu_pm_output_phaseb_v_lbl'>&nbsp;</td><td id='gpu_pm_output_phaseb_v' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='gpu_pm_output_phasec_v_lbl'>&nbsp;</td><td id='gpu_pm_output_phasec_v' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='gpu_pm_input_phasea_v_lbl'>&nbsp;</td><td id='gpu_pm_input_phasea_v' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='gpu_pm_input_phaseb_v_lbl'>&nbsp;</td><td id='gpu_pm_input_phaseb_v' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='gpu_pm_input_phasec_v_lbl'>&nbsp;</td><td id='gpu_pm_input_phasec_v' class='val'>LOADING...</td></tr>
+    <table id="widgetData" class='data'>
+      <tbody>
+      </tbody>
     </table>
   </div>
 

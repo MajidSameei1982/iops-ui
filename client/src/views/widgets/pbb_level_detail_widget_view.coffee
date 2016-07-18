@@ -3,8 +3,8 @@ IOPSWidgetView = require('./iops_widget_view')
 
 # ----------------------------------
 class PbbleveldetailWidgetView extends IOPSWidgetView
-  template:   "widgets/pbbleveldetail_widget"
-  className: 'widget-outer box box-primary gate_widget'
+  template:   "widgets/pbb_level_detail_widget"
+  className: 'widget-outer box box-primary pbb_level_detail_widget'
   ui:
     terminal:       'input#terminal'
     zone:           'input#zone'
@@ -25,7 +25,7 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
   tags:
     #Grid Tags
     pbb_status :           'PBB.AIRCRAFTDOCKEDCALCULATION'
-    pbb_aircraft :         'PBB.AIRCRAFTSTATUS'
+    #pbb_aircraft :         'PBB.AIRCRAFTSTATUS'
     pbb_autolevelmode :    'PBB.AUTOLEVELMODEFLAG'
     pbb_canopy:            'PBB.CANOPYDOWN'
     pbb_autolevelkey :     'PBB.AUTOLEVELKEY'

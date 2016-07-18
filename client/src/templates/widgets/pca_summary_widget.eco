@@ -15,7 +15,11 @@
 <div class="box-body content" id='content'>
   
   <div class="display contain">
-    <div id='display_label'><h1></h1></div>
+    <div id='display_label'>
+		<h1>
+
+		</h1>
+	</div>
     <div id="summary">
       <div id="view_main">
         <div id="power_indicator"></div>
@@ -43,16 +47,16 @@
                   <div id="coolingstage2_img" class=""></div>   
                   <div id="accool_img" class=""></div>  
                   <div id="bccool_img" class=""></div> 
-                  <div id="pca_coildp" class=""></div>   
-                  <div id="pca_vfdspeed" class=""></div>
-                  <div id="pca_pcaambhumidity" class=""></div>
-                  <div id="pca_sucpressure1" class=""></div>
-                  <div id="pca_sucpressure2" class=""></div>
-                  <div id="pca_hotgas1" class=""></div>
-                  <div id="pca_hotgas2" class=""></div>
-                  <div id="pca_pumpcond" class=""></div>
-                  <div id="pca_aircraftdamper" class=""></div>
-                  <div id="pca_bridgedamper" class=""></div>
+                  <div id="pca_coil_dp" class=""></div>   
+                  <div id="pca_vfd_speed" class=""></div>
+                  <div id="pca_ambient_humidity" class=""></div>
+                  <div id="pca_suction_pressure_1" class=""></div>
+                  <div id="pca_suction_pressure_2" class=""></div>
+                  <div id="pca_hot_gas_1" class=""></div>
+                  <div id="pca_hot_gas_2" class=""></div>
+                  <div id="pca_pump_cond" class=""></div>
+                  <div id="pca_bridge_damper" class=""></div>
+                  <div id="pca_bridge_air" class=""></div>
                 </td>
               </tr>         
             </table>
@@ -89,6 +93,18 @@
         </tr>
       </table>
     </div>
+     <div id="pca_coil_dp" class=""></div>   
+     <div id="pca_vfd_speed" class=""></div>
+     <div id="pca_ambient_humidity" class=""></div>
+     <div id="pca_suction_pressure_1" class=""></div>
+     <div id="pca_suction_pressure_2" class=""></div>
+     <div id="pca_hot_gas_1" class=""></div>
+     <div id="pca_hot_gas_2" class=""></div>
+     <div id="pca_pump_cond" class=""></div>
+     <div id="pca_bridge_damper" class=""></div>
+     <div id="pca_bridge_air" class=""></div>
+
+     </td></tr>         
   </div>
 
   <div class="settings" style="display: none;">

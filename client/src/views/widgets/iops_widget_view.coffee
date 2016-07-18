@@ -26,7 +26,7 @@ class IOPSWidgetView extends WidgetView
   data_q: (tag)=>
     c = App.opc.connections[@site_code]
     t = c.tags["#{@prefix}#{tag}"]
-    t.props.Value.quality;
+    return if t? then t.props.Value.quality else false
 
   data_update: (data)=>
     # override me
@@ -52,41 +52,84 @@ class IOPSWidgetView extends WidgetView
     @dcount = if force then 0 else @dcount
     if !@dcount? then @dcount = 0
 
-    for t of @tags
+    for t, d of @tags
       tg = @tags[t]
-      tds.push "#{@prefix}#{tg}.Description"
+      tds.push "#{@prefix}#{d}.Description"
+
+    for t, d of @tagData
+      tds.push "#{@prefix}#{d.Tag}.Description"
+
     @opc.load_tags tds, (data)=>
+      vals = []
+      for t, d of @tags
+        tg = @tags[t]
+        vals[t] = {"Tag":"#{tg}", "Label":null} 
+
+      for t, d of @tagData
+        vals[t] = {"Tag":"#{d.Tag}", "Label":"#{d.Label}"} 
+
       for t in data.tags
-        for tt, idx of @tags
-          ts = @tags[tt]
-          if "#{@prefix}#{ts}" == t.name
-            v = t.props[0].val
+        for tt, idx of vals
+          if "#{@prefix}#{idx.Tag}" == t.name
+            if t.props? && t.props[0].val != ""
+              v = t.props[0].val
+            else
+              v = idx.Label
             @$("##{tt}_lbl").html(v)
             @dcount += 1
             break      
 
-  render_row: (tag, tv, fv, tc, fc)->
+  render_row: (tag, tv, fv, tc, fc, format)->
     v = @get_bool(@vals[tag])
     #console.log "#{tag} : #{v}"
     txt = if v then tv else fv
+    if format?
+      txt = format.replace /#{1}/, "#{txt}".replace /^\s+|\s+$/g, ""
     el = @$("##{tag}").html(txt)
     if tc? then el.toggleClass(tc, v)
     if fc? then el.toggleClass(fc, !v)
-    @mark_bad_data @tags[tag], el
+    tagValue = null
+    if @tags[tag]?
+      tagValue = @tags[tag]
+    else if @tagData[tag]?
+      tagValue = @tagData[tag].Tag
+    @mark_bad_data tagValue, el
 
   render_tagvalue: (tag)->
     a = if (@vals[tag])? && (@vals[tag]) != '' then parseFloat(@vals[tag]).toFixed(2)  else ' --'
     el1 =  @$("##{tag}").html("#{a}")
-    @mark_bad_data @tags[tag], el1
-
-  render_value_row: (tag, IsNumeric, precision, suffix)->
+    tagValue = null
+    if @tags[tag]?
+      tagValue = @tags[tag]
+    else if @tagData[tag]?
+      tagValue = @tagData[tag].Tag
+    @mark_bad_data tagValue, el1
+    
+  render_value_row: (tag, IsNumeric, precision, format)->
+    ###********************************************************
+    ** format: If no #{1} is found in string treat as suffix
+    **         otherwise replace #{1} with the #{set_value} 
+    ********************************************************###
     if @vals[tag]? && @vals[tag] != '' 
       set_value = if IsNumeric then parseFloat(@vals[tag]).toFixed(precision) else @vals[tag] 
     else
       set_value = ' -- ' 
-    suffix = if suffix? then " #{suffix}" else ""
-    el = @$("##{tag}").html("#{set_value}#{suffix}")
-    @mark_bad_data @tags[tag], el
+    
+    displayValue = "#{set_value}".replace /^\s+|\s+$/g, ""
+    if format?
+      displayValue = ''
+      if format.search(/#{1}/) > -1
+        displayValue = format.replace /#{1}/, "#{set_value}".replace /^\s+|\s+$/g, ""
+      else
+        displayValue = "#{set_value} #{format}".replace /^\s+|\s+$/g, ""
+
+    el = @$("##{tag}").html(displayValue)
+    tagValue = null
+    if @tags[tag]?
+      tagValue = @tags[tag]
+    else if @tagData[tag]?
+      tagValue = @tagData[tag].Tag
+    @mark_bad_data tagValue, el
   
   # grab widget settings, update prefix, set up listener, etc.
   update_settings:({prefix, cloud_prefix})->
@@ -110,8 +153,11 @@ class IOPSWidgetView extends WidgetView
   
   refresh_values: ()->
     @vals = {}
-    for tg of @tags
-      @vals[tg] = @get_value(@tags[tg])
+    for t, d of @tags
+      @vals[t] = @get_value(d) 
+
+    for t, d of @tagData
+      @vals[t] = @get_value(d.Tag) 
     @
 
   # draw terminal selector

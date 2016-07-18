@@ -4,7 +4,7 @@ IOPSWidgetView = require('./iops_widget_view')
 # ----------------------------------
 class PbbpcagpuWidgetView extends IOPSWidgetView
   template:   "widgets/pbb_pca_gpu_basic_widget"
-  className: 'widget-outer box box-primary gate_widget'
+  className: 'widget-outer box box-primary pbb_pca_gpu_basic_widget'
   ui:
     wtitle:         'h3.box-title'
     display:        '.display'
@@ -19,98 +19,89 @@ class PbbpcagpuWidgetView extends IOPSWidgetView
     sy: 8
 
   tags:
-    #Grid Tags
-    pbb_status :         'PBB.AIRCRAFTDOCKEDCALCULATION'
-    pca_pcastatus:       'PCA.PCASTATUS'
-    gpu_gpustatus:       'GPU.GPUSTATUSBOOLEAN'
-    pbb_docktime:        'PBB.DOCKTIME'
-    pbb_hookup:          'PBB.HOOKUPTIME'
-    pca_hookup:          'PCA.PCATime'
-    gpu_hookup:          'GPU.GPUTime'
-    pca_pcadischargetemp:'PCA.TEMPDISCH' 
-    gpu_raoutavg:        'GPU.RAOUTAVG'
-    gpu_rvoutavg:        'GPU.RVOUTAVG'
-
-    
     #Processing Tags
     pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
     pbb_has_warnings :  'Warning._HasWarnings'
     pbb_has_alarms :    'Alarm._HasAlarms'
-    
+  
+  tagData = []
+
   update: ()->
     @update_settings
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+
     if !@site_code? then return null
 
     s = @model.get("settings")
-   
+    
     if s? && !!s.site      
+      # stop listening for updates
+      @kill_updates(@site_code)
+
+      tagConfig = null
+      @tagData = null
+      $('.pbb_pca_gpu_basic_widget #widgetData tbody').empty();
+      tagConfig = new App.tagconfig {'pbb_pca_gpu_basic_widget'}, null, @site_code, s
+      @tagData = tagConfig.TagData
+
       tags = []
+
+      for tag, tagData of @tagData
+        switch tagData.Element.Type
+          when 'TableRow'
+            if $(".pbb_pca_gpu_basic_widget #{tagData.Element.ParentID} td[id*='#{tag}']").length == 0
+              $(".pbb_pca_gpu_basic_widget " + tagData.Element.ParentID).find("tbody:last").append("'<tr><td class='lbl' id='#{tag}_lbl'>&nbsp;</td><td id='#{tag}' class='val'>Loading...</td></tr>'")
+          else null
+
+        tags.push "#{@prefix}#{tagData.Tag}.Value"
+
       for tg of @tags
         t = @tags[tg]
         tags.push "#{@prefix}#{t}.Value"
+      
       App.opc.add_tags @site_code, tags
 
-      lbl = "PBB/PCA/GPU #{s.gate}"
+      lbl = "#{@site_code}: Gate #{s.gate} PBB/PCA/GPU"
       @ui.wtitle.html(lbl)
       @$('#display_label #txt').html(lbl)
 
       @opc =  App.opc.connections[@site_code]
+      ref = s.layout
+
       # listen for updates
       @watch_updates(@site_code)
       @set_descriptions(true)
 
   # process data and update the view
   data_update: (data)=>
-    @vals = {}
-    for tg of @tags
-      @vals[tg] = @get_value(@tags[tg])
+    @refresh_values()
+    #@vals = {}
+    #for tg of @tags
+    #  @vals[tg] = @get_value(@tags[tg])
     
-    # PBB AIRCRAFT
-    @render_row("pbb_status", "Docked", "UnDocked", "ok","err")
+    for tag, tagData of @tagData
+      #@vals[tag] =  @get_value(tagData.Tag)
+      switch tagData.DataType.toLowerCase()
+        when 'boolean'
+          @render_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004, tagData.Parameters.Parm005)
+        when 'float'
+          @render_value_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004)
+        when 'value'
+          @render_value_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004)
+        #when 'byte' null
+        #when 'int' null
+        #when 'string' null
+        #when 'double' null
+        else null
 
-    # PCA STATUS
-    @render_row("pca_pcastatus", "On", "Off", "ok","err")
-
-    # GPU STATUS
-    @render_row("gpu_gpustatus", "On", "Off", "ok","err")
-
-    # DOCKTIME
-    @render_value_row("pbb_docktime", true, 2," mins")
-    
-    # PBB ON TIME
-    @render_value_row("pbb_hookup", true, 2," mins")
-
-    # PCA ON TIME
-    @render_value_row("pca_hookup", true, 2," mins")
-
-    # GPU ON TIME
-    @render_value_row("gpu_hookup", true, 2," mins")
-
-    # PCA DISCHARGE TEMP
-    @render_value_row("pca_pcadischargetemp", true, 2," F")
-
-    # GPU RAOUTAVG                    
-    @render_value_row("gpu_raoutavg", true, 1,"Amps")
-
-    # GPU RVOUTAVG                    
-    @render_value_row("gpu_rvoutavg", true, 1,"Volts")
-
-    @$("#pbb_statused_lbl").html('PBB Status')
-    @$("#pbb_dockedtime_lbl").html('PBB Dock Time')
-    @$("#pca_discharge_lbl").html('PCA Discharge Temp')
-    @$("#gpu_raout_lbl").html('GPU Output Amps')
-    @$("#gpu_rvout_lbl").html('GPU Output Volts')
-    
     # ALARMS
     aq = @data_q(@tags.pbb_has_alarms)
     @ui.alarms.toggle(@get_bool(@vals.pbb_has_alarms)==true && aq)
+
     # WARNINGS
     wq = @data_q(@tags.pbb_has_warnings)
     @ui.warnings.toggle(@get_bool(@vals.pbb_has_warnings)==true && wq)
- 
-
 
     @set_descriptions()
 
@@ -151,6 +142,5 @@ class PbbpcagpuWidgetView extends IOPSWidgetView
     @kill_updates(@site_code)
     
 # ----------------------------------
-
 window.PbbpcagpuWidgetView = PbbpcagpuWidgetView
 module.exports = PbbpcagpuWidgetView
