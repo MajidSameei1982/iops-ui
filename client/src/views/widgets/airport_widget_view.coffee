@@ -87,8 +87,6 @@ class AirportWidgetView extends IOPSWidgetView
       # set labels
       lbl = "#{@site_code} Airport Overview"
       @ui.wtitle.html(lbl)
-      @$('#display_label #txt').html(lbl)
-
 
   data_update: (data)=>
     for g in @gateData

@@ -10,7 +10,8 @@
   
   <div class="display contain">
     <div id="display_label">
-      <h1><span id='txt'></span></h1>
+      <h1>
+      </h1>
     </div>
     <div id="key">
       <div class="key_row"><i class="fa fa-fw fa-plane"></i> Airplane at Gate</div>

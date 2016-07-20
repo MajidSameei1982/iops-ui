@@ -64,7 +64,6 @@ class PbbdetailWidgetView extends IOPSWidgetView
       
       lbl = "#{@site_code}: Gate #{s.gate} - Overview"
       @ui.wtitle.html(lbl)
-      @$('#display_label #txt').html(lbl)
 
       @opc =  App.opc.connections[@site_code]
       @set_descriptions(true)

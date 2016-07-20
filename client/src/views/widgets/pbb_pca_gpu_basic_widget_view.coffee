@@ -64,7 +64,6 @@ class PbbpcagpuWidgetView extends IOPSWidgetView
 
       lbl = "#{@site_code}: Gate #{s.gate} PBB/PCA/GPU"
       @ui.wtitle.html(lbl)
-      @$('#display_label #txt').html(lbl)
 
       @opc =  App.opc.connections[@site_code]
       ref = s.layout

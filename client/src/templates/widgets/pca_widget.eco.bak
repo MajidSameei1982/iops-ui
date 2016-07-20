@@ -10,7 +10,6 @@
   <div class="display contain">
     <div id="gate_label">
       <h1>
-        <span id='txt'></span> 
       </h1>
     </div>
     <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>

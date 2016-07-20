@@ -93,4 +93,121 @@ ul.gridster.widget-container {
 .blink { animation: blinker 1s linear infinite;}
 @keyframes blinker { 50% { opacity: 0.0; } }
 
+table {
+	&.data {
+		width: 100%;
+	    border:solid 1px #999;
+	    border-spacing: 1px;
+	    border-collapse: separate;
+		&.transparent {
+			background: transparent;
+		}
+		&.airplane {
+			border: 0;
+			td {
+				background-color: #fff;
+			}
+		}
+		&.docked {
 
+		}
+		&.tag {
+
+		}
+		&.no-show {
+			visibility: hidden;
+		}
+		td {
+			padding:3px 10px;
+			background-color: #eee;
+			color:#999;
+			&.transparent {
+				background: transparent;
+			}
+			tr{
+				&.dockundock {
+					background-color: #090;
+				}
+			}
+			&.lbl {
+				background-color:#fff;
+				font-style: italic;
+				color:#333;
+				border-bottom:solid 1px #ddd;
+				&.transparent {
+					background : transparent;
+					border-right:solid 1px #ddd;
+				}
+			}
+			&.val {
+				font-weight: bold;
+				color:#333;   
+				&.transparent {
+					font-weight: bold;
+					border-bottom:solid 1px #ddd;
+				}
+			}
+			&.err {
+				color: #fe6;
+				background-color:#c33;
+				&.transparent {
+					color: #ff3333;
+					background : transparent;
+					border-bottom:solid 1px #ddd;
+				}
+			}
+			&.ok {
+				background-color: #090;
+				color:#fff;
+				&.transparent {
+					background : transparent;
+					color:#090;
+					border-bottom:solid 1px #ddd;
+				}
+ 			}
+			&.blue {
+				background-color: #06c;
+				color:#fff; 
+				&.transparent {
+					background : transparent;
+					color:#fff; 
+				}
+ 			}
+			&.bad_data {
+				background-color: #fec;
+				color:#999;
+				&.transparent {
+					background : transparent;
+					color:#999;
+					border-bottom:solid 1px #ddd;
+				}
+			}
+			&.img-circles {
+				border-radius: 10%; // set radius in percents
+				&.transparent {
+					background : transparent;
+					border-radius: 10%; // set radius in percents
+				}
+			}
+		}
+	}
+}
+//**********************************************************
+//**  Keep this for a few until we determine why it was set
+//**  to:
+//**  
+//**  background-color: #fec;
+//**
+//**  While the rest were set to:
+//**
+//**  background-color: #090;
+//**
+//**********************************************************
+//	table.data1 {
+	//gate_widget.scss
+//		tr{
+//			&.dockundock {
+//				background-color: #fec;
+//			}
+//		}
+//	}

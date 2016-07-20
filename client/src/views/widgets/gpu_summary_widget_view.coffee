@@ -163,7 +163,7 @@ class GpusummaryWidgetView extends IOPSWidgetView
       
       lbl = "#{@site_code}: Gate #{s.gate} - GPU Summary"
       @ui.wtitle.html(lbl)
-      @$('#gpu_summary_label #txt').html(lbl)
+      #@$('#gpu_summary_label #txt').html(lbl)
 
       @opc =  App.opc.connections[@site_code]
 

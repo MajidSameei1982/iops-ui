@@ -11,12 +11,10 @@
   <div class="display contain">
     <div>
       <h1>
-        <span id="txt"></span> 
-        
       </h1>
     </div>
     <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>
-    <table id="widgetData" class="data4" style="float: left; width:92%"> 
+    <table id="widgetData" class="data" style="float: left; width:92%"> 
       <tbody>
       </tbody>
     </table>

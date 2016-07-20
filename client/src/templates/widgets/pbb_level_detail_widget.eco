@@ -14,19 +14,19 @@
  
     </div>
 
-    <table class='data2' style="float:left; width:39%; position:absolute; top:5%; left:1%;">
+    <table class='data transparent' style="float:left; width:39%; position:absolute; top:5%; left:1%;">
       <br>
-      <tr><td class='lbl' id='pbb_autolevelkey_lbl'>&nbsp;</td><td id='pbb_autolevelkey' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_estoped_lbl'>&nbsp;</td><td id='pbb_estop' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_autolevelmode_lbl'>&nbsp;</td><td id='pbb_autolevelmode' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_autolevelling_lbl'>&nbsp;</td><td id='pbb_autolevelling' class='val'>LOADING...</td></tr>     
-      <tr><td class='lbl' id='pbb_canopy_lbl'>&nbsp;</td><td id='pbb_canopy' class='val'>LOADING...</td></tr>   
-      <tr><td class='lbl' id='pbb_limits_lbl'>&nbsp;</td><td id='pbb_limits' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_smokedetector_lbl'>&nbsp;</td><td id='pbb_smokedetector' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_cabinfloordeicer_lbl'>&nbsp;</td><td id='pbb_cabinfloordeicer' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_terminaldoor_lbl'>&nbsp;</td><td id='pbb_terminaldoor' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_lastdocktime_lbl'>&nbsp;</td><td id='pbb_lastdocktime' class='val'>LOADING...</td></tr>
-      <tr><td class='lbl' id='pbb_dailyaircraftcount_lbl'>&nbsp;</td><td id='pbb_dailyaircraftcount' class='val'>LOADING...</td></tr> 
+      <tr><td class='lbl transparent' id='pbb_autolevelkey_lbl'>&nbsp;</td><td id='pbb_autolevelkey' class='val transparent'>LOADING...</td></tr>
+      <tr><td class='lbl transparent' id='pbb_estoped_lbl'>&nbsp;</td><td id='pbb_estop' class='val transparent'>LOADING...</td></tr>
+      <tr><td class='lbl transparent' id='pbb_autolevelmode_lbl'>&nbsp;</td><td id='pbb_autolevelmode' class='val transparent'>LOADING...</td></tr>
+      <tr><td class='lbl transparent' id='pbb_autolevelling_lbl'>&nbsp;</td><td id='pbb_autolevelling' class='val transparent'>LOADING...</td></tr>     
+      <tr><td class='lbl transparent' id='pbb_canopy_lbl'>&nbsp;</td><td id='pbb_canopy' class='val transparent'>LOADING...</td></tr>   
+      <tr><td class='lbl transparent' id='pbb_limits_lbl'>&nbsp;</td><td id='pbb_limits' class='val transparent'>LOADING...</td></tr>
+      <tr><td class='lbl transparent' id='pbb_smokedetector_lbl'>&nbsp;</td><td id='pbb_smokedetector' class='val transparent'>LOADING...</td></tr>
+      <tr><td class='lbl transparent' id='pbb_cabinfloordeicer_lbl'>&nbsp;</td><td id='pbb_cabinfloordeicer' class='val transparent'>LOADING...</td></tr>
+      <tr><td class='lbl transparent' id='pbb_terminaldoor_lbl'>&nbsp;</td><td id='pbb_terminaldoor' class='val transparent'>LOADING...</td></tr>
+      <tr><td class='lbl transparent' id='pbb_lastdocktime_lbl'>&nbsp;</td><td id='pbb_lastdocktime' class='val transparent'>LOADING...</td></tr>
+      <tr><td class='lbl transparent' id='pbb_dailyaircraftcount_lbl'>&nbsp;</td><td id='pbb_dailyaircraftcount' class='val transparent'>LOADING...</td></tr> 
     </table>
      <div id="pbb_cabangledisp" class=""></div>  
      <div id="pbb_slopedeg" class=""></div> 

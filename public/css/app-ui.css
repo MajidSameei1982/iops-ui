@@ -156,6 +156,74 @@ ul.gridster.widget-container {
 @keyframes blinker {
   50% {
     opacity: 0.0; } }
+table.data {
+  width: 100%;
+  border: solid 1px #999;
+  border-spacing: 1px;
+  border-collapse: separate; }
+  table.data.transparent {
+    background: transparent; }
+  table.data.airplane {
+    border: 0; }
+    table.data.airplane td {
+      background-color: #fff; }
+  table.data.no-show {
+    visibility: hidden; }
+  table.data td {
+    padding: 3px 10px;
+    background-color: #eee;
+    color: #999; }
+    table.data td.transparent {
+      background: transparent; }
+    table.data td tr.dockundock {
+      background-color: #090; }
+    table.data td.lbl {
+      background-color: #fff;
+      font-style: italic;
+      color: #333;
+      border-bottom: solid 1px #ddd; }
+      table.data td.lbl.transparent {
+        background: transparent;
+        border-right: solid 1px #ddd; }
+    table.data td.val {
+      font-weight: bold;
+      color: #333; }
+      table.data td.val.transparent {
+        font-weight: bold;
+        border-bottom: solid 1px #ddd; }
+    table.data td.err {
+      color: #fe6;
+      background-color: #c33; }
+      table.data td.err.transparent {
+        color: #ff3333;
+        background: transparent;
+        border-bottom: solid 1px #ddd; }
+    table.data td.ok {
+      background-color: #090;
+      color: #fff; }
+      table.data td.ok.transparent {
+        background: transparent;
+        color: #090;
+        border-bottom: solid 1px #ddd; }
+    table.data td.blue {
+      background-color: #06c;
+      color: #fff; }
+      table.data td.blue.transparent {
+        background: transparent;
+        color: #fff; }
+    table.data td.bad_data {
+      background-color: #fec;
+      color: #999; }
+      table.data td.bad_data.transparent {
+        background: transparent;
+        color: #999;
+        border-bottom: solid 1px #ddd; }
+    table.data td.img-circles {
+      border-radius: 10%; }
+      table.data td.img-circles.transparent {
+        background: transparent;
+        border-radius: 10%; }
+
 .crud_container {
   margin: 0 5px;
   color: #999; }
@@ -961,48 +1029,6 @@ li.dashboard-link {
   min-height: 100%;
   min-width: 100%;
   overflow: auto; }
-  .gate_widget .display #pbb_cabangledisp {
-    position: absolute;
-    left: 46%;
-    top: 24%;
-    font-size: 13px;
-    color: mediumblue;
-    background: transparent; }
-  .gate_widget .display #pbb_slopedeg {
-    position: absolute;
-    left: 67%;
-    top: 29%;
-    font-size: 13px;
-    color: mediumblue;
-    background: transparent; }
-  .gate_widget .display #pbb_swingangledisp {
-    position: absolute;
-    left: 82%;
-    top: 33%;
-    font-size: 13px;
-    color: mediumblue;
-    background: transparent; }
-  .gate_widget .display #pbb_heighttodisp {
-    position: absolute;
-    left: 51%;
-    top: 51%;
-    font-size: 13px;
-    color: mediumblue;
-    background: transparent; }
-  .gate_widget .display #pbb_wheelangledeg {
-    position: absolute;
-    left: 52%;
-    top: 59%;
-    font-size: 13px;
-    color: mediumblue;
-    background: transparent; }
-  .gate_widget .display #pbb_tunnellength {
-    position: absolute;
-    left: 72%;
-    top: 52%;
-    font-size: 12px;
-    color: mediumblue;
-    background: transparent; }
   .gate_widget .display #aircraft_img {
     position: absolute;
     top: 10%;
@@ -1037,99 +1063,6 @@ li.dashboard-link {
       .gate_widget .display #display_label h1 i#warnings {
         color: #f90 !important;
         background-color: #eee !important; }
-.gate_widget table.data {
-  border: solid 1px #999;
-  border-spacing: 1px;
-  border-collapse: separate; }
-  .gate_widget table.data td {
-    padding: 3px 10px;
-    background-color: #eee;
-    color: #999; }
-    .gate_widget table.data td.lbl {
-      background-color: #fff;
-      font-style: italic;
-      color: #333;
-      border-bottom: solid 1px #ddd; }
-    .gate_widget table.data td.val {
-      font-weight: bold;
-      color: #333; }
-    .gate_widget table.data td.err {
-      color: #fe6;
-      background-color: #c33; }
-    .gate_widget table.data td.ok {
-      background-color: #090;
-      color: #fff; }
-    .gate_widget table.data td.blue {
-      background-color: #06c;
-      color: #fff; }
-    .gate_widget table.data td.bad_data {
-      background-color: #fec;
-      color: #999; }
-    .gate_widget table.data td.img-circles {
-      border-radius: 10%; }
-.gate_widget table.data4 {
-  border: solid 1px #999;
-  border-spacing: 1px;
-  border-collapse: separate; }
-  .gate_widget table.data4 td {
-    padding: 3px 10px;
-    background-color: #eee;
-    color: #999; }
-    .gate_widget table.data4 td.lbl {
-      background-color: #fff;
-      font-style: italic;
-      color: #333;
-      border-bottom: solid 1px #ddd; }
-    .gate_widget table.data4 td.val {
-      font-weight: bold;
-      color: #333; }
-    .gate_widget table.data4 td.err {
-      color: #999; }
-    .gate_widget table.data4 td.ok {
-      background-color: #090;
-      color: #fff; }
-    .gate_widget table.data4 td.blue {
-      background-color: #06c;
-      color: #fff; }
-    .gate_widget table.data4 td.bad_data {
-      background-color: #fec;
-      color: #999; }
-    .gate_widget table.data4 td.img-circles {
-      border-radius: 10%; }
-.gate_widget table.data1 tr.dockundock {
-  background-color: #fec; }
-.gate_widget table.data2 {
-  border-collapse: collapse;
-  border: solid 1px #999; }
-  .gate_widget table.data2 td {
-    padding: 3px 10px;
-    background: transparent; }
-    .gate_widget table.data2 td.lbl {
-      background: transparent;
-      font-style: italic;
-      color: #333;
-      border-bottom: solid 1px #ddd;
-      border-right: solid 1px #ddd; }
-    .gate_widget table.data2 td.val {
-      font-weight: bold;
-      border-bottom: solid 1px #ddd; }
-    .gate_widget table.data2 td.err {
-      color: #ff3333;
-      background: transparent;
-      border-bottom: solid 1px #ddd; }
-    .gate_widget table.data2 td.ok {
-      background: transparent;
-      color: #090;
-      border-bottom: solid 1px #ddd; }
-    .gate_widget table.data2 td.blue {
-      background: transparent;
-      color: #fff; }
-    .gate_widget table.data2 td.bad_data {
-      background: transparent;
-      color: #999;
-      border-bottom: solid 1px #ddd; }
-    .gate_widget table.data2 td.img-circles {
-      border-radius: 10%; }
 
 .pbb_detail_widget.alarm {
   background-color: #c00;
@@ -1191,35 +1124,6 @@ li.dashboard-link {
       .pbb_detail_widget .display #pbbdetail_label h1 i#warnings {
         color: #f90;
         background-color: #eee; }
-.pbb_detail_widget table.data1 tr.dockundock {
-  background-color: #090; }
-.pbb_detail_widget table.data2 {
-  border: solid 1px #999;
-  border-spacing: 1px;
-  border-collapse: separate; }
-  .pbb_detail_widget table.data2 tr.dockundock {
-    background-color: #090; }
-  .pbb_detail_widget table.data2 td {
-    padding: 3px 10px;
-    color: #999; }
-    .pbb_detail_widget table.data2 td.lbl {
-      background-color: #fff;
-      font-style: italic;
-      color: #333;
-      border-bottom: solid 1px #ddd; }
-    .pbb_detail_widget table.data2 td.val {
-      font-weight: bold;
-      color: #333; }
-    .pbb_detail_widget table.data2 td.ok {
-      color: #090; }
-    .pbb_detail_widget table.data2 td.blue {
-      background-color: #06c;
-      color: #fff; }
-    .pbb_detail_widget table.data2 td.bad_data {
-      background-color: #fec;
-      color: #999; }
-    .pbb_detail_widget table.data2 td.img-circles {
-      border-radius: 10%; }
 
 .pbb_level_detail_widget.alarm {
   background-color: #c00;
@@ -1228,6 +1132,62 @@ li.dashboard-link {
   min-height: 100%;
   min-width: 100%;
   overflow: auto; }
+  .pbb_level_detail_widget .display #pbb_cabangledisp {
+    position: absolute;
+    left: 46%;
+    top: 24%;
+    font-size: 13px;
+    color: mediumblue;
+    background: transparent; }
+  .pbb_level_detail_widget .display #pbb_slopedeg {
+    position: absolute;
+    left: 67%;
+    top: 29%;
+    font-size: 13px;
+    color: mediumblue;
+    background: transparent; }
+  .pbb_level_detail_widget .display #pbb_swingangledisp {
+    position: absolute;
+    left: 82%;
+    top: 33%;
+    font-size: 13px;
+    color: mediumblue;
+    background: transparent; }
+  .pbb_level_detail_widget .display #pbb_heighttodisp {
+    position: absolute;
+    left: 51%;
+    top: 51%;
+    font-size: 13px;
+    color: mediumblue;
+    background: transparent; }
+  .pbb_level_detail_widget .display #pbb_wheelangledeg {
+    position: absolute;
+    left: 52%;
+    top: 59%;
+    font-size: 13px;
+    color: mediumblue;
+    background: transparent; }
+  .pbb_level_detail_widget .display #pbb_tunnellength {
+    position: absolute;
+    left: 72%;
+    top: 52%;
+    font-size: 12px;
+    color: mediumblue;
+    background: transparent; }
+  .pbb_level_detail_widget .display #aircraft_img {
+    position: absolute;
+    top: 10%;
+    left: 1%;
+    background-image: url("../img/pbb/Docking_Plane_Not-at-Gate.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center center;
+    margin: auto auto;
+    display: block;
+    height: 100%;
+    width: 100%; }
+    .pbb_level_detail_widget .display #aircraft_img.docked {
+      background-image: url("../img/pbb/Docking_Plane_at-Gate.png"); }
 
 /* GPU Widget Styles */
 .gpu_widget.alarm {
@@ -1257,34 +1217,6 @@ li.dashboard-link {
       .gpu_widget .display #gpu_label h1 i#warnings {
         color: #f90;
         background-color: #eee; }
-.gpu_widget table.data {
-  width: 100%;
-  border: solid 1px #999;
-  border-spacing: 1px;
-  border-collapse: separate; }
-  .gpu_widget table.data td {
-    padding: 3px 10px;
-    background-color: #eee;
-    color: #999; }
-    .gpu_widget table.data td.lbl {
-      background-color: #fff;
-      font-style: italic;
-      color: #333;
-      border-bottom: solid 1px #ddd; }
-    .gpu_widget table.data td.val {
-      font-weight: bold; }
-    .gpu_widget table.data td.err {
-      color: #fe6;
-      background-color: #c33; }
-    .gpu_widget table.data td.ok {
-      background-color: #090;
-      color: #fff; }
-    .gpu_widget table.data td.blue {
-      background-color: #06c;
-      color: #fff; }
-    .gpu_widget table.data td.bad_data {
-      background-color: #fec;
-      color: #999; }
 
 /* GPU Summary Widget Styles */
 /*.gpu_summary_widget {
@@ -1745,48 +1677,6 @@ li.dashboard-link {
       .pca_summary_widget .display #display_label h1 i#warnings {
         color: #f90;
         background-color: #eee; }
-.pca_summary_widget table.data {
-  width: 100%;
-  border: 0;
-  border-spacing: 0;
-  border-collapse: separate; }
-  .pca_summary_widget table.data td {
-    padding: 3px 10px;
-    background-color: #fff;
-    color: #999; }
-    .pca_summary_widget table.data td.lbl {
-      background-color: #fff;
-      font-style: italic;
-      color: #333;
-      border-bottom: solid 1px #ddd; }
-    .pca_summary_widget table.data td.val {
-      font-weight: bold; }
-    .pca_summary_widget table.data td.err {
-      color: #fe6;
-      background-color: #c33; }
-    .pca_summary_widget table.data td.ok {
-      background-color: #090;
-      color: #fff; }
-    .pca_summary_widget table.data td.blue {
-      background-color: #06c;
-      color: #fff; }
-    .pca_summary_widget table.data td.bad_data {
-      background-color: #fec;
-      color: #999; }
-.pca_summary_widget table.data1 {
-  width: 200%;
-  border: 0;
-  border-spacing: 0;
-  border-collapse: separate; }
-  .pca_summary_widget table.data1 td {
-    padding: 3px 10px;
-    background-color: #fff;
-    color: #999; }
-    .pca_summary_widget table.data1 td.lbl {
-      background-color: #fff;
-      font-style: italic;
-      color: #333;
-      border-bottom: solid 1px #ddd; }
 
 @font-face {
   font-family: 'weather';
