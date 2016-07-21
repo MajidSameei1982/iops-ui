@@ -127,7 +127,6 @@ module.exports = (grunt)->
           'client/requires/jquery-dateFormat/jquery-dateFormat.js'
           'client/assets/js/opc-lib.min.js'
           'client/assets/js/lz-string.min.js'
-          #'client/assets/js/raphael.js'
           'client/assets/js/JustGage/raphael-2.1.4.min.js'
           'client/assets/js/JustGage/justgage.js'
           'client/assets/js/flot-master/jquery.flot.js'
@@ -138,7 +137,6 @@ module.exports = (grunt)->
           'client/assets/js/jquery.resize.min.js'
           'client/assets/js/skycons.js'
           'client/requires/simpleWeather/jquery.simpleWeather.js'
-          'client/assets/js/morris.js'
           
         ]
         dest: 'build/vendor.js'
@@ -153,7 +151,6 @@ module.exports = (grunt)->
           'client/assets/css/opc-style.css'
           'client/assets/css/opc-alarm-style.css'
           'client/assets/js/bootstrap-toggle-master/css/bootstrap2-toggle.min.css'
-          'client/assets/css/morris.css'
         ]
         dest: 'build/vendor.css'
       
