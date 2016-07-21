@@ -1,0 +1,12 @@
+/* KPI Widget Styles */
+.kpi_widget {
+  &.alarm {
+    background-color: #c00;
+    color: #fff;
+  }
+  .display {
+    min-height: 300;
+    min-width: 400;
+    overflow: auto;    
+  }
+}

@@ -190,7 +190,13 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
 
 }));
 
+<<<<<<< HEAD
 },{"backbone":"7WdlDG","underscore":"sid1aP"}],"eKEO00":[function(require,module,exports){
+=======
+},{"backbone":"IRrc66","underscore":"VWI2OL"}],"marionette":[function(require,module,exports){
+module.exports=require('oFTesN');
+},{}],"oFTesN":[function(require,module,exports){
+>>>>>>> 0f7bc01f3cd326f71d7ea63aae03add24cd09aeb
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
 
 ; global.$ = require("jquery");
@@ -4159,9 +4165,13 @@ global._ = require("underscore");
 
 }).call(global, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
+<<<<<<< HEAD
 },{"backbone":"7WdlDG","jquery":"d+9IPP","underscore":"sid1aP"}],"marionette":[function(require,module,exports){
 module.exports=require('eKEO00');
 },{}],4:[function(require,module,exports){
+=======
+},{"backbone":"IRrc66","jquery":"6oFF6r","underscore":"VWI2OL"}],4:[function(require,module,exports){
+>>>>>>> 0f7bc01f3cd326f71d7ea63aae03add24cd09aeb
 // Backbone.ModelBinder v1.1.0
 // (c) 2015 Bart Wood
 // Distributed Under MIT License
@@ -4740,7 +4750,11 @@ module.exports=require('eKEO00');
 
 }));
 
+<<<<<<< HEAD
 },{"backbone":"7WdlDG","jquery":"d+9IPP","underscore":"sid1aP"}],"OVWKyA":[function(require,module,exports){
+=======
+},{"backbone":"IRrc66","jquery":"6oFF6r","underscore":"VWI2OL"}],"mDKN7o":[function(require,module,exports){
+>>>>>>> 0f7bc01f3cd326f71d7ea63aae03add24cd09aeb
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
 
 ; global.Backbone = require("backbone");
@@ -4956,8 +4970,13 @@ IN THE SOFTWARE.*/
 
 }).call(global, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
+<<<<<<< HEAD
 },{"backbone":"7WdlDG","underscore":"sid1aP"}],"backbone.mutators":[function(require,module,exports){
 module.exports=require('OVWKyA');
+=======
+},{"backbone":"IRrc66","underscore":"VWI2OL"}],"backbone.mutators":[function(require,module,exports){
+module.exports=require('mDKN7o');
+>>>>>>> 0f7bc01f3cd326f71d7ea63aae03add24cd09aeb
 },{}],7:[function(require,module,exports){
 // Backbone.Wreqr (Backbone.Marionette)
 // ----------------------------------
@@ -5395,9 +5414,15 @@ module.exports=require('OVWKyA');
 
 }));
 
+<<<<<<< HEAD
 },{"backbone":"7WdlDG","underscore":"sid1aP"}],"backbone":[function(require,module,exports){
 module.exports=require('7WdlDG');
 },{}],"7WdlDG":[function(require,module,exports){
+=======
+},{"backbone":"IRrc66","underscore":"VWI2OL"}],"backbone":[function(require,module,exports){
+module.exports=require('IRrc66');
+},{}],"IRrc66":[function(require,module,exports){
+>>>>>>> 0f7bc01f3cd326f71d7ea63aae03add24cd09aeb
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
 
 ; global.$ = require("jquery");
@@ -7301,7 +7326,11 @@ global.underscore = require("underscore");
 
 }).call(global, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
+<<<<<<< HEAD
 },{"jquery":"d+9IPP","underscore":"sid1aP"}],10:[function(require,module,exports){
+=======
+},{"jquery":"6oFF6r","underscore":"VWI2OL"}],10:[function(require,module,exports){
+>>>>>>> 0f7bc01f3cd326f71d7ea63aae03add24cd09aeb
 (function () {
 	// Basil
 	var Basil = function (options) {
@@ -7670,7 +7699,11 @@ global.underscore = require("underscore");
 
 })();
 
+<<<<<<< HEAD
 },{}],"sxSVGl":[function(require,module,exports){
+=======
+},{}],"547TVB":[function(require,module,exports){
+>>>>>>> 0f7bc01f3cd326f71d7ea63aae03add24cd09aeb
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
 
 ; global.$ = require("jquery");
@@ -10042,8 +10075,13 @@ if (typeof jQuery === 'undefined') {
 
 }).call(global, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
+<<<<<<< HEAD
 },{"jquery":"d+9IPP"}],"bootstrap":[function(require,module,exports){
 module.exports=require('sxSVGl');
+=======
+},{"jquery":"6oFF6r"}],"bootstrap":[function(require,module,exports){
+module.exports=require('547TVB');
+>>>>>>> 0f7bc01f3cd326f71d7ea63aae03add24cd09aeb
 },{}],13:[function(require,module,exports){
 /* Chosen v1.4.2 | (c) 2011-2015 by Harvest | MIT License, https://github.com/harvesthq/chosen/blob/master/LICENSE.md */
 (function(){var a,AbstractChosen,Chosen,SelectParser,b,c={}.hasOwnProperty,d=function(a,b){function d(){this.constructor=a}for(var e in b)c.call(b,e)&&(a[e]=b[e]);return d.prototype=b.prototype,a.prototype=new d,a.__super__=b.prototype,a};SelectParser=function(){function SelectParser(){this.options_index=0,this.parsed=[]}return SelectParser.prototype.add_node=function(a){return"OPTGROUP"===a.nodeName.toUpperCase()?this.add_group(a):this.add_option(a)},SelectParser.prototype.add_group=function(a){var b,c,d,e,f,g;for(b=this.parsed.length,this.parsed.push({array_index:b,group:!0,label:this.escapeExpression(a.label),title:a.title?a.title:void 0,children:0,disabled:a.disabled,classes:a.className}),f=a.childNodes,g=[],d=0,e=f.length;e>d;d++)c=f[d],g.push(this.add_option(c,b,a.disabled));return g},SelectParser.prototype.add_option=function(a,b,c){return"OPTION"===a.nodeName.toUpperCase()?(""!==a.text?(null!=b&&(this.parsed[b].children+=1),this.parsed.push({array_index:this.parsed.length,options_index:this.options_index,value:a.value,text:a.text,html:a.innerHTML,title:a.title?a.title:void 0,selected:a.selected,disabled:c===!0?c:a.disabled,group_array_index:b,group_label:null!=b?this.parsed[b].label:null,classes:a.className,style:a.style.cssText})):this.parsed.push({array_index:this.parsed.length,options_index:this.options_index,empty:!0}),this.options_index+=1):void 0},SelectParser.prototype.escapeExpression=function(a){var b,c;return null==a||a===!1?"":/[\&\<\>\"\'\`]/.test(a)?(b={"<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#x27;","`":"&#x60;"},c=/&(?!\w+;)|[\<\>\"\'\`]/g,a.replace(c,function(a){return b[a]||"&amp;"})):a},SelectParser}(),SelectParser.select_to_array=function(a){var b,c,d,e,f;for(c=new SelectParser,f=a.childNodes,d=0,e=f.length;e>d;d++)b=f[d],c.add_node(b);return c.parsed},AbstractChosen=function(){function AbstractChosen(a,b){this.form_field=a,this.options=null!=b?b:{},AbstractChosen.browser_is_supported()&&(this.is_multiple=this.form_field.multiple,this.set_default_text(),this.set_default_values(),this.setup(),this.set_up_html(),this.register_observers(),this.on_ready())}return AbstractChosen.prototype.set_default_values=function(){var a=this;return this.click_test_action=function(b){return a.test_active_click(b)},this.activate_action=function(b){return a.activate_field(b)},this.active_field=!1,this.mouse_on_container=!1,this.results_showing=!1,this.result_highlighted=null,this.allow_single_deselect=null!=this.options.allow_single_deselect&&null!=this.form_field.options[0]&&""===this.form_field.options[0].text?this.options.allow_single_deselect:!1,this.disable_search_threshold=this.options.disable_search_threshold||0,this.disable_search=this.options.disable_search||!1,this.enable_split_word_search=null!=this.options.enable_split_word_search?this.options.enable_split_word_search:!0,this.group_search=null!=this.options.group_search?this.options.group_search:!0,this.search_contains=this.options.search_contains||!1,this.single_backstroke_delete=null!=this.options.single_backstroke_delete?this.options.single_backstroke_delete:!0,this.max_selected_options=this.options.max_selected_options||1/0,this.inherit_select_classes=this.options.inherit_select_classes||!1,this.display_selected_options=null!=this.options.display_selected_options?this.options.display_selected_options:!0,this.display_disabled_options=null!=this.options.display_disabled_options?this.options.display_disabled_options:!0,this.include_group_label_in_selected=this.options.include_group_label_in_selected||!1},AbstractChosen.prototype.set_default_text=function(){return this.default_text=this.form_field.getAttribute("data-placeholder")?this.form_field.getAttribute("data-placeholder"):this.is_multiple?this.options.placeholder_text_multiple||this.options.placeholder_text||AbstractChosen.default_multiple_text:this.options.placeholder_text_single||this.options.placeholder_text||AbstractChosen.default_single_text,this.results_none_found=this.form_field.getAttribute("data-no_results_text")||this.options.no_results_text||AbstractChosen.default_no_result_text},AbstractChosen.prototype.choice_label=function(a){return this.include_group_label_in_selected&&null!=a.group_label?"<b class='group-name'>"+a.group_label+"</b>"+a.html:a.html},AbstractChosen.prototype.mouse_enter=function(){return this.mouse_on_container=!0},AbstractChosen.prototype.mouse_leave=function(){return this.mouse_on_container=!1},AbstractChosen.prototype.input_focus=function(){var a=this;if(this.is_multiple){if(!this.active_field)return setTimeout(function(){return a.container_mousedown()},50)}else if(!this.active_field)return this.activate_field()},AbstractChosen.prototype.input_blur=function(){var a=this;return this.mouse_on_container?void 0:(this.active_field=!1,setTimeout(function(){return a.blur_test()},100))},AbstractChosen.prototype.results_option_build=function(a){var b,c,d,e,f;for(b="",f=this.results_data,d=0,e=f.length;e>d;d++)c=f[d],b+=c.group?this.result_add_group(c):this.result_add_option(c),(null!=a?a.first:void 0)&&(c.selected&&this.is_multiple?this.choice_build(c):c.selected&&!this.is_multiple&&this.single_set_selected_text(this.choice_label(c)));return b},AbstractChosen.prototype.result_add_option=function(a){var b,c;return a.search_match&&this.include_option_in_results(a)?(b=[],a.disabled||a.selected&&this.is_multiple||b.push("active-result"),!a.disabled||a.selected&&this.is_multiple||b.push("disabled-result"),a.selected&&b.push("result-selected"),null!=a.group_array_index&&b.push("group-option"),""!==a.classes&&b.push(a.classes),c=document.createElement("li"),c.className=b.join(" "),c.style.cssText=a.style,c.setAttribute("data-option-array-index",a.array_index),c.innerHTML=a.search_text,a.title&&(c.title=a.title),this.outerHTML(c)):""},AbstractChosen.prototype.result_add_group=function(a){var b,c;return(a.search_match||a.group_match)&&a.active_options>0?(b=[],b.push("group-result"),a.classes&&b.push(a.classes),c=document.createElement("li"),c.className=b.join(" "),c.innerHTML=a.search_text,a.title&&(c.title=a.title),this.outerHTML(c)):""},AbstractChosen.prototype.results_update_field=function(){return this.set_default_text(),this.is_multiple||this.results_reset_cleanup(),this.result_clear_highlight(),this.results_build(),this.results_showing?this.winnow_results():void 0},AbstractChosen.prototype.reset_single_select_options=function(){var a,b,c,d,e;for(d=this.results_data,e=[],b=0,c=d.length;c>b;b++)a=d[b],e.push(a.selected?a.selected=!1:void 0);return e},AbstractChosen.prototype.results_toggle=function(){return this.results_showing?this.results_hide():this.results_show()},AbstractChosen.prototype.results_search=function(){return this.results_showing?this.winnow_results():this.results_show()},AbstractChosen.prototype.winnow_results=function(){var a,b,c,d,e,f,g,h,i,j,k,l;for(this.no_results_clear(),d=0,f=this.get_search_text(),a=f.replace(/[-[\]{}()*+?.,\\^$|#\s]/g,"\\$&"),i=new RegExp(a,"i"),c=this.get_search_regex(a),l=this.results_data,j=0,k=l.length;k>j;j++)b=l[j],b.search_match=!1,e=null,this.include_option_in_results(b)&&(b.group&&(b.group_match=!1,b.active_options=0),null!=b.group_array_index&&this.results_data[b.group_array_index]&&(e=this.results_data[b.group_array_index],0===e.active_options&&e.search_match&&(d+=1),e.active_options+=1),b.search_text=b.group?b.label:b.html,(!b.group||this.group_search)&&(b.search_match=this.search_string_match(b.search_text,c),b.search_match&&!b.group&&(d+=1),b.search_match?(f.length&&(g=b.search_text.search(i),h=b.search_text.substr(0,g+f.length)+"</em>"+b.search_text.substr(g+f.length),b.search_text=h.substr(0,g)+"<em>"+h.substr(g)),null!=e&&(e.group_match=!0)):null!=b.group_array_index&&this.results_data[b.group_array_index].search_match&&(b.search_match=!0)));return this.result_clear_highlight(),1>d&&f.length?(this.update_results_content(""),this.no_results(f)):(this.update_results_content(this.results_option_build()),this.winnow_results_set_highlight())},AbstractChosen.prototype.get_search_regex=function(a){var b;return b=this.search_contains?"":"^",new RegExp(b+a,"i")},AbstractChosen.prototype.search_string_match=function(a,b){var c,d,e,f;if(b.test(a))return!0;if(this.enable_split_word_search&&(a.indexOf(" ")>=0||0===a.indexOf("["))&&(d=a.replace(/\[|\]/g,"").split(" "),d.length))for(e=0,f=d.length;f>e;e++)if(c=d[e],b.test(c))return!0},AbstractChosen.prototype.choices_count=function(){var a,b,c,d;if(null!=this.selected_option_count)return this.selected_option_count;for(this.selected_option_count=0,d=this.form_field.options,b=0,c=d.length;c>b;b++)a=d[b],a.selected&&(this.selected_option_count+=1);return this.selected_option_count},AbstractChosen.prototype.choices_click=function(a){return a.preventDefault(),this.results_showing||this.is_disabled?void 0:this.results_show()},AbstractChosen.prototype.keyup_checker=function(a){var b,c;switch(b=null!=(c=a.which)?c:a.keyCode,this.search_field_scale(),b){case 8:if(this.is_multiple&&this.backstroke_length<1&&this.choices_count()>0)return this.keydown_backstroke();if(!this.pending_backstroke)return this.result_clear_highlight(),this.results_search();break;case 13:if(a.preventDefault(),this.results_showing)return this.result_select(a);break;case 27:return this.results_showing&&this.results_hide(),!0;case 9:case 38:case 40:case 16:case 91:case 17:break;default:return this.results_search()}},AbstractChosen.prototype.clipboard_event_checker=function(){var a=this;return setTimeout(function(){return a.results_search()},50)},AbstractChosen.prototype.container_width=function(){return null!=this.options.width?this.options.width:""+this.form_field.offsetWidth+"px"},AbstractChosen.prototype.include_option_in_results=function(a){return this.is_multiple&&!this.display_selected_options&&a.selected?!1:!this.display_disabled_options&&a.disabled?!1:a.empty?!1:!0},AbstractChosen.prototype.search_results_touchstart=function(a){return this.touch_started=!0,this.search_results_mouseover(a)},AbstractChosen.prototype.search_results_touchmove=function(a){return this.touch_started=!1,this.search_results_mouseout(a)},AbstractChosen.prototype.search_results_touchend=function(a){return this.touch_started?this.search_results_mouseup(a):void 0},AbstractChosen.prototype.outerHTML=function(a){var b;return a.outerHTML?a.outerHTML:(b=document.createElement("div"),b.appendChild(a),b.innerHTML)},AbstractChosen.browser_is_supported=function(){return"Microsoft Internet Explorer"===window.navigator.appName?document.documentMode>=8:/iP(od|hone)/i.test(window.navigator.userAgent)?!1:/Android/i.test(window.navigator.userAgent)&&/Mobile/i.test(window.navigator.userAgent)?!1:!0},AbstractChosen.default_multiple_text="Select Some Options",AbstractChosen.default_single_text="Select an Option",AbstractChosen.default_no_result_text="No results match",AbstractChosen}(),a=jQuery,a.fn.extend({chosen:function(b){return AbstractChosen.browser_is_supported()?this.each(function(){var c,d;c=a(this),d=c.data("chosen"),"destroy"===b&&d instanceof Chosen?d.destroy():d instanceof Chosen||c.data("chosen",new Chosen(this,b))}):this}}),Chosen=function(c){function Chosen(){return b=Chosen.__super__.constructor.apply(this,arguments)}return d(Chosen,c),Chosen.prototype.setup=function(){return this.form_field_jq=a(this.form_field),this.current_selectedIndex=this.form_field.selectedIndex,this.is_rtl=this.form_field_jq.hasClass("chosen-rtl")},Chosen.prototype.set_up_html=function(){var b,c;return b=["chosen-container"],b.push("chosen-container-"+(this.is_multiple?"multi":"single")),this.inherit_select_classes&&this.form_field.className&&b.push(this.form_field.className),this.is_rtl&&b.push("chosen-rtl"),c={"class":b.join(" "),style:"width: "+this.container_width()+";",title:this.form_field.title},this.form_field.id.length&&(c.id=this.form_field.id.replace(/[^\w]/g,"_")+"_chosen"),this.container=a("<div />",c),this.container.html(this.is_multiple?'<ul class="chosen-choices"><li class="search-field"><input type="text" value="'+this.default_text+'" class="default" autocomplete="off" style="width:25px;" /></li></ul><div class="chosen-drop"><ul class="chosen-results"></ul></div>':'<a class="chosen-single chosen-default" tabindex="-1"><span>'+this.default_text+'</span><div><b></b></div></a><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off" /></div><ul class="chosen-results"></ul></div>'),this.form_field_jq.hide().after(this.container),this.dropdown=this.container.find("div.chosen-drop").first(),this.search_field=this.container.find("input").first(),this.search_results=this.container.find("ul.chosen-results").first(),this.search_field_scale(),this.search_no_results=this.container.find("li.no-results").first(),this.is_multiple?(this.search_choices=this.container.find("ul.chosen-choices").first(),this.search_container=this.container.find("li.search-field").first()):(this.search_container=this.container.find("div.chosen-search").first(),this.selected_item=this.container.find(".chosen-single").first()),this.results_build(),this.set_tab_index(),this.set_label_behavior()},Chosen.prototype.on_ready=function(){return this.form_field_jq.trigger("chosen:ready",{chosen:this})},Chosen.prototype.register_observers=function(){var a=this;return this.container.bind("touchstart.chosen",function(b){return a.container_mousedown(b),b.preventDefault()}),this.container.bind("touchend.chosen",function(b){return a.container_mouseup(b),b.preventDefault()}),this.container.bind("mousedown.chosen",function(b){a.container_mousedown(b)}),this.container.bind("mouseup.chosen",function(b){a.container_mouseup(b)}),this.container.bind("mouseenter.chosen",function(b){a.mouse_enter(b)}),this.container.bind("mouseleave.chosen",function(b){a.mouse_leave(b)}),this.search_results.bind("mouseup.chosen",function(b){a.search_results_mouseup(b)}),this.search_results.bind("mouseover.chosen",function(b){a.search_results_mouseover(b)}),this.search_results.bind("mouseout.chosen",function(b){a.search_results_mouseout(b)}),this.search_results.bind("mousewheel.chosen DOMMouseScroll.chosen",function(b){a.search_results_mousewheel(b)}),this.search_results.bind("touchstart.chosen",function(b){a.search_results_touchstart(b)}),this.search_results.bind("touchmove.chosen",function(b){a.search_results_touchmove(b)}),this.search_results.bind("touchend.chosen",function(b){a.search_results_touchend(b)}),this.form_field_jq.bind("chosen:updated.chosen",function(b){a.results_update_field(b)}),this.form_field_jq.bind("chosen:activate.chosen",function(b){a.activate_field(b)}),this.form_field_jq.bind("chosen:open.chosen",function(b){a.container_mousedown(b)}),this.form_field_jq.bind("chosen:close.chosen",function(b){a.input_blur(b)}),this.search_field.bind("blur.chosen",function(b){a.input_blur(b)}),this.search_field.bind("keyup.chosen",function(b){a.keyup_checker(b)}),this.search_field.bind("keydown.chosen",function(b){a.keydown_checker(b)}),this.search_field.bind("focus.chosen",function(b){a.input_focus(b)}),this.search_field.bind("cut.chosen",function(b){a.clipboard_event_checker(b)}),this.search_field.bind("paste.chosen",function(b){a.clipboard_event_checker(b)}),this.is_multiple?this.search_choices.bind("click.chosen",function(b){a.choices_click(b)}):this.container.bind("click.chosen",function(a){a.preventDefault()})},Chosen.prototype.destroy=function(){return a(this.container[0].ownerDocument).unbind("click.chosen",this.click_test_action),this.search_field[0].tabIndex&&(this.form_field_jq[0].tabIndex=this.search_field[0].tabIndex),this.container.remove(),this.form_field_jq.removeData("chosen"),this.form_field_jq.show()},Chosen.prototype.search_field_disabled=function(){return this.is_disabled=this.form_field_jq[0].disabled,this.is_disabled?(this.container.addClass("chosen-disabled"),this.search_field[0].disabled=!0,this.is_multiple||this.selected_item.unbind("focus.chosen",this.activate_action),this.close_field()):(this.container.removeClass("chosen-disabled"),this.search_field[0].disabled=!1,this.is_multiple?void 0:this.selected_item.bind("focus.chosen",this.activate_action))},Chosen.prototype.container_mousedown=function(b){return this.is_disabled||(b&&"mousedown"===b.type&&!this.results_showing&&b.preventDefault(),null!=b&&a(b.target).hasClass("search-choice-close"))?void 0:(this.active_field?this.is_multiple||!b||a(b.target)[0]!==this.selected_item[0]&&!a(b.target).parents("a.chosen-single").length||(b.preventDefault(),this.results_toggle()):(this.is_multiple&&this.search_field.val(""),a(this.container[0].ownerDocument).bind("click.chosen",this.click_test_action),this.results_show()),this.activate_field())},Chosen.prototype.container_mouseup=function(a){return"ABBR"!==a.target.nodeName||this.is_disabled?void 0:this.results_reset(a)},Chosen.prototype.search_results_mousewheel=function(a){var b;return a.originalEvent&&(b=a.originalEvent.deltaY||-a.originalEvent.wheelDelta||a.originalEvent.detail),null!=b?(a.preventDefault(),"DOMMouseScroll"===a.type&&(b=40*b),this.search_results.scrollTop(b+this.search_results.scrollTop())):void 0},Chosen.prototype.blur_test=function(){return!this.active_field&&this.container.hasClass("chosen-container-active")?this.close_field():void 0},Chosen.prototype.close_field=function(){return a(this.container[0].ownerDocument).unbind("click.chosen",this.click_test_action),this.active_field=!1,this.results_hide(),this.container.removeClass("chosen-container-active"),this.clear_backstroke(),this.show_search_field_default(),this.search_field_scale()},Chosen.prototype.activate_field=function(){return this.container.addClass("chosen-container-active"),this.active_field=!0,this.search_field.val(this.search_field.val()),this.search_field.focus()},Chosen.prototype.test_active_click=function(b){var c;return c=a(b.target).closest(".chosen-container"),c.length&&this.container[0]===c[0]?this.active_field=!0:this.close_field()},Chosen.prototype.results_build=function(){return this.parsing=!0,this.selected_option_count=null,this.results_data=SelectParser.select_to_array(this.form_field),this.is_multiple?this.search_choices.find("li.search-choice").remove():this.is_multiple||(this.single_set_selected_text(),this.disable_search||this.form_field.options.length<=this.disable_search_threshold?(this.search_field[0].readOnly=!0,this.container.addClass("chosen-container-single-nosearch")):(this.search_field[0].readOnly=!1,this.container.removeClass("chosen-container-single-nosearch"))),this.update_results_content(this.results_option_build({first:!0})),this.search_field_disabled(),this.show_search_field_default(),this.search_field_scale(),this.parsing=!1},Chosen.prototype.result_do_highlight=function(a){var b,c,d,e,f;if(a.length){if(this.result_clear_highlight(),this.result_highlight=a,this.result_highlight.addClass("highlighted"),d=parseInt(this.search_results.css("maxHeight"),10),f=this.search_results.scrollTop(),e=d+f,c=this.result_highlight.position().top+this.search_results.scrollTop(),b=c+this.result_highlight.outerHeight(),b>=e)return this.search_results.scrollTop(b-d>0?b-d:0);if(f>c)return this.search_results.scrollTop(c)}},Chosen.prototype.result_clear_highlight=function(){return this.result_highlight&&this.result_highlight.removeClass("highlighted"),this.result_highlight=null},Chosen.prototype.results_show=function(){return this.is_multiple&&this.max_selected_options<=this.choices_count()?(this.form_field_jq.trigger("chosen:maxselected",{chosen:this}),!1):(this.container.addClass("chosen-with-drop"),this.results_showing=!0,this.search_field.focus(),this.search_field.val(this.search_field.val()),this.winnow_results(),this.form_field_jq.trigger("chosen:showing_dropdown",{chosen:this}))},Chosen.prototype.update_results_content=function(a){return this.search_results.html(a)},Chosen.prototype.results_hide=function(){return this.results_showing&&(this.result_clear_highlight(),this.container.removeClass("chosen-with-drop"),this.form_field_jq.trigger("chosen:hiding_dropdown",{chosen:this})),this.results_showing=!1},Chosen.prototype.set_tab_index=function(){var a;return this.form_field.tabIndex?(a=this.form_field.tabIndex,this.form_field.tabIndex=-1,this.search_field[0].tabIndex=a):void 0},Chosen.prototype.set_label_behavior=function(){var b=this;return this.form_field_label=this.form_field_jq.parents("label"),!this.form_field_label.length&&this.form_field.id.length&&(this.form_field_label=a("label[for='"+this.form_field.id+"']")),this.form_field_label.length>0?this.form_field_label.bind("click.chosen",function(a){return b.is_multiple?b.container_mousedown(a):b.activate_field()}):void 0},Chosen.prototype.show_search_field_default=function(){return this.is_multiple&&this.choices_count()<1&&!this.active_field?(this.search_field.val(this.default_text),this.search_field.addClass("default")):(this.search_field.val(""),this.search_field.removeClass("default"))},Chosen.prototype.search_results_mouseup=function(b){var c;return c=a(b.target).hasClass("active-result")?a(b.target):a(b.target).parents(".active-result").first(),c.length?(this.result_highlight=c,this.result_select(b),this.search_field.focus()):void 0},Chosen.prototype.search_results_mouseover=function(b){var c;return c=a(b.target).hasClass("active-result")?a(b.target):a(b.target).parents(".active-result").first(),c?this.result_do_highlight(c):void 0},Chosen.prototype.search_results_mouseout=function(b){return a(b.target).hasClass("active-result")?this.result_clear_highlight():void 0},Chosen.prototype.choice_build=function(b){var c,d,e=this;return c=a("<li />",{"class":"search-choice"}).html("<span>"+this.choice_label(b)+"</span>"),b.disabled?c.addClass("search-choice-disabled"):(d=a("<a />",{"class":"search-choice-close","data-option-array-index":b.array_index}),d.bind("click.chosen",function(a){return e.choice_destroy_link_click(a)}),c.append(d)),this.search_container.before(c)},Chosen.prototype.choice_destroy_link_click=function(b){return b.preventDefault(),b.stopPropagation(),this.is_disabled?void 0:this.choice_destroy(a(b.target))},Chosen.prototype.choice_destroy=function(a){return this.result_deselect(a[0].getAttribute("data-option-array-index"))?(this.show_search_field_default(),this.is_multiple&&this.choices_count()>0&&this.search_field.val().length<1&&this.results_hide(),a.parents("li").first().remove(),this.search_field_scale()):void 0},Chosen.prototype.results_reset=function(){return this.reset_single_select_options(),this.form_field.options[0].selected=!0,this.single_set_selected_text(),this.show_search_field_default(),this.results_reset_cleanup(),this.form_field_jq.trigger("change"),this.active_field?this.results_hide():void 0},Chosen.prototype.results_reset_cleanup=function(){return this.current_selectedIndex=this.form_field.selectedIndex,this.selected_item.find("abbr").remove()},Chosen.prototype.result_select=function(a){var b,c;return this.result_highlight?(b=this.result_highlight,this.result_clear_highlight(),this.is_multiple&&this.max_selected_options<=this.choices_count()?(this.form_field_jq.trigger("chosen:maxselected",{chosen:this}),!1):(this.is_multiple?b.removeClass("active-result"):this.reset_single_select_options(),b.addClass("result-selected"),c=this.results_data[b[0].getAttribute("data-option-array-index")],c.selected=!0,this.form_field.options[c.options_index].selected=!0,this.selected_option_count=null,this.is_multiple?this.choice_build(c):this.single_set_selected_text(this.choice_label(c)),(a.metaKey||a.ctrlKey)&&this.is_multiple||this.results_hide(),this.search_field.val(""),(this.is_multiple||this.form_field.selectedIndex!==this.current_selectedIndex)&&this.form_field_jq.trigger("change",{selected:this.form_field.options[c.options_index].value}),this.current_selectedIndex=this.form_field.selectedIndex,a.preventDefault(),this.search_field_scale())):void 0},Chosen.prototype.single_set_selected_text=function(a){return null==a&&(a=this.default_text),a===this.default_text?this.selected_item.addClass("chosen-default"):(this.single_deselect_control_build(),this.selected_item.removeClass("chosen-default")),this.selected_item.find("span").html(a)},Chosen.prototype.result_deselect=function(a){var b;return b=this.results_data[a],this.form_field.options[b.options_index].disabled?!1:(b.selected=!1,this.form_field.options[b.options_index].selected=!1,this.selected_option_count=null,this.result_clear_highlight(),this.results_showing&&this.winnow_results(),this.form_field_jq.trigger("change",{deselected:this.form_field.options[b.options_index].value}),this.search_field_scale(),!0)},Chosen.prototype.single_deselect_control_build=function(){return this.allow_single_deselect?(this.selected_item.find("abbr").length||this.selected_item.find("span").first().after('<abbr class="search-choice-close"></abbr>'),this.selected_item.addClass("chosen-single-with-deselect")):void 0},Chosen.prototype.get_search_text=function(){return a("<div/>").text(a.trim(this.search_field.val())).html()},Chosen.prototype.winnow_results_set_highlight=function(){var a,b;return b=this.is_multiple?[]:this.search_results.find(".result-selected.active-result"),a=b.length?b.first():this.search_results.find(".active-result").first(),null!=a?this.result_do_highlight(a):void 0},Chosen.prototype.no_results=function(b){var c;return c=a('<li class="no-results">'+this.results_none_found+' "<span></span>"</li>'),c.find("span").first().html(b),this.search_results.append(c),this.form_field_jq.trigger("chosen:no_results",{chosen:this})},Chosen.prototype.no_results_clear=function(){return this.search_results.find(".no-results").remove()},Chosen.prototype.keydown_arrow=function(){var a;return this.results_showing&&this.result_highlight?(a=this.result_highlight.nextAll("li.active-result").first())?this.result_do_highlight(a):void 0:this.results_show()},Chosen.prototype.keyup_arrow=function(){var a;return this.results_showing||this.is_multiple?this.result_highlight?(a=this.result_highlight.prevAll("li.active-result"),a.length?this.result_do_highlight(a.first()):(this.choices_count()>0&&this.results_hide(),this.result_clear_highlight())):void 0:this.results_show()},Chosen.prototype.keydown_backstroke=function(){var a;return this.pending_backstroke?(this.choice_destroy(this.pending_backstroke.find("a").first()),this.clear_backstroke()):(a=this.search_container.siblings("li.search-choice").last(),a.length&&!a.hasClass("search-choice-disabled")?(this.pending_backstroke=a,this.single_backstroke_delete?this.keydown_backstroke():this.pending_backstroke.addClass("search-choice-focus")):void 0)},Chosen.prototype.clear_backstroke=function(){return this.pending_backstroke&&this.pending_backstroke.removeClass("search-choice-focus"),this.pending_backstroke=null},Chosen.prototype.keydown_checker=function(a){var b,c;switch(b=null!=(c=a.which)?c:a.keyCode,this.search_field_scale(),8!==b&&this.pending_backstroke&&this.clear_backstroke(),b){case 8:this.backstroke_length=this.search_field.val().length;break;case 9:this.results_showing&&!this.is_multiple&&this.result_select(a),this.mouse_on_container=!1;break;case 13:this.results_showing&&a.preventDefault();break;case 32:this.disable_search&&a.preventDefault();break;case 38:a.preventDefault(),this.keyup_arrow();break;case 40:a.preventDefault(),this.keydown_arrow()}},Chosen.prototype.search_field_scale=function(){var b,c,d,e,f,g,h,i,j;if(this.is_multiple){for(d=0,h=0,f="position:absolute; left: -1000px; top: -1000px; display:none;",g=["font-size","font-style","font-weight","font-family","line-height","text-transform","letter-spacing"],i=0,j=g.length;j>i;i++)e=g[i],f+=e+":"+this.search_field.css(e)+";";return b=a("<div />",{style:f}),b.text(this.search_field.val()),a("body").append(b),h=b.width()+25,b.remove(),c=this.container.outerWidth(),h>c-10&&(h=c-10),this.search_field.css({width:h+"px"})}},Chosen}(AbstractChosen)}).call(this);
@@ -10516,8 +10554,13 @@ var DateFormat = {};
 }(jQuery));
 
 },{}],"jquery":[function(require,module,exports){
+<<<<<<< HEAD
 module.exports=require('d+9IPP');
 },{}],"d+9IPP":[function(require,module,exports){
+=======
+module.exports=require('6oFF6r');
+},{}],"6oFF6r":[function(require,module,exports){
+>>>>>>> 0f7bc01f3cd326f71d7ea63aae03add24cd09aeb
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
 /*!
  * jQuery JavaScript Library v2.1.4
@@ -20144,8 +20187,13 @@ if(typeof KJUR=="undefined"||!KJUR){KJUR={}}if(typeof KJUR.jws=="undefined"||!KJ
 })(jQuery);
 
 },{}],"underscore":[function(require,module,exports){
+<<<<<<< HEAD
 module.exports=require('sid1aP');
 },{}],"sid1aP":[function(require,module,exports){
+=======
+module.exports=require('VWI2OL');
+},{}],"VWI2OL":[function(require,module,exports){
+>>>>>>> 0f7bc01f3cd326f71d7ea63aae03add24cd09aeb
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
@@ -24080,7 +24128,11 @@ function hasOwnProperty(obj, prop) {
 },{"_shims":5}]},{},[])
 ;;module.exports=require("buffer-browserify")
 
+<<<<<<< HEAD
 },{}]},{},[1,"eKEO00",4,"OVWKyA",7,"7WdlDG",10,"sxSVGl",13,14,"d+9IPP",17,18,"sid1aP"])
+=======
+},{}]},{},[1,"oFTesN","mDKN7o",7,4,"IRrc66","547TVB",10,13,14,"6oFF6r",17,18,"VWI2OL"])
+>>>>>>> 0f7bc01f3cd326f71d7ea63aae03add24cd09aeb
 ;
 /*! gridster.js - v0.5.6 - 2014-09-25 - * http://gridster.net/ - Copyright (c) 2014 ducksboard; Licensed MIT */ (function(t,i){"function"==typeof define&&define.amd?define("gridster-coords",["jquery"],i):t.GridsterCoords=i(t.$||t.jQuery)})(this,function(t){function i(i){return i[0]&&t.isPlainObject(i[0])?this.data=i[0]:this.el=i,this.isCoords=!0,this.coords={},this.init(),this}var e=i.prototype;return e.init=function(){this.set(),this.original_coords=this.get()},e.set=function(t,i){var e=this.el;if(e&&!t&&(this.data=e.offset(),this.data.width=e.width(),this.data.height=e.height()),e&&t&&!i){var s=e.offset();this.data.top=s.top,this.data.left=s.left}var r=this.data;return r.left===void 0&&(r.left=r.x1),r.top===void 0&&(r.top=r.y1),this.coords.x1=r.left,this.coords.y1=r.top,this.coords.x2=r.left+r.width,this.coords.y2=r.top+r.height,this.coords.cx=r.left+r.width/2,this.coords.cy=r.top+r.height/2,this.coords.width=r.width,this.coords.height=r.height,this.coords.el=e||!1,this},e.update=function(i){if(!i&&!this.el)return this;if(i){var e=t.extend({},this.data,i);return this.data=e,this.set(!0,!0)}return this.set(!0),this},e.get=function(){return this.coords},e.destroy=function(){this.el.removeData("coords"),delete this.el},t.fn.coords=function(){if(this.data("coords"))return this.data("coords");var t=new i(this,arguments[0]);return this.data("coords",t),t},i}),function(t,i){"function"==typeof define&&define.amd?define("gridster-collision",["jquery","gridster-coords"],i):t.GridsterCollision=i(t.$||t.jQuery,t.GridsterCoords)}(this,function(t){function i(i,s,r){this.options=t.extend(e,r),this.$element=i,this.last_colliders=[],this.last_colliders_coords=[],this.set_colliders(s),this.init()}var e={colliders_context:document.body,overlapping_region:"C"};i.defaults=e;var s=i.prototype;return s.init=function(){this.find_collisions()},s.overlaps=function(t,i){var e=!1,s=!1;return(i.x1>=t.x1&&i.x1<=t.x2||i.x2>=t.x1&&i.x2<=t.x2||t.x1>=i.x1&&t.x2<=i.x2)&&(e=!0),(i.y1>=t.y1&&i.y1<=t.y2||i.y2>=t.y1&&i.y2<=t.y2||t.y1>=i.y1&&t.y2<=i.y2)&&(s=!0),e&&s},s.detect_overlapping_region=function(t,i){var e="",s="";return t.y1>i.cy&&t.y1<i.y2&&(e="N"),t.y2>i.y1&&t.y2<i.cy&&(e="S"),t.x1>i.cx&&t.x1<i.x2&&(s="W"),t.x2>i.x1&&t.x2<i.cx&&(s="E"),e+s||"C"},s.calculate_overlapped_area_coords=function(i,e){var s=Math.max(i.x1,e.x1),r=Math.max(i.y1,e.y1),o=Math.min(i.x2,e.x2),a=Math.min(i.y2,e.y2);return t({left:s,top:r,width:o-s,height:a-r}).coords().get()},s.calculate_overlapped_area=function(t){return t.width*t.height},s.manage_colliders_start_stop=function(i,e,s){for(var r=this.last_colliders_coords,o=0,a=r.length;a>o;o++)-1===t.inArray(r[o],i)&&e.call(this,r[o]);for(var n=0,h=i.length;h>n;n++)-1===t.inArray(i[n],r)&&s.call(this,i[n])},s.find_collisions=function(i){for(var e=this,s=this.options.overlapping_region,r=[],o=[],a=this.colliders||this.$colliders,n=a.length,h=e.$element.coords().update(i||!1).get();n--;){var _=e.$colliders?t(a[n]):a[n],d=_.isCoords?_:_.coords(),l=d.get(),c=e.overlaps(h,l);if(c){var p=e.detect_overlapping_region(h,l);if(p===s||"all"===s){var g=e.calculate_overlapped_area_coords(h,l),u=e.calculate_overlapped_area(g),f={area:u,area_coords:g,region:p,coords:l,player_coords:h,el:_};e.options.on_overlap&&e.options.on_overlap.call(this,f),r.push(d),o.push(f)}}}return(e.options.on_overlap_stop||e.options.on_overlap_start)&&this.manage_colliders_start_stop(r,e.options.on_overlap_start,e.options.on_overlap_stop),this.last_colliders_coords=r,o},s.get_closest_colliders=function(t){var i=this.find_collisions(t);return i.sort(function(t,i){return"C"===t.region&&"C"===i.region?t.coords.y1<i.coords.y1||t.coords.x1<i.coords.x1?-1:1:t.area<i.area?1:1}),i},s.set_colliders=function(i){"string"==typeof i||i instanceof t?this.$colliders=t(i,this.options.colliders_context).not(this.$element):this.colliders=t(i)},t.fn.collision=function(t,e){return new i(this,t,e)},i}),function(t){t.delay=function(t,i){var e=Array.prototype.slice.call(arguments,2);return setTimeout(function(){return t.apply(null,e)},i)},t.debounce=function(t,i,e){var s;return function(){var r=this,o=arguments,a=function(){s=null,e||t.apply(r,o)};e&&!s&&t.apply(r,o),clearTimeout(s),s=setTimeout(a,i)}},t.throttle=function(t,i){var e,s,r,o,a,n,h=debounce(function(){a=o=!1},i);return function(){e=this,s=arguments;var _=function(){r=null,a&&t.apply(e,s),h()};return r||(r=setTimeout(_,i)),o?a=!0:n=t.apply(e,s),h(),o=!0,n}}}(window),function(t,i){"function"==typeof define&&define.amd?define("gridster-draggable",["jquery"],i):t.GridsterDraggable=i(t.$||t.jQuery)}(this,function(t){function i(i,s){this.options=t.extend({},e,s),this.$document=t(document),this.$container=t(i),this.$dragitems=t(this.options.items,this.$container),this.is_dragging=!1,this.player_min_left=0+this.options.offset_left,this.id=h(),this.ns=".gridster-draggable-"+this.id,this.init()}var e={items:"li",distance:1,limit:!0,offset_left:0,autoscroll:!0,ignore_dragging:["INPUT","TEXTAREA","SELECT","BUTTON"],handle:null,container_width:0,move_element:!0,helper:!1,remove_helper:!0},s=t(window),r={x:"left",y:"top"},o=!!("ontouchstart"in window),a=function(t){return t.charAt(0).toUpperCase()+t.slice(1)},n=0,h=function(){return++n+""};i.defaults=e;var _=i.prototype;return _.init=function(){var i=this.$container.css("position");this.calculate_dimensions(),this.$container.css("position","static"===i?"relative":i),this.disabled=!1,this.events(),t(window).bind(this.nsEvent("resize"),throttle(t.proxy(this.calculate_dimensions,this),200))},_.nsEvent=function(t){return(t||"")+this.ns},_.events=function(){this.pointer_events={start:this.nsEvent("touchstart")+" "+this.nsEvent("mousedown"),move:this.nsEvent("touchmove")+" "+this.nsEvent("mousemove"),end:this.nsEvent("touchend")+" "+this.nsEvent("mouseup")},this.$container.on(this.nsEvent("selectstart"),t.proxy(this.on_select_start,this)),this.$container.on(this.pointer_events.start,this.options.items,t.proxy(this.drag_handler,this)),this.$document.on(this.pointer_events.end,t.proxy(function(t){this.is_dragging=!1,this.disabled||(this.$document.off(this.pointer_events.move),this.drag_start&&this.on_dragstop(t))},this))},_.get_actual_pos=function(t){var i=t.position();return i},_.get_mouse_pos=function(t){if(t.originalEvent&&t.originalEvent.touches){var i=t.originalEvent;t=i.touches.length?i.touches[0]:i.changedTouches[0]}return{left:t.clientX,top:t.clientY}},_.get_offset=function(i){i.preventDefault();var e=this.get_mouse_pos(i),s=Math.round(e.left-this.mouse_init_pos.left),r=Math.round(e.top-this.mouse_init_pos.top),o=Math.round(this.el_init_offset.left+s-this.baseX+t(window).scrollLeft()-this.win_offset_x),a=Math.round(this.el_init_offset.top+r-this.baseY+t(window).scrollTop()-this.win_offset_y);return this.options.limit&&(o>this.player_max_left?o=this.player_max_left:this.player_min_left>o&&(o=this.player_min_left)),{position:{left:o,top:a},pointer:{left:e.left,top:e.top,diff_left:s+(t(window).scrollLeft()-this.win_offset_x),diff_top:r+(t(window).scrollTop()-this.win_offset_y)}}},_.get_drag_data=function(t){var i=this.get_offset(t);return i.$player=this.$player,i.$helper=this.helper?this.$helper:this.$player,i},_.set_limits=function(t){return t||(t=this.$container.width()),this.player_max_left=t-this.player_width+-this.options.offset_left,this.options.container_width=t,this},_.scroll_in=function(i,e){var o,n=r[i],h=50,_=30,d="x"===i,l=d?this.window_width:this.window_height,c=d?t(document).width():t(document).height(),p=d?this.$player.width():this.$player.height(),g=s["scroll"+a(n)](),u=g,f=u+l,w=f-h,m=u+h,y=u+e.pointer[n],v=c-l+p;return y>=w&&(o=g+_,v>o&&(s["scroll"+a(n)](o),this["scroll_offset_"+i]+=_)),m>=y&&(o=g-_,o>0&&(s["scroll"+a(n)](o),this["scroll_offset_"+i]-=_)),this},_.manage_scroll=function(t){this.scroll_in("x",t),this.scroll_in("y",t)},_.calculate_dimensions=function(){this.window_height=s.height(),this.window_width=s.width()},_.drag_handler=function(i){if(i.target.nodeName,!this.disabled&&(1===i.which||o)&&!this.ignore_drag(i)){var e=this,s=!0;return this.$player=t(i.currentTarget),this.el_init_pos=this.get_actual_pos(this.$player),this.mouse_init_pos=this.get_mouse_pos(i),this.offsetY=this.mouse_init_pos.top-this.el_init_pos.top,this.$document.on(this.pointer_events.move,function(t){var i=e.get_mouse_pos(t),r=Math.abs(i.left-e.mouse_init_pos.left),o=Math.abs(i.top-e.mouse_init_pos.top);return r>e.options.distance||o>e.options.distance?s?(s=!1,e.on_dragstart.call(e,t),!1):(e.is_dragging===!0&&e.on_dragmove.call(e,t),!1):!1}),o?void 0:!1}},_.on_dragstart=function(i){if(i.preventDefault(),this.is_dragging)return this;this.drag_start=this.is_dragging=!0;var e=this.$container.offset();return this.baseX=Math.round(e.left),this.baseY=Math.round(e.top),this.initial_container_width=this.options.container_width||this.$container.width(),"clone"===this.options.helper?(this.$helper=this.$player.clone().appendTo(this.$container).addClass("helper"),this.helper=!0):this.helper=!1,this.win_offset_y=t(window).scrollTop(),this.win_offset_x=t(window).scrollLeft(),this.scroll_offset_y=0,this.scroll_offset_x=0,this.el_init_offset=this.$player.offset(),this.player_width=this.$player.width(),this.player_height=this.$player.height(),this.set_limits(this.options.container_width),this.options.start&&this.options.start.call(this.$player,i,this.get_drag_data(i)),!1},_.on_dragmove=function(t){var i=this.get_drag_data(t);this.options.autoscroll&&this.manage_scroll(i),this.options.move_element&&(this.helper?this.$helper:this.$player).css({position:"absolute",left:i.position.left,top:i.position.top});var e=this.last_position||i.position;return i.prev_position=e,this.options.drag&&this.options.drag.call(this.$player,t,i),this.last_position=i.position,!1},_.on_dragstop=function(t){var i=this.get_drag_data(t);return this.drag_start=!1,this.options.stop&&this.options.stop.call(this.$player,t,i),this.helper&&this.options.remove_helper&&this.$helper.remove(),!1},_.on_select_start=function(t){return this.disabled||this.ignore_drag(t)?void 0:!1},_.enable=function(){this.disabled=!1},_.disable=function(){this.disabled=!0},_.destroy=function(){this.disable(),this.$container.off(this.ns),this.$document.off(this.ns),t(window).off(this.ns),t.removeData(this.$container,"drag")},_.ignore_drag=function(i){return this.options.handle?!t(i.target).is(this.options.handle):t.isFunction(this.options.ignore_dragging)?this.options.ignore_dragging(i):t(i.target).is(this.options.ignore_dragging.join(", "))},t.fn.drag=function(t){return new i(this,t)},i}),function(t,i){"function"==typeof define&&define.amd?define(["jquery","gridster-draggable","gridster-collision"],i):t.Gridster=i(t.$||t.jQuery,t.GridsterDraggable,t.GridsterCollision)}(this,function(t,i){function e(i,e){this.options=t.extend(!0,{},s,e),this.$el=t(i),this.$wrapper=this.$el.parent(),this.$widgets=this.$el.children(this.options.widget_selector).addClass("gs-w"),this.widgets=[],this.$changed=t([]),this.wrapper_width=this.$wrapper.width(),this.min_widget_width=2*this.options.widget_margins[0]+this.options.widget_base_dimensions[0],this.min_widget_height=2*this.options.widget_margins[1]+this.options.widget_base_dimensions[1],this.generated_stylesheets=[],this.$style_tags=t([]),this.options.auto_init&&this.init()}var s={namespace:"",widget_selector:"li",widget_margins:[10,10],widget_base_dimensions:[400,225],extra_rows:0,extra_cols:0,min_cols:1,max_cols:1/0,min_rows:15,max_size_x:!1,autogrow_cols:!1,autogenerate_stylesheet:!0,avoid_overlapped_widgets:!0,auto_init:!0,serialize_params:function(t,i){return{col:i.col,row:i.row,size_x:i.size_x,size_y:i.size_y}},collision:{},draggable:{items:".gs-w",distance:4,ignore_dragging:i.defaults.ignore_dragging.slice(0)},resize:{enabled:!1,axes:["both"],handle_append_to:"",handle_class:"gs-resize-handle",max_size:[1/0,1/0],min_size:[1,1]}};e.defaults=s,e.generated_stylesheets=[],e.sort_by_row_asc=function(i){return i=i.sort(function(i,e){return i.row||(i=t(i).coords().grid,e=t(e).coords().grid),i.row>e.row?1:-1})},e.sort_by_row_and_col_asc=function(t){return t=t.sort(function(t,i){return t.row>i.row||t.row===i.row&&t.col>i.col?1:-1})},e.sort_by_col_asc=function(t){return t=t.sort(function(t,i){return t.col>i.col?1:-1})},e.sort_by_row_desc=function(t){return t=t.sort(function(t,i){return t.row+t.size_y<i.row+i.size_y?1:-1})};var r=e.prototype;return r.init=function(){this.options.resize.enabled&&this.setup_resize(),this.generate_grid_and_stylesheet(),this.get_widgets_from_DOM(),this.set_dom_grid_height(),this.set_dom_grid_width(),this.$wrapper.addClass("ready"),this.draggable(),this.options.resize.enabled&&this.resizable(),t(window).bind("resize.gridster",throttle(t.proxy(this.recalculate_faux_grid,this),200))},r.disable=function(){return this.$wrapper.find(".player-revert").removeClass("player-revert"),this.drag_api.disable(),this},r.enable=function(){return this.drag_api.enable(),this},r.disable_resize=function(){return this.$el.addClass("gs-resize-disabled"),this.resize_api.disable(),this},r.enable_resize=function(){return this.$el.removeClass("gs-resize-disabled"),this.resize_api.enable(),this},r.add_widget=function(i,e,s,r,o,a,n){var h;e||(e=1),s||(s=1),!r&!o?h=this.next_position(e,s):(h={col:r,row:o,size_x:e,size_y:s},this.empty_cells(r,o,e,s));var _=t(i).attr({"data-col":h.col,"data-row":h.row,"data-sizex":e,"data-sizey":s}).addClass("gs-w").appendTo(this.$el).hide();return this.$widgets=this.$widgets.add(_),this.register_widget(_),this.add_faux_rows(h.size_y),a&&this.set_widget_max_size(_,a),n&&this.set_widget_min_size(_,n),this.set_dom_grid_width(),this.set_dom_grid_height(),this.drag_api.set_limits(this.cols*this.min_widget_width),_.fadeIn()},r.set_widget_min_size=function(t,i){if(t="number"==typeof t?this.$widgets.eq(t):t,!t.length)return this;var e=t.data("coords").grid;return e.min_size_x=i[0],e.min_size_y=i[1],this},r.set_widget_max_size=function(t,i){if(t="number"==typeof t?this.$widgets.eq(t):t,!t.length)return this;var e=t.data("coords").grid;return e.max_size_x=i[0],e.max_size_y=i[1],this},r.add_resize_handle=function(i){var e=this.options.resize.handle_append_to;return t(this.resize_handle_tpl).appendTo(e?t(e,i):i),this},r.resize_widget=function(t,i,e,s){var r=t.coords().grid,o=r.col,a=this.options.max_cols,n=r.size_y,h=r.col,_=h;i||(i=r.size_x),e||(e=r.size_y),1/0!==a&&(i=Math.min(i,a-o+1)),e>n&&this.add_faux_rows(Math.max(e-n,0));var d=o+i-1;d>this.cols&&this.add_faux_cols(d-this.cols);var l={col:_,row:r.row,size_x:i,size_y:e};return this.mutate_widget_in_gridmap(t,r,l),this.set_dom_grid_height(),this.set_dom_grid_width(),s&&s.call(this,l.size_x,l.size_y),t},r.mutate_widget_in_gridmap=function(i,e,s){e.size_x;var r=e.size_y,o=this.get_cells_occupied(e),a=this.get_cells_occupied(s),n=[];t.each(o.cols,function(i,e){-1===t.inArray(e,a.cols)&&n.push(e)});var h=[];t.each(a.cols,function(i,e){-1===t.inArray(e,o.cols)&&h.push(e)});var _=[];t.each(o.rows,function(i,e){-1===t.inArray(e,a.rows)&&_.push(e)});var d=[];if(t.each(a.rows,function(i,e){-1===t.inArray(e,o.rows)&&d.push(e)}),this.remove_from_gridmap(e),h.length){var l=[s.col,s.row,s.size_x,Math.min(r,s.size_y),i];this.empty_cells.apply(this,l)}if(d.length){var c=[s.col,s.row,s.size_x,s.size_y,i];this.empty_cells.apply(this,c)}if(e.col=s.col,e.row=s.row,e.size_x=s.size_x,e.size_y=s.size_y,this.add_to_gridmap(s,i),i.removeClass("player-revert"),i.data("coords").update({width:s.size_x*this.options.widget_base_dimensions[0]+2*(s.size_x-1)*this.options.widget_margins[0],height:s.size_y*this.options.widget_base_dimensions[1]+2*(s.size_y-1)*this.options.widget_margins[1]}),i.attr({"data-col":s.col,"data-row":s.row,"data-sizex":s.size_x,"data-sizey":s.size_y}),n.length){var p=[n[0],s.row,n.length,Math.min(r,s.size_y),i];this.remove_empty_cells.apply(this,p)}if(_.length){var g=[s.col,s.row,s.size_x,s.size_y,i];this.remove_empty_cells.apply(this,g)}return this.move_widget_up(i),this},r.empty_cells=function(i,e,s,r,o){var a=this.widgets_below({col:i,row:e-r,size_x:s,size_y:r});return a.not(o).each(t.proxy(function(i,s){var o=t(s).coords().grid;if(e+r-1>=o.row){var a=e+r-o.row;this.move_widget_down(t(s),a)}},this)),this.set_dom_grid_height(),this},r.remove_empty_cells=function(i,e,s,r,o){var a=this.widgets_below({col:i,row:e,size_x:s,size_y:r});return a.not(o).each(t.proxy(function(i,e){this.move_widget_up(t(e),r)},this)),this.set_dom_grid_height(),this},r.next_position=function(t,i){t||(t=1),i||(i=1);for(var s,r=this.gridmap,o=r.length,a=[],n=1;o>n;n++){s=r[n].length;for(var h=1;s>=h;h++){var _=this.can_move_to({size_x:t,size_y:i},n,h);_&&a.push({col:n,row:h,size_y:i,size_x:t})}}return a.length?e.sort_by_row_and_col_asc(a)[0]:!1},r.remove_widget=function(i,e,s){var r=i instanceof t?i:t(i),o=r.coords().grid;t.isFunction(e)&&(s=e,e=!1),this.cells_occupied_by_placeholder={},this.$widgets=this.$widgets.not(r);var a=this.widgets_below(r);return this.remove_from_gridmap(o),r.fadeOut(t.proxy(function(){r.remove(),e||a.each(t.proxy(function(i,e){this.move_widget_up(t(e),o.size_y)},this)),this.set_dom_grid_height(),s&&s.call(this,i)},this)),this},r.remove_all_widgets=function(i){return this.$widgets.each(t.proxy(function(t,e){this.remove_widget(e,!0,i)},this)),this},r.serialize=function(i){return i||(i=this.$widgets),i.map(t.proxy(function(i,e){var s=t(e);return this.options.serialize_params(s,s.coords().grid)},this)).get()},r.serialize_changed=function(){return this.serialize(this.$changed)},r.dom_to_coords=function(t){return{col:parseInt(t.attr("data-col"),10),row:parseInt(t.attr("data-row"),10),size_x:parseInt(t.attr("data-sizex"),10)||1,size_y:parseInt(t.attr("data-sizey"),10)||1,max_size_x:parseInt(t.attr("data-max-sizex"),10)||!1,max_size_y:parseInt(t.attr("data-max-sizey"),10)||!1,min_size_x:parseInt(t.attr("data-min-sizex"),10)||!1,min_size_y:parseInt(t.attr("data-min-sizey"),10)||!1,el:t}},r.register_widget=function(i){var e=i instanceof jQuery,s=e?this.dom_to_coords(i):i,r=!1;e||(i=s.el);var o=this.can_go_widget_up(s);return o&&(s.row=o,i.attr("data-row",o),this.$el.trigger("gridster:positionchanged",[s]),r=!0),this.options.avoid_overlapped_widgets&&!this.can_move_to({size_x:s.size_x,size_y:s.size_y},s.col,s.row)&&(t.extend(s,this.next_position(s.size_x,s.size_y)),i.attr({"data-col":s.col,"data-row":s.row,"data-sizex":s.size_x,"data-sizey":s.size_y}),r=!0),i.data("coords",i.coords()),i.data("coords").grid=s,this.add_to_gridmap(s,i),this.options.resize.enabled&&this.add_resize_handle(i),r},r.update_widget_position=function(t,i){return this.for_each_cell_occupied(t,function(t,e){return this.gridmap[t]?(this.gridmap[t][e]=i,void 0):this}),this},r.remove_from_gridmap=function(t){return this.update_widget_position(t,!1)},r.add_to_gridmap=function(i,e){if(this.update_widget_position(i,e||i.el),i.el){var s=this.widgets_below(i.el);s.each(t.proxy(function(i,e){this.move_widget_up(t(e))},this))}},r.draggable=function(){var i=this,e=t.extend(!0,{},this.options.draggable,{offset_left:this.options.widget_margins[0],offset_top:this.options.widget_margins[1],container_width:this.cols*this.min_widget_width,limit:!0,start:function(e,s){i.$widgets.filter(".player-revert").removeClass("player-revert"),i.$player=t(this),i.$helper=t(s.$helper),i.helper=!i.$helper.is(i.$player),i.on_start_drag.call(i,e,s),i.$el.trigger("gridster:dragstart")},stop:function(t,e){i.on_stop_drag.call(i,t,e),i.$el.trigger("gridster:dragstop")},drag:throttle(function(t,e){i.on_drag.call(i,t,e),i.$el.trigger("gridster:drag")},60)});return this.drag_api=this.$el.drag(e),this},r.resizable=function(){return this.resize_api=this.$el.drag({items:"."+this.options.resize.handle_class,offset_left:this.options.widget_margins[0],container_width:this.container_width,move_element:!1,resize:!0,limit:this.options.autogrow_cols?!1:!0,start:t.proxy(this.on_start_resize,this),stop:t.proxy(function(i,e){delay(t.proxy(function(){this.on_stop_resize(i,e)},this),120)},this),drag:throttle(t.proxy(this.on_resize,this),60)}),this},r.setup_resize=function(){this.resize_handle_class=this.options.resize.handle_class;var i=this.options.resize.axes,e='<span class="'+this.resize_handle_class+" "+this.resize_handle_class+'-{type}" />';return this.resize_handle_tpl=t.map(i,function(t){return e.replace("{type}",t)}).join(""),t.isArray(this.options.draggable.ignore_dragging)&&this.options.draggable.ignore_dragging.push("."+this.resize_handle_class),this},r.on_start_drag=function(i,e){this.$helper.add(this.$player).add(this.$wrapper).addClass("dragging"),this.highest_col=this.get_highest_occupied_cell().col,this.$player.addClass("player"),this.player_grid_data=this.$player.coords().grid,this.placeholder_grid_data=t.extend({},this.player_grid_data),this.set_dom_grid_height(this.$el.height()+this.player_grid_data.size_y*this.min_widget_height),this.set_dom_grid_width(this.cols);var s=this.player_grid_data.size_x,r=this.cols-this.highest_col;this.options.autogrow_cols&&s>=r&&this.add_faux_cols(Math.min(s-r,1));var o=this.faux_grid,a=this.$player.data("coords").coords;this.cells_occupied_by_player=this.get_cells_occupied(this.player_grid_data),this.cells_occupied_by_placeholder=this.get_cells_occupied(this.placeholder_grid_data),this.last_cols=[],this.last_rows=[],this.collision_api=this.$helper.collision(o,this.options.collision),this.$preview_holder=t("<"+this.$player.get(0).tagName+" />",{"class":"preview-holder","data-row":this.$player.attr("data-row"),"data-col":this.$player.attr("data-col"),css:{width:a.width,height:a.height}}).appendTo(this.$el),this.options.draggable.start&&this.options.draggable.start.call(this,i,e)},r.on_drag=function(t,i){if(null===this.$player)return!1;var e={left:i.position.left+this.baseX,top:i.position.top+this.baseY};if(this.options.autogrow_cols){var s=this.placeholder_grid_data.col+this.placeholder_grid_data.size_x-1;s>=this.cols-1&&this.options.max_cols>=this.cols+1&&(this.add_faux_cols(1),this.set_dom_grid_width(this.cols+1),this.drag_api.set_limits(this.container_width)),this.collision_api.set_colliders(this.faux_grid)}this.colliders_data=this.collision_api.get_closest_colliders(e),this.on_overlapped_column_change(this.on_start_overlapping_column,this.on_stop_overlapping_column),this.on_overlapped_row_change(this.on_start_overlapping_row,this.on_stop_overlapping_row),this.helper&&this.$player&&this.$player.css({left:i.position.left,top:i.position.top}),this.options.draggable.drag&&this.options.draggable.drag.call(this,t,i)},r.on_stop_drag=function(t,i){this.$helper.add(this.$player).add(this.$wrapper).removeClass("dragging"),i.position.left=i.position.left+this.baseX,i.position.top=i.position.top+this.baseY,this.colliders_data=this.collision_api.get_closest_colliders(i.position),this.on_overlapped_column_change(this.on_start_overlapping_column,this.on_stop_overlapping_column),this.on_overlapped_row_change(this.on_start_overlapping_row,this.on_stop_overlapping_row),this.$player.addClass("player-revert").removeClass("player").attr({"data-col":this.placeholder_grid_data.col,"data-row":this.placeholder_grid_data.row}).css({left:"",top:""}),this.$changed=this.$changed.add(this.$player),this.cells_occupied_by_player=this.get_cells_occupied(this.placeholder_grid_data),this.set_cells_player_occupies(this.placeholder_grid_data.col,this.placeholder_grid_data.row),this.$player.coords().grid.row=this.placeholder_grid_data.row,this.$player.coords().grid.col=this.placeholder_grid_data.col,this.options.draggable.stop&&this.options.draggable.stop.call(this,t,i),this.$preview_holder.remove(),this.$player=null,this.$helper=null,this.placeholder_grid_data={},this.player_grid_data={},this.cells_occupied_by_placeholder={},this.cells_occupied_by_player={},this.set_dom_grid_height(),this.set_dom_grid_width(),this.options.autogrow_cols&&this.drag_api.set_limits(this.cols*this.min_widget_width)},r.on_start_resize=function(i,e){this.$resized_widget=e.$player.closest(".gs-w"),this.resize_coords=this.$resized_widget.coords(),this.resize_wgd=this.resize_coords.grid,this.resize_initial_width=this.resize_coords.coords.width,this.resize_initial_height=this.resize_coords.coords.height,this.resize_initial_sizex=this.resize_coords.grid.size_x,this.resize_initial_sizey=this.resize_coords.grid.size_y,this.resize_initial_col=this.resize_coords.grid.col,this.resize_last_sizex=this.resize_initial_sizex,this.resize_last_sizey=this.resize_initial_sizey,this.resize_max_size_x=Math.min(this.resize_wgd.max_size_x||this.options.resize.max_size[0],this.options.max_cols-this.resize_initial_col+1),this.resize_max_size_y=this.resize_wgd.max_size_y||this.options.resize.max_size[1],this.resize_min_size_x=this.resize_wgd.min_size_x||this.options.resize.min_size[0]||1,this.resize_min_size_y=this.resize_wgd.min_size_y||this.options.resize.min_size[1]||1,this.resize_initial_last_col=this.get_highest_occupied_cell().col,this.set_dom_grid_width(this.cols),this.resize_dir={right:e.$player.is("."+this.resize_handle_class+"-x"),bottom:e.$player.is("."+this.resize_handle_class+"-y")},this.$resized_widget.css({"min-width":this.options.widget_base_dimensions[0],"min-height":this.options.widget_base_dimensions[1]});var s=this.$resized_widget.get(0).tagName;this.$resize_preview_holder=t("<"+s+" />",{"class":"preview-holder resize-preview-holder","data-row":this.$resized_widget.attr("data-row"),"data-col":this.$resized_widget.attr("data-col"),css:{width:this.resize_initial_width,height:this.resize_initial_height}}).appendTo(this.$el),this.$resized_widget.addClass("resizing"),this.options.resize.start&&this.options.resize.start.call(this,i,e,this.$resized_widget),this.$el.trigger("gridster:resizestart")},r.on_stop_resize=function(i,e){this.$resized_widget.removeClass("resizing").css({width:"",height:""}),delay(t.proxy(function(){this.$resize_preview_holder.remove().css({"min-width":"","min-height":""}),this.options.resize.stop&&this.options.resize.stop.call(this,i,e,this.$resized_widget),this.$el.trigger("gridster:resizestop")},this),300),this.set_dom_grid_width(),this.options.autogrow_cols&&this.drag_api.set_limits(this.cols*this.min_widget_width)},r.on_resize=function(t,i){var e,s=i.pointer.diff_left,r=i.pointer.diff_top,o=this.options.widget_base_dimensions[0],a=this.options.widget_base_dimensions[1],n=this.options.widget_margins[0],h=this.options.widget_margins[1],_=this.resize_max_size_x,d=this.resize_min_size_x,l=this.resize_max_size_y,c=this.resize_min_size_y,p=this.options.autogrow_cols,g=1/0,u=1/0,f=Math.ceil(s/(o+2*n)-.2),w=Math.ceil(r/(a+2*h)-.2),m=Math.max(1,this.resize_initial_sizex+f),y=Math.max(1,this.resize_initial_sizey+w),v=this.container_width/this.min_widget_width-this.resize_initial_col+1,z=v*this.min_widget_width-2*n;if(m=Math.max(Math.min(m,_),d),m=Math.min(v,m),e=_*o+2*(m-1)*n,g=Math.min(e,z),min_width=d*o+2*(m-1)*n,y=Math.max(Math.min(y,l),c),u=l*a+2*(y-1)*h,min_height=c*a+2*(y-1)*h,this.resize_dir.right?y=this.resize_initial_sizey:this.resize_dir.bottom&&(m=this.resize_initial_sizex),p){var x=this.resize_initial_col+m-1;p&&x>=this.resize_initial_last_col&&(this.set_dom_grid_width(Math.max(x+1,this.cols)),x>this.cols&&this.add_faux_cols(x-this.cols))}var $={};!this.resize_dir.bottom&&($.width=Math.max(Math.min(this.resize_initial_width+s,g),min_width)),!this.resize_dir.right&&($.height=Math.max(Math.min(this.resize_initial_height+r,u),min_height)),this.$resized_widget.css($),(m!==this.resize_last_sizex||y!==this.resize_last_sizey)&&(this.resize_widget(this.$resized_widget,m,y),this.set_dom_grid_width(this.cols),this.$resize_preview_holder.css({width:"",height:""}).attr({"data-row":this.$resized_widget.attr("data-row"),"data-sizex":m,"data-sizey":y})),this.options.resize.resize&&this.options.resize.resize.call(this,t,i,this.$resized_widget),this.$el.trigger("gridster:resize"),this.resize_last_sizex=m,this.resize_last_sizey=y},r.on_overlapped_column_change=function(i,e){if(!this.colliders_data.length)return this;var s,r=this.get_targeted_columns(this.colliders_data[0].el.data.col),o=this.last_cols.length,a=r.length;for(s=0;a>s;s++)-1===t.inArray(r[s],this.last_cols)&&(i||t.noop).call(this,r[s]);for(s=0;o>s;s++)-1===t.inArray(this.last_cols[s],r)&&(e||t.noop).call(this,this.last_cols[s]);return this.last_cols=r,this},r.on_overlapped_row_change=function(i,e){if(!this.colliders_data.length)return this;var s,r=this.get_targeted_rows(this.colliders_data[0].el.data.row),o=this.last_rows.length,a=r.length;for(s=0;a>s;s++)-1===t.inArray(r[s],this.last_rows)&&(i||t.noop).call(this,r[s]);for(s=0;o>s;s++)-1===t.inArray(this.last_rows[s],r)&&(e||t.noop).call(this,this.last_rows[s]);this.last_rows=r},r.set_player=function(t,i,e){var s=this;e||this.empty_cells_player_occupies();var r=e?{col:t}:s.colliders_data[0].el.data,o=r.col,a=i||r.row;this.player_grid_data={col:o,row:a,size_y:this.player_grid_data.size_y,size_x:this.player_grid_data.size_x},this.cells_occupied_by_player=this.get_cells_occupied(this.player_grid_data);var n=this.get_widgets_overlapped(this.player_grid_data),h=this.widgets_constraints(n);if(this.manage_movements(h.can_go_up,o,a),this.manage_movements(h.can_not_go_up,o,a),!n.length){var _=this.can_go_player_up(this.player_grid_data);_!==!1&&(a=_),this.set_placeholder(o,a)}return{col:o,row:a}},r.widgets_constraints=function(i){var s,r=t([]),o=[],a=[];return i.each(t.proxy(function(i,e){var s=t(e),n=s.coords().grid;this.can_go_widget_up(n)?(r=r.add(s),o.push(n)):a.push(n)},this)),s=i.not(r),{can_go_up:e.sort_by_row_asc(o),can_not_go_up:e.sort_by_row_desc(a)}},r.manage_movements=function(i,e,s){return t.each(i,t.proxy(function(t,i){var r=i,o=r.el,a=this.can_go_widget_up(r);if(a)this.move_widget_to(o,a),this.set_placeholder(e,a+r.size_y);else{var n=this.can_go_player_up(this.player_grid_data);if(!n){var h=s+this.player_grid_data.size_y-r.row;this.move_widget_down(o,h),this.set_placeholder(e,s)}}},this)),this},r.is_player=function(t,i){if(i&&!this.gridmap[t])return!1;var e=i?this.gridmap[t][i]:t;return e&&(e.is(this.$player)||e.is(this.$helper))},r.is_player_in=function(i,e){var s=this.cells_occupied_by_player||{};return t.inArray(i,s.cols)>=0&&t.inArray(e,s.rows)>=0},r.is_placeholder_in=function(i,e){var s=this.cells_occupied_by_placeholder||{};return this.is_placeholder_in_col(i)&&t.inArray(e,s.rows)>=0},r.is_placeholder_in_col=function(i){var e=this.cells_occupied_by_placeholder||[];return t.inArray(i,e.cols)>=0},r.is_empty=function(t,i){return this.gridmap[t]!==void 0?this.gridmap[t][i]!==void 0&&this.gridmap[t][i]===!1?!0:!1:!0},r.is_occupied=function(t,i){return this.gridmap[t]?this.gridmap[t][i]?!0:!1:!1},r.is_widget=function(t,i){var e=this.gridmap[t];return e?(e=e[i],e?e:!1):!1},r.is_widget_under_player=function(t,i){return this.is_widget(t,i)?this.is_player_in(t,i):!1},r.get_widgets_under_player=function(i){i||(i=this.cells_occupied_by_player||{cols:[],rows:[]});var e=t([]);return t.each(i.cols,t.proxy(function(s,r){t.each(i.rows,t.proxy(function(t,i){this.is_widget(r,i)&&(e=e.add(this.gridmap[r][i]))},this))},this)),e},r.set_placeholder=function(i,e){var s=t.extend({},this.placeholder_grid_data),r=this.widgets_below({col:s.col,row:s.row,size_y:s.size_y,size_x:s.size_x}),o=i+s.size_x-1;o>this.cols&&(i-=o-i);var a=e>this.placeholder_grid_data.row,n=this.placeholder_grid_data.col!==i;this.placeholder_grid_data.col=i,this.placeholder_grid_data.row=e,this.cells_occupied_by_placeholder=this.get_cells_occupied(this.placeholder_grid_data),this.$preview_holder.attr({"data-row":e,"data-col":i}),(a||n)&&r.each(t.proxy(function(e,r){this.move_widget_up(t(r),this.placeholder_grid_data.col-i+s.size_y)},this));var h=this.get_widgets_under_player(this.cells_occupied_by_placeholder);h.length&&h.each(t.proxy(function(i,r){var o=t(r);this.move_widget_down(o,e+s.size_y-o.data("coords").grid.row)},this))},r.can_go_player_up=function(t){var i=t.row+t.size_y-1,e=!0,s=[],r=1e4,o=this.get_widgets_under_player();return this.for_each_column_occupied(t,function(t){var a=this.gridmap[t],n=i+1;for(s[t]=[];--n>0&&(this.is_empty(t,n)||this.is_player(t,n)||this.is_widget(t,n)&&a[n].is(o));)s[t].push(n),r=r>n?n:r;return 0===s[t].length?(e=!1,!0):(s[t].sort(function(t,i){return t-i
 }),void 0)}),e?this.get_valid_rows(t,s,r):!1},r.can_go_widget_up=function(t){var i=t.row+t.size_y-1,e=!0,s=[],r=1e4;return this.for_each_column_occupied(t,function(o){var a=this.gridmap[o];s[o]=[];for(var n=i+1;--n>0&&(!this.is_widget(o,n)||this.is_player_in(o,n)||a[n].is(t.el));)this.is_player(o,n)||this.is_placeholder_in(o,n)||this.is_player_in(o,n)||s[o].push(n),r>n&&(r=n);return 0===s[o].length?(e=!1,!0):(s[o].sort(function(t,i){return t-i}),void 0)}),e?this.get_valid_rows(t,s,r):!1},r.get_valid_rows=function(i,e,s){for(var r=i.row,o=i.row+i.size_y-1,a=i.size_y,n=s-1,h=[];o>=++n;){var _=!0;if(t.each(e,function(i,e){t.isArray(e)&&-1===t.inArray(n,e)&&(_=!1)}),_===!0&&(h.push(n),h.length===a))break}var d=!1;return 1===a?h[0]!==r&&(d=h[0]||!1):h[0]!==r&&(d=this.get_consecutive_numbers_index(h,a)),d},r.get_consecutive_numbers_index=function(t,i){for(var e=t.length,s=[],r=!0,o=-1,a=0;e>a;a++){if(r||t[a]===o+1){if(s.push(a),s.length===i)break;r=!1}else s=[],r=!0;o=t[a]}return s.length>=i?t[s[0]]:!1},r.get_widgets_overlapped=function(){var i=t([]),e=[],s=this.cells_occupied_by_player.rows.slice(0);return s.reverse(),t.each(this.cells_occupied_by_player.cols,t.proxy(function(r,o){t.each(s,t.proxy(function(s,r){if(!this.gridmap[o])return!0;var a=this.gridmap[o][r];this.is_occupied(o,r)&&!this.is_player(a)&&-1===t.inArray(a,e)&&(i=i.add(a),e.push(a))},this))},this)),i},r.on_start_overlapping_column=function(t){this.set_player(t,!1)},r.on_start_overlapping_row=function(t){this.set_player(!1,t)},r.on_stop_overlapping_column=function(t){this.set_player(t,!1);var i=this;this.for_each_widget_below(t,this.cells_occupied_by_player.rows[0],function(){i.move_widget_up(this,i.player_grid_data.size_y)})},r.on_stop_overlapping_row=function(t){this.set_player(!1,t);for(var i=this,e=this.cells_occupied_by_player.cols,s=0,r=e.length;r>s;s++)this.for_each_widget_below(e[s],t,function(){i.move_widget_up(this,i.player_grid_data.size_y)})},r.move_widget_to=function(i,e){var s=this,r=i.coords().grid;e-r.row;var o=this.widgets_below(i),a=this.can_move_to(r,r.col,e,i);return a===!1?!1:(this.remove_from_gridmap(r),r.row=e,this.add_to_gridmap(r),i.attr("data-row",e),this.$changed=this.$changed.add(i),o.each(function(i,e){var r=t(e),o=r.coords().grid,a=s.can_go_widget_up(o);a&&a!==o.row&&s.move_widget_to(r,a)}),this)},r.move_widget_up=function(i,e){var s=i.coords().grid,r=s.row,o=[];return e||(e=1),this.can_go_up(i)?(this.for_each_column_occupied(s,function(s){if(-1===t.inArray(i,o)){var a=i.coords().grid,n=r-e;if(n=this.can_go_up_to_row(a,s,n),!n)return!0;var h=this.widgets_below(i);this.remove_from_gridmap(a),a.row=n,this.add_to_gridmap(a),i.attr("data-row",a.row),this.$changed=this.$changed.add(i),o.push(i),h.each(t.proxy(function(i,s){this.move_widget_up(t(s),e)},this))}}),void 0):!1},r.move_widget_down=function(i,e){var s,r,o,a;if(0>=e)return!1;if(s=i.coords().grid,r=s.row,o=[],a=e,!i)return!1;if(-1===t.inArray(i,o)){var n=i.coords().grid,h=r+e,_=this.widgets_below(i);this.remove_from_gridmap(n),_.each(t.proxy(function(i,e){var s=t(e),r=s.coords().grid,o=this.displacement_diff(r,n,a);o>0&&this.move_widget_down(s,o)},this)),n.row=h,this.update_widget_position(n,i),i.attr("data-row",n.row),this.$changed=this.$changed.add(i),o.push(i)}},r.can_go_up_to_row=function(i,e,s){var r,o=this.gridmap,a=!0,n=[],h=i.row;if(this.for_each_column_occupied(i,function(t){for(o[t],n[t]=[],r=h;r--&&this.is_empty(t,r)&&!this.is_placeholder_in(t,r);)n[t].push(r);return n[t].length?void 0:(a=!1,!0)}),!a)return!1;for(r=s,r=1;h>r;r++){for(var _=!0,d=0,l=n.length;l>d;d++)n[d]&&-1===t.inArray(r,n[d])&&(_=!1);if(_===!0){a=r;break}}return a},r.displacement_diff=function(t,i,e){var s=t.row,r=[],o=i.row+i.size_y;this.for_each_column_occupied(t,function(t){for(var i=0,e=o;s>e;e++)this.is_empty(t,e)&&(i+=1);r.push(i)});var a=Math.max.apply(Math,r);return e-=a,e>0?e:0},r.widgets_below=function(i){var s=t.isPlainObject(i)?i:i.coords().grid,r=this;this.gridmap;var o=s.row+s.size_y-1,a=t([]);return this.for_each_column_occupied(s,function(i){r.for_each_widget_below(i,o,function(){return r.is_player(this)||-1!==t.inArray(this,a)?void 0:(a=a.add(this),!0)})}),e.sort_by_row_asc(a)},r.set_cells_player_occupies=function(t,i){return this.remove_from_gridmap(this.placeholder_grid_data),this.placeholder_grid_data.col=t,this.placeholder_grid_data.row=i,this.add_to_gridmap(this.placeholder_grid_data,this.$player),this},r.empty_cells_player_occupies=function(){return this.remove_from_gridmap(this.placeholder_grid_data),this},r.can_go_up=function(t){var i=t.coords().grid,e=i.row,s=e-1;this.gridmap;var r=!0;return 1===e?!1:(this.for_each_column_occupied(i,function(t){return this.is_widget(t,s),this.is_occupied(t,s)||this.is_player(t,s)||this.is_placeholder_in(t,s)||this.is_player_in(t,s)?(r=!1,!0):void 0}),r)},r.can_move_to=function(t,i,e,s){this.gridmap;var r=t.el,o={size_y:t.size_y,size_x:t.size_x,col:i,row:e},a=!0,n=i+t.size_x-1;return n>this.cols?!1:s&&e+t.size_y-1>s?!1:(this.for_each_cell_occupied(o,function(i,e){var s=this.is_widget(i,e);!s||t.el&&!s.is(r)||(a=!1)}),a)},r.get_targeted_columns=function(t){for(var i=(t||this.player_grid_data.col)+(this.player_grid_data.size_x-1),e=[],s=t;i>=s;s++)e.push(s);return e},r.get_targeted_rows=function(t){for(var i=(t||this.player_grid_data.row)+(this.player_grid_data.size_y-1),e=[],s=t;i>=s;s++)e.push(s);return e},r.get_cells_occupied=function(i){var e,s={cols:[],rows:[]};for(arguments[1]instanceof t&&(i=arguments[1].coords().grid),e=0;i.size_x>e;e++){var r=i.col+e;s.cols.push(r)}for(e=0;i.size_y>e;e++){var o=i.row+e;s.rows.push(o)}return s},r.for_each_cell_occupied=function(t,i){return this.for_each_column_occupied(t,function(e){this.for_each_row_occupied(t,function(t){i.call(this,e,t)})}),this},r.for_each_column_occupied=function(t,i){for(var e=0;t.size_x>e;e++){var s=t.col+e;i.call(this,s,t)}},r.for_each_row_occupied=function(t,i){for(var e=0;t.size_y>e;e++){var s=t.row+e;i.call(this,s,t)}},r._traversing_widgets=function(i,e,s,r,o){var a=this.gridmap;if(a[s]){var n,h,_=i+"/"+e;if(arguments[2]instanceof t){var d=arguments[2].coords().grid;s=d.col,r=d.row,o=arguments[3]}var l=[],c=r,p={"for_each/above":function(){for(;c--&&!(c>0&&this.is_widget(s,c)&&-1===t.inArray(a[s][c],l)&&(n=o.call(a[s][c],s,c),l.push(a[s][c]),n)););},"for_each/below":function(){for(c=r+1,h=a[s].length;h>c&&(!this.is_widget(s,c)||-1!==t.inArray(a[s][c],l)||(n=o.call(a[s][c],s,c),l.push(a[s][c]),!n));c++);}};p[_]&&p[_].call(this)}},r.for_each_widget_above=function(t,i,e){return this._traversing_widgets("for_each","above",t,i,e),this},r.for_each_widget_below=function(t,i,e){return this._traversing_widgets("for_each","below",t,i,e),this},r.get_highest_occupied_cell=function(){for(var t,i=this.gridmap,e=i[1].length,s=[],r=[],o=i.length-1;o>=1;o--)for(t=e-1;t>=1;t--)if(this.is_widget(o,t)){s.push(t),r.push(o);break}return{col:Math.max.apply(Math,r),row:Math.max.apply(Math,s)}},r.get_widgets_from=function(i,e){this.gridmap;var s=t();return i&&(s=s.add(this.$widgets.filter(function(){var e=t(this).attr("data-col");return e===i||e>i}))),e&&(s=s.add(this.$widgets.filter(function(){var i=t(this).attr("data-row");return i===e||i>e}))),s},r.set_dom_grid_height=function(t){if(t===void 0){var i=this.get_highest_occupied_cell().row;t=i*this.min_widget_height}return this.container_height=t,this.$el.css("height",this.container_height),this},r.set_dom_grid_width=function(t){t===void 0&&(t=this.get_highest_occupied_cell().col);var i=this.options.autogrow_cols?this.options.max_cols:this.cols;return t=Math.min(i,Math.max(t,this.options.min_cols)),this.container_width=t*this.min_widget_width,this.$el.css("width",this.container_width),this},r.generate_stylesheet=function(i){var s,r="",o=this.options.max_size_x||this.cols;i||(i={}),i.cols||(i.cols=this.cols),i.rows||(i.rows=this.rows),i.namespace||(i.namespace=this.options.namespace),i.widget_base_dimensions||(i.widget_base_dimensions=this.options.widget_base_dimensions),i.widget_margins||(i.widget_margins=this.options.widget_margins),i.min_widget_width=2*i.widget_margins[0]+i.widget_base_dimensions[0],i.min_widget_height=2*i.widget_margins[1]+i.widget_base_dimensions[1];var a=t.param(i);if(t.inArray(a,e.generated_stylesheets)>=0)return!1;for(this.generated_stylesheets.push(a),e.generated_stylesheets.push(a),s=i.cols;s>=0;s--)r+=i.namespace+' [data-col="'+(s+1)+'"] { left:'+(s*i.widget_base_dimensions[0]+s*i.widget_margins[0]+(s+1)*i.widget_margins[0])+"px; }\n";for(s=i.rows;s>=0;s--)r+=i.namespace+' [data-row="'+(s+1)+'"] { top:'+(s*i.widget_base_dimensions[1]+s*i.widget_margins[1]+(s+1)*i.widget_margins[1])+"px; }\n";for(var n=1;i.rows>=n;n++)r+=i.namespace+' [data-sizey="'+n+'"] { height:'+(n*i.widget_base_dimensions[1]+(n-1)*2*i.widget_margins[1])+"px; }\n";for(var h=1;o>=h;h++)r+=i.namespace+' [data-sizex="'+h+'"] { width:'+(h*i.widget_base_dimensions[0]+(h-1)*2*i.widget_margins[0])+"px; }\n";return this.remove_style_tags(),this.add_style_tag(r)},r.add_style_tag=function(t){var i=document,e=i.createElement("style");return i.getElementsByTagName("head")[0].appendChild(e),e.setAttribute("type","text/css"),e.styleSheet?e.styleSheet.cssText=t:e.appendChild(document.createTextNode(t)),this.$style_tags=this.$style_tags.add(e),this},r.remove_style_tags=function(){var i=e.generated_stylesheets,s=this.generated_stylesheets;this.$style_tags.remove(),e.generated_stylesheets=t.map(i,function(i){return-1===t.inArray(i,s)?i:void 0})},r.generate_faux_grid=function(t,i){this.faux_grid=[],this.gridmap=[];var e,s;for(e=i;e>0;e--)for(this.gridmap[e]=[],s=t;s>0;s--)this.add_faux_cell(s,e);return this},r.add_faux_cell=function(i,e){var s=t({left:this.baseX+(e-1)*this.min_widget_width,top:this.baseY+(i-1)*this.min_widget_height,width:this.min_widget_width,height:this.min_widget_height,col:e,row:i,original_col:e,original_row:i}).coords();return t.isArray(this.gridmap[e])||(this.gridmap[e]=[]),this.gridmap[e][i]=!1,this.faux_grid.push(s),this},r.add_faux_rows=function(t){for(var i=this.rows,e=i+(t||1),s=e;s>i;s--)for(var r=this.cols;r>=1;r--)this.add_faux_cell(s,r);return this.rows=e,this.options.autogenerate_stylesheet&&this.generate_stylesheet(),this},r.add_faux_cols=function(t){var i=this.cols,e=i+(t||1);e=Math.min(e,this.options.max_cols);for(var s=i+1;e>=s;s++)for(var r=this.rows;r>=1;r--)this.add_faux_cell(r,s);return this.cols=e,this.options.autogenerate_stylesheet&&this.generate_stylesheet(),this},r.recalculate_faux_grid=function(){var i=this.$wrapper.width();return this.baseX=(t(window).width()-i)/2,this.baseY=this.$wrapper.offset().top,t.each(this.faux_grid,t.proxy(function(t,i){this.faux_grid[t]=i.update({left:this.baseX+(i.data.col-1)*this.min_widget_width,top:this.baseY+(i.data.row-1)*this.min_widget_height})},this)),this},r.get_widgets_from_DOM=function(){var i=this.$widgets.map(t.proxy(function(i,e){var s=t(e);return this.dom_to_coords(s)},this));i=e.sort_by_row_and_col_asc(i);var s=t(i).map(t.proxy(function(t,i){return this.register_widget(i)||null},this));return s.length&&this.$el.trigger("gridster:positionschanged"),this},r.generate_grid_and_stylesheet=function(){var i=this.$wrapper.width(),e=this.options.max_cols,s=Math.floor(i/this.min_widget_width)+this.options.extra_cols,r=this.$widgets.map(function(){return t(this).attr("data-col")}).get();r.length||(r=[0]);var o=Math.max.apply(Math,r);this.cols=Math.max(o,s,this.options.min_cols),1/0!==e&&e>=o&&this.cols>e&&(this.cols=e);var a=this.options.extra_rows;return this.$widgets.each(function(i,e){a+=+t(e).attr("data-sizey")}),this.rows=Math.max(a,this.options.min_rows),this.baseX=(t(window).width()-i)/2,this.baseY=this.$wrapper.offset().top,this.options.autogenerate_stylesheet&&this.generate_stylesheet(),this.generate_faux_grid(this.rows,this.cols)},r.destroy=function(i){return this.$el.removeData("gridster"),t(window).unbind(".gridster"),this.drag_api&&this.drag_api.destroy(),this.remove_style_tags(),i&&this.$el.remove(),this},t.fn.gridster=function(i){return this.each(function(){t(this).data("gridster")||t(this).data("gridster",new e(this,i))})},e});
@@ -35036,1674 +35088,114 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   });
 })(jQuery);
 
+<<<<<<< HEAD
 /* @license
 morris.js v0.5.0
 Copyright 2014 Olly Smith All rights reserved.
 Licensed under the BSD-2-Clause License.
+=======
+/*
+ * jquery.flot.tooltip
+ *
+ * desc:	create tooltip with values of hovered point on the graph, 
+			support many series, time mode, stacking
+			you can set custom tip content (also with use of HTML tags) and precision of values
+ * version:	0.4.3
+ * author: 	Krzysztof Urbas @krzysu [myviews.pl]
+ * website:	https://github.com/krzysu/flot.tooltip
+ * 
+ * released under MIT License, 2012
+>>>>>>> 0f7bc01f3cd326f71d7ea63aae03add24cd09aeb
 */
 
-
-(function() {
-  var $, Morris, minutesSpecHelper, secondsSpecHelper,
-    __slice = [].slice,
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
-    __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-    __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
-
-  Morris = window.Morris = {};
-
-  $ = jQuery;
-
-  Morris.EventEmitter = (function() {
-    function EventEmitter() {}
-
-    EventEmitter.prototype.on = function(name, handler) {
-      if (this.handlers == null) {
-        this.handlers = {};
-      }
-      if (this.handlers[name] == null) {
-        this.handlers[name] = [];
-      }
-      this.handlers[name].push(handler);
-      return this;
-    };
-
-    EventEmitter.prototype.fire = function() {
-      var args, handler, name, _i, _len, _ref, _results;
-      name = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
-      if ((this.handlers != null) && (this.handlers[name] != null)) {
-        _ref = this.handlers[name];
-        _results = [];
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          handler = _ref[_i];
-          _results.push(handler.apply(null, args));
-        }
-        return _results;
-      }
-    };
-
-    return EventEmitter;
-
-  })();
-
-  Morris.commas = function(num) {
-    var absnum, intnum, ret, strabsnum;
-    if (num != null) {
-      ret = num < 0 ? "-" : "";
-      absnum = Math.abs(num);
-      intnum = Math.floor(absnum).toFixed(0);
-      ret += intnum.replace(/(?=(?:\d{3})+$)(?!^)/g, ',');
-      strabsnum = absnum.toString();
-      if (strabsnum.length > intnum.length) {
-        ret += strabsnum.slice(intnum.length);
-      }
-      return ret;
-    } else {
-      return '-';
-    }
-  };
-
-  Morris.pad2 = function(number) {
-    return (number < 10 ? '0' : '') + number;
-  };
-
-  Morris.Grid = (function(_super) {
-    __extends(Grid, _super);
-
-    function Grid(options) {
-      this.resizeHandler = __bind(this.resizeHandler, this);
-      var _this = this;
-      if (typeof options.element === 'string') {
-        this.el = $(document.getElementById(options.element));
-      } else {
-        this.el = $(options.element);
-      }
-      if ((this.el == null) || this.el.length === 0) {
-        throw new Error("Graph container element not found");
-      }
-      if (this.el.css('position') === 'static') {
-        this.el.css('position', 'relative');
-      }
-      this.options = $.extend({}, this.gridDefaults, this.defaults || {}, options);
-      if (typeof this.options.units === 'string') {
-        this.options.postUnits = options.units;
-      }
-      this.raphael = new Raphael(this.el[0]);
-      this.elementWidth = null;
-      this.elementHeight = null;
-      this.dirty = false;
-      this.selectFrom = null;
-      if (this.init) {
-        this.init();
-      }
-      this.setData(this.options.data);
-      this.el.bind('mousemove', function(evt) {
-        var left, offset, right, width, x;
-        offset = _this.el.offset();
-        x = evt.pageX - offset.left;
-        if (_this.selectFrom) {
-          left = _this.data[_this.hitTest(Math.min(x, _this.selectFrom))]._x;
-          right = _this.data[_this.hitTest(Math.max(x, _this.selectFrom))]._x;
-          width = right - left;
-          return _this.selectionRect.attr({
-            x: left,
-            width: width
-          });
-        } else {
-          return _this.fire('hovermove', x, evt.pageY - offset.top);
-        }
-      });
-      this.el.bind('mouseleave', function(evt) {
-        if (_this.selectFrom) {
-          _this.selectionRect.hide();
-          _this.selectFrom = null;
-        }
-        return _this.fire('hoverout');
-      });
-      this.el.bind('touchstart touchmove touchend', function(evt) {
-        var offset, touch;
-        touch = evt.originalEvent.touches[0] || evt.originalEvent.changedTouches[0];
-        offset = _this.el.offset();
-        return _this.fire('hovermove', touch.pageX - offset.left, touch.pageY - offset.top);
-      });
-      this.el.bind('click', function(evt) {
-        var offset;
-        offset = _this.el.offset();
-        return _this.fire('gridclick', evt.pageX - offset.left, evt.pageY - offset.top);
-      });
-      if (this.options.rangeSelect) {
-        this.selectionRect = this.raphael.rect(0, 0, 0, this.el.innerHeight()).attr({
-          fill: this.options.rangeSelectColor,
-          stroke: false
-        }).toBack().hide();
-        this.el.bind('mousedown', function(evt) {
-          var offset;
-          offset = _this.el.offset();
-          return _this.startRange(evt.pageX - offset.left);
-        });
-        this.el.bind('mouseup', function(evt) {
-          var offset;
-          offset = _this.el.offset();
-          _this.endRange(evt.pageX - offset.left);
-          return _this.fire('hovermove', evt.pageX - offset.left, evt.pageY - offset.top);
-        });
-      }
-      if (this.options.resize) {
-        $(window).bind('resize', function(evt) {
-          if (_this.timeoutId != null) {
-            window.clearTimeout(_this.timeoutId);
-          }
-          return _this.timeoutId = window.setTimeout(_this.resizeHandler, 100);
-        });
-      }
-      this.el.css('-webkit-tap-highlight-color', 'rgba(0,0,0,0)');
-      if (this.postInit) {
-        this.postInit();
-      }
-    }
-
-    Grid.prototype.gridDefaults = {
-      dateFormat: null,
-      axes: true,
-      grid: true,
-      gridLineColor: '#aaa',
-      gridStrokeWidth: 0.5,
-      gridTextColor: '#888',
-      gridTextSize: 12,
-      gridTextFamily: 'sans-serif',
-      gridTextWeight: 'normal',
-      hideHover: false,
-      yLabelFormat: null,
-      xLabelAngle: 0,
-      numLines: 5,
-      padding: 25,
-      parseTime: true,
-      postUnits: '',
-      preUnits: '',
-      ymax: 'auto',
-      ymin: 'auto 0',
-      goals: [],
-      goalStrokeWidth: 1.0,
-      goalLineColors: ['#666633', '#999966', '#cc6666', '#663333'],
-      events: [],
-      eventStrokeWidth: 1.0,
-      eventLineColors: ['#005a04', '#ccffbb', '#3a5f0b', '#005502'],
-      rangeSelect: null,
-      rangeSelectColor: '#eef',
-      resize: false
-    };
-
-    Grid.prototype.setData = function(data, redraw) {
-      var e, idx, index, maxGoal, minGoal, ret, row, step, total, y, ykey, ymax, ymin, yval, _ref;
-      if (redraw == null) {
-        redraw = true;
-      }
-      this.options.data = data;
-      if ((data == null) || data.length === 0) {
-        this.data = [];
-        this.raphael.clear();
-        if (this.hover != null) {
-          this.hover.hide();
-        }
-        return;
-      }
-      ymax = this.cumulative ? 0 : null;
-      ymin = this.cumulative ? 0 : null;
-      if (this.options.goals.length > 0) {
-        minGoal = Math.min.apply(Math, this.options.goals);
-        maxGoal = Math.max.apply(Math, this.options.goals);
-        ymin = ymin != null ? Math.min(ymin, minGoal) : minGoal;
-        ymax = ymax != null ? Math.max(ymax, maxGoal) : maxGoal;
-      }
-      this.data = (function() {
-        var _i, _len, _results;
-        _results = [];
-        for (index = _i = 0, _len = data.length; _i < _len; index = ++_i) {
-          row = data[index];
-          ret = {
-            src: row
-          };
-          ret.label = row[this.options.xkey];
-          if (this.options.parseTime) {
-            ret.x = Morris.parseDate(ret.label);
-            if (this.options.dateFormat) {
-              ret.label = this.options.dateFormat(ret.x);
-            } else if (typeof ret.label === 'number') {
-              ret.label = new Date(ret.label).toString();
-            }
-          } else {
-            ret.x = index;
-            if (this.options.xLabelFormat) {
-              ret.label = this.options.xLabelFormat(ret);
-            }
-          }
-          total = 0;
-          ret.y = (function() {
-            var _j, _len1, _ref, _results1;
-            _ref = this.options.ykeys;
-            _results1 = [];
-            for (idx = _j = 0, _len1 = _ref.length; _j < _len1; idx = ++_j) {
-              ykey = _ref[idx];
-              yval = row[ykey];
-              if (typeof yval === 'string') {
-                yval = parseFloat(yval);
-              }
-              if ((yval != null) && typeof yval !== 'number') {
-                yval = null;
-              }
-              if (yval != null) {
-                if (this.cumulative) {
-                  total += yval;
-                } else {
-                  if (ymax != null) {
-                    ymax = Math.max(yval, ymax);
-                    ymin = Math.min(yval, ymin);
-                  } else {
-                    ymax = ymin = yval;
-                  }
-                }
-              }
-              if (this.cumulative && (total != null)) {
-                ymax = Math.max(total, ymax);
-                ymin = Math.min(total, ymin);
-              }
-              _results1.push(yval);
-            }
-            return _results1;
-          }).call(this);
-          _results.push(ret);
-        }
-        return _results;
-      }).call(this);
-      if (this.options.parseTime) {
-        this.data = this.data.sort(function(a, b) {
-          return (a.x > b.x) - (b.x > a.x);
-        });
-      }
-      this.xmin = this.data[0].x;
-      this.xmax = this.data[this.data.length - 1].x;
-      this.events = [];
-      if (this.options.events.length > 0) {
-        if (this.options.parseTime) {
-          this.events = (function() {
-            var _i, _len, _ref, _results;
-            _ref = this.options.events;
-            _results = [];
-            for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-              e = _ref[_i];
-              _results.push(Morris.parseDate(e));
-            }
-            return _results;
-          }).call(this);
-        } else {
-          this.events = this.options.events;
-        }
-        this.xmax = Math.max(this.xmax, Math.max.apply(Math, this.events));
-        this.xmin = Math.min(this.xmin, Math.min.apply(Math, this.events));
-      }
-      if (this.xmin === this.xmax) {
-        this.xmin -= 1;
-        this.xmax += 1;
-      }
-      this.ymin = this.yboundary('min', ymin);
-      this.ymax = this.yboundary('max', ymax);
-      if (this.ymin === this.ymax) {
-        if (ymin) {
-          this.ymin -= 1;
-        }
-        this.ymax += 1;
-      }
-      if (((_ref = this.options.axes) === true || _ref === 'both' || _ref === 'y') || this.options.grid === true) {
-        if (this.options.ymax === this.gridDefaults.ymax && this.options.ymin === this.gridDefaults.ymin) {
-          this.grid = this.autoGridLines(this.ymin, this.ymax, this.options.numLines);
-          this.ymin = Math.min(this.ymin, this.grid[0]);
-          this.ymax = Math.max(this.ymax, this.grid[this.grid.length - 1]);
-        } else {
-          step = (this.ymax - this.ymin) / (this.options.numLines - 1);
-          this.grid = (function() {
-            var _i, _ref1, _ref2, _results;
-            _results = [];
-            for (y = _i = _ref1 = this.ymin, _ref2 = this.ymax; step > 0 ? _i <= _ref2 : _i >= _ref2; y = _i += step) {
-              _results.push(y);
-            }
-            return _results;
-          }).call(this);
-        }
-      }
-      this.dirty = true;
-      if (redraw) {
-        return this.redraw();
-      }
-    };
-
-    Grid.prototype.yboundary = function(boundaryType, currentValue) {
-      var boundaryOption, suggestedValue;
-      boundaryOption = this.options["y" + boundaryType];
-      if (typeof boundaryOption === 'string') {
-        if (boundaryOption.slice(0, 4) === 'auto') {
-          if (boundaryOption.length > 5) {
-            suggestedValue = parseInt(boundaryOption.slice(5), 10);
-            if (currentValue == null) {
-              return suggestedValue;
-            }
-            return Math[boundaryType](currentValue, suggestedValue);
-          } else {
-            if (currentValue != null) {
-              return currentValue;
-            } else {
-              return 0;
-            }
-          }
-        } else {
-          return parseInt(boundaryOption, 10);
-        }
-      } else {
-        return boundaryOption;
-      }
-    };
-
-    Grid.prototype.autoGridLines = function(ymin, ymax, nlines) {
-      var gmax, gmin, grid, smag, span, step, unit, y, ymag;
-      span = ymax - ymin;
-      ymag = Math.floor(Math.log(span) / Math.log(10));
-      unit = Math.pow(10, ymag);
-      gmin = Math.floor(ymin / unit) * unit;
-      gmax = Math.ceil(ymax / unit) * unit;
-      step = (gmax - gmin) / (nlines - 1);
-      if (unit === 1 && step > 1 && Math.ceil(step) !== step) {
-        step = Math.ceil(step);
-        gmax = gmin + step * (nlines - 1);
-      }
-      if (gmin < 0 && gmax > 0) {
-        gmin = Math.floor(ymin / step) * step;
-        gmax = Math.ceil(ymax / step) * step;
-      }
-      if (step < 1) {
-        smag = Math.floor(Math.log(step) / Math.log(10));
-        grid = (function() {
-          var _i, _results;
-          _results = [];
-          for (y = _i = gmin; step > 0 ? _i <= gmax : _i >= gmax; y = _i += step) {
-            _results.push(parseFloat(y.toFixed(1 - smag)));
-          }
-          return _results;
-        })();
-      } else {
-        grid = (function() {
-          var _i, _results;
-          _results = [];
-          for (y = _i = gmin; step > 0 ? _i <= gmax : _i >= gmax; y = _i += step) {
-            _results.push(y);
-          }
-          return _results;
-        })();
-      }
-      return grid;
-    };
-
-    Grid.prototype._calc = function() {
-      var bottomOffsets, gridLine, h, i, w, yLabelWidths, _ref, _ref1;
-      w = this.el.width();
-      h = this.el.height();
-      if (this.elementWidth !== w || this.elementHeight !== h || this.dirty) {
-        this.elementWidth = w;
-        this.elementHeight = h;
-        this.dirty = false;
-        this.left = this.options.padding;
-        this.right = this.elementWidth - this.options.padding;
-        this.top = this.options.padding;
-        this.bottom = this.elementHeight - this.options.padding;
-        if ((_ref = this.options.axes) === true || _ref === 'both' || _ref === 'y') {
-          yLabelWidths = (function() {
-            var _i, _len, _ref1, _results;
-            _ref1 = this.grid;
-            _results = [];
-            for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
-              gridLine = _ref1[_i];
-              _results.push(this.measureText(this.yAxisFormat(gridLine)).width);
-            }
-            return _results;
-          }).call(this);
-          this.left += Math.max.apply(Math, yLabelWidths);
-        }
-        if ((_ref1 = this.options.axes) === true || _ref1 === 'both' || _ref1 === 'x') {
-          bottomOffsets = (function() {
-            var _i, _ref2, _results;
-            _results = [];
-            for (i = _i = 0, _ref2 = this.data.length; 0 <= _ref2 ? _i < _ref2 : _i > _ref2; i = 0 <= _ref2 ? ++_i : --_i) {
-              _results.push(this.measureText(this.data[i].text, -this.options.xLabelAngle).height);
-            }
-            return _results;
-          }).call(this);
-          this.bottom -= Math.max.apply(Math, bottomOffsets);
-        }
-        this.width = Math.max(1, this.right - this.left);
-        this.height = Math.max(1, this.bottom - this.top);
-        this.dx = this.width / (this.xmax - this.xmin);
-        this.dy = this.height / (this.ymax - this.ymin);
-        if (this.calc) {
-          return this.calc();
-        }
-      }
-    };
-
-    Grid.prototype.transY = function(y) {
-      return this.bottom - (y - this.ymin) * this.dy;
-    };
-
-    Grid.prototype.transX = function(x) {
-      if (this.data.length === 1) {
-        return (this.left + this.right) / 2;
-      } else {
-        return this.left + (x - this.xmin) * this.dx;
-      }
-    };
-
-    Grid.prototype.redraw = function() {
-      this.raphael.clear();
-      this._calc();
-      this.drawGrid();
-      this.drawGoals();
-      this.drawEvents();
-      if (this.draw) {
-        return this.draw();
-      }
-    };
-
-    Grid.prototype.measureText = function(text, angle) {
-      var ret, tt;
-      if (angle == null) {
-        angle = 0;
-      }
-      tt = this.raphael.text(100, 100, text).attr('font-size', this.options.gridTextSize).attr('font-family', this.options.gridTextFamily).attr('font-weight', this.options.gridTextWeight).rotate(angle);
-      ret = tt.getBBox();
-      tt.remove();
-      return ret;
-    };
-
-    Grid.prototype.yAxisFormat = function(label) {
-      return this.yLabelFormat(label);
-    };
-
-    Grid.prototype.yLabelFormat = function(label) {
-      if (typeof this.options.yLabelFormat === 'function') {
-        return this.options.yLabelFormat(label);
-      } else {
-        return "" + this.options.preUnits + (Morris.commas(label)) + this.options.postUnits;
-      }
-    };
-
-    Grid.prototype.drawGrid = function() {
-      var lineY, y, _i, _len, _ref, _ref1, _ref2, _results;
-      if (this.options.grid === false && ((_ref = this.options.axes) !== true && _ref !== 'both' && _ref !== 'y')) {
-        return;
-      }
-      _ref1 = this.grid;
-      _results = [];
-      for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
-        lineY = _ref1[_i];
-        y = this.transY(lineY);
-        if ((_ref2 = this.options.axes) === true || _ref2 === 'both' || _ref2 === 'y') {
-          this.drawYAxisLabel(this.left - this.options.padding / 2, y, this.yAxisFormat(lineY));
-        }
-        if (this.options.grid) {
-          _results.push(this.drawGridLine("M" + this.left + "," + y + "H" + (this.left + this.width)));
-        } else {
-          _results.push(void 0);
-        }
-      }
-      return _results;
-    };
-
-    Grid.prototype.drawGoals = function() {
-      var color, goal, i, _i, _len, _ref, _results;
-      _ref = this.options.goals;
-      _results = [];
-      for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
-        goal = _ref[i];
-        color = this.options.goalLineColors[i % this.options.goalLineColors.length];
-        _results.push(this.drawGoal(goal, color));
-      }
-      return _results;
-    };
-
-    Grid.prototype.drawEvents = function() {
-      var color, event, i, _i, _len, _ref, _results;
-      _ref = this.events;
-      _results = [];
-      for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
-        event = _ref[i];
-        color = this.options.eventLineColors[i % this.options.eventLineColors.length];
-        _results.push(this.drawEvent(event, color));
-      }
-      return _results;
-    };
-
-    Grid.prototype.drawGoal = function(goal, color) {
-      return this.raphael.path("M" + this.left + "," + (this.transY(goal)) + "H" + this.right).attr('stroke', color).attr('stroke-width', this.options.goalStrokeWidth);
-    };
-
-    Grid.prototype.drawEvent = function(event, color) {
-      return this.raphael.path("M" + (this.transX(event)) + "," + this.bottom + "V" + this.top).attr('stroke', color).attr('stroke-width', this.options.eventStrokeWidth);
-    };
-
-    Grid.prototype.drawYAxisLabel = function(xPos, yPos, text) {
-      return this.raphael.text(xPos, yPos, text).attr('font-size', this.options.gridTextSize).attr('font-family', this.options.gridTextFamily).attr('font-weight', this.options.gridTextWeight).attr('fill', this.options.gridTextColor).attr('text-anchor', 'end');
-    };
-
-    Grid.prototype.drawGridLine = function(path) {
-      return this.raphael.path(path).attr('stroke', this.options.gridLineColor).attr('stroke-width', this.options.gridStrokeWidth);
-    };
-
-    Grid.prototype.startRange = function(x) {
-      this.hover.hide();
-      this.selectFrom = x;
-      return this.selectionRect.attr({
-        x: x,
-        width: 0
-      }).show();
-    };
-
-    Grid.prototype.endRange = function(x) {
-      var end, start;
-      if (this.selectFrom) {
-        start = Math.min(this.selectFrom, x);
-        end = Math.max(this.selectFrom, x);
-        this.options.rangeSelect.call(this.el, {
-          start: this.data[this.hitTest(start)].x,
-          end: this.data[this.hitTest(end)].x
-        });
-        return this.selectFrom = null;
-      }
-    };
-
-    Grid.prototype.resizeHandler = function() {
-      this.timeoutId = null;
-      this.raphael.setSize(this.el.width(), this.el.height());
-      return this.redraw();
-    };
-
-    return Grid;
-
-  })(Morris.EventEmitter);
-
-  Morris.parseDate = function(date) {
-    var isecs, m, msecs, n, o, offsetmins, p, q, r, ret, secs;
-    if (typeof date === 'number') {
-      return date;
-    }
-    m = date.match(/^(\d+) Q(\d)$/);
-    n = date.match(/^(\d+)-(\d+)$/);
-    o = date.match(/^(\d+)-(\d+)-(\d+)$/);
-    p = date.match(/^(\d+) W(\d+)$/);
-    q = date.match(/^(\d+)-(\d+)-(\d+)[ T](\d+):(\d+)(Z|([+-])(\d\d):?(\d\d))?$/);
-    r = date.match(/^(\d+)-(\d+)-(\d+)[ T](\d+):(\d+):(\d+(\.\d+)?)(Z|([+-])(\d\d):?(\d\d))?$/);
-    if (m) {
-      return new Date(parseInt(m[1], 10), parseInt(m[2], 10) * 3 - 1, 1).getTime();
-    } else if (n) {
-      return new Date(parseInt(n[1], 10), parseInt(n[2], 10) - 1, 1).getTime();
-    } else if (o) {
-      return new Date(parseInt(o[1], 10), parseInt(o[2], 10) - 1, parseInt(o[3], 10)).getTime();
-    } else if (p) {
-      ret = new Date(parseInt(p[1], 10), 0, 1);
-      if (ret.getDay() !== 4) {
-        ret.setMonth(0, 1 + ((4 - ret.getDay()) + 7) % 7);
-      }
-      return ret.getTime() + parseInt(p[2], 10) * 604800000;
-    } else if (q) {
-      if (!q[6]) {
-        return new Date(parseInt(q[1], 10), parseInt(q[2], 10) - 1, parseInt(q[3], 10), parseInt(q[4], 10), parseInt(q[5], 10)).getTime();
-      } else {
-        offsetmins = 0;
-        if (q[6] !== 'Z') {
-          offsetmins = parseInt(q[8], 10) * 60 + parseInt(q[9], 10);
-          if (q[7] === '+') {
-            offsetmins = 0 - offsetmins;
-          }
-        }
-        return Date.UTC(parseInt(q[1], 10), parseInt(q[2], 10) - 1, parseInt(q[3], 10), parseInt(q[4], 10), parseInt(q[5], 10) + offsetmins);
-      }
-    } else if (r) {
-      secs = parseFloat(r[6]);
-      isecs = Math.floor(secs);
-      msecs = Math.round((secs - isecs) * 1000);
-      if (!r[8]) {
-        return new Date(parseInt(r[1], 10), parseInt(r[2], 10) - 1, parseInt(r[3], 10), parseInt(r[4], 10), parseInt(r[5], 10), isecs, msecs).getTime();
-      } else {
-        offsetmins = 0;
-        if (r[8] !== 'Z') {
-          offsetmins = parseInt(r[10], 10) * 60 + parseInt(r[11], 10);
-          if (r[9] === '+') {
-            offsetmins = 0 - offsetmins;
-          }
-        }
-        return Date.UTC(parseInt(r[1], 10), parseInt(r[2], 10) - 1, parseInt(r[3], 10), parseInt(r[4], 10), parseInt(r[5], 10) + offsetmins, isecs, msecs);
-      }
-    } else {
-      return new Date(parseInt(date, 10), 0, 1).getTime();
-    }
-  };
-
-  Morris.Hover = (function() {
-    Hover.defaults = {
-      "class": 'morris-hover morris-default-style'
-    };
-
-    function Hover(options) {
-      if (options == null) {
-        options = {};
-      }
-      this.options = $.extend({}, Morris.Hover.defaults, options);
-      this.el = $("<div class='" + this.options["class"] + "'></div>");
-      this.el.hide();
-      this.options.parent.append(this.el);
-    }
-
-    Hover.prototype.update = function(html, x, y) {
-      if (!html) {
-        return this.hide();
-      } else {
-        this.html(html);
-        this.show();
-        return this.moveTo(x, y);
-      }
-    };
-
-    Hover.prototype.html = function(content) {
-      return this.el.html(content);
-    };
-
-    Hover.prototype.moveTo = function(x, y) {
-      var hoverHeight, hoverWidth, left, parentHeight, parentWidth, top;
-      parentWidth = this.options.parent.innerWidth();
-      parentHeight = this.options.parent.innerHeight();
-      hoverWidth = this.el.outerWidth();
-      hoverHeight = this.el.outerHeight();
-      left = Math.min(Math.max(0, x - hoverWidth / 2), parentWidth - hoverWidth);
-      if (y != null) {
-        top = y - hoverHeight - 10;
-        if (top < 0) {
-          top = y + 10;
-          if (top + hoverHeight > parentHeight) {
-            top = parentHeight / 2 - hoverHeight / 2;
-          }
-        }
-      } else {
-        top = parentHeight / 2 - hoverHeight / 2;
-      }
-      return this.el.css({
-        left: left + "px",
-        top: parseInt(top) + "px"
-      });
-    };
-
-    Hover.prototype.show = function() {
-      return this.el.show();
-    };
-
-    Hover.prototype.hide = function() {
-      return this.el.hide();
-    };
-
-    return Hover;
-
-  })();
-
-  Morris.Line = (function(_super) {
-    __extends(Line, _super);
-
-    function Line(options) {
-      this.hilight = __bind(this.hilight, this);
-      this.onHoverOut = __bind(this.onHoverOut, this);
-      this.onHoverMove = __bind(this.onHoverMove, this);
-      this.onGridClick = __bind(this.onGridClick, this);
-      if (!(this instanceof Morris.Line)) {
-        return new Morris.Line(options);
-      }
-      Line.__super__.constructor.call(this, options);
-    }
-
-    Line.prototype.init = function() {
-      if (this.options.hideHover !== 'always') {
-        this.hover = new Morris.Hover({
-          parent: this.el
-        });
-        this.on('hovermove', this.onHoverMove);
-        this.on('hoverout', this.onHoverOut);
-        return this.on('gridclick', this.onGridClick);
-      }
-    };
-
-    Line.prototype.defaults = {
-      lineWidth: 3,
-      pointSize: 4,
-      lineColors: ['#0b62a4', '#7A92A3', '#4da74d', '#afd8f8', '#edc240', '#cb4b4b', '#9440ed'],
-      pointStrokeWidths: [1],
-      pointStrokeColors: ['#ffffff'],
-      pointFillColors: [],
-      smooth: true,
-      xLabels: 'auto',
-      xLabelFormat: null,
-      xLabelMargin: 24,
-      hideHover: false
-    };
-
-    Line.prototype.calc = function() {
-      this.calcPoints();
-      return this.generatePaths();
-    };
-
-    Line.prototype.calcPoints = function() {
-      var row, y, _i, _len, _ref, _results;
-      _ref = this.data;
-      _results = [];
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        row = _ref[_i];
-        row._x = this.transX(row.x);
-        row._y = (function() {
-          var _j, _len1, _ref1, _results1;
-          _ref1 = row.y;
-          _results1 = [];
-          for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-            y = _ref1[_j];
-            if (y != null) {
-              _results1.push(this.transY(y));
-            } else {
-              _results1.push(y);
-            }
-          }
-          return _results1;
-        }).call(this);
-        _results.push(row._ymax = Math.min.apply(Math, [this.bottom].concat((function() {
-          var _j, _len1, _ref1, _results1;
-          _ref1 = row._y;
-          _results1 = [];
-          for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-            y = _ref1[_j];
-            if (y != null) {
-              _results1.push(y);
-            }
-          }
-          return _results1;
-        })())));
-      }
-      return _results;
-    };
-
-    Line.prototype.hitTest = function(x) {
-      var index, r, _i, _len, _ref;
-      if (this.data.length === 0) {
-        return null;
-      }
-      _ref = this.data.slice(1);
-      for (index = _i = 0, _len = _ref.length; _i < _len; index = ++_i) {
-        r = _ref[index];
-        if (x < (r._x + this.data[index]._x) / 2) {
-          break;
-        }
-      }
-      return index;
-    };
-
-    Line.prototype.onGridClick = function(x, y) {
-      var index;
-      index = this.hitTest(x);
-      return this.fire('click', index, this.data[index].src, x, y);
-    };
-
-    Line.prototype.onHoverMove = function(x, y) {
-      var index;
-      index = this.hitTest(x);
-      return this.displayHoverForRow(index);
-    };
-
-    Line.prototype.onHoverOut = function() {
-      if (this.options.hideHover !== false) {
-        return this.displayHoverForRow(null);
-      }
-    };
-
-    Line.prototype.displayHoverForRow = function(index) {
-      var _ref;
-      if (index != null) {
-        (_ref = this.hover).update.apply(_ref, this.hoverContentForRow(index));
-        return this.hilight(index);
-      } else {
-        this.hover.hide();
-        return this.hilight();
-      }
-    };
-
-    Line.prototype.hoverContentForRow = function(index) {
-      var content, j, row, y, _i, _len, _ref;
-      row = this.data[index];
-      content = "<div class='morris-hover-row-label'>" + row.label + "</div>";
-      _ref = row.y;
-      for (j = _i = 0, _len = _ref.length; _i < _len; j = ++_i) {
-        y = _ref[j];
-        content += "<div class='morris-hover-point' style='color: " + (this.colorFor(row, j, 'label')) + "'>\n  " + this.options.labels[j] + ":\n  " + (this.yLabelFormat(y)) + "\n</div>";
-      }
-      if (typeof this.options.hoverCallback === 'function') {
-        content = this.options.hoverCallback(index, this.options, content, row.src);
-      }
-      return [content, row._x, row._ymax];
-    };
-
-    Line.prototype.generatePaths = function() {
-      var coords, i, r, smooth;
-      return this.paths = (function() {
-        var _i, _ref, _ref1, _results;
-        _results = [];
-        for (i = _i = 0, _ref = this.options.ykeys.length; 0 <= _ref ? _i < _ref : _i > _ref; i = 0 <= _ref ? ++_i : --_i) {
-          smooth = typeof this.options.smooth === "boolean" ? this.options.smooth : (_ref1 = this.options.ykeys[i], __indexOf.call(this.options.smooth, _ref1) >= 0);
-          coords = (function() {
-            var _j, _len, _ref2, _results1;
-            _ref2 = this.data;
-            _results1 = [];
-            for (_j = 0, _len = _ref2.length; _j < _len; _j++) {
-              r = _ref2[_j];
-              if (r._y[i] !== void 0) {
-                _results1.push({
-                  x: r._x,
-                  y: r._y[i]
-                });
-              }
-            }
-            return _results1;
-          }).call(this);
-          if (coords.length > 1) {
-            _results.push(Morris.Line.createPath(coords, smooth, this.bottom));
-          } else {
-            _results.push(null);
-          }
-        }
-        return _results;
-      }).call(this);
-    };
-
-    Line.prototype.draw = function() {
-      var _ref;
-      if ((_ref = this.options.axes) === true || _ref === 'both' || _ref === 'x') {
-        this.drawXAxis();
-      }
-      this.drawSeries();
-      if (this.options.hideHover === false) {
-        return this.displayHoverForRow(this.data.length - 1);
-      }
-    };
-
-    Line.prototype.drawXAxis = function() {
-      var drawLabel, l, labels, prevAngleMargin, prevLabelMargin, row, ypos, _i, _len, _results,
-        _this = this;
-      ypos = this.bottom + this.options.padding / 2;
-      prevLabelMargin = null;
-      prevAngleMargin = null;
-      drawLabel = function(labelText, xpos) {
-        var label, labelBox, margin, offset, textBox;
-        label = _this.drawXAxisLabel(_this.transX(xpos), ypos, labelText);
-        textBox = label.getBBox();
-        label.transform("r" + (-_this.options.xLabelAngle));
-        labelBox = label.getBBox();
-        label.transform("t0," + (labelBox.height / 2) + "...");
-        if (_this.options.xLabelAngle !== 0) {
-          offset = -0.5 * textBox.width * Math.cos(_this.options.xLabelAngle * Math.PI / 180.0);
-          label.transform("t" + offset + ",0...");
-        }
-        labelBox = label.getBBox();
-        if (((prevLabelMargin == null) || prevLabelMargin >= labelBox.x + labelBox.width || (prevAngleMargin != null) && prevAngleMargin >= labelBox.x) && labelBox.x >= 0 && (labelBox.x + labelBox.width) < _this.el.width()) {
-          if (_this.options.xLabelAngle !== 0) {
-            margin = 1.25 * _this.options.gridTextSize / Math.sin(_this.options.xLabelAngle * Math.PI / 180.0);
-            prevAngleMargin = labelBox.x - margin;
-          }
-          return prevLabelMargin = labelBox.x - _this.options.xLabelMargin;
-        } else {
-          return label.remove();
-        }
-      };
-      if (this.options.parseTime) {
-        if (this.data.length === 1 && this.options.xLabels === 'auto') {
-          labels = [[this.data[0].label, this.data[0].x]];
-        } else {
-          labels = Morris.labelSeries(this.xmin, this.xmax, this.width, this.options.xLabels, this.options.xLabelFormat);
-        }
-      } else {
-        labels = (function() {
-          var _i, _len, _ref, _results;
-          _ref = this.data;
-          _results = [];
-          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            row = _ref[_i];
-            _results.push([row.label, row.x]);
-          }
-          return _results;
-        }).call(this);
-      }
-      labels.reverse();
-      _results = [];
-      for (_i = 0, _len = labels.length; _i < _len; _i++) {
-        l = labels[_i];
-        _results.push(drawLabel(l[0], l[1]));
-      }
-      return _results;
-    };
-
-    Line.prototype.drawSeries = function() {
-      var i, _i, _j, _ref, _ref1, _results;
-      this.seriesPoints = [];
-      for (i = _i = _ref = this.options.ykeys.length - 1; _ref <= 0 ? _i <= 0 : _i >= 0; i = _ref <= 0 ? ++_i : --_i) {
-        this._drawLineFor(i);
-      }
-      _results = [];
-      for (i = _j = _ref1 = this.options.ykeys.length - 1; _ref1 <= 0 ? _j <= 0 : _j >= 0; i = _ref1 <= 0 ? ++_j : --_j) {
-        _results.push(this._drawPointFor(i));
-      }
-      return _results;
-    };
-
-    Line.prototype._drawPointFor = function(index) {
-      var circle, row, _i, _len, _ref, _results;
-      this.seriesPoints[index] = [];
-      _ref = this.data;
-      _results = [];
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        row = _ref[_i];
-        circle = null;
-        if (row._y[index] != null) {
-          circle = this.drawLinePoint(row._x, row._y[index], this.colorFor(row, index, 'point'), index);
-        }
-        _results.push(this.seriesPoints[index].push(circle));
-      }
-      return _results;
-    };
-
-    Line.prototype._drawLineFor = function(index) {
-      var path;
-      path = this.paths[index];
-      if (path !== null) {
-        return this.drawLinePath(path, this.colorFor(null, index, 'line'), index);
-      }
-    };
-
-    Line.createPath = function(coords, smooth, bottom) {
-      var coord, g, grads, i, ix, lg, path, prevCoord, x1, x2, y1, y2, _i, _len;
-      path = "";
-      if (smooth) {
-        grads = Morris.Line.gradients(coords);
-      }
-      prevCoord = {
-        y: null
-      };
-      for (i = _i = 0, _len = coords.length; _i < _len; i = ++_i) {
-        coord = coords[i];
-        if (coord.y != null) {
-          if (prevCoord.y != null) {
-            if (smooth) {
-              g = grads[i];
-              lg = grads[i - 1];
-              ix = (coord.x - prevCoord.x) / 4;
-              x1 = prevCoord.x + ix;
-              y1 = Math.min(bottom, prevCoord.y + ix * lg);
-              x2 = coord.x - ix;
-              y2 = Math.min(bottom, coord.y - ix * g);
-              path += "C" + x1 + "," + y1 + "," + x2 + "," + y2 + "," + coord.x + "," + coord.y;
-            } else {
-              path += "L" + coord.x + "," + coord.y;
-            }
-          } else {
-            if (!smooth || (grads[i] != null)) {
-              path += "M" + coord.x + "," + coord.y;
-            }
-          }
-        }
-        prevCoord = coord;
-      }
-      return path;
-    };
-
-    Line.gradients = function(coords) {
-      var coord, grad, i, nextCoord, prevCoord, _i, _len, _results;
-      grad = function(a, b) {
-        return (a.y - b.y) / (a.x - b.x);
-      };
-      _results = [];
-      for (i = _i = 0, _len = coords.length; _i < _len; i = ++_i) {
-        coord = coords[i];
-        if (coord.y != null) {
-          nextCoord = coords[i + 1] || {
-            y: null
-          };
-          prevCoord = coords[i - 1] || {
-            y: null
-          };
-          if ((prevCoord.y != null) && (nextCoord.y != null)) {
-            _results.push(grad(prevCoord, nextCoord));
-          } else if (prevCoord.y != null) {
-            _results.push(grad(prevCoord, coord));
-          } else if (nextCoord.y != null) {
-            _results.push(grad(coord, nextCoord));
-          } else {
-            _results.push(null);
-          }
-        } else {
-          _results.push(null);
-        }
-      }
-      return _results;
-    };
-
-    Line.prototype.hilight = function(index) {
-      var i, _i, _j, _ref, _ref1;
-      if (this.prevHilight !== null && this.prevHilight !== index) {
-        for (i = _i = 0, _ref = this.seriesPoints.length - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
-          if (this.seriesPoints[i][this.prevHilight]) {
-            this.seriesPoints[i][this.prevHilight].animate(this.pointShrinkSeries(i));
-          }
-        }
-      }
-      if (index !== null && this.prevHilight !== index) {
-        for (i = _j = 0, _ref1 = this.seriesPoints.length - 1; 0 <= _ref1 ? _j <= _ref1 : _j >= _ref1; i = 0 <= _ref1 ? ++_j : --_j) {
-          if (this.seriesPoints[i][index]) {
-            this.seriesPoints[i][index].animate(this.pointGrowSeries(i));
-          }
-        }
-      }
-      return this.prevHilight = index;
-    };
-
-    Line.prototype.colorFor = function(row, sidx, type) {
-      if (typeof this.options.lineColors === 'function') {
-        return this.options.lineColors.call(this, row, sidx, type);
-      } else if (type === 'point') {
-        return this.options.pointFillColors[sidx % this.options.pointFillColors.length] || this.options.lineColors[sidx % this.options.lineColors.length];
-      } else {
-        return this.options.lineColors[sidx % this.options.lineColors.length];
-      }
-    };
-
-    Line.prototype.drawXAxisLabel = function(xPos, yPos, text) {
-      return this.raphael.text(xPos, yPos, text).attr('font-size', this.options.gridTextSize).attr('font-family', this.options.gridTextFamily).attr('font-weight', this.options.gridTextWeight).attr('fill', this.options.gridTextColor);
-    };
-
-    Line.prototype.drawLinePath = function(path, lineColor, lineIndex) {
-      return this.raphael.path(path).attr('stroke', lineColor).attr('stroke-width', this.lineWidthForSeries(lineIndex));
-    };
-
-    Line.prototype.drawLinePoint = function(xPos, yPos, pointColor, lineIndex) {
-      return this.raphael.circle(xPos, yPos, this.pointSizeForSeries(lineIndex)).attr('fill', pointColor).attr('stroke-width', this.pointStrokeWidthForSeries(lineIndex)).attr('stroke', this.pointStrokeColorForSeries(lineIndex));
-    };
-
-    Line.prototype.pointStrokeWidthForSeries = function(index) {
-      return this.options.pointStrokeWidths[index % this.options.pointStrokeWidths.length];
-    };
-
-    Line.prototype.pointStrokeColorForSeries = function(index) {
-      return this.options.pointStrokeColors[index % this.options.pointStrokeColors.length];
-    };
-
-    Line.prototype.lineWidthForSeries = function(index) {
-      if (this.options.lineWidth instanceof Array) {
-        return this.options.lineWidth[index % this.options.lineWidth.length];
-      } else {
-        return this.options.lineWidth;
-      }
-    };
-
-    Line.prototype.pointSizeForSeries = function(index) {
-      if (this.options.pointSize instanceof Array) {
-        return this.options.pointSize[index % this.options.pointSize.length];
-      } else {
-        return this.options.pointSize;
-      }
-    };
-
-    Line.prototype.pointGrowSeries = function(index) {
-      return Raphael.animation({
-        r: this.pointSizeForSeries(index) + 3
-      }, 25, 'linear');
-    };
-
-    Line.prototype.pointShrinkSeries = function(index) {
-      return Raphael.animation({
-        r: this.pointSizeForSeries(index)
-      }, 25, 'linear');
-    };
-
-    return Line;
-
-  })(Morris.Grid);
-
-  Morris.labelSeries = function(dmin, dmax, pxwidth, specName, xLabelFormat) {
-    var d, d0, ddensity, name, ret, s, spec, t, _i, _len, _ref;
-    ddensity = 200 * (dmax - dmin) / pxwidth;
-    d0 = new Date(dmin);
-    spec = Morris.LABEL_SPECS[specName];
-    if (spec === void 0) {
-      _ref = Morris.AUTO_LABEL_ORDER;
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        name = _ref[_i];
-        s = Morris.LABEL_SPECS[name];
-        if (ddensity >= s.span) {
-          spec = s;
-          break;
-        }
-      }
-    }
-    if (spec === void 0) {
-      spec = Morris.LABEL_SPECS["second"];
-    }
-    if (xLabelFormat) {
-      spec = $.extend({}, spec, {
-        fmt: xLabelFormat
-      });
-    }
-    d = spec.start(d0);
-    ret = [];
-    while ((t = d.getTime()) <= dmax) {
-      if (t >= dmin) {
-        ret.push([spec.fmt(d), t]);
-      }
-      spec.incr(d);
-    }
-    return ret;
-  };
-
-  minutesSpecHelper = function(interval) {
-    return {
-      span: interval * 60 * 1000,
-      start: function(d) {
-        return new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours());
-      },
-      fmt: function(d) {
-        return "" + (Morris.pad2(d.getHours())) + ":" + (Morris.pad2(d.getMinutes()));
-      },
-      incr: function(d) {
-        return d.setUTCMinutes(d.getUTCMinutes() + interval);
-      }
-    };
-  };
-
-  secondsSpecHelper = function(interval) {
-    return {
-      span: interval * 1000,
-      start: function(d) {
-        return new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), d.getMinutes());
-      },
-      fmt: function(d) {
-        return "" + (Morris.pad2(d.getHours())) + ":" + (Morris.pad2(d.getMinutes())) + ":" + (Morris.pad2(d.getSeconds()));
-      },
-      incr: function(d) {
-        return d.setUTCSeconds(d.getUTCSeconds() + interval);
-      }
-    };
-  };
-
-  Morris.LABEL_SPECS = {
-    "decade": {
-      span: 172800000000,
-      start: function(d) {
-        return new Date(d.getFullYear() - d.getFullYear() % 10, 0, 1);
-      },
-      fmt: function(d) {
-        return "" + (d.getFullYear());
-      },
-      incr: function(d) {
-        return d.setFullYear(d.getFullYear() + 10);
-      }
-    },
-    "year": {
-      span: 17280000000,
-      start: function(d) {
-        return new Date(d.getFullYear(), 0, 1);
-      },
-      fmt: function(d) {
-        return "" + (d.getFullYear());
-      },
-      incr: function(d) {
-        return d.setFullYear(d.getFullYear() + 1);
-      }
-    },
-    "month": {
-      span: 2419200000,
-      start: function(d) {
-        return new Date(d.getFullYear(), d.getMonth(), 1);
-      },
-      fmt: function(d) {
-        return "" + (d.getFullYear()) + "-" + (Morris.pad2(d.getMonth() + 1));
-      },
-      incr: function(d) {
-        return d.setMonth(d.getMonth() + 1);
-      }
-    },
-    "week": {
-      span: 604800000,
-      start: function(d) {
-        return new Date(d.getFullYear(), d.getMonth(), d.getDate());
-      },
-      fmt: function(d) {
-        return "" + (d.getFullYear()) + "-" + (Morris.pad2(d.getMonth() + 1)) + "-" + (Morris.pad2(d.getDate()));
-      },
-      incr: function(d) {
-        return d.setDate(d.getDate() + 7);
-      }
-    },
-    "day": {
-      span: 86400000,
-      start: function(d) {
-        return new Date(d.getFullYear(), d.getMonth(), d.getDate());
-      },
-      fmt: function(d) {
-        return "" + (d.getFullYear()) + "-" + (Morris.pad2(d.getMonth() + 1)) + "-" + (Morris.pad2(d.getDate()));
-      },
-      incr: function(d) {
-        return d.setDate(d.getDate() + 1);
-      }
-    },
-    "hour": minutesSpecHelper(60),
-    "30min": minutesSpecHelper(30),
-    "15min": minutesSpecHelper(15),
-    "10min": minutesSpecHelper(10),
-    "5min": minutesSpecHelper(5),
-    "minute": minutesSpecHelper(1),
-    "30sec": secondsSpecHelper(30),
-    "15sec": secondsSpecHelper(15),
-    "10sec": secondsSpecHelper(10),
-    "5sec": secondsSpecHelper(5),
-    "second": secondsSpecHelper(1)
-  };
-
-  Morris.AUTO_LABEL_ORDER = ["decade", "year", "month", "week", "day", "hour", "30min", "15min", "10min", "5min", "minute", "30sec", "15sec", "10sec", "5sec", "second"];
-
-  Morris.Area = (function(_super) {
-    var areaDefaults;
-
-    __extends(Area, _super);
-
-    areaDefaults = {
-      fillOpacity: 'auto',
-      behaveLikeLine: false
-    };
-
-    function Area(options) {
-      var areaOptions;
-      if (!(this instanceof Morris.Area)) {
-        return new Morris.Area(options);
-      }
-      areaOptions = $.extend({}, areaDefaults, options);
-      this.cumulative = !areaOptions.behaveLikeLine;
-      if (areaOptions.fillOpacity === 'auto') {
-        areaOptions.fillOpacity = areaOptions.behaveLikeLine ? .8 : 1;
-      }
-      Area.__super__.constructor.call(this, areaOptions);
-    }
-
-    Area.prototype.calcPoints = function() {
-      var row, total, y, _i, _len, _ref, _results;
-      _ref = this.data;
-      _results = [];
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        row = _ref[_i];
-        row._x = this.transX(row.x);
-        total = 0;
-        row._y = (function() {
-          var _j, _len1, _ref1, _results1;
-          _ref1 = row.y;
-          _results1 = [];
-          for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-            y = _ref1[_j];
-            if (this.options.behaveLikeLine) {
-              _results1.push(this.transY(y));
-            } else {
-              total += y || 0;
-              _results1.push(this.transY(total));
-            }
-          }
-          return _results1;
-        }).call(this);
-        _results.push(row._ymax = Math.max.apply(Math, row._y));
-      }
-      return _results;
-    };
-
-    Area.prototype.drawSeries = function() {
-      var i, range, _i, _j, _k, _len, _ref, _ref1, _results, _results1, _results2;
-      this.seriesPoints = [];
-      if (this.options.behaveLikeLine) {
-        range = (function() {
-          _results = [];
-          for (var _i = 0, _ref = this.options.ykeys.length - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; 0 <= _ref ? _i++ : _i--){ _results.push(_i); }
-          return _results;
-        }).apply(this);
-      } else {
-        range = (function() {
-          _results1 = [];
-          for (var _j = _ref1 = this.options.ykeys.length - 1; _ref1 <= 0 ? _j <= 0 : _j >= 0; _ref1 <= 0 ? _j++ : _j--){ _results1.push(_j); }
-          return _results1;
-        }).apply(this);
-      }
-      _results2 = [];
-      for (_k = 0, _len = range.length; _k < _len; _k++) {
-        i = range[_k];
-        this._drawFillFor(i);
-        this._drawLineFor(i);
-        _results2.push(this._drawPointFor(i));
-      }
-      return _results2;
-    };
-
-    Area.prototype._drawFillFor = function(index) {
-      var path;
-      path = this.paths[index];
-      if (path !== null) {
-        path = path + ("L" + (this.transX(this.xmax)) + "," + this.bottom + "L" + (this.transX(this.xmin)) + "," + this.bottom + "Z");
-        return this.drawFilledPath(path, this.fillForSeries(index));
-      }
-    };
-
-    Area.prototype.fillForSeries = function(i) {
-      var color;
-      color = Raphael.rgb2hsl(this.colorFor(this.data[i], i, 'line'));
-      return Raphael.hsl(color.h, this.options.behaveLikeLine ? color.s * 0.9 : color.s * 0.75, Math.min(0.98, this.options.behaveLikeLine ? color.l * 1.2 : color.l * 1.25));
-    };
-
-    Area.prototype.drawFilledPath = function(path, fill) {
-      return this.raphael.path(path).attr('fill', fill).attr('fill-opacity', this.options.fillOpacity).attr('stroke', 'none');
-    };
-
-    return Area;
-
-  })(Morris.Line);
-
-  Morris.Bar = (function(_super) {
-    __extends(Bar, _super);
-
-    function Bar(options) {
-      this.onHoverOut = __bind(this.onHoverOut, this);
-      this.onHoverMove = __bind(this.onHoverMove, this);
-      this.onGridClick = __bind(this.onGridClick, this);
-      if (!(this instanceof Morris.Bar)) {
-        return new Morris.Bar(options);
-      }
-      Bar.__super__.constructor.call(this, $.extend({}, options, {
-        parseTime: false
-      }));
-    }
-
-    Bar.prototype.init = function() {
-      this.cumulative = this.options.stacked;
-      if (this.options.hideHover !== 'always') {
-        this.hover = new Morris.Hover({
-          parent: this.el
-        });
-        this.on('hovermove', this.onHoverMove);
-        this.on('hoverout', this.onHoverOut);
-        return this.on('gridclick', this.onGridClick);
-      }
-    };
-
-    Bar.prototype.defaults = {
-      barSizeRatio: 0.75,
-      barGap: 3,
-      barColors: ['#0b62a4', '#7a92a3', '#4da74d', '#afd8f8', '#edc240', '#cb4b4b', '#9440ed'],
-      barOpacity: 1.0,
-      barRadius: [0, 0, 0, 0],
-      xLabelMargin: 50
-    };
-
-    Bar.prototype.calc = function() {
-      var _ref;
-      this.calcBars();
-      if (this.options.hideHover === false) {
-        return (_ref = this.hover).update.apply(_ref, this.hoverContentForRow(this.data.length - 1));
-      }
-    };
-
-    Bar.prototype.calcBars = function() {
-      var idx, row, y, _i, _len, _ref, _results;
-      _ref = this.data;
-      _results = [];
-      for (idx = _i = 0, _len = _ref.length; _i < _len; idx = ++_i) {
-        row = _ref[idx];
-        row._x = this.left + this.width * (idx + 0.5) / this.data.length;
-        _results.push(row._y = (function() {
-          var _j, _len1, _ref1, _results1;
-          _ref1 = row.y;
-          _results1 = [];
-          for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-            y = _ref1[_j];
-            if (y != null) {
-              _results1.push(this.transY(y));
-            } else {
-              _results1.push(null);
-            }
-          }
-          return _results1;
-        }).call(this));
-      }
-      return _results;
-    };
-
-    Bar.prototype.draw = function() {
-      var _ref;
-      if ((_ref = this.options.axes) === true || _ref === 'both' || _ref === 'x') {
-        this.drawXAxis();
-      }
-      return this.drawSeries();
-    };
-
-    Bar.prototype.drawXAxis = function() {
-      var i, label, labelBox, margin, offset, prevAngleMargin, prevLabelMargin, row, textBox, ypos, _i, _ref, _results;
-      ypos = this.bottom + (this.options.xAxisLabelTopPadding || this.options.padding / 2);
-      prevLabelMargin = null;
-      prevAngleMargin = null;
-      _results = [];
-      for (i = _i = 0, _ref = this.data.length; 0 <= _ref ? _i < _ref : _i > _ref; i = 0 <= _ref ? ++_i : --_i) {
-        row = this.data[this.data.length - 1 - i];
-        label = this.drawXAxisLabel(row._x, ypos, row.label);
-        textBox = label.getBBox();
-        label.transform("r" + (-this.options.xLabelAngle));
-        labelBox = label.getBBox();
-        label.transform("t0," + (labelBox.height / 2) + "...");
-        if (this.options.xLabelAngle !== 0) {
-          offset = -0.5 * textBox.width * Math.cos(this.options.xLabelAngle * Math.PI / 180.0);
-          label.transform("t" + offset + ",0...");
-        }
-        if (((prevLabelMargin == null) || prevLabelMargin >= labelBox.x + labelBox.width || (prevAngleMargin != null) && prevAngleMargin >= labelBox.x) && labelBox.x >= 0 && (labelBox.x + labelBox.width) < this.el.width()) {
-          if (this.options.xLabelAngle !== 0) {
-            margin = 1.25 * this.options.gridTextSize / Math.sin(this.options.xLabelAngle * Math.PI / 180.0);
-            prevAngleMargin = labelBox.x - margin;
-          }
-          _results.push(prevLabelMargin = labelBox.x - this.options.xLabelMargin);
-        } else {
-          _results.push(label.remove());
-        }
-      }
-      return _results;
-    };
-
-    Bar.prototype.drawSeries = function() {
-      var barWidth, bottom, groupWidth, idx, lastTop, left, leftPadding, numBars, row, sidx, size, spaceLeft, top, ypos, zeroPos;
-      groupWidth = this.width / this.options.data.length;
-      numBars = this.options.stacked ? 1 : this.options.ykeys.length;
-      barWidth = (groupWidth * this.options.barSizeRatio - this.options.barGap * (numBars - 1)) / numBars;
-      if (this.options.barSize) {
-        barWidth = Math.min(barWidth, this.options.barSize);
-      }
-      spaceLeft = groupWidth - barWidth * numBars - this.options.barGap * (numBars - 1);
-      leftPadding = spaceLeft / 2;
-      zeroPos = this.ymin <= 0 && this.ymax >= 0 ? this.transY(0) : null;
-      return this.bars = (function() {
-        var _i, _len, _ref, _results;
-        _ref = this.data;
-        _results = [];
-        for (idx = _i = 0, _len = _ref.length; _i < _len; idx = ++_i) {
-          row = _ref[idx];
-          lastTop = 0;
-          _results.push((function() {
-            var _j, _len1, _ref1, _results1;
-            _ref1 = row._y;
-            _results1 = [];
-            for (sidx = _j = 0, _len1 = _ref1.length; _j < _len1; sidx = ++_j) {
-              ypos = _ref1[sidx];
-              if (ypos !== null) {
-                if (zeroPos) {
-                  top = Math.min(ypos, zeroPos);
-                  bottom = Math.max(ypos, zeroPos);
-                } else {
-                  top = ypos;
-                  bottom = this.bottom;
-                }
-                left = this.left + idx * groupWidth + leftPadding;
-                if (!this.options.stacked) {
-                  left += sidx * (barWidth + this.options.barGap);
-                }
-                size = bottom - top;
-                if (this.options.verticalGridCondition && this.options.verticalGridCondition(row.x)) {
-                  this.drawBar(this.left + idx * groupWidth, this.top, groupWidth, Math.abs(this.top - this.bottom), this.options.verticalGridColor, this.options.verticalGridOpacity, this.options.barRadius);
-                }
-                if (this.options.stacked) {
-                  top -= lastTop;
-                }
-                this.drawBar(left, top, barWidth, size, this.colorFor(row, sidx, 'bar'), this.options.barOpacity, this.options.barRadius);
-                _results1.push(lastTop += size);
-              } else {
-                _results1.push(null);
-              }
-            }
-            return _results1;
-          }).call(this));
-        }
-        return _results;
-      }).call(this);
-    };
-
-    Bar.prototype.colorFor = function(row, sidx, type) {
-      var r, s;
-      if (typeof this.options.barColors === 'function') {
-        r = {
-          x: row.x,
-          y: row.y[sidx],
-          label: row.label
+(function ($) {
+    var options = {
+		tooltip: false, //boolean
+		tooltipOpts: {
+			content: "%s | X: %x | Y: %y.2", //%s -> series label, %x -> X value, %y -> Y value, %x.2 -> precision of X value
+			dateFormat: "%y-%0m-%0d",
+			shifts: {
+				x: 10,
+				y: 20
+			},
+			defaultTheme: true
+		}
+	};
+
+    var init = function(plot) {
+
+		var tipPosition = {x: 0, y: 0};
+		var opts = plot.getOptions();
+		
+		var updateTooltipPosition = function(pos) {
+			tipPosition.x = pos.x;
+			tipPosition.y = pos.y;
+		};
+		
+		var onMouseMove = function(e) {
+            
+			var pos = {x: 0, y: 0};
+			pos.x = e.pageX;
+			pos.y = e.pageY;
+			
+			updateTooltipPosition(pos);
         };
-        s = {
-          index: sidx,
-          key: this.options.ykeys[sidx],
-          label: this.options.labels[sidx]
-        };
-        return this.options.barColors.call(this, r, s, type);
-      } else {
-        return this.options.barColors[sidx % this.options.barColors.length];
-      }
-    };
+		
+		var timestampToDate = function(tmst) {
 
-    Bar.prototype.hitTest = function(x) {
-      if (this.data.length === 0) {
-        return null;
-      }
-      x = Math.max(Math.min(x, this.right), this.left);
-      return Math.min(this.data.length - 1, Math.floor((x - this.left) / (this.width / this.data.length)));
-    };
+			var theDate = new Date(tmst);
+			
+			return $.plot.formatDate(theDate, opts.tooltipOpts.dateFormat);
+		};
+		
+		plot.hooks.bindEvents.push(function (plot, eventHolder) {
+            
+			var to = opts.tooltipOpts;
+			var placeholder = plot.getPlaceholder();
+			var $tip;
+			
+			if (opts.tooltip === false) return;
 
-    Bar.prototype.onGridClick = function(x, y) {
-      var index;
-      index = this.hitTest(x);
-      return this.fire('click', index, this.data[index].src, x, y);
-    };
+			if( $('#flotTip').length > 0 ){
+				$tip = $('#flotTip');
+			}
+			else {
+				$tip = $('<div />').attr('id', 'flotTip');
+				$tip.appendTo('body').hide().css({position: 'absolute'});
+			
+				if(to.defaultTheme) {
+					$tip.css({
+						'background': '#fff',
+						'z-index': '100',
+						'padding': '0.4em 0.6em',
+						'border-radius': '0.5em',
+						'font-size': '0.8em',
+						'border': '1px solid #111'
+					});
+				}
+			}
+			
+			$(placeholder).bind("plothover", function (event, pos, item) {
+				if (item) {					
+					var tipText;
 
-    Bar.prototype.onHoverMove = function(x, y) {
-      var index, _ref;
-      index = this.hitTest(x);
-      return (_ref = this.hover).update.apply(_ref, this.hoverContentForRow(index));
-    };
-
-    Bar.prototype.onHoverOut = function() {
-      if (this.options.hideHover !== false) {
-        return this.hover.hide();
-      }
-    };
-
-    Bar.prototype.hoverContentForRow = function(index) {
-      var content, j, row, x, y, _i, _len, _ref;
-      row = this.data[index];
-      content = "<div class='morris-hover-row-label'>" + row.label + "</div>";
-      _ref = row.y;
-      for (j = _i = 0, _len = _ref.length; _i < _len; j = ++_i) {
-        y = _ref[j];
-        content += "<div class='morris-hover-point' style='color: " + (this.colorFor(row, j, 'label')) + "'>\n  " + this.options.labels[j] + ":\n  " + (this.yLabelFormat(y)) + "\n</div>";
-      }
-      if (typeof this.options.hoverCallback === 'function') {
-        content = this.options.hoverCallback(index, this.options, content, row.src);
-      }
-      x = this.left + (index + 0.5) * this.width / this.data.length;
-      return [content, x];
-    };
-
-    Bar.prototype.drawXAxisLabel = function(xPos, yPos, text) {
-      var label;
-      return label = this.raphael.text(xPos, yPos, text).attr('font-size', this.options.gridTextSize).attr('font-family', this.options.gridTextFamily).attr('font-weight', this.options.gridTextWeight).attr('fill', this.options.gridTextColor);
-    };
-
-    Bar.prototype.drawBar = function(xPos, yPos, width, height, barColor, opacity, radiusArray) {
-      var maxRadius, path;
-      maxRadius = Math.max.apply(Math, radiusArray);
-      if (maxRadius === 0 || maxRadius > height) {
-        path = this.raphael.rect(xPos, yPos, width, height);
-      } else {
-        path = this.raphael.path(this.roundedRect(xPos, yPos, width, height, radiusArray));
-      }
-      return path.attr('fill', barColor).attr('fill-opacity', opacity).attr('stroke', 'none');
-    };
-
-    Bar.prototype.roundedRect = function(x, y, w, h, r) {
-      if (r == null) {
-        r = [0, 0, 0, 0];
-      }
-      return ["M", x, r[0] + y, "Q", x, y, x + r[0], y, "L", x + w - r[1], y, "Q", x + w, y, x + w, y + r[1], "L", x + w, y + h - r[2], "Q", x + w, y + h, x + w - r[2], y + h, "L", x + r[3], y + h, "Q", x, y + h, x, y + h - r[3], "Z"];
-    };
-
-    return Bar;
-
-  })(Morris.Grid);
-
-  Morris.Donut = (function(_super) {
-    __extends(Donut, _super);
-
-    Donut.prototype.defaults = {
-      colors: ['#0B62A4', '#3980B5', '#679DC6', '#95BBD7', '#B0CCE1', '#095791', '#095085', '#083E67', '#052C48', '#042135'],
-      backgroundColor: '#FFFFFF',
-      labelColor: '#000000',
-      formatter: Morris.commas,
-      resize: false
-    };
-
-    function Donut(options) {
-      this.resizeHandler = __bind(this.resizeHandler, this);
-      this.select = __bind(this.select, this);
-      this.click = __bind(this.click, this);
-      var _this = this;
-      if (!(this instanceof Morris.Donut)) {
-        return new Morris.Donut(options);
-      }
-      this.options = $.extend({}, this.defaults, options);
-      if (typeof options.element === 'string') {
-        this.el = $(document.getElementById(options.element));
-      } else {
-        this.el = $(options.element);
-      }
-      if (this.el === null || this.el.length === 0) {
-        throw new Error("Graph placeholder not found.");
-      }
-      if (options.data === void 0 || options.data.length === 0) {
-        return;
-      }
-      this.raphael = new Raphael(this.el[0]);
-      if (this.options.resize) {
-        $(window).bind('resize', function(evt) {
-          if (_this.timeoutId != null) {
-            window.clearTimeout(_this.timeoutId);
-          }
-          return _this.timeoutId = window.setTimeout(_this.resizeHandler, 100);
+					if(opts.xaxis.mode === "time" || opts.xaxes[0].mode === "time") {
+						tipText = stringFormat(to.content, item, timestampToDate);
+					}
+					else {
+						tipText = stringFormat(to.content, item);						
+					}
+					
+					$tip.html( tipText ).css({left: tipPosition.x + to.shifts.x, top: tipPosition.y + to.shifts.y}).show();
+				}
+				else {
+					$tip.hide().html('');
+				}
+			});
+			
+            eventHolder.mousemove(onMouseMove);
         });
+<<<<<<< HEAD
       }
       this.setData(options.data);
     }
@@ -36928,3 +35420,51 @@ Licensed under the BSD-2-Clause License.
   })(Morris.EventEmitter);
 
 }).call(this);
+=======
+		
+		var stringFormat = function(content, item, fnct) {
+		
+			var seriesPattern = /%s/;
+			var xPattern = /%x\.{0,1}(\d{0,})/;
+			var yPattern = /%y\.{0,1}(\d{0,})/;
+			
+			//series match
+			if( typeof(item.series.label) !== 'undefined' ) {
+				content = content.replace(seriesPattern, item.series.label);
+			}
+			// xVal match
+			if( typeof(fnct) === 'function' ) {
+				content = content.replace(xPattern, fnct(item.series.data[item.dataIndex][0]) );
+			}
+			else {
+				content = adjustValPrecision(xPattern, content, item.series.data[item.dataIndex][0]);
+			}
+			// yVal match
+			content = adjustValPrecision(yPattern, content, item.series.data[item.dataIndex][1]);
+
+			return content;
+		};
+		
+		var adjustValPrecision = function(pattern, content, value) {
+		
+			var precision;
+			if( content.match(pattern) !== 'null' ) {
+				if(RegExp.$1 !== '') {
+					precision = RegExp.$1;
+					value = value.toFixed(precision)
+				}
+				content = content.replace(pattern, value);
+			}
+		
+			return content;
+		};
+    }
+    
+    $.plot.plugins.push({
+        init: init,
+        options: options,
+        name: 'tooltip',
+        version: '0.4.3'
+    });
+})(jQuery);
+>>>>>>> 0f7bc01f3cd326f71d7ea63aae03add24cd09aeb

@@ -137,7 +137,7 @@ module.exports = (grunt)->
           'client/assets/js/jquery.resize.min.js'
           'client/assets/js/skycons.js'
           'client/requires/simpleWeather/jquery.simpleWeather.js'
-          
+          'client/assets/js/jquery.flot.tooltip.js'
         ]
         dest: 'build/vendor.js'
       vendor_css:

@@ -1925,8 +1925,12 @@ window.JST["widgets/kpi_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+<<<<<<< HEAD
     
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" style=\'overflow:auto !important;\'>\n  <div class="display">\n  </div>\n  <div id="lineitemchart" style="height: 250px;"></div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+=======
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" style=\'overflow:auto !important;\'>\n  <div class="display">\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+>>>>>>> 0f7bc01f3cd326f71d7ea63aae03add24cd09aeb
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -1934,7 +1938,7 @@ window.JST["widgets/kpi_widget"] = function(__obj) {
         site: this.settings.site
       })));
     
-      _print(_safe('\n  </div>\n</div><!-- /.box-body -->\n'));
+      _print(_safe('\n  </div>\n</div><!-- /.box-body -->'));
     
     }).call(this);
     
@@ -2476,8 +2480,12 @@ window.JST["widgets/video_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+<<<<<<< HEAD
     
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-battery-3"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n<div class="box-body content" id=\'content\' style=\'overflow:auto !important;\'>\n  <div class="display contain">\n    <div id="videoRep"></div>\n    <div id="imageRep" ><img id="image" src="http://192.168.1.3:8008" height="600" width="800"></div>\n    <select id="videoFiles">\n      <option value="http://192.168.1.3:8008" selected="selected">test stream Lab</option>\n      <option value="http://test-reporting.iopsnow.com/motion/image.jpg">test image</option>\n    </select>\n    <button class="cmdVideoChange" >Click to change content!</button>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+=======
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-battery-3"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n<div class="box-body content" id=\'content\' style=\'overflow:auto !important;\'>\n  <div class="display contain">\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+>>>>>>> 0f7bc01f3cd326f71d7ea63aae03add24cd09aeb
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -12793,7 +12801,7 @@ KpiWidgetView = (function(superClass) {
 
   KpiWidgetView.prototype.ui = {
     site: 'select#site',
-    wtitle: '.box-title',
+    wtitle: 'h3.box-title',
     display: '.display',
     content: '.content'
   };
@@ -12804,7 +12812,7 @@ KpiWidgetView = (function(superClass) {
   };
 
   KpiWidgetView.prototype.update = function() {
-    var code, s, url;
+    var code, s;
     s = this.model.get("settings");
     this.site_code = null;
     this.site = OPCManager.get_site(s.site);
@@ -12812,26 +12820,76 @@ KpiWidgetView = (function(superClass) {
       this.site_code = this.site.get('code');
     }
     code = this.site_code != null ? this.site_code : '...';
-    this.ui.wtitle.html("KPI for " + code);
+    return this.ui.wtitle.html("KPI for " + code);
+  };
+
+  KpiWidgetView.prototype.plotGraph = function() {
+    var chartOptions, parameters, plotareaid, url;
     this.ui.display.empty();
-    url = this.rurl + "/api/KPI";
-    if ((this.site_code != null)) {
-      return $.ajax({
-        type: 'GET',
-        url: url,
-        success: (function(_this) {
-          return function(data) {
-            return new Morris.Line({
-              element: 'lineitemchart',
-              data: data,
-              xkey: 'TimeStamp',
-              ykeys: ['Value'],
-              labels: ['Value']
-            });
-          };
-        })(this)
-      });
-    }
+    this.modelIdVal = "" + this.model.id;
+    this.plotheader = $("<div id='plotheader_" + this.model.id + "' style='height:50px;'></div>");
+    this.plotArea = "<div id='plotplaceholder_" + this.model.id + "' style='width:1000px; height:250px'></div>";
+    this.plotTooltip = "<div id='flotTip_" + this.model.id + "' style='position:fixed;'></div>";
+    this.ui.display.append(this.plotheader);
+    this.ui.display.append(this.plotArea);
+    this.ui.display.append(this.plotTooltip);
+    chartOptions = {
+      series: {
+        lines: {
+          show: true
+        },
+        points: {
+          show: true
+        }
+      },
+      grid: {
+        hoverable: true
+      },
+      tooltip: true,
+      tooltipOpts: {
+        content: 'X: %x<br>Y: %y.2',
+        dateFormat: '%Y/%m/%d %H:%M:%S',
+        shifts: {
+          x: 10,
+          y: 20
+        },
+        defaultTheme: true
+      },
+      xaxis: {
+        show: true,
+        mode: 'time',
+        timeformat: '%Y/%m/%d',
+        minTickSize: [1, 'day']
+      }
+    };
+    parameters = 'DAL|Term1_Zone1|Gate12|PCA|PCAOnTime';
+    url = this.rurl + "/api/DBKPILiveDateBased?parameters=" + parameters;
+    plotareaid = "#plotplaceholder_" + this.model.id;
+    $.ajax({
+      url: url,
+      type: 'GET',
+      dataType: 'json',
+      success: function(result) {
+        var d, d3, i, len, ticks;
+        d3 = [];
+        i = 0;
+        len = result.length;
+        while (i < len) {
+          d = new Date(result[i].Index);
+          ticks = d.getTime();
+          d3.push([ticks, result[i].Value]);
+          i++;
+        }
+        return $.plot($(plotareaid), [d3], chartOptions);
+      }
+    });
+    this.plotheader.html("Plot for " + parameters);
+    setTimeout('plotGraph()', 300000);
+  };
+
+  KpiWidgetView.prototype.toggle_settings = function(e) {
+    KpiWidgetView.__super__.toggle_settings.call(this, e);
+    return this.ui.display.toggle(!this.settings_visible);
   };
 
   KpiWidgetView.prototype.set_model = function() {
@@ -12854,7 +12912,8 @@ KpiWidgetView = (function(superClass) {
 
   KpiWidgetView.prototype.start = function() {
     this.rurl = App.config.report_server;
-    return this.update();
+    this.update();
+    return this.plotGraph();
   };
 
   return KpiWidgetView;
@@ -15080,8 +15139,7 @@ VideoWidgetView = (function(superClass) {
   };
 
   VideoWidgetView.prototype.update = function() {
-    var code, img, s, uri;
-    console.log("enter function update");
+    var code, s;
     s = this.model.get("settings");
     this.site_code = null;
     this.site = OPCManager.get_site(s.site);
@@ -15089,53 +15147,34 @@ VideoWidgetView = (function(superClass) {
       this.site_code = this.site.get('code');
     }
     code = this.site_code != null ? this.site_code : '...';
-    this.ui.wtitle.html(" " + code);
-    console.log("update - call service");
-    uri = 'http://test-reporting.iopsnow.com/api/VideoService';
-    console.log(uri);
-    img = document.getElementById('image');
-    img.src = 'http://test-reporting.iopsnow.com/motion/image.jpg';
-    $.ajax({
+    return this.ui.wtitle.html(" " + code);
+  };
+
+  VideoWidgetView.prototype.getImagery = function() {
+    var img, uri;
+    uri = this.rurl + "/api/VideoService";
+    img = $("#image_" + this.model.id);
+    img.src = this.rurl + "/motion/image.jpg";
+    return $.ajax({
       type: 'GET',
       dataType: 'json',
       url: uri,
       success: (function(_this) {
         return function(data) {
-          var i, len, r, results, xOption, xSelection;
-          console.log(data.length);
+          var i, len, ovalue, r, results, xSelection;
           results = [];
           for (i = 0, len = data.length; i < len; i++) {
             r = data[i];
             console.log(r.fileDate);
-            xSelection = document.getElementById('videoFiles');
-            xOption = document.createElement('option');
-            xOption.text = formatItem(r);
-            xOption.value = 'http://test-reporting.iopsnow.com/motion/' + formatItem2(r);
-            results.push(xSelection.add(xOption));
+            xSelection = $("#videoFiles_" + _this.model.id);
+            ovalue = (_this.rurl + "/motion/") + formatItem2(r);
+            results.push(_this.selector.append($("<option></option>").attr("value", ovalue).text(formatItem(r))));
           }
           return results;
         };
       })(this)
     });
-    return this.set_descriptions();
   };
-
-  $(document).on('click', '.cmdVideoChange', (function() {
-    var e, img, value;
-    console.log("clicked");
-    e = document.getElementById('videoFiles');
-    value = e.selectedOptions[0].value;
-    if (value.indexOf('mp4') !== -1) {
-      document.getElementById('videoRep').innerHTML = '<video height="600" width="800" autoplay loop ><source src="' + value + '" type="video/mp4">Your browser does not support HTML5 video.</video>';
-      document.getElementById('imageRep').hidden = true;
-      return document.getElementById('videoRep').hidden = false;
-    } else {
-      document.getElementById('imageRep').hidden = false;
-      document.getElementById('videoRep').hidden = true;
-      img = document.getElementById('image');
-      return img.src = value;
-    }
-  }));
 
   formatItem = function(item) {
     return item.Id + ': -- :' + item.fileName + ': -- :' + item.fileDate;
@@ -15165,6 +15204,35 @@ VideoWidgetView = (function(superClass) {
 
   VideoWidgetView.prototype.start = function() {
     this.rurl = App.config.report_server;
+    this.videoFilesSelectorId = "#videoFiles_" + this.model.id;
+    this.ui.display.empty();
+    this.videoRepresentation = $("<div id='videoRep_" + this.model.id + "'></div>");
+    this.imageRepresentation = $("<div id='imageRep_" + this.model.id + "' ><img id='image_" + this.model.id + "' src='http://192.168.1.3:8008' height='600' width='800'></div>");
+    this.selector = $("<select id='videoFiles_" + this.model.id + "'><option value='" + this.rurl + "/motion/image.jpg' selected='selected'>test image</option><option value='http://192.168.1.3:8008'>test stream Lab</option></select>");
+    this.button = $("<button id='cmdVideoChange_" + this.model.id + "'>Click to change content!</button>");
+    this.button.click((function(_this) {
+      return function() {
+        var drpdown, value;
+        drpdown = $("#videoFiles_" + _this.model.id + " option:selected");
+        value = drpdown.val();
+        console.log(value);
+        if (value.indexOf('mp4') !== -1) {
+          $("#videoRep_" + _this.model.id).html("<video height='600' width='800' autoplay controls loop ><source src=" + value + " type='video/mp4'>Your browser does not support HTML5 video.</video>");
+          $("#imageRep_" + _this.model.id).hide();
+          return $("#videoRep_" + _this.model.id).show();
+        } else {
+          $("#image_" + _this.model.id).attr('src', value);
+          $("#imageRep_" + _this.model.id).show();
+          return $("#videoRep_" + _this.model.id).hide();
+        }
+      };
+    })(this));
+    this.ui.display.append(this.videoRepresentation);
+    this.ui.display.append(this.imageRepresentation);
+    this.ui.display.append(this.selector);
+    this.ui.display.append(this.button);
+    this.getImagery();
+    $("#image_" + this.model.id).attr('src', this.rurl + "/motion/image.jpg");
     return this.update();
   };
 
