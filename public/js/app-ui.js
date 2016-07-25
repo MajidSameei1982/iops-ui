@@ -2212,7 +2212,7 @@ window.JST["widgets/pca_summary_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'>\n    <i class="fa fa-plane"></i> <h3 class="box-title"></h3>\n    <select id="mode" style=\'display:none;\'>\n      <option value=\'\'>Summary</option>\n      <option value=\'plots\'>Temp. Data</option>\n    </select>\n  </div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id=\'display_label\'>\n\t\t<h1>\n\n\t\t</h1>\n\t</div>\n    <div id="summary">\n      <div id="view_main">\n        <div id="power_indicator"></div>\n        <div id="txt_connected_time"></div>\n      </div>\n      <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n      <table height="100%";width"100%">\n        <tr>\n          <td>\n            <table> \n              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr> \n              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    \n              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>    \n            </table>\n          </td>\n          <td>\n            <table> \n              <tr>\n                <td style="width:200px; height:200px; vertical-align:middle">\n                  <div id="pcamain_img" class=""></div>   \n                  <div id="blower_img" class=""></div>  \n                  <div id="heatingstage1_img" class=""></div>  \n                  <div id="heatingstage2_img" class=""></div>  \n                  <div id="coolingstage1_img" class=""></div>  \n                  <div id="coolingstage2_img" class=""></div>   \n                  <div id="accool_img" class=""></div>  \n                  <div id="bccool_img" class=""></div> \n                  <div id="pca_coil_dp" class=""></div>   \n                  <div id="pca_vfd_speed" class=""></div>\n                  <div id="pca_ambient_humidity" class=""></div>\n                  <div id="pca_suction_pressure_1" class=""></div>\n                  <div id="pca_suction_pressure_2" class=""></div>\n                  <div id="pca_hot_gas_1" class=""></div>\n                  <div id="pca_hot_gas_2" class=""></div>\n                  <div id="pca_pump_cond" class=""></div>\n                  <div id="pca_bridge_damper" class=""></div>\n                  <div id="pca_bridge_air" class=""></div>\n                </td>\n              </tr>         \n            </table>\n          </td>\n        </tr>\n      </table> \n    </div>\n    <div id="plots" style="display: none;">\n      <table id=\'plot_container\' border="0">\n        <tr>\n          <td id=\'options\'>\n            <div id=\'ptype_lbl\'>\n              <table>\n                <tr>\n                  <td>Ambient Temp:</td>\n                  <td><div style=\'width:14px;height:14px;background-color:#80C3FF;\'></div></td>\n                </tr>\n                <tr>\n                  <td>Discharge Temp:</td>\n                  <td><div style=\'width:14px;height:14px;background-color:#FF8C1A;\'></div></td>\n                </tr>\n              </table>\n            </div>\n\n            <div id=\'live_container\'>\n              <label>Live Data</label>\n              <div>\n                <input id=\'live_data\' type="checkbox" data-toggle="toggle" >\n              </div>\n            </div>\n            \n          </td>\n          <td id=\'plot_data\'></td>\n        </tr>\n      </table>\n    </div>\n     <div id="pca_coil_dp" class=""></div>   \n     <div id="pca_vfd_speed" class=""></div>\n     <div id="pca_ambient_humidity" class=""></div>\n     <div id="pca_suction_pressure_1" class=""></div>\n     <div id="pca_suction_pressure_2" class=""></div>\n     <div id="pca_hot_gas_1" class=""></div>\n     <div id="pca_hot_gas_2" class=""></div>\n     <div id="pca_pump_cond" class=""></div>\n     <div id="pca_bridge_damper" class=""></div>\n     <div id="pca_bridge_air" class=""></div>\n\n     </td></tr>         \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'>\n    <i class="fa fa-plane"></i> <h3 class="box-title"></h3>\n    <select id="mode" style=\'display:none;\'>\n      <option value=\'\'>Summary</option>\n      <option value=\'plots\'>Temp. Data</option>\n    </select>\n  </div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id=\'display_label\'>\n      <h1>\n      </h1>\n    </div>\n    <div id="summary">\n      <div id="view_main">\n        <div id="power_indicator"></div>\n        <div id="txt_connected_time"></div>\n      </div>\n      <div id="pca_coil_dp" class="val"></div>   \n      <div id="pca_vfd_speed" class="val"></div>\n      <div id="pca_ambient_humidity" class="val"></div>\n      <div id="pca_suction_pressure_1" class="val"></div>\n      <div id="pca_suction_pressure_2" class="val"></div>\n      <div id="pca_hot_gas_1" class="val"></div>\n      <div id="pca_hot_gas_2" class="val"></div>\n      <div id="pca_pump_cond" class="val"></div>\n      <div id="pca_bridge_damper" class="val"></div>\n      <div id="pca_bridge_air" class="val"></div>\n    </div>\n    <div id="graphics_container">\n      <!--<div id="pca_graphics_container" class="background">\n        <div id="blower_img" class="img"></div>  \n        <div id="heatingstage1_img" class="img"></div>  \n        <div id="heatingstage2_img" class="img"></div>  \n        <div id="coolingstage1_img" class="img"></div>  \n        <div id="coolingstage2_img" class="img"></div>   \n        <div id="accool_img" class="img"></div>  \n        <div id="bccool_img" class="img"></div> \n        <div id="fan1_img" class="img"></div> \n        <div id="fan2_img" class="img"></div> \n        <div id="fan3_img" class="img"></div> \n      </div> -->\n    </div>\n    <div id="plots" style="display: none;">\n      <table id=\'plot_container\' border="0">\n        <tr>\n          <td id=\'options\'>\n            <div id=\'ptype_lbl\'>\n              <table>\n                <tr>\n                  <td>Ambient Temp:</td>\n                  <td><div style=\'width:14px;height:14px;background-color:#80C3FF;\'></div></td>\n                </tr>\n                <tr>\n                  <td>Discharge Temp:</td>\n                  <td><div style=\'width:14px;height:14px;background-color:#FF8C1A;\'></div></td>\n                </tr>\n              </table>\n            </div>\n\n            <div id=\'live_container\'>\n              <label>Live Data</label>\n              <div>\n                <input id=\'live_data\' type="checkbox" data-toggle="toggle" >\n              </div>\n            </div>\n            \n          </td>\n          <td id=\'plot_data\'></td>\n        </tr>\n      </table>\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -3766,13 +3766,15 @@ _.extend(Marionette.View.prototype, {
 },{}],7:[function(require,module,exports){
 
 /*
-This is the class definition
+This is the class definitio
  */
 var TagConfig,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
 TagConfig = (function(superClass) {
+  var getProperty;
+
   extend(TagConfig, superClass);
 
   TagConfig.tags = {
@@ -3780,13 +3782,6 @@ TagConfig = (function(superClass) {
     /***************************************************
     		*** GPU Tags
     		**************************************************
-     */
-
-    /****************
-    		Name: Tag:'Tag', Label: '', DataType:''
-    									, Parameters: {Parm001: '', Parm002: '', Parm003: '', Parm004: '', }
-    									, Element: {Type: 'TableRow', ParentID:'#widgetData', Object: null}
-    		***************
      */
     gpu_by_pass: {
       Tag: 'GPU.ByPass',
@@ -3802,6 +3797,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -3813,12 +3809,13 @@ TagConfig = (function(superClass) {
         Parm001: 'On',
         Parm002: 'Off',
         Parm003: 'ok',
-        Parm004: 'err',
+        Parm004: null,
         Parm005: null
       },
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -3836,6 +3833,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -3853,6 +3851,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -3869,6 +3868,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -3885,6 +3885,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -3901,6 +3902,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -3917,6 +3919,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -3933,6 +3936,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -3949,6 +3953,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -3965,6 +3970,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -3981,6 +3987,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -3997,6 +4004,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4013,6 +4021,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4029,6 +4038,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4045,6 +4055,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4061,6 +4072,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4077,6 +4089,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4093,6 +4106,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4109,6 +4123,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4125,6 +4140,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
 
@@ -4147,6 +4163,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4164,6 +4181,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4181,6 +4199,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4198,6 +4217,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4214,6 +4234,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4231,6 +4252,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4248,6 +4270,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4265,6 +4288,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4281,6 +4305,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4297,6 +4322,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4314,6 +4340,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4331,6 +4358,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4347,6 +4375,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4363,6 +4392,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4379,6 +4409,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4396,6 +4427,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4412,6 +4444,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4429,6 +4462,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4446,6 +4480,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4462,6 +4497,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4479,6 +4515,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4495,6 +4532,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4511,6 +4549,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4527,6 +4566,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
 
@@ -4549,6 +4589,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4566,6 +4607,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4582,6 +4624,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4598,6 +4641,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4615,6 +4659,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4632,6 +4677,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4649,6 +4695,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4665,6 +4712,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4681,6 +4729,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4698,6 +4747,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4715,6 +4765,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4731,6 +4782,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4747,6 +4799,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4764,6 +4817,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4780,6 +4834,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4797,6 +4852,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4814,6 +4870,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4830,6 +4887,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4846,6 +4904,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4862,6 +4921,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4878,6 +4938,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4895,6 +4956,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4912,6 +4974,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4923,12 +4986,13 @@ TagConfig = (function(superClass) {
         Parm001: 'On',
         Parm002: 'Off',
         Parm003: 'ok',
-        Parm004: 'err',
+        Parm004: null,
         Parm005: null
       },
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4946,6 +5010,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4962,6 +5027,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4978,6 +5044,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -4994,6 +5061,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -5010,6 +5078,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -5026,6 +5095,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -5042,6 +5112,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -5058,6 +5129,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -5074,6 +5146,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -5090,6 +5163,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -5106,6 +5180,7 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     },
@@ -5122,208 +5197,333 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
+        Class: null,
         Object: null
       }
     }
   };
 
-  TagConfig.groups = {
 
-    /***************************************************
-    		*** Widget Tag Groups
-    		**************************************************
-     */
+  /***************************************************
+  	*** Widget Tag Groups
+  	**************************************************
+   */
+
+  TagConfig.widgets = {
     config_widget: {
-      'pca_cooling_pt': 'pca_cooling_pt',
-      'pca_heating_pt': 'pca_heating_pt',
-      'pca_cooling_tm': 'pca_cooling_tm',
-      'pca_heating_tm': 'pca_heating_tm'
+      Tags: {
+        'pca_cooling_pt': 'pca_cooling_pt',
+        'pca_heating_pt': 'pca_heating_pt',
+        'pca_cooling_tm': 'pca_cooling_tm',
+        'pca_heating_tm': 'pca_heating_tm'
+      },
+      Graphics: {}
     },
     gpu_summary_widget: {
-      'gpu_status': 'gpu_status',
-      'gpu_time': 'gpu_time',
-      'gpu_ra_out_avg': 'gpu_ra_out_avg',
-      'gpu_rv_out_avg': 'gpu_rv_out_avg',
-      'gpu_ra_in_avg': 'gpu_ra_in_avg',
-      'gpu_rv_in_avg': 'gpu_rv_in_avg'
+      Tags: {
+        'gpu_status': 'gpu_status',
+        'gpu_time': 'gpu_time',
+        'gpu_ra_out_avg': 'gpu_ra_out_avg',
+        'gpu_rv_out_avg': 'gpu_rv_out_avg',
+        'gpu_ra_in_avg': 'gpu_ra_in_avg',
+        'gpu_rv_in_avg': 'gpu_rv_in_avg'
+      },
+      Graphics: {}
     },
     gpu_widget: {
-      'gpu_status': 'gpu_status',
-      'gpu_by_pass': 'gpu_by_pass',
-      'gpu_ra_out_avg': 'gpu_ra_out_avg',
-      'gpu_rv_out_avg': 'gpu_rv_out_avg',
-      'gpu_ra_in_avg': 'gpu_ra_in_avg',
-      'gpu_rv_in_avg': 'gpu_rv_in_avg',
-      'gpu_pm_output_phasea_i': 'gpu_pm_output_phasea_i',
-      'gpu_pm_output_phaseb_i': 'gpu_pm_output_phaseb_i',
-      'gpu_pm_output_phasec_i': 'gpu_pm_output_phasec_i',
-      'gpu_pm_output_phasea_v': 'gpu_pm_output_phasea_v',
-      'gpu_pm_output_phaseb_v': 'gpu_pm_output_phaseb_v',
-      'gpu_pm_output_phasec_v': 'gpu_pm_output_phasec_v',
-      'gpu_pm_input_phasea_i': 'gpu_pm_input_phasea_i',
-      'gpu_pm_input_phaseb_i': 'gpu_pm_input_phaseb_i',
-      'gpu_pm_input_phasec_i': 'gpu_pm_input_phasec_i',
-      'gpu_pm_input_phasea_v': 'gpu_pm_input_phasea_v',
-      'gpu_pm_input_phaseb_v': 'gpu_pm_input_phaseb_v',
-      'gpu_pm_input_phasec_v': 'gpu_pm_input_phasec_v',
-      'gpu_on_1': 'gpu_on_1',
-      'gpu_on_2': 'gpu_on_2'
+      Tags: {
+        'gpu_status': 'gpu_status',
+        'gpu_by_pass': 'gpu_by_pass',
+        'gpu_ra_out_avg': 'gpu_ra_out_avg',
+        'gpu_rv_out_avg': 'gpu_rv_out_avg',
+        'gpu_ra_in_avg': 'gpu_ra_in_avg',
+        'gpu_rv_in_avg': 'gpu_rv_in_avg',
+        'gpu_pm_output_phasea_i': 'gpu_pm_output_phasea_i',
+        'gpu_pm_output_phaseb_i': 'gpu_pm_output_phaseb_i',
+        'gpu_pm_output_phasec_i': 'gpu_pm_output_phasec_i',
+        'gpu_pm_output_phasea_v': 'gpu_pm_output_phasea_v',
+        'gpu_pm_output_phaseb_v': 'gpu_pm_output_phaseb_v',
+        'gpu_pm_output_phasec_v': 'gpu_pm_output_phasec_v',
+        'gpu_pm_input_phasea_i': 'gpu_pm_input_phasea_i',
+        'gpu_pm_input_phaseb_i': 'gpu_pm_input_phaseb_i',
+        'gpu_pm_input_phasec_i': 'gpu_pm_input_phasec_i',
+        'gpu_pm_input_phasea_v': 'gpu_pm_input_phasea_v',
+        'gpu_pm_input_phaseb_v': 'gpu_pm_input_phaseb_v',
+        'gpu_pm_input_phasec_v': 'gpu_pm_input_phasec_v',
+        'gpu_on_1': 'gpu_on_1',
+        'gpu_on_2': 'gpu_on_2'
+      },
+      Graphics: {}
     },
     pbb_widget: {
-      'pbb_status': 'pbb_status',
-      'pbb_autolevel_mode': 'pbb_autolevel_mode',
-      'pbb_canopy': 'pbb_canopy',
-      'pbb_dock_time': 'pbb_dock_time',
-      'pbb_undock_time': 'pbb_undock_time'
+      Tags: {
+        'pbb_status': 'pbb_status',
+        'pbb_autolevel_mode': 'pbb_autolevel_mode',
+        'pbb_canopy': 'pbb_canopy',
+        'pbb_dock_time': 'pbb_dock_time',
+        'pbb_undock_time': 'pbb_undock_time'
+      },
+      Graphics: {}
     },
     pbb_pca_gpu_basic_widget: {
-      'pbb_status': 'pbb_status',
-      'pca_status': 'pca_status',
-      'gpu_status': 'gpu_status',
-      'pbb_dock_time': 'pbb_dock_time',
-      'pbb_hookup_time': 'pbb_hookup_time',
-      'pca_time': 'pca_time',
-      'gpu_time': 'gpu_time',
-      'pca_discharge_temp': 'pca_discharge_temp',
-      'gpu_ra_out_avg': 'gpu_ra_out_avg',
-      'gpu_rv_out_avg': 'gpu_rv_out_avg'
+      Tags: {
+        'pbb_status': 'pbb_status',
+        'pca_status': 'pca_status',
+        'gpu_status': 'gpu_status',
+        'pbb_dock_time': 'pbb_dock_time',
+        'pbb_hookup_time': 'pbb_hookup_time',
+        'pca_time': 'pca_time',
+        'gpu_time': 'gpu_time',
+        'pca_discharge_temp': 'pca_discharge_temp',
+        'gpu_ra_out_avg': 'gpu_ra_out_avg',
+        'gpu_rv_out_avg': 'gpu_rv_out_avg'
+      },
+      Graphics: {}
     },
-    pbb_widget: {
-      'pbb_status': 'pbb_status',
-      'pbb_autolevel_mode': 'pbb_autolevel_mode',
-      'pbb_canopy': 'pbb_canopy',
-      'pbb_autolevel_key': 'pbb_autolevel_key',
-      'pbb_autoleveling': 'pbb_autoleveling',
-      'pbb_estop_rw': 'pbb_estop_rw',
-      'pbb_limits': 'pbb_limits',
-      'pbb_dock_time': 'pbb_dock_time',
-      'pbb_undock_time': 'pbb_undock_time',
-      'pbb_smoke_detector': 'pbb_smoke_detector',
-      'pbb_daily_aircraft_count': 'pbb_daily_aircraft_count',
-      'pbb_last_dock_time': 'pbb_last_dock_time',
-      'pbb_cabin_floor_deicer': 'pbb_cabin_floor_deicer',
-      'pbb_terminal_door': 'pbb_terminal_door',
-      'pbb_cab_angle_disp': 'pbb_cab_angle_disp',
-      'pbb_slope_deg': 'pbb_slope_deg',
-      'pbb_swing_angle_disp': 'pbb_swing_angle_disp',
-      'pbb_height_to_disp': 'pbb_height_to_disp',
-      'pbb_wheel_angle_deg': 'pbb_wheel_angle_deg',
-      'pbb_tunnel_length': 'pbb_tunnel_length'
+    pbb_level_detail_widget: {
+      Tags: {
+        'pbb_status': 'pbb_status',
+        'pbb_autolevel_mode': 'pbb_autolevel_mode',
+        'pbb_canopy': 'pbb_canopy',
+        'pbb_autolevel_key': 'pbb_autolevel_key',
+        'pbb_autoleveling': 'pbb_autoleveling',
+        'pbb_estop_rw': 'pbb_estop_rw',
+        'pbb_limits': 'pbb_limits',
+        'pbb_dock_time': 'pbb_dock_time',
+        'pbb_undock_time': 'pbb_undock_time',
+        'pbb_smoke_detector': 'pbb_smoke_detector',
+        'pbb_daily_aircraft_count': 'pbb_daily_aircraft_count',
+        'pbb_last_dock_time': 'pbb_last_dock_time',
+        'pbb_cabin_floor_deicer': 'pbb_cabin_floor_deicer',
+        'pbb_terminal_door': 'pbb_terminal_door',
+        'pbb_cab_angle_disp': 'pbb_cab_angle_disp',
+        'pbb_slope_deg': 'pbb_slope_deg',
+        'pbb_swing_angle_disp': 'pbb_swing_angle_disp',
+        'pbb_height_to_disp': 'pbb_height_to_disp',
+        'pbb_wheel_angle_deg': 'pbb_wheel_angle_deg',
+        'pbb_tunnel_length': 'pbb_tunnel_length'
+      },
+      Graphics: {}
     },
     pca_discharge_widget: {
-      'pca_discharge_temp': 'pca_discharge_temp',
-      'pca_status': 'pca_status',
-      'pca_mode_cooling': 'pca_mode_cooling',
-      'pca_mode_heating': 'pca_mode_heating',
-      'pca_cooling_pt': 'pca_cooling_pt',
-      'pca_heating_pt': 'pca_heating_pt',
-      'pca_alarm_cooling_run': 'pca_alarm_cooling_run',
-      'pca_alarm_heating_run': 'pca_alarm_heating_run',
-      'pca_cooling_tm': 'pca_cooling_tm',
-      'pca_heating_tm': 'pca_heating_tm'
+      Tags: {
+        'pca_discharge_temp': 'pca_discharge_temp',
+        'pca_status': 'pca_status',
+        'pca_mode_cooling': 'pca_mode_cooling',
+        'pca_mode_heating': 'pca_mode_heating',
+        'pca_cooling_pt': 'pca_cooling_pt',
+        'pca_heating_pt': 'pca_heating_pt',
+        'pca_alarm_cooling_run': 'pca_alarm_cooling_run',
+        'pca_alarm_heating_run': 'pca_alarm_heating_run',
+        'pca_cooling_tm': 'pca_cooling_tm',
+        'pca_heating_tm': 'pca_heating_tm'
+      },
+      Graphics: {}
     },
     pca_summary_widget: {
-      'pca_ambient_humidity': 'pca_ambient_humidity',
-      'pca_ambient_temp': 'pca_ambient_temp',
-      'pca_discharge_temp': 'pca_discharge_temp',
-      'pca_status': 'pca_status',
-      'pca_time': 'pca_time',
-      'pca_blower': 'pca_blower',
-      'pca_heater_1': 'pca_heater_1',
-      'pca_heater_2': 'pca_heater_2',
-      'pca_comp_stage_1': 'pca_comp_stage_1',
-      'pca_comp_stage_2': 'pca_comp_stage_2',
-      'pca_bridge_damper': 'pca_bridge_damper',
-      'pca_bridge_air': 'pca_bridge_air',
-      'pca_pump_cond': 'pca_pump_cond',
-      'pca_coil_dp': 'pca_coil_dp',
-      'pca_vfd_speed': 'pca_vfd_speed',
-      'pca_suction_pressure_1': 'pca_suction_pressure_1',
-      'pca_suction_pressure_2': 'pca_suction_pressure_2',
-      'pca_hot_gas_1': 'pca_hot_gas_1',
-      'pca_hot_gas_2': 'pca_hot_gas_2'
+      Tags: {
+        'pca_ambient_humidity': 'pca_ambient_humidity',
+        'pca_ambient_temp': 'pca_ambient_temp',
+        'pca_discharge_temp': 'pca_discharge_temp',
+        'pca_status': 'pca_status',
+        'pca_time': 'pca_time',
+        'pca_blower': 'pca_blower',
+        'pca_heater_1': 'pca_heater_1',
+        'pca_heater_2': 'pca_heater_2',
+        'pca_comp_stage_1': 'pca_comp_stage_1',
+        'pca_comp_stage_2': 'pca_comp_stage_2',
+        'pca_bridge_damper': 'pca_bridge_damper',
+        'pca_bridge_air': 'pca_bridge_air',
+        'pca_pump_cond': 'pca_pump_cond',
+        'pca_coil_dp': 'pca_coil_dp',
+        'pca_vfd_speed': 'pca_vfd_speed',
+        'pca_suction_pressure_1': 'pca_suction_pressure_1',
+        'pca_suction_pressure_2': 'pca_suction_pressure_2',
+        'pca_hot_gas_1': 'pca_hot_gas_1',
+        'pca_hot_gas_2': 'pca_hot_gas_2'
+      },
+      Graphics: {
+        pca_main_background: {
+          ControlTags: {
+            none: null
+          },
+          Parameters: {
+            Parm001: null,
+            Parm002: null,
+            Parm003: null,
+            Parm004: null
+          },
+          Element: {
+            Type: 'div',
+            ParentID: '#graphics_container',
+            Class: 'background',
+            Object: null
+          }
+        },
+        blower_img: {
+          ControlTags: {
+            pca_blower: 'Boolean'
+          },
+          Parameters: {
+            Parm001: 'ALL_TRUE',
+            Parm002: 'blower-on',
+            Parm003: null,
+            Parm004: 'blower-bq'
+          },
+          Element: {
+            Type: 'div',
+            ParentID: '#dynamic_pca_main_background',
+            Class: 'img',
+            Object: null
+          }
+        },
+        heating_stage_1_img: {
+          ControlTags: {
+            pca_heater_1: 'Boolean'
+          },
+          Parameters: {
+            Parm001: 'ALL_TRUE',
+            Parm002: 'heating-stage-1-on',
+            Parm003: null,
+            Parm004: 'heating-stage-1-bq'
+          },
+          Element: {
+            Type: 'div',
+            ParentID: '#dynamic_pca_main_background',
+            Class: 'img',
+            Object: null
+          }
+        },
+        heating_stage_2_img: {
+          ControlTags: {
+            pca_heater_2: 'Boolean'
+          },
+          Parameters: {
+            Parm001: 'ALL_TRUE',
+            Parm002: 'heating-stage-2-on',
+            Parm003: null,
+            Parm004: 'heating-stage-2-bq'
+          },
+          Element: {
+            Type: 'div',
+            ParentID: '#dynamic_pca_main_background',
+            Class: 'img',
+            Object: null
+          }
+        },
+        cooling_stage_1_img: {
+          ControlTags: {
+            pca_comp_stage_1: 'Boolean'
+          },
+          Parameters: {
+            Parm001: 'ALL_TRUE',
+            Parm002: 'cooling-stage-1-on',
+            Parm003: null,
+            Parm004: 'cooling-stage-1-bq'
+          },
+          Element: {
+            Type: 'div',
+            ParentID: '#dynamic_pca_main_background',
+            Class: 'img',
+            Object: null
+          }
+        },
+        cooling_stage_2_img: {
+          ControlTags: {
+            pca_comp_stage_2: 'Boolean'
+          },
+          Parameters: {
+            Parm001: 'ALL_TRUE',
+            Parm002: 'cooling-stage-2-on',
+            Parm003: null,
+            Parm004: 'cooling-stage-1-bq'
+          },
+          Element: {
+            Type: 'div',
+            ParentID: '#dynamic_pca_main_background',
+            Class: 'img',
+            Object: null
+          }
+        },
+        accool_img: {
+          ControlTags: {
+            pca_bridge_damper: 'Boolean',
+            pca_status: 'Boolean'
+          },
+          Parameters: {
+            Parm001: 'ALL_TRUE',
+            Parm002: 'ac-cool-on',
+            Parm003: null,
+            Parm004: 'ac-cool-bq'
+          },
+          Element: {
+            Type: 'div',
+            ParentID: '#dynamic_pca_main_background',
+            Class: 'img',
+            Object: null
+          }
+        },
+        bccool_img: {
+          ControlTags: {
+            pca_bridge_air: 'Boolean'
+          },
+          Parameters: {
+            Parm001: 'ALL_TRUE',
+            Parm002: 'bc-cool-on',
+            Parm003: null,
+            Parm004: 'bc-cool-bq'
+          },
+          Element: {
+            Type: 'div',
+            ParentID: '#dynamic_pca_main_background',
+            Class: 'img',
+            Object: null
+          }
+        }
+      }
     },
     pca_widget: {
-      'pca_cabin_temp': 'pca_cabin_temp',
-      'pca_ambient_temp': 'pca_ambient_temp',
-      'pca_discharge_temp': 'pca_discharge_temp',
-      'pca_heater_1': 'pca_heater_1',
-      'pca_heater_2': 'pca_heater_2',
-      'pca_comp_stage_1': 'pca_comp_stage_1',
-      'pca_comp_stage_2': 'pca_comp_stage_2',
-      'pca_bridge_damper': 'pca_bridge_damper',
-      'pca_bridge_air': 'pca_bridge_air',
-      'pca_dirty_filter': 'pca_dirty_filter',
-      'pca_blower': 'pca_blower',
-      'pca_suction_pressure_1': 'pca_suction_pressure_1',
-      'pca_suction_pressure_2': 'pca_suction_pressure_2',
-      'pca_hot_gas_1': 'pca_hot_gas_1',
-      'pca_hot_gas_2': 'pca_hot_gas_2',
-      'pca_status': 'pca_status'
+      Tags: {
+        'pca_cabin_temp': 'pca_cabin_temp',
+        'pca_ambient_temp': 'pca_ambient_temp',
+        'pca_discharge_temp': 'pca_discharge_temp',
+        'pca_heater_1': 'pca_heater_1',
+        'pca_heater_2': 'pca_heater_2',
+        'pca_comp_stage_1': 'pca_comp_stage_1',
+        'pca_comp_stage_2': 'pca_comp_stage_2',
+        'pca_bridge_damper': 'pca_bridge_damper',
+        'pca_bridge_air': 'pca_bridge_air',
+        'pca_dirty_filter': 'pca_dirty_filter',
+        'pca_blower': 'pca_blower',
+        'pca_suction_pressure_1': 'pca_suction_pressure_1',
+        'pca_suction_pressure_2': 'pca_suction_pressure_2',
+        'pca_hot_gas_1': 'pca_hot_gas_1',
+        'pca_hot_gas_2': 'pca_hot_gas_2',
+        'pca_status': 'pca_status'
+      },
+      Graphics: {}
     }
-
-    /***************************************************
-    		*** Equipment Tag Groups
-    		**************************************************
-     */
-
-    /***************************************************
-    		*** Modification Tag Groups
-    		**************************************************
-     */
-
-    /*
-    		pbb_pca_gpu_basic_widget_10T: {'gpu_10TStatus'}
-    		pca_jetway10T: {'','',...}
-    		gpu_basic_widget: {'gpu_gpustatus','gpu_hookup','gpu_ra_out_avg','gpu_rv_out_avg'}
-    		pbb_basic_widget: {'pbb_status','pbb_docktime','pbb_hookup'}
-    		pca_basic_widget: {'pca_pcastatus','pca_hookup','pca_pcadischargetemp'}
-    		gpu_gpustatus: {'gpu_gpustatus'}
-    		gpu_hookup: {'gpu_hookup'}
-    		gpu_ra_out_avg: {'gpu_ra_out_avg'}
-    		gpu_rv_out_avg: {'gpu_rv_out_avg'}
-    		pbb_status: {'pbb_status'}
-    		pbb_docktime: {'pbb_docktime'}
-    		pbb_hookup: {'pbb_hookup'}
-    		pca_pcastatus: {'pca_pcastatus'}
-    		pca_hookup: {'pca_hookup'}
-    		pca_pcadischargetemp: {'pca_pcadischargetemp'}
-    		pca_inet_rev_1_0_00: {'','','',...}
-    		pca_jw_50T_rev_1_0_00: {'pca_jw_dischargetemp','pca_jw_hookuptime','pca_jw_ambient_temp'}
-    		pca_inet_50T_rev_1_0_00: {'pca_inet_dischargetemp','pca_inet_hookuptime','pca_inet_ambient_temp','pca_inet_blower_01','pca_inet_blower_02','pca_inet_blower_03','pca_inet_blower_04',}
-     */
   };
 
-  TagConfig.clients = {
 
-    /* _CLIENT Example for developers configuration
-    		[Client Abbreviation]:
-    			add_tags: 
-    			remove_tags:
-    			update_tags:
-    			use_tags:
-    			zones:
-    				add_tags: 
-    				remove_tags:
-    				update_tags:
-    				use_tags:
-    				[Terminal ID]:
-    					add_tags: 
-    					remove_tags:
-    					update_tags:
-    					use_tags:
-    					[Zone ID]:
-    						add_tags: 
-    						remove_tags:
-    						update_tags:
-    						use_tags:
-    						[Gate ID]:
-    							add_tags: 
-    							remove_tags:
-    							update_tags
-    
-    		**********************************************
-     */
+  /***************************************************
+  	*** Equipment/Modification Tag Groups
+  	**************************************************
+   */
+
+  TagConfig.groups = {
+    none: {
+      'Add Tag Names': 'Add Tag Names'
+    }
+  };
+
+
+  /***************************************************
+  	*** Client Tag and Graphics
+  	**************************************************
+   */
+
+  TagConfig.clients = {
     CID: {
       pbb_widget: {
         remove_tags: {
@@ -5333,18 +5533,20 @@ TagConfig = (function(superClass) {
         },
         add_tags: {
           pbb_estop: {
-            Tag: 'PBB.Alarm.E_STOP',
+            Tag: 'PBB.E_STOP',
             Label: 'Emergency Stop',
             DataType: 'Boolean',
             Parameters: {
-              Parm001: '',
-              Parm002: '',
-              Parm003: '',
-              Parm004: ''
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'err',
+              Parm004: null,
+              Parm005: null
             },
             Element: {
               Type: 'TableRow',
               ParentID: '#widgetData',
+              Class: null,
               Object: null
             }
           }
@@ -5354,133 +5556,300 @@ TagConfig = (function(superClass) {
         1: {
           1: {
             C3: {
-              remove_tags: {
-                'pca_discharge_temp': 'pca_discharge_temp',
-                'pca_mode_cooling': 'pca_mode_cooling',
-                'pca_mode_heating': 'pca_mode_heating',
-                'pca_cooling_pt': 'pca_cooling_pt',
-                'pca_heating_pt': 'pca_heating_pt',
-                'pca_alarm_cooling_run': 'pca_alarm_cooling_run',
-                'pca_alarm_heating_run': 'pca_alarm_heating_run',
-                'pca_cooling_tm': 'pca_cooling_tm',
-                'pca_heating_tm': 'pca_heating_tm'
+              use_tags: {
+                pca_status: {
+                  Tag: 'PCA.PCASTATUS',
+                  Label: 'PCA status',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: 'err',
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
               }
             }
           }
         }
       },
       pca_summary_widget: {
+        update_graphics: {
+          pca_main_background: {
+            ControlTags: {
+              none: null
+            },
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#graphics_container',
+              Class: 'background jetair-xpc-3013',
+              Object: null
+            }
+          },
+          blower_img: {
+            ControlTags: {
+              pca_blower: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'blower-on',
+              Parm003: null,
+              Parm004: 'blower-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jetair-xpc-3013',
+              Object: null
+            }
+          },
+          heating_stage_1_img: {
+            ControlTags: {
+              pca_heater_1: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'heating-stage-1-on',
+              Parm003: null,
+              Parm004: 'heating-stage-1-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jetair-xpc-3013',
+              Object: null
+            }
+          },
+          heating_stage_2_img: {
+            ControlTags: {
+              pca_heater_2: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'heating-stage-2-on',
+              Parm003: null,
+              Parm004: 'heating-stage-2-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jetair-xpc-3013',
+              Object: null
+            }
+          },
+          cooling_stage_1_img: {
+            ControlTags: {
+              pca_comp_stage_1: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'cooling-stage-1-on',
+              Parm003: null,
+              Parm004: 'cooling-stage-1-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jetair-xpc-3013',
+              Object: null
+            }
+          },
+          cooling_stage_2_img: {
+            ControlTags: {
+              pca_comp_stage_2: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'cooling-stage-2-on',
+              Parm003: null,
+              Parm004: 'cooling-stage-2-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jetair-xpc-3013',
+              Object: null
+            }
+          },
+          accool_img: {
+            ControlTags: {
+              pca_bridge_damper: 'Boolean',
+              pca_status: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'ac-cool-on',
+              Parm003: null,
+              Parm004: 'ac-cool-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jetair-xpc-3013',
+              Object: null
+            }
+          },
+          bccool_img: {
+            ControlTags: {
+              pca_bridge_air: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'bc-cool-on',
+              Parm003: null,
+              Parm004: 'bc-cool-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jetair-xpc-3013',
+              Object: null
+            }
+          }
+        },
+        add_graphics: {
+          fan_1_img: {
+            ControlTags: {
+              pca_fan_1: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'fan-1-on',
+              Parm003: null,
+              Parm004: 'fan-1-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jetair-xpc-3013',
+              Object: null
+            }
+          },
+          fan_2_img: {
+            ControlTags: {
+              pca_fan_2: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'fan-2-on',
+              Parm003: null,
+              Parm004: 'fan-2-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jetair-xpc-3013',
+              Object: null
+            }
+          },
+          fan_3_img: {
+            ControlTags: {
+              pca_fan_3: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'fan-3-on',
+              Parm003: null,
+              Parm004: 'fan-3-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jetair-xpc-3013',
+              Object: null
+            }
+          }
+        },
         remove_tags: {
-          'pca_ambient_humidity': 'pca_ambient_humidity',
-          'pca_coil_dp': 'pca_coil_dp',
-          'pca_vfd_speed': 'pca_vfd_speed',
-          'pca_ambient_humidity': 'pca_ambient_humidity',
           'pca_hot_gas_1': 'pca_hot_gas_1',
           'pca_hot_gas_2': 'pca_hot_gas_2'
         },
         update_tags: {
           pca_heater_1: {
-            Tag: "PCA.HEAT1",
-            Label: "Heater #1is running",
-            DataType: "Boolean",
+            Tag: 'PCA.HEAT1',
+            Label: 'Heater #1is running',
+            DataType: 'Boolean',
             Parameters: {
-              Parm001: "On",
-              Parm002: "Off",
-              Parm003: "ok",
-              Parm004: ""
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
             },
             Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
               Object: null
             }
           },
           pca_heater_2: {
-            Tag: "PCA.HEAT2",
-            Label: "Heater #2 is running",
-            DataType: "Boolean",
+            Tag: 'PCA.HEAT2',
+            Label: 'Heater #2 is running',
+            DataType: 'Boolean',
             Parameters: {
-              Parm001: "On",
-              Parm002: "Off",
-              Parm003: "ok",
-              Parm004: ""
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
             },
             Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
               Object: null
             }
           },
           pca_comp_stage_1: {
-            Tag: "PCA.COMPPRI1",
-            Label: "Primary compressor #1 is running",
-            DataType: "Boolean",
+            Tag: 'PCA.COMPPRI1',
+            Label: 'Primary compressor #1 is running',
+            DataType: 'Boolean',
             Parameters: {
-              Parm001: "On",
-              Parm002: "Off",
-              Parm003: "ok",
-              Parm004: ""
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
             },
             Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
               Object: null
             }
           },
           pca_comp_stage_2: {
-            Tag: "PCA.COMPPRI2",
-            Label: "Primary compressor #2 is running",
-            DataType: "Boolean",
+            Tag: 'PCA.COMPPRI2',
+            Label: 'Primary compressor #2 is running',
+            DataType: 'Boolean',
             Parameters: {
-              Parm001: "On",
-              Parm002: "Off",
-              Parm003: "ok",
-              Parm004: ""
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
             },
             Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
               Object: null
             }
           },
           pca_suction_pressure_1: {
-            Tag: "PCA.PRESSSUCPRI1",
-            Label: "Suction pressure,primary compressor #1",
-            DataType: "Float",
-            Parameters: {
-              Parm001: "",
-              Parm002: "",
-              Parm003: "",
-              Parm004: ""
-            },
-            Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
-              Object: null
-            }
-          },
-          pca_suction_pressure_2: {
-            Tag: "PCA.PRESSSUCPRI2",
-            Label: "Suction pressure,primary compressor #2",
-            DataType: "Float",
-            Parameters: {
-              Parm001: "",
-              Parm002: "",
-              Parm003: "",
-              Parm004: ""
-            },
-            Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
-              Object: null
-            }
-          }
-        },
-        add_tags: {
-          pbb_estop: {
-            Tag: 'PBB.Alarm.E_STOP',
-            Label: 'Emergency Stop',
-            DataType: 'Boolean',
+            Tag: 'PCA.PRESSSUCPRI1',
+            Label: 'Suction pressure,primary compressor #1',
+            DataType: 'Float',
             Parameters: {
               Parm001: '',
               Parm002: '',
@@ -5490,119 +5859,68 @@ TagConfig = (function(superClass) {
             Element: {
               Type: 'TableRow',
               ParentID: '#widgetData',
+              Class: null,
               Object: null
             }
           },
-          pca_heater_3: {
-            Tag: "PCA.HEAT3",
-            Label: "Heater #3 is running",
-            DataType: "Boolean",
+          pca_suction_pressure_2: {
+            Tag: 'PCA.PRESSSUCPRI2',
+            Label: 'Suction pressure,primary compressor #2',
+            DataType: 'Float',
             Parameters: {
-              Parm001: "On",
-              Parm002: "Off",
-              Parm003: "ok",
-              Parm004: ""
+              Parm001: '',
+              Parm002: '',
+              Parm003: '',
+              Parm004: ''
             },
             Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
               Object: null
             }
-          },
-          pca_heater_4: {
-            Tag: "PCA.HEAT4",
-            Label: "Heater #4 is running",
-            DataType: "Boolean",
-            Parameters: {
-              Parm001: "On",
-              Parm002: "Off",
-              Parm003: "ok",
-              Parm004: ""
-            },
-            Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
-              Object: null
-            }
-          },
-          pca_heater_5: {
-            Tag: "PCA.HEAT5",
-            Label: "Heater #5 is running",
-            DataType: "Boolean",
-            Parameters: {
-              Parm001: "On",
-              Parm002: "Off",
-              Parm003: "ok",
-              Parm004: ""
-            },
-            Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
-              Object: null
-            }
-          },
-          pca_comp_sec_Stage_1: {
-            Tag: "PCA.COMPSEC1",
-            Label: "Secondary compressor #1 is running",
-            DataType: "Boolean",
-            Parameters: {
-              Parm001: "On",
-              Parm002: "Off",
-              Parm003: "ok",
-              Parm004: ""
-            },
-            Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
-              Object: null
-            }
-          },
-          pca_comp_sec_Stage_2: {
-            Tag: "PCA.COMPSEC2",
-            Label: "Secondary compressor #2 is running",
-            DataType: "Boolean",
-            Parameters: {
-              Parm001: "On",
-              Parm002: "Off",
-              Parm003: "ok",
-              Parm004: ""
-            },
-            Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
-              Object: null
-            }
-          },
-          pca_suction_pressure_sec_1: {
-            Tag: "PCA.PRESSSUCPRI1",
-            Label: "Suction pressure,secondary compressor #1",
-            DataType: "Float",
-            Parameters: {
-              Parm001: "",
-              Parm002: "",
-              Parm003: "",
-              Parm004: ""
-            },
-            Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
-              Object: null
-            }
-          },
-          pca_suction_pressure_sec_2: {
-            Tag: "PCA.PRESSSUCPRI2",
-            Label: "Suction pressure,secondary compressor #2",
-            DataType: "Float",
-            Parameters: {
-              Parm001: "",
-              Parm002: "",
-              Parm003: "",
-              Parm004: ""
-            },
-            Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
-              Object: null
+          }
+        },
+        1: {
+          1: {
+            C3: {
+              use_tags: {
+                pca_ambient_temp: {
+                  Tag: 'PCA.TEMPAMB',
+                  Label: 'Ambient Air Temperature',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_bridge_air: {
+                  Tag: 'PCA.BRIDGE_AIR',
+                  Label: 'Bridge Damper',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
             }
           }
         }
@@ -5614,212 +5932,104 @@ TagConfig = (function(superClass) {
         },
         update_tags: {
           pca_heater_1: {
-            Tag: "PCA.HEAT1",
-            Label: "Heater #1 is running",
-            DataType: "Boolean",
+            Tag: 'PCA.HEAT1',
+            Label: 'Heater #1 is running',
+            DataType: 'Boolean',
             Parameters: {
-              Parm001: "On",
-              Parm002: "Off",
-              Parm003: "ok",
-              Parm004: ""
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
             },
             Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
               Object: null
             }
           },
           pca_heater_2: {
-            Tag: "PCA.HEAT2",
-            Label: "Heater #2 is running",
-            DataType: "Boolean",
+            Tag: 'PCA.HEAT2',
+            Label: 'Heater #2 is running',
+            DataType: 'Boolean',
             Parameters: {
-              Parm001: "On",
-              Parm002: "Off",
-              Parm003: "ok",
-              Parm004: ""
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
             },
             Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
               Object: null
             }
           },
           pca_comp_stage_1: {
-            Tag: "PCA.COMPPRI1",
-            Label: "Primary compressor #1 is running",
-            DataType: "Boolean",
+            Tag: 'PCA.COMPPRI1',
+            Label: 'Primary compressor #1 is running',
+            DataType: 'Boolean',
             Parameters: {
-              Parm001: "On",
-              Parm002: "Off",
-              Parm003: "ok",
-              Parm004: ""
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
             },
             Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
               Object: null
             }
           },
           pca_comp_stage_2: {
-            Tag: "PCA.COMPPRI2",
-            Label: "Primary compressor #2 is running",
-            DataType: "Boolean",
+            Tag: 'PCA.COMPPRI2',
+            Label: 'Primary compressor #2 is running',
+            DataType: 'Boolean',
             Parameters: {
-              Parm001: "On",
-              Parm002: "Off",
-              Parm003: "ok",
-              Parm004: ""
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
             },
             Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
               Object: null
             }
           },
           pca_suction_pressure_1: {
-            Tag: "PCA.PRESSSUCPRI1",
-            Label: "Suction pressure, primary compressor #1",
-            DataType: "Float",
+            Tag: 'PCA.PRESSSUCPRI1',
+            Label: 'Suction pressure, primary compressor #1',
+            DataType: 'Float',
             Parameters: {
-              Parm001: "",
-              Parm002: "",
-              Parm003: "",
-              Parm004: ""
+              Parm001: '',
+              Parm002: '',
+              Parm003: '',
+              Parm004: ''
             },
             Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
               Object: null
             }
           },
           pca_suction_pressure_2: {
-            Tag: "PCA.PRESSSUCPRI2",
-            Label: "Suction pressure, primary compressor #2",
-            DataType: "Float",
+            Tag: 'PCA.PRESSSUCPRI2',
+            Label: 'Suction pressure, primary compressor #2',
+            DataType: 'Float',
             Parameters: {
-              Parm001: "",
-              Parm002: "",
-              Parm003: "",
-              Parm004: ""
+              Parm001: '',
+              Parm002: '',
+              Parm003: '',
+              Parm004: ''
             },
             Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
-              Object: null
-            }
-          }
-        },
-        add_tags: {
-          pca_heater_3: {
-            Tag: "PCA.HEAT3",
-            Label: "Heater #3 is running",
-            DataType: "Boolean",
-            Parameters: {
-              Parm001: "On",
-              Parm002: "Off",
-              Parm003: "ok",
-              Parm004: ""
-            },
-            Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
-              Object: null
-            }
-          },
-          pca_heater_4: {
-            Tag: "PCA.HEAT4",
-            Label: "Heater #4 is running",
-            DataType: "Boolean",
-            Parameters: {
-              Parm001: "On",
-              Parm002: "Off",
-              Parm003: "ok",
-              Parm004: ""
-            },
-            Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
-              Object: null
-            }
-          },
-          pca_heater_5: {
-            Tag: "PCA.HEAT5",
-            Label: "Heater #5 is running",
-            DataType: "Boolean",
-            Parameters: {
-              Parm001: "On",
-              Parm002: "Off",
-              Parm003: "ok",
-              Parm004: ""
-            },
-            Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
-              Object: null
-            }
-          },
-          pca_comp_sec_Stage_1: {
-            Tag: "PCA.COMPSEC1",
-            Label: "Secondary compressor #1 is running",
-            DataType: "Boolean",
-            Parameters: {
-              Parm001: "On",
-              Parm002: "Off",
-              Parm003: "ok",
-              Parm004: ""
-            },
-            Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
-              Object: null
-            }
-          },
-          pca_comp_sec_Stage_2: {
-            Tag: "PCA.COMPSEC2",
-            Label: "Secondary compressor #2 is running",
-            DataType: "Boolean",
-            Parameters: {
-              Parm001: "On",
-              Parm002: "Off",
-              Parm003: "ok",
-              Parm004: ""
-            },
-            Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
-              Object: null
-            }
-          },
-          pca_suction_pressure_sec_1: {
-            Tag: "PCA.PRESSSUCPRI1",
-            Label: "Suction pressure, secondary compressor #1",
-            DataType: "Float",
-            Parameters: {
-              Parm001: "",
-              Parm002: "",
-              Parm003: "",
-              Parm004: ""
-            },
-            Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
-              Object: null
-            }
-          },
-          pca_suction_pressure_sec_2: {
-            Tag: "PCA.PRESSSUCPRI1",
-            Label: "Suction pressure, secondary compressor #2",
-            DataType: "Float",
-            Parameters: {
-              Parm001: "",
-              Parm002: "",
-              Parm003: "",
-              Parm004: ""
-            },
-            Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
               Object: null
             }
           }
@@ -5842,146 +6052,155 @@ TagConfig = (function(superClass) {
         },
         update_tags: {
           gpu_pm_output_phasea_i: {
-            Tag: "GPU.RAOUTA",
-            Label: "Amps Out Phase A",
-            DataType: "Float",
+            Tag: 'GPU.RAOUTA',
+            Label: 'Amps Out Phase A',
+            DataType: 'Float',
             Parameters: {
-              Parm001: "TRUE",
-              Parm002: "1",
-              Parm003: "Amps",
-              Parm004: ""
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Amps',
+              Parm004: ''
             },
             Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
               Object: null
             }
           },
           gpu_pm_output_phaseb_i: {
-            Tag: "GPU.RAOUTA",
-            Label: "Amps Out Phase B",
-            DataType: "Float",
+            Tag: 'GPU.RAOUTB',
+            Label: 'Amps Out Phase B',
+            DataType: 'Float',
             Parameters: {
-              Parm001: "TRUE",
-              Parm002: "1",
-              Parm003: "Amps",
-              Parm004: ""
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Amps',
+              Parm004: ''
             },
             Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
               Object: null
             }
           },
           gpu_pm_output_phasec_i: {
-            Tag: "GPU.RAOUTA",
-            Label: "Amps Out Phase C",
-            DataType: "Float",
+            Tag: 'GPU.RAOUTC',
+            Label: 'Amps Out Phase C',
+            DataType: 'Float',
             Parameters: {
-              Parm001: "TRUE",
-              Parm002: "1",
-              Parm003: "Amps",
-              Parm004: ""
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Amps',
+              Parm004: ''
             },
             Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
               Object: null
             }
           },
           gpu_pm_output_phasea_v: {
-            Tag: "GPU.RVOUTA",
-            Label: "Volts Out Phase A",
-            DataType: "Float",
+            Tag: 'GPU.RVOUTA',
+            Label: 'Volts Out Phase A',
+            DataType: 'Float',
             Parameters: {
-              Parm001: "TRUE",
-              Parm002: "1",
-              Parm003: "Volts",
-              Parm004: ""
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Volts',
+              Parm004: ''
             },
             Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
               Object: null
             }
           },
           gpu_pm_output_phaseb_v: {
-            Tag: "GPU.RVOUTA",
-            Label: "Volts Out Phase B",
-            DataType: "Float",
+            Tag: 'GPU.RVOUTB',
+            Label: 'Volts Out Phase B',
+            DataType: 'Float',
             Parameters: {
-              Parm001: "TRUE",
-              Parm002: "1",
-              Parm003: "Volts",
-              Parm004: ""
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Volts',
+              Parm004: ''
             },
             Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
               Object: null
             }
           },
           gpu_pm_output_phasec_v: {
-            Tag: "GPU.RVOUTA",
-            Label: "Volts Out Phase C",
-            DataType: "Float",
+            Tag: 'GPU.RVOUTC',
+            Label: 'Volts Out Phase C',
+            DataType: 'Float',
             Parameters: {
-              Parm001: "TRUE",
-              Parm002: "1",
-              Parm003: "Volts",
-              Parm004: ""
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Volts',
+              Parm004: ''
             },
             Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
               Object: null
             }
           },
           gpu_pm_input_phasea_v: {
-            Tag: "GPU.RVINA",
-            Label: "Volts In Phase A",
-            DataType: "Float",
+            Tag: 'GPU.RVINA',
+            Label: 'Volts In Phase A',
+            DataType: 'Float',
             Parameters: {
-              Parm001: "TRUE",
-              Parm002: "1",
-              Parm003: "Volts",
-              Parm004: ""
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Volts',
+              Parm004: ''
             },
             Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
               Object: null
             }
           },
           gpu_pm_input_phaseb_v: {
-            Tag: "GPU.RVINA",
-            Label: "Volts In Phase A",
-            DataType: "Float",
+            Tag: 'GPU.RVINB',
+            Label: 'Volts In Phase B',
+            DataType: 'Float',
             Parameters: {
-              Parm001: "TRUE",
-              Parm002: "1",
-              Parm003: "Volts",
-              Parm004: ""
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Volts',
+              Parm004: ''
             },
             Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
               Object: null
             }
           },
           gpu_pm_input_phasec_v: {
-            Tag: "GPU.RVINA",
-            Label: "Volts In Phase A",
-            DataType: "Float",
+            Tag: 'GPU.RVINC',
+            Label: 'Volts In Phase C',
+            DataType: 'Float',
             Parameters: {
-              Parm001: "TRUE",
-              Parm002: "1",
-              Parm003: "Volts",
-              Parm004: ""
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Volts',
+              Parm004: ''
             },
             Element: {
-              Type: "TableRow",
-              ParentID: "#widgetData",
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
               Object: null
             }
           }
@@ -6000,65 +6219,6 @@ TagConfig = (function(superClass) {
           }
         }
       }
-
-      /******************************************************************************************8
-      			example_widget:
-      				add_groups: {'gpu_basic_widget','pbb_basic_widget','pca_inet_50T_rev_1_0_00'}
-      				remove_groups: {'pbb_pca_gpu_basic_widget'}
-      				use_groups: {'pbb_pca_gpu_basic_widget'}
-      				add_tags: { 
-      					csw_tag001:{Tag:"CSW.TAG001",Label:"CSW TAG001 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData",Object:null}},
-      					csw_tag002:{Tag:"CSW.TAG002",Label:"CSW TAG002 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData",Object:null}},
-      				}
-      				remove_tags:  { 'csw_tag002','gpu_gpustatus','gpu_hookup','gpu_ra_out_avg','gpu_rv_out_avg' }
-      				update_tags:  { 
-      					csw_tag001:{Tag:"CSW.TAG001a",Label:"CSW TAG001a Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData",Object:null}},
-      				}
-      				use_tags: {}
-      				#terminal:
-      				1: 
-      					add_groups: {'gpu_hookup','pbb_docktime'}
-      					remove_groups: {'pbb_docktime', 'gpu_hookup'}
-      					use_groups: {'pca_hookup'}
-      					add_tags: { 
-      						csw_tag003:{Tag:"CSW.TAG003",Label:"CSW TAG003 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData",Object:null}},
-      						csw_tag004:{Tag:"CSW.TAG004",Label:"CSW TAG004 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData",Object:null}},
-      					} 
-      					remove_tags:  { 'csw_tag004' }
-      					update_tags:  { 
-      						csw_tag003:{Tag:"CSW.TAG003a",Label:"CSW TAG003a Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData",Object:null}},
-      					}
-      					use_tags: {}
-      					#zone:
-      					1:
-      						add_groups: {'gpu_ra_out_avg','pbb_hookup'}
-      						remove_groups: {'pbb_hookup'}
-      						use_groups: {'gpu_gpustatus'}
-      						add_tags: { 
-      							csw_tag005:{Tag:"CSW.TAG005",Label:"CSW TAG005 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData",Object:null}},
-      							csw_tag006:{Tag:"CSW.TAG006",Label:"CSW TAG006 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData",Object:null}},
-      						} 
-      						remove_tags:  { 'csw_tag006'}
-      						update_tags:  { 
-      							csw_tag005:{Tag:"CSW.TAG005a",Label:"CSW TAG005a Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData",Object:null}},
-      						}
-      						use_tags: {}
-      						#gate:
-      						C1:
-      							add_groups: {'gpu_status','gpu_rv_out_avg','pca_pcastatus'}
-      							remove_groups: {'pca_pcastatus'}
-      							use_groups: {'pbb_status'}
-      							add_tags: { 
-      								csw_tag007:{Tag:"CSW.TAG007",Label:"CSW TAG007 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData",Object:null}},
-      								csw_tag008:{Tag:"CSW.TAG008",Label:"CSW TAG008 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData",Object:null}},
-      							} 
-      							remove_tags:  { 'csw_tag008' }
-      							update_tags:  {
-      								csw_tag007:{Tag:"CSW.TAG007a",Label:"CSW TAG007a Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData",Object:null}},
-      							}
-      							use_tags: {}
-      			*************************************************************************************
-       */
     },
     DAL: {
       futute: {
@@ -6081,260 +6241,246 @@ TagConfig = (function(superClass) {
     }
   };
 
-  function TagConfig(Groups, Tags, Site_Code, Site) {
-    var Data, Group, GroupData, Tag, addGroups, addTags, data, gateData, gateMod, groupData, groupMod, i, j, key, len, len1, ref, removeTags, termData, termMod, useGroups, useTags, zoneData, zoneMod;
+
+  /*********************************************************************************
+  	**  Widget: String
+  	**  Groups: { String, String, ... }
+  	**  Tags: { Tag, Tag, Tag, ...}
+  	**        Tag = tag_name:{Tag:'PATH.NAME',Label:'Label',DataType:'[DataType]',Parameters:{Parm001:[value],Parm002:[value],Parm003:[value]...},Element:{Type:'[HTML Element Type]',ParentID:'#ParentID',Object:[null or <HTML Element definition/>]}},
+  	**  Site_Code: String
+  	**  Site:  Site Object From Widgets
+  	***********************************************************************************
+  	** NOTES: 
+  	***********************************************************************************
+  	** If Groups OR Tags parameters are set, the Widget.Tags WILL NOT be used.
+  	** If Group AND Tags parameters are set, the Tags will be apopended to the group 
+  	**      tags
+  	** Site_Code AND Site must be set or an error will be thrown
+  	********************************************************************************
+   */
+
+  function TagConfig(Widget, Groups, Tags, Site_Code, Site) {
+    var addGraphics, addGroups, addTags, data, found_use, graphic, graphicData, group, groupList, j, k, key, l, len, len1, len2, lookupProps, mod, modList, propCnt, property, propertyList, ref, ref1, ref2, removeGraphics, removeGroups, removeTags, tag, updateGraphics, updateTags, useGraphics, useGroups, useTags;
     this.TagData = [];
+    this.Graphics = [];
+    addGroups = [];
+    removeGroups = [];
+    useGroups = [];
+    addGraphics = [];
+    removeGraphics = [];
+    updateGraphics = [];
+    useGraphics = [];
+    addTags = [];
+    removeTags = [];
+    updateTags = [];
+    useTags = [];
+    if (Widget != null ? Widget.length = 0 : void 0) {
+      if (Object.keys(this.constructor.widgets).indexOf(Widget) < 0) {
+        throw new Error("Class does not contain a configuration for Widget: " + Widget);
+      }
+    }
+    if ((Site_Code != null ? Site_Code.length : void 0) > 0 && (Site != null ? Site.length = 0 : void 0)) {
+      throw new Error("Class cannot have Site_Code without Site: Widget: " + Widget);
+    }
+    if (Site_Code != null ? Site_Code.length = 0 && (Site != null ? Site.length : void 0) > 0 : void 0) {
+      throw new Error("Class cannot have Site without Site_Code: Widget: " + Widget);
+    }
+    if ((Widget != null) && Widget.length > 0) {
+      ref = this.constructor.widgets[Widget].Graphics;
+      for (graphic in ref) {
+        graphicData = ref[graphic];
+        this.Graphics[graphic] = graphicData;
+      }
+      for (tag in this.constructor.widgets[Widget].Tags) {
+        if (Object.keys(this.constructor.tags).indexOf(tag) > -1) {
+          this.TagData[tag] = this.constructor.tags[tag];
+        }
+      }
+    }
+    if ((Groups != null) && Object.keys(Groups).length > 0) {
+      for (key in Groups) {
+        group = Groups[key];
+        ref1 = this.constructor.groups[group];
+        for (tag in ref1) {
+          data = ref1[tag];
+          if (Object.keys(this.constructor.tags).indexOf(tag) > -1) {
+            this.TagData[tag] = this.constructor.tags[tag];
+          }
+        }
+      }
+    }
+    if ((Tags != null) && Object.keys(Tags).length > 0) {
+      this.TagData = Tags;
+    }
     if ((Site_Code != null ? Site_Code.length : void 0) > 0) {
-      addGroups = [];
-      addTags = [];
-      removeTags = [];
-      useGroups = [];
-      useTags = [];
-      if ((Groups != null) && Object.keys(Groups).length > 0) {
-        addGroups = Groups;
+
+      /* LOOP: Get Graphics */
+      groupList = [];
+      groupList["root"] = '';
+      groupList[Widget] = Widget;
+      for (key in Groups) {
+        group = Groups[key];
+        groupList[group] = group;
       }
-      if ((Tags != null) && Object.keys(Tags).length > 0) {
-        addTags = Tags;
+      propertyList = [Site.terminal, Site.zone, Site.gate];
+      modList = ["use_graphics", "add_graphics", "update_graphics", "remove_graphics"];
+      found_use = false;
+      for (key in groupList) {
+        group = groupList[key];
+        propCnt = 0;
+        while (propCnt < propertyList.length + 1) {
+          for (j = 0, len = modList.length; j < len; j++) {
+            mod = modList[j];
+            lookupProps = propertyList.slice(0, propCnt);
+            lookupProps.unshift(group);
+            lookupProps.push(mod);
+            property = getProperty(this.constructor.clients[Site_Code], lookupProps);
+            if (property !== void 0) {
+              switch (mod) {
+                case "" + (modList.slice(0, 1)):
+                  found_use = true;
+                  this.Graphics = [];
+                  for (key in property) {
+                    data = property[key];
+                    this.Graphics[key] = data;
+                  }
+                  break;
+                case "" + (modList.slice(1, 2)):
+                case "" + (modList.slice(2, 3)):
+                  if (!found_use) {
+                    for (key in property) {
+                      data = property[key];
+                      this.Graphics[key] = data;
+                    }
+                  }
+                  break;
+                case "" + (modList.slice(3, 4)):
+                  if (!found_use) {
+                    for (key in property) {
+                      data = property[key];
+                      delete this.Graphics[key];
+                    }
+                  }
+              }
+            }
+          }
+          propCnt++;
+        }
       }
-      ref = this.constructor.clients[Site_Code];
-      for (Group in ref) {
-        GroupData = ref[Group];
-        console.log('Group:' + Group + ' GroupData: ' + GroupData);
-        if (Object.keys(addGroups).indexOf(Group) > -1) {
-          for (groupMod in GroupData) {
-            groupData = GroupData[groupMod];
-            console.log('groupMod:' + groupMod + ' groupData: ' + groupData);
-            switch (groupMod) {
-              case 'add_groups':
-                console.log('groupMod: ' + groupMod + '->add_groups');
-                for (key in groupData) {
-                  data = groupData[key];
-                  addGroups[key] = data;
-                }
-                break;
-              case 'remove_groups':
-                console.log('groupMod: ' + groupMod + '->remove_groups');
-                for (key in groupData) {
-                  data = groupData[key];
-                  delete addGroups[key];
-                }
-                break;
-              case 'use_groups':
-                console.log('groupMod: ' + groupMod + '->use_groups');
-                useGroups = groupData;
-                break;
-              case 'add_tags':
-                console.log('groupMod: ' + groupMod + '->add_tags');
-                for (key in groupData) {
-                  data = groupData[key];
-                  addTags[key] = data;
-                }
-                break;
-              case 'remove_tags':
-                console.log('groupMod: ' + groupMod + '->remove_tags');
-                for (key in groupData) {
-                  data = groupData[key];
-                  removeTags[key] = data;
-                }
-                break;
-              case 'update_tags':
-                console.log('groupMod: ' + groupMod + '->update_tags');
-                for (key in groupData) {
-                  data = groupData[key];
-                  addTags[key] = data;
-                }
-                break;
-              case 'use_tags':
-                console.log('groupMod: ' + groupMod + '->use_tags');
-                useTags = groupData;
-                break;
-              case Site.terminal:
-                for (termMod in groupData) {
-                  termData = groupData[termMod];
-                  console.log('termMod:' + termMod + ' termData: ' + termData);
-                  switch (termMod) {
-                    case 'add_groups':
-                      console.log('termMod: ' + termMod + '->add_groups');
-                      for (key in termData) {
-                        data = termData[key];
-                        addGroups[key] = data;
+
+      /* LOOP: Get Groups */
+      modList = ["use_groups", "add_groups", "remove_groups"];
+      found_use = false;
+      for (key in groupList) {
+        group = groupList[key];
+        propCnt = 0;
+        while (propCnt < propertyList.length + 1) {
+          for (k = 0, len1 = modList.length; k < len1; k++) {
+            mod = modList[k];
+            lookupProps = propertyList.slice(0, propCnt);
+            lookupProps.push(mod);
+            property = getProperty(this.constructor.clients[Site_Code], lookupProps);
+            if (property !== void 0) {
+              switch (mod) {
+                case "" + (modList.slice(0, 1)):
+                  found_use = true;
+                  addGroups = [];
+                  this.TagData = [];
+                  for (key in property) {
+                    group = property[key];
+                    addGroups[key] = group;
+                  }
+                  break;
+                case "" + (modList.slice(1, 2)):
+                  if (!found_use) {
+                    for (key in property) {
+                      group = property[key];
+                      if (Object.keys(addGroups).indexOf(key) === -1) {
+                        addGroups[key] = group;
                       }
-                      break;
-                    case 'remove_groups':
-                      console.log('termMod: ' + termMod + '->remove_groups');
-                      for (key in termData) {
-                        data = termData[key];
+                    }
+                  }
+                  break;
+                case "" + (modList.slice(2, 3)):
+                  if (!found_use) {
+                    for (key in property) {
+                      group = property[key];
+                      if (Object.keys(addGroups).indexOf(group) > -1) {
                         delete addGroups[key];
                       }
-                      break;
-                    case 'use_groups':
-                      console.log('termMod: ' + termMod + '->use_groups');
-                      useGroups = termData;
-                      break;
-                    case 'add_tags':
-                      console.log('termMod: ' + termMod + '->add_tags');
-                      for (key in termData) {
-                        data = termData[key];
-                        addTags[key] = data;
-                      }
-                      break;
-                    case 'remove_tags':
-                      console.log('termMod: ' + termMod + '->remove_tags');
-                      for (key in termData) {
-                        data = termData[key];
-                        removeTags[key] = data;
-                      }
-                      break;
-                    case 'update_tags':
-                      console.log('termMod: ' + termMod + '->update_tags');
-                      for (key in termData) {
-                        data = termData[key];
-                        addTags[key] = data;
-                      }
-                      break;
-                    case 'use_tags':
-                      console.log('termMod: ' + termMod + '->use_tags');
-                      useTags = termData;
-                      break;
-                    case Site.zone:
-                      for (zoneMod in termData) {
-                        zoneData = termData[zoneMod];
-                        console.log('zoneMod:' + zoneMod + ' zoneData: ' + zoneData);
-                        switch (zoneMod) {
-                          case 'add_groups':
-                            console.log('zoneMod: ' + zoneMod + '->add_groups');
-                            for (key in zoneData) {
-                              data = zoneData[key];
-                              addGroups[key] = data;
-                            }
-                            break;
-                          case 'remove_groups':
-                            console.log('zoneMod: ' + zoneMod + '->remove_groups');
-                            for (data = i = 0, len = zoneData.length; i < len; data = ++i) {
-                              key = zoneData[data];
-                              delete addGroups[key];
-                            }
-                            break;
-                          case 'use_groups':
-                            console.log('zoneMod: ' + zoneMod + '->use_groups');
-                            useGroups = zoneData;
-                            break;
-                          case 'add_tags':
-                            console.log('zoneMod: ' + zoneMod + '->add_tags');
-                            for (key in zoneData) {
-                              data = zoneData[key];
-                              addTags[key] = data;
-                            }
-                            break;
-                          case 'remove_tags':
-                            console.log('zoneMod: ' + zoneMod + '->remove_tags');
-                            for (key in zoneData) {
-                              data = zoneData[key];
-                              removeTags[key] = data;
-                            }
-                            break;
-                          case 'update_tags':
-                            console.log('zoneMod: ' + zoneMod + '->update_tags');
-                            for (key in zoneData) {
-                              data = zoneData[key];
-                              addTags[key] = data;
-                            }
-                            break;
-                          case 'use_tags':
-                            console.log('zoneMod: ' + zoneMod + '->use_tags');
-                            useTags = zoneData;
-                            break;
-                          case Site.gate:
-                            for (gateMod in zoneData) {
-                              gateData = zoneData[gateMod];
-                              console.log('gateMod:' + gateMod + ' data: ' + gateData);
-                              switch (gateMod) {
-                                case 'add_groups':
-                                  console.log('gateMod: ' + gateMod + '->add_groups');
-                                  for (key in gateData) {
-                                    data = gateData[key];
-                                    addGroups[key] = data;
-                                  }
-                                  break;
-                                case 'remove_groups':
-                                  console.log('gateMod: ' + gateMod + '->remove_groups');
-                                  for (key in gateData) {
-                                    data = gateData[key];
-                                    delete addGroups[key];
-                                  }
-                                  break;
-                                case 'use_groups':
-                                  console.log('gateMod: ' + gateMod + '->use_groups');
-                                  useGroups = gateData;
-                                  break;
-                                case 'add_tags':
-                                  console.log('gateMod: ' + gateMod + '->add_tags');
-                                  for (key in gateData) {
-                                    data = gateData[key];
-                                    addTags[key] = data;
-                                  }
-                                  break;
-                                case 'remove_tags':
-                                  console.log('gateMod: ' + gateMod + '->remove_tags');
-                                  for (key in gateData) {
-                                    data = gateData[key];
-                                    removeTags[key] = data;
-                                  }
-                                  break;
-                                case 'update_tags':
-                                  console.log('gateMod: ' + gateMod + '->update_tags');
-                                  for (key in gateData) {
-                                    data = gateData[key];
-                                    addTags[key] = data;
-                                  }
-                                  break;
-                                case 'use_tags':
-                                  console.log('gateMod: ' + gateMod + '->use_tags');
-                                  useTags = gateData;
-                              }
-                            }
-                        }
-                      }
+                    }
                   }
-                }
+              }
+            }
+          }
+          propCnt++;
+        }
+      }
+      if ((addGroups != null) && Object.keys(addGroups).length > 0) {
+        for (key in addGroups) {
+          group = addGroups[key];
+          ref2 = this.constructor.groups[group];
+          for (tag in ref2) {
+            data = ref2[tag];
+            if (Object.keys(this.constructor.tags).indexOf(tag) > -1) {
+              this.TagData[tag] = this.constructor.tags[tag];
             }
           }
         }
       }
-      if (Object.keys(addGroups).length > 0) {
-        for (key in addGroups) {
-          data = addGroups[key];
-          for (Tag in this.constructor.groups[key]) {
-            this.TagData[Tag] = this.constructor.tags[Tag];
+
+      /* LOOP: Get Tags */
+      modList = ["use_tags", "add_tags", "update_tags", "remove_tags"];
+      found_use = false;
+      for (key in groupList) {
+        group = groupList[key];
+        propCnt = 0;
+        while (propCnt < propertyList.length + 1) {
+          for (l = 0, len2 = modList.length; l < len2; l++) {
+            mod = modList[l];
+            lookupProps = propertyList.slice(0, propCnt);
+            lookupProps.push(mod);
+            property = getProperty(this.constructor.clients[Site_Code], lookupProps);
+            if (property !== void 0) {
+              switch (mod) {
+                case "" + (modList.slice(0, 1)):
+                  found_use = true;
+                  this.TagData = [];
+                  for (key in property) {
+                    data = property[key];
+                    this.TagData[key] = data;
+                  }
+                  break;
+                case "" + (modList.slice(1, 2)):
+                case "" + (modList.slice(2, 3)):
+                  if (!found_use) {
+                    for (key in property) {
+                      data = property[key];
+                      this.TagData[key] = data;
+                    }
+                  }
+                  break;
+                case "" + (modList.slice(3, 4)):
+                  if (!found_use) {
+                    for (key in property) {
+                      data = property[key];
+                      delete this.TagData[key];
+                    }
+                  }
+              }
+            }
           }
+          propCnt++;
         }
-      }
-      if (Object.keys(addTags).length > 0) {
-        for (Tag in addTags) {
-          Data = addTags[Tag];
-          this.TagData[Tag] = Data;
-        }
-      }
-      if (Object.keys(removeTags).length > 0) {
-        for (Tag in removeTags) {
-          Data = removeTags[Tag];
-          delete this.TagData[Tag];
-        }
-      }
-    } else if ((Groups != null ? Groups.length : void 0) > 0) {
-      for (j = 0, len1 = Groups.length; j < len1; j++) {
-        Group = Groups[j];
-        for (Tag in this.constructor.groups[Group]) {
-          this.TagData[Tag] = this.constructor.tags[Tag];
-        }
-      }
-    } else {
-      for (Tag in Tags) {
-        Data = Tags[Tag];
-        this.TagData[Tag] = Data;
       }
     }
   }
+
+
+  /************************************************************
+  	** FUNCTION BLOCK
+  	***********************************************************
+   */
 
   TagConfig.prototype.addTags = function(Tags) {
     var Data, Tag, results;
@@ -6347,10 +6493,10 @@ TagConfig = (function(superClass) {
   };
 
   TagConfig.prototype.removeTags = function(Tags) {
-    var Tag, i, len, results;
+    var Tag, j, len, results;
     results = [];
-    for (i = 0, len = Tags.length; i < len; i++) {
-      Tag = Tags[i];
+    for (j = 0, len = Tags.length; j < len; j++) {
+      Tag = Tags[j];
       results.push(delete this.TagData[Tag]);
     }
     return results;
@@ -6360,42 +6506,56 @@ TagConfig = (function(superClass) {
     return this.TagData[Tag] = Data;
   };
 
+  TagConfig.prototype.addGraphics = function(Graphics) {
+    var Graphic, Widget, results;
+    results = [];
+    for (Widget in Graphics) {
+      Graphic = Graphics[Widget];
+      results.push(this.Graphics[Widget] = Graphic);
+    }
+    return results;
+  };
+
+  TagConfig.prototype.removeGraphics = function(Graphics) {
+    var Graphic, Widget, results;
+    results = [];
+    for (Widget in Graphics) {
+      Graphic = Graphics[Widget];
+      results.push(delete this.Graphics[Widget][Graphic]);
+    }
+    return results;
+  };
+
+  TagConfig.prototype.updateGraphics = function(Graphics) {
+    var Graphic, Widget, results;
+    results = [];
+    for (Widget in Graphics) {
+      Graphic = Graphics[Widget];
+      results.push(this.Graphics[Widget] = Graphic);
+    }
+    return results;
+  };
+
+  getProperty = function(obj, prop) {
+    var i, iLen;
+    i = 0;
+    iLen = prop.length - 1;
+    while (i < iLen) {
+      if (typeof obj[prop[i]] === 'object') {
+        obj = obj[prop[i]];
+      } else {
+        return;
+      }
+      i++;
+    }
+    return obj[prop[i]];
+  };
+
   return TagConfig;
 
 })(Object);
 
 module.exports = TagConfig;
-
-
-/*
-This is the usage of the above class
- */
-
-
-/*
-$ ->
-  newData = {
-	csw_tag001: {Tag: "CSW.TAG001",Label:"CSW TAG001 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData", Object: null} } ,
-	csw_tag002: {Tag: "CSW.TAG002",Label:"CSW TAG002 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData", Object: null} } ,
-	csw_tag003: {Tag: "CSW.TAG003",Label:"CSW TAG003 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData", Object: null} } ,
-	csw_tag004: {Tag: "CSW.TAG004",Label:"CSW TAG004 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData", Object: null} }
-	max_tag001: {Tag: "MAX.TAG001",Label:"MAX TAG001 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData", Object: null} } ,
-	max_tag002: {Tag: "MAX.TAG002",Label:"MAX TAG002 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData", Object: null} } ,
-  }
-  addData = {
-	csw_tag005: {Tag: "CSW.TAG005",Label:"CSW TAG005 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData", Object: null} } ,
-	csw_tag006: {Tag: "CSW.TAG006",Label:"CSW TAG006 Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData", Object: null} } ,
-  }
-
-	#loadTags = []
-  #['pbb_pca_gpu_basic_widget']
-  tagConfig = new TagConfig(null, newData)
-  tagConfig.addTags addData
-  tagConfig.removeTags ['max_tag001','max_tag002']
-  tagConfig.updateTag 'csw_tag005', {Tag: "CSW.TAG005a",Label:"CSW TAG005a Avereage",DataType:"Float",Parameters:{Parm001:true,Parm002:1,Parm003:"Volts"},Element:{Type:"TableRow",ParentID:"#widgetData", Object: null} }
-  console.log tagConfig.TagData
-  console.log tagConfig.TagData.csw_tag001.Label
- */
 
 },{}],8:[function(require,module,exports){
 var Marionette, ModalView, UIUtils,
@@ -11519,7 +11679,7 @@ IOPSWidgetView = require('./iops_widget_view');
 UIUtils = require('../../common/uiutils');
 
 GpusummaryWidgetView = (function(superClass) {
-  var tagData, tags;
+  var tagConfig, tagData, tags;
 
   extend(GpusummaryWidgetView, superClass);
 
@@ -11583,6 +11743,8 @@ GpusummaryWidgetView = (function(superClass) {
    */
 
   tagData = [];
+
+  tagConfig = [];
 
   GpusummaryWidgetView.prototype.initialize = function() {};
 
@@ -11698,7 +11860,7 @@ GpusummaryWidgetView = (function(superClass) {
   };
 
   GpusummaryWidgetView.prototype.update = function() {
-    var lbl, ref, s, show_opts, t, tag, tagConfig, tg;
+    var lbl, ref, s, show_opts, t, tag, tg;
     this.update_settings({
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
@@ -11711,25 +11873,14 @@ GpusummaryWidgetView = (function(superClass) {
     this.$('#mode').toggle(show_opts);
     if (show_opts) {
       this.kill_updates(this.site_code);
-      tagConfig = null;
-      this.tagData = null;
-      tagConfig = new App.tagconfig({
-        'gpu_summary_widget': 'gpu_summary_widget'
-      }, null, this.site_code, s);
-      this.tagData = tagConfig.TagData;
       tags = [];
+      this.tagData = [];
+      this.tagConfig = [];
+      this.tagConfig = this.create_dynamic_elements('gpu_summary_widget', null, null, this.site_code, s);
+      this.tagData = this.tagConfig.TagData;
       ref = this.tagData;
       for (tag in ref) {
         tagData = ref[tag];
-        switch (tagData.Element.Type) {
-          case 'TableRow':
-            if ($(".pbb_pca_gpu_basic_widget " + tagData.Element.ParentID + " td[id*='" + tag + "']").length === 0) {
-              $(".pbb_pca_gpu_basic_widget " + tagData.Element.ParentID).find("tbody:last").append("'<tr><td class='lbl' id='" + tag + "_lbl'>&nbsp;</td><td id='" + tag + "' class='val'>Loading...</td></tr>'");
-            }
-            break;
-          default:
-            null;
-        }
         tags.push("" + this.prefix + tagData.Tag + ".Value");
       }
       for (tg in this.tags) {
@@ -12218,7 +12369,7 @@ Marionette = require('marionette');
 IOPSWidgetView = require('./iops_widget_view');
 
 GpuWidgetView = (function(superClass) {
-  var tags;
+  var tagConfig, tagData, tags;
 
   extend(GpuWidgetView, superClass);
 
@@ -12253,8 +12404,12 @@ GpuWidgetView = (function(superClass) {
 
   tags = [];
 
+  tagData = [];
+
+  tagConfig = [];
+
   GpuWidgetView.prototype.update = function() {
-    var lbl, ref, ref1, s, t, tag, tagConfig, tagData, tg;
+    var lbl, ref, ref1, s, t, tag, tg;
     this.update_settings({
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
@@ -12265,26 +12420,14 @@ GpuWidgetView = (function(superClass) {
     s = this.model.get("settings");
     if ((s != null) && !!s.site) {
       this.kill_updates(this.site_code);
-      tagConfig = null;
-      this.tagData = null;
-      $('.gpu_widget #widgetData tbody').empty();
-      tagConfig = new App.tagconfig({
-        'gpu_widget': 'gpu_widget'
-      }, null, this.site_code, s);
-      this.tagData = tagConfig.TagData;
       tags = [];
+      this.tagData = [];
+      this.tagConfig = [];
+      this.tagConfig = this.create_dynamic_elements('gpu_widget', null, null, this.site_code, s);
+      this.tagData = this.tagConfig.tagData;
       ref1 = this.tagData;
       for (tag in ref1) {
         tagData = ref1[tag];
-        switch (tagData.Element.Type) {
-          case 'TableRow':
-            if ($(".gpu_widget " + tagData.Element.ParentID + " td[id*='" + tag + "']").length === 0) {
-              $(".gpu_widget " + tagData.Element.ParentID).find("tbody:last").append("'<tr><td class='lbl' id='" + tag + "_lbl'>&nbsp;</td><td id='" + tag + "' class='val'>Loading...</td></tr>'");
-            }
-            break;
-          default:
-            null;
-        }
         tags.push("" + this.prefix + tagData.Tag + ".Value");
       }
       for (tg in this.tags) {
@@ -12302,20 +12445,20 @@ GpuWidgetView = (function(superClass) {
   };
 
   GpuWidgetView.prototype.data_update = function(data) {
-    var aq, ref1, tag, tagData, wq;
+    var aq, ref1, tag, wq;
     this.refresh_values();
     ref1 = this.tagData;
     for (tag in ref1) {
       tagData = ref1[tag];
       switch (tagData.DataType.toLowerCase()) {
         case 'boolean':
-          this.render_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004, tagData.Parameters.Parm005);
+          this.render_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004, tagData.Parameters.Parm005);
           break;
         case 'float':
-          this.render_value_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004);
+          this.render_value_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004);
           break;
         case 'value':
-          this.render_value_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004);
+          this.render_value_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004);
           break;
         default:
           null;
@@ -12449,9 +12592,13 @@ IOPSWidgetView = (function(superClass) {
   };
 
   IOPSWidgetView.prototype.set_descriptions = function(force) {
-    var d, ref, ref1, t, tds, tg, tlen;
+    var d, ref, ref1, t, tdLen, tds, tg, tlen;
     tds = [];
-    tlen = Object.keys(this.tags).length;
+    tdLen = 0;
+    if (!(this.tagData == null)) {
+      tdLen = Object.keys(this.tagData).length;
+    }
+    tlen = Object.keys(this.tags).length + tdLen;
     if (!force && (this.dcount != null) && this.dcount >= tlen) {
       return;
     }
@@ -12506,7 +12653,11 @@ IOPSWidgetView = (function(superClass) {
                 } else {
                   v = idx.Label;
                 }
-                this.$("#" + tt + "_lbl").html(v);
+                if (this.$("#" + tt + "_lbl").length > 0) {
+                  this.$("#" + tt + "_lbl").html(v);
+                } else if (this.$("#dynamic_" + tt + "_lbl").length > 0) {
+                  this.$("#dynamic_" + tt + "_lbl").html(v);
+                }
                 this.dcount += 1;
                 break;
               } else {
@@ -12522,13 +12673,19 @@ IOPSWidgetView = (function(superClass) {
   };
 
   IOPSWidgetView.prototype.render_row = function(tag, tv, fv, tc, fc, format) {
-    var el, tagValue, txt, v;
+    var dynamicTag, el, elName, tagValue, txt, v;
+    dynamicTag = false;
+    elName = "" + tag;
+    if (/dynamic_/.test(tag)) {
+      dynamicTag = true;
+      tag = tag.replace('dynamic_', "");
+    }
     v = this.get_bool(this.vals[tag]);
     txt = v ? tv : fv;
     if (format != null) {
-      txt = format.replace(/#{1}/, ("" + txt).replace(/^\s+|\s+$/g, ""));
+      txt = format.replace('#{1}', ("" + txt).replace(/^\s+|\s+$/g, ""));
     }
-    el = this.$("#" + tag).html(txt);
+    el = this.$("#" + elName).html(txt);
     if (tc != null) {
       el.toggleClass(tc, v);
     }
@@ -12545,9 +12702,15 @@ IOPSWidgetView = (function(superClass) {
   };
 
   IOPSWidgetView.prototype.render_tagvalue = function(tag) {
-    var a, el1, tagValue;
+    var a, dynamicTag, el1, elName, tagValue;
+    dynamicTag = false;
+    elName = "" + tag;
+    if (/dynamic_/.test(tag)) {
+      dynamicTag = true;
+      tag = tag.replace('dynamic_', "");
+    }
     a = (this.vals[tag] != null) && this.vals[tag] !== '' ? parseFloat(this.vals[tag]).toFixed(2) : ' --';
-    el1 = this.$("#" + tag).html("" + a);
+    el1 = this.$("#" + elName).html("" + a);
     tagValue = null;
     if (this.tags[tag] != null) {
       tagValue = this.tags[tag];
@@ -12564,7 +12727,13 @@ IOPSWidgetView = (function(superClass) {
     **         otherwise replace #{1} with the #{set_value} 
     ********************************************************
      */
-    var displayValue, el, set_value, tagValue;
+    var displayValue, dynamicTag, el, elName, set_value, tagValue;
+    dynamicTag = false;
+    elName = "" + tag;
+    if (/dynamic_/.test(tag)) {
+      dynamicTag = true;
+      tag = tag.replace('dynamic_', "");
+    }
     if ((this.vals[tag] != null) && this.vals[tag] !== '') {
       set_value = IsNumeric ? parseFloat(this.vals[tag]).toFixed(precision) : this.vals[tag];
     } else {
@@ -12574,12 +12743,12 @@ IOPSWidgetView = (function(superClass) {
     if (format != null) {
       displayValue = '';
       if (format.search(/#{1}/) > -1) {
-        displayValue = format.replace(/#{1}/, ("" + set_value).replace(/^\s+|\s+$/g, ""));
+        displayValue = format.replace('#{1}', ("" + set_value).replace(/^\s+|\s+$/g, ""));
       } else {
         displayValue = (set_value + " " + format).replace(/^\s+|\s+$/g, "");
       }
     }
-    el = this.$("#" + tag).html(displayValue);
+    el = this.$("#" + elName).html(displayValue);
     tagValue = null;
     if (this.tags[tag] != null) {
       tagValue = this.tags[tag];
@@ -12587,6 +12756,78 @@ IOPSWidgetView = (function(superClass) {
       tagValue = this.tagData[tag].Tag;
     }
     return this.mark_bad_data(tagValue, el);
+  };
+
+  IOPSWidgetView.prototype.create_dynamic_elements = function(Widget, Groups, Tags, Site_Code, Site) {
+    var elType, img, imgData, ref, ref1, ref2, ref3, tag, tagConfig, tagData;
+    tagConfig = null;
+    tagConfig = new App.tagconfig(Widget, Groups, Tags, Site_Code, Site);
+    $("." + Widget + " [id^='dynamic_']").remove();
+
+    /*
+     * Remove any existing tag elements
+    for tag, tagData of tagConfig.TagData
+      elType = tagData.Element.Type.toLowerCase()
+      switch elType
+        when 'tablerow'
+          elType = 'td'
+          if $(".#{Widget} #{tagData.Element.ParentID} tbody td").length > 0
+            $(".#{Widget} #{tagData.Element.ParentID} tbody").empty()
+        else 
+          $(".#{Widget} #{tagData.Element.ParentID} #{elType}[id^='dynamic_']").remove()
+    
+     * Remove any existing image elements
+    for img, imgData of tagConfig.Graphics
+      elType = imgData.Element.Type.toLowerCase()
+      $(".#{Widget} #{imgData.Element.ParentID} #{elType}[id*='#{img}']").remove()
+     */
+    ref = tagConfig.TagData;
+    for (tag in ref) {
+      tagData = ref[tag];
+      elType = tagData.Element.Type.toLowerCase();
+      switch (elType) {
+        case 'tablerow':
+          elType = 'td';
+          if ($("." + Widget + " " + tagData.Element.ParentID + " " + elType + "[id*='dynamic_" + tag + "']").length === 0) {
+            $("." + Widget + " " + tagData.Element.ParentID).find("tbody:last").append("'<tr id='dynamic_" + tag + "_row'><td class='lbl' id='dynamic_" + tag + "_lbl'>&nbsp;</td><td id='dynamic_" + tag + "' class='val'>Loading...</td></tr>'");
+          }
+          break;
+        default:
+          elType = tagData.Element.Type.toLowerCase();
+          if ($("." + Widget + " " + tagData.Element.ParentID + " " + elType + "[id*='dynamic_" + tag + "']").length === 0) {
+            $("." + Widget + " " + tagData.Element.ParentID).append("<" + elType + " id='dynamic_" + tag + "'>Loading...</" + elType + ">");
+          }
+      }
+      if (((ref1 = tagData.Element.Class) != null ? ref1.length : void 0) > 0) {
+        $("." + Widget + "  " + tagData.Element.ParentID + " " + elType + "[id*='dynamic_" + tag + "']").removeClass();
+        $("." + Widget + "  " + tagData.Element.ParentID + " " + elType + "[id*='dynamic_" + tag + "']").addClass(tagData.Element.Class);
+      }
+    }
+    ref2 = tagConfig.Graphics;
+    for (img in ref2) {
+      imgData = ref2[img];
+      elType = imgData.Element.Type.toLowerCase();
+      if ($("." + Widget + " " + imgData.Element.ParentID + " " + elType + "[id*='dynamic_" + img + "']").length === 0) {
+        $("." + Widget + " " + imgData.Element.ParentID).append("<" + elType + " id='dynamic_" + img + "'></" + elType + ">");
+      }
+      if (((ref3 = imgData.Element.Class) != null ? ref3.length : void 0) > 0) {
+        $("." + Widget + "  " + imgData.Element.ParentID + " " + elType + "[id*='dynamic_" + img + "']").removeClass();
+        $("." + Widget + "  " + imgData.Element.ParentID + " " + elType + "[id*='dynamic_" + img + "']").addClass(imgData.Element.Class);
+      }
+    }
+    return tagConfig;
+  };
+
+  IOPSWidgetView.prototype.render_image = function(Image) {
+
+    /*********************************************************
+    ** format: If no #{1} is found in string treat as suffix
+    **         otherwise replace #{1} with the #{set_value} 
+    ********************************************************
+     */
+    debugger;
+    var img;
+    return img = Iamge[0];
   };
 
   IOPSWidgetView.prototype.update_settings = function(arg) {
@@ -13252,7 +13493,7 @@ Marionette = require('marionette');
 IOPSWidgetView = require('./iops_widget_view');
 
 PbbpcagpuWidgetView = (function(superClass) {
-  var tagData;
+  var tagConfig, tagData;
 
   extend(PbbpcagpuWidgetView, superClass);
 
@@ -13289,8 +13530,10 @@ PbbpcagpuWidgetView = (function(superClass) {
 
   tagData = [];
 
+  tagConfig = [];
+
   PbbpcagpuWidgetView.prototype.update = function() {
-    var lbl, ref, ref1, s, t, tag, tagConfig, tags, tg;
+    var lbl, ref, ref1, s, t, tag, tags, tg;
     this.update_settings({
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
@@ -13301,26 +13544,14 @@ PbbpcagpuWidgetView = (function(superClass) {
     s = this.model.get("settings");
     if ((s != null) && !!s.site) {
       this.kill_updates(this.site_code);
-      tagConfig = null;
-      this.tagData = null;
-      $('.pbb_pca_gpu_basic_widget #widgetData tbody').empty();
-      tagConfig = new App.tagconfig({
-        'pbb_pca_gpu_basic_widget': 'pbb_pca_gpu_basic_widget'
-      }, null, this.site_code, s);
-      this.tagData = tagConfig.TagData;
       tags = [];
+      this.tagData = [];
+      this.tagConfig = [];
+      this.tagConfig = this.create_dynamic_elements('pbb_pca_gpu_basic_widget', null, null, this.site_code, s);
+      this.tagData = this.tagConfig.TagData;
       ref1 = this.tagData;
       for (tag in ref1) {
         tagData = ref1[tag];
-        switch (tagData.Element.Type) {
-          case 'TableRow':
-            if ($(".pbb_pca_gpu_basic_widget " + tagData.Element.ParentID + " td[id*='" + tag + "']").length === 0) {
-              $(".pbb_pca_gpu_basic_widget " + tagData.Element.ParentID).find("tbody:last").append("'<tr><td class='lbl' id='" + tag + "_lbl'>&nbsp;</td><td id='" + tag + "' class='val'>Loading...</td></tr>'");
-            }
-            break;
-          default:
-            null;
-        }
         tags.push("" + this.prefix + tagData.Tag + ".Value");
       }
       for (tg in this.tags) {
@@ -13345,13 +13576,13 @@ PbbpcagpuWidgetView = (function(superClass) {
       tagData = ref1[tag];
       switch (tagData.DataType.toLowerCase()) {
         case 'boolean':
-          this.render_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004, tagData.Parameters.Parm005);
+          this.render_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004, tagData.Parameters.Parm005);
           break;
         case 'float':
-          this.render_value_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004);
+          this.render_value_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004);
           break;
         case 'value':
-          this.render_value_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004);
+          this.render_value_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004);
           break;
         default:
           null;
@@ -13427,7 +13658,7 @@ Marionette = require('marionette');
 IOPSWidgetView = require('./iops_widget_view');
 
 PbbWidgetView = (function(superClass) {
-  var tagData;
+  var tagConfig, tagData;
 
   extend(PbbWidgetView, superClass);
 
@@ -13464,8 +13695,10 @@ PbbWidgetView = (function(superClass) {
 
   tagData = [];
 
+  tagConfig = [];
+
   PbbWidgetView.prototype.update = function() {
-    var lbl, ref, ref1, s, t, tag, tagConfig, tags, tg;
+    var lbl, ref, ref1, s, t, tag, tags, tg;
     this.update_settings({
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
@@ -13476,26 +13709,14 @@ PbbWidgetView = (function(superClass) {
     s = this.model.get("settings");
     if ((s != null) && !!s.site) {
       this.kill_updates(this.site_code);
-      tagConfig = null;
-      this.tagData = null;
-      $('.pbb_widget #widgetData tbody').empty();
-      tagConfig = new App.tagconfig({
-        'pbb_widget': 'pbb_widget'
-      }, null, this.site_code, s);
-      this.tagData = tagConfig.TagData;
       tags = [];
+      this.tagData = [];
+      this.tagConfig = [];
+      this.tagConfig = this.create_dynamic_elements('pbb_widget', null, null, this.site_code, s);
+      this.tagData = this.tagConfig.TagData;
       ref1 = this.tagData;
       for (tag in ref1) {
         tagData = ref1[tag];
-        switch (tagData.Element.Type) {
-          case 'TableRow':
-            if ($(".pbb_widget " + tagData.Element.ParentID + " td[id*='" + tag + "']").length === 0) {
-              $(".pbb_widget " + tagData.Element.ParentID).find("tbody:last").append("'<tr><td class='lbl' id='" + tag + "_lbl'>&nbsp;</td><td id='" + tag + "' class='val'>Loading...</td></tr>'");
-            }
-            break;
-          default:
-            null;
-        }
         tags.push("" + this.prefix + tagData.Tag + ".Value");
       }
       for (tg in this.tags) {
@@ -13513,24 +13734,20 @@ PbbWidgetView = (function(superClass) {
   };
 
   PbbWidgetView.prototype.data_update = function(data) {
-    var aq, ref1, tag, tg, wq;
-    this.vals = {};
-    for (tg in this.tags) {
-      this.vals[tg] = this.get_value(this.tags[tg]);
-    }
+    var aq, ref1, tag, wq;
+    this.refresh_values();
     ref1 = this.tagData;
     for (tag in ref1) {
       tagData = ref1[tag];
-      this.vals[tag] = this.get_value(tagData.Tag);
       switch (tagData.DataType.toLowerCase()) {
         case 'boolean':
-          this.render_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004, tagData.Parameters.Parm005);
+          this.render_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004, tagData.Parameters.Parm005);
           break;
         case 'float':
-          this.render_value_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm00);
+          this.render_value_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm00);
           break;
         case 'value':
-          this.render_value_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004);
+          this.render_value_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004);
           break;
         default:
           null;
@@ -13606,7 +13823,7 @@ Marionette = require('marionette');
 IOPSWidgetView = require('./iops_widget_view');
 
 PcadischargeWidgetView = (function(superClass) {
-  var tagData, tags;
+  var tagConfig, tagData, tags;
 
   extend(PcadischargeWidgetView, superClass);
 
@@ -13640,10 +13857,12 @@ PcadischargeWidgetView = (function(superClass) {
 
   tagData = [];
 
+  tagConfig = [];
+
   PcadischargeWidgetView.prototype.max_gates = 6;
 
   PcadischargeWidgetView.prototype.update = function() {
-    var btg, g, gate, gp, j, len, ref, ref1, s, t, tag, tagConfig;
+    var btg, g, gate, gp, j, len, ref, ref1, s, t, tag;
     this.update_settings({
       prefix: 'Airport.#{@site_code}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
@@ -13659,26 +13878,14 @@ PcadischargeWidgetView = (function(superClass) {
         return;
       }
       this.kill_updates(this.site_code);
-      tagConfig = null;
-      this.tagData = null;
-      $('.pbb_pca_gpu_basic_widget #widgetData tbody').empty();
-      tagConfig = new App.tagconfig({
-        'pbb_pca_gpu_basic_widget': 'pbb_pca_gpu_basic_widget'
-      }, null, this.site_code, s);
-      this.tagData = tagConfig.TagData;
       tags = [];
+      this.tagData = [];
+      this.tagConfig = [];
+      this.tagConfig = this.create_dynamic_elements('pbb_pca_gpu_basic_widget', null, null, this.site_code, s);
+      this.tagData = this.tagConfig.TagData;
       ref = this.tagData;
       for (tag in ref) {
         tagData = ref[tag];
-        switch (tagData.Element.Type) {
-          case 'TableRow':
-            if ($(".pbb_pca_gpu_basic_widget " + tagData.Element.ParentID + " td[id*='" + tag + "']").length === 0) {
-              $(".pbb_pca_gpu_basic_widget " + tagData.Element.ParentID).find("tbody:last").append("'<tr><td class='lbl' id='" + tag + "_lbl'>&nbsp;</td><td id='" + tag + "' class='val'>Loading...</td></tr>'");
-            }
-            break;
-          default:
-            null;
-        }
         tags.push("" + this.prefix + tagData.Tag + ".Value");
       }
       for (btg in this.tags) {
@@ -14012,6 +14219,8 @@ IOPSWidgetView = require('./iops_widget_view');
 UIUtils = require('../../common/uiutils');
 
 PcasummaryWidgetView = (function(superClass) {
+  var tagConfig, tagData;
+
   extend(PcasummaryWidgetView, superClass);
 
   function PcasummaryWidgetView() {
@@ -14053,8 +14262,12 @@ PcasummaryWidgetView = (function(superClass) {
     pbb_has_alarms: 'Alarm._HasAlarms'
   };
 
+  tagData = [];
+
+  tagConfig = [];
+
   PcasummaryWidgetView.prototype.update = function() {
-    var lbl, ref, s, show_opts, t, tag, tagConfig, tagData, tags, tg;
+    var lbl, ref, s, show_opts, t, tData, tags, tg;
     this.update_settings({
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
@@ -14067,27 +14280,15 @@ PcasummaryWidgetView = (function(superClass) {
       show_opts = (s != null) && !!s.gate;
       this.$('#mode').toggle(show_opts);
       this.kill_updates(this.site_code);
-      tagConfig = null;
-      this.tagData = null;
-      $('.pca_summary_widget #widgetData tbody').empty();
-      tagConfig = new App.tagconfig({
-        'pca_summary_widget': 'pca_summary_widget'
-      }, null, this.site_code, s);
-      this.tagData = tagConfig.TagData;
       tags = [];
+      this.tagData = [];
+      this.tagConfig = [];
+      this.tagConfig = this.create_dynamic_elements('pca_summary_widget', null, null, this.site_code, s);
+      this.tagData = this.tagConfig.TagData;
       ref = this.tagData;
-      for (tag in ref) {
-        tagData = ref[tag];
-        switch (tagData.Element.Type) {
-          case 'TableRow':
-            if ($(".pca_summary_widget " + tagData.Element.ParentID + " td[id*='" + tag + "']").length === 0) {
-              $(".pca_summary_widget " + tagData.Element.ParentID).find("tbody:last").append("'<tr><td class='lbl' id='" + tag + "_lbl'>&nbsp;</td><td id='" + tag + "' class='val'>Loading...</td></tr>'");
-            }
-            break;
-          default:
-            null;
-        }
-        tags.push("" + this.prefix + tagData.Tag + ".Value");
+      for (t in ref) {
+        tData = ref[t];
+        tags.push("" + this.prefix + tData.Tag + ".Value");
       }
       for (tg in this.tags) {
         t = this.tags[tg];
@@ -14103,7 +14304,7 @@ PcasummaryWidgetView = (function(superClass) {
   };
 
   PcasummaryWidgetView.prototype.data_update = function(data) {
-    var ad, add, ambd, ambhumidity, aq, b, bd, bdd, bdq, bq, c, cd, cls, co1, co1q, co2, co2q, coildp, h, h1, h1q, h2, h2q, hot1d, hot2d, hotgas1, hotgas2, icn, m, p, pc, pcd, pq, s, sq, stat, suc1d, suc2d, sucpressure1, sucpressure2, t, th, txt, txta, txtb, v, vfd, vfdspeed, vq, wq;
+    var ad, add, all_true, ambd, ambhumidity, any_true, aq, bd, bdd, cd, cls, coildp, good_quality, h, hot1d, hot2d, hotgas1, hotgas2, icn, img, imgData, m, pc, pcd, ref, ref1, ref2, ref3, ref4, ref5, s, sq, stat, suc1d, suc2d, sucpressure1, sucpressure2, t, tag, tagQuality, tagVal, th, true_val, txt, txta, txtb, type, v, vfd, vfdspeed, vq, wq;
     this.refresh_values();
     vq = this.data_q(this.tagData.pca_discharge_temp.Tag);
     this.$("#gauge_volts_out_" + this.model.id + " .bad_data").toggle(!vq);
@@ -14224,57 +14425,140 @@ PcasummaryWidgetView = (function(superClass) {
     if (this.tagData.pca_status != null) {
       this.render_row("pca_status", "On", "Off", "ok", " ");
     }
-    c = this.tagData.pca_blower != null ? this.get_bool(this.vals.pca_blower) : false;
-    p = this.tagData.pca_status != null ? this.get_bool(this.vals.pca_status) : false;
-    h1 = this.tagData.pca_heater_1 != null ? this.get_bool(this.vals.pca_heater_1) : false;
-    h2 = this.tagData.pca_heater_2 != null ? this.get_bool(this.vals.pca_heater_2) : false;
-    co1 = this.tagData.pca_comp_stage_1 != null ? this.get_bool(this.vals.pca_comp_stage_1) : false;
-    co2 = this.tagData.pca_comp_stage_2 != null ? this.get_bool(this.vals.pca_comp_stage_2) : false;
-    b = this.tagData.pca_bridge_damper != null ? this.get_bool(this.vals.pca_bridge_damper) : false;
-    bd = this.tagData.pca_bridge_air != null ? this.get_bool(this.vals.pca_bridge_air) : false;
-    if (this.tagData.pca_blower != null) {
-      sq = this.data_q(this.tagData.pca_blower.Tag);
-      this.$("#blower_img").toggleClass('bloweron', c === true && sq);
-    } else {
-      this.$("#blower_img").toggleClass('bloweron', false);
+    s = this.model.get("settings");
+    if ((s != null) && !!s.site) {
+      ref = this.tagConfig.Graphics;
+      for (img in ref) {
+        imgData = ref[img];
+        true_val = false;
+        good_quality = true;
+        if (!(imgData.Parameters['Parm001'] == null)) {
+          true_val = (ref1 = imgData.Parameters['Parm001'].toUpperCase() === 'ALL_TRUE') != null ? ref1 : {
+            "true": false
+          };
+          ref2 = imgData.ControlTags;
+          for (tag in ref2) {
+            type = ref2[tag];
+            if (this.tagData[tag] != null) {
+              switch (type.toLowerCase()) {
+                case 'boolean':
+                  tagQuality = this.data_q(this.tagData[tag].Tag);
+                  good_quality = (ref3 = good_quality && tagQuality) != null ? ref3 : {
+                    "true": false
+                  };
+                  tagVal = this.get_bool(this.vals[tag]);
+                  switch (imgData.Parameters['Parm001'].toUpperCase()) {
+                    case 'ALL_TRUE':
+                      all_true = (ref4 = all_true && tagVal) != null ? ref4 : {
+                        "true": false
+                      };
+                      break;
+                    case 'ANY_TRUE':
+                      any_true = (ref5 = !any_true && tagVal) != null ? ref5 : {
+                        "true": false
+                      };
+                      break;
+                    default:
+                      null;
+                  }
+                  break;
+                default:
+                  null;
+              }
+            } else {
+              true_val = false;
+            }
+          }
+        }
+        if (!good_quality) {
+          if (!(imgData.Parameters['Parm002'] == null)) {
+            this.$("#dynamic_" + img).toggleClass(imgData.Parameters['Parm002'], false);
+          }
+          if (!(imgData.Parameters['Parm004'] == null)) {
+            this.$("#dynamic_" + img).toggleClass(imgData.Parameters['Parm004'], true);
+          }
+        } else {
+          if (!(imgData.Parameters['Parm002'] == null)) {
+            this.$("#dynamic_" + img).toggleClass(imgData.Parameters['Parm002'], true_val && good_quality);
+          }
+        }
+      }
     }
-    if (this.tagData.pca_heater_1 != null) {
-      h1q = this.data_q(this.tagData.pca_heater_1.Tag);
-      this.$("#heatingstage1_img").toggleClass('heatingstage1on', h1 === true && h1q);
-    } else {
-      this.$("#heatingstage1_img").toggleClass('heatingstage1on', false);
-    }
-    if (this.tagData.pca_heater_2 != null) {
-      h2q = this.data_q(this.tagData.pca_heater_2.Tag);
-      this.$("#heatingstage2_img").toggleClass('heatingstage2on', h2 === true && h2q);
-    } else {
-      this.$("#heatingstage2_img").toggleClass('heatingstage2on', false);
-    }
-    if (this.tagData.pca_comp_stage_1 != null) {
-      co1q = this.data_q(this.tagData.pca_comp_stage_1.Tag);
-      this.$("#coolingstage1_img").toggleClass('coolingstage1on', co1 === true && co1q);
-    } else {
-      this.$("#coolingstage1_img").toggleClass('coolingstage1on', false);
-    }
-    if (this.tagData.pca_comp_stage_2 != null) {
-      co2q = this.data_q(this.tagData.pca_comp_stage_2.Tag);
-      this.$("#coolingstage2_img").toggleClass('coolingstage2on', co2 === true && co2q);
-    } else {
-      this.$("#coolingstage2_img").toggleClass('coolingstage2on', false);
-    }
-    if ((this.tagData.pca_bridge_damper != null) && (this.tagData.pca_status != null)) {
-      bq = this.data_q(this.tagData.pca_bridge_damper.Tag);
-      pq = this.data_q(this.tagData.pca_status.Tag);
-      this.$("#accool_img").toggleClass('accoolon', p === true && b === true && pq && bq);
-    } else {
-      this.$("#accool_img").toggleClass('accoolon', false);
-    }
-    if (this.tagData.pca_bridge_air != null) {
-      bdq = this.data_q(this.tagData.pca_bridge_air.Tag);
-      this.$("#bccool_img").toggleClass('bccoolon', bd === true && bdq);
-    } else {
-      this.$("#bccool_img").toggleClass('bccoolon', false);
-    }
+
+    /*
+    c = if @tagData.pca_blower? then @get_bool(@vals.pca_blower) else false
+    p = if @tagData.pca_status? then @get_bool(@vals.pca_status) else false
+    h1 = if @tagData.pca_heater_1? then @get_bool(@vals.pca_heater_1) else false
+    h2 = if @tagData.pca_heater_2? then @get_bool(@vals.pca_heater_2) else false
+    co1 = if @tagData.pca_comp_stage_1? then @get_bool(@vals.pca_comp_stage_1) else false
+    co2 = if @tagData.pca_comp_stage_2? then @get_bool(@vals.pca_comp_stage_2) else false
+    b = if @tagData.pca_bridge_damper? then @get_bool(@vals.pca_bridge_damper) else false
+    bd = if @tagData.pca_bridge_air? then @get_bool(@vals.pca_bridge_air) else false
+    f1 = if @tagData.pca_fan_1? then @get_bool(@vals.pca_fan_1) else false
+    f2 = if @tagData.pca_fan_2? then @get_bool(@vals.pca_fan_2) else false
+    f3 = if @tagData.pca_fan_3? then @get_bool(@vals.pca_fan_3) else false
+    
+    if @tagData.pca_blower?
+      sq = @data_q(@tagData.pca_blower.Tag)
+      @$("#blower_img").toggleClass('blower-on', c==true && sq)
+    else
+      @$("#blower_img").toggleClass('blower-on', false)
+    
+    if @tagData.pca_heater_1?
+      h1q = @data_q(@tagData.pca_heater_1.Tag)
+      @$("#heatingstage1_img").toggleClass('heating-stage-1-on', h1==true && h1q)
+    else
+      @$("#heatingstage1_img").toggleClass('heating-stage-1-on', false)
+    
+    if @tagData.pca_heater_2?
+      h2q = @data_q(@tagData.pca_heater_2.Tag)
+      @$("#heatingstage2_img").toggleClass('heating-stage-2-on', h2==true && h2q)
+    else
+      @$("#heatingstage2_img").toggleClass('heating-stage-2-on', false)
+    
+    if @tagData.pca_comp_stage_1?
+      co1q = @data_q(@tagData.pca_comp_stage_1.Tag)
+      @$("#coolingstage1_img").toggleClass('cooling-stage-1-on', co1==true && co1q)
+    else
+      @$("#coolingstage1_img").toggleClass('cooling-stage-1-on', false)
+    
+    if @tagData.pca_comp_stage_2?
+      co2q = @data_q(@tagData.pca_comp_stage_2.Tag)
+      @$("#coolingstage2_img").toggleClass('cooling-stage-2-on', co2==true && co2q)
+    else
+      @$("#coolingstage2_img").toggleClass('cooling-stage-2-on', false)
+    
+    if @tagData.pca_bridge_damper? && @tagData.pca_status?
+      bq = @data_q(@tagData.pca_bridge_damper.Tag)
+      pq = @data_q(@tagData.pca_status.Tag)
+      @$("#accool_img").toggleClass('ac-cool-on', p==true && b==true && pq && bq)
+    else
+      @$("#accool_img").toggleClass('ac-cool-on', false)
+    
+    if @tagData.pca_bridge_air?
+      bdq = @data_q(@tagData.pca_bridge_air.Tag)
+      @$("#bccool_img").toggleClass('bc-cool-on', bd==true && bdq)
+    else
+      @$("#bccool_img").toggleClass('bc-cool-on', false)
+    
+    if @tagData.pca_fan_1?
+      bdq = @data_q(@tagData.pca_fan_1.Tag)
+      @$("#fan1_img").toggleClass('fan-1-on', f1==true && bdq)
+    else
+      @$("#fan1_img").toggleClass('fan-1-on', false)
+    
+    if @tagData.pca_fan_2?
+      bdq = @data_q(@tagData.pca_fan_2.Tag)
+      @$("#fan2_img").toggleClass('fan-2-on', f2==true && bdq)
+    else
+      @$("#fan2_img").toggleClass('fan-2-on', false)
+    
+    if @tagData.pca_fan_3?
+      bdq = @data_q(@tagData.pca_fan_3.Tag)
+      @$("#fan3_img").toggleClass('fan-3-on', f3==true && bdq)
+    else
+      @$("#fan3_img").toggleClass('fan-3-on', false)
+     */
     aq = this.data_q(this.tags.pbb_has_alarms);
     this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
     wq = this.data_q(this.tags.pbb_has_warnings);
@@ -14690,7 +14974,7 @@ Marionette = require('marionette');
 IOPSWidgetView = require('./iops_widget_view');
 
 PcaWidgetView = (function(superClass) {
-  var tagData;
+  var tagConfig, tagData;
 
   extend(PcaWidgetView, superClass);
 
@@ -14731,8 +15015,10 @@ PcaWidgetView = (function(superClass) {
 
   tagData = [];
 
+  tagConfig = [];
+
   PcaWidgetView.prototype.update = function() {
-    var lbl, ref, ref1, s, t, tag, tagConfig, tags, tg;
+    var lbl, ref, ref1, s, t, tag, tags, tg;
     this.update_settings({
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
@@ -14743,26 +15029,14 @@ PcaWidgetView = (function(superClass) {
     s = this.model.get("settings");
     if ((s != null) && !!s.gate) {
       this.kill_updates(this.site_code);
-      tagConfig = null;
-      this.tagData = null;
-      $('.pca_widget #widgetData tbody').empty();
-      tagConfig = new App.tagconfig({
-        'pca_widget': 'pca_widget'
-      }, null, this.site_code, s);
-      this.tagData = tagConfig.TagData;
       tags = [];
+      this.tagData = [];
+      this.tagConfig = [];
+      this.tagConfig = this.create_dynamic_elements('pca_widget', null, null, this.site_code, s);
+      this.tagData = this.tagConfig.TagData;
       ref1 = this.tagData;
       for (tag in ref1) {
         tagData = ref1[tag];
-        switch (tagData.Element.Type) {
-          case 'TableRow':
-            if ($(".pca_widget " + tagData.Element.ParentID + " td[id*='" + tag + "']").length === 0) {
-              $(".pca_widget " + tagData.Element.ParentID).find("tbody:last").append("'<tr><td class='lbl' id='" + tag + "_lbl'>&nbsp;</td><td id='" + tag + "' class='val'>Loading...</td></tr>'");
-            }
-            break;
-          default:
-            null;
-        }
         tags.push("" + this.prefix + tagData.Tag + ".Value");
       }
       for (tg in this.tags) {
@@ -14780,24 +15054,20 @@ PcaWidgetView = (function(superClass) {
   };
 
   PcaWidgetView.prototype.data_update = function(data) {
-    var aq, ref1, tag, tg, wq;
-    this.vals = {};
-    for (tg in this.tags) {
-      this.vals[tg] = this.get_value(this.tags[tg]);
-    }
+    var aq, ref1, tag, wq;
+    this.refresh_values();
     ref1 = this.tagData;
     for (tag in ref1) {
       tagData = ref1[tag];
-      this.vals[tag] = this.get_value(tagData.Tag);
       switch (tagData.DataType.toLowerCase()) {
         case 'boolean':
-          this.render_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004, tagData.Parameters.Parm005);
+          this.render_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004, tagData.Parameters.Parm005);
           break;
         case 'float':
-          this.render_value_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004);
+          this.render_value_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004);
           break;
         case 'value':
-          this.render_value_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004);
+          this.render_value_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004);
           break;
         default:
           null;

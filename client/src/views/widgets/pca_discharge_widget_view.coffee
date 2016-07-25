@@ -22,7 +22,7 @@ class PcadischargeWidgetView extends IOPSWidgetView
   tags = []
 
   tagData = []
-    
+  tagConfig = []   
  
   max_gates: 6
     
@@ -42,21 +42,13 @@ class PcadischargeWidgetView extends IOPSWidgetView
       # stop listening for updates
       @kill_updates(@site_code)
 
-      tagConfig = null
-      @tagData = null
-      $('.pbb_pca_gpu_basic_widget #widgetData tbody').empty();
-      tagConfig = new App.tagconfig {'pbb_pca_gpu_basic_widget'}, null, @site_code, s
-      @tagData = tagConfig.TagData
-
       tags = []
+      @tagData = []
+      @tagConfig = []
+      @tagConfig = @create_dynamic_elements('pbb_pca_gpu_basic_widget', null, null, @site_code, s)
+      @tagData = @tagConfig.TagData
 
       for tag, tagData of @tagData
-        switch tagData.Element.Type
-          when 'TableRow'
-            if $(".pbb_pca_gpu_basic_widget #{tagData.Element.ParentID} td[id*='#{tag}']").length == 0
-              $(".pbb_pca_gpu_basic_widget " + tagData.Element.ParentID).find("tbody:last").append("'<tr><td class='lbl' id='#{tag}_lbl'>&nbsp;</td><td id='#{tag}' class='val'>Loading...</td></tr>'")
-          else null
-
         tags.push "#{@prefix}#{tagData.Tag}.Value"
 
       for btg of @tags

@@ -1,0 +1,212 @@
+###******************************************************************************************************
+***  Tag Definition Format
+*********************************************************************************************************
+Name: Tag:'Tag', Label: '', DataType:''
+							, Parameters: {Parm001: '', Parm002: '', Parm003: '', Parm004: '', }
+							, Element: {Type: 'TableRow', ParentID:'#widgetData', Object: null}
+******************************************************************************************************###
+
+
+###******************************************************************************************************
+***  Widget Definition Format
+*********************************************************************************************************
+widget_name: 
+	Tags: {'tag_001_name','tag_002_name','tag_003_name','tag_004_name',...}
+	Graphics: {
+		# BACKGROUND IMAGE DEFINITION
+		image_container_name:{ControlTags:{none:null},Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'div',ParentID:'#summary',Class:'background',Object:null}},
+		
+		# OVERLAY IMAGE DEFINITION
+		blower_img:{ControlTags:{pca_blower:'Boolean'},Parameters:{Parm001:null,Parm002:'blower-on',Parm003:null,Parm004:'blower-bq'},Element:{Type:'div',ParentID:'#pca_main_background',Class:'img',Object:null}},
+	}
+******************************************************************************************************###
+
+###******************************************************************************************************
+***  CLient Definition Tree Structure
+*********************************************************************************************************
+[Client Abbreviation]:
+	add_graphics:
+	update_graphics:
+	remove_graphics:
+	use_graphics:
+	add_groups:
+	remove_groups:
+	use_groups:
+	add_tags: 
+	remove_tags:
+	update_tags:
+	use_tags:
+	[Terminal ID]:
+		add_graphics:
+		update_graphics:
+		remove_graphics:
+		use_graphics:
+		add_groups:
+		remove_groups:
+		use_groups:
+		add_tags: 
+		remove_tags:
+		update_tags:
+		use_tags:
+		[Zone ID]:
+			add_graphics:
+			update_graphics:
+			remove_graphics:
+			use_graphics:
+			add_groups:
+			remove_groups:
+			use_groups:
+			add_tags: 
+			remove_tags:
+			update_tags:
+			use_tags:
+			[Gate ID]:
+				add_graphics:
+				update_graphics:
+				remove_graphics:
+				use_graphics:
+				add_groups:
+				remove_groups:
+				use_groups:
+				add_tags: 
+				remove_tags:
+				update_tags:
+				use_tags:
+	[Widget Name]:
+		add_graphics:
+		update_graphics:
+		remove_graphics:
+		use_graphics:
+		add_groups:
+		remove_groups:
+		use_groups:
+		add_tags: 
+		remove_tags:
+		update_tags:
+		use_tags:
+		[Terminal ID]:
+			add_graphics:
+			update_graphics:
+			remove_graphics:
+			use_graphics:
+			add_groups:
+			remove_groups:
+			use_groups:
+			add_tags: 
+			remove_tags:
+			update_tags:
+			use_tags:
+			[Zone ID]:
+				add_graphics:
+				update_graphics:
+				remove_graphics:
+				use_graphics:
+				add_groups:
+				remove_groups:
+				use_groups:
+				add_tags: 
+				remove_tags:
+				update_tags:
+				use_tags:
+				[Gate ID]:
+					add_graphics:
+					update_graphics:
+					remove_graphics:
+					use_graphics:
+					add_groups:
+					remove_groups:
+					use_groups:
+					add_tags: 
+					remove_tags:
+					update_tags:
+					use_tags:
+
+******************************************************************************************************###
+
+###******************************************************************************************************
+***  CLient Definition basic example
+*********************************************************************************************************
+	example_widget:
+		add_groups: {'gpu_basic_widget','pbb_basic_widget','pca_inet_50T_rev_1_0_00'}
+		remove_groups: {'pbb_pca_gpu_basic_widget'}
+		use_groups: {'pbb_pca_gpu_basic_widget'}
+		add_tags: { 
+			csw_tag001:{Tag:'CSW.TAG001',Label:'CSW TAG001 Avereage',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts'},Element:{Type:'TableRow',ParentID:'#widgetData',Object:null}},
+			csw_tag002:{Tag:'CSW.TAG002',Label:'CSW TAG002 Avereage',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts'},Element:{Type:'TableRow',ParentID:'#widgetData',Object:null}},
+		}
+		remove_tags:  { 'csw_tag002','gpu_gpustatus','gpu_hookup','gpu_ra_out_avg','gpu_rv_out_avg' }
+		update_tags:  { 
+			csw_tag001:{Tag:'CSW.TAG001a',Label:'CSW TAG001a Avereage',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts'},Element:{Type:'TableRow',ParentID:'#widgetData',Object:null}},
+		}
+		use_tags: {}
+		#terminal:
+		1: 
+			add_groups: {'gpu_hookup','pbb_docktime'}
+			remove_groups: {'pbb_docktime', 'gpu_hookup'}
+			use_groups: {'pca_hookup'}
+			add_tags: { 
+				csw_tag003:{Tag:'CSW.TAG003',Label:'CSW TAG003 Avereage',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts'},Element:{Type:'TableRow',ParentID:'#widgetData',Object:null}},
+				csw_tag004:{Tag:'CSW.TAG004',Label:'CSW TAG004 Avereage',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts'},Element:{Type:'TableRow',ParentID:'#widgetData',Object:null}},
+			} 
+			remove_tags:  { 'csw_tag004' }
+			update_tags:  { 
+				csw_tag003:{Tag:'CSW.TAG003a',Label:'CSW TAG003a Avereage',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts'},Element:{Type:'TableRow',ParentID:'#widgetData',Object:null}},
+			}
+			use_tags: {}
+			#zone:
+			1:
+				add_groups: {'gpu_ra_out_avg','pbb_hookup'}
+				remove_groups: {'pbb_hookup'}
+				use_groups: {'gpu_gpustatus'}
+				add_tags: { 
+					csw_tag005:{Tag:'CSW.TAG005',Label:'CSW TAG005 Avereage',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts'},Element:{Type:'TableRow',ParentID:'#widgetData',Object:null}},
+					csw_tag006:{Tag:'CSW.TAG006',Label:'CSW TAG006 Avereage',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts'},Element:{Type:'TableRow',ParentID:'#widgetData',Object:null}},
+				} 
+				remove_tags:  { 'csw_tag006'}
+				update_tags:  { 
+					csw_tag005:{Tag:'CSW.TAG005a',Label:'CSW TAG005a Avereage',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts'},Element:{Type:'TableRow',ParentID:'#widgetData',Object:null}},
+				}
+				use_tags: {}
+				#gate:
+				C1:
+					add_groups: {'gpu_status','gpu_rv_out_avg','pca_pcastatus'}
+					remove_groups: {'pca_pcastatus'}
+					use_groups: {'pbb_status'}
+					add_tags: { 
+						csw_tag007:{Tag:'CSW.TAG007',Label:'CSW TAG007 Avereage',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts'},Element:{Type:'TableRow',ParentID:'#widgetData',Object:null}},
+						csw_tag008:{Tag:'CSW.TAG008',Label:'CSW TAG008 Avereage',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts'},Element:{Type:'TableRow',ParentID:'#widgetData',Object:null}},
+					} 
+					remove_tags:  { 'csw_tag008' }
+					update_tags:  {
+						csw_tag007:{Tag:'CSW.TAG007a',Label:'CSW TAG007a Avereage',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts'},Element:{Type:'TableRow',ParentID:'#widgetData',Object:null}},
+					}
+					use_tags: {}
+******************************************************************************************************###
+
+
+###******************************************************************************************************
+***  Loading class via exposed functions
+*********************************************************************************************************
+$ ->
+  newData = {
+	csw_tag001: {Tag: 'CSW.TAG001',Label:'CSW TAG001 Avereage',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts'},Element:{Type:'TableRow',ParentID:'#widgetData', Object: null} } ,
+	csw_tag002: {Tag: 'CSW.TAG002',Label:'CSW TAG002 Avereage',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts'},Element:{Type:'TableRow',ParentID:'#widgetData', Object: null} } ,
+	csw_tag003: {Tag: 'CSW.TAG003',Label:'CSW TAG003 Avereage',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts'},Element:{Type:'TableRow',ParentID:'#widgetData', Object: null} } ,
+	csw_tag004: {Tag: 'CSW.TAG004',Label:'CSW TAG004 Avereage',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts'},Element:{Type:'TableRow',ParentID:'#widgetData', Object: null} }
+	max_tag001: {Tag: 'MAX.TAG001',Label:'MAX TAG001 Avereage',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts'},Element:{Type:'TableRow',ParentID:'#widgetData', Object: null} } ,
+	max_tag002: {Tag: 'MAX.TAG002',Label:'MAX TAG002 Avereage',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts'},Element:{Type:'TableRow',ParentID:'#widgetData', Object: null} } ,
+  }
+  addData = {
+	csw_tag005: {Tag: 'CSW.TAG005',Label:'CSW TAG005 Avereage',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts'},Element:{Type:'TableRow',ParentID:'#widgetData', Object: null} } ,
+	csw_tag006: {Tag: 'CSW.TAG006',Label:'CSW TAG006 Avereage',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts'},Element:{Type:'TableRow',ParentID:'#widgetData', Object: null} } ,
+  }
+
+	#loadTags = []
+  #['pbb_pca_gpu_basic_widget']
+  tagConfig = new TagConfig(null, newData)
+  tagConfig.addTags addData
+  tagConfig.removeTags ['max_tag001','max_tag002']
+  tagConfig.updateTag 'csw_tag005', {Tag: 'CSW.TAG005a',Label:'CSW TAG005a Avereage',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts'},Element:{Type:'TableRow',ParentID:'#widgetData', Object: null} }
+  console.log tagConfig.TagData
+  console.log tagConfig.TagData.csw_tag001.Label
+******************************************************************************************************###

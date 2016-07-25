@@ -30,7 +30,10 @@ class PcasummaryWidgetView extends IOPSWidgetView
     pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
     pbb_has_warnings :  'Warning._HasWarnings'
     pbb_has_alarms :    'Alarm._HasAlarms'
-    
+  
+  tagData = []
+  tagConfig = []
+
   update: ()->
     @update_settings
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
@@ -48,27 +51,19 @@ class PcasummaryWidgetView extends IOPSWidgetView
       # stop listening for updates
       @kill_updates(@site_code)
 
-      tagConfig = null
-      @tagData = null
-      $('.pca_summary_widget #widgetData tbody').empty();
-      tagConfig = new App.tagconfig {'pca_summary_widget'}, null, @site_code, s
-      @tagData = tagConfig.TagData
-
       tags = []
+      @tagData = []
+      @tagConfig = []
+      @tagConfig = @create_dynamic_elements('pca_summary_widget', null, null, @site_code, s)
+      @tagData = @tagConfig.TagData
 
-      for tag, tagData of @tagData
-        switch tagData.Element.Type
-          when 'TableRow'
-            if $(".pca_summary_widget #{tagData.Element.ParentID} td[id*='#{tag}']").length == 0
-              $(".pca_summary_widget " + tagData.Element.ParentID).find("tbody:last").append("'<tr><td class='lbl' id='#{tag}_lbl'>&nbsp;</td><td id='#{tag}' class='val'>Loading...</td></tr>'")
-          else null
-
-        tags.push "#{@prefix}#{tagData.Tag}.Value"
+      for t, tData of @tagData
+        tags.push "#{@prefix}#{tData.Tag}.Value"
 
       for tg of @tags
         t = @tags[tg]
         tags.push "#{@prefix}#{t}.Value"
-      
+
       App.opc.add_tags @site_code, tags
 
       lbl = "#{@site_code}: Gate #{s.gate} PCA - Overview"
@@ -85,6 +80,11 @@ class PcasummaryWidgetView extends IOPSWidgetView
     # refresh gauges
     @refresh_values()
     
+    #for img, imgdata of @graphicsData
+    #  switch imgData.ControlTags
+    #  imgQuality = @data_q(imgData.Con.Tag)
+
+
     vq = @data_q(@tagData.pca_discharge_temp.Tag)
     @$("#gauge_volts_out_#{@model.id} .bad_data").toggle(!vq)
     v = @vals.pca_discharge_temp
@@ -215,9 +215,42 @@ class PcasummaryWidgetView extends IOPSWidgetView
     if @tagData.pca_status?
       @render_row("pca_status", "On", "Off", "ok"," ")
 
-    #@render_tagvalue("pca_discharge_temp")
-    #@render_tagvalue("pca_ambient_temp")
+    s = @model.get("settings")
+    
+    if s? && !!s.site      
+      #tagConfig = new App.tagconfig 'pca_summary_widget', null, null, @site_code, s
+      for img, imgData of @tagConfig.Graphics
+        true_val = false      
+        good_quality = true
+        if !!imgData.Parameters['Parm001']?
+          true_val = imgData.Parameters['Parm001'].toUpperCase() == 'ALL_TRUE' ? true : false
+          for tag, type of imgData.ControlTags
+            if @tagData[tag]?
+              switch type.toLowerCase()
+                when 'boolean'
+                  tagQuality = @data_q(@tagData[tag].Tag)
+                  good_quality = good_quality && tagQuality ? true : false
+                  tagVal = @get_bool(@vals[tag])
+                  switch imgData.Parameters['Parm001'].toUpperCase()
+                    when 'ALL_TRUE'
+                      all_true = all_true && tagVal ? true : false    
+                    when 'ANY_TRUE'
+                      any_true = !any_true && tagVal ? true : false
+                    else null
+                else null
+            else
+              true_val = false
 
+        if !good_quality
+          if !!imgData.Parameters['Parm002']?
+            @$("#dynamic_#{img}").toggleClass(imgData.Parameters['Parm002'], false)
+          if !!imgData.Parameters['Parm004']?
+            @$("#dynamic_#{img}").toggleClass(imgData.Parameters['Parm004'], true)  
+        else 
+          if !!imgData.Parameters['Parm002']?
+            @$("#dynamic_#{img}").toggleClass(imgData.Parameters['Parm002'], true_val && good_quality)
+
+    ###
     c = if @tagData.pca_blower? then @get_bool(@vals.pca_blower) else false
     p = if @tagData.pca_status? then @get_bool(@vals.pca_status) else false
     h1 = if @tagData.pca_heater_1? then @get_bool(@vals.pca_heater_1) else false
@@ -226,50 +259,72 @@ class PcasummaryWidgetView extends IOPSWidgetView
     co2 = if @tagData.pca_comp_stage_2? then @get_bool(@vals.pca_comp_stage_2) else false
     b = if @tagData.pca_bridge_damper? then @get_bool(@vals.pca_bridge_damper) else false
     bd = if @tagData.pca_bridge_air? then @get_bool(@vals.pca_bridge_air) else false
+    f1 = if @tagData.pca_fan_1? then @get_bool(@vals.pca_fan_1) else false
+    f2 = if @tagData.pca_fan_2? then @get_bool(@vals.pca_fan_2) else false
+    f3 = if @tagData.pca_fan_3? then @get_bool(@vals.pca_fan_3) else false
 
     if @tagData.pca_blower?
       sq = @data_q(@tagData.pca_blower.Tag)
-      @$("#blower_img").toggleClass('bloweron', c==true && sq)
+      @$("#blower_img").toggleClass('blower-on', c==true && sq)
     else
-      @$("#blower_img").toggleClass('bloweron', false)
+      @$("#blower_img").toggleClass('blower-on', false)
 
     if @tagData.pca_heater_1?
       h1q = @data_q(@tagData.pca_heater_1.Tag)
-      @$("#heatingstage1_img").toggleClass('heatingstage1on', h1==true && h1q)
+      @$("#heatingstage1_img").toggleClass('heating-stage-1-on', h1==true && h1q)
     else
-      @$("#heatingstage1_img").toggleClass('heatingstage1on', false)
+      @$("#heatingstage1_img").toggleClass('heating-stage-1-on', false)
 
     if @tagData.pca_heater_2?
       h2q = @data_q(@tagData.pca_heater_2.Tag)
-      @$("#heatingstage2_img").toggleClass('heatingstage2on', h2==true && h2q)
+      @$("#heatingstage2_img").toggleClass('heating-stage-2-on', h2==true && h2q)
     else
-      @$("#heatingstage2_img").toggleClass('heatingstage2on', false)
+      @$("#heatingstage2_img").toggleClass('heating-stage-2-on', false)
 
     if @tagData.pca_comp_stage_1?
       co1q = @data_q(@tagData.pca_comp_stage_1.Tag)
-      @$("#coolingstage1_img").toggleClass('coolingstage1on', co1==true && co1q)
+      @$("#coolingstage1_img").toggleClass('cooling-stage-1-on', co1==true && co1q)
     else
-      @$("#coolingstage1_img").toggleClass('coolingstage1on', false)
+      @$("#coolingstage1_img").toggleClass('cooling-stage-1-on', false)
 
     if @tagData.pca_comp_stage_2?
       co2q = @data_q(@tagData.pca_comp_stage_2.Tag)
-      @$("#coolingstage2_img").toggleClass('coolingstage2on', co2==true && co2q)
+      @$("#coolingstage2_img").toggleClass('cooling-stage-2-on', co2==true && co2q)
     else
-      @$("#coolingstage2_img").toggleClass('coolingstage2on', false)
+      @$("#coolingstage2_img").toggleClass('cooling-stage-2-on', false)
 
     if @tagData.pca_bridge_damper? && @tagData.pca_status?
       bq = @data_q(@tagData.pca_bridge_damper.Tag)
       pq = @data_q(@tagData.pca_status.Tag)
-      @$("#accool_img").toggleClass('accoolon', p==true && b==true && pq && bq)
+      @$("#accool_img").toggleClass('ac-cool-on', p==true && b==true && pq && bq)
     else
-      @$("#accool_img").toggleClass('accoolon', false)
+      @$("#accool_img").toggleClass('ac-cool-on', false)
 
     if @tagData.pca_bridge_air?
       bdq = @data_q(@tagData.pca_bridge_air.Tag)
-      @$("#bccool_img").toggleClass('bccoolon', bd==true && bdq)
+      @$("#bccool_img").toggleClass('bc-cool-on', bd==true && bdq)
     else
-      @$("#bccool_img").toggleClass('bccoolon', false)
-    
+      @$("#bccool_img").toggleClass('bc-cool-on', false)
+
+    if @tagData.pca_fan_1?
+      bdq = @data_q(@tagData.pca_fan_1.Tag)
+      @$("#fan1_img").toggleClass('fan-1-on', f1==true && bdq)
+    else
+      @$("#fan1_img").toggleClass('fan-1-on', false)
+
+    if @tagData.pca_fan_2?
+      bdq = @data_q(@tagData.pca_fan_2.Tag)
+      @$("#fan2_img").toggleClass('fan-2-on', f2==true && bdq)
+    else
+      @$("#fan2_img").toggleClass('fan-2-on', false)
+
+    if @tagData.pca_fan_3?
+      bdq = @data_q(@tagData.pca_fan_3.Tag)
+      @$("#fan3_img").toggleClass('fan-3-on', f3==true && bdq)
+    else
+      @$("#fan3_img").toggleClass('fan-3-on', false)
+    ###
+
     # ALARMS
     aq = @data_q(@tags.pbb_has_alarms)
     @ui.alarms.toggle(@get_bool(@vals.pbb_has_alarms)==true && aq)

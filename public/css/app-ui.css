@@ -1544,119 +1544,42 @@ li.dashboard-link {
   min-height: 100%;
   min-width: 100%;
   overflow: auto; }
-  .pca_summary_widget .display #pcaoverview_img {
+  .pca_summary_widget .display div.background {
     position: absolute;
-    top: 12%;
-    left: 3%;
-    background-image: url("../img/pca/pcaoriginal.gif");
+    padding: 0;
+    margin: 0;
+    height: 90%;
+    width: 70%;
+    top: 5%;
+    left: 30%;
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: contain;
-    height: 30%;
-    width: 30%; }
-  .pca_summary_widget .display #pcamain_img {
+    background-size: 100%;
+    background-image: url("../img/pca/Inet-Model-001/Rev-001/Inet_PCAire-Main.png"); }
+    .pca_summary_widget .display div.background.jetair-xpc-3013 {
+      background-image: url("../img/pca/JetAir-XPC-3013/Rev-001/30-Ton-PCA-Base-Image.png"); }
+  .pca_summary_widget .display div.img {
     position: absolute;
-    top: 7.5%;
-    left: 23%;
-    background-image: url("../img/pca/Inet_PCAire-Main.gif");
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: contain;
-    height: 80%;
-    width: 80%; }
-  .pca_summary_widget .display #backgroundgrey_img {
-    position: relative;
-    float: left;
-    background-image: url("../img/pca/backgroundgrey.gif");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
-    height: 50%;
-    width: 50%; }
-  .pca_summary_widget .display #blower_img {
-    position: absolute;
-    top: 8%;
-    left: 25.5%;
-    background-image: none;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
-    height: 80%;
-    width: 80%; }
-    .pca_summary_widget .display #blower_img.bloweron {
-      background-image: url("../img/pca/Blower.gif"); }
-  .pca_summary_widget .display #coolingstage1_img {
-    position: absolute;
-    top: 7%;
-    left: 25.5%;
-    background-image: none;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
-    height: 80%;
-    width: 80%; }
-    .pca_summary_widget .display #coolingstage1_img.coolingstage1on {
-      background-image: url("../img/pca/Cooling-Stage-1.gif"); }
-  .pca_summary_widget .display #coolingstage2_img {
-    position: absolute;
-    top: 7%;
-    left: 25.5%;
-    background-image: none;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
-    height: 80%;
-    width: 80%; }
-    .pca_summary_widget .display #coolingstage2_img.coolingstage2on {
-      background-image: url("../img/pca/Cooling-Stage-2.gif"); }
-  .pca_summary_widget .display #heatingstage1_img {
-    position: absolute;
-    top: 8%;
-    left: 24.5%;
-    background-image: none;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
-    height: 80%;
-    width: 80%; }
-    .pca_summary_widget .display #heatingstage1_img.heatingstage1on {
-      background-image: url("../img/pca/Heat-Stage-1.gif"); }
-  .pca_summary_widget .display #heatingstage2_img {
-    position: absolute;
-    top: 8%;
-    left: 24.5%;
-    background-image: none;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
-    height: 80%;
-    width: 80%; }
-    .pca_summary_widget .display #heatingstage2_img.heatingstage2on {
-      background-image: url("../img/pca/Heat-Stage-2.gif"); }
-  .pca_summary_widget .display #accool_img {
-    position: absolute;
-    top: 6%;
-    left: 24%;
-    background-image: none;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
-    height: 80%;
-    width: 80%; }
-    .pca_summary_widget .display #accool_img.accoolon {
-      background-image: url("../img/pca/AC-Cool.gif"); }
-  .pca_summary_widget .display #bccool_img {
-    position: absolute;
-    top: 7%;
-    left: 24%;
-    background-image: none;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
-    height: 80%;
-    width: 80%; }
-    .pca_summary_widget .display #bccool_img.bccoolon {
-      background-image: url("../img/pca/BC-Cool.gif"); }
+    background-size: 100%;
+    height: 100%;
+    width: 100%;
+    background-image: none; }
+    .pca_summary_widget .display div.img.blower-on {
+      background-image: url("../img/pca/Inet-Model-001/Rev-001/Blower.png"); }
+    .pca_summary_widget .display div.img.cooling-stage-1-on {
+      background-image: url("../img/pca/Inet-Model-001/Rev-001/Cooling-Stage-1.png"); }
+    .pca_summary_widget .display div.img.cooling-stage-2-on {
+      background-image: url("../img/pca/Inet-Model-001/Rev-001/Cooling-Stage-2.png"); }
+    .pca_summary_widget .display div.img.heating-stage-1-on {
+      background-image: url("../img/pca/Inet-Model-001/Rev-001/Heat-Stage-1.png"); }
+    .pca_summary_widget .display div.img.heating-stage-2-on {
+      background-image: url("../img/pca/Inet-Model-001/Rev-001/Heat-Stage-2.png"); }
+    .pca_summary_widget .display div.img.ac-cool-on {
+      background-image: url("../img/pca/Inet-Model-001/Rev-001/AC-Cool.png"); }
+    .pca_summary_widget .display div.img.bc-cool-on {
+      background-image: url("../img/pca/Inet-Model-001/Rev-001/BC-Cool.png"); }
   .pca_summary_widget .display #display_label {
     margin-bottom: 3px; }
     .pca_summary_widget .display #display_label h1 {

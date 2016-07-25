@@ -23,6 +23,8 @@ class GpuWidgetView extends IOPSWidgetView
     sy: 10
 
   tags = []
+  tagData = []
+  tagConfig = []
   
   update: ()->
     @update_settings
@@ -37,21 +39,13 @@ class GpuWidgetView extends IOPSWidgetView
       # stop listening for updates
       @kill_updates(@site_code)
 
-      tagConfig = null
-      @tagData = null
-      $('.gpu_widget #widgetData tbody').empty();
-      tagConfig = new App.tagconfig {'gpu_widget'}, null, @site_code, s
-      @tagData = tagConfig.TagData
-
       tags = []
-
+      @tagData = []
+      @tagConfig = []
+      @tagConfig = @create_dynamic_elements('gpu_widget', null, null, @site_code, s)
+      @tagData = @tagConfig.tagData
+      
       for tag, tagData of @tagData
-        switch tagData.Element.Type
-          when 'TableRow'
-            if $(".gpu_widget #{tagData.Element.ParentID} td[id*='#{tag}']").length == 0
-              $(".gpu_widget " + tagData.Element.ParentID).find("tbody:last").append("'<tr><td class='lbl' id='#{tag}_lbl'>&nbsp;</td><td id='#{tag}' class='val'>Loading...</td></tr>'")
-          else null
-
         tags.push "#{@prefix}#{tagData.Tag}.Value"
 
       for tg of @tags
@@ -78,14 +72,13 @@ class GpuWidgetView extends IOPSWidgetView
     #  @vals[tg] = @get_value(@tags[tg])
     
     for tag, tagData of @tagData
-      #@vals[tag] =  @get_value(tagData.Tag)
       switch tagData.DataType.toLowerCase()
         when 'boolean'
-          @render_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004, tagData.Parameters.Parm005)
+          @render_row("dynamic_#{tag}", tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004, tagData.Parameters.Parm005)
         when 'float'
-          @render_value_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004)
+          @render_value_row("dynamic_#{tag}", tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004)
         when 'value'
-          @render_value_row(tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004)
+          @render_value_row("dynamic_#{tag}", tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004)
         #when 'byte' null
         #when 'int' null
         #when 'string' null
