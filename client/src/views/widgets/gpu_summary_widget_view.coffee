@@ -48,7 +48,8 @@ class GpusummaryWidgetView extends IOPSWidgetView
   *********************************************************###
 
   tagData = []
-    
+  tagConfig = []
+
   initialize: ()->
     #
 
@@ -139,20 +140,13 @@ class GpusummaryWidgetView extends IOPSWidgetView
       # stop listening for updates
       @kill_updates(@site_code)
 
-      tagConfig = null
-      @tagData = null
-      tagConfig = new App.tagconfig {'gpu_summary_widget'}, null, @site_code, s
-      @tagData = tagConfig.TagData
-
       tags = []
+      @tagData = []
+      @tagConfig = []
+      @tagConfig = @create_dynamic_elements('gpu_summary_widget', null, null, @site_code, s)
+      @tagData = @tagConfig.TagData
 
       for tag, tagData of @tagData
-        switch tagData.Element.Type
-          when 'TableRow'
-            if $(".pbb_pca_gpu_basic_widget #{tagData.Element.ParentID} td[id*='#{tag}']").length == 0
-              $(".pbb_pca_gpu_basic_widget " + tagData.Element.ParentID).find("tbody:last").append("'<tr><td class='lbl' id='#{tag}_lbl'>&nbsp;</td><td id='#{tag}' class='val'>Loading...</td></tr>'")
-          else null
-
         tags.push "#{@prefix}#{tagData.Tag}.Value"
 
       for tg of @tags

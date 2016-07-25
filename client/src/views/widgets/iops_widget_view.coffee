@@ -45,8 +45,11 @@ class IOPSWidgetView extends WidgetView
   # load tag descriptions once for labels
   set_descriptions: (force)=>
     tds = []
-    
-    tlen = Object.keys(@tags).length
+    tdLen = 0
+    if !!@tagData?
+      tdLen =  Object.keys(@tagData).length
+
+    tlen = Object.keys(@tags).length + tdLen
     return if !force && @dcount? && @dcount >= tlen
 
     @dcount = if force then 0 else @dcount
@@ -75,17 +78,27 @@ class IOPSWidgetView extends WidgetView
               v = t.props[0].val
             else
               v = idx.Label
-            @$("##{tt}_lbl").html(v)
+            if @$("##{tt}_lbl").length > 0
+              @$("##{tt}_lbl").html(v)
+            else if @$("#dynamic_#{tt}_lbl").length > 0
+              @$("#dynamic_#{tt}_lbl").html(v)
+
             @dcount += 1
             break      
 
   render_row: (tag, tv, fv, tc, fc, format)->
+    dynamicTag = false
+    elName = "#{tag}"
+    if /dynamic_/.test(tag)
+      dynamicTag = true
+      tag = tag.replace 'dynamic_', ""
+
     v = @get_bool(@vals[tag])
     #console.log "#{tag} : #{v}"
     txt = if v then tv else fv
     if format?
-      txt = format.replace /#{1}/, "#{txt}".replace /^\s+|\s+$/g, ""
-    el = @$("##{tag}").html(txt)
+      txt = format.replace '#{1}', "#{txt}".replace /^\s+|\s+$/g, ""
+    el = @$("##{elName}").html(txt)
     if tc? then el.toggleClass(tc, v)
     if fc? then el.toggleClass(fc, !v)
     tagValue = null
@@ -96,8 +109,14 @@ class IOPSWidgetView extends WidgetView
     @mark_bad_data tagValue, el
 
   render_tagvalue: (tag)->
+    dynamicTag = false
+    elName = "#{tag}"
+    if /dynamic_/.test(tag)
+      dynamicTag = true
+      tag = tag.replace 'dynamic_', ""
+
     a = if (@vals[tag])? && (@vals[tag]) != '' then parseFloat(@vals[tag]).toFixed(2)  else ' --'
-    el1 =  @$("##{tag}").html("#{a}")
+    el1 =  @$("##{elName}").html("#{a}")
     tagValue = null
     if @tags[tag]?
       tagValue = @tags[tag]
@@ -110,6 +129,12 @@ class IOPSWidgetView extends WidgetView
     ** format: If no #{1} is found in string treat as suffix
     **         otherwise replace #{1} with the #{set_value} 
     ********************************************************###
+    dynamicTag = false
+    elName = "#{tag}"
+    if /dynamic_/.test(tag)
+      dynamicTag = true
+      tag = tag.replace 'dynamic_', ""
+
     if @vals[tag]? && @vals[tag] != '' 
       set_value = if IsNumeric then parseFloat(@vals[tag]).toFixed(precision) else @vals[tag] 
     else
@@ -119,18 +144,88 @@ class IOPSWidgetView extends WidgetView
     if format?
       displayValue = ''
       if format.search(/#{1}/) > -1
-        displayValue = format.replace /#{1}/, "#{set_value}".replace /^\s+|\s+$/g, ""
+        displayValue = format.replace '#{1}', "#{set_value}".replace /^\s+|\s+$/g, ""
       else
         displayValue = "#{set_value} #{format}".replace /^\s+|\s+$/g, ""
 
-    el = @$("##{tag}").html(displayValue)
+    el = @$("##{elName}").html(displayValue)
     tagValue = null
     if @tags[tag]?
       tagValue = @tags[tag]
     else if @tagData[tag]?
       tagValue = @tagData[tag].Tag
     @mark_bad_data tagValue, el
-  
+
+  create_dynamic_elements: (Widget, Groups, Tags, Site_Code, Site)->
+    
+    # Load Tag configurations
+    tagConfig = null
+    tagConfig = new App.tagconfig Widget, Groups, Tags, Site_Code, Site
+
+    $(".#{Widget} [id^='dynamic_']").remove()
+    ###
+    # Remove any existing tag elements
+    for tag, tagData of tagConfig.TagData
+      elType = tagData.Element.Type.toLowerCase()
+      switch elType
+        when 'tablerow'
+          elType = 'td'
+          if $(".#{Widget} #{tagData.Element.ParentID} tbody td").length > 0
+            $(".#{Widget} #{tagData.Element.ParentID} tbody").empty()
+        else 
+          $(".#{Widget} #{tagData.Element.ParentID} #{elType}[id^='dynamic_']").remove()
+
+    # Remove any existing image elements
+    for img, imgData of tagConfig.Graphics
+      elType = imgData.Element.Type.toLowerCase()
+      $(".#{Widget} #{imgData.Element.ParentID} #{elType}[id*='#{img}']").remove()
+    ###
+
+    # Create tag elements
+    for tag, tagData of tagConfig.TagData
+      elType = tagData.Element.Type.toLowerCase()
+      switch elType
+        when 'tablerow'
+          elType = 'td'
+          if $(".#{Widget} #{tagData.Element.ParentID} #{elType}[id*='dynamic_#{tag}']").length == 0
+            $(".#{Widget} #{tagData.Element.ParentID}").find("tbody:last").append("'<tr id='dynamic_#{tag}_row'><td class='lbl' id='dynamic_#{tag}_lbl'>&nbsp;</td><td id='dynamic_#{tag}' class='val'>Loading...</td></tr>'")
+        else 
+          elType = tagData.Element.Type.toLowerCase()
+          if $(".#{Widget} #{tagData.Element.ParentID} #{elType}[id*='dynamic_#{tag}']").length == 0
+            $(".#{Widget} #{tagData.Element.ParentID}").append("<#{elType} id='dynamic_#{tag}'>Loading...</#{elType}>")
+      
+      if tagData.Element.Class?.length > 0
+        $(".#{Widget}  #{tagData.Element.ParentID} #{elType}[id*='dynamic_#{tag}']").removeClass()
+        $(".#{Widget}  #{tagData.Element.ParentID} #{elType}[id*='dynamic_#{tag}']").addClass(tagData.Element.Class)
+
+    # Create graphics elements
+    for img, imgData of tagConfig.Graphics
+      elType = imgData.Element.Type.toLowerCase()
+      if $(".#{Widget} #{imgData.Element.ParentID} #{elType}[id*='dynamic_#{img}']").length == 0
+        $(".#{Widget} #{imgData.Element.ParentID}").append("<#{elType} id='dynamic_#{img}'></#{elType}>")
+
+      if imgData.Element.Class?.length > 0
+        $(".#{Widget}  #{imgData.Element.ParentID} #{elType}[id*='dynamic_#{img}']").removeClass()
+        $(".#{Widget}  #{imgData.Element.ParentID} #{elType}[id*='dynamic_#{img}']").addClass(imgData.Element.Class)
+
+    return tagConfig
+
+  render_image: (Image)->
+    ###********************************************************
+    ** format: If no #{1} is found in string treat as suffix
+    **         otherwise replace #{1} with the #{set_value} 
+    ********************************************************###
+    debugger
+
+    img = Iamge[0]
+    #vq = @data_q(@tagData.pca_discharge_temp.Tag)
+    #@$("#gauge_volts_out_#{@model.id} .bad_data").toggle(!vq)
+    #v = @vals.pca_discharge_temp
+    #if vq && !isNaN(v) && v != ''
+    #  @g1.refresh(parseInt(v))    
+
+
+
   # grab widget settings, update prefix, set up listener, etc.
   update_settings:({prefix, cloud_prefix})->
     s = @model.get("settings")
