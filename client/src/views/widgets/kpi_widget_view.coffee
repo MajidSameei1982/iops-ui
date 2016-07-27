@@ -2,10 +2,10 @@ Marionette = require('marionette')
 IOPSWidgetView = require('./iops_widget_view')
 
 # ----------------------------------
-
 class KpiWidgetView extends IOPSWidgetView
   template:   "widgets/kpi_widget"
-  className: 'widget-outer box box-primary'
+  classID: 'kpi_widget'
+  className: 'widget-outer box box-primary kpi_widget'
   ui:   
     site:           'select#site'
     wtitle:         'h3.box-title'

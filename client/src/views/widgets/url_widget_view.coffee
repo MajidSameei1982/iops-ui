@@ -2,9 +2,9 @@ Marionette = require('marionette')
 WidgetView = require('../dashboard/widget_view')
 
 # ----------------------------------
-
 class UrlWidgetView extends WidgetView
   template:   "widgets/url_widget"
+  classID: 'url_widget'
   className: 'widget-outer box box-primary url_widget'
   ui:
     iframe: 'iframe#iframe'

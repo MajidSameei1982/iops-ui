@@ -4,12 +4,13 @@ IOPSWidgetView = require('./iops_widget_view')
 # ----------------------------------
 class GpuWidgetView extends IOPSWidgetView
   template:   "widgets/gpu_widget"
+  classID: 'gpu_widget'
   className: 'widget-outer box box-primary gpu_widget'
   ui:
-    terminal:       'input#terminal'
-    zone:           'input#zone'
+    terminal:       'select#terminal'
+    zone:           'select#zone'
     display_prefix: 'input#display_prefix'
-    gate:           'input#gate'
+    gate:           'select#gate'
     site:           'select#site'
     wtitle:         'h3.box-title'
     display:        '.display'
@@ -42,8 +43,8 @@ class GpuWidgetView extends IOPSWidgetView
       tags = []
       @tagData = []
       @tagConfig = []
-      @tagConfig = @create_dynamic_elements('gpu_widget', null, null, @site_code, s)
-      @tagData = @tagConfig.tagData
+      @tagConfig = @create_dynamic_elements(@el.parentNode.id, @classID, null, null, @site_code, s)
+      @tagData = @tagConfig.TagData
       
       for tag, tagData of @tagData
         tags.push "#{@prefix}#{tagData.Tag}.Value"

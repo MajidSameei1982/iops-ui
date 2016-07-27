@@ -4,6 +4,7 @@ IOPSWidgetView = require('./iops_widget_view')
 # ----------------------------------
 class PcadischargeWidgetView extends IOPSWidgetView
   template:   "widgets/pca_discharge_widget"
+  classID: 'pca_discharge_widget'
   className: 'widget-outer box box-primary pca_discharge_widget'
   ui:
     wtitle:         'h3.box-title'
@@ -45,17 +46,21 @@ class PcadischargeWidgetView extends IOPSWidgetView
       tags = []
       @tagData = []
       @tagConfig = []
-      @tagConfig = @create_dynamic_elements('pbb_pca_gpu_basic_widget', null, null, @site_code, s)
+      @tagConfig = @create_dynamic_elements(@el.parentNode.id, @classID, null, null, @site_code, s)
       @tagData = @tagConfig.TagData
 
       for tag, tagData of @tagData
-        tags.push "#{@prefix}#{tagData.Tag}.Value"
+        t = tagData.Tag
+        for g in s.gates
+          gp = g.split(':')
+          gate = "Term#{gp[0]}.Zone#{gp[1]}.Gate#{gp[2]}."
+          @cktags.push "#{@prefix}#{gate}#{tagData.Tag}.Value"
 
       for btg of @tags
         t = @tags[btg]
         for g in s.gates
           gp = g.split(':')
-          gate = "Term#{gp[0]}.Zone#{gp[1]}.Gate#{gp[2]}."
+          gate = "Term#{gp[0]}.Zone#{gp[1]}.Gate#{gp[2]}.Value"
           @cktags.push "#{@prefix}#{gate}#{t}"
 
       App.opc.add_tags @site_code, @cktags
@@ -90,21 +95,21 @@ class PcadischargeWidgetView extends IOPSWidgetView
       zone = gp[1]
       gate = gp[2]
       pre = "#{@prefix}Term#{gp[0]}.Zone#{gp[1]}.Gate#{gp[2]}."
-      temp = @vals["#{pre}#{@tags.temp}"]
+      temp = @vals["#{pre}#{@tagData.pca_discharge_temp.Tag}"]
       temp = if temp? && temp != '' then parseFloat(temp) else 0
       max = if temp > max then temp else max
 
-      onv = @vals["#{pre}#{@tags.on}"]
-      cooling = @vals["#{pre}#{@tags.cooling}"]
-      heating = @vals["#{pre}#{@tags.heating}"]
-      cool_set = @vals["#{pre}#{@tags.cool_set}"]
-      heat_set = @vals["#{pre}#{@tags.heat_set}"]
-      alarm_heat = @vals["#{pre}#{@tags.alarm_heat}"]
-      alarm_cool = @vals["#{pre}#{@tags.alarm_cool}"]
-      alarm_heat_timer = @vals["#{pre}#{@tags.alarm_heat_timer}"]
-      alarm_cool_timer = @vals["#{pre}#{@tags.alarm_cool_timer}"]
-      timer_heat = @vals["#{pre}#{@tags.timer_heat}"]
-      timer_cool = @vals["#{pre}#{@tags.timer_cool}"]
+      onv = @vals["#{pre}#{@tagData.pca_status.Tag}"]
+      cooling = @vals["#{pre}#{@tagData.pca_mode_cooling.Tag}"]
+      heating = @vals["#{pre}#{@tagData.pca_mode_heating.Tag}"]
+      cool_set = @vals["#{pre}#{@tagData.pca_cooling_pt.Tag}"]
+      heat_set = @vals["#{pre}#{@tagData.pca_heating_pt.Tag}"]
+      alarm_heat = @vals["#{pre}#{@tagData.pca_alarm_heating_run.Tag}"]
+      alarm_cool = @vals["#{pre}#{@tagData.pca_alarm_cooling_run.Tag}"]
+      alarm_heat_timer = 0 #@vals["#{pre}#{@tagData.alarm_heat_timer.Tag}"]
+      alarm_cool_timer = 0 #@vals["#{pre}#{@tagData.alarm_cool_timer.Tag}"]
+      timer_heat = @vals["#{pre}#{@tagData.pca_heating_tm.Tag}"]
+      timer_cool = @vals["#{pre}#{@tagData.pca_cooling_tm.Tag}"]
       timers.push [alarm_heat, timer_heat, alarm_cool, timer_cool,alarm_heat_timer,alarm_cool_timer]
       if cool_set? && cool_set != ''
         cv = parseFloat(cool_set) 

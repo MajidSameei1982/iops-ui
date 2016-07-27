@@ -2,9 +2,9 @@ Marionette = require('marionette')
 IOPSWidgetView = require('./iops_widget_view')
 
 # ----------------------------------
-
 class PcaWidgetView extends IOPSWidgetView
   template:   "widgets/pca_widget"
+  classID: 'pca_widget'
   className: 'widget-outer box box-primary pca_widget'
   ui:
     terminal:       'input#terminal'
@@ -48,7 +48,7 @@ class PcaWidgetView extends IOPSWidgetView
       tags = []
       @tagData = []
       @tagConfig = []
-      @tagConfig = @create_dynamic_elements('pca_widget', null, null, @site_code, s)
+      @tagConfig = @create_dynamic_elements(@el.parentNode.id, @classID, null, null, @site_code, s)
       @tagData = @tagConfig.TagData
 
       for tag, tagData of @tagData

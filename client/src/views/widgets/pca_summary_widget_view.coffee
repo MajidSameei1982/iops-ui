@@ -3,9 +3,9 @@ IOPSWidgetView = require('./iops_widget_view')
 UIUtils = require('../../common/uiutils')
 
 # ----------------------------------
-
 class PcasummaryWidgetView extends IOPSWidgetView
   template:   "widgets/pca_summary_widget"
+  classID: 'pca_summary_widget'
   className: 'widget-outer box box-primary pca_summary_widget'
   ui:
     terminal:       'input#terminal'
@@ -54,7 +54,7 @@ class PcasummaryWidgetView extends IOPSWidgetView
       tags = []
       @tagData = []
       @tagConfig = []
-      @tagConfig = @create_dynamic_elements('pca_summary_widget', null, null, @site_code, s)
+      @tagConfig = @create_dynamic_elements(@el.parentNode.id, @classID, null, null, @site_code, s)
       @tagData = @tagConfig.TagData
 
       for t, tData of @tagData

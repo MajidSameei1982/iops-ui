@@ -4,6 +4,7 @@ IOPSWidgetView = require('./iops_widget_view')
 # ----------------------------------
 class PbbpcagpuWidgetView extends IOPSWidgetView
   template:   "widgets/pbb_pca_gpu_basic_widget"
+  classID: 'pbb_pca_gpu_basic_widget'
   className: 'widget-outer box box-primary pbb_pca_gpu_basic_widget'
   ui:
     wtitle:         'h3.box-title'
@@ -43,7 +44,7 @@ class PbbpcagpuWidgetView extends IOPSWidgetView
       tags = []
       @tagData = []
       @tagConfig = []
-      @tagConfig = @create_dynamic_elements('pbb_pca_gpu_basic_widget', null, null, @site_code, s)
+      @tagConfig = @create_dynamic_elements(@el.parentNode.id, @classID, null, null, @site_code, s)
       @tagData = @tagConfig.TagData
 
       for tag, tagData of @tagData
@@ -123,6 +124,8 @@ class PbbpcagpuWidgetView extends IOPSWidgetView
 
 
   start: ()->
+    @tableWidgetData = '<table id="widgetData" class="data" style="float: left; width:92%"><tbody></tbody></table>'
+    @ui.display.append(@tableWidgetData)
     @update()
 
   onDestroy: (arg1, arg2) ->

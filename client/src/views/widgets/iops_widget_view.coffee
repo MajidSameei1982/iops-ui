@@ -156,30 +156,13 @@ class IOPSWidgetView extends WidgetView
       tagValue = @tagData[tag].Tag
     @mark_bad_data tagValue, el
 
-  create_dynamic_elements: (Widget, Groups, Tags, Site_Code, Site)->
+  create_dynamic_elements: (WidgetID, ClassID, Groups, Tags, Site_Code, Site)->
     
     # Load Tag configurations
     tagConfig = null
-    tagConfig = new App.tagconfig Widget, Groups, Tags, Site_Code, Site
+    tagConfig = new App.tagconfig ClassID, Groups, Tags, Site_Code, Site
 
-    $(".#{Widget} [id^='dynamic_']").remove()
-    ###
-    # Remove any existing tag elements
-    for tag, tagData of tagConfig.TagData
-      elType = tagData.Element.Type.toLowerCase()
-      switch elType
-        when 'tablerow'
-          elType = 'td'
-          if $(".#{Widget} #{tagData.Element.ParentID} tbody td").length > 0
-            $(".#{Widget} #{tagData.Element.ParentID} tbody").empty()
-        else 
-          $(".#{Widget} #{tagData.Element.ParentID} #{elType}[id^='dynamic_']").remove()
-
-    # Remove any existing image elements
-    for img, imgData of tagConfig.Graphics
-      elType = imgData.Element.Type.toLowerCase()
-      $(".#{Widget} #{imgData.Element.ParentID} #{elType}[id*='#{img}']").remove()
-    ###
+    $("li##{WidgetID} .#{ClassID} [id^='dynamic_']").remove()
 
     # Create tag elements
     for tag, tagData of tagConfig.TagData
@@ -187,26 +170,26 @@ class IOPSWidgetView extends WidgetView
       switch elType
         when 'tablerow'
           elType = 'td'
-          if $(".#{Widget} #{tagData.Element.ParentID} #{elType}[id*='dynamic_#{tag}']").length == 0
-            $(".#{Widget} #{tagData.Element.ParentID}").find("tbody:last").append("'<tr id='dynamic_#{tag}_row'><td class='lbl' id='dynamic_#{tag}_lbl'>&nbsp;</td><td id='dynamic_#{tag}' class='val'>Loading...</td></tr>'")
+          if $("li##{WidgetID} .#{ClassID} #{tagData.Element.ParentID} #{elType}[id*='dynamic_#{tag}']").length == 0
+            $("li##{WidgetID} .#{ClassID} #{tagData.Element.ParentID}").find("tbody:last").append("'<tr id='dynamic_#{tag}_row'><td class='lbl' id='dynamic_#{tag}_lbl'>&nbsp;</td><td id='dynamic_#{tag}' class='val'>Loading...</td></tr>'")
         else 
           elType = tagData.Element.Type.toLowerCase()
-          if $(".#{Widget} #{tagData.Element.ParentID} #{elType}[id*='dynamic_#{tag}']").length == 0
-            $(".#{Widget} #{tagData.Element.ParentID}").append("<#{elType} id='dynamic_#{tag}'>Loading...</#{elType}>")
+          if $("li##{WidgetID} .#{ClassID} #{tagData.Element.ParentID} #{elType}[id*='dynamic_#{tag}']").length == 0
+            $("li##{WidgetID} .#{ClassID} #{tagData.Element.ParentID}").append("<#{elType} id='dynamic_#{tag}'>Loading...</#{elType}>")
       
       if tagData.Element.Class?.length > 0
-        $(".#{Widget}  #{tagData.Element.ParentID} #{elType}[id*='dynamic_#{tag}']").removeClass()
-        $(".#{Widget}  #{tagData.Element.ParentID} #{elType}[id*='dynamic_#{tag}']").addClass(tagData.Element.Class)
+        $("li##{WidgetID} .#{ClassID} #{tagData.Element.ParentID} #{elType}[id*='dynamic_#{tag}']").removeClass()
+        $("li##{WidgetID} .#{ClassID} #{tagData.Element.ParentID} #{elType}[id*='dynamic_#{tag}']").addClass(tagData.Element.Class)
 
     # Create graphics elements
     for img, imgData of tagConfig.Graphics
       elType = imgData.Element.Type.toLowerCase()
-      if $(".#{Widget} #{imgData.Element.ParentID} #{elType}[id*='dynamic_#{img}']").length == 0
-        $(".#{Widget} #{imgData.Element.ParentID}").append("<#{elType} id='dynamic_#{img}'></#{elType}>")
+      if $("li##{WidgetID} .#{ClassID} #{imgData.Element.ParentID} #{elType}[id*='dynamic_#{img}']").length == 0
+        $("li##{WidgetID} .#{ClassID} #{imgData.Element.ParentID}").append("<#{elType} id='dynamic_#{img}'></#{elType}>")
 
       if imgData.Element.Class?.length > 0
-        $(".#{Widget}  #{imgData.Element.ParentID} #{elType}[id*='dynamic_#{img}']").removeClass()
-        $(".#{Widget}  #{imgData.Element.ParentID} #{elType}[id*='dynamic_#{img}']").addClass(imgData.Element.Class)
+        $("li##{WidgetID} .#{ClassID} #{imgData.Element.ParentID} #{elType}[id*='dynamic_#{img}']").removeClass()
+        $("li##{WidgetID} .#{ClassID} #{imgData.Element.ParentID} #{elType}[id*='dynamic_#{img}']").addClass(imgData.Element.Class)
 
     return tagConfig
 

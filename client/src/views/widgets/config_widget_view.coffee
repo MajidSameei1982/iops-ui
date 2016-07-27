@@ -2,9 +2,9 @@ Marionette = require('marionette')
 IOPSWidgetView = require('./iops_widget_view')
 
 # ----------------------------------
-
 class ConfigWidgetView extends IOPSWidgetView
   template:   "widgets/config_widget"
+  classID: 'config_widget'
   className: 'widget-outer box box-primary config_widget'
   ui:
     display:        '#display'
@@ -124,6 +124,9 @@ class ConfigWidgetView extends IOPSWidgetView
     # be sure to remove listeners
     @kill_updates(@site_code)
     
+  start:()->
+    @update()
+
 # ----------------------------------
 
 window.ConfigWidgetView = ConfigWidgetView

@@ -2,10 +2,10 @@ Marionette = require('marionette')
 IOPSWidgetView = require('./iops_widget_view')
 
 # ----------------------------------
-
 class ReportWidgetView extends IOPSWidgetView
   template:   "widgets/report_widget"
-  className: 'widget-outer box box-primary'
+  classID: 'airport_widget'
+  className: 'widget-outer box box-primary airport_widget'
   ui:
     site: 'select#site'
     wtitle: '.box-title'

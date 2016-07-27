@@ -4,6 +4,7 @@ IOPSWidgetView = require('./iops_widget_view')
 # ----------------------------------
 class PbbdetailWidgetView extends IOPSWidgetView
   template:   "widgets/pbb_detail_widget"
+  classID: 'pbb_detail_widget'
   className: 'widget-outer box box-primary pbb_detail_widget'
   ui:
     terminal:       'input#terminal'

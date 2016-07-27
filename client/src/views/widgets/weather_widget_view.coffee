@@ -2,9 +2,9 @@ Marionette = require('marionette')
 WidgetView = require('../dashboard/widget_view')
 
 # ----------------------------------
-
 class WeatherWidgetView extends WidgetView
   template:   "widgets/weather_widget"
+  classID: 'weather_widget'
   className: 'widget-outer box box-primary weather_widget'
   ui:
     display: '#display'
@@ -68,7 +68,6 @@ class WeatherWidgetView extends WidgetView
     @$('#cover .val').html("#{cover}<sup>%</sup>")
     @$('#weather').show()
     @$('#loading').hide()
-
 
   set_model: ()=>
     s = _.clone(@model.get("settings"))

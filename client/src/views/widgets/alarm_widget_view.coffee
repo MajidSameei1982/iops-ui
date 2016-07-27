@@ -4,6 +4,7 @@ IOPSWidgetView = require('./iops_widget_view')
 # ----------------------------------
 class AlarmWidgetView extends IOPSWidgetView
   template:   "widgets/alarm_widget"
+  classID: 'alarm_widget'
   className: 'widget-outer box box-primary alarm_widget'
   ui:
     site: 'select#site'

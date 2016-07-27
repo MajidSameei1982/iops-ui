@@ -4,6 +4,7 @@ IOPSWidgetView = require('./iops_widget_view')
 # ----------------------------------
 class PbbWidgetView extends IOPSWidgetView
   template:   "widgets/pbb_widget"
+  classID: 'pbb_widget'
   className: 'widget-outer box box-primary pbb_widget'
   ui:
     wtitle:         'h3.box-title'
@@ -43,7 +44,7 @@ class PbbWidgetView extends IOPSWidgetView
       tags = []
       @tagData = []
       @tagConfig = []
-      @tagConfig = @create_dynamic_elements('pbb_widget', null, null, @site_code, s)
+      @tagConfig = @create_dynamic_elements(@el.parentNode.id, @classID, null, null, @site_code, s)
       @tagData = @tagConfig.TagData
 
       for tag, tagData of @tagData

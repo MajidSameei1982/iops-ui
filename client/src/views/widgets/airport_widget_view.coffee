@@ -4,6 +4,7 @@ IOPSWidgetView = require('./iops_widget_view')
 # ----------------------------------
 class AirportWidgetView extends IOPSWidgetView
   template:   "widgets/airport_widget"
+  classID: 'airport_widget'
   className: 'widget-outer box box-primary airport_widget'
   ui:
     terminal:       'input#terminal'

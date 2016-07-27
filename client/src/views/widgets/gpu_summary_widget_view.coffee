@@ -5,6 +5,7 @@ UIUtils = require('../../common/uiutils')
 # ----------------------------------
 class GpusummaryWidgetView extends IOPSWidgetView
   template:   "widgets/gpu_summary_widget"
+  classID: 'gpu_summary_widget'
   className: 'widget-outer box box-primary gpu_summary_widget'
   ui:
     terminal:          'input#terminal'
@@ -143,7 +144,7 @@ class GpusummaryWidgetView extends IOPSWidgetView
       tags = []
       @tagData = []
       @tagConfig = []
-      @tagConfig = @create_dynamic_elements('gpu_summary_widget', null, null, @site_code, s)
+      @tagConfig = @create_dynamic_elements(@el.parentNode.id, @classID, null, null, @site_code, s)
       @tagData = @tagConfig.TagData
 
       for tag, tagData of @tagData

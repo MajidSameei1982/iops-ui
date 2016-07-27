@@ -6,7 +6,7 @@
   </div>
 </div><!-- /.box-header -->
 <div class="box-body content">
-  <iframe id='iframe' src=""></iframe>
+  <iframe id='iframe' src="" frameborder="0" allowfullscreen></iframe>
   <div class="settings" style="display: none;">
     <h3>Settings</h3>
     <%- @formGroup({id:'title', type:'text', placeholder:'Widget Title', value:@settings.name}) %>
