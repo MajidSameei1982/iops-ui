@@ -3898,6 +3898,57 @@ TagConfig = (function(superClass) {
         Object: null
       }
     },
+    gpu_mode: {
+      Tag: 'GPU.MODE',
+      Label: 'GPU Mode',
+      DataType: 'String',
+      Parameters: {
+        Parm001: false,
+        Parm002: null,
+        Parm003: '#{1}',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_rdc_amps: {
+      Tag: 'GPU.RDCAMPS',
+      Label: 'DC Output -  Amps',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Amps',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_rdc_volts: {
+      Tag: 'GPU.RDCVOLTS',
+      Label: 'DC Output -  Volts',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Volts',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
     gpu_pm_input_phasea_i: {
       Tag: 'GPU.PM_INPUT_PHASEA_I',
       Label: 'Input - Phase A Amps',
@@ -4186,6 +4237,450 @@ TagConfig = (function(superClass) {
         Class: null,
         Object: null
       }
+    },
+    gpu_01_status: {
+      Tag: 'GPU01.GPUSTATUSBOOLEAN',
+      Label: 'GPU-1 Status',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'On',
+        Parm002: 'Off',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_02_status: {
+      Tag: 'GPU02.GPUSTATUSBOOLEAN',
+      Label: 'GPU-2 Status',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'On',
+        Parm002: 'Off',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_01_time: {
+      Tag: 'GPU01.GPUTime',
+      Label: 'GPU-1 Run Time',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: 'mins',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_02_time: {
+      Tag: 'GPU02.GPUTime',
+      Label: 'GPU-2 Run Time',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 2,
+        Parm003: 'mins',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_01_rv_out_set: {
+      Tag: 'GPU01.RVOUTSET',
+      Label: 'GPU-1 Voltage Output Setting',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Volts',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_02_rv_out_set: {
+      Tag: 'GPU02.RVOUTSET',
+      Label: 'GPU-2 Voltage Output Setting',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Volts',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_01_ra_out_avg: {
+      Tag: 'GPU01.RAOUTAVG',
+      Label: 'GPU-1 Average Output -  Amps',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Amps',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_02_ra_out_avg: {
+      Tag: 'GPU02.RAOUTAVG',
+      Label: 'GPU-2 Average Output -  Amps',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Amps',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_01_rv_out_avg: {
+      Tag: 'GPU01.RVOUTAVG',
+      Label: 'GPU-1 Average Output -  Volts',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Volts',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_02_rv_out_avg: {
+      Tag: 'GPU02.RVOUTAVG',
+      Label: 'GPU-2 Average Output -  Volts',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Volts',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_01_rv_in_avg: {
+      Tag: 'GPU01.RVINAVG',
+      Label: 'GPU-1 Average Input -  Volts',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Volts',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_02_rv_in_avg: {
+      Tag: 'GPU02.RVINAVG',
+      Label: 'GPU-2 Average Input -  Volts',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Volts',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_01_ra_in_avg: {
+      Tag: 'GPU01.RAINAVG',
+      Label: 'GPU-1 Average Input -  Amps',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Amps',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_02_ra_in_avg: {
+      Tag: 'GPU02.RAINAVG',
+      Label: 'GPU-2 Average Input -  Amps',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Amps',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_01_ra_out_a: {
+      Tag: 'GPU01.RAOUTA',
+      Label: 'GPU-1 Output - Phase A Amps',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Amps',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_02_ra_out_a: {
+      Tag: 'GPU02.RAOUTA',
+      Label: 'GPU-2 Output - Phase A Amps',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Amps',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_01_ra_out_b: {
+      Tag: 'GPU01.RAOUTB',
+      Label: 'GPU-1 Output - Phase B Amps',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Amps',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_02_ra_out_b: {
+      Tag: 'GPU02.RAOUTB',
+      Label: 'GPU-2 Output - Phase B Amps',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Amps',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_01_ra_out_c: {
+      Tag: 'GPU01.RAOUTC',
+      Label: 'GPU-1 Output - Phase C Amps',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Amps',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_02_ra_out_c: {
+      Tag: 'GPU02.RAOUTC',
+      Label: 'GPU-2 Output - Phase C Amps',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Amps',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_01_rv_out_a: {
+      Tag: 'GPU01.RVOUTA',
+      Label: 'GPU-1 Output - Phase A Volts',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Volts',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_02_rv_out_a: {
+      Tag: 'GPU02.RVOUTA',
+      Label: 'GPU-2 Output - Phase A Volts',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Volts',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_01_rv_out_b: {
+      Tag: 'GPU01.RVOUTB',
+      Label: 'GPU-1 Output - Phase B Volts',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Volts',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_02_rv_out_b: {
+      Tag: 'GPU02.RVOUTB',
+      Label: 'GPU-2 Output - Phase B Volts',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Volts',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_01_rv_out_c: {
+      Tag: 'GPU01.RVOUTC',
+      Label: 'GPU-1 Output - Phase C Volts',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Volts',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_02_rv_out_c: {
+      Tag: 'GPU02.RVOUTC',
+      Label: 'GPU-2 Output - Phase C Volts',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: true,
+        Parm002: 1,
+        Parm003: 'Volts',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
 
       /***************************************************
       		*** PBB Tags
@@ -4271,7 +4766,7 @@ TagConfig = (function(superClass) {
       Parameters: {
         Parm001: true,
         Parm002: 2,
-        Parm003: 'Cab Angle : #{1}',
+        Parm003: 'Cab Angle :#{1}',
         Parm004: null
       },
       Element: {
@@ -4394,7 +4889,7 @@ TagConfig = (function(superClass) {
       Parameters: {
         Parm001: true,
         Parm002: 2,
-        Parm003: 'Height : #{1}',
+        Parm003: 'Height :#{1}',
         Parm004: null
       },
       Element: {
@@ -4463,7 +4958,7 @@ TagConfig = (function(superClass) {
       Parameters: {
         Parm001: true,
         Parm002: 2,
-        Parm003: 'Slope : #{1}',
+        Parm003: 'Slope :#{1}',
         Parm004: null
       },
       Element: {
@@ -4551,7 +5046,7 @@ TagConfig = (function(superClass) {
       Parameters: {
         Parm001: true,
         Parm002: 2,
-        Parm003: 'Tunnel Length : #{1}',
+        Parm003: 'Tunnel Length :#{1}',
         Parm004: null
       },
       Element: {
@@ -4585,7 +5080,7 @@ TagConfig = (function(superClass) {
       Parameters: {
         Parm001: true,
         Parm002: 2,
-        Parm003: 'Wheel Bogie Angle : #{1}',
+        Parm003: 'Wheel Bogie Angle :#{1}',
         Parm004: null
       },
       Element: {
@@ -4643,7 +5138,7 @@ TagConfig = (function(superClass) {
       Parameters: {
         Parm001: true,
         Parm002: 2,
-        Parm003: 'Amb Humidity : #{1}',
+        Parm003: 'Amb Humidity :#{1}',
         Parm004: null
       },
       Element: {
@@ -4748,7 +5243,7 @@ TagConfig = (function(superClass) {
       Parameters: {
         Parm001: true,
         Parm002: 2,
-        Parm003: 'COIL DP : #{1}',
+        Parm003: 'COIL DP :#{1}',
         Parm004: null
       },
       Element: {
@@ -5030,7 +5525,7 @@ TagConfig = (function(superClass) {
         Parm002: 'Off',
         Parm003: 'ok',
         Parm004: null,
-        Parm005: 'Condensate Pump : #{txt}'
+        Parm005: 'Condensate Pump :#{txt}'
       },
       Element: {
         Type: 'TableRow',
@@ -5097,7 +5592,7 @@ TagConfig = (function(superClass) {
       Parameters: {
         Parm001: true,
         Parm002: 2,
-        Parm003: 'VFD : #{1}',
+        Parm003: 'VFD :#{1}',
         Parm004: null
       },
       Element: {
@@ -5277,56 +5772,6 @@ TagConfig = (function(superClass) {
         'gpu_pm_input_phasec_v': 'gpu_pm_input_phasec_v',
         'gpu_on_1': 'gpu_on_1',
         'gpu_on_2': 'gpu_on_2'
-      },
-      Graphics: {}
-    },
-    pbb_widget: {
-      Tags: {
-        'pbb_status': 'pbb_status',
-        'pbb_autolevel_mode': 'pbb_autolevel_mode',
-        'pbb_canopy': 'pbb_canopy',
-        'pbb_dock_time': 'pbb_dock_time',
-        'pbb_undock_time': 'pbb_undock_time'
-      },
-      Graphics: {}
-    },
-    pbb_pca_gpu_basic_widget: {
-      Tags: {
-        'pbb_status': 'pbb_status',
-        'pca_status': 'pca_status',
-        'gpu_status': 'gpu_status',
-        'pbb_dock_time': 'pbb_dock_time',
-        'pbb_hookup_time': 'pbb_hookup_time',
-        'pca_time': 'pca_time',
-        'gpu_time': 'gpu_time',
-        'pca_discharge_temp': 'pca_discharge_temp',
-        'gpu_ra_out_avg': 'gpu_ra_out_avg',
-        'gpu_rv_out_avg': 'gpu_rv_out_avg'
-      },
-      Graphics: {}
-    },
-    pbb_level_detail_widget: {
-      Tags: {
-        'pbb_status': 'pbb_status',
-        'pbb_autolevel_mode': 'pbb_autolevel_mode',
-        'pbb_canopy': 'pbb_canopy',
-        'pbb_autolevel_key': 'pbb_autolevel_key',
-        'pbb_autoleveling': 'pbb_autoleveling',
-        'pbb_estop': 'pbb_estop',
-        'pbb_limits': 'pbb_limits',
-        'pbb_dock_time': 'pbb_dock_time',
-        'pbb_undock_time': 'pbb_undock_time',
-        'pbb_smoke_detector': 'pbb_smoke_detector',
-        'pbb_daily_aircraft_count': 'pbb_daily_aircraft_count',
-        'pbb_last_dock_time': 'pbb_last_dock_time',
-        'pbb_cabin_floor_deicer': 'pbb_cabin_floor_deicer',
-        'pbb_terminal_door': 'pbb_terminal_door',
-        'pbb_cab_angle_disp': 'pbb_cab_angle_disp',
-        'pbb_slope_deg': 'pbb_slope_deg',
-        'pbb_swing_angle_disp': 'pbb_swing_angle_disp',
-        'pbb_height_to_disp': 'pbb_height_to_disp',
-        'pbb_wheel_angle_deg': 'pbb_wheel_angle_deg',
-        'pbb_tunnel_length': 'pbb_tunnel_length'
       },
       Graphics: {}
     },
@@ -5527,6 +5972,56 @@ TagConfig = (function(superClass) {
         'pca_status': 'pca_status'
       },
       Graphics: {}
+    },
+    pbb_level_detail_widget: {
+      Tags: {
+        'pbb_status': 'pbb_status',
+        'pbb_autolevel_mode': 'pbb_autolevel_mode',
+        'pbb_canopy': 'pbb_canopy',
+        'pbb_autolevel_key': 'pbb_autolevel_key',
+        'pbb_autoleveling': 'pbb_autoleveling',
+        'pbb_estop': 'pbb_estop',
+        'pbb_limits': 'pbb_limits',
+        'pbb_dock_time': 'pbb_dock_time',
+        'pbb_undock_time': 'pbb_undock_time',
+        'pbb_smoke_detector': 'pbb_smoke_detector',
+        'pbb_daily_aircraft_count': 'pbb_daily_aircraft_count',
+        'pbb_last_dock_time': 'pbb_last_dock_time',
+        'pbb_cabin_floor_deicer': 'pbb_cabin_floor_deicer',
+        'pbb_terminal_door': 'pbb_terminal_door',
+        'pbb_cab_angle_disp': 'pbb_cab_angle_disp',
+        'pbb_slope_deg': 'pbb_slope_deg',
+        'pbb_swing_angle_disp': 'pbb_swing_angle_disp',
+        'pbb_height_to_disp': 'pbb_height_to_disp',
+        'pbb_wheel_angle_deg': 'pbb_wheel_angle_deg',
+        'pbb_tunnel_length': 'pbb_tunnel_length'
+      },
+      Graphics: {}
+    },
+    pbb_pca_gpu_basic_widget: {
+      Tags: {
+        'pbb_status': 'pbb_status',
+        'pca_status': 'pca_status',
+        'gpu_status': 'gpu_status',
+        'pbb_dock_time': 'pbb_dock_time',
+        'pbb_hookup_time': 'pbb_hookup_time',
+        'pca_time': 'pca_time',
+        'gpu_time': 'gpu_time',
+        'pca_discharge_temp': 'pca_discharge_temp',
+        'gpu_ra_out_avg': 'gpu_ra_out_avg',
+        'gpu_rv_out_avg': 'gpu_rv_out_avg'
+      },
+      Graphics: {}
+    },
+    pbb_widget: {
+      Tags: {
+        'pbb_status': 'pbb_status',
+        'pbb_autolevel_mode': 'pbb_autolevel_mode',
+        'pbb_canopy': 'pbb_canopy',
+        'pbb_dock_time': 'pbb_dock_time',
+        'pbb_undock_time': 'pbb_undock_time'
+      },
+      Graphics: {}
     }
   };
 
@@ -5537,8 +6032,36 @@ TagConfig = (function(superClass) {
    */
 
   TagConfig.groups = {
-    none: {
-      'Add Tag Names': 'Add Tag Names'
+    gpu_hobart_sx2400_dual_unit: {
+      Tags: {
+        'gpu_01_status': 'gpu_01_status',
+        'gpu_02_status': 'gpu_02_status',
+        'gpu_01_time': 'gpu_01_time',
+        'gpu_02_time': 'gpu_02_time',
+        'gpu_01_rv_out_set': 'gpu_01_rv_out_set',
+        'gpu_02_rv_out_set': 'gpu_02_rv_out_set',
+        'gpu_01_ra_out_avg': 'gpu_01_ra_out_avg',
+        'gpu_02_ra_out_avg': 'gpu_02_ra_out_avg',
+        'gpu_01_rv_out_avg': 'gpu_01_rv_out_avg',
+        'gpu_02_rv_out_avg': 'gpu_02_rv_out_avg',
+        'gpu_01_rv_in_avg': 'gpu_01_rv_in_avg',
+        'gpu_02_rv_in_avg': 'gpu_02_rv_in_avg',
+        'gpu_01_ra_in_avg': 'gpu_01_ra_in_avg',
+        'gpu_02_ra_in_avg': 'gpu_02_ra_in_avg',
+        'gpu_01_ra_out_a': 'gpu_01_ra_out_a',
+        'gpu_02_ra_out_a': 'gpu_02_ra_out_a',
+        'gpu_01_ra_out_b': 'gpu_01_ra_out_b',
+        'gpu_02_ra_out_b': 'gpu_02_ra_out_b',
+        'gpu_01_ra_out_c': 'gpu_01_ra_out_c',
+        'gpu_02_ra_out_c': 'gpu_02_ra_out_c',
+        'gpu_01_rv_out_a': 'gpu_01_rv_out_a',
+        'gpu_02_rv_out_a': 'gpu_02_rv_out_a',
+        'gpu_01_rv_out_b': 'gpu_01_rv_out_b',
+        'gpu_02_rv_out_b': 'gpu_02_rv_out_b',
+        'gpu_01_rv_out_c': 'gpu_01_rv_out_c',
+        'gpu_02_rv_out_c': 'gpu_02_rv_out_c'
+      },
+      Graphics: {}
     }
   };
 
@@ -5550,10 +6073,297 @@ TagConfig = (function(superClass) {
 
   TagConfig.clients = {
     CID: {
-      pbb_widget: {
+      gpu_summary_widget: {
         remove_tags: {
-          'pbb_autolevel_key': 'pbb_autolevel_key',
-          'pbb_terminal_door': 'pbb_terminal_door'
+          'gpu_ra_in_avg': 'gpu_ra_in_avg'
+        },
+        1: {
+          1: {
+            C3: {
+              use_tags: {
+                gpu_status: {
+                  Tag: 'GPU.GPUSTATUSBOOLEAN',
+                  Label: 'GPU Status',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_time: {
+                  Tag: 'GPU.GPUTime',
+                  Label: 'GPUTime',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: 'mins',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      gpu_widget: {
+        remove_tags: {
+          'gpu_by_pass': 'gpu_by_pass',
+          'gpu_ra_in_avg': 'gpu_ra_in_avg',
+          'gpu_pm_input_phasea_i': 'gpu_pm_input_phasea_i',
+          'gpu_pm_input_phaseb_i': 'gpu_pm_input_phaseb_i',
+          'gpu_pm_input_phasec_i': 'gpu_pm_input_phasec_i',
+          'gpu_on_1': 'gpu_on_1',
+          'gpu_on_2': 'gpu_on_2'
+        },
+        add_tags: {
+          gpu_mode: {
+            Tag: 'GPU.MODE',
+            Label: 'GPU Mode',
+            DataType: 'String',
+            Parameters: {
+              Parm001: false,
+              Parm002: null,
+              Parm003: '#{1}',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_rdc_amps: {
+            Tag: 'GPU.RDCAMPS',
+            Label: 'DC Output -  Amps',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 1,
+              Parm003: 'Amps',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_rdc_volts: {
+            Tag: 'GPU.RDCVOLTS',
+            Label: 'DC Output -  Volts',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 1,
+              Parm003: 'Volts',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          }
+        },
+        update_tags: {
+          gpu_pm_output_phasea_i: {
+            Tag: 'GPU.RAOUTA',
+            Label: 'Amps Out Phase A',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Amps',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_pm_output_phaseb_i: {
+            Tag: 'GPU.RAOUTB',
+            Label: 'Amps Out Phase B',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Amps',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_pm_output_phasec_i: {
+            Tag: 'GPU.RAOUTC',
+            Label: 'Amps Out Phase C',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Amps',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_pm_output_phasea_v: {
+            Tag: 'GPU.RVOUTA',
+            Label: 'Volts Out Phase A',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Volts',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_pm_output_phaseb_v: {
+            Tag: 'GPU.RVOUTB',
+            Label: 'Volts Out Phase B',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Volts',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_pm_output_phasec_v: {
+            Tag: 'GPU.RVOUTC',
+            Label: 'Volts Out Phase C',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Volts',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_pm_input_phasea_v: {
+            Tag: 'GPU.RVINA',
+            Label: 'Volts In Phase A',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Volts',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_pm_input_phaseb_v: {
+            Tag: 'GPU.RVINB',
+            Label: 'Volts In Phase B',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Volts',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_pm_input_phasec_v: {
+            Tag: 'GPU.RVINC',
+            Label: 'Volts In Phase C',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Volts',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          }
+        },
+        1: {
+          1: {
+            C3: {
+              use_tags: {
+                pca_status: {
+                  Tag: 'PCA.PCASTATUS',
+                  Label: 'PCA status',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: 'err',
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            }
+          }
         }
       },
       pca_discharge_widget: {
@@ -5778,6 +6588,10 @@ TagConfig = (function(superClass) {
           }
         },
         remove_tags: {
+          'pca_ambient_humidity': 'pca_ambient_humidity',
+          'pca_coil_dp': 'pca_coil_dp',
+          'pca_vfd_speed': 'pca_vfd_speed',
+          'pca_ambient_humidity': 'pca_ambient_humidity',
           'pca_hot_gas_1': 'pca_hot_gas_1',
           'pca_hot_gas_2': 'pca_hot_gas_2'
         },
@@ -5923,6 +6737,23 @@ TagConfig = (function(superClass) {
                     Class: null,
                     Object: null
                   }
+                },
+                pca_discharge_temp: {
+                  Tag: 'PCA.TEMPDISCH',
+                  Label: 'Discharge Air Temperature',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1} F',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
                 }
               }
             }
@@ -6037,175 +6868,87 @@ TagConfig = (function(superClass) {
               Object: null
             }
           }
-        }
-      },
-      gpu_summary_widget: {
-        remove_tags: {
-          'gpu_ra_in_avg': 'gpu_ra_in_avg'
-        }
-      },
-      gpu_widget: {
-        remove_tags: {
-          'gpu_by_pass': 'gpu_by_pass',
-          'gpu_ra_in_avg': 'gpu_ra_in_avg',
-          'gpu_pm_input_phasea_i': 'gpu_pm_input_phasea_i',
-          'gpu_pm_input_phaseb_i': 'gpu_pm_input_phaseb_i',
-          'gpu_pm_input_phasec_i': 'gpu_pm_input_phasec_i',
-          'gpu_on_1': 'gpu_on_1',
-          'gpu_on_2': 'gpu_on_2'
         },
-        update_tags: {
-          gpu_pm_output_phasea_i: {
-            Tag: 'GPU.RAOUTA',
-            Label: 'Amps Out Phase A',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: 'TRUE',
-              Parm002: '1',
-              Parm003: 'Amps',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
+        1: {
+          1: {
+            C3: {
+              use_tags: {
+                pca_ambient_temp: {
+                  Tag: 'PCA.TEMPAMB',
+                  Label: 'Ambient Air Temperature',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_bridge_air: {
+                  Tag: 'PCA.BRIDGE_AIR',
+                  Label: 'Bridge Damper',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
             }
-          },
-          gpu_pm_output_phaseb_i: {
-            Tag: 'GPU.RAOUTB',
-            Label: 'Amps Out Phase B',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: 'TRUE',
-              Parm002: '1',
-              Parm003: 'Amps',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_pm_output_phasec_i: {
-            Tag: 'GPU.RAOUTC',
-            Label: 'Amps Out Phase C',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: 'TRUE',
-              Parm002: '1',
-              Parm003: 'Amps',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_pm_output_phasea_v: {
-            Tag: 'GPU.RVOUTA',
-            Label: 'Volts Out Phase A',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: 'TRUE',
-              Parm002: '1',
-              Parm003: 'Volts',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_pm_output_phaseb_v: {
-            Tag: 'GPU.RVOUTB',
-            Label: 'Volts Out Phase B',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: 'TRUE',
-              Parm002: '1',
-              Parm003: 'Volts',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_pm_output_phasec_v: {
-            Tag: 'GPU.RVOUTC',
-            Label: 'Volts Out Phase C',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: 'TRUE',
-              Parm002: '1',
-              Parm003: 'Volts',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_pm_input_phasea_v: {
-            Tag: 'GPU.RVINA',
-            Label: 'Volts In Phase A',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: 'TRUE',
-              Parm002: '1',
-              Parm003: 'Volts',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_pm_input_phaseb_v: {
-            Tag: 'GPU.RVINB',
-            Label: 'Volts In Phase B',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: 'TRUE',
-              Parm002: '1',
-              Parm003: 'Volts',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_pm_input_phasec_v: {
-            Tag: 'GPU.RVINC',
-            Label: 'Volts In Phase C',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: 'TRUE',
-              Parm002: '1',
-              Parm003: 'Volts',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
+          }
+        }
+      },
+      pbb_level_detail_widget: {
+        remove_tags: {
+          'pbb_terminal_door': 'pbb_terminal_door',
+          'pbb_autolevel_key': 'pbb_autolevel_key'
+        },
+        1: {
+          1: {
+            C3: {
+              remove_tags: {
+                'pbb_cab_angle_disp': 'pbb_cab_angle_disp',
+                'pbb_slope_deg': 'pbb_slope_deg',
+                'pbb_swing_angle_disp': 'pbb_swing_angle_disp',
+                'pbb_height_to_disp': 'pbb_height_to_disp',
+                'pbb_wheel_angle_deg': 'pbb_wheel_angle_deg',
+                'pbb_tunnel_length': 'pbb_tunnel_length'
+              },
+              add_tags: {
+                pbb_autolevel_key: {
+                  Tag: 'PBB.AUTOLEVELKEY',
+                  Label: 'Auto Level Key',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
             }
           }
         }
@@ -6222,6 +6965,12 @@ TagConfig = (function(superClass) {
             }
           }
         }
+      },
+      pbb_widget: {
+        remove_tags: {
+          'pbb_autolevel_key': 'pbb_autolevel_key',
+          'pbb_terminal_door': 'pbb_terminal_door'
+        }
       }
     },
     DAL: {
@@ -6230,25 +6979,135 @@ TagConfig = (function(superClass) {
       }
     },
     EWR: {
-
-      /*
-      			config_widget:
-      				Tags: {'pca_cooling_pt','pca_heating_pt','pca_cooling_tm','pca_heating_tm'}
-      				Graphics: {}
-      			gpu_summary_widget: 
-      				Tags: {'gpu_status','gpu_time','gpu_ra_out_avg','gpu_rv_out_avg','gpu_ra_in_avg','gpu_rv_in_avg'}
-      				Graphics: {}
-      			gpu_widget: 
-      				Tags: {'gpu_status','gpu_by_pass','gpu_ra_out_avg','gpu_rv_out_avg','gpu_ra_in_avg','gpu_rv_in_avg','gpu_pm_output_phasea_i'
-      					,'gpu_pm_output_phaseb_i','gpu_pm_output_phasec_i','gpu_pm_output_phasea_v','gpu_pm_output_phaseb_v','gpu_pm_output_phasec_v'
-      					,'gpu_pm_input_phasea_i','gpu_pm_input_phaseb_i','gpu_pm_input_phasec_i','gpu_pm_input_phasea_v','gpu_pm_input_phaseb_v'
-      					,'gpu_pm_input_phasec_v','gpu_on_1','gpu_on_2'}
-      				Graphics: {}
-      			pbb_widget:
-      				Tags: {'pbb_status','pbb_autolevel_mode','pbb_canopy','pbb_dock_time','pbb_undock_time'}
-      				Graphics: {}
-       */
+      gpu_summary_widget: {
+        C: {
+          1: {
+            C90: {
+              remove_all: {}
+            }
+          }
+        },
+        C: {
+          3: {
+            C125: {
+              use_groups: {
+                'gpu_hobart_sx2400_dual_unit': 'gpu_hobart_sx2400_dual_unit'
+              },
+              remove_tags: {
+                'gpu_01_rv_out_set': 'gpu_01_rv_out_set',
+                'gpu_02_rv_out_set': 'gpu_02_rv_out_set',
+                'gpu_01_rv_in_avg': 'gpu_01_rv_in_avg',
+                'gpu_02_rv_in_avg': 'gpu_02_rv_in_avg',
+                'gpu_01_ra_out_a': 'gpu_01_ra_out_a',
+                'gpu_02_ra_out_a': 'gpu_02_ra_out_a',
+                'gpu_01_ra_out_b': 'gpu_01_ra_out_b',
+                'gpu_02_ra_out_b': 'gpu_02_ra_out_b',
+                'gpu_01_ra_out_c': 'gpu_01_ra_out_c',
+                'gpu_02_ra_out_c': 'gpu_02_ra_out_c',
+                'gpu_01_rv_out_a': 'gpu_01_rv_out_a',
+                'gpu_02_rv_out_a': 'gpu_02_rv_out_a',
+                'gpu_01_rv_out_b': 'gpu_01_rv_out_b',
+                'gpu_02_rv_out_b': 'gpu_02_rv_out_b',
+                'gpu_01_rv_out_c': 'gpu_01_rv_out_c',
+                'gpu_02_rv_out_c': 'gpu_02_rv_out_c'
+              }
+            }
+          }
+        }
+      },
+      gpu_widget: {
+        C: {
+          1: {
+            C90: {
+              remove_all: {}
+            }
+          }
+        },
+        C: {
+          3: {
+            C125: {
+              use_groups: {
+                'gpu_hobart_sx2400_dual_unit': 'gpu_hobart_sx2400_dual_unit'
+              },
+              remove_tags: {
+                'gpu_01_time': 'gpu_01_time',
+                'gpu_02_time': 'gpu_02_time'
+              }
+            }
+          }
+        }
+      },
       pbb_pca_gpu_basic_widget: {
+        update_tags: {
+          pca_time: {
+            Tag: 'PCA.PCATime',
+            Label: 'PCA Run Time',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 2,
+              Parm003: 'mins',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_time: {
+            Tag: 'GPU01.GPUTime',
+            Label: 'GPU-1 Run Time',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 2,
+              Parm003: 'mins',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_ra_out_avg: {
+            Tag: 'GPU01.RAOUTAVG',
+            Label: 'GPU-1 Average Output - Amps',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 1,
+              Parm003: 'Amps',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_rv_out_avg: {
+            Tag: 'GPU01.RVOUTAVG',
+            Label: 'GPU-1 Average Output - Volts',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 1,
+              Parm003: 'Volts',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          }
+        },
         C: {
           1: {
             C90: {
@@ -6256,25 +7115,6 @@ TagConfig = (function(superClass) {
                 'gpu_time': 'gpu_time',
                 'gpu_ra_out_avg': 'gpu_ra_out_avg',
                 'gpu_rv_out_avg': 'gpu_rv_out_avg'
-              },
-              update_tags: {
-                pca_time: {
-                  Tag: 'PCA.PCATime',
-                  Label: 'PCA Run Time',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: true,
-                    Parm002: 2,
-                    Parm003: 'mins',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                }
               }
             }
           }
@@ -6282,76 +7122,6 @@ TagConfig = (function(superClass) {
         C: {
           3: {
             C125: {
-              update_tags: {
-                pca_time: {
-                  Tag: 'PCA.PCATime',
-                  Label: 'PCA Run Time',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: true,
-                    Parm002: 2,
-                    Parm003: 'mins',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                gpu_time: {
-                  Tag: 'GPU01.GPUTime',
-                  Label: 'GPU-1 Run Time',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: true,
-                    Parm002: 2,
-                    Parm003: 'mins',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                gpu_ra_out_avg: {
-                  Tag: 'GPU01.RAOUTAVG',
-                  Label: 'GPU-1 Average Output - Amps',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: true,
-                    Parm002: 1,
-                    Parm003: 'Amps',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                gpu_rv_out_avg: {
-                  Tag: 'GPU01.RVOUTAVG',
-                  Label: 'GPU-1 Average Output - Volts',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: true,
-                    Parm002: 1,
-                    Parm003: 'Volts',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                }
-              },
               add_tags: {
                 gpu_02_time: {
                   Tag: 'GPU02.GPUTime',
@@ -6409,19 +7179,25 @@ TagConfig = (function(superClass) {
           }
         }
       },
-
-      /*
-      			pbb_level_detail_widget: 
-      				Tags: {'pbb_status','pbb_autolevel_mode','pbb_canopy','pbb_autolevel_key','pbb_autoleveling','pbb_estop','pbb_limits'
-      					,'pbb_dock_time','pbb_undock_time','pbb_smoke_detector','pbb_daily_aircraft_count','pbb_last_dock_time'
-      					,'pbb_cabin_floor_deicer','pbb_terminal_door','pbb_cab_angle_disp','pbb_slope_deg','pbb_swing_angle_disp'
-      					,'pbb_height_to_disp','pbb_wheel_angle_deg','pbb_tunnel_length'}
-      				Graphics: {}
-      			pca_discharge_widget:
-      				Tags: {'pca_discharge_temp','pca_status','pca_mode_cooling','pca_mode_heating','pca_cooling_pt','pca_heating_pt'
-      					,'pca_alarm_cooling_run','pca_alarm_heating_run','pca_cooling_tm','pca_heating_tm'}
-      				Graphics: {}
-       */
+      pbb_level_detail_widget: {
+        C: {
+          3: {
+            C125: {
+              remove_tags: {
+                'pbb_smoke_detector': 'pbb_smoke_detector',
+                'pbb_cabin_floor_deicer': 'pbb_cabin_floor_deicer',
+                'pbb_terminal_door': 'pbb_terminal_door',
+                'pbb_cab_angle_disp': 'pbb_cab_angle_disp',
+                'pbb_slope_deg': 'pbb_slope_deg',
+                'pbb_swing_angle_disp': 'pbb_swing_angle_disp',
+                'pbb_height_to_disp': 'pbb_height_to_disp',
+                'pbb_wheel_angle_deg': 'pbb_wheel_angle_deg',
+                'pbb_tunnel_length': 'pbb_tunnel_length'
+              }
+            }
+          }
+        }
+      },
       pca_summary_widget: {
         remove_tags: {
           'pca_ambient_humidity': 'pca_ambient_humidity',
@@ -6537,214 +7313,13 @@ TagConfig = (function(superClass) {
             }
           }
         },
-        add_tags: {
-          pca_heater_3: {
-            Tag: 'PCA.HEAT3',
-            Label: 'Heater #3',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_heater_4: {
-            Tag: 'PCA.HEAT4',
-            Label: 'Heater #4',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_comp_stage_1_sec: {
-            Tag: 'PCA.COMPSEC1',
-            Label: 'Secondary compressor #1',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_comp_stage_2_sec: {
-            Tag: 'PCA.COMPSEC2',
-            Label: 'Secondary compressor #2',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_suction_pressure_1_sec: {
-            Tag: 'PCA.PRESSSUCSEC1',
-            Label: 'Suction pressure,secondary compressor #1',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: false,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_suction_pressure_2_sec: {
-            Tag: 'PCA.PRESSSUCSEC2',
-            Label: 'Suction pressure,secondary compressor #2',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: false,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_pressure_head_1_pri: {
-            Tag: 'PCA.PRESSHEADPRI1',
-            Label: 'Head pressure,primary compressor #1',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: false,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_pressure_head_2_pri: {
-            Tag: 'PCA.PRESSHEADPRI2',
-            Label: 'Head pressure,primary compressor #2',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: false,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_pressure_head_1_sec: {
-            Tag: 'PCA.PRESSHEADSEC1',
-            Label: 'Head pressure,secondary compressor #1',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: false,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_pressure_head_2_sec: {
-            Tag: 'PCA.PRESSHEADSEC2',
-            Label: 'Head pressure,secondary compressor #2',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: false,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          }
-        }
-
-        /*
-        				Tags: {'pca_ambient_humidity','pca_ambient_temp','pca_discharge_temp','pca_status','pca_time','pca_blower','pca_heater_1'
-        					,'pca_heater_2','pca_comp_stage_1','pca_comp_stage_2','pca_bridge_damper','pca_bridge_air','pca_pump_cond','pca_coil_dp'
-        					,'pca_vfd_speed','pca_suction_pressure_1','pca_suction_pressure_2','pca_hot_gas_1','pca_hot_gas_2'},
-        				Graphics: {
-        					pca_main_background:{ControlTags:{none:null},Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'div',ParentID:'#graphics_container',Class:'background',Object:null}},
-        					blower_img:{ControlTags:{pca_blower:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'blower-on',Parm003:null,Parm004:'blower-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img',Object:null}},
-        					heating_stage_1_img:{ControlTags:{pca_heater_1:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'heating-stage-1-on',Parm003:null,Parm004:'heating-stage-1-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img',Object:null}},
-        					heating_stage_2_img:{ControlTags:{pca_heater_2:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'heating-stage-2-on',Parm003:null,Parm004:'heating-stage-2-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img',Object:null}},
-        					cooling_stage_1_img:{ControlTags:{pca_comp_stage_1:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'cooling-stage-1-on',Parm003:null,Parm004:'cooling-stage-1-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img',Object:null}},
-        					cooling_stage_2_img:{ControlTags:{pca_comp_stage_2:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'cooling-stage-2-on',Parm003:null,Parm004:'cooling-stage-1-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img',Object:null}},
-        					accool_img:{ControlTags:{pca_bridge_damper:'Boolean',pca_status:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'ac-cool-on',Parm003:null,Parm004:'ac-cool-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img',Object:null}},
-        					bccool_img:{ControlTags:{pca_bridge_air:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'bc-cool-on',Parm003:null,Parm004:'bc-cool-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img',Object:null}},
-        				}
-         */
-      },
-      pca_widget: {
-        remove_tags: {
-          'pca_hot_gas_1': 'pca_hot_gas_1',
-          'pca_hot_gas_2': 'pca_hot_gas_2'
-        },
         C: {
           1: {
             C90: {
-              remove_tags: {
-                'pca_status': 'pca_status'
-              },
-              update_tags: {
-                pca_heater_1: {
-                  Tag: 'PCA.HEAT1',
-                  Label: 'Heater #1',
+              add_tags: {
+                pca_heater_3: {
+                  Tag: 'PCA.HEAT3',
+                  Label: 'Heater #3',
                   DataType: 'Boolean',
                   Parameters: {
                     Parm001: 'On',
@@ -6760,9 +7335,9 @@ TagConfig = (function(superClass) {
                     Object: null
                   }
                 },
-                pca_heater_2: {
-                  Tag: 'PCA.HEAT2',
-                  Label: 'Heater #2',
+                pca_heater_4: {
+                  Tag: 'PCA.HEAT4',
+                  Label: 'Heater #4',
                   DataType: 'Boolean',
                   Parameters: {
                     Parm001: 'On',
@@ -6778,9 +7353,9 @@ TagConfig = (function(superClass) {
                     Object: null
                   }
                 },
-                pca_comp_stage_1: {
-                  Tag: 'PCA.COMPPRI1',
-                  Label: 'Primary compressor #1',
+                pca_comp_stage_1_sec: {
+                  Tag: 'PCA.COMPSEC1',
+                  Label: 'Secondary compressor #1',
                   DataType: 'Boolean',
                   Parameters: {
                     Parm001: 'On',
@@ -6796,9 +7371,9 @@ TagConfig = (function(superClass) {
                     Object: null
                   }
                 },
-                pca_comp_stage_2: {
-                  Tag: 'PCA.COMPPRI2',
-                  Label: 'Primary compressor #2',
+                pca_comp_stage_2_sec: {
+                  Tag: 'PCA.COMPSEC2',
+                  Label: 'Secondary compressor #2',
                   DataType: 'Boolean',
                   Parameters: {
                     Parm001: 'On',
@@ -6814,9 +7389,9 @@ TagConfig = (function(superClass) {
                     Object: null
                   }
                 },
-                pca_suction_pressure_1: {
-                  Tag: 'PCA.PRESSSUCPRI1',
-                  Label: 'Suction pressure,primary compressor #1',
+                pca_suction_pressure_1_sec: {
+                  Tag: 'PCA.PRESSSUCSEC1',
+                  Label: 'Suction pressure,secondary compressor #1',
                   DataType: 'Float',
                   Parameters: {
                     Parm001: false,
@@ -6831,9 +7406,77 @@ TagConfig = (function(superClass) {
                     Object: null
                   }
                 },
-                pca_suction_pressure_2: {
-                  Tag: 'PCA.PRESSSUCPRI2',
-                  Label: 'Suction pressure,primary compressor #2',
+                pca_suction_pressure_2_sec: {
+                  Tag: 'PCA.PRESSSUCSEC2',
+                  Label: 'Suction pressure,secondary compressor #2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_pressure_head_1_pri: {
+                  Tag: 'PCA.PRESSHEADPRI1',
+                  Label: 'Head pressure,primary compressor #1',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_pressure_head_2_pri: {
+                  Tag: 'PCA.PRESSHEADPRI2',
+                  Label: 'Head pressure,primary compressor #2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_pressure_head_1_sec: {
+                  Tag: 'PCA.PRESSHEADSEC1',
+                  Label: 'Head pressure,secondary compressor #1',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_pressure_head_2_sec: {
+                  Tag: 'PCA.PRESSHEADSEC2',
+                  Label: 'Head pressure,secondary compressor #2',
                   DataType: 'Float',
                   Parameters: {
                     Parm001: false,
@@ -6848,6 +7491,179 @@ TagConfig = (function(superClass) {
                     Object: null
                   }
                 }
+              }
+            }
+          }
+        },
+        C: {
+          3: {
+            C125: {
+              remove_tags: {
+                'pca_bridge_air': 'pca_bridge_air',
+                'pca_pump_cond': 'pca_pump_cond',
+                'pca_suction_pressure_1': 'pca_suction_pressure_1',
+                'pca_suction_pressure_2': 'pca_suction_pressure_2'
+              },
+              add_tags: {
+                pca_heater_3: {
+                  Tag: 'PCA.HEAT3',
+                  Label: 'Heater #3',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_stage_3: {
+                  Tag: 'PCA.COMPPRI3',
+                  Label: 'Primary compressor #3',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      pca_widget: {
+        remove_tags: {
+          'pca_hot_gas_1': 'pca_hot_gas_1',
+          'pca_hot_gas_2': 'pca_hot_gas_2'
+        },
+        update_tags: {
+          pca_heater_1: {
+            Tag: 'PCA.HEAT1',
+            Label: 'Heater #1',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_heater_2: {
+            Tag: 'PCA.HEAT2',
+            Label: 'Heater #2',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_comp_stage_1: {
+            Tag: 'PCA.COMPPRI1',
+            Label: 'Primary compressor #1',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_comp_stage_2: {
+            Tag: 'PCA.COMPPRI2',
+            Label: 'Primary compressor #2',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_suction_pressure_1: {
+            Tag: 'PCA.PRESSSUCPRI1',
+            Label: 'Suction pressure,primary compressor #1',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: false,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_suction_pressure_2: {
+            Tag: 'PCA.PRESSSUCPRI2',
+            Label: 'Suction pressure,primary compressor #2',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: false,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          }
+        },
+        C: {
+          1: {
+            C90: {
+              remove_tags: {
+                'pca_status': 'pca_status'
               },
               add_tags: {
                 pca_heater_3: {
@@ -7037,80 +7853,6 @@ TagConfig = (function(superClass) {
                 'pca_suction_pressure_1': 'pca_suction_pressure_1',
                 'pca_suction_pressure_2': 'pca_suction_pressure_2'
               },
-              update_tags: {
-                pca_heater_1: {
-                  Tag: 'PCA.HEAT1',
-                  Label: 'Heater #1',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                pca_heater_2: {
-                  Tag: 'PCA.HEAT2',
-                  Label: 'Heater #2',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                pca_comp_stage_1: {
-                  Tag: 'PCA.COMPPRI1',
-                  Label: 'Primary compressor #1',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                pca_comp_stage_2: {
-                  Tag: 'PCA.COMPPRI2',
-                  Label: 'Primary compressor #2',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                }
-              },
               add_tags: {
                 pca_heater_3: {
                   Tag: 'PCA.HEAT3',
@@ -7165,14 +7907,14 @@ TagConfig = (function(superClass) {
 
 
   /*********************************************************************************
-  	**  Widget: String
-  	**  Groups: { String,String,... }
-  	**  Tags: { Tag,Tag,Tag,...}
+  	**  Widget:String
+  	**  Groups:{ String,String,... }
+  	**  Tags:{ Tag,Tag,Tag,...}
   	**        Tag = tag_name:{Tag:'PATH.NAME',Label:'Label',DataType:'[DataType]',Parameters:{Parm001:[value],Parm002:[value],Parm003:[value]...},Element:{Type:'[HTML Element Type]',ParentID:'#ParentID',Object:[null or <HTML Element definition/>]}},
-  	**  Site_Code: String
-  	**  Site:  Site Object From Widgets
+  	**  Site_Code:String
+  	**  Site: Site Object From Widgets
   	***********************************************************************************
-  	** NOTES: 
+  	** NOTES:
   	***********************************************************************************
   	** If Groups OR Tags parameters are set,the Widget.Tags WILL NOT be used.
   	** If Group AND Tags parameters are set,the Tags will be apopended to the group 
@@ -7182,7 +7924,7 @@ TagConfig = (function(superClass) {
    */
 
   function TagConfig(Widget, Groups, Tags, Site_Code, Site) {
-    var addGraphics, addGroups, addTags, data, found_use, graphic, graphicData, group, groupList, j, k, key, l, len, len1, len2, lookupProps, mod, modList, propCnt, property, propertyList, ref, ref1, ref2, removeGraphics, removeGroups, removeTags, tag, updateGraphics, updateTags, useGraphics, useGroups, useTags;
+    var addGraphics, addGroups, addTags, data, found_use, graphic, graphicData, group, groupList, j, k, key, l, len, len1, len2, lookupProps, mod, modList, propCnt, property, propertyList, ref, ref1, ref2, removeGraphics, removeGroups, removeTags, remove_all, tag, updateGraphics, updateTags, useGraphics, useGroups, useTags;
     this.TagData = [];
     this.Graphics = [];
     addGroups = [];
@@ -7198,14 +7940,14 @@ TagConfig = (function(superClass) {
     useTags = [];
     if (Widget != null ? Widget.length = 0 : void 0) {
       if (Object.keys(this.constructor.widgets).indexOf(Widget) < 0) {
-        throw new Error("Class does not contain a configuration for Widget: " + Widget);
+        throw new Error("Class does not contain a configuration for Widget:" + Widget);
       }
     }
     if ((Site_Code != null ? Site_Code.length : void 0) > 0 && (Site != null ? Site.length = 0 : void 0)) {
-      throw new Error("Class cannot have Site_Code without Site: Widget: " + Widget);
+      throw new Error("Class cannot have Site_Code without Site:Widget:" + Widget);
     }
     if (Site_Code != null ? Site_Code.length = 0 && (Site != null ? Site.length : void 0) > 0 : void 0) {
-      throw new Error("Class cannot have Site without Site_Code: Widget: " + Widget);
+      throw new Error("Class cannot have Site without Site_Code:Widget:" + Widget);
     }
     if ((Widget != null) && Widget.length > 0) {
       ref = this.constructor.widgets[Widget].Graphics;
@@ -7222,9 +7964,16 @@ TagConfig = (function(superClass) {
     if ((Groups != null) && Object.keys(Groups).length > 0) {
       for (key in Groups) {
         group = Groups[key];
-        ref1 = this.constructor.groups[group];
-        for (tag in ref1) {
-          data = ref1[tag];
+        if (Object.keys(this.constructor.widgets[group].Graphics).indexOf(tag) > -1) {
+          this.Graphics = [];
+          ref1 = this.constructor.widgets[group].Graphics;
+          for (graphic in ref1) {
+            graphicData = ref1[graphic];
+            this.Graphics[graphic] = graphicData;
+          }
+        }
+        this.TagData = [];
+        for (tag in this.constructor.widgets[Widget].Tags) {
           if (Object.keys(this.constructor.tags).indexOf(tag) > -1) {
             this.TagData[tag] = this.constructor.tags[tag];
           }
@@ -7232,11 +7981,12 @@ TagConfig = (function(superClass) {
       }
     }
     if ((Tags != null) && Object.keys(Tags).length > 0) {
+      this.TagData = [];
       this.TagData = Tags;
     }
     if ((Site_Code != null ? Site_Code.length : void 0) > 0) {
 
-      /* LOOP: Get Graphics */
+      /* LOOP:Get Graphics */
       groupList = [];
       groupList["root"] = '';
       groupList[Widget] = Widget;
@@ -7245,8 +7995,9 @@ TagConfig = (function(superClass) {
         groupList[group] = group;
       }
       propertyList = [Site.terminal, Site.zone, Site.gate];
-      modList = ["use_graphics", "add_graphics", "update_graphics", "remove_graphics"];
+      modList = ["use_graphics", "add_graphics", "update_graphics", "remove_graphics", "remove_all"];
       found_use = false;
+      remove_all = false;
       for (key in groupList) {
         group = groupList[key];
         propCnt = 0;
@@ -7260,16 +8011,18 @@ TagConfig = (function(superClass) {
             if (property !== void 0) {
               switch (mod) {
                 case "" + (modList.slice(0, 1)):
-                  found_use = true;
-                  this.Graphics = [];
-                  for (key in property) {
-                    data = property[key];
-                    this.Graphics[key] = data;
+                  if (!remove_all) {
+                    found_use = true;
+                    this.Graphics = [];
+                    for (key in property) {
+                      data = property[key];
+                      this.Graphics[key] = data;
+                    }
                   }
                   break;
                 case "" + (modList.slice(1, 2)):
                 case "" + (modList.slice(2, 3)):
-                  if (!found_use) {
+                  if (!found_use && !remove_all) {
                     for (key in property) {
                       data = property[key];
                       this.Graphics[key] = data;
@@ -7277,12 +8030,16 @@ TagConfig = (function(superClass) {
                   }
                   break;
                 case "" + (modList.slice(3, 4)):
-                  if (!found_use) {
+                  if (!found_use && !remove_all) {
                     for (key in property) {
                       data = property[key];
                       delete this.Graphics[key];
                     }
                   }
+                  break;
+                case "" + (modList.slice(4, 5)):
+                  remove_all = true;
+                  this.Graphics = [];
               }
             }
           }
@@ -7290,9 +8047,10 @@ TagConfig = (function(superClass) {
         }
       }
 
-      /* LOOP: Get Groups */
-      modList = ["use_groups", "add_groups", "remove_groups"];
+      /* LOOP:Get Groups */
+      modList = ["use_groups", "add_groups", "remove_groups", "remove_all"];
       found_use = false;
+      remove_all = false;
       for (key in groupList) {
         group = groupList[key];
         propCnt = 0;
@@ -7306,16 +8064,18 @@ TagConfig = (function(superClass) {
             if (property !== void 0) {
               switch (mod) {
                 case "" + (modList.slice(0, 1)):
-                  found_use = true;
-                  addGroups = [];
-                  this.TagData = [];
-                  for (key in property) {
-                    group = property[key];
-                    addGroups[key] = group;
+                  if (!remove_all) {
+                    found_use = true;
+                    addGroups = [];
+                    this.TagData = [];
+                    for (key in property) {
+                      group = property[key];
+                      addGroups[key] = group;
+                    }
                   }
                   break;
                 case "" + (modList.slice(1, 2)):
-                  if (!found_use) {
+                  if (!found_use && !remove_all) {
                     for (key in property) {
                       group = property[key];
                       if (Object.keys(addGroups).indexOf(key) === -1) {
@@ -7325,7 +8085,7 @@ TagConfig = (function(superClass) {
                   }
                   break;
                 case "" + (modList.slice(2, 3)):
-                  if (!found_use) {
+                  if (!found_use && !remove_all) {
                     for (key in property) {
                       group = property[key];
                       if (Object.keys(addGroups).indexOf(group) > -1) {
@@ -7333,6 +8093,10 @@ TagConfig = (function(superClass) {
                       }
                     }
                   }
+                  break;
+                case "" + (modList.slice(3, 4)):
+                  remove_all = true;
+                  addGroups = [];
               }
             }
           }
@@ -7352,9 +8116,10 @@ TagConfig = (function(superClass) {
         }
       }
 
-      /* LOOP: Get Tags */
-      modList = ["use_tags", "add_tags", "update_tags", "remove_tags"];
+      /* LOOP:Get Tags */
+      modList = ["use_tags", "add_tags", "update_tags", "remove_tags", "remove_all"];
       found_use = false;
+      remove_all = false;
       for (key in groupList) {
         group = groupList[key];
         propCnt = 0;
@@ -7368,16 +8133,18 @@ TagConfig = (function(superClass) {
             if (property !== void 0) {
               switch (mod) {
                 case "" + (modList.slice(0, 1)):
-                  found_use = true;
-                  this.TagData = [];
-                  for (key in property) {
-                    data = property[key];
-                    this.TagData[key] = data;
+                  if (!remove_all) {
+                    found_use = true;
+                    this.TagData = [];
+                    for (key in property) {
+                      data = property[key];
+                      this.TagData[key] = data;
+                    }
                   }
                   break;
                 case "" + (modList.slice(1, 2)):
                 case "" + (modList.slice(2, 3)):
-                  if (!found_use) {
+                  if (!found_use && !remove_all) {
                     for (key in property) {
                       data = property[key];
                       this.TagData[key] = data;
@@ -7385,12 +8152,16 @@ TagConfig = (function(superClass) {
                   }
                   break;
                 case "" + (modList.slice(3, 4)):
-                  if (!found_use) {
+                  if (!found_use && !remove_all) {
                     for (key in property) {
                       data = property[key];
                       delete this.TagData[key];
                     }
                   }
+                  break;
+                case "" + (modList.slice(4, 5)):
+                  remove_all = true;
+                  this.TagData = [];
               }
             }
           }
