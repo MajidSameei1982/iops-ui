@@ -7423,7 +7423,7 @@ TagConfig = (function(superClass) {
                     Object: null
                   }
                 },
-                pca_pressure_head_1_pri: {
+                pca_pressure_head_1: {
                   Tag: 'PCA.PRESSHEADPRI1',
                   Label: 'Head pressure,primary compressor #1',
                   DataType: 'Float',
@@ -7440,7 +7440,7 @@ TagConfig = (function(superClass) {
                     Object: null
                   }
                 },
-                pca_pressure_head_2_pri: {
+                pca_pressure_head_2: {
                   Tag: 'PCA.PRESSHEADPRI2',
                   Label: 'Head pressure,primary compressor #2',
                   DataType: 'Float',
@@ -7772,7 +7772,7 @@ TagConfig = (function(superClass) {
                     Object: null
                   }
                 },
-                pca_pressure_head_1_pri: {
+                pca_pressure_head_1: {
                   Tag: 'PCA.PRESSHEADPRI1',
                   Label: 'Head pressure,primary compressor #1',
                   DataType: 'Float',
@@ -7789,7 +7789,7 @@ TagConfig = (function(superClass) {
                     Object: null
                   }
                 },
-                pca_pressure_head_2_pri: {
+                pca_pressure_head_2: {
                   Tag: 'PCA.PRESSHEADPRI2',
                   Label: 'Head pressure,primary compressor #2',
                   DataType: 'Float',
@@ -7897,9 +7897,252 @@ TagConfig = (function(superClass) {
       }
     },
     JFK: {
+      gpu_summary_widget: {
+        remove_tags: {
+          'gpu_ra_in_avg': 'gpu_ra_in_avg'
+        }
+      },
+      gpu_widget: {
+        remove_tags: {
+          'gpu_ra_in_avg': 'gpu_ra_in_avg',
+          'gpu_pm_input_phasea_i': 'gpu_pm_input_phasea_i',
+          'gpu_pm_input_phaseb_i': 'gpu_pm_input_phaseb_i',
+          'gpu_pm_input_phasec_i': 'gpu_pm_input_phasec_i',
+          'gpu_on_1': 'gpu_on_1',
+          'gpu_on_2': 'gpu_on_2'
+        },
+        update_tags: {
+          gpu_pm_output_phasea_i: {
+            Tag: 'GPU.PM_OUTPUT_PHASEA_I',
+            Label: 'Amps Out Phase A',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 1,
+              Parm003: 'Amps',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_pm_output_phasea_v: {
+            Tag: 'GPU.PM_OUTPUT_PHASEA_V',
+            Label: 'Volts Out Phase A',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 1,
+              Parm003: 'Volts',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_pm_output_phaseb_i: {
+            Tag: 'GPU.PM_OUTPUT_PHASEB_I',
+            Label: 'Amps Out Phase B',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 1,
+              Parm003: 'Amps',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_pm_output_phaseb_v: {
+            Tag: 'GPU.PM_OUTPUT_PHASEB_V',
+            Label: 'Volts Out Phase B',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 1,
+              Parm003: 'Volts',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_pm_output_phasec_i: {
+            Tag: 'GPU.PM_OUTPUT_PHASEC_I',
+            Label: 'Amps Out Phase C',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 1,
+              Parm003: 'Amps',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_pm_output_phasec_v: {
+            Tag: 'GPU.PM_OUTPUT_PHASEC_V',
+            Label: 'Volts Out Phase C',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 1,
+              Parm003: 'Volts',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          }
+        }
+      },
+      pca_discharge_widget: {
+        remove_all: {}
+      },
+      pca_summary_widget: {
+        remove_all: {}
+      },
+      pca_widget: {
+        remove_all: {}
+      },
+      pbb_level_detail_widget: {
+        4: {
+          B1: {
+            B29L2: {
+              add_tags: {
+                elvrot_rotunda_status: {
+                  Tag: 'ELVROT.ROTUNDA_STATUS',
+                  Label: 'Elevating Rotunda Status',
+                  DataType: 'String',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                elvrot_rotunda_mode: {
+                  Tag: 'ELVROT.ROTUNDA_MODE',
+                  Label: 'Elevating Rotunda Operational Mode',
+                  DataType: 'String',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                elvrot_rotunda_position: {
+                  Tag: 'ELVROT.ROTUNDA_POSITION',
+                  Label: 'Elevating Rotunda Position',
+                  DataType: 'String',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       pbb_pca_gpu_basic_widget: {
-        add_groups: {
-          'pbb_pca_gpu_basic_widget': 'pbb_pca_gpu_basic_widget'
+        remove_tags: {
+          'pca_status': 'pca_status',
+          'pca_time': 'pca_time',
+          'pca_discharge_temp': 'pca_discharge_temp'
+        },
+        4: {
+          B1: {
+            B29L2: {
+              add_tags: {
+                elvrot_rotunda_status: {
+                  Tag: 'ELVROT.ROTUNDA_STATUS',
+                  Label: 'Elevating Rotunda Status',
+                  DataType: 'String',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      pbb_widget: {
+        4: {
+          B1: {
+            B29L2: {
+              add_tags: {
+                elvrot_rotunda_position: {
+                  Tag: 'ELVROT.ROTUNDA_POSITION',
+                  Label: 'Elevating Rotunda Position',
+                  DataType: 'String',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
