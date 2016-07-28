@@ -565,8 +565,8 @@ class TagConfig extends Object
 						pca_comp_stage_2_sec:{Tag:'PCA.COMPSEC2',Label:'Secondary compressor #2',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 						pca_suction_pressure_1_sec:{Tag:'PCA.PRESSSUCSEC1',Label:'Suction pressure,secondary compressor #1',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 						pca_suction_pressure_2_sec:{Tag:'PCA.PRESSSUCSEC2',Label:'Suction pressure,secondary compressor #2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						pca_pressure_head_1_pri:{Tag:'PCA.PRESSHEADPRI1',Label:'Head pressure,primary compressor #1',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						pca_pressure_head_2_pri:{Tag:'PCA.PRESSHEADPRI2',Label:'Head pressure,primary compressor #2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+						pca_pressure_head_1:{Tag:'PCA.PRESSHEADPRI1',Label:'Head pressure,primary compressor #1',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+						pca_pressure_head_2:{Tag:'PCA.PRESSHEADPRI2',Label:'Head pressure,primary compressor #2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 						pca_pressure_head_1_sec:{Tag:'PCA.PRESSHEADSEC1',Label:'Head pressure,secondary compressor #1',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 						pca_pressure_head_2_sec:{Tag:'PCA.PRESSHEADSEC2',Label:'Head pressure,secondary compressor #2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					}
@@ -595,8 +595,8 @@ class TagConfig extends Object
 						pca_comp_stage_2_sec:{Tag:'PCA.COMPSEC2',Label:'Secondary compressor #2',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 						pca_suction_pressure_1_sec:{Tag:'PCA.PRESSSUCSEC1',Label:'Suction pressure,secondary compressor #1',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 						pca_suction_pressure_2_sec:{Tag:'PCA.PRESSSUCSEC2',Label:'Suction pressure,secondary compressor #2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						pca_pressure_head_1_pri:{Tag:'PCA.PRESSHEADPRI1',Label:'Head pressure,primary compressor #1',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						pca_pressure_head_2_pri:{Tag:'PCA.PRESSHEADPRI2',Label:'Head pressure,primary compressor #2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+						pca_pressure_head_1:{Tag:'PCA.PRESSHEADPRI1',Label:'Head pressure,primary compressor #1',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+						pca_pressure_head_2:{Tag:'PCA.PRESSHEADPRI2',Label:'Head pressure,primary compressor #2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 						pca_pressure_head_1_sec:{Tag:'PCA.PRESSHEADSEC1',Label:'Head pressure,secondary compressor #1',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 						pca_pressure_head_2_sec:{Tag:'PCA.PRESSHEADSEC2',Label:'Head pressure,secondary compressor #2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					}
@@ -608,8 +608,47 @@ class TagConfig extends Object
 					}
 
 		JFK:
-			pbb_pca_gpu_basic_widget:
-				add_groups:{'pbb_pca_gpu_basic_widget'}
+			#4:A1:A5:
+			#4:B1:B25L1:
+			#4:B1:B27:
+			#4:B1:B29L1:
+			#4:B1:B29L2:
+			gpu_summary_widget: # GPU Summary Widget
+				remove_tags: {'gpu_ra_in_avg'}
+			gpu_widget: # GPU Widget
+				remove_tags:{'gpu_ra_in_avg','gpu_pm_input_phasea_i','gpu_pm_input_phaseb_i','gpu_pm_input_phasec_i','gpu_on_1','gpu_on_2'}
+				update_tags:{
+					gpu_pm_output_phasea_i:{Tag:'GPU.PM_OUTPUT_PHASEA_I',Label:'Amps Out Phase A',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Amps',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					gpu_pm_output_phasea_v:{Tag:'GPU.PM_OUTPUT_PHASEA_V',Label:'Volts Out Phase A',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					gpu_pm_output_phaseb_i:{Tag:'GPU.PM_OUTPUT_PHASEB_I',Label:'Amps Out Phase B',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Amps',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					gpu_pm_output_phaseb_v:{Tag:'GPU.PM_OUTPUT_PHASEB_V',Label:'Volts Out Phase B',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					gpu_pm_output_phasec_i:{Tag:'GPU.PM_OUTPUT_PHASEC_I',Label:'Amps Out Phase C',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Amps',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					gpu_pm_output_phasec_v:{Tag:'GPU.PM_OUTPUT_PHASEC_V',Label:'Volts Out Phase C',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+				}
+			pca_discharge_widget: # PCA Discharge Widget
+				remove_all: {}
+			pca_summary_widget: # PCA Summary Widget
+				remove_all:{}
+			pca_widget: # PCA Widget
+				remove_all:{}
+			pbb_level_detail_widget: # PBB Overview Widget
+				4:B1:B29L2:
+					add_tags:{
+						elvrot_rotunda_status:{Tag:'ELVROT.ROTUNDA_STATUS',Label:'Elevating Rotunda Status',DataType:'String',Parameters:{Parm001:false,Parm002:null,Parm003:'#{1}',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+						elvrot_rotunda_mode:{Tag:'ELVROT.ROTUNDA_MODE',Label:'Elevating Rotunda Operational Mode',DataType:'String',Parameters:{Parm001:false,Parm002:null,Parm003:'#{1}',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+						elvrot_rotunda_position:{Tag:'ELVROT.ROTUNDA_POSITION',Label:'Elevating Rotunda Position',DataType:'String',Parameters:{Parm001:false,Parm002:null,Parm003:'#{1}',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					}
+			pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
+				remove_tags:{'pca_status','pca_time','pca_discharge_temp'}
+				4:B1:B29L2:
+					add_tags:{
+						elvrot_rotunda_status:{Tag:'ELVROT.ROTUNDA_STATUS',Label:'Elevating Rotunda Status',DataType:'String',Parameters:{Parm001:false,Parm002:null,Parm003:'#{1}',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					}
+			pbb_widget: # PBB Bridge Widget
+				4:B1:B29L2:
+					add_tags:{
+						elvrot_rotunda_position:{Tag:'ELVROT.ROTUNDA_POSITION',Label:'Elevating Rotunda Position',DataType:'String',Parameters:{Parm001:false,Parm002:null,Parm003:'#{1}',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					}
 
 
 	###********************************************************************************
