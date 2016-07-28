@@ -8085,7 +8085,7 @@ TagConfig = (function(superClass) {
                 elvrot_rotunda_status: {
                   Tag: 'ELVROT.ROTUNDA_STATUS',
                   Label: 'Elevating Rotunda Status',
-                  DataType: 'String',
+                  DataType: 'Value',
                   Parameters: {
                     Parm001: false,
                     Parm002: null,
@@ -8102,7 +8102,7 @@ TagConfig = (function(superClass) {
                 elvrot_rotunda_mode: {
                   Tag: 'ELVROT.ROTUNDA_MODE',
                   Label: 'Elevating Rotunda Operational Mode',
-                  DataType: 'String',
+                  DataType: 'Value',
                   Parameters: {
                     Parm001: false,
                     Parm002: null,
@@ -8119,7 +8119,7 @@ TagConfig = (function(superClass) {
                 elvrot_rotunda_position: {
                   Tag: 'ELVROT.ROTUNDA_POSITION',
                   Label: 'Elevating Rotunda Position',
-                  DataType: 'String',
+                  DataType: 'Value',
                   Parameters: {
                     Parm001: false,
                     Parm002: null,
@@ -8151,7 +8151,7 @@ TagConfig = (function(superClass) {
                 elvrot_rotunda_status: {
                   Tag: 'ELVROT.ROTUNDA_STATUS',
                   Label: 'Elevating Rotunda Status',
-                  DataType: 'String',
+                  DataType: 'Value',
                   Parameters: {
                     Parm001: false,
                     Parm002: null,
@@ -8178,7 +8178,7 @@ TagConfig = (function(superClass) {
                 elvrot_rotunda_position: {
                   Tag: 'ELVROT.ROTUNDA_POSITION',
                   Label: 'Elevating Rotunda Position',
-                  DataType: 'String',
+                  DataType: 'Value',
                   Parameters: {
                     Parm001: false,
                     Parm002: null,
