@@ -1988,7 +1988,7 @@ window.JST["widgets/pbb_detail_widget"] = function(__obj) {
         site: this.settings.site
       })));
     
-      _print(_safe('\n    <div class="row">\n      <div id=\'terminals\' class=\'col-md-6\'></div>\n    </div>\n    <div class="row">\n      <div id=\'zones\' class=\'col-md-6\'></div>\n    </div>\n    <div class="row">\n      <div id=\'gates\' class=\'col-md-6\'></div>  \n    </div>\n  </div>\n\n</div>\n'));
+      _print(_safe('\n    <div class="row">\n      <div id=\'terminals\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row">\n      <div id=\'zones\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row">\n      <div id=\'gates\' class=\'col-md-12\'></div>  \n    </div>\n  </div>\n\n</div>\n'));
     
     }).call(this);
     
@@ -2088,7 +2088,7 @@ window.JST["widgets/pbb_pca_gpu_basic_widget"] = function(__obj) {
     };
     (function() {
     
-      _print(_safe('<div class="box-header with-border">\n  <div class="pull-left"><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <!--\n    <table id="widgetData" class="data" style="float: left; width:92%"> \n      <tbody>\n      </tbody>\n    </table>\n  -->\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class="pull-left"><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -2258,7 +2258,7 @@ window.JST["widgets/pca_summary_widget"] = function(__obj) {
         site: this.settings.site
       })));
     
-      _print(_safe('\n    <div class="row">\n      <div id=\'terminals\' class=\'col-md-6\'></div>\n    </div>\n    <div class="row">\n      <div id=\'zones\' class=\'col-md-6\'></div>\n    </div>\n    <div class="row">\n      <div id=\'gates\' class=\'col-md-6\'></div>  \n    </div>\n  </div>\n\n</div>\n'));
+      _print(_safe('\n    <div class="row">\n      <div id=\'terminals\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row">\n      <div id=\'zones\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row">\n      <div id=\'gates\' class=\'col-md-12\'></div>  \n    </div>\n  </div>\n\n</div>\n'));
     
     }).call(this);
     
@@ -3647,7 +3647,7 @@ _.extend(Marionette.View.prototype, {
         return "<div class='form-group " + cls + "' for='" + id + "'>" + label + field + feedback + "</div>";
       },
       siteSelector: function(arg) {
-        var acc, code, i, id, j, label, len, len1, ref, ref1, s, sel, sh, site, txt;
+        var acc, code, found_sel, i, id, j, label, len, len1, ref, ref1, s, sel, sh, site, txt;
         id = arg.id, label = arg.label, site = arg.site;
         sh = "<div class='form-group' for='" + id + "' style='width:95%;'>\n  <label>" + label + "</label>\n  <select id='" + id + "' class='form-control' style='width:95%;' data-placeholder='Select a Site'>\n    <option value=''></option>";
         if ((App.accounts != null) && App.accounts.models.length > 0) {
@@ -3655,6 +3655,7 @@ _.extend(Marionette.View.prototype, {
           for (i = 0, len = ref.length; i < len; i++) {
             acc = ref[i];
             if ((acc.sites != null) && acc.sites.models.length > 0) {
+              found_sel = false;
               ref1 = acc.sites.models;
               for (j = 0, len1 = ref1.length; j < len1; j++) {
                 s = ref1[j];
@@ -3667,7 +3668,13 @@ _.extend(Marionette.View.prototype, {
                   txt = txt + " (" + code + ")";
                 }
                 sel = (site != null) && ("" + site) === ("" + s.id) ? 'selected' : '';
+                if (sel == null) {
+                  found_sel = true;
+                }
                 sh += "<option value='" + s.id + "' " + sel + ">" + txt + "</option>";
+              }
+              if (!found_sel) {
+                sh = sh.replace("<option value='" + (Object.keys(acc.sites.models)[0]) + "' ", "<option value='" + (Object.keys(acc.sites.models)[0]) + "' selected");
               }
             }
           }
@@ -3675,7 +3682,7 @@ _.extend(Marionette.View.prototype, {
         return sh + "</select></div>";
       },
       terminalSelector: function(arg) {
-        var id, label, s, sel, settings, sh, site, t, terminal, terminals;
+        var found_sel, id, label, s, sel, settings, sh, site, t, terminal, terminals;
         id = arg.id, label = arg.label, site = arg.site, terminal = arg.terminal;
         sh = "<div class='form-group' for='" + id + "'>\n  <label>" + label + "</label>\n  <select id='" + id + "' class='form-control' data-placeholder='Select a Terminal'>";
         s = OPCManager.get_site(site);
@@ -3683,14 +3690,21 @@ _.extend(Marionette.View.prototype, {
           settings = s.get('settings') || {};
           terminals = settings.zones || {};
         }
+        found_sel = false;
         for (t in terminals) {
           sel = (terminal != null) && ("" + terminal) === ("" + t) ? 'selected' : '';
+          if (sel == null) {
+            found_sel = true;
+          }
           sh += "<option value='" + t + "' " + sel + ">" + t + "</option>";
+        }
+        if (!found_sel) {
+          sh = sh.replace("<option value='" + (Object.keys(terminals)[0]) + "' ", "<option value='" + (Object.keys(terminals)[0]) + "' selected");
         }
         return sh + "</select></div>";
       },
       zoneSelector: function(arg) {
-        var id, label, s, sel, settings, sh, site, t, term, terminal, terminals, z, zone;
+        var found_sel, id, label, s, sel, settings, sh, site, t, term, terminal, terminals, z, zone;
         id = arg.id, label = arg.label, site = arg.site, terminal = arg.terminal, zone = arg.zone;
         sh = "<div class='form-group' for='" + id + "'>\n  <label>" + label + "</label>\n  <select id='" + id + "' class='form-control' data-placeholder='Select a Zone'>";
         s = OPCManager.get_site(site);
@@ -3703,15 +3717,22 @@ _.extend(Marionette.View.prototype, {
             continue;
           }
           term = terminals[t];
+          found_sel = false;
           for (z in term) {
             sel = (zone != null) && ("" + zone) === ("" + z) ? 'selected' : '';
+            if (sel == null) {
+              found_sel = true;
+            }
             sh += "<option value='" + z + "' " + sel + ">" + z + "</option>";
+          }
+          if (!found_sel) {
+            sh = sh.replace("<option value='" + (Object.keys(term)[0]) + "' ", "<option value='" + (Object.keys(term)[0]) + "' selected");
           }
         }
         return sh + "</select></div>";
       },
       gateSelector: function(arg) {
-        var g, gate, id, label, s, sel, settings, sh, site, t, term, terminal, terminals, z, zn, zone;
+        var found_sel, g, gate, id, label, s, sel, settings, sh, site, t, term, terminal, terminals, z, zn, zone;
         id = arg.id, label = arg.label, site = arg.site, terminal = arg.terminal, zone = arg.zone, gate = arg.gate;
         sh = "<div class='form-group' for='" + id + "'>\n  <label>" + label + "</label>\n  <select id='" + id + "' class='form-control' data-placeholder='Select a Gate'>";
         s = OPCManager.get_site(site);
@@ -3729,16 +3750,23 @@ _.extend(Marionette.View.prototype, {
               continue;
             }
             zn = term[z];
+            found_sel = false;
             for (g in zn) {
               sel = (gate != null) && ("" + gate) === ("" + g) ? 'selected' : '';
+              if (sel == null) {
+                found_sel = true;
+              }
               sh += "<option value='" + g + "' " + sel + ">" + g + "</option>";
+            }
+            if (!found_sel) {
+              sh = sh.replace("<option value='" + (Object.keys(zn)[0]) + "' ", "<option value='" + (Object.keys(zn)[0]) + "' selected");
             }
           }
         }
         return sh + "</select></div>";
       },
       claimSelector: function(arg) {
-        var c, ch, claims, cls, i, id, j, label, len, len1, ref, sel, sid, site_id, txt, value;
+        var c, ch, claims, cls, found_sel, i, id, j, label, len, len1, ref, sel, sid, site_id, txt, value;
         id = arg.id, label = arg.label, value = arg.value, site_id = arg.site_id, cls = arg.cls;
         c = 'form-group';
         c = cls != null ? c + " " + cls : c;
@@ -3756,11 +3784,18 @@ _.extend(Marionette.View.prototype, {
             }
           }
         }
+        found_sel = false;
         for (j = 0, len1 = claims.length; j < len1; j++) {
           c = claims[j];
           txt = c.get('name');
           sel = (value != null) && ("" + value) === ("" + c.id) ? 'selected' : '';
+          if (sel == null) {
+            found_sel = true;
+          }
           ch += "<option value='" + c.id + "' " + sel + ">" + txt + "</option>";
+        }
+        if (!found_sel) {
+          ch = ch.replace("<option value='" + (Object.keys(claims)[0]) + "' ", "<option value='" + (Object.keys(claims)[0]) + "' selected");
         }
         return ch + "</select></div>";
       },
@@ -14544,6 +14579,7 @@ IOPSWidgetView = (function(superClass) {
 
   function IOPSWidgetView() {
     this.draw_selectors = bind(this.draw_selectors, this);
+    this.update_opc_data = bind(this.update_opc_data, this);
     this.set_descriptions = bind(this.set_descriptions, this);
     this.data_update = bind(this.data_update, this);
     this.data_q = bind(this.data_q, this);
@@ -14598,7 +14634,7 @@ IOPSWidgetView = (function(superClass) {
   };
 
   IOPSWidgetView.prototype.set_descriptions = function(force) {
-    var d, ref, ref1, t, tdLen, tds, tg, tlen;
+    var d, ref1, ref2, t, tdLen, tds, tg, tlen;
     tds = [];
     tdLen = 0;
     if (!(this.tagData == null)) {
@@ -14612,42 +14648,42 @@ IOPSWidgetView = (function(superClass) {
     if (this.dcount == null) {
       this.dcount = 0;
     }
-    ref = this.tags;
-    for (t in ref) {
-      d = ref[t];
+    ref1 = this.tags;
+    for (t in ref1) {
+      d = ref1[t];
       tg = this.tags[t];
       tds.push("" + this.prefix + d + ".Description");
     }
-    ref1 = this.tagData;
-    for (t in ref1) {
-      d = ref1[t];
+    ref2 = this.tagData;
+    for (t in ref2) {
+      d = ref2[t];
       tds.push("" + this.prefix + d.Tag + ".Description");
     }
     return this.opc.load_tags(tds, (function(_this) {
       return function(data) {
-        var i, idx, len, ref2, ref3, ref4, results, tt, v, vals;
+        var i, idx, len, ref3, ref4, ref5, results, tt, v, vals;
         vals = [];
-        ref2 = _this.tags;
-        for (t in ref2) {
-          d = ref2[t];
+        ref3 = _this.tags;
+        for (t in ref3) {
+          d = ref3[t];
           tg = _this.tags[t];
           vals[t] = {
             "Tag": "" + tg,
             "Label": null
           };
         }
-        ref3 = _this.tagData;
-        for (t in ref3) {
-          d = ref3[t];
+        ref4 = _this.tagData;
+        for (t in ref4) {
+          d = ref4[t];
           vals[t] = {
             "Tag": "" + d.Tag,
             "Label": "" + d.Label
           };
         }
-        ref4 = data.tags;
+        ref5 = data.tags;
         results = [];
-        for (i = 0, len = ref4.length; i < len; i++) {
-          t = ref4[i];
+        for (i = 0, len = ref5.length; i < len; i++) {
+          t = ref5[i];
           results.push((function() {
             var results1;
             results1 = [];
@@ -14765,13 +14801,13 @@ IOPSWidgetView = (function(superClass) {
   };
 
   IOPSWidgetView.prototype.create_dynamic_elements = function(WidgetID, ClassID, Groups, Tags, Site_Code, Site) {
-    var elType, img, imgData, ref, ref1, ref2, ref3, tag, tagConfig, tagData;
+    var elType, img, imgData, ref1, ref2, ref3, ref4, tag, tagConfig, tagData;
     tagConfig = null;
     tagConfig = new App.tagconfig(ClassID, Groups, Tags, Site_Code, Site);
     $("li#" + WidgetID + " ." + ClassID + " [id^='dynamic_']").remove();
-    ref = tagConfig.TagData;
-    for (tag in ref) {
-      tagData = ref[tag];
+    ref1 = tagConfig.TagData;
+    for (tag in ref1) {
+      tagData = ref1[tag];
       elType = tagData.Element.Type.toLowerCase();
       switch (elType) {
         case 'tablerow':
@@ -14786,19 +14822,19 @@ IOPSWidgetView = (function(superClass) {
             $("li#" + WidgetID + " ." + ClassID + " " + tagData.Element.ParentID).append("<" + elType + " id='dynamic_" + tag + "'>Loading...</" + elType + ">");
           }
       }
-      if (((ref1 = tagData.Element.Class) != null ? ref1.length : void 0) > 0) {
+      if (((ref2 = tagData.Element.Class) != null ? ref2.length : void 0) > 0) {
         $("li#" + WidgetID + " ." + ClassID + " " + tagData.Element.ParentID + " " + elType + "[id*='dynamic_" + tag + "']").removeClass();
         $("li#" + WidgetID + " ." + ClassID + " " + tagData.Element.ParentID + " " + elType + "[id*='dynamic_" + tag + "']").addClass(tagData.Element.Class);
       }
     }
-    ref2 = tagConfig.Graphics;
-    for (img in ref2) {
-      imgData = ref2[img];
+    ref3 = tagConfig.Graphics;
+    for (img in ref3) {
+      imgData = ref3[img];
       elType = imgData.Element.Type.toLowerCase();
       if ($("li#" + WidgetID + " ." + ClassID + " " + imgData.Element.ParentID + " " + elType + "[id*='dynamic_" + img + "']").length === 0) {
         $("li#" + WidgetID + " ." + ClassID + " " + imgData.Element.ParentID).append("<" + elType + " id='dynamic_" + img + "'></" + elType + ">");
       }
-      if (((ref3 = imgData.Element.Class) != null ? ref3.length : void 0) > 0) {
+      if (((ref4 = imgData.Element.Class) != null ? ref4.length : void 0) > 0) {
         $("li#" + WidgetID + " ." + ClassID + " " + imgData.Element.ParentID + " " + elType + "[id*='dynamic_" + img + "']").removeClass();
         $("li#" + WidgetID + " ." + ClassID + " " + imgData.Element.ParentID + " " + elType + "[id*='dynamic_" + img + "']").addClass(imgData.Element.Class);
       }
@@ -14836,20 +14872,53 @@ IOPSWidgetView = (function(superClass) {
       this.cloud_prefix = this.site_settings.cloud ? cloud_prefix.replace('#{@site_code}', this.site_code) : '';
       this.prefix = this.cloud_prefix + prefix.replace('#{@site_code}', this.site_code).replace('#{s.terminal}', s.terminal).replace('#{s.zone}', s.zone).replace('#{s.gate}', s.gate);
     }
-    return this;
+    return s;
+  };
+
+  IOPSWidgetView.prototype.update_opc_data = function() {
+    var ref, ref1, s, t, tag, tagData, tags, tg;
+    if (this.site_code == null) {
+      return null;
+    }
+    s = this.update_settings({
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+    });
+    if ((s != null) && !!s.site) {
+      this.kill_updates(this.site_code);
+      tags = [];
+      this.tagData = [];
+      this.tagConfig = [];
+      this.tagConfig = this.create_dynamic_elements(this.el.parentNode.id, this.classID, null, null, this.site_code, s);
+      this.tagData = this.tagConfig.TagData;
+      ref1 = this.tagData;
+      for (tag in ref1) {
+        tagData = ref1[tag];
+        tags.push("" + this.prefix + tagData.Tag + ".Value");
+      }
+      for (tg in this.tags) {
+        t = this.tags[tg];
+        tags.push("" + this.prefix + t + ".Value");
+      }
+      App.opc.add_tags(this.site_code, tags);
+      this.opc = App.opc.connections[this.site_code];
+      ref = s.layout;
+      this.watch_updates(this.site_code);
+      return this.set_descriptions(true);
+    }
   };
 
   IOPSWidgetView.prototype.refresh_values = function() {
-    var d, ref, ref1, t;
+    var d, ref1, ref2, t;
     this.vals = {};
-    ref = this.tags;
-    for (t in ref) {
-      d = ref[t];
-      this.vals[t] = this.get_value(d);
-    }
-    ref1 = this.tagData;
+    ref1 = this.tags;
     for (t in ref1) {
       d = ref1[t];
+      this.vals[t] = this.get_value(d);
+    }
+    ref2 = this.tagData;
+    for (t in ref2) {
+      d = ref2[t];
       this.vals[t] = this.get_value(d.Tag);
     }
     return this;
@@ -14930,19 +14999,19 @@ IOPSWidgetView = (function(superClass) {
     this.draw_gates(gate);
     this.$("select#site").chosen({
       disable_search: true,
-      width: '150px'
+      width: 'auto'
     });
     this.$("select#terminal").chosen({
       disable_search: true,
-      width: '50px'
+      width: 'auto'
     });
     this.$("select#zone").chosen({
       disable_search: true,
-      width: '50px'
+      width: 'auto'
     });
     this.$("select#gate").chosen({
       disable_search: true,
-      width: '50px'
+      width: 'auto'
     });
     return this;
   };
@@ -15529,47 +15598,15 @@ PbbpcagpuWidgetView = (function(superClass) {
   tagConfig = [];
 
   PbbpcagpuWidgetView.prototype.update = function() {
-    var lbl, ref, ref1, s, t, tag, tags, tg;
-    this.update_settings({
-      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
-      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
-    });
-    if (this.site_code == null) {
-      return null;
-    }
-    s = this.model.get("settings");
-    if ((s != null) && !!s.site) {
-      this.kill_updates(this.site_code);
-      tags = [];
-      this.tagData = [];
-      this.tagConfig = [];
-      this.tagConfig = this.create_dynamic_elements(this.el.parentNode.id, this.classID, null, null, this.site_code, s);
-      this.tagData = this.tagConfig.TagData;
-      ref1 = this.tagData;
-      for (tag in ref1) {
-        tagData = ref1[tag];
-        tags.push("" + this.prefix + tagData.Tag + ".Value");
-      }
-      for (tg in this.tags) {
-        t = this.tags[tg];
-        tags.push("" + this.prefix + t + ".Value");
-      }
-      App.opc.add_tags(this.site_code, tags);
-      lbl = this.site_code + ": Gate " + s.gate + " PBB/PCA/GPU";
-      this.ui.wtitle.html(lbl);
-      this.opc = App.opc.connections[this.site_code];
-      ref = s.layout;
-      this.watch_updates(this.site_code);
-      return this.set_descriptions(true);
-    }
+    return this;
   };
 
   PbbpcagpuWidgetView.prototype.data_update = function(data) {
-    var aq, ref1, tag, wq;
+    var aq, ref, tag, wq;
     this.refresh_values();
-    ref1 = this.tagData;
-    for (tag in ref1) {
-      tagData = ref1[tag];
+    ref = this.tagData;
+    for (tag in ref) {
+      tagData = ref[tag];
       switch (tagData.DataType.toLowerCase()) {
         case 'boolean':
           this.render_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004, tagData.Parameters.Parm005);
@@ -15587,8 +15624,7 @@ PbbpcagpuWidgetView = (function(superClass) {
     aq = this.data_q(this.tags.pbb_has_alarms);
     this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
     wq = this.data_q(this.tags.pbb_has_warnings);
-    this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings) === true && wq);
-    return this.set_descriptions();
+    return this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings) === true && wq);
   };
 
   PbbpcagpuWidgetView.prototype.set_model = function() {
@@ -15598,7 +15634,8 @@ PbbpcagpuWidgetView = (function(superClass) {
     s.terminal = this.$('#terminal').val();
     s.zone = this.$('#zone').val();
     s.gate = this.$('#gate').val();
-    return this.model.set("settings", s);
+    this.model.set("settings", s);
+    return this.update_opc_data();
   };
 
   PbbpcagpuWidgetView.prototype.toggle_settings = function(e) {
@@ -15628,8 +15665,17 @@ PbbpcagpuWidgetView = (function(superClass) {
   };
 
   PbbpcagpuWidgetView.prototype.start = function() {
+    var lbl, s, settings;
+    settings = this.model.get('settings');
     this.tableWidgetData = '<table id="widgetData" class="data" style="float: left; width:92%"><tbody></tbody></table>';
     this.ui.display.append(this.tableWidgetData);
+    s = this.model.get("settings");
+    lbl = this.site_code + ": Gate ??? PBB/PCA/GPU";
+    if ((s != null) && !!s.gate) {
+      lbl = this.site_code + ": Gate " + s.gate + " PBB/PCA/GPU";
+    }
+    this.ui.wtitle.html(lbl);
+    this.update_opc_data();
     return this.update();
   };
 
@@ -16315,7 +16361,7 @@ PcasummaryWidgetView = (function(superClass) {
   };
 
   PcasummaryWidgetView.prototype.data_update = function(data) {
-    var ad, add, all_true, ambd, ambhumidity, any_true, aq, bd, bdd, cd, cls, coildp, good_quality, h, hot1d, hot2d, hotgas1, hotgas2, icn, img, imgData, m, pc, pcd, ref, ref1, ref2, ref3, ref4, ref5, s, sq, stat, suc1d, suc2d, sucpressure1, sucpressure2, t, tag, tagQuality, tagVal, th, true_val, txt, txta, txtb, type, v, vfd, vfdspeed, vq, wq;
+    var ad, add, ambd, ambhumidity, aq, bd, bdd, cd, cls, coildp, good_quality, h, hot1d, hot2d, hotgas1, hotgas2, icn, img, imgData, m, pc, pcd, ref, ref1, s, sq, stat, suc1d, suc2d, sucpressure1, sucpressure2, t, tag, tagQuality, tagVal, th, true_val, txt, txta, txtb, type, v, vfd, vfdspeed, vq, wq;
     this.refresh_values();
     vq = this.data_q(this.tagData.pca_discharge_temp.Tag);
     this.$("#gauge_volts_out_" + this.model.id + " .bad_data").toggle(!vq);
@@ -16444,30 +16490,24 @@ PcasummaryWidgetView = (function(superClass) {
         true_val = false;
         good_quality = true;
         if (!(imgData.Parameters['Parm001'] == null)) {
-          true_val = (ref1 = imgData.Parameters['Parm001'].toUpperCase() === 'ALL_TRUE') != null ? ref1 : {
-            "true": false
-          };
-          ref2 = imgData.ControlTags;
-          for (tag in ref2) {
-            type = ref2[tag];
+          ref1 = imgData.ControlTags;
+          for (tag in ref1) {
+            type = ref1[tag];
             if (this.tagData[tag] != null) {
               switch (type.toLowerCase()) {
                 case 'boolean':
                   tagQuality = this.data_q(this.tagData[tag].Tag);
-                  good_quality = (ref3 = good_quality && tagQuality) != null ? ref3 : {
-                    "true": false
-                  };
+                  good_quality = good_quality && tagQuality ? true : false;
                   tagVal = this.get_bool(this.vals[tag]);
+                  if (tagVal) {
+                    true_val = true;
+                  }
                   switch (imgData.Parameters['Parm001'].toUpperCase()) {
                     case 'ALL_TRUE':
-                      all_true = (ref4 = all_true && tagVal) != null ? ref4 : {
-                        "true": false
-                      };
+                      true_val = true_val && tagVal ? true : false;
                       break;
                     case 'ANY_TRUE':
-                      any_true = (ref5 = !any_true && tagVal) != null ? ref5 : {
-                        "true": false
-                      };
+                      true_val = true_val || tagVal ? true : false;
                       break;
                     default:
                       null;
@@ -16959,6 +16999,8 @@ PcasummaryWidgetView = (function(superClass) {
   };
 
   PcasummaryWidgetView.prototype.start = function() {
+    this.GraphicsContainer = "<div id='graphics_container'></div>";
+    this.ui.display.append(this.GraphicsContainer);
     return this.update();
   };
 

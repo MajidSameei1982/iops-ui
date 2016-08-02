@@ -9,12 +9,6 @@
 <div class="box-body content" id='content'>
   
   <div class="display contain">
-    <!--
-    <table id="widgetData" class="data" style="float: left; width:92%"> 
-      <tbody>
-      </tbody>
-    </table>
-  -->
   </div>
 
   <div class="settings" style="display: none;">
