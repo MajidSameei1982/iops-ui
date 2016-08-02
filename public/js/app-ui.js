@@ -3673,7 +3673,7 @@ _.extend(Marionette.View.prototype, {
                 }
                 sh += "<option value='" + s.id + "' " + sel + ">" + txt + "</option>";
               }
-              if (!found_sel) {
+              if (!found_sel && (acc.sites.models != null)) {
                 sh = sh.replace("<option value='" + (Object.keys(acc.sites.models)[0]) + "' ", "<option value='" + (Object.keys(acc.sites.models)[0]) + "' selected");
               }
             }
@@ -3698,7 +3698,7 @@ _.extend(Marionette.View.prototype, {
           }
           sh += "<option value='" + t + "' " + sel + ">" + t + "</option>";
         }
-        if (!found_sel) {
+        if (!found_sel && (terminals != null)) {
           sh = sh.replace("<option value='" + (Object.keys(terminals)[0]) + "' ", "<option value='" + (Object.keys(terminals)[0]) + "' selected");
         }
         return sh + "</select></div>";
@@ -3725,7 +3725,7 @@ _.extend(Marionette.View.prototype, {
             }
             sh += "<option value='" + z + "' " + sel + ">" + z + "</option>";
           }
-          if (!found_sel) {
+          if (!found_sel && (term != null)) {
             sh = sh.replace("<option value='" + (Object.keys(term)[0]) + "' ", "<option value='" + (Object.keys(term)[0]) + "' selected");
           }
         }
@@ -3758,7 +3758,7 @@ _.extend(Marionette.View.prototype, {
               }
               sh += "<option value='" + g + "' " + sel + ">" + g + "</option>";
             }
-            if (!found_sel) {
+            if (!found_sel && (zn != null)) {
               sh = sh.replace("<option value='" + (Object.keys(zn)[0]) + "' ", "<option value='" + (Object.keys(zn)[0]) + "' selected");
             }
           }
@@ -3794,7 +3794,7 @@ _.extend(Marionette.View.prototype, {
           }
           ch += "<option value='" + c.id + "' " + sel + ">" + txt + "</option>";
         }
-        if (!found_sel) {
+        if (!found_sel && (claims != null)) {
           ch = ch.replace("<option value='" + (Object.keys(claims)[0]) + "' ", "<option value='" + (Object.keys(claims)[0]) + "' selected");
         }
         return ch + "</select></div>";

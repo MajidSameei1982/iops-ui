@@ -62,7 +62,7 @@ _.extend Marionette.View::,
               if !sel?
                 found_sel = true
               sh += "<option value='#{s.id}' #{sel}>#{txt}</option>"
-            if !found_sel
+            if !found_sel && acc.sites.models?
               sh = sh.replace "<option value='#{Object.keys(acc.sites.models)[0]}' ","<option value='#{Object.keys(acc.sites.models)[0]}' selected"
       "#{sh}</select></div>"  
 
@@ -82,7 +82,7 @@ _.extend Marionette.View::,
         if !sel? 
           found_sel = true
         sh += "<option value='#{t}' #{sel}>#{t}</option>"
-      if !found_sel
+      if !found_sel && terminals?
         sh = sh.replace "<option value='#{Object.keys(terminals)[0]}' ","<option value='#{Object.keys(terminals)[0]}' selected"
       "#{sh}</select></div>"
 
@@ -105,7 +105,7 @@ _.extend Marionette.View::,
           if !sel? 
             found_sel = true
           sh += "<option value='#{z}' #{sel}>#{z}</option>"
-        if !found_sel
+        if !found_sel && term?
           sh = sh.replace "<option value='#{Object.keys(term)[0]}' ","<option value='#{Object.keys(term)[0]}' selected"
       "#{sh}</select></div>"
 
@@ -131,7 +131,7 @@ _.extend Marionette.View::,
             if !sel? 
               found_sel = true
             sh += "<option value='#{g}' #{sel}>#{g}</option>"
-          if !found_sel
+          if !found_sel && zn?
             sh = sh.replace "<option value='#{Object.keys(zn)[0]}' ","<option value='#{Object.keys(zn)[0]}' selected"
       "#{sh}</select></div>"
 
@@ -158,7 +158,7 @@ _.extend Marionette.View::,
         if !sel? 
           found_sel = true
         ch += "<option value='#{c.id}' #{sel}>#{txt}</option>"
-      if !found_sel
+      if !found_sel && claims?
         ch = ch.replace "<option value='#{Object.keys(claims)[0]}' ","<option value='#{Object.keys(claims)[0]}' selected"
       "#{ch}</select></div>"  
 
