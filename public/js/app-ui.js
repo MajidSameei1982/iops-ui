@@ -13899,39 +13899,7 @@ GpusummaryWidgetView = (function(superClass) {
   };
 
   GpusummaryWidgetView.prototype.update = function() {
-    var lbl, ref, s, show_opts, t, tag, tg;
-    this.update_settings({
-      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
-      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
-    });
-    if (this.site_code == null) {
-      return null;
-    }
-    s = this.model.get("settings");
-    show_opts = (s != null) && !!s.gate;
-    this.$('#mode').toggle(show_opts);
-    if (show_opts) {
-      this.kill_updates(this.site_code);
-      tags = [];
-      this.tagData = [];
-      this.tagConfig = [];
-      this.tagConfig = this.create_dynamic_elements(this.el.parentNode.id, this.classID, null, null, this.site_code, s);
-      this.tagData = this.tagConfig.TagData;
-      ref = this.tagData;
-      for (tag in ref) {
-        tagData = ref[tag];
-        tags.push("" + this.prefix + tagData.Tag + ".Value");
-      }
-      for (tg in this.tags) {
-        t = this.tags[tg];
-        tags.push("" + this.prefix + t + ".Value");
-      }
-      App.opc.add_tags(this.site_code, tags);
-      lbl = this.site_code + ": Gate " + s.gate + " - GPU Summary";
-      this.ui.wtitle.html(lbl);
-      this.opc = App.opc.connections[this.site_code];
-      return this.watch_updates(this.site_code);
-    }
+    return this;
   };
 
   GpusummaryWidgetView.prototype.trend_callback = function(data) {
@@ -14379,6 +14347,39 @@ GpusummaryWidgetView = (function(superClass) {
   };
 
   GpusummaryWidgetView.prototype.start = function() {
+    var lbl, ref, s, show_opts, t, tag, tg;
+    s = this.model.get("settings");
+    show_opts = (s != null) && !!s.gate;
+    this.$('#mode').toggle(show_opts);
+    this.update_settings({
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+    });
+    if (this.site_code == null) {
+      return null;
+    }
+    if (show_opts) {
+      this.kill_updates(this.site_code);
+      tags = [];
+      this.tagData = [];
+      this.tagConfig = [];
+      this.tagConfig = this.create_dynamic_elements(this.el.parentNode.id, this.classID, null, null, this.site_code, s);
+      this.tagData = this.tagConfig.TagData;
+      ref = this.tagData;
+      for (tag in ref) {
+        tagData = ref[tag];
+        tags.push("" + this.prefix + tagData.Tag + ".Value");
+      }
+      for (tg in this.tags) {
+        t = this.tags[tg];
+        tags.push("" + this.prefix + t + ".Value");
+      }
+      App.opc.add_tags(this.site_code, tags);
+      lbl = this.site_code + ": Gate " + s.gate + " - GPU Summary";
+      this.ui.wtitle.html(lbl);
+      this.opc = App.opc.connections[this.site_code];
+      this.watch_updates(this.site_code);
+    }
     return this.update();
   };
 
@@ -15628,14 +15629,26 @@ PbbpcagpuWidgetView = (function(superClass) {
   };
 
   PbbpcagpuWidgetView.prototype.set_model = function() {
-    var s;
+    var lbl, s, site;
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     s.terminal = this.$('#terminal').val();
     s.zone = this.$('#zone').val();
     s.gate = this.$('#gate').val();
     this.model.set("settings", s);
-    return this.update_opc_data();
+    if (this.site_code == null) {
+      site = OPCManager.get_site(s.site);
+      if (site != null) {
+        this.site_code = site.get('code');
+      }
+    }
+    lbl = this.site_code + ": Gate ??? PBB/PCA/GPU";
+    if ((s != null) && !!s.gate) {
+      lbl = this.site_code + ": Gate " + s.gate + " PBB/PCA/GPU";
+    }
+    this.ui.wtitle.html(lbl);
+    this.update_opc_data();
+    return this.update();
   };
 
   PbbpcagpuWidgetView.prototype.toggle_settings = function(e) {

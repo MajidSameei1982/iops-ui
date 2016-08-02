@@ -66,7 +66,21 @@ class PbbpcagpuWidgetView extends IOPSWidgetView
     s.zone = @$('#zone').val()
     s.gate = @$('#gate').val()
     @model.set("settings", s)
+
+    if !@site_code?
+      site = OPCManager.get_site(s.site);
+      if site?
+        @site_code = site.get('code');
+
+    lbl = "#{@site_code}: Gate ??? PBB/PCA/GPU"
+    if s? && !!s.gate
+      lbl = "#{@site_code}: Gate #{s.gate} PBB/PCA/GPU"
+
+    @ui.wtitle.html(lbl)
+
     @update_opc_data()
+
+    @update()
 
   toggle_settings: (e)->
     super(e)
