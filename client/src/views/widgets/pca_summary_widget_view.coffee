@@ -84,7 +84,6 @@ class PcasummaryWidgetView extends IOPSWidgetView
     #  switch imgData.ControlTags
     #  imgQuality = @data_q(imgData.Con.Tag)
 
-
     vq = @data_q(@tagData.pca_discharge_temp.Tag)
     @$("#gauge_volts_out_#{@model.id} .bad_data").toggle(!vq)
     v = @vals.pca_discharge_temp
@@ -223,19 +222,20 @@ class PcasummaryWidgetView extends IOPSWidgetView
         true_val = false      
         good_quality = true
         if !!imgData.Parameters['Parm001']?
-          true_val = imgData.Parameters['Parm001'].toUpperCase() == 'ALL_TRUE' ? true : false
           for tag, type of imgData.ControlTags
             if @tagData[tag]?
               switch type.toLowerCase()
                 when 'boolean'
                   tagQuality = @data_q(@tagData[tag].Tag)
-                  good_quality = good_quality && tagQuality ? true : false
+                  good_quality = if good_quality && tagQuality then true else false
                   tagVal = @get_bool(@vals[tag])
+                  if tagVal
+                    true_val = true
                   switch imgData.Parameters['Parm001'].toUpperCase()
                     when 'ALL_TRUE'
-                      all_true = all_true && tagVal ? true : false    
+                      true_val = if true_val && tagVal then true else false    
                     when 'ANY_TRUE'
-                      any_true = !any_true && tagVal ? true : false
+                      true_val = if true_val || tagVal then true else false
                     else null
                 else null
             else
@@ -619,6 +619,8 @@ class PcasummaryWidgetView extends IOPSWidgetView
 
 
   start: ()->
+    @GraphicsContainer = "<div id='graphics_container'></div>"
+    @ui.display.append(@GraphicsContainer)
     @update()
 
   onDestroy: (arg1, arg2) ->

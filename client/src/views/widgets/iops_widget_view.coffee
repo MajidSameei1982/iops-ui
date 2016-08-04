@@ -227,7 +227,40 @@ class IOPSWidgetView extends WidgetView
       @cloud_prefix = if @site_settings.cloud then cloud_prefix.replace('#{@site_code}', @site_code) else ''
       # @prefix = "#{cloud}Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}."
       @prefix = @cloud_prefix + prefix.replace('#{@site_code}', @site_code).replace('#{s.terminal}', s.terminal).replace('#{s.zone}', s.zone).replace('#{s.gate}', s.gate)
-    @
+    return s
+
+  update_opc_data: ()=>
+    if !@site_code? then return null
+
+    s= @update_settings
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+
+    if s? && !!s.site      
+      # stop listening for updates
+      @kill_updates(@site_code)
+
+      tags = []
+      @tagData = []
+      @tagConfig = []
+      @tagConfig = @create_dynamic_elements(@el.parentNode.id, @classID, null, null, @site_code, s)
+      @tagData = @tagConfig.TagData
+
+      for tag, tagData of @tagData
+        tags.push "#{@prefix}#{tagData.Tag}.Value"
+
+      for tg of @tags
+        t = @tags[tg]
+        tags.push "#{@prefix}#{t}.Value"
+      
+      App.opc.add_tags @site_code, tags
+
+      @opc =  App.opc.connections[@site_code]
+      ref = s.layout
+
+      # listen for updates
+      @watch_updates(@site_code)
+      @set_descriptions(true)
   
   refresh_values: ()->
     @vals = {}
@@ -300,16 +333,20 @@ class IOPSWidgetView extends WidgetView
     @draw_gates(gate)
     @$("select#site").chosen
       disable_search:true
-      width:'150px'
+      width:'auto'
+      #width:'150px'
     @$("select#terminal").chosen
       disable_search:true
-      width:'50px'
+      width:'auto'
+      #width:'50px'
     @$("select#zone").chosen
       disable_search:true
-      width:'50px'
+      width:'auto'
+      #width:'50px'
     @$("select#gate").chosen
       disable_search:true
-      width:'50px'
+      width:'auto'
+      #width:'50px'
     @
     
 # ----------------------------------

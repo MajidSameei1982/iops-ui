@@ -133,6 +133,14 @@ ul.gridster.widget-container {
       ul.gridster.widget-container li.widget .widget-outer .box-body .settings h3 {
         margin-top: 0;
         margin-bottom: 5px; }
+      ul.gridster.widget-container li.widget .widget-outer .box-body .settings .form-group label {
+        width: 20%;
+        text-align: right;
+        padding: 0px;
+        margin: 0px; }
+      ul.gridster.widget-container li.widget .widget-outer .box-body .settings .chosen-container {
+        margin-left: 20px;
+        width: auto; }
     ul.gridster.widget-container li.widget .widget-outer .box-body .display.contain {
       max-width: 100%;
       max-height: 100%;
@@ -1558,6 +1566,10 @@ li.dashboard-link {
     background-image: url("../img/pca/Inet-Model-001/Rev-001/Inet_PCAire-Main.png"); }
     .pca_summary_widget .display div.background.jetair-xpc-3013 {
       background-image: url("../img/pca/JetAir-XPC-3013/Rev-001/30-Ton-PCA-Base-Image.png"); }
+    .pca_summary_widget .display div.background.jetway-100 {
+      background-image: url("../img/pca/Jetway-100/Rev-001/100-Ton-PCA-Base-Unit.png"); }
+    .pca_summary_widget .display div.background.jetway-twist-75 {
+      background-image: url("../img/pca/Jetway-Twist-75/Rev-001/TwistAero-PCA-Base-Unit.png"); }
   .pca_summary_widget .display div.img {
     position: absolute;
     background-repeat: no-repeat;
@@ -1580,6 +1592,82 @@ li.dashboard-link {
       background-image: url("../img/pca/Inet-Model-001/Rev-001/AC-Cool.png"); }
     .pca_summary_widget .display div.img.bc-cool-on {
       background-image: url("../img/pca/Inet-Model-001/Rev-001/BC-Cool.png"); }
+    .pca_summary_widget .display div.img.jetair-xpc-3013.blower-on {
+      background-image: url("../img/pca/JetAir-XPC-3013/Rev-001/30-Ton-PCA-Blower.png"); }
+    .pca_summary_widget .display div.img.jetair-xpc-3013.cooling-stage-1-on {
+      background-image: url("../img/pca/JetAir-XPC-3013/Rev-001/30-Ton-PCA-Cooling-1.png"); }
+    .pca_summary_widget .display div.img.jetair-xpc-3013.cooling-stage-2-on {
+      background-image: url("../img/pca/JetAir-XPC-3013/Rev-001/30-Ton-PCA-Cooling-2.png"); }
+    .pca_summary_widget .display div.img.jetair-xpc-3013.heating-stage-1-on {
+      background-image: url("../img/pca/JetAir-XPC-3013/Rev-001/30-Ton-PCA-Haet-1.png"); }
+    .pca_summary_widget .display div.img.jetair-xpc-3013.heating-stage-2-on {
+      background-image: url("../img/pca/JetAir-XPC-3013/Rev-001/30-Ton-PCA-Haet-2.png"); }
+    .pca_summary_widget .display div.img.jetair-xpc-3013.ac-cool-on {
+      background-image: url("../img/pca/JetAir-XPC-3013/Rev-001/30-Ton-PCA-Aircraft-Output-Damper.png"); }
+    .pca_summary_widget .display div.img.jetair-xpc-3013.bc-cool-on {
+      background-image: url("../img/pca/JetAir-XPC-3013/Rev-001/30-Ton-PCA-Bridge-Cool-Output-Damper.png"); }
+    .pca_summary_widget .display div.img.jetair-xpc-3013.fan-1-on {
+      background-image: url("../img/pca/JetAir-XPC-3013/Rev-001/30-Ton-PCA-Fan-1.png"); }
+    .pca_summary_widget .display div.img.jetair-xpc-3013.fan-2-on {
+      background-image: url("../img/pca/JetAir-XPC-3013/Rev-001/30-Ton-PCA-Fan-2.png"); }
+    .pca_summary_widget .display div.img.jetair-xpc-3013.fan-3-on {
+      background-image: url("../img/pca/JetAir-XPC-3013/Rev-001/30-Ton-PCA-Fan-3.png"); }
+    .pca_summary_widget .display div.img.jetway-twist-75.blower-on {
+      background-image: url("../img/pca/Jetway-Twist-75/Rev-001/Blower.png"); }
+    .pca_summary_widget .display div.img.jetway-twist-75.cooling-stage-1-on {
+      background-image: url("../img/pca/Jetway-Twist-75/Rev-001/Cooling-1.png"); }
+    .pca_summary_widget .display div.img.jetway-twist-75.cooling-stage-2-on {
+      background-image: url("../img/pca/Jetway-Twist-75/Rev-001/Cooling-2.png"); }
+    .pca_summary_widget .display div.img.jetway-twist-75.cooling-stage-3-on {
+      background-image: url("../img/pca/Jetway-Twist-75/Rev-001/Cooling-3.png"); }
+    .pca_summary_widget .display div.img.jetway-twist-75.heating-stage-1-on {
+      background-image: url("../img/pca/Jetway-Twist-75/Rev-001/HTR-1.png"); }
+    .pca_summary_widget .display div.img.jetway-twist-75.heating-stage-2-on {
+      background-image: url("../img/pca/Jetway-Twist-75/Rev-001/HTR-2.png"); }
+    .pca_summary_widget .display div.img.jetway-twist-75.heating-stage-3-on {
+      background-image: url("../img/pca/Jetway-Twist-75/Rev-001/HTR-3.png"); }
+    .pca_summary_widget .display div.img.jetway-twist-75.ac-cool-on {
+      background-image: url("../img/pca/Jetway-Twist-75/Rev-001/Aircraft-Mode.png"); }
+    .pca_summary_widget .display div.img.jetway-twist-75.fan-1-on {
+      background-image: url("../img/pca/Jetway-Twist-75/Rev-001/Fan-1.png"); }
+    .pca_summary_widget .display div.img.jetway-twist-75.fan-2-on {
+      background-image: url("../img/pca/Jetway-Twist-75/Rev-001/Fan-2.png"); }
+    .pca_summary_widget .display div.img.jetway-twist-75.filter-on {
+      background-image: url("../img/pca/Jetway-Twist-75/Rev-001/Filters-On.png"); }
+    .pca_summary_widget .display div.img.jetway-100.blower-on {
+      background-image: url("../img/pca/Jetway-100/Rev-001/100-Ton-PCA-Blower-On.png"); }
+    .pca_summary_widget .display div.img.jetway-100.cooling-stage-1-on {
+      background-image: url("../img/pca/Jetway-100/Rev-001/100-Ton-PCA-Comp-1.png"); }
+    .pca_summary_widget .display div.img.jetway-100.cooling-stage-2-on {
+      background-image: url("../img/pca/Jetway-100/Rev-001/100-Ton-PCA-Comp-2.png"); }
+    .pca_summary_widget .display div.img.jetway-100.cooling-stage-3-on {
+      background-image: url("../img/pca/Jetway-100/Rev-001/100-Ton-PCA-Comp-3.png"); }
+    .pca_summary_widget .display div.img.jetway-100.cooling-stage-4-on {
+      background-image: url("../img/pca/Jetway-100/Rev-001/100-Ton-PCA-Comp-4.png"); }
+    .pca_summary_widget .display div.img.jetway-100.heating-stage-1-on {
+      background-image: url("../img/pca/Jetway-100/Rev-001/100-Ton-PCA-HTR-1.png"); }
+    .pca_summary_widget .display div.img.jetway-100.heating-stage-2-on {
+      background-image: url("../img/pca/Jetway-100/Rev-001/100-Ton-PCA-HTR-2.png"); }
+    .pca_summary_widget .display div.img.jetway-100.heating-stage-3-on {
+      background-image: url("../img/pca/Jetway-100/Rev-001/100-Ton-PCA-HTR-3.png"); }
+    .pca_summary_widget .display div.img.jetway-100.heating-stage-4-on {
+      background-image: url("../img/pca/Jetway-100/Rev-001/100-Ton-PCA-HTR-4.png"); }
+    .pca_summary_widget .display div.img.jetway-100.heating-stage-5-on {
+      background-image: url("../img/pca/Jetway-100/Rev-001/100-Ton-PCA-HTR-5.png"); }
+    .pca_summary_widget .display div.img.jetway-100.ac-cool-on {
+      background-image: url("../img/pca/Jetway-100/Rev-001/100-Ton-PCA-Aircraft-Cool.png"); }
+    .pca_summary_widget .display div.img.jetway-100.bc-cool-on {
+      background-image: url("../img/pca/Jetway-100/Rev-001/100-Ton-PCA-Bridge-Cool.png"); }
+    .pca_summary_widget .display div.img.jetway-100.fan-1-on {
+      background-image: url("../img/pca/Jetway-100/Rev-001/100-Ton-PCA-FAN-1.png"); }
+    .pca_summary_widget .display div.img.jetway-100.fan-2-on {
+      background-image: url("../img/pca/Jetway-100/Rev-001/100-Ton-PCA-FAN-2.png"); }
+    .pca_summary_widget .display div.img.jetway-100.fan-3-on {
+      background-image: url("../img/pca/Jetway-100/Rev-001/100-Ton-PCA-FAN-3.png"); }
+    .pca_summary_widget .display div.img.jetway-100.fan-4-on {
+      background-image: url("../img/pca/Jetway-100/Rev-001/100-Ton-PCA-FAN-4.png"); }
+    .pca_summary_widget .display div.img.jetway-100.filter-on {
+      background-image: url("../img/pca/Jetway-100/Rev-001/100-Ton-PCA-Dirty-Filter.png"); }
   .pca_summary_widget .display #display_label {
     margin-bottom: 3px; }
     .pca_summary_widget .display #display_label h1 {
