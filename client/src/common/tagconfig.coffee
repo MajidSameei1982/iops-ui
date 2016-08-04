@@ -488,8 +488,6 @@ class TagConfig extends Object
 					pca_fan_2:{Tag:'PCA.FANCONDFRONTSEC',Label:'Fan #2',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					pca_fan_1:{Tag:'PCA.FANCONDREARPRI',Label:'Fan #1',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 				}
-				1:1:C3:
-<<<<<<< .mine
 				add_tags:{
 					pca_heater_3:{Tag:'PCA.HEAT3',Label:'Heater #3',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					pca_comp_stage_3:{Tag:'PCA.COMPPRI3',Label:'Primary compressor #3',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
@@ -497,13 +495,6 @@ class TagConfig extends Object
 					pca_fan_2:{Tag:'PCA.FANCONDFRONTSEC',Label:'Fan #2',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					pca_fan_1:{Tag:'PCA.FANCONDREARPRI',Label:'Fan #1',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 				}
-				1:1:C3:
-					use_tags:{
-						pca_ambient_temp:{Tag:'PCA.TEMPAMB',Label:'Ambient Air Temperature',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						pca_bridge_air:{Tag:'PCA.BRIDGE_AIR',Label:'Bridge Damper',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'Discharge Air Temperature',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-					}
-=======
 				1:
 					1:
 						C3:
@@ -513,11 +504,6 @@ class TagConfig extends Object
 								pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'Discharge Air Temperature',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							}
 
-
-
-
-
->>>>>>> .theirs
 			pca_widget: # PCA Widget
 				remove_tags:{'pca_hot_gas_1','pca_hot_gas_2'}
 				update_tags:{
@@ -581,37 +567,16 @@ class TagConfig extends Object
 					gpu_rv_out_avg:{Tag:'GPU01.RVOUTAVG',Label:'GPU-1 Average Output - Volts',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					gpu_status:{Tag:'GPU01.GPUSTATUSBOOLEAN',Label:'GPU Status',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},						
 				}
-						gpu__02_status:{Tag:'GPU02.GPUSTATUSBOOLEAN',Label:'GPU Status',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						gpu_02_time:{Tag:'GPU02.GPUTime',Label:'GPU-2 Run Time',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-<<<<<<< .mine
 				C:
 					1:C90:
 					 remove_tags:{'gpu_status','gpu_time','gpu_ra_out_avg','gpu_rv_out_avg'} 
 					3:C125:
 						add_tags:{
-=======
-				C:
-					1:
-						C90:
-							remove_tags:{'gpu_time','gpu_ra_out_avg','gpu_rv_out_avg'} 
-					3:
->>>>>>> .theirs
 							gpu__02_status:{Tag:'GPU02.GPUSTATUSBOOLEAN',Label:'GPU Status',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-<<<<<<< .mine
 							gpu_02_time:{Tag:'GPU02.GPUTime',Label:'GPU-2 Run Time',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							gpu_02_ra_out_avg:{Tag:'GPU02.RAOUTAVG',Label:'GPU-2 Average Output - Amps',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Amps',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							gpu_02_rv_out_avg:{Tag:'GPU02.RVOUTAVG',Label:'GPU-2 Average Output - Volts',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-=======
-							add_tags:{
-								gpu_02_time:{Tag:'GPU02.GPUTime',Label:'GPU-2 Run Time',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-								gpu_02_ra_out_avg:{Tag:'GPU02.RAOUTAVG',Label:'GPU-2 Average Output - Amps',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Amps',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
->>>>>>> .theirs
 						}	
-<<<<<<< .mine
-
-=======
-							}	
->>>>>>> .theirs
 			pbb_level_detail_widget: # PBB Overview Widget
 				C:
 					3:C125:
