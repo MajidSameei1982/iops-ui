@@ -543,12 +543,14 @@ class TagConfig extends Object
 					gpu_time:{Tag:'GPU01.GPUTime',Label:'GPU-1 Run Time',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					gpu_ra_out_avg:{Tag:'GPU01.RAOUTAVG',Label:'GPU-1 Average Output - Amps',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Amps',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					gpu_rv_out_avg:{Tag:'GPU01.RVOUTAVG',Label:'GPU-1 Average Output - Volts',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					gpu_status:{Tag:'GPU01.GPUSTATUSBOOLEAN',Label:'GPU Status',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},						
 				}
 				C:
 					1:C90:
-					 remove_tags:{'gpu_time','gpu_ra_out_avg','gpu_rv_out_avg'} 
+					 remove_tags:{'gpu_status','gpu_time','gpu_ra_out_avg','gpu_rv_out_avg'} 
 					3:C125:
 						add_tags:{
+							gpu__02_status:{Tag:'GPU02.GPUSTATUSBOOLEAN',Label:'GPU Status',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							gpu_02_time:{Tag:'GPU02.GPUTime',Label:'GPU-2 Run Time',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							gpu_02_ra_out_avg:{Tag:'GPU02.RAOUTAVG',Label:'GPU-2 Average Output - Amps',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Amps',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							gpu_02_rv_out_avg:{Tag:'GPU02.RVOUTAVG',Label:'GPU-2 Average Output - Volts',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
@@ -557,7 +559,7 @@ class TagConfig extends Object
 				C:
 					3:C125:
 						remove_tags:{'pbb_smoke_detector','pbb_cabin_floor_deicer','pbb_terminal_door','pbb_cab_angle_disp','pbb_slope_deg','pbb_swing_angle_disp'
-							,'pbb_height_to_disp','pbb_wheel_angle_deg','pbb_tunnel_length'}
+							    ,'pbb_height_to_disp','pbb_wheel_angle_deg','pbb_tunnel_length'}
 			pca_summary_widget: # PCA Summary Widget
 				C:
 					1:C90:

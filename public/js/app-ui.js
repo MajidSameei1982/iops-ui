@@ -7229,12 +7229,31 @@ TagConfig = (function(superClass) {
               Class: null,
               Object: null
             }
+          },
+          gpu_status: {
+            Tag: 'GPU01.GPUSTATUSBOOLEAN',
+            Label: 'GPU Status',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
           }
         },
         C: {
           1: {
             C90: {
               remove_tags: {
+                'gpu_status': 'gpu_status',
                 'gpu_time': 'gpu_time',
                 'gpu_ra_out_avg': 'gpu_ra_out_avg',
                 'gpu_rv_out_avg': 'gpu_rv_out_avg'
@@ -7244,6 +7263,24 @@ TagConfig = (function(superClass) {
           3: {
             C125: {
               add_tags: {
+                gpu__02_status: {
+                  Tag: 'GPU02.GPUSTATUSBOOLEAN',
+                  Label: 'GPU Status',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
                 gpu_02_time: {
                   Tag: 'GPU02.GPUTime',
                   Label: 'GPU-2 Run Time',
