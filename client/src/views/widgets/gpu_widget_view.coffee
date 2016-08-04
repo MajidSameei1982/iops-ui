@@ -40,6 +40,9 @@ class GpuWidgetView extends IOPSWidgetView
       # stop listening for updates
       @kill_updates(@site_code)
 
+      $("#widgetData").toggleClass("no-show", false)
+      $("#widgetData2").toggleClass("no-show", true)
+
       tags = []
       @tagData = []
       @tagConfig = []
@@ -104,6 +107,7 @@ class GpuWidgetView extends IOPSWidgetView
     s.gate = @$('#gate').val()
     @model.set("settings", s)
 
+
   toggle_settings: (e)->
     super(e)
     @ui.display.toggle(!@settings_visible)
@@ -125,6 +129,9 @@ class GpuWidgetView extends IOPSWidgetView
     if @site_code? then @watch_updates(@site_code)
 
   start: ()->
+    #$("#widgetData").removeClass("no-show", false)
+    #$("#widgetData2").toggleClass("no-show", true)
+
     @update()
 
   onDestroy: (arg1, arg2) ->

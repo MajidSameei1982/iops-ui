@@ -101,6 +101,17 @@ class PbbWidgetView extends IOPSWidgetView
     s.gate = @$('#gate').val()
     @model.set("settings", s)
 
+    if !@site_code?
+      site = OPCManager.get_site(s.site);
+      if site?
+        @site_code = site.get('code');
+
+    lbl = "PBB ??? - Details"
+    if s? && !!s.gate
+      lbl = "PBB #{s.gate} - Details"
+
+    @ui.wtitle.html(lbl)
+
   toggle_settings: (e)->
     super(e)
     @ui.display.toggle(!@settings_visible)

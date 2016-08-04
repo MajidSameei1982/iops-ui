@@ -89,6 +89,17 @@ class KpiWidgetView extends IOPSWidgetView
     s.site = @ui.site.val()
     @model.set("settings", s)
 
+    if !@site_code?
+      site = OPCManager.get_site(s.site);
+      if site?
+        @site_code = site.get('code');
+
+    lbl = "???: KPI"
+    if s? && !!s.gate
+      lbl = "#{@site_code}: KPI"
+
+    @ui.wtitle.html(lbl)
+
 
   onShow: ()->
     @ui.site.on 'change', ()=>

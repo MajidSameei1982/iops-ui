@@ -14,27 +14,18 @@
  
     </div>
 
-    <table class='data transparent' style="float:left; width:39%; position:absolute; top:5%; left:1%;">
-      <br>
-      <tr><td class='lbl transparent' id='pbb_autolevelkey_lbl'>&nbsp;</td><td id='pbb_autolevelkey' class='val transparent'>LOADING...</td></tr>
-      <tr><td class='lbl transparent' id='pbb_estoped_lbl'>&nbsp;</td><td id='pbb_estop' class='val transparent'>LOADING...</td></tr>
-      <tr><td class='lbl transparent' id='pbb_autolevelmode_lbl'>&nbsp;</td><td id='pbb_autolevelmode' class='val transparent'>LOADING...</td></tr>
-      <tr><td class='lbl transparent' id='pbb_autolevelling_lbl'>&nbsp;</td><td id='pbb_autolevelling' class='val transparent'>LOADING...</td></tr>     
-      <tr><td class='lbl transparent' id='pbb_canopy_lbl'>&nbsp;</td><td id='pbb_canopy' class='val transparent'>LOADING...</td></tr>   
-      <tr><td class='lbl transparent' id='pbb_limits_lbl'>&nbsp;</td><td id='pbb_limits' class='val transparent'>LOADING...</td></tr>
-      <tr><td class='lbl transparent' id='pbb_smokedetector_lbl'>&nbsp;</td><td id='pbb_smokedetector' class='val transparent'>LOADING...</td></tr>
-      <tr><td class='lbl transparent' id='pbb_cabinfloordeicer_lbl'>&nbsp;</td><td id='pbb_cabinfloordeicer' class='val transparent'>LOADING...</td></tr>
-      <tr><td class='lbl transparent' id='pbb_terminaldoor_lbl'>&nbsp;</td><td id='pbb_terminaldoor' class='val transparent'>LOADING...</td></tr>
-      <tr><td class='lbl transparent' id='pbb_lastdocktime_lbl'>&nbsp;</td><td id='pbb_lastdocktime' class='val transparent'>LOADING...</td></tr>
-      <tr><td class='lbl transparent' id='pbb_dailyaircraftcount_lbl'>&nbsp;</td><td id='pbb_dailyaircraftcount' class='val transparent'>LOADING...</td></tr> 
+    <table id="widgetData" class='data transparent' style="float:left; width:39%; position:absolute; top:5%; left:1%;">
+      <tbody>
+      </tbody>
     </table>
-     <div id="pbb_cabangledisp" class=""></div>  
-     <div id="pbb_slopedeg" class=""></div> 
-     <div id="pbb_swingangledisp" class=""></div>   
-     <div id="pbb_heighttodisp" class=""></div>
+     <div id="pbb_cab_angle_disp" class=""></div>  
+     <div id="pbb_slope_deg" class=""></div> 
+     <div id="pbb_swing_angle_disp" class=""></div>   
+     <div id="pbb_height_to_disp" class=""></div>
      <div id="pca_pcaambhumidity" class=""></div>
-     <div id="pbb_wheelangledeg" class=""></div>
-     <div id="pbb_tunnellength" class=""></div> 
+     <!-- <div id="pbb_wheel_angle_deg" class=""></div> -->
+     <label id="pbb_wheel_angle_deg" class=""></label>
+     <div id="pbb_tunnel_length" class=""></div> 
   </div></div>
 
   <div class="settings" style="display: none;">

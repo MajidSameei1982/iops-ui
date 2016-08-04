@@ -106,6 +106,18 @@ class AlarmWidgetView extends IOPSWidgetView
     console.log s.allgates
     @model.set("settings", s)
 
+    if !@site_code?
+      site = OPCManager.get_site(s.site);
+      if site?
+        @site_code = site.get('code');
+
+    lbl = "???: Alarm window"
+    if s? && !!s.gate
+      lbl = "#{@site_code}: Alarm window"
+
+    @ui.wtitle.html(lbl)
+
+
   toggle_settings: (e)->
     super(e)
     @ui.display.toggle(!@settings_visible)
