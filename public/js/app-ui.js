@@ -6186,9 +6186,9 @@ TagConfig = (function(superClass) {
         },
         add_tags: {
           gpu_mode: {
-            Tag: 'GPU.MODE',
+            Tag: 'GPU.GPUMODE',
             Label: 'GPU Mode',
-            DataType: 'String',
+            DataType: 'Value',
             Parameters: {
               Parm001: false,
               Parm002: null,
@@ -7167,6 +7167,24 @@ TagConfig = (function(superClass) {
               Parm002: 1,
               Parm003: 'Volts',
               Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_status: {
+            Tag: 'GPU01.GPUSTATUSBOOLEAN',
+            Label: 'GPU Status',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
             },
             Element: {
               Type: 'TableRow',
