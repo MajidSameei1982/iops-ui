@@ -127,6 +127,17 @@ class AirportWidgetView extends IOPSWidgetView
     s.site = @$('#site').val()
     @model.set("settings", s)
 
+    if !@site_code?
+      site = OPCManager.get_site(s.site);
+      if site?
+        @site_code = site.get('code');
+
+    lbl = "???: Airport Overview"
+    if s? && !!s.gate
+      lbl = "#{@site_code}: Airport Overview"
+
+    @ui.wtitle.html(lbl)
+
   toggle_settings: (e)->
     super(e)
     @ui.display.toggle(!@settings_visible)

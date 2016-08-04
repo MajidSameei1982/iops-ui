@@ -1872,7 +1872,7 @@ window.JST["widgets/gpu_widget"] = function(__obj) {
     };
     (function() {
     
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-battery-3"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table id="widgetData" class=\'data\'>\n      <tbody>\n      </tbody>\n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-battery-3"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table id="widgetData" class=\'data no-show\'>\n      <tbody>\n      </tbody>\n    </table>\n    <table id="widgetData2" class=\'data2 no-show\'>\n      <tbody>\n      </tbody>\n    </table>\n\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -1980,7 +1980,7 @@ window.JST["widgets/pbb_detail_widget"] = function(__obj) {
     };
     (function() {
     
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div>\n      <h1>\n      </h1>\n    </div>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n<table height="100%";width"100%">\n  <tr><td>\n    <table> \n     <tr><td style="width:300px; height:200px; ;text-align:center; vertical-align:middle">\n     <div id="aircraft_img" class=""></div>   \n    </td></tr>         \n    </table>\n </td><td>\n    <table class=\'data transparent\'> \n       <tr><td id=\'pbb_status\' class=\'val transparent\'>LOADING...</td><td id=\'pbb_undockordocktimeun\' class=\'val transparent\'>LOADING...</td></tr>\n     <tr>\n      <td style="width:200px; height:150px; vertical-align:middle">\n        <div id="autolevel_img" class=""></div>   \n      </td>\n      <td style="width:200px; height:150px; vertical-align:middle">\n       <div id="canopy_img" class=""></div>    \n      </td>\n     </tr>  \n     <tr><td id=\'pbb_autolevel\' class=\'val transparent\'>LOADING...</td><td id=\'pbb_canopy\' class=\'val transparent\'>LOADING...</td></tr>     \n    </table>\n </td></tr>\n </td></tr></table> \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div>\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n<table height="100%";width"100%">\n  <tr><td>\n    <table> \n     <tr><td style="width:300px; height:200px; ;text-align:center; vertical-align:middle">\n     <div id="aircraft_img" class=""></div>   \n    </td></tr>         \n    </table>\n </td><td>\n    <table class=\'data transparent\'> \n       <tr><td id=\'pbb_status\' class=\'val transparent\'>LOADING...</td><td id=\'pbb_undockordocktimeun\' class=\'val transparent\'>LOADING...</td></tr>\n     <tr>\n      <td style="width:200px; height:150px; vertical-align:middle">\n        <div id="autolevel_img" class=""></div>   \n      </td>\n      <td style="width:200px; height:150px; vertical-align:middle">\n       <div id="canopy_img" class=""></div>    \n      </td>\n     </tr>  \n     <tr><td id=\'pbb_autolevel\' class=\'val transparent\'>LOADING...</td><td id=\'pbb_canopy\' class=\'val transparent\'>LOADING...</td></tr>     \n    </table>\n </td></tr>\n </td></tr></table> \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -2034,7 +2034,7 @@ window.JST["widgets/pbb_level_detail_widget"] = function(__obj) {
     };
     (function() {
     
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="aircraft_img" class="">\n    <div>\n \n    </div>\n\n    <table class=\'data transparent\' style="float:left; width:39%; position:absolute; top:5%; left:1%;">\n      <br>\n      <tr><td class=\'lbl transparent\' id=\'pbb_autolevelkey_lbl\'>&nbsp;</td><td id=\'pbb_autolevelkey\' class=\'val transparent\'>LOADING...</td></tr>\n      <tr><td class=\'lbl transparent\' id=\'pbb_estoped_lbl\'>&nbsp;</td><td id=\'pbb_estop\' class=\'val transparent\'>LOADING...</td></tr>\n      <tr><td class=\'lbl transparent\' id=\'pbb_autolevelmode_lbl\'>&nbsp;</td><td id=\'pbb_autolevelmode\' class=\'val transparent\'>LOADING...</td></tr>\n      <tr><td class=\'lbl transparent\' id=\'pbb_autolevelling_lbl\'>&nbsp;</td><td id=\'pbb_autolevelling\' class=\'val transparent\'>LOADING...</td></tr>     \n      <tr><td class=\'lbl transparent\' id=\'pbb_canopy_lbl\'>&nbsp;</td><td id=\'pbb_canopy\' class=\'val transparent\'>LOADING...</td></tr>   \n      <tr><td class=\'lbl transparent\' id=\'pbb_limits_lbl\'>&nbsp;</td><td id=\'pbb_limits\' class=\'val transparent\'>LOADING...</td></tr>\n      <tr><td class=\'lbl transparent\' id=\'pbb_smokedetector_lbl\'>&nbsp;</td><td id=\'pbb_smokedetector\' class=\'val transparent\'>LOADING...</td></tr>\n      <tr><td class=\'lbl transparent\' id=\'pbb_cabinfloordeicer_lbl\'>&nbsp;</td><td id=\'pbb_cabinfloordeicer\' class=\'val transparent\'>LOADING...</td></tr>\n      <tr><td class=\'lbl transparent\' id=\'pbb_terminaldoor_lbl\'>&nbsp;</td><td id=\'pbb_terminaldoor\' class=\'val transparent\'>LOADING...</td></tr>\n      <tr><td class=\'lbl transparent\' id=\'pbb_lastdocktime_lbl\'>&nbsp;</td><td id=\'pbb_lastdocktime\' class=\'val transparent\'>LOADING...</td></tr>\n      <tr><td class=\'lbl transparent\' id=\'pbb_dailyaircraftcount_lbl\'>&nbsp;</td><td id=\'pbb_dailyaircraftcount\' class=\'val transparent\'>LOADING...</td></tr> \n    </table>\n     <div id="pbb_cabangledisp" class=""></div>  \n     <div id="pbb_slopedeg" class=""></div> \n     <div id="pbb_swingangledisp" class=""></div>   \n     <div id="pbb_heighttodisp" class=""></div>\n     <div id="pca_pcaambhumidity" class=""></div>\n     <div id="pbb_wheelangledeg" class=""></div>\n     <div id="pbb_tunnellength" class=""></div> \n  </div></div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="aircraft_img" class="">\n    <div>\n \n    </div>\n\n    <table id="widgetData" class=\'data transparent\' style="float:left; width:39%; position:absolute; top:5%; left:1%;">\n      <tbody>\n      </tbody>\n    </table>\n     <div id="pbb_cab_angle_disp" class=""></div>  \n     <div id="pbb_slope_deg" class=""></div> \n     <div id="pbb_swing_angle_disp" class=""></div>   \n     <div id="pbb_height_to_disp" class=""></div>\n     <div id="pca_pcaambhumidity" class=""></div>\n     <!-- <div id="pbb_wheel_angle_deg" class=""></div> -->\n     <label id="pbb_wheel_angle_deg" class=""></label>\n     <div id="pbb_tunnel_length" class=""></div> \n  </div></div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -4304,7 +4304,7 @@ TagConfig = (function(superClass) {
       },
       Element: {
         Type: 'TableRow',
-        ParentID: '#widgetData',
+        ParentID: '#widgetData2',
         Class: null,
         Object: null
       }
@@ -4338,7 +4338,7 @@ TagConfig = (function(superClass) {
       },
       Element: {
         Type: 'TableRow',
-        ParentID: '#widgetData',
+        ParentID: '#widgetData2',
         Class: null,
         Object: null
       }
@@ -4372,7 +4372,7 @@ TagConfig = (function(superClass) {
       },
       Element: {
         Type: 'TableRow',
-        ParentID: '#widgetData',
+        ParentID: '#widgetData2',
         Class: null,
         Object: null
       }
@@ -4406,7 +4406,7 @@ TagConfig = (function(superClass) {
       },
       Element: {
         Type: 'TableRow',
-        ParentID: '#widgetData',
+        ParentID: '#widgetData2',
         Class: null,
         Object: null
       }
@@ -4440,7 +4440,7 @@ TagConfig = (function(superClass) {
       },
       Element: {
         Type: 'TableRow',
-        ParentID: '#widgetData',
+        ParentID: '#widgetData2',
         Class: null,
         Object: null
       }
@@ -4474,7 +4474,7 @@ TagConfig = (function(superClass) {
       },
       Element: {
         Type: 'TableRow',
-        ParentID: '#widgetData',
+        ParentID: '#widgetData2',
         Class: null,
         Object: null
       }
@@ -4508,7 +4508,7 @@ TagConfig = (function(superClass) {
       },
       Element: {
         Type: 'TableRow',
-        ParentID: '#widgetData',
+        ParentID: '#widgetData2',
         Class: null,
         Object: null
       }
@@ -4542,7 +4542,7 @@ TagConfig = (function(superClass) {
       },
       Element: {
         Type: 'TableRow',
-        ParentID: '#widgetData',
+        ParentID: '#widgetData2',
         Class: null,
         Object: null
       }
@@ -4576,7 +4576,7 @@ TagConfig = (function(superClass) {
       },
       Element: {
         Type: 'TableRow',
-        ParentID: '#widgetData',
+        ParentID: '#widgetData2',
         Class: null,
         Object: null
       }
@@ -4610,7 +4610,7 @@ TagConfig = (function(superClass) {
       },
       Element: {
         Type: 'TableRow',
-        ParentID: '#widgetData',
+        ParentID: '#widgetData2',
         Class: null,
         Object: null
       }
@@ -4644,7 +4644,7 @@ TagConfig = (function(superClass) {
       },
       Element: {
         Type: 'TableRow',
-        ParentID: '#widgetData',
+        ParentID: '#widgetData2',
         Class: null,
         Object: null
       }
@@ -4678,7 +4678,7 @@ TagConfig = (function(superClass) {
       },
       Element: {
         Type: 'TableRow',
-        ParentID: '#widgetData',
+        ParentID: '#widgetData2',
         Class: null,
         Object: null
       }
@@ -4712,7 +4712,7 @@ TagConfig = (function(superClass) {
       },
       Element: {
         Type: 'TableRow',
-        ParentID: '#widgetData',
+        ParentID: '#widgetData2',
         Class: null,
         Object: null
       }
@@ -5188,9 +5188,9 @@ TagConfig = (function(superClass) {
       Label: 'Ambient Air Temperature',
       DataType: 'Float',
       Parameters: {
-        Parm001: false,
-        Parm002: null,
-        Parm003: null,
+        Parm001: true,
+        Parm002: 2,
+        Parm003: '#{1} F',
         Parm004: null
       },
       Element: {
@@ -5783,7 +5783,25 @@ TagConfig = (function(superClass) {
         'gpu_ra_in_avg': 'gpu_ra_in_avg',
         'gpu_rv_in_avg': 'gpu_rv_in_avg'
       },
-      Graphics: {}
+      Graphics: {
+        gpu_main_background: {
+          ControlTags: {
+            none: null
+          },
+          Parameters: {
+            Parm001: null,
+            Parm002: null,
+            Parm003: null,
+            Parm004: null
+          },
+          Element: {
+            Type: 'div',
+            ParentID: '#graphics_container',
+            Class: 'background',
+            Object: null
+          }
+        }
+      }
     },
     gpu_widget: {
       Tags: {
@@ -6704,10 +6722,10 @@ TagConfig = (function(superClass) {
             Label: 'Suction pressure,primary compressor #1',
             DataType: 'Float',
             Parameters: {
-              Parm001: '',
-              Parm002: '',
-              Parm003: '',
-              Parm004: ''
+              Parm001: false,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
             },
             Element: {
               Type: 'TableRow',
@@ -6721,10 +6739,10 @@ TagConfig = (function(superClass) {
             Label: 'Suction pressure,primary compressor #2',
             DataType: 'Float',
             Parameters: {
-              Parm001: '',
-              Parm002: '',
-              Parm003: '',
-              Parm004: ''
+              Parm001: false,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
             },
             Element: {
               Type: 'TableRow',
@@ -6743,9 +6761,9 @@ TagConfig = (function(superClass) {
                   Label: 'Ambient Air Temperature',
                   DataType: 'Float',
                   Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: null,
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1} F',
                     Parm004: null
                   },
                   Element: {
@@ -6874,10 +6892,10 @@ TagConfig = (function(superClass) {
             Label: 'Suction pressure,primary compressor #1',
             DataType: 'Float',
             Parameters: {
-              Parm001: '',
-              Parm002: '',
-              Parm003: '',
-              Parm004: ''
+              Parm001: false,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
             },
             Element: {
               Type: 'TableRow',
@@ -6891,10 +6909,10 @@ TagConfig = (function(superClass) {
             Label: 'Suction pressure,primary compressor #2',
             DataType: 'Float',
             Parameters: {
-              Parm001: '',
-              Parm002: '',
-              Parm003: '',
-              Parm004: ''
+              Parm001: false,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
             },
             Element: {
               Type: 'TableRow',
@@ -7020,11 +7038,28 @@ TagConfig = (function(superClass) {
             C90: {
               remove_all: {}
             }
-          }
-        },
-        C: {
+          },
           3: {
             C125: {
+              update_graphics: {
+                gpu_main_background: {
+                  ControlTags: {
+                    none: null
+                  },
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#graphics_container',
+                    Class: 'background axa-gpu-dual-unit',
+                    Object: null
+                  }
+                }
+              },
               use_groups: {
                 'gpu_hobart_sx2400_dual_unit': 'gpu_hobart_sx2400_dual_unit'
               },
@@ -7056,9 +7091,7 @@ TagConfig = (function(superClass) {
             C90: {
               remove_all: {}
             }
-          }
-        },
-        C: {
+          },
           3: {
             C125: {
               use_groups: {
@@ -7152,9 +7185,7 @@ TagConfig = (function(superClass) {
                 'gpu_rv_out_avg': 'gpu_rv_out_avg'
               }
             }
-          }
-        },
-        C: {
+          },
           3: {
             C125: {
               add_tags: {
@@ -7528,9 +7559,7 @@ TagConfig = (function(superClass) {
                 }
               }
             }
-          }
-        },
-        C: {
+          },
           3: {
             C125: {
               remove_tags: {
@@ -7877,9 +7906,7 @@ TagConfig = (function(superClass) {
                 }
               }
             }
-          }
-        },
-        C: {
+          },
           3: {
             C125: {
               remove_tags: {
@@ -8436,7 +8463,7 @@ TagConfig = (function(superClass) {
       if ((addGroups != null) && Object.keys(addGroups).length > 0) {
         for (key in addGroups) {
           group = addGroups[key];
-          ref2 = this.constructor.groups[group];
+          ref2 = this.constructor.groups[group].Tags;
           for (tag in ref2) {
             data = ref2[tag];
             if (Object.keys(this.constructor.tags).indexOf(tag) > -1) {
@@ -13098,10 +13125,21 @@ AirportWidgetView = (function(superClass) {
   };
 
   AirportWidgetView.prototype.set_model = function() {
-    var s;
+    var lbl, s, site;
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
-    return this.model.set("settings", s);
+    this.model.set("settings", s);
+    if (this.site_code == null) {
+      site = OPCManager.get_site(s.site);
+      if (site != null) {
+        this.site_code = site.get('code');
+      }
+    }
+    lbl = "???: Airport Overview";
+    if ((s != null) && !!s.gate) {
+      lbl = this.site_code + ": Airport Overview";
+    }
+    return this.ui.wtitle.html(lbl);
   };
 
   AirportWidgetView.prototype.toggle_settings = function(e) {
@@ -13328,7 +13366,7 @@ AlarmWidgetView = (function(superClass) {
   };
 
   AlarmWidgetView.prototype.set_model = function() {
-    var s;
+    var lbl, s, site;
     s = _.clone(this.model.get("settings"));
     s.site = this.ui.site.val();
     s.terminal = this.$("select#terminal").val();
@@ -13338,7 +13376,18 @@ AlarmWidgetView = (function(superClass) {
     s.priority = this.$("[name=priority_" + this.cid + "]:checked").val();
     s.allgates = this.$("#allgates").is(':checked');
     console.log(s.allgates);
-    return this.model.set("settings", s);
+    this.model.set("settings", s);
+    if (this.site_code == null) {
+      site = OPCManager.get_site(s.site);
+      if (site != null) {
+        this.site_code = site.get('code');
+      }
+    }
+    lbl = "???: Alarm window";
+    if ((s != null) && !!s.gate) {
+      lbl = this.site_code + ": Alarm window";
+    }
+    return this.ui.wtitle.html(lbl);
   };
 
   AlarmWidgetView.prototype.toggle_settings = function(e) {
@@ -14294,13 +14343,45 @@ GpusummaryWidgetView = (function(superClass) {
   };
 
   GpusummaryWidgetView.prototype.set_model = function() {
-    var s;
+    var lbl, ref, s, show_opts, t, tag, tg;
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     s.terminal = this.$('#terminal').val();
     s.zone = this.$('#zone').val();
     s.gate = this.$('#gate').val();
-    return this.model.set("settings", s);
+    this.model.set("settings", s);
+    s = this.model.get("settings");
+    show_opts = (s != null) && !!s.gate;
+    this.$('#mode').toggle(show_opts);
+    this.update_settings({
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+    });
+    if (this.site_code == null) {
+      return null;
+    }
+    if (show_opts) {
+      this.kill_updates(this.site_code);
+      tags = [];
+      this.tagData = [];
+      this.tagConfig = [];
+      this.tagConfig = this.create_dynamic_elements(this.el.parentNode.id, this.classID, null, null, this.site_code, s);
+      this.tagData = this.tagConfig.TagData;
+      ref = this.tagData;
+      for (tag in ref) {
+        tagData = ref[tag];
+        tags.push("" + this.prefix + tagData.Tag + ".Value");
+      }
+      for (tg in this.tags) {
+        t = this.tags[tg];
+        tags.push("" + this.prefix + t + ".Value");
+      }
+      App.opc.add_tags(this.site_code, tags);
+      lbl = this.site_code + ": Gate " + s.gate + " - GPU Summary";
+      this.ui.wtitle.html(lbl);
+      this.opc = App.opc.connections[this.site_code];
+      return this.watch_updates(this.site_code);
+    }
   };
 
   GpusummaryWidgetView.prototype.toggle_settings = function(e) {
@@ -14462,6 +14543,8 @@ GpuWidgetView = (function(superClass) {
     s = this.model.get("settings");
     if ((s != null) && !!s.site) {
       this.kill_updates(this.site_code);
+      $("#widgetData").toggleClass("no-show", false);
+      $("#widgetData2").toggleClass("no-show", true);
       tags = [];
       this.tagData = [];
       this.tagConfig = [];
@@ -14809,6 +14892,7 @@ IOPSWidgetView = (function(superClass) {
     ref1 = tagConfig.TagData;
     for (tag in ref1) {
       tagData = ref1[tag];
+      $("li#" + WidgetID + " ." + ClassID + " " + tagData.Element.ParentID).toggleClass("no-show", false);
       elType = tagData.Element.Type.toLowerCase();
       switch (elType) {
         case 'tablerow':
@@ -15143,10 +15227,21 @@ KpiWidgetView = (function(superClass) {
   };
 
   KpiWidgetView.prototype.set_model = function() {
-    var s;
+    var lbl, s, site;
     s = _.clone(this.model.get("settings"));
     s.site = this.ui.site.val();
-    return this.model.set("settings", s);
+    this.model.set("settings", s);
+    if (this.site_code == null) {
+      site = OPCManager.get_site(s.site);
+      if (site != null) {
+        this.site_code = site.get('code');
+      }
+    }
+    lbl = "???: KPI";
+    if ((s != null) && !!s.gate) {
+      lbl = this.site_code + ": KPI";
+    }
+    return this.ui.wtitle.html(lbl);
   };
 
   KpiWidgetView.prototype.onShow = function() {
@@ -15289,13 +15384,24 @@ PbbdetailWidgetView = (function(superClass) {
   };
 
   PbbdetailWidgetView.prototype.set_model = function() {
-    var s;
+    var lbl, s, site;
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     s.terminal = this.$('#terminal').val();
     s.zone = this.$('#zone').val();
     s.gate = this.$('#gate').val();
-    return this.model.set("settings", s);
+    this.model.set("settings", s);
+    if (this.site_code == null) {
+      site = OPCManager.get_site(s.site);
+      if (site != null) {
+        this.site_code = site.get('code');
+      }
+    }
+    lbl = "???: Gate ??? - Overview";
+    if ((s != null) && !!s.gate) {
+      lbl = this.site_code + ": Gate " + s.gate + " - Overview";
+    }
+    return this.ui.wtitle.html(lbl);
   };
 
   PbbdetailWidgetView.prototype.toggle_settings = function(e) {
@@ -15351,6 +15457,8 @@ Marionette = require('marionette');
 IOPSWidgetView = require('./iops_widget_view');
 
 PbbleveldetailWidgetView = (function(superClass) {
+  var tagConfig, tagData;
+
   extend(PbbleveldetailWidgetView, superClass);
 
   function PbbleveldetailWidgetView() {
@@ -15385,109 +15493,150 @@ PbbleveldetailWidgetView = (function(superClass) {
   };
 
   PbbleveldetailWidgetView.prototype.tags = {
-    pbb_status: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-    pbb_autolevelmode: 'PBB.AUTOLEVELMODEFLAG',
-    pbb_canopy: 'PBB.CANOPYDOWN',
-    pbb_autolevelkey: 'PBB.AUTOLEVELKEY',
-    pbb_autolevelling: 'PBB.AUTOLEVELING',
-    pbb_estop: 'PBB.Alarm.E_STOP',
-    pbb_estopRW: 'PBB.Alarm.RedWord2[4]',
-    pbb_limits: 'PBB.BYPASSPB',
-    pbb_docktime: 'PBB.DOCKTIME',
-    pbb_undocktime: 'PBB.UNDOCKTIME',
-    pbb_smokedetector: 'PBB.SMOKEDETECTOR',
-    pbb_dailyaircraftcount: 'PBB.DAILYAIRCRAFTDOCKED',
-    pbb_lastdocktime: 'PBB.LASTDOCKTIME',
-    pbb_cabinfloordeicer: 'PBB.CABFLOORDEICER',
-    pbb_terminaldoor: 'PBB.TERMINALDOOR',
-    pbb_cabangledisp: 'PBB.CABANGLEDISP',
-    pbb_slopedeg: 'PBB.SLOPEDEG',
-    pbb_swingangledisp: 'PBB.SWINGANGLEDISP',
-    pbb_heighttodisp: 'PBB.HEIGHTTODISP',
-    pbb_wheelangledeg: 'PBB.WHEELANGLEDEG',
-    pbb_tunnellength: 'PBB.HORIZTODISP',
+
+    /*
+    pbb_status :           'PBB.AIRCRAFTDOCKEDCALCULATION'
+    #pbb_aircraft :         'PBB.AIRCRAFTSTATUS'
+    pbb_autolevelmode :    'PBB.AUTOLEVELMODEFLAG'
+    pbb_canopy:            'PBB.CANOPYDOWN'
+    pbb_autolevelkey :     'PBB.AUTOLEVELKEY'
+    pbb_autolevelling:     'PBB.AUTOLEVELING'
+    pbb_estop:             'PBB.Alarm.E_STOP'  
+    pbb_estopRW:           'PBB.Alarm.RedWord2[4]'
+    pbb_limits:            'PBB.BYPASSPB'
+    pbb_docktime:          'PBB.DOCKTIME'
+    pbb_undocktime:        'PBB.UNDOCKTIME'
+    pbb_smokedetector:     'PBB.SMOKEDETECTOR'
+    pbb_dailyaircraftcount:'PBB.DAILYAIRCRAFTDOCKED'
+    pbb_lastdocktime:      'PBB.LASTDOCKTIME'
+    pbb_cabinfloordeicer:  'PBB.CABFLOORDEICER'
+    pbb_terminaldoor:      'PBB.TERMINALDOOR'
+    pbb_cabangledisp:      'PBB.CABANGLEDISP'
+    pbb_slopedeg:          'PBB.SLOPEDEG'
+    pbb_swingangledisp:    'PBB.SWINGANGLEDISP'
+    pbb_heighttodisp:      'PBB.HEIGHTTODISP'
+    pbb_wheelangledeg:     'PBB.WHEELANGLEDEG'
+    pbb_tunnellength:      'PBB.HORIZTODISP'
+     */
     pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
     pbb_has_warnings: 'Warning._HasWarnings',
     pbb_has_alarms: 'Alarm._HasAlarms'
   };
 
+  tagData = [];
+
+  tagConfig = [];
+
   PbbleveldetailWidgetView.prototype.update = function() {
-    var cloud, lbl, s, settings, t, tags, tg;
+    var lbl, ref, ref1, s, t, tag, tags, tg;
+    this.update_settings({
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+    });
+    if (this.site_code == null) {
+      return null;
+    }
     s = this.model.get("settings");
-    if ((s != null) && !!s.gate) {
-      this.site = OPCManager.get_site(s.site);
-      this.site_code = this.site.get('code');
-      if (this.site_code == null) {
-        return null;
-      }
+    if ((s != null) && !!s.site) {
       this.kill_updates(this.site_code);
-      settings = this.site.get('settings');
-      settings || (settings = {});
-      cloud = settings.cloud ? "RemoteSCADAHosting.Airport-" + this.site_code + "." : '';
-      this.prefix = cloud + "Airport." + this.site_code + ".Term" + s.terminal + ".Zone" + s.zone + ".Gate" + s.gate + ".";
       tags = [];
+      this.tagData = [];
+      this.tagConfig = [];
+      this.tagConfig = this.create_dynamic_elements(this.el.parentNode.id, this.classID, null, null, this.site_code, s);
+      this.tagData = this.tagConfig.TagData;
+      $(".data td").toggleClass("transparent", true);
+      ref1 = this.tagData;
+      for (tag in ref1) {
+        tagData = ref1[tag];
+        tags.push("" + this.prefix + tagData.Tag + ".Value");
+      }
       for (tg in this.tags) {
         t = this.tags[tg];
         tags.push("" + this.prefix + t + ".Value");
       }
       App.opc.add_tags(this.site_code, tags);
-      this.watch_updates(this.site_code);
-      lbl = "PBB " + s.gate + " - Details";
+      lbl = this.site_code + ": PBB " + s.gate + " - Details";
       this.ui.wtitle.html(lbl);
       this.opc = App.opc.connections[this.site_code];
+      ref = s.layout;
+      this.watch_updates(this.site_code);
       return this.set_descriptions(true);
     }
   };
 
   PbbleveldetailWidgetView.prototype.data_update = function(data) {
-    var aq, ca1, cabangledisp, hd1, heighttodisp, s2, slopedeg, sq, swa1, swingangledisp, tg, tl, tunnellength, v, wa1, wheelangledeg, wq;
-    this.vals = {};
-    for (tg in this.tags) {
-      this.vals[tg] = this.get_value(this.tags[tg]);
+    var aq, ca1, cabangledisp, hd1, heighttodisp, ref1, s2, slopedeg, sq, swa1, swingangledisp, tag, tl, tunnellength, v, wa1, wheelangledeg, wq;
+    this.refresh_values();
+    ref1 = this.tagData;
+    for (tag in ref1) {
+      tagData = ref1[tag];
+      switch (tagData.DataType.toLowerCase()) {
+        case 'boolean':
+          this.render_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004, tagData.Parameters.Parm005);
+          break;
+        case 'float':
+          this.render_value_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm00);
+          break;
+        case 'value':
+          this.render_value_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004);
+          break;
+        default:
+          null;
+      }
     }
     v = this.get_bool(this.vals.pbb_status);
-    sq = this.data_q(this.tags.pbb_status);
+    sq = this.data_q(this.tagData.pbb_status.Tag);
     this.$("#aircraft_img").toggleClass('docked', v === true && sq);
-    this.render_row("pbb_status", "Docked", "UnDocked", "ok");
-    this.render_row("pbb_autolevelmode", "On", "Off", "ok");
-    this.render_row("pbb_limits", "Active", "Deactive", "ok", " ");
-    this.render_row("pbb_smokedetector", "Off", "On", "", "err");
-    this.render_row("pbb_canopy", "Down", "Up", "ok");
-    this.render_row("pbb_limits", "Normal", "ByPass", "ok");
-    this.render_row("pbb_autolevelkey", "On", "Off", "ok");
-    this.render_row("pbb_autolevelling", "On", "Off", "ok");
-    this.render_row("pbb_cabinfloordeicer", "On", "Off", "ok");
-    this.render_row("pbb_terminaldoor", "Open", "Close", "ok");
-    if ((this.vals.pbb_estop != null) && this.vals.pbb_estop !== '') {
-      this.render_row("pbb_estop", "On", "Off", "err");
-    } else if ((this.vals.pbb_estopRW != null) && this.vals.pbb_estopRW !== '') {
-      this.render_row("pbb_estopRW", "On", "Off", "err");
+
+    /*
+    Tags:{'pbb_status','pbb_autolevel_mode','pbb_canopy','pbb_autolevel_key','pbb_autoleveling','pbb_estop','pbb_limits'
+            ,'pbb_dock_time','pbb_undock_time','pbb_smoke_detector','pbb_daily_aircraft_count','pbb_last_dock_time'
+            ,'pbb_cabin_floor_deicer','pbb_terminal_door','pbb_cab_angle_disp','pbb_slope_deg','pbb_swing_angle_disp'
+            ,'pbb_height_to_disp','pbb_wheel_angle_deg','pbb_tunnel_length'}
+     */
+    if (this.tagData.pbb_wheel_angle_deg != null) {
+      wheelangledeg = (this.vals.pbb_wheel_angle_deg != null) && this.vals.pbb_wheel_angle_deg !== '' ? parseFloat(this.vals.pbb_wheel_angle_deg).toFixed(2) : ' -- ';
+      wa1 = this.$('#pbb_wheel_angle_deg').text("Wheel Bogie Angle : " + wheelangledeg);
+      this.mark_bad_data(this.tagData.pbb_wheel_angle_deg.Tag, wa1);
+    } else {
+      this.$('#pbb_wheel_angle_deg').html("");
     }
-    this.$("#pbb_statused_lbl").html('PBB Status');
-    this.$("#pbb_estoped_lbl").html('E-Stop');
-    this.render_value_row("pbb_docktime", true, 2, " mins");
-    this.render_value_row("pbb_undocktime", true, 2, " mins");
-    this.render_value_row("pbb_lastdocktime", true, 2, " mins");
-    this.render_value_row("pbb_dailyaircraftcount", false);
-    wheelangledeg = (this.vals.pbb_wheelangledeg != null) && this.vals.pbb_wheelangledeg !== '' ? parseFloat(this.vals.pbb_wheelangledeg).toFixed(2) : ' -- ';
-    wa1 = this.$('#pbb_wheelangledeg').html("Wheel Bogie Angle : " + wheelangledeg);
-    this.mark_bad_data(this.tags.pbb_wheelangledeg, wa1);
-    slopedeg = (this.vals.pbb_slopedeg != null) && this.vals.pbb_slopedeg !== '' ? parseFloat(this.vals.pbb_slopedeg).toFixed(2) : ' -- ';
-    s2 = this.$('#pbb_slopedeg').html("Slope : " + slopedeg);
-    this.mark_bad_data(this.tags.pbb_slopedeg, s2);
-    cabangledisp = (this.vals.pbb_cabangledisp != null) && this.vals.pbb_cabangledisp !== '' ? this.vals.pbb_cabangledisp : ' -- ';
-    ca1 = this.$('#pbb_cabangledisp').html("Cab Angle : " + cabangledisp);
-    this.mark_bad_data(this.tags.pbb_cabangledisp, ca1);
-    swingangledisp = (this.vals.pbb_swingangledisp != null) && this.vals.pbb_swingangledisp !== '' ? this.vals.pbb_swingangledisp : ' -- ';
-    swa1 = this.$('#pbb_swingangledisp').html("Bridge Rotation :" + swingangledisp);
-    this.mark_bad_data(this.tags.pbb_swingangledisp, swa1);
-    heighttodisp = (this.vals.pbb_heighttodisp != null) && this.vals.pbb_heighttodisp !== '' ? this.vals.pbb_heighttodisp : ' -- ';
-    hd1 = this.$('#pbb_heighttodisp').html("Height : " + heighttodisp);
-    this.mark_bad_data(this.tags.pbb_heighttodisp, hd1);
-    tunnellength = (this.vals.pbb_tunnellength != null) && this.vals.pbb_tunnellength !== '' ? this.vals.pbb_tunnellength : ' -- ';
-    tl = this.$('#pbb_tunnellength').html("Tunnel Length : " + tunnellength);
-    this.mark_bad_data(this.tags.pbb_tunnellength, tl);
-    aq = this.data_q(this.tags.pbb_has_alarms);
+    if (this.tagData.pbb_slope_deg != null) {
+      slopedeg = (this.vals.pbb_slope_deg != null) && this.vals.pbb_slope_deg !== '' ? parseFloat(this.vals.pbb_slope_deg).toFixed(2) : ' -- ';
+      s2 = this.$('#pbb_slope_deg').html("Slope : " + slopedeg);
+      this.mark_bad_data(this.tagData.pbb_slope_deg.Tag, s2);
+    } else {
+      this.$('#pbb_slope_deg').html("");
+    }
+    if (this.tagData.pbb_cab_angle_disp != null) {
+      cabangledisp = (this.vals.pbb_cab_angle_disp != null) && this.vals.pbb_cab_angle_disp !== '' ? this.vals.pbb_cab_angle_disp : ' -- ';
+      ca1 = this.$('#pbb_cab_angle_disp').html("Cab Angle : " + cabangledisp);
+      this.mark_bad_data(this.tagData.pbb_cab_angle_disp.Tag, ca1);
+    } else {
+      this.$('#pbb_cab_angle_disp').html("");
+    }
+    if (this.tagData.pbb_swing_angle_disp != null) {
+      swingangledisp = (this.vals.pbb_swing_angle_disp != null) && this.vals.pbb_swing_angle_disp !== '' ? this.vals.pbb_swing_angle_disp : ' -- ';
+      swa1 = this.$('#pbb_swing_angle_disp').html("Bridge Rotation :" + swingangledisp);
+      this.mark_bad_data(this.tagData.pbb_swing_angle_disp.Tag, swa1);
+    } else {
+      this.$('#pbb_swing_angle_disp').html("");
+    }
+    if (this.tagData.pbb_height_to_disp != null) {
+      heighttodisp = (this.vals.pbb_height_to_disp != null) && this.vals.pbb_height_to_disp !== '' ? this.vals.pbb_height_to_disp : ' -- ';
+      hd1 = this.$('#pbb_height_to_disp').html("Height : " + heighttodisp);
+      this.mark_bad_data(this.tagData.pbb_height_to_disp.Tag, hd1);
+    } else {
+      this.$('#pbb_height_to_disp').html("");
+    }
+    if (this.tagData.pbb_tunnel_length != null) {
+      tunnellength = (this.vals.pbb_tunnel_length != null) && this.vals.pbb_tunnel_length !== '' ? this.vals.pbb_tunnel_length : ' -- ';
+      tl = this.$('#pbb_tunnel_length').html("Tunnel Length : " + tunnellength);
+      this.mark_bad_data(this.tagData.pbb_tunnel_length.Tag, tl);
+    } else {
+      this.$('#pbb_tunnel_length').html("");
+    }
+    aq = this.data_q(this.tagData.pbb_has_alarms);
     this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
     wq = this.data_q(this.tags.pbb_has_warnings);
     this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings) === true && wq);
@@ -15495,13 +15644,24 @@ PbbleveldetailWidgetView = (function(superClass) {
   };
 
   PbbleveldetailWidgetView.prototype.set_model = function() {
-    var s;
+    var lbl, s, site;
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     s.terminal = this.$('#terminal').val();
     s.zone = this.$('#zone').val();
     s.gate = this.$('#gate').val();
-    return this.model.set("settings", s);
+    this.model.set("settings", s);
+    if (this.site_code == null) {
+      site = OPCManager.get_site(s.site);
+      if (site != null) {
+        this.site_code = site.get('code');
+      }
+    }
+    lbl = "PBB ??? - Details";
+    if ((s != null) && !!s.gate) {
+      lbl = "PBB " + s.gate + " - Details";
+    }
+    return this.ui.wtitle.html(lbl);
   };
 
   PbbleveldetailWidgetView.prototype.toggle_settings = function(e) {
@@ -15680,7 +15840,7 @@ PbbpcagpuWidgetView = (function(superClass) {
   PbbpcagpuWidgetView.prototype.start = function() {
     var lbl, s, settings;
     settings = this.model.get('settings');
-    this.tableWidgetData = '<table id="widgetData" class="data" style="float: left; width:92%"><tbody></tbody></table>';
+    this.tableWidgetData = '<table id="widgetData" class="data"><tbody></tbody></table>';
     this.ui.display.append(this.tableWidgetData);
     s = this.model.get("settings");
     lbl = this.site_code + ": Gate ??? PBB/PCA/GPU";
@@ -15820,13 +15980,24 @@ PbbWidgetView = (function(superClass) {
   };
 
   PbbWidgetView.prototype.set_model = function() {
-    var s;
+    var lbl, s, site;
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     s.terminal = this.$('#terminal').val();
     s.zone = this.$('#zone').val();
     s.gate = this.$('#gate').val();
-    return this.model.set("settings", s);
+    this.model.set("settings", s);
+    if (this.site_code == null) {
+      site = OPCManager.get_site(s.site);
+      if (site != null) {
+        this.site_code = site.get('code');
+      }
+    }
+    lbl = "PBB ??? - Details";
+    if ((s != null) && !!s.gate) {
+      lbl = "PBB " + s.gate + " - Details";
+    }
+    return this.ui.wtitle.html(lbl);
   };
 
   PbbWidgetView.prototype.toggle_settings = function(e) {

@@ -164,71 +164,71 @@ ul.gridster.widget-container {
 @keyframes blinker {
   50% {
     opacity: 0.0; } }
-table.data {
+table.data, table.data2 {
   width: 100%;
   border: solid 1px #999;
   border-spacing: 1px;
   border-collapse: separate; }
-  table.data.transparent {
+  table.data.transparent, table.data2.transparent {
     background: transparent; }
-  table.data.airplane {
+  table.data.airplane, table.data2.airplane {
     border: 0; }
-    table.data.airplane td {
+    table.data.airplane td, table.data2.airplane td {
       background-color: #fff; }
-  table.data.no-show {
+  table.data.no-show, table.data2.no-show {
     visibility: hidden; }
-  table.data td {
+  table.data td, table.data2 td {
     padding: 3px 10px;
     background-color: #eee;
     color: #999; }
-    table.data td.transparent {
+    table.data td.transparent, table.data2 td.transparent {
       background: transparent; }
-    table.data td tr.dockundock {
+    table.data td tr.dockundock, table.data2 td tr.dockundock {
       background-color: #090; }
-    table.data td.lbl {
+    table.data td.lbl, table.data2 td.lbl {
       background-color: #fff;
       font-style: italic;
       color: #333;
       border-bottom: solid 1px #ddd; }
-      table.data td.lbl.transparent {
+      table.data td.lbl.transparent, table.data2 td.lbl.transparent {
         background: transparent;
         border-right: solid 1px #ddd; }
-    table.data td.val {
+    table.data td.val, table.data2 td.val {
       font-weight: bold;
       color: #333; }
-      table.data td.val.transparent {
+      table.data td.val.transparent, table.data2 td.val.transparent {
         font-weight: bold;
         border-bottom: solid 1px #ddd; }
-    table.data td.err {
+    table.data td.err, table.data2 td.err {
       color: #fe6;
       background-color: #c33; }
-      table.data td.err.transparent {
+      table.data td.err.transparent, table.data2 td.err.transparent {
         color: #ff3333;
         background: transparent;
         border-bottom: solid 1px #ddd; }
-    table.data td.ok {
+    table.data td.ok, table.data2 td.ok {
       background-color: #090;
       color: #fff; }
-      table.data td.ok.transparent {
+      table.data td.ok.transparent, table.data2 td.ok.transparent {
         background: transparent;
         color: #090;
         border-bottom: solid 1px #ddd; }
-    table.data td.blue {
+    table.data td.blue, table.data2 td.blue {
       background-color: #06c;
       color: #fff; }
-      table.data td.blue.transparent {
+      table.data td.blue.transparent, table.data2 td.blue.transparent {
         background: transparent;
         color: #fff; }
-    table.data td.bad_data {
+    table.data td.bad_data, table.data2 td.bad_data {
       background-color: #fec;
       color: #999; }
-      table.data td.bad_data.transparent {
+      table.data td.bad_data.transparent, table.data2 td.bad_data.transparent {
         background: transparent;
         color: #999;
         border-bottom: solid 1px #ddd; }
-    table.data td.img-circles {
+    table.data td.img-circles, table.data2 td.img-circles {
       border-radius: 10%; }
-      table.data td.img-circles.transparent {
+      table.data td.img-circles.transparent, table.data2 td.img-circles.transparent {
         background: transparent;
         border-radius: 10%; }
 
@@ -1140,42 +1140,42 @@ li.dashboard-link {
   min-height: 100%;
   min-width: 100%;
   overflow: auto; }
-  .pbb_level_detail_widget .display #pbb_cabangledisp {
+  .pbb_level_detail_widget .display #pbb_cab_angle_disp {
     position: absolute;
     left: 46%;
     top: 24%;
     font-size: 13px;
     color: mediumblue;
     background: transparent; }
-  .pbb_level_detail_widget .display #pbb_slopedeg {
+  .pbb_level_detail_widget .display #pbb_slope_deg {
     position: absolute;
     left: 67%;
     top: 29%;
     font-size: 13px;
     color: mediumblue;
     background: transparent; }
-  .pbb_level_detail_widget .display #pbb_swingangledisp {
+  .pbb_level_detail_widget .display #pbb_swing_angle_disp {
     position: absolute;
     left: 82%;
     top: 33%;
     font-size: 13px;
     color: mediumblue;
     background: transparent; }
-  .pbb_level_detail_widget .display #pbb_heighttodisp {
+  .pbb_level_detail_widget .display #pbb_height_to_disp {
     position: absolute;
     left: 51%;
     top: 51%;
     font-size: 13px;
     color: mediumblue;
     background: transparent; }
-  .pbb_level_detail_widget .display #pbb_wheelangledeg {
+  .pbb_level_detail_widget .display #pbb_wheel_angle_deg {
     position: absolute;
     left: 52%;
     top: 59%;
     font-size: 13px;
     color: mediumblue;
     background: transparent; }
-  .pbb_level_detail_widget .display #pbb_tunnellength {
+  .pbb_level_detail_widget .display #pbb_tunnel_length {
     position: absolute;
     left: 72%;
     top: 52%;

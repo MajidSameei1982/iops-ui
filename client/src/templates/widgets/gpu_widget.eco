@@ -16,10 +16,15 @@
         <i id='warnings' class="fa fa-warning" title='Gate has WARNINGS' style='display:none;'></i>
       </h1>
     </div>
-    <table id="widgetData" class='data'>
+    <table id="widgetData" class='data no-show'>
       <tbody>
       </tbody>
     </table>
+    <table id="widgetData2" class='data2 no-show'>
+      <tbody>
+      </tbody>
+    </table>
+
   </div>
 
   <div class="settings" style="display: none;">

@@ -107,7 +107,7 @@ ul.gridster.widget-container {
 @keyframes blinker { 50% { opacity: 0.0; } }
 
 table {
-	&.data {
+	&.data, &.data2 {
 		width: 100%;
 	    border:solid 1px #999;
 	    border-spacing: 1px;

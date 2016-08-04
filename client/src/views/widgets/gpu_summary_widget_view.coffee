@@ -385,6 +385,51 @@ class GpusummaryWidgetView extends IOPSWidgetView
     s.gate = @$('#gate').val()
     @model.set("settings", s)
 
+    s = @model.get("settings")
+
+    show_opts = s? && !!s.gate
+    @$('#mode').toggle(show_opts)
+
+    @update_settings
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+
+    if !@site_code? then return null
+
+   
+    if show_opts
+      # stop listening for updates
+      @kill_updates(@site_code)
+
+      tags = []
+      @tagData = []
+      @tagConfig = []
+      @tagConfig = @create_dynamic_elements(@el.parentNode.id, @classID, null, null, @site_code, s)
+      @tagData = @tagConfig.TagData
+
+      for tag, tagData of @tagData
+        tags.push "#{@prefix}#{tagData.Tag}.Value"
+
+      for tg of @tags
+        t = @tags[tg]
+        tags.push "#{@prefix}#{t}.Value"
+
+      App.opc.add_tags @site_code, tags
+      
+      lbl = "#{@site_code}: Gate #{s.gate} - GPU Summary"
+      @ui.wtitle.html(lbl)
+      #@$('#gpu_summary_label #txt').html(lbl)
+
+      @opc =  App.opc.connections[@site_code]
+
+      # listen for updates
+      @watch_updates(@site_code)
+
+
+
+
+
+
   toggle_settings: (e)->
     super(e)
     @ui.display.toggle(!@settings_visible)

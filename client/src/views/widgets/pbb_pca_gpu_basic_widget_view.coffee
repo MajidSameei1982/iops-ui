@@ -105,7 +105,7 @@ class PbbpcagpuWidgetView extends IOPSWidgetView
 
   start: ()->
     settings = @model.get('settings')
-    @tableWidgetData = '<table id="widgetData" class="data" style="float: left; width:92%"><tbody></tbody></table>'
+    @tableWidgetData = '<table id="widgetData" class="data"><tbody></tbody></table>'
     @ui.display.append(@tableWidgetData)
 
     s = @model.get("settings")
