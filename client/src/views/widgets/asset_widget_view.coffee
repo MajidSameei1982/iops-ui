@@ -16,12 +16,27 @@ class AssetWidgetView extends IOPSWidgetView
     sx: 10
     sy: 6
 
+  IsUpdatingSettings: false
+  IsPageLoading: true
+
   update: ()->
+    # Ignore all calls except those from startup and Update
+    if !@IsUpdatingSettings && !@IsPageLoading
+      return null
+
+    @IsPageLoading = false
+    @IsUpdatingSettings = false
+
+    lbl = "#{@site_code}: Asset"
+    @ui.wtitle.html(lbl)
+
     # s = @model.get("settings")
     # @ui.iframe.attr("src", s.url)
     #@ui.wtitle.html("<i class='fa fa-link'></i> #{s.name}")
 
   set_model: ()=>
+    @IsUpdatingSettings = true
+
     # s = _.clone(@model.get("settings"))
     # url = @ui.url.val().trim()
     # if url.indexOf("http://") == -1 && url.indexOf("https://") == -1

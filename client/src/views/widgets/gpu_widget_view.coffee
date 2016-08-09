@@ -26,8 +26,18 @@ class GpuWidgetView extends IOPSWidgetView
   tags = []
   tagData = []
   tagConfig = []
-  
+
+  IsUpdatingSettings: false
+  IsPageLoading: true
+
   update: ()->
+    # Ignore all calls except those from startup and Update
+    if !@IsUpdatingSettings && !@IsPageLoading
+      return null
+
+    @IsPageLoading = false
+    @IsUpdatingSettings = false
+
     @update_settings
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
@@ -37,6 +47,9 @@ class GpuWidgetView extends IOPSWidgetView
     s = @model.get("settings")
     
     if s? && !!s.site      
+      lbl = "#{@site_code}: Gate #{s.gate} - GPU"
+      @ui.wtitle.html(lbl)
+
       # stop listening for updates
       @kill_updates(@site_code)
 
@@ -57,9 +70,6 @@ class GpuWidgetView extends IOPSWidgetView
         tags.push "#{@prefix}#{t}.Value"
       
       App.opc.add_tags @site_code, tags
-
-      lbl = "#{@site_code}: Gate #{s.gate} - GPU"
-      @ui.wtitle.html(lbl)
 
       @opc =  App.opc.connections[@site_code]
       ref = s.layout
@@ -100,13 +110,14 @@ class GpuWidgetView extends IOPSWidgetView
     @set_descriptions()
 
   set_model: ()=>
+    @IsUpdatingSettings = true
+
     s = _.clone(@model.get("settings"))
     s.site = @$('#site').val()
     s.terminal = @$('#terminal').val()
     s.zone = @$('#zone').val()
     s.gate = @$('#gate').val()
     @model.set("settings", s)
-
 
   toggle_settings: (e)->
     super(e)
@@ -131,7 +142,6 @@ class GpuWidgetView extends IOPSWidgetView
   start: ()->
     #$("#widgetData").removeClass("no-show", false)
     #$("#widgetData2").toggleClass("no-show", true)
-
     @update()
 
   onDestroy: (arg1, arg2) ->

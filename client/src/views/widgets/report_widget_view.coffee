@@ -16,14 +16,24 @@ class ReportWidgetView extends IOPSWidgetView
     sx: 5
     sy: 6
 
+  IsUpdatingSettings: false
+  IsPageLoading: true
+
   update: ()->
+    # Ignore all calls except those from startup and Update
+    if !@IsUpdatingSettings && !@IsPageLoading
+      return null
+
+    @IsPageLoading = false
+    @IsUpdatingSettings = false
+
     s = @model.get("settings")
     @site_code = null
     @site = OPCManager.get_site(s.site)
     if @site?
       @site_code = @site.get('code')
     code = if @site_code? then @site_code else '...'
-    @ui.wtitle.html("Reports for #{code}")
+    @ui.wtitle.html("#{code}: Reports")
 
     @ui.display.empty()
     url = "#{@rurl}/api/reports?airport=#{@site_code}"
@@ -37,6 +47,8 @@ class ReportWidgetView extends IOPSWidgetView
             @ui.display.append("<div class='rlink'><a href='#{@rurl}#{r.ReportUrl}' target='_new'>#{r.ReportTitle}</a></div>")
 
   set_model: ()=>
+    @IsUpdatingSettings = true
+
     s = _.clone(@model.get("settings"))
     s.site = @ui.site.val()
     @model.set("settings", s)

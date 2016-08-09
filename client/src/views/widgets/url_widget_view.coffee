@@ -16,12 +16,24 @@ class UrlWidgetView extends WidgetView
     sx: 4
     sy: 10
 
+  IsUpdatingSettings: false
+  IsPageLoading: true
+
   update: ()->
+    # Ignore all calls except those from startup and Update
+    if !@IsUpdatingSettings && !@IsPageLoading
+      return null
+
+    @IsPageLoading = false
+    @IsUpdatingSettings = false
+
     s = @model.get("settings")
     @ui.iframe.attr("src", s.url)
-    @ui.wtitle.html("<i class='fa fa-link'></i> #{s.name}")
+    @ui.wtitle.html("#{s.name}")
 
   set_model: ()=>
+    @IsUpdatingSettings = true
+
     s = _.clone(@model.get("settings"))
     url = @ui.url.val().trim()
     if url.indexOf("http://") == -1 && url.indexOf("https://") == -1

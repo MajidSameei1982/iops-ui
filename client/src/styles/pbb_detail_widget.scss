@@ -8,7 +8,7 @@
     min-width: 100%;
     overflow: auto;
 
-    #aircraft_img {
+    .aircraft_img {
       position: relative;
       float: left;
       background-image: url("../img/pbb/PBB_Un-docked-400x400.gif") ;
@@ -21,7 +21,7 @@
         background-image: url("../img/pbb/PBB_docked-400x400.gif");
       }
     }
-    #autolevel_img {
+    .autolevel_img {
       position: relative;
       float: left;
       background-image: url("../img/pbb/PBB-AutoLevel-Off-400x400.gif") ;
@@ -30,11 +30,11 @@
       background-size: contain;
       height: 100%;
       width: 100%;
-      &.autolevelon {
+      &.autolevel-on {
         background-image: url("../img/pbb/PBB-AutoLevel-On-400x400.gif");
       }
     }
-    #canopy_img {
+    .canopy_img {
       position: relative;
       float: left;
       background-image: url("../img/pbb/PBB-Canopy-Off-400x400.gif") ;
@@ -43,7 +43,7 @@
       background-size: contain;
       height: 100%;
       width: 100%;
-      &.canopyon {
+      &.canopy-on {
         background-image: url("../img/pbb/PBB-Canopy-On-400x400.gif");
       }
     }

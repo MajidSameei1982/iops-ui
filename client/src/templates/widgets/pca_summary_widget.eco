@@ -1,6 +1,5 @@
 <div class="box-header with-border">
-  <div class='pull-left'>
-    <i class="fa fa-plane"></i> <h3 class="box-title"></h3>
+  <div class='pull-left'><i class="fa fa-server"></i>&emsp;<h3 class="box-title"></h3>
     <select id="mode" style='display:none;'>
       <option value=''>Summary</option>
       <option value='plots'>Temp. Data</option>
@@ -34,20 +33,6 @@
       <div id="pca_pump_cond" class="val"></div>
       <div id="pca_bridge_damper" class="val"></div>
       <div id="pca_bridge_air" class="val"></div>
-    </div>
-    <div id="graphics_container">
-      <!--<div id="pca_graphics_container" class="background">
-        <div id="blower_img" class="img"></div>  
-        <div id="heatingstage1_img" class="img"></div>  
-        <div id="heatingstage2_img" class="img"></div>  
-        <div id="coolingstage1_img" class="img"></div>  
-        <div id="coolingstage2_img" class="img"></div>   
-        <div id="accool_img" class="img"></div>  
-        <div id="bccool_img" class="img"></div> 
-        <div id="fan1_img" class="img"></div> 
-        <div id="fan2_img" class="img"></div> 
-        <div id="fan3_img" class="img"></div> 
-      </div> -->
     </div>
     <div id="plots" style="display: none;">
       <table id='plot_container' border="0">

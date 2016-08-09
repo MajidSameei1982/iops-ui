@@ -28,7 +28,52 @@ class PbbpcagpuWidgetView extends IOPSWidgetView
   tagData = []
   tagConfig = []
 
+  IsUpdatingSettings: false
+  IsPageLoading: true
+
   update: ()->
+    # Ignore all calls except those from startup and Update
+    if !@IsUpdatingSettings && !@IsPageLoading
+      return null
+
+    @IsPageLoading = false
+    @IsUpdatingSettings = false
+
+    if !@site_code? then return null
+
+    s= @update_settings
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+
+    if s? && !!s.site      
+      lbl = "#{@site_code}: Gate #{s.gate} PBB/PCA/GPU"
+      @ui.wtitle.html(lbl)
+
+      # stop listening for updates
+      @kill_updates(@site_code)
+
+      tags = []
+      @tagData = []
+      @tagConfig = []
+      @tagConfig = @create_dynamic_elements(@el.parentNode.id, @classID, null, null, @site_code, s)
+      @tagData = @tagConfig.TagData
+
+      for tag, tagData of @tagData
+        tags.push "#{@prefix}#{tagData.Tag}.Value"
+
+      for tg of @tags
+        t = @tags[tg]
+        tags.push "#{@prefix}#{t}.Value"
+      
+      App.opc.add_tags @site_code, tags
+
+      @opc =  App.opc.connections[@site_code]
+      ref = s.layout
+
+      # listen for updates
+      @watch_updates(@site_code)
+      @set_descriptions(true)
+
     @
 
   # process data and update the view
@@ -60,6 +105,8 @@ class PbbpcagpuWidgetView extends IOPSWidgetView
     #@set_descriptions()
 
   set_model: ()=>
+    @IsUpdatingSettings = true
+
     s = _.clone(@model.get("settings"))
     s.site = @$('#site').val()
     s.terminal = @$('#terminal').val()
@@ -67,20 +114,7 @@ class PbbpcagpuWidgetView extends IOPSWidgetView
     s.gate = @$('#gate').val()
     @model.set("settings", s)
 
-    if !@site_code?
-      site = OPCManager.get_site(s.site);
-      if site?
-        @site_code = site.get('code');
-
-    lbl = "#{@site_code}: Gate ??? PBB/PCA/GPU"
-    if s? && !!s.gate
-      lbl = "#{@site_code}: Gate #{s.gate} PBB/PCA/GPU"
-
-    @ui.wtitle.html(lbl)
-
-    @update_opc_data()
-
-    @update()
+#    @update()
 
   toggle_settings: (e)->
     super(e)
@@ -102,21 +136,10 @@ class PbbpcagpuWidgetView extends IOPSWidgetView
     @site_code = OPCManager.get_site_code(settings.site)
     if @site_code? then @watch_updates(@site_code)
 
-
   start: ()->
     settings = @model.get('settings')
     @tableWidgetData = '<table id="widgetData" class="data"><tbody></tbody></table>'
     @ui.display.append(@tableWidgetData)
-
-    s = @model.get("settings")
-   
-    lbl = "#{@site_code}: Gate ??? PBB/PCA/GPU"
-    if s? && !!s.gate
-      lbl = "#{@site_code}: Gate #{s.gate} PBB/PCA/GPU"
-
-    @ui.wtitle.html(lbl)
-
-    @update_opc_data()
 
     @update()
 

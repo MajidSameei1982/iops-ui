@@ -9,6 +9,7 @@ class ConfigWidgetView extends IOPSWidgetView
   ui:
     display:        '#display'
     settings:       '#settings'
+    wtitle:         'h3.box-title'
   
   @layout:
     sx: 4
@@ -21,17 +22,30 @@ class ConfigWidgetView extends IOPSWidgetView
     heating_tm:  'PCA.SET_HEATINGPOINT_TIMER.Value'
 
   base_tags: []
-    
+
+  IsUpdatingSettings: false
+  IsPageLoading: true
+
   update: ()->
+    # Ignore all calls except those from startup and Update
+    if !@IsUpdatingSettings && !@IsPageLoading
+      return null
+
+    @IsPageLoading = false
+    @IsUpdatingSettings = false
+
     if @site_code? then @kill_updates(@site_code)
     s = @model.get("settings")
    
     if s? && !!s.site
+
       @site = OPCManager.get_site(s.site)
       @site_code = @site.get('code')
       if !@site_code? then return null
 
-    @$('h3.box-title').html("Configure (#{@site_code})")
+      lbl = "#{@site_code}: Configurations"
+      @ui.wtitle.html(lbl)
+
     # @update_settings
     #   prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
     #   cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
@@ -52,6 +66,7 @@ class ConfigWidgetView extends IOPSWidgetView
       App.opc.add_tags @site_code, @base_tags
       @opc =  App.opc.connections[@site_code]
       @watch_updates(@site_code)
+
       
   data_update: (data)=>
     # kill after first read - no need to poll any more
@@ -99,8 +114,9 @@ class ConfigWidgetView extends IOPSWidgetView
             @opc.set_value("#{pre}#{@tags.cooling_tm}", @$('input#cool_set_tm').val())
             @opc.set_value("#{pre}#{@tags.heating_tm}", @$('input#heat_set_tm').val())
     
-
   set_model: ()=>
+    @IsUpdatingSettings = true
+
     s = _.clone(@model.get("settings"))
     s.site = @$('#site').val()
     @model.set("settings", s)
