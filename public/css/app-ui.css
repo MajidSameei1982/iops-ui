@@ -1224,7 +1224,7 @@ ul.chosen-results li.highlighted {
   min-height: 100%;
   min-width: 100%;
   overflow: auto; }
-  .pbb_level_detail_widget .display.data {
+  .pbb_level_detail_widget .display #widgetData {
     position: absolute;
     float: left;
     width: 39%;
