@@ -167,16 +167,17 @@ class IOPSWidgetView extends WidgetView
     # Create tag elements
     for tag, tagData of tagConfig.TagData
       $("li##{WidgetID} .#{ClassID} #{tagData.Element.ParentID}").toggleClass("no-show", false)
-      elType = tagData.Element.Type.toLowerCase()
-      switch elType
-        when 'tablerow'
-          elType = 'td'
-          if $("li##{WidgetID} .#{ClassID} #{tagData.Element.ParentID} #{elType}[id*='dynamic_#{tag}']").length == 0
-            $("li##{WidgetID} .#{ClassID} #{tagData.Element.ParentID}").find("tbody:last").append("'<tr id='dynamic_#{tag}_row'><td class='lbl' id='dynamic_#{tag}_lbl'>&nbsp;</td><td id='dynamic_#{tag}' class='val'>Loading...</td></tr>'")
-        else 
-          elType = tagData.Element.Type.toLowerCase()
-          if $("li##{WidgetID} .#{ClassID} #{tagData.Element.ParentID} #{elType}[id*='dynamic_#{tag}']").length == 0
-            $("li##{WidgetID} .#{ClassID} #{tagData.Element.ParentID}").append("<#{elType} id='dynamic_#{tag}'>Loading...</#{elType}>")
+      if tagData.Element.Type?
+        elType = tagData.Element.Type.toLowerCase()
+        switch elType
+          when 'tablerow'
+            elType = 'td'
+            if $("li##{WidgetID} .#{ClassID} #{tagData.Element.ParentID} #{elType}[id*='dynamic_#{tag}']").length == 0
+              $("li##{WidgetID} .#{ClassID} #{tagData.Element.ParentID}").find("tbody:last").append("'<tr id='dynamic_#{tag}_row'><td class='lbl' id='dynamic_#{tag}_lbl'>&nbsp;</td><td id='dynamic_#{tag}' class='val'>Loading...</td></tr>'")
+          else 
+            elType = tagData.Element.Type.toLowerCase()
+            if $("li##{WidgetID} .#{ClassID} #{tagData.Element.ParentID} #{elType}[id*='dynamic_#{tag}']").length == 0
+              $("li##{WidgetID} .#{ClassID} #{tagData.Element.ParentID}").append("<#{elType} id='dynamic_#{tag}' class='{tagData.Element.Class}'>Loading...</#{elType}>")
       
       if tagData.Element.Class?.length > 0
         $("li##{WidgetID} .#{ClassID} #{tagData.Element.ParentID} #{elType}[id*='dynamic_#{tag}']").removeClass()
@@ -208,8 +209,6 @@ class IOPSWidgetView extends WidgetView
     #if vq && !isNaN(v) && v != ''
     #  @g1.refresh(parseInt(v))    
 
-
-
   # grab widget settings, update prefix, set up listener, etc.
   update_settings:({prefix, cloud_prefix})->
     s = @model.get("settings")
@@ -230,39 +229,6 @@ class IOPSWidgetView extends WidgetView
       @prefix = @cloud_prefix + prefix.replace('#{@site_code}', @site_code).replace('#{s.terminal}', s.terminal).replace('#{s.zone}', s.zone).replace('#{s.gate}', s.gate)
     return s
 
-  update_opc_data: ()=>
-    if !@site_code? then return null
-
-    s= @update_settings
-      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
-      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
-
-    if s? && !!s.site      
-      # stop listening for updates
-      @kill_updates(@site_code)
-
-      tags = []
-      @tagData = []
-      @tagConfig = []
-      @tagConfig = @create_dynamic_elements(@el.parentNode.id, @classID, null, null, @site_code, s)
-      @tagData = @tagConfig.TagData
-
-      for tag, tagData of @tagData
-        tags.push "#{@prefix}#{tagData.Tag}.Value"
-
-      for tg of @tags
-        t = @tags[tg]
-        tags.push "#{@prefix}#{t}.Value"
-      
-      App.opc.add_tags @site_code, tags
-
-      @opc =  App.opc.connections[@site_code]
-      ref = s.layout
-
-      # listen for updates
-      @watch_updates(@site_code)
-      @set_descriptions(true)
-  
   refresh_values: ()->
     @vals = {}
     for t, d of @tags

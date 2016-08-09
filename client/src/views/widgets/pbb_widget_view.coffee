@@ -28,7 +28,17 @@ class PbbWidgetView extends IOPSWidgetView
   tagData = []
   tagConfig = []
 
+  IsUpdatingSettings: false
+  IsPageLoading: true
+
   update: ()->
+    # Ignore all calls except those from startup and Update
+    if !@IsUpdatingSettings && !@IsPageLoading
+      return null
+
+    @IsPageLoading = false
+    @IsUpdatingSettings = false
+
     @update_settings
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
@@ -38,6 +48,9 @@ class PbbWidgetView extends IOPSWidgetView
     s = @model.get("settings")
    
     if s? && !!s.site
+      lbl = "#{@site_code}: Gate #{s.gate}"
+      @ui.wtitle.html(lbl)
+
       # stop listening for updates
       @kill_updates(@site_code)
 
@@ -55,9 +68,6 @@ class PbbWidgetView extends IOPSWidgetView
         tags.push "#{@prefix}#{t}.Value"
 
       App.opc.add_tags @site_code, tags
-
-      lbl = "#{@site_code}: Gate #{s.gate}"
-      @ui.wtitle.html(lbl)
 
       @opc =  App.opc.connections[@site_code]
       ref = s.layout
@@ -94,23 +104,14 @@ class PbbWidgetView extends IOPSWidgetView
     @set_descriptions()
 
   set_model: ()=>
+    @IsUpdatingSettings = true
+
     s = _.clone(@model.get("settings"))
     s.site = @$('#site').val()
     s.terminal = @$('#terminal').val()
     s.zone = @$('#zone').val()
     s.gate = @$('#gate').val()
     @model.set("settings", s)
-
-    if !@site_code?
-      site = OPCManager.get_site(s.site);
-      if site?
-        @site_code = site.get('code');
-
-    lbl = "PBB ??? - Details"
-    if s? && !!s.gate
-      lbl = "PBB #{s.gate} - Details"
-
-    @ui.wtitle.html(lbl)
 
   toggle_settings: (e)->
     super(e)
@@ -131,7 +132,6 @@ class PbbWidgetView extends IOPSWidgetView
 
     @site_code = OPCManager.get_site_code(settings.site)
     if @site_code? then @watch_updates(@site_code)
-
 
   start: ()->
     @update()

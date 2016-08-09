@@ -25,19 +25,32 @@ class AirportWidgetView extends IOPSWidgetView
 
   tags:{}
 
+  IsUpdatingSettings: false
+  IsPageLoading: true
+
   update: ()->
+    # Ignore all calls except those from startup and Update
+    if !@IsUpdatingSettings && !@IsPageLoading
+      return null
+
+    @IsPageLoading = false
+    @IsUpdatingSettings = false
+
     @update_settings
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
 
     s = @model.get("settings")
+
     if s? && !!s.site
+      lbl = "#{@site_code}: Airport Overview"
+      @ui.wtitle.html(lbl)
+
       # clear out lingering top-level <code>_account classes
       classList = $(@el).attr('class').split(/\s+/)
       for c in classList
         if c.endsWith('_account') then $(@el).removeClass(c)
       $(@el).addClass("#{@site_code}_account")
-
 
       # generate list of gates
       @gateData = []
@@ -85,10 +98,6 @@ class AirportWidgetView extends IOPSWidgetView
       # make local reference to the opc connection in use
       @opc = App.opc.connections[@site_code]
 
-      # set labels
-      lbl = "#{@site_code} Airport Overview"
-      @ui.wtitle.html(lbl)
-
   data_update: (data)=>
     for g in @gateData
       docked = @get_bool(@opc.get_value("#{g.Tag_gate_docked}.Value"))
@@ -121,22 +130,12 @@ class AirportWidgetView extends IOPSWidgetView
 
     @
 
-
   set_model: ()=>
+    @IsUpdatingSettings = true
+
     s = _.clone(@model.get("settings"))
     s.site = @$('#site').val()
     @model.set("settings", s)
-
-    if !@site_code?
-      site = OPCManager.get_site(s.site);
-      if site?
-        @site_code = site.get('code');
-
-    lbl = "???: Airport Overview"
-    if s? && !!s.gate
-      lbl = "#{@site_code}: Airport Overview"
-
-    @ui.wtitle.html(lbl)
 
   toggle_settings: (e)->
     super(e)

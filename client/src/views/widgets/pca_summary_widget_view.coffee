@@ -6,6 +6,7 @@ UIUtils = require('../../common/uiutils')
 class PcasummaryWidgetView extends IOPSWidgetView
   template:   "widgets/pca_summary_widget"
   classID: 'pca_summary_widget'
+  widgetID: '.widget_1 .pca_summary_widget'
   className: 'widget-outer box box-primary pca_summary_widget'
   ui:
     terminal:       'input#terminal'
@@ -20,6 +21,7 @@ class PcasummaryWidgetView extends IOPSWidgetView
     alarms:         'i#alarms'
     warnings:       'i#warnings'
     power_indicator:   'span#power_indicator'
+    GraphicsContainer: 'div#graphics_container'
 
   @layout:
     sx: 9
@@ -34,7 +36,17 @@ class PcasummaryWidgetView extends IOPSWidgetView
   tagData = []
   tagConfig = []
 
+  IsUpdatingSettings: false
+  IsPageLoading: true
+
   update: ()->
+    # Ignore all calls except those from startup and Update
+    if !@IsUpdatingSettings && !@IsPageLoading
+      return null
+
+    @IsPageLoading = false
+    @IsUpdatingSettings = false
+
     @update_settings
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
@@ -44,6 +56,10 @@ class PcasummaryWidgetView extends IOPSWidgetView
     s = @model.get("settings")
     
     if s? && !!s.site      
+      lbl = "#{@site_code}: Gate #{s.gate} PCA - Overview"
+      @ui.wtitle.html(lbl)
+
+      @opc =  App.opc.connections[@site_code]
 
       show_opts = s? && !!s.gate
       @$('#mode').toggle(show_opts)
@@ -66,10 +82,6 @@ class PcasummaryWidgetView extends IOPSWidgetView
 
       App.opc.add_tags @site_code, tags
 
-      lbl = "#{@site_code}: Gate #{s.gate} PCA - Overview"
-      @ui.wtitle.html(lbl)
-
-      @opc =  App.opc.connections[@site_code]
  
       # listen for updates
       @watch_updates(@site_code)
@@ -138,7 +150,7 @@ class PcasummaryWidgetView extends IOPSWidgetView
     
     #pca_vfd_speed
     if @tagData.pca_vfd_speed?
-      vfdspeed = if @vals.pca_vfd_speed? && @vals.pca_vfdspeed != '' then parseFloat(@vals.pca_vfdspeed).toFixed(2)  else ' -- ' 
+      vfdspeed = if @vals.pca_vfd_speed? && @vals.pca_vfd_speed != '' then parseFloat(@vals.pca_vfd_speed).toFixed(2)  else ' -- ' 
       vfd = if v==true && sq then @$('#pca_vfd_speed').html("VFD : #{vfdspeed}") else @$('#pca_vfd_speed').html(" ")
       @mark_bad_data @tagData.pca_vfd_speed.Tag, vfd
     else
@@ -248,7 +260,7 @@ class PcasummaryWidgetView extends IOPSWidgetView
             @$("#dynamic_#{img}").toggleClass(imgData.Parameters['Parm004'], true)  
         else 
           if !!imgData.Parameters['Parm002']?
-            @$("#dynamic_#{img}").toggleClass(imgData.Parameters['Parm002'], true_val && good_quality)
+            @$("#dynamic_#{img}").toggleClass(imgData.Parameters['Parm002'], (true_val && good_quality))
 
     ###
     c = if @tagData.pca_blower? then @get_bool(@vals.pca_blower) else false
@@ -331,11 +343,12 @@ class PcasummaryWidgetView extends IOPSWidgetView
     # WARNINGS
     wq = @data_q(@tags.pbb_has_warnings)
     @ui.warnings.toggle(@get_bool(@vals.pbb_has_warnings)==true && wq)
-    
 
     @set_descriptions()
 
   set_model: ()=>
+    @IsUpdatingSettings = true
+
     s = _.clone(@model.get("settings"))
     s.site = @$('#site').val()
     s.terminal = @$('#terminal').val()
@@ -346,7 +359,6 @@ class PcasummaryWidgetView extends IOPSWidgetView
   toggle_settings: (e)->
     super(e)
     @ui.display.toggle(!@settings_visible)
-
 
   render_gauges: ()->
     vid = "gauge_volts_out_#{@model.id}"
@@ -413,6 +425,7 @@ class PcasummaryWidgetView extends IOPSWidgetView
           {color: '#ff3333',lo: 100,hi: 150}
         ]
         counter: true
+
   onShow: ()->
     @ui.gate.on "change", @set_model
     @ui.site.on "change", @set_model
@@ -453,6 +466,7 @@ class PcasummaryWidgetView extends IOPSWidgetView
     # set buttons
     @$("#plots").toggle(p?)
     @$("#summary").toggle(!p?)
+    @$("#graphics_container").toggle(!p?)
 
     
     show_hist = p? && !live
@@ -616,7 +630,6 @@ class PcasummaryWidgetView extends IOPSWidgetView
             @$("#plot_tooltip").show()
           
       @initializing = false
-
 
   start: ()->
     @GraphicsContainer = "<div id='graphics_container'></div>"

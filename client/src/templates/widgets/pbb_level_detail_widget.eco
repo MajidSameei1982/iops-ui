@@ -1,5 +1,5 @@
 <div class="box-header with-border">
-  <div class='pull-left'><i class="fa fa-plane"></i> <h3 class="box-title"></h3></div>
+  <div class='pull-left'><i class="fa fa-plane"></i>&emsp;<h3 class="box-title"></h3></div>
   <div class="pull-right controls">
     <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> 
     <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>
@@ -14,18 +14,24 @@
  
     </div>
 
-    <table id="widgetData" class='data transparent' style="float:left; width:39%; position:absolute; top:5%; left:1%;">
+    <table id="widgetData" class='data transparent'>
       <tbody>
       </tbody>
     </table>
-     <div id="pbb_cab_angle_disp" class=""></div>  
-     <div id="pbb_slope_deg" class=""></div> 
-     <div id="pbb_swing_angle_disp" class=""></div>   
-     <div id="pbb_height_to_disp" class=""></div>
-     <div id="pca_pcaambhumidity" class=""></div>
-     <!-- <div id="pbb_wheel_angle_deg" class=""></div> -->
-     <label id="pbb_wheel_angle_deg" class=""></label>
-     <div id="pbb_tunnel_length" class=""></div> 
+      <!-- <div id="pbb_cab_angle_disp" class=""></div> -->
+      <label id="pbb_cab_angle_disp" class=""></label>  
+      <!-- <div id="pbb_slope_deg" class=""></div> --> 
+      <label id="pbb_slope_deg" class=""></label> 
+      <!-- <div id="pbb_swing_angle_disp" class=""></div> -->   
+      <label id="pbb_swing_angle_disp" class=""></label>   
+      <!-- <div id="pbb_height_to_disp" class=""></div> -->
+      <label id="pbb_height_to_disp" class=""></label>
+      <!-- <div id="pca_pcaambhumidity" class=""></div> -->
+      <label id="pca_pcaambhumidity" class=""></label>
+      <!-- <div id="pbb_wheel_angle_deg" class=""></div> -->
+      <label id="pbb_wheel_angle_deg" class=""></label>
+      <!-- <div id="pbb_tunnel_length" class=""></div> --> 
+      <label id="pbb_tunnel_length" class=""></label> 
   </div></div>
 
   <div class="settings" style="display: none;">
