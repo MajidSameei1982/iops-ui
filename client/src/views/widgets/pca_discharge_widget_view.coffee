@@ -26,18 +26,31 @@ class PcadischargeWidgetView extends IOPSWidgetView
   tagConfig = []   
  
   max_gates: 6
-    
+ 
+  IsUpdatingSettings: false
+  IsPageLoading: true
+
   update: ()->
+    # Ignore all calls except those from startup and Update
+    if !@IsUpdatingSettings && !@IsPageLoading
+      return null
+
+    @IsPageLoading = false
+    @IsUpdatingSettings = false
+
     @update_settings
       prefix: 'Airport.#{@site_code}.'
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
 
     if !@site_code? then return null
-    @$('h3.box-title').html("PCA Discharge (#{@site_code})")
+
     s = @model.get("settings")
 
     @cktags = []
     if s? && !!s.site   
+      lbl = "#{@site_code}: PCA Discharge"
+      @ui.wtitle.html(lbl)
+
       return if !s.gates || s.gates.length == 0   
 
       # stop listening for updates
@@ -204,6 +217,8 @@ class PcadischargeWidgetView extends IOPSWidgetView
       index++
     
   set_model: ()=>
+    @IsUpdatingSettings = true
+
     s = _.clone(@model.get("settings"))
     s.site = @$('#site').val()
     @gates = []
@@ -278,7 +293,6 @@ class PcadischargeWidgetView extends IOPSWidgetView
 
     @site_code = OPCManager.get_site_code(settings.site)
     if @site_code? then @watch_updates(@site_code)
-
 
   start: ()->
     @update()

@@ -1,59 +1,3 @@
-.bs-callout {
-  padding: 20px;
-  margin: 20px 0;
-  border: 1px solid #eee;
-  border-left-width: 5px;
-  border-radius: 3px; }
-
-.bs-callout h4 {
-  margin-top: 0;
-  margin-bottom: 5px; }
-
-.bs-callout p:last-child {
-  margin-bottom: 0; }
-
-.bs-callout code {
-  border-radius: 3px; }
-
-.bs-callout + .bs-callout {
-  margin-top: -5px; }
-
-.bs-callout-default {
-  border-left-color: #777; }
-
-.bs-callout-default h4 {
-  color: #777; }
-
-.bs-callout-primary {
-  border-left-color: #428bca; }
-
-.bs-callout-primary h4 {
-  color: #428bca; }
-
-.bs-callout-success {
-  border-left-color: #5cb85c; }
-
-.bs-callout-success h4 {
-  color: #5cb85c; }
-
-.bs-callout-danger {
-  border-left-color: #d9534f; }
-
-.bs-callout-danger h4 {
-  color: #d9534f; }
-
-.bs-callout-warning {
-  border-left-color: #f0ad4e; }
-
-.bs-callout-warning h4 {
-  color: #f0ad4e; }
-
-.bs-callout-info {
-  border-left-color: #5bc0de; }
-
-.bs-callout-info h4 {
-  color: #5bc0de; }
-
 .user-panel .image img {
   max-width: 35px; }
 
@@ -88,444 +32,6 @@ i.form-control-feedback {
     background-color: #d2d6de; }
     .skin-black .main-header > .logo:hover {
       background-color: #fff; } }
-ul.gridster.widget-container {
-  list-style: none; }
-  ul.gridster.widget-container li.widget .widget-outer {
-    width: 100%;
-    height: 100%;
-    position: relative; }
-    ul.gridster.widget-container li.widget .widget-outer .box-header {
-      cursor: all-scroll;
-      padding: 2px 10px;
-      color: #fff;
-      background-color: #3c8dbc;
-      position: absolute;
-      top: 0;
-      width: 100%;
-      height: 25px;
-      z-index: 11; }
-      ul.gridster.widget-container li.widget .widget-outer .box-header h3 {
-        font-size: 14px;
-        font-weight: bold; }
-      ul.gridster.widget-container li.widget .widget-outer .box-header .controls a {
-        color: #fff;
-        margin-left: 10px; }
-      ul.gridster.widget-container li.widget .widget-outer .box-header select {
-        color: #333 !important; }
-    ul.gridster.widget-container li.widget .widget-outer .box-body.content {
-      width: 100%;
-      box-sizing: border-box;
-      position: absolute;
-      box-sizing: border-box;
-      padding: 35px 10px 10px 10px;
-      height: 100%;
-      min-height: 100%;
-      z-index: 10;
-      overflow: hidden !important; }
-    ul.gridster.widget-container li.widget .widget-outer .box-body iframe {
-      display: inline;
-      width: 100%;
-      height: 100%;
-      border: 0px solid #cccccc;
-      box-sizing: border-box; }
-    ul.gridster.widget-container li.widget .widget-outer .box-body .settings {
-      width: 100%; }
-      ul.gridster.widget-container li.widget .widget-outer .box-body .settings h3 {
-        margin-top: 0;
-        margin-bottom: 5px; }
-      ul.gridster.widget-container li.widget .widget-outer .box-body .settings .form-group label {
-        width: 20%;
-        text-align: right;
-        padding: 0px;
-        margin: 0px; }
-      ul.gridster.widget-container li.widget .widget-outer .box-body .settings .chosen-container {
-        margin-left: 20px;
-        width: auto; }
-    ul.gridster.widget-container li.widget .widget-outer .box-body .display.contain {
-      max-width: 100%;
-      max-height: 100%;
-      overflow: auto; }
-    ul.gridster.widget-container li.widget .widget-outer .box-body .display h1 {
-      margin: 0 0 10px 0;
-      font-weight: bold; }
-
-#widget_selections a.widget_select {
-  color: #fff;
-  font-size: 20px;
-  padding: 10px 20px;
-  display: block; }
-  #widget_selections a.widget_select:hover {
-    background-color: rgba(255, 255, 255, 0.5);
-    color: #000; }
-
-.blink {
-  animation: blinker 1s linear infinite; }
-
-@keyframes blinker {
-  50% {
-    opacity: 0.0; } }
-table.data, table.data2 {
-  width: 100%;
-  border: solid 1px #999;
-  border-spacing: 1px;
-  border-collapse: separate; }
-  table.data.transparent, table.data2.transparent {
-    background: transparent; }
-  table.data.airplane, table.data2.airplane {
-    border: 0; }
-    table.data.airplane td, table.data2.airplane td {
-      background-color: #fff; }
-  table.data.no-show, table.data2.no-show {
-    visibility: hidden; }
-  table.data td, table.data2 td {
-    padding: 3px 10px;
-    background-color: #eee;
-    color: #999; }
-    table.data td.transparent, table.data2 td.transparent {
-      background: transparent; }
-    table.data td tr.dockundock, table.data2 td tr.dockundock {
-      background-color: #090; }
-    table.data td.lbl, table.data2 td.lbl {
-      background-color: #fff;
-      font-style: italic;
-      color: #333;
-      border-bottom: solid 1px #ddd; }
-      table.data td.lbl.transparent, table.data2 td.lbl.transparent {
-        background: transparent;
-        border-right: solid 1px #ddd; }
-    table.data td.val, table.data2 td.val {
-      font-weight: bold;
-      color: #333; }
-      table.data td.val.transparent, table.data2 td.val.transparent {
-        font-weight: bold;
-        border-bottom: solid 1px #ddd; }
-    table.data td.err, table.data2 td.err {
-      color: #fe6;
-      background-color: #c33; }
-      table.data td.err.transparent, table.data2 td.err.transparent {
-        color: #ff3333;
-        background: transparent;
-        border-bottom: solid 1px #ddd; }
-    table.data td.ok, table.data2 td.ok {
-      background-color: #090;
-      color: #fff; }
-      table.data td.ok.transparent, table.data2 td.ok.transparent {
-        background: transparent;
-        color: #090;
-        border-bottom: solid 1px #ddd; }
-    table.data td.blue, table.data2 td.blue {
-      background-color: #06c;
-      color: #fff; }
-      table.data td.blue.transparent, table.data2 td.blue.transparent {
-        background: transparent;
-        color: #fff; }
-    table.data td.bad_data, table.data2 td.bad_data {
-      background-color: #fec;
-      color: #999; }
-      table.data td.bad_data.transparent, table.data2 td.bad_data.transparent {
-        background: transparent;
-        color: #999;
-        border-bottom: solid 1px #ddd; }
-    table.data td.img-circles, table.data2 td.img-circles {
-      border-radius: 10%; }
-      table.data td.img-circles.transparent, table.data2 td.img-circles.transparent {
-        background: transparent;
-        border-radius: 10%; }
-
-.crud_container {
-  margin: 0 5px;
-  color: #999; }
-  .crud_container .crud {
-    margin: 0 5px;
-    cursor: pointer;
-    font-weight: normal;
-    font-size: 14px; }
-    .crud_container .crud .fa-pencil-square, .crud_container .crud .fa-pencil-square-o {
-      color: #336; }
-    .crud_container .crud .fa-plus-square {
-      color: #363; }
-    .crud_container .crud .fa-times-circle {
-      color: #933; }
-    .crud_container .crud:hover {
-      color: #000; }
-
-.button, .link {
-  cursor: pointer; }
-
-.nav-tabs-custom {
-  background-color: transparent !important;
-  box-shadow: none; }
-
-.nav.nav-tabs li.active {
-  font-weight: bold; }
-
-.row .form-control-feedback {
-  right: 15px; }
-
-ul.chosen-choices {
-  padding: 3px 5px !important;
-  border: solid 1px #d2d6de !important;
-  background-image: none !important; }
-  ul.chosen-choices li.search-choice {
-    background-image: none !important;
-    background-color: #3c8dbc !important;
-    border-color: #3c8dbc !important;
-    color: #fff !important;
-    box-shadow: none !important; }
-  ul.chosen-choices a.search-choice-close:after {
-    content: 'x';
-    font-size: 14px;
-    font-weight: bold;
-    line-height: 10px;
-    color: #000 !important;
-    background-image: none !important;
-    background: none !important; }
-    ul.chosen-choices a.search-choice-close:after:hover {
-      color: #fff !important; }
-  ul.chosen-choices a.search-choice-close {
-    background-image: none !important;
-    background: none !important; }
-    ul.chosen-choices a.search-choice-close:hover {
-      color: #fff !important; }
-
-ul.chosen-results li.highlighted {
-  background-image: none !important;
-  background-color: #3c8dbc !important;
-  color: #fff !important; }
-
-.chosen-container-active ul.chosen-choices {
-  border-color: #3c8dbc !important;
-  box-shadow: none !important; }
-
-.chosen-container.chosen-container-multi {
-  width: 100% !important; }
-
-#add_account {
-  margin-left: 20px;
-  cursor: pointer; }
-
-.preamble {
-  padding: 0 0 10px 0;
-  margin-left: 5px; }
-
-#account_list {
-  width: 100%; }
-  #account_list .row {
-    background-color: rgba(255, 255, 255, 0.5); }
-
-.account_container {
-  border-top: solid 1px #ccc;
-  padding: 20px 0 0 0; }
-  .account_container .title {
-    font-size: 21px;
-    font-weight: bold; }
-  .account_container #account_active.fa-toggle-on {
-    color: #363; }
-  .account_container #account_active.fa-toggle-off {
-    color: #999; }
-  .account_container #account_name {
-    display: none;
-    max-width: 90%; }
-  .account_container #account_buttons {
-    display: none; }
-  .account_container.rw #account_name {
-    display: inline !important; }
-  .account_container.rw #account_name_label {
-    display: none; }
-  .account_container.rw #account_crud {
-    display: none; }
-  .account_container.rw #account_buttons {
-    display: inline !important; }
-  .account_container.rw #account_active {
-    cursor: pointer; }
-  .account_container .site_list {
-    margin-bottom: 20px; }
-    .account_container .site_list #header {
-      margin: 10px 0 5px 30px; }
-    .account_container .site_list .row {
-      padding-left: 20px; }
-
-.site_container {
-  margin-top: 10px;
-  border-top: dashed 1px #ccc;
-  box-sizing: content-box;
-  padding: 10px 0 0 10px; }
-  .site_container > div {
-    padding-left: 10px; }
-  .site_container .label {
-    color: #666;
-    font-style: italic;
-    display: inline-block;
-    text-align: left;
-    font-weight: normal;
-    font-size: 12px; }
-    .site_container .label.left {
-      min-width: 85px !important;
-      margin-right: 5px;
-      padding: 0 0 0 5px; }
-    .site_container .label.right {
-      padding: 0 0 0 0;
-      margin-left: 5px; }
-  .site_container .fa-toggle-on {
-    color: #363;
-    cursor: pointer; }
-  .site_container .fa-toggle-off {
-    color: #999;
-    cursor: pointer; }
-  .site_container #site_name {
-    max-width: 90%; }
-  .site_container #site_refresh_rate {
-    text-align: right; }
-  .site_container #site_buttons {
-    margin-top: 10px; }
-  .site_container .edit {
-    display: none; }
-  .site_container.rw .edit {
-    display: inline-block !important; }
-  .site_container.rw .display {
-    display: none !important; }
-  .site_container.rw #site_buttons {
-    display: block !important; }
-
-#permissions_region h4, #roles_region h4 {
-  margin: 0px 0 0 -5px;
-  background-color: #f6f6f6;
-  padding: 5px 0 5px 13px; }
-#permissions_region h3, #roles_region h3 {
-  margin: 0;
-  background-color: #cbe1ee;
-  padding: 5px 0 5px 5px; }
-#permissions_region #global_region, #roles_region #global_region {
-  padding-bottom: 20px; }
-  #permissions_region #global_region h3, #roles_region #global_region h3 {
-    margin-left: -5px; }
-#permissions_region .site_item, #roles_region .site_item {
-  margin-bottom: 10px; }
-
-#add_claim {
-  cursor: pointer;
-  margin-left: 30px;
-  color: #00a65a; }
-
-#permissions_list {
-  padding: 0 0 0 10px; }
-
-.permission_container {
-  padding: 5px 0 5px 20px;
-  width: 100%;
-  border-top: 1px dashed #ccc; }
-  .permission_container i.fa.fa-lock {
-    color: #ccc; }
-  .permission_container #permission_label {
-    font-size: 18px; }
-  .permission_container #permission_desc_container {
-    padding-left: 36px; }
-  .permission_container #permission_name, .permission_container #permission_buttons, .permission_container #permission_desc {
-    display: none; }
-  .permission_container.rw #permission_name, .permission_container.rw #permission_desc {
-    display: inline !important; }
-  .permission_container.rw #permission_label, .permission_container.rw #permission_desc_label {
-    display: none !important; }
-  .permission_container.rw #permission_crud {
-    display: none; }
-  .permission_container.rw #permission_buttons {
-    display: inline !important; }
-
-#add_role {
-  cursor: pointer;
-  margin-left: 30px;
-  color: #00a65a; }
-
-#roles_list {
-  padding: 0 0 0 20px; }
-
-.role_container {
-  padding: 5px 0 5px 10px;
-  width: 100%;
-  border-top: 1px dashed #ccc; }
-  .role_container i.fa.fa-group {
-    color: #ccc; }
-  .role_container #role_label {
-    font-size: 18px; }
-  .role_container #role_desc_container {
-    padding-left: 36px; }
-  .role_container #role_claims_container {
-    padding-left: 36px; }
-  .role_container #role_name, .role_container #role_buttons, .role_container #role_desc {
-    display: none; }
-  .role_container.rw #role_name, .role_container.rw #role_desc {
-    display: inline !important; }
-  .role_container.rw #role_label, .role_container.rw #role_desc_label {
-    display: none !important; }
-  .role_container.rw #role_crud {
-    display: none; }
-  .role_container.rw #role_buttons {
-    display: inline !important; }
-
-.user_container {
-  padding: 20px 0 20px 10px;
-  border-top: 1px dashed #ccc; }
-  .user_container .edit {
-    display: none; }
-  .user_container.rw .edit {
-    display: block !important; }
-  .user_container.rw .display {
-    display: none !important; }
-  .user_container #user_label {
-    font-size: 18px;
-    color: #333;
-    font-weight: bold; }
-    .user_container #user_label small {
-      color: #666;
-      font-weight: normal; }
-  .user_container h3.account_name {
-    margin: 0 0 10px 0;
-    background-color: #cbe1ee;
-    padding: 5px 0 5px 5px; }
-  .user_container .account_container {
-    border: none !important;
-    padding: 0;
-    margin: 0; }
-  .user_container #user_buttons {
-    margin-left: 15px; }
-
-.login-box .login-logo img {
-  max-width: 300px;
-  height: auto; }
-
-* {
-  outline: none; }
-
-a.inline {
-  display: inline !important;
-  padding: 0;
-  margin: 0 0 0 10px;
-  border-left: none !important; }
-  a.inline:hover, a.inline:focus {
-    border-left: none !important;
-    background-color: transparent !important; }
-
-li.dashboard-link {
-  position: relative; }
-  li.dashboard-link .controls {
-    display: none;
-    position: absolute;
-    right: 0;
-    top: 13px;
-    z-index: 9999; }
-    li.dashboard-link .controls i.fa {
-      margin-right: 5px; }
-    li.dashboard-link .controls a:hover {
-      color: #fff; }
-  li.dashboard-link:hover .controls {
-    display: block; }
-
-.loading {
-  text-align: center;
-  font-size: 24px;
-  color: #ccc;
-  margin: 40px 0 40px; }
-
 /* Airport Widget Styles */
 .airport_widget.alarm {
   background-color: #c00;
@@ -1029,6 +535,169 @@ li.dashboard-link {
       .airport_widget.EWR_account .display #Airport_Gate_C125_a .icon i.perfect {
         color: #090; }
 
+.alarm_widget #alarm_lbl {
+  margin: 0 0 10px 0;
+  font-size: 16px; }
+.alarm_widget .group_item {
+  margin: 0 5px; }
+
+.bs-callout {
+  padding: 20px;
+  margin: 20px 0;
+  border: 1px solid #eee;
+  border-left-width: 5px;
+  border-radius: 3px; }
+
+.bs-callout h4 {
+  margin-top: 0;
+  margin-bottom: 5px; }
+
+.bs-callout p:last-child {
+  margin-bottom: 0; }
+
+.bs-callout code {
+  border-radius: 3px; }
+
+.bs-callout + .bs-callout {
+  margin-top: -5px; }
+
+.bs-callout-default {
+  border-left-color: #777; }
+
+.bs-callout-default h4 {
+  color: #777; }
+
+.bs-callout-primary {
+  border-left-color: #428bca; }
+
+.bs-callout-primary h4 {
+  color: #428bca; }
+
+.bs-callout-success {
+  border-left-color: #5cb85c; }
+
+.bs-callout-success h4 {
+  color: #5cb85c; }
+
+.bs-callout-danger {
+  border-left-color: #d9534f; }
+
+.bs-callout-danger h4 {
+  color: #d9534f; }
+
+.bs-callout-warning {
+  border-left-color: #f0ad4e; }
+
+.bs-callout-warning h4 {
+  color: #f0ad4e; }
+
+.bs-callout-info {
+  border-left-color: #5bc0de; }
+
+.bs-callout-info h4 {
+  color: #5bc0de; }
+
+* {
+  outline: none; }
+
+a.inline {
+  display: inline !important;
+  padding: 0;
+  margin: 0 0 0 10px;
+  border-left: none !important; }
+  a.inline:hover, a.inline:focus {
+    border-left: none !important;
+    background-color: transparent !important; }
+
+li.dashboard-link {
+  position: relative; }
+  li.dashboard-link .controls {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 13px;
+    z-index: 9999; }
+    li.dashboard-link .controls i.fa {
+      margin-right: 5px; }
+    li.dashboard-link .controls a:hover {
+      color: #fff; }
+  li.dashboard-link:hover .controls {
+    display: block; }
+
+.loading {
+  text-align: center;
+  font-size: 24px;
+  color: #ccc;
+  margin: 40px 0 40px; }
+
+.crud_container {
+  margin: 0 5px;
+  color: #999; }
+  .crud_container .crud {
+    margin: 0 5px;
+    cursor: pointer;
+    font-weight: normal;
+    font-size: 14px; }
+    .crud_container .crud .fa-pencil-square, .crud_container .crud .fa-pencil-square-o {
+      color: #336; }
+    .crud_container .crud .fa-plus-square {
+      color: #363; }
+    .crud_container .crud .fa-times-circle {
+      color: #933; }
+    .crud_container .crud:hover {
+      color: #000; }
+
+.button, .link {
+  cursor: pointer; }
+
+.nav-tabs-custom {
+  background-color: transparent !important;
+  box-shadow: none; }
+
+.nav.nav-tabs li.active {
+  font-weight: bold; }
+
+.row .form-control-feedback {
+  right: 15px; }
+
+ul.chosen-choices {
+  padding: 3px 5px !important;
+  border: solid 1px #d2d6de !important;
+  background-image: none !important; }
+  ul.chosen-choices li.search-choice {
+    background-image: none !important;
+    background-color: #3c8dbc !important;
+    border-color: #3c8dbc !important;
+    color: #fff !important;
+    box-shadow: none !important; }
+  ul.chosen-choices a.search-choice-close:after {
+    content: 'x';
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 10px;
+    color: #000 !important;
+    background-image: none !important;
+    background: none !important; }
+    ul.chosen-choices a.search-choice-close:after:hover {
+      color: #fff !important; }
+  ul.chosen-choices a.search-choice-close {
+    background-image: none !important;
+    background: none !important; }
+    ul.chosen-choices a.search-choice-close:hover {
+      color: #fff !important; }
+
+ul.chosen-results li.highlighted {
+  background-image: none !important;
+  background-color: #3c8dbc !important;
+  color: #fff !important; }
+
+.chosen-container-active ul.chosen-choices {
+  border-color: #3c8dbc !important;
+  box-shadow: none !important; }
+
+.chosen-container.chosen-container-multi {
+  width: 100% !important; }
+
 /* Gate Widget Styles */
 .gate_widget.alarm {
   background-color: #c00;
@@ -1071,160 +740,6 @@ li.dashboard-link {
       .gate_widget .display #display_label h1 i#warnings {
         color: #f90 !important;
         background-color: #eee !important; }
-
-.pbb_detail_widget.alarm {
-  background-color: #c00;
-  color: #fff; }
-.pbb_detail_widget .display {
-  min-height: 100%;
-  min-width: 100%;
-  overflow: auto; }
-  .pbb_detail_widget .display #aircraft_img {
-    position: relative;
-    float: left;
-    background-image: url("../img/pbb/PBB_Un-docked-400x400.gif");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
-    height: 100%;
-    width: 100%; }
-    .pbb_detail_widget .display #aircraft_img.docked {
-      background-image: url("../img/pbb/PBB_docked-400x400.gif"); }
-  .pbb_detail_widget .display #autolevel_img {
-    position: relative;
-    float: left;
-    background-image: url("../img/pbb/PBB-AutoLevel-Off-400x400.gif");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
-    height: 100%;
-    width: 100%; }
-    .pbb_detail_widget .display #autolevel_img.autolevelon {
-      background-image: url("../img/pbb/PBB-AutoLevel-On-400x400.gif"); }
-  .pbb_detail_widget .display #canopy_img {
-    position: relative;
-    float: left;
-    background-image: url("../img/pbb/PBB-Canopy-Off-400x400.gif");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
-    height: 100%;
-    width: 100%; }
-    .pbb_detail_widget .display #canopy_img.canopyon {
-      background-image: url("../img/pbb/PBB-Canopy-On-400x400.gif"); }
-  .pbb_detail_widget .display #pbbdetail_label {
-    margin-bottom: 3px; }
-    .pbb_detail_widget .display #pbbdetail_label h1 {
-      line-height: 48px;
-      font-weight: bold;
-      margin: 0 0 0 0; }
-      .pbb_detail_widget .display #pbbdetail_label h1 i.fa {
-        margin-right: -5px;
-        padding: 5px;
-        border-radius: 10px;
-        font-size: 26px !important; }
-      .pbb_detail_widget .display #pbbdetail_label h1 i#docked {
-        color: #069;
-        background-color: #eee; }
-      .pbb_detail_widget .display #pbbdetail_label h1 i#alarms {
-        color: #fff;
-        background-color: #c00; }
-      .pbb_detail_widget .display #pbbdetail_label h1 i#warnings {
-        color: #f90;
-        background-color: #eee; }
-
-.pbb_level_detail_widget.alarm {
-  background-color: #c00;
-  color: #fff; }
-.pbb_level_detail_widget .display {
-  min-height: 100%;
-  min-width: 100%;
-  overflow: auto; }
-  .pbb_level_detail_widget .display #pbb_cab_angle_disp {
-    position: absolute;
-    left: 46%;
-    top: 24%;
-    font-size: 13px;
-    color: mediumblue;
-    background: transparent; }
-  .pbb_level_detail_widget .display #pbb_slope_deg {
-    position: absolute;
-    left: 67%;
-    top: 29%;
-    font-size: 13px;
-    color: mediumblue;
-    background: transparent; }
-  .pbb_level_detail_widget .display #pbb_swing_angle_disp {
-    position: absolute;
-    left: 82%;
-    top: 33%;
-    font-size: 13px;
-    color: mediumblue;
-    background: transparent; }
-  .pbb_level_detail_widget .display #pbb_height_to_disp {
-    position: absolute;
-    left: 51%;
-    top: 51%;
-    font-size: 13px;
-    color: mediumblue;
-    background: transparent; }
-  .pbb_level_detail_widget .display #pbb_wheel_angle_deg {
-    position: absolute;
-    left: 52%;
-    top: 59%;
-    font-size: 13px;
-    color: mediumblue;
-    background: transparent; }
-  .pbb_level_detail_widget .display #pbb_tunnel_length {
-    position: absolute;
-    left: 72%;
-    top: 52%;
-    font-size: 12px;
-    color: mediumblue;
-    background: transparent; }
-  .pbb_level_detail_widget .display #aircraft_img {
-    position: absolute;
-    top: 10%;
-    left: 1%;
-    background-image: url("../img/pbb/Docking_Plane_Not-at-Gate.png");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-position: center center;
-    margin: auto auto;
-    display: block;
-    height: 100%;
-    width: 100%; }
-    .pbb_level_detail_widget .display #aircraft_img.docked {
-      background-image: url("../img/pbb/Docking_Plane_at-Gate.png"); }
-
-/* GPU Widget Styles */
-.gpu_widget.alarm {
-  background-color: #c00;
-  color: #fff; }
-.gpu_widget .display {
-  min-height: 100%;
-  min-width: 100%;
-  overflow: auto; }
-  .gpu_widget .display #gpu_label {
-    margin-bottom: 3px; }
-    .gpu_widget .display #gpu_label h1 {
-      line-height: 48px;
-      font-weight: bold;
-      margin: 0 0 0 0; }
-      .gpu_widget .display #gpu_label h1 i.fa {
-        margin-right: -5px;
-        padding: 5px;
-        border-radius: 10px;
-        font-size: 26px !important; }
-      .gpu_widget .display #gpu_label h1 i#docked {
-        color: #069;
-        background-color: #eee; }
-      .gpu_widget .display #gpu_label h1 i#alarms {
-        color: #fff;
-        background-color: #c00; }
-      .gpu_widget .display #gpu_label h1 i#warnings {
-        color: #f90;
-        background-color: #eee; }
 
 /* GPU Summary Widget Styles */
 /*.gpu_summary_widget {
@@ -1419,6 +934,395 @@ li.dashboard-link {
       border-radius: 50%;
       box-shadow: inset 0 1px 0 #052756, 0 1px 0 #60c9f0; }
 
+/* GPU Widget Styles */
+.gpu_widget.alarm {
+  background-color: #c00;
+  color: #fff; }
+.gpu_widget .display {
+  min-height: 100%;
+  min-width: 100%;
+  overflow: auto; }
+  .gpu_widget .display #gpu_label {
+    margin-bottom: 3px; }
+    .gpu_widget .display #gpu_label h1 {
+      line-height: 48px;
+      font-weight: bold;
+      margin: 0 0 0 0; }
+      .gpu_widget .display #gpu_label h1 i.fa {
+        margin-right: -5px;
+        padding: 5px;
+        border-radius: 10px;
+        font-size: 26px !important; }
+      .gpu_widget .display #gpu_label h1 i#docked {
+        color: #069;
+        background-color: #eee; }
+      .gpu_widget .display #gpu_label h1 i#alarms {
+        color: #fff;
+        background-color: #c00; }
+      .gpu_widget .display #gpu_label h1 i#warnings {
+        color: #f90;
+        background-color: #eee; }
+
+.login-box .login-logo img {
+  max-width: 300px;
+  height: auto; }
+
+#add_account {
+  margin-left: 20px;
+  cursor: pointer; }
+
+.preamble {
+  padding: 0 0 10px 0;
+  margin-left: 5px; }
+
+#account_list {
+  width: 100%; }
+  #account_list .row {
+    background-color: rgba(255, 255, 255, 0.5); }
+
+.account_container {
+  border-top: solid 1px #ccc;
+  padding: 20px 0 0 0; }
+  .account_container .title {
+    font-size: 21px;
+    font-weight: bold; }
+  .account_container #account_active.fa-toggle-on {
+    color: #363; }
+  .account_container #account_active.fa-toggle-off {
+    color: #999; }
+  .account_container #account_name {
+    display: none;
+    max-width: 90%; }
+  .account_container #account_buttons {
+    display: none; }
+  .account_container.rw #account_name {
+    display: inline !important; }
+  .account_container.rw #account_name_label {
+    display: none; }
+  .account_container.rw #account_crud {
+    display: none; }
+  .account_container.rw #account_buttons {
+    display: inline !important; }
+  .account_container.rw #account_active {
+    cursor: pointer; }
+  .account_container .site_list {
+    margin-bottom: 20px; }
+    .account_container .site_list #header {
+      margin: 10px 0 5px 30px; }
+    .account_container .site_list .row {
+      padding-left: 20px; }
+
+.site_container {
+  margin-top: 10px;
+  border-top: dashed 1px #ccc;
+  box-sizing: content-box;
+  padding: 10px 0 0 10px; }
+  .site_container > div {
+    padding-left: 10px; }
+  .site_container .label {
+    color: #666;
+    font-style: italic;
+    display: inline-block;
+    text-align: left;
+    font-weight: normal;
+    font-size: 12px; }
+    .site_container .label.left {
+      min-width: 85px !important;
+      margin-right: 5px;
+      padding: 0 0 0 5px; }
+    .site_container .label.right {
+      padding: 0 0 0 0;
+      margin-left: 5px; }
+  .site_container .fa-toggle-on {
+    color: #363;
+    cursor: pointer; }
+  .site_container .fa-toggle-off {
+    color: #999;
+    cursor: pointer; }
+  .site_container #site_name {
+    max-width: 90%; }
+  .site_container #site_refresh_rate {
+    text-align: right; }
+  .site_container #site_buttons {
+    margin-top: 10px; }
+  .site_container .edit {
+    display: none; }
+  .site_container.rw .edit {
+    display: inline-block !important; }
+  .site_container.rw .display {
+    display: none !important; }
+  .site_container.rw #site_buttons {
+    display: block !important; }
+
+#permissions_region h4, #roles_region h4 {
+  margin: 0px 0 0 -5px;
+  background-color: #f6f6f6;
+  padding: 5px 0 5px 13px; }
+#permissions_region h3, #roles_region h3 {
+  margin: 0;
+  background-color: #cbe1ee;
+  padding: 5px 0 5px 5px; }
+#permissions_region #global_region, #roles_region #global_region {
+  padding-bottom: 20px; }
+  #permissions_region #global_region h3, #roles_region #global_region h3 {
+    margin-left: -5px; }
+#permissions_region .site_item, #roles_region .site_item {
+  margin-bottom: 10px; }
+
+#add_claim {
+  cursor: pointer;
+  margin-left: 30px;
+  color: #00a65a; }
+
+#permissions_list {
+  padding: 0 0 0 10px; }
+
+.permission_container {
+  padding: 5px 0 5px 20px;
+  width: 100%;
+  border-top: 1px dashed #ccc; }
+  .permission_container i.fa.fa-lock {
+    color: #ccc; }
+  .permission_container #permission_label {
+    font-size: 18px; }
+  .permission_container #permission_desc_container {
+    padding-left: 36px; }
+  .permission_container #permission_name, .permission_container #permission_buttons, .permission_container #permission_desc {
+    display: none; }
+  .permission_container.rw #permission_name, .permission_container.rw #permission_desc {
+    display: inline !important; }
+  .permission_container.rw #permission_label, .permission_container.rw #permission_desc_label {
+    display: none !important; }
+  .permission_container.rw #permission_crud {
+    display: none; }
+  .permission_container.rw #permission_buttons {
+    display: inline !important; }
+
+#add_role {
+  cursor: pointer;
+  margin-left: 30px;
+  color: #00a65a; }
+
+#roles_list {
+  padding: 0 0 0 20px; }
+
+.role_container {
+  padding: 5px 0 5px 10px;
+  width: 100%;
+  border-top: 1px dashed #ccc; }
+  .role_container i.fa.fa-group {
+    color: #ccc; }
+  .role_container #role_label {
+    font-size: 18px; }
+  .role_container #role_desc_container {
+    padding-left: 36px; }
+  .role_container #role_claims_container {
+    padding-left: 36px; }
+  .role_container #role_name, .role_container #role_buttons, .role_container #role_desc {
+    display: none; }
+  .role_container.rw #role_name, .role_container.rw #role_desc {
+    display: inline !important; }
+  .role_container.rw #role_label, .role_container.rw #role_desc_label {
+    display: none !important; }
+  .role_container.rw #role_crud {
+    display: none; }
+  .role_container.rw #role_buttons {
+    display: inline !important; }
+
+.user_container {
+  padding: 20px 0 20px 10px;
+  border-top: 1px dashed #ccc; }
+  .user_container .edit {
+    display: none; }
+  .user_container.rw .edit {
+    display: block !important; }
+  .user_container.rw .display {
+    display: none !important; }
+  .user_container #user_label {
+    font-size: 18px;
+    color: #333;
+    font-weight: bold; }
+    .user_container #user_label small {
+      color: #666;
+      font-weight: normal; }
+  .user_container h3.account_name {
+    margin: 0 0 10px 0;
+    background-color: #cbe1ee;
+    padding: 5px 0 5px 5px; }
+  .user_container .account_container {
+    border: none !important;
+    padding: 0;
+    margin: 0; }
+  .user_container #user_buttons {
+    margin-left: 15px; }
+
+.pbb_detail_widget.alarm {
+  background-color: #c00;
+  color: #fff; }
+.pbb_detail_widget .display {
+  min-height: 100%;
+  min-width: 100%;
+  overflow: auto; }
+  .pbb_detail_widget .display .aircraft_img {
+    position: relative;
+    float: left;
+    background-image: url("../img/pbb/PBB_Un-docked-400x400.gif");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    height: 100%;
+    width: 100%; }
+    .pbb_detail_widget .display .aircraft_img.docked {
+      background-image: url("../img/pbb/PBB_docked-400x400.gif"); }
+  .pbb_detail_widget .display .autolevel_img {
+    position: relative;
+    float: left;
+    background-image: url("../img/pbb/PBB-AutoLevel-Off-400x400.gif");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    height: 100%;
+    width: 100%; }
+    .pbb_detail_widget .display .autolevel_img.autolevel-on {
+      background-image: url("../img/pbb/PBB-AutoLevel-On-400x400.gif"); }
+  .pbb_detail_widget .display .canopy_img {
+    position: relative;
+    float: left;
+    background-image: url("../img/pbb/PBB-Canopy-Off-400x400.gif");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    height: 100%;
+    width: 100%; }
+    .pbb_detail_widget .display .canopy_img.canopy-on {
+      background-image: url("../img/pbb/PBB-Canopy-On-400x400.gif"); }
+  .pbb_detail_widget .display #pbbdetail_label {
+    margin-bottom: 3px; }
+    .pbb_detail_widget .display #pbbdetail_label h1 {
+      line-height: 48px;
+      font-weight: bold;
+      margin: 0 0 0 0; }
+      .pbb_detail_widget .display #pbbdetail_label h1 i.fa {
+        margin-right: -5px;
+        padding: 5px;
+        border-radius: 10px;
+        font-size: 26px !important; }
+      .pbb_detail_widget .display #pbbdetail_label h1 i#docked {
+        color: #069;
+        background-color: #eee; }
+      .pbb_detail_widget .display #pbbdetail_label h1 i#alarms {
+        color: #fff;
+        background-color: #c00; }
+      .pbb_detail_widget .display #pbbdetail_label h1 i#warnings {
+        color: #f90;
+        background-color: #eee; }
+
+.pbb_level_detail_widget.alarm {
+  background-color: #c00;
+  color: #fff; }
+.pbb_level_detail_widget .display {
+  min-height: 100%;
+  min-width: 100%;
+  overflow: auto; }
+  .pbb_level_detail_widget .display.data {
+    position: absolute;
+    float: left;
+    width: 39%;
+    top: 0px;
+    left: 0px; }
+  .pbb_level_detail_widget .display #pbb_cab_angle_disp {
+    position: absolute;
+    left: 46%;
+    top: 24%;
+    font-size: 13px;
+    color: mediumblue;
+    background: transparent; }
+  .pbb_level_detail_widget .display #pbb_slope_deg {
+    position: absolute;
+    left: 67%;
+    top: 29%;
+    font-size: 13px;
+    color: mediumblue;
+    background: transparent; }
+  .pbb_level_detail_widget .display #pbb_swing_angle_disp {
+    position: absolute;
+    left: 82%;
+    top: 33%;
+    font-size: 13px;
+    color: mediumblue;
+    background: transparent; }
+  .pbb_level_detail_widget .display #pbb_height_to_disp {
+    position: absolute;
+    left: 51%;
+    top: 51%;
+    font-size: 13px;
+    color: mediumblue;
+    background: transparent; }
+  .pbb_level_detail_widget .display #pbb_wheel_angle_deg {
+    position: absolute;
+    left: 52%;
+    top: 59%;
+    font-size: 13px;
+    color: mediumblue;
+    background: transparent; }
+  .pbb_level_detail_widget .display #pbb_tunnel_length {
+    position: absolute;
+    left: 72%;
+    top: 52%;
+    font-size: 12px;
+    color: mediumblue;
+    background: transparent; }
+  .pbb_level_detail_widget .display #aircraft_img {
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    background-image: url("../img/pbb/Docking_Plane_Not-at-Gate.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center center;
+    margin: auto auto;
+    display: block;
+    height: 100%;
+    width: 100%; }
+    .pbb_level_detail_widget .display #aircraft_img.docked {
+      background-image: url("../img/pbb/Docking_Plane_at-Gate.png"); }
+
+/* GPU Widget Styles */
+.pbb_pca_gpu_basic_widget.alarm {
+  background-color: #c00;
+  color: #fff; }
+.pbb_pca_gpu_basic_widget .display {
+  min-height: 100%;
+  min-width: 100%;
+  overflow: auto; }
+  .pbb_pca_gpu_basic_widget .display #display_label {
+    margin-bottom: 3px; }
+    .pbb_pca_gpu_basic_widget .display #display_label h1 {
+      line-height: 48px;
+      font-weight: bold;
+      margin: 0 0 0 0; }
+      .pbb_pca_gpu_basic_widget .display #display_label h1 i.fa {
+        margin-right: -5px;
+        padding: 5px;
+        border-radius: 10px;
+        font-size: 26px !important; }
+      .pbb_pca_gpu_basic_widget .display #display_label h1 i#docked {
+        color: #069;
+        background-color: #eee; }
+      .pbb_pca_gpu_basic_widget .display #display_label h1 i#alarms {
+        color: #fff;
+        background-color: #c00; }
+      .pbb_pca_gpu_basic_widget .display #display_label h1 i#warnings {
+        color: #f90;
+        background-color: #eee; }
+
+.pcad_widget .zone_list {
+  margin-left: 10px; }
+  .pcad_widget .zone_list .gate_list {
+    margin-left: 10px; }
+    .pcad_widget .zone_list .gate_list .gate_span {
+      margin-right: 10px; }
+
 /* PCA Widget Styles */
 .pca_summary_widget #plot_container #options {
   min-width: 100px;
@@ -1554,6 +1458,7 @@ li.dashboard-link {
   overflow: auto; }
   .pca_summary_widget .display div.background {
     position: absolute;
+    z-index: -100;
     padding: 0;
     margin: 0;
     height: 90%;
@@ -1827,17 +1732,148 @@ i.weather {
     line-height: 40px;
     font-weight: bold; }
 
-.alarm_widget #alarm_lbl {
-  margin: 0 0 10px 0;
-  font-size: 16px; }
-.alarm_widget .group_item {
-  margin: 0 5px; }
+ul.gridster.widget-container {
+  list-style: none; }
+  ul.gridster.widget-container li.widget .widget-outer {
+    width: 100%;
+    height: 100%;
+    position: relative; }
+    ul.gridster.widget-container li.widget .widget-outer .box-header {
+      cursor: all-scroll;
+      padding: 2px 10px;
+      color: #fff;
+      background-color: #3c8dbc;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 25px;
+      z-index: 11; }
+      ul.gridster.widget-container li.widget .widget-outer .box-header h3 {
+        font-size: 14px;
+        font-weight: bold; }
+      ul.gridster.widget-container li.widget .widget-outer .box-header .controls a {
+        color: #fff;
+        margin-left: 10px; }
+      ul.gridster.widget-container li.widget .widget-outer .box-header select {
+        color: #333 !important; }
+    ul.gridster.widget-container li.widget .widget-outer .box-body.content {
+      width: 100%;
+      box-sizing: border-box;
+      position: absolute;
+      box-sizing: border-box;
+      padding: 35px 10px 10px 10px;
+      height: 100%;
+      min-height: 100%;
+      z-index: 10;
+      overflow: hidden !important; }
+    ul.gridster.widget-container li.widget .widget-outer .box-body iframe {
+      display: inline;
+      width: 100%;
+      height: 100%;
+      border: 0px solid #cccccc;
+      box-sizing: border-box; }
+    ul.gridster.widget-container li.widget .widget-outer .box-body .settings {
+      width: 100%; }
+      ul.gridster.widget-container li.widget .widget-outer .box-body .settings h3 {
+        margin-top: 0;
+        margin-bottom: 5px; }
+      ul.gridster.widget-container li.widget .widget-outer .box-body .settings .form-group label {
+        width: 20%;
+        text-align: right;
+        padding: 0px;
+        margin: 0px; }
+      ul.gridster.widget-container li.widget .widget-outer .box-body .settings .chosen-container {
+        margin-left: 20px;
+        width: auto; }
+    ul.gridster.widget-container li.widget .widget-outer .box-body .display.contain {
+      max-width: 100%;
+      max-height: 100%;
+      overflow: auto; }
+    ul.gridster.widget-container li.widget .widget-outer .box-body .display h1 {
+      margin: 0 0 10px 0;
+      font-weight: bold; }
 
-.pcad_widget .zone_list {
-  margin-left: 10px; }
-  .pcad_widget .zone_list .gate_list {
-    margin-left: 10px; }
-    .pcad_widget .zone_list .gate_list .gate_span {
-      margin-right: 10px; }
+#widget_selections a.widget_select {
+  color: #fff;
+  font-size: 20px;
+  padding: 10px 20px;
+  display: block; }
+  #widget_selections a.widget_select:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #000; }
+
+.blink {
+  animation: blinker 1s linear infinite; }
+
+@keyframes blinker {
+  50% {
+    opacity: 0.0; } }
+table.data, table.data2 {
+  width: 100%;
+  border: solid 1px #999;
+  border-spacing: 1px;
+  border-collapse: separate; }
+  table.data.transparent, table.data2.transparent {
+    background: transparent; }
+  table.data.airplane, table.data2.airplane {
+    border: 0; }
+    table.data.airplane td, table.data2.airplane td {
+      background-color: #fff; }
+  table.data.no-show, table.data2.no-show {
+    visibility: hidden; }
+  table.data td, table.data div, table.data2 td, table.data2 div {
+    padding: 3px 10px;
+    background-color: #eee;
+    color: #999; }
+    table.data td.transparent, table.data div.transparent, table.data2 td.transparent, table.data2 div.transparent {
+      background: transparent; }
+    table.data td tr.dockundock, table.data div tr.dockundock, table.data2 td tr.dockundock, table.data2 div tr.dockundock {
+      background-color: #090; }
+    table.data td.lbl, table.data div.lbl, table.data2 td.lbl, table.data2 div.lbl {
+      background-color: #fff;
+      font-style: italic;
+      color: #333;
+      border-bottom: solid 1px #ddd; }
+      table.data td.lbl.transparent, table.data div.lbl.transparent, table.data2 td.lbl.transparent, table.data2 div.lbl.transparent {
+        background: transparent;
+        border-right: solid 1px #ddd; }
+    table.data td.val, table.data div.val, table.data2 td.val, table.data2 div.val {
+      font-weight: bold;
+      color: #333; }
+      table.data td.val.transparent, table.data div.val.transparent, table.data2 td.val.transparent, table.data2 div.val.transparent {
+        font-weight: bold;
+        border-bottom: solid 1px #ddd; }
+    table.data td.err, table.data div.err, table.data2 td.err, table.data2 div.err {
+      color: #fe6;
+      background-color: #c33; }
+      table.data td.err.transparent, table.data div.err.transparent, table.data2 td.err.transparent, table.data2 div.err.transparent {
+        color: #ff3333;
+        background: transparent;
+        border-bottom: solid 1px #ddd; }
+    table.data td.ok, table.data div.ok, table.data2 td.ok, table.data2 div.ok {
+      background-color: #090;
+      color: #fff; }
+      table.data td.ok.transparent, table.data div.ok.transparent, table.data2 td.ok.transparent, table.data2 div.ok.transparent {
+        background: transparent;
+        color: #090;
+        border-bottom: solid 1px #ddd; }
+    table.data td.blue, table.data div.blue, table.data2 td.blue, table.data2 div.blue {
+      background-color: #06c;
+      color: #fff; }
+      table.data td.blue.transparent, table.data div.blue.transparent, table.data2 td.blue.transparent, table.data2 div.blue.transparent {
+        background: transparent;
+        color: #fff; }
+    table.data td.bad_data, table.data div.bad_data, table.data2 td.bad_data, table.data2 div.bad_data {
+      background-color: #fec;
+      color: #999; }
+      table.data td.bad_data.transparent, table.data div.bad_data.transparent, table.data2 td.bad_data.transparent, table.data2 div.bad_data.transparent {
+        background: transparent;
+        color: #999;
+        border-bottom: solid 1px #ddd; }
+    table.data td.img-circles, table.data div.img-circles, table.data2 td.img-circles, table.data2 div.img-circles {
+      border-radius: 10%; }
+      table.data td.img-circles.transparent, table.data div.img-circles.transparent, table.data2 td.img-circles.transparent, table.data2 div.img-circles.transparent {
+        background: transparent;
+        border-radius: 10%; }
 
 /*# sourceMappingURL=app-ui.css.map */

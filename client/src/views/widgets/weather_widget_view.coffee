@@ -16,7 +16,17 @@ class WeatherWidgetView extends WidgetView
     sx: 6
     sy: 8
 
+  IsUpdatingSettings: false
+  IsPageLoading: true
+
   update: ()=>
+    # Ignore all calls except those from startup and Update
+    if !@IsUpdatingSettings && !@IsPageLoading
+      return null
+
+    @IsPageLoading = false
+    @IsUpdatingSettings = false
+
     @refresh_data()
 
   refresh_data: =>
@@ -70,6 +80,8 @@ class WeatherWidgetView extends WidgetView
     @$('#loading').hide()
 
   set_model: ()=>
+    @IsUpdatingSettings = true
+
     s = _.clone(@model.get("settings"))
     s.site = @ui.site.val()
     @model.set("settings", s)

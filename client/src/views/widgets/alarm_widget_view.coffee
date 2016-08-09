@@ -18,12 +18,26 @@ class AlarmWidgetView extends IOPSWidgetView
     sx: 10
     sy: 10
 
+
+  IsUpdatingSettings: false
+  IsPageLoading: true
+
   update: ()->
+    # Ignore all calls except those from startup and Update
+    if !@IsUpdatingSettings && !@IsPageLoading
+      return null
+
+    @IsPageLoading = false
+    @IsUpdatingSettings = false
+
     if @site_code? then @kill_updates(@site_code)
 
     s = @model.get("settings")
 
     if s? && !!s.gate
+      lbl = "#{@site_code}: Alarm window"
+      @ui.wtitle.html(lbl)
+
       @site = OPCManager.get_site(s.site)
       @site_code = @site.get('code')
       if !@site_code? then return null
@@ -93,8 +107,10 @@ class AlarmWidgetView extends IOPSWidgetView
         @$("#alarm_lbl").html("<b>#{@site_code}</b> #{tzg} | <b>#{t}</b> | <b>#{p}</b>")
         App.opc.add_alarm @site_code, @alarm_binding
         @watch_updates(@site_code)
-
+    
   set_model: ()=>
+    @IsUpdatingSettings = true
+
     s = _.clone(@model.get("settings"))
     s.site = @ui.site.val()
     s.terminal = @$("select#terminal").val()
@@ -105,18 +121,6 @@ class AlarmWidgetView extends IOPSWidgetView
     s.allgates = @$("#allgates").is(':checked')
     console.log s.allgates
     @model.set("settings", s)
-
-    if !@site_code?
-      site = OPCManager.get_site(s.site);
-      if site?
-        @site_code = site.get('code');
-
-    lbl = "???: Alarm window"
-    if s? && !!s.gate
-      lbl = "#{@site_code}: Alarm window"
-
-    @ui.wtitle.html(lbl)
-
 
   toggle_settings: (e)->
     super(e)
@@ -168,7 +172,6 @@ class AlarmWidgetView extends IOPSWidgetView
     @site_code = OPCManager.get_site_code(settings.site)
     if @site_code? then @watch_updates(@site_code)
 
-
   start: ()->
     @update()
 
@@ -176,7 +179,6 @@ class AlarmWidgetView extends IOPSWidgetView
     # be sure to remove listener
     if @alarm_binding? then App.opc.rem_alarm @site_code, @alarm_binding
     @kill_updates(@site_code)
-
 
 # ----------------------------------
 

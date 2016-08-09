@@ -8,6 +8,14 @@
     min-width: 100%;
     overflow: auto;
 
+    &.data {
+      position:absolute;
+      float:left; 
+      width:39%; 
+      top:0px; 
+      left:0px;
+    }
+    
     #pbb_cab_angle_disp{
     position: absolute;
     left: 46%;
@@ -64,8 +72,8 @@
 
     #aircraft_img {
       position: absolute;
-      top: 10%;
-      left: 1%;
+      top: 40px;
+      left: 20px;
       background-image: url("../img/pbb/Docking_Plane_Not-at-Gate.png") ;
       background-repeat: no-repeat;
       background-size: 100% 100%;

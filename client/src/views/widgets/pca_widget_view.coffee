@@ -32,7 +32,17 @@ class PcaWidgetView extends IOPSWidgetView
   tagData = []
   tagConfig = []
 
+  IsUpdatingSettings: false
+  IsPageLoading: true
+
   update: ()->
+    # Ignore all calls except those from startup and Update
+    if !@IsUpdatingSettings && !@IsPageLoading
+      return null
+
+    @IsPageLoading = false
+    @IsUpdatingSettings = false
+
     @update_settings
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
@@ -42,6 +52,9 @@ class PcaWidgetView extends IOPSWidgetView
     s = @model.get("settings")
    
     if s? && !!s.gate
+      lbl = "#{@site_code}: Gate #{s.gate} PCA"
+      @ui.wtitle.html(lbl)
+
       # stop listening for updates
       @kill_updates(@site_code)
 
@@ -59,9 +72,6 @@ class PcaWidgetView extends IOPSWidgetView
         tags.push "#{@prefix}#{t}.Value"
 
       App.opc.add_tags @site_code, tags
-
-      lbl = "#{@site_code}: Gate #{s.gate} PCA"
-      @ui.wtitle.html(lbl)
 
       @opc =  App.opc.connections[@site_code]
       ref = s.layout
@@ -99,6 +109,8 @@ class PcaWidgetView extends IOPSWidgetView
     @set_descriptions()
 
   set_model: ()=>
+    @IsUpdatingSettings = true
+
     s = _.clone(@model.get("settings"))
     s.site = @$('#site').val()
     s.terminal = @$('#terminal').val()

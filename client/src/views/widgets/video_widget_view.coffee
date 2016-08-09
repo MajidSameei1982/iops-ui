@@ -4,8 +4,8 @@ IOPSWidgetView = require('./iops_widget_view')
 # ----------------------------------
 class VideoWidgetView extends IOPSWidgetView
   template:   "widgets/video_widget"
-  classID: 'iops_widget'
-  className: 'widget-outer box box-primary iops_widget'
+  classID: 'video_widget'
+  className: 'widget-outer box box-primary video_widget'
   ui:   
     site:           'select#site'
     wtitle:         'h3.box-title'
@@ -16,14 +16,26 @@ class VideoWidgetView extends IOPSWidgetView
     sx: 15
     sy: 18
 
+  IsUpdatingSettings: false
+  IsPageLoading: true
+
   update: ()->
+    # Ignore all calls except those from startup and Update
+    if !@IsUpdatingSettings && !@IsPageLoading
+      return null
+
+    @IsPageLoading = false
+    @IsUpdatingSettings = false
+
     s = @model.get("settings")
     @site_code = null
     @site = OPCManager.get_site(s.site)
     if @site?
       @site_code = @site.get('code')
     code = if @site_code? then @site_code else '...'
-    @ui.wtitle.html(" #{code}")
+    
+    lbl = "#{code}: Video System Monitoring"
+    @ui.wtitle.html(lbl)
 
   getImagery: ()->
     uri = "#{@rurl}/api/VideoService"
@@ -50,6 +62,8 @@ class VideoWidgetView extends IOPSWidgetView
     item.fileName
 
   set_model: ()=>
+    @IsUpdatingSettings = true
+
     s = _.clone(@model.get("settings"))
     s.site = @ui.site.val()
     @model.set("settings", s)
