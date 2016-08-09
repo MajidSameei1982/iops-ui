@@ -1818,7 +1818,7 @@ window.JST["widgets/gpu_summary_widget"] = function(__obj) {
     };
     (function() {
     
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'>\n    <i class="fa fa-flash"></i>&emsp;<h3 class="box-title"></h3>\n    <select id="mode" style=\'display:none;\'>\n      <option value=\'\'>Summary</option>\n      <option value=\'vin\'>Input Voltage</option>\n      <option value=\'vout\'>Output Voltage</option>\n      <option value=\'aout\'>Output Amperage</option>\n    </select>\n  </div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gpu_summary_label">\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <div id="view_main">\n      <div id="gpu_image"></div>\n      <div id="power_indicator"></div>\n      <div id="txt_connected_time"></div>\n    </div>\n    <div id="plots" style="display: none;">\n      <table id=\'plot_container\' border="0">\n        <tr>\n          <td id=\'options\'>\n            <div id=\'ptype_lbl\'></div>\n\n            <div id=\'live_container\'>\n              <label>Live Data</label>\n              <input id=\'live_data\' type="checkbox" data-toggle="toggle" >\n            </div>\n            \n            <div id="phases">\n              <a id="phase_a" class=\'plot_type\' href="#">Phase A</a>\n              <a id="phase_b" class=\'plot_type\' href="#">Phase B</a>\n              <a id="phase_c" class=\'plot_type\' href="#">Phase C</a>\n            </div>\n\n          </td>\n          <td id=\'plot_data\'></td>\n        </tr>\n      </table>\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'>\n    <i class="fa fa-flash"></i>&emsp;<h3 class="box-title"></h3>&emsp;\n    <select id="mode" style=\'display:none;\'>\n      <option value=\'\'>Summary</option>\n      <option value=\'vin\'>Input Voltage</option>\n      <option value=\'vout\'>Output Voltage</option>\n      <option value=\'aout\'>Output Amperage</option>\n    </select>\n  </div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gpu_summary_label">\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <div id="view_main">\n      <div id="gpu_image"></div>\n      <div id="power_indicator"></div>\n      <div id="txt_connected_time"></div>\n    </div>\n    <div id="plots" style="display: none;">\n      <table id=\'plot_container\' border="0">\n        <tr>\n          <td id=\'options\'>\n            <div id=\'ptype_lbl\'></div>\n\n            <div id=\'live_container\'>\n              <label>Live Data</label>\n              <input id=\'live_data\' type="checkbox" data-toggle="toggle" >\n            </div>\n            \n            <div id="phases">\n              <a id="phase_a" class=\'plot_type\' href="#">Phase A</a>\n              <a id="phase_b" class=\'plot_type\' href="#">Phase B</a>\n              <a id="phase_c" class=\'plot_type\' href="#">Phase C</a>\n            </div>\n\n          </td>\n          <td id=\'plot_data\'></td>\n        </tr>\n      </table>\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -2250,7 +2250,7 @@ window.JST["widgets/pca_summary_widget"] = function(__obj) {
     };
     (function() {
     
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-server"></i>&emsp;<h3 class="box-title"></h3>\n    <select id="mode" style=\'display:none;\'>\n      <option value=\'\'>Summary</option>\n      <option value=\'plots\'>Temp. Data</option>\n    </select>\n  </div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id=\'display_label\'>\n      <h1>\n      </h1>\n    </div>\n    <div id="summary">\n      <div id="view_main">\n        <div id="power_indicator"></div>\n        <div id="txt_connected_time"></div>\n      </div>\n      <div id="pca_coil_dp" class="val"></div>   \n      <div id="pca_vfd_speed" class="val"></div>\n      <div id="pca_ambient_humidity" class="val"></div>\n      <div id="pca_suction_pressure_1" class="val"></div>\n      <div id="pca_suction_pressure_2" class="val"></div>\n      <div id="pca_hot_gas_1" class="val"></div>\n      <div id="pca_hot_gas_2" class="val"></div>\n      <div id="pca_pump_cond" class="val"></div>\n      <div id="pca_bridge_damper" class="val"></div>\n      <div id="pca_bridge_air" class="val"></div>\n    </div>\n    <div id="plots" style="display: none;">\n      <table id=\'plot_container\' border="0">\n        <tr>\n          <td id=\'options\'>\n            <div id=\'ptype_lbl\'>\n              <table>\n                <tr>\n                  <td>Ambient Temp:</td>\n                  <td><div style=\'width:14px;height:14px;background-color:#80C3FF;\'></div></td>\n                </tr>\n                <tr>\n                  <td>Discharge Temp:</td>\n                  <td><div style=\'width:14px;height:14px;background-color:#FF8C1A;\'></div></td>\n                </tr>\n              </table>\n            </div>\n\n            <div id=\'live_container\'>\n              <label>Live Data</label>\n              <div>\n                <input id=\'live_data\' type="checkbox" data-toggle="toggle" >\n              </div>\n            </div>\n            \n          </td>\n          <td id=\'plot_data\'></td>\n        </tr>\n      </table>\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-server"></i>&emsp;<h3 class="box-title"></h3>&emsp;\n    <select id="mode" style=\'display:none;\'>\n      <option value=\'\'>Summary</option>\n      <option value=\'plots\'>Temp. Data</option>\n    </select>\n  </div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id=\'display_label\'>\n      <h1>\n      </h1>\n    </div>\n    <div id="summary">\n      <div id="view_main">\n        <div id="power_indicator"></div>\n        <div id="txt_connected_time"></div>\n      </div>\n      <div id="pca_coil_dp" class="val"></div>   \n      <div id="pca_vfd_speed" class="val"></div>\n      <div id="pca_ambient_humidity" class="val"></div>\n      <div id="pca_suction_pressure_1" class="val"></div>\n      <div id="pca_suction_pressure_2" class="val"></div>\n      <div id="pca_hot_gas_1" class="val"></div>\n      <div id="pca_hot_gas_2" class="val"></div>\n      <div id="pca_pump_cond" class="val"></div>\n      <div id="pca_bridge_damper" class="val"></div>\n      <div id="pca_bridge_air" class="val"></div>\n    </div>\n    <div id="plots" style="display: none;">\n      <table id=\'plot_container\' border="0">\n        <tr>\n          <td id=\'options\'>\n            <div id=\'ptype_lbl\'>\n              <table>\n                <tr>\n                  <td>Ambient Temp:</td>\n                  <td><div style=\'width:14px;height:14px;background-color:#80C3FF;\'></div></td>\n                </tr>\n                <tr>\n                  <td>Discharge Temp:</td>\n                  <td><div style=\'width:14px;height:14px;background-color:#FF8C1A;\'></div></td>\n                </tr>\n              </table>\n            </div>\n\n            <div id=\'live_container\'>\n              <label>Live Data</label>\n              <div>\n                <input id=\'live_data\' type="checkbox" data-toggle="toggle" >\n              </div>\n            </div>\n            \n          </td>\n          <td id=\'plot_data\'></td>\n        </tr>\n      </table>\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -3649,7 +3649,7 @@ _.extend(Marionette.View.prototype, {
       siteSelector: function(arg) {
         var acc, code, found_sel, i, id, j, label, len, len1, ref, ref1, s, sel, sh, site, txt;
         id = arg.id, label = arg.label, site = arg.site;
-        sh = "<div class='form-group' for='" + id + "' style='width:95%;'>\n  <label>" + label + "</label>\n  <select id='" + id + "' class='form-control' style='width:95%;' data-placeholder='Select a Site'>\n    <option value=''></option>";
+        sh = "<div class='form-group' for='" + id + "' style='width:95%;'>\n  <label>" + label + "</label>\n  <select id='" + id + "' class='form-control' style='width:95%;' data-placeholder='Select a Site'>\n    <!-- <option value=''></option> -->";
         if ((App.accounts != null) && App.accounts.models.length > 0) {
           ref = App.accounts.models;
           for (i = 0, len = ref.length; i < len; i++) {
@@ -6809,98 +6809,6 @@ TagConfig = (function(superClass) {
               Parm002: null,
               Parm003: null,
               Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          }
-        },
-        add_tags: {
-          pca_heater_3: {
-            Tag: 'PCA.HEAT3',
-            Label: 'Heater #3',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_comp_stage_3: {
-            Tag: 'PCA.COMPPRI3',
-            Label: 'Primary compressor #3',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_fan_3: {
-            Tag: 'PCA.FANCONDFRONTPRI',
-            Label: 'Fan #3',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_fan_2: {
-            Tag: 'PCA.FANCONDFRONTSEC',
-            Label: 'Fan #2',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_fan_1: {
-            Tag: 'PCA.FANCONDREARPRI',
-            Label: 'Fan #1',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
             },
             Element: {
               Type: 'TableRow',
@@ -14564,15 +14472,16 @@ AirportWidgetView = (function(superClass) {
     var settings, site;
     settings = this.model.get('settings');
     settings || (settings = {});
-    this.$('#site').on('change', (function(_this) {
+    site = settings.site;
+    if ((site == null) || site === '') {
+      this.toggle_settings();
+    }
+    this.draw_selectors(settings.terminal, settings.zone, settings.gate);
+    return this.$('#site').on('change', (function(_this) {
       return function() {
         return _this.set_model();
       };
     })(this));
-    site = settings.site;
-    if ((site == null) || site === '') {
-      return this.toggle_settings();
-    }
   };
 
   AirportWidgetView.prototype.start = function() {
@@ -14606,6 +14515,7 @@ AlarmWidgetView = (function(superClass) {
 
   function AlarmWidgetView() {
     this.set_model = bind(this.set_model, this);
+    this.alarm_update = bind(this.alarm_update, this);
     return AlarmWidgetView.__super__.constructor.apply(this, arguments);
   }
 
@@ -14628,6 +14538,8 @@ AlarmWidgetView = (function(superClass) {
     sx: 10,
     sy: 10
   };
+
+  AlarmWidgetView.prototype.TestMe = 0;
 
   AlarmWidgetView.prototype.IsUpdatingSettings = false;
 
@@ -14713,6 +14625,7 @@ AlarmWidgetView = (function(superClass) {
       }
       this.alarm_binding = {
         alarmid: "" + this.alarmid,
+        callback: this.alarm_update,
         showSearch: false,
         showHistory: false,
         filter: {
@@ -14749,6 +14662,11 @@ AlarmWidgetView = (function(superClass) {
             text: "Acked",
             type: "boolean",
             visible: false
+          }, {
+            name: "Priority",
+            text: "Priority",
+            type: "integer",
+            visible: true
           }
         ]
       };
@@ -14782,6 +14700,18 @@ AlarmWidgetView = (function(superClass) {
         return this.watch_updates(this.site_code);
       }
     }
+  };
+
+  AlarmWidgetView.prototype.alarm_update = function(ab, data) {
+    $('table.opc-alarm > tbody > tr> td:nth-child(3)').hide();
+    $('table.opc-alarm > thead > tr> th:nth-child(3)').hide();
+    return $("table.opc-alarm > tbody > tr").each((function(_this) {
+      return function(idx, element) {
+        if ($("td:eq(2)", element).text() === "0") {
+          return $("td:eq(2)", element).closest("tr").toggleClass("notification", true);
+        }
+      };
+    })(this));
   };
 
   AlarmWidgetView.prototype.set_model = function() {
@@ -16419,6 +16349,10 @@ IOPSWidgetView = (function(superClass) {
         return _this.set_model();
       };
     })(this));
+    this.$("select#terminal").chosen({
+      disable_search: true,
+      width: 'auto'
+    });
     return this;
   };
 
@@ -16442,6 +16376,10 @@ IOPSWidgetView = (function(superClass) {
         return _this.set_model();
       };
     })(this));
+    this.$("select#zone").chosen({
+      disable_search: true,
+      width: 'auto'
+    });
     return this;
   };
 
@@ -16466,6 +16404,10 @@ IOPSWidgetView = (function(superClass) {
         return _this.set_model();
       };
     })(this));
+    this.$("select#gate").chosen({
+      disable_search: true,
+      width: 'auto'
+    });
     return this;
   };
 
@@ -16474,18 +16416,6 @@ IOPSWidgetView = (function(superClass) {
     this.draw_zones(zone);
     this.draw_gates(gate);
     this.$("select#site").chosen({
-      disable_search: true,
-      width: 'auto'
-    });
-    this.$("select#terminal").chosen({
-      disable_search: true,
-      width: 'auto'
-    });
-    this.$("select#zone").chosen({
-      disable_search: true,
-      width: 'auto'
-    });
-    this.$("select#gate").chosen({
       disable_search: true,
       width: 'auto'
     });
@@ -18935,6 +18865,14 @@ ReportWidgetView = (function(superClass) {
   };
 
   ReportWidgetView.prototype.onShow = function() {
+    var settings, site;
+    settings = this.model.get('settings');
+    settings || (settings = {});
+    site = settings.site;
+    if ((site == null) || site === '') {
+      this.toggle_settings();
+    }
+    this.draw_selectors(settings.terminal, settings.zone, settings.gate);
     this.ui.site.on('change', (function(_this) {
       return function() {
         return _this.set_model();
@@ -19214,14 +19152,14 @@ window.VideoWidgetView = VideoWidgetView;
 module.exports = VideoWidgetView;
 
 },{"./iops_widget_view":62}],74:[function(require,module,exports){
-var Marionette, WeatherWidgetView, WidgetView,
+var IOPSWidgetView, Marionette, WeatherWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
 Marionette = require('marionette');
 
-WidgetView = require('../dashboard/widget_view');
+IOPSWidgetView = require('./iops_widget_view');
 
 WeatherWidgetView = (function(superClass) {
   extend(WeatherWidgetView, superClass);
@@ -19344,10 +19282,17 @@ WeatherWidgetView = (function(superClass) {
   };
 
   WeatherWidgetView.prototype.onShow = function() {
-    var s;
+    var s, settings, site;
     this.HOUR = 60 * 60 * 1000;
     this.timer = setInterval(this.refresh_data, this.HOUR / 4);
     this.skycons = new Skycons();
+    settings = this.model.get('settings');
+    settings || (settings = {});
+    site = settings.site;
+    if ((site == null) || site === '') {
+      this.toggle_settings();
+    }
+    this.draw_selectors(settings.terminal, settings.zone, settings.gate);
     this.$('#site').on('change', (function(_this) {
       return function() {
         return _this.set_model();
@@ -19374,11 +19319,11 @@ WeatherWidgetView = (function(superClass) {
 
   return WeatherWidgetView;
 
-})(WidgetView);
+})(IOPSWidgetView);
 
 window.WeatherWidgetView = WeatherWidgetView;
 
 module.exports = WeatherWidgetView;
 
-},{"../dashboard/widget_view":39}]},{},[1])
+},{"./iops_widget_view":62}]},{},[1])
 ;

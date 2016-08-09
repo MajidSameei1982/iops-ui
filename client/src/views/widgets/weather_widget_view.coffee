@@ -1,8 +1,9 @@
 Marionette = require('marionette')
-WidgetView = require('../dashboard/widget_view')
+#WidgetView = require('../dashboard/widget_view')
+IOPSWidgetView = require('./iops_widget_view')
 
 # ----------------------------------
-class WeatherWidgetView extends WidgetView
+class WeatherWidgetView extends IOPSWidgetView
   template:   "widgets/weather_widget"
   classID: 'weather_widget'
   className: 'widget-outer box box-primary weather_widget'
@@ -94,6 +95,14 @@ class WeatherWidgetView extends WidgetView
     @HOUR = 60 * 60 * 1000
     @timer = setInterval(@refresh_data, @HOUR/4)
     @skycons = new Skycons()
+
+    settings = @model.get('settings')
+    settings || settings = {}
+    site = settings.site
+    if !site? || site == ''
+      @toggle_settings()
+    @draw_selectors(settings.terminal, settings.zone, settings.gate)
+
     @$('#site').on 'change', ()=>
       @set_model()
     s = @model.get("settings")

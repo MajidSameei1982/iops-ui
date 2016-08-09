@@ -1,6 +1,6 @@
 <div class="box-header with-border">
   <div class='pull-left'>
-    <i class="fa fa-flash"></i>&emsp;<h3 class="box-title"></h3>
+    <i class="fa fa-flash"></i>&emsp;<h3 class="box-title"></h3>&emsp;
     <select id="mode" style='display:none;'>
       <option value=''>Summary</option>
       <option value='vin'>Input Voltage</option>

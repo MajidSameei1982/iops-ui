@@ -54,6 +54,13 @@ class ReportWidgetView extends IOPSWidgetView
     @model.set("settings", s)
 
   onShow: ()->
+    settings = @model.get('settings')
+    settings || settings = {}
+    site = settings.site
+    if !site? || site == ''
+      @toggle_settings()
+    @draw_selectors(settings.terminal, settings.zone, settings.gate)
+
     @ui.site.on 'change', ()=>
       @set_model()
     if !@ui.site.val()? || @ui.site.val() == ''

@@ -19,6 +19,7 @@ class AlarmWidgetView extends IOPSWidgetView
     sy: 10
 
 
+  TestMe: 0
   IsUpdatingSettings: false
   IsPageLoading: true
 
@@ -74,6 +75,7 @@ class AlarmWidgetView extends IOPSWidgetView
 
       @alarm_binding =
         alarmid: "#{@alarmid}"
+        callback: @alarm_update
         showSearch:false
         showHistory:false
         filter:
@@ -85,6 +87,7 @@ class AlarmWidgetView extends IOPSWidgetView
           { name: "Text", text: "Text", type: "string", visible: true }
           { name: "Group", text: "Text", type: "string", visible: false }
           { name: "Acked", text: "Acked", type: "boolean", visible: false }
+          { name: "Priority", text: "Priority", type: "integer", visible: true }
         ]
       if net_node then @alarm_binding.networkNodes = net_node
 
@@ -107,7 +110,16 @@ class AlarmWidgetView extends IOPSWidgetView
         @$("#alarm_lbl").html("<b>#{@site_code}</b> #{tzg} | <b>#{t}</b> | <b>#{p}</b>")
         App.opc.add_alarm @site_code, @alarm_binding
         @watch_updates(@site_code)
-    
+  
+  alarm_update: (ab, data)=>
+      # If your table has header(th), use this:
+      $('table.opc-alarm > tbody > tr> td:nth-child(3)').hide()
+      $('table.opc-alarm > thead > tr> th:nth-child(3)').hide();
+      $("table.opc-alarm > tbody > tr").each (idx, element) =>
+        if $("td:eq(2)", element).text() == "0"
+          $("td:eq(2)", element).closest("tr").toggleClass("notification",true)
+
+
   set_model: ()=>
     @IsUpdatingSettings = true
 

@@ -47,7 +47,7 @@ _.extend Marionette.View::,
         <div class='form-group' for='#{id}' style='width:95%;'>
           <label>#{label}</label>
           <select id='#{id}' class='form-control' style='width:95%;' data-placeholder='Select a Site'>
-            <option value=''></option>
+            <!-- <option value=''></option> -->
       """
       if App.accounts? && App.accounts.models.length > 0
         for acc in App.accounts.models

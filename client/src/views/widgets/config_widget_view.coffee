@@ -132,6 +132,7 @@ class ConfigWidgetView extends IOPSWidgetView
     if !site? || site == ''
       @toggle_settings()
     @draw_selectors(settings.terminal, settings.zone, settings.gate)
+    
     @$('#site').on 'change', ()=>
       @set_model()
     @$('#set_pca_points').click @set_points

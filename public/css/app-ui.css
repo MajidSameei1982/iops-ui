@@ -540,6 +540,12 @@ i.form-control-feedback {
   font-size: 16px; }
 .alarm_widget .group_item {
   margin: 0 5px; }
+.alarm_widget .notification {
+  background-color: yellow !important;
+  color: black !important; }
+  .alarm_widget .notification td[class^='sorting'], .alarm_widget .notification td[class*=' sorting'] {
+    background-color: yellow !important;
+    color: black !important; }
 
 .bs-callout {
   padding: 20px;
@@ -1600,6 +1606,9 @@ ul.chosen-results li.highlighted {
   src: url("/fonts/artill_clean_icons-webfont_ie.eot") format("embedded-opentype"), url("/fonts/artill_clean_icons-webfont.woff") format("woff"), url("/fonts/artill_clean_icons-webfont.ttf") format("truetype"), url("/fonts/artill_clean_icons-webfont.svg") format("svg");
   font-weight: normal;
   font-style: normal; }
+#weather {
+  margin: 20px; }
+
 i.weather {
   font-family: weather;
   font-weight: normal;
