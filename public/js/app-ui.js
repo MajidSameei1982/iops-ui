@@ -2531,7 +2531,7 @@ window.JST["widgets/weather_widget"] = function(__obj) {
     };
     (function() {
     
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-cloud"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\'>\n    <div id=\'loading\' style=\'display:none;\'>Loading Weather Data...</div>\n    <div id=\'weather\' style=\'display:none;\'>\n      <table style=\'width:100%;text-align:center;\'>\n        <tr>\n          <td width="50%">\n            <canvas id=\'wicon\' width="200" height="200" style="width:100px;margin-right:10px;"></canvas>\n          </td>\n          <td width="50%">\n            <div id=\'temp\' style=\'\n    font-size: 80px;\n    font-weight: bold;\n    line-height: 72px;\n    text-align:left;\n\'></div>\n            <div id="summ" style=\'\n    font-size: 24px;\n    font-weight: normal;\n    line-height: 32px;\n    text-align:left;\n\'></div>\n          </td>\n        </tr>\n        <tr>\n          <td colspan="2">\n            <div id="forecast"></div>\n          </td>\n        </tr>\n        <tr>\n          <td colspan="2">\n            <div id="precip" class=\'col\' style=\'float:left;width:33%;\'>\n              <div class="label">Precipitation</div>\n              <div class="val"></div>\n            </div>\n            <div id="humid" class=\'col\' style=\'float:left;width:33%;\'>\n              <div class="label">Humidity</div>\n              <div class="val"></div>\n            </div>\n            <div id="cover" class=\'col\' style=\'float:left;width:33%;\'>\n              <div class="label">Cloud Cover</div>\n              <div class="val"></div>\n            </div>\n            <div style=\'clear:both;\'></div>\n          </td>\n        </tr>\n      </table>\n    </div>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-cloud"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div class=\'display\'>\n    <div id=\'loading\' style=\'display:none;\'>Loading Weather Data...</div>\n    <div id=\'weather\' style=\'display:none;\'>\n      <table style=\'width:100%;text-align:center;\'>\n        <tr>\n          <td width="50%">\n            <canvas id=\'wicon\' width="200" height="200" style="width:100px;margin-right:10px;"></canvas>\n          </td>\n          <td width="50%">\n            <div id=\'temp\' style=\'\n    font-size: 80px;\n    font-weight: bold;\n    line-height: 72px;\n    text-align:left;\n\'></div>\n            <div id="summ" style=\'\n    font-size: 24px;\n    font-weight: normal;\n    line-height: 32px;\n    text-align:left;\n\'></div>\n          </td>\n        </tr>\n        <tr>\n          <td colspan="2">\n            <div id="forecast"></div>\n          </td>\n        </tr>\n        <tr>\n          <td colspan="2">\n            <div id="precip" class=\'col\' style=\'float:left;width:33%;\'>\n              <div class="label">Precipitation</div>\n              <div class="val"></div>\n            </div>\n            <div id="humid" class=\'col\' style=\'float:left;width:33%;\'>\n              <div class="label">Humidity</div>\n              <div class="val"></div>\n            </div>\n            <div id="cover" class=\'col\' style=\'float:left;width:33%;\'>\n              <div class="label">Cloud Cover</div>\n              <div class="val"></div>\n            </div>\n            <div style=\'clear:both;\'></div>\n          </td>\n        </tr>\n      </table>\n    </div>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -6247,10 +6247,6 @@ TagConfig = (function(superClass) {
           'gpu_on_2': 'gpu_on_2'
         },
         add_tags: {
-          defined: {
-            'gpu_node': 'gpu_node',
-            'gpu_rdc_amps': 'gpu_rdc_amps'
-          },
           gpu_mode: {
             Tag: 'GPU.GPUMODE',
             Label: 'GPU Mode',
@@ -19180,7 +19176,7 @@ WeatherWidgetView = (function(superClass) {
   WeatherWidgetView.prototype.className = 'widget-outer box box-primary weather_widget';
 
   WeatherWidgetView.prototype.ui = {
-    display: '#display',
+    display: '.display',
     title: 'input#title',
     site: '#site',
     wtitle: "h3.box-title"

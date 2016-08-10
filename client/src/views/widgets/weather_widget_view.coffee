@@ -8,7 +8,7 @@ class WeatherWidgetView extends IOPSWidgetView
   classID: 'weather_widget'
   className: 'widget-outer box box-primary weather_widget'
   ui:
-    display: '#display'
+    display: '.display'
     title: 'input#title'
     site: '#site'
     wtitle: "h3.box-title"
