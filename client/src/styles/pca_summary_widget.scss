@@ -170,7 +170,7 @@
     min-width: 100%;
     overflow: auto;
 
-    div.background {
+    div.background {/* default background image */
       position: absolute;
       z-index: -100;
       padding: 0;
@@ -192,8 +192,11 @@
       &.jetway-twist-75 {
         background-image: url("../img/pca/Jetway-Twist-75/Rev-001/TwistAero-PCA-Base-Unit.png") ;
       }
+      &.SJ_90 {
+        background-image: url("../img/pca/SJ_90/SJ-90-Base-Unit.png") ;
+      }
     }
-    div.img {
+    div.img {/* default overlays */
       position: absolute;
       background-repeat: no-repeat; 
       background-position: center center;
@@ -221,6 +224,59 @@
       }
       &.bc-cool-on {
         background-image: url("../img/pca/Inet-Model-001/Rev-001/BC-Cool.png");
+      }
+      &.SJ_90 {
+        &.blower-on {
+          background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-Blower.png");
+        }
+        &.filter-on {
+           background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-Filters.png");
+        }
+        &.comp-stage-1-on {
+          background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-Comp-1.png");
+        }
+        &.comp-stage-2-on {
+          background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-Comp-2.png");
+        }
+        &.comp-stage-3-on {
+          background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-Comp-3.png");
+        }
+        &.cond-coil-1-on {
+          background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-Cond-Coil-1.png");
+        }
+        &.cond-coil-2-on {
+          background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-Cond-Coil-2.png");
+        }
+        &.cond-coil-3-on {
+          background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-Cond-Coil-3.png");
+        }
+        &.evap-coil-1-on {
+          background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-Evap-Cool-1.png");
+        }
+        &.evap-coil-2-on {
+          background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-Evap-Cool-2.png");
+        }
+        &.evap-coil-3-on {
+          background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-Evap-Cool-3.png");
+        }
+        &.heating-stage-1-on {
+          background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-Heat-1.png");
+        }
+        &.heating-stage-2-on {
+          background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-Heat-2.png");
+        }
+        &.heating-stage-3-on {
+          background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-Heat-3.png");
+        }
+        &.ac-cool-on {
+          background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-Aircraft-Cool.png"); 
+        }
+        &.bc-cool-on {
+          background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-Bridge-Cool.png"); 
+        }
+        &.fan-1-on {
+           background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-Blower.png");
+        }
       }
       &.jetair-xpc-3013 {
          &.blower-on {
