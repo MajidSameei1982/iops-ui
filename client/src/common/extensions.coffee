@@ -64,6 +64,10 @@ _.extend Marionette.View::,
               sh += "<option value='#{s.id}' #{sel}>#{txt}</option>"
             if !found_sel && acc.sites.models?
               sh = sh.replace "<option value='#{Object.keys(acc.sites.models)[0]}' ","<option value='#{Object.keys(acc.sites.models)[0]}' selected"
+              s = OPCManager.get_site(acc.sites.models[0].id)
+              if s?
+                settings = s.get('settings') || {}
+
       "#{sh}</select></div>"  
 
     terminalSelector: ({id, label, site, terminal})->

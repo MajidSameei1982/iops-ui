@@ -112,8 +112,8 @@ class PbbpcagpuWidgetView extends IOPSWidgetView
     s.terminal = @$('#terminal').val()
     s.zone = @$('#zone').val()
     s.gate = @$('#gate').val()
+    @site_code = OPCManager.get_site_code(@$('#site').val())
     @model.set("settings", s)
-
 #    @update()
 
   toggle_settings: (e)->
@@ -137,7 +137,7 @@ class PbbpcagpuWidgetView extends IOPSWidgetView
     if @site_code? then @watch_updates(@site_code)
 
   start: ()->
-    settings = @model.get('settings')
+    #settings = @model.get('settings')
     @tableWidgetData = '<table id="widgetData" class="data"><tbody></tbody></table>'
     @ui.display.append(@tableWidgetData)
 

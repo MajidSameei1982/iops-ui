@@ -3647,7 +3647,7 @@ _.extend(Marionette.View.prototype, {
         return "<div class='form-group " + cls + "' for='" + id + "'>" + label + field + feedback + "</div>";
       },
       siteSelector: function(arg) {
-        var acc, code, found_sel, i, id, j, label, len, len1, ref, ref1, s, sel, sh, site, txt;
+        var acc, code, found_sel, i, id, j, label, len, len1, ref, ref1, s, sel, settings, sh, site, txt;
         id = arg.id, label = arg.label, site = arg.site;
         sh = "<div class='form-group' for='" + id + "' style='width:95%;'>\n  <label>" + label + "</label>\n  <select id='" + id + "' class='form-control' style='width:95%;' data-placeholder='Select a Site'>\n    <!-- <option value=''></option> -->";
         if ((App.accounts != null) && App.accounts.models.length > 0) {
@@ -3675,6 +3675,10 @@ _.extend(Marionette.View.prototype, {
               }
               if (!found_sel && (acc.sites.models != null)) {
                 sh = sh.replace("<option value='" + (Object.keys(acc.sites.models)[0]) + "' ", "<option value='" + (Object.keys(acc.sites.models)[0]) + "' selected");
+                s = OPCManager.get_site(acc.sites.models[0].id);
+                if (s != null) {
+                  settings = s.get('settings') || {};
+                }
               }
             }
           }
@@ -17181,6 +17185,7 @@ PbbpcagpuWidgetView = (function(superClass) {
     s.terminal = this.$('#terminal').val();
     s.zone = this.$('#zone').val();
     s.gate = this.$('#gate').val();
+    this.site_code = OPCManager.get_site_code(this.$('#site').val());
     return this.model.set("settings", s);
   };
 
@@ -17211,8 +17216,6 @@ PbbpcagpuWidgetView = (function(superClass) {
   };
 
   PbbpcagpuWidgetView.prototype.start = function() {
-    var settings;
-    settings = this.model.get('settings');
     this.tableWidgetData = '<table id="widgetData" class="data"><tbody></tbody></table>';
     this.ui.display.append(this.tableWidgetData);
     return this.update();
