@@ -6374,7 +6374,7 @@ TagConfig = (function(superClass) {
             Element: {
               Type: 'div',
               ParentID: '#dynamic_pca_main_background',
-              Class: 'img jetair-xpc-3013',
+              Class: 'img SJ_90',
               Object: null
             }
           },
@@ -6391,7 +6391,7 @@ TagConfig = (function(superClass) {
             Element: {
               Type: 'div',
               ParentID: '#dynamic_pca_main_background',
-              Class: 'img jetair-xpc-3013',
+              Class: 'img SJ_90',
               Object: null
             }
           },
@@ -6408,41 +6408,7 @@ TagConfig = (function(superClass) {
             Element: {
               Type: 'div',
               ParentID: '#dynamic_pca_main_background',
-              Class: 'img jetair-xpc-3013',
-              Object: null
-            }
-          },
-          cooling_stage_1_img: {
-            ControlTags: {
-              pca_comp_stage_1: 'Boolean'
-            },
-            Parameters: {
-              Parm001: 'ALL_TRUE',
-              Parm002: 'cooling-stage-1-on',
-              Parm003: null,
-              Parm004: 'cooling-stage-1-bq'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#dynamic_pca_main_background',
-              Class: 'img jetair-xpc-3013',
-              Object: null
-            }
-          },
-          cooling_stage_2_img: {
-            ControlTags: {
-              pca_comp_stage_2: 'Boolean'
-            },
-            Parameters: {
-              Parm001: 'ALL_TRUE',
-              Parm002: 'cooling-stage-2-on',
-              Parm003: null,
-              Parm004: 'cooling-stage-2-bq'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#dynamic_pca_main_background',
-              Class: 'img jetair-xpc-3013',
+              Class: 'img SJ_90',
               Object: null
             }
           },
@@ -6460,8 +6426,10 @@ TagConfig = (function(superClass) {
             Element: {
               Type: 'div',
               ParentID: '#dynamic_pca_main_background',
-              Class: 'img jetair-xpc-3013',
-              Object: null
+              Class: {
+                Class: 'img SJ_90',
+                Object: null
+              }
             }
           },
           bccool_img: {
@@ -6477,12 +6445,46 @@ TagConfig = (function(superClass) {
             Element: {
               Type: 'div',
               ParentID: '#dynamic_pca_main_background',
-              Class: 'img jetair-xpc-3013',
+              Class: 'img SJ_90',
               Object: null
             }
           }
         },
         add_graphics: {
+          heating_stage_3_img: {
+            ControlTags: {
+              pca_heater_3: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'heating-stage-3-on',
+              Parm003: null,
+              Parm004: 'heating-stage-3-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          },
+          filter_img: {
+            ControlTags: {
+              pca_dirtyfilter: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'filter-on',
+              Parm003: null,
+              Parm004: 'filter-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          },
           fan_1_img: {
             ControlTags: {
               pca_fan_1: 'Boolean'
@@ -6500,37 +6502,156 @@ TagConfig = (function(superClass) {
               Object: null
             }
           },
-          fan_2_img: {
+          comp_stage_1_img: {
             ControlTags: {
-              pca_fan_2: 'Boolean'
+              pca_comp_stage_1: 'Boolean'
             },
             Parameters: {
               Parm001: 'ALL_TRUE',
-              Parm002: 'fan-2-on',
+              Parm002: 'comp-stage-1-on',
               Parm003: null,
-              Parm004: 'fan-2-bq'
+              Parm004: 'comp-stage-1-bq'
             },
             Element: {
               Type: 'div',
               ParentID: '#dynamic_pca_main_background',
-              Class: 'img jetair-xpc-3013',
+              Class: 'img SJ_90',
               Object: null
             }
           },
-          fan_3_img: {
+          comp_stage_2_img: {
             ControlTags: {
-              pca_fan_3: 'Boolean'
+              pca_comp_stage_2: 'Boolean'
             },
             Parameters: {
               Parm001: 'ALL_TRUE',
-              Parm002: 'fan-3-on',
+              Parm002: 'comp-stage-2-on',
               Parm003: null,
-              Parm004: 'fan-3-bq'
+              Parm004: 'comp-stage-2-bq'
             },
             Element: {
               Type: 'div',
               ParentID: '#dynamic_pca_main_background',
-              Class: 'img jetair-xpc-3013',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          },
+          comp_stage_3_img: {
+            ControlTags: {
+              pca_comp_stage_3: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'comp-stage-3-on',
+              Parm003: null,
+              Parm004: 'comp-stage-3-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          },
+          cond_coil_1_img: {
+            ControlTags: {
+              pca_comp_stage_1: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'cond-coil-1-on',
+              Parm003: null,
+              Parm004: 'cond-coil-1-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          },
+          cond_coil_2_img: {
+            ControlTags: {
+              pca_comp_stage_2: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'cond-coil-2-on',
+              Parm003: null,
+              Parm004: 'cond-coil-2-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          },
+          cond_coil_3_img: {
+            ControlTags: {
+              pca_comp_stage_3: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'cond-coil-3-on',
+              Parm003: null,
+              Parm004: 'cond-coil-3-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          },
+          evap_coil_1_img: {
+            ControlTags: {
+              pca_comp_stage_1: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'evap-coil-1-on',
+              Parm003: null,
+              Parm004: 'evap-coil-1-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          },
+          evap_coil_2_img: {
+            ControlTags: {
+              pca_comp_stage_2: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'evap-coil-2-on',
+              Parm003: null,
+              Parm004: 'evap-coil-2-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          },
+          evap_coil_3_img: {
+            ControlTags: {
+              pca_comp_stage_3: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'evap-coil-3-on',
+              Parm003: null,
+              Parm004: 'evap-coil-3-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
               Object: null
             }
           }
