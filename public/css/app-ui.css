@@ -1202,6 +1202,17 @@ ul.chosen-results li.highlighted {
     width: 100%; }
     .pbb_detail_widget .display .canopy_img.canopy-on {
       background-image: url("../img/pbb/PBB-Canopy-On-400x400.gif"); }
+  .pbb_detail_widget .display .elevating_img {
+    position: relative;
+    float: left;
+    background-image: url("../img/pbb/down-position.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    height: 100%;
+    width: 100%; }
+    .pbb_detail_widget .display .elevating_img.up {
+      background-image: url("../img/pbb/up-position.png"); }
   .pbb_detail_widget .display #pbbdetail_label {
     margin-bottom: 3px; }
     .pbb_detail_widget .display #pbbdetail_label h1 {
@@ -1236,6 +1247,23 @@ ul.chosen-results li.highlighted {
     width: 39%;
     top: 0px;
     left: 0px; }
+  .pbb_level_detail_widget .display #widgetImage21 {
+    position: absolute;
+    float: right;
+    width: 19%;
+    left: 76%;
+    top: 0%; }
+    .pbb_level_detail_widget .display #widgetImage21 .elevating_img {
+      position: relative;
+      float: left;
+      background-image: url("../img/pbb/down-position.png");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+      height: 100%;
+      width: 100%; }
+      .pbb_level_detail_widget .display #widgetImage21 .elevating_img.up {
+        background-image: url("../img/pbb/up-position.png"); }
   .pbb_level_detail_widget .display #pbb_cab_angle_disp {
     position: absolute;
     left: 46%;
@@ -1867,6 +1895,8 @@ table.data, table.data2 {
       background-color: #fff; }
   table.data.no-show, table.data2.no-show {
     visibility: hidden; }
+  table.data.show, table.data2.show {
+    visibility: visible; }
   table.data td, table.data div, table.data2 td, table.data2 div {
     padding: 3px 10px;
     background-color: #eee;

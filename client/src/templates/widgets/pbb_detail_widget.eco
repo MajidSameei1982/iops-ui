@@ -18,27 +18,30 @@
     </div>
     <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>
 <table height="100%";width"100%">
-  <tr><td>
-    <table> 
-     <tr><td id="aircraft_img_container" style="width:300px; height:200px; ;text-align:center; vertical-align:middle">
-     <!--<div id="aircraft_img" class=""></div> -->  
-    </td></tr>         
-    </table>
- </td><td>
-    <table class='data transparent'> 
-       <tr><td id='pbb_status_container' class=''></td><td id='pbb_undockordocktime_container' class=''></td></tr>
-     <tr>
-      <td id="autolevel_img_container" style="width:200px; height:150px; vertical-align:middle">
-        <!--<div id="autolevel_img" class=""></div>-->
-      </td>
-      <td id="canopy_img_container" style="width:200px; height:150px; vertical-align:middle">
-       <!--<div id="canopy_img" class=""></div>-->    
-      </td>
-     </tr>  
-     <tr><td id='pbb_autolevel_container' class=''></td><td id='pbb_canopy_container' class=''></td></tr>     
-    </table>
- </td></tr>
- </td></tr></table> 
+  <tr>
+    <td>
+      <table> 
+        <tr><td id="aircraft_img_container" style="width:300px; height:200px; ;text-align:center; vertical-align:middle"></td><tr>
+      </table>
+    </td>
+    <td>
+      <table class='data transparent'> 
+        <tr><td id='pbb_status_container' class=''></td><td id='pbb_undockordocktime_container' class=''></td></tr>
+        <tr>
+            <td id="autolevel_img_container" style="width:225px; height:150px; vertical-align:middle"></td>
+            <td id="canopy_img_container" style="width:225px; height:150px; vertical-align:middle"></td>
+        </tr>  
+        <tr><td id='pbb_autolevel_container' class=''></td><td id='pbb_canopy_container' class=''></td></tr>     
+      </table>
+    </td>
+    <td>
+      <table id="widgetImage2" class='data no-show'>  
+        <tr><td class='val'>Elevating Rotunda </td></tr>
+        <tr><td id="elevating_img_container" style="width:150px; height:165px; vertical-align:middle "></td></tr>
+      </table>
+    </td>
+  </tr>
+</table> 
   </div>
 
   <div class="settings" style="display: none;">

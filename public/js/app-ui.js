@@ -1980,7 +1980,7 @@ window.JST["widgets/pbb_detail_widget"] = function(__obj) {
     };
     (function() {
     
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div>\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n<table height="100%";width"100%">\n  <tr><td>\n    <table> \n     <tr><td id="aircraft_img_container" style="width:300px; height:200px; ;text-align:center; vertical-align:middle">\n     <!--<div id="aircraft_img" class=""></div> -->  \n    </td></tr>         \n    </table>\n </td><td>\n    <table class=\'data transparent\'> \n       <tr><td id=\'pbb_status_container\' class=\'\'></td><td id=\'pbb_undockordocktime_container\' class=\'\'></td></tr>\n     <tr>\n      <td id="autolevel_img_container" style="width:200px; height:150px; vertical-align:middle">\n        <!--<div id="autolevel_img" class=""></div>-->\n      </td>\n      <td id="canopy_img_container" style="width:200px; height:150px; vertical-align:middle">\n       <!--<div id="canopy_img" class=""></div>-->    \n      </td>\n     </tr>  \n     <tr><td id=\'pbb_autolevel_container\' class=\'\'></td><td id=\'pbb_canopy_container\' class=\'\'></td></tr>     \n    </table>\n </td></tr>\n </td></tr></table> \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div>\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n<table height="100%";width"100%">\n  <tr>\n    <td>\n      <table> \n        <tr><td id="aircraft_img_container" style="width:300px; height:200px; ;text-align:center; vertical-align:middle"></td><tr>\n      </table>\n    </td>\n    <td>\n      <table class=\'data transparent\'> \n        <tr><td id=\'pbb_status_container\' class=\'\'></td><td id=\'pbb_undockordocktime_container\' class=\'\'></td></tr>\n        <tr>\n            <td id="autolevel_img_container" style="width:225px; height:150px; vertical-align:middle"></td>\n            <td id="canopy_img_container" style="width:225px; height:150px; vertical-align:middle"></td>\n        </tr>  \n        <tr><td id=\'pbb_autolevel_container\' class=\'\'></td><td id=\'pbb_canopy_container\' class=\'\'></td></tr>     \n      </table>\n    </td>\n    <td>\n      <table id="widgetImage2" class=\'data no-show\'>  \n        <tr><td class=\'val\'>Elevating Rotunda </td></tr>\n        <tr><td id="elevating_img_container" style="width:150px; height:165px; vertical-align:middle "></td></tr>\n      </table>\n    </td>\n  </tr>\n</table> \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -2034,7 +2034,7 @@ window.JST["widgets/pbb_level_detail_widget"] = function(__obj) {
     };
     (function() {
     
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="aircraft_img" class="">\n    <div>\n \n    </div>\n\n    <table id="widgetData" class=\'data transparent\'>\n      <tbody>\n      </tbody>\n    </table>\n      <!-- <div id="pbb_cab_angle_disp" class=""></div> -->\n      <label id="pbb_cab_angle_disp" class=""></label>  \n      <!-- <div id="pbb_slope_deg" class=""></div> --> \n      <label id="pbb_slope_deg" class=""></label> \n      <!-- <div id="pbb_swing_angle_disp" class=""></div> -->   \n      <label id="pbb_swing_angle_disp" class=""></label>   \n      <!-- <div id="pbb_height_to_disp" class=""></div> -->\n      <label id="pbb_height_to_disp" class=""></label>\n      <!-- <div id="pca_pcaambhumidity" class=""></div> -->\n      <label id="pca_pcaambhumidity" class=""></label>\n      <!-- <div id="pbb_wheel_angle_deg" class=""></div> -->\n      <label id="pbb_wheel_angle_deg" class=""></label>\n      <!-- <div id="pbb_tunnel_length" class=""></div> --> \n      <label id="pbb_tunnel_length" class=""></label> \n  </div></div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="aircraft_img" class="">\n      <div></div>\n\n    <table id="widgetData" class=\'data transparent\'>\n      <tbody>\n      </tbody>\n    </table>\n    <table id="widgetImage21">  \n        <tr><td id="elevating_img_container" style="width:150px; height:165px; vertical-align:middle"  class=\'no-show\'></td></tr>\n    </table>\n      <!-- <div id="pbb_cab_angle_disp" class=""></div> -->\n      <label id="pbb_cab_angle_disp" class=""></label>  \n      <!-- <div id="pbb_slope_deg" class=""></div> --> \n      <label id="pbb_slope_deg" class=""></label> \n      <!-- <div id="pbb_swing_angle_disp" class=""></div> -->   \n      <label id="pbb_swing_angle_disp" class=""></label>   \n      <!-- <div id="pbb_height_to_disp" class=""></div> -->\n      <label id="pbb_height_to_disp" class=""></label>\n      <!-- <div id="pca_pcaambhumidity" class=""></div> -->\n      <label id="pca_pcaambhumidity" class=""></label>\n      <!-- <div id="pbb_wheel_angle_deg" class=""></div> -->\n      <label id="pbb_wheel_angle_deg" class=""></label>\n      <!-- <div id="pbb_tunnel_length" class=""></div> --> \n      <label id="pbb_tunnel_length" class=""></label> \n\n   </div>\n </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -10189,12 +10189,93 @@ TagConfig = (function(superClass) {
               Object: null
             }
           }
+        },
+        4: {
+          B1: {
+            B29L2: {
+              add_graphics: {
+                elevating_img: {
+                  ControlTags: {
+                    elvrot_rotunda_position_boolean: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'up',
+                    Parm003: null,
+                    Parm004: 'elevating-img-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#elevating_img_container',
+                    Class: 'elevating_img',
+                    Object: null
+                  }
+                }
+              },
+              add_tags: {
+                elvrot_rotunda_position_boolean: {
+                  Tag: 'ELVROT.ROTUNDA_POSITION_BOOLEAN',
+                  Label: 'Elevating Rotunda Position',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'Down Position',
+                    Parm002: 'Up Position',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                position_container_tag: {
+                  Tag: 'ELVROT.ROTUNDA_POSITION',
+                  Label: 'Elevating Rotunda Position',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#widgetImage2',
+                    Class: 'val transparent show',
+                    Object: null
+                  }
+                }
+              }
+            }
+          }
         }
       },
       pbb_level_detail_widget: {
         4: {
           B1: {
             B29L2: {
+              add_graphics: {
+                elevating_img: {
+                  ControlTags: {
+                    elvrot_rotunda_position_boolean: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'up',
+                    Parm003: null,
+                    Parm004: 'elevating-img-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#elevating_img_container',
+                    Class: 'elevating_img show',
+                    Object: null
+                  }
+                }
+              },
               add_tags: {
                 elvrot_rotunda_status: {
                   Tag: 'ELVROT.ROTUNDA_STATUS',
@@ -10230,15 +10311,16 @@ TagConfig = (function(superClass) {
                     Object: null
                   }
                 },
-                elvrot_rotunda_position: {
-                  Tag: 'ELVROT.ROTUNDA_POSITION',
+                elvrot_rotunda_position_boolean: {
+                  Tag: 'ELVROT.ROTUNDA_POSITION_BOOLEAN',
                   Label: 'Elevating Rotunda Position',
-                  DataType: 'Value',
+                  DataType: 'Boolean',
                   Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: '#{1}',
-                    Parm004: null
+                    Parm001: 'Down Position',
+                    Parm002: 'Up Position',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
                   },
                   Element: {
                     Type: 'TableRow',

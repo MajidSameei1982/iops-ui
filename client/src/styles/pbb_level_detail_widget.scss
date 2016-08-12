@@ -14,8 +14,28 @@
       width:39%; 
       top:0px; 
       left:0px;
+    }   
+    #widgetImage21 {
+      position:absolute;
+      float:right; 
+      width:19%; 
+      left: 76%;
+      top: 0%;
+        .elevating_img {
+        position: relative;
+        float: left;
+        background-image: url("../img/pbb/down-position.png") ;
+        background-repeat: no-repeat; 
+        background-position: center center;
+        background-size: contain;
+        height: 100%;
+        width: 100%;
+          &.up {
+            background-image: url("../img/pbb/up-position.png");
+          }
+      }
     }
-    
+
     #pbb_cab_angle_disp{
     position: absolute;
     left: 46%;
@@ -86,7 +106,7 @@
         background-image: url("../img/pbb/Docking_Plane_at-Gate.png");
       }
   	}
-
+    
   }
   
 }

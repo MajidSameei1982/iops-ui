@@ -130,6 +130,9 @@ table {
 		&.no-show {
 			visibility: hidden;
 		}
+		&.show {
+			visibility: visible;
+		}
 		td, div {
 			padding:3px 10px;
 			background-color: #eee;

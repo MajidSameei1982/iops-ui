@@ -10,13 +10,14 @@
   
   <div class="display contain">
     <div id="aircraft_img" class="">
-    <div>
- 
-    </div>
+      <div></div>
 
     <table id="widgetData" class='data transparent'>
       <tbody>
       </tbody>
+    </table>
+    <table id="widgetImage21">  
+        <tr><td id="elevating_img_container" style="width:150px; height:165px; vertical-align:middle"  class='no-show'></td></tr>
     </table>
       <!-- <div id="pbb_cab_angle_disp" class=""></div> -->
       <label id="pbb_cab_angle_disp" class=""></label>  
@@ -32,7 +33,9 @@
       <label id="pbb_wheel_angle_deg" class=""></label>
       <!-- <div id="pbb_tunnel_length" class=""></div> --> 
       <label id="pbb_tunnel_length" class=""></label> 
-  </div></div>
+
+   </div>
+ </div>
 
   <div class="settings" style="display: none;">
     <h3>Settings</h3>
