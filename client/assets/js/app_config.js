@@ -12,8 +12,8 @@
 window.app_config = {
   widgets: [
     {
-      id: "airport",
-      name: "Airport Widget",
+      id: "airportoverview",
+      name: "Airport Overview Widget",
       icon: "road"
     },
     {
@@ -58,7 +58,7 @@ window.app_config = {
     },
     {
       id: "pcasummary",
-      name: "PCA Overview Widget",
+      name: "PCA Summary Widget",
       icon: "server"
     },
     {

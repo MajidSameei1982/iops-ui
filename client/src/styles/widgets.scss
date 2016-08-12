@@ -133,6 +133,7 @@ table {
 		td, div {
 			padding:3px 10px;
 			background-color: #eee;
+			border-left: solid 1px #ddd;
 			color:#999;
 			&.transparent {
 				background: transparent;
