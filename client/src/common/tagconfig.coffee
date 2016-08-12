@@ -836,7 +836,7 @@ class TagConfig extends Object
 							}
 							add_tags:{
 								elvrot_rotunda_position_boolean:{Tag:'ELVROT.ROTUNDA_POSITION_BOOLEAN',Label:'Elevating Rotunda Position',DataType:'Boolean',Parameters:{Parm001:'Down Position',Parm002:'Up Position',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-								position_container_tag:{Tag:'ELVROT.ROTUNDA_POSITION',Label:'Elevating Rotunda Position',DataType:'Value',Parameters:{Parm001:false,Parm002:null,Parm003:'#{1}',Parm004:null},Element:{Type:'div',ParentID:'#widgetImage2',Class:'val transparent show',Object:null}},
+								position_container_tag:{Tag:'ELVROT.ROTUNDA_POSITION',Label:'Elevating Rotunda Position',DataType:'Value',Parameters:{Parm001:false,Parm002:null,Parm003:'#{1}',Parm004:null},Element:{Type:'div',ParentID:'#widgetImage2',Class:'val show',Object:null}},
 							}
 						
 			pbb_level_detail_widget: # PBB Overview Widget

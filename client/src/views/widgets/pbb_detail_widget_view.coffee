@@ -20,8 +20,8 @@ class PbbdetailWidgetView extends IOPSWidgetView
     warnings:       'i#warnings'
 
   @layout:
-    sx: 8
-    sy: 7
+    sx: 12
+    sy: 8
 
   tags:
     #Grid Tags

@@ -20,8 +20,8 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     warnings:       'i#warnings'
 
   @layout:
-    sx: 12
-    sy: 9
+    sx: 13
+    sy: 16
 
   tags:
     #Grid Tags
