@@ -6,7 +6,7 @@
   </div>
 </div><!-- /.box-header -->
 <div class="box-body content">
-  <div id='display'>
+  <div class='display'>
     <div id='loading' style='display:none;'>Loading Weather Data...</div>
     <div id='weather' style='display:none;'>
       <table style='width:100%;text-align:center;'>

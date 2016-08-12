@@ -1,5 +1,5 @@
 <div class="box-header with-border">
-  <div class='pull-left'><i class="fa fa-server"></i>&emsp;<h3 class="box-title"></h3>
+  <div class='pull-left'><i class="fa fa-server"></i>&emsp;<h3 class="box-title"></h3>&emsp;
     <select id="mode" style='display:none;'>
       <option value=''>Summary</option>
       <option value='plots'>Temp. Data</option>

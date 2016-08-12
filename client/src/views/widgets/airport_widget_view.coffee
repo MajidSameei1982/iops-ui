@@ -145,11 +145,14 @@ class AirportWidgetView extends IOPSWidgetView
   onShow: ()->
     settings = @model.get('settings')
     settings || settings = {}
-    @$('#site').on 'change', ()=>
-      @set_model()    
     site = settings.site
     if !site? || site == ''
       @toggle_settings()
+    @draw_selectors(settings.terminal, settings.zone, settings.gate)
+    
+    @$('#site').on 'change', ()=>
+      @set_model()
+
 
   start: ()->
     @update()

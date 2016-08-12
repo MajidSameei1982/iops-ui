@@ -253,6 +253,11 @@ class IOPSWidgetView extends WidgetView
       @draw_zones(null)
       @draw_gates(null)
       @set_model()
+
+    @$("select#terminal").chosen
+      disable_search:true
+      width:'auto'
+      #width:'50px'
     @
 
   # draw zone selector
@@ -271,6 +276,11 @@ class IOPSWidgetView extends WidgetView
     zs.on 'change', ()=>
       @draw_gates(null)
       @set_model()
+
+    @$("select#zone").chosen
+      disable_search:true
+      width:'auto'
+      #width:'50px'
     @
   
   # draw gate selector
@@ -291,6 +301,11 @@ class IOPSWidgetView extends WidgetView
     @$('#gates').empty().append(gs)
     gs.on 'change', ()=>
       @set_model()
+
+    @$("select#gate").chosen
+      disable_search:true
+      width:'auto'
+      #width:'50px'
     @
 
   # draw all selectors
@@ -302,18 +317,6 @@ class IOPSWidgetView extends WidgetView
       disable_search:true
       width:'auto'
       #width:'150px'
-    @$("select#terminal").chosen
-      disable_search:true
-      width:'auto'
-      #width:'50px'
-    @$("select#zone").chosen
-      disable_search:true
-      width:'auto'
-      #width:'50px'
-    @$("select#gate").chosen
-      disable_search:true
-      width:'auto'
-      #width:'50px'
     @
     
 # ----------------------------------
