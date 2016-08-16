@@ -10929,7 +10929,7 @@ TagConfig = (function(superClass) {
           }
         }
       },
-      pbb_detail_widget: {
+      pbb_level_detail_widget: {
         D: {
           removeTags: {
             'pbb_autolevel_key': 'pbb_autolevel_key',

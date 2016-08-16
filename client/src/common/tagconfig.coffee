@@ -930,13 +930,13 @@ class TagConfig extends Object
 							gpu_volts_out_average_2:{Tag:'GPU.RV2OUTAVG',Label:'Volts Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 						}
 			#pbb_widget: # PBB Bridge Widget - no changes needed for D
-			pbb_detail_widget: #PBB Detail Widget
+			#pbb_detail_widget: #PBB Detail Widget- no changes needed for D
+			pbb_level_detail_widget: # PBB Overview Widget
 				D:
 					removeTags:{'pbb_autolevel_key','pbb_autoleveling','pbb_cabin_floor_deicer','pbb_terminal_door','pbb_cab_angle_disp','pbb_slope_deg','pbb_swing_angle_disp','pbb_height_to_disp','pbb_wheel_angle_deg','pbb_tunnel_length'}
 					update_tags:{
 						pbb_estop:{Tag:'PBB.ALARM.E_STOP',Label:'E-Stop',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					}
-			#pbb_level_detail_widget: # PBB Overview Widget
 			pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
 				D:
 					17:
