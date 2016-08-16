@@ -434,7 +434,9 @@ class TagConfig extends Object
 					pca_mode_heating:{Tag:'PCA.MODE_HEATING',Label:'Heat Mode Selected',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 				}
 			#pca_summary_widget: # PCA Summary Widget
-			#pca_discharge_widget: # PCA Discharge Widget
+			pca_discharge_widget: # PCA Discharge Widget
+				remove_tags:{'pca_cooling_pt','pca_heating_pt','pca_alarm_cooling_run','pca_alarm_heating_run','pca_cooling_tm','pca_heating_tm'
+				}
 			gpu_widget: # GPU Widget
 				C:
 					remove_tags:{'gpu_by_pass','gpu_ra_out_avg','gpu_rv_out_avg','gpu_ra_in_avg','gpu_rv_in_avg','gpu_pm_output_phasea_i','gpu_pm_output_phaseb_i','gpu_pm_output_phasec_i','gpu_pm_output_phasea_v','gpu_pm_out','ut_phaseb_v','gpu_pm_output_phasec_v','gpu_pm_input_phasea_i','gpu_pm_input_phaseb_i','gpu_pm_input_phasec_i','gpu_pm_input_phasea_v','gpu_pm_input_phaseb_v','gpu_pm_input_phasec_v','gpu_on_1','gpu_on_2'}
@@ -487,7 +489,18 @@ class TagConfig extends Object
 			#pbb_widget: # PBB Bridge Widget
 			#pbb_detail_widget: #PBB Detail Widget
 			#pbb_level_detail_widget: # PBB Overview Widget
-			#pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
+			pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
+				D:
+					17:
+						add_tags:{
+							gpu_amps_out_average_2:{Tag:'GPU.RA2OUTAVG',Label:'Amps Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_volts_out_average_2:{Tag:'GPU.RV2OUTAVG',Label:'Volts Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+						}
+					20:
+						add_tags:{
+							gpu_amps_out_average_2:{Tag:'GPU.RA2OUTAVG',Label:'Amps Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_volts_out_average_2:{Tag:'GPU.RV2OUTAVG',Label:'Volts Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+						}
 
 		PHX:
 			pca_widget: # PCA Widget
