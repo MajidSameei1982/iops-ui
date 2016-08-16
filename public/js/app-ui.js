@@ -6149,6 +6149,73 @@ TagConfig = (function(superClass) {
 
   TagConfig.clients = {
     RDU: {
+      pca_widget: {
+        remove_tags: {
+          'pca_hot_gas_1': 'pca_hot_gas_1',
+          'pca_hot_gas_2': 'pca_hot_gas_2',
+          'pca_suction_pressure_1': 'pca_suction_pressure_1',
+          'pca_suction_pressure_2': 'pca_suction_pressure_2',
+          'pca_bridge_damper': 'pca_bridge_damper',
+          'pca_bridge_air': 'pca_bridge_air',
+          'pca_dirty_filter': 'pca_dirty_filter',
+          'pca_heater_2': 'pca_heater_2'
+        },
+        update_tags: {
+          pca_comp_stage_1: {
+            Tag: 'PCA.COMPPRI1',
+            Label: 'Primary compressor #1 is running',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_comp_stage_2: {
+            Tag: 'PCA.COMPPRI2',
+            Label: 'Primary compressor #2 is running',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          }
+        },
+        add_tags: {
+          pca_mode_heating: {
+            Tag: 'PCA.MODE_HEATING',
+            Label: 'Heat Mode Selected',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          }
+        }
+      },
       gpu_widget: {
         C: {
           remove_tags: {
