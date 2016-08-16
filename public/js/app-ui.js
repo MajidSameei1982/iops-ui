@@ -6726,6 +6726,41 @@ TagConfig = (function(superClass) {
           }
         }
       },
+      pbb_detail_widget: {
+        D: {
+          removeTags: {
+            'pbb_autolevel_key': 'pbb_autolevel_key',
+            'pbb_autoleveling': 'pbb_autoleveling',
+            'pbb_cabin_floor_deicer': 'pbb_cabin_floor_deicer',
+            'pbb_terminal_door': 'pbb_terminal_door',
+            'pbb_cab_angle_disp': 'pbb_cab_angle_disp',
+            'pbb_slope_deg': 'pbb_slope_deg',
+            'pbb_swing_angle_disp': 'pbb_swing_angle_disp',
+            'pbb_height_to_disp': 'pbb_height_to_disp',
+            'pbb_wheel_angle_deg': 'pbb_wheel_angle_deg',
+            'pbb_tunnel_length': 'pbb_tunnel_length'
+          },
+          update_tags: {
+            pbb_estop: {
+              Tag: 'PBB.ALARM.E_STOP',
+              Label: 'E-Stop',
+              DataType: 'Boolean',
+              Parameters: {
+                Parm001: 'On',
+                Parm002: 'Off',
+                Parm003: 'ok',
+                Parm004: ''
+              },
+              Element: {
+                Type: 'TableRow',
+                ParentID: '#widgetData',
+                Class: null,
+                Object: null
+              }
+            }
+          }
+        }
+      },
       pbb_pca_gpu_basic_widget: {
         D: {
           17: {
