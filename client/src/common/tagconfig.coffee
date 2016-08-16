@@ -440,7 +440,6 @@ class TagConfig extends Object
 						gpu_freq_out_phase_B:{Tag:'GPU.PM_OUTPUT.PHASEB_FREQ',Label:'Frequency Out Phase B',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 						gpu_freq_out_phase_C:{Tag:'GPU.PM_OUTPUT.PHASEC_FREQ',Label:'Frequency Out Phase C',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					}
-
 					17:
 						add_tags:{
 							gpu_amps_out_phase_A_2:{Tag:'GPU.RA2OUTA',Label:'Amps Out Phase A_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
@@ -453,7 +452,7 @@ class TagConfig extends Object
 							gpu_volts_out_average_2:{Tag:'GPU.RV2OUTAVG',Label:'Volts Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 
 						}
-					120:
+					20:
 						add_tags:{
 							gpu_amps_out_phase_A_2:{Tag:'GPU.RA2OUTA',Label:'Amps Out Phase A_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							gpu_amps_out_phase_B_2:{Tag:'GPU.RA2OUTB',Label:'Amps Out Phase B_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
@@ -463,10 +462,20 @@ class TagConfig extends Object
 							gpu_volts_out_phase_C_2:{Tag:'GPU.RV2OUTC',Label:'Volts Out Phase C_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							gpu_amps_out_average_2:{Tag:'GPU.RA2OUTAVG',Label:'Amps Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							gpu_volts_out_average_2:{Tag:'GPU.RV2OUTAVG',Label:'Volts Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-
 						}
-
-			#gpu_summary_widget: # GPU Summary Widget
+			gpu_summary_widget: # GPU Summary Widget
+				#C: #TBD - Tags not ready
+				D:
+					17:
+						add_tags:{
+							gpu_amps_out_average_2:{Tag:'GPU.RA2OUTAVG',Label:'Amps Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_volts_out_average_2:{Tag:'GPU.RV2OUTAVG',Label:'Volts Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+						}
+					20:
+						add_tags:{
+							gpu_amps_out_average_2:{Tag:'GPU.RA2OUTAVG',Label:'Amps Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_volts_out_average_2:{Tag:'GPU.RV2OUTAVG',Label:'Volts Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+						}
 			#pbb_widget: # PBB Bridge Widget
 			#pbb_detail_widget: #PBB Detail Widget
 			#pbb_level_detail_widget: # PBB Overview Widget

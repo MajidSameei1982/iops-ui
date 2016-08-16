@@ -6427,7 +6427,7 @@ TagConfig = (function(superClass) {
               }
             }
           },
-          120: {
+          20: {
             add_tags: {
               gpu_amps_out_phase_A_2: {
                 Tag: 'GPU.RA2OUTA',
@@ -6531,6 +6531,86 @@ TagConfig = (function(superClass) {
                   Object: null
                 }
               },
+              gpu_amps_out_average_2: {
+                Tag: 'GPU.RA2OUTAVG',
+                Label: 'Amps Out Average_2',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: false,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              gpu_volts_out_average_2: {
+                Tag: 'GPU.RV2OUTAVG',
+                Label: 'Volts Out Average_2',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: false,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              }
+            }
+          }
+        }
+      },
+      gpu_summary_widget: {
+        D: {
+          17: {
+            add_tags: {
+              gpu_amps_out_average_2: {
+                Tag: 'GPU.RA2OUTAVG',
+                Label: 'Amps Out Average_2',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: false,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              gpu_volts_out_average_2: {
+                Tag: 'GPU.RV2OUTAVG',
+                Label: 'Volts Out Average_2',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: false,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              }
+            }
+          },
+          20: {
+            add_tags: {
               gpu_amps_out_average_2: {
                 Tag: 'GPU.RA2OUTAVG',
                 Label: 'Amps Out Average_2',
