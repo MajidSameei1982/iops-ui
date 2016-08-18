@@ -10200,7 +10200,7 @@ TagConfig = (function(superClass) {
                   },
                   Parameters: {
                     Parm001: 'ALL_TRUE',
-                    Parm002: 'up',
+                    Parm002: 'down-position',
                     Parm003: null,
                     Parm004: 'elevating-img-bq'
                   },
@@ -10264,7 +10264,7 @@ TagConfig = (function(superClass) {
                   },
                   Parameters: {
                     Parm001: 'ALL_TRUE',
-                    Parm002: 'up',
+                    Parm002: 'down-position',
                     Parm003: null,
                     Parm004: 'elevating-img-bq'
                   },
