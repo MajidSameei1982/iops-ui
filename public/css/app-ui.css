@@ -1205,14 +1205,14 @@ ul.chosen-results li.highlighted {
   .pbb_detail_widget .display .elevating_img {
     position: relative;
     float: left;
-    background-image: url("../img/pbb/down-position.png");
+    background-image: url("../img/pbb/up-position.png");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
     height: 100%;
     width: 100%; }
-    .pbb_detail_widget .display .elevating_img.up {
-      background-image: url("../img/pbb/up-position.png"); }
+    .pbb_detail_widget .display .elevating_img.down-position {
+      background-image: url("../img/pbb/down-position.png"); }
   .pbb_detail_widget .display #pbbdetail_label {
     margin-bottom: 3px; }
     .pbb_detail_widget .display #pbbdetail_label h1 {
@@ -1256,14 +1256,14 @@ ul.chosen-results li.highlighted {
     .pbb_level_detail_widget .display #widgetImage21 .elevating_img {
       position: relative;
       float: left;
-      background-image: url("../img/pbb/down-position.png");
+      background-image: url("../img/pbb/up-position.png");
       background-repeat: no-repeat;
       background-position: center center;
       background-size: contain;
       height: 100%;
       width: 100%; }
-      .pbb_level_detail_widget .display #widgetImage21 .elevating_img.up {
-        background-image: url("../img/pbb/up-position.png"); }
+      .pbb_level_detail_widget .display #widgetImage21 .elevating_img.down-position {
+        background-image: url("../img/pbb/down-position.png"); }
   .pbb_level_detail_widget .display #pbb_cab_angle_disp {
     position: absolute;
     left: 46%;

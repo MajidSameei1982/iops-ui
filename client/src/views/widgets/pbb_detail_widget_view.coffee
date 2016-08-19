@@ -112,6 +112,7 @@ class PbbdetailWidgetView extends IOPSWidgetView
     v = @get_bool(@vals.pbb_status)
     a = @get_bool(@vals.pbb_autolevel_mode)
     c = @get_bool(@vals.pbb_canopy)
+    e = @get_bool(@vals.elvrot_rotunda_position_boolean)
 
     sq = @data_q(@tagData.pbb_status.Tag)
     @$("div.aircraft_img").toggleClass('docked', v==true && sq)
@@ -121,6 +122,9 @@ class PbbdetailWidgetView extends IOPSWidgetView
 
     cq = @data_q(@tagData.pbb_canopy.Tag)
     @$("div.canopy_img").toggleClass('canopy-on', c==true && cq)
+
+    eq = @data_q(@tagData.elvrot_rotunda_position_boolean.Tag)
+    @$("div.elevating_img").toggleClass('down-position', e==true && eq)
  
 
     # ALARMS

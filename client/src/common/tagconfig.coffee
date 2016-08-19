@@ -832,7 +832,7 @@ class TagConfig extends Object
 					B1:
 						B29L2:
 							add_graphics:{
-								elevating_img:{ControlTags:{elvrot_rotunda_position_boolean:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'up',Parm003:null,Parm004:'elevating-img-bq'},Element:{Type:'div',ParentID:'#elevating_img_container',Class:'elevating_img',Object:null}},
+								elevating_img:{ControlTags:{elvrot_rotunda_position_boolean:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'down-position',Parm003:null,Parm004:'elevating-img-bq'},Element:{Type:'div',ParentID:'#elevating_img_container',Class:'elevating_img',Object:null}},
 							}
 							add_tags:{
 								elvrot_rotunda_position_boolean:{Tag:'ELVROT.ROTUNDA_POSITION_BOOLEAN',Label:'Elevating Rotunda Position',DataType:'Boolean',Parameters:{Parm001:'Down Position',Parm002:'Up Position',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
@@ -844,7 +844,7 @@ class TagConfig extends Object
 					B1:
 						B29L2:
 							add_graphics:{
-								elevating_img:{ControlTags:{elvrot_rotunda_position_boolean:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'up',Parm003:null,Parm004:'elevating-img-bq'},Element:{Type:'div',ParentID:'#elevating_img_container',Class:'elevating_img show',Object:null}},
+								elevating_img:{ControlTags:{elvrot_rotunda_position_boolean:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'down-position',Parm003:null,Parm004:'elevating-img-bq'},Element:{Type:'div',ParentID:'#elevating_img_container',Class:'elevating_img show',Object:null}},
 							}
 							add_tags:{
 								elvrot_rotunda_status:{Tag:'ELVROT.ROTUNDA_STATUS',Label:'Elevating Rotunda Status',DataType:'Value',Parameters:{Parm001:false,Parm002:null,Parm003:'#{1}',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},

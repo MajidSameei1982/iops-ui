@@ -24,14 +24,14 @@
         .elevating_img {
         position: relative;
         float: left;
-        background-image: url("../img/pbb/down-position.png") ;
+        background-image: url("../img/pbb/up-position.png") ;
         background-repeat: no-repeat; 
         background-position: center center;
         background-size: contain;
         height: 100%;
         width: 100%;
-          &.up {
-            background-image: url("../img/pbb/up-position.png");
+          &.down-position {
+            background-image: url("../img/pbb/down-position.png");
           }
       }
     }

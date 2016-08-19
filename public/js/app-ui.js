@@ -10200,7 +10200,7 @@ TagConfig = (function(superClass) {
                   },
                   Parameters: {
                     Parm001: 'ALL_TRUE',
-                    Parm002: 'up',
+                    Parm002: 'down-position',
                     Parm003: null,
                     Parm004: 'elevating-img-bq'
                   },
@@ -10264,7 +10264,7 @@ TagConfig = (function(superClass) {
                   },
                   Parameters: {
                     Parm001: 'ALL_TRUE',
-                    Parm002: 'up',
+                    Parm002: 'down-position',
                     Parm003: null,
                     Parm004: 'elevating-img-bq'
                   },
@@ -17518,7 +17518,7 @@ PbbdetailWidgetView = (function(superClass) {
   };
 
   PbbdetailWidgetView.prototype.data_update = function(data) {
-    var a, aq, auq, c, cq, el, fq, ref1, show_alarms, sq, tag, undockordocktimeun, v, wq;
+    var a, aq, auq, c, cq, e, el, eq, fq, ref1, show_alarms, sq, tag, undockordocktimeun, v, wq;
     this.refresh_values();
     ref1 = this.tagData;
     for (tag in ref1) {
@@ -17540,12 +17540,15 @@ PbbdetailWidgetView = (function(superClass) {
     v = this.get_bool(this.vals.pbb_status);
     a = this.get_bool(this.vals.pbb_autolevel_mode);
     c = this.get_bool(this.vals.pbb_canopy);
+    e = this.get_bool(this.vals.elvrot_rotunda_position_boolean);
     sq = this.data_q(this.tagData.pbb_status.Tag);
     this.$("div.aircraft_img").toggleClass('docked', v === true && sq);
     auq = this.data_q(this.tagData.pbb_autolevel_mode.Tag);
     this.$("div.autolevel_img").toggleClass('autolevel-on', a === true && auq);
     cq = this.data_q(this.tagData.pbb_canopy.Tag);
     this.$("div.canopy_img").toggleClass('canopy-on', c === true && cq);
+    eq = this.data_q(this.tagData.elvrot_rotunda_position_boolean.Tag);
+    this.$("div.elevating_img").toggleClass('down-position', e === true && eq);
     aq = this.data_q(this.tags.pbb_has_alarms);
     this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
     wq = this.data_q(this.tags.pbb_has_warnings);
@@ -17740,7 +17743,7 @@ PbbleveldetailWidgetView = (function(superClass) {
   };
 
   PbbleveldetailWidgetView.prototype.data_update = function(data) {
-    var aq, ca1, cabangledisp, hd1, heighttodisp, ref1, s2, slopedeg, sq, swa1, swingangledisp, tag, tl, tunnellength, v, wa1, wheelangledeg, wq;
+    var aq, ca1, cabangledisp, e, eq, hd1, heighttodisp, ref1, s2, slopedeg, sq, swa1, swingangledisp, tag, tl, tunnellength, v, wa1, wheelangledeg, wq;
     this.refresh_values();
     ref1 = this.tagData;
     for (tag in ref1) {
@@ -17760,8 +17763,11 @@ PbbleveldetailWidgetView = (function(superClass) {
       }
     }
     v = this.get_bool(this.vals.pbb_status);
+    e = this.get_bool(this.vals.elvrot_rotunda_position_boolean);
     sq = this.data_q(this.tagData.pbb_status.Tag);
     this.$("#aircraft_img").toggleClass('docked', v === true && sq);
+    eq = this.data_q(this.tagData.elvrot_rotunda_position_boolean.Tag);
+    this.$("div.elevating_img").toggleClass('down-position', e === true && eq);
 
     /*
     Tags:{'pbb_status','pbb_autolevel_mode','pbb_canopy','pbb_autolevel_key','pbb_autoleveling','pbb_estop','pbb_limits'
