@@ -37,7 +37,7 @@
     <td>
       <table id="widgetImage2" class='data transparent no-show'>  
         <tr><td class='val'>&nbsp;</td></tr>
-        <tr><td id="elevating_img_container" style="width:150px; height:165px; vertical-align:middle "></td></tr>
+        <tr><td id="elevating_img_container" style="width:150px; height:165px; vertical-align:middle"></td></tr>
       </table>
     </td>
   </tr>

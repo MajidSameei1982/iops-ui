@@ -128,13 +128,17 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
         else null
 
     v = @get_bool(@vals.pbb_status)
-    e = @get_bool(@vals.elvrot_rotunda_position_boolean)
+    
 
     sq = @data_q(@tagData.pbb_status.Tag)
     @$("#aircraft_img").toggleClass('docked', v==true && sq)
 
-    eq = @data_q(@tagData.elvrot_rotunda_position_boolean.Tag)
-    @$("div.elevating_img").toggleClass('down-position', e==true && eq)
+    if (@tagData.elvrot_rotunda_position_boolean?)
+        e = @get_bool(@vals.elvrot_rotunda_position_boolean)
+        eq = @data_q(@tagData.elvrot_rotunda_position_boolean.Tag)
+        @$("div.elevating_img").toggleClass('down-position', e==true && eq)
+      
+    
 
     # PBB AIRCRAFT
     #@render_row("pbb_status", "Docked", "UnDocked", "ok")
