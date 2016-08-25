@@ -34,6 +34,34 @@
         }
       }
     }
-    
+
+    // Handles the style overrides of the Dual Unit GPU
+    table {
+      th {
+        font-size: 1.5em;
+        text-align: center;
+        border-bottom: solid 1px #aaa;
+        border-left: solid 1px #aaa;
+        background-color: #cce;
+      }
+      &.data {
+        width: 75%;
+        float: left;
+      }
+      &.data2 {
+        width: 25%;
+        th:nth-child(1) {
+          display: none;
+        }        
+        td:nth-child(1) {
+          display: none;
+          border-left: solid 1px #ddd;
+        }
+        td:nth-child(2) {
+          padding:3px 10px;
+          border-bottom: solid 1px #ddd;
+        }
+      }
+    }
   }
 }

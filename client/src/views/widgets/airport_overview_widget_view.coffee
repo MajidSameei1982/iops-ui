@@ -2,10 +2,10 @@ Marionette = require('marionette')
 IOPSWidgetView = require('./iops_widget_view')
 
 # ----------------------------------
-class AirportWidgetView extends IOPSWidgetView
-  template:   "widgets/airport_widget"
-  classID: 'airport_widget'
-  className: 'widget-outer box box-primary airport_widget'
+class AirportoverviewWidgetView extends IOPSWidgetView
+  template:   "widgets/airport_overview_widget"
+  classID: 'airport_overview_widget'
+  className: 'widget-outer box box-primary airport_overview_widget'
   ui:
     terminal:       'input#terminal'
     zone:           'input#zone'
@@ -163,5 +163,5 @@ class AirportWidgetView extends IOPSWidgetView
     
 # ----------------------------------
 
-window.AirportWidgetView = AirportWidgetView
-module.exports = AirportWidgetView
+window.AirportoverviewWidgetView = AirportoverviewWidgetView
+module.exports = AirportoverviewWidgetView

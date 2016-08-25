@@ -269,44 +269,48 @@ class GpusummaryWidgetView extends IOPSWidgetView
   data_update: (data)=>
     # refresh gauges
     @refresh_values()
-    vq = @data_q(@tagData.gpu_rv_out_avg.Tag)
-    @$("#gauge_volts_out_#{@model.id} .bad_data").toggle(!vq)
-    v = @vals.gpu_rv_out_avg
-    if vq && !isNaN(v) && v != ''
-      @g1.refresh(parseInt(v))
+    
+    if @tagData.gpu_rv_out_avg?
+      vq = @data_q(@tagData.gpu_rv_out_avg.Tag)
+      @$("#gauge_volts_out_#{@model.id} .bad_data").toggle(!vq)
+      v = @vals.gpu_rv_out_avg
+      if vq && !isNaN(v) && v != ''
+        @g1.refresh(parseInt(v))
 
-    aq = @data_q(@tagData.gpu_ra_out_avg.Tag)
-    @$("#gauge_amps_out_#{@model.id} .bad_data").toggle(!aq)
-    v = @vals.gpu_ra_out_avg
-    if aq && !isNaN(v) && v != ''
-      v = parseInt(parseInt(v))
-      @g2.refresh(v)
+    if @tagData.gpu_ra_out_avg?
+      aq = @data_q(@tagData.gpu_ra_out_avg.Tag)
+      @$("#gauge_amps_out_#{@model.id} .bad_data").toggle(!aq)
+      v = @vals.gpu_ra_out_avg
+      if aq && !isNaN(v) && v != ''
+        v = parseInt(parseInt(v))
+        @g2.refresh(v)
 
     # refresh status
-    sq = @data_q(@tagData.gpu_status.Tag)
-    stat = @get_bool(@vals.gpu_status)
-    th = ""
-    icn = 'ban'
-    cls = 'inactive'
-    txt = 'BAD DATA'
-    if stat == true
-      cls = 'active'
-      txt = 'ON'
-      icn = 'circle'
-      t = parseFloat(@vals.gpu_time)
-      h = 0
-      m = Math.floor(t)
-      s = Math.floor((t-m)*60)
-      if m>59
-        h = Math.floor(m/60)
-        m = m-(h*60)
-      th = "<i class='fa fa-clock-o'></i> #{UIUtils.lpad(h,2,'0')}:#{UIUtils.lpad(m,2,'0')}:#{UIUtils.lpad(s,2,'0')}"
-    else if stat == false
+    if @tagData.gpu_status?
+      sq = @data_q(@tagData.gpu_status.Tag)
+      stat = @get_bool(@vals.gpu_status)
+      th = ""
+      icn = 'ban'
       cls = 'inactive'
-      icn = 'circle-thin'
-      txt = 'OFF'
-    @$("#power_indicator").html("<div class='#{cls}'><i class='fa fa-#{icn}'></i> #{txt}</div>")
-    @$("#txt_connected_time").html(th)
+      txt = 'BAD DATA'
+      if stat == true
+        cls = 'active'
+        txt = 'ON'
+        icn = 'circle'
+        t = parseFloat(@vals.gpu_time)
+        h = 0
+        m = Math.floor(t)
+        s = Math.floor((t-m)*60)
+        if m>59
+          h = Math.floor(m/60)
+          m = m-(h*60)
+        th = "<i class='fa fa-clock-o'></i> #{UIUtils.lpad(h,2,'0')}:#{UIUtils.lpad(m,2,'0')}:#{UIUtils.lpad(s,2,'0')}"
+      else if stat == false
+        cls = 'inactive'
+        icn = 'circle-thin'
+        txt = 'OFF'
+      @$("#power_indicator").html("<div class='#{cls}'><i class='fa fa-#{icn}'></i> #{txt}</div>")
+      @$("#txt_connected_time").html(th)
     @
 
   show_plot: (p, live)=>

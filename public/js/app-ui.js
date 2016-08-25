@@ -1569,7 +1569,7 @@ window.JST["reports"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
-window.JST["widgets/airport_widget"] = function(__obj) {
+window.JST["widgets/airport_overview_widget"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
       value = '';
@@ -2597,7 +2597,7 @@ AppConfig = require('./common/appconfig');
 
 TagConfig = require('./common/tagconfig');
 
-require('./views/widgets/airport_widget_view');
+require('./views/widgets/airport_overview_widget_view');
 
 require('./views/widgets/alarm_widget_view');
 
@@ -2841,7 +2841,7 @@ window.App = (function() {
   return App;
 })();
 
-},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/tagconfig":7,"./common/uiutils":8,"./models/account_collection":12,"./models/claim_collection":14,"./models/role_collection":18,"./models/session":19,"./models/site_collection":21,"./models/user_collection":23,"./opcmanager":26,"./router":27,"./views/app_layout":28,"./views/widgets/airport_widget_view":56,"./views/widgets/alarm_widget_view":57,"./views/widgets/asset_widget_view":58,"./views/widgets/config_widget_view":59,"./views/widgets/gpu_summary_widget_view":60,"./views/widgets/gpu_widget_view":61,"./views/widgets/kpi_widget_view":63,"./views/widgets/pbb_detail_widget_view":64,"./views/widgets/pbb_level_detail_widget_view":65,"./views/widgets/pbb_pca_gpu_basic_widget_view":66,"./views/widgets/pbb_widget_view":67,"./views/widgets/pca_discharge_widget_view":68,"./views/widgets/pca_summary_widget_view":69,"./views/widgets/pca_widget_view":70,"./views/widgets/report_widget_view":71,"./views/widgets/url_widget_view":72,"./views/widgets/video_widget_view":73,"./views/widgets/weather_widget_view":74}],2:[function(require,module,exports){
+},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/tagconfig":7,"./common/uiutils":8,"./models/account_collection":12,"./models/claim_collection":14,"./models/role_collection":18,"./models/session":19,"./models/site_collection":21,"./models/user_collection":23,"./opcmanager":26,"./router":27,"./views/app_layout":28,"./views/widgets/airport_overview_widget_view":56,"./views/widgets/alarm_widget_view":57,"./views/widgets/asset_widget_view":58,"./views/widgets/config_widget_view":59,"./views/widgets/gpu_summary_widget_view":60,"./views/widgets/gpu_widget_view":61,"./views/widgets/kpi_widget_view":63,"./views/widgets/pbb_detail_widget_view":64,"./views/widgets/pbb_level_detail_widget_view":65,"./views/widgets/pbb_pca_gpu_basic_widget_view":66,"./views/widgets/pbb_widget_view":67,"./views/widgets/pca_discharge_widget_view":68,"./views/widgets/pca_summary_widget_view":69,"./views/widgets/pca_widget_view":70,"./views/widgets/report_widget_view":71,"./views/widgets/url_widget_view":72,"./views/widgets/video_widget_view":73,"./views/widgets/weather_widget_view":74}],2:[function(require,module,exports){
 var AccountsView, AppController, Dashboard, DashboardCollection, DashboardContentView, DashboardLayout, LoginView, Marionette, PermissionsLayout, ProfileView, ReportsView, Session, User, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -15126,7 +15126,7 @@ ReportsView = (function(superClass) {
 module.exports = ReportsView;
 
 },{"../common/uiutils":8,"../models/session":19}],56:[function(require,module,exports){
-var AirportWidgetView, IOPSWidgetView, Marionette,
+var AirportoverviewWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -15135,22 +15135,22 @@ Marionette = require('marionette');
 
 IOPSWidgetView = require('./iops_widget_view');
 
-AirportWidgetView = (function(superClass) {
-  extend(AirportWidgetView, superClass);
+AirportoverviewWidgetView = (function(superClass) {
+  extend(AirportoverviewWidgetView, superClass);
 
-  function AirportWidgetView() {
+  function AirportoverviewWidgetView() {
     this.set_model = bind(this.set_model, this);
     this.data_update = bind(this.data_update, this);
-    return AirportWidgetView.__super__.constructor.apply(this, arguments);
+    return AirportoverviewWidgetView.__super__.constructor.apply(this, arguments);
   }
 
-  AirportWidgetView.prototype.template = "widgets/airport_widget";
+  AirportoverviewWidgetView.prototype.template = "widgets/airport_overview_widget";
 
-  AirportWidgetView.prototype.classID = 'airport_widget';
+  AirportoverviewWidgetView.prototype.classID = 'airport_overview_widget';
 
-  AirportWidgetView.prototype.className = 'widget-outer box box-primary airport_widget';
+  AirportoverviewWidgetView.prototype.className = 'widget-outer box box-primary airport_overview_widget';
 
-  AirportWidgetView.prototype.ui = {
+  AirportoverviewWidgetView.prototype.ui = {
     terminal: 'input#terminal',
     zone: 'input#zone',
     display_prefix: 'input#display_prefix',
@@ -15164,18 +15164,18 @@ AirportWidgetView = (function(superClass) {
     warnings: 'i#warnings'
   };
 
-  AirportWidgetView.layout = {
+  AirportoverviewWidgetView.layout = {
     sx: 9,
     sy: 9
   };
 
-  AirportWidgetView.prototype.tags = {};
+  AirportoverviewWidgetView.prototype.tags = {};
 
-  AirportWidgetView.prototype.IsUpdatingSettings = false;
+  AirportoverviewWidgetView.prototype.IsUpdatingSettings = false;
 
-  AirportWidgetView.prototype.IsPageLoading = true;
+  AirportoverviewWidgetView.prototype.IsPageLoading = true;
 
-  AirportWidgetView.prototype.update = function() {
+  AirportoverviewWidgetView.prototype.update = function() {
     var c, classList, g, gate, i, j, lbl, len, len1, ref, s, t, tags, term, terminals, z, zone;
     if (!this.IsUpdatingSettings && !this.IsPageLoading) {
       return null;
@@ -15234,7 +15234,7 @@ AirportWidgetView = (function(superClass) {
     }
   };
 
-  AirportWidgetView.prototype.data_update = function(data) {
+  AirportoverviewWidgetView.prototype.data_update = function(data) {
     var a, alarm, bad_q, docked, g, i, len, qa, qd, qw, ref, warning;
     ref = this.gateData;
     for (i = 0, len = ref.length; i < len; i++) {
@@ -15267,7 +15267,7 @@ AirportWidgetView = (function(superClass) {
     return this;
   };
 
-  AirportWidgetView.prototype.set_model = function() {
+  AirportoverviewWidgetView.prototype.set_model = function() {
     var s;
     this.IsUpdatingSettings = true;
     s = _.clone(this.model.get("settings"));
@@ -15275,8 +15275,8 @@ AirportWidgetView = (function(superClass) {
     return this.model.set("settings", s);
   };
 
-  AirportWidgetView.prototype.toggle_settings = function(e) {
-    AirportWidgetView.__super__.toggle_settings.call(this, e);
+  AirportoverviewWidgetView.prototype.toggle_settings = function(e) {
+    AirportoverviewWidgetView.__super__.toggle_settings.call(this, e);
     this.ui.display.toggle(!this.settings_visible);
     if (this.settings_visible) {
       return this.ui.site.chosen({
@@ -15285,7 +15285,7 @@ AirportWidgetView = (function(superClass) {
     }
   };
 
-  AirportWidgetView.prototype.onShow = function() {
+  AirportoverviewWidgetView.prototype.onShow = function() {
     var settings, site;
     settings = this.model.get('settings');
     settings || (settings = {});
@@ -15301,21 +15301,21 @@ AirportWidgetView = (function(superClass) {
     })(this));
   };
 
-  AirportWidgetView.prototype.start = function() {
+  AirportoverviewWidgetView.prototype.start = function() {
     return this.update();
   };
 
-  AirportWidgetView.prototype.onDestroy = function(arg1, arg2) {
+  AirportoverviewWidgetView.prototype.onDestroy = function(arg1, arg2) {
     return this.kill_updates(this.site_code);
   };
 
-  return AirportWidgetView;
+  return AirportoverviewWidgetView;
 
 })(IOPSWidgetView);
 
-window.AirportWidgetView = AirportWidgetView;
+window.AirportoverviewWidgetView = AirportoverviewWidgetView;
 
-module.exports = AirportWidgetView;
+module.exports = AirportoverviewWidgetView;
 
 },{"./iops_widget_view":62}],57:[function(require,module,exports){
 var AlarmWidgetView, IOPSWidgetView, Marionette,
@@ -16314,45 +16314,51 @@ GpusummaryWidgetView = (function(superClass) {
   GpusummaryWidgetView.prototype.data_update = function(data) {
     var aq, cls, h, icn, m, s, sq, stat, t, th, txt, v, vq;
     this.refresh_values();
-    vq = this.data_q(this.tagData.gpu_rv_out_avg.Tag);
-    this.$("#gauge_volts_out_" + this.model.id + " .bad_data").toggle(!vq);
-    v = this.vals.gpu_rv_out_avg;
-    if (vq && !isNaN(v) && v !== '') {
-      this.g1.refresh(parseInt(v));
-    }
-    aq = this.data_q(this.tagData.gpu_ra_out_avg.Tag);
-    this.$("#gauge_amps_out_" + this.model.id + " .bad_data").toggle(!aq);
-    v = this.vals.gpu_ra_out_avg;
-    if (aq && !isNaN(v) && v !== '') {
-      v = parseInt(parseInt(v));
-      this.g2.refresh(v);
-    }
-    sq = this.data_q(this.tagData.gpu_status.Tag);
-    stat = this.get_bool(this.vals.gpu_status);
-    th = "";
-    icn = 'ban';
-    cls = 'inactive';
-    txt = 'BAD DATA';
-    if (stat === true) {
-      cls = 'active';
-      txt = 'ON';
-      icn = 'circle';
-      t = parseFloat(this.vals.gpu_time);
-      h = 0;
-      m = Math.floor(t);
-      s = Math.floor((t - m) * 60);
-      if (m > 59) {
-        h = Math.floor(m / 60);
-        m = m - (h * 60);
+    if (this.tagData.gpu_rv_out_avg != null) {
+      vq = this.data_q(this.tagData.gpu_rv_out_avg.Tag);
+      this.$("#gauge_volts_out_" + this.model.id + " .bad_data").toggle(!vq);
+      v = this.vals.gpu_rv_out_avg;
+      if (vq && !isNaN(v) && v !== '') {
+        this.g1.refresh(parseInt(v));
       }
-      th = "<i class='fa fa-clock-o'></i> " + (UIUtils.lpad(h, 2, '0')) + ":" + (UIUtils.lpad(m, 2, '0')) + ":" + (UIUtils.lpad(s, 2, '0'));
-    } else if (stat === false) {
-      cls = 'inactive';
-      icn = 'circle-thin';
-      txt = 'OFF';
     }
-    this.$("#power_indicator").html("<div class='" + cls + "'><i class='fa fa-" + icn + "'></i> " + txt + "</div>");
-    this.$("#txt_connected_time").html(th);
+    if (this.tagData.gpu_ra_out_avg != null) {
+      aq = this.data_q(this.tagData.gpu_ra_out_avg.Tag);
+      this.$("#gauge_amps_out_" + this.model.id + " .bad_data").toggle(!aq);
+      v = this.vals.gpu_ra_out_avg;
+      if (aq && !isNaN(v) && v !== '') {
+        v = parseInt(parseInt(v));
+        this.g2.refresh(v);
+      }
+    }
+    if (this.tagData.gpu_status != null) {
+      sq = this.data_q(this.tagData.gpu_status.Tag);
+      stat = this.get_bool(this.vals.gpu_status);
+      th = "";
+      icn = 'ban';
+      cls = 'inactive';
+      txt = 'BAD DATA';
+      if (stat === true) {
+        cls = 'active';
+        txt = 'ON';
+        icn = 'circle';
+        t = parseFloat(this.vals.gpu_time);
+        h = 0;
+        m = Math.floor(t);
+        s = Math.floor((t - m) * 60);
+        if (m > 59) {
+          h = Math.floor(m / 60);
+          m = m - (h * 60);
+        }
+        th = "<i class='fa fa-clock-o'></i> " + (UIUtils.lpad(h, 2, '0')) + ":" + (UIUtils.lpad(m, 2, '0')) + ":" + (UIUtils.lpad(s, 2, '0'));
+      } else if (stat === false) {
+        cls = 'inactive';
+        icn = 'circle-thin';
+        txt = 'OFF';
+      }
+      this.$("#power_indicator").html("<div class='" + cls + "'><i class='fa fa-" + icn + "'></i> " + txt + "</div>");
+      this.$("#txt_connected_time").html(th);
+    }
     return this;
   };
 
@@ -16734,8 +16740,18 @@ GpuWidgetView = (function(superClass) {
       this.opc = App.opc.connections[this.site_code];
       ref = s.layout;
       this.watch_updates(this.site_code);
-      return this.set_descriptions(true);
+      this.set_descriptions(true);
+      if (this.$('.data2').hasClass('no-show')) {
+        this.$('.data').css('width', '100%');
+        $('.data').find('<thead>').remove();
+        $('.data2').find('<thead>').remove();
+      } else {
+        this.$('.data').css('width', '75%');
+        $('.data').prepend('<thead><tr><th></th><th>Unit 01</th></tr></thead>');
+        $('.data2').prepend('<thead><tr><th></th><th>Unit 02</th></tr></thead>');
+      }
     }
+    return this;
   };
 
   GpuWidgetView.prototype.data_update = function(data) {
@@ -18132,7 +18148,7 @@ PbbWidgetView = (function(superClass) {
     }
     s = this.model.get("settings");
     if ((s != null) && !!s.site) {
-      lbl = this.site_code + ": Gate " + s.gate;
+      lbl = this.site_code + ": Gate " + s.gate + " - PBB";
       this.ui.wtitle.html(lbl);
       this.kill_updates(this.site_code);
       tags = [];
@@ -18736,7 +18752,7 @@ PcasummaryWidgetView = (function(superClass) {
     }
     s = this.model.get("settings");
     if ((s != null) && !!s.site) {
-      lbl = this.site_code + ": Gate " + s.gate + " PCA - Overview";
+      lbl = this.site_code + ": Gate " + s.gate + " PCA - Summary";
       this.ui.wtitle.html(lbl);
       this.opc = App.opc.connections[this.site_code];
       show_opts = (s != null) && !!s.gate;
@@ -18765,45 +18781,51 @@ PcasummaryWidgetView = (function(superClass) {
   PcasummaryWidgetView.prototype.data_update = function(data) {
     var ad, add, ambd, ambhumidity, aq, bd, bdd, cd, cls, coildp, good_quality, h, hot1d, hot2d, hotgas1, hotgas2, icn, img, imgData, m, pc, pcd, ref, ref1, s, sq, stat, suc1d, suc2d, sucpressure1, sucpressure2, t, tag, tagQuality, tagVal, th, true_val, txt, txta, txtb, type, v, vfd, vfdspeed, vq, wq;
     this.refresh_values();
-    vq = this.data_q(this.tagData.pca_discharge_temp.Tag);
-    this.$("#gauge_volts_out_" + this.model.id + " .bad_data").toggle(!vq);
-    v = this.vals.pca_discharge_temp;
-    if (vq && !isNaN(v) && v !== '') {
-      this.g1.refresh(parseInt(v));
-    }
-    aq = this.data_q(this.tagData.pca_ambient_temp.Tag);
-    this.$("#amps_out_" + this.model.id + " .bad_data").toggle(!aq);
-    v = this.vals.pca_ambient_temp;
-    if (aq && !isNaN(v) && v !== '') {
-      v = parseInt(parseInt(v));
-      this.g2.refresh(v);
-    }
-    sq = this.data_q(this.tagData.pca_status.Tag);
-    stat = this.get_bool(this.vals.pca_status);
-    th = "";
-    icn = 'ban';
-    cls = 'inactive';
-    txt = 'BAD DATA';
-    if (stat === true) {
-      cls = 'active';
-      txt = 'ON';
-      icn = 'circle';
-      t = parseFloat(this.vals.pca_time);
-      h = 0;
-      m = Math.floor(t);
-      s = Math.floor((t - m) * 60);
-      if (m > 59) {
-        h = Math.floor(m / 60);
-        m = m - (h * 60);
+    if (this.tagData.pca_discharge_temp != null) {
+      vq = this.data_q(this.tagData.pca_discharge_temp.Tag);
+      this.$("#gauge_volts_out_" + this.model.id + " .bad_data").toggle(!vq);
+      v = this.vals.pca_discharge_temp;
+      if (vq && !isNaN(v) && v !== '') {
+        this.g1.refresh(parseInt(v));
       }
-      th = "<i class='fa fa-clock-o'></i> " + (UIUtils.lpad(h, 2, '0')) + ":" + (UIUtils.lpad(m, 2, '0')) + ":" + (UIUtils.lpad(s, 2, '0'));
-    } else if (stat === false) {
-      cls = 'inactive';
-      icn = 'circle-thin';
-      txt = 'OFF';
     }
-    this.$("#power_indicator").html("<div class='" + cls + "'><i class='fa fa-" + icn + "'></i> " + txt + "</div>");
-    this.$("#txt_connected_time").html(th);
+    if (this.tagData.pca_ambient_temp != null) {
+      aq = this.data_q(this.tagData.pca_ambient_temp.Tag);
+      this.$("#amps_out_" + this.model.id + " .bad_data").toggle(!aq);
+      v = this.vals.pca_ambient_temp;
+      if (aq && !isNaN(v) && v !== '') {
+        v = parseInt(parseInt(v));
+        this.g2.refresh(v);
+      }
+    }
+    if (this.tagData.pca_status != null) {
+      sq = this.data_q(this.tagData.pca_status.Tag);
+      stat = this.get_bool(this.vals.pca_status);
+      th = "";
+      icn = 'ban';
+      cls = 'inactive';
+      txt = 'BAD DATA';
+      if (stat === true) {
+        cls = 'active';
+        txt = 'ON';
+        icn = 'circle';
+        t = parseFloat(this.vals.pca_time);
+        h = 0;
+        m = Math.floor(t);
+        s = Math.floor((t - m) * 60);
+        if (m > 59) {
+          h = Math.floor(m / 60);
+          m = m - (h * 60);
+        }
+        th = "<i class='fa fa-clock-o'></i> " + (UIUtils.lpad(h, 2, '0')) + ":" + (UIUtils.lpad(m, 2, '0')) + ":" + (UIUtils.lpad(s, 2, '0'));
+      } else if (stat === false) {
+        cls = 'inactive';
+        icn = 'circle-thin';
+        txt = 'OFF';
+      }
+      this.$("#power_indicator").html("<div class='" + cls + "'><i class='fa fa-" + icn + "'></i> " + txt + "</div>");
+      this.$("#txt_connected_time").html(th);
+    }
     if (this.tagData.pca_status != null) {
       v = this.get_bool(this.vals.pca_status);
       sq = this.data_q(this.tagData.pca_status.Tag);
@@ -19626,9 +19648,9 @@ ReportWidgetView = (function(superClass) {
 
   ReportWidgetView.prototype.template = "widgets/report_widget";
 
-  ReportWidgetView.prototype.classID = 'airport_widget';
+  ReportWidgetView.prototype.classID = 'report_widget';
 
-  ReportWidgetView.prototype.className = 'widget-outer box box-primary airport_widget';
+  ReportWidgetView.prototype.className = 'widget-outer box box-primary report_widget';
 
   ReportWidgetView.prototype.ui = {
     site: 'select#site',
