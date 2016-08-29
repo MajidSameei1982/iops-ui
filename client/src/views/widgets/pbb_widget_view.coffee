@@ -48,7 +48,7 @@ class PbbWidgetView extends IOPSWidgetView
     s = @model.get("settings")
    
     if s? && !!s.site
-      lbl = "#{@site_code}: Gate #{s.gate}"
+      lbl = "#{@site_code}: Gate #{s.gate} - PBB"
       @ui.wtitle.html(lbl)
 
       # stop listening for updates

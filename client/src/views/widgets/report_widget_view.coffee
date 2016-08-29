@@ -4,8 +4,8 @@ IOPSWidgetView = require('./iops_widget_view')
 # ----------------------------------
 class ReportWidgetView extends IOPSWidgetView
   template:   "widgets/report_widget"
-  classID: 'airport_widget'
-  className: 'widget-outer box box-primary airport_widget'
+  classID: 'report_widget'
+  className: 'widget-outer box box-primary report_widget'
   ui:
     site: 'select#site'
     wtitle: '.box-title'
