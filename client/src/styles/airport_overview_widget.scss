@@ -437,4 +437,114 @@
       }
     }
   }
+
+  &.RDU_account {
+    $site_code: RDU;
+    $Gates: C1,  C3,  C7,  C8,  C9, C10, C11, C12, C14, C15, C16, C17, C18, C20, C21, C22, C23, C24, C25,
+            D1,  D3,  D5,  D6,  D8,  D9, D10, D11, D12, D13, D14, D15, D16, D17, D18, D19, D20;
+    $posx:  1%,  2%,  3%,  4%,  5%,  6%,  7%,  8%,  9%, 10%, 11%, 12%, 13%, 14%, 15%, 16%, 17%, 18%, 19%,
+           20%, 21%, 22%, 23%, 24%, 25%, 26%, 27%, 28%, 29%, 30%, 31%, 32%, 33%, 34%, 35%, 36%;
+    $posy:  1%,  2%,  3%,  4%,  5%,  6%,  7%,  8%,  9%, 10%, 11%, 12%, 13%, 14%, 15%, 16%, 17%, 18%, 19%,
+           20%, 21%, 22%, 23%, 24%, 25%, 26%, 27%, 28%, 29%, 30%, 31%, 32%, 33%, 34%, 35%, 36%;
+    %div_defaults {
+      min-height: 100%;
+      min-width: 100%;
+      overflow: auto;
+      position: absolute;
+      top: 25px;
+      left: 0px;
+    }
+    .display {
+      #key {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        font-size: 18px;
+        background-color: rgba(255,255,255,0.5);
+        z-index: 9999;
+        border-radius: 10px;
+        padding: 10px;
+        .alarm { color:#c00; }
+        .warning { color:#f90; }
+        .perfect { color:#090; }
+      }
+      #display_label {
+        display: none;
+      }
+      div[id^='Airport_Gate_'] {
+        @extend %div_defaults;
+        z-index: 1000;
+      }
+      #Airport_Overview {
+        @extend %div_defaults;
+        // background: url("../img/airport/CID/CID_Term_Overview.png") no-repeat bottom center; 
+        // background-size: contain;
+        // z-index: 100;
+        margin-top:25px;
+        #layout {
+          width:100%;
+          height:auto;
+        }
+        #layout_container {
+          position:absolute;
+          top:0;left:0;
+        }
+      }
+
+      $ClassSuffixs: _bad_data _idle _ac_docked _good _alarm _warning;
+      $ImagesPrefix: "../img/airport/#{$site_code}/#{$site_code}_Gate_";  
+      $ImagesSuffixs: "_Bad_Data.png" ".png" "_Plane.png" "" "_Alarm.png" "_Warning.png";  
+
+      $index: 1;  
+      @each $Gate in $Gates {
+        #Airport_Gate_#{$Gate}_a {
+          background-repeat:no-repeat;
+          background-size: contain;
+          background-position: bottom center;
+          width: 100% !important;
+          height: 100% !important;
+          top: 0;
+          left: 0;
+          &.docked {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_Plane.png");
+          }
+          &.bad_data {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_bad_data.png");
+          }
+          .icon {
+            font-size:18px;
+            left: #{nth($posx,$index)};
+            top: #{nth($posy,$index)};
+            position:absolute;
+            border-radius:3px;
+            padding:2px;
+            i {
+              text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
+              &.alarm { color:#c00; }
+              &.warning { color:#f90; }
+              &.perfect { color:#090; }
+            }
+          }
+        }
+        $index: $index + 1;
+
+      //   @each $cls in $ClassSuffixs {
+      //     .airport_gate_#{$Gate}#{$cls} {
+      //         @if $index != 4 
+      //         {
+      //           background: url("#{$ImagesPrefixs}#{$Gate}#{nth($ImagesSuffixs,$index)}") no-repeat bottom center;
+      //           background-size: contain;
+      //         }
+      //         @else
+      //         {
+      //           background: none;
+      //         }
+      //       }
+      //       $index: $index + 1;
+      //   }
+
+      }
+    }
+  }
+
 }
