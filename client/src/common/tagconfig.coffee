@@ -908,7 +908,7 @@ class TagConfig extends Object
 							pca_fan_2:{Tag:'PCA.FANCONDFRONTSEC',Label:'Fan #2',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							pca_fan_1:{Tag:'PCA.FANCONDREARPRI',Label:'Fan #1',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 						}
-					# 20 TON Graphicsfor Gate 14,24
+					# 20 TON Graphicsfor Gate 14,20
 						C14:
 							update_graphics:{
 								pca_main_background:{ControlTags:{none:null},Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'div',ParentID:'#graphics_container',Class:'background jetway-20',Object:null}},
@@ -928,7 +928,7 @@ class TagConfig extends Object
 								pca_comp_stage_1:{Tag:'PCA.DO_COMPRESSOR_PRI',Label:'Primary compressor #1 is running',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 								pca_comp_stage_2:{Tag:'PCA.DO_COMPRESSOR_SEC',Label:'Primary compressor #2 is running',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							}
-						C24:
+						C20:
 							update_graphics:{
 								pca_main_background:{ControlTags:{none:null},Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'div',ParentID:'#graphics_container',Class:'background jetway-20',Object:null}},
 								blower_img:{ControlTags:{pca_blower:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'blower-on',Parm003:null,Parm004:'blower-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetway-20',Object:null}},
