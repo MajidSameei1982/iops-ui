@@ -1046,7 +1046,14 @@ class TagConfig extends Object
 							gpu_volts_out_average_2:{Tag:'GPU.RV2OUTAVG',Label:'Volts Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 						}
 			#pbb_widget: # PBB Bridge Widget - no changes needed for D
-			#pbb_detail_widget: #PBB Detail Widget- no changes needed for D
+			pbb_detail_widget: #PBB Detail Widget
+				update_tags:{
+					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'PBB Status',DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'div',ParentID:'#pbb_status_container',Class:'val transparent',Object:null}},
+					pbb_undock_time:{Tag:'PBB.UNDOCKTIME',Label:null,DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'div',ParentID:'#pbb_undockordocktime_container',Class:'pbb_undockordocktime val transparent',Object:null}},
+					pbb_dock_time:{Tag:'PBB.DOCKTIME',Label:'Aircraft Docked Time (Minutes)',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:null,ParentID:null,Class:'pbb_undockordocktime val transparent',Object:null}},
+					pbb_autolevel_mode:{Tag:'PBB.AUTOLEVELMODEFLAG',Label:'PBB Mode',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:'Auto-Level : #{1}'},Element:{Type:'div',ParentID:'#pbb_autolevel_container',Class:'val transparent',Object:null}},
+					pbb_canopy:{Tag:'PBB.CANOPYDOWN',Label:'Canopy',DataType:'Boolean',Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:'Canopy : #{1}'},Element:{Type:'div',ParentID:'#pbb_canopy_container',Class:'val transparent',Object:null}},
+				}
 			pbb_level_detail_widget: # PBB Overview Widget
 				D:
 					removeTags:{'pbb_autolevel_key','pbb_autoleveling','pbb_cabin_floor_deicer','pbb_terminal_door','pbb_cab_angle_disp','pbb_slope_deg','pbb_swing_angle_disp','pbb_height_to_disp','pbb_wheel_angle_deg','pbb_tunnel_length'}

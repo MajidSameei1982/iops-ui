@@ -12481,6 +12481,98 @@ TagConfig = (function(superClass) {
           }
         }
       },
+      pbb_detail_widget: {
+        update_tags: {
+          pbb_status: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: 'PBB Status',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Docked',
+              Parm002: 'UnDocked',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#pbb_status_container',
+              Class: 'val transparent',
+              Object: null
+            }
+          },
+          pbb_undock_time: {
+            Tag: 'PBB.UNDOCKTIME',
+            Label: null,
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 2,
+              Parm003: 'mins',
+              Parm004: null
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#pbb_undockordocktime_container',
+              Class: 'pbb_undockordocktime val transparent',
+              Object: null
+            }
+          },
+          pbb_dock_time: {
+            Tag: 'PBB.DOCKTIME',
+            Label: 'Aircraft Docked Time (Minutes)',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 2,
+              Parm003: 'mins',
+              Parm004: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'pbb_undockordocktime val transparent',
+              Object: null
+            }
+          },
+          pbb_autolevel_mode: {
+            Tag: 'PBB.AUTOLEVELMODEFLAG',
+            Label: 'PBB Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: 'Auto-Level : #{1}'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#pbb_autolevel_container',
+              Class: 'val transparent',
+              Object: null
+            }
+          },
+          pbb_canopy: {
+            Tag: 'PBB.CANOPYDOWN',
+            Label: 'Canopy',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Down',
+              Parm002: 'Up',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: 'Canopy : #{1}'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#pbb_canopy_container',
+              Class: 'val transparent',
+              Object: null
+            }
+          }
+        }
+      },
       pbb_level_detail_widget: {
         D: {
           removeTags: {
