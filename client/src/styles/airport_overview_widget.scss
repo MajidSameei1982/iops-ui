@@ -65,6 +65,7 @@
           background-repeat:no-repeat;
           background-size: contain;
           background-position: bottom center;
+          background-image: url("#{$ImagesPrefix}#{$Gate}.png");
           width: 100% !important;
           height: 100% !important;
           top: 0;
@@ -501,6 +502,7 @@
           background-repeat:no-repeat;
           background-size: contain;
           background-position: bottom center;
+          background-image: url("#{$ImagesPrefix}#{$Gate}.png");
           width: 100% !important;
           height: 100% !important;
           top: 0;
@@ -528,20 +530,20 @@
         }
         $index: $index + 1;
 
-      //   @each $cls in $ClassSuffixs {
-      //     .airport_gate_#{$Gate}#{$cls} {
-      //         @if $index != 4 
-      //         {
-      //           background: url("#{$ImagesPrefixs}#{$Gate}#{nth($ImagesSuffixs,$index)}") no-repeat bottom center;
-      //           background-size: contain;
-      //         }
-      //         @else
-      //         {
-      //           background: none;
-      //         }
-      //       }
-      //       $index: $index + 1;
-      //   }
+        // @each $cls in $ClassSuffixs {
+        //   .airport_gate_#{$Gate}#{$cls} {
+        //       @if $index != 4 
+        //       {
+        //         background: url("#{$ImagesPrefixs}#{$Gate}#{nth($ImagesSuffixs,$index)}") no-repeat bottom center;
+        //         background-size: contain;
+        //       }
+        //       @else
+        //       {
+        //         background: none;
+        //       }
+        //     }
+        //     $index: $index + 1;
+        // }
 
       }
     }
