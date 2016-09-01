@@ -493,6 +493,7 @@ class TagConfig extends Object
 								pca_headpri2:{Tag:'PCA.PRESSHEADPRI2',Label:'Head pressure,primary compressor #2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 								pca_headpri2:{Tag:'PCA.PRESSHEADPRI3',Label:'Head pressure, secondary compressor #1',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							}
+		
 		CID:
 			gpu_summary_widget: # GPU Summary Widget
 				remove_tags:{'gpu_ra_in_avg'}
@@ -618,7 +619,6 @@ class TagConfig extends Object
 			pbb_widget: # PBB Bridge Widget
 				remove_tags:{'pbb_autolevel_key','pbb_terminal_door'}
 
-
 		DAL:
 			pbb_detail_widget: #PBB Detail Widget
 				update_tags:{
@@ -628,6 +628,7 @@ class TagConfig extends Object
 					pbb_autolevel_mode:{Tag:'PBB.AUTOLEVELMODEFLAG',Label:'PBB Mode',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:'Auto-Level : #{1}'},Element:{Type:'div',ParentID:'#pbb_autolevel_container',Class:'val transparent',Object:null}},
 					pbb_canopy:{Tag:'PBB.CANOPYDOWN',Label:'Canopy',DataType:'Boolean',Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:'Canopy : #{1}'},Element:{Type:'div',ParentID:'#pbb_canopy_container',Class:'val transparent',Object:null}},
 				}
+		
 		EWR:
 			#C:1:C90
 			#C:3:C125
@@ -866,6 +867,7 @@ class TagConfig extends Object
 							add_tags:{
 								elvrot_rotunda_position:{Tag:'ELVROT.ROTUNDA_POSITION',Label:'Elevating Rotunda Position',DataType:'Value',Parameters:{Parm001:false,Parm002:null,Parm003:'#{1}',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							}
+		
 		RDU:
 			pca_widget: # PCA Widget
 				2:
@@ -1008,57 +1010,63 @@ class TagConfig extends Object
 				remove_tags:{'pca_cooling_pt','pca_heating_pt','pca_alarm_cooling_run','pca_alarm_heating_run','pca_cooling_tm','pca_heating_tm'
 				}
 			gpu_widget: # GPU Widget
-				C:
-					remove_tags:{'gpu_by_pass','gpu_ra_in_avg','gpu_pm_input_phasea_i','gpu_pm_input_phaseb_i','gpu_pm_input_phasec_i','gpu_on_1','gpu_on_2'}
-					update_tags:{
-						gpu_pm_output_phasea_i:{Tag:'GPU.RAOUTA',Label:'Amps Out Phase A',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Amps',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						gpu_pm_output_phaseb_i:{Tag:'GPU.RAOUTB',Label:'Amps Out Phase B',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Amps',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						gpu_pm_output_phasec_i:{Tag:'GPU.RAOUTC',Label:'Amps Out Phase C',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Amps',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						gpu_pm_output_phasea_v:{Tag:'GPU.RVOUTA',Label:'Volts Out Phase A',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						gpu_pm_output_phaseb_v:{Tag:'GPU.RVOUTB',Label:'Volts Out Phase B',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						gpu_pm_output_phasec_v:{Tag:'GPU.RVOUTC',Label:'Volts Out Phase C',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						gpu_pm_input_phasea_v:{Tag:'GPU.RVINA',Label:'Volts In Phase A',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						gpu_pm_input_phaseb_v:{Tag:'GPU.RVINB',Label:'Volts In Phase B',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						gpu_pm_input_phasec_v:{Tag:'GPU.RVINC',Label:'Volts In Phase C',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-					}
-				D:
-					remove_tags:{'gpu_by_pass','gpu_status','gpu_on_1','gpu_on_2'}
-					update_tags:{
-						gpu_pm_output_phasea_i:{Tag:'GPU.RAOUTA',Label:'Amps Out Phase A',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Amps',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						gpu_pm_output_phaseb_i:{Tag:'GPU.RAOUTB',Label:'Amps Out Phase B',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Amps',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						gpu_pm_output_phasec_i:{Tag:'GPU.RAOUTC',Label:'Amps Out Phase C',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Amps',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						gpu_pm_output_phasea_v:{Tag:'GPU.RVOUTA',Label:'Volts Out Phase A',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						gpu_pm_output_phaseb_v:{Tag:'GPU.RVOUTB',Label:'Volts Out Phase B',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						gpu_pm_output_phasec_v:{Tag:'GPU.RVOUTC',Label:'Volts Out Phase C',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						gpu_pm_input_phasea_v:{Tag:'GPU.RVINA',Label:'Volts In Phase A',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						gpu_pm_input_phaseb_v:{Tag:'GPU.RVINB',Label:'Volts In Phase B',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						gpu_pm_input_phasec_v:{Tag:'GPU.RVINC',Label:'Volts In Phase C',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						gpu_pm_input_phasea_i:{Tag:'GPU.RAINA',Label:'Amps In Phase A',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						gpu_pm_input_phaseb_i:{Tag:'GPU.RAINB',Label:'Amps In Phase B',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						gpu_pm_input_phasec_i:{Tag:'GPU.RAINC',Label:'Amps In Phase C',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-					}
-					17:
+				2:
+					C:
+						remove_tags:{'gpu_by_pass','gpu_ra_in_avg','gpu_pm_input_phasea_i','gpu_pm_input_phaseb_i','gpu_pm_input_phasec_i','gpu_on_1','gpu_on_2'}
 						add_tags:{
-							gpu_amps_out_phase_A_2:{Tag:'GPU.RA2OUTA',Label:'Amps Out Phase A_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-							gpu_amps_out_phase_B_2:{Tag:'GPU.RA2OUTB',Label:'Amps Out Phase B_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-							gpu_amps_out_phase_C_2:{Tag:'GPU.RA2OUTC',Label:'Amps Out Phase C_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-							gpu_volts_out_phase_A_2:{Tag:'GPU.RV2OUTA',Label:'Volts Out Phase A_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-							gpu_volts_out_phase_B_2:{Tag:'GPU.RV2OUTB',Label:'Volts Out Phase B_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-							gpu_volts_out_phase_C_2:{Tag:'GPU.RV2OUTC',Label:'Volts Out Phase C_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-							gpu_amps_out_average_2:{Tag:'GPU.RA2OUTAVG',Label:'Amps Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-							gpu_volts_out_average_2:{Tag:'GPU.RV2OUTAVG',Label:'Volts Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_mode:{Tag:'GPU.GPUMODE',Label:'GPU Mode',DataType:'Value',Parameters:{Parm001:false,Parm002:null,Parm003:'#{1}',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_rdc_amps:{Tag:'GPU.RDCAMPS',Label:'DC Output -  Amps',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Amps',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_rdc_volts:{Tag:'GPU.RDCVOLTS',Label:'DC Output -  Volts',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 						}
-					20:
-						add_tags:{
-							gpu_amps_out_phase_A_2:{Tag:'GPU.RA2OUTA',Label:'Amps Out Phase A_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-							gpu_amps_out_phase_B_2:{Tag:'GPU.RA2OUTB',Label:'Amps Out Phase B_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-							gpu_amps_out_phase_C_2:{Tag:'GPU.RA2OUTC',Label:'Amps Out Phase C_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-							gpu_volts_out_phase_A_2:{Tag:'GPU.RV2OUTA',Label:'Volts Out Phase A_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-							gpu_volts_out_phase_B_2:{Tag:'GPU.RV2OUTB',Label:'Volts Out Phase B_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-							gpu_volts_out_phase_C_2:{Tag:'GPU.RV2OUTC',Label:'Volts Out Phase C_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-							gpu_amps_out_average_2:{Tag:'GPU.RA2OUTAVG',Label:'Amps Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-							gpu_volts_out_average_2:{Tag:'GPU.RV2OUTAVG',Label:'Volts Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+						update_tags:{
+							gpu_pm_output_phasea_i:{Tag:'GPU.RAOUTA',Label:'Amps Out Phase A',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Amps',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_pm_output_phaseb_i:{Tag:'GPU.RAOUTB',Label:'Amps Out Phase B',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Amps',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_pm_output_phasec_i:{Tag:'GPU.RAOUTC',Label:'Amps Out Phase C',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Amps',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_pm_output_phasea_v:{Tag:'GPU.RVOUTA',Label:'Volts Out Phase A',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_pm_output_phaseb_v:{Tag:'GPU.RVOUTB',Label:'Volts Out Phase B',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_pm_output_phasec_v:{Tag:'GPU.RVOUTC',Label:'Volts Out Phase C',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_pm_input_phasea_v:{Tag:'GPU.RVINA',Label:'Volts In Phase A',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_pm_input_phaseb_v:{Tag:'GPU.RVINB',Label:'Volts In Phase B',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_pm_input_phasec_v:{Tag:'GPU.RVINC',Label:'Volts In Phase C',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 						}
+					D:
+						remove_tags:{'gpu_by_pass','gpu_status','gpu_on_1','gpu_on_2'}
+						update_tags:{
+							gpu_pm_output_phasea_i:{Tag:'GPU.RAOUTA',Label:'Amps Out Phase A',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Amps',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_pm_output_phaseb_i:{Tag:'GPU.RAOUTB',Label:'Amps Out Phase B',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Amps',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_pm_output_phasec_i:{Tag:'GPU.RAOUTC',Label:'Amps Out Phase C',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Amps',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_pm_output_phasea_v:{Tag:'GPU.RVOUTA',Label:'Volts Out Phase A',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_pm_output_phaseb_v:{Tag:'GPU.RVOUTB',Label:'Volts Out Phase B',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_pm_output_phasec_v:{Tag:'GPU.RVOUTC',Label:'Volts Out Phase C',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_pm_input_phasea_v:{Tag:'GPU.RVINA',Label:'Volts In Phase A',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_pm_input_phaseb_v:{Tag:'GPU.RVINB',Label:'Volts In Phase B',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_pm_input_phasec_v:{Tag:'GPU.RVINC',Label:'Volts In Phase C',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_pm_input_phasea_i:{Tag:'GPU.RAINA',Label:'Amps In Phase A',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_pm_input_phaseb_i:{Tag:'GPU.RAINB',Label:'Amps In Phase B',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_pm_input_phasec_i:{Tag:'GPU.RAINC',Label:'Amps In Phase C',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+						}
+						17:
+							add_tags:{
+								gpu_amps_out_phase_A_2:{Tag:'GPU.RA2OUTA',Label:'Amps Out Phase A_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+								gpu_amps_out_phase_B_2:{Tag:'GPU.RA2OUTB',Label:'Amps Out Phase B_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+								gpu_amps_out_phase_C_2:{Tag:'GPU.RA2OUTC',Label:'Amps Out Phase C_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+								gpu_volts_out_phase_A_2:{Tag:'GPU.RV2OUTA',Label:'Volts Out Phase A_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+								gpu_volts_out_phase_B_2:{Tag:'GPU.RV2OUTB',Label:'Volts Out Phase B_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+								gpu_volts_out_phase_C_2:{Tag:'GPU.RV2OUTC',Label:'Volts Out Phase C_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+								gpu_amps_out_average_2:{Tag:'GPU.RA2OUTAVG',Label:'Amps Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+								gpu_volts_out_average_2:{Tag:'GPU.RV2OUTAVG',Label:'Volts Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							}
+						20:
+							add_tags:{
+								gpu_amps_out_phase_A_2:{Tag:'GPU.RA2OUTA',Label:'Amps Out Phase A_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+								gpu_amps_out_phase_B_2:{Tag:'GPU.RA2OUTB',Label:'Amps Out Phase B_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+								gpu_amps_out_phase_C_2:{Tag:'GPU.RA2OUTC',Label:'Amps Out Phase C_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+								gpu_volts_out_phase_A_2:{Tag:'GPU.RV2OUTA',Label:'Volts Out Phase A_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+								gpu_volts_out_phase_B_2:{Tag:'GPU.RV2OUTB',Label:'Volts Out Phase B_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+								gpu_volts_out_phase_C_2:{Tag:'GPU.RV2OUTC',Label:'Volts Out Phase C_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+								gpu_amps_out_average_2:{Tag:'GPU.RA2OUTAVG',Label:'Amps Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+								gpu_volts_out_average_2:{Tag:'GPU.RV2OUTAVG',Label:'Volts Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							}
 			gpu_summary_widget: # GPU Summary Widget
 				C: 
 					remove_tags:{'gpu_ra_in_avg'}
