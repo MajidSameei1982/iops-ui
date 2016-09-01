@@ -195,6 +195,9 @@
       &.SJ_90 {
         background-image: url("../img/pca/SJ_90/SJ-90-Base-Unit.png") ;
       }
+      &.jetway-20 {
+        background-image: url("../img/pca/Jetway-20/Rev-001/20-Ton-PCA-Base-Unit.png") ;
+      }
     }
     div.img {/* default overlays */
       position: absolute;
@@ -398,7 +401,35 @@
            background-image: url("../img/pca/Jetway-100/Rev-001/100-Ton-PCA-Dirty-Filter.png");
         }
       }
-
+      &.jetway-20 {
+        &.blower-on {
+          background-image: url("../img/pca/Jetway-20/Rev-001/20-Ton-PCA-Blower.png");
+        }
+        &.cooling-stage-1-on {
+          background-image: url("../img/pca/Jetway-20/Rev-001/20-Ton-PCA-Comp-Pri-1.png");
+        }
+        &.cooling-stage-2-on {
+          background-image: url("../img/pca/Jetway-20/Rev-001/20-Ton-PCA-Comp-Sec-1.png");
+        }
+        &.heating-stage-1-on {
+          background-image: url("../img/pca/Jetway-100/Rev-001/20-Ton-PCA-Heat-1.png");
+        }
+        &.heating-stage-2-on {
+          background-image: url("../img/pca/Jetway-100/Rev-001/20-Ton-PCA-Heat-2.png");
+        }
+        &.ac-cool-on {
+          background-image: url("../img/pca/Jetway-20/Rev-001/20-Ton-PCA-Damper-Airplane.png");
+        }
+        &.bc-cool-on {
+          background-image: url("../img/pca/Jetway-20/Rev-001/20-Ton-PCA-Damper-Bridge.png");
+        }
+        &.fan-1-on {
+           background-image: url("../img/pca/Jetway-20/Rev-001/20-Ton-PCA-Fan-1.png");
+        }
+        &.fan-2-on {
+           background-image: url("../img/pca/Jetway-20/Rev-001/20-Ton-PCA-Fan-1.png");
+        }
+      } 
     }
     div.val {
 
