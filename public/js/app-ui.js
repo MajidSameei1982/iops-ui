@@ -12685,84 +12685,86 @@ TagConfig = (function(superClass) {
         }
       },
       gpu_summary_widget: {
-        C: {
-          remove_tags: {
-            'gpu_ra_in_avg': 'gpu_ra_in_avg'
-          }
-        },
-        D: {
-          17: {
-            add_tags: {
-              gpu_amps_out_average_2: {
-                Tag: 'GPU.RA2OUTAVG',
-                Label: 'Amps Out Average_2',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: false,
-                  Parm002: null,
-                  Parm003: null,
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              gpu_volts_out_average_2: {
-                Tag: 'GPU.RV2OUTAVG',
-                Label: 'Volts Out Average_2',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: false,
-                  Parm002: null,
-                  Parm003: null,
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              }
+        2: {
+          C: {
+            remove_tags: {
+              'gpu_ra_in_avg': 'gpu_ra_in_avg'
             }
           },
-          20: {
-            add_tags: {
-              gpu_amps_out_average_2: {
-                Tag: 'GPU.RA2OUTAVG',
-                Label: 'Amps Out Average_2',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: false,
-                  Parm002: null,
-                  Parm003: null,
-                  Parm004: null
+          D: {
+            17: {
+              add_tags: {
+                gpu_amps_out_average_2: {
+                  Tag: 'GPU.RA2OUTAVG',
+                  Label: 'Amps Out Average_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
                 },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
+                gpu_volts_out_average_2: {
+                  Tag: 'GPU.RV2OUTAVG',
+                  Label: 'Volts Out Average_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
                 }
-              },
-              gpu_volts_out_average_2: {
-                Tag: 'GPU.RV2OUTAVG',
-                Label: 'Volts Out Average_2',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: false,
-                  Parm002: null,
-                  Parm003: null,
-                  Parm004: null
+              }
+            },
+            20: {
+              add_tags: {
+                gpu_amps_out_average_2: {
+                  Tag: 'GPU.RA2OUTAVG',
+                  Label: 'Amps Out Average_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
                 },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
+                gpu_volts_out_average_2: {
+                  Tag: 'GPU.RV2OUTAVG',
+                  Label: 'Volts Out Average_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
                 }
               }
             }
@@ -12862,114 +12864,118 @@ TagConfig = (function(superClass) {
         }
       },
       pbb_level_detail_widget: {
-        D: {
-          removeTags: {
-            'pbb_autolevel_key': 'pbb_autolevel_key',
-            'pbb_autoleveling': 'pbb_autoleveling',
-            'pbb_cabin_floor_deicer': 'pbb_cabin_floor_deicer',
-            'pbb_terminal_door': 'pbb_terminal_door',
-            'pbb_cab_angle_disp': 'pbb_cab_angle_disp',
-            'pbb_slope_deg': 'pbb_slope_deg',
-            'pbb_swing_angle_disp': 'pbb_swing_angle_disp',
-            'pbb_height_to_disp': 'pbb_height_to_disp',
-            'pbb_wheel_angle_deg': 'pbb_wheel_angle_deg',
-            'pbb_tunnel_length': 'pbb_tunnel_length'
-          },
-          update_tags: {
-            pbb_estop: {
-              Tag: 'PBB.ALARM.E_STOP',
-              Label: 'E-Stop',
-              DataType: 'Boolean',
-              Parameters: {
-                Parm001: 'On',
-                Parm002: 'Off',
-                Parm003: 'ok',
-                Parm004: ''
-              },
-              Element: {
-                Type: 'TableRow',
-                ParentID: '#widgetData',
-                Class: null,
-                Object: null
+        2: {
+          D: {
+            removeTags: {
+              'pbb_autolevel_key': 'pbb_autolevel_key',
+              'pbb_autoleveling': 'pbb_autoleveling',
+              'pbb_cabin_floor_deicer': 'pbb_cabin_floor_deicer',
+              'pbb_terminal_door': 'pbb_terminal_door',
+              'pbb_cab_angle_disp': 'pbb_cab_angle_disp',
+              'pbb_slope_deg': 'pbb_slope_deg',
+              'pbb_swing_angle_disp': 'pbb_swing_angle_disp',
+              'pbb_height_to_disp': 'pbb_height_to_disp',
+              'pbb_wheel_angle_deg': 'pbb_wheel_angle_deg',
+              'pbb_tunnel_length': 'pbb_tunnel_length'
+            },
+            update_tags: {
+              pbb_estop: {
+                Tag: 'PBB.ALARM.E_STOP',
+                Label: 'E-Stop',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: ''
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
               }
             }
           }
         }
       },
       pbb_pca_gpu_basic_widget: {
-        D: {
-          17: {
-            add_tags: {
-              gpu_amps_out_average_2: {
-                Tag: 'GPU.RA2OUTAVG',
-                Label: 'Amps Out Average_2',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: false,
-                  Parm002: null,
-                  Parm003: null,
-                  Parm004: null
+        2: {
+          D: {
+            17: {
+              add_tags: {
+                gpu_amps_out_average_2: {
+                  Tag: 'GPU.RA2OUTAVG',
+                  Label: 'Amps Out Average_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
                 },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              gpu_volts_out_average_2: {
-                Tag: 'GPU.RV2OUTAVG',
-                Label: 'Volts Out Average_2',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: false,
-                  Parm002: null,
-                  Parm003: null,
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
+                gpu_volts_out_average_2: {
+                  Tag: 'GPU.RV2OUTAVG',
+                  Label: 'Volts Out Average_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
                 }
               }
-            }
-          },
-          20: {
-            add_tags: {
-              gpu_amps_out_average_2: {
-                Tag: 'GPU.RA2OUTAVG',
-                Label: 'Amps Out Average_2',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: false,
-                  Parm002: null,
-                  Parm003: null,
-                  Parm004: null
+            },
+            20: {
+              add_tags: {
+                gpu_amps_out_average_2: {
+                  Tag: 'GPU.RA2OUTAVG',
+                  Label: 'Amps Out Average_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
                 },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              gpu_volts_out_average_2: {
-                Tag: 'GPU.RV2OUTAVG',
-                Label: 'Volts Out Average_2',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: false,
-                  Parm002: null,
-                  Parm003: null,
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
+                gpu_volts_out_average_2: {
+                  Tag: 'GPU.RV2OUTAVG',
+                  Label: 'Volts Out Average_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
                 }
               }
             }

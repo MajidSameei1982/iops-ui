@@ -1068,19 +1068,20 @@ class TagConfig extends Object
 								gpu_volts_out_average_2:{Tag:'GPU.RV2OUTAVG',Label:'Volts Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							}
 			gpu_summary_widget: # GPU Summary Widget
-				C: 
-					remove_tags:{'gpu_ra_in_avg'}
-				D:
-					17:
-						add_tags:{
-							gpu_amps_out_average_2:{Tag:'GPU.RA2OUTAVG',Label:'Amps Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-							gpu_volts_out_average_2:{Tag:'GPU.RV2OUTAVG',Label:'Volts Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						}
-					20:
-						add_tags:{
-							gpu_amps_out_average_2:{Tag:'GPU.RA2OUTAVG',Label:'Amps Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-							gpu_volts_out_average_2:{Tag:'GPU.RV2OUTAVG',Label:'Volts Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						}
+				2:
+					C: 
+						remove_tags:{'gpu_ra_in_avg'}
+					D:
+						17:
+							add_tags:{
+								gpu_amps_out_average_2:{Tag:'GPU.RA2OUTAVG',Label:'Amps Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+								gpu_volts_out_average_2:{Tag:'GPU.RV2OUTAVG',Label:'Volts Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							}
+						20:
+							add_tags:{
+								gpu_amps_out_average_2:{Tag:'GPU.RA2OUTAVG',Label:'Amps Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+								gpu_volts_out_average_2:{Tag:'GPU.RV2OUTAVG',Label:'Volts Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							}
 			#pbb_widget: # PBB Bridge Widget - no changes needed for D
 			pbb_detail_widget: #PBB Detail Widget
 				update_tags:{
@@ -1091,23 +1092,26 @@ class TagConfig extends Object
 					pbb_canopy:{Tag:'PBB.CANOPYDOWN',Label:'Canopy',DataType:'Boolean',Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:'Canopy : #{1}'},Element:{Type:'div',ParentID:'#pbb_canopy_container',Class:'val transparent',Object:null}},
 				}
 			pbb_level_detail_widget: # PBB Overview Widget
-				D:
-					removeTags:{'pbb_autolevel_key','pbb_autoleveling','pbb_cabin_floor_deicer','pbb_terminal_door','pbb_cab_angle_disp','pbb_slope_deg','pbb_swing_angle_disp','pbb_height_to_disp','pbb_wheel_angle_deg','pbb_tunnel_length'}
-					update_tags:{
-						pbb_estop:{Tag:'PBB.ALARM.E_STOP',Label:'E-Stop',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-					}
+				2:
+					D:
+						removeTags:{'pbb_autolevel_key','pbb_autoleveling','pbb_cabin_floor_deicer','pbb_terminal_door','pbb_cab_angle_disp','pbb_slope_deg','pbb_swing_angle_disp','pbb_height_to_disp','pbb_wheel_angle_deg','pbb_tunnel_length'}
+						update_tags:{
+							pbb_estop:{Tag:'PBB.ALARM.E_STOP',Label:'E-Stop',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+						}
 			pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
-				D:
-					17:
-						add_tags:{
-							gpu_amps_out_average_2:{Tag:'GPU.RA2OUTAVG',Label:'Amps Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-							gpu_volts_out_average_2:{Tag:'GPU.RV2OUTAVG',Label:'Volts Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						}
-					20:
-						add_tags:{
-							gpu_amps_out_average_2:{Tag:'GPU.RA2OUTAVG',Label:'Amps Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-							gpu_volts_out_average_2:{Tag:'GPU.RV2OUTAVG',Label:'Volts Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-						}
+				2:
+					D:
+						17:
+							add_tags:{
+								gpu_amps_out_average_2:{Tag:'GPU.RA2OUTAVG',Label:'Amps Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+								gpu_volts_out_average_2:{Tag:'GPU.RV2OUTAVG',Label:'Volts Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							}
+						20:
+							add_tags:{
+								gpu_amps_out_average_2:{Tag:'GPU.RA2OUTAVG',Label:'Amps Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+								gpu_volts_out_average_2:{Tag:'GPU.RV2OUTAVG',Label:'Volts Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							}
+
 	###********************************************************************************
 	**  Widget:String
 	**  Groups:{ String,String,... }
