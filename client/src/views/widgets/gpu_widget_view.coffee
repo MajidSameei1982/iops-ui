@@ -81,8 +81,10 @@ class GpuWidgetView extends IOPSWidgetView
       # Handle the second table used for dual unit GPU's
       if @$('.data2').hasClass('no-show')
         @$('.data').css('width', '100%')
-        $('.data').find('<thead>').remove()
-        $('.data2').find('<thead>').remove()
+        if $('.data thead')? || $('.data thead').length = 0
+          $('.data thead').remove()
+        if $('.data2 thead')? || $('.data2 thead').length = 0
+          $('.data2 thead').remove()
       else
         @$('.data').css('width', '75%')
         $('.data').prepend('<thead><tr><th></th><th>Unit 01</th></tr></thead>')
