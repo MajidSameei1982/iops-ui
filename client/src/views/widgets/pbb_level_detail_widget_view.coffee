@@ -250,7 +250,6 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     else
       @$('#pbb_tunnel_length').html("")
 
-    
     # ALARMS
     aq = @data_q(@tagData.pbb_has_alarms)
     @ui.alarms.toggle(@get_bool(@vals.pbb_has_alarms)==true && aq)

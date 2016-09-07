@@ -331,40 +331,52 @@ class GpusummaryWidgetView extends IOPSWidgetView
     switch p
       when 'vin'
         lbl = 'Input Voltage'
-        tags = [{tag: "#{@prefix}#{@tagData.gpu_rv_in_avg.Tag}.Value", fill: true, color: plot_color}]
+        if @tagData.gpu_rv_in_avg.Tag?
+          tags = [{tag: "#{@prefix}#{@tagData.gpu_rv_in_avg.Tag}.Value", fill: true, color: plot_color}]
       when 'vin_a', 'vin_b', 'vin_c'
         lbl = "Input Voltage Phase #{ph}"
         switch ph
           when 'A'
-            tags = [{tag: "#{@prefix}#{@tagData.gpu_pm_input_phasea_v.Tag}.Value", fill: true, color: plot_color}]
+            if @tagData.gpu_pm_input_phasea_v.Tag?
+              tags = [{tag: "#{@prefix}#{@tagData.gpu_pm_input_phasea_v.Tag}.Value", fill: true, color: plot_color}]
           when 'B'
-            tags = [{tag: "#{@prefix}#{@tagData.gpu_pm_input_phaseb_v.Tag}.Value", fill: true, color: plot_color}]
+            if @tagData.gpu_pm_input_phaseb_v.Tag?
+              tags = [{tag: "#{@prefix}#{@tagData.gpu_pm_input_phaseb_v.Tag}.Value", fill: true, color: plot_color}]
           when 'C'
-            tags = [{tag: "#{@prefix}#{@tagData.gpu_pm_input_phasec_v.Tag}.Value", fill: true, color: plot_color}]
+            if @tagData.gpu_pm_input_phasec_v.Tag?
+              tags = [{tag: "#{@prefix}#{@tagData.gpu_pm_input_phasec_v.Tag}.Value", fill: true, color: plot_color}]
       when 'vout'
         lbl = 'Output Voltage'
-        tags = [{tag: "#{@prefix}#{@tagData.gpu_rv_out_avg.Tag}.Value", fill: true, color: plot_color}]
+        if @tagData.gpu_rv_out_avg.Tag?
+          tags = [{tag: "#{@prefix}#{@tagData.gpu_rv_out_avg.Tag}.Value", fill: true, color: plot_color}]
       when 'vout_a', 'vout_b', 'vout_c'
         lbl = "Output Voltage Phase #{ph}"
         switch ph
           when 'A'
-            tags = [{tag: "#{@prefix}#{@tagData.gpu_pm_output_phasea_v.Tag}.Value", fill: true, color: plot_color}]
+            if @tagData.gpu_pm_output_phasea_v.Tag?
+              tags = [{tag: "#{@prefix}#{@tagData.gpu_pm_output_phasea_v.Tag}.Value", fill: true, color: plot_color}]
           when 'B'
-            tags = [{tag: "#{@prefix}#{@tagData.gpu_pm_output_phaseb_v.Tag}.Value", fill: true, color: plot_color}]
+            if @tagData.gpu_pm_output_phaseb_v.Tag?
+              tags = [{tag: "#{@prefix}#{@tagData.gpu_pm_output_phaseb_v.Tag}.Value", fill: true, color: plot_color}]
           when 'C'
-            tags = [{tag: "#{@prefix}#{@tagData.gpu_pm_output_phasec_v.Tag}.Value", fill: true, color: plot_color}]
+            if @tagData.gpu_pm_output_phasec_v.Tag?
+              tags = [{tag: "#{@prefix}#{@tagData.gpu_pm_output_phasec_v.Tag}.Value", fill: true, color: plot_color}]
       when 'aout'
         lbl = 'Output Amperage'
-        tags = [{tag: "#{@prefix}#{@tagData.gpu_ra_out_avg.Tag}.Value", fill: true, color: plot_color}]
+        if @tagData.gpu_ra_out_avg.Tag?
+          tags = [{tag: "#{@prefix}#{@tagData.gpu_ra_out_avg.Tag}.Value", fill: true, color: plot_color}]
       when 'aout_a', 'aout_b', 'aout_c'
         lbl = "Output Amperage Phase #{ph}"
         switch ph
           when 'A'
-            tags = [{tag: "#{@prefix}#{@tagData.gpu_pm_output_phasea_i.Tag}.Value", fill: true, color: plot_color}]
+            if @tagData.gpu_pm_output_phasea_i.Tag?
+              tags = [{tag: "#{@prefix}#{@tagData.gpu_pm_output_phasea_i.Tag}.Value", fill: true, color: plot_color}]
           when 'B'
-            tags = [{tag: "#{@prefix}#{@tagData.gpu_pm_output_phaseb_i.Tag}.Value", fill: true, color: plot_color}]
+            if @tagData.gpu_pm_output_phaseb_i.Tag?
+              tags = [{tag: "#{@prefix}#{@tagData.gpu_pm_output_phaseb_i.Tag}.Value", fill: true, color: plot_color}]
           when 'C'
-            tags = [{tag: "#{@prefix}#{@tagData.gpu_pm_output_phasec_i.Tag}.Value", fill: true, color: plot_color}]
+            if @tagData.gpu_pm_output_phasec_i.Tag?
+              tags = [{tag: "#{@prefix}#{@tagData.gpu_pm_output_phasec_i.Tag}.Value", fill: true, color: plot_color}]
 
     @$('#ptype_lbl').html(lbl)
     @$('#toggle_volts_in').toggle(ptype!='vin')
