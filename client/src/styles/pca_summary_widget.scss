@@ -198,6 +198,13 @@
       &.jetway-20 {
         background-image: url("../img/pca/Jetway-20/Rev-001/20-Ton-PCA-Base-Unit.png") ;
       }
+      &.inet-30 {
+        background-image: url("../img/pca/Inet-Model-001/Rev-001/Inet_PCAire-Main.png") ;
+      }
+      &.inet-pdx-15 {
+        background-image: url("../img/pca/Inet-PDX-15/Rev-001/PDX15-BaseImage.png") ;
+      }
+
     }
     div.img {/* default overlays */
       position: absolute;
@@ -430,6 +437,58 @@
            background-image: url("../img/pca/Jetway-20/Rev-001/20-Ton-PCA-Fan-1.png");
         }
       } 
+      &.inet-30 {
+        &.blower-on {
+          background-image: url("../img/pca/Inet-Model-001/Rev-001/Blower.png");
+        }
+        &.cooling-stage-1-on {
+          background-image: url("../img/pca/Inet-Model-001/Rev-001/Cooling-Stage-1.png");
+        }
+        &.cooling-stage-2-on {
+          background-image: url("../img/pca/Inet-Model-001/Rev-001/Cooling-Stage-2.png");
+        }
+        &.heating-stage-1-on {
+          background-image: url("../img/pca/Inet-Model-001/Rev-001/Heat-Stage-1.png");
+        }
+        &.heating-stage-2-on {
+          background-image: url("../img/pca/Inet-Model-001/Rev-001/Heat-Stage-2.png");
+        }
+        &.ac-cool-on {
+          background-image: url("../img/pca/Inet-Model-001/Rev-001/AC-Cool.png");
+        }
+        &.bc-cool-on {
+          background-image: url("../img/pca/Inet-Model-001/Rev-001/BC-Cool.png");
+        }
+      }
+     &.inet-pdx-15 {
+        &.blower-on {
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/PDX15-Blower.png");
+        }
+        &.cooling-stage-1-on {
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/PDX15-Cooling1.png");
+        }
+        &.cooling-stage-2-on {
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/PDX15-Cooling2.png");
+        }
+        &.heating-stage-1-on {
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/PDX15-Heater1.png");
+        }
+        &.heating-stage-2-on {
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/PDX15-Heater2.png");
+        }
+        &.ac-cool-on {
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/PDX15-AC.png");
+        }
+        &.filters-on {
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/PDX15-FiltersOn.png");
+        }
+        &.fan-1-on {
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/PDX15-Fan1.png");
+        }
+        &.fan-2-on {
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/PDX15-Fan2.png");
+        }
+     } 
     }
     div.val {
 
