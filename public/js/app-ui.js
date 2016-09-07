@@ -6928,8 +6928,160 @@ TagConfig = (function(superClass) {
     },
     CID: {
       gpu_summary_widget: {
-        remove_tags: {
-          'gpu_ra_in_avg': 'gpu_ra_in_avg'
+        add_tags: {
+          gpu_pm_output_phasea_i: {
+            Tag: 'GPU.RAOUTA',
+            Label: 'Amps Out Phase A',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Amps',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_pm_output_phaseb_i: {
+            Tag: 'GPU.RAOUTB',
+            Label: 'Amps Out Phase B',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Amps',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_pm_output_phasec_i: {
+            Tag: 'GPU.RAOUTC',
+            Label: 'Amps Out Phase C',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Amps',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_pm_output_phasea_v: {
+            Tag: 'GPU.RVOUTA',
+            Label: 'Volts Out Phase A',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Volts',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_pm_output_phaseb_v: {
+            Tag: 'GPU.RVOUTB',
+            Label: 'Volts Out Phase B',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Volts',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_pm_output_phasec_v: {
+            Tag: 'GPU.RVOUTC',
+            Label: 'Volts Out Phase C',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Volts',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_pm_input_phasea_v: {
+            Tag: 'GPU.RVINA',
+            Label: 'Volts In Phase A',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Volts',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_pm_input_phaseb_v: {
+            Tag: 'GPU.RVINB',
+            Label: 'Volts In Phase B',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Volts',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_pm_input_phasec_v: {
+            Tag: 'GPU.RVINC',
+            Label: 'Volts In Phase C',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Volts',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          }
         },
         1: {
           1: {
@@ -7197,15 +7349,15 @@ TagConfig = (function(superClass) {
           1: {
             C3: {
               use_tags: {
-                pca_status: {
-                  Tag: 'PCA.PCASTATUS',
-                  Label: 'PCA status',
+                gpu_status: {
+                  Tag: 'GPU.GPUSTATUSBOOLEAN',
+                  Label: 'GPU Status',
                   DataType: 'Boolean',
                   Parameters: {
                     Parm001: 'On',
                     Parm002: 'Off',
                     Parm003: 'ok',
-                    Parm004: 'err',
+                    Parm004: null,
                     Parm005: null
                   },
                   Element: {
@@ -18968,13 +19120,15 @@ GpusummaryWidgetView = (function(superClass) {
     switch (p) {
       case 'vin':
         lbl = 'Input Voltage';
-        tags = [
-          {
-            tag: "" + this.prefix + this.tagData.gpu_rv_in_avg.Tag + ".Value",
-            fill: true,
-            color: plot_color
-          }
-        ];
+        if (this.tagData.gpu_rv_in_avg.Tag != null) {
+          tags = [
+            {
+              tag: "" + this.prefix + this.tagData.gpu_rv_in_avg.Tag + ".Value",
+              fill: true,
+              color: plot_color
+            }
+          ];
+        }
         break;
       case 'vin_a':
       case 'vin_b':
@@ -18982,42 +19136,50 @@ GpusummaryWidgetView = (function(superClass) {
         lbl = "Input Voltage Phase " + ph;
         switch (ph) {
           case 'A':
-            tags = [
-              {
-                tag: "" + this.prefix + this.tagData.gpu_pm_input_phasea_v.Tag + ".Value",
-                fill: true,
-                color: plot_color
-              }
-            ];
+            if (this.tagData.gpu_pm_input_phasea_v.Tag != null) {
+              tags = [
+                {
+                  tag: "" + this.prefix + this.tagData.gpu_pm_input_phasea_v.Tag + ".Value",
+                  fill: true,
+                  color: plot_color
+                }
+              ];
+            }
             break;
           case 'B':
-            tags = [
-              {
-                tag: "" + this.prefix + this.tagData.gpu_pm_input_phaseb_v.Tag + ".Value",
-                fill: true,
-                color: plot_color
-              }
-            ];
+            if (this.tagData.gpu_pm_input_phaseb_v.Tag != null) {
+              tags = [
+                {
+                  tag: "" + this.prefix + this.tagData.gpu_pm_input_phaseb_v.Tag + ".Value",
+                  fill: true,
+                  color: plot_color
+                }
+              ];
+            }
             break;
           case 'C':
-            tags = [
-              {
-                tag: "" + this.prefix + this.tagData.gpu_pm_input_phasec_v.Tag + ".Value",
-                fill: true,
-                color: plot_color
-              }
-            ];
+            if (this.tagData.gpu_pm_input_phasec_v.Tag != null) {
+              tags = [
+                {
+                  tag: "" + this.prefix + this.tagData.gpu_pm_input_phasec_v.Tag + ".Value",
+                  fill: true,
+                  color: plot_color
+                }
+              ];
+            }
         }
         break;
       case 'vout':
         lbl = 'Output Voltage';
-        tags = [
-          {
-            tag: "" + this.prefix + this.tagData.gpu_rv_out_avg.Tag + ".Value",
-            fill: true,
-            color: plot_color
-          }
-        ];
+        if (this.tagData.gpu_rv_out_avg.Tag != null) {
+          tags = [
+            {
+              tag: "" + this.prefix + this.tagData.gpu_rv_out_avg.Tag + ".Value",
+              fill: true,
+              color: plot_color
+            }
+          ];
+        }
         break;
       case 'vout_a':
       case 'vout_b':
@@ -19025,42 +19187,50 @@ GpusummaryWidgetView = (function(superClass) {
         lbl = "Output Voltage Phase " + ph;
         switch (ph) {
           case 'A':
-            tags = [
-              {
-                tag: "" + this.prefix + this.tagData.gpu_pm_output_phasea_v.Tag + ".Value",
-                fill: true,
-                color: plot_color
-              }
-            ];
+            if (this.tagData.gpu_pm_output_phasea_v.Tag != null) {
+              tags = [
+                {
+                  tag: "" + this.prefix + this.tagData.gpu_pm_output_phasea_v.Tag + ".Value",
+                  fill: true,
+                  color: plot_color
+                }
+              ];
+            }
             break;
           case 'B':
-            tags = [
-              {
-                tag: "" + this.prefix + this.tagData.gpu_pm_output_phaseb_v.Tag + ".Value",
-                fill: true,
-                color: plot_color
-              }
-            ];
+            if (this.tagData.gpu_pm_output_phaseb_v.Tag != null) {
+              tags = [
+                {
+                  tag: "" + this.prefix + this.tagData.gpu_pm_output_phaseb_v.Tag + ".Value",
+                  fill: true,
+                  color: plot_color
+                }
+              ];
+            }
             break;
           case 'C':
-            tags = [
-              {
-                tag: "" + this.prefix + this.tagData.gpu_pm_output_phasec_v.Tag + ".Value",
-                fill: true,
-                color: plot_color
-              }
-            ];
+            if (this.tagData.gpu_pm_output_phasec_v.Tag != null) {
+              tags = [
+                {
+                  tag: "" + this.prefix + this.tagData.gpu_pm_output_phasec_v.Tag + ".Value",
+                  fill: true,
+                  color: plot_color
+                }
+              ];
+            }
         }
         break;
       case 'aout':
         lbl = 'Output Amperage';
-        tags = [
-          {
-            tag: "" + this.prefix + this.tagData.gpu_ra_out_avg.Tag + ".Value",
-            fill: true,
-            color: plot_color
-          }
-        ];
+        if (this.tagData.gpu_ra_out_avg.Tag != null) {
+          tags = [
+            {
+              tag: "" + this.prefix + this.tagData.gpu_ra_out_avg.Tag + ".Value",
+              fill: true,
+              color: plot_color
+            }
+          ];
+        }
         break;
       case 'aout_a':
       case 'aout_b':
@@ -19068,31 +19238,37 @@ GpusummaryWidgetView = (function(superClass) {
         lbl = "Output Amperage Phase " + ph;
         switch (ph) {
           case 'A':
-            tags = [
-              {
-                tag: "" + this.prefix + this.tagData.gpu_pm_output_phasea_i.Tag + ".Value",
-                fill: true,
-                color: plot_color
-              }
-            ];
+            if (this.tagData.gpu_pm_output_phasea_i.Tag != null) {
+              tags = [
+                {
+                  tag: "" + this.prefix + this.tagData.gpu_pm_output_phasea_i.Tag + ".Value",
+                  fill: true,
+                  color: plot_color
+                }
+              ];
+            }
             break;
           case 'B':
-            tags = [
-              {
-                tag: "" + this.prefix + this.tagData.gpu_pm_output_phaseb_i.Tag + ".Value",
-                fill: true,
-                color: plot_color
-              }
-            ];
+            if (this.tagData.gpu_pm_output_phaseb_i.Tag != null) {
+              tags = [
+                {
+                  tag: "" + this.prefix + this.tagData.gpu_pm_output_phaseb_i.Tag + ".Value",
+                  fill: true,
+                  color: plot_color
+                }
+              ];
+            }
             break;
           case 'C':
-            tags = [
-              {
-                tag: "" + this.prefix + this.tagData.gpu_pm_output_phasec_i.Tag + ".Value",
-                fill: true,
-                color: plot_color
-              }
-            ];
+            if (this.tagData.gpu_pm_output_phasec_i.Tag != null) {
+              tags = [
+                {
+                  tag: "" + this.prefix + this.tagData.gpu_pm_output_phasec_i.Tag + ".Value",
+                  fill: true,
+                  color: plot_color
+                }
+              ];
+            }
         }
     }
     this.$('#ptype_lbl').html(lbl);
@@ -20987,20 +21163,20 @@ PcadischargeWidgetView = (function(superClass) {
       zone = gp[1];
       gate = gp[2];
       pre = this.prefix + "Term" + gp[0] + ".Zone" + gp[1] + ".Gate" + gp[2] + ".";
-      temp = this.vals["" + pre + this.tagData.pca_discharge_temp.Tag];
+      temp = this.vals["" + pre + this.tagData.pca_discharge_temp.Tag + ".Value"];
       temp = (temp != null) && temp !== '' ? parseFloat(temp) : 0;
       max = temp > max ? temp : max;
-      onv = this.vals["" + pre + this.tagData.pca_status.Tag];
-      cooling = this.vals["" + pre + this.tagData.pca_mode_cooling.Tag];
-      heating = this.vals["" + pre + this.tagData.pca_mode_heating.Tag];
-      cool_set = this.vals["" + pre + this.tagData.pca_cooling_pt.Tag];
-      heat_set = this.vals["" + pre + this.tagData.pca_heating_pt.Tag];
-      alarm_heat = this.vals["" + pre + this.tagData.pca_alarm_heating_run.Tag];
-      alarm_cool = this.vals["" + pre + this.tagData.pca_alarm_cooling_run.Tag];
+      onv = this.vals["" + pre + this.tagData.pca_status.Tag + ".Value"];
+      cooling = this.vals["" + pre + this.tagData.pca_mode_cooling.Tag + ".Value"];
+      heating = this.vals["" + pre + this.tagData.pca_mode_heating.Tag + ".Value"];
+      cool_set = this.vals["" + pre + this.tagData.pca_cooling_pt.Tag + ".Value"];
+      heat_set = this.vals["" + pre + this.tagData.pca_heating_pt.Tag + ".Value"];
+      alarm_heat = this.vals["" + pre + this.tagData.pca_alarm_heating_run.Tag + ".Value"];
+      alarm_cool = this.vals["" + pre + this.tagData.pca_alarm_cooling_run.Tag + ".Value"];
       alarm_heat_timer = 0;
       alarm_cool_timer = 0;
-      timer_heat = this.vals["" + pre + this.tagData.pca_heating_tm.Tag];
-      timer_cool = this.vals["" + pre + this.tagData.pca_cooling_tm.Tag];
+      timer_heat = this.vals["" + pre + this.tagData.pca_heating_tm.Tag + ".Value"];
+      timer_cool = this.vals["" + pre + this.tagData.pca_cooling_tm.Tag + ".Value"];
       timers.push([alarm_heat, timer_heat, alarm_cool, timer_cool, alarm_heat_timer, alarm_cool_timer]);
       if ((cool_set != null) && cool_set !== '') {
         cv = parseFloat(cool_set);
@@ -21799,7 +21975,7 @@ PcasummaryWidgetView = (function(superClass) {
         lbl = 'Ambient Temp';
         tags = [
           {
-            tag: this.prefix + "#(@tagData.pca_ambient_temp.Tag).Value",
+            tag: "" + this.prefix + this.tagData.pca_ambient_temp.Tag + ".Value",
             fill: true,
             color: plot_color
           }
@@ -21809,7 +21985,7 @@ PcasummaryWidgetView = (function(superClass) {
         lbl = "Discharge Temp";
         tags = [
           {
-            tag: this.prefix + "#(@tagData.pca_discharge_temp.Tag).Value",
+            tag: "" + this.prefix + this.tagData.pca_discharge_temp.Tag + ".Value",
             fill: true,
             color: plot_color
           }
@@ -21819,11 +21995,11 @@ PcasummaryWidgetView = (function(superClass) {
         lbl = 'Ambient/Discharge Temps';
         tags = [
           {
-            tag: this.prefix + "#(@tagData.pca_ambient_temp.Tag).Value",
+            tag: "" + this.prefix + this.tagData.pca_ambient_temp.Tag + ".Value",
             fill: true,
             color: plot_color
           }, {
-            tag: this.prefix + "#(@tagData.pca_discharge_temp.Tag).Value",
+            tag: "" + this.prefix + this.tagData.pca_discharge_temp.Tag + ".Value",
             fill: true,
             color: plot2_color
           }
@@ -21884,7 +22060,6 @@ PcasummaryWidgetView = (function(superClass) {
     var fd, i, j, k, len, markings, max, opts, p, ref, ref1, ref2, ref3, ref4, span, tm1, tm2, tt, x, y;
     this.$('#plot-placeholder').remove();
     this.tb = OPC.Trend.getTrendBinding(data);
-    console.log(data);
     if (this.tb != null) {
       max = 0;
       if ((data.penvalues != null) && data.penvalues.length > 0) {

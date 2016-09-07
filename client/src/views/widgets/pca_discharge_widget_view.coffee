@@ -108,21 +108,21 @@ class PcadischargeWidgetView extends IOPSWidgetView
       zone = gp[1]
       gate = gp[2]
       pre = "#{@prefix}Term#{gp[0]}.Zone#{gp[1]}.Gate#{gp[2]}."
-      temp = @vals["#{pre}#{@tagData.pca_discharge_temp.Tag}"]
+      temp = @vals["#{pre}#{@tagData.pca_discharge_temp.Tag}.Value"]
       temp = if temp? && temp != '' then parseFloat(temp) else 0
       max = if temp > max then temp else max
 
-      onv = @vals["#{pre}#{@tagData.pca_status.Tag}"]
-      cooling = @vals["#{pre}#{@tagData.pca_mode_cooling.Tag}"]
-      heating = @vals["#{pre}#{@tagData.pca_mode_heating.Tag}"]
-      cool_set = @vals["#{pre}#{@tagData.pca_cooling_pt.Tag}"]
-      heat_set = @vals["#{pre}#{@tagData.pca_heating_pt.Tag}"]
-      alarm_heat = @vals["#{pre}#{@tagData.pca_alarm_heating_run.Tag}"]
-      alarm_cool = @vals["#{pre}#{@tagData.pca_alarm_cooling_run.Tag}"]
-      alarm_heat_timer = 0 #@vals["#{pre}#{@tagData.alarm_heat_timer.Tag}"]
-      alarm_cool_timer = 0 #@vals["#{pre}#{@tagData.alarm_cool_timer.Tag}"]
-      timer_heat = @vals["#{pre}#{@tagData.pca_heating_tm.Tag}"]
-      timer_cool = @vals["#{pre}#{@tagData.pca_cooling_tm.Tag}"]
+      onv = @vals["#{pre}#{@tagData.pca_status.Tag}.Value"]
+      cooling = @vals["#{pre}#{@tagData.pca_mode_cooling.Tag}.Value"]
+      heating = @vals["#{pre}#{@tagData.pca_mode_heating.Tag}.Value"]
+      cool_set = @vals["#{pre}#{@tagData.pca_cooling_pt.Tag}.Value"]
+      heat_set = @vals["#{pre}#{@tagData.pca_heating_pt.Tag}.Value"]
+      alarm_heat = @vals["#{pre}#{@tagData.pca_alarm_heating_run.Tag}.Value"]
+      alarm_cool = @vals["#{pre}#{@tagData.pca_alarm_cooling_run.Tag}.Value"]
+      alarm_heat_timer = 0 #@vals["#{pre}#{@tagData.alarm_heat_timer.Tag}.Value"]
+      alarm_cool_timer = 0 #@vals["#{pre}#{@tagData.alarm_cool_timer.Tag}.Value"]
+      timer_heat = @vals["#{pre}#{@tagData.pca_heating_tm.Tag}.Value"]
+      timer_cool = @vals["#{pre}#{@tagData.pca_cooling_tm.Tag}.Value"]
       timers.push [alarm_heat, timer_heat, alarm_cool, timer_cool,alarm_heat_timer,alarm_cool_timer]
       if cool_set? && cool_set != ''
         cv = parseFloat(cool_set) 
