@@ -10577,7 +10577,13 @@ TagConfig = (function(superClass) {
             }
           },
           D: {
-            remove_all: {}
+            remove_tags: {
+              'pca_bridge_damper': 'pca_bridge_damper',
+              'pca_ambient_humidity': 'pca_ambient_humidity',
+              'pca_hot_gas_1': 'pca_hot_gas_1',
+              'pca_hot_gas_2': 'pca_hot_gas_2',
+              'pca_dirty_filter': 'pca_dirty_filter'
+            }
           }
         }
       },
@@ -13486,16 +13492,6 @@ TagConfig = (function(superClass) {
           }
         }
       },
-      pca_discharge_widget: {
-        remove_tags: {
-          'pca_cooling_pt': 'pca_cooling_pt',
-          'pca_heating_pt': 'pca_heating_pt',
-          'pca_alarm_cooling_run': 'pca_alarm_cooling_run',
-          'pca_alarm_heating_run': 'pca_alarm_heating_run',
-          'pca_cooling_tm': 'pca_cooling_tm',
-          'pca_heating_tm': 'pca_heating_tm'
-        }
-      },
       gpu_widget: {
         2: {
           C: {
@@ -13718,13 +13714,41 @@ TagConfig = (function(superClass) {
             }
           },
           D: {
-            remove_tags: {
-              'gpu_by_pass': 'gpu_by_pass',
-              'gpu_status': 'gpu_status',
-              'gpu_on_1': 'gpu_on_1',
-              'gpu_on_2': 'gpu_on_2'
-            },
             update_tags: {
+              gpu_on_1: {
+                Tag: 'GPU.ON1',
+                Label: 'Contactor 1 ON',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: ''
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              gpu_on_2: {
+                Tag: 'GPU.ON2',
+                Label: 'Contactor 1 ON',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: ''
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
               gpu_pm_output_phasea_i: {
                 Tag: 'GPU.RAOUTA',
                 Label: 'Amps Out Phase A',
@@ -13930,7 +13954,7 @@ TagConfig = (function(superClass) {
                 }
               }
             },
-            17: {
+            D17: {
               add_tags: {
                 gpu_amps_out_phase_A_2: {
                   Tag: 'GPU.RA2OUTA',
@@ -14070,7 +14094,7 @@ TagConfig = (function(superClass) {
                 }
               }
             },
-            20: {
+            D20: {
               add_tags: {
                 gpu_amps_out_phase_A_2: {
                   Tag: 'GPU.RA2OUTA',
@@ -14221,7 +14245,7 @@ TagConfig = (function(superClass) {
             }
           },
           D: {
-            17: {
+            D17: {
               add_tags: {
                 gpu_amps_out_average_2: {
                   Tag: 'GPU.RA2OUTAVG',
@@ -14259,7 +14283,7 @@ TagConfig = (function(superClass) {
                 }
               }
             },
-            20: {
+            D20: {
               add_tags: {
                 gpu_amps_out_average_2: {
                   Tag: 'GPU.RA2OUTAVG',
@@ -14392,47 +14416,10 @@ TagConfig = (function(superClass) {
           }
         }
       },
-      pbb_level_detail_widget: {
-        2: {
-          D: {
-            removeTags: {
-              'pbb_autolevel_key': 'pbb_autolevel_key',
-              'pbb_autoleveling': 'pbb_autoleveling',
-              'pbb_cabin_floor_deicer': 'pbb_cabin_floor_deicer',
-              'pbb_terminal_door': 'pbb_terminal_door',
-              'pbb_cab_angle_disp': 'pbb_cab_angle_disp',
-              'pbb_slope_deg': 'pbb_slope_deg',
-              'pbb_swing_angle_disp': 'pbb_swing_angle_disp',
-              'pbb_height_to_disp': 'pbb_height_to_disp',
-              'pbb_wheel_angle_deg': 'pbb_wheel_angle_deg',
-              'pbb_tunnel_length': 'pbb_tunnel_length'
-            },
-            update_tags: {
-              pbb_estop: {
-                Tag: 'PBB.ALARM.E_STOP',
-                Label: 'E-Stop',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: ''
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              }
-            }
-          }
-        }
-      },
       pbb_pca_gpu_basic_widget: {
         2: {
           D: {
-            17: {
+            D17: {
               add_tags: {
                 gpu_amps_out_average_2: {
                   Tag: 'GPU.RA2OUTAVG',
@@ -14470,7 +14457,7 @@ TagConfig = (function(superClass) {
                 }
               }
             },
-            20: {
+            D20: {
               add_tags: {
                 gpu_amps_out_average_2: {
                   Tag: 'GPU.RA2OUTAVG',
