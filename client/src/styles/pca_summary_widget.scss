@@ -198,11 +198,20 @@
       &.jetway-20 {
         background-image: url("../img/pca/Jetway-20/Rev-001/20-Ton-PCA-Base-Unit.png") ;
       }
-      &.inet-30 {
+      &.inet-60 {
         background-image: url("../img/pca/Inet-Model-001/Rev-001/Inet_PCAire-Main.png") ;
       }
+      &.inet-pdx-10 {
+        background-image: url("../img/pca/Inet-PDX-10/Rev-001/InetPDX-10-Base-Unit.png") ;
+      }
       &.inet-pdx-15 {
-        background-image: url("../img/pca/Inet-PDX-15/Rev-001/PDX15-BaseImage.png") ;
+        background-image: url("../img/pca/Inet-PDX-15/Rev-001/InetPDX-15-Base.png") ;
+      }
+      &.inet-pdx-25 {
+        background-image: url("../img/pca/Inet-PDX-25/Rev-001/InetPDX-25s-Base-Unit.png") ;
+      }
+      &.inet-pdx-40 {
+        background-image: url("../img/pca/Inet-PDX-40/Rev-001/InetPDX-40-Base-Unit.png") ;
       }
 
     }
@@ -289,7 +298,7 @@
         }
       }
       &.jetair-xpc-3013 {
-         &.blower-on {
+        &.blower-on {
           background-image: url("../img/pca/JetAir-XPC-3013/Rev-001/30-Ton-PCA-Blower.png");
         }
         &.cooling-stage-1-on {
@@ -313,14 +322,14 @@
         &.fan-1-on {
            background-image: url("../img/pca/JetAir-XPC-3013/Rev-001/30-Ton-PCA-Fan-1.png");
         }
-         &.fan-2-on {
+        &.fan-2-on {
            background-image: url("../img/pca/JetAir-XPC-3013/Rev-001/30-Ton-PCA-Fan-2.png");
         }
-         &.fan-3-on {
+        &.fan-3-on {
            background-image: url("../img/pca/JetAir-XPC-3013/Rev-001/30-Ton-PCA-Fan-3.png");
         }
       }
-       &.jetway-twist-75 {
+      &.jetway-twist-75 {
         &.blower-on {
           background-image: url("../img/pca/Jetway-Twist-75/Rev-001/Blower.png");
         }
@@ -437,7 +446,7 @@
            background-image: url("../img/pca/Jetway-20/Rev-001/20-Ton-PCA-Fan-1.png");
         }
       } 
-      &.inet-30 {
+      &.inet-60 {
         &.blower-on {
           background-image: url("../img/pca/Inet-Model-001/Rev-001/Blower.png");
         }
@@ -462,33 +471,68 @@
       }
      &.inet-pdx-15 {
         &.blower-on {
-          background-image: url("../img/pca/Inet-PDX-15/Rev-001/PDX15-Blower.png");
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/InetPDX-15-Blower.png");
         }
         &.cooling-stage-1-on {
-          background-image: url("../img/pca/Inet-PDX-15/Rev-001/PDX15-Cooling1.png");
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/InetPDX-15-Pri-Comp-1.png");
         }
         &.cooling-stage-2-on {
-          background-image: url("../img/pca/Inet-PDX-15/Rev-001/PDX15-Cooling2.png");
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/InetPDX-15-Pri-Comp-2.png");
         }
         &.heating-stage-1-on {
-          background-image: url("../img/pca/Inet-PDX-15/Rev-001/PDX15-Heater1.png");
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/InetPDX-15-Heat-1.png");
         }
         &.heating-stage-2-on {
-          background-image: url("../img/pca/Inet-PDX-15/Rev-001/PDX15-Heater2.png");
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/InetPDX-15-Heat-2.png");
         }
         &.ac-cool-on {
-          background-image: url("../img/pca/Inet-PDX-15/Rev-001/PDX15-AC.png");
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/InetPDX-15-Aircraft-Cool.png");
         }
         &.filters-on {
-          background-image: url("../img/pca/Inet-PDX-15/Rev-001/PDX15-FiltersOn.png");
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/InetPDX-15-Filters.png");
         }
         &.fan-1-on {
-          background-image: url("../img/pca/Inet-PDX-15/Rev-001/PDX15-Fan1.png");
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/InetPDX-15-Fan-1.png");
         }
         &.fan-2-on {
-          background-image: url("../img/pca/Inet-PDX-15/Rev-001/PDX15-Fan2.png");
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/InetPDX-15-Fan-2.png");
         }
-     } 
+     }
+     &.inet-pdx-10 {
+        &.blower-on {
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/InetPDX-40-Blower.png");
+        }
+        &.cooling-stage-1-on {
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/InetPDX-40-Cooling-1.png");
+        }
+        &.cooling-stage-2-on {
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/InetPDX-40-Cooling-2.png");
+        }
+        &.cooling-stage-3-on {
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/InetPDX-40-Cooling-3.png");
+        }
+        &.heating-stage-1-on {
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/InetPDX-40-Heat-1.png");
+        }
+        &.heating-stage-2-on {
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/InetPDX-40-Heat-2.png");
+        }
+        &.heating-stage-3-on {
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/InetPDX-40-Heat-3.png");
+        }
+        &.ac-cool-on {
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/InetPDX-15-Aircraft-Cool.png");
+        }
+        &.filters-on {
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/InetPDX-15-Filters.png");
+        }
+        &.fan-1-on {
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/InetPDX-15-Fan-1.png");
+        }
+        &.fan-2-on {
+          background-image: url("../img/pca/Inet-PDX-15/Rev-001/InetPDX-15-Fan-2.png");
+        }
+     }  
     }
     div.val {
 
