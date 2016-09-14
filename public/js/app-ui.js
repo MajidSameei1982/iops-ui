@@ -6195,7 +6195,9 @@ TagConfig = (function(superClass) {
       pca_widget: {
         remove_tags: {
           'pca_hot_gas_1': 'pca_hot_gas_1',
-          'pca_hot_gas_2': 'pca_hot_gas_2'
+          'pca_hot_gas_2': 'pca_hot_gas_2',
+          'pca_bridge_damper': 'pca_bridge_damper',
+          'pca_bridge_air': 'pca_bridge_air'
         },
         update_tags: {
           pca_heater_1: {
@@ -6301,8 +6303,8 @@ TagConfig = (function(superClass) {
             }
           }
         },
-        1: {
-          1: {
+        4: {
+          D: {
             D4: {
               add_tags: {
                 pca_comp_stage_3: {
@@ -6362,8 +6364,8 @@ TagConfig = (function(superClass) {
         }
       },
       pca_discharge_widget: {
-        1: {
-          1: {
+        4: {
+          D: {
             D4: {
               use_tags: {
                 pca_status: {
@@ -6814,8 +6816,8 @@ TagConfig = (function(superClass) {
             }
           }
         },
-        1: {
-          1: {
+        4: {
+          D: {
             D4: {
               add_tags: {
                 pca_comp_stage_3: {
