@@ -2613,11 +2613,11 @@ ul.chosen-results li.highlighted {
       background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-Blower.png"); }
     .pca_summary_widget .display div.img.SJ_90.filter-on {
       background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-Filters.png"); }
-    .pca_summary_widget .display div.img.SJ_90.comp-stage-1-on {
+    .pca_summary_widget .display div.img.SJ_90.cooling-stage-1-on {
       background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-Comp-1.png"); }
-    .pca_summary_widget .display div.img.SJ_90.comp-stage-2-on {
+    .pca_summary_widget .display div.img.SJ_90.cooling-stage-2-on {
       background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-Comp-2.png"); }
-    .pca_summary_widget .display div.img.SJ_90.comp-stage-3-on {
+    .pca_summary_widget .display div.img.SJ_90.cooling-stage-3-on {
       background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-Comp-3.png"); }
     .pca_summary_widget .display div.img.SJ_90.cond-coil-1-on {
       background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-Cond-Coil-1.png"); }
