@@ -10933,7 +10933,7 @@ TagConfig = (function(superClass) {
                   Element: {
                     Type: 'div',
                     ParentID: '#graphics_container',
-                    Class: 'background inet-30',
+                    Class: 'background inet-60',
                     Object: null
                   }
                 },
@@ -10950,7 +10950,7 @@ TagConfig = (function(superClass) {
                   Element: {
                     Type: 'div',
                     ParentID: '#dynamic_pca_main_background',
-                    Class: 'img inet-30',
+                    Class: 'img inet-60',
                     Object: null
                   }
                 },
@@ -10967,7 +10967,7 @@ TagConfig = (function(superClass) {
                   Element: {
                     Type: 'div',
                     ParentID: '#dynamic_pca_main_background',
-                    Class: 'img inet-30',
+                    Class: 'img inet-60',
                     Object: null
                   }
                 },
@@ -10984,7 +10984,7 @@ TagConfig = (function(superClass) {
                   Element: {
                     Type: 'div',
                     ParentID: '#dynamic_pca_main_background',
-                    Class: 'img inet-30',
+                    Class: 'img inet-60',
                     Object: null
                   }
                 },
@@ -11001,7 +11001,7 @@ TagConfig = (function(superClass) {
                   Element: {
                     Type: 'div',
                     ParentID: '#dynamic_pca_main_background',
-                    Class: 'img inet-30',
+                    Class: 'img inet-60',
                     Object: null
                   }
                 },
@@ -11018,7 +11018,7 @@ TagConfig = (function(superClass) {
                   Element: {
                     Type: 'div',
                     ParentID: '#dynamic_pca_main_background',
-                    Class: 'img inet-30',
+                    Class: 'img inet-60',
                     Object: null
                   }
                 },
@@ -11036,7 +11036,7 @@ TagConfig = (function(superClass) {
                   Element: {
                     Type: 'div',
                     ParentID: '#dynamic_pca_main_background',
-                    Class: 'img inet-30',
+                    Class: 'img inet-60',
                     Object: null
                   }
                 },
@@ -11053,7 +11053,7 @@ TagConfig = (function(superClass) {
                   Element: {
                     Type: 'div',
                     ParentID: '#dynamic_pca_main_background',
-                    Class: 'img inet-30',
+                    Class: 'img inet-60',
                     Object: null
                   }
                 }
