@@ -6125,8 +6125,8 @@ TagConfig = (function(superClass) {
         'pbb_dock_time': 'pbb_dock_time',
         'pbb_hookup_time': 'pbb_hookup_time',
         'pca_time': 'pca_time',
-        'gpu_time': 'gpu_time',
         'pca_discharge_temp': 'pca_discharge_temp',
+        'gpu_time': 'gpu_time',
         'gpu_ra_out_avg': 'gpu_ra_out_avg',
         'gpu_rv_out_avg': 'gpu_rv_out_avg'
       },
