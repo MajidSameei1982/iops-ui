@@ -13061,24 +13061,10 @@ TagConfig = (function(superClass) {
                   Class: 'img inet-pdx-15',
                   Object: null
                 }
-              },
-              bccool_img: {
-                ControlTags: {
-                  pca_bridge_air: 'Boolean'
-                },
-                Parameters: {
-                  Parm001: 'ALL_TRUE',
-                  Parm002: 'bc-cool-on',
-                  Parm003: null,
-                  Parm004: 'bc-cool-bq'
-                },
-                Element: {
-                  Type: 'div',
-                  ParentID: '#dynamic_pca_main_background',
-                  Class: 'img inet-pdx-15',
-                  Object: null
-                }
               }
+            },
+            remove_graphics: {
+              'bccool_img': 'bccool_img'
             },
             add_graphics: {
               fan_1_img: {
@@ -13121,7 +13107,7 @@ TagConfig = (function(superClass) {
                 },
                 Parameters: {
                   Parm001: 'ALL_TRUE',
-                  Parm002: 'fan-3-on',
+                  Parm002: 'filters-on',
                   Parm003: null,
                   Parm004: 'fan-3-bq'
                 },
@@ -13132,6 +13118,15 @@ TagConfig = (function(superClass) {
                   Object: null
                 }
               }
+            },
+            remove_tags: {
+              'pca_ambient_humidity': 'pca_ambient_humidity',
+              'pca_coil_dp': 'pca_coil_dp',
+              'pca_vfd_speed': 'pca_vfd_speed',
+              'pca_ambient_humidity': 'pca_ambient_humidity',
+              'pca_hot_gas_1': 'pca_hot_gas_1',
+              'pca_hot_gas_2': 'pca_hot_gas_2',
+              'pca_bridge_air': 'pca_bridge_air'
             },
             add_tags: {
               pca_filters: {
@@ -13189,7 +13184,7 @@ TagConfig = (function(superClass) {
                 }
               }
             },
-            D1: {
+            D8: {
               update_graphics: {
                 pca_main_background: {
                   ControlTags: {
@@ -13204,7 +13199,7 @@ TagConfig = (function(superClass) {
                   Element: {
                     Type: 'div',
                     ParentID: '#graphics_container',
-                    Class: 'background jetair-xpc-3013',
+                    Class: 'background inet-pdx-10',
                     Object: null
                   }
                 },
@@ -13221,7 +13216,7 @@ TagConfig = (function(superClass) {
                   Element: {
                     Type: 'div',
                     ParentID: '#dynamic_pca_main_background',
-                    Class: 'img jetair-xpc-3013',
+                    Class: 'img inet-pdx-10',
                     Object: null
                   }
                 },
@@ -13238,7 +13233,7 @@ TagConfig = (function(superClass) {
                   Element: {
                     Type: 'div',
                     ParentID: '#dynamic_pca_main_background',
-                    Class: 'img jetair-xpc-3013',
+                    Class: 'img inet-pdx-10',
                     Object: null
                   }
                 },
@@ -13255,7 +13250,7 @@ TagConfig = (function(superClass) {
                   Element: {
                     Type: 'div',
                     ParentID: '#dynamic_pca_main_background',
-                    Class: 'img jetair-xpc-3013',
+                    Class: 'img inet-pdx-10',
                     Object: null
                   }
                 },
@@ -13272,7 +13267,7 @@ TagConfig = (function(superClass) {
                   Element: {
                     Type: 'div',
                     ParentID: '#dynamic_pca_main_background',
-                    Class: 'img jetair-xpc-3013',
+                    Class: 'img inet-pdx-10',
                     Object: null
                   }
                 },
@@ -13289,7 +13284,7 @@ TagConfig = (function(superClass) {
                   Element: {
                     Type: 'div',
                     ParentID: '#dynamic_pca_main_background',
-                    Class: 'img jetair-xpc-3013',
+                    Class: 'img inet-pdx-10',
                     Object: null
                   }
                 },
@@ -13307,36 +13302,17 @@ TagConfig = (function(superClass) {
                   Element: {
                     Type: 'div',
                     ParentID: '#dynamic_pca_main_background',
-                    Class: 'img jetair-xpc-3013',
+                    Class: 'img inet-pdx-10',
                     Object: null
                   }
                 },
-                bccool_img: {
+                filters_img: {
                   ControlTags: {
-                    pca_bridge_air: 'Boolean'
+                    pca_filters: 'Boolean'
                   },
                   Parameters: {
                     Parm001: 'ALL_TRUE',
-                    Parm002: 'bc-cool-on',
-                    Parm003: null,
-                    Parm004: 'bc-cool-bq'
-                  },
-                  Element: {
-                    Type: 'div',
-                    ParentID: '#dynamic_pca_main_background',
-                    Class: 'img jetair-xpc-3013',
-                    Object: null
-                  }
-                }
-              },
-              add_graphics: {
-                fan_3_img: {
-                  ControlTags: {
-                    pca_fan_3: 'Boolean'
-                  },
-                  Parameters: {
-                    Parm001: 'ALL_TRUE',
-                    Parm002: 'fan-3-on',
+                    Parm002: 'filters-on',
                     Parm003: null,
                     Parm004: 'fan-3-bq'
                   },
@@ -13348,17 +13324,61 @@ TagConfig = (function(superClass) {
                   }
                 }
               },
+              add_graphics: {
+                evap_coil_img: {
+                  ControlTags: {
+                    pca_evap_coil: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'evap-coil-on',
+                    Parm003: null,
+                    Parm004: 'evap-coil-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-10',
+                    Object: null
+                  }
+                }
+              },
+              remove_graphics: {
+                'bccool_img': 'bccool_img',
+                'fan_1_img': 'fan_1_img',
+                'fan_2_img': 'fan_2_img'
+              },
               remove_tags: {
                 'pca_ambient_humidity': 'pca_ambient_humidity',
                 'pca_coil_dp': 'pca_coil_dp',
                 'pca_vfd_speed': 'pca_vfd_speed',
                 'pca_ambient_humidity': 'pca_ambient_humidity',
                 'pca_hot_gas_1': 'pca_hot_gas_1',
-                'pca_hot_gas_2': 'pca_hot_gas_2'
+                'pca_hot_gas_2': 'pca_hot_gas_2',
+                'pca_bridge_air': 'pca_bridge_air',
+                'pca_fan_1': 'pca_fan_1',
+                'pca_fan_2': 'pca_fan_2'
               },
               update_tags: {
                 pca_bridge_damper: {
                   Tag: 'PCA.DI_STATUS_BRIDGE_AIR_START',
+                  Label: 'Bridge Damper',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: ''
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_stage_1: {
+                  Tag: 'PCA.COMPPRI1',
                   Label: 'Primary compressor #1 is running',
                   DataType: 'Boolean',
                   Parameters: {
@@ -13374,8 +13394,853 @@ TagConfig = (function(superClass) {
                     Object: null
                   }
                 },
-                pca_bridge_air: {
-                  Tag: 'PCA.DI_STATUS_BRIDGE_AIR_STOP',
+                pca_comp_stage_2: {
+                  Tag: 'PCA.COMPPRI2',
+                  Label: 'Primary compressor #2 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: ''
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              },
+              add_tags: {
+                pca_evap_coil: {
+                  Tag: 'PCA.HEAT3',
+                  Label: 'Heater #3',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            },
+            D16: {
+              update_graphics: {
+                pca_main_background: {
+                  ControlTags: {
+                    none: null
+                  },
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#graphics_container',
+                    Class: 'background inet-pdx-10',
+                    Object: null
+                  }
+                },
+                blower_img: {
+                  ControlTags: {
+                    pca_blower: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'blower-on',
+                    Parm003: null,
+                    Parm004: 'blower-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-10',
+                    Object: null
+                  }
+                },
+                heating_stage_1_img: {
+                  ControlTags: {
+                    pca_heater_1: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-1-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-1-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-10',
+                    Object: null
+                  }
+                },
+                heating_stage_2_img: {
+                  ControlTags: {
+                    pca_heater_2: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-2-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-2-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-10',
+                    Object: null
+                  }
+                },
+                cooling_stage_1_img: {
+                  ControlTags: {
+                    pca_comp_stage_1: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-1-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-1-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-10',
+                    Object: null
+                  }
+                },
+                cooling_stage_2_img: {
+                  ControlTags: {
+                    pca_comp_stage_2: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-2-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-2-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-10',
+                    Object: null
+                  }
+                },
+                accool_img: {
+                  ControlTags: {
+                    pca_bridge_damper: 'Boolean',
+                    pca_status: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'ac-cool-on',
+                    Parm003: null,
+                    Parm004: 'ac-cool-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-10',
+                    Object: null
+                  }
+                },
+                filters_img: {
+                  ControlTags: {
+                    pca_filters: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'filters-on',
+                    Parm003: null,
+                    Parm004: 'filters-on-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-10',
+                    Object: null
+                  }
+                }
+              },
+              add_graphics: {
+                evap_coil_img: {
+                  ControlTags: {
+                    pca_evap_coil: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'evap-coil-on',
+                    Parm003: null,
+                    Parm004: 'evap-coil-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-10',
+                    Object: null
+                  }
+                }
+              },
+              remove_graphics: {
+                'bccool_img': 'bccool_img',
+                'fan_1_img': 'fan_1_img',
+                'fan_2_img': 'fan_2_img'
+              },
+              remove_tags: {
+                'pca_ambient_humidity': 'pca_ambient_humidity',
+                'pca_coil_dp': 'pca_coil_dp',
+                'pca_vfd_speed': 'pca_vfd_speed',
+                'pca_ambient_humidity': 'pca_ambient_humidity',
+                'pca_hot_gas_1': 'pca_hot_gas_1',
+                'pca_hot_gas_2': 'pca_hot_gas_2',
+                'pca_bridge_air': 'pca_bridge_air',
+                'pca_fan_1': 'pca_fan_1',
+                'pca_fan_2': 'pca_fan_2'
+              },
+              update_tags: {
+                pca_bridge_damper: {
+                  Tag: 'PCA.DI_STATUS_BRIDGE_AIR_START',
+                  Label: 'Bridge Damper',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: ''
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_stage_1: {
+                  Tag: 'PCA.COMPPRI1',
+                  Label: 'Primary compressor #1 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: ''
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_stage_2: {
+                  Tag: 'PCA.COMPPRI2',
+                  Label: 'Primary compressor #2 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: ''
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              },
+              add_tags: {
+                pca_evap_coil: {
+                  Tag: 'PCA.HEAT3',
+                  Label: 'Heater #3',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            },
+            D19: {
+              update_graphics: {
+                pca_main_background: {
+                  ControlTags: {
+                    none: null
+                  },
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#graphics_container',
+                    Class: 'background inet-pdx-25',
+                    Object: null
+                  }
+                },
+                blower_img: {
+                  ControlTags: {
+                    pca_blower: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'blower-on',
+                    Parm003: null,
+                    Parm004: 'blower-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-25',
+                    Object: null
+                  }
+                },
+                heating_stage_1_img: {
+                  ControlTags: {
+                    pca_heater_1: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-1-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-1-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-25',
+                    Object: null
+                  }
+                },
+                heating_stage_2_img: {
+                  ControlTags: {
+                    pca_heater_2: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-2-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-2-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-25',
+                    Object: null
+                  }
+                },
+                cooling_stage_1_img: {
+                  ControlTags: {
+                    pca_comp_stage_1: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-1-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-1-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-25',
+                    Object: null
+                  }
+                },
+                cooling_stage_2_img: {
+                  ControlTags: {
+                    pca_comp_stage_2: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-2-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-2-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-25',
+                    Object: null
+                  }
+                },
+                accool_img: {
+                  ControlTags: {
+                    pca_bridge_damper: 'Boolean',
+                    pca_status: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'ac-cool-on',
+                    Parm003: null,
+                    Parm004: 'ac-cool-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-25',
+                    Object: null
+                  }
+                },
+                filters_img: {
+                  ControlTags: {
+                    pca_filters: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'filters-on',
+                    Parm003: null,
+                    Parm004: 'filters-on-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-25',
+                    Object: null
+                  }
+                },
+                fan_1_img: {
+                  ControlTags: {
+                    pca_fan_1: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'fans-on',
+                    Parm003: null,
+                    Parm004: 'fan-1-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-25',
+                    Object: null
+                  }
+                }
+              },
+              add_graphics: {
+                heating_stage_3_img: {
+                  ControlTags: {
+                    pca_heater_2: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-3-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-3-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-25',
+                    Object: null
+                  }
+                },
+                cooling_stage_3_img: {
+                  ControlTags: {
+                    pca_comp_stage_2: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-3-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-3-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-25',
+                    Object: null
+                  }
+                }
+              },
+              remove_graphics: {
+                'bccool_img': 'bccool_img',
+                'fan_2_img': 'fan_2_img'
+              },
+              remove_tags: {
+                'pca_ambient_humidity': 'pca_ambient_humidity',
+                'pca_coil_dp': 'pca_coil_dp',
+                'pca_vfd_speed': 'pca_vfd_speed',
+                'pca_ambient_humidity': 'pca_ambient_humidity',
+                'pca_hot_gas_1': 'pca_hot_gas_1',
+                'pca_hot_gas_2': 'pca_hot_gas_2',
+                'pca_bridge_air': 'pca_bridge_air',
+                'pca_fan_2': 'pca_fan_2'
+              },
+              update_tags: {
+                pca_bridge_damper: {
+                  Tag: 'PCA.DI_STATUS_BRIDGE_AIR_START',
+                  Label: 'Bridge Damper',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: ''
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_stage_1: {
+                  Tag: 'PCA.COMPPRI1',
+                  Label: 'Primary compressor #1 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: ''
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_stage_2: {
+                  Tag: 'PCA.COMPPRI2',
+                  Label: 'Primary compressor #2 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: ''
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              },
+              add_tags: {
+                pca_fan_1: {
+                  Tag: 'PCA.HEAT3',
+                  Label: 'Heater #3',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_3: {
+                  Tag: 'PCA.HEATER3',
+                  Label: 'Heater #3 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: ''
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_stage_3: {
+                  Tag: 'PCA.COMPPRI3',
+                  Label: 'Primary compressor #3 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: ''
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            },
+            D17: {
+              update_graphics: {
+                pca_main_background: {
+                  ControlTags: {
+                    none: null
+                  },
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#graphics_container',
+                    Class: 'background inet-pdx-40',
+                    Object: null
+                  }
+                },
+                blower_img: {
+                  ControlTags: {
+                    pca_blower: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'blower-on',
+                    Parm003: null,
+                    Parm004: 'blower-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-40',
+                    Object: null
+                  }
+                },
+                heating_stage_1_img: {
+                  ControlTags: {
+                    pca_heater_1: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-1-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-1-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-40',
+                    Object: null
+                  }
+                },
+                heating_stage_2_img: {
+                  ControlTags: {
+                    pca_heater_2: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-2-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-2-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-40',
+                    Object: null
+                  }
+                },
+                cooling_stage_1_img: {
+                  ControlTags: {
+                    pca_comp_stage_1: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-1-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-1-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-40',
+                    Object: null
+                  }
+                },
+                cooling_stage_2_img: {
+                  ControlTags: {
+                    pca_comp_stage_2: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-2-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-2-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-40',
+                    Object: null
+                  }
+                },
+                accool_img: {
+                  ControlTags: {
+                    pca_bridge_damper: 'Boolean',
+                    pca_status: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'ac-cool-on',
+                    Parm003: null,
+                    Parm004: 'ac-cool-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-40',
+                    Object: null
+                  }
+                },
+                filters_img: {
+                  ControlTags: {
+                    pca_filters: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'filters-on',
+                    Parm003: null,
+                    Parm004: 'filters-on-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-40',
+                    Object: null
+                  }
+                },
+                fan_1_img: {
+                  ControlTags: {
+                    pca_fan_1: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'fans-on',
+                    Parm003: null,
+                    Parm004: 'fan-1-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-40',
+                    Object: null
+                  }
+                }
+              },
+              add_graphics: {
+                heating_stage_3_img: {
+                  ControlTags: {
+                    pca_heater_2: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-3-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-3-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-40',
+                    Object: null
+                  }
+                },
+                cooling_stage_3_img: {
+                  ControlTags: {
+                    pca_comp_stage_2: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-3-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-3-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-40',
+                    Object: null
+                  }
+                }
+              },
+              remove_graphics: {
+                'bccool_img': 'bccool_img',
+                'fan_2_img': 'fan_2_img'
+              },
+              remove_tags: {
+                'pca_ambient_humidity': 'pca_ambient_humidity',
+                'pca_coil_dp': 'pca_coil_dp',
+                'pca_vfd_speed': 'pca_vfd_speed',
+                'pca_ambient_humidity': 'pca_ambient_humidity',
+                'pca_hot_gas_1': 'pca_hot_gas_1',
+                'pca_hot_gas_2': 'pca_hot_gas_2',
+                'pca_bridge_air': 'pca_bridge_air',
+                'pca_fan_2': 'pca_fan_2'
+              },
+              update_tags: {
+                pca_bridge_damper: {
+                  Tag: 'PCA.DI_STATUS_BRIDGE_AIR_START',
+                  Label: 'Bridge Damper',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: ''
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_stage_1: {
+                  Tag: 'PCA.COMPPRI1',
+                  Label: 'Primary compressor #1 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: ''
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_stage_2: {
+                  Tag: 'PCA.COMPPRI2',
                   Label: 'Primary compressor #2 is running',
                   DataType: 'Boolean',
                   Parameters: {
@@ -13394,15 +14259,14 @@ TagConfig = (function(superClass) {
               },
               add_tags: {
                 pca_heater_3: {
-                  Tag: 'PCA.HEAT3',
-                  Label: 'Heater #3',
+                  Tag: 'PCA.HEATER3',
+                  Label: 'Heater #3 is running',
                   DataType: 'Boolean',
                   Parameters: {
                     Parm001: 'On',
                     Parm002: 'Off',
                     Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
+                    Parm004: ''
                   },
                   Element: {
                     Type: 'TableRow',
@@ -13413,14 +14277,240 @@ TagConfig = (function(superClass) {
                 },
                 pca_comp_stage_3: {
                   Tag: 'PCA.COMPPRI3',
-                  Label: 'Primary compressor #3',
+                  Label: 'Primary compressor #3 is running',
                   DataType: 'Boolean',
                   Parameters: {
                     Parm001: 'On',
                     Parm002: 'Off',
                     Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
+                    Parm004: ''
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            },
+            D20: {
+              update_graphics: {
+                pca_main_background: {
+                  ControlTags: {
+                    none: null
+                  },
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#graphics_container',
+                    Class: 'background inet-pdx-40',
+                    Object: null
+                  }
+                },
+                blower_img: {
+                  ControlTags: {
+                    pca_blower: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'blower-on',
+                    Parm003: null,
+                    Parm004: 'blower-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-40',
+                    Object: null
+                  }
+                },
+                heating_stage_1_img: {
+                  ControlTags: {
+                    pca_heater_1: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-1-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-1-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-40',
+                    Object: null
+                  }
+                },
+                heating_stage_2_img: {
+                  ControlTags: {
+                    pca_heater_2: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-2-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-2-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-40',
+                    Object: null
+                  }
+                },
+                cooling_stage_1_img: {
+                  ControlTags: {
+                    pca_comp_stage_1: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-1-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-1-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-40',
+                    Object: null
+                  }
+                },
+                cooling_stage_2_img: {
+                  ControlTags: {
+                    pca_comp_stage_2: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-2-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-2-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-40',
+                    Object: null
+                  }
+                },
+                accool_img: {
+                  ControlTags: {
+                    pca_bridge_damper: 'Boolean',
+                    pca_status: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'ac-cool-on',
+                    Parm003: null,
+                    Parm004: 'ac-cool-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-40',
+                    Object: null
+                  }
+                },
+                filters_img: {
+                  ControlTags: {
+                    pca_filters: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'filters-on',
+                    Parm003: null,
+                    Parm004: 'filters-on-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-40',
+                    Object: null
+                  }
+                },
+                fan_1_img: {
+                  ControlTags: {
+                    pca_fan_1: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'fans-on',
+                    Parm003: null,
+                    Parm004: 'fan-1-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-40',
+                    Object: null
+                  }
+                }
+              },
+              add_graphics: {
+                heating_stage_3_img: {
+                  ControlTags: {
+                    pca_heater_2: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-3-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-3-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-40',
+                    Object: null
+                  }
+                },
+                cooling_stage_3_img: {
+                  ControlTags: {
+                    pca_comp_stage_2: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-3-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-3-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img inet-pdx-40',
+                    Object: null
+                  }
+                }
+              },
+              remove_graphics: {
+                'bccool_img': 'bccool_img',
+                'fan_2_img': 'fan_2_img'
+              },
+              remove_tags: {
+                'pca_ambient_humidity': 'pca_ambient_humidity',
+                'pca_coil_dp': 'pca_coil_dp',
+                'pca_vfd_speed': 'pca_vfd_speed',
+                'pca_ambient_humidity': 'pca_ambient_humidity',
+                'pca_hot_gas_1': 'pca_hot_gas_1',
+                'pca_hot_gas_2': 'pca_hot_gas_2',
+                'pca_bridge_air': 'pca_bridge_air',
+                'pca_fan_2': 'pca_fan_2'
+              },
+              update_tags: {
+                pca_bridge_damper: {
+                  Tag: 'PCA.DI_STATUS_BRIDGE_AIR_START',
+                  Label: 'Bridge Damper',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: ''
                   },
                   Element: {
                     Type: 'TableRow',
@@ -13429,16 +14519,15 @@ TagConfig = (function(superClass) {
                     Object: null
                   }
                 },
-                pca_fan_3: {
-                  Tag: 'PCA.FANCONDFRONTPRI',
-                  Label: 'Fan #3',
+                pca_comp_stage_1: {
+                  Tag: 'PCA.COMPPRI1',
+                  Label: 'Primary compressor #1 is running',
                   DataType: 'Boolean',
                   Parameters: {
                     Parm001: 'On',
                     Parm002: 'Off',
                     Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
+                    Parm004: ''
                   },
                   Element: {
                     Type: 'TableRow',
@@ -13447,16 +14536,34 @@ TagConfig = (function(superClass) {
                     Object: null
                   }
                 },
-                pca_fan_2: {
-                  Tag: 'PCA.FANCONDFRONTSEC',
-                  Label: 'Fan #2',
+                pca_comp_stage_2: {
+                  Tag: 'PCA.COMPPRI2',
+                  Label: 'Primary compressor #2 is running',
                   DataType: 'Boolean',
                   Parameters: {
                     Parm001: 'On',
                     Parm002: 'Off',
                     Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
+                    Parm004: ''
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              },
+              add_tags: {
+                pca_heater_3: {
+                  Tag: 'PCA.HEATER3',
+                  Label: 'Heater #3 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: ''
                   },
                   Element: {
                     Type: 'TableRow',
@@ -13465,16 +14572,15 @@ TagConfig = (function(superClass) {
                     Object: null
                   }
                 },
-                pca_fan_1: {
-                  Tag: 'PCA.FANCONDREARPRI',
-                  Label: 'Fan #1',
+                pca_comp_stage_3: {
+                  Tag: 'PCA.COMPPRI3',
+                  Label: 'Primary compressor #3 is running',
                   DataType: 'Boolean',
                   Parameters: {
                     Parm001: 'On',
                     Parm002: 'Off',
                     Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
+                    Parm004: ''
                   },
                   Element: {
                     Type: 'TableRow',
