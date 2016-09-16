@@ -454,6 +454,7 @@ class TagConfig extends Object
 								pca_comp_stage_3:{Tag:'PCA.COMPPRI3',Label:'Primary compressor #3 is running',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 								pca_suction_pressure_3:{Tag:'PCA.PRESSSUCPRI3',Label:'Suction pressure,primary compressor #3',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 								pca_heater_3:{Tag:'PCA.HEAT3',Label:'Heater #3 is running',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							
 							}
 			pca_discharge_widget: # PCA Discharge Widget
 				1:
