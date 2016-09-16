@@ -7072,7 +7072,7 @@ TagConfig = (function(superClass) {
             }
           },
           pca_bridge_damper: {
-            Tag: 'PCA.BRIDGE_DAMPLER_POSITION',
+            Tag: 'PCA.BRIDGE_DAMPER_POSITION',
             Label: 'Aircraft Cool is on',
             DataType: 'Boolean',
             Parameters: {
