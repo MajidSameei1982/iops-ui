@@ -401,7 +401,7 @@ class TagConfig extends Object
 				,'pbb_height_to_disp','pbb_wheel_angle_deg','pbb_tunnel_length'}
 			Graphics:{}
 		pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
-			Tags:{'pbb_status','pca_status','gpu_status','pbb_dock_time','pbb_hookup_time','pca_time','gpu_time','pca_discharge_temp'
+			Tags:{'pbb_status','pca_status','gpu_status','pbb_dock_time','pbb_hookup_time','pca_time','pca_discharge_temp','gpu_time'
 				,'gpu_ra_out_avg','gpu_rv_out_avg'}
 			Graphics:{}
 		pbb_widget: # PBB Bridge Widget
