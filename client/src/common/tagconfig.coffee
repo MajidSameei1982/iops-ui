@@ -487,6 +487,9 @@ class TagConfig extends Object
 					evap_coil_1_img:{ControlTags:{pca_comp_stage_1:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'evap-coil-1-on',Parm003:null,Parm004:'evap-coil-1-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img SJ_90',Object:null}},
 					evap_coil_2_img:{ControlTags:{pca_comp_stage_2:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'evap-coil-2-on',Parm003:null,Parm004:'evap-coil-2-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img SJ_90',Object:null}},
 					evap_coil_3_img:{ControlTags:{pca_comp_stage_3:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'evap-coil-3-on',Parm003:null,Parm004:'evap-coil-3-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img SJ_90',Object:null}},
+					cfan_1_img:{ControlTags:{pca_cfan_1:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'cfan-1-on',Parm003:null,Parm004:'cfan-1-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img SJ_90',Object:null}},
+					cfan_2_img:{ControlTags:{pca_cfan_2:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'cfan-2-on',Parm003:null,Parm004:'cfan-2-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img SJ_90',Object:null}},
+					cfan_3_img:{ControlTags:{pca_cfan_3:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'cfan-3-on',Parm003:null,Parm004:'cfan-3-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img SJ_90',Object:null}},
 				}
 				remove_tags:{'pca_hot_gas_1','pca_hot_gas_2','pca_ambient_humidity','pca_coil_dp','pca_vfd_speed'}
 				update_tags:{
@@ -506,6 +509,9 @@ class TagConfig extends Object
 					pca_headpri1:{Tag:'PCA.PRESSHEADPRI1',Label:'Head pressure,primary compressor #1',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					pca_headpri2:{Tag:'PCA.PRESSHEADPRI2',Label:'Head pressure,primary compressor #2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					pca_headpri3:{Tag:'PCA.PRESSHEADPRI3',Label:'Head pressure, secondary compressor #1',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					pca_cfan_3:{Tag:'PCA.FANCONDFRONTPRI',Label:'Fan #3',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					pca_cfan_2:{Tag:'PCA.FANCONDFRONTSEC',Label:'Fan #2',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					pca_cfan_1:{Tag:'PCA.FANCONDREARPRI',Label:'Fan #1',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 				}
 		CID:
 			gpu_summary_widget: # GPU Summary Widget

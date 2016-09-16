@@ -6908,6 +6908,57 @@ TagConfig = (function(superClass) {
               Class: 'img SJ_90',
               Object: null
             }
+          },
+          cfan_1_img: {
+            ControlTags: {
+              pca_cfan_1: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'cfan-1-on',
+              Parm003: null,
+              Parm004: 'cfan-1-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          },
+          cfan_2_img: {
+            ControlTags: {
+              pca_cfan_2: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'cfan-2-on',
+              Parm003: null,
+              Parm004: 'cfan-2-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          },
+          cfan_3_img: {
+            ControlTags: {
+              pca_cfan_3: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'cfan-3-on',
+              Parm003: null,
+              Parm004: 'cfan-3-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
           }
         },
         remove_tags: {
@@ -7150,6 +7201,60 @@ TagConfig = (function(superClass) {
               Parm002: null,
               Parm003: null,
               Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_cfan_3: {
+            Tag: 'PCA.FANCONDFRONTPRI',
+            Label: 'Fan #3',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_cfan_2: {
+            Tag: 'PCA.FANCONDFRONTSEC',
+            Label: 'Fan #2',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_cfan_1: {
+            Tag: 'PCA.FANCONDREARPRI',
+            Label: 'Fan #1',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
             },
             Element: {
               Type: 'TableRow',

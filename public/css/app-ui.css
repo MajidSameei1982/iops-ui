@@ -2649,6 +2649,12 @@ ul.chosen-results li.highlighted {
       background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-Bridge-Cool.png"); }
     .pca_summary_widget .display div.img.SJ_90.fan-1-on {
       background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-Blower.png"); }
+    .pca_summary_widget .display div.img.SJ_90.cfan-1-on {
+      background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-CBlower1.png"); }
+    .pca_summary_widget .display div.img.SJ_90.cfan-2-on {
+      background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-CBlower2.png"); }
+    .pca_summary_widget .display div.img.SJ_90.cfan-3-on {
+      background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-CBlower3.png"); }
     .pca_summary_widget .display div.img.jetair-xpc-3013.blower-on {
       background-image: url("../img/pca/JetAir-XPC-3013/Rev-001/30-Ton-PCA-Blower.png"); }
     .pca_summary_widget .display div.img.jetair-xpc-3013.cooling-stage-1-on {

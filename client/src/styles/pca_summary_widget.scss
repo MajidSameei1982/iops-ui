@@ -296,6 +296,15 @@
         &.fan-1-on {
            background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-Blower.png");
         }
+        &.cfan-1-on {
+           background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-CBlower1.png");
+        }
+        &.cfan-2-on {
+           background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-CBlower2.png");
+        }
+        &.cfan-3-on {
+           background-image: url("../img/pca/SJ_90/Rev-001/SJ-90-CBlower3.png");
+        }
       }
       &.jetair-xpc-3013 {
         &.blower-on {
