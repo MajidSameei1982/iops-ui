@@ -434,18 +434,26 @@ class TagConfig extends Object
 					pca_suction_pressure_1:{Tag:'PCA.PRESSSUCPRI1',Label:'Suction pressure,primary compressor #1',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					pca_suction_pressure_2:{Tag:'PCA.PRESSSUCPRI2',Label:'Suction pressure,primary compressor #2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 				}
-				4:
+				add_tags:{
+					pca_comp_stage_3:{Tag:'PCA.COMPPRI3',Label:'Primary compressor #3 is running',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					pca_suction_pressure_3:{Tag:'PCA.PRESSSUCPRI3',Label:'Suction pressure,primary compressor #3',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					pca_heater_3:{Tag:'PCA.HEAT3',Label:'Heater #3 is running',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					pca_headpri1:{Tag:'PCA.PRESSHEADPRI1',Label:'Head pressure,primary compressor #1',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					pca_headpri2:{Tag:'PCA.PRESSHEADPRI2',Label:'Head pressure,primary compressor #2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					pca_headpri3:{Tag:'PCA.PRESSHEADPRI3',Label:'Head pressure, secondary compressor #1',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+				}
+				1:
 					D:
-						D4:
+						D1:
 							add_tags:{
 								pca_comp_stage_3:{Tag:'PCA.COMPPRI3',Label:'Primary compressor #3 is running',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 								pca_suction_pressure_3:{Tag:'PCA.PRESSSUCPRI3',Label:'Suction pressure,primary compressor #3',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 								pca_heater_3:{Tag:'PCA.HEAT3',Label:'Heater #3 is running',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							}
 			pca_discharge_widget: # PCA Discharge Widget
-				4:
+				1:
 					D:
-						D4:
+						D1:
 							use_tags:{
 								pca_status:{Tag:'PCA.PCASTATUS',Label:'PCA status',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:'err',Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							}
@@ -460,6 +468,8 @@ class TagConfig extends Object
 					bccool_img:{ControlTags:{pca_bridge_air:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'bc-cool-on',Parm003:null,Parm004:'bc-cool-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img SJ_90',Object:null}},
 					cooling_stage_1_img:{ControlTags:{pca_comp_stage_1:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'cooling-stage-1-on',Parm003:null,Parm004:'cooling-stage-1-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img SJ_90',Object:null}},
 					cooling_stage_2_img:{ControlTags:{pca_comp_stage_2:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'cooling-stage-2-on',Parm003:null,Parm004:'cooling-stage-1-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img SJ_90',Object:null}},
+					accool_img:{ControlTags:{pca_bridge_damper:'Boolean',pca_status:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'ac-cool-on',Parm003:null,Parm004:'ac-cool-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img SJ_90',Object:null}},
+					bccool_img:{ControlTags:{pca_bridge_air:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'bc-cool-on',Parm003:null,Parm004:'bc-cool-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img SJ_90',Object:null}},
 				}
 				add_graphics:{
 					heating_stage_3_img:{ControlTags:{pca_heater_3:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'heating-stage-3-on',Parm003:null,Parm004:'heating-stage-3-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img SJ_90',Object:null}},
@@ -488,8 +498,8 @@ class TagConfig extends Object
 					pca_heater_3:{Tag:'PCA.HEAT3',Label:'Heater #3 is running',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					pca_headpri1:{Tag:'PCA.PRESSHEADPRI1',Label:'Head pressure,primary compressor #1',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					pca_headpri2:{Tag:'PCA.PRESSHEADPRI2',Label:'Head pressure,primary compressor #2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-					pca_headpri2:{Tag:'PCA.PRESSHEADPRI3',Label:'Head pressure, secondary compressor #1',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-				}		
+					pca_headpri3:{Tag:'PCA.PRESSHEADPRI3',Label:'Head pressure, secondary compressor #1',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+				}
 		CID:
 			gpu_summary_widget: # GPU Summary Widget
 				#remove_tags:{'gpu_ra_in_avg'}
