@@ -6195,9 +6195,7 @@ TagConfig = (function(superClass) {
       pca_widget: {
         remove_tags: {
           'pca_hot_gas_1': 'pca_hot_gas_1',
-          'pca_hot_gas_2': 'pca_hot_gas_2',
-          'pca_bridge_damper': 'pca_bridge_damper',
-          'pca_bridge_air': 'pca_bridge_air'
+          'pca_hot_gas_2': 'pca_hot_gas_2'
         },
         update_tags: {
           pca_heater_1: {
@@ -6301,6 +6299,40 @@ TagConfig = (function(superClass) {
               Class: null,
               Object: null
             }
+          },
+          pca_bridge_damper: {
+            Tag: 'PCA.BRIDGE_DAMPER_POSITION',
+            Label: 'Aircraft Cool is running',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_bridge_air: {
+            Tag: 'PCA.BRIDGE_AIR',
+            Label: 'Bridge Cool is running',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
           }
         },
         add_tags: {
@@ -6392,6 +6424,40 @@ TagConfig = (function(superClass) {
           pca_headpri3: {
             Tag: 'PCA.PRESSHEADPRI3',
             Label: 'Head pressure, secondary compressor #1',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: false,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_blowercurrent: {
+            Tag: 'PCA.BLOWERCURRENT',
+            Label: 'Blower Current',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: false,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_unitcurrent: {
+            Tag: 'PCA.UNITCURRENT',
+            Label: 'Unit Current',
             DataType: 'Float',
             Parameters: {
               Parm001: false,
@@ -6946,6 +7012,40 @@ TagConfig = (function(superClass) {
               Parm002: null,
               Parm003: null,
               Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_bridge_damper: {
+            Tag: 'PCA.BRIDGE_DAMPLER_POSITION',
+            Label: 'Aircraft Cool is on',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_bridge_air: {
+            Tag: 'PCA.BRIDGE_AIR',
+            Label: 'Bridge Cool is running',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
             },
             Element: {
               Type: 'TableRow',
