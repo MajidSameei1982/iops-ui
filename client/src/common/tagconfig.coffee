@@ -447,7 +447,7 @@ class TagConfig extends Object
 					pca_unitcurrent:{Tag:'PCA.UNITCURRENT',Label:'Unit Current',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 
 				}
-				1:
+				4:
 					D:
 						D1:
 							add_tags:{
@@ -457,7 +457,7 @@ class TagConfig extends Object
 							
 							}
 			pca_discharge_widget: # PCA Discharge Widget
-				1:
+				4:
 					D:
 						D1:
 							use_tags:{

@@ -6473,7 +6473,7 @@ TagConfig = (function(superClass) {
             }
           }
         },
-        1: {
+        4: {
           D: {
             D1: {
               add_tags: {
@@ -6534,7 +6534,7 @@ TagConfig = (function(superClass) {
         }
       },
       pca_discharge_widget: {
-        1: {
+        4: {
           D: {
             D1: {
               use_tags: {
