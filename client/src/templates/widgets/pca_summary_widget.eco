@@ -28,6 +28,10 @@
       <div id="pca_ambient_humidity" class="val"></div>
       <div id="pca_suction_pressure_1" class="val"></div>
       <div id="pca_suction_pressure_2" class="val"></div>
+      <div id="pca_suction_pressure_3" class="val"></div>
+      <div id="pca_headpri1" class="val"></div>
+      <div id="pca_headpri2" class="val"></div>
+      <div id="pca_headpri3" class="val"></div>
       <div id="pca_hot_gas_1" class="val"></div>
       <div id="pca_hot_gas_2" class="val"></div>
       <div id="pca_pump_cond" class="val"></div>

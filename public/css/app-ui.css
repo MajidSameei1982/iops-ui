@@ -2500,29 +2500,57 @@ ul.chosen-results li.highlighted {
   color: #333; }
 .pca_summary_widget #pca_suction_pressure_1 {
   position: absolute;
-  left: 72%;
-  top: 65%;
+  left: 70%;
+  top: 74%;
   font-size: 12px;
   font-weight: bold;
   color: #333; }
 .pca_summary_widget #pca_suction_pressure_2 {
   position: absolute;
-  left: 85%;
-  top: 65%;
+  left: 80%;
+  top: 74%;
+  font-size: 12px;
+  font-weight: bold;
+  color: #333; }
+.pca_summary_widget #pca_suction_pressure_3 {
+  position: absolute;
+  left: 90%;
+  top: 74%;
+  font-size: 12px;
+  font-weight: bold;
+  color: #333; }
+.pca_summary_widget #pca_headpri1 {
+  position: absolute;
+  left: 70%;
+  top: 77%;
+  font-size: 12px;
+  font-weight: bold;
+  color: #333; }
+.pca_summary_widget #pca_headpri2 {
+  position: absolute;
+  left: 80%;
+  top: 77%;
+  font-size: 12px;
+  font-weight: bold;
+  color: #333; }
+.pca_summary_widget #pca_headpri3 {
+  position: absolute;
+  left: 90%;
+  top: 77%;
   font-size: 12px;
   font-weight: bold;
   color: #333; }
 .pca_summary_widget #pca_hot_gas_1 {
   position: absolute;
-  left: 72%;
-  top: 72%;
+  left: 70%;
+  top: 80%;
   font-size: 12px;
   font-weight: bold;
   color: #333; }
 .pca_summary_widget #pca_hot_gas_2 {
   position: absolute;
-  left: 85%;
-  top: 72%;
+  left: 80%;
+  top: 80%;
   font-size: 12px;
   font-weight: bold;
   color: #333; }

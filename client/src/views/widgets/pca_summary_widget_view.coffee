@@ -183,10 +183,42 @@ class PcasummaryWidgetView extends IOPSWidgetView
     else
       @$('#pca_suction_pressure_2').html(" ")
 
+    #pca_suction_pressure_3
+    if @tagData.pca_suction_pressure_3?
+      sucpressure3 = if @vals.pca_suction_pressure_3? && @vals.pca_suction_pressure_3 != '' then parseFloat(@vals.pca_suction_pressure_3).toFixed(2)  else ' -- ' 
+      suc3d = if v==true && sq then @$('#pca_suction_pressure_3').html("SP3 : #{sucpressure3}") else @$('#pca_suction_pressure_3').html(" ")
+      @mark_bad_data @tagData.pca_suction_pressure_3.Tag, suc3d
+    else
+      @$('#pca_suction_pressure_3').html(" ")
+
+    #pca_headpri1
+    if @tagData.pca_headpri1?
+      pcaheadpri1 = if @vals.pca_headpri1? && @vals.pca_headpri1 != '' then parseFloat(@vals.pca_headpri1).toFixed(2)  else ' -- ' 
+      hpp1d = if v==true && sq then @$('#pca_headpri1').html("HP1 : #{pcaheadpri1}") else @$('#pca_headpri1').html(" ")
+      @mark_bad_data @tagData.pca_headpri1.Tag, hpp1d
+    else
+      @$('#pca_headpri1').html(" ")
+
+    #pca_headpri2
+    if @tagData.pca_headpri2?
+      pcaheadpri2 = if @vals.pca_headpri2? && @vals.pca_headpri2 != '' then parseFloat(@vals.pca_headpri2).toFixed(2)  else ' -- ' 
+      hpp2d = if v==true && sq then @$('#pca_headpri2').html("HP2 : #{pcaheadpri2}") else @$('#pca_headpri2').html(" ")
+      @mark_bad_data @tagData.pca_headpri2.Tag, hpp2d
+    else
+      @$('#pca_headpri2').html(" ")
+
+    #pca_headpri3
+    if @tagData.pca_headpri3?
+      pcaheadpri3 = if @vals.pca_headpri3? && @vals.pca_headpri3 != '' then parseFloat(@vals.pca_headpri3).toFixed(2)  else ' -- ' 
+      hpp3d = if v==true && sq then @$('#pca_headpri3').html("HP3 : #{pcaheadpri3}") else @$('#pca_headpri3').html(" ")
+      @mark_bad_data @tagData.pca_headpri3.Tag, hpp3d
+    else
+      @$('#pca_headpri3').html(" ")
+
     #pca_hot_gas_1
     if @tagData.pca_hot_gas_1?
       hotgas1 = if @vals.pca_hot_gas_1? && @vals.pca_hot_gas_1 != '' then parseFloat(@vals.pca_hot_gas_1).toFixed(2)  else ' -- ' 
-      hot1d = if v==true && sq then @$('#pca_hot_gas_1').html("HP1 : #{hotgas1}") else @$('#pca_hot_gas_1').html(" ")
+      hot1d = if v==true && sq then @$('#pca_hot_gas_1').html("HG1 : #{hotgas1}") else @$('#pca_hot_gas_1').html(" ")
       @mark_bad_data @tagData.pca_hot_gas_1.Tag, hot1d
     else
       @$('#pca_hot_gas_1').html(" ")
@@ -194,7 +226,7 @@ class PcasummaryWidgetView extends IOPSWidgetView
     #pca_hot_gas_2
     if @tagData.pca_hot_gas_2?
       hotgas2 = if @vals.pca_hot_gas_2? && @vals.pca_hot_gas_2 != '' then parseFloat(@vals.pca_hot_gas_2).toFixed(2)  else ' -- ' 
-      hot2d = if v==true && sq then @$('#pca_hot_gas_2').html("HP2 : #{hotgas2}") else @$('#pca_hot_gas_2').html(" ")
+      hot2d = if v==true && sq then @$('#pca_hot_gas_2').html("HG2 : #{hotgas2}") else @$('#pca_hot_gas_2').html(" ")
       @mark_bad_data @tagData.pca_hot_gas_2.Tag, hot2d
     else
       @$('#pca_hot_gas_2').html(" ")

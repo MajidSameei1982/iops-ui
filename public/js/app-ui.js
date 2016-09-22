@@ -2250,7 +2250,7 @@ window.JST["widgets/pca_summary_widget"] = function(__obj) {
     };
     (function() {
     
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-server"></i>&emsp;<h3 class="box-title"></h3>&emsp;\n    <select id="mode" style=\'display:none;\'>\n      <option value=\'\'>Summary</option>\n      <option value=\'plots\'>Temp. Data</option>\n    </select>\n  </div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id=\'display_label\'>\n      <h1>\n      </h1>\n    </div>\n    <div id="summary">\n      <div id="view_main">\n        <div id="power_indicator"></div>\n        <div id="txt_connected_time"></div>\n      </div>\n      <div id="pca_coil_dp" class="val"></div>   \n      <div id="pca_vfd_speed" class="val"></div>\n      <div id="pca_ambient_humidity" class="val"></div>\n      <div id="pca_suction_pressure_1" class="val"></div>\n      <div id="pca_suction_pressure_2" class="val"></div>\n      <div id="pca_hot_gas_1" class="val"></div>\n      <div id="pca_hot_gas_2" class="val"></div>\n      <div id="pca_pump_cond" class="val"></div>\n      <div id="pca_bridge_damper" class="val"></div>\n      <div id="pca_bridge_air" class="val"></div>\n    </div>\n    <div id="plots" style="display: none;">\n      <table id=\'plot_container\' border="0">\n        <tr>\n          <td id=\'options\'>\n            <div id=\'ptype_lbl\'>\n              <table>\n                <tr>\n                  <td>Ambient Temp:</td>\n                  <td><div style=\'width:14px;height:14px;background-color:#80C3FF;\'></div></td>\n                </tr>\n                <tr>\n                  <td>Discharge Temp:</td>\n                  <td><div style=\'width:14px;height:14px;background-color:#FF8C1A;\'></div></td>\n                </tr>\n              </table>\n            </div>\n\n            <div id=\'live_container\'>\n              <label>Live Data</label>\n              <div>\n                <input id=\'live_data\' type="checkbox" data-toggle="toggle" >\n              </div>\n            </div>\n            \n          </td>\n          <td id=\'plot_data\'></td>\n        </tr>\n      </table>\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-server"></i>&emsp;<h3 class="box-title"></h3>&emsp;\n    <select id="mode" style=\'display:none;\'>\n      <option value=\'\'>Summary</option>\n      <option value=\'plots\'>Temp. Data</option>\n    </select>\n  </div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id=\'display_label\'>\n      <h1>\n      </h1>\n    </div>\n    <div id="summary">\n      <div id="view_main">\n        <div id="power_indicator"></div>\n        <div id="txt_connected_time"></div>\n      </div>\n      <div id="pca_coil_dp" class="val"></div>   \n      <div id="pca_vfd_speed" class="val"></div>\n      <div id="pca_ambient_humidity" class="val"></div>\n      <div id="pca_suction_pressure_1" class="val"></div>\n      <div id="pca_suction_pressure_2" class="val"></div>\n      <div id="pca_suction_pressure_3" class="val"></div>\n      <div id="pca_headpri1" class="val"></div>\n      <div id="pca_headpri2" class="val"></div>\n      <div id="pca_headpri3" class="val"></div>\n      <div id="pca_hot_gas_1" class="val"></div>\n      <div id="pca_hot_gas_2" class="val"></div>\n      <div id="pca_pump_cond" class="val"></div>\n      <div id="pca_bridge_damper" class="val"></div>\n      <div id="pca_bridge_air" class="val"></div>\n    </div>\n    <div id="plots" style="display: none;">\n      <table id=\'plot_container\' border="0">\n        <tr>\n          <td id=\'options\'>\n            <div id=\'ptype_lbl\'>\n              <table>\n                <tr>\n                  <td>Ambient Temp:</td>\n                  <td><div style=\'width:14px;height:14px;background-color:#80C3FF;\'></div></td>\n                </tr>\n                <tr>\n                  <td>Discharge Temp:</td>\n                  <td><div style=\'width:14px;height:14px;background-color:#FF8C1A;\'></div></td>\n                </tr>\n              </table>\n            </div>\n\n            <div id=\'live_container\'>\n              <label>Live Data</label>\n              <div>\n                <input id=\'live_data\' type="checkbox" data-toggle="toggle" >\n              </div>\n            </div>\n            \n          </td>\n          <td id=\'plot_data\'></td>\n        </tr>\n      </table>\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -24358,7 +24358,7 @@ PcasummaryWidgetView = (function(superClass) {
   };
 
   PcasummaryWidgetView.prototype.data_update = function(data) {
-    var ad, add, ambd, ambhumidity, aq, bd, bdd, cd, cls, coildp, good_quality, h, hot1d, hot2d, hotgas1, hotgas2, icn, img, imgData, m, pc, pcd, ref, ref1, s, sq, stat, suc1d, suc2d, sucpressure1, sucpressure2, t, tag, tagQuality, tagVal, th, true_val, txt, txta, txtb, type, v, vfd, vfdspeed, vq, wq;
+    var ad, add, ambd, ambhumidity, aq, bd, bdd, cd, cls, coildp, good_quality, h, hot1d, hot2d, hotgas1, hotgas2, hpp1d, hpp2d, hpp3d, icn, img, imgData, m, pc, pcaheadpri1, pcaheadpri2, pcaheadpri3, pcd, ref, ref1, s, sq, stat, suc1d, suc2d, suc3d, sucpressure1, sucpressure2, sucpressure3, t, tag, tagQuality, tagVal, th, true_val, txt, txta, txtb, type, v, vfd, vfdspeed, vq, wq;
     this.refresh_values();
     if (this.tagData.pca_discharge_temp != null) {
       vq = this.data_q(this.tagData.pca_discharge_temp.Tag);
@@ -24444,16 +24444,44 @@ PcasummaryWidgetView = (function(superClass) {
     } else {
       this.$('#pca_suction_pressure_2').html(" ");
     }
+    if (this.tagData.pca_suction_pressure_3 != null) {
+      sucpressure3 = (this.vals.pca_suction_pressure_3 != null) && this.vals.pca_suction_pressure_3 !== '' ? parseFloat(this.vals.pca_suction_pressure_3).toFixed(2) : ' -- ';
+      suc3d = v === true && sq ? this.$('#pca_suction_pressure_3').html("SP3 : " + sucpressure3) : this.$('#pca_suction_pressure_3').html(" ");
+      this.mark_bad_data(this.tagData.pca_suction_pressure_3.Tag, suc3d);
+    } else {
+      this.$('#pca_suction_pressure_3').html(" ");
+    }
+    if (this.tagData.pca_headpri1 != null) {
+      pcaheadpri1 = (this.vals.pca_headpri1 != null) && this.vals.pca_headpri1 !== '' ? parseFloat(this.vals.pca_headpri1).toFixed(2) : ' -- ';
+      hpp1d = v === true && sq ? this.$('#pca_headpri1').html("HP1 : " + pcaheadpri1) : this.$('#pca_headpri1').html(" ");
+      this.mark_bad_data(this.tagData.pca_headpri1.Tag, hpp1d);
+    } else {
+      this.$('#pca_headpri1').html(" ");
+    }
+    if (this.tagData.pca_headpri2 != null) {
+      pcaheadpri2 = (this.vals.pca_headpri2 != null) && this.vals.pca_headpri2 !== '' ? parseFloat(this.vals.pca_headpri2).toFixed(2) : ' -- ';
+      hpp2d = v === true && sq ? this.$('#pca_headpri2').html("HP2 : " + pcaheadpri2) : this.$('#pca_headpri2').html(" ");
+      this.mark_bad_data(this.tagData.pca_headpri2.Tag, hpp2d);
+    } else {
+      this.$('#pca_headpri2').html(" ");
+    }
+    if (this.tagData.pca_headpri3 != null) {
+      pcaheadpri3 = (this.vals.pca_headpri3 != null) && this.vals.pca_headpri3 !== '' ? parseFloat(this.vals.pca_headpri3).toFixed(2) : ' -- ';
+      hpp3d = v === true && sq ? this.$('#pca_headpri3').html("HP3 : " + pcaheadpri3) : this.$('#pca_headpri3').html(" ");
+      this.mark_bad_data(this.tagData.pca_headpri3.Tag, hpp3d);
+    } else {
+      this.$('#pca_headpri3').html(" ");
+    }
     if (this.tagData.pca_hot_gas_1 != null) {
       hotgas1 = (this.vals.pca_hot_gas_1 != null) && this.vals.pca_hot_gas_1 !== '' ? parseFloat(this.vals.pca_hot_gas_1).toFixed(2) : ' -- ';
-      hot1d = v === true && sq ? this.$('#pca_hot_gas_1').html("HP1 : " + hotgas1) : this.$('#pca_hot_gas_1').html(" ");
+      hot1d = v === true && sq ? this.$('#pca_hot_gas_1').html("HG1 : " + hotgas1) : this.$('#pca_hot_gas_1').html(" ");
       this.mark_bad_data(this.tagData.pca_hot_gas_1.Tag, hot1d);
     } else {
       this.$('#pca_hot_gas_1').html(" ");
     }
     if (this.tagData.pca_hot_gas_2 != null) {
       hotgas2 = (this.vals.pca_hot_gas_2 != null) && this.vals.pca_hot_gas_2 !== '' ? parseFloat(this.vals.pca_hot_gas_2).toFixed(2) : ' -- ';
-      hot2d = v === true && sq ? this.$('#pca_hot_gas_2').html("HP2 : " + hotgas2) : this.$('#pca_hot_gas_2').html(" ");
+      hot2d = v === true && sq ? this.$('#pca_hot_gas_2').html("HG2 : " + hotgas2) : this.$('#pca_hot_gas_2').html(" ");
       this.mark_bad_data(this.tagData.pca_hot_gas_2.Tag, hot2d);
     } else {
       this.$('#pca_hot_gas_2').html(" ");
