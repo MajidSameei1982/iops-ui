@@ -102,7 +102,77 @@ class GpusummaryWidgetView extends IOPSWidgetView
         value: 0
         parseTime: false
         min: 0
-        max: 150
+        max: 70
+        symbol: ' A'
+        relativeGaugeSize: true
+        shadowOpacity: 1
+        shadowSize: 5
+        shadowVerticalOffset: 10
+        pointer: true
+        pointerOptions: 
+          toplength: -5
+          bottomlength: 20
+          bottomwidth: 3
+          color: '#000'
+          stroke: '#ffffff'
+          stroke_width: 1
+          stroke_linecap: 'round'
+        gaugeWidthScale: 0.6
+        customSectors: [
+          {color: '#000000',lo: 0,hi: 1}
+          {color: '#ff3333',lo: 2,hi: 23}
+          {color: '#ffcc66',lo: 24,hi: 29}
+          {color: '#00b300',lo: 30,hi: 40}
+          {color: '#ffcc66',lo: 41,hi: 46}
+          {color: '#ff3333',lo: 47,hi: 70}
+        ]
+        counter: true
+
+    v28id = "gauge_28volts_out_#{@model.id}"
+    @$('#view_main').append("<div id='#{vid}'><div class='bad_data' style='display:none;'>BAD DATA</div></div>")
+    @g3 = new JustGage
+      id: v28id
+      title: ' '
+      label: '28V Output Voltage'
+      value: 0
+      parseTime: false
+      min: 0
+      max: 35
+      symbol: ' V'
+      relativeGaugeSize: true
+      shadowOpacity: 1
+      shadowSize: 5
+      shadowVerticalOffset: 10
+      pointer: true
+      pointerOptions: 
+        toplength: -5
+        bottomlength: 20
+        bottomwidth: 3
+        color: '#000'
+        stroke: '#ffffff'
+        stroke_width: 1
+        stroke_linecap: 'round'
+      gaugeWidthScale: 0.6
+      customSectors: [
+        {color: '#000000',lo: 0,hi: 2}
+        {color: '#ff3333',lo: 3,hi: 23}
+        {color: '#ffcc66',lo: 24,hi: 25}
+        {color: '#00b300',lo: 26,hi: 30}
+        {color: '#ffcc66',lo: 31,hi: 32}
+        {color: '#ff3333',lo: 33,hi: 35}
+      ]
+      counter: true
+
+      a28id = "gauge_28amps_out_#{@model.id}"
+      @$('#view_main').append("<div id='#{aid}'><div class='bad_data' style='display:none;'>BAD DATA</div></div>")
+      @g4 = new JustGage
+        id: a28id
+        title: ' '
+        label: '28V Output Amperage'
+        value: 0
+        parseTime: false
+        min: 0
+        max: 70
         symbol: ' A'
         relativeGaugeSize: true
         shadowOpacity: 1
@@ -284,6 +354,33 @@ class GpusummaryWidgetView extends IOPSWidgetView
       if aq && !isNaN(v) && v != ''
         v = parseInt(parseInt(v))
         @g2.refresh(v)
+
+    if @tagData.gpu_rdc_volts?
+      rvq = @data_q(@tagData.gpu_rdc_volts.Tag)
+      @$("#gauge_32volts_out_#{@model.id} .bad_data").toggle(!rvq)
+      rv = @vals.gpu_rdc_volts
+      if rvq && !isNaN(rv) && rv != ''
+        @g1.refresh(parseInt(rv))
+
+    if @tagData.gpu_rdc_amps?
+      raq = @data_q(@tagData.gpu_rdc_amps.Tag)
+      @$("#gauge_32amps_out_#{@model.id} .bad_data").toggle(!raq)
+      rv = @vals.gpu_rdc_amps
+      if raq && !isNaN(rv) && rv != ''
+        rv = parseInt(parseInt(rv))
+        @g2.refresh(rv)
+
+    if v > 0
+      @$("#gauge_amps_out_#{@model.id}").toggleClass("NoShow",false)
+      @$("#gauge_amps_out_#{@model.id}").toggleClass("NoShow",false)
+      @$("#gauge_32amps_out_#{@model.id}").toggleClass("NoShow",true)
+      @$("#gauge_32amps_out_#{@model.id}").toggleClass("NoShow",true)
+
+    if rv > 0
+      @$("#gauge_amps_out_#{@model.id}").toggleClass("NoShow",true)
+      @$("#gauge_amps_out_#{@model.id}").toggleClass("NoShow",true)
+      @$("#gauge_32amps_out_#{@model.id}").toggleClass("NoShow",false)
+      @$("#gauge_32amps_out_#{@model.id}").toggleClass("NoShow",false)
 
     # refresh status
     if @tagData.gpu_status?

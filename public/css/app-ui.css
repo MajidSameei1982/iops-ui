@@ -1815,6 +1815,8 @@ ul.chosen-results li.highlighted {
   font-weight: bold;
   font-size: 18px;
   border: solid 4px #fff; }
+.gpu_summary_widget .NoShow {
+  visibility: hidden; }
 .gpu_summary_widget #plot_container #options {
   min-width: 100px;
   width: 18%;
@@ -2417,6 +2419,98 @@ ul.chosen-results li.highlighted {
       .pbb_pca_gpu_basic_widget .display #display_label h1 i#warnings {
         color: #f90;
         background-color: #eee; }
+
+/* GPU Widget Styles */
+.pbb_system_status_widget.alarm {
+  background-color: #c00;
+  color: #fff; }
+.pbb_system_status_widget .display {
+  min-height: 100%;
+  min-width: 100%;
+  overflow: auto; }
+  .pbb_system_status_widget .display #gpu_label {
+    margin-bottom: 3px; }
+    .pbb_system_status_widget .display #gpu_label h1 {
+      line-height: 48px;
+      font-weight: bold;
+      margin: 0 0 0 0; }
+      .pbb_system_status_widget .display #gpu_label h1 i.fa {
+        margin-right: -5px;
+        padding: 5px;
+        border-radius: 10px;
+        font-size: 26px !important; }
+      .pbb_system_status_widget .display #gpu_label h1 i#docked {
+        color: #069;
+        background-color: #eee; }
+      .pbb_system_status_widget .display #gpu_label h1 i#alarms {
+        color: #fff;
+        background-color: #c00; }
+      .pbb_system_status_widget .display #gpu_label h1 i#warnings {
+        color: #f90;
+        background-color: #eee; }
+  .pbb_system_status_widget .display table th {
+    font-size: 1.5em;
+    text-align: center;
+    border-bottom: solid 1px #aaa;
+    border-left: solid 1px #aaa;
+    background-color: #cce; }
+  .pbb_system_status_widget .display table.data-status {
+    width: 75%;
+    float: left; }
+  .pbb_system_status_widget .display table.data-status {
+    width: 100%;
+    border: solid 1px #999;
+    border-spacing: 1px;
+    border-collapse: separate; }
+    .pbb_system_status_widget .display table.data-status.airplane {
+      border: 0; }
+      .pbb_system_status_widget .display table.data-status.airplane td {
+        background-color: #fff; }
+    .pbb_system_status_widget .display table.data-status.no-show {
+      visibility: hidden; }
+    .pbb_system_status_widget .display table.data-status.show {
+      visibility: visible; }
+    .pbb_system_status_widget .display table.data-status td, .pbb_system_status_widget .display table.data-status div {
+      padding: 2px 5px;
+      border-left: solid 1px #ddd;
+      border-bottom: solid 1px #ddd; }
+      .pbb_system_status_widget .display table.data-status td tr.dockundock, .pbb_system_status_widget .display table.data-status div tr.dockundock {
+        background-color: #090; }
+      .pbb_system_status_widget .display table.data-status td.DisCharge, .pbb_system_status_widget .display table.data-status div.DisCharge {
+        text-align: center; }
+        .pbb_system_status_widget .display table.data-status td.DisCharge.Cooling, .pbb_system_status_widget .display table.data-status div.DisCharge.Cooling {
+          color: #33adff; }
+        .pbb_system_status_widget .display table.data-status td.DisCharge.Heating, .pbb_system_status_widget .display table.data-status div.DisCharge.Heating {
+          color: #ff3300; }
+      .pbb_system_status_widget .display table.data-status td.lbl, .pbb_system_status_widget .display table.data-status div.lbl {
+        background-color: #fff;
+        font-style: italic;
+        color: #333; }
+      .pbb_system_status_widget .display table.data-status td.val, .pbb_system_status_widget .display table.data-status div.val {
+        background-image: url("../img/data-status-idle.png");
+        background-repeat: no-repeat;
+        background-position: center center; }
+      .pbb_system_status_widget .display table.data-status td.alarm, .pbb_system_status_widget .display table.data-status div.alarm {
+        color: #fe6;
+        background-color: #c33; }
+      .pbb_system_status_widget .display table.data-status td.ok, .pbb_system_status_widget .display table.data-status div.ok {
+        background-image: url("../img/data-status-ok.png");
+        background-repeat: no-repeat;
+        background-position: center center; }
+      .pbb_system_status_widget .display table.data-status td.blue, .pbb_system_status_widget .display table.data-status div.blue {
+        background-color: #06c;
+        color: #fff; }
+      .pbb_system_status_widget .display table.data-status td.bad_data, .pbb_system_status_widget .display table.data-status div.bad_data {
+        background-image: url("../img/data-status-baddata.png");
+        background-repeat: no-repeat;
+        background-position: center center; }
+      .pbb_system_status_widget .display table.data-status td.img-circles, .pbb_system_status_widget .display table.data-status div.img-circles {
+        border-radius: 10%; }
+    .pbb_system_status_widget .display table.data-status td[id$="_lbl"] {
+      background-color: #fff;
+      font-style: italic;
+      color: #333;
+      text-align: left; }
 
 .pcad_widget .zone_list {
   margin-left: 10px; }

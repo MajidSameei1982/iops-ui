@@ -41,9 +41,14 @@ window.app_config = {
       name: "PBB Overview Widget",
       icon: "plane"
     },
-     {
+    {
       id: "pbbleveldetail",
       name: "PBB Bridge Widget",
+      icon: "plane"
+    },
+    {
+      id: "pbbsystemstatus",
+      name: "PBB System Status",
       icon: "plane"
     },
     {

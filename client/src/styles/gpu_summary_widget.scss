@@ -23,6 +23,10 @@
     border: solid 4px #fff;
   }
 
+  .NoShow {
+    visibility: hidden;
+  }
+  
   #plot_container {
     #options {
       min-width:100px;

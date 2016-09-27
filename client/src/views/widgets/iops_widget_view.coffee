@@ -74,10 +74,14 @@ class IOPSWidgetView extends WidgetView
       for t in data.tags
         for tt, idx of vals
           if "#{@prefix}#{idx.Tag}" == t.name
-            if t.props? && t.props[0].val != ""
-              v = t.props[0].val
+            if /[*]/.test(idx.Label)
+              v = idx.Label.replace "[*]", ""
             else
-              v = idx.Label
+              if t.props? && t.props[0].val != ""
+                v = t.props[0].val
+              else
+                v = idx.Label
+
             if @$("##{tt}_lbl").length > 0
               @$("##{tt}_lbl").html(v)
             else if @$("#dynamic_#{tt}_lbl").length > 0
