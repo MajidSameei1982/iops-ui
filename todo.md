@@ -1,11 +1,9 @@
-Asset Tracking and Management
+Security
+========
 
-Mapping
-
-Filtering by asset type
-
-Click on asset for details
-
-Overlay a map blueprint on a building
-
-Example LeafletJS into a widget and add overlay of buildings
+- Only show users for the sites admins can manage
+- Only show airports for the sites admins can manage
+- Hide global permissions for admins without global admin privs
+- Hide sites on dropdowns for users without rights
+- Don't render widgets for sites without rights
+- Create default <site>_User permission
