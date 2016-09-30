@@ -18079,7 +18079,7 @@ User = (function(superClass) {
   };
 
   User.prototype.check_widget_roles = function(sroles) {
-    var app_role, ar, i, j, k, len, len1, len2, r, ref, ref1, role, rp, type, ur;
+    var app_role, ar, i, j, k, l, len, len1, len2, len3, r, ref, ref1, ref2, role, rp, s, sid, type, ur;
     for (i = 0, len = sroles.length; i < len; i++) {
       r = sroles[i];
       rp = r.split(':');
@@ -18089,17 +18089,27 @@ User = (function(superClass) {
       ref = App.roles.models;
       for (j = 0, len1 = ref.length; j < len1; j++) {
         ar = ref[j];
+        sid = ar.get("siteId");
         if (ar.get('name') === role) {
-          if ((type === 'global' && (ar.get('siteId') == null)) || (type === 'site' && ar.get('siteId'))) {
+          if ((type === 'global' && (sid == null)) || (type === 'site' && sid)) {
             app_role = ar;
             break;
+          } else if (type !== "global" && type !== "site") {
+            ref1 = App.accounts.models[0].sites.models;
+            for (k = 0, len2 = ref1.length; k < len2; k++) {
+              s = ref1[k];
+              if (s.get("code").toLowerCase() === type && (sid != null) && sid === s.id) {
+                app_role = ar;
+                break;
+              }
+            }
           }
         }
       }
       if (app_role) {
-        ref1 = this.roles.models;
-        for (k = 0, len2 = ref1.length; k < len2; k++) {
-          ur = ref1[k];
+        ref2 = this.roles.models;
+        for (l = 0, len3 = ref2.length; l < len3; l++) {
+          ur = ref2[l];
           if (ur.id === app_role.id) {
             return true;
           }
@@ -19522,17 +19532,27 @@ WidgetLayout = (function(superClass) {
   };
 
   WidgetLayout.prototype.onShow = function() {
-    var i, idx, j, len, len1, ref, w, wv, wvs;
+    var i, idx, j, k, len, len1, len2, ref, ref1, w, wc, wv, wvs;
     OPCManager.drop_connections();
     wvs = [];
     ref = this.model.widgets.models;
     for (idx = i = 0, len = ref.length; i < len; idx = ++i) {
       w = ref[idx];
-      wvs.push(this.draw_widget_view(w));
+      ref1 = App.config.widgets;
+      for (j = 0, len1 = ref1.length; j < len1; j++) {
+        wc = ref1[j];
+        if (wc.id === w.get("type")) {
+          if ((wc.roles != null) && !App.session.check_widget_roles(wc.roles)) {
+            continue;
+          }
+          wvs.push(this.draw_widget_view(w));
+          break;
+        }
+      }
     }
     this.set_gridster();
-    for (j = 0, len1 = wvs.length; j < len1; j++) {
-      wv = wvs[j];
+    for (k = 0, len2 = wvs.length; k < len2; k++) {
+      wv = wvs[k];
       if (wv.onGridster) {
         wv.onGridster();
       }

@@ -94,13 +94,19 @@ window.app_config = {
     {
       id: "kpi",
       name: "Kpi Widget",
-      icon: "bar-chart"
+      icon: "bar-chart" 
     },
     {
       id: "config",
       name: "Config Widget",
       icon: "gear",
       roles: ["global:admin", "site:admin"]
+    },
+    {
+      id: "example",
+      name: "Permissions Example",
+      icon: "gear",
+      roles: ["jfk:user"]
     }
     // ,
     // {

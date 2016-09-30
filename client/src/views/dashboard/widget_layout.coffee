@@ -121,7 +121,11 @@ class WidgetLayout extends Marionette.LayoutView
     OPCManager.drop_connections()
     wvs = []
     for w, idx in @model.widgets.models
-      wvs.push @draw_widget_view(w)
+      for wc in App.config.widgets
+        if (wc.id == w.get("type"))
+          continue if wc.roles? && !App.session.check_widget_roles(wc.roles)
+          wvs.push @draw_widget_view(w)
+          break
     @set_gridster()
     for wv in wvs
       if wv.onGridster then wv.onGridster()

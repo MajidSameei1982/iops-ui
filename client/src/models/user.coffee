@@ -115,10 +115,16 @@ class User extends BaseModel
       role = rp[1]
       app_role = null
       for ar in App.roles.models
+        sid = ar.get("siteId")
         if ar.get('name') == role
-          if (type == 'global' && !ar.get('siteId')?) || (type == 'site' && ar.get('siteId'))
+          if (type == 'global' && !sid?) || (type == 'site' && sid)
             app_role = ar
             break
+          else if (type != "global" && type != "site")
+            for s in App.accounts.models[0].sites.models
+              if s.get("code").toLowerCase() == type && sid? && sid == s.id
+                app_role = ar
+                break
       if app_role
         for ur in @roles.models
           if ur.id == app_role.id
