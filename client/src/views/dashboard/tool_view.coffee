@@ -26,6 +26,9 @@ class DashboardToolView extends Marionette.ItemView
     e.preventDefault()
     App.router.navigate('reports', {trigger:true})
 
+  set_options: (global_admin)->
+    @ui.accounts_link.toggle(global_admin)
+
   onShow: ()->
     $(@el).attr('tabindex', '-1')
 

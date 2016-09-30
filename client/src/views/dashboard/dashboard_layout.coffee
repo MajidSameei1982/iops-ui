@@ -48,10 +48,15 @@ class DashboardLayout extends Marionette.LayoutView
       collection: App.dashboards
     @side.show(@sideview)
 
-    pck = App.session.check_role('admin')
-    if pck
+    global_admin = App.session.is_global_admin()
+    site_admin = false
+    for s in App.accounts.models[0].sites.models
+      site_admin = site_admin || App.session.is_site_admin(s.id)
+
+    if site_admin || global_admin
       @toolview = new DashboardToolView()
       @tool.show(@toolview)
+      @toolview.set_options(global_admin)
     else
       $("#toolsmenu").hide()
 

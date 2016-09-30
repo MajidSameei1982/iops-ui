@@ -16,16 +16,19 @@ class PermissionsTopView extends Marionette.LayoutView
     @claims = new ClaimCollection()
     @claims.fetch
       success: ()=>
-        @pv = new PermissionsView
-          model: new Backbone.Model
-            id: 0
-            name: 'Global Permissions'
-            global: true
-          collection: @claims
-          filter: (child, index, collection)->
-            s = child.get('siteId')
-            return !s? || s == 0
-        @global_region.show(@pv)
+        if App.session.is_global_admin()
+          @pv = new PermissionsView
+            model: new Backbone.Model
+              id: 0
+              name: 'Global Permissions'
+              global: true
+            collection: @claims
+            filter: (child, index, collection)->
+              s = child.get('siteId')
+              return !s? || s == 0
+          @global_region.show(@pv)
+        else
+          @$(@regions.global_region).hide()
 
         for acc in App.accounts.models
           acc_el = """
@@ -38,6 +41,7 @@ class PermissionsTopView extends Marionette.LayoutView
           
           # fetch latest claims for each site
           for s in acc.sites.models
+            continue if !App.session.is_site_admin(s.id)
             site_el = $("<div id='site_#{s.id}' class='site_item'></div>")
             acc_el.append(site_el)
             spv = new PermissionsView

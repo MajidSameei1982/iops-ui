@@ -2990,9 +2990,16 @@ AppController = (function(superClass) {
   };
 
   AppController.prototype.mgpermissions = function() {
-    var dl;
+    var dl, global_admin, i, len, ref, s, site_admin;
     App.log('route:mgpermissions');
-    if (!App.session.check_role('admin')) {
+    global_admin = App.session.is_global_admin();
+    site_admin = false;
+    ref = App.accounts.models[0].sites.models;
+    for (i = 0, len = ref.length; i < len; i++) {
+      s = ref[i];
+      site_admin = site_admin || App.session.is_site_admin(s.id);
+    }
+    if (!global_admin && !site_admin) {
       App.router.navigate('', {
         trigger: true
       });
@@ -3671,7 +3678,7 @@ _.extend(Marionette.View.prototype, {
               ref1 = acc.sites.models;
               for (j = 0, len1 = ref1.length; j < len1; j++) {
                 s = ref1[j];
-                if (!App.session.has_site(s.id)) {
+                if (!App.session.has_site(s.id) && !App.session.is_global_admin()) {
                   continue;
                 }
                 txt = s.get('name');
@@ -18002,6 +18009,26 @@ User = (function(superClass) {
     return false;
   };
 
+  User.prototype.is_site_admin = function(sid) {
+    var ar, i, len, ref, tsid;
+    if (this.is_global_admin()) {
+      return true;
+    }
+    ref = App.roles.models;
+    for (i = 0, len = ref.length; i < len; i++) {
+      ar = ref[i];
+      tsid = ar.get("siteId");
+      if ((tsid == null) || tsid === '') {
+        continue;
+      }
+      if (tsid === sid && ar.get("name") === "admin" && this.has_role(ar.id)) {
+        return true;
+        break;
+      }
+    }
+    return false;
+  };
+
   User.prototype.has_site = function(sid) {
     var i, len, ref, s;
     ref = this.sites();
@@ -18015,30 +18042,25 @@ User = (function(superClass) {
   };
 
   User.prototype.sites = function() {
-    var acc, ar, i, isadmin, j, k, l, len, len1, len2, len3, ref, ref1, ref2, ref3, s, sid, sites, ur;
+    var acc, ar, i, j, k, l, len, len1, len2, len3, ref, ref1, ref2, ref3, s, sid, sites, ur;
     sites = [];
-    isadmin = this.is_global_admin();
     ref = App.accounts.models;
     for (i = 0, len = ref.length; i < len; i++) {
       acc = ref[i];
       ref1 = acc.sites.models;
       for (j = 0, len1 = ref1.length; j < len1; j++) {
         s = ref1[j];
-        if (isadmin) {
-          sites.push(s.id);
-        } else {
-          ref2 = this.roles.models;
-          for (k = 0, len2 = ref2.length; k < len2; k++) {
-            ur = ref2[k];
-            ref3 = App.roles.models;
-            for (l = 0, len3 = ref3.length; l < len3; l++) {
-              ar = ref3[l];
-              if (ar.id === ur.id) {
-                sid = ar.get('siteId');
-                if ((sid != null) && s.id === sid) {
-                  sites.push(s.id);
-                  break;
-                }
+        ref2 = this.roles.models;
+        for (k = 0, len2 = ref2.length; k < len2; k++) {
+          ur = ref2[k];
+          ref3 = App.roles.models;
+          for (l = 0, len3 = ref3.length; l < len3; l++) {
+            ar = ref3[l];
+            if (ar.id === ur.id) {
+              sid = ar.get('siteId');
+              if ((sid != null) && s.id === sid) {
+                sites.push(s.id);
+                break;
               }
             }
           }
@@ -18807,7 +18829,7 @@ DashboardLayout = (function(superClass) {
   };
 
   DashboardLayout.prototype.onShow = function() {
-    var pck;
+    var global_admin, i, len, ref, s, site_admin;
     this.headerview = new DashboardHeaderView({
       model: App.session
     });
@@ -18816,10 +18838,17 @@ DashboardLayout = (function(superClass) {
       collection: App.dashboards
     });
     this.side.show(this.sideview);
-    pck = App.session.check_role('admin');
-    if (pck) {
+    global_admin = App.session.is_global_admin();
+    site_admin = false;
+    ref = App.accounts.models[0].sites.models;
+    for (i = 0, len = ref.length; i < len; i++) {
+      s = ref[i];
+      site_admin = site_admin || App.session.is_site_admin(s.id);
+    }
+    if (site_admin || global_admin) {
       this.toolview = new DashboardToolView();
       this.tool.show(this.toolview);
+      this.toolview.set_options(global_admin);
     } else {
       $("#toolsmenu").hide();
     }
@@ -19296,6 +19325,10 @@ DashboardToolView = (function(superClass) {
     return App.router.navigate('reports', {
       trigger: true
     });
+  };
+
+  DashboardToolView.prototype.set_options = function(global_admin) {
+    return this.ui.accounts_link.toggle(global_admin);
   };
 
   DashboardToolView.prototype.onShow = function() {
@@ -20302,20 +20335,24 @@ PermissionsTopView = (function(superClass) {
       success: (function(_this) {
         return function() {
           var acc, acc_el, i, len, r, ref, results, s, site_el, spv;
-          _this.pv = new PermissionsView({
-            model: new Backbone.Model({
-              id: 0,
-              name: 'Global Permissions',
-              global: true
-            }),
-            collection: _this.claims,
-            filter: function(child, index, collection) {
-              var s;
-              s = child.get('siteId');
-              return (s == null) || s === 0;
-            }
-          });
-          _this.global_region.show(_this.pv);
+          if (App.session.is_global_admin()) {
+            _this.pv = new PermissionsView({
+              model: new Backbone.Model({
+                id: 0,
+                name: 'Global Permissions',
+                global: true
+              }),
+              collection: _this.claims,
+              filter: function(child, index, collection) {
+                var s;
+                s = child.get('siteId');
+                return (s == null) || s === 0;
+              }
+            });
+            _this.global_region.show(_this.pv);
+          } else {
+            _this.$(_this.regions.global_region).hide();
+          }
           ref = App.accounts.models;
           results = [];
           for (i = 0, len = ref.length; i < len; i++) {
@@ -20329,6 +20366,9 @@ PermissionsTopView = (function(superClass) {
               results1 = [];
               for (j = 0, len1 = ref1.length; j < len1; j++) {
                 s = ref1[j];
+                if (!App.session.is_site_admin(s.id)) {
+                  continue;
+                }
                 site_el = $("<div id='site_" + s.id + "' class='site_item'></div>");
                 acc_el.append(site_el);
                 spv = new PermissionsView({
@@ -20586,20 +20626,24 @@ RolesTopView = (function(superClass) {
       success: (function(_this) {
         return function() {
           var acc, acc_el, i, len, r, ref, results, s, site_el, srv;
-          _this.rv = new RolesView({
-            model: new Backbone.Model({
-              id: 0,
-              name: 'Global Roles',
-              global: true
-            }),
-            collection: _this.roles,
-            filter: function(child, index, collection) {
-              var s;
-              s = child.get('siteId');
-              return (s == null) || s === 0;
-            }
-          });
-          _this.global_region.show(_this.rv);
+          if (App.session.is_global_admin()) {
+            _this.rv = new RolesView({
+              model: new Backbone.Model({
+                id: 0,
+                name: 'Global Roles',
+                global: true
+              }),
+              collection: _this.roles,
+              filter: function(child, index, collection) {
+                var s;
+                s = child.get('siteId');
+                return (s == null) || s === 0;
+              }
+            });
+            _this.global_region.show(_this.rv);
+          } else {
+            _this.$(_this.regions.global_region).hide();
+          }
           ref = App.accounts.models;
           results = [];
           for (i = 0, len = ref.length; i < len; i++) {
@@ -20613,6 +20657,9 @@ RolesTopView = (function(superClass) {
               results1 = [];
               for (j = 0, len1 = ref1.length; j < len1; j++) {
                 s = ref1[j];
+                if (!App.session.is_site_admin(s.id)) {
+                  continue;
+                }
                 site_el = $("<div id='site_" + s.id + "' class='site_item'></div>");
                 acc_el.append(site_el);
                 srv = new RolesView({
@@ -20750,6 +20797,10 @@ UserView = (function(superClass) {
     var acc, i, j, len, len1, ref, ref1, roles, s;
     $(this.el).toggleClass('rw', rw);
     if (rw) {
+      $("#users_region .row.user_container").toggle(false);
+      $(this.el).toggle(rw);
+    }
+    if (rw) {
       roles = this.model.get('roles');
       ref = App.accounts.models;
       for (i = 0, len = ref.length; i < len; i++) {
@@ -20771,8 +20822,9 @@ UserView = (function(superClass) {
   };
 
   UserView.prototype.cancel_edit = function() {
+    $("#users_region .row.user_container").toggle(true);
     if ((this.model.id == null) || this.model.id < 1) {
-      App.users.remove(this.model);
+      this.model.collection.remove(this.model);
       return;
     }
     this.model = new User(this.old_model);
@@ -20904,7 +20956,7 @@ UserView = (function(superClass) {
 module.exports = UserView;
 
 },{"../../../models/user":22}],51:[function(require,module,exports){
-var Marionette, RoleCollection, UserCollection, UsersLayout, UsersView,
+var Marionette, RoleCollection, User, UserCollection, UsersLayout, UsersView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -20916,6 +20968,8 @@ UsersView = require('./users_view');
 UserCollection = require('../../../models/user_collection');
 
 RoleCollection = require('../../../models/role_collection');
+
+User = require('../../../models/user');
 
 UsersLayout = (function(superClass) {
   extend(UsersLayout, superClass);
@@ -20961,7 +21015,7 @@ UsersLayout = (function(superClass) {
   };
 
   UsersLayout.prototype.add_user = function() {
-    var c, i, len, ref;
+    var c, i, len, ref, u;
     if ((this.users == null) || (this.users.models == null)) {
       return;
     }
@@ -20972,9 +21026,11 @@ UsersLayout = (function(superClass) {
         return false;
       }
     }
-    return this.users.add({}, {
+    u = new User();
+    this.users.add(u, {
       at: 0
     });
+    return u.collection = this.users;
   };
 
   UsersLayout.prototype.onShow = function() {
@@ -20991,12 +21047,28 @@ UsersLayout = (function(superClass) {
   UsersLayout.prototype.rebuild_view = function() {
     this.$('.loading').show();
     this.$('.preamble').hide();
-    this.users = new UserCollection();
-    return this.users.fetch({
+    this.tempusers = new UserCollection();
+    return this.tempusers.fetch({
       success: (function(_this) {
         return function() {
+          var global_admin, i, j, len, len1, ref, ref1, s, site_admin, u;
           _this.$('.loading').hide();
           _this.$('.preamble').show();
+          _this.users = new UserCollection();
+          global_admin = App.session.is_global_admin();
+          ref = _this.tempusers.models;
+          for (i = 0, len = ref.length; i < len; i++) {
+            u = ref[i];
+            site_admin = false;
+            ref1 = u.sites();
+            for (j = 0, len1 = ref1.length; j < len1; j++) {
+              s = ref1[j];
+              site_admin = site_admin || App.session.is_site_admin(s);
+            }
+            if (global_admin || site_admin) {
+              _this.users.add(u);
+            }
+          }
           _this.usersview = new UsersView({
             collection: _this.users
           });
@@ -21017,7 +21089,7 @@ UsersLayout = (function(superClass) {
 
 module.exports = UsersLayout;
 
-},{"../../../models/role_collection":18,"../../../models/user_collection":23,"./users_view":52}],52:[function(require,module,exports){
+},{"../../../models/role_collection":18,"../../../models/user":22,"../../../models/user_collection":23,"./users_view":52}],52:[function(require,module,exports){
 var Marionette, UserCollection, UserView, UsersView,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;

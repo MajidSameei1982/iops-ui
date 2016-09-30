@@ -89,7 +89,11 @@ class AppController extends Object
 
   mgpermissions: ()->
     App.log('route:mgpermissions')
-    if !App.session.check_role('admin')
+    global_admin = App.session.is_global_admin()
+    site_admin = false
+    for s in App.accounts.models[0].sites.models
+      site_admin = site_admin || App.session.is_site_admin(s.id)
+    if !global_admin && !site_admin
       App.router.navigate('', {trigger:true})
       return
     dl = @set_main_layout()

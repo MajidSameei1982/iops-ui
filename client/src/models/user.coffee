@@ -78,26 +78,33 @@ class User extends BaseModel
         break
     false
 
+  is_site_admin: (sid)->
+    # check global admin
+    if @is_global_admin() then return true
+    for ar in App.roles.models
+      tsid = ar.get("siteId")
+      continue if !tsid? or tsid == ''
+      if tsid==sid && ar.get("name") == "admin" && @has_role(ar.id)
+        return true
+        break
+    false
+
   has_site: (sid)->
     for s in @sites()
       if s == sid then return true
     false
-
+    
   sites: ()->
     sites = []
-    isadmin = @is_global_admin()    
     for acc in App.accounts.models
       for s in acc.sites.models
-        if isadmin
-          sites.push(s.id)
-        else
-          for ur in @roles.models
-            for ar in App.roles.models
-              if ar.id == ur.id
-                sid = ar.get('siteId')
-                if sid? && s.id == sid
-                  sites.push(s.id)
-                  break          
+        for ur in @roles.models
+          for ar in App.roles.models
+            if ar.id == ur.id
+              sid = ar.get('siteId')
+              if sid? && s.id == sid
+                sites.push(s.id)
+                break          
     sites
 
   # check widget roles against user's roles for access to widgets

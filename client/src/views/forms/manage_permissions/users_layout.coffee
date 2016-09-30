@@ -2,6 +2,7 @@ Marionette = require('marionette')
 UsersView = require('./users_view')
 UserCollection = require('../../../models/user_collection')
 RoleCollection = require('../../../models/role_collection')
+User = require('../../../models/user')
 
 # ----------------------------------
 
@@ -32,7 +33,10 @@ class UsersLayout extends Marionette.LayoutView
     return if !@users? || !@users.models?
     for c in @users.models
       if !c.id? || c.id == 0 then return false
-    @users.add {}, {at:0}
+    u = new User()
+    @users.add u, {at:0}
+    u.collection = @users
+
 
   onShow: ()=>
     App.roles = new RoleCollection()
@@ -43,11 +47,19 @@ class UsersLayout extends Marionette.LayoutView
   rebuild_view: ()=>
     @$('.loading').show()
     @$('.preamble').hide()
-    @users = new UserCollection()
-    @users.fetch
+    @tempusers = new UserCollection()
+    @tempusers.fetch
       success: ()=>
         @$('.loading').hide()
         @$('.preamble').show()
+        @users = new UserCollection()
+        global_admin = App.session.is_global_admin()
+        for u in @tempusers.models
+          site_admin = false
+          for s in u.sites()
+            site_admin = site_admin || App.session.is_site_admin(s)
+          if global_admin || site_admin
+            @users.add(u)
         @usersview = new UsersView
           collection: @users
         @users_region.show(@usersview)

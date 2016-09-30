@@ -54,7 +54,7 @@ _.extend Marionette.View::,
           if acc.sites? && acc.sites.models.length > 0
             found_sel = false
             for s in acc.sites.models
-              continue if !App.session.has_site(s.id)
+              continue if !App.session.has_site(s.id) && !App.session.is_global_admin()
               txt = s.get('name')
               code = s.get('code')
               if code? && code != '' then txt = "#{txt} (#{code})"

@@ -23,16 +23,19 @@ class RolesTopView extends Marionette.LayoutView
     @roles = new RoleCollection()
     @roles.fetch
       success: ()=>
-        @rv = new RolesView
-          model: new Backbone.Model
-            id: 0
-            name: 'Global Roles'
-            global: true
-          collection: @roles
-          filter: (child, index, collection)->
-            s = child.get('siteId')
-            return !s? || s == 0
-        @global_region.show(@rv)
+        if App.session.is_global_admin()
+          @rv = new RolesView
+            model: new Backbone.Model
+              id: 0
+              name: 'Global Roles'
+              global: true
+            collection: @roles
+            filter: (child, index, collection)->
+              s = child.get('siteId')
+              return !s? || s == 0
+          @global_region.show(@rv)
+        else
+          @$(@regions.global_region).hide()
 
         for acc in App.accounts.models
           acc_el = """
@@ -43,8 +46,9 @@ class RolesTopView extends Marionette.LayoutView
           acc_el = $(acc_el)
           $(@el).append(acc_el)
           
-          # fetch latest claims for each site
+          # fetch latest roles for each site
           for s in acc.sites.models
+            continue if !App.session.is_site_admin(s.id)
             site_el = $("<div id='site_#{s.id}' class='site_item'></div>")
             acc_el.append(site_el)
             srv = new RolesView

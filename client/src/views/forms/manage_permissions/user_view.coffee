@@ -34,6 +34,9 @@ class UserView extends Marionette.ItemView
 
   toggle_edit: (rw)->
     $(@el).toggleClass('rw',rw)
+    if(rw)
+      $("#users_region .row.user_container").toggle(false)
+      $(@el).toggle(rw)
     #@$('#role_claims_container').toggle(rw)
     if rw
       roles = @model.get('roles')
@@ -48,8 +51,9 @@ class UserView extends Marionette.ItemView
     @toggle_edit(true);
 
   cancel_edit: ()->
+    $("#users_region .row.user_container").toggle(true)
     if (!@model.id? || @model.id < 1) 
-      App.users.remove(@model)  
+      @model.collection.remove(@model)
       return
     @model = new User(@old_model)
     @render()
