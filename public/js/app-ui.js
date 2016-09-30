@@ -1204,17 +1204,21 @@ window.JST["forms/manage_permissions/user"] = function(__obj) {
         label: '&nbsp;'
       })));
     
-      _print(_safe('\n  </div>\n\n  <div class="row">\n  <h3 class=\'account_name col-md-12\'><i class="fa fa-fw fa-globe"></i>Global Roles</h3>\n  '));
+      _print(_safe('\n  </div>\n\n  '));
     
-      _print(_safe(this.roleSelector({
-        id: 'roles_global',
-        label: null,
-        value: this.roles,
-        site_id: null,
-        cls: 'col-md-12'
-      })));
+      if (App.session.is_global_admin()) {
+        _print(_safe('\n  <div class="row">\n  <h3 class=\'account_name col-md-12\'><i class="fa fa-fw fa-globe"></i>Global Roles</h3>\n  '));
+        _print(_safe(this.roleSelector({
+          id: 'roles_global',
+          label: null,
+          value: this.roles,
+          site_id: null,
+          cls: 'col-md-12'
+        })));
+        _print(_safe('\n  </div>\n  '));
+      }
     
-      _print(_safe('\n  </div>\n\n  <div class="row">\n  '));
+      _print(_safe('\n\n  <div class="row">\n  '));
     
       ref = App.accounts.models;
       for (i = 0, len = ref.length; i < len; i++) {
@@ -1225,14 +1229,18 @@ window.JST["forms/manage_permissions/user"] = function(__obj) {
         ref1 = acc.sites.models;
         for (j = 0, len1 = ref1.length; j < len1; j++) {
           s = ref1[j];
-          _print(_safe('\n        '));
-          _print(_safe(this.roleSelector({
-            id: 'roles_' + s.id,
-            label: (s.get('name')) + " (" + (s.get('code')) + ")",
-            value: this.roles,
-            site_id: s.id,
-            cls: 'col-md-12 roleselect'
-          })));
+          _print(_safe('\n  '));
+          if (App.session.is_site_admin(s.id)) {
+            _print(_safe('\n        '));
+            _print(_safe(this.roleSelector({
+              id: 'roles_' + s.id,
+              label: (s.get('name')) + " (" + (s.get('code')) + ")",
+              value: this.roles,
+              site_id: s.id,
+              cls: 'col-md-12 roleselect'
+            })));
+            _print(_safe('\n  '));
+          }
           _print(_safe('\n  '));
         }
         _print(_safe('\n    </div>\n  '));
@@ -20922,7 +20930,8 @@ UserView = (function(superClass) {
       success: (function(_this) {
         return function() {
           delete _this.model.attributes['password'];
-          return _this.render();
+          _this.render();
+          return $("#users_region .row.user_container").toggle(true);
         };
       })(this)
     });

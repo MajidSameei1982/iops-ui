@@ -123,6 +123,7 @@ class UserView extends Marionette.ItemView
       success:()=>
         delete @model.attributes['password']
         @render()
+        $("#users_region .row.user_container").toggle(true)
  
   onRender: ()->
     @toggle_edit(false);

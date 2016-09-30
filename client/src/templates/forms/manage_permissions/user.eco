@@ -16,17 +16,21 @@
     <%- @formGroup({id:'password_confirmation', type:'password', placeholder:'confirm new password', cls: 'col-sm-6', label: '&nbsp;' }) %>
   </div>
 
+  <% if App.session.is_global_admin(): %>
   <div class="row">
   <h3 class='account_name col-md-12'><i class="fa fa-fw fa-globe"></i>Global Roles</h3>
   <%- @roleSelector({id:'roles_global', label:null, value:@roles, site_id:null, cls:'col-md-12'})%>
   </div>
+  <% end %>
 
   <div class="row">
   <% for acc in App.accounts.models: %>
     <div class='account_container col-md-12'>
       <h3 class='account_name'><i class="fa fa-fw fa-building-o"></i><%= acc.get('name') %> Roles</h3>
   <%    for s in acc.sites.models :%>
+  <%      if App.session.is_site_admin(s.id): %>
         <%- @roleSelector({id:'roles_' + s.id , label:"#{s.get('name')} (#{s.get('code')})", value:@roles, site_id:s.id, cls:'col-md-12 roleselect'})%>
+  <%      end %>
   <%    end %>
     </div>
   <% end %>
