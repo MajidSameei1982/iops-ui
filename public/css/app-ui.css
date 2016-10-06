@@ -2648,13 +2648,6 @@ ul.chosen-results li.highlighted {
   font-size: 12px;
   font-weight: bold;
   color: #333; }
-.pca_summary_widget #pca_modeofoperation {
-  position: absolute;
-  left: 88%;
-  top: 15%;
-  font-size: 12px;
-  font-weight: bold;
-  color: #333; }
 .pca_summary_widget #power_indicator {
   position: absolute;
   top: 14%;
