@@ -5830,6 +5830,23 @@ TagConfig = (function(superClass) {
         Class: null,
         Object: null
       }
+    },
+    pca_modeofoperation: {
+      Tag: 'PCA.MODEOFOPERATION',
+      Label: 'Mode',
+      DataType: 'Float',
+      Parameters: {
+        Parm001: false,
+        Parm002: null,
+        Parm003: null,
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
     }
   };
 
@@ -6551,6 +6568,23 @@ TagConfig = (function(superClass) {
               Class: null,
               Object: null
             }
+          },
+          pca_modeofoperation: {
+            Tag: 'PCA.MODEOFOPERATION',
+            Label: 'Mode',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: false,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
           }
         },
         4: {
@@ -6774,41 +6808,6 @@ TagConfig = (function(superClass) {
               Parm002: 'cooling-stage-2-on',
               Parm003: null,
               Parm004: 'cooling-stage-1-bq'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#dynamic_pca_main_background',
-              Class: 'img SJ_90',
-              Object: null
-            }
-          },
-          accool_img: {
-            ControlTags: {
-              pca_bridge_damper: 'Boolean',
-              pca_status: 'Boolean'
-            },
-            Parameters: {
-              Parm001: 'ALL_TRUE',
-              Parm002: 'ac-cool-on',
-              Parm003: null,
-              Parm004: 'ac-cool-bq'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#dynamic_pca_main_background',
-              Class: 'img SJ_90',
-              Object: null
-            }
-          },
-          bccool_img: {
-            ControlTags: {
-              pca_bridge_air: 'Boolean'
-            },
-            Parameters: {
-              Parm001: 'ALL_TRUE',
-              Parm002: 'bc-cool-on',
-              Parm003: null,
-              Parm004: 'bc-cool-bq'
             },
             Element: {
               Type: 'div',
@@ -7335,6 +7334,23 @@ TagConfig = (function(superClass) {
               Parm003: 'ok',
               Parm004: null,
               Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_modeofoperation: {
+            Tag: 'PCA.MODEOFOPERATION',
+            Label: 'Mode',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: false,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
             },
             Element: {
               Type: 'TableRow',
@@ -25506,7 +25522,7 @@ PcasummaryWidgetView = (function(superClass) {
   };
 
   PcasummaryWidgetView.prototype.data_update = function(data) {
-    var ad, add, ambd, ambhumidity, aq, bd, bdd, cd, cls, coildp, good_quality, h, hot1d, hot2d, hotgas1, hotgas2, hpp1d, hpp2d, hpp3d, icn, img, imgData, m, pc, pcaheadpri1, pcaheadpri2, pcaheadpri3, pcd, ref, ref1, s, sq, stat, suc1d, suc2d, suc3d, sucpressure1, sucpressure2, sucpressure3, t, tag, tagQuality, tagVal, th, true_val, txt, txta, txtb, type, v, vfd, vfdspeed, vq, wq;
+    var ad, add, ambd, ambhumidity, aq, bd, bdd, cd, cls, coildp, good_quality, h, hot1d, hot2d, hotgas1, hotgas2, hpp1d, hpp2d, hpp3d, icn, img, imgData, m, modeo, modeofoperation, pc, pcaheadpri1, pcaheadpri2, pcaheadpri3, pcd, ref, ref1, s, sq, stat, suc1d, suc2d, suc3d, sucpressure1, sucpressure2, sucpressure3, t, tag, tagQuality, tagVal, th, true_val, txt, txta, txtb, type, v, vfd, vfdspeed, vq, wq;
     this.refresh_values();
     if (this.tagData.pca_discharge_temp != null) {
       vq = this.data_q(this.tagData.pca_discharge_temp.Tag);
@@ -25633,6 +25649,13 @@ PcasummaryWidgetView = (function(superClass) {
       this.mark_bad_data(this.tagData.pca_hot_gas_2.Tag, hot2d);
     } else {
       this.$('#pca_hot_gas_2').html(" ");
+    }
+    if (this.tagData.pca_modeofoperation != null) {
+      modeofoperation = this.vals.pca_modeofoperation != null ? this.vals.pca_modeofoperation : ' -- ';
+      modeo = v === true && sq ? this.$('#pca_modeofoperation').html("Mode : " + modeofoperation) : this.$('#pca_modeofoperation').html(" ");
+      this.mark_bad_data(this.tagData.pca_modeofoperation.Tag, modeo);
+    } else {
+      this.$('#pca_modeofoperation').html(" ");
     }
     if (this.tagData.pca_coil_dp != null) {
       ad = this.get_bool(this.vals.pca_bridge_damper);

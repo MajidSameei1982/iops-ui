@@ -231,6 +231,14 @@ class PcasummaryWidgetView extends IOPSWidgetView
     else
       @$('#pca_hot_gas_2').html(" ")
 
+    #mode of operation
+    if @tagData.pca_modeofoperation?
+      modeofoperation = if @vals.pca_modeofoperation? then @vals.pca_modeofoperation  else ' -- ' 
+      modeo = if v==true && sq then @$('#pca_modeofoperation').html("Mode : #{modeofoperation}") else @$('#pca_modeofoperation').html(" ")
+      @mark_bad_data @tagData.pca_modeofoperation.Tag, modeo
+    else
+      @$('#pca_modeofoperation').html(" ")
+
     #pca_bridge_damper
     if @tagData.pca_coil_dp?
       ad = @get_bool(@vals.pca_bridge_damper)
