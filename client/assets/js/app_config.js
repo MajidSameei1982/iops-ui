@@ -32,6 +32,11 @@ window.app_config = {
       icon: "tasks"
     },
     {
+      id: "pbbpcagpustatus",
+      name: "PBB/PCA/GPU Status Widget",
+      icon: "tasks"
+    },
+    {
       id: "pbb",
       name: "PBB Widget",
       icon: "plane"
