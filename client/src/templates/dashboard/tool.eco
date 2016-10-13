@@ -5,7 +5,6 @@
     <li class="header">App Admin</li>
     <li id="manage_accounts" class='tool_link' data-toggle="control-sidebar" tabindex='-1'><a href="#" tabindex='-1'><i class='fa fa-building-o'></i> <span>Manage Accounts</span></a></li>
     <li id="manage_permissions" class='tool_link' data-toggle="control-sidebar" tabindex='-1'><a href="#" tabindex='-1'><i class='fa fa-users'></i> <span>Manage Permissions</span></a></li>
-    <li id="reports" class='tool_link' data-toggle="control-sidebar" tabindex='-1'><a href="#" tabindex='-1'><i class='fa fa-bar-chart'></i> <span>Reports</span></a></li>
   </ul>
   <!-- /.sidebar-menu -->
 </section>
