@@ -42,7 +42,7 @@ class WeatherWidgetView extends IOPSWidgetView
 
             is_stale = false
             if ss.weather_refresh?
-              is_stale = ((new Date) - (new Date(ss.weather_refresh))) > @ONE_HOUR
+              is_stale = ((new Date) - (new Date(ss.weather_refresh))) > @QUARTER_HOUR
 
             if !ss.weather_refresh? || is_stale
               $.ajax
@@ -93,7 +93,8 @@ class WeatherWidgetView extends IOPSWidgetView
 
   onShow: ()->
     @HOUR = 60 * 60 * 1000
-    @timer = setInterval(@refresh_data, @HOUR/4)
+    @QUARTER_HOUR = 60 * 15 * 1000
+    @timer = setInterval(@refresh_data, @HOUR/6)
     @skycons = new Skycons()
 
     settings = @model.get('settings')

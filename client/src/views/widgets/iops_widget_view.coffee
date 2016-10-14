@@ -17,9 +17,12 @@ class IOPSWidgetView extends WidgetView
     return @opc.get_value("#{@prefix}#{tag}.Value")
 
   # get data quality and set view if bad
-  mark_bad_data: (tag, el)->
+  mark_bad_data: (tag, el, blank)->
     q = @data_q(tag)
-    h = if !q then 'BAD DATA' else $(el).html()
+
+    h = if !q then '***' else $(el).html()
+    if blank? && blank
+      h = ""
     $(el).html(h).toggleClass("bad_data", !q)
 
   # get data quality of a widget's tag
@@ -112,6 +115,30 @@ class IOPSWidgetView extends WidgetView
       tagValue = @tagData[tag].Tag
     @mark_bad_data tagValue, el
 
+  render_row_tzg: (tag, tv, fv, tc, fc, format)->
+    dynamicTag = false
+    elName = "#{tag}"
+    if /dynamic_/.test(tag)
+      dynamicTag = true
+      tag = tag.replace 'dynamic_', ""
+
+    parsedTagId = tag.split("_")
+    gate = "Term#{parsedTagId[0]}.Zone#{parsedTagId[1]}.Gate#{parsedTagId[2]}."
+    v = @get_bool(@vals[tag])
+    #console.log "#{tag} : #{v}"
+    txt = if v then tv else fv
+    if format?
+      txt = format.replace '#{1}', "#{txt}".replace /^\s+|\s+$/g, ""
+    el = @$("##{elName}").html(txt)
+    if tc? then el.toggleClass(tc, v)
+    if fc? then el.toggleClass(fc, !v)
+    tagValue = null
+    if @tags[tag]?
+      tagValue = gate + @tags[tag]
+    else if @tagData[tag]?
+      tagValue = gate + @tagData[tag].Tag
+    @mark_bad_data tagValue, el, true
+
   render_tagvalue: (tag)->
     dynamicTag = false
     elName = "#{tag}"
@@ -160,13 +187,48 @@ class IOPSWidgetView extends WidgetView
       tagValue = @tagData[tag].Tag
     @mark_bad_data tagValue, el
 
+  render_value_row_tzg: (tag, IsNumeric, precision, format)->
+    ###********************************************************
+    ** format: If no #{1} is found in string treat as suffix
+    **         otherwise replace #{1} with the #{set_value} 
+    ********************************************************###
+    dynamicTag = false
+    elName = "#{tag}"
+    if /dynamic_/.test(tag)
+      dynamicTag = true
+      tag = tag.replace 'dynamic_', ""
+
+    parsedTagId = tag.split("_")
+    gate = "Term#{parsedTagId[0]}.Zone#{parsedTagId[1]}.Gate#{parsedTagId[2]}."
+    if @vals[tag]? && @vals[tag] != '' 
+      set_value = if IsNumeric then parseFloat(@vals[tag]).toFixed(precision) else @vals[tag] 
+    else
+      set_value = ' -- ' 
+    
+    displayValue = "#{set_value}".replace /^\s+|\s+$/g, ""
+    if format?
+      displayValue = ''
+      if format.search(/#{1}/) > -1
+        displayValue = format.replace '#{1}', "#{set_value}".replace /^\s+|\s+$/g, ""
+      else
+        displayValue = "#{set_value} #{format}".replace /^\s+|\s+$/g, ""
+
+    el = @$("##{elName}").html(displayValue)
+    tagValue = null
+    if @tags[tag]?
+      tagValue = gate + @tags[tag]
+    else if @tagData[tag]?
+      tagValue = gate + @tagData[tag].Tag
+    @mark_bad_data tagValue, el
+
   create_dynamic_elements: (WidgetID, ClassID, Groups, Tags, Site_Code, Site)->
     
     # Load Tag configurations
     tagConfig = null
     tagConfig = new App.tagconfig ClassID, Groups, Tags, Site_Code, Site
 
-    $("li##{WidgetID} .#{ClassID} [id^='dynamic_']").remove()
+    if(!Site.RetainDynamic?)
+      $("li##{WidgetID} .#{ClassID} [id^='dynamic_']").remove()
 
     # Create tag elements
     for tag, tagData of tagConfig.TagData

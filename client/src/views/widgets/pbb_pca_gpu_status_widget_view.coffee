@@ -20,7 +20,12 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
     sx: 8
     sy: 6
 
-  tags = []
+  tags:
+    #Processing Tags
+    pca_mode_cooling:   'PCA.MODE_COOLING'
+    pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
+    pbb_has_warnings :  'Warning._HasWarnings'
+    pbb_has_alarms :    'Alarm._HasAlarms'
 
   tagData = []
   tagConfig = []   
@@ -57,164 +62,107 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
       @kill_updates(@site_code)
 
       tags = []
+      $("li##{@el.parentNode.id} .#{@classID} [id^='dynamic_']").remove()
+      column = 1
       @tagData = []
-      @tagConfig = []
-      @tagConfig = @create_dynamic_elements(@el.parentNode.id, @classID, null, null, @site_code, s)
-      @tagData = @tagConfig.TagData
+      for g in s.gates
+        column = column + 1
+        gp = g.split(':')
+        gate = "Term#{gp[0]}.Zone#{gp[1]}.Gate#{gp[2]}."
+        @tagConfig = []
+        @tagConfig = @create_dynamic_elements(@el.parentNode.id, @classID, null, null, @site_code, {site: @site_code, terminal: gp[0], zone: gp[1], gate: gp[2], RetainDynamic: true})
+        for key, data of @tagConfig.TagData
+          tags["#{gp[0]}_#{gp[1]}_#{gp[2]}_#{key}"] = data.Tag
+          #data.Tag = "#{@prefix}#{gate}#{data.Tag}"
+          @tagData["#{gp[0]}_#{gp[1]}_#{gp[2]}_#{key}"] = data
+          for btg of @tags
+            t = @tags[btg]
+            @tagData["#{gp[0]}_#{gp[1]}_#{gp[2]}_#{btg}"] = { Tag: "#{t}",DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null}}
+          data = []
 
-      for tag, tagData of @tagData
-        t = tagData.Tag
-        for g in s.gates
-          gp = g.split(':')
-          gate = "Term#{gp[0]}.Zone#{gp[1]}.Gate#{gp[2]}."
-          @cktags.push "#{@prefix}#{gate}#{tagData.Tag}.Value"
+        if($("#dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}").length == 0)
+          $("#widgetData thead tr").append("<th id='dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}' class='header'>#{gp[2]}</th>")
+          $("#widgetData tbody #iconRow").append(
+            "<td id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}'>
+              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_docked' class='fa fa-plane' title='Plane is DOCKED' style='display:none;'></i>
+              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_alarms' class='fa fa-bell-o' title='Gate has ALARMS' style='display:none;'></i>
+              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_warnings' class='fa fa-warning' title='Gate has WARNINGS' style='display:none;'></i>
+            </td>"
+          )
+          
+        for tag, tagData of @tagConfig.TagData
+          if(tagData.Element.Class != 'no_row')
+            t = tagData.Tag
+            gate = "Term#{gp[0]}.Zone#{gp[1]}.Gate#{gp[2]}."
+            tags.push "#{@prefix}#{gate}#{tagData.Tag}.Value"
+            if($("#dynamic_#{tag}").length == 0)
+              label = tagData.Label
+              if /[*]/.test(label)
+                label = label.replace "[*]", ""
+              $("#widgetData tbody").append(
+                "<tr id='dynamic_#{tag}'>
+                  <td class='lbl' id='dynamic_#{tag}_lbl'>#{label}</td>
+                  <td class='val no-show' id='dynamic_#{tag}_default_1'></td>
+                  <td class='val no-show' id='dynamic_#{tag}_default_2'></td>
+                  <td class='val no-show' id='dynamic_#{tag}_default_3'></td>
+                  <td class='val no-show' id='dynamic_#{tag}_default_4'></td>
+                  <td class='val no-show' id='dynamic_#{tag}_default_5'></td>
+                  <td class='val no-show' id='dynamic_#{tag}_default_6'></td>
+                </th>"
+              )
 
-      for btg of @tags
-        t = @tags[btg]
-        for g in s.gates
-          gp = g.split(':')
-          gate = "Term#{gp[0]}.Zone#{gp[1]}.Gate#{gp[2]}.Value"
-          @cktags.push "#{@prefix}#{gate}#{t}"
+          $("#widgetData #dynamic_#{tag} td:nth-child(#{column})").attr('id', "dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}_#{tag}")
+          $("#widgetData #dynamic_#{tag} td:nth-child(#{column})").toggleClass("no-show", false)
+          if "dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}_#{tag}".indexOf("_discharge_") > -1
+            $("#widgetData #dynamic_#{tag} td:nth-child(#{column})").toggleClass("val", false)
+            $("#widgetData #dynamic_#{tag} td:nth-child(#{column})").toggleClass("DisCharge", true)
 
-      App.opc.add_tags @site_code, @cktags
+
+          for element, index in $("#dynamic_#{tag}>td")
+            if element.id.indexOf("dynamic_#{tag}_default_") > -1
+              col = column - 1
+              $("##{element.id}").toggleClass('no-show',(index > col))
+
+          # for element, index in $("#widgetData tbody>tr")
+          #   indexR = 0
+          #   for elementR, indexR in $("##{element.id}>td")
+          #     if /dynamic_#{tag}_default_/.test(elementR.id)
+          #       $("##{elementR.id}").toggleClass('no-show',(indexR > column))
+
+      for g in s.gates
+        gp = g.split(':')
+        gate = "Term#{gp[0]}.Zone#{gp[1]}.Gate#{gp[2]}."
+        for btg of @tags
+          t = @tags[btg]
+          tags.push "#{@prefix}#{gate}#{t}"
+
+      @cktags = tags
+      App.opc.add_tags @site_code, tags
       @opc =  App.opc.connections[@site_code]
       # listen for updates
       @watch_updates(@site_code)
 
   # process data and update the view
   data_update: (data)=>
+
     s = @model.get("settings")
     return if !s? || !s.gates? || s.gates.length == 0
 
     # load values for all tags
     @vals = {}
-    for tg in @cktags
-      @vals[tg] = @opc.get_value(tg)
+    for tag, data of @tagData
+      parsedTagId = tag.split("_")
+      gate = "Term#{parsedTagId[0]}.Zone#{parsedTagId[1]}.Gate#{parsedTagId[2]}."
+      @vals[tag] = @opc.get_value("#{@prefix}#{gate}#{data.Tag}.Value")
 
-    cnt = 0
-    data = []
-    ticks = []
-    hot = '#cc0000'   #heating color
-    cool = '#0066cc'  #cooling color
-    offc = '#cccccc'  #PCA off color
-    bad_q = '#ffcc99' #bad quality data
+      switch data.DataType.toLowerCase()
+        when 'boolean'
+          @render_row_tzg("dynamic_#{tag}", "", "", data.Parameters.Parm003, data.Parameters.Parm004, data.Parameters.Parm005)
+        when 'float'
+          @render_value_row_tzg("dynamic_#{tag}", data.Parameters.Parm001, data.Parameters.Parm002, data.Parameters.Parm003, data.Parameters.Parm004)
+        when 'value'
+          @render_value_row_tzg("dynamic_#{tag}", "", "", data.Parameters.Parm003, data.Parameters.Parm004)
 
-    markings = []
-    timers = []
-    max = 0
-    for g, idx in s.gates
-      gp = g.split(':')
-      term = gp[0]
-      zone = gp[1]
-      gate = gp[2]
-      pre = "#{@prefix}Term#{gp[0]}.Zone#{gp[1]}.Gate#{gp[2]}."
-      temp = @vals["#{pre}#{@tagData.pca_discharge_temp.Tag}.Value"]
-      temp = if temp? && temp != '' then parseFloat(temp) else 0
-      max = if temp > max then temp else max
-
-      onv = @vals["#{pre}#{@tagData.pca_status.Tag}.Value"]
-      cooling = @vals["#{pre}#{@tagData.pca_mode_cooling.Tag}.Value"]
-      heating = @vals["#{pre}#{@tagData.pca_mode_heating.Tag}.Value"]
-      cool_set = @vals["#{pre}#{@tagData.pca_cooling_pt.Tag}.Value"]
-      heat_set = @vals["#{pre}#{@tagData.pca_heating_pt.Tag}.Value"]
-      alarm_heat = @vals["#{pre}#{@tagData.pca_alarm_heating_run.Tag}.Value"]
-      alarm_cool = @vals["#{pre}#{@tagData.pca_alarm_cooling_run.Tag}.Value"]
-      alarm_heat_timer = 0 #@vals["#{pre}#{@tagData.alarm_heat_timer.Tag}.Value"]
-      alarm_cool_timer = 0 #@vals["#{pre}#{@tagData.alarm_cool_timer.Tag}.Value"]
-      timer_heat = @vals["#{pre}#{@tagData.pca_heating_tm.Tag}.Value"]
-      timer_cool = @vals["#{pre}#{@tagData.pca_cooling_tm.Tag}.Value"]
-      timers.push [alarm_heat, timer_heat, alarm_cool, timer_cool,alarm_heat_timer,alarm_cool_timer]
-      if cool_set? && cool_set != ''
-        cv = parseFloat(cool_set) 
-        markings.push { color: '#6666cc', lineWidth: 2, yaxis: { from: cv, to: cv } }
-        if cv > max then max = cv
-      if heat_set? && heat_set != ''
-        hv = parseFloat(heat_set) 
-        markings.push { color: '#cc6666', lineWidth: 2, yaxis: { from: hv, to: hv } }
-        if hv > max then max = hv
-
-      color = bad_q
-      if onv? && onv.toUpperCase() == "FALSE"
-        color = offc
-      else
-        if cooling? && cooling.toUpperCase() == "TRUE" then color = cool
-        if heating? && heating.toUpperCase() == "TRUE" then color = hot
-      
-      ticks.push [idx, "Gate #{gate}"]
-      data.push
-        data: [[idx, temp]]
-        color: color
-      cnt++
-    
-    options =
-      series:
-        bars:
-          show: true
-      bars:
-        align: "center"
-        barWidth: 0.5
-      xaxis:
-        axisLabel: "Gates"
-        axisLabelUseCanvas: true
-        axisLabelFontSizePixels: 14
-        axisLabelFontFamily: 'Verdana, Arial'
-        axisLabelPadding: 10
-        ticks: ticks
-        autoscaleMargin: .10
-      yaxis:
-        axisLabel: "Temperature"
-        axisLabelUseCanvas: true
-        axisLabelFontSizePixels: 12
-        axisLabelFontFamily: 'Verdana, Arial'
-        axisLabelPadding: 3
-        max: max + 5
-      legend: 
-        noColumns: 0
-        labelBoxBorderColor: "#000000"
-        position: "nw"
-      grid: 
-        hoverable: true
-        borderWidth: 1
-        markings: markings
-
-    p = $.plot(@$("#chart"), data, options)
-
-    # draw values above bars and timer on bars
-    index = 0
-    for series in [0..cnt-1]
-      $.each p.getData()[series].data, (i, el)->
-        o = p.pointOffset({x: el[0], y: el[1]})
-        wu = p.getOptions().series.bars.barWidth
-        w = wu * p.getXAxes()[0].scale
-        $('<div class="data-point-label"><span style="background-color:rgba(255,255,255,0.8);padding:0px 5px;">' + el[1] + '°</span></div>').css
-          position: 'absolute'
-          left: o.left - w/2
-          top: o.top - 20
-          width: "#{w}px"
-          textAlign: "center"
-          fontWeight: "bold"
-        .appendTo(p.getPlaceholder())
-
-        timer = timers[index]
-        ht = if timer[5]? && timer[5] != '0' then parseFloat(timer[5]) else 0
-        ct = if timer[6]? && timer[6] != '0' then parseFloat(timer[6]) else 0
-        if ht > 0 || ct > 0
-          v = if ht>0 then ht else ct
-          v = v.toFixed(2)
-          showTimer = (timer[0]? && timer[0].toUpperCase() == "TRUE") || (timer[2]? && timer[2].toUpperCase() == "TRUE")
-          blink = if showTimer then "blink" else ""
-          if showTimer
-            $("<div class='timer-label #{blink}' style='padding:5px;'>#{v} min.</div>").css
-              position: 'absolute'
-              left: o.left - w/2
-              top: o.top + 20
-              width: "#{w}px"
-              textAlign: "center"
-              fontWeight: "bold"
-              backgroundColor: "#FC0"
-              color: "#C00"
-            .appendTo(p.getPlaceholder())
-      index++
     
   set_model: ()=>
     @IsUpdatingSettings = true

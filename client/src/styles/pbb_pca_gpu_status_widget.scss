@@ -8,4 +8,131 @@
       }
     }
   }
+
+  .no-show {
+    visibility: hidden;
+    display: none;
+  }
+  .show {
+    visibility: visible;
+  }
+  &.alarm {
+    background-color: #c00;
+    color: #fff;
+  }
+  .display {
+    min-height: 100%;
+    min-width: 100%;
+    overflow: auto;
+    #gpu_label {
+      margin-bottom: 3px;
+      h1 {
+        line-height:48px;
+        font-weight: bold;
+        margin: 0 0 0 0;
+        i.fa {
+          margin-right:-5px;
+          padding: 5px;
+          border-radius: 10px;
+          font-size:26px !important;
+        }
+        i#docked {
+          color: #069;
+          background-color: #eee;
+        }
+        i#alarms {
+          color: #fff;
+          background-color: #c00;
+        }
+        i#warnings {
+          color: #f90;
+          background-color: #eee;
+        }
+      }
+    }
+
+        // Handles the style overrides of the Dual Unit GPU
+    table {
+      th {
+        font-size: 1.5em;
+        text-align: center;
+        border-bottom: solid 1px #aaa;
+        border-left: solid 1px #aaa;
+        background-color: #cce;
+      }
+      &.data-status {
+        width: 75%;
+        float: left;
+      }
+      &.data-status {
+        width: 100%;
+        border:solid 1px #999;
+        border-spacing: 1px;
+        border-collapse: separate;
+        &.airplane {
+          border: 0;
+          td {
+            background-color: #fff;
+          }
+        }
+        td, div {
+          padding: 2px 5px;
+          border-left: solid 1px #ddd;
+          border-bottom: solid 1px #ddd;
+          tr{
+            &.dockundock {
+              background-color: #090;
+            }
+          }
+          &.DisCharge {
+            text-align: center;
+            &.Cooling {
+              color: #33adff;
+            }
+            &.Heating {
+              color: #ff3300;
+            }
+          }
+          &.lbl {
+            background-color:#fff;
+            font-style: italic;
+            color:#333;
+            //border-bottom:solid 1px #ddd;
+          }
+          &.val {
+            background-image:  url("../img/data-status-idle.png");
+            background-repeat: no-repeat;
+            background-position: center center;
+          }
+          &.alarm {
+            color: #fe6;
+            background-color:#c33;
+          }
+          &.ok {
+            background-image:  url("../img/data-status-ok.png");
+            background-repeat: no-repeat;
+            background-position: center center;
+          }
+          &.blue {
+            background-color: #06c;
+            color:#fff; 
+          }
+          &.bad_data {
+            background-image:  url("../img/data-status-baddata.png");
+            background-repeat: no-repeat;
+            background-position: center center
+          }
+          &.img-circles {
+            border-radius: 10%; // set radius in percents
+          }
+        }
+        td[id$="_lbl"] {
+            background-color:#fff;
+            font-style: italic;
+            color:#333;
+            text-align: left;
+        }
+      }
+    }
+  }
 }

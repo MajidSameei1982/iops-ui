@@ -7,9 +7,27 @@
 </div>
 
 <div class="box-body content" id='content'>
-  
+
   <div class="display contain" style='width:100%;height:100%;'>
-    <div id="chart" style="width:100%;height:100%;"></div>     
+    <div id="display_label">
+      <h1>
+        <i id='docked' class="fa fa-plane" title='Plane is DOCKED' style='display:none;'></i>
+        <i id='alarms' class="fa fa-bell-o" title='Gate has ALARMS' style='display:none;'></i>
+        <i id='warnings' class="fa fa-warning" title='Gate has WARNINGS' style='display:none;'></i>
+      </h1>
+    </div>
+    <table id="widgetData" class='data-status'>
+      <thead>
+        <th id="H0"></th>
+      </thead>
+      <tbody>
+        <tr id="iconRow">
+          <td id="iconRow_0">
+            Alerts
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <div class="settings" style="display: none;">
