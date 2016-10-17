@@ -25966,7 +25966,7 @@ PbbpcagpustatusWidgetView = (function(superClass) {
     s = this.model.get("settings");
     this.cktags = [];
     if ((s != null) && !!s.site) {
-      lbl = this.site_code + ": PCA Discharge";
+      lbl = this.site_code + ": PBB/PCA/GPU Status";
       this.ui.wtitle.html(lbl);
       if (!s.gates || s.gates.length === 0) {
         return;

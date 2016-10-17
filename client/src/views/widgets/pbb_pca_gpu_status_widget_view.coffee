@@ -53,7 +53,7 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
 
     @cktags = []
     if s? && !!s.site   
-      lbl = "#{@site_code}: PCA Discharge"
+      lbl = "#{@site_code}: PBB/PCA/GPU Status"
       @ui.wtitle.html(lbl)
 
       return if !s.gates || s.gates.length == 0   
