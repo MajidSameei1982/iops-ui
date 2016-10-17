@@ -7737,26 +7737,6 @@ TagConfig = (function(superClass) {
           'gpu_status': 'gpu_status',
           'pca_status': 'pca_status',
           'pca_discharge_temp': 'pca_discharge_temp'
-        },
-        update_tags: {
-          pbb_status: {
-            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-            Label: '[*]PBB',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'Docked',
-              Parm002: 'UnDocked',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          }
         }
       },
       pbb_pca_gpu_basic_widget: {

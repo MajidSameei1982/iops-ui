@@ -560,9 +560,6 @@ class TagConfig extends Object
 					}
 				pbb_system_status_widget: # PBB Status Widget
 					remove_tags:{'gpu_status','pca_status','pca_discharge_temp'}
-					update_tags:{
-						pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]PBB',DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-					}
 				pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
 					remove_tags:{'gpu_status','pca_status','pca_discharge_temp'}	
 				pbb_pca_gpu_basic_widget:
