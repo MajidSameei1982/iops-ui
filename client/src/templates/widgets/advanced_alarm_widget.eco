@@ -1,0 +1,64 @@
+<div class="box-header with-border">
+  <div class='pull-left'><i class="fa fa-bullhorn"></i>&emsp;<h3 class="box-title">Alarms</h3></div>
+  <div class="pull-right controls">
+    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> 
+    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>
+  </div>
+</div><!-- /.box-header -->
+<div class="box-body content" id='content'>
+  <div class="display contain">
+    <h3 id='alarm_lbl'></h3>
+  </div>
+  
+  <div class="settings" style="display: none;">
+    <h3>Settings</h3>
+    <%- @siteSelector({id:'site', label:'Site', site:@settings.site}) %>
+    <div class="row">
+      <div id='all_gates_container' class='col-md-12'>
+        <div class="form-group" for='allgates'>
+          <label>ALL Gates</label>
+          <input type="checkbox" id="allgates"></input>
+        </div>        
+      </div>  
+    </div>
+    <div class="row gates">
+      <div id='terminals' class='col-md-12'></div>
+    </div>
+    <div class="row gates">
+      <div id='zones' class='col-md-12'></div>
+    </div>
+    <div class="row gates">
+      <div id='gates' class='col-md-12'></div>  
+    </div>
+    <div class='row'>
+      <div class="col-md-12">
+        <div class="form-group" for='type'>
+          <label>Type</label>
+          <select id='type'>
+            <option value='all'>All Types</option>
+            <option value='PBB'>PBB</option>
+            <option value='PCA'>PCA</option>
+            <option value='GPU'>GPU</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group" for='priority'>
+          <label>Priority</label>
+          <span class='group_item'>
+            <input type="radio" id="p_alarms" name="priority" value="alarms" checked> Alarms
+          </span>
+          <span class='group_item'>
+            <input type="radio" id="p_notifications" name="priority" value="notifications"> Notifications
+          </span>
+          <span class='group_item'>
+            <input type="radio" id="p_all" name="priority" value="all"> All
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div><!-- /.box-body -->

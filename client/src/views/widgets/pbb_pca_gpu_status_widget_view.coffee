@@ -62,7 +62,8 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
       @kill_updates(@site_code)
 
       tags = []
-      $("li##{@el.parentNode.id} .#{@classID} [id^='dynamic_']").remove()
+      elementPrefix = "li##{@el.parentNode.id} .#{@classID} "
+      $("#{elementPrefix} [id^='dynamic_']").remove()
       column = 1
       @tagData = []
       for g in s.gates
@@ -80,9 +81,9 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
             @tagData["#{gp[0]}_#{gp[1]}_#{gp[2]}_#{btg}"] = { Tag: "#{t}",DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null}}
           data = []
 
-        if($("#dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}").length == 0)
-          $("#widgetData thead tr").append("<th id='dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}' class='header'>#{gp[2]}</th>")
-          $("#widgetData tbody #iconRow").append(
+        if($("#{elementPrefix} #dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}").length == 0)
+          $("#{elementPrefix} #widgetData thead tr").append("<th id='dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}' class='header'>#{gp[2]}</th>")
+          $("#{elementPrefix} #widgetData tbody #iconRow").append(
             "<td id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}'>
               <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_docked' class='fa fa-plane' title='Plane is DOCKED' style='display:none;'></i>
               <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_alarms' class='fa fa-bell-o' title='Gate has ALARMS' style='display:none;'></i>
@@ -95,11 +96,11 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
             t = tagData.Tag
             gate = "Term#{gp[0]}.Zone#{gp[1]}.Gate#{gp[2]}."
             tags.push "#{@prefix}#{gate}#{tagData.Tag}.Value"
-            if($("#dynamic_#{tag}").length == 0)
+            if($("#{elementPrefix} #dynamic_#{tag}").length == 0)
               label = tagData.Label
               if /[*]/.test(label)
                 label = label.replace "[*]", ""
-              $("#widgetData tbody").append(
+              $("#{elementPrefix} #widgetData tbody").append(
                 "<tr id='dynamic_#{tag}'>
                   <td class='lbl' id='dynamic_#{tag}_lbl'>#{label}</td>
                   <td class='val no-show' id='dynamic_#{tag}_default_1'></td>
@@ -111,23 +112,23 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
                 </th>"
               )
 
-          $("#widgetData #dynamic_#{tag} td:nth-child(#{column})").attr('id', "dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}_#{tag}")
-          $("#widgetData #dynamic_#{tag} td:nth-child(#{column})").toggleClass("no-show", false)
+          $("#{elementPrefix} #widgetData #dynamic_#{tag} td:nth-child(#{column})").attr('id', "dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}_#{tag}")
+          $("#{elementPrefix} #widgetData #dynamic_#{tag} td:nth-child(#{column})").toggleClass("no-show", false)
           if "dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}_#{tag}".indexOf("_discharge_") > -1
-            $("#widgetData #dynamic_#{tag} td:nth-child(#{column})").toggleClass("val", false)
-            $("#widgetData #dynamic_#{tag} td:nth-child(#{column})").toggleClass("DisCharge", true)
+            $("#{elementPrefix} #widgetData #dynamic_#{tag} td:nth-child(#{column})").toggleClass("val", false)
+            $("#{elementPrefix} #widgetData #dynamic_#{tag} td:nth-child(#{column})").toggleClass("DisCharge", true)
 
 
-          for element, index in $("#dynamic_#{tag}>td")
-            if element.id.indexOf("dynamic_#{tag}_default_") > -1
+          for element, index in $("#{elementPrefix} #dynamic_#{tag}>td")
+            if element.id.indexOf("#{elementPrefix} dynamic_#{tag}_default_") > -1
               col = column - 1
-              $("##{element.id}").toggleClass('no-show',(index > col))
+              $("#{elementPrefix} ##{element.id}").toggleClass('no-show',(index > col))
 
           # for element, index in $("#widgetData tbody>tr")
           #   indexR = 0
           #   for elementR, indexR in $("##{element.id}>td")
           #     if /dynamic_#{tag}_default_/.test(elementR.id)
-          #       $("##{elementR.id}").toggleClass('no-show',(indexR > column))
+          #       $(#{elementPrefix} ##{elementR.id}").toggleClass('no-show',(indexR > column))
 
       for g in s.gates
         gp = g.split(':')

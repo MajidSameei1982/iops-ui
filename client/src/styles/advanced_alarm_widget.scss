@@ -1,0 +1,17 @@
+.advanced_alarm_widget {
+  #alarm_lbl {
+    margin:0 0 10px 0;
+    font-size: 16px;
+  }
+  .group_item {
+    margin:0 5px;
+  }
+  .notification {
+  	background-color: yellow !important;
+  	color: black !important;
+  	td[class^='sorting'], td[class*=' sorting'] {
+	  	background-color: yellow !important;
+	  	color: black !important;
+  	}
+  }
+}

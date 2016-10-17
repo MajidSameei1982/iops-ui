@@ -16,6 +16,7 @@ UserCollection = require('./models/user_collection')
 AppConfig = require('./common/appconfig')
 TagConfig = require('./common/tagconfig')
 # forces inclusion of core widget classes
+require('./views/widgets/advanced_alarm_widget_view')
 require('./views/widgets/airport_overview_widget_view')
 require('./views/widgets/alarm_widget_view')
 require('./views/widgets/pbb_widget_view')

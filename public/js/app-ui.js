@@ -1577,6 +1577,60 @@ window.JST["reports"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
+window.JST["widgets/advanced_alarm_widget"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+    
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-bullhorn"></i>&emsp;<h3 class="box-title">Alarms</h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" id=\'content\'>\n  <div class="display contain">\n    <h3 id=\'alarm_lbl\'></h3>\n  </div>\n  \n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+    
+      _print(_safe(this.siteSelector({
+        id: 'site',
+        label: 'Site',
+        site: this.settings.site
+      })));
+    
+      _print(_safe('\n    <div class="row">\n      <div id=\'all_gates_container\' class=\'col-md-12\'>\n        <div class="form-group" for=\'allgates\'>\n          <label>ALL Gates</label>\n          <input type="checkbox" id="allgates"></input>\n        </div>        \n      </div>  \n    </div>\n    <div class="row gates">\n      <div id=\'terminals\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row gates">\n      <div id=\'zones\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row gates">\n      <div id=\'gates\' class=\'col-md-12\'></div>  \n    </div>\n    <div class=\'row\'>\n      <div class="col-md-12">\n        <div class="form-group" for=\'type\'>\n          <label>Type</label>\n          <select id=\'type\'>\n            <option value=\'all\'>All Types</option>\n            <option value=\'PBB\'>PBB</option>\n            <option value=\'PCA\'>PCA</option>\n            <option value=\'GPU\'>GPU</option>\n          </select>\n        </div>\n      </div>\n    </div>\n    <div class="row">\n      <div class="col-md-12">\n        <div class="form-group" for=\'priority\'>\n          <label>Priority</label>\n          <span class=\'group_item\'>\n            <input type="radio" id="p_alarms" name="priority" value="alarms" checked> Alarms\n          </span>\n          <span class=\'group_item\'>\n            <input type="radio" id="p_notifications" name="priority" value="notifications"> Notifications\n          </span>\n          <span class=\'group_item\'>\n            <input type="radio" id="p_all" name="priority" value="all"> All\n          </span>\n        </div>\n      </div>\n    </div>\n  </div>\n  \n</div><!-- /.box-body -->\n'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
 window.JST["widgets/airport_overview_widget"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
@@ -2713,6 +2767,8 @@ AppConfig = require('./common/appconfig');
 
 TagConfig = require('./common/tagconfig');
 
+require('./views/widgets/advanced_alarm_widget_view');
+
 require('./views/widgets/airport_overview_widget_view');
 
 require('./views/widgets/alarm_widget_view');
@@ -2961,7 +3017,7 @@ window.App = (function() {
   return App;
 })();
 
-},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/tagconfig":7,"./common/uiutils":8,"./models/account_collection":12,"./models/claim_collection":14,"./models/role_collection":18,"./models/session":19,"./models/site_collection":21,"./models/user_collection":23,"./opcmanager":26,"./router":27,"./views/app_layout":28,"./views/widgets/airport_overview_widget_view":56,"./views/widgets/alarm_widget_view":57,"./views/widgets/asset_widget_view":58,"./views/widgets/config_widget_view":59,"./views/widgets/gpu_summary_widget_view":60,"./views/widgets/gpu_widget_view":61,"./views/widgets/kpi_widget_view":63,"./views/widgets/pbb_detail_widget_view":64,"./views/widgets/pbb_level_detail_widget_view":65,"./views/widgets/pbb_pca_gpu_basic_widget_view":66,"./views/widgets/pbb_pca_gpu_status_widget_view":67,"./views/widgets/pbb_system_status_widget_view":68,"./views/widgets/pbb_widget_view":69,"./views/widgets/pca_discharge_widget_view":70,"./views/widgets/pca_summary_widget_view":71,"./views/widgets/pca_widget_view":72,"./views/widgets/report_widget_view":73,"./views/widgets/url_widget_view":74,"./views/widgets/video_widget_view":75,"./views/widgets/weather_widget_view":76}],2:[function(require,module,exports){
+},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/tagconfig":7,"./common/uiutils":8,"./models/account_collection":12,"./models/claim_collection":14,"./models/role_collection":18,"./models/session":19,"./models/site_collection":21,"./models/user_collection":23,"./opcmanager":26,"./router":27,"./views/app_layout":28,"./views/widgets/advanced_alarm_widget_view":56,"./views/widgets/airport_overview_widget_view":57,"./views/widgets/alarm_widget_view":58,"./views/widgets/asset_widget_view":59,"./views/widgets/config_widget_view":60,"./views/widgets/gpu_summary_widget_view":61,"./views/widgets/gpu_widget_view":62,"./views/widgets/kpi_widget_view":64,"./views/widgets/pbb_detail_widget_view":65,"./views/widgets/pbb_level_detail_widget_view":66,"./views/widgets/pbb_pca_gpu_basic_widget_view":67,"./views/widgets/pbb_pca_gpu_status_widget_view":68,"./views/widgets/pbb_system_status_widget_view":69,"./views/widgets/pbb_widget_view":70,"./views/widgets/pca_discharge_widget_view":71,"./views/widgets/pca_summary_widget_view":72,"./views/widgets/pca_widget_view":73,"./views/widgets/report_widget_view":74,"./views/widgets/url_widget_view":75,"./views/widgets/video_widget_view":76,"./views/widgets/weather_widget_view":77}],2:[function(require,module,exports){
 var AccountsView, AppController, Dashboard, DashboardCollection, DashboardContentView, DashboardLayout, LoginView, Marionette, PermissionsLayout, ProfileView, ReportsView, Session, User, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -7561,7 +7617,7 @@ TagConfig = (function(superClass) {
             Element: {
               Type: null,
               ParentID: null,
-              Class: null,
+              Class: 'no_row',
               Object: null
             }
           }
@@ -17388,6 +17444,120 @@ TagConfig = (function(superClass) {
           }
         }
       }
+    },
+    'IAH-HAS': {
+      pbb_pca_gpu_status_widget: {
+        update_tags: {
+          pbb_status: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: '[*]PBB',
+            LebelOverride: true,
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Docked',
+              Parm002: 'UnDocked',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_status: {
+            Tag: 'GPU.GPUSTATUSBOOLEAN',
+            Label: '[*]GPU',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_status: {
+            Tag: 'PCA.PCASTATUS',
+            Label: '[*]PCA',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_discharge_temp: {
+            Tag: 'PCA.TEMPDISCH',
+            Label: '[*]DisCharge',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 2,
+              Parm003: '#{1} F',
+              Parm004: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_mode_cooling: {
+            Tag: 'PCA.MODE_COOLING',
+            Label: 'Cooling Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_mode_heating: {
+            Tag: 'PCA.MODE_HEATING',
+            Label: 'Heating Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          }
+        }
+      }
     }
   };
 
@@ -22207,6 +22377,324 @@ ReportsView = (function(superClass) {
 module.exports = ReportsView;
 
 },{"../common/uiutils":8,"../models/session":19}],56:[function(require,module,exports){
+var AdvancedalarmWidgetView, IOPSWidgetView, Marionette,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+IOPSWidgetView = require('./iops_widget_view');
+
+AdvancedalarmWidgetView = (function(superClass) {
+  extend(AdvancedalarmWidgetView, superClass);
+
+  function AdvancedalarmWidgetView() {
+    this.set_model = bind(this.set_model, this);
+    this.alarm_update = bind(this.alarm_update, this);
+    return AdvancedalarmWidgetView.__super__.constructor.apply(this, arguments);
+  }
+
+  AdvancedalarmWidgetView.prototype.template = "widgets/advanced_alarm_widget";
+
+  AdvancedalarmWidgetView.prototype.classID = 'advanced_alarm_widget';
+
+  AdvancedalarmWidgetView.prototype.className = 'widget-outer box box-primary advanced_alarm_widget';
+
+  AdvancedalarmWidgetView.prototype.ui = {
+    site: 'select#site',
+    type: 'select#type',
+    wtitle: "h3.box-title",
+    display: '.display',
+    content: '.content',
+    allgates: '#allgates'
+  };
+
+  AdvancedalarmWidgetView.layout = {
+    sx: 10,
+    sy: 10
+  };
+
+  AdvancedalarmWidgetView.prototype.TestMe = 0;
+
+  AdvancedalarmWidgetView.prototype.IsUpdatingSettings = false;
+
+  AdvancedalarmWidgetView.prototype.IsPageLoading = true;
+
+  AdvancedalarmWidgetView.prototype.update = function() {
+    var alarms, gate, gates, gpu, groups, lbl, net_node, notifications, obj, obj1, obj2, p, pbb, pca, pre, s, t, term, terminals, tzg, zone, zones;
+    if (!this.IsUpdatingSettings && !this.IsPageLoading) {
+      return null;
+    }
+    this.IsPageLoading = false;
+    this.IsUpdatingSettings = false;
+    if (this.site_code != null) {
+      this.kill_updates(this.site_code);
+    }
+    s = this.model.get("settings");
+    if ((s != null) && !!s.gate) {
+      lbl = this.site_code + ": Alarm window";
+      this.ui.wtitle.html(lbl);
+      this.site = OPCManager.get_site(s.site);
+      this.site_code = this.site.get('code');
+      if (this.site_code == null) {
+        return null;
+      }
+      groups = [];
+      terminals = (
+        obj = {},
+        obj["" + s.terminal] = (
+          obj1 = {},
+          obj1["" + s.zone] = (
+            obj2 = {},
+            obj2["" + s.gate] = {},
+            obj2
+          ),
+          obj1
+        ),
+        obj
+      );
+      if (s.allgates) {
+        terminals = this.site.get('settings').zones;
+      }
+      net_node = (this.site.get('settings').cloud != null) && this.site.get('settings').cloud === true;
+      if (net_node) {
+        net_node = ["RemoteSCADAHosting.localhost.RemoteSCADAHost.Airport-" + this.site_code];
+      }
+      for (term in terminals) {
+        zones = terminals[term];
+        for (zone in zones) {
+          gates = zones[zone];
+          for (gate in gates) {
+            pre = "Airport_" + this.site_code + "_Term" + term + "_Zone" + zone + "_Gate" + gate + "_";
+            p = s.priority == null ? 'all' : s.priority;
+            t = s.type == null ? 'all' : s.type;
+            alarms = p === 'all' || p === 'alarms';
+            notifications = p === 'all' || p === 'notifications';
+            pbb = t === 'all' || t === 'PBB';
+            pca = t === 'all' || t === 'PCA';
+            gpu = t === 'all' || t === 'GPU';
+            if (alarms) {
+              if (pbb) {
+                groups.push(pre + "PBB_Alarms");
+              }
+              if (pca) {
+                groups.push(pre + "PCA_Alarms");
+              }
+              if (gpu) {
+                groups.push(pre + "GPU_Alarms");
+              }
+            }
+            if (notifications) {
+              if (pbb) {
+                groups.push(pre + "PBB_Warnings");
+              }
+              if (pca) {
+                groups.push(pre + "PCA_Warnings");
+              }
+              if (gpu) {
+                groups.push(pre + "GPU_Warnings");
+              }
+            }
+          }
+        }
+      }
+      this.alarm_binding = {
+        alarmid: "" + this.alarmid,
+        callback: this.alarm_update,
+        showSearch: false,
+        showHistory: false,
+        filter: {
+          alarmtypes: ["Digital"],
+          alarmgroups: groups
+        },
+        columns: [
+          {
+            name: "AlarmDateTime",
+            text: "Alarm Date/Time",
+            type: "datetime",
+            visible: true,
+            sort: 'desc',
+            width: '130px',
+            searchable: false
+          }, {
+            name: "AlarmValue",
+            text: "Alarm Value",
+            type: "string",
+            visible: false,
+            align: 'right'
+          }, {
+            name: "Text",
+            text: "Text",
+            type: "string",
+            visible: true
+          }, {
+            name: "Group",
+            text: "Text",
+            type: "string",
+            visible: false
+          }, {
+            name: "Acked",
+            text: "Acked",
+            type: "boolean",
+            visible: false
+          }, {
+            name: "Priority",
+            text: "Priority",
+            type: "integer",
+            visible: true
+          }
+        ]
+      };
+      if (net_node) {
+        this.alarm_binding.networkNodes = net_node;
+      }
+      if (this.site_code != null) {
+        p = alarms ? "Alarms" : '';
+        if (notifications) {
+          if (p !== '') {
+            p += ' &amp; ';
+          }
+          p += "Notifications";
+        }
+        t = pbb ? "PBB" : '';
+        if (pca) {
+          if (t !== '') {
+            t += ', ';
+          }
+          t += 'PCA';
+        }
+        if (gpu) {
+          if (t !== '') {
+            t += ', ';
+          }
+          t += 'GPU';
+        }
+        tzg = s.allgates ? "<b>All Gates</b>" : "Terminal " + s.terminal + " Zone " + s.zone + " <b>Gate " + s.gate + "</b>";
+        this.$("#alarm_lbl").html("<b>" + this.site_code + "</b> " + tzg + " | <b>" + t + "</b> | <b>" + p + "</b>");
+        App.opc.add_alarm(this.site_code, this.alarm_binding);
+        return this.watch_updates(this.site_code);
+      }
+    }
+  };
+
+  AdvancedalarmWidgetView.prototype.alarm_update = function(ab, data) {
+    $('table.opc-alarm > tbody > tr> td:nth-child(3)').hide();
+    $('table.opc-alarm > thead > tr> th:nth-child(3)').hide();
+    return $("table.opc-alarm > tbody > tr").each((function(_this) {
+      return function(idx, element) {
+        if ($("td:eq(2)", element).text() === "0") {
+          return $("td:eq(2)", element).closest("tr").toggleClass("notification", true);
+        }
+      };
+    })(this));
+  };
+
+  AdvancedalarmWidgetView.prototype.set_model = function() {
+    var s;
+    this.IsUpdatingSettings = true;
+    s = _.clone(this.model.get("settings"));
+    s.site = this.ui.site.val();
+    s.terminal = this.$("select#terminal").val();
+    s.zone = this.$("select#zone").val();
+    s.gate = this.$("select#gate").val();
+    s.type = this.ui.type.val();
+    s.priority = this.$("[name=priority_" + this.cid + "]:checked").val();
+    s.allgates = this.$("#allgates").is(':checked');
+    console.log(s.allgates);
+    return this.model.set("settings", s);
+  };
+
+  AdvancedalarmWidgetView.prototype.toggle_settings = function(e) {
+    var checked;
+    AdvancedalarmWidgetView.__super__.toggle_settings.call(this, e);
+    this.ui.display.toggle(!this.settings_visible);
+    if (this.settings_visible) {
+      this.ui.type.chosen();
+    }
+    checked = this.$("#allgates").is(':checked');
+    return this.$(".gates").toggle(!checked);
+  };
+
+  AdvancedalarmWidgetView.prototype.onShow = function() {
+    var a, ag, gate, p, settings;
+    this.alarmid = "alarm_" + this.model.id + "_" + this.cid;
+    a = this.$(".display #" + this.alarmid);
+    if ((a == null) || a.length === 0) {
+      a = $("<div id='" + this.alarmid + "'></div>");
+      this.$('.display').append(a);
+    }
+    settings = this.model.get('settings');
+    settings || (settings = {});
+    this.draw_selectors(settings.terminal, settings.zone, settings.gate);
+    this.ui.site.on('change', (function(_this) {
+      return function() {
+        _this.draw_selectors();
+        return _this.set_model();
+      };
+    })(this));
+    this.ui.type.val(settings.type);
+    this.ui.type.on('change', (function(_this) {
+      return function() {
+        return _this.set_model();
+      };
+    })(this));
+    p = settings.priority;
+    if ((p != null) && p === 'alarms') {
+      $("#p_alarms").prop("checked", true);
+    }
+    if ((p != null) && p === 'notifications') {
+      $("#p_notifications").prop("checked", true);
+    }
+    if ((p == null) || p === 'all') {
+      $("#p_all").prop("checked", true);
+    }
+    this.$("[name=priority]").attr('name', "priority_" + this.cid);
+    this.$("[name=priority_" + this.cid + "]").on('change', (function(_this) {
+      return function() {
+        return _this.set_model();
+      };
+    })(this));
+    ag = settings.allgates;
+    $("#allgates").prop("checked", ag);
+    this.ui.allgates.on('change', (function(_this) {
+      return function() {
+        var checked;
+        _this.set_model();
+        checked = _this.$("#allgates").is(':checked');
+        return _this.$(".gates").toggle(!checked);
+      };
+    })(this));
+    gate = settings.gate;
+    if ((gate == null) || gate === '') {
+      this.toggle_settings();
+    }
+    this.site_code = OPCManager.get_site_code(settings.site);
+    if (this.site_code != null) {
+      return this.watch_updates(this.site_code);
+    }
+  };
+
+  AdvancedalarmWidgetView.prototype.start = function() {
+    return this.update();
+  };
+
+  AdvancedalarmWidgetView.prototype.onDestroy = function(arg1, arg2) {
+    if (this.alarm_binding != null) {
+      App.opc.rem_alarm(this.site_code, this.alarm_binding);
+    }
+    return this.kill_updates(this.site_code);
+  };
+
+  return AdvancedalarmWidgetView;
+
+})(IOPSWidgetView);
+
+window.AdvancedalarmWidgetView = AdvancedalarmWidgetView;
+
+module.exports = AdvancedalarmWidgetView;
+
+},{"./iops_widget_view":63}],57:[function(require,module,exports){
 var AirportoverviewWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -22398,7 +22886,7 @@ window.AirportoverviewWidgetView = AirportoverviewWidgetView;
 
 module.exports = AirportoverviewWidgetView;
 
-},{"./iops_widget_view":62}],57:[function(require,module,exports){
+},{"./iops_widget_view":63}],58:[function(require,module,exports){
 var AlarmWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -22716,7 +23204,7 @@ window.AlarmWidgetView = AlarmWidgetView;
 
 module.exports = AlarmWidgetView;
 
-},{"./iops_widget_view":62}],58:[function(require,module,exports){
+},{"./iops_widget_view":63}],59:[function(require,module,exports){
 var AssetWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -22802,7 +23290,7 @@ window.AssetWidgetView = AssetWidgetView;
 
 module.exports = AssetWidgetView;
 
-},{"./iops_widget_view":62}],59:[function(require,module,exports){
+},{"./iops_widget_view":63}],60:[function(require,module,exports){
 var ConfigWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -23016,7 +23504,7 @@ window.ConfigWidgetView = ConfigWidgetView;
 
 module.exports = ConfigWidgetView;
 
-},{"./iops_widget_view":62}],60:[function(require,module,exports){
+},{"./iops_widget_view":63}],61:[function(require,module,exports){
 var GpusummaryWidgetView, IOPSWidgetView, Marionette, UIUtils,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -23886,7 +24374,7 @@ window.GpusummaryWidgetView = GpusummaryWidgetView;
 
 module.exports = GpusummaryWidgetView;
 
-},{"../../common/uiutils":8,"./iops_widget_view":62}],61:[function(require,module,exports){
+},{"../../common/uiutils":8,"./iops_widget_view":63}],62:[function(require,module,exports){
 var GpuWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -24079,7 +24567,7 @@ window.GpuWidgetView = GpuWidgetView;
 
 module.exports = GpuWidgetView;
 
-},{"./iops_widget_view":62}],62:[function(require,module,exports){
+},{"./iops_widget_view":63}],63:[function(require,module,exports){
 var IOPSWidgetView, Marionette, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -24588,7 +25076,7 @@ window.IOPSWidgetView = IOPSWidgetView;
 
 module.exports = IOPSWidgetView;
 
-},{"../dashboard/widget_view":39}],63:[function(require,module,exports){
+},{"../dashboard/widget_view":39}],64:[function(require,module,exports){
 var IOPSWidgetView, KpiWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -24749,7 +25237,7 @@ window.KpiWidgetView = KpiWidgetView;
 
 module.exports = KpiWidgetView;
 
-},{"./iops_widget_view":62}],64:[function(require,module,exports){
+},{"./iops_widget_view":63}],65:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbdetailWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -24958,7 +25446,7 @@ window.PbbdetailWidgetView = PbbdetailWidgetView;
 
 module.exports = PbbdetailWidgetView;
 
-},{"./iops_widget_view":62}],65:[function(require,module,exports){
+},{"./iops_widget_view":63}],66:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbleveldetailWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -25222,7 +25710,7 @@ window.PbbleveldetailWidgetView = PbbleveldetailWidgetView;
 
 module.exports = PbbleveldetailWidgetView;
 
-},{"./iops_widget_view":62}],66:[function(require,module,exports){
+},{"./iops_widget_view":63}],67:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbpcagpuWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -25401,7 +25889,7 @@ window.PbbpcagpuWidgetView = PbbpcagpuWidgetView;
 
 module.exports = PbbpcagpuWidgetView;
 
-},{"./iops_widget_view":62}],67:[function(require,module,exports){
+},{"./iops_widget_view":63}],68:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbpcagpustatusWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -25462,7 +25950,7 @@ PbbpcagpustatusWidgetView = (function(superClass) {
   PbbpcagpustatusWidgetView.prototype.IsPageLoading = true;
 
   PbbpcagpustatusWidgetView.prototype.update = function() {
-    var btg, col, column, data, element, g, gate, gp, i, index, j, k, key, label, lbl, len, len1, len2, ref, ref1, ref2, ref3, ref4, s, t, tag, tags;
+    var btg, col, column, data, element, elementPrefix, g, gate, gp, i, index, j, k, key, label, lbl, len, len1, len2, ref, ref1, ref2, ref3, ref4, s, t, tag, tags;
     if (!this.IsUpdatingSettings && !this.IsPageLoading) {
       return null;
     }
@@ -25485,7 +25973,8 @@ PbbpcagpustatusWidgetView = (function(superClass) {
       }
       this.kill_updates(this.site_code);
       tags = [];
-      $("li#" + this.el.parentNode.id + " ." + this.classID + " [id^='dynamic_']").remove();
+      elementPrefix = "li#" + this.el.parentNode.id + " ." + this.classID + " ";
+      $(elementPrefix + " [id^='dynamic_']").remove();
       column = 1;
       this.tagData = [];
       ref = s.gates;
@@ -25523,9 +26012,9 @@ PbbpcagpustatusWidgetView = (function(superClass) {
           }
           data = [];
         }
-        if ($("#dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2]).length === 0) {
-          $("#widgetData thead tr").append("<th id='dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "' class='header'>" + gp[2] + "</th>");
-          $("#widgetData tbody #iconRow").append("<td id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "'> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_docked' class='fa fa-plane' title='Plane is DOCKED' style='display:none;'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_alarms' class='fa fa-bell-o' title='Gate has ALARMS' style='display:none;'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_warnings' class='fa fa-warning' title='Gate has WARNINGS' style='display:none;'></i> </td>");
+        if ($(elementPrefix + " #dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2]).length === 0) {
+          $(elementPrefix + " #widgetData thead tr").append("<th id='dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "' class='header'>" + gp[2] + "</th>");
+          $(elementPrefix + " #widgetData tbody #iconRow").append("<td id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "'> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_docked' class='fa fa-plane' title='Plane is DOCKED' style='display:none;'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_alarms' class='fa fa-bell-o' title='Gate has ALARMS' style='display:none;'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_warnings' class='fa fa-warning' title='Gate has WARNINGS' style='display:none;'></i> </td>");
         }
         ref2 = this.tagConfig.TagData;
         for (tag in ref2) {
@@ -25534,26 +26023,26 @@ PbbpcagpustatusWidgetView = (function(superClass) {
             t = tagData.Tag;
             gate = "Term" + gp[0] + ".Zone" + gp[1] + ".Gate" + gp[2] + ".";
             tags.push("" + this.prefix + gate + tagData.Tag + ".Value");
-            if ($("#dynamic_" + tag).length === 0) {
+            if ($(elementPrefix + " #dynamic_" + tag).length === 0) {
               label = tagData.Label;
               if (/[*]/.test(label)) {
                 label = label.replace("[*]", "");
               }
-              $("#widgetData tbody").append("<tr id='dynamic_" + tag + "'> <td class='lbl' id='dynamic_" + tag + "_lbl'>" + label + "</td> <td class='val no-show' id='dynamic_" + tag + "_default_1'></td> <td class='val no-show' id='dynamic_" + tag + "_default_2'></td> <td class='val no-show' id='dynamic_" + tag + "_default_3'></td> <td class='val no-show' id='dynamic_" + tag + "_default_4'></td> <td class='val no-show' id='dynamic_" + tag + "_default_5'></td> <td class='val no-show' id='dynamic_" + tag + "_default_6'></td> </th>");
+              $(elementPrefix + " #widgetData tbody").append("<tr id='dynamic_" + tag + "'> <td class='lbl' id='dynamic_" + tag + "_lbl'>" + label + "</td> <td class='val no-show' id='dynamic_" + tag + "_default_1'></td> <td class='val no-show' id='dynamic_" + tag + "_default_2'></td> <td class='val no-show' id='dynamic_" + tag + "_default_3'></td> <td class='val no-show' id='dynamic_" + tag + "_default_4'></td> <td class='val no-show' id='dynamic_" + tag + "_default_5'></td> <td class='val no-show' id='dynamic_" + tag + "_default_6'></td> </th>");
             }
           }
-          $("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").attr('id', "dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tag);
-          $("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("no-show", false);
+          $(elementPrefix + " #widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").attr('id', "dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tag);
+          $(elementPrefix + " #widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("no-show", false);
           if (("dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tag).indexOf("_discharge_") > -1) {
-            $("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("val", false);
-            $("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("DisCharge", true);
+            $(elementPrefix + " #widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("val", false);
+            $(elementPrefix + " #widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("DisCharge", true);
           }
-          ref3 = $("#dynamic_" + tag + ">td");
+          ref3 = $(elementPrefix + " #dynamic_" + tag + ">td");
           for (index = j = 0, len1 = ref3.length; j < len1; index = ++j) {
             element = ref3[index];
-            if (element.id.indexOf("dynamic_" + tag + "_default_") > -1) {
+            if (element.id.indexOf(elementPrefix + " dynamic_" + tag + "_default_") > -1) {
               col = column - 1;
-              $("#" + element.id).toggleClass('no-show', index > col);
+              $(elementPrefix + " #" + element.id).toggleClass('no-show', index > col);
             }
           }
         }
@@ -25733,7 +26222,7 @@ window.PbbpcagpustatusWidgetView = PbbpcagpustatusWidgetView;
 
 module.exports = PbbpcagpustatusWidgetView;
 
-},{"./iops_widget_view":62}],68:[function(require,module,exports){
+},{"./iops_widget_view":63}],69:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbsystemstatusWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -25925,7 +26414,7 @@ window.PbbsystemstatusWidgetView = PbbsystemstatusWidgetView;
 
 module.exports = PbbsystemstatusWidgetView;
 
-},{"./iops_widget_view":62}],69:[function(require,module,exports){
+},{"./iops_widget_view":63}],70:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -26102,7 +26591,7 @@ window.PbbWidgetView = PbbWidgetView;
 
 module.exports = PbbWidgetView;
 
-},{"./iops_widget_view":62}],70:[function(require,module,exports){
+},{"./iops_widget_view":63}],71:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PcadischargeWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -26516,7 +27005,7 @@ window.PcadischargeWidgetView = PcadischargeWidgetView;
 
 module.exports = PcadischargeWidgetView;
 
-},{"./iops_widget_view":62}],71:[function(require,module,exports){
+},{"./iops_widget_view":63}],72:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PcasummaryWidgetView, UIUtils,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -27318,7 +27807,7 @@ window.PcasummaryWidgetView = PcasummaryWidgetView;
 
 module.exports = PcasummaryWidgetView;
 
-},{"../../common/uiutils":8,"./iops_widget_view":62}],72:[function(require,module,exports){
+},{"../../common/uiutils":8,"./iops_widget_view":63}],73:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PcaWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -27504,7 +27993,7 @@ window.PcaWidgetView = PcaWidgetView;
 
 module.exports = PcaWidgetView;
 
-},{"./iops_widget_view":62}],73:[function(require,module,exports){
+},{"./iops_widget_view":63}],74:[function(require,module,exports){
 var IOPSWidgetView, Marionette, ReportWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -27620,7 +28109,7 @@ window.ReportWidgetView = ReportWidgetView;
 
 module.exports = ReportWidgetView;
 
-},{"./iops_widget_view":62}],74:[function(require,module,exports){
+},{"./iops_widget_view":63}],75:[function(require,module,exports){
 var Marionette, UrlWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -27720,7 +28209,7 @@ window.UrlWidgetView = UrlWidgetView;
 
 module.exports = UrlWidgetView;
 
-},{"../dashboard/widget_view":39}],75:[function(require,module,exports){
+},{"../dashboard/widget_view":39}],76:[function(require,module,exports){
 var IOPSWidgetView, Marionette, VideoWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -27875,7 +28364,7 @@ window.VideoWidgetView = VideoWidgetView;
 
 module.exports = VideoWidgetView;
 
-},{"./iops_widget_view":62}],76:[function(require,module,exports){
+},{"./iops_widget_view":63}],77:[function(require,module,exports){
 var IOPSWidgetView, Marionette, WeatherWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -28050,5 +28539,5 @@ window.WeatherWidgetView = WeatherWidgetView;
 
 module.exports = WeatherWidgetView;
 
-},{"./iops_widget_view":62}]},{},[1])
+},{"./iops_widget_view":63}]},{},[1])
 ;

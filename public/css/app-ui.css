@@ -32,6 +32,18 @@ i.form-control-feedback {
     background-color: #d2d6de; }
     .skin-black .main-header > .logo:hover {
       background-color: #fff; } }
+.advanced_alarm_widget #alarm_lbl {
+  margin: 0 0 10px 0;
+  font-size: 16px; }
+.advanced_alarm_widget .group_item {
+  margin: 0 5px; }
+.advanced_alarm_widget .notification {
+  background-color: yellow !important;
+  color: black !important; }
+  .advanced_alarm_widget .notification td[class^='sorting'], .advanced_alarm_widget .notification td[class*=' sorting'] {
+    background-color: yellow !important;
+    color: black !important; }
+
 /* Airport Overview Widget Styles */
 .airport_overview_widget.alarm {
   background-color: #c00;
