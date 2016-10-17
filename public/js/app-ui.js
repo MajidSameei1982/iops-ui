@@ -7624,6 +7624,193 @@ TagConfig = (function(superClass) {
         }
       }
     },
+    'HAS-IAH': {
+      gpu_summary_widget: {
+        remove_all: {}
+      },
+      gpu_widget: {
+        remove_all: {}
+      },
+      pca_discharge_widget: {
+        remove_all: {}
+      },
+      pca_summary_widget: {
+        remove_all: {}
+      },
+      pca_widget: {
+        remove_all: {}
+      },
+      pbb_detail_widget: {
+        update_tags: {
+          pbb_status: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: 'PBB Status',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Docked',
+              Parm002: 'UnDocked',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#pbb_status_container',
+              Class: 'val transparent',
+              Object: null
+            }
+          },
+          pbb_undock_time: {
+            Tag: 'PBB.UNDOCKTIME',
+            Label: null,
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 2,
+              Parm003: 'mins',
+              Parm004: null
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#pbb_undockordocktime_container',
+              Class: 'pbb_undockordocktime val transparent',
+              Object: null
+            }
+          },
+          pbb_dock_time: {
+            Tag: 'PBB.DOCKTIME',
+            Label: 'Aircraft Docked Time (Minutes)',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 2,
+              Parm003: 'mins',
+              Parm004: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'pbb_undockordocktime val transparent',
+              Object: null
+            }
+          },
+          pbb_autolevel_mode: {
+            Tag: 'PBB.AUTOLEVELMODEFLAG',
+            Label: 'PBB Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: 'Auto-Level : #{1}'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#pbb_autolevel_container',
+              Class: 'val transparent',
+              Object: null
+            }
+          },
+          pbb_canopy: {
+            Tag: 'PBB.CANOPYDOWN',
+            Label: 'Canopy',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Down',
+              Parm002: 'Up',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: 'Canopy : #{1}'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#pbb_canopy_container',
+              Class: 'val transparent',
+              Object: null
+            }
+          }
+        }
+      },
+      pbb_system_status_widget: {
+        remove_tags: {
+          'gpu_status': 'gpu_status',
+          'pca_status': 'pca_status',
+          'pca_discharge_temp': 'pca_discharge_temp'
+        },
+        update_tags: {
+          pbb_status: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: '[*]PBB',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Docked',
+              Parm002: 'UnDocked',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          }
+        }
+      },
+      pbb_pca_gpu_basic_widget: {
+        remove_tags: {
+          'gpu_status': 'gpu_status',
+          'pca_status': 'pca_status',
+          'pca_discharge_temp': 'pca_discharge_temp'
+        }
+      },
+      pbb_pca_gpu_basic_widget: {
+        remove_tags: {
+          'pca_status': 'pca_status',
+          'gpu_status': 'gpu_status',
+          'pca_time': 'pca_time',
+          'pca_discharge_temp': 'pca_discharge_temp',
+          'gpu_time': 'gpu_time',
+          'gpu_ra_out_avg': 'gpu_ra_out_avg',
+          'gpu_rv_out_avg': 'gpu_rv_out_avg'
+        }
+      },
+      pbb_level_detail_widget: {
+        remove_tags: {
+          'pbb_autoleveling': 'pbb_autoleveling',
+          'pbb_estop': 'pbb_estop',
+          'pbb_limits': 'pbb_limits',
+          'pbb_terminal_door': 'pbb_terminal_door',
+          'pbb_cab_angle_disp': 'pbb_cab_angle_disp',
+          'pbb_slope_deg': 'pbb_slope_deg',
+          'pbb_swing_angle_disp': 'pbb_swing_angle_disp',
+          'pbb_height_to_disp': 'pbb_height_to_disp',
+          'pbb_wheel_angle_deg': 'pbb_wheel_angle_deg',
+          'pbb_tunnel_length': 'pbb_tunnel_length'
+        },
+        add_tags: {
+          pbb_floodlight: {
+            Tag: 'PBB.FLOODLIGHTS',
+            Label: 'FloodLights',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          }
+        }
+      }
+    },
     CID: {
       gpu_summary_widget: {
         add_tags: {
