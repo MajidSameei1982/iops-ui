@@ -112,8 +112,8 @@ class AirportoverviewWidgetView extends IOPSWidgetView
 
       @$("#Airport_Gate_#{g.Number}_a")
       .toggleClass("docked", docked==true && qd)
-      .toggleClass("bad_data", bad_q)
-      .toggleClass("alarm", qa)
+      #.toggleClass("bad_data", bad_q)
+      #.toggleClass("alarm", qa)
 
       # aq = @opc.tags["#{g.Tag_gate_alarm}"]
       # console.log aq

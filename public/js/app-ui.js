@@ -22986,7 +22986,7 @@ AirportoverviewWidgetView = (function(superClass) {
       qw = this.opc.tags["" + g.Tag_gate_warning].props.Value.quality;
       qc = this.opc.tags["" + g.Tag_gate_critical].props.Value.quality;
       bad_q = !qa || !qw;
-      this.$("#Airport_Gate_" + g.Number + "_a").toggleClass("docked", docked === true && qd).toggleClass("bad_data", bad_q).toggleClass("alarm", qa);
+      this.$("#Airport_Gate_" + g.Number + "_a").toggleClass("docked", docked === true && qd);
     }
     return this;
   };
