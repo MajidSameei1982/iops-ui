@@ -152,7 +152,7 @@ class AirportoverviewWidgetView extends IOPSWidgetView
     
     @$('#site').on 'change', ()=>
       @set_model()
-
+    @check_init_site()
 
   start: ()->
     @update()

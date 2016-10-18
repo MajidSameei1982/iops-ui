@@ -582,6 +582,8 @@ class GpusummaryWidgetView extends IOPSWidgetView
     
     @configure_buttons()
     @render_gauges()
+    @check_init_site()
+
 
   start: ()->
     @update()

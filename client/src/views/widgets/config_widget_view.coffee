@@ -136,6 +136,8 @@ class ConfigWidgetView extends IOPSWidgetView
     @$('#site').on 'change', ()=>
       @set_model()
     @$('#set_pca_points').click @set_points
+    @check_init_site()
+
     
   onDestroy: (arg1, arg2) ->
     # be sure to remove listeners

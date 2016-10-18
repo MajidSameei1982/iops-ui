@@ -1634,7 +1634,7 @@ window.JST["widgets/alarm_widget"] = function(__obj) {
         site: this.settings.site
       })));
     
-      _print(_safe('\n    <div class="row">\n      <div id=\'all_gates_container\' class=\'col-md-12\'>\n        <div class="form-group" for=\'allgates\'>\n          <label>ALL Gates</label>\n          <input type="checkbox" id="allgates"></input>\n        </div>        \n      </div>  \n    </div>\n    <div class="row gates">\n      <div id=\'terminals\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row gates">\n      <div id=\'zones\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row gates">\n      <div id=\'gates\' class=\'col-md-12\'></div>  \n    </div>\n    <div class=\'row\'>\n      <div class="col-md-12">\n        <div class="form-group" for=\'type\'>\n          <label>Type</label>\n          <select id=\'type\'>\n            <option value=\'all\'>All Types</option>\n            <option value=\'PBB\'>PBB</option>\n            <option value=\'PCA\'>PCA</option>\n            <option value=\'GPU\'>GPU</option>\n          </select>\n        </div>\n      </div>\n    </div>\n    <div class="row">\n      <div class="col-md-12">\n        <div class="form-group" for=\'priority\'>\n          <label>Priority</label>\n          <span class=\'group_item\'>\n            <input type="radio" id="p_alarms" name="priority" value="alarms" checked> Alarms\n          </span>\n          <span class=\'group_item\'>\n            <input type="radio" id="p_notifications" name="priority" value="notifications"> Notifications\n          </span>\n          <span class=\'group_item\'>\n            <input type="radio" id="p_all" name="priority" value="all"> All\n          </span>\n        </div>\n      </div>\n    </div>\n  </div>\n  \n</div><!-- /.box-body -->\n'));
+      _print(_safe('\n    <div class="row">\n      <div id=\'all_gates_container\' class=\'col-md-12\'>\n        <div class="form-group" for=\'allgates\'>\n          <label>ALL Gates</label>\n          <input type="checkbox" id="allgates"></input>\n        </div>        \n      </div>  \n    </div>\n    <div class="row gates">\n      <div id=\'terminals\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row gates">\n      <div id=\'zones\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row gates">\n      <div id=\'gates\' class=\'col-md-12\'></div>  \n    </div>\n    <div class=\'row\'>\n      <div class="col-md-12">\n        <div class="form-group" for=\'type\'>\n          <label>Type</label>\n          <select id=\'type\'>\n            <option value=\'all\'>All Types</option>\n            <option value=\'PBB\'>PBB</option>\n            <option value=\'PCA\'>PCA</option>\n            <option value=\'GPU\'>GPU</option>\n          </select>\n        </div>\n      </div>\n    </div>\n    <div class="row">\n      <div class="col-md-12">\n        <div class="form-group" for=\'priority\'>\n          <label>Priority</label>\n          <span class=\'group_item\'>\n            <input type="radio" id="p_alarms" name="priority" value="alarms" checked="checked"> Alarms\n          </span>\n          <span class=\'group_item\'>\n            <input type="radio" id="p_notifications" name="priority" value="notifications"> Notifications\n          </span>\n          <span class=\'group_item\'>\n            <input type="radio" id="p_all" name="priority" value="all"> All\n          </span>\n        </div>\n      </div>\n    </div>\n  </div>\n  \n</div><!-- /.box-body -->\n'));
     
     }).call(this);
     
@@ -21624,11 +21624,12 @@ AirportoverviewWidgetView = (function(superClass) {
       this.toggle_settings();
     }
     this.draw_selectors(settings.terminal, settings.zone, settings.gate);
-    return this.$('#site').on('change', (function(_this) {
+    this.$('#site').on('change', (function(_this) {
       return function() {
         return _this.set_model();
       };
     })(this));
+    return this.check_init_site();
   };
 
   AirportoverviewWidgetView.prototype.start = function() {
@@ -21704,10 +21705,10 @@ AlarmWidgetView = (function(superClass) {
     }
     s = this.model.get("settings");
     if ((s != null) && !!s.gate) {
-      lbl = this.site_code + ": Alarm window";
-      this.ui.wtitle.html(lbl);
       this.site = OPCManager.get_site(s.site);
       this.site_code = this.site.get('code');
+      lbl = this.site_code + ": Alarm window";
+      this.ui.wtitle.html(lbl);
       if (this.site_code == null) {
         return null;
       }
@@ -21872,7 +21873,6 @@ AlarmWidgetView = (function(superClass) {
     s.type = this.ui.type.val();
     s.priority = this.$("[name=priority_" + this.cid + "]:checked").val();
     s.allgates = this.$("#allgates").is(':checked');
-    console.log(s.allgates);
     return this.model.set("settings", s);
   };
 
@@ -21911,15 +21911,9 @@ AlarmWidgetView = (function(superClass) {
       };
     })(this));
     p = settings.priority;
-    if ((p != null) && p === 'alarms') {
-      $("#p_alarms").prop("checked", true);
-    }
-    if ((p != null) && p === 'notifications') {
-      $("#p_notifications").prop("checked", true);
-    }
-    if ((p == null) || p === 'all') {
-      $("#p_all").prop("checked", true);
-    }
+    $("#p_alarms").prop("checked", (p == null) || p === 'alarms');
+    $("#p_notifications").prop("checked", (p != null) && p === 'notifications');
+    $("#p_all").prop("checked", (p != null) && p === 'all');
     this.$("[name=priority]").attr('name', "priority_" + this.cid);
     this.$("[name=priority_" + this.cid + "]").on('change', (function(_this) {
       return function() {
@@ -21942,8 +21936,9 @@ AlarmWidgetView = (function(superClass) {
     }
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
-      return this.watch_updates(this.site_code);
+      this.watch_updates(this.site_code);
     }
+    return this.check_init_site();
   };
 
   AlarmWidgetView.prototype.start = function() {
@@ -22246,7 +22241,8 @@ ConfigWidgetView = (function(superClass) {
         return _this.set_model();
       };
     })(this));
-    return this.$('#set_pca_points').click(this.set_points);
+    this.$('#set_pca_points').click(this.set_points);
+    return this.check_init_site();
   };
 
   ConfigWidgetView.prototype.onDestroy = function(arg1, arg2) {
@@ -23113,7 +23109,8 @@ GpusummaryWidgetView = (function(superClass) {
       };
     })(this));
     this.configure_buttons();
-    return this.render_gauges();
+    this.render_gauges();
+    return this.check_init_site();
   };
 
   GpusummaryWidgetView.prototype.start = function() {
@@ -23308,8 +23305,9 @@ GpuWidgetView = (function(superClass) {
     }
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
-      return this.watch_updates(this.site_code);
+      this.watch_updates(this.site_code);
     }
+    return this.check_init_site();
   };
 
   GpuWidgetView.prototype.start = function() {
@@ -23394,6 +23392,24 @@ IOPSWidgetView = (function(superClass) {
     console.log("kill : " + conn);
     App.vent.off("opc:data:" + conn, this.data_update);
     return OPCManager.rem_ref(conn);
+  };
+
+  IOPSWidgetView.prototype.check_init_site = function() {
+    var settings, site, sv;
+    if (this.$('#site').length === 0) {
+      return null;
+    }
+    settings = this.model.get('settings');
+    settings || (settings = {});
+    site = settings.site;
+    if ((site != null) && site !== '') {
+      return null;
+    }
+    sv = this.$('#site').val();
+    if ((sv != null) && sv !== '') {
+      this.set_model();
+    }
+    return this;
   };
 
   IOPSWidgetView.prototype.set_descriptions = function(force) {
@@ -23904,8 +23920,9 @@ KpiWidgetView = (function(superClass) {
       };
     })(this));
     if ((this.ui.site.val() == null) || this.ui.site.val() === '') {
-      return this.toggle_settings();
+      this.toggle_settings();
     }
+    return this.check_init_site();
   };
 
   KpiWidgetView.prototype.start = function() {
@@ -24111,8 +24128,9 @@ PbbdetailWidgetView = (function(superClass) {
     }
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
-      return this.watch_updates(this.site_code);
+      this.watch_updates(this.site_code);
     }
+    return this.check_init_site();
   };
 
   PbbdetailWidgetView.prototype.start = function() {
@@ -24375,8 +24393,9 @@ PbbleveldetailWidgetView = (function(superClass) {
     }
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
-      return this.watch_updates(this.site_code);
+      this.watch_updates(this.site_code);
     }
+    return this.check_init_site();
   };
 
   PbbleveldetailWidgetView.prototype.start = function() {
@@ -24552,8 +24571,9 @@ PbbpcagpuWidgetView = (function(superClass) {
     }
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
-      return this.watch_updates(this.site_code);
+      this.watch_updates(this.site_code);
     }
+    return this.check_init_site();
   };
 
   PbbpcagpuWidgetView.prototype.start = function() {
@@ -24746,8 +24766,9 @@ PbbsystemstatusWidgetView = (function(superClass) {
     }
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
-      return this.watch_updates(this.site_code);
+      this.watch_updates(this.site_code);
     }
+    return this.check_init_site();
   };
 
   PbbsystemstatusWidgetView.prototype.start = function() {
@@ -24923,8 +24944,9 @@ PbbWidgetView = (function(superClass) {
     }
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
-      return this.watch_updates(this.site_code);
+      this.watch_updates(this.site_code);
     }
+    return this.check_init_site();
   };
 
   PbbWidgetView.prototype.start = function() {
@@ -25337,8 +25359,9 @@ PcadischargeWidgetView = (function(superClass) {
     }
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
-      return this.watch_updates(this.site_code);
+      this.watch_updates(this.site_code);
     }
+    return this.check_init_site();
   };
 
   PcadischargeWidgetView.prototype.start = function() {
@@ -25891,7 +25914,8 @@ PcasummaryWidgetView = (function(superClass) {
       this.watch_updates(this.site_code);
     }
     this.configure_buttons();
-    return this.render_gauges();
+    this.render_gauges();
+    return this.check_init_site();
   };
 
   PcasummaryWidgetView.prototype.configure_buttons = function() {
@@ -26325,8 +26349,9 @@ PcaWidgetView = (function(superClass) {
     }
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
-      return this.watch_updates(this.site_code);
+      this.watch_updates(this.site_code);
     }
+    return this.check_init_site();
   };
 
   PcaWidgetView.prototype.start = function() {
@@ -26444,8 +26469,9 @@ ReportWidgetView = (function(superClass) {
       };
     })(this));
     if ((this.ui.site.val() == null) || this.ui.site.val() === '') {
-      return this.toggle_settings();
+      this.toggle_settings();
     }
+    return this.check_init_site();
   };
 
   ReportWidgetView.prototype.start = function() {
@@ -26670,8 +26696,9 @@ VideoWidgetView = (function(superClass) {
       };
     })(this));
     if ((this.ui.site.val() == null) || this.ui.site.val() === '') {
-      return this.toggle_settings();
+      this.toggle_settings();
     }
+    return this.check_init_site();
   };
 
   VideoWidgetView.prototype.start = function() {
@@ -26865,8 +26892,9 @@ WeatherWidgetView = (function(superClass) {
     })(this));
     s = this.model.get("settings");
     if ((s == null) || (s.site == null)) {
-      return this.toggle_settings();
+      this.toggle_settings();
     }
+    return this.check_init_site();
   };
 
   WeatherWidgetView.prototype.onDestroy = function() {
