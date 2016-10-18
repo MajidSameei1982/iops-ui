@@ -66,15 +66,15 @@ class AirportoverviewWidgetView extends IOPSWidgetView
               Terminal: "#{t}"
               Zone: "#{z}"
               Tag_gate_alarm: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.Alarm._HasAlarms"
-              #Tag_gate_warning: "Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.Warning._HasWarnings"
+              Tag_gate_warning: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.Warning._HasWarnings"
               Tag_gate_docked: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB.AIRCRAFTDOCKEDCALCULATION"
               Tag_gate_critical: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB.AUTOLEVEL_FAIL_FLAG"
-              #Tag_gate_docked: "Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB.AUTOLEVELING"
             @gateData.push gate
             # add tags to monitor
             tags.push "#{gate.Tag_gate_alarm}.Value"
             tags.push "#{gate.Tag_gate_warning}.Value"
             tags.push "#{gate.Tag_gate_docked}.Value"
+            tags.push "#{gate.Tag_gate_critical}.Value"
  
       # draw layout and gates
       @$("#Airport_Overview").remove()
@@ -101,32 +101,33 @@ class AirportoverviewWidgetView extends IOPSWidgetView
   data_update: (data)=>
     for g in @gateData
       docked = @get_bool(@opc.get_value("#{g.Tag_gate_docked}.Value"))
-      # alarm = @get_bool(@opc.get_value("#{g.Tag_gate_alarm}.Value"))
-      # warning = @get_bool(@opc.get_value("#{g.Tag_gate_warning}.Value"))
+      alarm = @get_bool(@opc.get_value("#{g.Tag_gate_alarm}.Value"))
       warning = @get_bool(@opc.get_value("#{g.Tag_gate_alarm}.Value"))
-      alarm = @get_bool(@opc.get_value("#{g.Tag_gate_critical}.Value"))
+      critical = @get_bool(@opc.get_value("#{g.Tag_gate_critical}.Value"))
       qd = @opc.tags["#{g.Tag_gate_docked}"].props.Value.quality
       qa = @opc.tags["#{g.Tag_gate_alarm}"].props.Value.quality
       qw = @opc.tags["#{g.Tag_gate_warning}"].props.Value.quality
+      qc = @opc.tags["#{g.Tag_gate_critical}"].props.Value.quality
       bad_q = !qa || !qw
 
       @$("#Airport_Gate_#{g.Number}_a")
       .toggleClass("docked", docked==true && qd)
-      .toggleClass("bad_data", !qd)
+      .toggleClass("bad_data", bad_q)
+      .toggleClass("alarm", qa)
 
       # aq = @opc.tags["#{g.Tag_gate_alarm}"]
       # console.log aq
-      if alarm == true 
-        a = @$("#Airport_Gate_#{g.Number}_a .icon #alarm")
-        if !a? || a.length == 0 then @$("#Airport_Gate_#{g.Number}_a .icon").append("<i id='alarm' class='fa fa-warning alarm blink'></i>")
-      else
-        @$("#Airport_Gate_#{g.Number}_a .icon #alarm").remove()
+      # if alarm == true 
+      #   a = @$("#Airport_Gate_#{g.Number}_a .icon #alarm")
+      #   if !a? || a.length == 0 then @$("#Airport_Gate_#{g.Number}_a .icon").append("<i id='alarm' class='fa fa-warning alarm blink'></i>")
+      # else
+      #   @$("#Airport_Gate_#{g.Number}_a .icon #alarm").remove()
 
-      if warning == true && alarm == false
-        a = @$("#Airport_Gate_#{g.Number}_a .icon #warning")
-        if !a? || a.length == 0 then @$("#Airport_Gate_#{g.Number}_a .icon").append("<i id='warning' class='fa fa-warning warning'></i>")
-      else
-        @$("#Airport_Gate_#{g.Number}_a .icon #warning").remove()
+      # if warning == true && alarm == false
+      #   a = @$("#Airport_Gate_#{g.Number}_a .icon #warning")
+      #   if !a? || a.length == 0 then @$("#Airport_Gate_#{g.Number}_a .icon").append("<i id='warning' class='fa fa-warning warning'></i>")
+      # else
+      #   @$("#Airport_Gate_#{g.Number}_a .icon #warning").remove()
 
     @
 

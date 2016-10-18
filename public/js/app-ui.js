@@ -22947,6 +22947,7 @@ AirportoverviewWidgetView = (function(superClass) {
               Terminal: "" + t,
               Zone: "" + z,
               Tag_gate_alarm: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".Alarm._HasAlarms",
+              Tag_gate_warning: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".Warning._HasWarnings",
               Tag_gate_docked: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.AIRCRAFTDOCKEDCALCULATION",
               Tag_gate_critical: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.AUTOLEVEL_FAIL_FLAG"
             };
@@ -22954,6 +22955,7 @@ AirportoverviewWidgetView = (function(superClass) {
             tags.push(gate.Tag_gate_alarm + ".Value");
             tags.push(gate.Tag_gate_warning + ".Value");
             tags.push(gate.Tag_gate_docked + ".Value");
+            tags.push(gate.Tag_gate_critical + ".Value");
           }
         }
       }
@@ -22971,34 +22973,20 @@ AirportoverviewWidgetView = (function(superClass) {
   };
 
   AirportoverviewWidgetView.prototype.data_update = function(data) {
-    var a, alarm, bad_q, docked, g, i, len, qa, qd, qw, ref, warning;
+    var alarm, bad_q, critical, docked, g, i, len, qa, qc, qd, qw, ref, warning;
     ref = this.gateData;
     for (i = 0, len = ref.length; i < len; i++) {
       g = ref[i];
       docked = this.get_bool(this.opc.get_value(g.Tag_gate_docked + ".Value"));
+      alarm = this.get_bool(this.opc.get_value(g.Tag_gate_alarm + ".Value"));
       warning = this.get_bool(this.opc.get_value(g.Tag_gate_alarm + ".Value"));
-      alarm = this.get_bool(this.opc.get_value(g.Tag_gate_critical + ".Value"));
+      critical = this.get_bool(this.opc.get_value(g.Tag_gate_critical + ".Value"));
       qd = this.opc.tags["" + g.Tag_gate_docked].props.Value.quality;
       qa = this.opc.tags["" + g.Tag_gate_alarm].props.Value.quality;
       qw = this.opc.tags["" + g.Tag_gate_warning].props.Value.quality;
+      qc = this.opc.tags["" + g.Tag_gate_critical].props.Value.quality;
       bad_q = !qa || !qw;
-      this.$("#Airport_Gate_" + g.Number + "_a").toggleClass("docked", docked === true && qd).toggleClass("bad_data", !qd);
-      if (alarm === true) {
-        a = this.$("#Airport_Gate_" + g.Number + "_a .icon #alarm");
-        if ((a == null) || a.length === 0) {
-          this.$("#Airport_Gate_" + g.Number + "_a .icon").append("<i id='alarm' class='fa fa-warning alarm blink'></i>");
-        }
-      } else {
-        this.$("#Airport_Gate_" + g.Number + "_a .icon #alarm").remove();
-      }
-      if (warning === true && alarm === false) {
-        a = this.$("#Airport_Gate_" + g.Number + "_a .icon #warning");
-        if ((a == null) || a.length === 0) {
-          this.$("#Airport_Gate_" + g.Number + "_a .icon").append("<i id='warning' class='fa fa-warning warning'></i>");
-        }
-      } else {
-        this.$("#Airport_Gate_" + g.Number + "_a .icon #warning").remove();
-      }
+      this.$("#Airport_Gate_" + g.Number + "_a").toggleClass("docked", docked === true && qd).toggleClass("bad_data", bad_q).toggleClass("alarm", qa);
     }
     return this;
   };
