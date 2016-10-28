@@ -3,9 +3,9 @@ IOPSWidgetView = require('./iops_widget_view')
 
 # ----------------------------------
 class BaseKpiSiteWidgetView extends IOPSWidgetView
-  template:   "widgets/Basekpi_site_widget"
-  classID: 'Basekpi_site_widget'
-  className: 'widget-outer box box-primary Basekpi_site_widget'
+  template:   "widgets/basekpi_site_widget"
+  classID: 'basekpi_site_widget'
+  className: 'widget-outer box box-primary basekpi_site_widget'
   ui:   
     site:           'select#site'
     wtitle:         'h3.box-title'
@@ -92,7 +92,7 @@ class BaseKpiSiteWidgetView extends IOPSWidgetView
       @toggle_settings()
 
   start:()->
-    @videoRepresentation = $("<div id='kpisiteRep_#{@model.id}'><table style='width:100%''><tr><td><img src='kpi_down.jpg' height='89' width='138'></td></tr><tr><td><img src='kpi_up.jpg' height='89' width='138'></td></tr><tr><td><img src='kpi_up.jpg' height='89' width='138'></td></tr><tr><td><img src='kpi_down.jpg' height='89' width='138'></td></tr><tr><td><img src='kpi_neutral.jpg' height='89' width='138'></td></tr><tr>    <td><img src='kpi_neutral.jpg' height='89' width='138'></td></tr></table></div>")
+    @videoRepresentation = $("<div id='kpisiteRep_#{@model.id}'><table style='width:100%''><tr><td><img src='kpi_down.png' height='89' width='138'></td></tr><tr><td><img src='kpi_up.png' height='89' width='138'></td></tr><tr><td><img src='kpi_up.png' height='89' width='138'></td></tr><tr><td><img src='kpi_down.png' height='89' width='138'></td></tr><tr><td><img src='kpi_neutral.png' height='89' width='138'></td></tr><tr>    <td><img src='kpi_neutral.png' height='89' width='138'></td></tr></table></div>")
     @rurl = App.config.report_server
     @update()
     @plotGraph()

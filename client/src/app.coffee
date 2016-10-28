@@ -37,6 +37,7 @@ require('./views/widgets/pbb_pca_gpu_status_widget_view')
 require('./views/widgets/asset_widget_view')
 require('./views/widgets/report_widget_view')
 require('./views/widgets/kpi_widget_view')
+require('./views/widgets/basekpi_site_widget_view')
 
 # ----------------------------------
 

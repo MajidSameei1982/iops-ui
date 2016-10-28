@@ -2484,6 +2484,15 @@ ul.chosen-results li.highlighted {
       padding: 3px 10px;
       border-bottom: solid 1px #ddd; }
 
+/* KPI Widget Styles */
+.basekpi_site_widget.alarm {
+  background-color: #c00;
+  color: #fff; }
+.basekpi_site_widget .display {
+  min-height: 300;
+  min-width: 400;
+  overflow: auto; }
+
 .login-box .login-logo img {
   max-width: 300px;
   height: auto; }
