@@ -101,6 +101,17 @@ window.App = do()->
       for acc, idx in accounts
         aacc = App.accounts.models[idx]
         acc.sites = aacc.sites.toJSON()
+
+    App.vent.on "app:dash_lock", ()->
+      lock = App.session.get("settings").dash_lock
+      $("a#lock_dash i.fa").toggleClass("fa-toggle-off", !lock).toggleClass("fa-toggle-on", lock)
+      if App.currentView? && App.currentView.grid?
+        if lock
+          App.currentView.grid.disable()
+          $("a#lock_dash span.lock_label").html("LOCKED")
+        else 
+          App.currentView.grid.enable()
+          $("a#lock_dash span.lock_label").html("UNLOCKED")
       
     # setup app clock
     @log('Setting system clock')

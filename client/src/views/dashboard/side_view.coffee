@@ -16,6 +16,7 @@ class DashboardSideView extends Marionette.ItemView
   events:
     'click #dashboard-list' : 'click_dash'
     'click #add_dash' : 'show_add'
+    'click #lock_dash' : 'toggle_dash'
 
   show_dash_modal: (d, action)->
     @dmv = new DashboardModalView
@@ -58,6 +59,17 @@ class DashboardSideView extends Marionette.ItemView
         dlink.addClass('active')
         App.router.navigate("dashboard/#{d.id}", {trigger:true})
         break
+    null
+
+  toggle_dash: (e)->
+    s = App.session.get("settings")
+    if s?
+      lock = s.dash_lock || false
+      lock = !lock
+      s.dash_lock = lock
+      App.session.set("settings", s)
+      App.session.save()
+      App.vent.trigger("app:dash_lock")
     null
 
   show_add: (e)->

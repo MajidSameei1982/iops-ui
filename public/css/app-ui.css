@@ -2100,6 +2100,15 @@ i.form-control-feedback {
 * {
   outline: none; }
 
+.sidebar-menu > li > a.short {
+  padding: 3px 0 3px 15px;
+  border-left: none !important;
+  background-color: transparent !important; }
+  .sidebar-menu > li > a.short:hover, .sidebar-menu > li > a.short:focus {
+    border-left: none !important;
+    background-color: transparent !important;
+    color: #fff !important; }
+
 a.inline {
   display: inline !important;
   padding: 0;
