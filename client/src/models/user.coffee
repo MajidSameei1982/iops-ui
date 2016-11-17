@@ -96,14 +96,16 @@ class User extends BaseModel
     
   sites: ()->
     sites = []
+    sh = {}
     for acc in App.accounts.models
       for s in acc.sites.models
         for ur in @roles.models
           for ar in App.roles.models
             if ar.id == ur.id
               sid = ar.get('siteId')
-              if sid? && s.id == sid
+              if sid? && s.id == sid && !sh[s.id]
                 sites.push(s.id)
+                sh[s.id] = true
                 break          
     sites
 

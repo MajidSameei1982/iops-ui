@@ -55,9 +55,10 @@ class UsersLayout extends Marionette.LayoutView
         @users = new UserCollection()
         global_admin = App.session.is_global_admin()
         for u in @tempusers.models
-          site_admin = false
-          for s in u.sites()
-            site_admin = site_admin || App.session.is_site_admin(s)
+          console.log u.sites()
+          site_admin = u.sites().length == 1 && App.session.is_site_admin(u.sites()[0])
+          # for s in u.sites()
+          #   site_admin = site_admin || App.session.is_site_admin(s)
           if global_admin || site_admin
             @users.add(u)
         @usersview = new UsersView

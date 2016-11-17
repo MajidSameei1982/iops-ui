@@ -18,7 +18,6 @@ class AlarmWidgetView extends IOPSWidgetView
     sx: 10
     sy: 10
 
-
   TestMe: 0
   IsUpdatingSettings: false
   IsPageLoading: true
@@ -36,11 +35,11 @@ class AlarmWidgetView extends IOPSWidgetView
     s = @model.get("settings")
 
     if s? && !!s.gate
+      @site = OPCManager.get_site(s.site)
+      @site_code = @site.get('code')
       lbl = "#{@site_code}: Alarm window"
       @ui.wtitle.html(lbl)
 
-      @site = OPCManager.get_site(s.site)
-      @site_code = @site.get('code')
       if !@site_code? then return null
       groups = []
 
@@ -122,7 +121,6 @@ class AlarmWidgetView extends IOPSWidgetView
 
   set_model: ()=>
     @IsUpdatingSettings = true
-
     s = _.clone(@model.get("settings"))
     s.site = @ui.site.val()
     s.terminal = @$("select#terminal").val()
@@ -131,7 +129,6 @@ class AlarmWidgetView extends IOPSWidgetView
     s.type = @ui.type.val()
     s.priority = @$("[name=priority_#{@cid}]:checked").val()
     s.allgates = @$("#allgates").is(':checked')
-    console.log s.allgates
     @model.set("settings", s)
 
   toggle_settings: (e)->
@@ -162,9 +159,9 @@ class AlarmWidgetView extends IOPSWidgetView
       @set_model()
 
     p = settings.priority
-    if p? && p=='alarms' then $("#p_alarms").prop("checked", true)
-    if p? && p=='notifications' then $("#p_notifications").prop("checked", true)
-    if !p? || p=='all' then $("#p_all").prop("checked", true)
+    $("#p_alarms").prop("checked", !p? || p=='alarms')
+    $("#p_notifications").prop("checked", p? && p=='notifications')
+    $("#p_all").prop("checked", p? && p=='all')
     @$("[name=priority]").attr('name', "priority_#{@cid}")
     @$("[name=priority_#{@cid}]").on 'change', ()=>
       @set_model()
@@ -183,6 +180,7 @@ class AlarmWidgetView extends IOPSWidgetView
 
     @site_code = OPCManager.get_site_code(settings.site)
     if @site_code? then @watch_updates(@site_code)
+    @check_init_site()
 
   start: ()->
     @update()

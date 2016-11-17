@@ -3,7 +3,6 @@ WidgetView = require('../dashboard/widget_view')
 
 # ----------------------------------
 class IOPSWidgetView extends WidgetView
-
   # convert string value to boolean
   get_bool: (v)=>
     if v? && v.toUpperCase() == "TRUE"
@@ -44,6 +43,18 @@ class IOPSWidgetView extends WidgetView
     console.log "kill : #{conn}"
     App.vent.off "opc:data:#{conn}", @data_update
     OPCManager.rem_ref(conn)
+
+  # set initial site when widget is created
+  check_init_site: ()->
+    return null if @$('#site').length == 0
+    settings = @model.get('settings')
+    settings || settings = {}
+    site = settings.site
+    return null if site? && site != ''
+    sv = @$('#site').val()
+    if sv? && sv != ''
+      @set_model()
+    @
 
   # load tag descriptions once for labels
   set_descriptions: (force)=>
@@ -384,7 +395,7 @@ class IOPSWidgetView extends WidgetView
       width:'auto'
       #width:'150px'
     @
-    
+
 # ----------------------------------
 
 window.IOPSWidgetView = IOPSWidgetView

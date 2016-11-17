@@ -109,6 +109,7 @@ class WeatherWidgetView extends IOPSWidgetView
     s = @model.get("settings")
     if !s? || !s.site?
       @toggle_settings()
+    @check_init_site()
 
   onDestroy: ()=>
     if @timer then clearInterval(@timer)

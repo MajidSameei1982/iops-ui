@@ -484,6 +484,7 @@ class PcasummaryWidgetView extends IOPSWidgetView
 
     @configure_buttons()
     @render_gauges()
+    @check_init_site()
 
   configure_buttons: ()=>
     @$('#mode').change (e)=>

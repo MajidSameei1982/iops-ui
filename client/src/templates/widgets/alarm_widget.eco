@@ -48,7 +48,7 @@
         <div class="form-group" for='priority'>
           <label>Priority</label>
           <span class='group_item'>
-            <input type="radio" id="p_alarms" name="priority" value="alarms" checked> Alarms
+            <input type="radio" id="p_alarms" name="priority" value="alarms" checked="checked"> Alarms
           </span>
           <span class='group_item'>
             <input type="radio" id="p_notifications" name="priority" value="notifications"> Notifications

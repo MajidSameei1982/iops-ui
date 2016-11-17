@@ -288,6 +288,8 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
 
     @site_code = OPCManager.get_site_code(settings.site)
     if @site_code? then @watch_updates(@site_code)
+    @check_init_site()
+
 
   start: ()->
     @update()

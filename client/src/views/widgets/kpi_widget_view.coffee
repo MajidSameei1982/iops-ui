@@ -112,6 +112,8 @@ class KpiWidgetView extends IOPSWidgetView
       @set_model()
     if !@ui.site.val()? || @ui.site.val() == ''
       @toggle_settings()
+    @check_init_site()
+
 
   start:()->
     @rurl = App.config.report_server
