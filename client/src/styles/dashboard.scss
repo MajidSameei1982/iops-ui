@@ -2,7 +2,16 @@
   // eliminate glow on webkit browsers
   outline:none;
 }
-
+.sidebar-menu > li > a.short {
+  padding:3px 0 3px 15px;
+  border-left:none !important;
+  background-color:transparent !important;
+  &:hover, &:focus {
+    border-left:none !important;
+    background-color:transparent !important;
+    color:#fff !important;
+  }
+}
 a.inline {
   display:inline !important;
   padding:0;

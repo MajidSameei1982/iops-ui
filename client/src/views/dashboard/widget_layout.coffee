@@ -136,6 +136,7 @@ class WidgetLayout extends Marionette.LayoutView
       App.currentView.grid.remove_widget $("li##{rg}"), ()=>
         App.currentView.removeRegion(rg)
     App.currentView = @
+    App.vent.trigger("app:dash_lock")
       
   	#App.AdminLTE_lib.reset()
   	

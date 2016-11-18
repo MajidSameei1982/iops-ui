@@ -2,7 +2,10 @@
 <section class="sidebar" tabindex='-1'>
   <!-- Sidebar Menu -->
   <ul class="sidebar-menu" id='dashboard-list' tabindex='-1'>
-    <li class="header" tabindex='-1'>DASHBOARDS  <a href='#' id='add_dash' class='inline'><i class='fa fa-plus-square'></i>Add</a></li>
+    <li class="header" tabindex='-1'>DASHBOARDS
+      <a href='#' id='add_dash' class='short'><i class='fa fa-plus-square'></i>Add</a>
+      <a href='#' id='lock_dash' class='short'><i class="fa fa-toggle-off" ></i> <span class='lock_label'>UNLOCKED</span></a>
+    </li>
     <!-- <li class="header" tabindex='-1'>DASHBOARDS </li> -->
   </ul>
   <!-- /.sidebar-menu -->
