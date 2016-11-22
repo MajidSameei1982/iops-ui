@@ -124,7 +124,16 @@ class UserView extends Marionette.ItemView
         delete @model.attributes['password']
         @render()
         $("#users_region .row.user_container").toggle(true)
- 
+      error:(user, err)=>
+        emsg = err.responseJSON.message
+        emsg = if emsg.indexOf('child') == 0 then emsg.substring(6) else emsg
+        App.uiutils.showModal
+          title: 'Error Saving User!'
+          icon: 'warning'
+          type: 'danger'
+          body: emsg
+          show_cancel: false
+      
   onRender: ()->
     @toggle_edit(false);
     @modelBinder.bind(@model, @el, @bindings)

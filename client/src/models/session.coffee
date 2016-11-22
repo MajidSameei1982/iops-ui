@@ -109,6 +109,7 @@ class Session extends BaseModel
     tk = App.store.get('token')
     if tk? then @set_header_token(tk)
     s = App.store.get('session')
+    if tk? && !s.token? then s.token = tk
     if s? && s.token?
       if App.session? then Session.clear()
       user = Session.parse_token(s.token)
