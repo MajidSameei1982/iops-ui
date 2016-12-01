@@ -112,22 +112,22 @@ class AirportoverviewWidgetView extends IOPSWidgetView
 
       @$("#Airport_Gate_#{g.Number}_a")
       .toggleClass("docked", docked==true && qd)
-      #.toggleClass("bad_data", bad_q)
-      #.toggleClass("alarm", qa)
+      .toggleClass("bad_data", bad_q)
+      .toggleClass("alarm", qa)
 
-      # aq = @opc.tags["#{g.Tag_gate_alarm}"]
-      # console.log aq
-      # if alarm == true 
-      #   a = @$("#Airport_Gate_#{g.Number}_a .icon #alarm")
-      #   if !a? || a.length == 0 then @$("#Airport_Gate_#{g.Number}_a .icon").append("<i id='alarm' class='fa fa-warning alarm blink'></i>")
-      # else
-      #   @$("#Airport_Gate_#{g.Number}_a .icon #alarm").remove()
+      aq = @opc.tags["#{g.Tag_gate_alarm}"]
+      console.log aq
+      if alarm == true 
+        a = @$("#Airport_Gate_#{g.Number}_a .icon #alarm")
+        if !a? || a.length == 0 then @$("#Airport_Gate_#{g.Number}_a .icon").append("<i id='alarm' class='fa fa-warning alarm blink'></i>")
+      else
+        @$("#Airport_Gate_#{g.Number}_a .icon #alarm").remove()
 
-      # if warning == true && alarm == false
-      #   a = @$("#Airport_Gate_#{g.Number}_a .icon #warning")
-      #   if !a? || a.length == 0 then @$("#Airport_Gate_#{g.Number}_a .icon").append("<i id='warning' class='fa fa-warning warning'></i>")
-      # else
-      #   @$("#Airport_Gate_#{g.Number}_a .icon #warning").remove()
+      if warning == true && alarm == false
+        a = @$("#Airport_Gate_#{g.Number}_a .icon #warning")
+        if !a? || a.length == 0 then @$("#Airport_Gate_#{g.Number}_a .icon").append("<i id='warning' class='fa fa-warning warning'></i>")
+      else
+        @$("#Airport_Gate_#{g.Number}_a .icon #warning").remove()
 
     @
 
