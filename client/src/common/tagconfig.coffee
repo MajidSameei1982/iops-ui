@@ -559,11 +559,16 @@ class TagConfig extends Object
 						pbb_autolevel_mode:{Tag:'PBB.AUTOLEVELMODEFLAG',Label:'PBB Mode',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:'Auto-Level : #{1}'},Element:{Type:'div',ParentID:'#pbb_autolevel_container',Class:'val transparent',Object:null}},								pbb_canopy:{Tag:'PBB.CANOPYDOWN',Label:'Canopy',DataType:'Boolean',Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:'Canopy : #{1}'},Element:{Type:'div',ParentID:'#pbb_canopy_container',Class:'val transparent',Object:null}},
 					}
 				pbb_system_status_widget: # PBB Status Widget
-					remove_tags:{'gpu_status','pca_status','pca_discharge_temp'}
-				pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
-					remove_tags:{'gpu_status','pca_status','pca_discharge_temp'}	
-				pbb_pca_gpu_basic_widget:
-					remove_tags:{'pca_status','gpu_status','pca_time','pca_discharge_temp','gpu_time','gpu_ra_out_avg','gpu_rv_out_avg'}
+					remove_tags:{'pca_status','pca_discharge_temp','gpu_status'}
+					update_tags:{
+						pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]PBB',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					}
+				
+				pbb_pca_gpu_status_widget: # PBB/PCA/GPU Widget
+					remove_tags:{'pca_status','pca_discharge_temp','gpu_status'}
+					update_tags:{
+						pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]PBB',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					}
 				pbb_level_detail_widget: # PBB Overview Widget
 					remove_tags:{'pbb_autoleveling','pbb_estop','pbb_limits','pbb_terminal_door','pbb_cab_angle_disp','pbb_slope_deg','pbb_swing_angle_disp','pbb_height_to_disp','pbb_wheel_angle_deg','pbb_tunnel_length'}		
 					add_tags:{
