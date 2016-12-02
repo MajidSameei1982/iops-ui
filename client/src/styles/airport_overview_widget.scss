@@ -74,40 +74,42 @@
             background-image: url("#{$ImagesPrefix}#{$Gate}_Plane.png");
           }
           &.bad_data {
-            background-image: url("#{$ImagesPrefix}#{$Gate}_bad_data.png");
-          }
-          .icon {
-            font-size:18px;
-            left: #{nth($posx,$index)};
-            top: #{nth($posy,$index)};
-            position:absolute;
-            border-radius:3px;
-            padding:2px;
-            i {
-              text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
-              &.alarm { color:#c00; }
-              &.warning { color:#f90; }
-              &.perfect { color:#090; }
-            }
+            background-image: url("#{$ImagesPrefix}#{$Gate}_Bad_Data.png");
           }
         }
+        #Airport_Gate_#{$Gate}_icon {
+          background-repeat:no-repeat;
+          background-size: contain;
+          background-position: bottom center;
+          background-image: none;
+          width: 100% !important;
+          height: 100% !important;
+          top: 0;
+          left: 0;
+          &.alarm {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_Alarm.png");
+          }
+          &.critical {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_Critical.png");
+          }
+          &.perfect-dock {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_perfect.png");
+          }
+        }        
+        #Airport_Gate_#{$Gate}_status {
+          background-repeat:no-repeat;
+          background-size: contain;
+          background-position: bottom center;
+          background-image: none;
+          width: 100% !important;
+          height: 100% !important;
+          top: 0;
+          left: 0;
+          &.out-of-service {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_perfect.png");
+          }
+        }        
         $index: $index + 1;
-
-      //   @each $cls in $ClassSuffixs {
-      //     .airport_gate_#{$Gate}#{$cls} {
-      //         @if $index != 4 
-      //         {
-      //           background: url("#{$ImagesPrefixs}#{$Gate}#{nth($ImagesSuffixs,$index)}") no-repeat bottom center;
-      //           background-size: contain;
-      //         }
-      //         @else
-      //         {
-      //           background: none;
-      //         }
-      //       }
-      //       $index: $index + 1;
-      //   }
-
       }
     }
   }
@@ -183,40 +185,42 @@
             background-image: url("#{$ImagesPrefix}#{$Gate}_Plane.png");
           }
           &.bad_data {
-            background-image: url("#{$ImagesPrefix}#{$Gate}_bad_data.png");
-          }
-          .icon {
-            font-size:18px;
-            left: #{nth($posx,$index)};
-            top: #{nth($posy,$index)};
-            position:absolute;
-            border-radius:3px;
-            padding:2px;
-            i {
-              text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
-              &.alarm { color:#c00; }
-              &.warning { color:#f90; }
-              &.perfect { color:#090; }
-            }
+            background-image: url("#{$ImagesPrefix}#{$Gate}_Bad_Data.png");
           }
         }
+        #Airport_Gate_#{$Gate}_icon {
+          background-repeat:no-repeat;
+          background-size: contain;
+          background-position: bottom center;
+          background-image: none;
+          width: 100% !important;
+          height: 100% !important;
+          top: 0;
+          left: 0;
+          &.alarm {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_Alarm.png");
+          }
+          &.critical {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_Critical.png");
+          }
+          &.perfect-dock {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_perfect.png");
+          }
+        }        
+        #Airport_Gate_#{$Gate}_status {
+          background-repeat:no-repeat;
+          background-size: contain;
+          background-position: bottom center;
+          background-image: none;
+          width: 100% !important;
+          height: 100% !important;
+          top: 0;
+          left: 0;
+          &.out-of-service {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_perfect.png");
+          }
+        }        
         $index: $index + 1;
-
-      //   @each $cls in $ClassSuffixs {
-      //     .airport_gate_#{$Gate}#{$cls} {
-      //         @if $index != 4 
-      //         {
-      //           background: url("#{$ImagesPrefixs}#{$Gate}#{nth($ImagesSuffixs,$index)}") no-repeat bottom center;
-      //           background-size: contain;
-      //         }
-      //         @else
-      //         {
-      //           background: none;
-      //         }
-      //       }
-      //       $index: $index + 1;
-      //   }
-
       }
     }
   }
@@ -292,40 +296,42 @@
             background-image: url("#{$ImagesPrefix}#{$Gate}_Plane.png");
           }
           &.bad_data {
-            background-image: url("#{$ImagesPrefix}#{$Gate}_bad_data.png");
-          }
-          .icon {
-            font-size:18px;
-            left: #{nth($posx,$index)};
-            top: #{nth($posy,$index)};
-            position:absolute;
-            border-radius:3px;
-            padding:2px;
-            i {
-              text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
-              &.alarm { color:#c00; }
-              &.warning { color:#f90; }
-              &.perfect { color:#090; }
-            }
+            background-image: url("#{$ImagesPrefix}#{$Gate}_Bad_Data.png");
           }
         }
+        #Airport_Gate_#{$Gate}_icon {
+          background-repeat:no-repeat;
+          background-size: contain;
+          background-position: bottom center;
+          background-image: none;
+          width: 100% !important;
+          height: 100% !important;
+          top: 0;
+          left: 0;
+          &.alarm {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_Alarm.png");
+          }
+          &.critical {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_Critical.png");
+          }
+          &.perfect-dock {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_perfect.png");
+          }
+        }        
+        #Airport_Gate_#{$Gate}_status {
+          background-repeat:no-repeat;
+          background-size: contain;
+          background-position: bottom center;
+          background-image: none;
+          width: 100% !important;
+          height: 100% !important;
+          top: 0;
+          left: 0;
+          &.out-of-service {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_perfect.png");
+          }
+        }        
         $index: $index + 1;
-
-      //   @each $cls in $ClassSuffixs {
-      //     .airport_gate_#{$Gate}#{$cls} {
-      //         @if $index != 4 
-      //         {
-      //           background: url("#{$ImagesPrefixs}#{$Gate}#{nth($ImagesSuffixs,$index)}") no-repeat bottom center;
-      //           background-size: contain;
-      //         }
-      //         @else
-      //         {
-      //           background: none;
-      //         }
-      //       }
-      //       $index: $index + 1;
-      //   }
-
       }
     }
   }
@@ -381,7 +387,6 @@
         }
       }
 
-
       $ClassSuffixs: _bad_data _idle _ac_docked _good _alarm _warning;
       $ImagesPrefix: "../img/airport/#{$site_code}/#{$site_code}_Gate_";  
       $ImagesSuffixs: "_Bad_Data.png" ".png" "_Plane.png" "" "_Alarm.png" "_Warning.png";  
@@ -401,51 +406,53 @@
             background-image: url("#{$ImagesPrefix}#{$Gate}_Plane.png");
           }
           &.bad_data {
-            background-image: url("#{$ImagesPrefix}#{$Gate}_bad_data.png");
-          }
-          .icon {
-            font-size:18px;
-            left: #{nth($posx,$index)};
-            top: #{nth($posy,$index)};
-            position:absolute;
-            border-radius:3px;
-            padding:2px;
-            i {
-              text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
-              &.alarm { color:#c00; }
-              &.warning { color:#f90; }
-              &.perfect { color:#090; }
-            }
+            background-image: url("#{$ImagesPrefix}#{$Gate}_Bad_Data.png");
           }
         }
+        #Airport_Gate_#{$Gate}_icon {
+          background-repeat:no-repeat;
+          background-size: contain;
+          background-position: bottom center;
+          background-image: none;
+          width: 100% !important;
+          height: 100% !important;
+          top: 0;
+          left: 0;
+          &.alarm {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_Alarm.png");
+          }
+          &.critical {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_Critical.png");
+          }
+          &.perfect-dock {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_perfect.png");
+          }
+        }        
+        #Airport_Gate_#{$Gate}_status {
+          background-repeat:no-repeat;
+          background-size: contain;
+          background-position: bottom center;
+          background-image: none;
+          width: 100% !important;
+          height: 100% !important;
+          top: 0;
+          left: 0;
+          &.out-of-service {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_perfect.png");
+          }
+        }        
         $index: $index + 1;
-
-      //   @each $cls in $ClassSuffixs {
-      //     .airport_gate_#{$Gate}#{$cls} {
-      //         @if $index != 4 
-      //         {
-      //           background: url("#{$ImagesPrefixs}#{$Gate}#{nth($ImagesSuffixs,$index)}") no-repeat bottom center;
-      //           background-size: contain;
-      //         }
-      //         @else
-      //         {
-      //           background: none;
-      //         }
-      //       }
-      //       $index: $index + 1;
-      //   }
-
       }
     }
   }
 
   &.RDU_account {
     $site_code: RDU;
-    $Gates: C3,  C7,  C8,  C9, C10, C11, C12, C13, C14, C15, C16, C17, C18, C20, C21, C22, C23, C24, C25,
+    $Gates: C1,  C3,  C7,  C8,  C9, C10, C11, C12, C13, C14, C15, C16, C17, C18, C20, C21, C22, C23, C24, C25,
             D3,  D5,  D6,  D8,  D9, D10, D11, D12, D13, D14, D15, D16, D17, D18, D19, D20;
-    $posx:  1%,  2%,  3%,  4%,  5%,  6%,  7%,  8%,  9%, 10%, 11%, 12%, 13%, 14%, 15%, 16%, 17%, 18%, 19%,
+    $posx:  0%,  1%,  2%,  3%,  4%,  5%,  6%,  7%,  8%,  9%, 10%, 11%, 12%, 13%, 14%, 15%, 16%, 17%, 18%, 19%,
            20%, 21%, 22%, 23%, 24%, 25%, 26%, 27%, 28%, 29%, 30%, 31%, 32%, 33%, 34%, 35%;
-    $posy:  1%,  2%,  3%,  4%,  5%,  6%,  7%,  8%,  9%, 10%, 11%, 12%, 13%, 14%, 15%, 16%, 17%, 18%, 19%,
+    $posy:  0%,  1%,  2%,  3%,  4%,  5%,  6%,  7%,  8%,  9%, 10%, 11%, 12%, 13%, 14%, 15%, 16%, 17%, 18%, 19%,
            20%, 21%, 22%, 23%, 24%, 25%, 26%, 27%, 28%, 29%, 30%, 31%, 32%, 33%, 34%, 35%;
     %div_defaults {
       min-height: 100%;
@@ -513,50 +520,49 @@
           &.bad_data {
             background-image: url("#{$ImagesPrefix}#{$Gate}_Bad_Data.png");
           }
+        }
+        #Airport_Gate_#{$Gate}_icon {
+          background-repeat:no-repeat;
+          background-size: contain;
+          background-position: bottom center;
+          background-image: none;
+          width: 100% !important;
+          height: 100% !important;
+          top: 0;
+          left: 0;
           &.alarm {
             background-image: url("#{$ImagesPrefix}#{$Gate}_Alarm.png");
           }
-          .icon {
-            font-size:18px;
-            left: #{nth($posx,$index)};
-            top: #{nth($posy,$index)};
-            position:absolute;
-            border-radius:3px;
-            padding:2px;
-            i {
-              text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
-              &.alarm { color:#c00; }
-              &.warning { color:#f90; }
-              &.perfect { color:#090; }
-            }
+          &.critical {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_Critical.png");
           }
-        }
+          &.perfect-dock {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_perfect.png");
+          }
+        }        
+        #Airport_Gate_#{$Gate}_status {
+          background-repeat:no-repeat;
+          background-size: contain;
+          background-position: bottom center;
+          background-image: none;
+          width: 100% !important;
+          height: 100% !important;
+          top: 0;
+          left: 0;
+          &.out-of-service {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_perfect.png");
+          }
+        }        
         $index: $index + 1;
-
-        // @each $cls in $ClassSuffixs {
-        //   .airport_gate_#{$Gate}#{$cls} {
-        //       @if $index != 4 
-        //       {
-        //         background: url("#{$ImagesPrefixs}#{$Gate}#{nth($ImagesSuffixs,$index)}") no-repeat bottom center;
-        //         background-size: contain;
-        //       }
-        //       @else
-        //       {
-        //         background: none;
-        //       }
-        //     }
-        //     $index: $index + 1;
-        // }
-
       }
     }
   }
 
   &.HAS-IAH_account {
     $site_code: HAS-IAH;
-    $Gates: A01, A02, A07, A08, A09, A10, A11, A12, A14, A15;
-    $posx:  1%,  2%,  3%,  4%,  5%,  6%,  7%,  8%,  9%, 10%;
-    $posy:  1%,  2%,  3%,  4%,  5%,  6%,  7%,  8%,  9%, 10%;
+    $Gates: A01, A02, A07, A08, A09, A10, A11, A12, A14, A15, A17, A18, A19, A24, A25, A26, A27, A29, A30;
+    $posx:  1%,  2%,  3%,  4%,  5%,  6%,  7%,  8%,  9%,  10%, 11%, 12%, 13%, 14%, 15%, 16%, 17%, 18%, 19%;
+    $posy:  1%,  2%,  3%,  4%,  5%,  6%,  7%,  8%,  9%,  10%, 11%, 12%, 13%, 14%, 15%, 16%, 17%, 18%, 19%;
     %div_defaults {
       min-height: 100%;
       min-width: 100%;
@@ -603,7 +609,6 @@
         }
       }
 
-
       $ClassSuffixs: _bad_data _idle _ac_docked _good _alarm _warning;
       $ImagesPrefix: "../img/airport/#{$site_code}/#{$site_code}_Gate_";  
       $ImagesSuffixs: "_Bad_Data.png" ".png" "_Plane.png" "" "_Alarm.png" "_Warning.png";  
@@ -625,44 +630,41 @@
           &.bad_data {
             background-image: url("#{$ImagesPrefix}#{$Gate}_Bad_Data.png");
           }
-          &.alarm {
-           background-image: url("#{$ImagesPrefix}#{$Gate}_Alarm.png"); 
-          }
-          .icon {
-            font-size:18px;
-            left: #{nth($posx,$index)};
-            top: #{nth($posy,$index)};
-            position:absolute;
-            border-radius:3px;
-            padding:2px;
-            i {
-              text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
-              &.alarm { color:#c00; }
-              &.warning { color:#f90; }
-              &.perfect { color:#090; }
-            }
-          }
         }
+        #Airport_Gate_#{$Gate}_icon {
+          background-repeat:no-repeat;
+          background-size: contain;
+          background-position: bottom center;
+          background-image: none;
+          width: 100% !important;
+          height: 100% !important;
+          top: 0;
+          left: 0;
+          &.alarm {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_Alarm.png");
+          }
+          &.critical {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_Critical.png");
+          }
+          &.perfect-dock {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_perfect.png");
+          }
+        }        
+        #Airport_Gate_#{$Gate}_status {
+          background-repeat:no-repeat;
+          background-size: contain;
+          background-position: bottom center;
+          background-image: none;
+          width: 100% !important;
+          height: 100% !important;
+          top: 0;
+          left: 0;
+          &.out-of-service {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_perfect.png");
+          }
+        }        
         $index: $index + 1;
-
-      //   @each $cls in $ClassSuffixs {
-      //     .airport_gate_#{$Gate}#{$cls} {
-      //         @if $index != 4 
-      //         {
-      //           background: url("#{$ImagesPrefixs}#{$Gate}#{nth($ImagesSuffixs,$index)}") no-repeat bottom center;
-      //           background-size: contain;
-      //         }
-      //         @else
-      //         {
-      //           background: none;
-      //         }
-      //       }
-      //       $index: $index + 1;
-      //   }
-
       }
     }
   }
-
-
 }

@@ -66,15 +66,17 @@ class AirportoverviewWidgetView extends IOPSWidgetView
               Terminal: "#{t}"
               Zone: "#{z}"
               Tag_gate_alarm: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.Alarm._HasAlarms"
-              Tag_gate_warning: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.Warning._HasWarnings"
               Tag_gate_docked: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB.AIRCRAFTDOCKEDCALCULATION"
-              Tag_gate_critical: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB.AUTOLEVEL_FAIL_FLAG"
+              Tag_gate_critical: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB.Alarm._HasCritialAlarms"
+              Tag_gate_perfect_dock: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB.PerfectDock"
+              Tag_gate_out_of_service: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB.OutOfService"
             @gateData.push gate
             # add tags to monitor
             tags.push "#{gate.Tag_gate_alarm}.Value"
-            tags.push "#{gate.Tag_gate_warning}.Value"
             tags.push "#{gate.Tag_gate_docked}.Value"
             tags.push "#{gate.Tag_gate_critical}.Value"
+            tags.push "#{gate.Tag_gate_perfect_dock}.Value"
+            tags.push "#{gate.Tag_gate_out_of_service}.Value"
  
       # draw layout and gates
       @$("#Airport_Overview").remove()
@@ -87,7 +89,7 @@ class AirportoverviewWidgetView extends IOPSWidgetView
       """
       #@$(".gate_ac").remove()
       for g in @gateData
-        @$("#layout_container").append "<div id='Airport_Gate_#{g.Number}_a'><div class='icon'></div></div>"
+        @$("#layout_container").append "<div id='Airport_Gate_#{g.Number}_a'><div id='Airport_Gate_#{g.Number}_icon'></div><div id='Airport_Gate_#{g.Number}_status'></div>"
         #$(".display").append "<div id='Airport_Gate_#{g.Number}_Status'></div>"
 
       # add tag list to the connection for monitoring
@@ -100,34 +102,52 @@ class AirportoverviewWidgetView extends IOPSWidgetView
 
   data_update: (data)=>
     for g in @gateData
-      docked = @get_bool(@opc.get_value("#{g.Tag_gate_docked}.Value"))
-      alarm = @get_bool(@opc.get_value("#{g.Tag_gate_alarm}.Value"))
-      warning = @get_bool(@opc.get_value("#{g.Tag_gate_alarm}.Value"))
-      critical = @get_bool(@opc.get_value("#{g.Tag_gate_critical}.Value"))
+      outOfService = null
+      critical = null
+      alarm = null
+      docked = null
+      perfectDock = null
+
       qd = @opc.tags["#{g.Tag_gate_docked}"].props.Value.quality
-      qa = @opc.tags["#{g.Tag_gate_alarm}"].props.Value.quality
-      qw = @opc.tags["#{g.Tag_gate_warning}"].props.Value.quality
+      if qd? && qd
+        docked = @get_bool(@opc.get_value("#{g.Tag_gate_docked}.Value"))
+        @$("#Airport_Gate_#{g.Number}_a")
+        .toggleClass("docked", docked ==true && qd)
+      else
+        qd = false
+
+      qoos = @opc.tags["#{g.Tag_gate_out_of_service}"].props.Value.quality
+      if qoos? && goos
+        outOfService = @get_bool(@opc.get_value("#{g.Tag_gate_out_of_service}.Value"))
+        @$("#Airport_Gate_#{g.Number}_icon")
+        .toggleClass("out-of-service", outOfService ==true && qoos)
+      else
+        goos = false
+
       qc = @opc.tags["#{g.Tag_gate_critical}"].props.Value.quality
-      bad_q = !qa || !qw
-
-      @$("#Airport_Gate_#{g.Number}_a")
-      .toggleClass("docked", docked==true && qd)
-      .toggleClass("bad_data", bad_q)
-      .toggleClass("alarm", qa)
-
-      aq = @opc.tags["#{g.Tag_gate_alarm}"]
-      console.log aq
-      if alarm == true 
-        a = @$("#Airport_Gate_#{g.Number}_a .icon #alarm")
-        if !a? || a.length == 0 then @$("#Airport_Gate_#{g.Number}_a .icon").append("<i id='alarm' class='fa fa-warning alarm blink'></i>")
+      if qc? && qc
+        critical = @get_bool(@opc.get_value("#{g.Tag_gate_critical}.Value"))
+        @$("#Airport_Gate_#{g.Number}_icon")
+        .toggleClass("critical", critical ==true && qc)
       else
-        @$("#Airport_Gate_#{g.Number}_a .icon #alarm").remove()
+        qc = false
 
-      if warning == true && alarm == false
-        a = @$("#Airport_Gate_#{g.Number}_a .icon #warning")
-        if !a? || a.length == 0 then @$("#Airport_Gate_#{g.Number}_a .icon").append("<i id='warning' class='fa fa-warning warning'></i>")
+      qa = @opc.tags["#{g.Tag_gate_alarm}"].props.Value.quality
+      if qa? && qa
+        alarm = @get_bool(@opc.get_value("#{g.Tag_gate_alarm}.Value"))
+        outOfService = @get_bool(@opc.get_value("#{g.Tag_gate_out_of_service}.Value"))
+        @$("#Airport_Gate_#{g.Number}_icon")
+        .toggleClass("alarm", alarm ==true && qa)
       else
-        @$("#Airport_Gate_#{g.Number}_a .icon #warning").remove()
+        qa = false
+      
+      qpd = @opc.tags["#{g.Tag_gate_perfect_dock}"].props.Value.quality
+      if qpd? && qpd
+        perfectDock = @get_bool(@opc.get_value("#{g.Tag_gate_perfect_dock}.Value"))
+        @$("#Airport_Gate_#{g.Number}_status")
+        .toggleClass("perfect-dock", perfectDock ==true && qpd)
+      else
+        qpd = false
 
     @
 
