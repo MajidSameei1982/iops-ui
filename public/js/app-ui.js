@@ -22971,7 +22971,7 @@ AirportoverviewWidgetView = (function(superClass) {
               Zone: "" + z,
               Tag_gate_alarm: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".Alarm._HasAlarms",
               Tag_gate_docked: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.AIRCRAFTDOCKEDCALCULATION",
-              Tag_gate_critical: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.Alarm._HasCritialAlarms",
+              Tag_gate_critical: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".Alarm._HasCritialAlarms",
               Tag_gate_perfect_dock: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.PerfectDock",
               Tag_gate_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.OutOfService"
             };
