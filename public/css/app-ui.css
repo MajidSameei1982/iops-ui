@@ -4694,7 +4694,19 @@ ul.gridster.widget-container {
         margin: 0px; }
       ul.gridster.widget-container li.widget .widget-outer .box-body .settings .chosen-container {
         margin-left: 20px;
-        width: auto; }
+        width: 70% !important; }
+      ul.gridster.widget-container li.widget .widget-outer .box-body .settings #terminals .chosen-container {
+        margin-left: 20px;
+        width: 25% !important;
+        min-width: 60px; }
+      ul.gridster.widget-container li.widget .widget-outer .box-body .settings #zones .chosen-container {
+        margin-left: 20px;
+        width: 30% !important;
+        min-width: 75px; }
+      ul.gridster.widget-container li.widget .widget-outer .box-body .settings #gates .chosen-container {
+        margin-left: 20px;
+        width: 45% !important;
+        min-width: 85px; }
     ul.gridster.widget-container li.widget .widget-outer .box-body .display.contain {
       max-width: 100%;
       max-height: 100%;
