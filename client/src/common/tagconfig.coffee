@@ -574,6 +574,8 @@ class TagConfig extends Object
 					add_tags:{
 							pbb_floodlight:{Tag:'PBB.FLOODLIGHTS',Label:'FloodLights',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					}
+				pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
+					remove_tags:{'pca_status','gpu_status','pca_time','pca_discharge_temp','gpu_time','gpu_ra_out_avg','gpu_rv_out_avg'}	
 
 		CID:
 			gpu_summary_widget: # GPU Summary Widget

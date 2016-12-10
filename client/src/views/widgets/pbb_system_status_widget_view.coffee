@@ -53,7 +53,7 @@ class PbbsystemstatusWidgetView extends IOPSWidgetView
     s = @model.get("settings")
     
     if s? && !!s.site      
-      lbl = "#{@site_code}: Gate #{s.gate} - GPU"
+      lbl = "#{@site_code}: Gate #{s.gate} - System Status"
       @ui.wtitle.html(lbl)
 
       # stop listening for updates
