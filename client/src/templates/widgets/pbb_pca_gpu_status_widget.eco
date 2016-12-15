@@ -22,7 +22,7 @@
       </thead>
       <tbody>
         <tr id="iconRow">
-          <td id="iconRow_0">
+          <td id="iconRow_lbl">
             Alerts
           </td>
         </tr>

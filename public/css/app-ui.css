@@ -82,7 +82,7 @@ i.form-control-feedback {
 .airport_overview_widget.alarm {
   background-color: #c00;
   color: #fff; }
-.airport_overview_widget.CID_account .display div[id^='Airport_Gate_'], .airport_overview_widget.CID_account .display #Airport_Overview, .airport_overview_widget.DAL_account .display .airport_overview_widget.CID_account div[id^='Airport_Gate_'], .airport_overview_widget.DAL_account .display .airport_overview_widget.CID_account #Airport_Overview, .airport_overview_widget.JFK_account .display .airport_overview_widget.CID_account div[id^='Airport_Gate_'], .airport_overview_widget.JFK_account .display .airport_overview_widget.CID_account #Airport_Overview, .airport_overview_widget.EWR_account .display .airport_overview_widget.CID_account div[id^='Airport_Gate_'], .airport_overview_widget.EWR_account .display .airport_overview_widget.CID_account #Airport_Overview, .airport_overview_widget.RDU_account .display .airport_overview_widget.CID_account div[id^='Airport_Gate_'], .airport_overview_widget.RDU_account .display .airport_overview_widget.CID_account #Airport_Overview, .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.CID_account div[id^='Airport_Gate_'], .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.CID_account #Airport_Overview {
+.airport_overview_widget.CID_account .display div[id^='Airport_Gate_'], .airport_overview_widget.CID_account .display #Airport_Overview, .airport_overview_widget.DAL_account .display .airport_overview_widget.CID_account div[id^='Airport_Gate_'], .airport_overview_widget.DAL_account .display .airport_overview_widget.CID_account #Airport_Overview, .airport_overview_widget.JFK_account .display .airport_overview_widget.CID_account div[id^='Airport_Gate_'], .airport_overview_widget.JFK_account .display .airport_overview_widget.CID_account #Airport_Overview, .airport_overview_widget.EWR_account .display .airport_overview_widget.CID_account div[id^='Airport_Gate_'], .airport_overview_widget.EWR_account .display .airport_overview_widget.CID_account #Airport_Overview, .airport_overview_widget.RDU_account .display .airport_overview_widget.CID_account div[id^='Airport_Gate_'], .airport_overview_widget.RDU_account .display .airport_overview_widget.CID_account #Airport_Overview, .airport_overview_widget.PHX_account .display .airport_overview_widget.CID_account div[id^='Airport_Gate_'], .airport_overview_widget.PHX_account .display .airport_overview_widget.CID_account #Airport_Overview, .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.CID_account div[id^='Airport_Gate_'], .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.CID_account #Airport_Overview {
   min-height: 100%;
   min-width: 100%;
   overflow: auto;
@@ -93,14 +93,14 @@ i.form-control-feedback {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  font-size: 18px;
+  font-size: 10px;
   background-color: rgba(255, 255, 255, 0.5);
   z-index: 9999;
   border-radius: 10px;
   padding: 10px; }
-  .airport_overview_widget.CID_account .display #key .alarm {
+  .airport_overview_widget.CID_account .display #key .critical {
     color: #c00; }
-  .airport_overview_widget.CID_account .display #key .warning {
+  .airport_overview_widget.CID_account .display #key .alarm {
     color: #e45f00; }
   .airport_overview_widget.CID_account .display #key .perfect {
     color: #090; }
@@ -352,7 +352,7 @@ i.form-control-feedback {
   left: 0; }
   .airport_overview_widget.CID_account .display #Airport_Gate_C6_status.out-of-service {
     background-image: url("../img/airport/CID/CID_Gate_C6_Service.png"); }
-.airport_overview_widget.CID_account .display .airport_overview_widget.DAL_account div[id^='Airport_Gate_'], .airport_overview_widget.CID_account .display .airport_overview_widget.DAL_account #Airport_Overview, .airport_overview_widget.DAL_account .display div[id^='Airport_Gate_'], .airport_overview_widget.DAL_account .display #Airport_Overview, .airport_overview_widget.JFK_account .display .airport_overview_widget.DAL_account div[id^='Airport_Gate_'], .airport_overview_widget.JFK_account .display .airport_overview_widget.DAL_account #Airport_Overview, .airport_overview_widget.EWR_account .display .airport_overview_widget.DAL_account div[id^='Airport_Gate_'], .airport_overview_widget.EWR_account .display .airport_overview_widget.DAL_account #Airport_Overview, .airport_overview_widget.RDU_account .display .airport_overview_widget.DAL_account div[id^='Airport_Gate_'], .airport_overview_widget.RDU_account .display .airport_overview_widget.DAL_account #Airport_Overview, .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.DAL_account div[id^='Airport_Gate_'], .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.DAL_account #Airport_Overview {
+.airport_overview_widget.CID_account .display .airport_overview_widget.DAL_account div[id^='Airport_Gate_'], .airport_overview_widget.CID_account .display .airport_overview_widget.DAL_account #Airport_Overview, .airport_overview_widget.DAL_account .display div[id^='Airport_Gate_'], .airport_overview_widget.DAL_account .display #Airport_Overview, .airport_overview_widget.JFK_account .display .airport_overview_widget.DAL_account div[id^='Airport_Gate_'], .airport_overview_widget.JFK_account .display .airport_overview_widget.DAL_account #Airport_Overview, .airport_overview_widget.EWR_account .display .airport_overview_widget.DAL_account div[id^='Airport_Gate_'], .airport_overview_widget.EWR_account .display .airport_overview_widget.DAL_account #Airport_Overview, .airport_overview_widget.RDU_account .display .airport_overview_widget.DAL_account div[id^='Airport_Gate_'], .airport_overview_widget.RDU_account .display .airport_overview_widget.DAL_account #Airport_Overview, .airport_overview_widget.PHX_account .display .airport_overview_widget.DAL_account div[id^='Airport_Gate_'], .airport_overview_widget.PHX_account .display .airport_overview_widget.DAL_account #Airport_Overview, .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.DAL_account div[id^='Airport_Gate_'], .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.DAL_account #Airport_Overview {
   min-height: 100%;
   min-width: 100%;
   overflow: auto;
@@ -363,14 +363,14 @@ i.form-control-feedback {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  font-size: 18px;
+  font-size: 10px;
   background-color: rgba(255, 255, 255, 0.5);
   z-index: 9999;
   border-radius: 10px;
   padding: 10px; }
-  .airport_overview_widget.DAL_account .display #key .alarm {
+  .airport_overview_widget.DAL_account .display #key .critical {
     color: #c00; }
-  .airport_overview_widget.DAL_account .display #key .warning {
+  .airport_overview_widget.DAL_account .display #key .alarm {
     color: #e45f00; }
   .airport_overview_widget.DAL_account .display #key .perfect {
     color: #090; }
@@ -466,7 +466,7 @@ i.form-control-feedback {
   left: 0; }
   .airport_overview_widget.DAL_account .display #Airport_Gate_12_status.out-of-service {
     background-image: url("../img/airport/DAL/DAL_Gate_12_Service.png"); }
-.airport_overview_widget.CID_account .display .airport_overview_widget.JFK_account div[id^='Airport_Gate_'], .airport_overview_widget.CID_account .display .airport_overview_widget.JFK_account #Airport_Overview, .airport_overview_widget.DAL_account .display .airport_overview_widget.JFK_account div[id^='Airport_Gate_'], .airport_overview_widget.DAL_account .display .airport_overview_widget.JFK_account #Airport_Overview, .airport_overview_widget.JFK_account .display div[id^='Airport_Gate_'], .airport_overview_widget.JFK_account .display #Airport_Overview, .airport_overview_widget.EWR_account .display .airport_overview_widget.JFK_account div[id^='Airport_Gate_'], .airport_overview_widget.EWR_account .display .airport_overview_widget.JFK_account #Airport_Overview, .airport_overview_widget.RDU_account .display .airport_overview_widget.JFK_account div[id^='Airport_Gate_'], .airport_overview_widget.RDU_account .display .airport_overview_widget.JFK_account #Airport_Overview, .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.JFK_account div[id^='Airport_Gate_'], .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.JFK_account #Airport_Overview {
+.airport_overview_widget.CID_account .display .airport_overview_widget.JFK_account div[id^='Airport_Gate_'], .airport_overview_widget.CID_account .display .airport_overview_widget.JFK_account #Airport_Overview, .airport_overview_widget.DAL_account .display .airport_overview_widget.JFK_account div[id^='Airport_Gate_'], .airport_overview_widget.DAL_account .display .airport_overview_widget.JFK_account #Airport_Overview, .airport_overview_widget.JFK_account .display div[id^='Airport_Gate_'], .airport_overview_widget.JFK_account .display #Airport_Overview, .airport_overview_widget.EWR_account .display .airport_overview_widget.JFK_account div[id^='Airport_Gate_'], .airport_overview_widget.EWR_account .display .airport_overview_widget.JFK_account #Airport_Overview, .airport_overview_widget.RDU_account .display .airport_overview_widget.JFK_account div[id^='Airport_Gate_'], .airport_overview_widget.RDU_account .display .airport_overview_widget.JFK_account #Airport_Overview, .airport_overview_widget.PHX_account .display .airport_overview_widget.JFK_account div[id^='Airport_Gate_'], .airport_overview_widget.PHX_account .display .airport_overview_widget.JFK_account #Airport_Overview, .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.JFK_account div[id^='Airport_Gate_'], .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.JFK_account #Airport_Overview {
   min-height: 100%;
   min-width: 100%;
   overflow: auto;
@@ -477,14 +477,14 @@ i.form-control-feedback {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  font-size: 18px;
+  font-size: 10px;
   background-color: rgba(255, 255, 255, 0.5);
   z-index: 9999;
   border-radius: 10px;
   padding: 10px; }
-  .airport_overview_widget.JFK_account .display #key .alarm {
+  .airport_overview_widget.JFK_account .display #key .critical {
     color: #c00; }
-  .airport_overview_widget.JFK_account .display #key .warning {
+  .airport_overview_widget.JFK_account .display #key .alarm {
     color: #e45f00; }
   .airport_overview_widget.JFK_account .display #key .perfect {
     color: #090; }
@@ -2259,7 +2259,7 @@ i.form-control-feedback {
   left: 0; }
   .airport_overview_widget.JFK_account .display #Airport_Gate_B20L2_status.out-of-service {
     background-image: url("../img/airport/JFK/JFK_Gate_B20L2_Service.png"); }
-.airport_overview_widget.CID_account .display .airport_overview_widget.EWR_account div[id^='Airport_Gate_'], .airport_overview_widget.CID_account .display .airport_overview_widget.EWR_account #Airport_Overview, .airport_overview_widget.DAL_account .display .airport_overview_widget.EWR_account div[id^='Airport_Gate_'], .airport_overview_widget.DAL_account .display .airport_overview_widget.EWR_account #Airport_Overview, .airport_overview_widget.JFK_account .display .airport_overview_widget.EWR_account div[id^='Airport_Gate_'], .airport_overview_widget.JFK_account .display .airport_overview_widget.EWR_account #Airport_Overview, .airport_overview_widget.EWR_account .display div[id^='Airport_Gate_'], .airport_overview_widget.EWR_account .display #Airport_Overview, .airport_overview_widget.RDU_account .display .airport_overview_widget.EWR_account div[id^='Airport_Gate_'], .airport_overview_widget.RDU_account .display .airport_overview_widget.EWR_account #Airport_Overview, .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.EWR_account div[id^='Airport_Gate_'], .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.EWR_account #Airport_Overview {
+.airport_overview_widget.CID_account .display .airport_overview_widget.EWR_account div[id^='Airport_Gate_'], .airport_overview_widget.CID_account .display .airport_overview_widget.EWR_account #Airport_Overview, .airport_overview_widget.DAL_account .display .airport_overview_widget.EWR_account div[id^='Airport_Gate_'], .airport_overview_widget.DAL_account .display .airport_overview_widget.EWR_account #Airport_Overview, .airport_overview_widget.JFK_account .display .airport_overview_widget.EWR_account div[id^='Airport_Gate_'], .airport_overview_widget.JFK_account .display .airport_overview_widget.EWR_account #Airport_Overview, .airport_overview_widget.EWR_account .display div[id^='Airport_Gate_'], .airport_overview_widget.EWR_account .display #Airport_Overview, .airport_overview_widget.RDU_account .display .airport_overview_widget.EWR_account div[id^='Airport_Gate_'], .airport_overview_widget.RDU_account .display .airport_overview_widget.EWR_account #Airport_Overview, .airport_overview_widget.PHX_account .display .airport_overview_widget.EWR_account div[id^='Airport_Gate_'], .airport_overview_widget.PHX_account .display .airport_overview_widget.EWR_account #Airport_Overview, .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.EWR_account div[id^='Airport_Gate_'], .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.EWR_account #Airport_Overview {
   min-height: 100%;
   min-width: 100%;
   overflow: auto;
@@ -2268,16 +2268,16 @@ i.form-control-feedback {
   left: 0px; }
 .airport_overview_widget.EWR_account .display #key {
   position: absolute;
-  top: 50px;
-  right: 30px;
-  font-size: 18px;
+  bottom: 20px;
+  right: 20px;
+  font-size: 10px;
   background-color: rgba(255, 255, 255, 0.5);
   z-index: 9999;
   border-radius: 10px;
   padding: 10px; }
-  .airport_overview_widget.EWR_account .display #key .alarm {
+  .airport_overview_widget.EWR_account .display #key .critical {
     color: #c00; }
-  .airport_overview_widget.EWR_account .display #key .warning {
+  .airport_overview_widget.EWR_account .display #key .alarm {
     color: #e45f00; }
   .airport_overview_widget.EWR_account .display #key .perfect {
     color: #090; }
@@ -2373,7 +2373,7 @@ i.form-control-feedback {
   left: 0; }
   .airport_overview_widget.EWR_account .display #Airport_Gate_C125_status.out-of-service {
     background-image: url("../img/airport/EWR/EWR_Gate_C125_Service.png"); }
-.airport_overview_widget.CID_account .display .airport_overview_widget.RDU_account div[id^='Airport_Gate_'], .airport_overview_widget.CID_account .display .airport_overview_widget.RDU_account #Airport_Overview, .airport_overview_widget.DAL_account .display .airport_overview_widget.RDU_account div[id^='Airport_Gate_'], .airport_overview_widget.DAL_account .display .airport_overview_widget.RDU_account #Airport_Overview, .airport_overview_widget.JFK_account .display .airport_overview_widget.RDU_account div[id^='Airport_Gate_'], .airport_overview_widget.JFK_account .display .airport_overview_widget.RDU_account #Airport_Overview, .airport_overview_widget.EWR_account .display .airport_overview_widget.RDU_account div[id^='Airport_Gate_'], .airport_overview_widget.EWR_account .display .airport_overview_widget.RDU_account #Airport_Overview, .airport_overview_widget.RDU_account .display div[id^='Airport_Gate_'], .airport_overview_widget.RDU_account .display #Airport_Overview, .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.RDU_account div[id^='Airport_Gate_'], .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.RDU_account #Airport_Overview {
+.airport_overview_widget.CID_account .display .airport_overview_widget.RDU_account div[id^='Airport_Gate_'], .airport_overview_widget.CID_account .display .airport_overview_widget.RDU_account #Airport_Overview, .airport_overview_widget.DAL_account .display .airport_overview_widget.RDU_account div[id^='Airport_Gate_'], .airport_overview_widget.DAL_account .display .airport_overview_widget.RDU_account #Airport_Overview, .airport_overview_widget.JFK_account .display .airport_overview_widget.RDU_account div[id^='Airport_Gate_'], .airport_overview_widget.JFK_account .display .airport_overview_widget.RDU_account #Airport_Overview, .airport_overview_widget.EWR_account .display .airport_overview_widget.RDU_account div[id^='Airport_Gate_'], .airport_overview_widget.EWR_account .display .airport_overview_widget.RDU_account #Airport_Overview, .airport_overview_widget.RDU_account .display div[id^='Airport_Gate_'], .airport_overview_widget.RDU_account .display #Airport_Overview, .airport_overview_widget.PHX_account .display .airport_overview_widget.RDU_account div[id^='Airport_Gate_'], .airport_overview_widget.PHX_account .display .airport_overview_widget.RDU_account #Airport_Overview, .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.RDU_account div[id^='Airport_Gate_'], .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.RDU_account #Airport_Overview {
   min-height: 100%;
   min-width: 100%;
   overflow: auto;
@@ -2384,14 +2384,14 @@ i.form-control-feedback {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  font-size: 18px;
+  font-size: 10px;
   background-color: rgba(255, 255, 255, 0.5);
   z-index: 9999;
   border-radius: 10px;
   padding: 10px; }
-  .airport_overview_widget.RDU_account .display #key .alarm {
+  .airport_overview_widget.RDU_account .display #key .critical {
     color: #c00; }
-  .airport_overview_widget.RDU_account .display #key .warning {
+  .airport_overview_widget.RDU_account .display #key .alarm {
     color: #e45f00; }
   .airport_overview_widget.RDU_account .display #key .perfect {
     color: #090; }
@@ -3813,7 +3813,82 @@ i.form-control-feedback {
   left: 0; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D20_status.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D20_Service.png"); }
-.airport_overview_widget.CID_account .display .airport_overview_widget.HAS-IAH_account div[id^='Airport_Gate_'], .airport_overview_widget.CID_account .display .airport_overview_widget.HAS-IAH_account #Airport_Overview, .airport_overview_widget.DAL_account .display .airport_overview_widget.HAS-IAH_account div[id^='Airport_Gate_'], .airport_overview_widget.DAL_account .display .airport_overview_widget.HAS-IAH_account #Airport_Overview, .airport_overview_widget.JFK_account .display .airport_overview_widget.HAS-IAH_account div[id^='Airport_Gate_'], .airport_overview_widget.JFK_account .display .airport_overview_widget.HAS-IAH_account #Airport_Overview, .airport_overview_widget.EWR_account .display .airport_overview_widget.HAS-IAH_account div[id^='Airport_Gate_'], .airport_overview_widget.EWR_account .display .airport_overview_widget.HAS-IAH_account #Airport_Overview, .airport_overview_widget.RDU_account .display .airport_overview_widget.HAS-IAH_account div[id^='Airport_Gate_'], .airport_overview_widget.RDU_account .display .airport_overview_widget.HAS-IAH_account #Airport_Overview, .airport_overview_widget.HAS-IAH_account .display div[id^='Airport_Gate_'], .airport_overview_widget.HAS-IAH_account .display #Airport_Overview {
+.airport_overview_widget.CID_account .display .airport_overview_widget.PHX_account div[id^='Airport_Gate_'], .airport_overview_widget.CID_account .display .airport_overview_widget.PHX_account #Airport_Overview, .airport_overview_widget.DAL_account .display .airport_overview_widget.PHX_account div[id^='Airport_Gate_'], .airport_overview_widget.DAL_account .display .airport_overview_widget.PHX_account #Airport_Overview, .airport_overview_widget.JFK_account .display .airport_overview_widget.PHX_account div[id^='Airport_Gate_'], .airport_overview_widget.JFK_account .display .airport_overview_widget.PHX_account #Airport_Overview, .airport_overview_widget.EWR_account .display .airport_overview_widget.PHX_account div[id^='Airport_Gate_'], .airport_overview_widget.EWR_account .display .airport_overview_widget.PHX_account #Airport_Overview, .airport_overview_widget.RDU_account .display .airport_overview_widget.PHX_account div[id^='Airport_Gate_'], .airport_overview_widget.RDU_account .display .airport_overview_widget.PHX_account #Airport_Overview, .airport_overview_widget.PHX_account .display div[id^='Airport_Gate_'], .airport_overview_widget.PHX_account .display #Airport_Overview, .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.PHX_account div[id^='Airport_Gate_'], .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.PHX_account #Airport_Overview {
+  min-height: 100%;
+  min-width: 100%;
+  overflow: auto;
+  position: absolute;
+  top: 25px;
+  left: 0px; }
+.airport_overview_widget.PHX_account .display #key {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 9999;
+  border-radius: 10px;
+  padding: 10px; }
+  .airport_overview_widget.PHX_account .display #key .critical {
+    color: #c00; }
+  .airport_overview_widget.PHX_account .display #key .alarm {
+    color: #e45f00; }
+  .airport_overview_widget.PHX_account .display #key .perfect {
+    color: #090; }
+.airport_overview_widget.PHX_account .display #display_label {
+  display: none; }
+.airport_overview_widget.PHX_account .display div[id^='Airport_Gate_'] {
+  z-index: 1000; }
+.airport_overview_widget.PHX_account .display #Airport_Overview {
+  margin-top: 25px; }
+  .airport_overview_widget.PHX_account .display #Airport_Overview #layout {
+    width: 100%;
+    height: auto; }
+  .airport_overview_widget.PHX_account .display #Airport_Overview #layout_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden; }
+.airport_overview_widget.PHX_account .display #Airport_Gate_D1_a {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: url("../img/airport/PHX/PHX_Gate_D1.png");
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.PHX_account .display #Airport_Gate_D1_a.docked {
+    background-image: url("../img/airport/PHX/PHX_Gate_D1_Plane.png"); }
+  .airport_overview_widget.PHX_account .display #Airport_Gate_D1_a.bad_data {
+    background-image: url("../img/airport/PHX/PHX_Gate_D1_Bad_Data.png"); }
+.airport_overview_widget.PHX_account .display #Airport_Gate_D1_icon {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.PHX_account .display #Airport_Gate_D1_icon.alarm {
+    background-image: url("../img/airport/PHX/PHX_Gate_D1_Alarm.png"); }
+  .airport_overview_widget.PHX_account .display #Airport_Gate_D1_icon.critical {
+    background-image: url("../img/airport/PHX/PHX_Gate_D1_Critical.png"); }
+  .airport_overview_widget.PHX_account .display #Airport_Gate_D1_icon.perfect-dock {
+    background-image: url("../img/airport/PHX/PHX_Gate_D1_Perfect.png"); }
+.airport_overview_widget.PHX_account .display #Airport_Gate_D1_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.PHX_account .display #Airport_Gate_D1_status.out-of-service {
+    background-image: url("../img/airport/PHX/PHX_Gate_D1_Service.png"); }
+.airport_overview_widget.CID_account .display .airport_overview_widget.HAS-IAH_account div[id^='Airport_Gate_'], .airport_overview_widget.CID_account .display .airport_overview_widget.HAS-IAH_account #Airport_Overview, .airport_overview_widget.DAL_account .display .airport_overview_widget.HAS-IAH_account div[id^='Airport_Gate_'], .airport_overview_widget.DAL_account .display .airport_overview_widget.HAS-IAH_account #Airport_Overview, .airport_overview_widget.JFK_account .display .airport_overview_widget.HAS-IAH_account div[id^='Airport_Gate_'], .airport_overview_widget.JFK_account .display .airport_overview_widget.HAS-IAH_account #Airport_Overview, .airport_overview_widget.EWR_account .display .airport_overview_widget.HAS-IAH_account div[id^='Airport_Gate_'], .airport_overview_widget.EWR_account .display .airport_overview_widget.HAS-IAH_account #Airport_Overview, .airport_overview_widget.RDU_account .display .airport_overview_widget.HAS-IAH_account div[id^='Airport_Gate_'], .airport_overview_widget.RDU_account .display .airport_overview_widget.HAS-IAH_account #Airport_Overview, .airport_overview_widget.PHX_account .display .airport_overview_widget.HAS-IAH_account div[id^='Airport_Gate_'], .airport_overview_widget.PHX_account .display .airport_overview_widget.HAS-IAH_account #Airport_Overview, .airport_overview_widget.HAS-IAH_account .display div[id^='Airport_Gate_'], .airport_overview_widget.HAS-IAH_account .display #Airport_Overview {
   min-height: 100%;
   min-width: 100%;
   overflow: auto;
@@ -3824,14 +3899,14 @@ i.form-control-feedback {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  font-size: 18px;
+  font-size: 10px;
   background-color: rgba(255, 255, 255, 0.5);
   z-index: 9999;
   border-radius: 10px;
   padding: 10px; }
-  .airport_overview_widget.HAS-IAH_account .display #key .alarm {
+  .airport_overview_widget.HAS-IAH_account .display #key .critical {
     color: #c00; }
-  .airport_overview_widget.HAS-IAH_account .display #key .warning {
+  .airport_overview_widget.HAS-IAH_account .display #key .alarm {
     color: #f90; }
   .airport_overview_widget.HAS-IAH_account .display #key .perfect {
     color: #090; }
@@ -5447,97 +5522,79 @@ ul.chosen-results li.highlighted {
     margin-left: 10px; }
     .pbb_pca_gpu_status_widget .zone_list .gate_list .gate_span {
       margin-right: 10px; }
-.pbb_pca_gpu_status_widget .no-show {
-  visibility: hidden;
-  display: none; }
-.pbb_pca_gpu_status_widget .show {
-  visibility: visible; }
-.pbb_pca_gpu_status_widget.alarm {
-  background-color: #c00;
-  color: #fff; }
 .pbb_pca_gpu_status_widget .display {
   min-height: 100%;
   min-width: 100%;
   overflow: auto; }
-  .pbb_pca_gpu_status_widget .display #gpu_label {
-    margin-bottom: 3px; }
-    .pbb_pca_gpu_status_widget .display #gpu_label h1 {
-      line-height: 48px;
-      font-weight: bold;
-      margin: 0 0 0 0; }
-      .pbb_pca_gpu_status_widget .display #gpu_label h1 i.fa {
-        margin-right: -5px;
-        padding: 5px;
-        border-radius: 10px;
-        font-size: 26px !important; }
-      .pbb_pca_gpu_status_widget .display #gpu_label h1 i#docked {
-        color: #069;
-        background-color: #eee; }
-      .pbb_pca_gpu_status_widget .display #gpu_label h1 i#alarms {
-        color: #fff;
-        background-color: #c00; }
-      .pbb_pca_gpu_status_widget .display #gpu_label h1 i#warnings {
-        color: #f90;
-        background-color: #eee; }
-  .pbb_pca_gpu_status_widget .display table th {
-    font-size: 1.5em;
-    text-align: center;
-    border-bottom: solid 1px #aaa;
-    border-left: solid 1px #aaa;
-    background-color: #cce; }
-  .pbb_pca_gpu_status_widget .display table.data-status {
-    width: 75%;
-    float: left; }
-  .pbb_pca_gpu_status_widget .display table.data-status {
+  .pbb_pca_gpu_status_widget .display #widgetData {
     width: 100%;
     border: solid 1px #999;
     border-spacing: 1px;
     border-collapse: separate; }
-    .pbb_pca_gpu_status_widget .display table.data-status.airplane {
-      border: 0; }
-      .pbb_pca_gpu_status_widget .display table.data-status.airplane td {
-        background-color: #fff; }
-    .pbb_pca_gpu_status_widget .display table.data-status td, .pbb_pca_gpu_status_widget .display table.data-status div {
+    .pbb_pca_gpu_status_widget .display #widgetData thead th {
+      font-size: 1.2em;
+      text-align: center;
+      border-bottom: solid 1px #aaa;
+      border-left: solid 1px #aaa;
+      background-color: #cce; }
+    .pbb_pca_gpu_status_widget .display #widgetData tbody td {
       padding: 2px 5px;
       border-left: solid 1px #ddd;
       border-bottom: solid 1px #ddd; }
-      .pbb_pca_gpu_status_widget .display table.data-status td tr.dockundock, .pbb_pca_gpu_status_widget .display table.data-status div tr.dockundock {
-        background-color: #090; }
-      .pbb_pca_gpu_status_widget .display table.data-status td.DisCharge, .pbb_pca_gpu_status_widget .display table.data-status div.DisCharge {
-        text-align: center; }
-        .pbb_pca_gpu_status_widget .display table.data-status td.DisCharge.Cooling, .pbb_pca_gpu_status_widget .display table.data-status div.DisCharge.Cooling {
-          color: #33adff; }
-        .pbb_pca_gpu_status_widget .display table.data-status td.DisCharge.Heating, .pbb_pca_gpu_status_widget .display table.data-status div.DisCharge.Heating {
-          color: #ff3300; }
-      .pbb_pca_gpu_status_widget .display table.data-status td.lbl, .pbb_pca_gpu_status_widget .display table.data-status div.lbl {
-        background-color: #fff;
-        font-style: italic;
-        color: #333; }
-      .pbb_pca_gpu_status_widget .display table.data-status td.val, .pbb_pca_gpu_status_widget .display table.data-status div.val {
+      .pbb_pca_gpu_status_widget .display #widgetData tbody td.val {
         background-image: url("../img/data-status-idle.png");
         background-repeat: no-repeat;
         background-position: center center; }
-      .pbb_pca_gpu_status_widget .display table.data-status td.alarm, .pbb_pca_gpu_status_widget .display table.data-status div.alarm {
-        color: #fe6;
-        background-color: #c33; }
-      .pbb_pca_gpu_status_widget .display table.data-status td.ok, .pbb_pca_gpu_status_widget .display table.data-status div.ok {
+      .pbb_pca_gpu_status_widget .display #widgetData tbody td.ok {
         background-image: url("../img/data-status-ok.png");
         background-repeat: no-repeat;
         background-position: center center; }
-      .pbb_pca_gpu_status_widget .display table.data-status td.blue, .pbb_pca_gpu_status_widget .display table.data-status div.blue {
-        background-color: #06c;
-        color: #fff; }
-      .pbb_pca_gpu_status_widget .display table.data-status td.bad_data, .pbb_pca_gpu_status_widget .display table.data-status div.bad_data {
+      .pbb_pca_gpu_status_widget .display #widgetData tbody td.bad_data {
         background-image: url("../img/data-status-baddata.png");
         background-repeat: no-repeat;
         background-position: center center; }
-      .pbb_pca_gpu_status_widget .display table.data-status td.img-circles, .pbb_pca_gpu_status_widget .display table.data-status div.img-circles {
-        border-radius: 10%; }
-    .pbb_pca_gpu_status_widget .display table.data-status td[id$="_lbl"] {
+      .pbb_pca_gpu_status_widget .display #widgetData tbody td.no-show {
+        visibility: hidden;
+        display: none; }
+      .pbb_pca_gpu_status_widget .display #widgetData tbody td.show {
+        visibility: visible; }
+      .pbb_pca_gpu_status_widget .display #widgetData tbody td.show-no-status {
+        background-image: none !important; }
+    .pbb_pca_gpu_status_widget .display #widgetData tbody td[id$="_lbl"] {
       background-color: #fff;
       font-style: italic;
       color: #333;
       text-align: left; }
+    .pbb_pca_gpu_status_widget .display #widgetData tbody tr#iconRow i {
+      display: none;
+      text-align: center;
+      vertical-align: middle; }
+      .pbb_pca_gpu_status_widget .display #widgetData tbody tr#iconRow i.fa {
+        margin-right: -5px;
+        padding: 5px;
+        border-radius: 10px;
+        font-size: 15px !important; }
+      .pbb_pca_gpu_status_widget .display #widgetData tbody tr#iconRow i.docked {
+        color: #069;
+        display: inline-block; }
+      .pbb_pca_gpu_status_widget .display #widgetData tbody tr#iconRow i.critical {
+        color: #c00;
+        display: inline-block; }
+      .pbb_pca_gpu_status_widget .display #widgetData tbody tr#iconRow i.alarm {
+        color: #e45f00;
+        display: inline-block; }
+    .pbb_pca_gpu_status_widget .display #widgetData tbody td[id$="_pca_discharge_temp"] {
+      font-size: 12px; }
+      .pbb_pca_gpu_status_widget .display #widgetData tbody td[id$="_pca_discharge_temp"].DisCharge {
+        text-align: center; }
+        .pbb_pca_gpu_status_widget .display #widgetData tbody td[id$="_pca_discharge_temp"].DisCharge.Cooling {
+          color: #33adff; }
+        .pbb_pca_gpu_status_widget .display #widgetData tbody td[id$="_pca_discharge_temp"].DisCharge.Heating {
+          color: #ff3300; }
+    .pbb_pca_gpu_status_widget .display #widgetData tbody td[id$="_elvrot_rotunda_status"] {
+      background-image: none !important;
+      text-align: center;
+      vertical-align: middle; }
 
 /* GPU Widget Styles */
 .pbb_system_status_widget.alarm {
