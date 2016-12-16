@@ -1652,12 +1652,8 @@ window.JST["widgets/airport_overview_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-<<<<<<< HEAD
     
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-road"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n      </h1>\n    </div>\n    <div id="key">\n      <div class="key_row"><i class="fa fa-fw fa-plane"></i> Airplane at Gate</div>\n      <div class="key_row"><i class="fa fa-fw fa-warning alarm"></i> Critical Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-warning warning"></i> Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-check-circle-o perfect"></i> Perfect Hookup</div>\n      <div class="key_row"><i class="fa fa-fw fa-wrench alarm"></i> Out of Service</div>\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
-=======
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-road"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n      </h1>\n    </div>\n    <div id="key">\n      <div class="key_row"><i class="fa fa-fw fa-plane"></i> Airplane at Gate</div>\n      <div class="key_row"><i class="fa fa-fw fa-warning critical"></i> Critical Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-bell alarm"></i> Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-check-circle-o perfect"></i> Perfect Hookup</div>\n      <div class="key_row"><i class="fa fa-fw fa-wrench alarm"></i> Out of Service</div>\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
->>>>>>> 2968857e600efe68ddcba550de5aa559a99d892d
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -2207,12 +2203,8 @@ window.JST["widgets/pbb_pca_gpu_status_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-<<<<<<< HEAD
     
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-server"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n\n  <div class="display contain" style=\'width:100%;height:100%;\'>\n    <div id="display_label">\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table id="widgetData" class=\'data-status\'>\n      <thead>\n        <th id="H0"></th>\n      </thead>\n      <tbody>\n        <tr id="iconRow">\n          <td id="iconRow_0">\n            Alerts\n          </td>\n        </tr>\n      </tbody>\n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
-=======
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-server"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n\n  <div class="display contain" style=\'width:100%;height:100%;\'>\n    <div id="display_label">\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table id="widgetData" class=\'data-status\'>\n      <thead>\n        <th id="H0"></th>\n      </thead>\n      <tbody>\n        <tr id="iconRow">\n          <td id="iconRow_lbl">\n            Alerts\n          </td>\n        </tr>\n      </tbody>\n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
->>>>>>> 2968857e600efe68ddcba550de5aa559a99d892d
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -7651,33 +7643,14 @@ TagConfig = (function(superClass) {
           'gpu_status': 'gpu_status'
         },
         update_tags: {
-          pbb_docked: {
-            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-            Label: '[*]Docked',
-            LebelOverride: true,
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'Docked',
-              Parm002: 'UnDocked',
-              Parm003: 'Docked',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          },
           pbb_status: {
             Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
             Label: '[*]PBB',
             LebelOverride: true,
             DataType: 'Boolean',
             Parameters: {
-              Parm001: '',
-              Parm002: '',
+              Parm001: 'Docked',
+              Parm002: 'UnDocked',
               Parm003: 'ok',
               Parm004: null,
               Parm005: null
@@ -19111,142 +19084,6 @@ TagConfig = (function(superClass) {
           }
         }
       }
-<<<<<<< HEAD
-    },
-    'IAH-HAS': {
-      pbb_pca_gpu_status_widget: {
-        update_tags: {
-          pbb_docked: {
-            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-            Label: '[*]Docked',
-            LebelOverride: true,
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'Docked',
-              Parm002: 'UnDocked',
-              Parm003: 'Docked',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          },
-          pbb_status: {
-            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-            Label: '[*]PBB',
-            LebelOverride: true,
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: '',
-              Parm002: '',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_status: {
-            Tag: 'GPU.GPUSTATUSBOOLEAN',
-            Label: '[*]GPU',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          pca_status: {
-            Tag: 'PCA.PCASTATUS',
-            Label: '[*]PCA',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          pca_discharge_temp: {
-            Tag: 'PCA.TEMPDISCH',
-            Label: '[*]DisCharge',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: true,
-              Parm002: 2,
-              Parm003: '#{1} F',
-              Parm004: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          pca_mode_cooling: {
-            Tag: 'PCA.MODE_COOLING',
-            Label: 'Cooling Mode',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          },
-          pca_mode_heating: {
-            Tag: 'PCA.MODE_HEATING',
-            Label: 'Heating Mode',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          }
-        }
-      }
-=======
->>>>>>> fd92138247989b8b173e6439e1e3af520d302552
     }
   };
 
