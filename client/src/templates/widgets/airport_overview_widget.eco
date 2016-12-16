@@ -15,8 +15,8 @@
     </div>
     <div id="key">
       <div class="key_row"><i class="fa fa-fw fa-plane"></i> Airplane at Gate</div>
-      <div class="key_row"><i class="fa fa-fw fa-warning alarm"></i> Critical Alarm</div>
-      <div class="key_row"><i class="fa fa-fw fa-warning warning"></i> Alarm</div>
+      <div class="key_row"><i class="fa fa-fw fa-warning critical"></i> Critical Alarm</div>
+      <div class="key_row"><i class="fa fa-fw fa-bell alarm"></i> Alarm</div>
       <div class="key_row"><i class="fa fa-fw fa-check-circle-o perfect"></i> Perfect Hookup</div>
       <div class="key_row"><i class="fa fa-fw fa-wrench alarm"></i> Out of Service</div>
     </div>

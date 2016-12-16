@@ -23,13 +23,13 @@
         position: absolute;
         bottom: 20px;
         right: 20px;
-        font-size: 18px;
+        font-size: 10px;
         background-color: rgba(255,255,255,0.5);
         z-index: 9999;
         border-radius: 10px;
         padding: 10px;
-        .alarm { color:#c00; }
-        .warning { color:#e45f00; }
+        .critical { color:#c00; }
+        .alarm { color:#e45f00; }
         .perfect { color:#090; }
       }
       #display_label {
@@ -134,13 +134,13 @@
         position: absolute;
         bottom: 20px;
         right: 20px;
-        font-size: 18px;
+        font-size: 10px;
         background-color: rgba(255,255,255,0.5);
         z-index: 9999;
         border-radius: 10px;
         padding: 10px;
-        .alarm { color:#c00; }
-        .warning { color:#e45f00; }
+        .critical { color:#c00; }
+        .alarm { color:#e45f00; }
         .perfect { color:#090; }
       }
       #display_label {
@@ -252,13 +252,13 @@
         position: absolute;
         bottom: 20px;
         right: 20px;
-        font-size: 18px;
+        font-size: 10px;
         background-color: rgba(255,255,255,0.5);
         z-index: 9999;
         border-radius: 10px;
         padding: 10px;
-        .alarm { color:#c00; }
-        .warning { color:#e45f00; }
+        .critical { color:#c00; }
+        .alarm { color:#e45f00; }
         .perfect { color:#090; }
       }
       #display_label {
@@ -365,15 +365,15 @@
 
       #key {
         position: absolute;
-        top: 50px;
-        right: 30px;
-        font-size: 18px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 10px;
         background-color: rgba(255,255,255,0.5);
         z-index: 9999;
         border-radius: 10px;
         padding: 10px;
-        .alarm { color:#c00; }
-        .warning { color:#e45f00; }
+        .critical { color:#c00; }
+        .alarm { color:#e45f00; }
         .perfect { color:#090; }
       }
       #display_label {
@@ -480,13 +480,123 @@
         position: absolute;
         bottom: 20px;
         right: 20px;
-        font-size: 18px;
+        font-size: 10px;
         background-color: rgba(255,255,255,0.5);
         z-index: 9999;
         border-radius: 10px;
         padding: 10px;
-        .alarm { color:#c00; }
-        .warning { color:#e45f00; }
+        .critical { color:#c00; }
+        .alarm { color:#e45f00; }
+        .perfect { color:#090; }
+      }
+      #display_label {
+        display: none;
+      }
+      div[id^='Airport_Gate_'] {
+        @extend %div_defaults;
+        z-index: 1000;
+      }
+      #Airport_Overview {
+        @extend %div_defaults;
+        // background: url("../img/airport/CID/CID_Term_Overview.png") no-repeat bottom center; 
+        // background-size: contain;
+        // z-index: 100;
+        margin-top:25px;
+        #layout {
+          width:100%;
+          height:auto;
+        }
+        #layout_container {
+          position:absolute;
+          top:0;left:0;
+          overflow: hidden;
+        }
+      }
+
+      $ClassSuffixs: _bad_data _idle _ac_docked _good _alarm _warning;
+      $ImagesPrefix: "../img/airport/#{$site_code}/#{$site_code}_Gate_";  
+      $ImagesSuffixs: "_Bad_Data.png" ".png" "_Plane.png" "" "_Alarm.png" "_Warning.png";  
+
+      $index: 1;  
+      @each $Gate in $Gates {
+        #Airport_Gate_#{$Gate}_a {
+          background-repeat:no-repeat;
+          background-size: contain;
+          background-position: bottom center;
+          background-image: url("#{$ImagesPrefix}#{$Gate}.png");
+          width: 100% !important;
+          height: 100% !important;
+          top: 0;
+          left: 0;
+          &.docked {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_Plane.png");
+          }
+          &.bad_data {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_Bad_Data.png");
+          }
+        }
+        #Airport_Gate_#{$Gate}_icon {
+          background-repeat:no-repeat;
+          background-size: contain;
+          background-position: bottom center;
+          background-image: none;
+          width: 100% !important;
+          height: 100% !important;
+          top: 0;
+          left: 0;
+          &.alarm {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_Alarm.png");
+          }
+          &.critical {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_Critical.png");
+          }
+          &.perfect-dock {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_Perfect.png");
+          }
+        }        
+        #Airport_Gate_#{$Gate}_status {
+          background-repeat:no-repeat;
+          background-size: contain;
+          background-position: bottom center;
+          background-image: none;
+          width: 100% !important;
+          height: 100% !important;
+          top: 0;
+          left: 0;
+          &.out-of-service {
+            background-image: url("#{$ImagesPrefix}#{$Gate}_Service.png");
+          }
+        }        
+        $index: $index + 1;
+      }
+    }
+  }
+
+  &.PHX_account {
+    $site_code: PHX;
+    $Gates: D1;
+    $posx:  0%;
+    $posy:  0%;
+    %div_defaults {
+      min-height: 100%;
+      min-width: 100%;
+      overflow: auto;
+      position: absolute;
+      top: 25px;
+      left: 0px;
+    }
+    .display {
+      #key {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        font-size: 10px;
+        background-color: rgba(255,255,255,0.5);
+        z-index: 9999;
+        border-radius: 10px;
+        padding: 10px;
+        .critical { color:#c00; }
+        .alarm { color:#e45f00; }
         .perfect { color:#090; }
       }
       #display_label {
@@ -591,13 +701,13 @@
         position: absolute;
         bottom: 20px;
         right: 20px;
-        font-size: 18px;
+        font-size: 10px;
         background-color: rgba(255,255,255,0.5);
         z-index: 9999;
         border-radius: 10px;
         padding: 10px;
-        .alarm { color:#c00; }
-        .warning { color:#f90; }
+        .critical { color:#c00; }
+        .alarm { color:#f90; }
         .perfect { color:#090; }
       }
       #display_label {

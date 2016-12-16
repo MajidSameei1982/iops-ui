@@ -1652,8 +1652,12 @@ window.JST["widgets/airport_overview_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+<<<<<<< HEAD
     
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-road"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n      </h1>\n    </div>\n    <div id="key">\n      <div class="key_row"><i class="fa fa-fw fa-plane"></i> Airplane at Gate</div>\n      <div class="key_row"><i class="fa fa-fw fa-warning alarm"></i> Critical Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-warning warning"></i> Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-check-circle-o perfect"></i> Perfect Hookup</div>\n      <div class="key_row"><i class="fa fa-fw fa-wrench alarm"></i> Out of Service</div>\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+=======
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-road"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n      </h1>\n    </div>\n    <div id="key">\n      <div class="key_row"><i class="fa fa-fw fa-plane"></i> Airplane at Gate</div>\n      <div class="key_row"><i class="fa fa-fw fa-warning critical"></i> Critical Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-bell alarm"></i> Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-check-circle-o perfect"></i> Perfect Hookup</div>\n      <div class="key_row"><i class="fa fa-fw fa-wrench alarm"></i> Out of Service</div>\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+>>>>>>> 2968857e600efe68ddcba550de5aa559a99d892d
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -2203,8 +2207,12 @@ window.JST["widgets/pbb_pca_gpu_status_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+<<<<<<< HEAD
     
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-server"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n\n  <div class="display contain" style=\'width:100%;height:100%;\'>\n    <div id="display_label">\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table id="widgetData" class=\'data-status\'>\n      <thead>\n        <th id="H0"></th>\n      </thead>\n      <tbody>\n        <tr id="iconRow">\n          <td id="iconRow_0">\n            Alerts\n          </td>\n        </tr>\n      </tbody>\n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+=======
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-server"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n\n  <div class="display contain" style=\'width:100%;height:100%;\'>\n    <div id="display_label">\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table id="widgetData" class=\'data-status\'>\n      <thead>\n        <th id="H0"></th>\n      </thead>\n      <tbody>\n        <tr id="iconRow">\n          <td id="iconRow_lbl">\n            Alerts\n          </td>\n        </tr>\n      </tbody>\n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+>>>>>>> 2968857e600efe68ddcba550de5aa559a99d892d
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -7781,14 +7789,33 @@ TagConfig = (function(superClass) {
           'gpu_status': 'gpu_status'
         },
         update_tags: {
+          pbb_docked: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: '[*]Docked',
+            LebelOverride: true,
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Docked',
+              Parm002: 'UnDocked',
+              Parm003: 'Docked',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
           pbb_status: {
             Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
             Label: '[*]PBB',
             LebelOverride: true,
             DataType: 'Boolean',
             Parameters: {
-              Parm001: 'Docked',
-              Parm002: 'UnDocked',
+              Parm001: '',
+              Parm002: '',
               Parm003: 'ok',
               Parm004: null,
               Parm005: null
@@ -9196,13 +9223,33 @@ TagConfig = (function(superClass) {
       },
       pbb_pca_gpu_status_widget: {
         update_tags: {
-          pbb_status: {
+          pbb_docked: {
             Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-            Label: '[*]PBB',
+            Label: '[*]Docked',
+            LebelOverride: true,
             DataType: 'Boolean',
             Parameters: {
               Parm001: 'Docked',
               Parm002: 'UnDocked',
+              Parm003: 'Docked',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_status: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: '[*]PBB',
+            LebelOverride: true,
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: '',
+              Parm002: '',
               Parm003: 'ok',
               Parm004: null,
               Parm005: null
@@ -9513,14 +9560,33 @@ TagConfig = (function(superClass) {
       },
       pbb_pca_gpu_status_widget: {
         update_tags: {
+          pbb_docked: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: '[*]Docked',
+            LebelOverride: true,
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Docked',
+              Parm002: 'UnDocked',
+              Parm003: 'Docked',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
           pbb_status: {
             Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
             Label: '[*]PBB',
             LebelOverride: true,
             DataType: 'Boolean',
             Parameters: {
-              Parm001: 'Docked',
-              Parm002: 'UnDocked',
+              Parm001: '',
+              Parm002: '',
               Parm003: 'ok',
               Parm004: null,
               Parm005: null
@@ -11604,14 +11670,33 @@ TagConfig = (function(superClass) {
       },
       pbb_pca_gpu_status_widget: {
         update_tags: {
+          pbb_docked: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: '[*]Docked',
+            LebelOverride: true,
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Docked',
+              Parm002: 'UnDocked',
+              Parm003: 'Docked',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
           pbb_status: {
             Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
             Label: '[*]PBB',
             LebelOverride: true,
             DataType: 'Boolean',
             Parameters: {
-              Parm001: 'Docked',
-              Parm002: 'UnDocked',
+              Parm001: '',
+              Parm002: '',
               Parm003: 'ok',
               Parm004: null,
               Parm005: null
@@ -12320,14 +12405,33 @@ TagConfig = (function(superClass) {
           'pca_discharge_temp': 'pca_discharge_temp'
         },
         update_tags: {
+          pbb_docked: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: '[*]Docked',
+            LebelOverride: true,
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Docked',
+              Parm002: 'UnDocked',
+              Parm003: 'Docked',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
           pbb_status: {
             Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
             Label: '[*]PBB',
             LebelOverride: true,
             DataType: 'Boolean',
             Parameters: {
-              Parm001: 'Docked',
-              Parm002: 'UnDocked',
+              Parm001: '',
+              Parm002: '',
               Parm003: 'ok',
               Parm004: null,
               Parm005: null
@@ -17557,14 +17661,33 @@ TagConfig = (function(superClass) {
       },
       pbb_pca_gpu_status_widget: {
         update_tags: {
+          pbb_docked: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: '[*]Docked',
+            LebelOverride: true,
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Docked',
+              Parm002: 'UnDocked',
+              Parm003: 'Docked',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
           pbb_status: {
             Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
             Label: '[*]PBB',
             LebelOverride: true,
             DataType: 'Boolean',
             Parameters: {
-              Parm001: 'Docked',
-              Parm002: 'UnDocked',
+              Parm001: '',
+              Parm002: '',
               Parm003: 'ok',
               Parm004: null,
               Parm005: null
@@ -17671,14 +17794,33 @@ TagConfig = (function(superClass) {
     'IAH-HAS': {
       pbb_pca_gpu_status_widget: {
         update_tags: {
+          pbb_docked: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: '[*]Docked',
+            LebelOverride: true,
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Docked',
+              Parm002: 'UnDocked',
+              Parm003: 'Docked',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
           pbb_status: {
             Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
             Label: '[*]PBB',
             LebelOverride: true,
             DataType: 'Boolean',
             Parameters: {
-              Parm001: 'Docked',
-              Parm002: 'UnDocked',
+              Parm001: '',
+              Parm002: '',
               Parm003: 'ok',
               Parm004: null,
               Parm005: null
@@ -26208,9 +26350,6 @@ PbbpcagpustatusWidgetView = (function(superClass) {
     wtitle: 'h3.box-title',
     display: '.display',
     content: '.content',
-    docked: 'i#docked',
-    alarms: 'i#alarms',
-    warnings: 'i#warnings',
     site: 'select#site',
     gates: '#gate_cks'
   };
@@ -26224,7 +26363,8 @@ PbbpcagpustatusWidgetView = (function(superClass) {
     pca_mode_cooling: 'PCA.MODE_COOLING',
     pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
     pbb_has_warnings: 'Warning._HasWarnings',
-    pbb_has_alarms: 'Alarm._HasAlarms'
+    has_alarms: 'Alarm._HasAlarms',
+    has_critical_alarms: 'Alarm._HasCriticalAlarms'
   };
 
   tagData = [];
@@ -26302,15 +26442,15 @@ PbbpcagpustatusWidgetView = (function(superClass) {
         }
         if ($(elementPrefix + " #dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2]).length === 0) {
           $(elementPrefix + " #widgetData thead tr").append("<th id='dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "' class='header'>" + gp[2] + "</th>");
-          $(elementPrefix + " #widgetData tbody #iconRow").append("<td id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "'> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_docked' class='fa fa-plane' title='Plane is DOCKED' style='display:none;'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_alarms' class='fa fa-bell-o' title='Gate has ALARMS' style='display:none;'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_warnings' class='fa fa-warning' title='Gate has WARNINGS' style='display:none;'></i> </td>");
+          $(elementPrefix + " #widgetData tbody #iconRow").append("<td id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "'> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_critical' class='fa fa-warning' title='Gate has CRITICAL ALARMS'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_alarm' class='fa fa-bell' title='Gate has ALARMS'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_docked' class='fa fa-plane' title='Plane is DOCKED'></i> </td>");
         }
         ref2 = this.tagConfig.TagData;
         for (tag in ref2) {
           tagData = ref2[tag];
+          t = tagData.Tag;
+          gate = "Term" + gp[0] + ".Zone" + gp[1] + ".Gate" + gp[2] + ".";
+          tags.push("" + this.prefix + gate + tagData.Tag + ".Value");
           if (tagData.Element.Class !== 'no_row') {
-            t = tagData.Tag;
-            gate = "Term" + gp[0] + ".Zone" + gp[1] + ".Gate" + gp[2] + ".";
-            tags.push("" + this.prefix + gate + tagData.Tag + ".Value");
             if ($(elementPrefix + " #dynamic_" + tag).length === 0) {
               label = tagData.Label;
               if (/[*]/.test(label)) {
@@ -26328,9 +26468,10 @@ PbbpcagpustatusWidgetView = (function(superClass) {
           ref3 = $(elementPrefix + " #dynamic_" + tag + ">td");
           for (index = j = 0, len1 = ref3.length; j < len1; index = ++j) {
             element = ref3[index];
-            if (element.id.indexOf(elementPrefix + " dynamic_" + tag + "_default_") > -1) {
+            if (element.id.indexOf("dynamic_" + tag + "_default_") > -1) {
               col = column - 1;
               $(elementPrefix + " #" + element.id).toggleClass('no-show', index > col);
+              $(elementPrefix + " #" + element.id).toggleClass('show-no-status', index <= col);
             }
           }
         }
@@ -26353,7 +26494,8 @@ PbbpcagpustatusWidgetView = (function(superClass) {
   };
 
   PbbpcagpustatusWidgetView.prototype.data_update = function(data) {
-    var gate, parsedTagId, ref, results, s, tag;
+    var elementPrefix, gate, parsedTagId, ref, results, s, setValue, tag, tzgPrefix;
+    elementPrefix = "li#" + this.el.parentNode.id + " ." + this.classID + " ";
     s = this.model.get("settings");
     if ((s == null) || (s.gates == null) || s.gates.length === 0) {
       return;
@@ -26364,21 +26506,33 @@ PbbpcagpustatusWidgetView = (function(superClass) {
     for (tag in ref) {
       data = ref[tag];
       parsedTagId = tag.split("_");
+      tzgPrefix = parsedTagId[0] + "_" + parsedTagId[1] + "_" + parsedTagId[2];
       gate = "Term" + parsedTagId[0] + ".Zone" + parsedTagId[1] + ".Gate" + parsedTagId[2] + ".";
       this.vals[tag] = this.opc.get_value("" + this.prefix + gate + data.Tag + ".Value");
-      switch (data.DataType.toLowerCase()) {
-        case 'boolean':
-          results.push(this.render_row_tzg("dynamic_" + tag, "", "", data.Parameters.Parm003, data.Parameters.Parm004, data.Parameters.Parm005));
-          break;
-        case 'float':
-          results.push(this.render_value_row_tzg("dynamic_" + tag, data.Parameters.Parm001, data.Parameters.Parm002, data.Parameters.Parm003, data.Parameters.Parm004));
-          break;
-        case 'value':
-          results.push(this.render_value_row_tzg("dynamic_" + tag, "", "", data.Parameters.Parm003, data.Parameters.Parm004));
-          break;
-        default:
-          results.push(void 0);
+      setValue = (this.vals[tag] != null) && this.vals[tag] === "True";
+      if (/pbb_docked/.test(tag)) {
+        $(elementPrefix + " #widgetData #dynamic_iconRow_" + tzgPrefix + "_docked").toggleClass('docked', setValue);
+      } else if (tag.indexOf(tzgPrefix + "_has_critical_alarms") > -1) {
+        $(elementPrefix + " #widgetData #dynamic_iconRow_" + tzgPrefix + "_critical").toggleClass('critical', setValue);
+      } else if (tag.indexOf(tzgPrefix + "_has_alarms") > -1) {
+        $(elementPrefix + " #widgetData #dynamic_iconRow_" + tzgPrefix + "_alarm").toggleClass('alarm', setValue);
+      } else if (tag.indexOf(tzgPrefix + "_pca_mode_cooling") > -1) {
+        $(elementPrefix + " #widgetData #dynamic_" + tzgPrefix + "_pca_discharge_temp").toggleClass('Cooling', setValue);
+      } else if (tag.indexOf(tzgPrefix + "_pca_mode_heating") > -1) {
+        $(elementPrefix + " #widgetData #dynamic_" + tzgPrefix + "_pca_discharge_temp").toggleClass('Heating', setValue);
+      } else {
+        switch (data.DataType.toLowerCase()) {
+          case 'boolean':
+            this.render_row_tzg("dynamic_" + tag, "", "", data.Parameters.Parm003, data.Parameters.Parm004, data.Parameters.Parm005);
+            break;
+          case 'float':
+            this.render_value_row_tzg("dynamic_" + tag, data.Parameters.Parm001, data.Parameters.Parm002, data.Parameters.Parm003, data.Parameters.Parm004);
+            break;
+          case 'value':
+            this.render_value_row_tzg("dynamic_" + tag, "", "", data.Parameters.Parm003, data.Parameters.Parm004);
+        }
       }
+      results.push(this);
     }
     return results;
   };

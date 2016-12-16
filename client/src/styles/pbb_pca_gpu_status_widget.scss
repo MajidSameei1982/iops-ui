@@ -9,81 +9,100 @@
     }
   }
 
-  .no-show {
-    visibility: hidden;
-    display: none;
-  }
-  .show {
-    visibility: visible;
-  }
-  &.alarm {
-    background-color: #c00;
-    color: #fff;
-  }
   .display {
     min-height: 100%;
     min-width: 100%;
     overflow: auto;
-    #gpu_label {
-      margin-bottom: 3px;
-      h1 {
-        line-height:48px;
-        font-weight: bold;
-        margin: 0 0 0 0;
-        i.fa {
-          margin-right:-5px;
-          padding: 5px;
-          border-radius: 10px;
-          font-size:26px !important;
-        }
-        i#docked {
-          color: #069;
-          background-color: #eee;
-        }
-        i#alarms {
-          color: #fff;
-          background-color: #c00;
-        }
-        i#warnings {
-          color: #f90;
-          background-color: #eee;
+    #widgetData {
+      width: 100%;
+      border:solid 1px #999;
+      border-spacing: 1px;
+      border-collapse: separate;
+      thead {
+        th {
+          font-size: 1.2em;
+          text-align: center;
+          border-bottom: solid 1px #aaa;
+          border-left: solid 1px #aaa;
+          background-color: #cce;
         }
       }
-    }
-
-        // Handles the style overrides of the Dual Unit GPU
-    table {
-      th {
-        font-size: 1.5em;
-        text-align: center;
-        border-bottom: solid 1px #aaa;
-        border-left: solid 1px #aaa;
-        background-color: #cce;
-      }
-      &.data-status {
-        width: 75%;
-        float: left;
-      }
-      &.data-status {
-        width: 100%;
-        border:solid 1px #999;
-        border-spacing: 1px;
-        border-collapse: separate;
-        &.airplane {
-          border: 0;
-          td {
-            background-color: #fff;
-          }
-        }
-        td, div {
+      tbody {
+        td{
           padding: 2px 5px;
           border-left: solid 1px #ddd;
           border-bottom: solid 1px #ddd;
-          tr{
-            &.dockundock {
-              background-color: #090;
+          &.val {
+            background-image:  url("../img/data-status-idle.png");
+            background-repeat: no-repeat;
+            background-position: center center;
+          }
+          &.ok {
+            background-image:  url("../img/data-status-ok.png");
+            background-repeat: no-repeat;
+            background-position: center center;
+          }
+          &.bad_data {
+            background-image:  url("../img/data-status-baddata.png");
+            background-repeat: no-repeat;
+            background-position: center center
+          }
+          &.no-show {
+            visibility: hidden;
+            display: none;
+          }
+          &.show {
+            visibility: visible;
+          }
+          &.show-no-status {
+            background-image:  none !important;
+          }
+
+        }
+        td[id$="_lbl"] {
+          background-color:#fff;
+          font-style: italic;
+          color:#333;
+          text-align: left;
+        }
+
+        tr#iconRow {
+          i {
+            display: none;
+            text-align: center;
+            vertical-align: middle;
+            &.fa {
+              margin-right:-5px;
+              padding: 5px;
+              border-radius: 10px;
+              font-size:15px !important;
+            }
+            &.docked {
+              color: #069;
+              display: inline-block;
+            }
+            &.critical { 
+              color:#c00; 
+              display: inline-block;
+            }
+            &.alarm { 
+              color:#e45f00; 
+              display: inline-block;
             }
           }
+
+        }
+        td[id$="_pbb_status"] {
+
+        }
+        td[id$="_pca_status"] {
+
+        }
+        td[id$="_gpu_status"], tr[id$="_gpu_01_status"], tr[id$="_gpu_02_status"] {
+
+        }
+        td[id$="_pca_discharge_temp"] {
+          font-size: 12px;
           &.DisCharge {
             text-align: center;
             &.Cooling {
@@ -93,44 +112,12 @@
               color: #ff3300;
             }
           }
-          &.lbl {
-            background-color:#fff;
-            font-style: italic;
-            color:#333;
-            //border-bottom:solid 1px #ddd;
-          }
-          &.val {
-            background-image:  url("../img/data-status-idle.png");
-            background-repeat: no-repeat;
-            background-position: center center;
-          }
-          &.alarm {
-            color: #fe6;
-            background-color:#c33;
-          }
-          &.ok {
-            background-image:  url("../img/data-status-ok.png");
-            background-repeat: no-repeat;
-            background-position: center center;
-          }
-          &.blue {
-            background-color: #06c;
-            color:#fff; 
-          }
-          &.bad_data {
-            background-image:  url("../img/data-status-baddata.png");
-            background-repeat: no-repeat;
-            background-position: center center
-          }
-          &.img-circles {
-            border-radius: 10%; // set radius in percents
-          }
+
         }
-        td[id$="_lbl"] {
-            background-color:#fff;
-            font-style: italic;
-            color:#333;
-            text-align: left;
+        td[id$="_elvrot_rotunda_status"] {
+          background-image: none !important;
+          text-align: center;
+          vertical-align: middle;
         }
       }
     }
