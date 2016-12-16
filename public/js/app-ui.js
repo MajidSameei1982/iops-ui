@@ -5669,9 +5669,9 @@ TagConfig = (function(superClass) {
       Label: 'Hot Gas Controller,Primary compressor #1',
       DataType: 'Float',
       Parameters: {
-        Parm001: false,
-        Parm002: null,
-        Parm003: null,
+        Parm001: true,
+        Parm002: 2,
+        Parm003: '#{1}',
         Parm004: null
       },
       Element: {
@@ -5686,9 +5686,9 @@ TagConfig = (function(superClass) {
       Label: 'Hot Gas Controller,Primary compressor #2',
       DataType: 'Float',
       Parameters: {
-        Parm001: false,
-        Parm002: null,
-        Parm003: null,
+        Parm001: true,
+        Parm002: 2,
+        Parm003: '#{1}',
         Parm004: null
       },
       Element: {
@@ -8458,9 +8458,9 @@ TagConfig = (function(superClass) {
             Label: 'Suction pressure,primary compressor #1',
             DataType: 'Float',
             Parameters: {
-              Parm001: false,
-              Parm002: null,
-              Parm003: null,
+              Parm001: true,
+              Parm002: 2,
+              Parm003: '#{1}',
               Parm004: null
             },
             Element: {
@@ -8475,9 +8475,9 @@ TagConfig = (function(superClass) {
             Label: 'Suction pressure,primary compressor #2',
             DataType: 'Float',
             Parameters: {
-              Parm001: false,
-              Parm002: null,
-              Parm003: null,
+              Parm001: true,
+              Parm002: 2,
+              Parm003: '#{1}',
               Parm004: null
             },
             Element: {
@@ -8720,9 +8720,9 @@ TagConfig = (function(superClass) {
             Label: 'Suction pressure,primary compressor #1',
             DataType: 'Float',
             Parameters: {
-              Parm001: false,
-              Parm002: null,
-              Parm003: null,
+              Parm001: true,
+              Parm002: 2,
+              Parm003: '#{1}',
               Parm004: null
             },
             Element: {
@@ -8737,9 +8737,9 @@ TagConfig = (function(superClass) {
             Label: 'Suction pressure,primary compressor #2',
             DataType: 'Float',
             Parameters: {
-              Parm001: false,
-              Parm002: null,
-              Parm003: null,
+              Parm001: true,
+              Parm002: 2,
+              Parm003: '#{1}',
               Parm004: null
             },
             Element: {
@@ -8759,9 +8759,9 @@ TagConfig = (function(superClass) {
                   Label: 'Ambient Air Temperature',
                   DataType: 'Float',
                   Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: null,
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1} F',
                     Parm004: null
                   },
                   Element: {
@@ -13553,7 +13553,7 @@ TagConfig = (function(superClass) {
           },
           B2: {
             B32: {
-              update_tags: {
+              add_tags: {
                 pca_status: {
                   Tag: 'PCA.PCASTATUS',
                   Label: '[*]PCA',
