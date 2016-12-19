@@ -76,11 +76,11 @@ window.app_config = {
       name: "PCA Summary Widget",
       icon: "server"
     },
-    {
-      id: "video",
-      name: "VIDEO Widget",
-      icon: "flash"
-    },
+    // {
+    //   id: "video",
+    //   name: "VIDEO Widget",
+    //   icon: "flash"
+    // },
     {
       id: "gpu",
       name: "GPU Widget",
@@ -101,11 +101,11 @@ window.app_config = {
       name: "Report Widget",
       icon: "bar-chart"
     },
-    {
-      id: "kpi",
-      name: "Kpi Widget",
-      icon: "bar-chart" 
-    },
+    // {
+    //   id: "kpi",
+    //   name: "Kpi Widget",
+    //   icon: "bar-chart" 
+    // },
     {
       id: "config",
       name: "Config Widget",

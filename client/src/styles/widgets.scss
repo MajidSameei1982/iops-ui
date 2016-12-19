@@ -67,7 +67,22 @@ ul.gridster.widget-container {
 					}
 					.chosen-container {
 						margin-left: 20px;
-						width: auto;
+						width: 70% !important;
+					}
+					#terminals .chosen-container {
+						margin-left: 20px;
+						width: 25% !important;
+						min-width: 60px;
+					}
+					#zones .chosen-container {
+						margin-left: 20px;
+						width: 30% !important;
+						min-width: 75px;
+					}
+					#gates .chosen-container {
+						margin-left: 20px;
+						width: 45% !important;
+						min-width: 85px;
 					}
 
 				}

@@ -10,9 +10,6 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
     wtitle:         'h3.box-title'
     display:        '.display'
     content:        '.content'
-    docked:         'i#docked'
-    alarms:         'i#alarms'
-    warnings:       'i#warnings'
     site:           'select#site'
     gates:          '#gate_cks'
 
@@ -25,7 +22,8 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
     pca_mode_cooling:   'PCA.MODE_COOLING'
     pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
     pbb_has_warnings :  'Warning._HasWarnings'
-    pbb_has_alarms :    'Alarm._HasAlarms'
+    has_alarms :    'Alarm._HasAlarms'
+    has_critical_alarms : 'Alarm._HasCriticalAlarms'
 
   tagData = []
   tagConfig = []   
@@ -85,17 +83,17 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
           $("#{elementPrefix} #widgetData thead tr").append("<th id='dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}' class='header'>#{gp[2]}</th>")
           $("#{elementPrefix} #widgetData tbody #iconRow").append(
             "<td id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}'>
-              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_docked' class='fa fa-plane' title='Plane is DOCKED' style='display:none;'></i>
-              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_alarms' class='fa fa-bell-o' title='Gate has ALARMS' style='display:none;'></i>
-              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_warnings' class='fa fa-warning' title='Gate has WARNINGS' style='display:none;'></i>
+              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_critical' class='fa fa-warning' title='Gate has CRITICAL ALARMS'></i>
+              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_alarm' class='fa fa-bell' title='Gate has ALARMS'></i>
+              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_docked' class='fa fa-plane' title='Plane is DOCKED'></i>
             </td>"
           )
           
         for tag, tagData of @tagConfig.TagData
+          t = tagData.Tag
+          gate = "Term#{gp[0]}.Zone#{gp[1]}.Gate#{gp[2]}."
+          tags.push "#{@prefix}#{gate}#{tagData.Tag}.Value"
           if(tagData.Element.Class != 'no_row')
-            t = tagData.Tag
-            gate = "Term#{gp[0]}.Zone#{gp[1]}.Gate#{gp[2]}."
-            tags.push "#{@prefix}#{gate}#{tagData.Tag}.Value"
             if($("#{elementPrefix} #dynamic_#{tag}").length == 0)
               label = tagData.Label
               if /[*]/.test(label)
@@ -120,9 +118,11 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
 
 
           for element, index in $("#{elementPrefix} #dynamic_#{tag}>td")
-            if element.id.indexOf("#{elementPrefix} dynamic_#{tag}_default_") > -1
+            if element.id.indexOf("dynamic_#{tag}_default_") > -1
               col = column - 1
               $("#{elementPrefix} ##{element.id}").toggleClass('no-show',(index > col))
+              $("#{elementPrefix} ##{element.id}").toggleClass('show-no-status',(index <= col))
+
 
           # for element, index in $("#widgetData tbody>tr")
           #   indexR = 0
@@ -145,7 +145,7 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
 
   # process data and update the view
   data_update: (data)=>
-
+    elementPrefix = "li##{@el.parentNode.id} .#{@classID} "
     s = @model.get("settings")
     return if !s? || !s.gates? || s.gates.length == 0
 
@@ -153,17 +153,30 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
     @vals = {}
     for tag, data of @tagData
       parsedTagId = tag.split("_")
+      tzgPrefix = "#{parsedTagId[0]}_#{parsedTagId[1]}_#{parsedTagId[2]}"
       gate = "Term#{parsedTagId[0]}.Zone#{parsedTagId[1]}.Gate#{parsedTagId[2]}."
       @vals[tag] = @opc.get_value("#{@prefix}#{gate}#{data.Tag}.Value")
-
-      switch data.DataType.toLowerCase()
-        when 'boolean'
-          @render_row_tzg("dynamic_#{tag}", "", "", data.Parameters.Parm003, data.Parameters.Parm004, data.Parameters.Parm005)
-        when 'float'
-          @render_value_row_tzg("dynamic_#{tag}", data.Parameters.Parm001, data.Parameters.Parm002, data.Parameters.Parm003, data.Parameters.Parm004)
-        when 'value'
-          @render_value_row_tzg("dynamic_#{tag}", "", "", data.Parameters.Parm003, data.Parameters.Parm004)
-
+      # Process the Docked
+      setValue = (@vals[tag]? && @vals[tag] == "True")
+      if /pbb_docked/.test(tag)
+        $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_docked").toggleClass('docked',setValue)
+      else if tag.indexOf("#{tzgPrefix}_has_critical_alarms") > -1
+        $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_critical").toggleClass('critical',setValue)
+      else if tag.indexOf("#{tzgPrefix}_has_alarms") > -1
+        $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_alarm").toggleClass('alarm',setValue)
+      else if tag.indexOf("#{tzgPrefix}_pca_mode_cooling") > -1
+        $("#{elementPrefix} #widgetData #dynamic_#{tzgPrefix}_pca_discharge_temp").toggleClass('Cooling',setValue)
+      else if tag.indexOf("#{tzgPrefix}_pca_mode_heating") > -1
+        $("#{elementPrefix} #widgetData #dynamic_#{tzgPrefix}_pca_discharge_temp").toggleClass('Heating',setValue)
+      else
+        switch data.DataType.toLowerCase()
+          when 'boolean'
+            @render_row_tzg("dynamic_#{tag}", "", "", data.Parameters.Parm003, data.Parameters.Parm004, data.Parameters.Parm005)
+          when 'float'
+            @render_value_row_tzg("dynamic_#{tag}", data.Parameters.Parm001, data.Parameters.Parm002, data.Parameters.Parm003, data.Parameters.Parm004)
+          when 'value'
+            @render_value_row_tzg("dynamic_#{tag}", "", "", data.Parameters.Parm003, data.Parameters.Parm004)
+      @
     
   set_model: ()=>
     @IsUpdatingSettings = true
