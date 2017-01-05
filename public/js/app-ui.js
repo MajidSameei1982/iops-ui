@@ -24304,6 +24304,11 @@ AirportoverviewWidgetView = (function(superClass) {
       for (j = 0, len1 = ref.length; j < len1; j++) {
         g = ref[j];
         this.$("#layout_container").append("<div id='Airport_Gate_" + g.Number + "_a'><div id='Airport_Gate_" + g.Number + "_icon'></div><div id='Airport_Gate_" + g.Number + "_status'></div>");
+        this.$("#Airport_Gate_" + g.Number + "_icon").on('blink', (function(_this) {
+          return function() {
+            _this.$("#Airport_Gate_" + g.Number + "_icon").fadeOut(1000).fadeIn(1, blink);
+          };
+        })(this));
       }
       App.opc.add_tags(this.site_code, tags);
       this.watch_updates(this.site_code);
@@ -24332,6 +24337,9 @@ AirportoverviewWidgetView = (function(superClass) {
       if ((qoos != null) && goos) {
         outOfService = this.get_bool(this.opc.get_value(g.Tag_gate_out_of_service + ".Value"));
         this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("out-of-service", outOfService === true && qoos);
+        if (outOfService) {
+          this.$("#Airport_Gate_" + g.Number + "_icon").trigger('blink');
+        }
       } else {
         goos = false;
       }

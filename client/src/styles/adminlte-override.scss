@@ -66,12 +66,13 @@ i.form-control-feedback {
 }
 
 #side-region {
-    margin-top: 50px;
-    width: 230px;
-    height: 95%;
-    position: fixed;
-    overflow: scroll;
-    z-index: 1000;
+	margin-top: 50px;
+	width: 230px;
+	transition: width 0.28s ease-out;
+	height: 95%;
+	position: fixed;
+	overflow: scroll;
+	z-index: 1000;
 }
 
 #content-region {

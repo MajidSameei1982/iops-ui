@@ -91,6 +91,10 @@ class AirportoverviewWidgetView extends IOPSWidgetView
       for g in @gateData
         @$("#layout_container").append "<div id='Airport_Gate_#{g.Number}_a'><div id='Airport_Gate_#{g.Number}_icon'></div><div id='Airport_Gate_#{g.Number}_status'></div>"
         #$(".display").append "<div id='Airport_Gate_#{g.Number}_Status'></div>"
+        @$("#Airport_Gate_#{g.Number}_icon").on 'blink', ()=>
+          #if @$("#Airport_Gate_#{g.Number}_icon").hasClass('critical')
+          @$("#Airport_Gate_#{g.Number}_icon").fadeOut(1000).fadeIn 1, blink
+          return
 
       # add tag list to the connection for monitoring
       App.opc.add_tags @site_code, tags
@@ -99,7 +103,7 @@ class AirportoverviewWidgetView extends IOPSWidgetView
 
       # make local reference to the opc connection in use
       @opc = App.opc.connections[@site_code]
-
+      
   data_update: (data)=>
     for g in @gateData
       outOfService = null
@@ -121,6 +125,8 @@ class AirportoverviewWidgetView extends IOPSWidgetView
         outOfService = @get_bool(@opc.get_value("#{g.Tag_gate_out_of_service}.Value"))
         @$("#Airport_Gate_#{g.Number}_icon")
         .toggleClass("out-of-service", outOfService ==true && qoos)
+        if outOfService
+          @$("#Airport_Gate_#{g.Number}_icon").trigger('blink')
       else
         goos = false
 
