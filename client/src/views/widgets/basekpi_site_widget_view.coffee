@@ -21,7 +21,7 @@ class BaseKpiSiteWidgetView extends IOPSWidgetView
 
   update: ()->
     # Need to redraw plot on all events
-    @plotGraph()
+    #@plotGraph()
 
     # Ignore all calls except those from startup and Update
     if !@IsUpdatingSettings && !@IsPageLoading
@@ -41,36 +41,36 @@ class BaseKpiSiteWidgetView extends IOPSWidgetView
     @ui.wtitle.html(lbl)
 
   plotGraph: ()->
-    @ui.display.empty()
-    @modelIdVal = "#{@model.id}"
-    @plotheader = $("<div id='plotheader_#{@model.id}' style='height:50px;'></div>")
-    @plotArea = "<div id='plotplaceholder_#{@model.id}' style='width:100%; height:250px'></div>"
-    @plotTooltip = "<div id='flotTip_#{@model.id}' style='position:fixed;'></div>"
-    @ui.display.append(@plotheader)
-    @ui.display.append(@plotArea)
-    
-    parameters = 'DAL|Term1_Zone1|Gate12|PCA|PCAOnTime'
-    url = "#{@rurl}/api/DBKPILiveDateBased?parameters=#{parameters}"
-    plotareaid = "#plotplaceholder_#{@model.id}"
-    $.ajax
-      url: url
-      type: 'GET'
-      dataType: 'json'
-      success: (result) ->
-        d3 = []
-        i = 0
-        len = result.length
-        while i < len
-          d = new Date(result[i].Index)
-          ticks = d.getTime()
-          d3.push [
-            ticks
-            result[i].Value
-          ]
-          i++ #TBD add styles to table
+    #@ui.display.empty()
+    #@modelIdVal = "#{@model.id}"
+    #@plotheader = $("<div id='plotheader_#{@model.id}' style='height:50px;'></div>")
+    #@plotArea = "<div id='plotplaceholder_#{@model.id}' style='width:100%; height:250px'></div>"
+    #@plotTooltip = "<div id='flotTip_#{@model.id}' style='position:fixed;'></div>"
+    #@ui.display.append(@plotheader)
+    #@ui.display.append(@plotArea)
+    # 
+    #parameters = 'DAL|Term1_Zone1|Gate12|PCA|PCAOnTime'
+    #url = "#{@rurl}/api/DBKPILiveDateBased?parameters=#{parameters}"
+    #plotareaid = "#plotplaceholder_#{@model.id}"
+    #$.ajax
+    #  url: url
+    #  type: 'GET'
+    #  dataType: 'json'
+    #  success: (result) ->
+    #    d3 = []
+    #    i = 0
+    #    len = result.length
+    #    while i < len
+    #      d = new Date(result[i].Index)
+    #      ticks = d.getTime()
+    #      d3.push [
+    #        ticks
+    #        result[i].Value
+    #      ]
+    #      i++ #TBD add styles to table
 
-    @plotheader.html("Plot for #{parameters}")
-    setTimeout 'plotGraph()', 300000
+    @plotheader.html("BASE KPI Site Widget ")
+    #setTimeout 'plotGraph()', 300000
     # refresh every 5 mins
     return
 
@@ -93,10 +93,11 @@ class BaseKpiSiteWidgetView extends IOPSWidgetView
 
   start:()->
     @videoRepresentation = $("<div id='kpisiteRep_#{@model.id}'><table style='width:100%''><tr><td><img src='kpi_down.png' height='89' width='138'></td></tr><tr><td><img src='kpi_up.png' height='89' width='138'></td></tr><tr><td><img src='kpi_up.png' height='89' width='138'></td></tr><tr><td><img src='kpi_down.png' height='89' width='138'></td></tr><tr><td><img src='kpi_neutral.png' height='89' width='138'></td></tr><tr>    <td><img src='kpi_neutral.png' height='89' width='138'></td></tr></table></div>")
+    @ui.display.append(@videoRepresentation)
     @rurl = App.config.report_server
     @update()
     @plotGraph()
 # ----------------------------------
 
-window.KpiSiteWidgetView = BaseKpiSiteWidgetView
+window.BaseKpiSiteWidgetView = BaseKpiSiteWidgetView
 module.exports = BaseKpiSiteWidgetView

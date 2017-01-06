@@ -1804,6 +1804,60 @@ window.JST["widgets/asset_widget"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
+window.JST["widgets/basekpi_site_widget"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+    
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-area-chart"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" style=\'overflow:auto !important;\'>\n  <div class="display">\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+    
+      _print(_safe(this.siteSelector({
+        id: 'site',
+        label: 'Site',
+        site: this.settings.site
+      })));
+    
+      _print(_safe('\n  </div>\n</div><!-- /.box-body -->'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
 window.JST["widgets/config_widget"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
@@ -23489,7 +23543,6 @@ BaseKpiSiteWidgetView = (function(superClass) {
 
   BaseKpiSiteWidgetView.prototype.update = function() {
     var code, lbl, s;
-    this.plotGraph();
     if (!this.IsUpdatingSettings && !this.IsPageLoading) {
       return null;
     }
@@ -23507,38 +23560,7 @@ BaseKpiSiteWidgetView = (function(superClass) {
   };
 
   BaseKpiSiteWidgetView.prototype.plotGraph = function() {
-    var parameters, plotareaid, url;
-    this.ui.display.empty();
-    this.modelIdVal = "" + this.model.id;
-    this.plotheader = $("<div id='plotheader_" + this.model.id + "' style='height:50px;'></div>");
-    this.plotArea = "<div id='plotplaceholder_" + this.model.id + "' style='width:100%; height:250px'></div>";
-    this.plotTooltip = "<div id='flotTip_" + this.model.id + "' style='position:fixed;'></div>";
-    this.ui.display.append(this.plotheader);
-    this.ui.display.append(this.plotArea);
-    parameters = 'DAL|Term1_Zone1|Gate12|PCA|PCAOnTime';
-    url = this.rurl + "/api/DBKPILiveDateBased?parameters=" + parameters;
-    plotareaid = "#plotplaceholder_" + this.model.id;
-    $.ajax({
-      url: url,
-      type: 'GET',
-      dataType: 'json',
-      success: function(result) {
-        var d, d3, i, len, results, ticks;
-        d3 = [];
-        i = 0;
-        len = result.length;
-        results = [];
-        while (i < len) {
-          d = new Date(result[i].Index);
-          ticks = d.getTime();
-          d3.push([ticks, result[i].Value]);
-          results.push(i++);
-        }
-        return results;
-      }
-    });
-    this.plotheader.html("Plot for " + parameters);
-    setTimeout('plotGraph()', 300000);
+    this.plotheader.html("BASE KPI Site Widget ");
   };
 
   BaseKpiSiteWidgetView.prototype.toggle_settings = function(e) {
@@ -23567,6 +23589,7 @@ BaseKpiSiteWidgetView = (function(superClass) {
 
   BaseKpiSiteWidgetView.prototype.start = function() {
     this.videoRepresentation = $("<div id='kpisiteRep_" + this.model.id + "'><table style='width:100%''><tr><td><img src='kpi_down.png' height='89' width='138'></td></tr><tr><td><img src='kpi_up.png' height='89' width='138'></td></tr><tr><td><img src='kpi_up.png' height='89' width='138'></td></tr><tr><td><img src='kpi_down.png' height='89' width='138'></td></tr><tr><td><img src='kpi_neutral.png' height='89' width='138'></td></tr><tr>    <td><img src='kpi_neutral.png' height='89' width='138'></td></tr></table></div>");
+    this.ui.display.append(this.videoRepresentation);
     this.rurl = App.config.report_server;
     this.update();
     return this.plotGraph();
@@ -23576,7 +23599,7 @@ BaseKpiSiteWidgetView = (function(superClass) {
 
 })(IOPSWidgetView);
 
-window.KpiSiteWidgetView = BaseKpiSiteWidgetView;
+window.BaseKpiSiteWidgetView = BaseKpiSiteWidgetView;
 
 module.exports = BaseKpiSiteWidgetView;
 
