@@ -19599,8 +19599,8 @@ OPCManager = (function() {
           code = site.get("code");
           results1.push(OPCManager.create(code, {
             token: '7e61b230-481d-4551-b24b-ba9046e3d8f2',
-            max_tags_per_msg: 50,
-            max_callbacks: 10,
+            max_tags_per_msg: 40,
+            max_callbacks: 20,
             callback_timeout: 10000,
             refresh_callback: (function(c) {
               return function(data) {
