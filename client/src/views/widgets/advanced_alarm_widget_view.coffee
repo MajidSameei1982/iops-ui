@@ -13,15 +13,16 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
     display: '.display'
     content: '.content'
     allgates: '#allgates'
+    alarmGrid: '#alarmGrid'
 
   @layout:
     sx: 10
     sy: 10
 
-
-  TestMe: 0
   IsUpdatingSettings: false
   IsPageLoading: true
+  searchOperators = ["eq", "ne", "lt", "le", "gt", "ge", "bw", "bn", "in", "ni", "ew", "en", "cn", "nc"]
+  titleHtml = ''
 
   update: ()->
     # Ignore all calls except those from startup and Update
@@ -36,7 +37,7 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
     s = @model.get("settings")
 
     if s? && !!s.gate
-      lbl = "#{@site_code}: Alarm window"
+      lbl = "#{@site_code}: Advanced Alarm window"
       @ui.wtitle.html(lbl)
 
       @site = OPCManager.get_site(s.site)
@@ -75,14 +76,14 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
 
       @alarm_binding =
         alarmid: "#{@alarmid}"
-        callback: @alarm_update
+        callback: @advanced_alarm_update
         showSearch:false
         showHistory:false
         filter:
           alarmtypes:["Digital"]
           alarmgroups: groups
         columns: [
-          { name: "AlarmDateTime", text: "Alarm Date/Time", type: "datetime", visible: true, sort: 'desc', width: '130px', searchable: false }
+          { name: "AlarmDateTime", text: "Alarm Date/Time", type: "datetime", visible: true, sort: 'desc', width: '140px', searchable: false }
           { name: "AlarmValue", text: "Alarm Value", type: "string", visible: false, align: 'right' }
           { name: "Text", text: "Text", type: "string", visible: true }
           { name: "Group", text: "Text", type: "string", visible: false }
@@ -107,18 +108,164 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
 
         tzg = if s.allgates then "<b>All Gates</b>" else "Terminal #{s.terminal} Zone #{s.zone} <b>Gate #{s.gate}</b>"
 
-        @$("#alarm_lbl").html("<b>#{@site_code}</b> #{tzg} | <b>#{t}</b> | <b>#{p}</b>")
+        @titleHtml = "<b>#{@site_code}</b> #{tzg} | <b>#{t}</b> | <b>#{p}</b>"
+        #@$("#alarm_lbl").html("#{@titleHtml}")
         App.opc.add_alarm @site_code, @alarm_binding
         @watch_updates(@site_code)
+        #tableToGrid 'table.opc-alarm'
+        @create_alarm_grid()
+
+  create_alarm_grid: ()=>
+    defaultData = [{
+      acked:         null,
+      alarmDateTime: null,
+      alarmValue:    null,
+      group:         null,
+      priority:      null,
+      text:          "No data available in table"
+    }]
+
+    gridWidth = 1000;
+    @ui.alarmGrid.jqGrid(
+      {
+        datatype: "local",
+        data: defaultData,
+        colNames:['Acked','Alarm Date/Time','Alarm Value','Group','Priority','Text'],
+        colModel:[
+          {
+            name:'Acked',
+            index:'Acked',
+            key: true,
+            sorttype: "int",
+            width: 10,
+            hidden: true,
+          },
+          {
+            name: "Alarm Date/Time",
+            index:"Alarm Date/Time",
+            width: 140,
+            align: "center",
+            sorttype: "date",
+            formatter: "date", 
+            formatoptions: { newformat: "m/d/Y h:i A" },
+            #editable: editableInAddForm,
+            #searchoptions: { sopt: ["eq", "ne", "lt", "le", "gt", "ge"], 
+            #dataInit: initDateSearch}
+          },
+          {
+            name:'Alarm Value',
+            index:'Alarm Value',
+            sorttype: "int",
+            width: 10,
+            hidden: true,
+          },
+          {
+            name:'Group',
+            index:'Group',
+            width: 10,
+            hidden: true,
+          },
+          {
+            name:'Priority',
+            index:'Priority',
+            sorttype: "int",
+            width: 10,
+            hidden: true,
+          },
+          {
+            name:'Text',
+            index:'Text',
+            width: gridWidth-140,
+          }
+        ],
+        search: true,
+        pager: '#pager',
+        jsonReader: { cell: "" },
+        rowNum: 10,
+        rowList: [5,10,20,50],
+        sortname: 'Alarm Date/Time',
+        sortorder: 'asc',
+        viewrecords: true,
+        height: "100%",
+        autowidth: true,
+        ajaxGridOptions: {cache: false},
+        cmTemplate: { title: false },
+        #shrinkToFit: false,
+        caption: "#{@titleHtml}"
+      }
+    )
   
-  alarm_update: (ab, data)=>
+    @ui.alarmGrid.jqGrid('navGrid', '#pager', {
+        add: false,
+        edit: false,
+        del: false,
+        search: true,
+        refresh: true
+    }, {}, {}, {}, {
+        multipleSearch: true,
+        multipleGroup: true,
+        showQuery: true
+    });
+
+    @ui.alarmGrid.setGridWidth(gridWidth);
+
+    #@ui.alarmGrid.jqGrid('filterToolbar')
+
+    return
+
+  advanced_alarm_update: (ab, data)=>
       # If your table has header(th), use this:
-      $('table.opc-alarm > tbody > tr> td:nth-child(3)').hide()
-      $('table.opc-alarm > thead > tr> th:nth-child(3)').hide();
+      alarmJson = $("table.opc-alarm").tableToJSON()
+      for idx, data of alarmJson
+        data['Alarm Date/Time'] = data['Alarm Date/Time'].substr 13
+
+      gridWidth = $('table.opc-alarm').width()
+      @ui.alarmGrid.jqGrid('setGridParam', { data: {} })
+      @ui.alarmGrid[0].refreshIndex()
+      @ui.alarmGrid.trigger("reloadGrid")
+      @ui.alarmGrid.setGridWidth(gridWidth)
+      @ui.alarmGrid.jqGrid('setGridParam', { data: alarmJson })
+      @ui.alarmGrid.jqGrid('setColProp','Alarm Date/Time',{width:140 })
+      @ui.alarmGrid.jqGrid('setColProp','Text',{width: (gridWidth-140) })
+      @ui.alarmGrid[0].refreshIndex()
+      @ui.alarmGrid.trigger("reloadGrid")
+
+      $('table.opc-alarm > tbody > tr> td:nth-child(2)').hide()
+      $('table.opc-alarm > thead > tr> th:nth-child(2)').hide()
+      $('table.opc-alarm > tbody > tr> td:nth-child(4)').hide()
+      $('table.opc-alarm > thead > tr> th:nth-child(4)').hide()
+      $('table.opc-alarm > tbody > tr> td:nth-child(5)').hide()
+      $('table.opc-alarm > thead > tr> th:nth-child(5)').hide()
+      $('table.opc-alarm > tbody > tr> td:nth-child(6)').hide()
+      $('table.opc-alarm > thead > tr> th:nth-child(6)').hide()
       $("table.opc-alarm > tbody > tr").each (idx, element) =>
         if $("td:eq(2)", element).text() == "0"
           $("td:eq(2)", element).closest("tr").toggleClass("notification",true)
 
+      return
+      #tableToGrid "##{@alarmid}_tbl"
+      #$('table.opc-alarm').trigger("reloadGrid");
+      
+
+  initDateSearch = (elem) ->
+    setTimeout (->
+      $(elem).datepicker
+        dateFormat: 'dd-M-yy'
+        autoSize: true
+        changeYear: true
+        changeMonth: true
+        showWeek: true
+        showButtonPanel: true
+      return
+    ), 100
+    return
+
+  editableInAddForm = (options) ->
+    if options.mode == 'addForm'
+      return true
+    if options.mode == 'editForm'
+      return 'disabled'
+    false
 
   set_model: ()=>
     @IsUpdatingSettings = true

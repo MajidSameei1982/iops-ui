@@ -97,20 +97,23 @@
           &.perfect-dock {
             background-image: url("#{$ImagesPrefix}#{$Gate}_Perfect.png");
           }
-        }        
-        #Airport_Gate_#{$Gate}_status {
-          background-repeat:no-repeat;
-          background-size: contain;
-          background-position: bottom center;
-          background-image: none;
-          width: 100% !important;
-          height: 100% !important;
-          top: 0;
-          left: 0;
           &.out-of-service {
             background-image: url("#{$ImagesPrefix}#{$Gate}_Service.png");
           }
         }        
+        // #Airport_Gate_#{$Gate}_status {
+        //   background-repeat:no-repeat;
+        //   background-size: contain;
+        //   background-position: bottom center;
+        //   background-image: none;
+        //   width: 100% !important;
+        //   height: 100% !important;
+        //   top: 0;
+        //   left: 0;
+        //   &.out-of-service {
+        //     background-image: url("#{$ImagesPrefix}#{$Gate}_Service.png");
+        //   }
+        // }        
         $index: $index + 1;
       }
     }
@@ -558,20 +561,20 @@
           &.perfect-dock {
             background-image: url("#{$ImagesPrefix}#{$Gate}_Perfect.png");
           }
-        }        
-        #Airport_Gate_#{$Gate}_status {
-          background-repeat:no-repeat;
-          background-size: contain;
-          background-position: bottom center;
-          background-image: none;
-          width: 100% !important;
-          height: 100% !important;
-          top: 0;
-          left: 0;
           &.out-of-service {
             background-image: url("#{$ImagesPrefix}#{$Gate}_Service.png");
           }
         }        
+        // #Airport_Gate_#{$Gate}_status {
+        //   background-repeat:no-repeat;
+        //   background-size: contain;
+        //   background-position: bottom center;
+        //   background-image: none;
+        //   width: 100% !important;
+        //   height: 100% !important;
+        //   top: 0;
+        //   left: 0;
+        // }        
         $index: $index + 1;
       }
     }

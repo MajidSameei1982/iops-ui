@@ -86,6 +86,7 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
               <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_critical' class='fa fa-warning' title='Gate has CRITICAL ALARMS'></i>
               <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_alarm' class='fa fa-bell' title='Gate has ALARMS'></i>
               <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_docked' class='fa fa-plane' title='Plane is DOCKED'></i>
+              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_outofservice' class='fa fa-wrench' title='A system is out of service'></i>
             </td>"
           )
           
@@ -158,6 +159,7 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
       @vals[tag] = @opc.get_value("#{@prefix}#{gate}#{data.Tag}.Value")
       # Process the Docked
       setValue = (@vals[tag]? && @vals[tag] == "True")
+
       if /pbb_docked/.test(tag)
         $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_docked").toggleClass('docked',setValue)
       else if tag.indexOf("#{tzgPrefix}_has_critical_alarms") > -1
@@ -176,6 +178,7 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
             @render_value_row_tzg("dynamic_#{tag}", data.Parameters.Parm001, data.Parameters.Parm002, data.Parameters.Parm003, data.Parameters.Parm004)
           when 'value'
             @render_value_row_tzg("dynamic_#{tag}", "", "", data.Parameters.Parm003, data.Parameters.Parm004)
+      
       @
     
   set_model: ()=>

@@ -69,14 +69,18 @@ class AirportoverviewWidgetView extends IOPSWidgetView
               Tag_gate_docked: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB.AIRCRAFTDOCKEDCALCULATION"
               Tag_gate_critical: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.Alarm._HasCriticalAlarms"
               Tag_gate_perfect_dock: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB.PerfectDock"
-              Tag_gate_out_of_service: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB.OutOfService"
+              Tag_gpu_out_of_service: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.GPU._OutOfService"
+              Tag_pbb_out_of_service: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB._OutOfService"
+              Tag_pca_out_of_service: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PCA._OutOfService"
             @gateData.push gate
             # add tags to monitor
             tags.push "#{gate.Tag_gate_alarm}.Value"
             tags.push "#{gate.Tag_gate_docked}.Value"
             tags.push "#{gate.Tag_gate_critical}.Value"
             tags.push "#{gate.Tag_gate_perfect_dock}.Value"
-            tags.push "#{gate.Tag_gate_out_of_service}.Value"
+            tags.push "#{gate.Tag_gpu_out_of_service}.Value"
+            tags.push "#{gate.Tag_pbb_out_of_service}.Value"
+            tags.push "#{gate.Tag_pca_out_of_service}.Value"
  
       # draw layout and gates
       @$("#Airport_Overview").remove()
@@ -120,15 +124,26 @@ class AirportoverviewWidgetView extends IOPSWidgetView
       else
         qd = false
 
-      qoos = @opc.tags["#{g.Tag_gate_out_of_service}"].props.Value.quality
-      if qoos? && goos
-        outOfService = @get_bool(@opc.get_value("#{g.Tag_gate_out_of_service}.Value"))
+      qgpuos = @opc.tags["#{g.Tag_gpu_out_of_service}"].props.Value.quality
+      qpbbos = @opc.tags["#{g.Tag_pbb_out_of_service}"].props.Value.quality
+      qpcaos = @opc.tags["#{g.Tag_pca_out_of_service}"].props.Value.quality
+      qos = false
+      if (qgpuos? && qgpuos) || (qpbbos? && qpbbos) || (qpcaos? && qpcaos)
+        qos = true
+        oosGPU = false
+        oosPBB = false
+        oosPCA = false
+        if (qgpuos? && qgpuos)
+          oosGPU = @get_bool(@opc.get_value("#{g.Tag_gpu_out_of_service}.Value"))
+        if (qpbbos? && qpbbos)
+          oosPBB = @get_bool(@opc.get_value("#{g.Tag_pbb_out_of_service}.Value"))
+        if (qpcaos? && qpcaos)
+          oosPCA = @get_bool(@opc.get_value("#{g.Tag_pca_out_of_service}.Value"))
+        outOfService = oosGPU || oosPBB || oosPCA
         @$("#Airport_Gate_#{g.Number}_icon")
-        .toggleClass("out-of-service", outOfService ==true && qoos)
-        if outOfService
-          @$("#Airport_Gate_#{g.Number}_icon").trigger('blink')
+          .toggleClass("out-of-service", outOfService==true && qos)
       else
-        goos = false
+        qos = false
 
       qc = @opc.tags["#{g.Tag_gate_critical}"].props.Value.quality
       if qc? && qc
@@ -141,7 +156,6 @@ class AirportoverviewWidgetView extends IOPSWidgetView
       qa = @opc.tags["#{g.Tag_gate_alarm}"].props.Value.quality
       if qa? && qa
         alarm = @get_bool(@opc.get_value("#{g.Tag_gate_alarm}.Value"))
-        outOfService = @get_bool(@opc.get_value("#{g.Tag_gate_out_of_service}.Value"))
         @$("#Airport_Gate_#{g.Number}_icon")
         .toggleClass("alarm", alarm ==true && qa)
       else

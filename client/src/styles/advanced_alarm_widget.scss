@@ -7,11 +7,15 @@
     margin:0 5px;
   }
   .notification {
-  	background-color: yellow !important;
-  	color: black !important;
-  	td[class^='sorting'], td[class*=' sorting'] {
-	  	background-color: yellow !important;
-	  	color: black !important;
-  	}
+    background-color: yellow !important;
+    color: black !important;
+    td[class^='sorting'], td[class*=' sorting'] {
+      background-color: yellow !important;
+      color: black !important;
+    }
+  }
+  div[id^='alarm_1'] {
+    visibility: hidden;
+    overflow: hidden;
   }
 }

@@ -78,6 +78,9 @@ i.form-control-feedback {
   .advanced_alarm_widget .notification td[class^='sorting'], .advanced_alarm_widget .notification td[class*=' sorting'] {
     background-color: yellow !important;
     color: black !important; }
+.advanced_alarm_widget div[id^='alarm_1'] {
+  visibility: hidden;
+  overflow: hidden; }
 
 /* Airport Overview Widget Styles */
 .airport_overview_widget.alarm {
@@ -148,16 +151,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.CID_account .display #Airport_Gate_C1_icon.perfect-dock {
     background-image: url("../img/airport/CID/CID_Gate_C1_Perfect.png"); }
-.airport_overview_widget.CID_account .display #Airport_Gate_C1_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.CID_account .display #Airport_Gate_C1_status.out-of-service {
+  .airport_overview_widget.CID_account .display #Airport_Gate_C1_icon.out-of-service {
     background-image: url("../img/airport/CID/CID_Gate_C1_Service.png"); }
 .airport_overview_widget.CID_account .display #Airport_Gate_C2_a {
   background-repeat: no-repeat;
@@ -188,16 +182,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.CID_account .display #Airport_Gate_C2_icon.perfect-dock {
     background-image: url("../img/airport/CID/CID_Gate_C2_Perfect.png"); }
-.airport_overview_widget.CID_account .display #Airport_Gate_C2_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.CID_account .display #Airport_Gate_C2_status.out-of-service {
+  .airport_overview_widget.CID_account .display #Airport_Gate_C2_icon.out-of-service {
     background-image: url("../img/airport/CID/CID_Gate_C2_Service.png"); }
 .airport_overview_widget.CID_account .display #Airport_Gate_C3_a {
   background-repeat: no-repeat;
@@ -228,16 +213,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.CID_account .display #Airport_Gate_C3_icon.perfect-dock {
     background-image: url("../img/airport/CID/CID_Gate_C3_Perfect.png"); }
-.airport_overview_widget.CID_account .display #Airport_Gate_C3_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.CID_account .display #Airport_Gate_C3_status.out-of-service {
+  .airport_overview_widget.CID_account .display #Airport_Gate_C3_icon.out-of-service {
     background-image: url("../img/airport/CID/CID_Gate_C3_Service.png"); }
 .airport_overview_widget.CID_account .display #Airport_Gate_C4_a {
   background-repeat: no-repeat;
@@ -268,16 +244,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.CID_account .display #Airport_Gate_C4_icon.perfect-dock {
     background-image: url("../img/airport/CID/CID_Gate_C4_Perfect.png"); }
-.airport_overview_widget.CID_account .display #Airport_Gate_C4_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.CID_account .display #Airport_Gate_C4_status.out-of-service {
+  .airport_overview_widget.CID_account .display #Airport_Gate_C4_icon.out-of-service {
     background-image: url("../img/airport/CID/CID_Gate_C4_Service.png"); }
 .airport_overview_widget.CID_account .display #Airport_Gate_C5_a {
   background-repeat: no-repeat;
@@ -308,16 +275,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.CID_account .display #Airport_Gate_C5_icon.perfect-dock {
     background-image: url("../img/airport/CID/CID_Gate_C5_Perfect.png"); }
-.airport_overview_widget.CID_account .display #Airport_Gate_C5_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.CID_account .display #Airport_Gate_C5_status.out-of-service {
+  .airport_overview_widget.CID_account .display #Airport_Gate_C5_icon.out-of-service {
     background-image: url("../img/airport/CID/CID_Gate_C5_Service.png"); }
 .airport_overview_widget.CID_account .display #Airport_Gate_C6_a {
   background-repeat: no-repeat;
@@ -348,16 +306,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.CID_account .display #Airport_Gate_C6_icon.perfect-dock {
     background-image: url("../img/airport/CID/CID_Gate_C6_Perfect.png"); }
-.airport_overview_widget.CID_account .display #Airport_Gate_C6_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.CID_account .display #Airport_Gate_C6_status.out-of-service {
+  .airport_overview_widget.CID_account .display #Airport_Gate_C6_icon.out-of-service {
     background-image: url("../img/airport/CID/CID_Gate_C6_Service.png"); }
 .airport_overview_widget.CID_account .display .airport_overview_widget.DAL_account div[id^='Airport_Gate_'], .airport_overview_widget.CID_account .display .airport_overview_widget.DAL_account #Airport_Overview, .airport_overview_widget.DAL_account .display div[id^='Airport_Gate_'], .airport_overview_widget.DAL_account .display #Airport_Overview, .airport_overview_widget.JFK_account .display .airport_overview_widget.DAL_account div[id^='Airport_Gate_'], .airport_overview_widget.JFK_account .display .airport_overview_widget.DAL_account #Airport_Overview, .airport_overview_widget.EWR_account .display .airport_overview_widget.DAL_account div[id^='Airport_Gate_'], .airport_overview_widget.EWR_account .display .airport_overview_widget.DAL_account #Airport_Overview, .airport_overview_widget.RDU_account .display .airport_overview_widget.DAL_account div[id^='Airport_Gate_'], .airport_overview_widget.RDU_account .display .airport_overview_widget.DAL_account #Airport_Overview, .airport_overview_widget.PHX_account .display .airport_overview_widget.DAL_account div[id^='Airport_Gate_'], .airport_overview_widget.PHX_account .display .airport_overview_widget.DAL_account #Airport_Overview, .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.DAL_account div[id^='Airport_Gate_'], .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.DAL_account #Airport_Overview {
   min-height: 100%;
@@ -2494,16 +2443,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C1_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_C1_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_C1_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C1_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C1_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C1_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_C3_a {
   background-repeat: no-repeat;
@@ -2534,16 +2474,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C3_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_C3_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_C3_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C3_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C3_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C3_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_C7_a {
   background-repeat: no-repeat;
@@ -2574,16 +2505,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C7_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_C7_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_C7_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C7_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C7_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C7_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_C8_a {
   background-repeat: no-repeat;
@@ -2614,16 +2536,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C8_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_C8_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_C8_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C8_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C8_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C8_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_C9_a {
   background-repeat: no-repeat;
@@ -2654,16 +2567,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C9_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_C9_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_C9_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C9_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C9_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C9_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_C10_a {
   background-repeat: no-repeat;
@@ -2694,16 +2598,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C10_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_C10_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_C10_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C10_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C10_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C10_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_C11_a {
   background-repeat: no-repeat;
@@ -2734,16 +2629,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C11_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_C11_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_C11_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C11_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C11_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C11_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_C12_a {
   background-repeat: no-repeat;
@@ -2774,16 +2660,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C12_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_C12_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_C12_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C12_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C12_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C12_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_C13_a {
   background-repeat: no-repeat;
@@ -2814,16 +2691,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C13_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_C13_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_C13_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C13_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C13_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C13_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_C14_a {
   background-repeat: no-repeat;
@@ -2854,16 +2722,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C14_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_C14_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_C14_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C14_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C14_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C14_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_C15_a {
   background-repeat: no-repeat;
@@ -2894,16 +2753,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C15_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_C15_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_C15_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C15_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C15_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C15_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_C16_a {
   background-repeat: no-repeat;
@@ -2934,16 +2784,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C16_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_C16_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_C16_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C16_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C16_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C16_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_C17_a {
   background-repeat: no-repeat;
@@ -2974,16 +2815,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C17_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_C17_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_C17_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C17_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C17_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C17_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_C18_a {
   background-repeat: no-repeat;
@@ -3014,16 +2846,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C18_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_C18_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_C18_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C18_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C18_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C18_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_C20_a {
   background-repeat: no-repeat;
@@ -3054,16 +2877,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C20_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_C20_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_C20_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C20_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C20_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C20_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_C21_a {
   background-repeat: no-repeat;
@@ -3094,16 +2908,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C21_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_C21_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_C21_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C21_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C21_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C21_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_C22_a {
   background-repeat: no-repeat;
@@ -3134,16 +2939,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C22_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_C22_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_C22_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C22_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C22_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C22_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_C23_a {
   background-repeat: no-repeat;
@@ -3174,16 +2970,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C23_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_C23_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_C23_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C23_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C23_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C23_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_C24_a {
   background-repeat: no-repeat;
@@ -3214,16 +3001,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C24_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_C24_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_C24_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C24_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C24_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C24_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_C25_a {
   background-repeat: no-repeat;
@@ -3254,16 +3032,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C25_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_C25_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_C25_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C25_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C25_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C25_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_D3_a {
   background-repeat: no-repeat;
@@ -3294,16 +3063,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D3_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_D3_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_D3_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D3_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D3_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D3_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_D5_a {
   background-repeat: no-repeat;
@@ -3334,16 +3094,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D5_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_D5_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_D5_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D5_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D5_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D5_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_D6_a {
   background-repeat: no-repeat;
@@ -3374,16 +3125,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D6_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_D6_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_D6_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D6_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D6_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D6_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_D8_a {
   background-repeat: no-repeat;
@@ -3414,16 +3156,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D8_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_D8_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_D8_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D8_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D8_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D8_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_D9_a {
   background-repeat: no-repeat;
@@ -3454,16 +3187,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D9_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_D9_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_D9_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D9_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D9_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D9_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_D10_a {
   background-repeat: no-repeat;
@@ -3494,16 +3218,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D10_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_D10_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_D10_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D10_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D10_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D10_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_D11_a {
   background-repeat: no-repeat;
@@ -3534,16 +3249,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D11_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_D11_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_D11_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D11_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D11_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D11_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_D12_a {
   background-repeat: no-repeat;
@@ -3574,16 +3280,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D12_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_D12_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_D12_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D12_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D12_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D12_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_D13_a {
   background-repeat: no-repeat;
@@ -3614,16 +3311,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D13_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_D13_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_D13_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D13_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D13_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D13_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_D14_a {
   background-repeat: no-repeat;
@@ -3654,16 +3342,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D14_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_D14_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_D14_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D14_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D14_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D14_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_D15_a {
   background-repeat: no-repeat;
@@ -3694,16 +3373,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D15_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_D15_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_D15_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D15_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D15_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D15_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_D16_a {
   background-repeat: no-repeat;
@@ -3734,16 +3404,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D16_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_D16_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_D16_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D16_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D16_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D16_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_D17_a {
   background-repeat: no-repeat;
@@ -3774,16 +3435,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D17_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_D17_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_D17_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D17_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D17_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D17_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_D18_a {
   background-repeat: no-repeat;
@@ -3814,16 +3466,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D18_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_D18_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_D18_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D18_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D18_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D18_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_D19_a {
   background-repeat: no-repeat;
@@ -3854,16 +3497,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D19_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_D19_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_D19_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D19_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D19_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D19_Service.png"); }
 .airport_overview_widget.RDU_account .display #Airport_Gate_D20_a {
   background-repeat: no-repeat;
@@ -3894,16 +3528,7 @@ i.form-control-feedback {
     animation: blink 2s ease-in infinite; }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D20_icon.perfect-dock {
     background-image: url("../img/airport/RDU/RDU_Gate_D20_Perfect.png"); }
-.airport_overview_widget.RDU_account .display #Airport_Gate_D20_status {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  left: 0; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D20_status.out-of-service {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D20_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D20_Service.png"); }
 .airport_overview_widget.CID_account .display .airport_overview_widget.PHX_account div[id^='Airport_Gate_'], .airport_overview_widget.CID_account .display .airport_overview_widget.PHX_account #Airport_Overview, .airport_overview_widget.DAL_account .display .airport_overview_widget.PHX_account div[id^='Airport_Gate_'], .airport_overview_widget.DAL_account .display .airport_overview_widget.PHX_account #Airport_Overview, .airport_overview_widget.JFK_account .display .airport_overview_widget.PHX_account div[id^='Airport_Gate_'], .airport_overview_widget.JFK_account .display .airport_overview_widget.PHX_account #Airport_Overview, .airport_overview_widget.EWR_account .display .airport_overview_widget.PHX_account div[id^='Airport_Gate_'], .airport_overview_widget.EWR_account .display .airport_overview_widget.PHX_account #Airport_Overview, .airport_overview_widget.RDU_account .display .airport_overview_widget.PHX_account div[id^='Airport_Gate_'], .airport_overview_widget.RDU_account .display .airport_overview_widget.PHX_account #Airport_Overview, .airport_overview_widget.PHX_account .display div[id^='Airport_Gate_'], .airport_overview_widget.PHX_account .display #Airport_Overview, .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.PHX_account div[id^='Airport_Gate_'], .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.PHX_account #Airport_Overview {
   min-height: 100%;
@@ -5695,7 +5320,8 @@ ul.chosen-results li.highlighted {
         display: inline-block; }
       .pbb_pca_gpu_status_widget .display #widgetData tbody tr#iconRow i.critical {
         color: #c00;
-        display: inline-block; }
+        display: inline-block;
+        animation: blink 2s ease-in infinite; }
       .pbb_pca_gpu_status_widget .display #widgetData tbody tr#iconRow i.alarm {
         color: #e45f00;
         display: inline-block; }
@@ -5711,7 +5337,11 @@ ul.chosen-results li.highlighted {
       background-image: none !important;
       text-align: center;
       vertical-align: middle; }
-
+@keyframes blink {
+  from, to {
+    opacity: 1; }
+  50% {
+    opacity: 0; } }
 /* GPU Widget Styles */
 .pbb_system_status_widget.alarm {
   background-color: #c00;
@@ -6272,6 +5902,102 @@ ul.chosen-results li.highlighted {
         color: #f90;
         background-color: #eee; }
 
+.out_of_service_widget .zone_list {
+  margin-left: 10px; }
+  .out_of_service_widget .zone_list .gate_list {
+    margin-left: 10px; }
+    .out_of_service_widget .zone_list .gate_list .gate_span {
+      margin-right: 10px; }
+.out_of_service_widget .no-show {
+  visibility: hidden;
+  display: none; }
+.out_of_service_widget .show {
+  visibility: visible; }
+.out_of_service_widget.alarm {
+  background-color: #c00;
+  color: #fff; }
+.out_of_service_widget .display {
+  min-height: 100%;
+  min-width: 100%;
+  overflow: auto; }
+  .out_of_service_widget .display #gpu_label {
+    margin-bottom: 3px; }
+    .out_of_service_widget .display #gpu_label h1 {
+      line-height: 48px;
+      font-weight: bold;
+      margin: 0 0 0 0; }
+      .out_of_service_widget .display #gpu_label h1 i.fa {
+        margin-right: -5px;
+        padding: 5px;
+        border-radius: 10px;
+        font-size: 26px !important; }
+      .out_of_service_widget .display #gpu_label h1 i#docked {
+        color: #069;
+        background-color: #eee; }
+      .out_of_service_widget .display #gpu_label h1 i#alarms {
+        color: #fff;
+        background-color: #c00; }
+      .out_of_service_widget .display #gpu_label h1 i#warnings {
+        color: #f90;
+        background-color: #eee; }
+  .out_of_service_widget .display table th {
+    font-size: 1.5em;
+    text-align: center;
+    border-bottom: solid 1px #aaa;
+    border-left: solid 1px #aaa;
+    background-color: #cce; }
+  .out_of_service_widget .display table.data-status {
+    width: 75%;
+    float: left; }
+  .out_of_service_widget .display table.data-status {
+    width: 100%;
+    border: solid 1px #999;
+    border-spacing: 1px;
+    border-collapse: separate; }
+    .out_of_service_widget .display table.data-status.airplane {
+      border: 0; }
+      .out_of_service_widget .display table.data-status.airplane td {
+        background-color: #fff; }
+    .out_of_service_widget .display table.data-status td, .out_of_service_widget .display table.data-status div {
+      padding: 2px 5px;
+      border-left: solid 1px #ddd;
+      border-bottom: solid 1px #ddd;
+      text-align: center;
+      vertical-align: middle; }
+      .out_of_service_widget .display table.data-status td tr.dockundock, .out_of_service_widget .display table.data-status div tr.dockundock {
+        background-color: #090; }
+      .out_of_service_widget .display table.data-status td.DisCharge, .out_of_service_widget .display table.data-status div.DisCharge {
+        text-align: center; }
+        .out_of_service_widget .display table.data-status td.DisCharge.Cooling, .out_of_service_widget .display table.data-status div.DisCharge.Cooling {
+          color: #33adff; }
+        .out_of_service_widget .display table.data-status td.DisCharge.Heating, .out_of_service_widget .display table.data-status div.DisCharge.Heating {
+          color: #ff3300; }
+      .out_of_service_widget .display table.data-status td.lbl, .out_of_service_widget .display table.data-status div.lbl {
+        background-color: #fff;
+        font-style: italic;
+        color: #333; }
+      .out_of_service_widget .display table.data-status td.alarm, .out_of_service_widget .display table.data-status div.alarm {
+        color: #fe6;
+        background-color: #c33; }
+      .out_of_service_widget .display table.data-status td.ok, .out_of_service_widget .display table.data-status div.ok {
+        background-color: #7aef7a; }
+      .out_of_service_widget .display table.data-status td.blue, .out_of_service_widget .display table.data-status div.blue {
+        background-color: #06c;
+        color: #fff; }
+      .out_of_service_widget .display table.data-status td.bad_data, .out_of_service_widget .display table.data-status div.bad_data {
+        background-image: url("../img/data-status-baddata.png");
+        background-repeat: no-repeat;
+        background-position: center center; }
+      .out_of_service_widget .display table.data-status td.img-circles, .out_of_service_widget .display table.data-status div.img-circles {
+        border-radius: 10%; }
+    .out_of_service_widget .display table.data-status td[id$="_lbl"] {
+      background-color: #fff;
+      font-style: italic;
+      color: #333;
+      text-align: left; }
+  .out_of_service_widget .display input[type="checkbox"] {
+    transform: scale(1.5, 1.5) !important; }
+
 @font-face {
   .weather_widget {
     font-family: 'weather';
@@ -6445,7 +6171,8 @@ ul.gridster.widget-container {
       height: 100%;
       min-height: 100%;
       z-index: 10;
-      overflow: hidden !important; }
+      overflow: hidden !important;
+      border: solid 2px silver; }
     ul.gridster.widget-container li.widget .widget-outer .box-body iframe {
       display: inline;
       width: 100%;
