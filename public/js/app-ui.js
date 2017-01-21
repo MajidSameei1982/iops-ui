@@ -6036,6 +6036,29 @@ TagConfig = (function(superClass) {
         Class: null,
         Object: null
       }
+
+      /***************************************************
+      		*** ELVROT Tags
+      		**************************************************
+       */
+    },
+    elvrot_out_of_service: {
+      Tag: 'ELVROT._OutOfService',
+      Label: '[*]ELVROT',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: null,
+        ParentID: null,
+        Class: null,
+        Object: null
+      }
     }
   };
 
@@ -7572,85 +7595,6 @@ TagConfig = (function(superClass) {
             }
           }
         }
-      },
-      out_of_service_widget: {
-        remove_tags: {
-          'pbb_status': 'pbb_status',
-          'gpu_status': 'gpu_status'
-        },
-        update_tags: {
-          pca_status: {
-            Tag: 'PCA.PCASTATUS',
-            Label: '[*]PCA',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          pca_discharge_temp: {
-            Tag: 'PCA.TEMPDISCH',
-            Label: '[*]DisCharge',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: true,
-              Parm002: 2,
-              Parm003: '#{1} F',
-              Parm004: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          pca_mode_cooling: {
-            Tag: 'PCA.MODE_COOLING',
-            Label: 'Cooling Mode',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          },
-          pca_mode_heating: {
-            Tag: 'PCA.MODE_HEATING',
-            Label: 'Heating Mode',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          }
-        }
       }
     },
     'HAS-IAH': {
@@ -7819,30 +7763,8 @@ TagConfig = (function(superClass) {
       },
       out_of_service_widget: {
         remove_tags: {
-          'pca_status': 'pca_status',
-          'pca_discharge_temp': 'pca_discharge_temp',
-          'gpu_status': 'gpu_status'
-        },
-        update_tags: {
-          pbb_status: {
-            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-            Label: '[*]PBB',
-            LebelOverride: true,
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'Docked',
-              Parm002: 'UnDocked',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          }
+          'pca_out_of_service': 'pca_out_of_service',
+          'gpu_out_of_service': 'gpu_out_of_service'
         }
       },
       pbb_level_detail_widget: {
@@ -9367,137 +9289,6 @@ TagConfig = (function(superClass) {
             }
           }
         }
-      },
-      out_of_service_widget: {
-        update_tags: {
-          pbb_docked: {
-            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-            Label: '[*]Docked',
-            LebelOverride: true,
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'Docked',
-              Parm002: 'UnDocked',
-              Parm003: 'Docked',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          },
-          pbb_status: {
-            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-            Label: '[*]PBB',
-            LebelOverride: true,
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: '',
-              Parm002: '',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_status: {
-            Tag: 'GPU.GPUSTATUSBOOLEAN',
-            Label: '[*]GPU',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          pca_status: {
-            Tag: 'PCA.PCASTATUS',
-            Label: '[*]PCA',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          pca_discharge_temp: {
-            Tag: 'PCA.TEMPDISCH',
-            Label: '[*]DisCharge',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: true,
-              Parm002: 2,
-              Parm003: '#{1} F',
-              Parm004: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          pca_mode_cooling: {
-            Tag: 'PCA.MODE_COOLING',
-            Label: 'Cooling Mode',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          },
-          pca_mode_heating: {
-            Tag: 'PCA.MODE_HEATING',
-            Label: 'Heating Mode',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          }
-        }
       }
     },
     DAL: {
@@ -9706,137 +9497,6 @@ TagConfig = (function(superClass) {
         }
       },
       pbb_pca_gpu_status_widget: {
-        update_tags: {
-          pbb_docked: {
-            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-            Label: '[*]Docked',
-            LebelOverride: true,
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'Docked',
-              Parm002: 'UnDocked',
-              Parm003: 'Docked',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          },
-          pbb_status: {
-            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-            Label: '[*]PBB',
-            LebelOverride: true,
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: '',
-              Parm002: '',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_status: {
-            Tag: 'GPU.GPUSTATUSBOOLEAN',
-            Label: '[*]GPU',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          pca_status: {
-            Tag: 'PCA.PCASTATUS',
-            Label: '[*]PCA',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          pca_discharge_temp: {
-            Tag: 'PCA.TEMPDISCH',
-            Label: '[*]DisCharge',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: true,
-              Parm002: 2,
-              Parm003: '#{1} F',
-              Parm004: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          pca_mode_cooling: {
-            Tag: 'PCA.MODE_COOLING',
-            Label: 'Cooling Mode',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          },
-          pca_mode_heating: {
-            Tag: 'PCA.MODE_HEATING',
-            Label: 'Heating Mode',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          }
-        }
-      },
-      out_of_service_widget: {
         update_tags: {
           pbb_docked: {
             Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
@@ -12273,156 +11933,27 @@ TagConfig = (function(superClass) {
         }
       },
       out_of_service_widget: {
-        update_tags: {
-          pbb_docked: {
-            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-            Label: '[*]Docked',
-            LebelOverride: true,
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'Docked',
-              Parm002: 'UnDocked',
-              Parm003: 'Docked',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          },
-          pbb_status: {
-            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-            Label: '[*]PBB',
-            LebelOverride: true,
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: '',
-              Parm002: '',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_status: {
-            Tag: 'GPU.GPUSTATUSBOOLEAN',
-            Label: '[*]GPU',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          pca_status: {
-            Tag: 'PCA.PCASTATUS',
-            Label: '[*]PCA',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          pca_discharge_temp: {
-            Tag: 'PCA.TEMPDISCH',
-            Label: '[*]DisCharge',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: true,
-              Parm002: 2,
-              Parm003: '#{1} F',
-              Parm004: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          pca_mode_cooling: {
-            Tag: 'PCA.MODE_COOLING',
-            Label: 'Cooling Mode',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          },
-          pca_mode_heating: {
-            Tag: 'PCA.MODE_HEATING',
-            Label: 'Heating Mode',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          }
-        },
         C: {
           1: {
             C90: {
               remove_tags: {
-                'gpu_status': 'gpu_status'
+                'gpu_out_of_service': 'gpu_out_of_service'
               }
             }
           },
           3: {
             C125: {
               remove_tags: {
-                'gpu_status': 'gpu_status'
+                'gpu_out_of_service': 'gpu_out_of_service'
               },
               add_tags: {
-                gpu_01_status: {
-                  Tag: 'GPU01.GPUSTATUSBOOLEAN',
-                  Label: 'GPU-1 Status',
+                gpu_01_out_of_service: {
+                  Tag: 'GPU01._OutOfService',
+                  Label: '[*]GPU-01',
                   DataType: 'Boolean',
                   Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
+                    Parm001: 'True',
+                    Parm002: 'False',
                     Parm003: 'ok',
                     Parm004: null,
                     Parm005: null
@@ -12434,13 +11965,13 @@ TagConfig = (function(superClass) {
                     Object: null
                   }
                 },
-                gpu_02_status: {
-                  Tag: 'GPU02.GPUSTATUSBOOLEAN',
-                  Label: 'GPU-2 Status',
+                gpu_02_out_of_service: {
+                  Tag: 'GPU02._OutOfService',
+                  Label: '[*]GPU-02',
                   DataType: 'Boolean',
                   Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
+                    Parm001: 'True',
+                    Parm002: 'False',
                     Parm003: 'ok',
                     Parm004: null,
                     Parm005: null
@@ -14412,101 +13943,19 @@ TagConfig = (function(superClass) {
       },
       out_of_service_widget: {
         remove_tags: {
-          'pca_status': 'pca_status',
-          'pca_discharge_temp': 'pca_discharge_temp'
-        },
-        update_tags: {
-          pbb_docked: {
-            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-            Label: '[*]Docked',
-            LebelOverride: true,
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'Docked',
-              Parm002: 'UnDocked',
-              Parm003: 'Docked',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          },
-          pbb_status: {
-            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-            Label: '[*]PBB',
-            LebelOverride: true,
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: '',
-              Parm002: '',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_status: {
-            Tag: 'GPU.GPUSTATUSBOOLEAN',
-            Label: '[*]GPU',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          }
+          'pca_out_of_service': 'pca_out_of_service'
         },
         4: {
           B1: {
             B29L2: {
               add_tags: {
-                elvrot_rotunda_status: {
-                  Tag: 'ELVROT.ROTUNDA_STATUS',
-                  Label: '[*]Elev. Rot.',
-                  DataType: 'Value',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: '#{1}',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: null,
-                    ParentID: null,
-                    Class: 'ElvRot',
-                    Object: null
-                  }
-                }
-              }
-            }
-          },
-          B2: {
-            B32: {
-              update_tags: {
-                pca_status: {
-                  Tag: 'PCA.PCASTATUS',
-                  Label: '[*]PCA',
+                elvrot_out_of_service: {
+                  Tag: 'ELVROT._OutOfService',
+                  Label: '[*]ELVROT',
                   DataType: 'Boolean',
                   Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
+                    Parm001: 'True',
+                    Parm002: 'False',
                     Parm003: 'ok',
                     Parm004: null,
                     Parm005: null
@@ -14517,16 +13966,23 @@ TagConfig = (function(superClass) {
                     Class: null,
                     Object: null
                   }
-                },
-                pca_discharge_temp: {
-                  Tag: 'PCA.TEMPDISCH',
-                  Label: '[*]DisCharge',
-                  DataType: 'Float',
+                }
+              }
+            }
+          },
+          B2: {
+            B32: {
+              update_tags: {
+                pca_out_of_service: {
+                  Tag: 'PCA._OutOfService',
+                  Label: '[*]PCA',
+                  DataType: 'Boolean',
                   Parameters: {
-                    Parm001: true,
-                    Parm002: 2,
-                    Parm003: '#{1} F',
-                    Parm004: null
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
                   },
                   Element: {
                     Type: null,
