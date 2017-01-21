@@ -419,7 +419,7 @@ class TagConfig extends Object
 			Tags:{'pbb_status','gpu_status','pca_status','pca_discharge_temp'}
 			Graphics:{}
 		pbb_pca_gpu_status_widget: # PBB/PCA/GPU System Status Widget
-			Tags:{'pbb_status','gpu_status','pca_status','pca_discharge_temp','pbb_out_of_service','gpu_out_of_service','pca_out_of_service'}
+			Tags:{'pbb_status','gpu_status','pca_status','pca_discharge_temp'}
 			Graphics:{}
 		out_of_service_widget: # Out Of Service Widget
 			Tags:{'pbb_out_of_service','gpu_out_of_service','pca_out_of_service'}
@@ -1703,9 +1703,6 @@ class TagConfig extends Object
 					pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'[*]DisCharge',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 					pca_mode_cooling:{Tag:'PCA.MODE_COOLING',Label:'Cooling Mode',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pca_mode_heating:{Tag:'PCA.MODE_HEATING',Label:'Heating Mode',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-					gpu_out_of_service:{Tag:'GPU._OutOfService',Label:'[*]Out Of Service',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:'out-of-service',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-					pbb_out_of_service:{Tag:'PBB._OutOfService',Label:'[*]Out Of Service',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:'out-of-service',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-					pca_out_of_service:{Tag:'PCA._OutOfService',Label:'[*]Out Of Service',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:'out-of-service',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 				}
 			# out_of_service_status_widget: # Out Of Service Widget
 

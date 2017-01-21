@@ -6318,10 +6318,7 @@ TagConfig = (function(superClass) {
         'pbb_status': 'pbb_status',
         'gpu_status': 'gpu_status',
         'pca_status': 'pca_status',
-        'pca_discharge_temp': 'pca_discharge_temp',
-        'pbb_out_of_service': 'pbb_out_of_service',
-        'gpu_out_of_service': 'gpu_out_of_service',
-        'pca_out_of_service': 'pca_out_of_service'
+        'pca_discharge_temp': 'pca_discharge_temp'
       },
       Graphics: {}
     },
@@ -19286,63 +19283,6 @@ TagConfig = (function(superClass) {
               Parm001: null,
               Parm002: null,
               Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          },
-          gpu_out_of_service: {
-            Tag: 'GPU._OutOfService',
-            Label: '[*]Out Of Service',
-            LebelOverride: true,
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: 'out-of-service',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          },
-          pbb_out_of_service: {
-            Tag: 'PBB._OutOfService',
-            Label: '[*]Out Of Service',
-            LebelOverride: true,
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: 'out-of-service',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          },
-          pca_out_of_service: {
-            Tag: 'PCA._OutOfService',
-            Label: '[*]Out Of Service',
-            LebelOverride: true,
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: 'out-of-service',
               Parm004: null,
               Parm005: null
             },
