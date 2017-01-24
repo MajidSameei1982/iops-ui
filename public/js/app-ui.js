@@ -8848,6 +8848,41 @@ TagConfig = (function(superClass) {
               Class: null,
               Object: null
             }
+          },
+          pca_modeofoperation: {
+            Tag: 'PCA.MODEOFOPERATION',
+            Label: 'Mode',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: false,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_modeovernight: {
+            Tag: 'PCA.MODEOVERNIGHT',
+            Label: 'Overnight Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
           }
         },
         1: {
@@ -11524,6 +11559,41 @@ TagConfig = (function(superClass) {
                     Class: null,
                     Object: null
                   }
+                },
+                pca_modeofoperation: {
+                  Tag: 'PCA.MODEOFOPERATION',
+                  Label: 'Mode',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_modeovernight: {
+                  Tag: 'PCA.MODEOVERNIGHT',
+                  Label: 'Overnight Mode',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
                 }
               }
             }
@@ -12159,7 +12229,367 @@ TagConfig = (function(superClass) {
         }
       },
       pca_discharge_widget: {
-        remove_all: {}
+        remove_all: {},
+        4: {
+          B2: {
+            update_tags: {
+              pca_discharge_temp: {
+                Tag: 'PCA.TEMPDISCH',
+                Label: 'Discharge Air Temperature',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_status: {
+                Tag: 'PCA.PCASTATUS',
+                Label: 'PCA status',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_mode_cooling: {
+                Tag: 'PCA.MODE_COOLING',
+                Label: 'Cooling Mode',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_mode_heating: {
+                Tag: 'PCA.MODE_HEATING',
+                Label: 'Heating Mode',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_cooling_pt: {
+                Tag: 'PCA.SET_COOLINGPOINT',
+                Label: 'Cooling Setpoint',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_cooling_tm: {
+                Tag: 'PCA.SET_COOLINGPOINT_TIMER',
+                Label: 'Cooling Timer',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_heating_pt: {
+                Tag: 'PCA.SET_HEATINGPOINT',
+                Label: 'Heating Setpoint',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_heating_tm: {
+                Tag: 'PCA.SET_HEATINGPOINT_TIMER',
+                Label: 'Heating Timer',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_alarm_cooling_run: {
+                Tag: 'PCA.ALARM_COOLINGRUN_BOOLEAN',
+                Label: 'Cooling Run Alarm',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_alarm_heating_run: {
+                Tag: 'PCA.ALARM_HEATINGRUN_BOOLEAN',
+                Label: 'Heating Run Alarm',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              }
+            }
+          },
+          B3: {
+            update_tags: {
+              pca_discharge_temp: {
+                Tag: 'PCA.TEMPDISCH',
+                Label: 'Discharge Air Temperature',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_status: {
+                Tag: 'PCA.PCASTATUS',
+                Label: 'PCA status',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_mode_cooling: {
+                Tag: 'PCA.MODE_COOLING',
+                Label: 'Cooling Mode',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_mode_heating: {
+                Tag: 'PCA.MODE_HEATING',
+                Label: 'Heating Mode',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_cooling_pt: {
+                Tag: 'PCA.SET_COOLINGPOINT',
+                Label: 'Cooling Setpoint',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_cooling_tm: {
+                Tag: 'PCA.SET_COOLINGPOINT_TIMER',
+                Label: 'Cooling Timer',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_heating_pt: {
+                Tag: 'PCA.SET_HEATINGPOINT',
+                Label: 'Heating Setpoint',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_heating_tm: {
+                Tag: 'PCA.SET_HEATINGPOINT_TIMER',
+                Label: 'Heating Timer',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_alarm_cooling_run: {
+                Tag: 'PCA.ALARM_COOLINGRUN_BOOLEAN',
+                Label: 'Cooling Run Alarm',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_alarm_heating_run: {
+                Tag: 'PCA.ALARM_HEATINGRUN_BOOLEAN',
+                Label: 'Heating Run Alarm',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              }
+            }
+          }
+        }
       },
       pca_widget: {
         remove_tags: {
@@ -12182,446 +12612,835 @@ TagConfig = (function(superClass) {
         },
         4: {
           B2: {
-            B32: {
-              update_tags: {
-                pca_cabin_temp: {
-                  Tag: 'PCA.TEMPCABIN',
-                  Label: 'Cabin Air Temperature',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: true,
-                    Parm002: 2,
-                    Parm003: '#{1} F',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+            update_tags: {
+              pca_cabin_temp: {
+                Tag: 'PCA.TEMPCABIN',
+                Label: 'Cabin Air Temperature',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
                 },
-                pca_ambient_temp: {
-                  Tag: 'PCA.TEMPAMB',
-                  Label: 'Ambient Air Temperature',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: true,
-                    Parm002: 2,
-                    Parm003: '#{1} F',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_ambient_temp: {
+                Tag: 'PCA.TEMPAMB',
+                Label: 'Ambient Air Temperature',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
                 },
-                pca_discharge_temp: {
-                  Tag: 'PCA.TEMPDISCH',
-                  Label: 'Discharge Air Temperature',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: true,
-                    Parm002: 2,
-                    Parm003: '#{1} F',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_discharge_temp: {
+                Tag: 'PCA.TEMPDISCH',
+                Label: 'Discharge Air Temperature',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
                 },
-                pca_heater_1: {
-                  Tag: 'PCA.HEAT1',
-                  Label: 'Heater #1 is running',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_heater_1: {
+                Tag: 'PCA.HEAT1',
+                Label: 'Heater #1 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
                 },
-                pca_heater_2: {
-                  Tag: 'PCA.HEAT2',
-                  Label: 'Heater #2 is running',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_heater_2: {
+                Tag: 'PCA.HEAT2',
+                Label: 'Heater #2 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
                 },
-                pca_heater_3: {
-                  Tag: 'PCA.HEAT3',
-                  Label: 'Heater #3 is running',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_heater_3: {
+                Tag: 'PCA.HEAT3',
+                Label: 'Heater #3 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
                 },
-                pca_heater_4: {
-                  Tag: 'PCA.HEAT4',
-                  Label: 'Heater #4 is running',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_heater_4: {
+                Tag: 'PCA.HEAT4',
+                Label: 'Heater #4 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
                 },
-                pca_heater_5: {
-                  Tag: 'PCA.HEAT5',
-                  Label: 'Heater #5 is running',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_heater_5: {
+                Tag: 'PCA.HEAT5',
+                Label: 'Heater #5 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
                 },
-                pca_comp_pri_1: {
-                  Tag: 'PCA.COMPPRI1',
-                  Label: 'Primary compressor #1 is running',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_comp_pri_1: {
+                Tag: 'PCA.COMPPRI1',
+                Label: 'Primary compressor #1 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
                 },
-                pca_comp_pri_2: {
-                  Tag: 'PCA.COMPPRI2',
-                  Label: 'Primary compressor #2 is running',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_comp_pri_2: {
+                Tag: 'PCA.COMPPRI2',
+                Label: 'Primary compressor #2 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
                 },
-                pca_comp_sec_1: {
-                  Tag: 'PCA.COMPSEC1',
-                  Label: 'Secondary compressor #1 is running',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_comp_sec_1: {
+                Tag: 'PCA.COMPSEC1',
+                Label: 'Secondary compressor #1 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
                 },
-                pca_comp_sec_2: {
-                  Tag: 'PCA.COMPSEC2',
-                  Label: 'Secondary compressor #2 is running',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_comp_sec_2: {
+                Tag: 'PCA.COMPSEC2',
+                Label: 'Secondary compressor #2 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
                 },
-                pca_bridge_damper: {
-                  Tag: 'PCA.BRIDGE_DAMPER_POSITION',
-                  Label: 'Aircraft Damper',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_bridge_damper: {
+                Tag: 'PCA.BRIDGE_DAMPER_POSITION',
+                Label: 'Aircraft Damper',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
                 },
-                pca_blower: {
-                  Tag: 'PCA.BLOWER',
-                  Label: 'Blower Status',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_blower: {
+                Tag: 'PCA.BLOWER',
+                Label: 'Blower Status',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
                 },
-                pca_bridge_air: {
-                  Tag: 'PCA.BRIDGE_AIR',
-                  Label: 'Bridge Damper',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_bridge_air: {
+                Tag: 'PCA.BRIDGE_AIR',
+                Label: 'Bridge Damper',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
                 },
-                pca_dirty_filter: {
-                  Tag: 'PCA.Warning.DIRTYFILTER',
-                  Label: 'Dirty Filter',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'Yes',
-                    Parm002: 'No',
-                    Parm003: 'err',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_dirty_filter: {
+                Tag: 'PCA.Alarm.DIRTY_AIR_FILTER',
+                Label: 'Dirty Filter',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'Yes',
+                  Parm002: 'No',
+                  Parm003: 'err',
+                  Parm004: null,
+                  Parm005: null
                 },
-                pca_suction_pressure_1: {
-                  Tag: 'PCA.PRESSSUCPRI1',
-                  Label: 'Suction pressure,primary compressor #1',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: true,
-                    Parm002: 2,
-                    Parm003: '#{1}',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_suction_pressure_1: {
+                Tag: 'PCA.PRESSSUCPRI1',
+                Label: 'Suction pressure,primary compressor #1',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1}',
+                  Parm004: null
                 },
-                pca_suction_pressure_2: {
-                  Tag: 'PCA.PRESSSUCPRI2',
-                  Label: 'Suction pressure,primary compressor #2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: true,
-                    Parm002: 2,
-                    Parm003: '#{1}',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_suction_pressure_2: {
+                Tag: 'PCA.PRESSSUCPRI2',
+                Label: 'Suction pressure,primary compressor #2',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1}',
+                  Parm004: null
                 },
-                pca_suction_pressure_sec_1: {
-                  Tag: 'PCA.PRESSSUCSEC1',
-                  Label: 'Suction pressure,secondary compressor #1',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: true,
-                    Parm002: 2,
-                    Parm003: '#{1}',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_suction_pressure_sec_1: {
+                Tag: 'PCA.PRESSSUCSEC1',
+                Label: 'Suction pressure,secondary compressor #1',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1}',
+                  Parm004: null
                 },
-                pca_suction_pressure_sec_2: {
-                  Tag: 'PCA.PRESSSUCSEC2',
-                  Label: 'Suction pressure,secondary compressor #2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: true,
-                    Parm002: 2,
-                    Parm003: '#{1}',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_suction_pressure_sec_2: {
+                Tag: 'PCA.PRESSSUCSEC2',
+                Label: 'Suction pressure,secondary compressor #2',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1}',
+                  Parm004: null
                 },
-                pca_pressure_head_1: {
-                  Tag: 'PCA.PRESSHEADPRI1',
-                  Label: 'Head pressure,primary compressor #1',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: true,
-                    Parm002: 2,
-                    Parm003: '#{1}',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_pressure_head_1: {
+                Tag: 'PCA.PRESSHEADPRI1',
+                Label: 'Head pressure,primary compressor #1',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1}',
+                  Parm004: null
                 },
-                pca_pressure_head_2: {
-                  Tag: 'PCA.PRESSHEADPRI2',
-                  Label: 'Head pressure,primary compressor #2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: true,
-                    Parm002: 2,
-                    Parm003: '#{1}',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_pressure_head_2: {
+                Tag: 'PCA.PRESSHEADPRI2',
+                Label: 'Head pressure,primary compressor #2',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1}',
+                  Parm004: null
                 },
-                pca_pressure_head_1_sec: {
-                  Tag: 'PCA.PRESSHEADSEC1',
-                  Label: 'Head pressure,secondary compressor #1',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: true,
-                    Parm002: 2,
-                    Parm003: '#{1}',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_pressure_head_1_sec: {
+                Tag: 'PCA.PRESSHEADSEC1',
+                Label: 'Head pressure,secondary compressor #1',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1}',
+                  Parm004: null
                 },
-                pca_pressure_head_2_sec: {
-                  Tag: 'PCA.PRESSHEADSEC2',
-                  Label: 'Head pressure,secondary compressor #2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: true,
-                    Parm002: 2,
-                    Parm003: '#{1}',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_pressure_head_2_sec: {
+                Tag: 'PCA.PRESSHEADSEC2',
+                Label: 'Head pressure,secondary compressor #2',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1}',
+                  Parm004: null
                 },
-                pca_status: {
-                  Tag: 'PCA.PCASTATUS',
-                  Label: 'PCA status',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_status: {
+                Tag: 'PCA.PCASTATUS',
+                Label: 'PCA status',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_modeofoperation: {
+                Tag: 'PCA.MODEOFOPERATION',
+                Label: 'Mode',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: false,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_modeovernight: {
+                Tag: 'PCA.MODEOVERNIGHT',
+                Label: 'Overnight Mode',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              }
+            }
+          },
+          B3: {
+            update_tags: {
+              pca_cabin_temp: {
+                Tag: 'PCA.TEMPCABIN',
+                Label: 'Cabin Air Temperature',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_ambient_temp: {
+                Tag: 'PCA.TEMPAMB',
+                Label: 'Ambient Air Temperature',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_discharge_temp: {
+                Tag: 'PCA.TEMPDISCH',
+                Label: 'Discharge Air Temperature',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_heater_1: {
+                Tag: 'PCA.HEATER1',
+                Label: 'Heater #1 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_heater_2: {
+                Tag: 'PCA.HEATER2',
+                Label: 'Heater #2 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_comp_pri_1: {
+                Tag: 'PCA.COMPPRI1',
+                Label: 'Primary compressor #1 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_comp_pri_2: {
+                Tag: 'PCA.COMPPRI2',
+                Label: 'Primary compressor #2 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_comp_sec_1: {
+                Tag: 'PCA.COMPSEC1',
+                Label: 'Secondary compressor #1 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_comp_sec_2: {
+                Tag: 'PCA.COMPSEC2',
+                Label: 'Secondary compressor #2 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_bridge_damper: {
+                Tag: 'PCA.BRIDGE_DAMPER_POSITION',
+                Label: 'Aircraft Damper',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_blower: {
+                Tag: 'PCA.BLOWER',
+                Label: 'Blower Status',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_bridge_air: {
+                Tag: 'PCA.BRIDGE_AIR',
+                Label: 'Bridge Damper',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_dirty_filter: {
+                Tag: 'PCA.Alarm.DIRTY_AIR_FILTER',
+                Label: 'Dirty Filter',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'Yes',
+                  Parm002: 'No',
+                  Parm003: 'err',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_suction_pressure_1: {
+                Tag: 'PCA.PRESSSUCPRI1',
+                Label: 'Suction pressure,primary compressor #1',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1}',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_suction_pressure_sec_1: {
+                Tag: 'PCA.PRESSSUCSEC1',
+                Label: 'Suction pressure,secondary compressor #1',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1}',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_pressure_head_1: {
+                Tag: 'PCA.PRESSHEADPRI1',
+                Label: 'Head pressure,primary compressor #1',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1}',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_pressure_head_1_sec: {
+                Tag: 'PCA.PRESSHEADSEC1',
+                Label: 'Head pressure,secondary compressor #1',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1}',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_status: {
+                Tag: 'PCA.PCASTATUS',
+                Label: 'PCA status',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_modeofoperation: {
+                Tag: 'PCA.MODEOFOPERATION',
+                Label: 'Mode',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: false,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_modeovernight: {
+                Tag: 'PCA.MODEOVERNIGHT',
+                Label: 'Overnight Mode',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
                 }
               }
             }
@@ -12631,7 +13450,630 @@ TagConfig = (function(superClass) {
       pca_summary_widget: {
         4: {
           B2: {
-            B32: {
+            update_graphics: {
+              pca_main_background: {
+                ControlTags: {
+                  none: null
+                },
+                Parameters: {
+                  Parm001: null,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#graphics_container',
+                  Class: 'background jetway-100',
+                  Object: null
+                }
+              },
+              blower_img: {
+                ControlTags: {
+                  pca_blower: 'Boolean'
+                },
+                Parameters: {
+                  Parm001: 'ALL_TRUE',
+                  Parm002: 'blower-on',
+                  Parm003: null,
+                  Parm004: 'blower-bq'
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#dynamic_pca_main_background',
+                  Class: 'img jetway-100',
+                  Object: null
+                }
+              },
+              heating_stage_1_img: {
+                ControlTags: {
+                  pca_heater_1: 'Boolean'
+                },
+                Parameters: {
+                  Parm001: 'ALL_TRUE',
+                  Parm002: 'heating-stage-1-on',
+                  Parm003: null,
+                  Parm004: 'heating-stage-1-bq'
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#dynamic_pca_main_background',
+                  Class: 'img jetway-100',
+                  Object: null
+                }
+              },
+              heating_stage_2_img: {
+                ControlTags: {
+                  pca_heater_2: 'Boolean'
+                },
+                Parameters: {
+                  Parm001: 'ALL_TRUE',
+                  Parm002: 'heating-stage-2-on',
+                  Parm003: null,
+                  Parm004: 'heating-stage-2-bq'
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#dynamic_pca_main_background',
+                  Class: 'img jetway-100',
+                  Object: null
+                }
+              },
+              heating_stage_3_img: {
+                ControlTags: {
+                  pca_heater_3: 'Boolean'
+                },
+                Parameters: {
+                  Parm001: 'ALL_TRUE',
+                  Parm002: 'heating-stage-3-on',
+                  Parm003: null,
+                  Parm004: 'heating-stage-3-bq'
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#dynamic_pca_main_background',
+                  Class: 'img jetway-100',
+                  Object: null
+                }
+              },
+              heating_stage_4_img: {
+                ControlTags: {
+                  pca_heater_4: 'Boolean'
+                },
+                Parameters: {
+                  Parm001: 'ALL_TRUE',
+                  Parm002: 'heating-stage-4-on',
+                  Parm003: null,
+                  Parm004: 'heating-stage-4-bq'
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#dynamic_pca_main_background',
+                  Class: 'img jetway-100',
+                  Object: null
+                }
+              },
+              heating_stage_5_img: {
+                ControlTags: {
+                  pca_heater_5: 'Boolean'
+                },
+                Parameters: {
+                  Parm001: 'ALL_TRUE',
+                  Parm002: 'heating-stage-5-on',
+                  Parm003: null,
+                  Parm004: 'heating-stage-5-bq'
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#dynamic_pca_main_background',
+                  Class: 'img jetway-100',
+                  Object: null
+                }
+              },
+              cooling_stage_1_img: {
+                ControlTags: {
+                  pca_comp_stage_2_sec: 'Boolean'
+                },
+                Parameters: {
+                  Parm001: 'ALL_TRUE',
+                  Parm002: 'cooling-stage-1-on',
+                  Parm003: null,
+                  Parm004: 'cooling-stage-1-bq'
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#dynamic_pca_main_background',
+                  Class: 'img jetway-100',
+                  Object: null
+                }
+              },
+              cooling_stage_2_img: {
+                ControlTags: {
+                  pca_comp_stage_1_sec: 'Boolean'
+                },
+                Parameters: {
+                  Parm001: 'ALL_TRUE',
+                  Parm002: 'cooling-stage-2-on',
+                  Parm003: null,
+                  Parm004: 'cooling-stage-2-bq'
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#dynamic_pca_main_background',
+                  Class: 'img jetway-100',
+                  Object: null
+                }
+              },
+              cooling_stage_3_img: {
+                ControlTags: {
+                  pca_comp_stage_2: 'Boolean'
+                },
+                Parameters: {
+                  Parm001: 'ALL_TRUE',
+                  Parm002: 'cooling-stage-3-on',
+                  Parm003: null,
+                  Parm004: 'cooling-stage-3-bq'
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#dynamic_pca_main_background',
+                  Class: 'img jetway-100',
+                  Object: null
+                }
+              },
+              cooling_stage_4_img: {
+                ControlTags: {
+                  pca_comp_stage_1: 'Boolean'
+                },
+                Parameters: {
+                  Parm001: 'ALL_TRUE',
+                  Parm002: 'cooling-stage-4-on',
+                  Parm003: null,
+                  Parm004: 'cooling-stage-3-bq'
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#dynamic_pca_main_background',
+                  Class: 'img jetway-100',
+                  Object: null
+                }
+              },
+              accool_img: {
+                ControlTags: {
+                  pca_bridge_damper: 'Boolean',
+                  pca_status: 'Boolean'
+                },
+                Parameters: {
+                  Parm001: 'ALL_TRUE',
+                  Parm002: 'ac-cool-on',
+                  Parm003: null,
+                  Parm004: 'ac-cool-bq'
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#dynamic_pca_main_background',
+                  Class: 'img jetway-100',
+                  Object: null
+                }
+              },
+              bccool_img: {
+                ControlTags: {
+                  pca_bridge_air: 'Boolean'
+                },
+                Parameters: {
+                  Parm001: 'ALL_TRUE',
+                  Parm002: 'bc-cool-on',
+                  Parm003: null,
+                  Parm004: 'bc-cool-bq'
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#dynamic_pca_main_background',
+                  Class: 'img jetway-100',
+                  Object: null
+                }
+              },
+              fan_1_img: {
+                ControlTags: {
+                  pca_fan_1: 'Boolean'
+                },
+                Parameters: {
+                  Parm001: 'ALL_TRUE',
+                  Parm002: 'fan-1-on',
+                  Parm003: null,
+                  Parm004: 'fan-1-bq'
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#dynamic_pca_main_background',
+                  Class: 'img jetway-100',
+                  Object: null
+                }
+              },
+              fan_2_img: {
+                ControlTags: {
+                  pca_fan_2: 'Boolean'
+                },
+                Parameters: {
+                  Parm001: 'ALL_TRUE',
+                  Parm002: 'fan-2-on',
+                  Parm003: null,
+                  Parm004: 'fan-2-bq'
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#dynamic_pca_main_background',
+                  Class: 'img jetway-100',
+                  Object: null
+                }
+              },
+              fan_3_img: {
+                ControlTags: {
+                  pca_fan_3: 'Boolean'
+                },
+                Parameters: {
+                  Parm001: 'ALL_TRUE',
+                  Parm002: 'fan-3-on',
+                  Parm003: null,
+                  Parm004: 'fan-3-bq'
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#dynamic_pca_main_background',
+                  Class: 'img jetway-100',
+                  Object: null
+                }
+              },
+              fan_4_img: {
+                ControlTags: {
+                  pca_fan_4: 'Boolean'
+                },
+                Parameters: {
+                  Parm001: 'ALL_TRUE',
+                  Parm002: 'fan-4-on',
+                  Parm003: null,
+                  Parm004: 'fan-4-bq'
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#dynamic_pca_main_background',
+                  Class: 'img jetway-100',
+                  Object: null
+                }
+              },
+              filter_img: {
+                ControlTags: {
+                  pca_dirtyfilter: 'Boolean'
+                },
+                Parameters: {
+                  Parm001: 'ALL_TRUE',
+                  Parm002: 'filter-on',
+                  Parm003: null,
+                  Parm004: 'filter-bq'
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#dynamic_pca_main_background',
+                  Class: 'img jetway-100',
+                  Object: null
+                }
+              }
+            },
+            remove_tags: {
+              'pca_ambient_humidity': 'pca_ambient_humidity',
+              'pca_coil_dp': 'pca_coil_dp',
+              'pca_hot_gas_1': 'pca_hot_gas_1',
+              'pca_hot_gas_2': 'pca_hot_gas_2'
+            },
+            update_tags: {
+              pca_heater_1: {
+                Tag: 'PCA.HEAT1',
+                Label: 'Heater #1',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_heater_2: {
+                Tag: 'PCA.HEAT2',
+                Label: 'Heater #2',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_heater_3: {
+                Tag: 'PCA.HEAT3',
+                Label: 'Heater #3',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_heater_4: {
+                Tag: 'PCA.HEAT4',
+                Label: 'Heater #4',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_heater_5: {
+                Tag: 'PCA.HEAT5',
+                Label: 'Heater #5',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_fan_1: {
+                Tag: 'PCA.FANCONDFRONTPRI',
+                Label: 'Fan #1',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_fan_2: {
+                Tag: 'PCA.FANCONDREARPRI',
+                Label: 'Fan #2',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_fan_3: {
+                Tag: 'PCA.FANCONDFRONTSEC',
+                Label: 'Fan #3',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_fan_4: {
+                Tag: 'PCA.FANCONDREARSEC',
+                Label: 'Fan #4',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_comp_stage_1: {
+                Tag: 'PCA.COMPPRI1',
+                Label: 'Primary compressor #1',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_comp_stage_2: {
+                Tag: 'PCA.COMPPRI2',
+                Label: 'Primary compressor #2',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_comp_stage_1_sec: {
+                Tag: 'PCA.COMPSEC1',
+                Label: 'Secondary compressor #1',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_comp_stage_2_sec: {
+                Tag: 'PCA.COMPSEC2',
+                Label: 'Secondary compressor #2',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_dirtyfilter: {
+                Tag: 'PCA.Alarm.DIRTY_AIR_FILTER',
+                Label: 'Dirty Filter',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_bridge_damper: {
+                Tag: 'PCA.BRIDGE_DAMPER_POSITION',
+                Label: 'Aircraft Damper',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_blower: {
+                Tag: 'PCA.BLOWER',
+                Label: 'Blower Status',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_bridge_air: {
+                Tag: 'PCA.BRIDGE_AIR',
+                Label: 'Bridge Damper',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              }
+            },
+            B33: {
               update_graphics: {
                 pca_main_background: {
                   ControlTags: {
@@ -12646,7 +14088,7 @@ TagConfig = (function(superClass) {
                   Element: {
                     Type: 'div',
                     ParentID: '#graphics_container',
-                    Class: 'background jetway-100',
+                    Class: 'background jetway-twist-75',
                     Object: null
                   }
                 },
@@ -12663,7 +14105,7 @@ TagConfig = (function(superClass) {
                   Element: {
                     Type: 'div',
                     ParentID: '#dynamic_pca_main_background',
-                    Class: 'img jetway-100',
+                    Class: 'img jetway-twist-75',
                     Object: null
                   }
                 },
@@ -12680,7 +14122,7 @@ TagConfig = (function(superClass) {
                   Element: {
                     Type: 'div',
                     ParentID: '#dynamic_pca_main_background',
-                    Class: 'img jetway-100',
+                    Class: 'img jetway-twist-75',
                     Object: null
                   }
                 },
@@ -12697,13 +14139,13 @@ TagConfig = (function(superClass) {
                   Element: {
                     Type: 'div',
                     ParentID: '#dynamic_pca_main_background',
-                    Class: 'img jetway-100',
+                    Class: 'img jetway-twist-75',
                     Object: null
                   }
                 },
                 cooling_stage_1_img: {
                   ControlTags: {
-                    pca_comp_stage_2_sec: 'Boolean'
+                    pca_comp_stage_1: 'Boolean'
                   },
                   Parameters: {
                     Parm001: 'ALL_TRUE',
@@ -12714,13 +14156,13 @@ TagConfig = (function(superClass) {
                   Element: {
                     Type: 'div',
                     ParentID: '#dynamic_pca_main_background',
-                    Class: 'img jetway-100',
+                    Class: 'img jetway-twist-75',
                     Object: null
                   }
                 },
                 cooling_stage_2_img: {
                   ControlTags: {
-                    pca_comp_stage_1_sec: 'Boolean'
+                    pca_comp_stage_2: 'Boolean'
                   },
                   Parameters: {
                     Parm001: 'ALL_TRUE',
@@ -12731,7 +14173,7 @@ TagConfig = (function(superClass) {
                   Element: {
                     Type: 'div',
                     ParentID: '#dynamic_pca_main_background',
-                    Class: 'img jetway-100',
+                    Class: 'img jetway-twist-75',
                     Object: null
                   }
                 },
@@ -12749,7 +14191,7 @@ TagConfig = (function(superClass) {
                   Element: {
                     Type: 'div',
                     ParentID: '#dynamic_pca_main_background',
-                    Class: 'img jetway-100',
+                    Class: 'img jetway-twist-75',
                     Object: null
                   }
                 },
@@ -12766,7 +14208,41 @@ TagConfig = (function(superClass) {
                   Element: {
                     Type: 'div',
                     ParentID: '#dynamic_pca_main_background',
-                    Class: 'img jetway-100',
+                    Class: 'img jetway-twist-75',
+                    Object: null
+                  }
+                },
+                heating_stage_3_img: {
+                  ControlTags: {
+                    pca_heater_3: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-3-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-3-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
+                    Object: null
+                  }
+                },
+                cooling_stage_3_img: {
+                  ControlTags: {
+                    pca_comp_stage_3: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-3-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-3-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
                     Object: null
                   }
                 },
@@ -12783,7 +14259,7 @@ TagConfig = (function(superClass) {
                   Element: {
                     Type: 'div',
                     ParentID: '#dynamic_pca_main_background',
-                    Class: 'img jetway-100',
+                    Class: 'img jetway-twist-75',
                     Object: null
                   }
                 },
@@ -12800,128 +14276,7 @@ TagConfig = (function(superClass) {
                   Element: {
                     Type: 'div',
                     ParentID: '#dynamic_pca_main_background',
-                    Class: 'img jetway-100',
-                    Object: null
-                  }
-                },
-                fan_3_img: {
-                  ControlTags: {
-                    pca_fan_3: 'Boolean'
-                  },
-                  Parameters: {
-                    Parm001: 'ALL_TRUE',
-                    Parm002: 'fan-3-on',
-                    Parm003: null,
-                    Parm004: 'fan-3-bq'
-                  },
-                  Element: {
-                    Type: 'div',
-                    ParentID: '#dynamic_pca_main_background',
-                    Class: 'img jetway-100',
-                    Object: null
-                  }
-                }
-              },
-              add_graphics: {
-                heating_stage_3_img: {
-                  ControlTags: {
-                    pca_heater_3: 'Boolean'
-                  },
-                  Parameters: {
-                    Parm001: 'ALL_TRUE',
-                    Parm002: 'heating-stage-3-on',
-                    Parm003: null,
-                    Parm004: 'heating-stage-3-bq'
-                  },
-                  Element: {
-                    Type: 'div',
-                    ParentID: '#dynamic_pca_main_background',
-                    Class: 'img jetway-100',
-                    Object: null
-                  }
-                },
-                heating_stage_4_img: {
-                  ControlTags: {
-                    pca_heater_4: 'Boolean'
-                  },
-                  Parameters: {
-                    Parm001: 'ALL_TRUE',
-                    Parm002: 'heating-stage-4-on',
-                    Parm003: null,
-                    Parm004: 'heating-stage-4-bq'
-                  },
-                  Element: {
-                    Type: 'div',
-                    ParentID: '#dynamic_pca_main_background',
-                    Class: 'img jetway-100',
-                    Object: null
-                  }
-                },
-                heating_stage_5_img: {
-                  ControlTags: {
-                    pca_heater_5: 'Boolean'
-                  },
-                  Parameters: {
-                    Parm001: 'ALL_TRUE',
-                    Parm002: 'heating-stage-5-on',
-                    Parm003: null,
-                    Parm004: 'heating-stage-5-bq'
-                  },
-                  Element: {
-                    Type: 'div',
-                    ParentID: '#dynamic_pca_main_background',
-                    Class: 'img jetway-100',
-                    Object: null
-                  }
-                },
-                cooling_stage_3_img: {
-                  ControlTags: {
-                    pca_comp_stage_2: 'Boolean'
-                  },
-                  Parameters: {
-                    Parm001: 'ALL_TRUE',
-                    Parm002: 'cooling-stage-3-on',
-                    Parm003: null,
-                    Parm004: 'cooling-stage-3-bq'
-                  },
-                  Element: {
-                    Type: 'div',
-                    ParentID: '#dynamic_pca_main_background',
-                    Class: 'img jetway-100',
-                    Object: null
-                  }
-                },
-                cooling_stage_4_img: {
-                  ControlTags: {
-                    pca_comp_stage_1: 'Boolean'
-                  },
-                  Parameters: {
-                    Parm001: 'ALL_TRUE',
-                    Parm002: 'cooling-stage-4-on',
-                    Parm003: null,
-                    Parm004: 'cooling-stage-3-bq'
-                  },
-                  Element: {
-                    Type: 'div',
-                    ParentID: '#dynamic_pca_main_background',
-                    Class: 'img jetway-100',
-                    Object: null
-                  }
-                },
-                fan_4_img: {
-                  ControlTags: {
-                    pca_fan_4: 'Boolean'
-                  },
-                  Parameters: {
-                    Parm001: 'ALL_TRUE',
-                    Parm002: 'fan-4-on',
-                    Parm003: null,
-                    Parm004: 'fan-4-bq'
-                  },
-                  Element: {
-                    Type: 'div',
-                    ParentID: '#dynamic_pca_main_background',
-                    Class: 'img jetway-100',
+                    Class: 'img jetway-twist-75',
                     Object: null
                   }
                 },
@@ -12938,407 +14293,900 @@ TagConfig = (function(superClass) {
                   Element: {
                     Type: 'div',
                     ParentID: '#dynamic_pca_main_background',
-                    Class: 'img jetway-100',
+                    Class: 'img jetway-twist-75',
                     Object: null
                   }
                 }
               },
+              remove_graphics: {
+                'heating_stage_4_img': 'heating_stage_4_img',
+                'heating_stage_5_img': 'heating_stage_5_img',
+                'cooling_stage_4_img': 'cooling_stage_4_img',
+                'fan_3_img': 'fan_3_img',
+                'fan_4_img': 'fan_4_img'
+              },
               remove_tags: {
+                'pca_heater_4': 'pca_heater_4',
+                'pca_heater_5': 'pca_heater_5',
+                'pca_fan_3': 'pca_fan_3',
+                'pca_fan_4': 'pca_fan_4',
+                'pca_comp_stage_1_sec': 'pca_comp_stage_1_sec',
+                'pca_comp_stage_2_sec': 'pca_comp_stage_2_sec',
                 'pca_ambient_humidity': 'pca_ambient_humidity',
                 'pca_coil_dp': 'pca_coil_dp',
                 'pca_hot_gas_1': 'pca_hot_gas_1',
                 'pca_hot_gas_2': 'pca_hot_gas_2'
-              },
-              update_tags: {
-                pca_heater_1: {
-                  Tag: 'PCA.HEAT1',
-                  Label: 'Heater #1',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
+              }
+            },
+            B35: {
+              update_graphics: {
+                pca_main_background: {
+                  ControlTags: {
+                    none: null
                   },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                pca_heater_2: {
-                  Tag: 'PCA.HEAT2',
-                  Label: 'Heater #2',
-                  DataType: 'Boolean',
                   Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                pca_comp_stage_1: {
-                  Tag: 'PCA.COMPPRI1',
-                  Label: 'Primary compressor #1',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                pca_comp_stage_2: {
-                  Tag: 'PCA.COMPPRI2',
-                  Label: 'Primary compressor #2',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                pca_suction_pressure_1: {
-                  Tag: 'PCA.PRESSSUCPRI1',
-                  Label: 'Suction pressure,primary compressor #1',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: false,
+                    Parm001: null,
                     Parm002: null,
                     Parm003: null,
                     Parm004: null
                   },
                   Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
+                    Type: 'div',
+                    ParentID: '#graphics_container',
+                    Class: 'background jetway-twist-75',
                     Object: null
                   }
                 },
-                pca_suction_pressure_2: {
-                  Tag: 'PCA.PRESSSUCPRI2',
-                  Label: 'Suction pressure,primary compressor #2',
-                  DataType: 'Float',
+                blower_img: {
+                  ControlTags: {
+                    pca_blower: 'Boolean'
+                  },
                   Parameters: {
-                    Parm001: false,
-                    Parm002: null,
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'blower-on',
                     Parm003: null,
-                    Parm004: null
+                    Parm004: 'blower-bq'
                   },
                   Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
                     Object: null
                   }
                 },
-                pca_fan_1: {
-                  Tag: 'PCA.FANCONDFRONTPRI',
-                  Label: 'Fan #1',
-                  DataType: 'Boolean',
+                heating_stage_1_img: {
+                  ControlTags: {
+                    pca_heater_1: 'Boolean'
+                  },
                   Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-1-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-1-bq'
                   },
                   Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
                     Object: null
                   }
                 },
-                pca_fan_2: {
-                  Tag: 'PCA.FANCONDREARPRI',
-                  Label: 'Fan #2',
-                  DataType: 'Boolean',
+                heating_stage_2_img: {
+                  ControlTags: {
+                    pca_heater_2: 'Boolean'
+                  },
                   Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-2-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-2-bq'
                   },
                   Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
                     Object: null
                   }
                 },
-                pca_fan_3: {
-                  Tag: 'PCA.FANCONDFRONTSEC',
-                  Label: 'Fan #3',
-                  DataType: 'Boolean',
+                cooling_stage_1_img: {
+                  ControlTags: {
+                    pca_comp_stage_1: 'Boolean'
+                  },
                   Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-1-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-1-bq'
                   },
                   Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
                     Object: null
                   }
                 },
-                pca_heater_3: {
-                  Tag: 'PCA.HEAT3',
-                  Label: 'Heater #3',
-                  DataType: 'Boolean',
+                cooling_stage_2_img: {
+                  ControlTags: {
+                    pca_comp_stage_2: 'Boolean'
+                  },
                   Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-2-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-2-bq'
                   },
                   Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
+                    Object: null
+                  }
+                },
+                accool_img: {
+                  ControlTags: {
+                    pca_bridge_damper: 'Boolean',
+                    pca_status: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'ac-cool-on',
+                    Parm003: null,
+                    Parm004: 'ac-cool-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
+                    Object: null
+                  }
+                },
+                bccool_img: {
+                  ControlTags: {
+                    pca_bridge_air: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'bc-cool-on',
+                    Parm003: null,
+                    Parm004: 'bc-cool-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
+                    Object: null
+                  }
+                },
+                heating_stage_3_img: {
+                  ControlTags: {
+                    pca_heater_3: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-3-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-3-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
+                    Object: null
+                  }
+                },
+                cooling_stage_3_img: {
+                  ControlTags: {
+                    pca_comp_stage_3: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-3-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-3-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
+                    Object: null
+                  }
+                },
+                fan_1_img: {
+                  ControlTags: {
+                    pca_fan_1: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'fan-1-on',
+                    Parm003: null,
+                    Parm004: 'fan-1-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
+                    Object: null
+                  }
+                },
+                fan_2_img: {
+                  ControlTags: {
+                    pca_fan_2: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'fan-2-on',
+                    Parm003: null,
+                    Parm004: 'fan-2-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
+                    Object: null
+                  }
+                },
+                filter_img: {
+                  ControlTags: {
+                    pca_dirtyfilter: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'filter-on',
+                    Parm003: null,
+                    Parm004: 'filter-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
                     Object: null
                   }
                 }
               },
-              add_tags: {
-                pca_heater_4: {
-                  Tag: 'PCA.HEAT4',
-                  Label: 'Heater #4',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
+              remove_graphics: {
+                'heating_stage_4_img': 'heating_stage_4_img',
+                'heating_stage_5_img': 'heating_stage_5_img',
+                'cooling_stage_4_img': 'cooling_stage_4_img',
+                'fan_3_img': 'fan_3_img',
+                'fan_4_img': 'fan_4_img'
+              },
+              remove_tags: {
+                'pca_heater_4': 'pca_heater_4',
+                'pca_heater_5': 'pca_heater_5',
+                'pca_fan_3': 'pca_fan_3',
+                'pca_fan_4': 'pca_fan_4',
+                'pca_comp_stage_1_sec': 'pca_comp_stage_1_sec',
+                'pca_comp_stage_2_sec': 'pca_comp_stage_2_sec',
+                'pca_ambient_humidity': 'pca_ambient_humidity',
+                'pca_coil_dp': 'pca_coil_dp',
+                'pca_hot_gas_1': 'pca_hot_gas_1',
+                'pca_hot_gas_2': 'pca_hot_gas_2'
+              }
+            },
+            B36: {
+              update_graphics: {
+                pca_main_background: {
+                  ControlTags: {
+                    none: null
                   },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                pca_heater_5: {
-                  Tag: 'PCA.HEAT5',
-                  Label: 'Heater #5',
-                  DataType: 'Boolean',
                   Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                pca_comp_stage_1_sec: {
-                  Tag: 'PCA.COMPSEC1',
-                  Label: 'Secondary compressor #1',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                pca_comp_stage_2_sec: {
-                  Tag: 'PCA.COMPSEC2',
-                  Label: 'Secondary compressor #2',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                pca_suction_pressure_1_sec: {
-                  Tag: 'PCA.PRESSSUCSEC1',
-                  Label: 'Suction pressure,secondary compressor #1',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: false,
+                    Parm001: null,
                     Parm002: null,
                     Parm003: null,
                     Parm004: null
                   },
                   Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
+                    Type: 'div',
+                    ParentID: '#graphics_container',
+                    Class: 'background jetway-twist-75',
                     Object: null
                   }
                 },
-                pca_suction_pressure_2_sec: {
-                  Tag: 'PCA.PRESSSUCSEC2',
-                  Label: 'Suction pressure,secondary compressor #2',
-                  DataType: 'Float',
+                blower_img: {
+                  ControlTags: {
+                    pca_blower: 'Boolean'
+                  },
                   Parameters: {
-                    Parm001: false,
-                    Parm002: null,
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'blower-on',
                     Parm003: null,
-                    Parm004: null
+                    Parm004: 'blower-bq'
                   },
                   Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
                     Object: null
                   }
                 },
-                pca_pressure_head_1: {
-                  Tag: 'PCA.PRESSHEADPRI1',
-                  Label: 'Head pressure,primary compressor #1',
-                  DataType: 'Float',
+                heating_stage_1_img: {
+                  ControlTags: {
+                    pca_heater_1: 'Boolean'
+                  },
                   Parameters: {
-                    Parm001: false,
-                    Parm002: null,
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-1-on',
                     Parm003: null,
-                    Parm004: null
+                    Parm004: 'heating-stage-1-bq'
                   },
                   Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
                     Object: null
                   }
                 },
-                pca_pressure_head_2: {
-                  Tag: 'PCA.PRESSHEADPRI2',
-                  Label: 'Head pressure,primary compressor #2',
-                  DataType: 'Float',
+                heating_stage_2_img: {
+                  ControlTags: {
+                    pca_heater_2: 'Boolean'
+                  },
                   Parameters: {
-                    Parm001: false,
-                    Parm002: null,
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-2-on',
                     Parm003: null,
-                    Parm004: null
+                    Parm004: 'heating-stage-2-bq'
                   },
                   Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
                     Object: null
                   }
                 },
-                pca_pressure_head_1_sec: {
-                  Tag: 'PCA.PRESSHEADSEC1',
-                  Label: 'Head pressure,secondary compressor #1',
-                  DataType: 'Float',
+                cooling_stage_1_img: {
+                  ControlTags: {
+                    pca_comp_stage_1: 'Boolean'
+                  },
                   Parameters: {
-                    Parm001: false,
-                    Parm002: null,
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-1-on',
                     Parm003: null,
-                    Parm004: null
+                    Parm004: 'cooling-stage-1-bq'
                   },
                   Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
                     Object: null
                   }
                 },
-                pca_pressure_head_2_sec: {
-                  Tag: 'PCA.PRESSHEADSEC2',
-                  Label: 'Head pressure,secondary compressor #2',
-                  DataType: 'Float',
+                cooling_stage_2_img: {
+                  ControlTags: {
+                    pca_comp_stage_2: 'Boolean'
+                  },
                   Parameters: {
-                    Parm001: false,
-                    Parm002: null,
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-2-on',
                     Parm003: null,
-                    Parm004: null
+                    Parm004: 'cooling-stage-2-bq'
                   },
                   Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
                     Object: null
                   }
                 },
-                pca_fan_4: {
-                  Tag: 'PCA.FANCONDREARSEC',
-                  Label: 'Fan #4',
-                  DataType: 'Boolean',
+                accool_img: {
+                  ControlTags: {
+                    pca_bridge_damper: 'Boolean',
+                    pca_status: 'Boolean'
+                  },
                   Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'ac-cool-on',
+                    Parm003: null,
+                    Parm004: 'ac-cool-bq'
                   },
                   Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
                     Object: null
                   }
                 },
-                pca_dirtyfilter: {
-                  Tag: 'PCA.Warning.DIRTYFILTER',
-                  Label: 'Dirty Filter',
-                  DataType: 'Boolean',
+                bccool_img: {
+                  ControlTags: {
+                    pca_bridge_air: 'Boolean'
+                  },
                   Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'bc-cool-on',
+                    Parm003: null,
+                    Parm004: 'bc-cool-bq'
                   },
                   Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
                     Object: null
                   }
+                },
+                heating_stage_3_img: {
+                  ControlTags: {
+                    pca_heater_3: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-3-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-3-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
+                    Object: null
+                  }
+                },
+                cooling_stage_3_img: {
+                  ControlTags: {
+                    pca_comp_stage_3: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-3-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-3-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
+                    Object: null
+                  }
+                },
+                fan_1_img: {
+                  ControlTags: {
+                    pca_fan_1: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'fan-1-on',
+                    Parm003: null,
+                    Parm004: 'fan-1-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
+                    Object: null
+                  }
+                },
+                fan_2_img: {
+                  ControlTags: {
+                    pca_fan_2: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'fan-2-on',
+                    Parm003: null,
+                    Parm004: 'fan-2-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
+                    Object: null
+                  }
+                },
+                filter_img: {
+                  ControlTags: {
+                    pca_dirtyfilter: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'filter-on',
+                    Parm003: null,
+                    Parm004: 'filter-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
+                    Object: null
+                  }
+                }
+              },
+              remove_graphics: {
+                'heating_stage_4_img': 'heating_stage_4_img',
+                'heating_stage_5_img': 'heating_stage_5_img',
+                'cooling_stage_4_img': 'cooling_stage_4_img',
+                'fan_3_img': 'fan_3_img',
+                'fan_4_img': 'fan_4_img'
+              },
+              remove_tags: {
+                'pca_heater_4': 'pca_heater_4',
+                'pca_heater_5': 'pca_heater_5',
+                'pca_fan_3': 'pca_fan_3',
+                'pca_fan_4': 'pca_fan_4',
+                'pca_comp_stage_1_sec': 'pca_comp_stage_1_sec',
+                'pca_comp_stage_2_sec': 'pca_comp_stage_2_sec',
+                'pca_ambient_humidity': 'pca_ambient_humidity',
+                'pca_coil_dp': 'pca_coil_dp',
+                'pca_hot_gas_1': 'pca_hot_gas_1',
+                'pca_hot_gas_2': 'pca_hot_gas_2'
+              }
+            }
+          },
+          B3: {
+            update_graphics: {
+              pca_main_background: {
+                ControlTags: {
+                  none: null
+                },
+                Parameters: {
+                  Parm001: null,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#graphics_container',
+                  Class: 'background jetair-xpc-3013',
+                  Object: null
+                }
+              },
+              blower_img: {
+                ControlTags: {
+                  pca_blower: 'Boolean'
+                },
+                Parameters: {
+                  Parm001: 'ALL_TRUE',
+                  Parm002: 'blower-on',
+                  Parm003: null,
+                  Parm004: 'blower-bq'
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#dynamic_pca_main_background',
+                  Class: 'img jetair-xpc-3013',
+                  Object: null
+                }
+              },
+              heating_stage_1_img: {
+                ControlTags: {
+                  pca_heater_1: 'Boolean'
+                },
+                Parameters: {
+                  Parm001: 'ALL_TRUE',
+                  Parm002: 'heating-stage-1-on',
+                  Parm003: null,
+                  Parm004: 'heating-stage-1-bq'
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#dynamic_pca_main_background',
+                  Class: 'img jetair-xpc-3013',
+                  Object: null
+                }
+              },
+              heating_stage_2_img: {
+                ControlTags: {
+                  pca_heater_2: 'Boolean'
+                },
+                Parameters: {
+                  Parm001: 'ALL_TRUE',
+                  Parm002: 'heating-stage-2-on',
+                  Parm003: null,
+                  Parm004: 'heating-stage-2-bq'
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#dynamic_pca_main_background',
+                  Class: 'img jetair-xpc-3013',
+                  Object: null
+                }
+              },
+              cooling_stage_1_img: {
+                ControlTags: {
+                  pca_comp_stage_1: 'Boolean'
+                },
+                Parameters: {
+                  Parm001: 'ALL_TRUE',
+                  Parm002: 'cooling-stage-1-on',
+                  Parm003: null,
+                  Parm004: 'cooling-stage-1-bq'
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#dynamic_pca_main_background',
+                  Class: 'img jetair-xpc-3013',
+                  Object: null
+                }
+              },
+              cooling_stage_2_img: {
+                ControlTags: {
+                  pca_comp_stage_2: 'Boolean'
+                },
+                Parameters: {
+                  Parm001: 'ALL_TRUE',
+                  Parm002: 'cooling-stage-2-on',
+                  Parm003: null,
+                  Parm004: 'cooling-stage-2-bq'
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#dynamic_pca_main_background',
+                  Class: 'img jetair-xpc-3013',
+                  Object: null
+                }
+              },
+              accool_img: {
+                ControlTags: {
+                  pca_bridge_damper: 'Boolean',
+                  pca_status: 'Boolean'
+                },
+                Parameters: {
+                  Parm001: 'ALL_TRUE',
+                  Parm002: 'ac-cool-on',
+                  Parm003: null,
+                  Parm004: 'ac-cool-bq'
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#dynamic_pca_main_background',
+                  Class: 'img jetair-xpc-3013',
+                  Object: null
+                }
+              },
+              bccool_img: {
+                ControlTags: {
+                  pca_bridge_air: 'Boolean'
+                },
+                Parameters: {
+                  Parm001: 'ALL_TRUE',
+                  Parm002: 'bc-cool-on',
+                  Parm003: null,
+                  Parm004: 'bc-cool-bq'
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#dynamic_pca_main_background',
+                  Class: 'img jetair-xpc-3013',
+                  Object: null
+                }
+              },
+              fan_1_img: {
+                ControlTags: {
+                  pca_fan_1: 'Boolean'
+                },
+                Parameters: {
+                  Parm001: 'ALL_TRUE',
+                  Parm002: 'fan-1-on',
+                  Parm003: null,
+                  Parm004: 'fan-1-bq'
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#dynamic_pca_main_background',
+                  Class: 'img jetair-xpc-3013',
+                  Object: null
+                }
+              },
+              fan_2_img: {
+                ControlTags: {
+                  pca_fan_2: 'Boolean'
+                },
+                Parameters: {
+                  Parm001: 'ALL_TRUE',
+                  Parm002: 'fan-2-on',
+                  Parm003: null,
+                  Parm004: 'fan-2-bq'
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#dynamic_pca_main_background',
+                  Class: 'img jetair-xpc-3013',
+                  Object: null
+                }
+              },
+              fan_3_img: {
+                ControlTags: {
+                  pca_fan_3: 'Boolean'
+                },
+                Parameters: {
+                  Parm001: 'ALL_TRUE',
+                  Parm002: 'fan-3-on',
+                  Parm003: null,
+                  Parm004: 'fan-3-bq'
+                },
+                Element: {
+                  Type: 'div',
+                  ParentID: '#dynamic_pca_main_background',
+                  Class: 'img jetair-xpc-3013',
+                  Object: null
+                }
+              }
+            },
+            remove_tags: {
+              'pca_ambient_humidity': 'pca_ambient_humidity',
+              'pca_coil_dp': 'pca_coil_dp',
+              'pca_vfd_speed': 'pca_vfd_speed',
+              'pca_ambient_humidity': 'pca_ambient_humidity',
+              'pca_hot_gas_1': 'pca_hot_gas_1',
+              'pca_hot_gas_2': 'pca_hot_gas_2'
+            },
+            update_tags: {
+              pca_heater_1: {
+                Tag: 'PCA.HEATER1',
+                Label: 'Heater #1',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_heater_2: {
+                Tag: 'PCA.HEATER2',
+                Label: 'Heater #2',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_bridge_damper: {
+                Tag: 'PCA.BRIDGE_DAMPER_POSITION',
+                Label: 'Aircraft Damper',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_blower: {
+                Tag: 'PCA.BLOWER',
+                Label: 'Blower Status',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_bridge_air: {
+                Tag: 'PCA.BRIDGE_AIR',
+                Label: 'Bridge Damper',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_comp_stage_1: {
+                Tag: 'PCA.COMPPRI1',
+                Label: 'Primary compressor #1 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_comp_stage_2: {
+                Tag: 'PCA.COMPPRI2',
+                Label: 'Primary compressor #2 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_fan_3: {
+                Tag: 'PCA.FANCONDFRONTPRI',
+                Label: 'Fan #3',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_fan_2: {
+                Tag: 'PCA.FANCONDFRONTSEC',
+                Label: 'Fan #2',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_fan_1: {
+                Tag: 'PCA.FANCONDREARPRI',
+                Label: 'Fan #1',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
                 }
               }
             }
@@ -13577,6 +15425,11 @@ TagConfig = (function(superClass) {
                 }
               }
             }
+          },
+          B2: {
+            remove_tags: {
+              'pbb_terminal_door': 'pbb_terminal_door'
+            }
           }
         }
       },
@@ -13611,59 +15464,113 @@ TagConfig = (function(superClass) {
             }
           },
           B2: {
-            B32: {
-              update_tags: {
-                pca_status: {
-                  Tag: 'PCA.PCASTATUS',
-                  Label: 'PCA status',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+            update_tags: {
+              pca_status: {
+                Tag: 'PCA.PCASTATUS',
+                Label: 'PCA status',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
                 },
-                pca_discharge_temp: {
-                  Tag: 'PCA.TEMPDISCH',
-                  Label: 'Discharge Air Temperature',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: true,
-                    Parm002: 2,
-                    Parm003: '#{1} F',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_discharge_temp: {
+                Tag: 'PCA.TEMPDISCH',
+                Label: 'Discharge Air Temperature',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
                 },
-                pca_time: {
-                  Tag: 'PCA.PCATime',
-                  Label: 'PCA Time',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: true,
-                    Parm002: 2,
-                    Parm003: 'mins',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_time: {
+                Tag: 'PCA.PCATime',
+                Label: 'PCA Time',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: 'mins',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              }
+            }
+          },
+          B3: {
+            update_tags: {
+              pca_status: {
+                Tag: 'PCA.PCASTATUS',
+                Label: 'PCA status',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_discharge_temp: {
+                Tag: 'PCA.TEMPDISCH',
+                Label: 'Discharge Air Temperature',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_time: {
+                Tag: 'PCA.PCATime',
+                Label: 'PCA Time',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: 'mins',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
                 }
               }
             }
@@ -13766,42 +15673,79 @@ TagConfig = (function(superClass) {
             }
           },
           B2: {
-            B32: {
-              add_tags: {
-                pca_status: {
-                  Tag: 'PCA.PCASTATUS',
-                  Label: '[*]PCA',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: null,
-                    ParentID: null,
-                    Class: null,
-                    Object: null
-                  }
+            update_tags: {
+              pca_status: {
+                Tag: 'PCA.PCASTATUS',
+                Label: '[*]PCA',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
                 },
-                pca_discharge_temp: {
-                  Tag: 'PCA.TEMPDISCH',
-                  Label: '[*]DisCharge',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: true,
-                    Parm002: 2,
-                    Parm003: '#{1} F',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: null,
-                    ParentID: null,
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_discharge_temp: {
+                Tag: 'PCA.TEMPDISCH',
+                Label: '[*]DisCharge',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: 'DisCharge',
+                  Object: null
+                }
+              }
+            }
+          },
+          B3: {
+            update_tags: {
+              pca_status: {
+                Tag: 'PCA.PCASTATUS',
+                Label: '[*]PCA',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_discharge_temp: {
+                Tag: 'PCA.TEMPDISCH',
+                Label: '[*]DisCharge',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: 'DisCharge',
+                  Object: null
                 }
               }
             }
@@ -13895,43 +15839,80 @@ TagConfig = (function(superClass) {
               }
             }
           },
-          B2: {
-            B32: {
-              update_tags: {
-                pca_status: {
-                  Tag: 'PCA.PCASTATUS',
-                  Label: '[*]PCA',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: null,
-                    ParentID: null,
-                    Class: null,
-                    Object: null
-                  }
+          B3: {
+            update_tags: {
+              pca_status: {
+                Tag: 'PCA.PCASTATUS',
+                Label: '[*]PCA',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
                 },
-                pca_discharge_temp: {
-                  Tag: 'PCA.TEMPDISCH',
-                  Label: '[*]DisCharge',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: true,
-                    Parm002: 2,
-                    Parm003: '#{1} F',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: null,
-                    ParentID: null,
-                    Class: null,
-                    Object: null
-                  }
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_discharge_temp: {
+                Tag: 'PCA.TEMPDISCH',
+                Label: '[*]DisCharge',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: null,
+                  Object: null
+                }
+              }
+            }
+          },
+          B2: {
+            update_tags: {
+              pca_status: {
+                Tag: 'PCA.PCASTATUS',
+                Label: '[*]PCA',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_discharge_temp: {
+                Tag: 'PCA.TEMPDISCH',
+                Label: '[*]DisCharge',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: null,
+                  Object: null
                 }
               }
             }
@@ -13968,25 +15949,45 @@ TagConfig = (function(superClass) {
             }
           },
           B2: {
-            B32: {
-              update_tags: {
-                pca_out_of_service: {
-                  Tag: 'PCA._OutOfService',
-                  Label: '[*]PCA',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'True',
-                    Parm002: 'False',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: null,
-                    ParentID: null,
-                    Class: null,
-                    Object: null
-                  }
+            update_tags: {
+              pca_out_of_service: {
+                Tag: 'PCA._OutOfService',
+                Label: '[*]PCA',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'True',
+                  Parm002: 'False',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: null,
+                  Object: null
+                }
+              }
+            }
+          },
+          B3: {
+            update_tags: {
+              pca_out_of_service: {
+                Tag: 'PCA._OutOfService',
+                Label: '[*]PCA',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'True',
+                  Parm002: 'False',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: null,
+                  Object: null
                 }
               }
             }
@@ -14014,6 +16015,24 @@ TagConfig = (function(superClass) {
                   Parm002: 'No',
                   Parm003: 'ok',
                   Parm004: ''
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_modeovernight: {
+                Tag: 'PCA.MODE_OVERNIGHT',
+                Label: 'Overnight Mode',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
                 },
                 Element: {
                   Type: 'TableRow',
