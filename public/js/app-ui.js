@@ -4068,9 +4068,32 @@ TagConfig = (function(superClass) {
   TagConfig.tags = {
 
     /***************************************************
-    		*** GPU Tags
+    		*** System Tags
     		**************************************************
      */
+    system_perfect_hookup: {
+      Tag: 'System.PerfectHookup',
+      Label: 'Perfect Hookup',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Yes',
+        Parm002: 'No',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+
+      /***************************************************
+      		*** GPU Tags
+      		**************************************************
+       */
+    },
     gpu_by_pass: {
       Tag: 'GPU.ByPass',
       Label: 'ByPass',
@@ -21590,7 +21613,9 @@ TagConfig = (function(superClass) {
           'pca_bridge_air': 'pca_bridge_air',
           'pca_suction_pressure_1': 'pca_suction_pressure_1',
           'pca_suction_pressure_2': 'pca_suction_pressure_2',
-          'pca_status': 'pca_status'
+          'pca_status': 'pca_status',
+          'pca_hot_gas_1': 'pca_hot_gas_1',
+          'pca_hot_gas_2': 'pca_hot_gas_2'
         },
         add_tags: {
           pca_egw_inlet_temp: {
@@ -21810,6 +21835,44 @@ TagConfig = (function(superClass) {
         }
       },
       pbb_pca_gpu_status_widget: {
+        add_tags: {
+          system_perfect_hookup: {
+            Tag: 'System.PerfectHookup',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: 'no_row',
+              Class: null,
+              Object: null
+            }
+          },
+          system_out_of_service: {
+            Tag: 'System._OutOfService',
+            Label: 'Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: 'no_row',
+              Class: null,
+              Object: null
+            }
+          }
+        },
         update_tags: {
           pbb_docked: {
             Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
@@ -27340,7 +27403,7 @@ AirportoverviewWidgetView = (function(superClass) {
               Tag_gate_alarm: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".Alarm._HasAlarms",
               Tag_gate_docked: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.AIRCRAFTDOCKEDCALCULATION",
               Tag_gate_critical: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".Alarm._HasCriticalAlarms",
-              Tag_gate_perfect_dock: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.PerfectDock",
+              Tag_gate_perfect_hookup: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".System.PerfectHookup",
               Tag_gpu_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".GPU._OutOfService",
               Tag_pbb_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB._OutOfService",
               Tag_pca_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PCA._OutOfService"
@@ -27349,7 +27412,7 @@ AirportoverviewWidgetView = (function(superClass) {
             tags.push(gate.Tag_gate_alarm + ".Value");
             tags.push(gate.Tag_gate_docked + ".Value");
             tags.push(gate.Tag_gate_critical + ".Value");
-            tags.push(gate.Tag_gate_perfect_dock + ".Value");
+            tags.push(gate.Tag_gate_perfect_hookup + ".Value");
             tags.push(gate.Tag_gpu_out_of_service + ".Value");
             tags.push(gate.Tag_pbb_out_of_service + ".Value");
             tags.push(gate.Tag_pca_out_of_service + ".Value");
@@ -27362,11 +27425,6 @@ AirportoverviewWidgetView = (function(superClass) {
       for (j = 0, len1 = ref.length; j < len1; j++) {
         g = ref[j];
         this.$("#layout_container").append("<div id='Airport_Gate_" + g.Number + "_a'><div id='Airport_Gate_" + g.Number + "_icon'></div><div id='Airport_Gate_" + g.Number + "_status'></div>");
-        this.$("#Airport_Gate_" + g.Number + "_icon").on('blink', (function(_this) {
-          return function() {
-            _this.$("#Airport_Gate_" + g.Number + "_icon").fadeOut(1000).fadeIn(1, blink);
-          };
-        })(this));
       }
       App.opc.add_tags(this.site_code, tags);
       this.watch_updates(this.site_code);
@@ -27375,7 +27433,7 @@ AirportoverviewWidgetView = (function(superClass) {
   };
 
   AirportoverviewWidgetView.prototype.data_update = function(data) {
-    var alarm, critical, docked, g, i, len, oosGPU, oosPBB, oosPCA, outOfService, perfectDock, qa, qc, qd, qgpuos, qos, qpbbos, qpcaos, qpd, ref;
+    var alarm, critical, docked, g, i, len, oosGPU, oosPBB, oosPCA, outOfService, perfectHookup, qa, qc, qd, qgpuos, qos, qpbbos, qpcaos, qpd, ref;
     ref = this.gateData;
     for (i = 0, len = ref.length; i < len; i++) {
       g = ref[i];
@@ -27383,7 +27441,7 @@ AirportoverviewWidgetView = (function(superClass) {
       critical = null;
       alarm = null;
       docked = null;
-      perfectDock = null;
+      perfectHookup = null;
       qd = this.opc.tags["" + g.Tag_gate_docked].props.Value.quality;
       if ((qd != null) && qd) {
         docked = this.get_bool(this.opc.get_value(g.Tag_gate_docked + ".Value"));
@@ -27428,10 +27486,10 @@ AirportoverviewWidgetView = (function(superClass) {
       } else {
         qa = false;
       }
-      qpd = this.opc.tags["" + g.Tag_gate_perfect_dock].props.Value.quality;
+      qpd = this.opc.tags["" + g.Tag_gate_perfect_hookup].props.Value.quality;
       if ((qpd != null) && qpd) {
-        perfectDock = this.get_bool(this.opc.get_value(g.Tag_gate_perfect_dock + ".Value"));
-        this.$("#Airport_Gate_" + g.Number + "_status").toggleClass("perfect-dock", perfectDock === true && qpd);
+        perfectHookup = this.get_bool(this.opc.get_value(g.Tag_gate_perfect_hookup + ".Value"));
+        this.$("#Airport_Gate_" + g.Number + "_status").toggleClass("perfect-hookup", perfectHookup === true && qpd);
       } else {
         qpd = false;
       }
@@ -31031,7 +31089,7 @@ PbbpcagpustatusWidgetView = (function(superClass) {
         }
         if ($(elementPrefix + " #dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2]).length === 0) {
           $(elementPrefix + " #widgetData thead tr").append("<th id='dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "' class='header'>" + gp[2] + "</th>");
-          $(elementPrefix + " #widgetData tbody #iconRow").append("<td id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "'> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_critical' class='fa fa-warning' title='Gate has CRITICAL ALARMS'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_alarm' class='fa fa-bell' title='Gate has ALARMS'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_docked' class='fa fa-plane' title='Plane is DOCKED'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_outofservice' class='fa fa-wrench' title='A system is out of service'></i> </td>");
+          $(elementPrefix + " #widgetData tbody #iconRow").append("<td id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "'> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_critical' class='fa fa-warning' title='Gate has CRITICAL ALARMS'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_alarm' class='fa fa-bell' title='Gate has ALARMS'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_docked' class='fa fa-plane' title='Plane is DOCKED'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_outofservice' class='fa fa-wrench' title='A system is out of service'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_perfecthookup' class='fa fa-check-circle-o' title='Perfect Hookup'></i> </td>");
         }
         ref2 = this.tagConfig.TagData;
         for (tag in ref2) {
@@ -31105,6 +31163,10 @@ PbbpcagpustatusWidgetView = (function(superClass) {
         $(elementPrefix + " #widgetData #dynamic_iconRow_" + tzgPrefix + "_critical").toggleClass('critical', setValue);
       } else if (tag.indexOf(tzgPrefix + "_has_alarms") > -1) {
         $(elementPrefix + " #widgetData #dynamic_iconRow_" + tzgPrefix + "_alarm").toggleClass('alarm', setValue);
+      } else if (tag.indexOf(tzgPrefix + "_system_out_of_service") > -1) {
+        $(elementPrefix + " #widgetData #dynamic_iconRow_" + tzgPrefix + "_outofservice").toggleClass('out-of-service', setValue);
+      } else if (tag.indexOf(tzgPrefix + "_system_perfect_hookup") > -1) {
+        $(elementPrefix + " #widgetData #dynamic_iconRow_" + tzgPrefix + "_perfecthookup").toggleClass('perfect-hookup', setValue);
       } else if (tag.indexOf(tzgPrefix + "_pca_mode_cooling") > -1) {
         $(elementPrefix + " #widgetData #dynamic_" + tzgPrefix + "_pca_discharge_temp").toggleClass('Cooling', setValue);
       } else if (tag.indexOf(tzgPrefix + "_pca_mode_heating") > -1) {

@@ -149,10 +149,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B1_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B1_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B1_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B1_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B1_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B1_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B1_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B1_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B1_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B1_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B2_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -180,10 +191,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B2_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B2_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B2_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B2_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B2_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B2_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B2_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B2_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B2_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B2_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B3_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -211,10 +233,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B3_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B3_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B3_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B3_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B3_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B3_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B3_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B3_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B3_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B3_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B4_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -242,10 +275,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B4_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B4_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B4_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B4_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B4_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B4_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B4_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B4_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B4_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B4_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B5_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -273,10 +317,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B5_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B5_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B5_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B5_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B5_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B5_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B5_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B5_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B5_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B5_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B6_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -304,10 +359,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B6_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B6_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B6_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B6_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B6_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B6_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B6_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B6_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B6_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B6_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B7_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -335,10 +401,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B7_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B7_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B7_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B7_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B7_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B7_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B7_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B7_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B7_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B7_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B9_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -366,10 +443,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B9_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B9_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B9_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B9_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B9_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B9_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B9_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B9_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B9_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B9_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B10_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -397,10 +485,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B10_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B10_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B10_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B10_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B10_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B10_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B10_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B10_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B10_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B10_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B11_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -428,10 +527,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B11_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B11_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B11_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B11_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B11_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B11_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B11_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B11_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B11_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B11_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B12_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -459,10 +569,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B12_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B12_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B12_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B12_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B12_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B12_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B12_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B12_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B12_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B12_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B13_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -490,10 +611,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B13_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B13_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B13_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B13_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B13_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B13_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B13_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B13_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B13_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B13_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B14_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -521,10 +653,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B14_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B14_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B14_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B14_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B14_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B14_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B14_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B14_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B14_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B14_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B16_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -552,10 +695,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B16_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B16_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B16_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B16_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B16_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B16_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B16_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B16_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B16_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B16_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B17_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -583,10 +737,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B17_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B17_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B17_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B17_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B17_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B17_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B17_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B17_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B17_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B17_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B18_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -614,10 +779,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B18_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B18_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B18_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B18_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B18_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B18_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B18_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B18_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B18_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B18_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B19_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -645,10 +821,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B19_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B19_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B19_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B19_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B19_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B19_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B19_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B19_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B19_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B19_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B20_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -676,10 +863,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B20_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B20_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B20_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B20_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B20_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B20_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B20_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B20_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B20_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B20_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B21_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -707,10 +905,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B21_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B21_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B21_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B21_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B21_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B21_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B21_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B21_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B21_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B21_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B22_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -738,10 +947,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B22_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B22_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B22_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B22_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B22_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B22_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B22_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B22_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B22_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B22_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B23_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -769,10 +989,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B23_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B23_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B23_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B23_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B23_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B23_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B23_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B23_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B23_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B23_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B24_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -800,10 +1031,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B24_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B24_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B24_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B24_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B24_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B24_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B24_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B24_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B24_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B24_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B25_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -831,10 +1073,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B25_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B25_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B25_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B25_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B25_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B25_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B25_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B25_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B25_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B25_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B26_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -862,10 +1115,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B26_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B26_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B26_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B26_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B26_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B26_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B26_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B26_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B26_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B26_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B27_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -893,10 +1157,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B27_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B27_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B27_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B27_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B27_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B27_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B27_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B27_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B27_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B27_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B28_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -924,10 +1199,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B28_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B28_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B28_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B28_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B28_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B28_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B28_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B28_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B28_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B28_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B29_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -955,10 +1241,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B29_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B29_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B29_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B29_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B29_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B29_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B29_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B29_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B29_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B29_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B31_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -986,10 +1283,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B31_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B31_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B31_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B31_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B31_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B31_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B31_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B31_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B31_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B31_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B32_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -1017,10 +1325,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B32_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B32_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B32_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B32_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B32_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B32_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B32_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B32_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B32_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B32_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B33_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -1048,10 +1367,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B33_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B33_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B33_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B33_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B33_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B33_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B33_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B33_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B33_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B33_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B34_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -1079,10 +1409,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B34_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B34_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B34_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B34_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B34_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B34_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B34_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B34_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B34_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B34_Perfect.png"); }
 .airport_overview_widget.ATL_account .display #Airport_Gate_B36_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -1110,10 +1451,21 @@ i.form-control-feedback {
   .airport_overview_widget.ATL_account .display #Airport_Gate_B36_icon.critical {
     background-image: url("../img/airport/ATL/ATL_Gate_B36_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.ATL_account .display #Airport_Gate_B36_icon.perfect-dock {
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B36_icon.perfect-hookup {
     background-image: url("../img/airport/ATL/ATL_Gate_B36_Perfect.png"); }
   .airport_overview_widget.ATL_account .display #Airport_Gate_B36_icon.out-of-service {
     background-image: url("../img/airport/ATL/ATL_Gate_B36_Service.png"); }
+.airport_overview_widget.ATL_account .display #Airport_Gate_B36_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.ATL_account .display #Airport_Gate_B36_status.perfect-hookup {
+    background-image: url("../img/airport/ATL/ATL_Gate_B36_Perfect.png"); }
 .airport_overview_widget.ATL_account .display .airport_overview_widget.CID_account div[id^='Airport_Gate_'], .airport_overview_widget.ATL_account .display .airport_overview_widget.CID_account #Airport_Overview, .airport_overview_widget.CID_account .display div[id^='Airport_Gate_'], .airport_overview_widget.CID_account .display #Airport_Overview, .airport_overview_widget.DAL_account .display .airport_overview_widget.CID_account div[id^='Airport_Gate_'], .airport_overview_widget.DAL_account .display .airport_overview_widget.CID_account #Airport_Overview, .airport_overview_widget.JFK_account .display .airport_overview_widget.CID_account div[id^='Airport_Gate_'], .airport_overview_widget.JFK_account .display .airport_overview_widget.CID_account #Airport_Overview, .airport_overview_widget.EWR_account .display .airport_overview_widget.CID_account div[id^='Airport_Gate_'], .airport_overview_widget.EWR_account .display .airport_overview_widget.CID_account #Airport_Overview, .airport_overview_widget.RDU_account .display .airport_overview_widget.CID_account div[id^='Airport_Gate_'], .airport_overview_widget.RDU_account .display .airport_overview_widget.CID_account #Airport_Overview, .airport_overview_widget.PHX_account .display .airport_overview_widget.CID_account div[id^='Airport_Gate_'], .airport_overview_widget.PHX_account .display .airport_overview_widget.CID_account #Airport_Overview, .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.CID_account div[id^='Airport_Gate_'], .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.CID_account #Airport_Overview {
   min-height: 100%;
   min-width: 100%;
@@ -1177,10 +1529,19 @@ i.form-control-feedback {
   .airport_overview_widget.CID_account .display #Airport_Gate_C1_icon.critical {
     background-image: url("../img/airport/CID/CID_Gate_C1_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.CID_account .display #Airport_Gate_C1_icon.perfect-dock {
-    background-image: url("../img/airport/CID/CID_Gate_C1_Perfect.png"); }
   .airport_overview_widget.CID_account .display #Airport_Gate_C1_icon.out-of-service {
     background-image: url("../img/airport/CID/CID_Gate_C1_Service.png"); }
+.airport_overview_widget.CID_account .display #Airport_Gate_C1_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.CID_account .display #Airport_Gate_C1_status.perfect-hookup {
+    background-image: url("../img/airport/CID/CID_Gate_C1_Perfect.png"); }
 .airport_overview_widget.CID_account .display #Airport_Gate_C2_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -1208,10 +1569,19 @@ i.form-control-feedback {
   .airport_overview_widget.CID_account .display #Airport_Gate_C2_icon.critical {
     background-image: url("../img/airport/CID/CID_Gate_C2_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.CID_account .display #Airport_Gate_C2_icon.perfect-dock {
-    background-image: url("../img/airport/CID/CID_Gate_C2_Perfect.png"); }
   .airport_overview_widget.CID_account .display #Airport_Gate_C2_icon.out-of-service {
     background-image: url("../img/airport/CID/CID_Gate_C2_Service.png"); }
+.airport_overview_widget.CID_account .display #Airport_Gate_C2_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.CID_account .display #Airport_Gate_C2_status.perfect-hookup {
+    background-image: url("../img/airport/CID/CID_Gate_C2_Perfect.png"); }
 .airport_overview_widget.CID_account .display #Airport_Gate_C3_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -1239,10 +1609,19 @@ i.form-control-feedback {
   .airport_overview_widget.CID_account .display #Airport_Gate_C3_icon.critical {
     background-image: url("../img/airport/CID/CID_Gate_C3_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.CID_account .display #Airport_Gate_C3_icon.perfect-dock {
-    background-image: url("../img/airport/CID/CID_Gate_C3_Perfect.png"); }
   .airport_overview_widget.CID_account .display #Airport_Gate_C3_icon.out-of-service {
     background-image: url("../img/airport/CID/CID_Gate_C3_Service.png"); }
+.airport_overview_widget.CID_account .display #Airport_Gate_C3_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.CID_account .display #Airport_Gate_C3_status.perfect-hookup {
+    background-image: url("../img/airport/CID/CID_Gate_C3_Perfect.png"); }
 .airport_overview_widget.CID_account .display #Airport_Gate_C4_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -1270,10 +1649,19 @@ i.form-control-feedback {
   .airport_overview_widget.CID_account .display #Airport_Gate_C4_icon.critical {
     background-image: url("../img/airport/CID/CID_Gate_C4_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.CID_account .display #Airport_Gate_C4_icon.perfect-dock {
-    background-image: url("../img/airport/CID/CID_Gate_C4_Perfect.png"); }
   .airport_overview_widget.CID_account .display #Airport_Gate_C4_icon.out-of-service {
     background-image: url("../img/airport/CID/CID_Gate_C4_Service.png"); }
+.airport_overview_widget.CID_account .display #Airport_Gate_C4_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.CID_account .display #Airport_Gate_C4_status.perfect-hookup {
+    background-image: url("../img/airport/CID/CID_Gate_C4_Perfect.png"); }
 .airport_overview_widget.CID_account .display #Airport_Gate_C5_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -1301,10 +1689,19 @@ i.form-control-feedback {
   .airport_overview_widget.CID_account .display #Airport_Gate_C5_icon.critical {
     background-image: url("../img/airport/CID/CID_Gate_C5_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.CID_account .display #Airport_Gate_C5_icon.perfect-dock {
-    background-image: url("../img/airport/CID/CID_Gate_C5_Perfect.png"); }
   .airport_overview_widget.CID_account .display #Airport_Gate_C5_icon.out-of-service {
     background-image: url("../img/airport/CID/CID_Gate_C5_Service.png"); }
+.airport_overview_widget.CID_account .display #Airport_Gate_C5_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.CID_account .display #Airport_Gate_C5_status.perfect-hookup {
+    background-image: url("../img/airport/CID/CID_Gate_C5_Perfect.png"); }
 .airport_overview_widget.CID_account .display #Airport_Gate_C6_a {
   background-repeat: no-repeat;
   background-size: contain;
@@ -1332,10 +1729,19 @@ i.form-control-feedback {
   .airport_overview_widget.CID_account .display #Airport_Gate_C6_icon.critical {
     background-image: url("../img/airport/CID/CID_Gate_C6_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.CID_account .display #Airport_Gate_C6_icon.perfect-dock {
-    background-image: url("../img/airport/CID/CID_Gate_C6_Perfect.png"); }
   .airport_overview_widget.CID_account .display #Airport_Gate_C6_icon.out-of-service {
     background-image: url("../img/airport/CID/CID_Gate_C6_Service.png"); }
+.airport_overview_widget.CID_account .display #Airport_Gate_C6_status {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0; }
+  .airport_overview_widget.CID_account .display #Airport_Gate_C6_status.perfect-hookup {
+    background-image: url("../img/airport/CID/CID_Gate_C6_Perfect.png"); }
 .airport_overview_widget.ATL_account .display .airport_overview_widget.DAL_account div[id^='Airport_Gate_'], .airport_overview_widget.ATL_account .display .airport_overview_widget.DAL_account #Airport_Overview, .airport_overview_widget.CID_account .display .airport_overview_widget.DAL_account div[id^='Airport_Gate_'], .airport_overview_widget.CID_account .display .airport_overview_widget.DAL_account #Airport_Overview, .airport_overview_widget.DAL_account .display div[id^='Airport_Gate_'], .airport_overview_widget.DAL_account .display #Airport_Overview, .airport_overview_widget.JFK_account .display .airport_overview_widget.DAL_account div[id^='Airport_Gate_'], .airport_overview_widget.JFK_account .display .airport_overview_widget.DAL_account #Airport_Overview, .airport_overview_widget.EWR_account .display .airport_overview_widget.DAL_account div[id^='Airport_Gate_'], .airport_overview_widget.EWR_account .display .airport_overview_widget.DAL_account #Airport_Overview, .airport_overview_widget.RDU_account .display .airport_overview_widget.DAL_account div[id^='Airport_Gate_'], .airport_overview_widget.RDU_account .display .airport_overview_widget.DAL_account #Airport_Overview, .airport_overview_widget.PHX_account .display .airport_overview_widget.DAL_account div[id^='Airport_Gate_'], .airport_overview_widget.PHX_account .display .airport_overview_widget.DAL_account #Airport_Overview, .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.DAL_account div[id^='Airport_Gate_'], .airport_overview_widget.HAS-IAH_account .display .airport_overview_widget.DAL_account #Airport_Overview {
   min-height: 100%;
   min-width: 100%;
@@ -1399,7 +1805,7 @@ i.form-control-feedback {
   .airport_overview_widget.DAL_account .display #Airport_Gate_10_icon.critical {
     background-image: url("../img/airport/DAL/DAL_Gate_10_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.DAL_account .display #Airport_Gate_10_icon.perfect-dock {
+  .airport_overview_widget.DAL_account .display #Airport_Gate_10_icon.perfect-hookup {
     background-image: url("../img/airport/DAL/DAL_Gate_10_Perfect.png"); }
 .airport_overview_widget.DAL_account .display #Airport_Gate_10_status {
   background-repeat: no-repeat;
@@ -1439,7 +1845,7 @@ i.form-control-feedback {
   .airport_overview_widget.DAL_account .display #Airport_Gate_12_icon.critical {
     background-image: url("../img/airport/DAL/DAL_Gate_12_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.DAL_account .display #Airport_Gate_12_icon.perfect-dock {
+  .airport_overview_widget.DAL_account .display #Airport_Gate_12_icon.perfect-hookup {
     background-image: url("../img/airport/DAL/DAL_Gate_12_Perfect.png"); }
 .airport_overview_widget.DAL_account .display #Airport_Gate_12_status {
   background-repeat: no-repeat;
@@ -1517,7 +1923,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_A3_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_A3_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_A3_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_A3_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_A3_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_A3_status {
   background-repeat: no-repeat;
@@ -1557,7 +1963,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_A5_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_A5_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_A5_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_A5_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_A5_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_A5_status {
   background-repeat: no-repeat;
@@ -1597,7 +2003,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_A7L1_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_A7L1_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_A7L1_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_A7L1_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_A7L1_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_A7L1_status {
   background-repeat: no-repeat;
@@ -1637,7 +2043,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_A7L2_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_A7L2_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_A7L2_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_A7L2_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_A7L2_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_A7L2_status {
   background-repeat: no-repeat;
@@ -1677,7 +2083,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_A6L1_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_A6L1_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_A6L1_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_A6L1_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_A6L1_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_A6L1_status {
   background-repeat: no-repeat;
@@ -1717,7 +2123,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_A6L2_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_A6L2_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_A6L2_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_A6L2_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_A6L2_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_A6L2_status {
   background-repeat: no-repeat;
@@ -1757,7 +2163,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_A6L3_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_A6L3_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_A6L3_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_A6L3_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_A6L3_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_A6L3_status {
   background-repeat: no-repeat;
@@ -1797,7 +2203,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_A4_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_A4_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_A4_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_A4_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_A4_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_A4_status {
   background-repeat: no-repeat;
@@ -1837,7 +2243,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_A2L1_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_A2L1_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_A2L1_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_A2L1_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_A2L1_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_A2L1_status {
   background-repeat: no-repeat;
@@ -1877,7 +2283,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_A2L2_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_A2L2_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_A2L2_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_A2L2_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_A2L2_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_A2L2_status {
   background-repeat: no-repeat;
@@ -1917,7 +2323,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B25L1_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B25L1_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B25L1_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B25L1_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B25L1_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B25L1_status {
   background-repeat: no-repeat;
@@ -1957,7 +2363,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B25L2_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B25L2_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B25L2_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B25L2_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B25L2_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B25L2_status {
   background-repeat: no-repeat;
@@ -1997,7 +2403,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B27_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B27_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B27_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B27_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B27_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B27_status {
   background-repeat: no-repeat;
@@ -2037,7 +2443,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B29L1_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B29L1_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B29L1_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B29L1_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B29L1_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B29L1_status {
   background-repeat: no-repeat;
@@ -2077,7 +2483,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B29L2_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B29L2_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B29L2_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B29L2_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B29L2_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B29L2_status {
   background-repeat: no-repeat;
@@ -2117,7 +2523,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B31L1_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B31L1_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B31L1_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B31L1_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B31L1_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B31L1_status {
   background-repeat: no-repeat;
@@ -2157,7 +2563,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B31L2_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B31L2_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B31L2_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B31L2_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B31L2_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B31L2_status {
   background-repeat: no-repeat;
@@ -2197,7 +2603,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B33_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B33_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B33_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B33_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B33_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B33_status {
   background-repeat: no-repeat;
@@ -2237,7 +2643,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B35_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B35_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B35_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B35_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B35_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B35_status {
   background-repeat: no-repeat;
@@ -2277,7 +2683,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B37_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B37_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B37_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B37_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B37_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B37_status {
   background-repeat: no-repeat;
@@ -2317,7 +2723,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B39_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B39_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B39_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B39_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B39_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B39_status {
   background-repeat: no-repeat;
@@ -2357,7 +2763,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B41_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B41_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B41_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B41_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B41_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B41_status {
   background-repeat: no-repeat;
@@ -2397,7 +2803,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B43_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B43_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B43_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B43_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B43_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B43_status {
   background-repeat: no-repeat;
@@ -2437,7 +2843,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B45_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B45_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B45_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B45_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B45_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B45_status {
   background-repeat: no-repeat;
@@ -2477,7 +2883,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B47_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B47_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B47_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B47_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B47_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B47_status {
   background-repeat: no-repeat;
@@ -2517,7 +2923,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B49_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B49_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B49_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B49_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B49_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B49_status {
   background-repeat: no-repeat;
@@ -2557,7 +2963,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B51_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B51_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B51_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B51_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B51_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B51_status {
   background-repeat: no-repeat;
@@ -2597,7 +3003,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B53_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B53_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B53_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B53_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B53_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B53_status {
   background-repeat: no-repeat;
@@ -2637,7 +3043,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B55_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B55_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B55_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B55_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B55_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B55_status {
   background-repeat: no-repeat;
@@ -2677,7 +3083,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B48_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B48_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B48_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B48_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B48_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B48_status {
   background-repeat: no-repeat;
@@ -2717,7 +3123,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B46_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B46_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B46_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B46_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B46_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B46_status {
   background-repeat: no-repeat;
@@ -2757,7 +3163,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B44_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B44_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B44_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B44_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B44_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B44_status {
   background-repeat: no-repeat;
@@ -2797,7 +3203,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B42_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B42_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B42_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B42_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B42_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B42_status {
   background-repeat: no-repeat;
@@ -2837,7 +3243,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B40_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B40_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B40_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B40_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B40_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B40_status {
   background-repeat: no-repeat;
@@ -2877,7 +3283,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B38_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B38_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B38_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B38_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B38_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B38_status {
   background-repeat: no-repeat;
@@ -2917,7 +3323,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B36_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B36_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B36_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B36_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B36_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B36_status {
   background-repeat: no-repeat;
@@ -2957,7 +3363,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B34_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B34_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B34_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B34_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B34_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B34_status {
   background-repeat: no-repeat;
@@ -2997,7 +3403,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B32_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B32_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B32_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B32_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B32_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B32_status {
   background-repeat: no-repeat;
@@ -3037,7 +3443,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B30_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B30_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B30_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B30_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B30_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B30_status {
   background-repeat: no-repeat;
@@ -3077,7 +3483,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B28_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B28_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B28_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B28_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B28_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B28_status {
   background-repeat: no-repeat;
@@ -3117,7 +3523,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B26_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B26_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B26_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B26_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B26_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B26_status {
   background-repeat: no-repeat;
@@ -3157,7 +3563,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B24_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B24_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B24_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B24_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B24_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B24_status {
   background-repeat: no-repeat;
@@ -3197,7 +3603,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B22_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B22_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B22_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B22_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B22_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B22_status {
   background-repeat: no-repeat;
@@ -3237,7 +3643,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B20L1_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B20L1_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B20L1_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B20L1_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B20L1_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B20L1_status {
   background-repeat: no-repeat;
@@ -3277,7 +3683,7 @@ i.form-control-feedback {
   .airport_overview_widget.JFK_account .display #Airport_Gate_B20L2_icon.critical {
     background-image: url("../img/airport/JFK/JFK_Gate_B20L2_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.JFK_account .display #Airport_Gate_B20L2_icon.perfect-dock {
+  .airport_overview_widget.JFK_account .display #Airport_Gate_B20L2_icon.perfect-hookup {
     background-image: url("../img/airport/JFK/JFK_Gate_B20L2_Perfect.png"); }
 .airport_overview_widget.JFK_account .display #Airport_Gate_B20L2_status {
   background-repeat: no-repeat;
@@ -3353,7 +3759,7 @@ i.form-control-feedback {
   .airport_overview_widget.EWR_account .display #Airport_Gate_C90_icon.critical {
     background-image: url("../img/airport/EWR/EWR_Gate_C90_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.EWR_account .display #Airport_Gate_C90_icon.perfect-dock {
+  .airport_overview_widget.EWR_account .display #Airport_Gate_C90_icon.perfect-hookup {
     background-image: url("../img/airport/EWR/EWR_Gate_C90_Perfect.png"); }
 .airport_overview_widget.EWR_account .display #Airport_Gate_C90_status {
   background-repeat: no-repeat;
@@ -3393,7 +3799,7 @@ i.form-control-feedback {
   .airport_overview_widget.EWR_account .display #Airport_Gate_C125_icon.critical {
     background-image: url("../img/airport/EWR/EWR_Gate_C125_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.EWR_account .display #Airport_Gate_C125_icon.perfect-dock {
+  .airport_overview_widget.EWR_account .display #Airport_Gate_C125_icon.perfect-hookup {
     background-image: url("../img/airport/EWR/EWR_Gate_C125_Perfect.png"); }
 .airport_overview_widget.EWR_account .display #Airport_Gate_C125_status {
   background-repeat: no-repeat;
@@ -3469,7 +3875,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_C1_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_C1_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C1_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C1_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_C1_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C1_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C1_Service.png"); }
@@ -3500,7 +3906,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_C3_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_C3_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C3_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C3_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_C3_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C3_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C3_Service.png"); }
@@ -3531,7 +3937,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_C7_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_C7_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C7_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C7_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_C7_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C7_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C7_Service.png"); }
@@ -3562,7 +3968,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_C8_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_C8_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C8_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C8_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_C8_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C8_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C8_Service.png"); }
@@ -3593,7 +3999,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_C9_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_C9_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C9_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C9_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_C9_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C9_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C9_Service.png"); }
@@ -3624,7 +4030,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_C10_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_C10_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C10_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C10_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_C10_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C10_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C10_Service.png"); }
@@ -3655,7 +4061,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_C11_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_C11_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C11_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C11_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_C11_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C11_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C11_Service.png"); }
@@ -3686,7 +4092,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_C12_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_C12_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C12_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C12_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_C12_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C12_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C12_Service.png"); }
@@ -3717,7 +4123,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_C13_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_C13_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C13_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C13_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_C13_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C13_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C13_Service.png"); }
@@ -3748,7 +4154,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_C14_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_C14_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C14_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C14_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_C14_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C14_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C14_Service.png"); }
@@ -3779,7 +4185,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_C15_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_C15_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C15_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C15_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_C15_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C15_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C15_Service.png"); }
@@ -3810,7 +4216,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_C16_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_C16_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C16_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C16_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_C16_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C16_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C16_Service.png"); }
@@ -3841,7 +4247,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_C17_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_C17_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C17_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C17_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_C17_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C17_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C17_Service.png"); }
@@ -3872,7 +4278,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_C18_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_C18_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C18_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C18_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_C18_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C18_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C18_Service.png"); }
@@ -3903,7 +4309,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_C20_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_C20_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C20_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C20_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_C20_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C20_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C20_Service.png"); }
@@ -3934,7 +4340,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_C21_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_C21_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C21_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C21_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_C21_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C21_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C21_Service.png"); }
@@ -3965,7 +4371,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_C22_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_C22_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C22_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C22_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_C22_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C22_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C22_Service.png"); }
@@ -3996,7 +4402,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_C23_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_C23_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C23_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C23_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_C23_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C23_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C23_Service.png"); }
@@ -4027,7 +4433,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_C24_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_C24_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C24_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C24_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_C24_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C24_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C24_Service.png"); }
@@ -4058,7 +4464,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_C25_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_C25_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_C25_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_C25_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_C25_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_C25_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_C25_Service.png"); }
@@ -4089,7 +4495,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_D3_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_D3_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D3_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D3_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_D3_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D3_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D3_Service.png"); }
@@ -4120,7 +4526,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_D5_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_D5_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D5_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D5_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_D5_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D5_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D5_Service.png"); }
@@ -4151,7 +4557,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_D6_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_D6_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D6_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D6_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_D6_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D6_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D6_Service.png"); }
@@ -4182,7 +4588,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_D8_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_D8_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D8_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D8_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_D8_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D8_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D8_Service.png"); }
@@ -4213,7 +4619,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_D9_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_D9_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D9_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D9_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_D9_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D9_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D9_Service.png"); }
@@ -4244,7 +4650,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_D10_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_D10_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D10_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D10_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_D10_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D10_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D10_Service.png"); }
@@ -4275,7 +4681,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_D11_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_D11_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D11_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D11_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_D11_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D11_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D11_Service.png"); }
@@ -4306,7 +4712,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_D12_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_D12_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D12_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D12_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_D12_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D12_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D12_Service.png"); }
@@ -4337,7 +4743,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_D13_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_D13_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D13_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D13_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_D13_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D13_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D13_Service.png"); }
@@ -4368,7 +4774,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_D14_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_D14_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D14_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D14_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_D14_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D14_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D14_Service.png"); }
@@ -4399,7 +4805,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_D15_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_D15_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D15_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D15_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_D15_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D15_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D15_Service.png"); }
@@ -4430,7 +4836,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_D16_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_D16_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D16_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D16_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_D16_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D16_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D16_Service.png"); }
@@ -4461,7 +4867,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_D17_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_D17_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D17_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D17_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_D17_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D17_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D17_Service.png"); }
@@ -4492,7 +4898,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_D18_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_D18_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D18_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D18_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_D18_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D18_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D18_Service.png"); }
@@ -4523,7 +4929,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_D19_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_D19_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D19_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D19_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_D19_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D19_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D19_Service.png"); }
@@ -4554,7 +4960,7 @@ i.form-control-feedback {
   .airport_overview_widget.RDU_account .display #Airport_Gate_D20_icon.critical {
     background-image: url("../img/airport/RDU/RDU_Gate_D20_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.RDU_account .display #Airport_Gate_D20_icon.perfect-dock {
+  .airport_overview_widget.RDU_account .display #Airport_Gate_D20_icon.perfect-hookup {
     background-image: url("../img/airport/RDU/RDU_Gate_D20_Perfect.png"); }
   .airport_overview_widget.RDU_account .display #Airport_Gate_D20_icon.out-of-service {
     background-image: url("../img/airport/RDU/RDU_Gate_D20_Service.png"); }
@@ -4621,7 +5027,7 @@ i.form-control-feedback {
   .airport_overview_widget.PHX_account .display #Airport_Gate_D1_icon.critical {
     background-image: url("../img/airport/PHX/PHX_Gate_D1_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.PHX_account .display #Airport_Gate_D1_icon.perfect-dock {
+  .airport_overview_widget.PHX_account .display #Airport_Gate_D1_icon.perfect-hookup {
     background-image: url("../img/airport/PHX/PHX_Gate_D1_Perfect.png"); }
 .airport_overview_widget.PHX_account .display #Airport_Gate_D1_status {
   background-repeat: no-repeat;
@@ -4699,7 +5105,7 @@ i.form-control-feedback {
   .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A01_icon.critical {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A01_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A01_icon.perfect-dock {
+  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A01_icon.perfect-hookup {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A01_Perfect.png"); }
 .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A01_status {
   background-repeat: no-repeat;
@@ -4739,7 +5145,7 @@ i.form-control-feedback {
   .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A02_icon.critical {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A02_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A02_icon.perfect-dock {
+  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A02_icon.perfect-hookup {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A02_Perfect.png"); }
 .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A02_status {
   background-repeat: no-repeat;
@@ -4779,7 +5185,7 @@ i.form-control-feedback {
   .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A07_icon.critical {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A07_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A07_icon.perfect-dock {
+  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A07_icon.perfect-hookup {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A07_Perfect.png"); }
 .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A07_status {
   background-repeat: no-repeat;
@@ -4819,7 +5225,7 @@ i.form-control-feedback {
   .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A08_icon.critical {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A08_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A08_icon.perfect-dock {
+  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A08_icon.perfect-hookup {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A08_Perfect.png"); }
 .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A08_status {
   background-repeat: no-repeat;
@@ -4859,7 +5265,7 @@ i.form-control-feedback {
   .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A09_icon.critical {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A09_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A09_icon.perfect-dock {
+  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A09_icon.perfect-hookup {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A09_Perfect.png"); }
 .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A09_status {
   background-repeat: no-repeat;
@@ -4899,7 +5305,7 @@ i.form-control-feedback {
   .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A10_icon.critical {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A10_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A10_icon.perfect-dock {
+  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A10_icon.perfect-hookup {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A10_Perfect.png"); }
 .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A10_status {
   background-repeat: no-repeat;
@@ -4939,7 +5345,7 @@ i.form-control-feedback {
   .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A11_icon.critical {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A11_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A11_icon.perfect-dock {
+  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A11_icon.perfect-hookup {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A11_Perfect.png"); }
 .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A11_status {
   background-repeat: no-repeat;
@@ -4979,7 +5385,7 @@ i.form-control-feedback {
   .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A12_icon.critical {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A12_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A12_icon.perfect-dock {
+  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A12_icon.perfect-hookup {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A12_Perfect.png"); }
 .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A12_status {
   background-repeat: no-repeat;
@@ -5019,7 +5425,7 @@ i.form-control-feedback {
   .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A14_icon.critical {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A14_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A14_icon.perfect-dock {
+  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A14_icon.perfect-hookup {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A14_Perfect.png"); }
 .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A14_status {
   background-repeat: no-repeat;
@@ -5059,7 +5465,7 @@ i.form-control-feedback {
   .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A15_icon.critical {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A15_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A15_icon.perfect-dock {
+  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A15_icon.perfect-hookup {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A15_Perfect.png"); }
 .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A15_status {
   background-repeat: no-repeat;
@@ -5099,7 +5505,7 @@ i.form-control-feedback {
   .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A17_icon.critical {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A17_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A17_icon.perfect-dock {
+  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A17_icon.perfect-hookup {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A17_Perfect.png"); }
 .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A17_status {
   background-repeat: no-repeat;
@@ -5139,7 +5545,7 @@ i.form-control-feedback {
   .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A18_icon.critical {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A18_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A18_icon.perfect-dock {
+  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A18_icon.perfect-hookup {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A18_Perfect.png"); }
 .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A18_status {
   background-repeat: no-repeat;
@@ -5179,7 +5585,7 @@ i.form-control-feedback {
   .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A19_icon.critical {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A19_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A19_icon.perfect-dock {
+  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A19_icon.perfect-hookup {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A19_Perfect.png"); }
 .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A19_status {
   background-repeat: no-repeat;
@@ -5219,7 +5625,7 @@ i.form-control-feedback {
   .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A24_icon.critical {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A24_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A24_icon.perfect-dock {
+  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A24_icon.perfect-hookup {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A24_Perfect.png"); }
 .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A24_status {
   background-repeat: no-repeat;
@@ -5259,7 +5665,7 @@ i.form-control-feedback {
   .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A25_icon.critical {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A25_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A25_icon.perfect-dock {
+  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A25_icon.perfect-hookup {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A25_Perfect.png"); }
 .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A25_status {
   background-repeat: no-repeat;
@@ -5299,7 +5705,7 @@ i.form-control-feedback {
   .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A26_icon.critical {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A26_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A26_icon.perfect-dock {
+  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A26_icon.perfect-hookup {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A26_Perfect.png"); }
 .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A26_status {
   background-repeat: no-repeat;
@@ -5339,7 +5745,7 @@ i.form-control-feedback {
   .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A27_icon.critical {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A27_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A27_icon.perfect-dock {
+  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A27_icon.perfect-hookup {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A27_Perfect.png"); }
 .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A27_status {
   background-repeat: no-repeat;
@@ -5379,7 +5785,7 @@ i.form-control-feedback {
   .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A29_icon.critical {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A29_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A29_icon.perfect-dock {
+  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A29_icon.perfect-hookup {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A29_Perfect.png"); }
 .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A29_status {
   background-repeat: no-repeat;
@@ -5419,7 +5825,7 @@ i.form-control-feedback {
   .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A30_icon.critical {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A30_Critical.png");
     animation: blink 2s ease-in infinite; }
-  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A30_icon.perfect-dock {
+  .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A30_icon.perfect-hookup {
     background-image: url("../img/airport/HAS-IAH/HAS-IAH_Gate_A30_Perfect.png"); }
 .airport_overview_widget.HAS-IAH_account .display #Airport_Gate_A30_status {
   background-repeat: no-repeat;
@@ -6352,6 +6758,12 @@ ul.chosen-results li.highlighted {
         animation: blink 2s ease-in infinite; }
       .pbb_pca_gpu_status_widget .display #widgetData tbody tr#iconRow i.alarm {
         color: #e45f00;
+        display: inline-block; }
+      .pbb_pca_gpu_status_widget .display #widgetData tbody tr#iconRow i.perfect-hookup {
+        color: #1dc150;
+        display: inline-block; }
+      .pbb_pca_gpu_status_widget .display #widgetData tbody tr#iconRow i.out-of-service {
+        color: #e10a12;
         display: inline-block; }
     .pbb_pca_gpu_status_widget .display #widgetData tbody td[id$="_pca_discharge_temp"] {
       font-size: 12px; }

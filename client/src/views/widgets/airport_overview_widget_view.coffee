@@ -68,7 +68,7 @@ class AirportoverviewWidgetView extends IOPSWidgetView
               Tag_gate_alarm: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.Alarm._HasAlarms"
               Tag_gate_docked: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB.AIRCRAFTDOCKEDCALCULATION"
               Tag_gate_critical: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.Alarm._HasCriticalAlarms"
-              Tag_gate_perfect_dock: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB.PerfectDock"
+              Tag_gate_perfect_hookup: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.System.PerfectHookup"
               Tag_gpu_out_of_service: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.GPU._OutOfService"
               Tag_pbb_out_of_service: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB._OutOfService"
               Tag_pca_out_of_service: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PCA._OutOfService"
@@ -77,7 +77,7 @@ class AirportoverviewWidgetView extends IOPSWidgetView
             tags.push "#{gate.Tag_gate_alarm}.Value"
             tags.push "#{gate.Tag_gate_docked}.Value"
             tags.push "#{gate.Tag_gate_critical}.Value"
-            tags.push "#{gate.Tag_gate_perfect_dock}.Value"
+            tags.push "#{gate.Tag_gate_perfect_hookup}.Value"
             tags.push "#{gate.Tag_gpu_out_of_service}.Value"
             tags.push "#{gate.Tag_pbb_out_of_service}.Value"
             tags.push "#{gate.Tag_pca_out_of_service}.Value"
@@ -91,14 +91,8 @@ class AirportoverviewWidgetView extends IOPSWidgetView
           </div>
         </div>
       """
-      #@$(".gate_ac").remove()
       for g in @gateData
         @$("#layout_container").append "<div id='Airport_Gate_#{g.Number}_a'><div id='Airport_Gate_#{g.Number}_icon'></div><div id='Airport_Gate_#{g.Number}_status'></div>"
-        #$(".display").append "<div id='Airport_Gate_#{g.Number}_Status'></div>"
-        @$("#Airport_Gate_#{g.Number}_icon").on 'blink', ()=>
-          #if @$("#Airport_Gate_#{g.Number}_icon").hasClass('critical')
-          @$("#Airport_Gate_#{g.Number}_icon").fadeOut(1000).fadeIn 1, blink
-          return
 
       # add tag list to the connection for monitoring
       App.opc.add_tags @site_code, tags
@@ -114,7 +108,7 @@ class AirportoverviewWidgetView extends IOPSWidgetView
       critical = null
       alarm = null
       docked = null
-      perfectDock = null
+      perfectHookup = null
 
       qd = @opc.tags["#{g.Tag_gate_docked}"].props.Value.quality
       if qd? && qd
@@ -161,11 +155,11 @@ class AirportoverviewWidgetView extends IOPSWidgetView
       else
         qa = false
       
-      qpd = @opc.tags["#{g.Tag_gate_perfect_dock}"].props.Value.quality
+      qpd = @opc.tags["#{g.Tag_gate_perfect_hookup}"].props.Value.quality
       if qpd? && qpd
-        perfectDock = @get_bool(@opc.get_value("#{g.Tag_gate_perfect_dock}.Value"))
+        perfectHookup = @get_bool(@opc.get_value("#{g.Tag_gate_perfect_hookup}.Value"))
         @$("#Airport_Gate_#{g.Number}_status")
-        .toggleClass("perfect-dock", perfectDock ==true && qpd)
+        .toggleClass("perfect-hookup", perfectHookup ==true && qpd)
       else
         qpd = false
 

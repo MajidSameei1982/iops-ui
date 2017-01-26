@@ -87,6 +87,7 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
               <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_alarm' class='fa fa-bell' title='Gate has ALARMS'></i>
               <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_docked' class='fa fa-plane' title='Plane is DOCKED'></i>
               <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_outofservice' class='fa fa-wrench' title='A system is out of service'></i>
+              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_perfecthookup' class='fa fa-check-circle-o' title='Perfect Hookup'></i>
             </td>"
           )
           
@@ -166,6 +167,10 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
         $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_critical").toggleClass('critical',setValue)
       else if tag.indexOf("#{tzgPrefix}_has_alarms") > -1
         $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_alarm").toggleClass('alarm',setValue)
+      else if tag.indexOf("#{tzgPrefix}_system_out_of_service") > -1
+        $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_outofservice").toggleClass('out-of-service',setValue)
+      else if tag.indexOf("#{tzgPrefix}_system_perfect_hookup") > -1
+        $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_perfecthookup").toggleClass('perfect-hookup',setValue)
       else if tag.indexOf("#{tzgPrefix}_pca_mode_cooling") > -1
         $("#{elementPrefix} #widgetData #dynamic_#{tzgPrefix}_pca_discharge_temp").toggleClass('Cooling',setValue)
       else if tag.indexOf("#{tzgPrefix}_pca_mode_heating") > -1

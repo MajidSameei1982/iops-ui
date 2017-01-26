@@ -4,6 +4,13 @@ This is the class definitio
 class TagConfig extends Object
 	@tags:
 		###**************************************************
+		*** System Tags
+		**************************************************###
+		system_perfect_hookup:Tag:'System.PerfectHookup',Label:'Perfect Hookup',DataType:'Boolean'
+									,Parameters:{Parm001:'Yes',Parm002:'No',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
+
+		###**************************************************
 		*** GPU Tags
 		**************************************************###
 		gpu_by_pass:Tag:'GPU.ByPass',Label:'ByPass',DataType:'Boolean'
@@ -547,6 +554,7 @@ class TagConfig extends Object
 					pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'[*]DisCharge',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 					pca_mode_cooling:{Tag:'PCA.MODE_COOLING',Label:'Cooling Mode',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pca_mode_heating:{Tag:'PCA.MODE_HEATING',Label:'Heating Mode',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+
 				}
 			#out_of_service_widget: # Out Of Service Widget
 
@@ -1840,7 +1848,8 @@ class TagConfig extends Object
 					pca_air_filter_dp:{Tag:'PCA.AIR_FILTER_DP',Label:'Air Filter DP',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 				}
 			pca_widget: # PCA Widget
-				remove_tags:{'pca_comp_stage_1','pca_comp_stage_2','pca_bridge_damper','pca_bridge_air','pca_suction_pressure_1','pca_suction_pressure_2','pca_status'}
+				remove_tags:{'pca_comp_stage_1','pca_comp_stage_2','pca_bridge_damper','pca_bridge_air','pca_suction_pressure_1','pca_suction_pressure_2','pca_status'
+					,'pca_hot_gas_1','pca_hot_gas_2'}
 				add_tags: {
 					pca_egw_inlet_temp:{Tag:'PCA.EGW_INLET_TEMP',Label:'EGW Valve Inlet Temp',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'2',Parm003:'#{1} F',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					pca_egw_outlet_temp:{Tag:'PCA.EGW_OUTLET_TEMP',Label:'EGW Valve Outlet Temp',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'2',Parm003:'#{1} F',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
@@ -1859,6 +1868,10 @@ class TagConfig extends Object
 					pca_mode_heating:{Tag:'PCA.MODE_HEATING',Label:'Heating Mode',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 				}
 			pbb_pca_gpu_status_widget: # PBB/PCA/GPU Widget
+				add_tags:{
+					system_perfect_hookup:{Tag:'System.PerfectHookup',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:'no_row',Class:null,Object:null}},
+					system_out_of_service:{Tag:'System._OutOfService',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:'no_row',Class:null,Object:null}},
+				}
 				update_tags:{
 					pbb_docked:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]Docked',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'Docked',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]PBB',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'',Parm002:'',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
