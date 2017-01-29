@@ -6,6 +6,24 @@
   .group_item {
     margin:0 5px;
   }
+  .alarm {
+    background-color: #ff8300 !important;
+    color: black !important;
+    td[class^='sorting'], td[class*=' sorting'] {
+      background-color: #ff8300 !important;
+      color: black !important;
+
+    }
+  }
+  .critical {
+    background-color: #c00 !important;
+    color: black !important;
+    td[class^='sorting'], td[class*=' sorting'] {
+      background-color: #c00 !important;
+      color: black !important;
+
+    }
+  }
   .notification {
   	background-color: yellow !important;
   	color: black !important;

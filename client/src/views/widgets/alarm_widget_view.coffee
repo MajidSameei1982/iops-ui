@@ -117,6 +117,9 @@ class AlarmWidgetView extends IOPSWidgetView
       $("table.opc-alarm > tbody > tr").each (idx, element) =>
         if $("td:eq(2)", element).text() == "0"
           $("td:eq(2)", element).closest("tr").toggleClass("notification",true)
+        if $("td:eq(2)", element).text() == "100"
+          $("td:eq(2)", element).closest("tr").toggleClass("alarm",true)
+
 
 
   set_model: ()=>

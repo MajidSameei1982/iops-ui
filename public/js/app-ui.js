@@ -23906,7 +23906,7 @@ OPCManager = (function() {
           code = site.get("code");
           results1.push(OPCManager.create(code, {
             token: '7e61b230-481d-4551-b24b-ba9046e3d8f2',
-            max_tags_per_msg: 50,
+            max_tags_per_msg: 70,
             max_callbacks: 10,
             callback_timeout: 10000,
             refresh_callback: (function(c) {
@@ -27756,7 +27756,10 @@ AlarmWidgetView = (function(superClass) {
     return $("table.opc-alarm > tbody > tr").each((function(_this) {
       return function(idx, element) {
         if ($("td:eq(2)", element).text() === "0") {
-          return $("td:eq(2)", element).closest("tr").toggleClass("notification", true);
+          $("td:eq(2)", element).closest("tr").toggleClass("notification", true);
+        }
+        if ($("td:eq(2)", element).text() === "100") {
+          return $("td:eq(2)", element).closest("tr").toggleClass("alarm", true);
         }
       };
     })(this));
