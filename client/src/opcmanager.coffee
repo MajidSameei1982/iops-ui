@@ -154,8 +154,8 @@ class OPCManager
         OPCManager.create code,
           token:'7e61b230-481d-4551-b24b-ba9046e3d8f2'
           #interval:5000
-          max_tags_per_msg: 70
-          max_callbacks: 10
+          max_tags_per_msg: 50
+          max_callbacks: 25
           callback_timeout: 10000
           refresh_callback: ((c)->
             (data)->
