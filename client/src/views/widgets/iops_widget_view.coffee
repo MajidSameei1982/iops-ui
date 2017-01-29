@@ -35,9 +35,14 @@ class IOPSWidgetView extends WidgetView
 
   # listen for updates on a connection
   watch_updates: (conn)->
-    console.log "watch : #{conn}"
-    App.vent.on "opc:data:#{conn}", @data_update
     OPCManager.add_ref(conn)
+    currTags = Object.keys(OPCManager.connections[conn].tags).length
+    maxTags = OPCManager.connections[conn].config.max_callbacks * OPCManager.connections[conn].config.max_tags_per_msg
+    console.log "watch : #{conn}: Max Tags: #{maxTags}, Current Tag Count: #{currTags}"
+    App.vent.on "opc:data:#{conn}", @data_update
+    if currTags > maxTags
+      throw new Error("To many Widgets declared for #{conn}: Max Tags Allowed: #{maxTags}, Current Tag Count: #{currTags}.  Increase opcmanager.coffee::init max_callbacks setting as needed to resolve this error.")
+
   # kill listener
   kill_updates: (conn)->
     console.log "kill : #{conn}"

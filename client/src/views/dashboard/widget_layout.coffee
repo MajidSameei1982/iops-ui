@@ -12,6 +12,7 @@ class WidgetLayout extends Marionette.LayoutView
     wgrid : "ul.gridster"
   events:
     "click #add_widget" : "show_add"
+    "click #tag_refresh" : "toggle_tag_refresh"
 
   # add widget to collection and grid
   add_widget: (type)->
@@ -41,6 +42,10 @@ class WidgetLayout extends Marionette.LayoutView
         wli.append('<span class="gs-resize-handle gs-resize-handle-both"></span>')
         if wv.onGridster? then wv.onGridster()
     @model.save()
+  
+  # toggle the tag refresh for widget design
+  toggle_tag_refresh: (e)->
+    e.preventDefault()
     
   # show widget dialog
   show_add: (e)->

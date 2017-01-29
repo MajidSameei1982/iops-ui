@@ -450,7 +450,7 @@ window.JST["dashboard/widget_layout"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div><a id="add_widget" href="#"><i class=\'fa fa-plus-square\'></i> Add New Widget</a></div>\n<ul class=\'gridster widget-container\'></ul>\n'));
+      _print(_safe('<div><a id="add_widget" href="#"><i class=\'fa fa-plus-square\'></i> Add New Widget</a>\n\t<!--&nbsp;&nbsp;<a href=\'#\' id=\'tag_refresh\' class=\'short\'><i class="fa fa-toggle-off" ></i> <span class=\'disable_label\'>OFF</span></a> -->\n</div>\n<ul class=\'gridster widget-container\'></ul>\n'));
     
     }).call(this);
     
@@ -23856,10 +23856,14 @@ OPCManager = (function() {
   };
 
   OPCManager.add_ref = function(conn) {
-    var c;
+    var c, t;
     c = OPCManager.refs[conn];
     c = c != null ? c + 1 : 1;
     if (c >= 1) {
+      t = Object.keys(OPCManager.connections[conn].tags).length;
+      OPCManager.connections[conn].config.max_callbacks = Math.ceil(t / OPCManager.connections[conn].config.max_tags_per_msg);
+      OPCManager.connections[conn].config.callback_timeout = Math.ceil(t / OPCManager.connections[conn].config.max_tags_per_msg) * 7500;
+      OPCManager.connections[conn].init;
       OPCManager.connections[conn].toggle_refresh(true);
     }
     OPCManager.refs[conn] = c;
@@ -24780,7 +24784,8 @@ WidgetLayout = (function(superClass) {
   };
 
   WidgetLayout.prototype.events = {
-    "click #add_widget": "show_add"
+    "click #add_widget": "show_add",
+    "click #tag_refresh": "toggle_tag_refresh"
   };
 
   WidgetLayout.prototype.add_widget = function(type) {
@@ -24826,6 +24831,10 @@ WidgetLayout = (function(superClass) {
       }
     }
     return this.model.save();
+  };
+
+  WidgetLayout.prototype.toggle_tag_refresh = function(e) {
+    return e.preventDefault();
   };
 
   WidgetLayout.prototype.show_add = function(e) {
@@ -29289,9 +29298,15 @@ IOPSWidgetView = (function(superClass) {
   IOPSWidgetView.prototype.data_update = function(data) {};
 
   IOPSWidgetView.prototype.watch_updates = function(conn) {
-    console.log("watch : " + conn);
+    var currTags, maxTags;
+    OPCManager.add_ref(conn);
+    currTags = Object.keys(OPCManager.connections[conn].tags).length;
+    maxTags = OPCManager.connections[conn].config.max_callbacks * OPCManager.connections[conn].config.max_tags_per_msg;
+    console.log("watch : " + conn + ": Max Tags: " + maxTags + ", Current Tag Count: " + currTags);
     App.vent.on("opc:data:" + conn, this.data_update);
-    return OPCManager.add_ref(conn);
+    if (currTags > maxTags) {
+      throw new Error("To many Widgets declared for " + conn + ": Max Tags Allowed: " + maxTags + ", Current Tag Count: " + currTags + ".  Increase opcmanager.coffee::init max_callbacks setting as needed to resolve this error.");
+    }
   };
 
   IOPSWidgetView.prototype.kill_updates = function(conn) {

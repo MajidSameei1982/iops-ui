@@ -1,2 +1,4 @@
-<div><a id="add_widget" href="#"><i class='fa fa-plus-square'></i> Add New Widget</a></div>
+<div><a id="add_widget" href="#"><i class='fa fa-plus-square'></i> Add New Widget</a>
+	<!--&nbsp;&nbsp;<a href='#' id='tag_refresh' class='short'><i class="fa fa-toggle-off" ></i> <span class='disable_label'>OFF</span></a> -->
+</div>
 <ul class='gridster widget-container'></ul>

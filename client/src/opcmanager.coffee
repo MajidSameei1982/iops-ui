@@ -126,6 +126,10 @@ class OPCManager
     c = @refs[conn]
     c = if c? then c+1 else 1
     if c >= 1
+      t = Object.keys(@connections[conn].tags).length
+      @connections[conn].config.max_callbacks = Math.ceil(t / @connections[conn].config.max_tags_per_msg)
+      @connections[conn].config.callback_timeout = Math.ceil(t / @connections[conn].config.max_tags_per_msg) * 7500
+      @connections[conn].init
       @connections[conn].toggle_refresh(true)
     @refs[conn] = c
     c
