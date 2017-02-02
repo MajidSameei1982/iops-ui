@@ -4068,16 +4068,52 @@ TagConfig = (function(superClass) {
   TagConfig.tags = {
 
     /***************************************************
-    		*** System Tags
+    		*** SYSTEM Tags
     		**************************************************
      */
-    system_perfect_hookup: {
-      Tag: 'System.PerfectHookup',
-      Label: 'Perfect Hookup',
+    system_out_of_service: {
+      Tag: 'System._OUT_OF_SERVICE',
+      Label: '[*]Out Of Service',
       DataType: 'Boolean',
       Parameters: {
-        Parm001: 'Yes',
-        Parm002: 'No',
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    system_perfect_hookup: {
+      Tag: 'System.PERFECT_HOOKUP',
+      Label: '[*]Perfect Hookup',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    system_quality: {
+      Tag: 'System._QUALITY',
+      Label: '[*]Perfect Hookup',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
         Parm003: 'ok',
         Parm004: null,
         Parm005: null
@@ -4507,7 +4543,7 @@ TagConfig = (function(superClass) {
       }
     },
     gpu_out_of_service: {
-      Tag: 'GPU._OutOfService',
+      Tag: 'GPU._OUT_OF_SERVICE',
       Label: '[*]GPU',
       DataType: 'Boolean',
       Parameters: {
@@ -5377,7 +5413,7 @@ TagConfig = (function(superClass) {
       }
     },
     pbb_out_of_service: {
-      Tag: 'PBB._OutOfService',
+      Tag: 'PBB._OUT_OF_SERVICE',
       Label: '[*]PBB',
       DataType: 'Boolean',
       Parameters: {
@@ -6043,49 +6079,8 @@ TagConfig = (function(superClass) {
       }
     },
     pca_out_of_service: {
-      Tag: 'PCA._OutOfService',
+      Tag: 'PCA._OUT_OF_SERVICE',
       Label: '[*]PCA',
-      DataType: 'Boolean',
-      Parameters: {
-        Parm001: 'True',
-        Parm002: 'False',
-        Parm003: 'ok',
-        Parm004: null,
-        Parm005: null
-      },
-      Element: {
-        Type: null,
-        ParentID: null,
-        Class: null,
-        Object: null
-      }
-
-      /***************************************************
-      		*** SYSTEM Tags
-      		**************************************************
-       */
-    },
-    system_out_of_service: {
-      Tag: 'System._OutOfService',
-      Label: '[*]Out Of Service',
-      DataType: 'Boolean',
-      Parameters: {
-        Parm001: 'True',
-        Parm002: 'False',
-        Parm003: 'ok',
-        Parm004: null,
-        Parm005: null
-      },
-      Element: {
-        Type: null,
-        ParentID: null,
-        Class: null,
-        Object: null
-      }
-    },
-    system_perfect_hookup: {
-      Tag: 'System._OutOfService',
-      Label: '[*]Perfect Hookup',
       DataType: 'Boolean',
       Parameters: {
         Parm001: 'True',
@@ -6107,7 +6102,7 @@ TagConfig = (function(superClass) {
        */
     },
     elvrot_out_of_service: {
-      Tag: 'ELVROT._OutOfService',
+      Tag: 'ELVROT._OUT_OF_SERVICE',
       Label: '[*]ELVROT',
       DataType: 'Boolean',
       Parameters: {
@@ -7585,7 +7580,7 @@ TagConfig = (function(superClass) {
         },
         add_tags: {
           system_perfect_hookup: {
-            Tag: 'System.PerfectHookup',
+            Tag: 'System.PERFECT_HOOKUP',
             Label: 'Perfect Hookup',
             DataType: 'Boolean',
             Parameters: {
@@ -7603,7 +7598,7 @@ TagConfig = (function(superClass) {
             }
           },
           system_out_of_service: {
-            Tag: 'System._OutOfService',
+            Tag: 'System._OUT_OF_SERVICE',
             Label: 'Out of Service',
             DataType: 'Boolean',
             Parameters: {
@@ -7840,7 +7835,7 @@ TagConfig = (function(superClass) {
         },
         add_tags: {
           system_perfect_hookup: {
-            Tag: 'System.PerfectHookup',
+            Tag: 'System.PERFECT_HOOKUP',
             Label: 'Perfect Hookup',
             DataType: 'Boolean',
             Parameters: {
@@ -7858,7 +7853,7 @@ TagConfig = (function(superClass) {
             }
           },
           system_out_of_service: {
-            Tag: 'System._OutOfService',
+            Tag: 'System._OUT_OF_SERVICE',
             Label: 'Out of Service',
             DataType: 'Boolean',
             Parameters: {
@@ -9334,7 +9329,7 @@ TagConfig = (function(superClass) {
       pbb_pca_gpu_status_widget: {
         add_tags: {
           system_perfect_hookup: {
-            Tag: 'System.PerfectHookup',
+            Tag: 'System.PERFECT_HOOKUP',
             Label: 'Perfect Hookup',
             DataType: 'Boolean',
             Parameters: {
@@ -9352,7 +9347,7 @@ TagConfig = (function(superClass) {
             }
           },
           system_out_of_service: {
-            Tag: 'System._OutOfService',
+            Tag: 'System._OUT_OF_SERVICE',
             Label: 'Out of Service',
             DataType: 'Boolean',
             Parameters: {
@@ -9709,7 +9704,7 @@ TagConfig = (function(superClass) {
       pbb_pca_gpu_status_widget: {
         add_tags: {
           system_perfect_hookup: {
-            Tag: 'System.PerfectHookup',
+            Tag: 'System.PERFECT_HOOKUP',
             Label: 'Perfect Hookup',
             DataType: 'Boolean',
             Parameters: {
@@ -9727,7 +9722,7 @@ TagConfig = (function(superClass) {
             }
           },
           system_out_of_service: {
-            Tag: 'System._OutOfService',
+            Tag: 'System._OUT_OF_SERVICE',
             Label: 'Out of Service',
             DataType: 'Boolean',
             Parameters: {
@@ -12033,7 +12028,7 @@ TagConfig = (function(superClass) {
       pbb_pca_gpu_status_widget: {
         add_tags: {
           system_perfect_hookup: {
-            Tag: 'System.PerfectHookup',
+            Tag: 'System.PERFECT_HOOKUP',
             Label: 'Perfect Hookup',
             DataType: 'Boolean',
             Parameters: {
@@ -12051,7 +12046,7 @@ TagConfig = (function(superClass) {
             }
           },
           system_out_of_service: {
-            Tag: 'System._OutOfService',
+            Tag: 'System._OUT_OF_SERVICE',
             Label: 'Out of Service',
             DataType: 'Boolean',
             Parameters: {
@@ -12269,7 +12264,7 @@ TagConfig = (function(superClass) {
               },
               add_tags: {
                 gpu_01_out_of_service: {
-                  Tag: 'GPU01._OutOfService',
+                  Tag: 'GPU01._OUT_OF_SERVICE',
                   Label: '[*]GPU-01',
                   DataType: 'Boolean',
                   Parameters: {
@@ -12287,7 +12282,7 @@ TagConfig = (function(superClass) {
                   }
                 },
                 gpu_02_out_of_service: {
-                  Tag: 'GPU02._OutOfService',
+                  Tag: 'GPU02._OUT_OF_SERVICE',
                   Label: '[*]GPU-02',
                   DataType: 'Boolean',
                   Parameters: {
@@ -16013,7 +16008,7 @@ TagConfig = (function(superClass) {
         },
         add_tags: {
           system_perfect_hookup: {
-            Tag: 'System.PerfectHookup',
+            Tag: 'System.PERFECT_HOOKUP',
             Label: 'Perfect Hookup',
             DataType: 'Boolean',
             Parameters: {
@@ -16031,7 +16026,7 @@ TagConfig = (function(superClass) {
             }
           },
           system_out_of_service: {
-            Tag: 'System._OutOfService',
+            Tag: 'System._OUT_OF_SERVICE',
             Label: 'Out of Service',
             DataType: 'Boolean',
             Parameters: {
@@ -16220,7 +16215,7 @@ TagConfig = (function(superClass) {
             B29L2: {
               add_tags: {
                 elvrot_out_of_service: {
-                  Tag: 'ELVROT._OutOfService',
+                  Tag: 'ELVROT._OUT_OF_SERVICE',
                   Label: '[*]ELVROT',
                   DataType: 'Boolean',
                   Parameters: {
@@ -16243,7 +16238,7 @@ TagConfig = (function(superClass) {
           B2: {
             update_tags: {
               pca_out_of_service: {
-                Tag: 'PCA._OutOfService',
+                Tag: 'PCA._OUT_OF_SERVICE',
                 Label: '[*]PCA',
                 DataType: 'Boolean',
                 Parameters: {
@@ -16265,7 +16260,7 @@ TagConfig = (function(superClass) {
           B3: {
             update_tags: {
               pca_out_of_service: {
-                Tag: 'PCA._OutOfService',
+                Tag: 'PCA._OUT_OF_SERVICE',
                 Label: '[*]PCA',
                 DataType: 'Boolean',
                 Parameters: {
@@ -21478,7 +21473,7 @@ TagConfig = (function(superClass) {
       pbb_pca_gpu_status_widget: {
         add_tags: {
           system_perfect_hookup: {
-            Tag: 'System.PerfectHookup',
+            Tag: 'System.PERFECT_HOOKUP',
             Label: 'Perfect Hookup',
             DataType: 'Boolean',
             Parameters: {
@@ -21496,7 +21491,7 @@ TagConfig = (function(superClass) {
             }
           },
           system_out_of_service: {
-            Tag: 'System._OutOfService',
+            Tag: 'System._OUT_OF_SERVICE',
             Label: 'Out of Service',
             DataType: 'Boolean',
             Parameters: {
@@ -22144,7 +22139,7 @@ TagConfig = (function(superClass) {
       pbb_pca_gpu_status_widget: {
         add_tags: {
           system_perfect_hookup: {
-            Tag: 'System.PerfectHookup',
+            Tag: 'System.PERFECT_HOOKUP',
             Label: 'Perfect Hookup',
             DataType: 'Boolean',
             Parameters: {
@@ -22162,7 +22157,7 @@ TagConfig = (function(superClass) {
             }
           },
           system_out_of_service: {
-            Tag: 'System._OutOfService',
+            Tag: 'System._OUT_OF_SERVICE',
             Label: 'Out of Service',
             DataType: 'Boolean',
             Parameters: {
