@@ -31,17 +31,15 @@ class OutofserviceWidgetView extends IOPSWidgetView
   tagConfig = []   
  
   max_gates: 6
- 
+  site_refresh: 50000
+
   IsUpdatingSettings: false
   IsPageLoading: true
 
   update: ()->
     # Ignore all calls except those from startup and Update
-    if !@IsUpdatingSettings && !@IsPageLoading
+    if @IsUpdatingSettings || @IsPageLoading
       return null
-
-    @IsPageLoading = false
-    @IsUpdatingSettings = false
 
     @update_settings
       prefix: 'Airport.#{@site_code}.'
@@ -147,6 +145,7 @@ class OutofserviceWidgetView extends IOPSWidgetView
       @opc =  App.opc.connections[@site_code]
       # listen for updates
       @watch_updates(@site_code)
+      @start_heartbeat()
 
   setOutOfService: (el) =>
     tag = el.id
@@ -177,6 +176,7 @@ class OutofserviceWidgetView extends IOPSWidgetView
 
     s = @model.get("settings")
     return if !s? || !s.gates? || s.gates.length == 0
+    @beat_time = new Date().getTime() + @site_refresh
 
     # load values for all tags
     @vals = {}
@@ -195,10 +195,10 @@ class OutofserviceWidgetView extends IOPSWidgetView
 
     
   set_model: ()=>
-    @IsUpdatingSettings = true
 
     s = _.clone(@model.get("settings"))
     s.site = @$('#site').val()
+    @site_code = OPCManager.get_site_code(s.site)
     @gates = []
     @$('.gate_check').each (idx, el)=>
       if $(el).is(":checked") then @gates.push($(el).attr("value"))
@@ -208,8 +208,15 @@ class OutofserviceWidgetView extends IOPSWidgetView
   toggle_settings: (e)->
     super(e)
     @ui.display.toggle(!@settings_visible)
+    @IsUpdatingSettings = @settings_visible
     if @settings_visible
+      @kill_updates(@site_code)
+      if @heartbeat_timer? && @heartbeat_timer > 0
+        window.clearInterval(@heartbeat_timer)
       @draw_gate_checks()
+    else
+      @IsPageLoading = false
+      @update()
 
   draw_gate_checks: ()->
     @ui.gates.empty()
@@ -268,15 +275,36 @@ class OutofserviceWidgetView extends IOPSWidgetView
     gates = settings.gates
     if !gates? || gates.length == 0
       @toggle_settings()
+    else
+      @IsPageLoading = false
 
     @site_code = OPCManager.get_site_code(settings.site)
-    if @site_code? then @watch_updates(@site_code)
+    if @site_code?
+      @site_refresh = ((OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3)
+      @watch_updates(@site_code)
+    @check_init_site()
 
   start: ()->
     @update()
 
+  start_heartbeat: ()=>
+    @beat_time = new Date().getTime() + @site_refresh
+    $("##{@el.parentNode.id} .widget-outer").toggleClass("no-heartbeat", false)
+    if @heartbeat_timer? && @heartbeat_timer > 0
+      window.clearInterval(@heartbeat_timer)
+    @heartbeat_timer = window.setInterval((=>
+      @check_heartbeat @el.parentNode.id
+      return
+    ), @site_refresh) 
+
+  check_heartbeat: (widget_id)=>
+    @curTime = new Date().getTime()
+    $("##{widget_id} .widget-outer").toggleClass("no-heartbeat", (@curTime > @beat_time))
+
   onDestroy: (arg1, arg2) ->
     # be sure to remove listener
+    if @heartbeat_timer? && @heartbeat_timer > 0
+      window.clearInterval(@heartbeat_timer)
     @kill_updates(@site_code)
     
 # ----------------------------------

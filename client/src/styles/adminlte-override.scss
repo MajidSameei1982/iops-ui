@@ -35,6 +35,17 @@
 	}
 }
 
+.content-header {
+	position: relative;
+	margin: 5px 0px 0px 171px;
+	color: #3c8dbc;
+	//border: 1px solid red;
+	z-index: 1000;	
+}
+
+.content-header > h1 {
+	font-size: 21px;
+}
 .nav-tabs-custom {
 	.tab-content {
 		padding:20px;

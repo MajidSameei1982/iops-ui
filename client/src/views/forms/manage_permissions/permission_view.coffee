@@ -24,14 +24,14 @@ class PermissionView extends Marionette.ItemView
     $(@el).toggleClass('rw',rw)
 
   show_edit: (e)->
-    @old_model = $.extend(true, {}, @model.attributes);
-    @toggle_edit(true);
+    @old_model = $.extend(true, {}, @model.attributes)
+    @toggle_edit(true)
     
   cancel_edit: ()->
     if (!@model.id? || @model.id < 1)   
       @model.collection.remove(@model)
       return
-    @toggle_edit(false);
+    @toggle_edit(false)
     @model = new Claim(@old_model)
     @render()
 

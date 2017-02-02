@@ -6,6 +6,7 @@
   .group_item {
     margin:0 5px;
   }
+  // Priority 100
   .alarm {
     background-color: #ff8300 !important;
     color: black !important;
@@ -15,6 +16,7 @@
 
     }
   }
+  // Priority 200
   .critical {
     background-color: #c00 !important;
     color: black !important;
@@ -24,6 +26,19 @@
 
     }
   }
+  // Priority 999
+  .bad-quality {
+    background-color: #000 !important;
+    color: red !important;
+    font-weight: bold;
+    td[class^='sorting'], td[class*=' sorting'] {
+      background-color: #000 !important;
+      color: red !important;
+      font-weight: bold;
+
+    }
+  }
+  // Priority 0
   .notification {
   	background-color: yellow !important;
   	color: black !important;

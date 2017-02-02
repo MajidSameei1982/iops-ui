@@ -39,7 +39,9 @@ class WidgetLayout extends Marionette.LayoutView
         @$('ul.gridster').append(wli)
         @grid.add_widget(wli, lo.sx, lo.sy, lo.c, lo.r)
         wv = @draw_widget_view(w)
-        wli.append('<span class="gs-resize-handle gs-resize-handle-both"></span>')
+        wli.append('<div class="gs-resize-handle gs-resize-handle-x"></div>')
+        wli.append('<div class="gs-resize-handle gs-resize-handle-y"></div>')
+        wli.append('<div class="gs-resize-handle gs-resize-handle-both"></div>')
         if wv.onGridster? then wv.onGridster()
     @model.save()
   
@@ -79,7 +81,7 @@ class WidgetLayout extends Marionette.LayoutView
   set_gridster: ()->
     return @grid if @grid?
     grid = @$('ul.gridster').gridster
-      max_size_x: 20
+      max_size_x: false
       widget_base_dimensions: [50, 25]
       autogrow_cols: true
       resize:
@@ -109,7 +111,7 @@ class WidgetLayout extends Marionette.LayoutView
       'data-col' : s.layout.c
       'data-sizex' : s.layout.sx
       'data-sizey' : s.layout.sy        
-    
+
     tpe = if w.get('type')? then w.get('type') else 'default'
     tpe = if tpe == 'default' then '' else tpe.charAt(0).toUpperCase() + tpe.slice(1)
     cls = "#{tpe}WidgetView"

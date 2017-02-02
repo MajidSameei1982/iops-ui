@@ -7,14 +7,15 @@ class DashboardHeaderView extends Marionette.ItemView
   tagName: "header"
   className: "main-header"
   ui:
-  	avatar: '#avatar'
-  	fullName: '#fullname'
-  	avatar_full: '#avatar_full'
-  	fullName_full: '#fullname_full'
-  	email_full: '#email_full'
-  	profile: 'a#profile'
-  	logout: 'a#logout'
-  	clock: '#clock'
+    avatar: '#avatar'
+    fullName: '#fullname'
+    avatar_full: '#avatar_full'
+    fullName_full: '#fullname_full'
+    email_full: '#email_full'
+    profile: 'a#profile'
+    logout: 'a#logout'
+    clock: '#clock'
+    memid: '#Memory_Test'
 
   events:
   	'click a#logout' : 'logout'
@@ -22,6 +23,7 @@ class DashboardHeaderView extends Marionette.ItemView
 
   set_clock: (dt)=>
     @ui.clock.html($.format.date(dt, App.config.dt_format))
+    @ui.memid.html((window.performance.memory.usedJSHeapSize/1000000) + ' Mb\/' + (window.performance.memory.totalJSHeapSize/1000000) + ' Mb')
     @
 
   logout: (e)->

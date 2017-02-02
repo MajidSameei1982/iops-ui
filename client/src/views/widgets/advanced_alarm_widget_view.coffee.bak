@@ -19,8 +19,6 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
     sx: 10
     sy: 10
 
-
-  TestMe: 0
   IsUpdatingSettings: false
   IsPageLoading: true
   searchOperators = ["eq", "ne", "lt", "le", "gt", "ge", "bw", "bn", "in", "ni", "ew", "en", "cn", "nc"]
@@ -78,18 +76,19 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
 
       @alarm_binding =
         alarmid: "#{@alarmid}"
-        callback: @alarm_update
+        callback: @advanced_alarm_update
         showSearch:false
         showHistory:false
         filter:
           alarmtypes:["Digital"]
           alarmgroups: groups
         columns: [
-          { name: "Open Operatators", text: "Open Operatators", type: "string", align: 'center', visible: true, sort: 'desc', width: '130px', searchable: false }
-          { name: "Tag", text: "Tag", type: "string", visible: true, align: 'right' }
-          { name: "Filter Operations", text: "Filter Operations", type: "string", align: 'center', visible: true, searchable: false }
-          { name: "Filter Value", text: "Filter Value", type: "string", align: 'center', visible: true, searchable: false }
-          { name: "Closing Operators", text: "Closing Operators", type: "string", align: 'center', visible: true, searchable: false }
+          { name: "AlarmDateTime", text: "Alarm Date/Time", type: "datetime", visible: true, sort: 'desc', width: '140px', searchable: false }
+          { name: "AlarmValue", text: "Alarm Value", type: "string", visible: false, align: 'right' }
+          { name: "Text", text: "Text", type: "string", visible: true }
+          { name: "Group", text: "Text", type: "string", visible: false }
+          { name: "Acked", text: "Acked", type: "boolean", visible: false }
+          { name: "Priority", text: "Priority", type: "integer", visible: true }
         ]
       if net_node then @alarm_binding.networkNodes = net_node
 
@@ -126,7 +125,7 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
       text:          "No data available in table"
     }]
 
-    gridWidth = 1000;
+    gridWidth = 1000
     @ui.alarmGrid.jqGrid(
       {
         datatype: "local",
@@ -139,16 +138,16 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
             key: true,
             sorttype: "int",
             width: 10,
-            hidden: true
+            hidden: true,
           },
           {
             name: "Alarm Date/Time",
             index:"Alarm Date/Time",
-            width: 130,
+            width: 140,
             align: "center",
             sorttype: "date",
             formatter: "date", 
-            formatoptions: { newformat: "m/d/Y h:i A" }, 
+            formatoptions: { newformat: "m/d/Y h:i A" },
             #editable: editableInAddForm,
             #searchoptions: { sopt: ["eq", "ne", "lt", "le", "gt", "ge"], 
             #dataInit: initDateSearch}
@@ -158,25 +157,25 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
             index:'Alarm Value',
             sorttype: "int",
             width: 10,
-            hidden: true
+            hidden: true,
           },
           {
             name:'Group',
             index:'Group',
             width: 10,
-            hidden: true
+            hidden: true,
           },
           {
             name:'Priority',
             index:'Priority',
             sorttype: "int",
             width: 10,
-            hidden: true
+            hidden: true,
           },
           {
             name:'Text',
             index:'Text',
-            width: gridWidth-130
+            width: gridWidth-140,
           }
         ],
         search: true,
@@ -206,14 +205,15 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
         multipleSearch: true,
         multipleGroup: true,
         showQuery: true
-    });
+    })
 
-    @ui.alarmGrid.setGridWidth(gridWidth);
+    @ui.alarmGrid.setGridWidth(gridWidth)
 
-    @ui.alarmGrid.jqGrid('filterToolbar')
+    #@ui.alarmGrid.jqGrid('filterToolbar')
+
     return
 
-  alarm_update: (ab, data)=>
+  advanced_alarm_update: (ab, data)=>
       # If your table has header(th), use this:
       alarmJson = $("table.opc-alarm").tableToJSON()
       for idx, data of alarmJson
@@ -225,8 +225,8 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
       @ui.alarmGrid.trigger("reloadGrid")
       @ui.alarmGrid.setGridWidth(gridWidth)
       @ui.alarmGrid.jqGrid('setGridParam', { data: alarmJson })
-      @ui.alarmGrid.jqGrid('setColProp','Alarm Date/Time',{width:130 })
-      @ui.alarmGrid.jqGrid('setColProp','Text',{width: (gridWidth-130) })
+      @ui.alarmGrid.jqGrid('setColProp','Alarm Date/Time',{width:140 })
+      @ui.alarmGrid.jqGrid('setColProp','Text',{width: (gridWidth-140) })
       @ui.alarmGrid[0].refreshIndex()
       @ui.alarmGrid.trigger("reloadGrid")
 
@@ -244,7 +244,7 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
 
       return
       #tableToGrid "##{@alarmid}_tbl"
-      #$('table.opc-alarm').trigger("reloadGrid");
+      #$('table.opc-alarm').trigger("reloadGrid")
       
 
   initDateSearch = (elem) ->
@@ -272,6 +272,7 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
 
     s = _.clone(@model.get("settings"))
     s.site = @ui.site.val()
+    @site_code = OPCManager.get_site_code(s.site)
     s.terminal = @$("select#terminal").val()
     s.zone = @$("select#zone").val()
     s.gate = @$("select#gate").val()

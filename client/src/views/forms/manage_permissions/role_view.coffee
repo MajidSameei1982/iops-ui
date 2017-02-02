@@ -29,8 +29,8 @@ class RoleView extends Marionette.ItemView
       @$('select#role_claims').chosen()
 
   show_edit: (e)->
-    @old_model = $.extend(true, {}, @model.attributes);
-    @toggle_edit(true);
+    @old_model = $.extend(true, {}, @model.attributes)
+    @toggle_edit(true)
 
   cancel_edit: ()->
     if (!@model.id? || @model.id < 1)   
@@ -60,7 +60,7 @@ class RoleView extends Marionette.ItemView
         @render()
  
   onRender: ()->
-    @toggle_edit(false);
+    @toggle_edit(false)
     @modelBinder.bind(@model, @el, @bindings)
     
   onShow: ()->

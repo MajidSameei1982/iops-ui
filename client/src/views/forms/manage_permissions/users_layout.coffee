@@ -23,7 +23,7 @@ class UsersLayout extends Marionette.LayoutView
     search = @ui.filter.val()
     if search? && search != ''
       @usersview.filter = (child, index, collection)->
-        rg = new RegExp(search,'i');
+        rg = new RegExp(search,'i')
         return child.get('firstName').match(rg) || child.get('lastName').match(rg)
     else
       @usersview.filter = null

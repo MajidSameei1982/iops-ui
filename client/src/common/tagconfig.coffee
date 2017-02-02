@@ -364,6 +364,16 @@ class TagConfig extends Object
 									,Element:{Type:null,ParentID:null,Class:null,Object:null}
 
 		###**************************************************
+		*** SYSTEM Tags
+		**************************************************###
+		system_out_of_service:Tag:'System._OutOfService',Label:'[*]Out Of Service',DataType:'Boolean'
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:null,ParentID:null,Class:null,Object:null}
+		system_perfect_hookup:Tag:'System._OutOfService',Label:'[*]Perfect Hookup',DataType:'Boolean'
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:null,ParentID:null,Class:null,Object:null}
+
+		###**************************************************
 		*** ELVROT Tags
 		**************************************************###
 		elvrot_out_of_service:Tag:'ELVROT._OutOfService',Label:'[*]ELVROT',DataType:'Boolean'
@@ -546,6 +556,10 @@ class TagConfig extends Object
 				}
 			pbb_pca_gpu_status_widget: # PBB/PCA/GPU Widget
 				remove_tags:{'pbb_status','gpu_status'}
+				add_tags:{
+					system_perfect_hookup:{Tag:'System.PerfectHookup',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					system_out_of_service:{Tag:'System._OutOfService',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+				}
 				update_tags:{
 					#pbb_docked:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]Docked',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'Docked',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					#pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]PBB',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'',Parm002:'',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
@@ -554,7 +568,6 @@ class TagConfig extends Object
 					pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'[*]DisCharge',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 					pca_mode_cooling:{Tag:'PCA.MODE_COOLING',Label:'Cooling Mode',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pca_mode_heating:{Tag:'PCA.MODE_HEATING',Label:'Heating Mode',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-
 				}
 			#out_of_service_widget: # Out Of Service Widget
 
@@ -584,6 +597,10 @@ class TagConfig extends Object
 			
 			pbb_pca_gpu_status_widget: # PBB/PCA/GPU Widget
 				remove_tags:{'pca_status','pca_discharge_temp','gpu_status'}
+				add_tags:{
+					system_perfect_hookup:{Tag:'System.PerfectHookup',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					system_out_of_service:{Tag:'System._OutOfService',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+				}
 				update_tags:{
 					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]PBB',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 				}
@@ -735,6 +752,10 @@ class TagConfig extends Object
 					pca_mode_heating:{Tag:'PCA.MODE_HEATING',Label:'Heating Mode',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 				}
 			pbb_pca_gpu_status_widget: # PBB/PCA/GPU Widget
+				add_tags:{
+					system_perfect_hookup:{Tag:'System.PerfectHookup',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					system_out_of_service:{Tag:'System._OutOfService',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+				}
 				update_tags:{
 					pbb_docked:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]Docked',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'Docked',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]PBB',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'',Parm002:'',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
@@ -765,6 +786,10 @@ class TagConfig extends Object
 					pca_mode_heating:{Tag:'PCA.MODE_HEATING',Label:'Heating Mode',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 				}
 			pbb_pca_gpu_status_widget: # PBB/PCA/GPU Widget
+				add_tags:{
+					system_perfect_hookup:{Tag:'System.PerfectHookup',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					system_out_of_service:{Tag:'System._OutOfService',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+				}
 				update_tags:{
 					pbb_docked:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]Docked',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'Docked',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]PBB',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'',Parm002:'',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
@@ -971,6 +996,10 @@ class TagConfig extends Object
 							gpu_02_status:{Tag:'GPU02.GPUSTATUSBOOLEAN',Label:'GPU-2 Status',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 						}
 			pbb_pca_gpu_status_widget: # PBB/PCA/GPU Widget
+				add_tags:{
+					system_perfect_hookup:{Tag:'System.PerfectHookup',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					system_out_of_service:{Tag:'System._OutOfService',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+				}
 				update_tags:{
 					pbb_docked:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]Docked',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'Docked',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]PBB',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'',Parm002:'',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
@@ -1310,6 +1339,10 @@ class TagConfig extends Object
 						}
 			pbb_pca_gpu_status_widget: # PBB/PCA/GPU Widget
 				remove_tags:{'pca_status','pca_discharge_temp'}
+				add_tags:{
+					system_perfect_hookup:{Tag:'System.PerfectHookup',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					system_out_of_service:{Tag:'System._OutOfService',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+				}
 				update_tags:{
 					pbb_docked:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]Docked',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'Docked',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]PBB',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'',Parm002:'',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
@@ -1805,6 +1838,10 @@ class TagConfig extends Object
 					pca_mode_heating:{Tag:'PCA.MODE_HEATING',Label:'Heating Mode',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 				}
 			pbb_pca_gpu_status_widget: # PBB/PCA/GPU Widget
+				add_tags:{
+					system_perfect_hookup:{Tag:'System.PerfectHookup',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					system_out_of_service:{Tag:'System._OutOfService',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+				}
 				update_tags:{
 					pbb_docked:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]Docked',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'Docked',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]PBB',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'',Parm002:'',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
@@ -1869,8 +1906,8 @@ class TagConfig extends Object
 				}
 			pbb_pca_gpu_status_widget: # PBB/PCA/GPU Widget
 				add_tags:{
-					system_perfect_hookup:{Tag:'System.PerfectHookup',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:'no_row',Class:null,Object:null}},
-					system_out_of_service:{Tag:'System._OutOfService',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:'no_row',Class:null,Object:null}},
+					system_perfect_hookup:{Tag:'System.PerfectHookup',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					system_out_of_service:{Tag:'System._OutOfService',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 				}
 				update_tags:{
 					pbb_docked:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]Docked',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'Docked',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},

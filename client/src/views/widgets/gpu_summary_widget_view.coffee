@@ -50,6 +50,7 @@ class GpusummaryWidgetView extends IOPSWidgetView
 
   tagData = []
   tagConfig = []
+  site_refresh: 50000
 
   IsUpdatingSettings: false
   IsPageLoading: true
@@ -200,11 +201,8 @@ class GpusummaryWidgetView extends IOPSWidgetView
 
   update: ()->
     # Ignore all calls except those from startup and Update
-    if !@IsUpdatingSettings && !@IsPageLoading
+    if @IsUpdatingSettings || @IsPageLoading
       return null
-
-    @IsPageLoading = false
-    @IsUpdatingSettings = false
 
     s = @model.get("settings")
 
@@ -245,6 +243,7 @@ class GpusummaryWidgetView extends IOPSWidgetView
 
       # listen for updates
       @watch_updates(@site_code)
+      @start_heartbeat()
     
   trend_callback: (data)=>
     @$('#plot-placeholder').remove()
@@ -339,6 +338,8 @@ class GpusummaryWidgetView extends IOPSWidgetView
   data_update: (data)=>
     # refresh gauges
     @refresh_values()
+    @beat_time = new Date().getTime() + @site_refresh
+
     
     if @tagData.gpu_rv_out_avg?
       vq = @data_q(@tagData.gpu_rv_out_avg.Tag)
@@ -539,10 +540,10 @@ class GpusummaryWidgetView extends IOPSWidgetView
       @show_plot(sel)
 
   set_model: ()=>
-    @IsUpdatingSettings = true
 
     s = _.clone(@model.get("settings"))
     s.site = @$('#site').val()
+    @site_code = OPCManager.get_site_code(s.site)
     s.terminal = @$('#terminal').val()
     s.zone = @$('#zone').val()
     s.gate = @$('#gate').val()
@@ -551,6 +552,14 @@ class GpusummaryWidgetView extends IOPSWidgetView
   toggle_settings: (e)->
     super(e)
     @ui.display.toggle(!@settings_visible)
+    @IsUpdatingSettings = @settings_visible
+    if @settings_visible
+      @kill_updates(@site_code)
+      if @heartbeat_timer? && @heartbeat_timer > 0
+        window.clearInterval(@heartbeat_timer)
+    else
+      @IsPageLoading = false
+      @update()
 
   onShow: ()->
     settings = @model.get('settings')
@@ -562,11 +571,15 @@ class GpusummaryWidgetView extends IOPSWidgetView
       @set_model()
     
     gate = settings.gate
-    if !gate? || gate == ''
+    if !gate? || gate.length == 0
       @toggle_settings()
+    else
+      @IsPageLoading = false
 
     @site_code = OPCManager.get_site_code(settings.site)
-    if @site_code? then @watch_updates(@site_code)
+    if @site_code?
+      @site_refresh = ((OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3)
+      @watch_updates(@site_code)
 
     @$("#view_main .trend").remove()
     @$('#live_data').bootstrapToggle
@@ -588,9 +601,25 @@ class GpusummaryWidgetView extends IOPSWidgetView
   start: ()->
     @update()
 
+  start_heartbeat: ()=>
+    @beat_time = new Date().getTime() + @site_refresh
+    $("##{@el.parentNode.id} .widget-outer").toggleClass("no-heartbeat", false)
+    if @heartbeat_timer? && @heartbeat_timer > 0
+      window.clearInterval(@heartbeat_timer)
+    @heartbeat_timer = window.setInterval((=>
+      @check_heartbeat @el.parentNode.id
+      return
+    ), @site_refresh) 
+
+  check_heartbeat: (widget_id)=>
+    @curTime = new Date().getTime()
+    $("##{widget_id} .widget-outer").toggleClass("no-heartbeat", (@curTime > @beat_time))
+
   onDestroy: (arg1, arg2)->
     # be sure to remove listener
     if @tbinding then OPCManager.rem_trend(@site_code, @tbinding)
+    if @heartbeat_timer? && @heartbeat_timer > 0
+      window.clearInterval(@heartbeat_timer)
     @kill_updates(@site_code)
     
 # ----------------------------------

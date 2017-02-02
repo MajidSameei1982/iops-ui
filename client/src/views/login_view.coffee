@@ -55,7 +55,7 @@ class LoginView extends Marionette.ItemView
     @    
 
   login: (e)->
-    e.preventDefault();
+    e.preventDefault()
     @clear_errors()
     @disable_ui(true)
     Session.auth

@@ -19,6 +19,8 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
     sx: 10
     sy: 10
 
+  site_refresh: 50000
+
   IsUpdatingSettings: false
   IsPageLoading: true
   searchOperators = ["eq", "ne", "lt", "le", "gt", "ge", "bw", "bn", "in", "ni", "ew", "en", "cn", "nc"]
@@ -26,13 +28,10 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
 
   update: ()->
     # Ignore all calls except those from startup and Update
-    if !@IsUpdatingSettings && !@IsPageLoading
+    if @IsUpdatingSettings || @IsPageLoading
       return null
 
-    @IsPageLoading = false
-    @IsUpdatingSettings = false
-
-    if @site_code? then @kill_updates(@site_code)
+    if !@site_code? then return null
 
     s = @model.get("settings")
 
@@ -40,13 +39,14 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
       lbl = "#{@site_code}: Advanced Alarm window"
       @ui.wtitle.html(lbl)
 
-      @site = OPCManager.get_site(s.site)
-      @site_code = @site.get('code')
-      if !@site_code? then return null
+      # stop listening for updates
+      @kill_updates(@site_code)
+
       groups = []
 
       terminals = {"#{s.terminal}" : {"#{s.zone}": {"#{s.gate}": {}}}}
 
+      @site = OPCManager.get_site(s.site)
       if s.allgates then terminals = @site.get('settings').zones
       net_node = @site.get('settings').cloud? && @site.get('settings').cloud == true
       if net_node
@@ -112,6 +112,7 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
         #@$("#alarm_lbl").html("#{@titleHtml}")
         App.opc.add_alarm @site_code, @alarm_binding
         @watch_updates(@site_code)
+        @start_heartbeat()
         #tableToGrid 'table.opc-alarm'
         @create_alarm_grid()
 
@@ -125,7 +126,7 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
       text:          "No data available in table"
     }]
 
-    gridWidth = 1000;
+    gridWidth = 1000
     @ui.alarmGrid.jqGrid(
       {
         datatype: "local",
@@ -205,21 +206,22 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
         multipleSearch: true,
         multipleGroup: true,
         showQuery: true
-    });
+    })
 
-    @ui.alarmGrid.setGridWidth(gridWidth);
+    @ui.alarmGrid.setGridWidth(gridWidth)
 
     #@ui.alarmGrid.jqGrid('filterToolbar')
 
     return
 
   advanced_alarm_update: (ab, data)=>
+      @beat_time = new Date().getTime() + @site_refresh
       # If your table has header(th), use this:
       alarmJson = $("table.opc-alarm").tableToJSON()
       for idx, data of alarmJson
         data['Alarm Date/Time'] = data['Alarm Date/Time'].substr 13
 
-      gridWidth = $('table.opc-alarm').width()
+      gridWidth = $('table.opc-alarm').width() - 5
       @ui.alarmGrid.jqGrid('setGridParam', { data: {} })
       @ui.alarmGrid[0].refreshIndex()
       @ui.alarmGrid.trigger("reloadGrid")
@@ -230,21 +232,25 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
       @ui.alarmGrid[0].refreshIndex()
       @ui.alarmGrid.trigger("reloadGrid")
 
-      $('table.opc-alarm > tbody > tr> td:nth-child(2)').hide()
-      $('table.opc-alarm > thead > tr> th:nth-child(2)').hide()
-      $('table.opc-alarm > tbody > tr> td:nth-child(4)').hide()
-      $('table.opc-alarm > thead > tr> th:nth-child(4)').hide()
-      $('table.opc-alarm > tbody > tr> td:nth-child(5)').hide()
-      $('table.opc-alarm > thead > tr> th:nth-child(5)').hide()
-      $('table.opc-alarm > tbody > tr> td:nth-child(6)').hide()
-      $('table.opc-alarm > thead > tr> th:nth-child(6)').hide()
+      # If your table has header(th), use this:
+      $('table.opc-alarm > tbody > tr> td:nth-child(3)').hide()
+      $('table.opc-alarm > thead > tr> th:nth-child(3)').hide()
       $("table.opc-alarm > tbody > tr").each (idx, element) =>
         if $("td:eq(2)", element).text() == "0"
           $("td:eq(2)", element).closest("tr").toggleClass("notification",true)
+        if $("td:eq(2)", element).text() == "100"
+          $("td:eq(2)", element).closest("tr").toggleClass("alarm",true)
+        if $("td:eq(2)", element).text() == "200"
+          $("td:eq(2)", element).closest("tr").toggleClass("critical",true)
+        if $("td:eq(2)", element).text() == "999"
+          $("td:eq(2)", element).closest("tr").toggleClass("bad-quality",true)
+
+      # $('table.opc-alarm > tbody > tr').each (idx, element) =>
+      #   $(element).hide()
 
       return
       #tableToGrid "##{@alarmid}_tbl"
-      #$('table.opc-alarm').trigger("reloadGrid");
+      #$('table.opc-alarm').trigger("reloadGrid")
       
 
   initDateSearch = (elem) ->
@@ -268,26 +274,29 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
     false
 
   set_model: ()=>
-    @IsUpdatingSettings = true
 
     s = _.clone(@model.get("settings"))
     s.site = @ui.site.val()
+    @site_code = OPCManager.get_site_code(s.site)
     s.terminal = @$("select#terminal").val()
     s.zone = @$("select#zone").val()
     s.gate = @$("select#gate").val()
     s.type = @ui.type.val()
     s.priority = @$("[name=priority_#{@cid}]:checked").val()
     s.allgates = @$("#allgates").is(':checked')
-    console.log s.allgates
     @model.set("settings", s)
 
   toggle_settings: (e)->
     super(e)
     @ui.display.toggle(!@settings_visible)
+    @IsUpdatingSettings = @settings_visible
     if @settings_visible
       @ui.type.chosen()
-    checked = @$("#allgates").is(':checked')
-    @$(".gates").toggle(!checked)
+      checked = @$("#allgates").is(':checked')
+      @$(".gates").toggle(!checked)
+    else
+      @IsPageLoading = false
+      @update() 
 
   onShow: ()->
     @alarmid = "alarm_#{@model.id}_#{@cid}"
@@ -327,16 +336,38 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
     gate = settings.gate
     if !gate? || gate == ''
       @toggle_settings()
+    else
+      @IsPageLoading = false
 
     @site_code = OPCManager.get_site_code(settings.site)
-    if @site_code? then @watch_updates(@site_code)
+    if @site_code?
+      @site_refresh = ((OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3)
+      @watch_updates(@site_code)
+
+    @check_init_site()
 
   start: ()->
     @update()
 
+  start_heartbeat: ()=>
+    @beat_time = new Date().getTime() + @site_refresh
+    $("##{@el.parentNode.id} .widget-outer").toggleClass("no-heartbeat", false)
+    if @heartbeat_timer? && @heartbeat_timer > 0
+      window.clearInterval(@heartbeat_timer)
+    @heartbeat_timer = window.setInterval((=>
+      @check_heartbeat @el.parentNode.id
+      return
+    ), @site_refresh) 
+
+  check_heartbeat: (widget_id)=>
+    @curTime = new Date().getTime()
+    $("##{widget_id} .widget-outer").toggleClass("no-heartbeat", (@curTime > @beat_time))
+
   onDestroy: (arg1, arg2) ->
     # be sure to remove listener
     if @alarm_binding? then App.opc.rem_alarm @site_code, @alarm_binding
+    if @heartbeat_timer? && @heartbeat_timer > 0
+      window.clearInterval(@heartbeat_timer)
     @kill_updates(@site_code)
 
 # ----------------------------------
