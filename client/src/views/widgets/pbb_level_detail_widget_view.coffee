@@ -220,7 +220,7 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
 
     # CAB ANGLE DISP
     if @tagData.pbb_cab_angle_disp?
-      cabangledisp = if @vals.pbb_cab_angle_disp? && @vals.pbb_cab_angle_disp != '' then (@vals.pbb_cab_angle_disp)  else ' -- ' 
+      cabangledisp = if @vals.pbb_cab_angle_disp? && @vals.pbb_cab_angle_disp != '' then parseFloat(@vals.pbb_cab_angle_disp).toFixed(2)  else ' -- ' 
       ca1 = @$('#pbb_cab_angle_disp').html("Cab Angle : #{cabangledisp}")
       @mark_bad_data @tagData.pbb_cab_angle_disp.Tag, ca1
     else
@@ -228,7 +228,7 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
 
     # SWING ANGLE DISP
     if @tagData.pbb_swing_angle_disp?
-      swingangledisp = if @vals.pbb_swing_angle_disp? && @vals.pbb_swing_angle_disp != '' then (@vals.pbb_swing_angle_disp)  else ' -- ' 
+      swingangledisp = if @vals.pbb_swing_angle_disp? && @vals.pbb_swing_angle_disp != '' then parseFloat(@vals.pbb_swing_angle_disp).toFixed(2)  else ' -- ' 
       swa1 = @$('#pbb_swing_angle_disp').html("Bridge Rotation :#{swingangledisp}")
       @mark_bad_data @tagData.pbb_swing_angle_disp.Tag, swa1
     else
@@ -236,7 +236,7 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
 
     # HEIGHT TO DISP
     if @tagData.pbb_height_to_disp?
-      heighttodisp = if @vals.pbb_height_to_disp? && @vals.pbb_height_to_disp != '' then (@vals.pbb_height_to_disp)  else ' -- ' 
+      heighttodisp = if @vals.pbb_height_to_disp? && @vals.pbb_height_to_disp != '' then parseFloat(@vals.pbb_height_to_disp).toFixed(2)  else ' -- ' 
       hd1 = @$('#pbb_height_to_disp').html("Height : #{heighttodisp}")
       @mark_bad_data @tagData.pbb_height_to_disp.Tag, hd1
     else
@@ -244,7 +244,7 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
 
     # TUNNEL LENGTH
     if @tagData.pbb_tunnel_length?
-      tunnellength = if @vals.pbb_tunnel_length? && @vals.pbb_tunnel_length != '' then (@vals.pbb_tunnel_length)  else ' -- ' 
+      tunnellength = if @vals.pbb_tunnel_length? && @vals.pbb_tunnel_length != '' then parseFloat(@vals.pbb_tunnel_length).toFixed(2)  else ' -- ' 
       tl = @$('#pbb_tunnel_length').html("Tunnel Length : #{tunnellength}")
       @mark_bad_data @tagData.pbb_tunnel_length.Tag, tl
     else

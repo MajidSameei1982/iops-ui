@@ -575,6 +575,7 @@ class TagConfig extends Object
 					pbb_undock_time:{Tag:'PBB.UNDOCKTIME',Label:null,DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'div',ParentID:'#pbb_undockordocktime_container',Class:'pbb_undockordocktime val transparent',Object:null}},
 					pbb_dock_time:{Tag:'PBB.DOCKTIME',Label:'Aircraft Docked Time (Minutes)',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:null,ParentID:null,Class:'pbb_undockordocktime val transparent',Object:null}},
 					pbb_autolevel_mode:{Tag:'PBB.AUTOLEVELMODEFLAG',Label:'PBB Mode',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:'Auto-Level : #{1}'},Element:{Type:'div',ParentID:'#pbb_autolevel_container',Class:'val transparent',Object:null}},								pbb_canopy:{Tag:'PBB.CANOPYDOWN',Label:'Canopy',DataType:'Boolean',Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:'Canopy : #{1}'},Element:{Type:'div',ParentID:'#pbb_canopy_container',Class:'val transparent',Object:null}},
+					pbb_canopy:{Tag:'PBB.CANOPYDOWN',Label:'Canopy',DataType:'Boolean',Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:'Canopy : #{1}'},Element:{Type:'div',ParentID:'#pbb_canopy_container',Class:'val transparent',Object:null}},
 				}
 			pbb_system_status_widget: # PBB Status Widget
 				remove_tags:{'pca_status','pca_discharge_temp','gpu_status'}
@@ -1022,10 +1023,13 @@ class TagConfig extends Object
 					gpu_pm_input_phasec_v:{Tag:'GPU.RVINC',Label:'Volts In Phase C',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 				}
 			pca_discharge_widget: # PCA Discharge Widget
-				remove_all: {}
 				4:
+					A1:
+						remove_tags: {'pca_discharge_temp','pca_status','pca_mode_cooling','pca_mode_heating','pca_cooling_pt','pca_cooling_tm','pca_heating_pt','pca_heating_tm','pca_alarm_cooling_run','pca_alarm_heating_run'}
+					B1:
+						remove_tags: {'pca_discharge_temp','pca_status','pca_mode_cooling','pca_mode_heating','pca_cooling_pt','pca_cooling_tm','pca_heating_pt','pca_heating_tm','pca_alarm_cooling_run','pca_alarm_heating_run'}
 					B2:
-						update_tags:{
+						add_tags:{
 							pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'Discharge Air Temperature',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							pca_status:{Tag:'PCA.PCASTATUS',Label:'PCA status',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							pca_mode_cooling:{Tag:'PCA.MODE_COOLING',Label:'Cooling Mode',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
@@ -1038,7 +1042,7 @@ class TagConfig extends Object
 							pca_alarm_heating_run:{Tag:'PCA.ALARM_HEATINGRUN_BOOLEAN',Label:'Heating Run Alarm',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 						}
 					B3:
-						update_tags:{
+						add_tags:{
 							pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'Discharge Air Temperature',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							pca_status:{Tag:'PCA.PCASTATUS',Label:'PCA status',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							pca_mode_cooling:{Tag:'PCA.MODE_COOLING',Label:'Cooling Mode',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
@@ -1817,6 +1821,8 @@ class TagConfig extends Object
 			# out_of_service_status_widget: # Out Of Service Widget
 
 		ATL:
+			pbb_detail_widget: #PBB Detail Widget
+				remove_all: {}
 			gpu_summary_widget: # GPU Summary Widget
 				remove_tags: {'gpu_ra_in_avg','gpu_rv_in_avg'}
 			gpu_widget: # GPU Widget
@@ -1844,7 +1850,7 @@ class TagConfig extends Object
 					pca_egw_outlet_temp:{Tag:'PCA.EGW_OUTLET_TEMP',Label:'EGW Valve Outlet Temp',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'2',Parm003:'#{1} F',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					pca_egw_interstage_temp:{Tag:'PCA.EGW_INTERSTAGE_TEMP',Label:'EGW Valve Interstage Temp',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'2',Parm003:'#{1} F',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					pca_flow_meter_square:{Tag:'PCA.FLOW_METER_SQUARE',Label:'CHW Flow',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-					pca_strip_heat_on:{Tag:'PCA.STRIP_HEAT_ON',Label:'Strip Heat On',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					pca_strip_heat_on:{Tag:'PCA.STRIP_HEAT_ON',Label:'Strip Heat On',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					pca_air_filter_dp:{Tag:'PCA.AIR_FILTER_DP',Label:'Air Filter DP',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 				}
 			pca_widget: # PCA Widget
@@ -1855,7 +1861,7 @@ class TagConfig extends Object
 					pca_egw_outlet_temp:{Tag:'PCA.EGW_OUTLET_TEMP',Label:'EGW Valve Outlet Temp',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'2',Parm003:'#{1} F',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					pca_egw_interstage_temp:{Tag:'PCA.EGW_INTERSTAGE_TEMP',Label:'EGW Valve Interstage Temp',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'2',Parm003:'#{1} F',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					pca_flow_meter_square:{Tag:'PCA.FLOW_METER_SQUARE',Label:'CHW Flow',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-					pca_strip_heat_on:{Tag:'PCA.STRIP_HEAT_ON',Label:'Strip Heat On',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					pca_strip_heat_on:{Tag:'PCA.STRIP_HEAT_ON',Label:'Strip Heat On',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					pca_air_filter_dp:{Tag:'PCA.AIR_FILTER_DP',Label:'Air Filter DP',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 				}
 			pbb_system_status_widget: # PBB Status Widget
