@@ -21318,7 +21318,6 @@ TagConfig = (function(superClass) {
           'pca_bridge_air': 'pca_bridge_air',
           'pca_suction_pressure_1': 'pca_suction_pressure_1',
           'pca_suction_pressure_2': 'pca_suction_pressure_2',
-          'pca_status': 'pca_status',
           'pca_hot_gas_1': 'pca_hot_gas_1',
           'pca_hot_gas_2': 'pca_hot_gas_2'
         },
@@ -21416,6 +21415,25 @@ TagConfig = (function(superClass) {
               Parm001: 'TRUE',
               Parm002: '1',
               Parm003: '',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          }
+        },
+        update_tags: {
+          pca_dirty_filter: {
+            Tag: 'PCA.DIRTY_FILTER',
+            Label: 'Dirty Filter',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Yes',
+              Parm002: 'No',
+              Parm003: 'ok',
               Parm004: ''
             },
             Element: {

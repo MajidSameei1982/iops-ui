@@ -1823,7 +1823,7 @@ class TagConfig extends Object
 					pca_air_filter_dp:{Tag:'PCA.AIR_FILTER_DP',Label:'Air Filter DP',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 				}
 			pca_widget: # PCA Widget
-				remove_tags:{'pca_comp_stage_1','pca_comp_stage_2','pca_bridge_damper','pca_bridge_air','pca_suction_pressure_1','pca_suction_pressure_2','pca_status'
+				remove_tags:{'pca_comp_stage_1','pca_comp_stage_2','pca_bridge_damper','pca_bridge_air','pca_suction_pressure_1','pca_suction_pressure_2'
 					,'pca_hot_gas_1','pca_hot_gas_2'}
 				add_tags: {
 					pca_egw_inlet_temp:{Tag:'PCA.EGW_INLET_TEMP',Label:'EGW Valve Inlet Temp',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'2',Parm003:'#{1} F',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
@@ -1832,6 +1832,9 @@ class TagConfig extends Object
 					pca_flow_meter_square:{Tag:'PCA.FLOW_METER_SQUARE',Label:'CHW Flow',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					pca_strip_heat_on:{Tag:'PCA.STRIP_HEAT_ON',Label:'Strip Heat On',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					pca_air_filter_dp:{Tag:'PCA.AIR_FILTER_DP',Label:'Air Filter DP',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+				}
+				update_tags:{
+					pca_dirty_filter:{Tag:'PCA.DIRTY_FILTER',Label:'Dirty Filter',DataType:'Boolean',Parameters:{Parm001:'Yes',Parm002:'No',Parm003:'ok',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 				}
 			pbb_system_status_widget: # PBB Status Widget
 				update_tags:{
