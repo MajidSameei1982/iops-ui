@@ -27757,16 +27757,18 @@ AirportoverviewWidgetView = (function(superClass) {
               Tag_gate_alarm: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".Alarm._HasAlarms",
               Tag_gate_docked: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.AIRCRAFTDOCKEDCALCULATION",
               Tag_gate_critical: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".Alarm._HasCriticalAlarms",
-              Tag_gate_perfect_hookup: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".System.PerfectHookup",
-              Tag_gpu_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".GPU._OutOfService",
-              Tag_pbb_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB._OutOfService",
-              Tag_pca_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PCA._OutOfService"
+              Tag_gate_perfect_hookup: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".System.PERFECT_HOOKUP",
+              Tag_system_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".System._OUT_OF_SERVICE",
+              Tag_gpu_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".GPU._OUT_OF_SERVICE",
+              Tag_pbb_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB._OUT_OF_SERVICE",
+              Tag_pca_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PCA._OUT_OF_SERVICE"
             };
             this.gateData.push(gate);
             tags.push(gate.Tag_gate_alarm + ".Value");
             tags.push(gate.Tag_gate_docked + ".Value");
             tags.push(gate.Tag_gate_critical + ".Value");
             tags.push(gate.Tag_gate_perfect_hookup + ".Value");
+            tags.push(gate.Tag_system_out_of_service + ".Value");
             tags.push(gate.Tag_gpu_out_of_service + ".Value");
             tags.push(gate.Tag_pbb_out_of_service + ".Value");
             tags.push(gate.Tag_pca_out_of_service + ".Value");
@@ -27788,7 +27790,7 @@ AirportoverviewWidgetView = (function(superClass) {
   };
 
   AirportoverviewWidgetView.prototype.data_update = function(data) {
-    var alarm, critical, docked, g, i, len, oosGPU, oosPBB, oosPCA, outOfService, perfectHookup, qa, qc, qd, qgpuos, qos, qpbbos, qpcaos, qpd, ref, s;
+    var alarm, critical, docked, g, i, len, oosGPU, oosPBB, oosPCA, outOfService, perfectHookup, qa, qc, qd, qgpuos, qos, qpbbos, qpcaos, qpd, qsysos, qsysuos, ref, s;
     s = this.model.get("settings");
     this.beat_time = new Date().getTime() + this.site_refresh;
     ref = this.gateData;
@@ -27805,6 +27807,13 @@ AirportoverviewWidgetView = (function(superClass) {
         this.$("#Airport_Gate_" + g.Number + "_a").toggleClass("docked", docked === true && qd);
       } else {
         qd = false;
+      }
+      qsysuos = this.opc.tags["" + g.Tag_system_out_of_service].props.Value.quality;
+      if ((qsysuos != null) && qsysuos) {
+        qsysos = this.get_bool(this.opc.get_value(g.Tag_gpu_out_of_service + ".Value"));
+        this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("out-of-service", qsysos === true && qsysuos);
+      } else {
+        qsysuos = false;
       }
       qgpuos = this.opc.tags["" + g.Tag_gpu_out_of_service].props.Value.quality;
       qpbbos = this.opc.tags["" + g.Tag_pbb_out_of_service].props.Value.quality;
