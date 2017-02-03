@@ -168,6 +168,8 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
         $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_critical").toggleClass('critical',setValue)
       else if tag.indexOf("#{tzgPrefix}_has_alarms") > -1
         $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_alarm").toggleClass('alarm',setValue)
+      else if tag.indexOf("#{tzgPrefix}_system_quality") > -1
+        $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_bad_quality").toggleClass('bad-data',setValue)
       else if tag.indexOf("#{tzgPrefix}_system_out_of_service") > -1
         $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_outofservice").toggleClass('out-of-service',setValue)
       else if tag.indexOf("#{tzgPrefix}_system_perfect_hookup") > -1
@@ -203,7 +205,7 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
     @ui.display.toggle(!@settings_visible)
     @IsUpdatingSettings = @settings_visible
     if @settings_visible
-      @kill_updates(@site_code)
+      #@kill_updates(@site_code)
       if @heartbeat_timer? && @heartbeat_timer > 0
         window.clearInterval(@heartbeat_timer)
       @draw_gate_checks()

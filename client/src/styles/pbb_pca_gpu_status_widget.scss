@@ -81,6 +81,10 @@
               color: #069;
               display: inline-block;
             }
+            &.bad-data { 
+              color:#c00; 
+              display: inline-block;
+            }
             &.critical { 
               color:#c00; 
               display: inline-block;

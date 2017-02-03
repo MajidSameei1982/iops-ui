@@ -4109,7 +4109,7 @@ TagConfig = (function(superClass) {
     },
     system_quality: {
       Tag: 'System._QUALITY',
-      Label: '[*]Perfect Hookup',
+      Label: '[*]Bad Quality',
       DataType: 'Boolean',
       Parameters: {
         Parm001: 'True',
@@ -7614,6 +7614,24 @@ TagConfig = (function(superClass) {
               Class: 'no_row',
               Object: null
             }
+          },
+          system_quality: {
+            Tag: 'System._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
           }
         },
         update_tags: {
@@ -7873,6 +7891,24 @@ TagConfig = (function(superClass) {
           system_out_of_service: {
             Tag: 'System._OUT_OF_SERVICE',
             Label: 'Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          system_quality: {
+            Tag: 'System._QUALITY',
+            Label: 'Bad Quality',
             DataType: 'Boolean',
             Parameters: {
               Parm001: null,
@@ -9381,6 +9417,24 @@ TagConfig = (function(superClass) {
               Class: 'no_row',
               Object: null
             }
+          },
+          system_quality: {
+            Tag: 'System._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
           }
         },
         update_tags: {
@@ -9742,6 +9796,24 @@ TagConfig = (function(superClass) {
           system_out_of_service: {
             Tag: 'System._OUT_OF_SERVICE',
             Label: 'Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          system_quality: {
+            Tag: 'System._QUALITY',
+            Label: 'Bad Quality',
             DataType: 'Boolean',
             Parameters: {
               Parm001: null,
@@ -12066,6 +12138,24 @@ TagConfig = (function(superClass) {
           system_out_of_service: {
             Tag: 'System._OUT_OF_SERVICE',
             Label: 'Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          system_quality: {
+            Tag: 'System._QUALITY',
+            Label: 'Bad Quality',
             DataType: 'Boolean',
             Parameters: {
               Parm001: null,
@@ -15683,6 +15773,24 @@ TagConfig = (function(superClass) {
           system_out_of_service: {
             Tag: 'System._OUT_OF_SERVICE',
             Label: 'Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          system_quality: {
+            Tag: 'System._QUALITY',
+            Label: 'Bad Quality',
             DataType: 'Boolean',
             Parameters: {
               Parm001: null,
@@ -21162,6 +21270,24 @@ TagConfig = (function(superClass) {
               Class: 'no_row',
               Object: null
             }
+          },
+          system_quality: {
+            Tag: 'System._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
           }
         },
         update_tags: {
@@ -21835,6 +21961,24 @@ TagConfig = (function(superClass) {
           system_out_of_service: {
             Tag: 'System._OUT_OF_SERVICE',
             Label: 'Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          system_quality: {
+            Tag: 'System._QUALITY',
+            Label: 'Bad Quality',
             DataType: 'Boolean',
             Parameters: {
               Parm001: null,
@@ -27437,7 +27581,8 @@ AirportoverviewWidgetView = (function(superClass) {
               Tag_system_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".System._OUT_OF_SERVICE",
               Tag_gpu_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".GPU._OUT_OF_SERVICE",
               Tag_pbb_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB._OUT_OF_SERVICE",
-              Tag_pca_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PCA._OUT_OF_SERVICE"
+              Tag_pca_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PCA._OUT_OF_SERVICE",
+              Tag_system_quality: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".System._QUALITY"
             };
             this.gateData.push(gate);
             tags.push(gate.Tag_gate_alarm + ".Value");
@@ -27448,6 +27593,7 @@ AirportoverviewWidgetView = (function(superClass) {
             tags.push(gate.Tag_gpu_out_of_service + ".Value");
             tags.push(gate.Tag_pbb_out_of_service + ".Value");
             tags.push(gate.Tag_pca_out_of_service + ".Value");
+            tags.push(gate.Tag_system_quality + ".Value");
           }
         }
       }
@@ -27466,7 +27612,7 @@ AirportoverviewWidgetView = (function(superClass) {
   };
 
   AirportoverviewWidgetView.prototype.data_update = function(data) {
-    var alarm, critical, docked, g, i, len, oosGPU, oosPBB, oosPCA, outOfService, perfectHookup, qa, qc, qd, qgpuos, qos, qpbbos, qpcaos, qpd, qsysos, qsysuos, ref, s;
+    var alarm, badQuality, critical, docked, g, i, len, oosGPU, oosPBB, oosPCA, outOfService, perfectHookup, qa, qbq, qc, qd, qgpuos, qos, qpbbos, qpcaos, qpd, qsysuos, ref, s;
     s = this.model.get("settings");
     this.beat_time = new Date().getTime() + this.site_refresh;
     ref = this.gateData;
@@ -27477,26 +27623,26 @@ AirportoverviewWidgetView = (function(superClass) {
       alarm = null;
       docked = null;
       perfectHookup = null;
-      qd = this.opc.tags["" + g.Tag_gate_docked].props.Value.quality;
-      if ((qd != null) && qd) {
-        docked = this.get_bool(this.opc.get_value(g.Tag_gate_docked + ".Value"));
-        this.$("#Airport_Gate_" + g.Number + "_a").toggleClass("docked", docked === true && qd);
+      badQuality = null;
+      qbq = this.opc.tags["" + g.Tag_system_quality].props.Value.quality;
+      if ((qbq != null) && qbq) {
+        badQuality = this.get_bool(this.opc.get_value(g.Tag_system_quality + ".Value"));
+        this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("bad-data", badQuality === true && qbq);
       } else {
-        qd = false;
+        qbq = false;
       }
       qsysuos = this.opc.tags["" + g.Tag_system_out_of_service].props.Value.quality;
       if ((qsysuos != null) && qsysuos) {
-        qsysos = this.get_bool(this.opc.get_value(g.Tag_gpu_out_of_service + ".Value"));
-        this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("out-of-service", qsysos === true && qsysuos);
+        outOfService = this.get_bool(this.opc.get_value(g.Tag_system_out_of_service + ".Value"));
+        this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("out-of-service", outOfService === true && qsysuos);
       } else {
         qsysuos = false;
       }
       qgpuos = this.opc.tags["" + g.Tag_gpu_out_of_service].props.Value.quality;
       qpbbos = this.opc.tags["" + g.Tag_pbb_out_of_service].props.Value.quality;
       qpcaos = this.opc.tags["" + g.Tag_pca_out_of_service].props.Value.quality;
-      qos = false;
-      if (((qgpuos != null) && qgpuos) || ((qpbbos != null) && qpbbos) || ((qpcaos != null) && qpcaos)) {
-        qos = true;
+      qos = qgpuos || qpbbos || qpcaos;
+      if ((qos != null) && qos) {
         oosGPU = false;
         oosPBB = false;
         oosPCA = false;
@@ -27528,6 +27674,13 @@ AirportoverviewWidgetView = (function(superClass) {
       } else {
         qa = false;
       }
+      qd = this.opc.tags["" + g.Tag_gate_docked].props.Value.quality;
+      if ((qd != null) && qd) {
+        docked = this.get_bool(this.opc.get_value(g.Tag_gate_docked + ".Value"));
+        this.$("#Airport_Gate_" + g.Number + "_a").toggleClass("docked", docked === true && qd);
+      } else {
+        qd = false;
+      }
       qpd = this.opc.tags["" + g.Tag_gate_perfect_hookup].props.Value.quality;
       if ((qpd != null) && qpd) {
         perfectHookup = this.get_bool(this.opc.get_value(g.Tag_gate_perfect_hookup + ".Value"));
@@ -27552,7 +27705,6 @@ AirportoverviewWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      this.kill_updates(this.site_code);
       if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
         window.clearInterval(this.heartbeat_timer);
       }
@@ -29095,7 +29247,6 @@ GpusummaryWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      this.kill_updates(this.site_code);
       if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
         return window.clearInterval(this.heartbeat_timer);
       }
@@ -29347,7 +29498,6 @@ GpuWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      this.kill_updates(this.site_code);
       if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
         return window.clearInterval(this.heartbeat_timer);
       }
@@ -30410,7 +30560,6 @@ OutofserviceWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      this.kill_updates(this.site_code);
       if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
         window.clearInterval(this.heartbeat_timer);
       }
@@ -30725,7 +30874,6 @@ PbbdetailWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      this.kill_updates(this.site_code);
       if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
         return window.clearInterval(this.heartbeat_timer);
       }
@@ -31028,7 +31176,6 @@ PbbleveldetailWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      this.kill_updates(this.site_code);
       if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
         return window.clearInterval(this.heartbeat_timer);
       }
@@ -31243,7 +31390,6 @@ PbbpcagpuWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      this.kill_updates(this.site_code);
       if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
         return window.clearInterval(this.heartbeat_timer);
       }
@@ -31518,6 +31664,8 @@ PbbpcagpustatusWidgetView = (function(superClass) {
         $(elementPrefix + " #widgetData #dynamic_iconRow_" + tzgPrefix + "_critical").toggleClass('critical', setValue);
       } else if (tag.indexOf(tzgPrefix + "_has_alarms") > -1) {
         $(elementPrefix + " #widgetData #dynamic_iconRow_" + tzgPrefix + "_alarm").toggleClass('alarm', setValue);
+      } else if (tag.indexOf(tzgPrefix + "_system_quality") > -1) {
+        $(elementPrefix + " #widgetData #dynamic_iconRow_" + tzgPrefix + "_bad_quality").toggleClass('bad-data', setValue);
       } else if (tag.indexOf(tzgPrefix + "_system_out_of_service") > -1) {
         $(elementPrefix + " #widgetData #dynamic_iconRow_" + tzgPrefix + "_outofservice").toggleClass('out-of-service', setValue);
       } else if (tag.indexOf(tzgPrefix + "_system_perfect_hookup") > -1) {
@@ -31565,7 +31713,6 @@ PbbpcagpustatusWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      this.kill_updates(this.site_code);
       if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
         window.clearInterval(this.heartbeat_timer);
       }
@@ -31861,7 +32008,6 @@ PbbsystemstatusWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      this.kill_updates(this.site_code);
       if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
         return window.clearInterval(this.heartbeat_timer);
       }
@@ -32077,7 +32223,6 @@ PbbWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      this.kill_updates(this.site_code);
       if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
         return window.clearInterval(this.heartbeat_timer);
       }
@@ -32470,7 +32615,6 @@ PcadischargeWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      this.kill_updates(this.site_code);
       if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
         window.clearInterval(this.heartbeat_timer);
       }
@@ -33030,7 +33174,6 @@ PcasummaryWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      this.kill_updates(this.site_code);
       if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
         return window.clearInterval(this.heartbeat_timer);
       }
@@ -33597,7 +33740,6 @@ PcaWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      this.kill_updates(this.site_code);
       if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
         return window.clearInterval(this.heartbeat_timer);
       }
@@ -33801,7 +33943,6 @@ ReportWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      this.kill_updates(this.site_code);
       if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
         return window.clearInterval(this.heartbeat_timer);
       }

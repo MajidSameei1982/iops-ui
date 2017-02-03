@@ -137,7 +137,7 @@ class GpuWidgetView extends IOPSWidgetView
     @ui.display.toggle(!@settings_visible)
     @IsUpdatingSettings = @settings_visible
     if @settings_visible
-      @kill_updates(@site_code)
+      #@kill_updates(@site_code)
       if @heartbeat_timer? && @heartbeat_timer > 0
         window.clearInterval(@heartbeat_timer)
     else
