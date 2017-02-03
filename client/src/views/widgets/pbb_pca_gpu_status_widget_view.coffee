@@ -167,7 +167,7 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
       else if tag.indexOf("#{tzgPrefix}_has_alarms") > -1
         $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_alarm").toggleClass('alarm',setValue)
       else if tag.indexOf("#{tzgPrefix}_system_quality") > -1
-        $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_bad_quality").toggleClass('bad-data',setValue)
+        $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_bad_quality").toggleClass('bad-data',!setValue)
       else if tag.indexOf("#{tzgPrefix}_system_out_of_service") > -1
         $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_outofservice").toggleClass('out-of-service',setValue)
       else if tag.indexOf("#{tzgPrefix}_system_perfect_hookup") > -1

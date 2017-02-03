@@ -4115,7 +4115,7 @@ TagConfig = (function(superClass) {
         Parm001: 'True',
         Parm002: 'False',
         Parm003: 'ok',
-        Parm004: null,
+        Parm004: 'bad-data',
         Parm005: null
       },
       Element: {
@@ -24538,7 +24538,6 @@ DashboardHeaderView = (function(superClass) {
 
   DashboardHeaderView.prototype.set_clock = function(dt) {
     this.ui.clock.html($.format.date(dt, App.config.dt_format));
-    this.ui.memid.html((window.performance.memory.usedJSHeapSize / 1000000) + ' Mb\/' + (window.performance.memory.totalJSHeapSize / 1000000) + ' Mb');
     return this;
   };
 
@@ -27627,8 +27626,9 @@ AirportoverviewWidgetView = (function(superClass) {
       qbq = this.opc.tags["" + g.Tag_system_quality].props.Value.quality;
       if ((qbq != null) && qbq) {
         badQuality = this.get_bool(this.opc.get_value(g.Tag_system_quality + ".Value"));
-        this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("bad-data", badQuality === true && qbq);
+        this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("bad-data", badQuality === false && qbq);
       } else {
+        this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("bad-data", false);
         qbq = false;
       }
       qsysuos = this.opc.tags["" + g.Tag_system_out_of_service].props.Value.quality;
@@ -27875,24 +27875,24 @@ AlarmWidgetView = (function(superClass) {
             gpu = t === 'all' || t === 'GPU';
             if (alarms) {
               if (pbb) {
-                groups.push(pre + "PBB_Alarms");
+                groups.push(this.prefix + "PBB_Alarms");
               }
               if (pca) {
-                groups.push(pre + "PCA_Alarms");
+                groups.push(this.prefix + "PCA_Alarms");
               }
               if (gpu) {
-                groups.push(pre + "GPU_Alarms");
+                groups.push(this.prefix + "GPU_Alarms");
               }
             }
             if (notifications) {
               if (pbb) {
-                groups.push(pre + "PBB_Warnings");
+                groups.push(this.prefix + "PBB_Warnings");
               }
               if (pca) {
-                groups.push(pre + "PCA_Warnings");
+                groups.push(this.prefix + "PCA_Warnings");
               }
               if (gpu) {
-                groups.push(pre + "GPU_Warnings");
+                groups.push(this.prefix + "GPU_Warnings");
               }
             }
           }
@@ -31654,7 +31654,7 @@ PbbpcagpustatusWidgetView = (function(superClass) {
       } else if (tag.indexOf(tzgPrefix + "_has_alarms") > -1) {
         $(elementPrefix + " #widgetData #dynamic_iconRow_" + tzgPrefix + "_alarm").toggleClass('alarm', setValue);
       } else if (tag.indexOf(tzgPrefix + "_system_quality") > -1) {
-        $(elementPrefix + " #widgetData #dynamic_iconRow_" + tzgPrefix + "_bad_quality").toggleClass('bad-data', setValue);
+        $(elementPrefix + " #widgetData #dynamic_iconRow_" + tzgPrefix + "_bad_quality").toggleClass('bad-data', !setValue);
       } else if (tag.indexOf(tzgPrefix + "_system_out_of_service") > -1) {
         $(elementPrefix + " #widgetData #dynamic_iconRow_" + tzgPrefix + "_outofservice").toggleClass('out-of-service', setValue);
       } else if (tag.indexOf(tzgPrefix + "_system_perfect_hookup") > -1) {

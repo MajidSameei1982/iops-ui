@@ -13,7 +13,7 @@ class TagConfig extends Object
 									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
 									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
 		system_quality:Tag:'System._QUALITY',Label:'[*]Bad Quality',DataType:'Boolean'
-									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:'bad-data',Parm005:null}
 									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
 
 		###**************************************************

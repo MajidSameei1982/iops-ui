@@ -126,8 +126,10 @@ class AirportoverviewWidgetView extends IOPSWidgetView
       if qbq? && qbq
         badQuality = @get_bool(@opc.get_value("#{g.Tag_system_quality}.Value"))
         @$("#Airport_Gate_#{g.Number}_icon")
-        .toggleClass("bad-data", badQuality ==true && qbq)
+        .toggleClass("bad-data", badQuality ==false && qbq)
       else
+        @$("#Airport_Gate_#{g.Number}_icon")
+        .toggleClass("bad-data", false)
         qbq = false
 
       qsysuos = @opc.tags["#{g.Tag_system_out_of_service}"].props.Value.quality

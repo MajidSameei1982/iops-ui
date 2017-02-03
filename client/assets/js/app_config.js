@@ -56,11 +56,11 @@ window.app_config = {
       name: "PBB Bridge Widget",
       icon: "plane"
     },
-    {
-      id: "pbbsystemstatus",
-      name: "PBB System Status",
-      icon: "plane"
-    },
+    // {
+    //   id: "pbbsystemstatus",
+    //   name: "PBB System Status",
+    //   icon: "plane"
+    // },
     {
       id: "pca",
       name: "PCA Widget",

@@ -23,7 +23,7 @@ class DashboardHeaderView extends Marionette.ItemView
 
   set_clock: (dt)=>
     @ui.clock.html($.format.date(dt, App.config.dt_format))
-    @ui.memid.html((window.performance.memory.usedJSHeapSize/1000000) + ' Mb\/' + (window.performance.memory.totalJSHeapSize/1000000) + ' Mb')
+    #@ui.memid.html((window.performance.memory.usedJSHeapSize/1000000) + ' Mb\/' + (window.performance.memory.totalJSHeapSize/1000000) + ' Mb')
     @
 
   logout: (e)->
