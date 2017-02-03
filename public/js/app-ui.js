@@ -7796,6 +7796,24 @@ TagConfig = (function(superClass) {
               Class: 'val transparent',
               Object: null
             }
+          },
+          pbb_canopy: {
+            Tag: 'PBB.CANOPYDOWN',
+            Label: 'Canopy',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Down',
+              Parm002: 'Up',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: 'Canopy : #{1}'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#pbb_canopy_container',
+              Class: 'val transparent',
+              Object: null
+            }
           }
         }
       },
@@ -12473,369 +12491,6 @@ TagConfig = (function(superClass) {
               ParentID: '#widgetData',
               Class: null,
               Object: null
-            }
-          }
-        }
-      },
-      pca_discharge_widget: {
-        remove_all: {},
-        4: {
-          B2: {
-            update_tags: {
-              pca_discharge_temp: {
-                Tag: 'PCA.TEMPDISCH',
-                Label: 'Discharge Air Temperature',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1} F',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_status: {
-                Tag: 'PCA.PCASTATUS',
-                Label: 'PCA status',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_mode_cooling: {
-                Tag: 'PCA.MODE_COOLING',
-                Label: 'Cooling Mode',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_mode_heating: {
-                Tag: 'PCA.MODE_HEATING',
-                Label: 'Heating Mode',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_cooling_pt: {
-                Tag: 'PCA.SET_COOLINGPOINT',
-                Label: 'Cooling Setpoint',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1} F',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_cooling_tm: {
-                Tag: 'PCA.SET_COOLINGPOINT_TIMER',
-                Label: 'Cooling Timer',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1} F',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_heating_pt: {
-                Tag: 'PCA.SET_HEATINGPOINT',
-                Label: 'Heating Setpoint',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1} F',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_heating_tm: {
-                Tag: 'PCA.SET_HEATINGPOINT_TIMER',
-                Label: 'Heating Timer',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1} F',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_alarm_cooling_run: {
-                Tag: 'PCA.ALARM_COOLINGRUN_BOOLEAN',
-                Label: 'Cooling Run Alarm',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_alarm_heating_run: {
-                Tag: 'PCA.ALARM_HEATINGRUN_BOOLEAN',
-                Label: 'Heating Run Alarm',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              }
-            }
-          },
-          B3: {
-            update_tags: {
-              pca_discharge_temp: {
-                Tag: 'PCA.TEMPDISCH',
-                Label: 'Discharge Air Temperature',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1} F',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_status: {
-                Tag: 'PCA.PCASTATUS',
-                Label: 'PCA status',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_mode_cooling: {
-                Tag: 'PCA.MODE_COOLING',
-                Label: 'Cooling Mode',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_mode_heating: {
-                Tag: 'PCA.MODE_HEATING',
-                Label: 'Heating Mode',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_cooling_pt: {
-                Tag: 'PCA.SET_COOLINGPOINT',
-                Label: 'Cooling Setpoint',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1} F',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_cooling_tm: {
-                Tag: 'PCA.SET_COOLINGPOINT_TIMER',
-                Label: 'Cooling Timer',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1} F',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_heating_pt: {
-                Tag: 'PCA.SET_HEATINGPOINT',
-                Label: 'Heating Setpoint',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1} F',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_heating_tm: {
-                Tag: 'PCA.SET_HEATINGPOINT_TIMER',
-                Label: 'Heating Timer',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1} F',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_alarm_cooling_run: {
-                Tag: 'PCA.ALARM_COOLINGRUN_BOOLEAN',
-                Label: 'Cooling Run Alarm',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_alarm_heating_run: {
-                Tag: 'PCA.ALARM_HEATINGRUN_BOOLEAN',
-                Label: 'Heating Run Alarm',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              }
             }
           }
         }
@@ -21641,6 +21296,9 @@ TagConfig = (function(superClass) {
       }
     },
     ATL: {
+      pbb_detail_widget: {
+        remove_all: {}
+      },
       gpu_summary_widget: {
         remove_tags: {
           'gpu_ra_in_avg': 'gpu_ra_in_avg',
@@ -21874,11 +21532,11 @@ TagConfig = (function(superClass) {
           pca_strip_heat_on: {
             Tag: 'PCA.STRIP_HEAT_ON',
             Label: 'Strip Heat On',
-            DataType: 'Float',
+            DataType: 'Boolean',
             Parameters: {
-              Parm001: 'TRUE',
-              Parm002: '1',
-              Parm003: '',
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
               Parm004: ''
             },
             Element: {
@@ -21915,7 +21573,6 @@ TagConfig = (function(superClass) {
           'pca_bridge_air': 'pca_bridge_air',
           'pca_suction_pressure_1': 'pca_suction_pressure_1',
           'pca_suction_pressure_2': 'pca_suction_pressure_2',
-          'pca_status': 'pca_status',
           'pca_hot_gas_1': 'pca_hot_gas_1',
           'pca_hot_gas_2': 'pca_hot_gas_2'
         },
@@ -21991,11 +21648,11 @@ TagConfig = (function(superClass) {
           pca_strip_heat_on: {
             Tag: 'PCA.STRIP_HEAT_ON',
             Label: 'Strip Heat On',
-            DataType: 'Float',
+            DataType: 'Boolean',
             Parameters: {
-              Parm001: 'TRUE',
-              Parm002: '1',
-              Parm003: '',
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
               Parm004: ''
             },
             Element: {
@@ -22013,6 +21670,25 @@ TagConfig = (function(superClass) {
               Parm001: 'TRUE',
               Parm002: '1',
               Parm003: '',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          }
+        },
+        update_tags: {
+          pca_dirty_filter: {
+            Tag: 'PCA.DIRTY_FILTER',
+            Label: 'Dirty Filter',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Yes',
+              Parm002: 'No',
+              Parm003: 'ok',
               Parm004: ''
             },
             Element: {
@@ -31302,28 +30978,28 @@ PbbleveldetailWidgetView = (function(superClass) {
       this.$('#pbb_slope_deg').html("");
     }
     if (this.tagData.pbb_cab_angle_disp != null) {
-      cabangledisp = (this.vals.pbb_cab_angle_disp != null) && this.vals.pbb_cab_angle_disp !== '' ? this.vals.pbb_cab_angle_disp : ' -- ';
+      cabangledisp = (this.vals.pbb_cab_angle_disp != null) && this.vals.pbb_cab_angle_disp !== '' ? parseFloat(this.vals.pbb_cab_angle_disp).toFixed(2) : ' -- ';
       ca1 = this.$('#pbb_cab_angle_disp').html("Cab Angle : " + cabangledisp);
       this.mark_bad_data(this.tagData.pbb_cab_angle_disp.Tag, ca1);
     } else {
       this.$('#pbb_cab_angle_disp').html("");
     }
     if (this.tagData.pbb_swing_angle_disp != null) {
-      swingangledisp = (this.vals.pbb_swing_angle_disp != null) && this.vals.pbb_swing_angle_disp !== '' ? this.vals.pbb_swing_angle_disp : ' -- ';
+      swingangledisp = (this.vals.pbb_swing_angle_disp != null) && this.vals.pbb_swing_angle_disp !== '' ? parseFloat(this.vals.pbb_swing_angle_disp).toFixed(2) : ' -- ';
       swa1 = this.$('#pbb_swing_angle_disp').html("Bridge Rotation :" + swingangledisp);
       this.mark_bad_data(this.tagData.pbb_swing_angle_disp.Tag, swa1);
     } else {
       this.$('#pbb_swing_angle_disp').html("");
     }
     if (this.tagData.pbb_height_to_disp != null) {
-      heighttodisp = (this.vals.pbb_height_to_disp != null) && this.vals.pbb_height_to_disp !== '' ? this.vals.pbb_height_to_disp : ' -- ';
+      heighttodisp = (this.vals.pbb_height_to_disp != null) && this.vals.pbb_height_to_disp !== '' ? parseFloat(this.vals.pbb_height_to_disp).toFixed(2) : ' -- ';
       hd1 = this.$('#pbb_height_to_disp').html("Height : " + heighttodisp);
       this.mark_bad_data(this.tagData.pbb_height_to_disp.Tag, hd1);
     } else {
       this.$('#pbb_height_to_disp').html("");
     }
     if (this.tagData.pbb_tunnel_length != null) {
-      tunnellength = (this.vals.pbb_tunnel_length != null) && this.vals.pbb_tunnel_length !== '' ? this.vals.pbb_tunnel_length : ' -- ';
+      tunnellength = (this.vals.pbb_tunnel_length != null) && this.vals.pbb_tunnel_length !== '' ? parseFloat(this.vals.pbb_tunnel_length).toFixed(2) : ' -- ';
       tl = this.$('#pbb_tunnel_length').html("Tunnel Length : " + tunnellength);
       this.mark_bad_data(this.tagData.pbb_tunnel_length.Tag, tl);
     } else {
