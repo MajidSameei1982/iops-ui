@@ -50,9 +50,9 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
 
       @site = OPCManager.get_site(s.site)
       if s.allgates then terminals = @site.get('settings').zones
-      #net_node = @site.get('settings').cloud? && @site.get('settings').cloud == true
-      #if net_node
-      # net_node = ["RemoteSCADAHosting.localhost.RemoteSCADAHost.Airport-#{@site_code}"]
+      net_node = @site.get('settings').cloud? && @site.get('settings').cloud == true
+      if net_node
+        net_node = ["RemoteSCADAHosting.localhost.RemoteSCADAHost.Airport-#{@site_code}"]
 
       for term of terminals
         zones = terminals[term]
@@ -92,6 +92,7 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
           { name: "Acked", text: "Acked", type: "boolean", visible: false }
           { name: "Priority", text: "Priority", type: "integer", visible: true }
         ]
+      
       if net_node then @alarm_binding.networkNodes = net_node
 
       if @site_code?

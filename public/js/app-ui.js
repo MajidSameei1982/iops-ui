@@ -27037,7 +27037,7 @@ AdvancedalarmWidgetView = (function(superClass) {
   titleHtml = '';
 
   AdvancedalarmWidgetView.prototype.update = function() {
-    var alarms, gate, gates, gpu, groups, lbl, notifications, obj, obj1, obj2, p, pbb, pca, s, t, term, terminals, tzg, zone, zones;
+    var alarms, gate, gates, gpu, groups, lbl, net_node, notifications, obj, obj1, obj2, p, pbb, pca, s, t, term, terminals, tzg, zone, zones;
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
@@ -27069,6 +27069,10 @@ AdvancedalarmWidgetView = (function(superClass) {
       this.site = OPCManager.get_site(s.site);
       if (s.allgates) {
         terminals = this.site.get('settings').zones;
+      }
+      net_node = (this.site.get('settings').cloud != null) && this.site.get('settings').cloud === true;
+      if (net_node) {
+        net_node = ["RemoteSCADAHosting.localhost.RemoteSCADAHost.Airport-" + this.site_code];
       }
       for (term in terminals) {
         zones = terminals[term];
@@ -27828,7 +27832,7 @@ AlarmWidgetView = (function(superClass) {
   AlarmWidgetView.prototype.IsPageLoading = true;
 
   AlarmWidgetView.prototype.update = function() {
-    var alarms, gate, gates, gpu, groups, lbl, notifications, obj, obj1, obj2, p, pbb, pca, s, t, term, terminals, tzg, zone, zones;
+    var alarms, gate, gates, gpu, groups, lbl, net_node, notifications, obj, obj1, obj2, p, pbb, pca, s, t, term, terminals, tzg, zone, zones;
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
@@ -27860,6 +27864,10 @@ AlarmWidgetView = (function(superClass) {
       this.site = OPCManager.get_site(s.site);
       if (s.allgates) {
         terminals = this.site.get('settings').zones;
+      }
+      net_node = (this.site.get('settings').cloud != null) && this.site.get('settings').cloud === true;
+      if (net_node) {
+        net_node = ["RemoteSCADAHosting.localhost.RemoteSCADAHost.Airport-" + this.site_code];
       }
       for (term in terminals) {
         zones = terminals[term];
