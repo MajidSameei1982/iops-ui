@@ -37,12 +37,12 @@ class AirportoverviewWidgetView extends IOPSWidgetView
     @IsPageLoading = false
     @IsUpdatingSettings = false
 
-    @update_settings
+    s = @update_settings
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
 
-    s = @model.get("settings")
-
+    if !@site_code? then return null
+    
     if s? && !!s.site
       lbl = "#{@site_code}: Airport Overview"
       @ui.wtitle.html(lbl)

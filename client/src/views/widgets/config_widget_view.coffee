@@ -46,7 +46,7 @@ class ConfigWidgetView extends IOPSWidgetView
       lbl = "#{@site_code}: Configurations"
       @ui.wtitle.html(lbl)
 
-    # @update_settings
+    # s = @update_settings
     #   prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
     #   cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
     @base_tags = []

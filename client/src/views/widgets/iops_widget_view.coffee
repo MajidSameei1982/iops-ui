@@ -326,7 +326,6 @@ class IOPSWidgetView extends WidgetView
     s = @model.get("settings")
    
     if s? && !!s.site
-      if @site_code? then @kill_updates(@site_code)
       @site = OPCManager.get_site(s.site)
       @site_code = @site.get('code')
 

@@ -29,9 +29,11 @@ class AlarmWidgetView extends IOPSWidgetView
     if @IsUpdatingSettings || @IsPageLoading
       return null
 
-    if !@site_code? then return null
+    s = @update_settings
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}_'
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
 
-    s = @model.get("settings")
+    if !@site_code? then return null
 
     if s? && !!s.gate
       lbl = "#{@site_code}: Alarm window"
@@ -46,16 +48,16 @@ class AlarmWidgetView extends IOPSWidgetView
 
       @site = OPCManager.get_site(s.site)
       if s.allgates then terminals = @site.get('settings').zones
-      net_node = @site.get('settings').cloud? && @site.get('settings').cloud == true
-      if net_node
-        net_node = ["RemoteSCADAHosting.localhost.RemoteSCADAHost.Airport-#{@site_code}"]
+      # net_node = @site.get('settings').cloud? && @site.get('settings').cloud == true
+      # if net_node
+      #   net_node = ["RemoteSCADAHosting.localhost.RemoteSCADAHost.Airport-#{@site_code}"]
 
       for term of terminals
         zones = terminals[term]
         for zone of zones
           gates = zones[zone]
           for gate of gates
-            pre = "Airport_#{@site_code}_Term#{term}_Zone#{zone}_Gate#{gate}_"
+            # pre = "Airport_#{@site_code}_Term#{term}_Zone#{zone}_Gate#{gate}_"
             p = if !s.priority? then 'all' else s.priority
             t = if !s.type? then 'all' else s.type
             alarms = (p=='all' || p=='alarms')

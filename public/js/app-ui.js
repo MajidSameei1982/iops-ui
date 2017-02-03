@@ -27038,14 +27038,17 @@ AdvancedalarmWidgetView = (function(superClass) {
   titleHtml = '';
 
   AdvancedalarmWidgetView.prototype.update = function() {
-    var alarms, gate, gates, gpu, groups, lbl, net_node, notifications, obj, obj1, obj2, p, pbb, pca, pre, s, t, term, terminals, tzg, zone, zones;
+    var alarms, gate, gates, gpu, groups, lbl, notifications, obj, obj1, obj2, p, pbb, pca, s, t, term, terminals, tzg, zone, zones;
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
+    s = this.update_settings({
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}_',
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+    });
     if (this.site_code == null) {
       return null;
     }
-    s = this.model.get("settings");
     if ((s != null) && !!s.gate) {
       lbl = this.site_code + ": Advanced Alarm window";
       this.ui.wtitle.html(lbl);
@@ -27068,16 +27071,11 @@ AdvancedalarmWidgetView = (function(superClass) {
       if (s.allgates) {
         terminals = this.site.get('settings').zones;
       }
-      net_node = (this.site.get('settings').cloud != null) && this.site.get('settings').cloud === true;
-      if (net_node) {
-        net_node = ["RemoteSCADAHosting.localhost.RemoteSCADAHost.Airport-" + this.site_code];
-      }
       for (term in terminals) {
         zones = terminals[term];
         for (zone in zones) {
           gates = zones[zone];
           for (gate in gates) {
-            pre = "Airport_" + this.site_code + "_Term" + term + "_Zone" + zone + "_Gate" + gate + "_";
             p = s.priority == null ? 'all' : s.priority;
             t = s.type == null ? 'all' : s.type;
             alarms = p === 'all' || p === 'alarms';
@@ -27087,24 +27085,24 @@ AdvancedalarmWidgetView = (function(superClass) {
             gpu = t === 'all' || t === 'GPU';
             if (alarms) {
               if (pbb) {
-                groups.push(pre + "PBB_Alarms");
+                groups.push(this.prefix + "PBB_Alarms");
               }
               if (pca) {
-                groups.push(pre + "PCA_Alarms");
+                groups.push(this.prefix + "PCA_Alarms");
               }
               if (gpu) {
-                groups.push(pre + "GPU_Alarms");
+                groups.push(this.prefix + "GPU_Alarms");
               }
             }
             if (notifications) {
               if (pbb) {
-                groups.push(pre + "PBB_Warnings");
+                groups.push(this.prefix + "PBB_Warnings");
               }
               if (pca) {
-                groups.push(pre + "PCA_Warnings");
+                groups.push(this.prefix + "PCA_Warnings");
               }
               if (gpu) {
-                groups.push(pre + "GPU_Warnings");
+                groups.push(this.prefix + "GPU_Warnings");
               }
             }
           }
@@ -27545,11 +27543,13 @@ AirportoverviewWidgetView = (function(superClass) {
     }
     this.IsPageLoading = false;
     this.IsUpdatingSettings = false;
-    this.update_settings({
+    s = this.update_settings({
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
     });
-    s = this.model.get("settings");
+    if (this.site_code == null) {
+      return null;
+    }
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": Airport Overview";
       this.ui.wtitle.html(lbl);
@@ -27828,14 +27828,17 @@ AlarmWidgetView = (function(superClass) {
   AlarmWidgetView.prototype.IsPageLoading = true;
 
   AlarmWidgetView.prototype.update = function() {
-    var alarms, gate, gates, gpu, groups, lbl, net_node, notifications, obj, obj1, obj2, p, pbb, pca, pre, s, t, term, terminals, tzg, zone, zones;
+    var alarms, gate, gates, gpu, groups, lbl, notifications, obj, obj1, obj2, p, pbb, pca, s, t, term, terminals, tzg, zone, zones;
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
+    s = this.update_settings({
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}_',
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+    });
     if (this.site_code == null) {
       return null;
     }
-    s = this.model.get("settings");
     if ((s != null) && !!s.gate) {
       lbl = this.site_code + ": Alarm window";
       this.ui.wtitle.html(lbl);
@@ -27858,16 +27861,11 @@ AlarmWidgetView = (function(superClass) {
       if (s.allgates) {
         terminals = this.site.get('settings').zones;
       }
-      net_node = (this.site.get('settings').cloud != null) && this.site.get('settings').cloud === true;
-      if (net_node) {
-        net_node = ["RemoteSCADAHosting.localhost.RemoteSCADAHost.Airport-" + this.site_code];
-      }
       for (term in terminals) {
         zones = terminals[term];
         for (zone in zones) {
           gates = zones[zone];
           for (gate in gates) {
-            pre = "Airport_" + this.site_code + "_Term" + term + "_Zone" + zone + "_Gate" + gate + "_";
             p = s.priority == null ? 'all' : s.priority;
             t = s.type == null ? 'all' : s.type;
             alarms = p === 'all' || p === 'alarms';
@@ -28745,16 +28743,15 @@ GpusummaryWidgetView = (function(superClass) {
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
-    s = this.model.get("settings");
-    show_opts = (s != null) && !!s.gate;
-    this.$('#mode').toggle(show_opts);
-    this.update_settings({
+    s = this.update_settings({
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
     });
     if (this.site_code == null) {
       return null;
     }
+    show_opts = (s != null) && !!s.gate;
+    this.$('#mode').toggle(show_opts);
     if (show_opts) {
       lbl = this.site_code + ": Gate " + s.gate + " - GPU Summary";
       this.ui.wtitle.html(lbl);
@@ -29403,14 +29400,13 @@ GpuWidgetView = (function(superClass) {
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
-    this.update_settings({
+    s = this.update_settings({
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
     });
     if (this.site_code == null) {
       return null;
     }
-    s = this.model.get("settings");
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": Gate " + s.gate + " - GPU";
       this.ui.wtitle.html(lbl);
@@ -30004,9 +30000,6 @@ IOPSWidgetView = (function(superClass) {
     prefix = arg.prefix, cloud_prefix = arg.cloud_prefix;
     s = this.model.get("settings");
     if ((s != null) && !!s.site) {
-      if (this.site_code != null) {
-        this.kill_updates(this.site_code);
-      }
       this.site = OPCManager.get_site(s.site);
       this.site_code = this.site.get('code');
       if (this.site_code == null) {
@@ -30369,14 +30362,13 @@ OutofserviceWidgetView = (function(superClass) {
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
-    this.update_settings({
+    s = this.update_settings({
       prefix: 'Airport.#{@site_code}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
     });
     if (this.site_code == null) {
       return null;
     }
-    s = this.model.get("settings");
     this.cktags = [];
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": Out Of Service";
@@ -30774,14 +30766,13 @@ PbbdetailWidgetView = (function(superClass) {
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
-    this.update_settings({
+    s = this.update_settings({
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
     });
     if (this.site_code == null) {
       return null;
     }
-    s = this.model.get("settings");
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": Gate " + s.gate + " - Overview";
       this.ui.wtitle.html(lbl);
@@ -31039,14 +31030,13 @@ PbbleveldetailWidgetView = (function(superClass) {
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
-    this.update_settings({
+    s = this.update_settings({
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
     });
     if (this.site_code == null) {
       return null;
     }
-    s = this.model.get("settings");
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": PBB " + s.gate + " - Details";
       this.ui.wtitle.html(lbl);
@@ -31312,13 +31302,13 @@ PbbpcagpuWidgetView = (function(superClass) {
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
-    if (this.site_code == null) {
-      return null;
-    }
     s = this.update_settings({
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
     });
+    if (this.site_code == null) {
+      return null;
+    }
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": Gate " + s.gate + " PBB/PCA/GPU";
       this.ui.wtitle.html(lbl);
@@ -31530,14 +31520,13 @@ PbbpcagpustatusWidgetView = (function(superClass) {
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
-    this.update_settings({
+    s = this.update_settings({
       prefix: 'Airport.#{@site_code}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
     });
     if (this.site_code == null) {
       return null;
     }
-    s = this.model.get("settings");
     this.cktags = [];
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": PBB/PCA/GPU Status";
@@ -31920,14 +31909,13 @@ PbbsystemstatusWidgetView = (function(superClass) {
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
-    this.update_settings({
+    s = this.update_settings({
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
     });
     if (this.site_code == null) {
       return null;
     }
-    s = this.model.get("settings");
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": Gate " + s.gate + " - System Status";
       this.ui.wtitle.html(lbl);
@@ -32144,14 +32132,13 @@ PbbWidgetView = (function(superClass) {
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
-    this.update_settings({
+    s = this.update_settings({
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
     });
     if (this.site_code == null) {
       return null;
     }
-    s = this.model.get("settings");
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": Gate " + s.gate + " - PBB";
       this.ui.wtitle.html(lbl);
@@ -32358,14 +32345,13 @@ PcadischargeWidgetView = (function(superClass) {
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
-    this.update_settings({
+    s = this.update_settings({
       prefix: 'Airport.#{@site_code}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
     });
     if (this.site_code == null) {
       return null;
     }
-    s = this.model.get("settings");
     this.cktags = [];
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": PCA Discharge";
@@ -32830,14 +32816,13 @@ PcasummaryWidgetView = (function(superClass) {
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
-    this.update_settings({
+    s = this.update_settings({
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
     });
     if (this.site_code == null) {
       return null;
     }
-    s = this.model.get("settings");
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": Gate " + s.gate + " PCA - Summary";
       this.ui.wtitle.html(lbl);
@@ -33661,14 +33646,13 @@ PcaWidgetView = (function(superClass) {
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
-    this.update_settings({
+    s = this.update_settings({
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
     });
     if (this.site_code == null) {
       return null;
     }
-    s = this.model.get("settings");
     if ((s != null) && !!s.gate) {
       lbl = this.site_code + ": Gate " + s.gate + " PCA";
       this.ui.wtitle.html(lbl);
@@ -33876,14 +33860,13 @@ ReportWidgetView = (function(superClass) {
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
-    this.update_settings({
+    s = this.update_settings({
       prefix: 'Airport.#{@site_code}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
     });
     if (this.site_code == null) {
       return null;
     }
-    s = this.model.get("settings");
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": Reports";
       this.ui.wtitle.html(lbl);

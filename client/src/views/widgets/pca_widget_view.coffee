@@ -41,14 +41,12 @@ class PcaWidgetView extends IOPSWidgetView
     if @IsUpdatingSettings || @IsPageLoading
       return null
 
-    @update_settings
+    s = @update_settings
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
     
     if !@site_code? then return null
 
-    s = @model.get("settings")
-   
     if s? && !!s.gate
       lbl = "#{@site_code}: Gate #{s.gate} PCA"
       @ui.wtitle.html(lbl)

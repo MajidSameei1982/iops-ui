@@ -36,14 +36,12 @@ class GpuWidgetView extends IOPSWidgetView
     if @IsUpdatingSettings || @IsPageLoading
       return null
 
-    @update_settings
+    s = @update_settings
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
 
     if !@site_code? then return null
 
-    s = @model.get("settings")
-    
     if s? && !!s.site      
       lbl = "#{@site_code}: Gate #{s.gate} - GPU"
       @ui.wtitle.html(lbl)
