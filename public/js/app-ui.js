@@ -27832,7 +27832,7 @@ AlarmWidgetView = (function(superClass) {
   AlarmWidgetView.prototype.IsPageLoading = true;
 
   AlarmWidgetView.prototype.update = function() {
-    var alarms, gate, gates, gpu, groups, lbl, net_node, notifications, obj, obj1, obj2, p, pbb, pca, s, t, term, terminals, tzg, zone, zones;
+    var alarms, gate, gates, gpu, groups, lbl, net_node, notifications, obj, obj1, obj2, p, pbb, pca, pre, s, t, term, terminals, tzg, zone, zones;
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
@@ -27874,6 +27874,7 @@ AlarmWidgetView = (function(superClass) {
         for (zone in zones) {
           gates = zones[zone];
           for (gate in gates) {
+            pre = "Airport_" + this.site_code + "_Term" + term + "_Zone" + zone + "_Gate" + gate + "_";
             p = s.priority == null ? 'all' : s.priority;
             t = s.type == null ? 'all' : s.type;
             alarms = p === 'all' || p === 'alarms';
@@ -27883,24 +27884,24 @@ AlarmWidgetView = (function(superClass) {
             gpu = t === 'all' || t === 'GPU';
             if (alarms) {
               if (pbb) {
-                groups.push(this.prefix + "PBB_Alarms");
+                groups.push(pre + "PBB_Alarms");
               }
               if (pca) {
-                groups.push(this.prefix + "PCA_Alarms");
+                groups.push(pre + "PCA_Alarms");
               }
               if (gpu) {
-                groups.push(this.prefix + "GPU_Alarms");
+                groups.push(pre + "GPU_Alarms");
               }
             }
             if (notifications) {
               if (pbb) {
-                groups.push(this.prefix + "PBB_Warnings");
+                groups.push(pre + "PBB_Warnings");
               }
               if (pca) {
-                groups.push(this.prefix + "PCA_Warnings");
+                groups.push(pre + "PCA_Warnings");
               }
               if (gpu) {
-                groups.push(this.prefix + "GPU_Warnings");
+                groups.push(pre + "GPU_Warnings");
               }
             }
           }

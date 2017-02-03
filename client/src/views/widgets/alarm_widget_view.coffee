@@ -57,7 +57,7 @@ class AlarmWidgetView extends IOPSWidgetView
         for zone of zones
           gates = zones[zone]
           for gate of gates
-            #pre = "Airport_#{@site_code}_Term#{term}_Zone#{zone}_Gate#{gate}_"
+            pre = "Airport_#{@site_code}_Term#{term}_Zone#{zone}_Gate#{gate}_"
             p = if !s.priority? then 'all' else s.priority
             t = if !s.type? then 'all' else s.type
             alarms = (p=='all' || p=='alarms')
@@ -66,13 +66,13 @@ class AlarmWidgetView extends IOPSWidgetView
             pca = (t=='all' || t=='PCA')
             gpu = (t=='all' || t=='GPU')
             if alarms
-              if pbb then groups.push("#{@prefix}PBB_Alarms")
-              if pca then groups.push("#{@prefix}PCA_Alarms")
-              if gpu then groups.push("#{@prefix}GPU_Alarms")
+              if pbb then groups.push("#{pre}PBB_Alarms")
+              if pca then groups.push("#{pre}PCA_Alarms")
+              if gpu then groups.push("#{pre}GPU_Alarms")
             if notifications
-              if pbb then groups.push("#{@prefix}PBB_Warnings")
-              if pca then groups.push("#{@prefix}PCA_Warnings")
-              if gpu then groups.push("#{@prefix}GPU_Warnings")
+              if pbb then groups.push("#{pre}PBB_Warnings")
+              if pca then groups.push("#{pre}PCA_Warnings")
+              if gpu then groups.push("#{pre}GPU_Warnings")
 
       @alarm_binding =
         alarmid: "#{@alarmid}"
