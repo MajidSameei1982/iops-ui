@@ -109,6 +109,7 @@ class AppController extends Object
     App.log('route:dashboard')
     id = if id? then id else null
     show_dash = ()=>
+      OPCManager.drop_connections() # force clean when switching
       dl = @set_main_layout()
       if dl.collection?
         first = dl.collection.first()
