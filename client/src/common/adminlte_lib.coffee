@@ -182,7 +182,7 @@ class AdminLTE_lib extends Object
           checkElement.slideUp 'normal', ->
             checkElement.removeClass 'menu-open'
             #Fix the layout in case the sidebar stretches over the height of the window
-            #_this.layout.fix();
+            #_this.layout.fix()
             return
           checkElement.parent('li').removeClass 'active'
         else if checkElement.is('.treeview-menu') and !checkElement.is(':visible')

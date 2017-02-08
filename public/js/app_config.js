@@ -16,11 +16,11 @@ window.app_config = {
       name: "Airport Overview Widget",
       icon: "road"
     },
-    //{
+    // {
     //  id: "advancedalarm",
     //  name: "Advanced Alarm Widget",
     //  icon: "bullhorn"
-    //},
+    // },
     {
       id: "alarm",
       name: "Alarm Widget",
@@ -90,6 +90,11 @@ window.app_config = {
       id: "gpusummary",
       name: "GPU Summary Widget",
       icon: "flash"
+    },
+    {
+      id: "outofservice",
+      name: "Out Of Service Widget",
+      icon: "wrench"
     },
     {
       id: "weather",

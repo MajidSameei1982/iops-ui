@@ -132,7 +132,7 @@ class DashboardSideView extends Marionette.ItemView
     $('li.dashboard-link', @ui.dashboard_list).remove()
     for d, idx in @collection.models
       hh = """
-      <li class='dashboard-link d_#{d.id}'>
+      <li class='dashboard-link d_#{d.id}' title='#{d.get('name')}'>
         <a href='#' class='dash_link'><i class='fa fa-th-large'></i> <span>#{d.get('name')}</span></a>
         <div class='controls'>
           <a href='#' class='moveup moveup_#{d.id}'><i class='fa fa-caret-up'></i></a>

@@ -46,7 +46,7 @@ class ConfigWidgetView extends IOPSWidgetView
       lbl = "#{@site_code}: Configurations"
       @ui.wtitle.html(lbl)
 
-    # @update_settings
+    # s = @update_settings
     #   prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
     #   cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
     @base_tags = []
@@ -119,6 +119,7 @@ class ConfigWidgetView extends IOPSWidgetView
 
     s = _.clone(@model.get("settings"))
     s.site = @$('#site').val()
+    @site_code = OPCManager.get_site_code(s.site)
     @model.set("settings", s)
 
   toggle_settings: (e)->

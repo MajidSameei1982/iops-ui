@@ -16,23 +16,27 @@ class WeatherWidgetView extends IOPSWidgetView
   @layout:
     sx: 6
     sy: 8
+  HOUR: 3600000 
+  site_refresh: 500000
 
   IsUpdatingSettings: false
   IsPageLoading: true
 
   update: ()=>
     # Ignore all calls except those from startup and Update
-    if !@IsUpdatingSettings && !@IsPageLoading
+    if @IsUpdatingSettings || @IsPageLoading
       return null
 
-    @IsPageLoading = false
-    @IsUpdatingSettings = false
-
+    if @timer then clearInterval(@timer)
+    @timer = setInterval(@refresh_data, @HOUR/6)
+    @start_heartbeat()
     @refresh_data()
+
 
   refresh_data: =>
     s = @model.get("settings")
     if s? && s.site?
+      @beat_time = new Date().getTime() + (@HOUR/6)
       @site = OPCManager.get_site(s.site)
       @ui.wtitle.html("Weather for #{@site.get('code')}")
       if site?
@@ -81,42 +85,69 @@ class WeatherWidgetView extends IOPSWidgetView
     @$('#loading').hide()
 
   set_model: ()=>
-    @IsUpdatingSettings = true
 
     s = _.clone(@model.get("settings"))
     s.site = @ui.site.val()
+    @site_code = OPCManager.get_site_code(s.site)
     @model.set("settings", s)
 
   toggle_settings: (e)->
     super(e)
     @ui.display.toggle(!@settings_visible)
+    @IsUpdatingSettings = @settings_visible
+    if @settings_visible
+      if @timer then clearInterval(@timer)
+      if @heartbeat_timer? && @heartbeat_timer > 0
+        window.clearInterval(@heartbeat_timer)
+    else
+      @IsPageLoading = false
+      @update()
 
   onShow: ()->
-    @HOUR = 60 * 60 * 1000
-    @QUARTER_HOUR = 60 * 15 * 1000
-    @timer = setInterval(@refresh_data, @HOUR/6)
     @skycons = new Skycons()
 
     settings = @model.get('settings')
     settings || settings = {}
-    site = settings.site
-    if !site? || site == ''
-      @toggle_settings()
     @draw_selectors(settings.terminal, settings.zone, settings.gate)
 
     @$('#site').on 'change', ()=>
       @set_model()
+
     s = @model.get("settings")
     if !s? || !s.site?
       @toggle_settings()
+    else
+      @IsPageLoading = false
+
+    @site_code = OPCManager.get_site_code(settings.site)
+    if @site_code?
+      if @timer then clearInterval(@timer)
+      @timer = setInterval(@refresh_data, @HOUR/6)
+
     @check_init_site()
 
-  onDestroy: ()=>
-    if @timer then clearInterval(@timer)
-    if @int? then clearInterval(@int)
 
   start:()->
     @update()
+
+  start_heartbeat: ()=>
+    @beat_time = new Date().getTime() + (@HOUR/6)
+    $("##{@el.parentNode.id} .widget-outer").toggleClass("no-heartbeat", false)
+    if @heartbeat_timer? && @heartbeat_timer > 0
+      window.clearInterval(@heartbeat_timer)
+    @heartbeat_timer = window.setInterval((=>
+      @check_heartbeat @el.parentNode.id
+      return
+    ), @site_refresh) 
+
+  check_heartbeat: (widget_id)=>
+    @curTime = new Date().getTime()
+    $("##{widget_id} .widget-outer").toggleClass("no-heartbeat", (@curTime > @beat_time))
+
+  onDestroy: ()=>
+    if @timer then clearInterval(@timer)
+    if @heartbeat_timer? && @heartbeat_timer > 0
+      window.clearInterval(@heartbeat_timer)
     
 # ----------------------------------
 

@@ -51,7 +51,7 @@ class VideoWidgetView extends IOPSWidgetView
           #add to list item
           xSelection = $("#videoFiles_#{@model.id}")
           ovalue = "#{@rurl}/motion/" + formatItem2(r)
-          @selector.append($("<option></option>").attr("value",ovalue).text(formatItem(r)));
+          @selector.append($("<option></option>").attr("value",ovalue).text(formatItem(r)))
 
   #format item
   formatItem = (item) ->
@@ -66,6 +66,7 @@ class VideoWidgetView extends IOPSWidgetView
 
     s = _.clone(@model.get("settings"))
     s.site = @ui.site.val()
+    @site_code = OPCManager.get_site_code(s.site)
     @model.set("settings", s)
 
   onShow: ()->
@@ -88,7 +89,7 @@ class VideoWidgetView extends IOPSWidgetView
         value = drpdown.val()
         console.log value
         if value.indexOf('mp4') != -1
-          $("#videoRep_#{@model.id}").html("<video height='600' width='800' autoplay controls loop ><source src=" + value + " type='video/mp4'>Your browser does not support HTML5 video.</video>");
+          $("#videoRep_#{@model.id}").html("<video height='600' width='800' autoplay controls loop ><source src=" + value + " type='video/mp4'>Your browser does not support HTML5 video.</video>")
           $("#imageRep_#{@model.id}").hide()
           $("#videoRep_#{@model.id}").show()
         else

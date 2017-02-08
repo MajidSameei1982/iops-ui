@@ -8,6 +8,8 @@
 <div class="box-body content" id='content'>
   <div class="display contain">
     <h3 id='alarm_lbl'></h3>
+    <table id="alarmGrid"></table>
+    <div id="pager"></div>
   </div>
   
   <div class="settings" style="display: none;">

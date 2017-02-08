@@ -139,6 +139,9 @@ module.exports = (grunt)->
           'client/assets/js/skycons.js'
           'client/requires/simpleWeather/jquery.simpleWeather.js'
           'client/assets/js/jquery.flot.tooltip.js'
+          'client/assets/js/jquery.tabletojson.js'
+          'client/assets/js/jqgrid/js/i18n/grid.locale-en.js'
+          'client/assets/js/jqGrid/jquery.jqgrid.src.js'
         ]
         dest: 'build/vendor.js'
       vendor_css:
@@ -152,6 +155,8 @@ module.exports = (grunt)->
           'client/assets/css/opc-style.css'
           'client/assets/css/opc-alarm-style.css'
           'client/assets/js/bootstrap-toggle-master/css/bootstrap2-toggle.min.css'
+          'client/assets/css/jqGrid/CustomTheme/jquery-ui.css'
+          'client/assets/css/jqGrid/ui.jqgrid.css'
         ]
         dest: 'build/vendor.css'
       
@@ -219,6 +224,11 @@ module.exports = (grunt)->
           cwd: 'bower_components/chosen'
           src: ['*.png']
           dest: 'public/css'
+          expand: true
+        ,
+          cwd: 'client/assets/css/jqGrid/CustomTheme/images'
+          src: ['*.png']
+          dest: 'public/css/jqGrid/CustomTheme/images'
           expand: true
         ,
           cwd: 'client/assets/js'
