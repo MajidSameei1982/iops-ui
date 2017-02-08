@@ -3155,6 +3155,7 @@ AppController = (function(superClass) {
     show_dash = (function(_this) {
       return function() {
         var dash, did, dl, first;
+        OPCManager.drop_connections();
         dl = _this.set_main_layout();
         if (dl.collection != null) {
           first = dl.collection.first();
