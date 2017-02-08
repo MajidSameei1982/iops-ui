@@ -105,6 +105,7 @@ class KpiWidgetView extends IOPSWidgetView
 
     s = _.clone(@model.get("settings"))
     s.site = @ui.site.val()
+    @site_code = OPCManager.get_site_code(s.site)
     @model.set("settings", s)
 
   onShow: ()->

@@ -35,9 +35,14 @@ class IOPSWidgetView extends WidgetView
 
   # listen for updates on a connection
   watch_updates: (conn)->
-    console.log "watch : #{conn}"
-    App.vent.on "opc:data:#{conn}", @data_update
     OPCManager.add_ref(conn)
+    currTags = Object.keys(OPCManager.connections[conn].tags).length
+    maxTags = OPCManager.connections[conn].config.max_callbacks * OPCManager.connections[conn].config.max_tags_per_msg
+    console.log "watch : #{conn}: Max Tags: #{maxTags}, Current Tag Count: #{currTags}"
+    App.vent.on "opc:data:#{conn}", @data_update
+    if currTags > maxTags
+      throw new Error("To many Widgets declared for #{conn}: Max Tags Allowed: #{maxTags}, Current Tag Count: #{currTags}.  Increase opcmanager.coffee::init max_callbacks setting as needed to resolve this error.")
+
   # kill listener
   kill_updates: (conn)->
     console.log "kill : #{conn}"
@@ -149,6 +154,36 @@ class IOPSWidgetView extends WidgetView
     else if @tagData[tag]?
       tagValue = gate + @tagData[tag].Tag
     @mark_bad_data tagValue, el, true
+
+  render_row_chk: (tag, tv, fv, tc, fc)->
+    dynamicTag = false
+    elName = "#{tag}"
+    if /dynamic_/.test(tag)
+      dynamicTag = true
+      tag = tag.replace 'dynamic_', ""
+
+    if /_checkbox/.test(tag)
+      tag = tag.replace '_checkbox', ""
+
+    parsedTagId = tag.split("_")
+    gate = "Term#{parsedTagId[0]}.Zone#{parsedTagId[1]}.Gate#{parsedTagId[2]}."
+    v = @get_bool(@vals[tag])
+
+    tagValue = null
+    if @tags[tag]?
+      tagValue = gate + @tags[tag]
+    else if @tagData[tag]?
+      tagValue = gate + @tagData[tag].Tag
+    q = @data_q(tagValue)
+
+    if !q 
+      @$("##{elName}").prop("disabled", !q)
+      return
+    
+    #console.log "#{tag} : #{v}"
+    @$("##{elName}").prop('checked', v)
+    if tc? then @$("#dynamic_#{tag}").toggleClass(tc, v)
+    if fc? then @$("#dynamic_#{tag}").toggleClass(fc, !v)
 
   render_tagvalue: (tag)->
     dynamicTag = false
@@ -291,7 +326,6 @@ class IOPSWidgetView extends WidgetView
     s = @model.get("settings")
    
     if s? && !!s.site
-      if @site_code? then @kill_updates(@site_code)
       @site = OPCManager.get_site(s.site)
       @site_code = @site.get('code')
 

@@ -126,7 +126,14 @@ class OPCManager
     c = @refs[conn]
     c = if c? then c+1 else 1
     if c >= 1
+      t = Object.keys(@connections[conn].tags).length
+      callBacks = Math.ceil(t / @connections[conn].config.max_tags_per_msg) + 10 + (5 * @connections[conn].alarm_bindings.length)
+      @connections[conn].config.max_callbacks = callBacks
+      #@connections[conn].config.callback_timeout = Math.ceil(callBacks * 7500)
+      @connections[conn].config.callback_timeout = Math.ceil(Math.sqrt(callBacks) * 7500)
+      @connections[conn].init
       @connections[conn].toggle_refresh(true)
+      console.log "tags: " + t + " max_callbacks: " + @connections[conn].config.max_callbacks + " callback_timeout: " + @connections[conn].config.callback_timeout
     @refs[conn] = c
     c
 
@@ -154,8 +161,8 @@ class OPCManager
         OPCManager.create code,
           token:'7e61b230-481d-4551-b24b-ba9046e3d8f2'
           #interval:5000
-          max_tags_per_msg: 40
-          max_callbacks: 20
+          max_tags_per_msg: 50
+          max_callbacks: 25
           callback_timeout: 10000
           refresh_callback: ((c)->
             (data)->

@@ -102,10 +102,10 @@ class UIUtils extends Object
         output = output + String.fromCharCode(chr1)
 
         if (enc3 != 64)
-          output = output + String.fromCharCode(chr2);
+          output = output + String.fromCharCode(chr2)
         if (enc4 != 64)
           output = output + String.fromCharCode(chr3)
-      output = @_utf8_decode(output);
+      output = @_utf8_decode(output)
       output
 
     _utf8_encode : (string)->
@@ -122,7 +122,7 @@ class UIUtils extends Object
         else
           utftext += String.fromCharCode((c >> 12) | 224)
           utftext += String.fromCharCode(((c >> 6) & 63) | 128)
-          utftext += String.fromCharCode((c & 63) | 128);
+          utftext += String.fromCharCode((c & 63) | 128)
       utftext
 
     _utf8_decode : (utftext)->

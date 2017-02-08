@@ -47,8 +47,8 @@ class UserView extends Marionette.ItemView
       @$('select').chosen()
 
   show_edit: (e)->
-    @old_model = $.extend(true, {}, @model.attributes);
-    @toggle_edit(true);
+    @old_model = $.extend(true, {}, @model.attributes)
+    @toggle_edit(true)
 
   cancel_edit: ()->
     $("#users_region .row.user_container").toggle(true)
@@ -135,7 +135,7 @@ class UserView extends Marionette.ItemView
           show_cancel: false
       
   onRender: ()->
-    @toggle_edit(false);
+    @toggle_edit(false)
     @modelBinder.bind(@model, @el, @bindings)
     
   onShow: ()->

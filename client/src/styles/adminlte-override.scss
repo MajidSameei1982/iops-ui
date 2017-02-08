@@ -35,6 +35,18 @@
 	}
 }
 
+.content-header {
+	position: relative;
+	margin: 5px 0px 0px 171px;
+	color: #3c8dbc;
+	width: 50%;
+	//border: 1px solid red;
+	z-index: 1000;	
+}
+
+.content-header > h1 {
+	font-size: 21px;
+}
 .nav-tabs-custom {
 	.tab-content {
 		padding:20px;
@@ -55,4 +67,47 @@ i.form-control-feedback {
 			background-color:#fff;
 		}
 	}
+}
+
+#header-region {
+	position: fixed;
+	width: 100%;
+	z-index: 1000;
+	top: 0%;
+	left: 0%;
+}
+
+#side-region {
+	margin-top: 50px;
+	width: 230px;
+	transition: width 0.28s ease-out;
+	height: 95%;
+	position: fixed;
+	overflow: scroll;
+	z-index: 1000;
+}
+
+#content-region {
+	padding-bottom: 30px !important;
+	min-height: 930px !important;
+}
+
+#center-region {
+	overflow-x: scroll;
+}
+.login-page  {
+	.wrapper #center-region {
+		overflow-x: scroll;
+	}
+	#center-region {
+		overflow-x: hidden;
+	}
+}
+
+#footer-region {
+	position: fixed;
+	width: 100%;
+	z-index: 1000;
+	top: 97%;
+	left: 0%;
 }

@@ -57,26 +57,22 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     
   tagData = []
   tagConfig = []
+  site_refresh: 50000
 
   IsUpdatingSettings: false
   IsPageLoading: true
 
   update: ()->
     # Ignore all calls except those from startup and Update
-    if !@IsUpdatingSettings && !@IsPageLoading
+    if @IsUpdatingSettings || @IsPageLoading
       return null
 
-    @IsPageLoading = false
-    @IsUpdatingSettings = false
-
-    @update_settings
+    s = @update_settings
       prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
     
     if !@site_code? then return null
 
-    s = @model.get("settings")
-   
     if s? && !!s.site
       lbl = "#{@site_code}: PBB #{s.gate} - Details"
       @ui.wtitle.html(lbl)
@@ -106,12 +102,14 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
 
       # listen for updates
       @watch_updates(@site_code)
+      @start_heartbeat()
       @set_descriptions(true)
 
 
   # process data and update the view
   data_update: (data)=>
     @refresh_values()
+    @beat_time = new Date().getTime() + @site_refresh
 
     for tag, tagData of @tagData
       switch tagData.DataType.toLowerCase()
@@ -220,7 +218,7 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
 
     # CAB ANGLE DISP
     if @tagData.pbb_cab_angle_disp?
-      cabangledisp = if @vals.pbb_cab_angle_disp? && @vals.pbb_cab_angle_disp != '' then (@vals.pbb_cab_angle_disp)  else ' -- ' 
+      cabangledisp = if @vals.pbb_cab_angle_disp? && @vals.pbb_cab_angle_disp != '' then parseFloat(@vals.pbb_cab_angle_disp).toFixed(2)  else ' -- ' 
       ca1 = @$('#pbb_cab_angle_disp').html("Cab Angle : #{cabangledisp}")
       @mark_bad_data @tagData.pbb_cab_angle_disp.Tag, ca1
     else
@@ -228,7 +226,7 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
 
     # SWING ANGLE DISP
     if @tagData.pbb_swing_angle_disp?
-      swingangledisp = if @vals.pbb_swing_angle_disp? && @vals.pbb_swing_angle_disp != '' then (@vals.pbb_swing_angle_disp)  else ' -- ' 
+      swingangledisp = if @vals.pbb_swing_angle_disp? && @vals.pbb_swing_angle_disp != '' then parseFloat(@vals.pbb_swing_angle_disp).toFixed(2)  else ' -- ' 
       swa1 = @$('#pbb_swing_angle_disp').html("Bridge Rotation :#{swingangledisp}")
       @mark_bad_data @tagData.pbb_swing_angle_disp.Tag, swa1
     else
@@ -236,7 +234,7 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
 
     # HEIGHT TO DISP
     if @tagData.pbb_height_to_disp?
-      heighttodisp = if @vals.pbb_height_to_disp? && @vals.pbb_height_to_disp != '' then (@vals.pbb_height_to_disp)  else ' -- ' 
+      heighttodisp = if @vals.pbb_height_to_disp? && @vals.pbb_height_to_disp != '' then parseFloat(@vals.pbb_height_to_disp).toFixed(2)  else ' -- ' 
       hd1 = @$('#pbb_height_to_disp').html("Height : #{heighttodisp}")
       @mark_bad_data @tagData.pbb_height_to_disp.Tag, hd1
     else
@@ -244,7 +242,7 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
 
     # TUNNEL LENGTH
     if @tagData.pbb_tunnel_length?
-      tunnellength = if @vals.pbb_tunnel_length? && @vals.pbb_tunnel_length != '' then (@vals.pbb_tunnel_length)  else ' -- ' 
+      tunnellength = if @vals.pbb_tunnel_length? && @vals.pbb_tunnel_length != '' then parseFloat(@vals.pbb_tunnel_length).toFixed(2)  else ' -- ' 
       tl = @$('#pbb_tunnel_length').html("Tunnel Length : #{tunnellength}")
       @mark_bad_data @tagData.pbb_tunnel_length.Tag, tl
     else
@@ -260,10 +258,10 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     @set_descriptions()
 
   set_model: ()=>
-    @IsUpdatingSettings = true
 
     s = _.clone(@model.get("settings"))
     s.site = @$('#site').val()
+    @site_code = OPCManager.get_site_code(s.site)
     s.terminal = @$('#terminal').val()
     s.zone = @$('#zone').val()
     s.gate = @$('#gate').val()
@@ -272,6 +270,14 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
   toggle_settings: (e)->
     super(e)
     @ui.display.toggle(!@settings_visible)
+    @IsUpdatingSettings = @settings_visible
+    if @settings_visible
+      #@kill_updates(@site_code)
+      if @heartbeat_timer? && @heartbeat_timer > 0
+        window.clearInterval(@heartbeat_timer)
+    else
+      @IsPageLoading = false
+      @update()
 
   onShow: ()->
     settings = @model.get('settings')
@@ -285,17 +291,38 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     gate = settings.gate
     if !gate? || gate == ''
       @toggle_settings()
+    else
+      @IsPageLoading = false
 
     @site_code = OPCManager.get_site_code(settings.site)
-    if @site_code? then @watch_updates(@site_code)
+    if @site_code?
+      @site_refresh = ((OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3)
+      @watch_updates(@site_code)
+
     @check_init_site()
 
 
   start: ()->
     @update()
 
+  start_heartbeat: ()=>
+    @beat_time = new Date().getTime() + @site_refresh
+    $("##{@el.parentNode.id} .widget-outer").toggleClass("no-heartbeat", false)
+    if @heartbeat_timer? && @heartbeat_timer > 0
+      window.clearInterval(@heartbeat_timer)
+    @heartbeat_timer = window.setInterval((=>
+      @check_heartbeat @el.parentNode.id
+      return
+    ), @site_refresh) 
+
+  check_heartbeat: (widget_id)=>
+    @curTime = new Date().getTime()
+    $("##{widget_id} .widget-outer").toggleClass("no-heartbeat", (@curTime > @beat_time))
+
   onDestroy: (arg1, arg2) ->
     # be sure to remove listener
+    if @heartbeat_timer? && @heartbeat_timer > 0
+      window.clearInterval(@heartbeat_timer)
     @kill_updates(@site_code)
     
 # ----------------------------------

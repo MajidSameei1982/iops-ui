@@ -16,11 +16,11 @@ window.app_config = {
       name: "Airport Overview Widget",
       icon: "road"
     },
-    //{
+    // {
     //  id: "advancedalarm",
     //  name: "Advanced Alarm Widget",
     //  icon: "bullhorn"
-    //},
+    // },
     {
       id: "alarm",
       name: "Alarm Widget",
@@ -56,11 +56,11 @@ window.app_config = {
       name: "PBB Bridge Widget",
       icon: "plane"
     },
-    {
-      id: "pbbsystemstatus",
-      name: "PBB System Status",
-      icon: "plane"
-    },
+    // {
+    //   id: "pbbsystemstatus",
+    //   name: "PBB System Status",
+    //   icon: "plane"
+    // },
     {
       id: "pca",
       name: "PCA Widget",
@@ -76,11 +76,11 @@ window.app_config = {
       name: "PCA Summary Widget",
       icon: "server"
     },
-    {
-      id: "video",
-      name: "VIDEO Widget",
-      icon: "flash"
-    },
+    // {
+    //   id: "video",
+    //   name: "VIDEO Widget",
+    //   icon: "flash"
+    // },
     {
       id: "gpu",
       name: "GPU Widget",
@@ -92,6 +92,11 @@ window.app_config = {
       icon: "flash"
     },
     {
+      id: "outofservice",
+      name: "Out Of Service Widget",
+      icon: "wrench"
+    },
+    {
       id: "weather",
       name: "Weather Widget",
       icon: "cloud"
@@ -101,11 +106,11 @@ window.app_config = {
       name: "Report Widget",
       icon: "bar-chart"
     },
-    {
-      id: "kpi",
-      name: "Kpi Widget",
-      icon: "bar-chart" 
-    },
+    // {
+    //   id: "kpi",
+    //   name: "Kpi Widget",
+    //   icon: "bar-chart" 
+    // },
     {
       id: "config",
       name: "Config Widget",
