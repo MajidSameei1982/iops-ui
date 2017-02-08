@@ -88,12 +88,15 @@ class TagConfig extends Object
 		gpu_rv_out_avg:Tag:'GPU.RVOUTAVG',Label:'Average Output - Volts',DataType:'Float'
 									,Parameters:{Parm001:true,Parm002:1,Parm003:'Volts',Parm004:null}
 									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
-		gpu_time:Tag:'GPU.GPUTime',Label:'GPUTime',DataType:'Float'
+		gpu_time:Tag:'GPU.GPUTime',Label:'GPU Run Time',DataType:'Float'
 									,Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null}
 									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
 		gpu_out_of_service:Tag:'GPU._OUT_OF_SERVICE',Label:'[*]GPU',DataType:'Boolean'
 									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
 									,Element:{Type:null,ParentID:null,Class:null,Object:null}
+		gpu_hookup_time:Tag:'GPU.HOOKUPTIME',Label:'GPU Hookup Time',DataType:'Float'
+									,Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}							
 
 		# Hobart SX2400 Dual Unit Tags
 		gpu_01_status:Tag:'GPU01.GPUSTATUSBOOLEAN',Label:'GPU-1 Status',DataType:'Boolean'
@@ -205,7 +208,7 @@ class TagConfig extends Object
 		pbb_daily_aircraft_count:Tag:'PBB.DAILYAIRCRAFTDOCKED',Label:'Daily Aircraft Docked Count',DataType:'Float'
 									,Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null}
 									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
-		pbb_dock_time:Tag:'PBB.DOCKTIME',Label:'Aircraft Docked Time (Minutes)',DataType:'Float'
+		pbb_dock_time:Tag:'PBB.DOCKTIME',Label:'Aircraft Docked Time',DataType:'Float'
 									,Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null}
 									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
 		pbb_estop:Tag:'PBB.E_STOP',Label:'Emergency Stop',DataType:'Boolean'
@@ -214,7 +217,7 @@ class TagConfig extends Object
 		pbb_height_to_disp:Tag:'PBB.HEIGHTTODISP',Label:'Height',DataType:'Float'
 									,Parameters:{Parm001:true,Parm002:2,Parm003:'Height :#{1}',Parm004:null}
 									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
-		pbb_hookup_time:Tag:'PBB.HOOKUPTIME',Label:'PBB On Time',DataType:'Float'
+		pbb_hookup_time:Tag:'PBB.HOOKUPTIME',Label:'PBB Hookup Time',DataType:'Float'
 									,Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null}
 									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
 		pbb_last_dock_time:Tag:'PBB.LASTDOCKTIME',Label:'Daily Aircraft Docked Time',DataType:'Float'
@@ -335,7 +338,7 @@ class TagConfig extends Object
 		pca_suction_pressure_2:Tag:'PCA.C2_SUCTION_PRESSURE',Label:'Suction pressure,primary compressor #2',DataType:'Float'
 									,Parameters:{Parm001:true,Parm002:2,Parm003:'#{1}',Parm004:null}
 									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
-		pca_time:Tag:'PCA.PCATime',Label:'PCA Time',DataType:'Float'
+		pca_time:Tag:'PCA.PCATime',Label:'PCA Run Time',DataType:'Float'
 									,Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null}
 									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
 		pca_vfd_speed:Tag:'PCA.VFD_SPEED',Label:'VFD Speed',DataType:'Float'
@@ -368,6 +371,9 @@ class TagConfig extends Object
 		pca_out_of_service:Tag:'PCA._OUT_OF_SERVICE',Label:'[*]PCA',DataType:'Boolean'
 									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
 									,Element:{Type:null,ParentID:null,Class:null,Object:null}
+		pca_hookup_time:Tag:'PCA.HOOKUPTIME',Label:'PCA Hookup Time',DataType:'Float'
+									,Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}							
 
 		###**************************************************
 		*** ELVROT Tags
@@ -408,7 +414,7 @@ class TagConfig extends Object
 				,'pbb_height_to_disp','pbb_wheel_angle_deg','pbb_tunnel_length'}
 			Graphics:{}
 		pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
-			Tags:{'pbb_status','pca_status','gpu_status','pbb_dock_time','pbb_hookup_time','pca_time','gpu_time','pca_discharge_temp'
+			Tags:{'pbb_status','pca_status','gpu_status','pbb_hookup_time','gpu_hookup_time','pca_hookup_time','pbb_dock_time','pca_time','gpu_time','pca_discharge_temp'
 				,'gpu_ra_out_avg','gpu_rv_out_avg'}
 			Graphics:{}
 		pbb_pca_gpu_status_widget: # PBB/PCA/GPU System Status Widget
@@ -605,13 +611,23 @@ class TagConfig extends Object
 				}
 			out_of_service_widget: # Out Of Service Widget
 				remove_tags:{'pca_out_of_service','gpu_out_of_service'}
-			pbb_level_detail_widget: # PBB Overview Widget
+			pbb_level_detail_widget: # PBB Bridge Widget
 				remove_tags:{'pbb_autoleveling','pbb_estop','pbb_limits','pbb_terminal_door','pbb_cab_angle_disp','pbb_slope_deg','pbb_swing_angle_disp','pbb_height_to_disp','pbb_wheel_angle_deg','pbb_tunnel_length'}		
 				add_tags:{
 					pbb_floodlight:{Tag:'PBB.FLOODLIGHTS',Label:'FloodLights',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 				}
+				'A':
+					'SC':
+						A25:	
+				 			remove_tags:{'pbb_canopy','pbb_autolevel_key','pbb_smoke_detector','pbb_cabin_floor_deicer','pbb_floodlight'}
+						A27:	
+				 			remove_tags:{'pbb_canopy','pbb_autolevel_key','pbb_smoke_detector','pbb_cabin_floor_deicer','pbb_floodlight'}
+						A29:	
+				 			remove_tags:{'pbb_canopy','pbb_autolevel_key','pbb_smoke_detector','pbb_cabin_floor_deicer','pbb_floodlight'}
+						A30:	
+				 			remove_tags:{'pbb_canopy','pbb_autolevel_key','pbb_smoke_detector','pbb_cabin_floor_deicer','pbb_floodlight'}
 			pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
-				remove_tags:{'pca_status','gpu_status','pca_time','pca_discharge_temp','gpu_time','gpu_ra_out_avg','gpu_rv_out_avg'}	
+				remove_tags:{'pca_status','gpu_status','pca_time','pca_hookup_time','pca_discharge_temp','gpu_time','gpu_ra_out_avg','gpu_rv_out_avg'}	
 
 		CID:
 			gpu_summary_widget: # GPU Summary Widget
@@ -1266,7 +1282,7 @@ class TagConfig extends Object
 					B2:
 					    remove_tags:{'pbb_terminal_door'}			
 			pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
-				remove_tags:{'pca_status','pca_time','pca_discharge_temp'}
+				remove_tags:{'pca_status','pca_time','pca_discharge_temp','pca_hookup_time'}
 				4:
 					B1:B29L2:
 						add_tags:{
@@ -1276,13 +1292,15 @@ class TagConfig extends Object
 						update_tags:{
 							pca_status:{Tag:'PCA.PCASTATUS',Label:'PCA status',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'Discharge Air Temperature',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-							pca_time:{Tag:'PCA.PCATime',Label:'PCA Time',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							pca_time:{Tag:'PCA.PCATime',Label:'PCA Run Time',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							pca_hookup_time:Tag:'PCA.HOOKUPTIME',Label:'PCA Hookup Time',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
 						}
 					B3:	
 						update_tags:{
 							pca_status:{Tag:'PCA.PCASTATUS',Label:'PCA status',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'Discharge Air Temperature',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							pca_time:{Tag:'PCA.PCATime',Label:'PCA Time',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							pca_hookup_time:Tag:'PCA.HOOKUPTIME',Label:'PCA Hookup Time',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
 						}	
 			pbb_widget: # PBB Bridge Widget
 				4:
@@ -1874,7 +1892,7 @@ class TagConfig extends Object
 					pca_air_filter_dp:{Tag:'PCA.AIR_FILTER_DP',Label:'Air Filter DP',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 				}
 				update_tags:{
-					pca_dirty_filter:{Tag:'PCA.DIRTY_FILTER',Label:'Dirty Filter',DataType:'Boolean',Parameters:{Parm001:'Yes',Parm002:'No',Parm003:'ok',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					pca_dirty_filter:{Tag:'PCA.Alarm.DIRTY_FILTER',Label:'Dirty Filter',DataType:'Boolean',Parameters:{Parm001:'Yes',Parm002:'No',Parm003:'ok',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 				}
 			pbb_system_status_widget: # PBB Status Widget
 				update_tags:{
