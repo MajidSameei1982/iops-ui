@@ -120,7 +120,10 @@ class PbbdetailWidgetView extends IOPSWidgetView
     cq = @data_q(@tagData.pbb_canopy.Tag)
     @$("div.canopy_img").toggleClass('canopy-on', c==true && cq)
 
+    
+    @$("td.elev_rotunda").toggleClass('no-show', true)
     if (@tagData.elvrot_rotunda_position_boolean?)
+      @$("td.elev_rotunda").toggleClass('no-show', false)
       e = @get_bool(@vals.elvrot_rotunda_position_boolean)
       eq = @data_q(@tagData.elvrot_rotunda_position_boolean.Tag)
       @$("div.elevating_img").toggleClass('down-position', e==true && eq)

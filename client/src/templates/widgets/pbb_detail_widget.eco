@@ -17,7 +17,7 @@
       </h1>
     </div>
     <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>
-<table height="100%";width"100%">
+<table style="height:100%;width: 100%;">
   <tr>
     <td>
       <table> 
@@ -34,7 +34,7 @@
         <tr><td id='pbb_autolevel_container' class=''></td><td id='pbb_canopy_container' class=''></td></tr>     
       </table>
     </td>
-    <td>
+    <td class="elev_rotunda no-show">
       <table id="widgetImage2" class='data transparent no-show'>  
         <tr><td class='val'>&nbsp;</td></tr>
         <tr><td id="elevating_img_container" style="width:150px; height:165px; vertical-align:middle"></td></tr>

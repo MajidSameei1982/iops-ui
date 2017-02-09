@@ -1796,7 +1796,7 @@ window.JST["widgets/config_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-gear"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\' class=\'display\'>\n    <b style=\'margin-bottom:10px;\'>PCA SET POINTS</b>\n    <div><b style=\'color:#cc6666;\'>Heat:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set\'>°</div>\n    <div><b style=\'color:#cc6666;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set_tm\'>min.</div>\n    <div><b style=\'color:#6666cc;\'>Cool:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set\'>°</div>\n    <div><b style=\'color:#6666cc;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set_tm\'>min.</div>\n    <div style=\'margin:10px 0;\'><button id=\'set_pca_points\'>UPDATE CONFIGURATION</button></div>\n  </div>\n  <div id="settings" class=\'settings\' style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-gear"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\' class=\'display\'>\n    \n    <table id="widgetData" class=\'\'> \n      <tr id="config_title">\n        <td class="title" colspan="3">PCA SET POINTS</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>Heat Set Points</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set\'>°</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_cool">\n        <td class=\'lbl\'>Cool Set Points</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set\'>°</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set_tm\'>min.</td>\n      </tr>\n      <tr id="config_title">\n        <td class="title" colspan="3">PERFECT HOOKUP TIMES</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>PCA</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'pca_perfect_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>GPU</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'gpu_perfect_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>PBB</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'pbb_perfect_tm\'>min.</td>\n      </tr>\n    </table>\n\n<!--     <div><b style=\'color:#cc6666;\'>Heat:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set\'>°</div>\n    <div><b style=\'color:#cc6666;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set_tm\'>min.</div>\n    <div><b style=\'color:#6666cc;\'>Cool:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set\'>°</div>\n    <div><b style=\'color:#6666cc;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set_tm\'>min.</div>\n -->    \n    <div style=\'margin:10px 0;\'><button id=\'set_pca_points\'>UPDATE CONFIGURATION</button></div>\n  </div>\n  <div id="settings" class=\'settings\' style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -2061,7 +2061,7 @@ window.JST["widgets/pbb_detail_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div>\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n<table height="100%";width"100%">\n  <tr>\n    <td>\n      <table> \n        <tr><td id="aircraft_img_container" style="width:300px; height:200px; ;text-align:center; vertical-align:middle"></td><tr>\n      </table>\n    </td>\n    <td>\n      <table class=\'data transparent\'> \n        <tr><td id=\'pbb_status_container\' class=\'\'></td><td id=\'pbb_undockordocktime_container\' class=\'\'></td></tr>\n        <tr>\n            <td id="autolevel_img_container" style="width:225px; height:150px; vertical-align:middle"></td>\n            <td id="canopy_img_container" style="width:225px; height:150px; vertical-align:middle"></td>\n        </tr>  \n        <tr><td id=\'pbb_autolevel_container\' class=\'\'></td><td id=\'pbb_canopy_container\' class=\'\'></td></tr>     \n      </table>\n    </td>\n    <td>\n      <table id="widgetImage2" class=\'data transparent no-show\'>  \n        <tr><td class=\'val\'>&nbsp;</td></tr>\n        <tr><td id="elevating_img_container" style="width:150px; height:165px; vertical-align:middle"></td></tr>\n      </table>\n    </td>\n  </tr>\n</table> \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div>\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n<table style="height:100%;width: 100%;">\n  <tr>\n    <td>\n      <table> \n        <tr><td id="aircraft_img_container" style="width:300px; height:200px; ;text-align:center; vertical-align:middle"></td><tr>\n      </table>\n    </td>\n    <td>\n      <table class=\'data transparent\'> \n        <tr><td id=\'pbb_status_container\' class=\'\'></td><td id=\'pbb_undockordocktime_container\' class=\'\'></td></tr>\n        <tr>\n            <td id="autolevel_img_container" style="width:225px; height:150px; vertical-align:middle"></td>\n            <td id="canopy_img_container" style="width:225px; height:150px; vertical-align:middle"></td>\n        </tr>  \n        <tr><td id=\'pbb_autolevel_container\' class=\'\'></td><td id=\'pbb_canopy_container\' class=\'\'></td></tr>     \n      </table>\n    </td>\n    <td class="elev_rotunda no-show">\n      <table id="widgetImage2" class=\'data transparent no-show\'>  \n        <tr><td class=\'val\'>&nbsp;</td></tr>\n        <tr><td id="elevating_img_container" style="width:150px; height:165px; vertical-align:middle"></td></tr>\n      </table>\n    </td>\n  </tr>\n</table> \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -28262,7 +28262,10 @@ ConfigWidgetView = (function(superClass) {
     cooling_pt: 'PCA.SET_COOLINGPOINT.Value',
     heating_pt: 'PCA.SET_HEATINGPOINT.Value',
     cooling_tm: 'PCA.SET_COOLINGPOINT_TIMER.Value',
-    heating_tm: 'PCA.SET_HEATINGPOINT_TIMER.Value'
+    heating_tm: 'PCA.SET_HEATINGPOINT_TIMER.Value',
+    pca_perfect_tm: 'PCA.SET_HOOKUPTIME.Value',
+    gpu_perfect_tm: 'GPU.SET_HOOKUPTIME.Value',
+    pbb_perfect_tm: 'PBB.SET_HOOKUPTIME.Value'
   };
 
   ConfigWidgetView.prototype.base_tags = [];
@@ -28276,13 +28279,15 @@ ConfigWidgetView = (function(superClass) {
     if (!this.IsUpdatingSettings && !this.IsPageLoading) {
       return null;
     }
-    this.IsPageLoading = false;
-    this.IsUpdatingSettings = false;
-    if (this.site_code != null) {
-      this.kill_updates(this.site_code);
+    s = this.update_settings({
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+    });
+    if (this.site_code == null) {
+      return null;
     }
-    s = this.model.get("settings");
     if ((s != null) && !!s.site) {
+      this.kill_updates(this.site_code);
       this.site = OPCManager.get_site(s.site);
       this.site_code = this.site.get('code');
       if (this.site_code == null) {
@@ -28317,12 +28322,15 @@ ConfigWidgetView = (function(superClass) {
   };
 
   ConfigWidgetView.prototype.data_update = function(data) {
-    var cool, cool_tm, heat, heat_tm, i, len, ref, t, v;
+    var cool, cool_tm, gpu_ph_tm, heat, heat_tm, i, len, pbb_ph_tm, pca_ph_tm, ref, t, v;
     if ((data != null) && (data.tags != null) && data.tags.length > 0) {
       cool = 0;
       heat = 0;
       cool_tm = 0;
       heat_tm = 0;
+      pca_ph_tm = 0;
+      gpu_ph_tm = 0;
+      pbb_ph_tm = 0;
       ref = data.tags;
       for (i = 0, len = ref.length; i < len; i++) {
         t = ref[i];
@@ -28346,11 +28354,29 @@ ConfigWidgetView = (function(superClass) {
           v = (v != null) && v !== '' ? parseFloat(v) : 0;
           heat_tm = v > heat_tm ? v : heat_tm;
         }
+        if (t.name.endsWith("PCA.SET_HOOKUPTIME")) {
+          v = t.props[0].val;
+          v = (v != null) && v !== '' ? parseFloat(v) : 0;
+          pca_ph_tm = v > pca_ph_tm ? v : pca_ph_tm;
+        }
+        if (t.name.endsWith("GPU.SET_HOOKUPTIME")) {
+          v = t.props[0].val;
+          v = (v != null) && v !== '' ? parseFloat(v) : 0;
+          gpu_ph_tm = v > gpu_ph_tm ? v : gpu_ph_tm;
+        }
+        if (t.name.endsWith("PBB.SET_HOOKUPTIMETIME")) {
+          v = t.props[0].val;
+          v = (v != null) && v !== '' ? parseFloat(v) : 0;
+          pbb_ph_tm = v > pbb_ph_tm ? v : pbb_ph_tm;
+        }
       }
       this.$('input#cool_set').val(cool);
       this.$('input#heat_set').val(heat);
       this.$('input#cool_set_tm').val(cool_tm);
       this.$('input#heat_set_tm').val(heat_tm);
+      this.$('input#pca_perfect_tm').val(pca_ph_tm);
+      this.$('input#gpu_perfect_tm').val(gpu_ph_tm);
+      this.$('input#pbb_perfect_tm').val(pbb_ph_tm);
     }
     return this.kill_updates(this.site_code);
   };
@@ -28377,7 +28403,10 @@ ConfigWidgetView = (function(superClass) {
                 this.opc.set_value("" + pre + this.tags.cooling_pt, this.$('input#cool_set').val());
                 this.opc.set_value("" + pre + this.tags.heating_pt, this.$('input#heat_set').val());
                 this.opc.set_value("" + pre + this.tags.cooling_tm, this.$('input#cool_set_tm').val());
-                results2.push(this.opc.set_value("" + pre + this.tags.heating_tm, this.$('input#heat_set_tm').val()));
+                this.opc.set_value("" + pre + this.tags.heating_tm, this.$('input#heat_set_tm').val());
+                this.opc.set_value("" + pre + this.tags.pca_perfect_tm, this.$('input#pca_perfect_tm').val());
+                this.opc.set_value("" + pre + this.tags.gpu_perfect_tm, this.$('input#gpu_perfect_tm').val());
+                results2.push(this.opc.set_value("" + pre + this.tags.pbb_perfect_tm, this.$('input#pbb_perfect_tm').val()));
               }
               return results2;
             }).call(this));
@@ -30839,7 +30868,9 @@ PbbdetailWidgetView = (function(superClass) {
     this.$("div.autolevel_img").toggleClass('autolevel-on', a === true && auq);
     cq = this.data_q(this.tagData.pbb_canopy.Tag);
     this.$("div.canopy_img").toggleClass('canopy-on', c === true && cq);
+    this.$("td.elev_rotunda").toggleClass('no-show', true);
     if ((this.tagData.elvrot_rotunda_position_boolean != null)) {
+      this.$("td.elev_rotunda").toggleClass('no-show', false);
       e = this.get_bool(this.vals.elvrot_rotunda_position_boolean);
       eq = this.data_q(this.tagData.elvrot_rotunda_position_boolean.Tag);
       this.$("div.elevating_img").toggleClass('down-position', e === true && eq);
@@ -31821,6 +31852,7 @@ PbbpcagpustatusWidgetView = (function(superClass) {
     if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
       window.clearInterval(this.heartbeat_timer);
     }
+    console.log(this.el.parentNode.id + "_" + this.classID + "::" + this.site_code + " - Heartbeat Started: " + this.site_refresh);
     return this.heartbeat_timer = window.setInterval(((function(_this) {
       return function() {
         _this.check_heartbeat(_this.el.parentNode.id);

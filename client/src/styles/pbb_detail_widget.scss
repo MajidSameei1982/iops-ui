@@ -47,17 +47,22 @@
         background-image: url("../img/pbb/PBB-Canopy-On-400x400.gif");
       }
     }
-    .elevating_img {
-      position: relative;
-      float: left;
-      background-image: url("../img/pbb/up-position.png") ;
-      background-repeat: no-repeat; 
-      background-position: center center;
-      background-size: contain;
-      height: 100%;
-      width: 100%;
-      &.down-position {
-        background-image: url("../img/pbb/down-position.png");
+    .elev_rotunda {
+      &.no-show {
+        display: none;
+      }
+      .elevating_img {
+        position: relative;
+        float: left;
+        background-image: url("../img/pbb/up-position.png") ;
+        background-repeat: no-repeat; 
+        background-position: center center;
+        background-size: contain;
+        height: 100%;
+        width: 100%;
+        &.down-position {
+          background-image: url("../img/pbb/down-position.png");
+        }
       }
     }
 

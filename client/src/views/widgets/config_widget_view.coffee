@@ -20,6 +20,9 @@ class ConfigWidgetView extends IOPSWidgetView
     heating_pt:  'PCA.SET_HEATINGPOINT.Value'
     cooling_tm:  'PCA.SET_COOLINGPOINT_TIMER.Value'
     heating_tm:  'PCA.SET_HEATINGPOINT_TIMER.Value'
+    pca_perfect_tm: 'PCA.SET_HOOKUPTIME.Value'
+    gpu_perfect_tm: 'GPU.SET_HOOKUPTIME.Value'
+    pbb_perfect_tm: 'PBB.SET_HOOKUPTIME.Value'
 
   base_tags: []
 
@@ -31,13 +34,16 @@ class ConfigWidgetView extends IOPSWidgetView
     if !@IsUpdatingSettings && !@IsPageLoading
       return null
 
-    @IsPageLoading = false
-    @IsUpdatingSettings = false
+    s = @update_settings
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
 
-    if @site_code? then @kill_updates(@site_code)
-    s = @model.get("settings")
-   
+    if !@site_code? then return null
+
     if s? && !!s.site
+
+      # stop listening for updates
+      @kill_updates(@site_code)
 
       @site = OPCManager.get_site(s.site)
       @site_code = @site.get('code')
@@ -75,6 +81,10 @@ class ConfigWidgetView extends IOPSWidgetView
       heat = 0
       cool_tm = 0
       heat_tm = 0
+      pca_ph_tm = 0
+      gpu_ph_tm = 0
+      pbb_ph_tm = 0
+
       for t in data.tags
         if t.name.endsWith("PCA.SET_COOLINGPOINT")
           v = t.props[0].val
@@ -92,10 +102,25 @@ class ConfigWidgetView extends IOPSWidgetView
           v = t.props[0].val
           v = if v? && v != '' then parseFloat(v) else 0
           heat_tm = if v > heat_tm then v else heat_tm
+        if t.name.endsWith("PCA.SET_HOOKUPTIME")
+          v = t.props[0].val
+          v = if v? && v != '' then parseFloat(v) else 0
+          pca_ph_tm = if v > pca_ph_tm then v else pca_ph_tm
+        if t.name.endsWith("GPU.SET_HOOKUPTIME")
+          v = t.props[0].val
+          v = if v? && v != '' then parseFloat(v) else 0
+          gpu_ph_tm = if v > gpu_ph_tm then v else gpu_ph_tm
+        if t.name.endsWith("PBB.SET_HOOKUPTIMETIME")
+          v = t.props[0].val
+          v = if v? && v != '' then parseFloat(v) else 0
+          pbb_ph_tm = if v > pbb_ph_tm then v else pbb_ph_tm
       @$('input#cool_set').val(cool)
       @$('input#heat_set').val(heat)
       @$('input#cool_set_tm').val(cool_tm)
       @$('input#heat_set_tm').val(heat_tm)
+      @$('input#pca_perfect_tm').val(pca_ph_tm)
+      @$('input#gpu_perfect_tm').val(gpu_ph_tm)
+      @$('input#pbb_perfect_tm').val(pbb_ph_tm)
     @kill_updates(@site_code)
 
   set_points: (e)=>
@@ -113,6 +138,9 @@ class ConfigWidgetView extends IOPSWidgetView
             @opc.set_value("#{pre}#{@tags.heating_pt}", @$('input#heat_set').val())
             @opc.set_value("#{pre}#{@tags.cooling_tm}", @$('input#cool_set_tm').val())
             @opc.set_value("#{pre}#{@tags.heating_tm}", @$('input#heat_set_tm').val())
+            @opc.set_value("#{pre}#{@tags.pca_perfect_tm}", @$('input#pca_perfect_tm').val())
+            @opc.set_value("#{pre}#{@tags.gpu_perfect_tm}", @$('input#gpu_perfect_tm').val())
+            @opc.set_value("#{pre}#{@tags.pbb_perfect_tm}", @$('input#pbb_perfect_tm').val())
     
   set_model: ()=>
     @IsUpdatingSettings = true
