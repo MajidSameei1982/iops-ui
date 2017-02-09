@@ -23,7 +23,7 @@
 
   OPC = (function() {
 
-    OPC.version = '3.1.0';
+    OPC.version = '3.0.2';
     OPC.callback_id = 0;
     OPC.pending_callbacks = 0;
     OPC.max_callbacks = 10;
@@ -31,7 +31,6 @@
     OPC.interval = 1000;
     OPC.connections = [];
     OPC.debug = false;
-    OPC.isfile = document.location.protocol && document.location.protocol.indexOf("file") >= 0; // if loading from local file
 
     OPC.rndstr = function(len) {
       var text = "";
@@ -503,7 +502,6 @@
       this.reload_interval = this.config.reload_interval != null ? this.config.reload_interval : 0;
       this.callback_timeout = this.config.callback_timeout != null ? this.config.callback_timeout : null;
       this.max_callbacks = this.config.max_callbacks != null ? this.config.max_callbacks : OPC.max_callbacks;
-      this.data_index = null; // data_index 
       if (OPC.max_callbacks < this.max_callbacks) {
         OPC.max_callbacks = this.max_callbacks;
       }
@@ -908,63 +906,23 @@
     };
 
     OPC.prototype.refresh = function() {
-      var ab, cid, i, idx, t, tagset, tagsets, tb, ts, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1, _ref2,
+      var ab, cid, d, i, idx, t, tagset, tagsets, tb, ts, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1, _ref2,
         _this = this;
-      if (_this.alarm_bindings != null) {
-        _ref = _this.alarm_bindings;
+      if (this.alarm_bindings != null) {
+        _ref = this.alarm_bindings;
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           ab = _ref[_i];
           ab.refresh_data();
         }
       }
-      if (_this.trend_bindings != null) {
-        _ref1 = _this.trend_bindings;
+      if (this.trend_bindings != null) {
+        _ref1 = this.trend_bindings;
         for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
           tb = _ref1[_j];
           tb.refresh_data();
         }
       }
-
-      var d = _this.get_tag_json();
-
-      // ------ data_index ------
-      if (!OPC.isfile && _this.data_index == null) {
-        // request data index
-        var data = {tags:[]};
-        if (d.tags.length == 0) return !0;
-
-        _this.data_index = "pending";
-        for (var n=0; n < d.tags.length; n++) {
-            var tag = d.tags[n];
-            for(var m=0; m<tag.props.length; m++) {
-                data.tags.push(tag.name + "." + tag.props[m].name);
-            }
-        }
-        _this.post({
-            data: data,
-            error: null,
-            success: null,
-            url: "/getdataindex?token=" + _this.token,
-            success: function(d) {
-              _this.data_index = d.message;
-              _this.get_tagdata();
-            },
-            error: function(perror){
-              if (perror.status == 0) {OPC.isfile = true;} // hack to devolve
-              _this.data_index = null;
-            }
-        });
-        return !0;
-
-      } else if (!OPC.isfile && _this.data_index == "pending") {
-        return !0;
-      } else if (!OPC.isfile) {
-        _this.get_tagdata();
-        return !0;
-      }
-      // ------ data_index ------
-
-
+      d = this.get_tag_json();
       tagsets = [];
       tagset = [];
       _ref2 = d.tags;
@@ -988,7 +946,7 @@
           d.status = "OK";
           d.message = "";
           cid = OPC.callback_id++;
-          _this.get({
+          this.get({
             url: '/getdata',
             data: d,
             cid: cid,
@@ -1012,26 +970,6 @@
       }
       d = null;
       return true;
-    };
-
-    OPC.prototype.get_tagdata = function(){
-      var _this = this;
-      var _cidx = OPC.cbpre + "_" + OPC.callback_id++
-      $.ajax({
-          type: "GET",
-          url: "" + _this.serverURL + "/OPCREST/gettagdata?token=" + _this.token + "&dataindex=" + _this.data_index + "&callback=" + _cidx,
-          contentType: "text/plain",
-          success: function(data){
-            _this.refresh_data(data, _cidx, _this);
-            if (_this.refresh_callback != null) {
-              _this.refresh_callback(data, _this);
-            }
-          },
-          error: function(e){
-            _this.data_index = null;
-          },
-          timeout: _this.interval + 1e3,
-      });
     };
 
     OPC.prototype.load_tags = function(tags, success, error) {
@@ -1223,21 +1161,6 @@
         OPC.pending_callbacks += 1;
       }
       return true;
-    };
-
-    OPC.prototype.post = function(r) {
-      var _this = this;
-      $.ajax({
-        type: "POST",
-        url: "" + _this.serverURL + "/OPCREST" + r.url + "&callback=" + OPC.cbpre + "_" + OPC.callback_id++,
-        dataType: "json",
-        contentType: "application/json; charset=utf-8",
-        data: JSON.stringify(r.data),
-        success: r.success,
-        error: r.error,
-        timeout: 30000,
-        crossDomain: true
-      });
     };
 
     OPC.prototype.read_tags = function(tags, cid) {

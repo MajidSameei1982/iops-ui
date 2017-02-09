@@ -3,3 +3,4 @@ build
 build/*
 .sass-cache
 .DS_Store
+.merge_file_*
