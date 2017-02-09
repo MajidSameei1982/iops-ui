@@ -7,11 +7,43 @@
 </div><!-- /.box-header -->
 <div class="box-body content">
   <div id='display' class='display'>
-    <b style='margin-bottom:10px;'>PCA SET POINTS</b>
-    <div><b style='color:#cc6666;'>Heat:</b> <input type='text' style='width:50px;text-align:right;' id='heat_set'>°</div>
+    
+    <table id="widgetData" class=''> 
+      <tr id="config_title">
+        <td class="title" colspan="3">PCA SET POINTS</td>
+      </tr>
+      <tr id="config_set_heat">
+        <td class='lbl'>Heat Set Points</td>
+        <td class='input'><input type='text' id='heat_set'>°</td>
+        <td class='input'><input type='text' id='heat_set_tm'>min.</td>
+      </tr>
+      <tr id="config_set_cool">
+        <td class='lbl'>Cool Set Points</td>
+        <td class='input'><input type='text' id='heat_set'>°</td>
+        <td class='input'><input type='text' id='heat_set_tm'>min.</td>
+      </tr>
+      <tr id="config_title">
+        <td class="title" colspan="3">PERFECT HOOKUP TIMES</td>
+      </tr>
+      <tr id="config_set_heat">
+        <td class='lbl'>PCA</td>
+        <td colspan="2" class='input'><input type='text' id='pca_perfect_tm'>min.</td>
+      </tr>
+      <tr id="config_set_heat">
+        <td class='lbl'>GPU</td>
+        <td colspan="2" class='input'><input type='text' id='gpu_perfect_tm'>min.</td>
+      </tr>
+      <tr id="config_set_heat">
+        <td class='lbl'>PBB</td>
+        <td colspan="2" class='input'><input type='text' id='pbb_perfect_tm'>min.</td>
+      </tr>
+    </table>
+
+<!--     <div><b style='color:#cc6666;'>Heat:</b> <input type='text' style='width:50px;text-align:right;' id='heat_set'>°</div>
     <div><b style='color:#cc6666;'>Time:</b> <input type='text' style='width:50px;text-align:right;' id='heat_set_tm'>min.</div>
     <div><b style='color:#6666cc;'>Cool:</b> <input type='text' style='width:50px;text-align:right;' id='cool_set'>°</div>
     <div><b style='color:#6666cc;'>Time:</b> <input type='text' style='width:50px;text-align:right;' id='cool_set_tm'>min.</div>
+ -->    
     <div style='margin:10px 0;'><button id='set_pca_points'>UPDATE CONFIGURATION</button></div>
   </div>
   <div id="settings" class='settings' style="display: none;">

@@ -286,6 +286,7 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
     $("##{@el.parentNode.id} .widget-outer").toggleClass("no-heartbeat", false)
     if @heartbeat_timer? && @heartbeat_timer > 0
       window.clearInterval(@heartbeat_timer)
+    console.log "#{@el.parentNode.id}_#{@classID}::#{@site_code} - Heartbeat Started: #{@site_refresh}"
     @heartbeat_timer = window.setInterval((=>
       @check_heartbeat @el.parentNode.id
       return

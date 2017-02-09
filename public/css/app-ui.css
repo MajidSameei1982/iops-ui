@@ -2378,6 +2378,33 @@ i.form-control-feedback {
 .bs-callout-info h4 {
   color: #5bc0de; }
 
+.config_widget #widgetData {
+  width: 100%;
+  border: solid 1px #999 !important;
+  border-spacing: 1px;
+  border-collapse: separate; }
+  .config_widget #widgetData .title {
+    width: 40%;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 14pt;
+    text-align: center;
+    background-color: #999; }
+  .config_widget #widgetData .lbl {
+    width: 30%;
+    font-size: 10pt;
+    text-align: right;
+    background-color: #eee;
+    color: #000;
+    padding-right: 10px; }
+  .config_widget #widgetData .input {
+    width: 30%;
+    text-align: center;
+    min-width: 75px; }
+    .config_widget #widgetData .input input {
+      width: 40%;
+      margin-right: 10px; }
+
 * {
   outline: none; }
 
@@ -3030,7 +3057,9 @@ ul.chosen-results li.highlighted {
     width: 100%; }
     .pbb_detail_widget .display .canopy_img.canopy-on {
       background-image: url("../img/pbb/PBB-Canopy-On-400x400.gif"); }
-  .pbb_detail_widget .display .elevating_img {
+  .pbb_detail_widget .display .elev_rotunda.no-show {
+    display: none; }
+  .pbb_detail_widget .display .elev_rotunda .elevating_img {
     position: relative;
     float: left;
     background-image: url("../img/pbb/up-position.png");
@@ -3039,7 +3068,7 @@ ul.chosen-results li.highlighted {
     background-size: contain;
     height: 100%;
     width: 100%; }
-    .pbb_detail_widget .display .elevating_img.down-position {
+    .pbb_detail_widget .display .elev_rotunda .elevating_img.down-position {
       background-image: url("../img/pbb/down-position.png"); }
   .pbb_detail_widget .display #pbbdetail_label {
     margin-bottom: 3px; }
