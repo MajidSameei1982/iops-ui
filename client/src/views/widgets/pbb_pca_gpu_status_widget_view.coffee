@@ -12,6 +12,7 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
     content:        '.content'
     site:           'select#site'
     gates:          '#gate_cks'
+    widgetData:     ''
 
   @layout:
     sx: 8
@@ -30,6 +31,7 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
  
   max_gates: 6
   site_refresh: 50000
+  refId: 0
 
   IsUpdatingSettings: false
   IsPageLoading: true
@@ -53,11 +55,12 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
       return if !s.gates || s.gates.length == 0   
 
       # stop listening for updates
-      @kill_updates(@site_code)
+      #@kill_updates(@site_code)
 
       tags = []
       elementPrefix = "li##{@el.parentNode.id} .#{@classID} "
-      $("#{elementPrefix} [id^='dynamic_']").remove()
+      #$("#{elementPrefix} [id^='dynamic_']").remove()
+      @$("[id^='dynamic_']").remove()
       column = 1
       @tagData = []
       for g in s.gates
@@ -75,9 +78,20 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
             @tagData["#{gp[0]}_#{gp[1]}_#{gp[2]}_#{btg}"] = { Tag: "#{t}",DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null}}
           data = []
 
-        if($("#{elementPrefix} #dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}").length == 0)
-          $("#{elementPrefix} #widgetData thead tr").append("<th id='dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}' class='header'>#{gp[2]}</th>")
-          $("#{elementPrefix} #widgetData tbody #iconRow").append(
+        # if($("#{elementPrefix} #dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}").length == 0)
+        #   $("#{elementPrefix} #widgetData thead tr").append("<th id='dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}' class='header'>#{gp[2]}</th>")
+        #   $("#{elementPrefix} #widgetData tbody #iconRow").append(
+        #     "<td id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}'>
+        #       <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_critical' class='fa fa-warning' title='Gate has CRITICAL ALARMS'></i>
+        #       <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_alarm' class='fa fa-bell' title='Gate has ALARMS'></i>
+        #       <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_docked' class='fa fa-plane' title='Plane is DOCKED'></i>
+        #       <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_outofservice' class='fa fa-wrench' title='A system is out of service'></i>
+        #       <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_perfecthookup' class='fa fa-check-circle-o' title='Perfect Hookup'></i>
+        #     </td>"
+        #   )
+        if(@$("#dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}").length == 0)
+          @$("#widgetData thead tr").append("<th id='dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}' class='header'>#{gp[2]}</th>")
+          @$("#widgetData tbody #iconRow").append(
             "<td id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}'>
               <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_critical' class='fa fa-warning' title='Gate has CRITICAL ALARMS'></i>
               <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_alarm' class='fa fa-bell' title='Gate has ALARMS'></i>
@@ -92,11 +106,26 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
           gate = "Term#{gp[0]}.Zone#{gp[1]}.Gate#{gp[2]}."
           tags.push "#{@prefix}#{gate}#{tagData.Tag}.Value"
           if(tagData.Element.Class != 'no_row')
-            if($("#{elementPrefix} #dynamic_#{tag}").length == 0)
+            # if($("#{elementPrefix} #dynamic_#{tag}").length == 0)
+            #   label = tagData.Label
+            #   if /[*]/.test(label)
+            #     label = label.replace "[*]", ""
+            #   $("#{elementPrefix} #widgetData tbody").append(
+            #     "<tr id='dynamic_#{tag}'>
+            #       <td class='lbl' id='dynamic_#{tag}_lbl'>#{label}</td>
+            #       <td class='val no-show' id='dynamic_#{tag}_default_1'></td>
+            #       <td class='val no-show' id='dynamic_#{tag}_default_2'></td>
+            #       <td class='val no-show' id='dynamic_#{tag}_default_3'></td>
+            #       <td class='val no-show' id='dynamic_#{tag}_default_4'></td>
+            #       <td class='val no-show' id='dynamic_#{tag}_default_5'></td>
+            #       <td class='val no-show' id='dynamic_#{tag}_default_6'></td>
+            #     </th>"
+            #   )
+            if(@$("#dynamic_#{tag}").length == 0)
               label = tagData.Label
               if /[*]/.test(label)
                 label = label.replace "[*]", ""
-              $("#{elementPrefix} #widgetData tbody").append(
+              @$("#widgetData tbody").append(
                 "<tr id='dynamic_#{tag}'>
                   <td class='lbl' id='dynamic_#{tag}_lbl'>#{label}</td>
                   <td class='val no-show' id='dynamic_#{tag}_default_1'></td>
@@ -108,18 +137,31 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
                 </th>"
               )
 
-          $("#{elementPrefix} #widgetData #dynamic_#{tag} td:nth-child(#{column})").attr('id', "dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}_#{tag}")
-          $("#{elementPrefix} #widgetData #dynamic_#{tag} td:nth-child(#{column})").toggleClass("no-show", false)
+          # $("#{elementPrefix} #widgetData #dynamic_#{tag} td:nth-child(#{column})").attr('id', "dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}_#{tag}")
+          # $("#{elementPrefix} #widgetData #dynamic_#{tag} td:nth-child(#{column})").toggleClass("no-show", false)
+          # if "dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}_#{tag}".indexOf("_discharge_") > -1
+          #   $("#{elementPrefix} #widgetData #dynamic_#{tag} td:nth-child(#{column})").toggleClass("val", false)
+          #   $("#{elementPrefix} #widgetData #dynamic_#{tag} td:nth-child(#{column})").toggleClass("DisCharge", true)
+
+
+          # for element, index in $("#{elementPrefix} #dynamic_#{tag}>td")
+          #   if element.id.indexOf("dynamic_#{tag}_default_") > -1
+          #     col = column - 1
+          #     $("#{elementPrefix} ##{element.id}").toggleClass('no-show',(index > col))
+          #     $("#{elementPrefix} ##{element.id}").toggleClass('show-no-status',(index <= col))
+
+          @$("#widgetData #dynamic_#{tag} td:nth-child(#{column})").attr('id', "dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}_#{tag}")
+          @$("#widgetData #dynamic_#{tag} td:nth-child(#{column})").toggleClass("no-show", false)
           if "dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}_#{tag}".indexOf("_discharge_") > -1
-            $("#{elementPrefix} #widgetData #dynamic_#{tag} td:nth-child(#{column})").toggleClass("val", false)
-            $("#{elementPrefix} #widgetData #dynamic_#{tag} td:nth-child(#{column})").toggleClass("DisCharge", true)
+            @$("#widgetData #dynamic_#{tag} td:nth-child(#{column})").toggleClass("val", false)
+            @$("#widgetData #dynamic_#{tag} td:nth-child(#{column})").toggleClass("DisCharge", true)
 
 
-          for element, index in $("#{elementPrefix} #dynamic_#{tag}>td")
+          for element, index in @$("#dynamic_#{tag}>td")
             if element.id.indexOf("dynamic_#{tag}_default_") > -1
               col = column - 1
-              $("#{elementPrefix} ##{element.id}").toggleClass('no-show',(index > col))
-              $("#{elementPrefix} ##{element.id}").toggleClass('show-no-status',(index <= col))
+              @$("##{element.id}").toggleClass('no-show',(index > col))
+              @$("##{element.id}").toggleClass('show-no-status',(index <= col))
 
 
           # for element, index in $("#widgetData tbody>tr")
@@ -136,11 +178,16 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
           tags.push "#{@prefix}#{gate}#{t}"
 
       @cktags = tags
-      App.opc.add_tags @site_code, tags
-      @opc =  App.opc.connections[@site_code]
+
+      if @refId == 0
+        @refId = App.opc.add_tags @site_code, tags
+        App.vent.on "opc:data:#{@site_code}", @data_update
+        @opc =  App.opc.connections[@site_code]
+        @start_heartbeat()
+
       # listen for updates
-      @watch_updates(@site_code)
-      @start_heartbeat()
+      #@watch_updates(@site_code)
+    @ 
 
 
   # process data and update the view
@@ -160,22 +207,47 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
       # Process the Docked
       setValue = (@vals[tag]? && @vals[tag] == "True")
 
+      # if /pbb_docked/.test(tag)
+      #   $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_docked").toggleClass('docked',setValue)
+      # else if tag.indexOf("#{tzgPrefix}_has_critical_alarms") > -1
+      #   $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_critical").toggleClass('critical',setValue)
+      # else if tag.indexOf("#{tzgPrefix}_has_alarms") > -1
+      #   $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_alarm").toggleClass('alarm',setValue)
+      # else if tag.indexOf("#{tzgPrefix}_system_quality") > -1
+      #   $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_bad_quality").toggleClass('bad-data',!setValue)
+      # else if tag.indexOf("#{tzgPrefix}_system_out_of_service") > -1
+      #   $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_outofservice").toggleClass('out-of-service',setValue)
+      # else if tag.indexOf("#{tzgPrefix}_system_perfect_hookup") > -1
+      #   $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_perfecthookup").toggleClass('perfect-hookup',setValue)
+      # else if tag.indexOf("#{tzgPrefix}_pca_mode_cooling") > -1
+      #   $("#{elementPrefix} #widgetData #dynamic_#{tzgPrefix}_pca_discharge_temp").toggleClass('Cooling',setValue)
+      # else if tag.indexOf("#{tzgPrefix}_pca_mode_heating") > -1
+      #   $("#{elementPrefix} #widgetData #dynamic_#{tzgPrefix}_pca_discharge_temp").toggleClass('Heating',setValue)
+      # else
+      #   switch data.DataType.toLowerCase()
+      #     when 'boolean'
+      #       @render_row_tzg("dynamic_#{tag}", "", "", data.Parameters.Parm003, data.Parameters.Parm004, data.Parameters.Parm005)
+      #     when 'float'
+      #       @render_value_row_tzg("dynamic_#{tag}", data.Parameters.Parm001, data.Parameters.Parm002, data.Parameters.Parm003, data.Parameters.Parm004)
+      #     when 'value'
+      #       @render_value_row_tzg("dynamic_#{tag}", "", "", data.Parameters.Parm003, data.Parameters.Parm004)
+
       if /pbb_docked/.test(tag)
-        $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_docked").toggleClass('docked',setValue)
+        @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_docked").toggleClass('docked',setValue)
       else if tag.indexOf("#{tzgPrefix}_has_critical_alarms") > -1
-        $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_critical").toggleClass('critical',setValue)
+        @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_critical").toggleClass('critical',setValue)
       else if tag.indexOf("#{tzgPrefix}_has_alarms") > -1
-        $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_alarm").toggleClass('alarm',setValue)
+        @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_alarm").toggleClass('alarm',setValue)
       else if tag.indexOf("#{tzgPrefix}_system_quality") > -1
-        $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_bad_quality").toggleClass('bad-data',!setValue)
+        @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_bad_quality").toggleClass('bad-data',!setValue)
       else if tag.indexOf("#{tzgPrefix}_system_out_of_service") > -1
-        $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_outofservice").toggleClass('out-of-service',setValue)
+        @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_outofservice").toggleClass('out-of-service',setValue)
       else if tag.indexOf("#{tzgPrefix}_system_perfect_hookup") > -1
-        $("#{elementPrefix} #widgetData #dynamic_iconRow_#{tzgPrefix}_perfecthookup").toggleClass('perfect-hookup',setValue)
+        @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_perfecthookup").toggleClass('perfect-hookup',setValue)
       else if tag.indexOf("#{tzgPrefix}_pca_mode_cooling") > -1
-        $("#{elementPrefix} #widgetData #dynamic_#{tzgPrefix}_pca_discharge_temp").toggleClass('Cooling',setValue)
+        @$("#widgetData #dynamic_#{tzgPrefix}_pca_discharge_temp").toggleClass('Cooling',setValue)
       else if tag.indexOf("#{tzgPrefix}_pca_mode_heating") > -1
-        $("#{elementPrefix} #widgetData #dynamic_#{tzgPrefix}_pca_discharge_temp").toggleClass('Heating',setValue)
+        @$("#widgetData #dynamic_#{tzgPrefix}_pca_discharge_temp").toggleClass('Heating',setValue)
       else
         switch data.DataType.toLowerCase()
           when 'boolean'
@@ -185,9 +257,14 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
           when 'value'
             @render_value_row_tzg("dynamic_#{tag}", "", "", data.Parameters.Parm003, data.Parameters.Parm004)
       
-      @
+    @
   
   set_model: ()=>
+    if @refId > 0
+      @kill_updates(@site_code)
+      if @heartbeat_timer? && @heartbeat_timer > 0
+        window.clearInterval(@heartbeat_timer)
+      @refId = 0
 
     s = _.clone(@model.get("settings"))
     s.site = @$('#site').val()
@@ -203,9 +280,6 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
     @ui.display.toggle(!@settings_visible)
     @IsUpdatingSettings = @settings_visible
     if @settings_visible
-      #@kill_updates(@site_code)
-      if @heartbeat_timer? && @heartbeat_timer > 0
-        window.clearInterval(@heartbeat_timer)
       @draw_gate_checks()
     else
       @IsPageLoading = false
@@ -274,7 +348,7 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
     @site_code = OPCManager.get_site_code(settings.site)
     if @site_code?
       @site_refresh = ((OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3)
-      @watch_updates(@site_code)
+      #@watch_updates(@site_code)
 
     @check_init_site()
 
@@ -283,7 +357,8 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
 
   start_heartbeat: ()=>
     @beat_time = new Date().getTime() + @site_refresh
-    $("##{@el.parentNode.id} .widget-outer").toggleClass("no-heartbeat", false)
+    # $("##{@el.parentNode.id} .widget-outer").toggleClass("no-heartbeat", false)
+    @$(".widget-outer").toggleClass("no-heartbeat", false)
     if @heartbeat_timer? && @heartbeat_timer > 0
       window.clearInterval(@heartbeat_timer)
     console.log "#{@el.parentNode.id}_#{@classID}::#{@site_code} - Heartbeat Started: #{@site_refresh}"
@@ -294,7 +369,8 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
 
   check_heartbeat: (widget_id)=>
     @curTime = new Date().getTime()
-    $("##{widget_id} .widget-outer").toggleClass("no-heartbeat", (@curTime > @beat_time))
+    # $("##{widget_id} .widget-outer").toggleClass("no-heartbeat", (@curTime > @beat_time))
+    @$(".widget-outer").toggleClass("no-heartbeat", (@curTime > @beat_time))
 
   onDestroy: (arg1, arg2) ->
     # be sure to remove listener

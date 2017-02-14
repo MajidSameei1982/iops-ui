@@ -78,7 +78,7 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
       @ui.wtitle.html(lbl)
 
       # stop listening for updates
-      @kill_updates(@site_code)
+      #@kill_updates(@site_code)
 
       tags = []
       @tagData = []
@@ -96,12 +96,14 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
         tags.push "#{@prefix}#{t}.Value"
 
       App.opc.add_tags @site_code, tags
+      App.vent.on "opc:data:#{@site_code}", @data_update
 
       @opc =  App.opc.connections[@site_code]
+
       ref = s.layout
 
       # listen for updates
-      @watch_updates(@site_code)
+      #@watch_updates(@site_code)
       @start_heartbeat()
       @set_descriptions(true)
 
@@ -272,7 +274,6 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     @ui.display.toggle(!@settings_visible)
     @IsUpdatingSettings = @settings_visible
     if @settings_visible
-      #@kill_updates(@site_code)
       if @heartbeat_timer? && @heartbeat_timer > 0
         window.clearInterval(@heartbeat_timer)
     else
@@ -297,7 +298,7 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     @site_code = OPCManager.get_site_code(settings.site)
     if @site_code?
       @site_refresh = ((OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3)
-      @watch_updates(@site_code)
+      #@watch_updates(@site_code)
 
     @check_init_site()
 

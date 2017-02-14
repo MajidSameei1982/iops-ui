@@ -1775,6 +1775,112 @@ window.JST["widgets/asset_widget"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
+window.JST["widgets/config_airport_widget"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-gear"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\' class=\'display\'>\n    \n    <table id="widgetData" class=\'\'> \n      <tr id="config_title">\n        <td class="title" colspan="3">PCA SET POINTS</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>Heat Set Points</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set\'>°</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_cool">\n        <td class=\'lbl\'>Cool Set Points</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set\'>°</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set_tm\'>min.</td>\n      </tr>\n      <tr id="config_title">\n        <td class="title" colspan="3">PERFECT HOOKUP TIMES</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>PCA</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'pca_perfect_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>GPU</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'gpu_perfect_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>PBB</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'pbb_perfect_tm\'>min.</td>\n      </tr>\n    </table>\n\n<!--     <div><b style=\'color:#cc6666;\'>Heat:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set\'>°</div>\n    <div><b style=\'color:#cc6666;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set_tm\'>min.</div>\n    <div><b style=\'color:#6666cc;\'>Cool:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set\'>°</div>\n    <div><b style=\'color:#6666cc;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set_tm\'>min.</div>\n -->    \n    <div style=\'margin:10px 0;\'><button id=\'set_pca_points\'>UPDATE CONFIGURATION</button></div>\n  </div>\n  <div id="settings" class=\'settings\' style="display: none;">\n    <h3>Settings</h3>\n    '));
+    
+      _print(_safe(this.siteSelector({
+        id: 'site',
+        label: 'Site',
+        site: this.settings.site
+      })));
+    
+      _print(_safe('\n  </div><!-- /.box-body -->\n</div><!-- /.box-body -->\n'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
+window.JST["widgets/config_gate_widget"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-gear"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\' class=\'display\'>\n    \n    <table id="widgetData" class=\'\'> \n      <tr id="config_title">\n        <td class="title" colspan="3">PCA SET POINTS</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>Heat Set Points</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set\'>°</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_cool">\n        <td class=\'lbl\'>Cool Set Points</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set\'>°</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set_tm\'>min.</td>\n      </tr>\n      <tr id="config_title">\n        <td class="title" colspan="3">PERFECT HOOKUP TIMES</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>PCA</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'pca_perfect_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>GPU</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'gpu_perfect_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>PBB</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'pbb_perfect_tm\'>min.</td>\n      </tr>\n    </table>\n\n<!--     <div><b style=\'color:#cc6666;\'>Heat:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set\'>°</div>\n    <div><b style=\'color:#cc6666;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set_tm\'>min.</div>\n    <div><b style=\'color:#6666cc;\'>Cool:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set\'>°</div>\n    <div><b style=\'color:#6666cc;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set_tm\'>min.</div>\n -->    \n    <div style=\'margin:10px 0;\'><button id=\'set_pca_points\'>UPDATE CONFIGURATION</button></div>\n  </div>\n  <div id="settings" class=\'settings\' style="display: none;">\n    <h3>Settings</h3>\n    '));
+    
+      _print(_safe(this.siteSelector({
+        id: 'site',
+        label: 'Site',
+        site: this.settings.site
+      })));
+    
+      _print(_safe('\n  </div><!-- /.box-body -->\n</div><!-- /.box-body -->\n'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
 window.JST["widgets/config_widget"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
@@ -2794,7 +2900,9 @@ require('./views/widgets/url_widget_view');
 
 require('./views/widgets/weather_widget_view');
 
-require('./views/widgets/config_widget_view');
+require('./views/widgets/config_airport_widget_view');
+
+require('./views/widgets/config_gate_widget_view');
 
 require('./views/widgets/gpu_widget_view');
 
@@ -3040,7 +3148,7 @@ window.App = (function() {
   return App;
 })();
 
-},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/tagconfig":7,"./common/uiutils":8,"./models/account_collection":12,"./models/claim_collection":14,"./models/role_collection":18,"./models/session":19,"./models/site_collection":21,"./models/user_collection":23,"./opcmanager":26,"./router":27,"./views/app_layout":28,"./views/widgets/advanced_alarm_widget_view":56,"./views/widgets/airport_overview_widget_view":57,"./views/widgets/alarm_widget_view":58,"./views/widgets/asset_widget_view":59,"./views/widgets/config_widget_view":60,"./views/widgets/gpu_summary_widget_view":61,"./views/widgets/gpu_widget_view":62,"./views/widgets/kpi_widget_view":64,"./views/widgets/out_of_service_widget_view":65,"./views/widgets/pbb_detail_widget_view":66,"./views/widgets/pbb_level_detail_widget_view":67,"./views/widgets/pbb_pca_gpu_basic_widget_view":68,"./views/widgets/pbb_pca_gpu_status_widget_view":69,"./views/widgets/pbb_system_status_widget_view":70,"./views/widgets/pbb_widget_view":71,"./views/widgets/pca_discharge_widget_view":72,"./views/widgets/pca_summary_widget_view":73,"./views/widgets/pca_widget_view":74,"./views/widgets/report_widget_view":75,"./views/widgets/url_widget_view":76,"./views/widgets/video_widget_view":77,"./views/widgets/weather_widget_view":78}],2:[function(require,module,exports){
+},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/tagconfig":7,"./common/uiutils":8,"./models/account_collection":12,"./models/claim_collection":14,"./models/role_collection":18,"./models/session":19,"./models/site_collection":21,"./models/user_collection":23,"./opcmanager":26,"./router":27,"./views/app_layout":28,"./views/widgets/advanced_alarm_widget_view":56,"./views/widgets/airport_overview_widget_view":57,"./views/widgets/alarm_widget_view":58,"./views/widgets/asset_widget_view":59,"./views/widgets/config_airport_widget_view":60,"./views/widgets/config_gate_widget_view":61,"./views/widgets/gpu_summary_widget_view":62,"./views/widgets/gpu_widget_view":63,"./views/widgets/kpi_widget_view":65,"./views/widgets/out_of_service_widget_view":66,"./views/widgets/pbb_detail_widget_view":67,"./views/widgets/pbb_level_detail_widget_view":68,"./views/widgets/pbb_pca_gpu_basic_widget_view":69,"./views/widgets/pbb_pca_gpu_status_widget_view":70,"./views/widgets/pbb_system_status_widget_view":71,"./views/widgets/pbb_widget_view":72,"./views/widgets/pca_discharge_widget_view":73,"./views/widgets/pca_summary_widget_view":74,"./views/widgets/pca_widget_view":75,"./views/widgets/report_widget_view":76,"./views/widgets/url_widget_view":77,"./views/widgets/video_widget_view":78,"./views/widgets/weather_widget_view":79}],2:[function(require,module,exports){
 var AccountsView, AppController, Dashboard, DashboardCollection, DashboardContentView, DashboardLayout, LoginView, Marionette, PermissionsLayout, ProfileView, ReportsView, Session, User, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -6163,7 +6271,16 @@ TagConfig = (function(superClass) {
    */
 
   TagConfig.widgets = {
-    config_widget: {
+    configairport_widget: {
+      Tags: {
+        'pca_cooling_pt': 'pca_cooling_pt',
+        'pca_heating_pt': 'pca_heating_pt',
+        'pca_cooling_tm': 'pca_cooling_tm',
+        'pca_heating_tm': 'pca_heating_tm'
+      },
+      Graphics: {}
+    },
+    configgate_widget: {
       Tags: {
         'pca_cooling_pt': 'pca_cooling_pt',
         'pca_heating_pt': 'pca_heating_pt',
@@ -23956,7 +24073,7 @@ OPCManager = (function() {
   };
 
   OPCManager.add_tags = function(conn, tags) {
-    var added, c, exists, i, j, len, len1, nt, ref, t;
+    var added, c, exists, i, j, len, len1, nt, r, ref, t;
     c = this.connections[conn];
     if (c != null) {
       added = false;
@@ -23980,12 +24097,13 @@ OPCManager = (function() {
           added = true;
         }
       }
+      r = this.add_ref(conn);
       if (added) {
         c.config.tags = [];
-        return c.init();
-      } else {
-        return c.toggle_refresh(true);
+        c.init();
       }
+      c.toggle_refresh(true);
+      return r;
     }
   };
 
@@ -24096,14 +24214,13 @@ OPCManager = (function() {
   OPCManager.add_ref = function(conn) {
     var c, callBacks, t;
     c = OPCManager.refs[conn];
-    c = c != null ? c + 1 : 1;
+    c = (c != null) && c > 0 ? c + 1 : 1;
     if (c >= 1) {
       t = Object.keys(OPCManager.connections[conn].tags).length;
       callBacks = Math.ceil(t / OPCManager.connections[conn].config.max_tags_per_msg) + 10 + (5 * OPCManager.connections[conn].alarm_bindings.length);
       OPCManager.connections[conn].config.max_callbacks = callBacks;
       OPCManager.connections[conn].config.callback_timeout = Math.ceil(Math.sqrt(callBacks) * 7500);
       OPCManager.connections[conn].init;
-      OPCManager.connections[conn].toggle_refresh(true);
       console.log("tags: " + t + " max_callbacks: " + OPCManager.connections[conn].config.max_callbacks + " callback_timeout: " + OPCManager.connections[conn].config.callback_timeout);
     }
     OPCManager.refs[conn] = c;
@@ -24116,7 +24233,7 @@ OPCManager = (function() {
       return 0;
     }
     c = OPCManager.refs[conn];
-    c = c != null ? c - 1 : 0;
+    c = (c != null) && c > 0 ? c - 1 : 0;
     if (c <= 0) {
       c = 0;
       OPCManager.connections[conn].toggle_refresh(false);
@@ -27615,7 +27732,7 @@ window.AdvancedalarmWidgetView = AdvancedalarmWidgetView;
 
 module.exports = AdvancedalarmWidgetView;
 
-},{"./iops_widget_view":63}],57:[function(require,module,exports){
+},{"./iops_widget_view":64}],57:[function(require,module,exports){
 var AirportoverviewWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -27677,7 +27794,7 @@ AirportoverviewWidgetView = (function(superClass) {
     this.IsPageLoading = false;
     this.IsUpdatingSettings = false;
     s = this.update_settings({
-      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
+      prefix: 'Airport.#{@site_code}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
     });
     if (this.site_code == null) {
@@ -27912,7 +28029,7 @@ window.AirportoverviewWidgetView = AirportoverviewWidgetView;
 
 module.exports = AirportoverviewWidgetView;
 
-},{"./iops_widget_view":63}],58:[function(require,module,exports){
+},{"./iops_widget_view":64}],58:[function(require,module,exports){
 var AlarmWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -28265,7 +28382,7 @@ window.AlarmWidgetView = AlarmWidgetView;
 
 module.exports = AlarmWidgetView;
 
-},{"./iops_widget_view":63}],59:[function(require,module,exports){
+},{"./iops_widget_view":64}],59:[function(require,module,exports){
 var AssetWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -28351,8 +28468,8 @@ window.AssetWidgetView = AssetWidgetView;
 
 module.exports = AssetWidgetView;
 
-},{"./iops_widget_view":63}],60:[function(require,module,exports){
-var ConfigWidgetView, IOPSWidgetView, Marionette,
+},{"./iops_widget_view":64}],60:[function(require,module,exports){
+var ConfigairportWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -28361,34 +28478,34 @@ Marionette = require('marionette');
 
 IOPSWidgetView = require('./iops_widget_view');
 
-ConfigWidgetView = (function(superClass) {
-  extend(ConfigWidgetView, superClass);
+ConfigairportWidgetView = (function(superClass) {
+  extend(ConfigairportWidgetView, superClass);
 
-  function ConfigWidgetView() {
+  function ConfigairportWidgetView() {
     this.set_model = bind(this.set_model, this);
     this.set_points = bind(this.set_points, this);
     this.data_update = bind(this.data_update, this);
-    return ConfigWidgetView.__super__.constructor.apply(this, arguments);
+    return ConfigairportWidgetView.__super__.constructor.apply(this, arguments);
   }
 
-  ConfigWidgetView.prototype.template = "widgets/config_widget";
+  ConfigairportWidgetView.prototype.template = "widgets/config_airport_widget";
 
-  ConfigWidgetView.prototype.classID = 'config_widget';
+  ConfigairportWidgetView.prototype.classID = 'config_airport_widget';
 
-  ConfigWidgetView.prototype.className = 'widget-outer box box-primary config_widget';
+  ConfigairportWidgetView.prototype.className = 'widget-outer box box-primary config_airport_widget';
 
-  ConfigWidgetView.prototype.ui = {
+  ConfigairportWidgetView.prototype.ui = {
     display: '#display',
     settings: '#settings',
     wtitle: 'h3.box-title'
   };
 
-  ConfigWidgetView.layout = {
+  ConfigairportWidgetView.layout = {
     sx: 4,
     sy: 5
   };
 
-  ConfigWidgetView.prototype.tags = {
+  ConfigairportWidgetView.prototype.tags = {
     cooling_pt: 'PCA.SET_COOLINGPOINT.Value',
     heating_pt: 'PCA.SET_HEATINGPOINT.Value',
     cooling_tm: 'PCA.SET_COOLINGPOINT_TIMER.Value',
@@ -28398,19 +28515,19 @@ ConfigWidgetView = (function(superClass) {
     pbb_perfect_tm: 'PBB.SET_HOOKUPTIME.Value'
   };
 
-  ConfigWidgetView.prototype.base_tags = [];
+  ConfigairportWidgetView.prototype.base_tags = [];
 
-  ConfigWidgetView.prototype.IsUpdatingSettings = false;
+  ConfigairportWidgetView.prototype.IsUpdatingSettings = false;
 
-  ConfigWidgetView.prototype.IsPageLoading = true;
+  ConfigairportWidgetView.prototype.IsPageLoading = true;
 
-  ConfigWidgetView.prototype.update = function() {
+  ConfigairportWidgetView.prototype.update = function() {
     var g, lbl, pre, s, settings, t, tag, term, terminals, tg, z, zn;
     if (!this.IsUpdatingSettings && !this.IsPageLoading) {
       return null;
     }
     s = this.update_settings({
-      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
+      prefix: 'Airport.#{@site_code}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
     });
     if (this.site_code == null) {
@@ -28423,7 +28540,7 @@ ConfigWidgetView = (function(superClass) {
       if (this.site_code == null) {
         return null;
       }
-      lbl = this.site_code + ": Configurations";
+      lbl = this.site_code + ": Airport Configurations";
       this.ui.wtitle.html(lbl);
     }
     this.base_tags = [];
@@ -28435,7 +28552,7 @@ ConfigWidgetView = (function(superClass) {
         for (z in term) {
           zn = term[z];
           for (g in zn) {
-            pre = "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".";
+            pre = this.prefix + "Term" + t + ".Zone" + z + ".Gate" + g + ".";
             for (tg in this.tags) {
               tag = this.tags[tg];
               this.base_tags.push("" + pre + tag);
@@ -28451,7 +28568,7 @@ ConfigWidgetView = (function(superClass) {
     }
   };
 
-  ConfigWidgetView.prototype.data_update = function(data) {
+  ConfigairportWidgetView.prototype.data_update = function(data) {
     var cool, cool_tm, gpu_ph_tm, heat, heat_tm, i, len, pbb_ph_tm, pca_ph_tm, ref, t, v;
     if ((data != null) && (data.tags != null) && data.tags.length > 0) {
       cool = 0;
@@ -28511,7 +28628,7 @@ ConfigWidgetView = (function(superClass) {
     return this.kill_updates(this.site_code);
   };
 
-  ConfigWidgetView.prototype.set_points = function(e) {
+  ConfigairportWidgetView.prototype.set_points = function(e) {
     var g, pre, results, settings, t, term, terminals, z, zn;
     e.preventDefault();
     if (this.site != null) {
@@ -28529,7 +28646,7 @@ ConfigWidgetView = (function(superClass) {
               var results2;
               results2 = [];
               for (g in zn) {
-                pre = "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".";
+                pre = this.prefix + ".Term" + t + ".Zone" + z + ".Gate" + g + ".";
                 this.opc.set_value("" + pre + this.tags.cooling_pt, this.$('input#cool_set').val());
                 this.opc.set_value("" + pre + this.tags.heating_pt, this.$('input#heat_set').val());
                 this.opc.set_value("" + pre + this.tags.cooling_tm, this.$('input#cool_set_tm').val());
@@ -28548,7 +28665,7 @@ ConfigWidgetView = (function(superClass) {
     }
   };
 
-  ConfigWidgetView.prototype.set_model = function() {
+  ConfigairportWidgetView.prototype.set_model = function() {
     var s;
     this.IsUpdatingSettings = true;
     s = _.clone(this.model.get("settings"));
@@ -28557,12 +28674,12 @@ ConfigWidgetView = (function(superClass) {
     return this.model.set("settings", s);
   };
 
-  ConfigWidgetView.prototype.toggle_settings = function(e) {
-    ConfigWidgetView.__super__.toggle_settings.call(this, e);
+  ConfigairportWidgetView.prototype.toggle_settings = function(e) {
+    ConfigairportWidgetView.__super__.toggle_settings.call(this, e);
     return this.ui.display.toggle(!this.settings_visible);
   };
 
-  ConfigWidgetView.prototype.onShow = function() {
+  ConfigairportWidgetView.prototype.onShow = function() {
     var settings, site;
     settings = this.model.get('settings');
     settings || (settings = {});
@@ -28580,23 +28697,245 @@ ConfigWidgetView = (function(superClass) {
     return this.check_init_site();
   };
 
-  ConfigWidgetView.prototype.onDestroy = function(arg1, arg2) {
+  ConfigairportWidgetView.prototype.onDestroy = function(arg1, arg2) {
     return this.kill_updates(this.site_code);
   };
 
-  ConfigWidgetView.prototype.start = function() {
+  ConfigairportWidgetView.prototype.start = function() {
     return this.update();
   };
 
-  return ConfigWidgetView;
+  return ConfigairportWidgetView;
 
 })(IOPSWidgetView);
 
-window.ConfigWidgetView = ConfigWidgetView;
+window.ConfigairportWidgetView = ConfigairportWidgetView;
 
-module.exports = ConfigWidgetView;
+module.exports = ConfigairportWidgetView;
 
-},{"./iops_widget_view":63}],61:[function(require,module,exports){
+},{"./iops_widget_view":64}],61:[function(require,module,exports){
+var ConfiggateWidgetView, IOPSWidgetView, Marionette,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+IOPSWidgetView = require('./iops_widget_view');
+
+ConfiggateWidgetView = (function(superClass) {
+  extend(ConfiggateWidgetView, superClass);
+
+  function ConfiggateWidgetView() {
+    this.set_model = bind(this.set_model, this);
+    this.set_points = bind(this.set_points, this);
+    this.data_update = bind(this.data_update, this);
+    return ConfiggateWidgetView.__super__.constructor.apply(this, arguments);
+  }
+
+  ConfiggateWidgetView.prototype.template = "widgets/config_gate_widget";
+
+  ConfiggateWidgetView.prototype.classID = 'config_gate_widget';
+
+  ConfiggateWidgetView.prototype.className = 'widget-outer box box-primary config_gate_widget';
+
+  ConfiggateWidgetView.prototype.ui = {
+    display: '#display',
+    settings: '#settings',
+    wtitle: 'h3.box-title'
+  };
+
+  ConfiggateWidgetView.layout = {
+    sx: 4,
+    sy: 5
+  };
+
+  ConfiggateWidgetView.prototype.tags = {
+    cooling_pt: 'PCA.SET_COOLINGPOINT.Value',
+    heating_pt: 'PCA.SET_HEATINGPOINT.Value',
+    cooling_tm: 'PCA.SET_COOLINGPOINT_TIMER.Value',
+    heating_tm: 'PCA.SET_HEATINGPOINT_TIMER.Value',
+    pca_perfect_tm: 'PCA.SET_HOOKUPTIME.Value',
+    gpu_perfect_tm: 'GPU.SET_HOOKUPTIME.Value',
+    pbb_perfect_tm: 'PBB.SET_HOOKUPTIME.Value'
+  };
+
+  ConfiggateWidgetView.prototype.base_tags = [];
+
+  ConfiggateWidgetView.prototype.IsUpdatingSettings = false;
+
+  ConfiggateWidgetView.prototype.IsPageLoading = true;
+
+  ConfiggateWidgetView.prototype.update = function() {
+    var lbl, s, tag, tg;
+    if (!this.IsUpdatingSettings && !this.IsPageLoading) {
+      return null;
+    }
+    s = this.update_settings({
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+    });
+    if (this.site_code == null) {
+      return null;
+    }
+    if ((s != null) && !!s.site) {
+      this.kill_updates(this.site_code);
+      this.site = OPCManager.get_site(s.site);
+      this.site_code = this.site.get('code');
+      if (this.site_code == null) {
+        return null;
+      }
+      lbl = this.site_code + ": Gate Configurations";
+      this.ui.wtitle.html(lbl);
+    }
+    this.base_tags = [];
+    if (this.site != null) {
+      for (tg in this.tags) {
+        tag = this.tags[tg];
+        this.base_tags.push("" + this.prefix + tag);
+      }
+    }
+    if (this.base_tags.length > 0) {
+      App.opc.add_tags(this.site_code, this.base_tags);
+      this.opc = App.opc.connections[this.site_code];
+      return this.watch_updates(this.site_code);
+    }
+  };
+
+  ConfiggateWidgetView.prototype.data_update = function(data) {
+    var cool, cool_tm, gpu_ph_tm, heat, heat_tm, i, len, pbb_ph_tm, pca_ph_tm, ref, t, v;
+    if ((data != null) && (data.tags != null) && data.tags.length > 0) {
+      cool = 0;
+      heat = 0;
+      cool_tm = 0;
+      heat_tm = 0;
+      pca_ph_tm = 0;
+      gpu_ph_tm = 0;
+      pbb_ph_tm = 0;
+      ref = data.tags;
+      for (i = 0, len = ref.length; i < len; i++) {
+        t = ref[i];
+        if (t.name.endsWith("PCA.SET_COOLINGPOINT")) {
+          v = t.props[0].val;
+          v = (v != null) && v !== '' ? parseFloat(v) : 0;
+          cool = v > cool ? v : cool;
+        }
+        if (t.name.endsWith("PCA.SET_COOLINGPOINT_TIMER")) {
+          v = t.props[0].val;
+          v = (v != null) && v !== '' ? parseFloat(v) : 0;
+          cool_tm = v > cool_tm ? v : cool_tm;
+        }
+        if (t.name.endsWith("PCA.SET_HEATINGPOINT")) {
+          v = t.props[0].val;
+          v = (v != null) && v !== '' ? parseFloat(v) : 0;
+          heat = v > heat ? v : heat;
+        }
+        if (t.name.endsWith("PCA.SET_HEATINGPOINT_TIMER")) {
+          v = t.props[0].val;
+          v = (v != null) && v !== '' ? parseFloat(v) : 0;
+          heat_tm = v > heat_tm ? v : heat_tm;
+        }
+        if (t.name.endsWith("PCA.SET_HOOKUPTIME")) {
+          v = t.props[0].val;
+          v = (v != null) && v !== '' ? parseFloat(v) : 0;
+          pca_ph_tm = v > pca_ph_tm ? v : pca_ph_tm;
+        }
+        if (t.name.endsWith("GPU.SET_HOOKUPTIME")) {
+          v = t.props[0].val;
+          v = (v != null) && v !== '' ? parseFloat(v) : 0;
+          gpu_ph_tm = v > gpu_ph_tm ? v : gpu_ph_tm;
+        }
+        if (t.name.endsWith("PBB.SET_HOOKUPTIMETIME")) {
+          v = t.props[0].val;
+          v = (v != null) && v !== '' ? parseFloat(v) : 0;
+          pbb_ph_tm = v > pbb_ph_tm ? v : pbb_ph_tm;
+        }
+      }
+      this.$('input#cool_set').val(cool);
+      this.$('input#heat_set').val(heat);
+      this.$('input#cool_set_tm').val(cool_tm);
+      this.$('input#heat_set_tm').val(heat_tm);
+      this.$('input#pca_perfect_tm').val(pca_ph_tm);
+      this.$('input#gpu_perfect_tm').val(gpu_ph_tm);
+      this.$('input#pbb_perfect_tm').val(pbb_ph_tm);
+    }
+    return this.kill_updates(this.site_code);
+  };
+
+  ConfiggateWidgetView.prototype.set_points = function(e) {
+    e.preventDefault();
+    if (this.site != null) {
+      this.opc.set_value("" + this.prefix + this.tags.cooling_pt, this.$('input#cool_set').val());
+      this.opc.set_value("" + this.prefix + this.tags.heating_pt, this.$('input#heat_set').val());
+      this.opc.set_value("" + this.prefix + this.tags.cooling_tm, this.$('input#cool_set_tm').val());
+      this.opc.set_value("" + this.prefix + this.tags.heating_tm, this.$('input#heat_set_tm').val());
+      this.opc.set_value("" + this.prefix + this.tags.pca_perfect_tm, this.$('input#pca_perfect_tm').val());
+      this.opc.set_value("" + this.prefix + this.tags.gpu_perfect_tm, this.$('input#gpu_perfect_tm').val());
+      return this.opc.set_value("" + this.prefix + this.tags.pbb_perfect_tm, this.$('input#pbb_perfect_tm').val());
+    }
+  };
+
+  ConfiggateWidgetView.prototype.set_model = function() {
+    var s;
+    this.IsUpdatingSettings = true;
+    s = _.clone(this.model.get("settings"));
+    s.site = this.$('#site').val();
+    this.site_code = OPCManager.get_site_code(s.site);
+    s.terminal = this.$('#terminal').val();
+    s.zone = this.$('#zone').val();
+    s.gate = this.$('#gate').val();
+    return this.model.set("settings", s);
+  };
+
+  ConfiggateWidgetView.prototype.toggle_settings = function(e) {
+    ConfiggateWidgetView.__super__.toggle_settings.call(this, e);
+    return this.ui.display.toggle(!this.settings_visible);
+  };
+
+  ConfiggateWidgetView.prototype.onShow = function() {
+    var gate, settings, site;
+    settings = this.model.get('settings');
+    settings || (settings = {});
+    site = settings.site;
+    if ((site == null) || site === '') {
+      this.toggle_settings();
+    }
+    this.draw_selectors(settings.terminal, settings.zone, settings.gate);
+    this.$('#site').on('change', (function(_this) {
+      return function() {
+        return _this.set_model();
+      };
+    })(this));
+    gate = settings.gate;
+    if ((gate == null) || gate === '') {
+      this.toggle_settings();
+    } else {
+      this.IsPageLoading = false;
+    }
+    this.site_code = OPCManager.get_site_code(settings.site);
+    if (this.site_code != null) {
+      this.site_refresh = (OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3;
+    }
+    return this.check_init_site();
+  };
+
+  ConfiggateWidgetView.prototype.onDestroy = function(arg1, arg2) {
+    return this.kill_updates(this.site_code);
+  };
+
+  ConfiggateWidgetView.prototype.start = function() {
+    return this.update();
+  };
+
+  return ConfiggateWidgetView;
+
+})(IOPSWidgetView);
+
+window.ConfiggateWidgetView = ConfiggateWidgetView;
+
+module.exports = ConfiggateWidgetView;
+
+},{"./iops_widget_view":64}],62:[function(require,module,exports){
 var GpusummaryWidgetView, IOPSWidgetView, Marionette, UIUtils,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -29503,7 +29842,7 @@ window.GpusummaryWidgetView = GpusummaryWidgetView;
 
 module.exports = GpusummaryWidgetView;
 
-},{"../../common/uiutils":8,"./iops_widget_view":63}],62:[function(require,module,exports){
+},{"../../common/uiutils":8,"./iops_widget_view":64}],63:[function(require,module,exports){
 var GpuWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -29733,7 +30072,7 @@ window.GpuWidgetView = GpuWidgetView;
 
 module.exports = GpuWidgetView;
 
-},{"./iops_widget_view":63}],63:[function(require,module,exports){
+},{"./iops_widget_view":64}],64:[function(require,module,exports){
 var IOPSWidgetView, Marionette, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -29794,7 +30133,7 @@ IOPSWidgetView = (function(superClass) {
 
   IOPSWidgetView.prototype.watch_updates = function(conn) {
     var currTags, maxTags;
-    OPCManager.add_ref(conn);
+    OPCManager.add_ref(conn, this.el.parentNode.id + "_" + this.classID);
     currTags = Object.keys(OPCManager.connections[conn].tags).length;
     maxTags = OPCManager.connections[conn].config.max_callbacks * OPCManager.connections[conn].config.max_tags_per_msg;
     console.log("watch : " + conn + ": Max Tags: " + maxTags + ", Current Tag Count: " + currTags);
@@ -29807,7 +30146,7 @@ IOPSWidgetView = (function(superClass) {
   IOPSWidgetView.prototype.kill_updates = function(conn) {
     console.log("kill : " + conn);
     App.vent.off("opc:data:" + conn, this.data_update);
-    return OPCManager.rem_ref(conn);
+    return OPCManager.rem_ref(conn, this.el.parentNode.id + "_" + this.classID);
   };
 
   IOPSWidgetView.prototype.check_init_site = function() {
@@ -30297,7 +30636,7 @@ window.IOPSWidgetView = IOPSWidgetView;
 
 module.exports = IOPSWidgetView;
 
-},{"../dashboard/widget_view":39}],64:[function(require,module,exports){
+},{"../dashboard/widget_view":39}],65:[function(require,module,exports){
 var IOPSWidgetView, KpiWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -30460,7 +30799,7 @@ window.KpiWidgetView = KpiWidgetView;
 
 module.exports = KpiWidgetView;
 
-},{"./iops_widget_view":63}],65:[function(require,module,exports){
+},{"./iops_widget_view":64}],66:[function(require,module,exports){
 var IOPSWidgetView, Marionette, OutofserviceWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -30857,7 +31196,7 @@ window.OutofserviceWidgetView = OutofserviceWidgetView;
 
 module.exports = OutofserviceWidgetView;
 
-},{"./iops_widget_view":63}],66:[function(require,module,exports){
+},{"./iops_widget_view":64}],67:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbdetailWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -31106,7 +31445,7 @@ window.PbbdetailWidgetView = PbbdetailWidgetView;
 
 module.exports = PbbdetailWidgetView;
 
-},{"./iops_widget_view":63}],67:[function(require,module,exports){
+},{"./iops_widget_view":64}],68:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbleveldetailWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -31210,7 +31549,6 @@ PbbleveldetailWidgetView = (function(superClass) {
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": PBB " + s.gate + " - Details";
       this.ui.wtitle.html(lbl);
-      this.kill_updates(this.site_code);
       tags = [];
       this.tagData = [];
       this.tagConfig = [];
@@ -31227,9 +31565,9 @@ PbbleveldetailWidgetView = (function(superClass) {
         tags.push("" + this.prefix + t + ".Value");
       }
       App.opc.add_tags(this.site_code, tags);
+      App.vent.on("opc:data:" + this.site_code, this.data_update);
       this.opc = App.opc.connections[this.site_code];
       ref = s.layout;
-      this.watch_updates(this.site_code);
       this.start_heartbeat();
       return this.set_descriptions(true);
     }
@@ -31365,7 +31703,6 @@ PbbleveldetailWidgetView = (function(superClass) {
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
       this.site_refresh = (OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3;
-      this.watch_updates(this.site_code);
     }
     return this.check_init_site();
   };
@@ -31407,7 +31744,7 @@ window.PbbleveldetailWidgetView = PbbleveldetailWidgetView;
 
 module.exports = PbbleveldetailWidgetView;
 
-},{"./iops_widget_view":63}],68:[function(require,module,exports){
+},{"./iops_widget_view":64}],69:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbpcagpuWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -31623,7 +31960,7 @@ window.PbbpcagpuWidgetView = PbbpcagpuWidgetView;
 
 module.exports = PbbpcagpuWidgetView;
 
-},{"./iops_widget_view":63}],69:[function(require,module,exports){
+},{"./iops_widget_view":64}],70:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbpcagpustatusWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -31657,7 +31994,8 @@ PbbpcagpustatusWidgetView = (function(superClass) {
     display: '.display',
     content: '.content',
     site: 'select#site',
-    gates: '#gate_cks'
+    gates: '#gate_cks',
+    widgetData: ''
   };
 
   PbbpcagpustatusWidgetView.layout = {
@@ -31680,6 +32018,8 @@ PbbpcagpustatusWidgetView = (function(superClass) {
   PbbpcagpustatusWidgetView.prototype.max_gates = 6;
 
   PbbpcagpustatusWidgetView.prototype.site_refresh = 50000;
+
+  PbbpcagpustatusWidgetView.prototype.refId = 0;
 
   PbbpcagpustatusWidgetView.prototype.IsUpdatingSettings = false;
 
@@ -31704,10 +32044,9 @@ PbbpcagpustatusWidgetView = (function(superClass) {
       if (!s.gates || s.gates.length === 0) {
         return;
       }
-      this.kill_updates(this.site_code);
       tags = [];
       elementPrefix = "li#" + this.el.parentNode.id + " ." + this.classID + " ";
-      $(elementPrefix + " [id^='dynamic_']").remove();
+      this.$("[id^='dynamic_']").remove();
       column = 1;
       this.tagData = [];
       ref = s.gates;
@@ -31745,9 +32084,9 @@ PbbpcagpustatusWidgetView = (function(superClass) {
           }
           data = [];
         }
-        if ($(elementPrefix + " #dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2]).length === 0) {
-          $(elementPrefix + " #widgetData thead tr").append("<th id='dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "' class='header'>" + gp[2] + "</th>");
-          $(elementPrefix + " #widgetData tbody #iconRow").append("<td id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "'> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_critical' class='fa fa-warning' title='Gate has CRITICAL ALARMS'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_alarm' class='fa fa-bell' title='Gate has ALARMS'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_docked' class='fa fa-plane' title='Plane is DOCKED'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_outofservice' class='fa fa-wrench' title='A system is out of service'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_perfecthookup' class='fa fa-check-circle-o' title='Perfect Hookup'></i> </td>");
+        if (this.$("#dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2]).length === 0) {
+          this.$("#widgetData thead tr").append("<th id='dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "' class='header'>" + gp[2] + "</th>");
+          this.$("#widgetData tbody #iconRow").append("<td id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "'> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_critical' class='fa fa-warning' title='Gate has CRITICAL ALARMS'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_alarm' class='fa fa-bell' title='Gate has ALARMS'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_docked' class='fa fa-plane' title='Plane is DOCKED'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_outofservice' class='fa fa-wrench' title='A system is out of service'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_perfecthookup' class='fa fa-check-circle-o' title='Perfect Hookup'></i> </td>");
         }
         ref2 = this.tagConfig.TagData;
         for (tag in ref2) {
@@ -31756,27 +32095,27 @@ PbbpcagpustatusWidgetView = (function(superClass) {
           gate = "Term" + gp[0] + ".Zone" + gp[1] + ".Gate" + gp[2] + ".";
           tags.push("" + this.prefix + gate + tagData.Tag + ".Value");
           if (tagData.Element.Class !== 'no_row') {
-            if ($(elementPrefix + " #dynamic_" + tag).length === 0) {
+            if (this.$("#dynamic_" + tag).length === 0) {
               label = tagData.Label;
               if (/[*]/.test(label)) {
                 label = label.replace("[*]", "");
               }
-              $(elementPrefix + " #widgetData tbody").append("<tr id='dynamic_" + tag + "'> <td class='lbl' id='dynamic_" + tag + "_lbl'>" + label + "</td> <td class='val no-show' id='dynamic_" + tag + "_default_1'></td> <td class='val no-show' id='dynamic_" + tag + "_default_2'></td> <td class='val no-show' id='dynamic_" + tag + "_default_3'></td> <td class='val no-show' id='dynamic_" + tag + "_default_4'></td> <td class='val no-show' id='dynamic_" + tag + "_default_5'></td> <td class='val no-show' id='dynamic_" + tag + "_default_6'></td> </th>");
+              this.$("#widgetData tbody").append("<tr id='dynamic_" + tag + "'> <td class='lbl' id='dynamic_" + tag + "_lbl'>" + label + "</td> <td class='val no-show' id='dynamic_" + tag + "_default_1'></td> <td class='val no-show' id='dynamic_" + tag + "_default_2'></td> <td class='val no-show' id='dynamic_" + tag + "_default_3'></td> <td class='val no-show' id='dynamic_" + tag + "_default_4'></td> <td class='val no-show' id='dynamic_" + tag + "_default_5'></td> <td class='val no-show' id='dynamic_" + tag + "_default_6'></td> </th>");
             }
           }
-          $(elementPrefix + " #widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").attr('id', "dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tag);
-          $(elementPrefix + " #widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("no-show", false);
+          this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").attr('id', "dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tag);
+          this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("no-show", false);
           if (("dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tag).indexOf("_discharge_") > -1) {
-            $(elementPrefix + " #widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("val", false);
-            $(elementPrefix + " #widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("DisCharge", true);
+            this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("val", false);
+            this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("DisCharge", true);
           }
-          ref3 = $(elementPrefix + " #dynamic_" + tag + ">td");
+          ref3 = this.$("#dynamic_" + tag + ">td");
           for (index = j = 0, len1 = ref3.length; j < len1; index = ++j) {
             element = ref3[index];
             if (element.id.indexOf("dynamic_" + tag + "_default_") > -1) {
               col = column - 1;
-              $(elementPrefix + " #" + element.id).toggleClass('no-show', index > col);
-              $(elementPrefix + " #" + element.id).toggleClass('show-no-status', index <= col);
+              this.$("#" + element.id).toggleClass('no-show', index > col);
+              this.$("#" + element.id).toggleClass('show-no-status', index <= col);
             }
           }
         }
@@ -31792,15 +32131,18 @@ PbbpcagpustatusWidgetView = (function(superClass) {
         }
       }
       this.cktags = tags;
-      App.opc.add_tags(this.site_code, tags);
-      this.opc = App.opc.connections[this.site_code];
-      this.watch_updates(this.site_code);
-      return this.start_heartbeat();
+      if (this.refId === 0) {
+        this.refId = App.opc.add_tags(this.site_code, tags);
+        App.vent.on("opc:data:" + this.site_code, this.data_update);
+        this.opc = App.opc.connections[this.site_code];
+        this.start_heartbeat();
+      }
     }
+    return this;
   };
 
   PbbpcagpustatusWidgetView.prototype.data_update = function(data) {
-    var elementPrefix, gate, parsedTagId, ref, results, s, setValue, tag, tzgPrefix;
+    var elementPrefix, gate, parsedTagId, ref, s, setValue, tag, tzgPrefix;
     elementPrefix = "li#" + this.el.parentNode.id + " ." + this.classID + " ";
     s = this.model.get("settings");
     if ((s == null) || (s.gates == null) || s.gates.length === 0) {
@@ -31809,7 +32151,6 @@ PbbpcagpustatusWidgetView = (function(superClass) {
     this.beat_time = new Date().getTime() + this.site_refresh;
     this.vals = {};
     ref = this.tagData;
-    results = [];
     for (tag in ref) {
       data = ref[tag];
       parsedTagId = tag.split("_");
@@ -31818,21 +32159,21 @@ PbbpcagpustatusWidgetView = (function(superClass) {
       this.vals[tag] = this.opc.get_value("" + this.prefix + gate + data.Tag + ".Value");
       setValue = (this.vals[tag] != null) && this.vals[tag] === "True";
       if (/pbb_docked/.test(tag)) {
-        $(elementPrefix + " #widgetData #dynamic_iconRow_" + tzgPrefix + "_docked").toggleClass('docked', setValue);
+        this.$("#widgetData #dynamic_iconRow_" + tzgPrefix + "_docked").toggleClass('docked', setValue);
       } else if (tag.indexOf(tzgPrefix + "_has_critical_alarms") > -1) {
-        $(elementPrefix + " #widgetData #dynamic_iconRow_" + tzgPrefix + "_critical").toggleClass('critical', setValue);
+        this.$("#widgetData #dynamic_iconRow_" + tzgPrefix + "_critical").toggleClass('critical', setValue);
       } else if (tag.indexOf(tzgPrefix + "_has_alarms") > -1) {
-        $(elementPrefix + " #widgetData #dynamic_iconRow_" + tzgPrefix + "_alarm").toggleClass('alarm', setValue);
+        this.$("#widgetData #dynamic_iconRow_" + tzgPrefix + "_alarm").toggleClass('alarm', setValue);
       } else if (tag.indexOf(tzgPrefix + "_system_quality") > -1) {
-        $(elementPrefix + " #widgetData #dynamic_iconRow_" + tzgPrefix + "_bad_quality").toggleClass('bad-data', !setValue);
+        this.$("#widgetData #dynamic_iconRow_" + tzgPrefix + "_bad_quality").toggleClass('bad-data', !setValue);
       } else if (tag.indexOf(tzgPrefix + "_system_out_of_service") > -1) {
-        $(elementPrefix + " #widgetData #dynamic_iconRow_" + tzgPrefix + "_outofservice").toggleClass('out-of-service', setValue);
+        this.$("#widgetData #dynamic_iconRow_" + tzgPrefix + "_outofservice").toggleClass('out-of-service', setValue);
       } else if (tag.indexOf(tzgPrefix + "_system_perfect_hookup") > -1) {
-        $(elementPrefix + " #widgetData #dynamic_iconRow_" + tzgPrefix + "_perfecthookup").toggleClass('perfect-hookup', setValue);
+        this.$("#widgetData #dynamic_iconRow_" + tzgPrefix + "_perfecthookup").toggleClass('perfect-hookup', setValue);
       } else if (tag.indexOf(tzgPrefix + "_pca_mode_cooling") > -1) {
-        $(elementPrefix + " #widgetData #dynamic_" + tzgPrefix + "_pca_discharge_temp").toggleClass('Cooling', setValue);
+        this.$("#widgetData #dynamic_" + tzgPrefix + "_pca_discharge_temp").toggleClass('Cooling', setValue);
       } else if (tag.indexOf(tzgPrefix + "_pca_mode_heating") > -1) {
-        $(elementPrefix + " #widgetData #dynamic_" + tzgPrefix + "_pca_discharge_temp").toggleClass('Heating', setValue);
+        this.$("#widgetData #dynamic_" + tzgPrefix + "_pca_discharge_temp").toggleClass('Heating', setValue);
       } else {
         switch (data.DataType.toLowerCase()) {
           case 'boolean':
@@ -31845,13 +32186,19 @@ PbbpcagpustatusWidgetView = (function(superClass) {
             this.render_value_row_tzg("dynamic_" + tag, "", "", data.Parameters.Parm003, data.Parameters.Parm004);
         }
       }
-      results.push(this);
     }
-    return results;
+    return this;
   };
 
   PbbpcagpustatusWidgetView.prototype.set_model = function() {
     var s;
+    if (this.refId > 0) {
+      this.kill_updates(this.site_code);
+      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+        window.clearInterval(this.heartbeat_timer);
+      }
+      this.refId = 0;
+    }
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     this.site_code = OPCManager.get_site_code(s.site);
@@ -31872,9 +32219,6 @@ PbbpcagpustatusWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
-        window.clearInterval(this.heartbeat_timer);
-      }
       return this.draw_gate_checks();
     } else {
       this.IsPageLoading = false;
@@ -31967,7 +32311,6 @@ PbbpcagpustatusWidgetView = (function(superClass) {
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
       this.site_refresh = (OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3;
-      this.watch_updates(this.site_code);
     }
     return this.check_init_site();
   };
@@ -31978,7 +32321,7 @@ PbbpcagpustatusWidgetView = (function(superClass) {
 
   PbbpcagpustatusWidgetView.prototype.start_heartbeat = function() {
     this.beat_time = new Date().getTime() + this.site_refresh;
-    $("#" + this.el.parentNode.id + " .widget-outer").toggleClass("no-heartbeat", false);
+    this.$(".widget-outer").toggleClass("no-heartbeat", false);
     if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
       window.clearInterval(this.heartbeat_timer);
     }
@@ -31992,7 +32335,7 @@ PbbpcagpustatusWidgetView = (function(superClass) {
 
   PbbpcagpustatusWidgetView.prototype.check_heartbeat = function(widget_id) {
     this.curTime = new Date().getTime();
-    return $("#" + widget_id + " .widget-outer").toggleClass("no-heartbeat", this.curTime > this.beat_time);
+    return this.$(".widget-outer").toggleClass("no-heartbeat", this.curTime > this.beat_time);
   };
 
   PbbpcagpustatusWidgetView.prototype.onDestroy = function(arg1, arg2) {
@@ -32010,7 +32353,7 @@ window.PbbpcagpustatusWidgetView = PbbpcagpustatusWidgetView;
 
 module.exports = PbbpcagpustatusWidgetView;
 
-},{"./iops_widget_view":63}],70:[function(require,module,exports){
+},{"./iops_widget_view":64}],71:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbsystemstatusWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -32238,7 +32581,7 @@ window.PbbsystemstatusWidgetView = PbbsystemstatusWidgetView;
 
 module.exports = PbbsystemstatusWidgetView;
 
-},{"./iops_widget_view":63}],71:[function(require,module,exports){
+},{"./iops_widget_view":64}],72:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -32313,7 +32656,6 @@ PbbWidgetView = (function(superClass) {
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": Gate " + s.gate + " - PBB";
       this.ui.wtitle.html(lbl);
-      this.kill_updates(this.site_code);
       tags = [];
       this.tagData = [];
       this.tagConfig = [];
@@ -32330,8 +32672,8 @@ PbbWidgetView = (function(superClass) {
       }
       App.opc.add_tags(this.site_code, tags);
       this.opc = App.opc.connections[this.site_code];
+      App.vent.on("opc:data:" + this.site_code, this.data_update);
       ref = s.layout;
-      this.watch_updates(this.site_code);
       this.start_heartbeat();
       return this.set_descriptions(true);
     }
@@ -32410,7 +32752,6 @@ PbbWidgetView = (function(superClass) {
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
       this.site_refresh = (OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3;
-      this.watch_updates(this.site_code);
     }
     return this.check_init_site();
   };
@@ -32452,7 +32793,7 @@ window.PbbWidgetView = PbbWidgetView;
 
 module.exports = PbbWidgetView;
 
-},{"./iops_widget_view":63}],72:[function(require,module,exports){
+},{"./iops_widget_view":64}],73:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PcadischargeWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -32909,7 +33250,7 @@ window.PcadischargeWidgetView = PcadischargeWidgetView;
 
 module.exports = PcadischargeWidgetView;
 
-},{"./iops_widget_view":63}],73:[function(require,module,exports){
+},{"./iops_widget_view":64}],74:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PcasummaryWidgetView, UIUtils,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -33748,7 +34089,7 @@ window.PcasummaryWidgetView = PcasummaryWidgetView;
 
 module.exports = PcasummaryWidgetView;
 
-},{"../../common/uiutils":8,"./iops_widget_view":63}],74:[function(require,module,exports){
+},{"../../common/uiutils":8,"./iops_widget_view":64}],75:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PcaWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -33971,7 +34312,7 @@ window.PcaWidgetView = PcaWidgetView;
 
 module.exports = PcaWidgetView;
 
-},{"./iops_widget_view":63}],75:[function(require,module,exports){
+},{"./iops_widget_view":64}],76:[function(require,module,exports){
 var IOPSWidgetView, Marionette, ReportWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -34168,7 +34509,7 @@ window.ReportWidgetView = ReportWidgetView;
 
 module.exports = ReportWidgetView;
 
-},{"./iops_widget_view":63}],76:[function(require,module,exports){
+},{"./iops_widget_view":64}],77:[function(require,module,exports){
 var Marionette, UrlWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -34268,7 +34609,7 @@ window.UrlWidgetView = UrlWidgetView;
 
 module.exports = UrlWidgetView;
 
-},{"../dashboard/widget_view":39}],77:[function(require,module,exports){
+},{"../dashboard/widget_view":39}],78:[function(require,module,exports){
 var IOPSWidgetView, Marionette, VideoWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -34425,7 +34766,7 @@ window.VideoWidgetView = VideoWidgetView;
 
 module.exports = VideoWidgetView;
 
-},{"./iops_widget_view":63}],78:[function(require,module,exports){
+},{"./iops_widget_view":64}],79:[function(require,module,exports){
 var IOPSWidgetView, Marionette, WeatherWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -34643,5 +34984,5 @@ window.WeatherWidgetView = WeatherWidgetView;
 
 module.exports = WeatherWidgetView;
 
-},{"./iops_widget_view":63}]},{},[1])
+},{"./iops_widget_view":64}]},{},[1])
 ;
