@@ -35,7 +35,7 @@ class IOPSWidgetView extends WidgetView
 
   # listen for updates on a connection
   watch_updates: (conn)->
-    OPCManager.add_ref(conn)
+    OPCManager.add_ref(conn, "#{@el.parentNode.id}_#{@classID}")
     currTags = Object.keys(OPCManager.connections[conn].tags).length
     maxTags = OPCManager.connections[conn].config.max_callbacks * OPCManager.connections[conn].config.max_tags_per_msg
     console.log "watch : #{conn}: Max Tags: #{maxTags}, Current Tag Count: #{currTags}"
@@ -47,7 +47,7 @@ class IOPSWidgetView extends WidgetView
   kill_updates: (conn)->
     console.log "kill : #{conn}"
     App.vent.off "opc:data:#{conn}", @data_update
-    OPCManager.rem_ref(conn)
+    OPCManager.rem_ref(conn,"#{@el.parentNode.id}_#{@classID}")
 
   # set initial site when widget is created
   check_init_site: ()->

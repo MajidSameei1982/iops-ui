@@ -386,7 +386,10 @@ class TagConfig extends Object
 	*** Widget Tag Groups
 	**************************************************###
 	@widgets:
-		config_widget: # config_widget
+		configairport_widget: # Airport Config Widget
+			Tags:{'pca_cooling_pt','pca_heating_pt','pca_cooling_tm','pca_heating_tm'}
+			Graphics:{}
+		configgate_widget: # Gate Config Widget
 			Tags:{'pca_cooling_pt','pca_heating_pt','pca_cooling_tm','pca_heating_tm'}
 			Graphics:{}
 		gpu_summary_widget: # GPU Summary Widget

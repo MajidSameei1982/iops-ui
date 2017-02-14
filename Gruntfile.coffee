@@ -174,7 +174,7 @@ module.exports = (grunt)->
         ]
       config_prod: 
         files: [
-          src: 'client/config//appconfig.prod.coffee'
+          src: 'client/config/appconfig.prod.coffee'
           dest: 'client/src/common/appconfig.coffee'
         ]
       js: 

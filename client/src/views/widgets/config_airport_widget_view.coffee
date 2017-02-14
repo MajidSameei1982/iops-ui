@@ -2,10 +2,10 @@ Marionette = require('marionette')
 IOPSWidgetView = require('./iops_widget_view')
 
 # ----------------------------------
-class ConfigWidgetView extends IOPSWidgetView
-  template:   "widgets/config_widget"
-  classID: 'config_widget'
-  className: 'widget-outer box box-primary config_widget'
+class ConfigairportWidgetView extends IOPSWidgetView
+  template:   "widgets/config_airport_widget"
+  classID: 'config_airport_widget'
+  className: 'widget-outer box box-primary config_airport_widget'
   ui:
     display:        '#display'
     settings:       '#settings'
@@ -35,7 +35,7 @@ class ConfigWidgetView extends IOPSWidgetView
       return null
 
     s = @update_settings
-      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
+      prefix: 'Airport.#{@site_code}.'
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
 
     if !@site_code? then return null
@@ -49,7 +49,7 @@ class ConfigWidgetView extends IOPSWidgetView
       @site_code = @site.get('code')
       if !@site_code? then return null
 
-      lbl = "#{@site_code}: Configurations"
+      lbl = "#{@site_code}: Airport Configurations"
       @ui.wtitle.html(lbl)
 
     # s = @update_settings
@@ -64,7 +64,7 @@ class ConfigWidgetView extends IOPSWidgetView
         for z of term
           zn = term[z]
           for g of zn
-            pre = "Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}."
+            pre = "#{@prefix}Term#{t}.Zone#{z}.Gate#{g}."
             for tg of @tags
               tag = @tags[tg]
               @base_tags.push "#{pre}#{tag}"
@@ -133,7 +133,7 @@ class ConfigWidgetView extends IOPSWidgetView
         for z of term
           zn = term[z]
           for g of zn
-            pre = "Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}."
+            pre = "#{@prefix}.Term#{t}.Zone#{z}.Gate#{g}."
             @opc.set_value("#{pre}#{@tags.cooling_pt}", @$('input#cool_set').val())
             @opc.set_value("#{pre}#{@tags.heating_pt}", @$('input#heat_set').val())
             @opc.set_value("#{pre}#{@tags.cooling_tm}", @$('input#cool_set_tm').val())
@@ -177,5 +177,5 @@ class ConfigWidgetView extends IOPSWidgetView
 
 # ----------------------------------
 
-window.ConfigWidgetView = ConfigWidgetView
-module.exports = ConfigWidgetView
+window.ConfigairportWidgetView = ConfigairportWidgetView
+module.exports = ConfigairportWidgetView
