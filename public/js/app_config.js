@@ -112,8 +112,14 @@ window.app_config = {
     //   icon: "bar-chart" 
     // },
     {
-      id: "config",
-      name: "Config Widget",
+      id: "configairport",
+      name: "Airport Config Widget",
+      icon: "gear",
+      roles: ["global:admin", "site:admin"]
+    },
+    {
+      id: "configgate",
+      name: "Gate Config Widget",
       icon: "gear",
       roles: ["global:admin", "site:admin"]
     },
