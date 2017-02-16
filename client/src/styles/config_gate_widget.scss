@@ -1,0 +1,33 @@
+.config_gate_widget {
+	#widgetData {
+		width: 100%;
+		border:solid 1px #999 !important;
+		border-spacing: 1px;
+		border-collapse: separate;
+		.title {
+			width: 40%;
+			margin-bottom:10px;
+			font-weight: bold;
+			font-size: 14pt;
+			text-align: center;
+			background-color: #999;
+		}
+		.lbl {
+			width: 30%;
+			font-size: 10pt;
+			text-align: right;
+			background-color: #eee;
+			color: #000;
+			padding-right: 10px;
+		}
+		.input {
+			width: 30%;
+			text-align: center;
+			min-width: 75px;
+			input {
+				width: 40%;
+				margin-right: 10px;
+			}
+		}
+	}
+}

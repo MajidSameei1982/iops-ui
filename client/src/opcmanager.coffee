@@ -52,11 +52,13 @@ class OPCManager
         if !exists
           c.config.watch_tags.push(nt)
           added = true
+      r = @add_ref(conn)
       if added
         c.config.tags = []
         c.init()
-      else 
-        c.toggle_refresh(true)
+
+      c.toggle_refresh(true)
+      r
 
   @add_alarm: (conn, binding)->
     c = @connections[conn]
@@ -124,7 +126,7 @@ class OPCManager
 
   @add_ref: (conn)=>
     c = @refs[conn]
-    c = if c? then c+1 else 1
+    c = if c? && c > 0 then c+1 else 1
     if c >= 1
       t = Object.keys(@connections[conn].tags).length
       callBacks = Math.ceil(t / @connections[conn].config.max_tags_per_msg) + 10 + (5 * @connections[conn].alarm_bindings.length)
@@ -132,18 +134,21 @@ class OPCManager
       #@connections[conn].config.callback_timeout = Math.ceil(callBacks * 7500)
       @connections[conn].config.callback_timeout = Math.ceil(Math.sqrt(callBacks) * 7500)
       @connections[conn].init
-      @connections[conn].toggle_refresh(true)
+      #@connections[conn].toggle_refresh(true)
       console.log "tags: " + t + " max_callbacks: " + @connections[conn].config.max_callbacks + " callback_timeout: " + @connections[conn].config.callback_timeout
+
     @refs[conn] = c
     c
 
   @rem_ref: (conn)=>
     return 0 if !conn?
+
     c = @refs[conn]
-    c = if c? then c-1 else 0
+    c = if c? && c > 0 then c-1 else 0
     if c <= 0
       c = 0
       @connections[conn].toggle_refresh(false)
+
     @refs[conn] = c
     c
 
