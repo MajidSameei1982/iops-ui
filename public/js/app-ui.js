@@ -23584,6 +23584,9 @@ BaseModel = (function(superClass) {
   BaseModel.prototype.save = function(attrs, options) {
     var blacklist, i, k, len;
     attrs || (attrs = $.extend(true, {}, this.attributes));
+    if ((attrs["0"] != null)) {
+      delete attrs["0"];
+    }
     options || (options = {});
     blacklist = ['isActive', 'createdAt', 'updatedAt', 'lastErrorObject', 'ok', 'value'];
     if (options.blacklist != null) {
@@ -23851,9 +23854,30 @@ Dashboard = (function(superClass) {
   };
 
   Dashboard.prototype.save = function(attrs, options) {
+    var i, j, k, len, len1, nums, ref, w;
     options || (options = {});
     options.blacklist = ["userId"];
     this.pickUrl();
+    attrs || (attrs = $.extend(true, {}, this.attributes));
+    nums = [];
+    for (k in attrs) {
+      if (!isNaN(k)) {
+        nums.push(k);
+      }
+    }
+    for (i = 0, len = nums.length; i < len; i++) {
+      k = nums[i];
+      delete attrs[k];
+    }
+    if ((attrs.widgets != null)) {
+      ref = attrs.widgets;
+      for (j = 0, len1 = ref.length; j < len1; j++) {
+        w = ref[j];
+        if (w.position != null) {
+          delete w.position;
+        }
+      }
+    }
     return Dashboard.__super__.save.call(this, attrs, options);
   };
 
@@ -29144,7 +29168,6 @@ AssetWidgetView = (function(superClass) {
   AssetWidgetView.prototype.onShow = function() {};
 
   AssetWidgetView.prototype.onGridster = function() {
-    debugger;
     var h, m, map, w;
     m = this.$("#map");
     w = m.width();
@@ -31189,7 +31212,6 @@ IOPSWidgetView = (function(superClass) {
     **         otherwise replace #{1} with the #{set_value} 
     ********************************************************
      */
-    debugger;
     var img;
     return img = Iamge[0];
   };

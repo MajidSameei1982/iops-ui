@@ -8,6 +8,7 @@ class BaseModel extends Backbone.Model
   
   save:(attrs, options)->
     attrs || (attrs = $.extend(true, {}, this.attributes))
+    if (attrs["0"]?) then delete attrs["0"]
     options || (options = {})
     # prevent attribs from being sent up in save operations
     blacklist = ['isActive', 'createdAt', 'updatedAt', 'lastErrorObject', 'ok', 'value']

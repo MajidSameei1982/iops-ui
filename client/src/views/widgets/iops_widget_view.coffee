@@ -312,7 +312,7 @@ class IOPSWidgetView extends WidgetView
     ** format: If no #{1} is found in string treat as suffix
     **         otherwise replace #{1} with the #{set_value} 
     ********************************************************###
-    debugger
+    #debugger
 
     img = Iamge[0]
     #vq = @data_q(@tagData.pca_discharge_temp.Tag)

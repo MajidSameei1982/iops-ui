@@ -56,7 +56,6 @@ class AssetWidgetView extends IOPSWidgetView
     # if !url? || url == '' then @toggle_settings()
 
   onGridster: ()->
-    debugger
     m = @$("#map")
     w = m.width()
     h = m.height()
