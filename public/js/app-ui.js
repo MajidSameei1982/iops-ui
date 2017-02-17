@@ -4206,7 +4206,7 @@ TagConfig = (function(superClass) {
     },
     gpu_status: {
       Tag: 'GPU.GPUSTATUSBOOLEAN',
-      Label: 'GPU Status',
+      Label: '[*]GPU Status',
       DataType: 'Boolean',
       Parameters: {
         Parm001: 'On',
@@ -4532,7 +4532,7 @@ TagConfig = (function(superClass) {
     },
     gpu_ra_out_avg: {
       Tag: 'GPU.RAOUTAVG',
-      Label: 'Average Output - Amps',
+      Label: '[*]Avg Output - Amps',
       DataType: 'Float',
       Parameters: {
         Parm001: true,
@@ -4566,7 +4566,7 @@ TagConfig = (function(superClass) {
     },
     gpu_rv_out_avg: {
       Tag: 'GPU.RVOUTAVG',
-      Label: 'Average Output - Volts',
+      Label: '[*]Avg Output - Volts',
       DataType: 'Float',
       Parameters: {
         Parm001: true,
@@ -4583,7 +4583,7 @@ TagConfig = (function(superClass) {
     },
     gpu_time: {
       Tag: 'GPU.GPUTime',
-      Label: 'GPU Run Time',
+      Label: '[*]GPU Run Time',
       DataType: 'Float',
       Parameters: {
         Parm001: true,
@@ -4618,7 +4618,7 @@ TagConfig = (function(superClass) {
     },
     gpu_hookup_time: {
       Tag: 'GPU.HOOKUPTIME',
-      Label: 'GPU Hookup Time',
+      Label: '[*]GPU Hookup Time',
       DataType: 'Float',
       Parameters: {
         Parm001: true,
@@ -5244,7 +5244,7 @@ TagConfig = (function(superClass) {
     },
     pbb_dock_time: {
       Tag: 'PBB.DOCKTIME',
-      Label: 'Aircraft Docked Time',
+      Label: '[*]Aircraft Docked Time',
       DataType: 'Float',
       Parameters: {
         Parm001: true,
@@ -5296,7 +5296,7 @@ TagConfig = (function(superClass) {
     },
     pbb_hookup_time: {
       Tag: 'PBB.HOOKUPTIME',
-      Label: 'PBB Hookup Time',
+      Label: '[*]PBB Hookup Time',
       DataType: 'Float',
       Parameters: {
         Parm001: true,
@@ -5383,7 +5383,7 @@ TagConfig = (function(superClass) {
     },
     pbb_status: {
       Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-      Label: 'PBB Status',
+      Label: '[*]PBB Status',
       DataType: 'Boolean',
       Parameters: {
         Parm001: 'Docked',
@@ -5756,7 +5756,7 @@ TagConfig = (function(superClass) {
     },
     pca_discharge_temp: {
       Tag: 'PCA.TEMPDISCH',
-      Label: 'Discharge Air Temperature',
+      Label: '[*]PCA Discharge Temp',
       DataType: 'Float',
       Parameters: {
         Parm001: true,
@@ -5913,7 +5913,7 @@ TagConfig = (function(superClass) {
     },
     pca_status: {
       Tag: 'PCA.PCASTATUS',
-      Label: 'PCA status',
+      Label: '[*]PCA status',
       DataType: 'Boolean',
       Parameters: {
         Parm001: 'On',
@@ -5983,7 +5983,7 @@ TagConfig = (function(superClass) {
     },
     pca_time: {
       Tag: 'PCA.PCATime',
-      Label: 'PCA Run Time',
+      Label: '[*]PCA Run Time',
       DataType: 'Float',
       Parameters: {
         Parm001: true,
@@ -6171,7 +6171,7 @@ TagConfig = (function(superClass) {
     },
     pca_hookup_time: {
       Tag: 'PCA.HOOKUPTIME',
-      Label: 'PCA Hookup Time',
+      Label: '[*]PCA Hookup Time',
       DataType: 'Float',
       Parameters: {
         Parm001: true,
@@ -6380,17 +6380,17 @@ TagConfig = (function(superClass) {
     pbb_pca_gpu_basic_widget: {
       Tags: {
         'pbb_status': 'pbb_status',
-        'pca_status': 'pca_status',
         'gpu_status': 'gpu_status',
+        'pca_status': 'pca_status',
         'pbb_hookup_time': 'pbb_hookup_time',
         'gpu_hookup_time': 'gpu_hookup_time',
         'pca_hookup_time': 'pca_hookup_time',
         'pbb_dock_time': 'pbb_dock_time',
-        'pca_time': 'pca_time',
         'gpu_time': 'gpu_time',
-        'pca_discharge_temp': 'pca_discharge_temp',
+        'pca_time': 'pca_time',
         'gpu_ra_out_avg': 'gpu_ra_out_avg',
-        'gpu_rv_out_avg': 'gpu_rv_out_avg'
+        'gpu_rv_out_avg': 'gpu_rv_out_avg',
+        'pca_discharge_temp': 'pca_discharge_temp'
       },
       Graphics: {}
     },
@@ -6472,7 +6472,6 @@ TagConfig = (function(superClass) {
         'pca_comp_stage_2': 'pca_comp_stage_2',
         'pca_bridge_damper': 'pca_bridge_damper',
         'pca_bridge_air': 'pca_bridge_air',
-        'pca_dirty_filter': 'pca_dirty_filter',
         'pca_blower': 'pca_blower',
         'pca_suction_pressure_1': 'pca_suction_pressure_1',
         'pca_suction_pressure_2': 'pca_suction_pressure_2',
@@ -7808,6 +7807,18 @@ TagConfig = (function(superClass) {
             }
           }
         }
+      },
+      pbb_pca_gpu_basic_widget: {
+        remove_tags: {
+          'pbb_status': 'pbb_status',
+          'gpu_status': 'gpu_status',
+          'pbb_hookup_time': 'pbb_hookup_time',
+          'gpu_hookup_time': 'gpu_hookup_time',
+          'pbb_dock_time': 'pbb_dock_time',
+          'gpu_time': 'gpu_time',
+          'gpu_ra_out_avg': 'gpu_ra_out_avg',
+          'gpu_rv_out_avg': 'gpu_rv_out_avg'
+        }
       }
     },
     'HAS-IAH': {
@@ -9052,7 +9063,7 @@ TagConfig = (function(superClass) {
                 },
                 pca_discharge_temp: {
                   Tag: 'PCA.TEMPDISCH',
-                  Label: 'Discharge Air Temperature',
+                  Label: '[*]PCA Discharge Temp',
                   DataType: 'Float',
                   Parameters: {
                     Parm001: true,
@@ -10303,7 +10314,7 @@ TagConfig = (function(superClass) {
         update_tags: {
           pca_time: {
             Tag: 'PCA.PCATime',
-            Label: 'PCA Run Time',
+            Label: '[*]PCA Run Time',
             DataType: 'Float',
             Parameters: {
               Parm001: true,
@@ -10320,7 +10331,7 @@ TagConfig = (function(superClass) {
           },
           gpu_time: {
             Tag: 'GPU01.GPUTime',
-            Label: 'GPU-1 Run Time',
+            Label: '[*]GPU-1 Run Time',
             DataType: 'Float',
             Parameters: {
               Parm001: true,
@@ -10337,7 +10348,7 @@ TagConfig = (function(superClass) {
           },
           gpu_ra_out_avg: {
             Tag: 'GPU01.RAOUTAVG',
-            Label: 'GPU-1 Average Output - Amps',
+            Label: 'GPU-1 Avg Output - Amps',
             DataType: 'Float',
             Parameters: {
               Parm001: true,
@@ -10354,7 +10365,7 @@ TagConfig = (function(superClass) {
           },
           gpu_rv_out_avg: {
             Tag: 'GPU01.RVOUTAVG',
-            Label: 'GPU-1 Average Output - Volts',
+            Label: 'GPU-1 Avg Output - Volts',
             DataType: 'Float',
             Parameters: {
               Parm001: true,
@@ -12785,7 +12796,7 @@ TagConfig = (function(superClass) {
               },
               pca_discharge_temp: {
                 Tag: 'PCA.TEMPDISCH',
-                Label: 'Discharge Air Temperature',
+                Label: '[*]PCA Discharge Temp',
                 DataType: 'Float',
                 Parameters: {
                   Parm001: true,
@@ -13006,24 +13017,6 @@ TagConfig = (function(superClass) {
                   Parm001: 'On',
                   Parm002: 'Off',
                   Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_dirty_filter: {
-                Tag: 'PCA.Alarm.DIRTY_AIR_FILTER',
-                Label: 'Dirty Filter',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'Yes',
-                  Parm002: 'No',
-                  Parm003: 'err',
                   Parm004: null,
                   Parm005: null
                 },
@@ -13263,7 +13256,7 @@ TagConfig = (function(superClass) {
               },
               pca_discharge_temp: {
                 Tag: 'PCA.TEMPDISCH',
-                Label: 'Discharge Air Temperature',
+                Label: '[*]PCA Discharge Temp',
                 DataType: 'Float',
                 Parameters: {
                   Parm001: true,
@@ -13430,24 +13423,6 @@ TagConfig = (function(superClass) {
                   Parm001: 'On',
                   Parm002: 'Off',
                   Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_dirty_filter: {
-                Tag: 'PCA.Alarm.DIRTY_AIR_FILTER',
-                Label: 'Dirty Filter',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'Yes',
-                  Parm002: 'No',
-                  Parm003: 'err',
                   Parm004: null,
                   Parm005: null
                 },
@@ -15622,7 +15597,7 @@ TagConfig = (function(superClass) {
               },
               pca_discharge_temp: {
                 Tag: 'PCA.TEMPDISCH',
-                Label: 'Discharge Air Temperature',
+                Label: '[*]PCA Discharge Temp',
                 DataType: 'Float',
                 Parameters: {
                   Parm001: true,
@@ -15639,7 +15614,7 @@ TagConfig = (function(superClass) {
               },
               pca_time: {
                 Tag: 'PCA.PCATime',
-                Label: 'PCA Run Time',
+                Label: '[*]PCA Run Time',
                 DataType: 'Float',
                 Parameters: {
                   Parm001: true,
@@ -15656,7 +15631,7 @@ TagConfig = (function(superClass) {
               },
               pca_hookup_time: {
                 Tag: 'PCA.HOOKUPTIME',
-                Label: 'PCA Hookup Time',
+                Label: '[*]PCA Hookup Time',
                 DataType: 'Float',
                 Parameters: {
                   Parm001: true,
@@ -15695,7 +15670,7 @@ TagConfig = (function(superClass) {
               },
               pca_discharge_temp: {
                 Tag: 'PCA.TEMPDISCH',
-                Label: 'Discharge Air Temperature',
+                Label: '[*]PCA Discharge Temp',
                 DataType: 'Float',
                 Parameters: {
                   Parm001: true,
@@ -15712,7 +15687,7 @@ TagConfig = (function(superClass) {
               },
               pca_time: {
                 Tag: 'PCA.PCATime',
-                Label: 'PCA Time',
+                Label: '[*]PCA Run Time',
                 DataType: 'Float',
                 Parameters: {
                   Parm001: true,
@@ -15729,7 +15704,7 @@ TagConfig = (function(superClass) {
               },
               pca_hookup_time: {
                 Tag: 'PCA.HOOKUPTIME',
-                Label: 'PCA Hookup Time',
+                Label: '[*]PCA Hookup Time',
                 DataType: 'Float',
                 Parameters: {
                   Parm001: true,
@@ -16233,23 +16208,6 @@ TagConfig = (function(superClass) {
               'pca_hot_gas_2': 'pca_hot_gas_2'
             },
             update_tags: {
-              pca_dirty_filter: {
-                Tag: 'PCA.DIRTY_FILTER',
-                Label: 'Dirty Filter',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'Yes',
-                  Parm002: 'No',
-                  Parm003: 'ok',
-                  Parm004: ''
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
               pca_modeovernight: {
                 Tag: 'PCA.MODE_OVERNIGHT',
                 Label: 'Overnight Mode',
@@ -16275,8 +16233,7 @@ TagConfig = (function(superClass) {
               'pca_bridge_damper': 'pca_bridge_damper',
               'pca_ambient_humidity': 'pca_ambient_humidity',
               'pca_hot_gas_1': 'pca_hot_gas_1',
-              'pca_hot_gas_2': 'pca_hot_gas_2',
-              'pca_dirty_filter': 'pca_dirty_filter'
+              'pca_hot_gas_2': 'pca_hot_gas_2'
             }
           }
         }
@@ -21600,7 +21557,96 @@ TagConfig = (function(superClass) {
     },
     ATL: {
       pbb_detail_widget: {
-        remove_all: {}
+        update_tags: {
+          pbb_status: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: 'PBB Status',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Docked',
+              Parm002: 'UnDocked',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#pbb_status_container',
+              Class: 'val transparent',
+              Object: null
+            }
+          },
+          pbb_undock_time: {
+            Tag: 'PBB.UNDOCKTIME',
+            Label: null,
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 2,
+              Parm003: 'mins',
+              Parm004: null
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#pbb_undockordocktime_container',
+              Class: 'pbb_undockordocktime val transparent',
+              Object: null
+            }
+          },
+          pbb_dock_time: {
+            Tag: 'PBB.DOCKTIME',
+            Label: 'Aircraft Docked Time (Minutes)',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 2,
+              Parm003: 'mins',
+              Parm004: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'pbb_undockordocktime val transparent',
+              Object: null
+            }
+          },
+          pbb_autolevel_mode: {
+            Tag: 'PBB.AUTOLEVELMODEFLAG',
+            Label: 'PBB Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: 'Auto-Level : #{1}'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#pbb_autolevel_container',
+              Class: 'val transparent',
+              Object: null
+            }
+          },
+          pbb_canopy: {
+            Tag: 'PBB.CANOPYDOWN',
+            Label: 'Canopy',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Down',
+              Parm002: 'Up',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: 'Canopy : #{1}'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#pbb_canopy_container',
+              Class: 'val transparent',
+              Object: null
+            }
+          }
+        }
       },
       gpu_summary_widget: {
         remove_tags: {
@@ -21973,25 +22019,6 @@ TagConfig = (function(superClass) {
               Parm001: 'TRUE',
               Parm002: '1',
               Parm003: '',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          }
-        },
-        update_tags: {
-          pca_dirty_filter: {
-            Tag: 'PCA.Alarm.DIRTY_FILTER',
-            Label: 'Dirty Filter',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'Yes',
-              Parm002: 'No',
-              Parm003: 'ok',
               Parm004: ''
             },
             Element: {
