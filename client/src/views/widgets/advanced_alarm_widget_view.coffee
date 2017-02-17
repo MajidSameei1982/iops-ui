@@ -32,7 +32,7 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
       return null
 
     s = @update_settings
-      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}_'
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
 
     if !@site_code? then return null
@@ -59,7 +59,7 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
         for zone of zones
           gates = zones[zone]
           for gate of gates
-            #pre = "Airport_#{@site_code}_Term#{term}_Zone#{zone}_Gate#{gate}_"
+            pre = "Airport_#{@site_code}_Term#{term}_Zone#{zone}_Gate#{gate}_"
             p = if !s.priority? then 'all' else s.priority
             t = if !s.type? then 'all' else s.type
             alarms = (p=='all' || p=='alarms')
@@ -68,13 +68,13 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
             pca = (t=='all' || t=='PCA')
             gpu = (t=='all' || t=='GPU')
             if alarms
-              if pbb then groups.push("#{@prefix}PBB_Alarms")
-              if pca then groups.push("#{@prefix}PCA_Alarms")
-              if gpu then groups.push("#{@prefix}GPU_Alarms")
+              if pbb then groups.push("#{pre}PBB_Alarms")
+              if pca then groups.push("#{pre}PCA_Alarms")
+              if gpu then groups.push("#{pre}GPU_Alarms")
             if notifications
-              if pbb then groups.push("#{@prefix}PBB_Warnings")
-              if pca then groups.push("#{@prefix}PCA_Warnings")
-              if gpu then groups.push("#{@prefix}GPU_Warnings")
+              if pbb then groups.push("#{pre}PBB_Warnings")
+              if pca then groups.push("#{pre}PCA_Warnings")
+              if gpu then groups.push("#{pre}GPU_Warnings")
 
       @alarm_binding =
         alarmid: "#{@alarmid}"
@@ -195,7 +195,17 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
         ajaxGridOptions: {cache: false},
         cmTemplate: { title: false },
         #shrinkToFit: false,
-        caption: "#{@titleHtml}"
+        caption: "#{@titleHtml}",
+        loadComplete: () =>
+          @ui.alarmGrid.find("tbody > tr").each (idx, element) =>
+            if $("td:eq(4)", element).text() == "0"
+              $("td:eq(4)", element).closest("tr").toggleClass("notification",true)
+            if $("td:eq(4)", element).text() == "100"
+              $("td:eq(4)", element).closest("tr").toggleClass("alarm",true)
+            if $("td:eq(4)", element).text() == "200"
+              $("td:eq(4)", element).closest("tr").toggleClass("critical",true)
+            if $("td:eq(4)", element).text() == "999"
+              $("td:eq(4)", element).closest("tr").toggleClass("bad-quality",true)
       }
     )
   
@@ -220,14 +230,14 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
   advanced_alarm_update: (ab, data)=>
       @beat_time = new Date().getTime() + @site_refresh
       # If your table has header(th), use this:
-      alarmJson = $("table.opc-alarm").tableToJSON()
+      alarmJson = @$("table.opc-alarm").tableToJSON()
       for idx, data of alarmJson
         data['Alarm Date/Time'] = data['Alarm Date/Time'].substr 13
 
-      gridWidth = $('table.opc-alarm').width() - 5
-      @ui.alarmGrid.jqGrid('setGridParam', { data: {} })
-      @ui.alarmGrid[0].refreshIndex()
-      @ui.alarmGrid.trigger("reloadGrid")
+      gridWidth = @$('table.opc-alarm').width() - 5
+      #@ui.alarmGrid.jqGrid('setGridParam', { data: {} })
+      #@ui.alarmGrid[0].refreshIndex()
+      #@ui.alarmGrid.trigger("reloadGrid")
       @ui.alarmGrid.setGridWidth(gridWidth)
       @ui.alarmGrid.jqGrid('setGridParam', { data: alarmJson })
       @ui.alarmGrid.jqGrid('setColProp','Alarm Date/Time',{width:140 })
@@ -236,17 +246,17 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
       @ui.alarmGrid.trigger("reloadGrid")
 
       # If your table has header(th), use this:
-      $('table.opc-alarm > tbody > tr> td:nth-child(3)').hide()
-      $('table.opc-alarm > thead > tr> th:nth-child(3)').hide()
-      $("table.opc-alarm > tbody > tr").each (idx, element) =>
-        if $("td:eq(2)", element).text() == "0"
-          $("td:eq(2)", element).closest("tr").toggleClass("notification",true)
-        if $("td:eq(2)", element).text() == "100"
-          $("td:eq(2)", element).closest("tr").toggleClass("alarm",true)
-        if $("td:eq(2)", element).text() == "200"
-          $("td:eq(2)", element).closest("tr").toggleClass("critical",true)
-        if $("td:eq(2)", element).text() == "999"
-          $("td:eq(2)", element).closest("tr").toggleClass("bad-quality",true)
+      @$('table.opc-alarm > tbody > tr> td:nth-child(3)').hide()
+      @$('table.opc-alarm > thead > tr> th:nth-child(3)').hide()
+      @$("table.opc-alarm > tbody > tr").each (idx, element) =>
+        if @$("td:eq(2)", element).text() == "0"
+          @$("td:eq(2)", element).closest("tr").toggleClass("notification",true)
+        if @$("td:eq(2)", element).text() == "100"
+          @$("td:eq(2)", element).closest("tr").toggleClass("alarm",true)
+        if @$("td:eq(2)", element).text() == "200"
+          @$("td:eq(2)", element).closest("tr").toggleClass("critical",true)
+        if @$("td:eq(2)", element).text() == "999"
+          @$("td:eq(2)", element).closest("tr").toggleClass("bad-quality",true)
 
       # $('table.opc-alarm > tbody > tr').each (idx, element) =>
       #   $(element).hide()
@@ -321,15 +331,15 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
       @set_model()
 
     p = settings.priority
-    if p? && p=='alarms' then $("#p_alarms").prop("checked", true)
-    if p? && p=='notifications' then $("#p_notifications").prop("checked", true)
-    if !p? || p=='all' then $("#p_all").prop("checked", true)
+    if p? && p=='alarms' then @$("#p_alarms").prop("checked", true)
+    if p? && p=='notifications' then @$("#p_notifications").prop("checked", true)
+    if !p? || p=='all' then @$("#p_all").prop("checked", true)
     @$("[name=priority]").attr('name', "priority_#{@cid}")
     @$("[name=priority_#{@cid}]").on 'change', ()=>
       @set_model()
 
     ag = settings.allgates
-    $("#allgates").prop("checked", ag)
+    @$("#allgates").prop("checked", ag)
     @ui.allgates.on 'change', ()=>
       @set_model()
       checked = @$("#allgates").is(':checked')
@@ -354,7 +364,7 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
 
   start_heartbeat: ()=>
     @beat_time = new Date().getTime() + @site_refresh
-    $("##{@el.parentNode.id} .widget-outer").toggleClass("no-heartbeat", false)
+    @$(".widget-outer").toggleClass("no-heartbeat", false)
     if @heartbeat_timer? && @heartbeat_timer > 0
       window.clearInterval(@heartbeat_timer)
     @heartbeat_timer = window.setInterval((=>
@@ -364,7 +374,7 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
 
   check_heartbeat: (widget_id)=>
     @curTime = new Date().getTime()
-    $("##{widget_id} .widget-outer").toggleClass("no-heartbeat", (@curTime > @beat_time))
+    @$(".widget-outer").toggleClass("no-heartbeat", (@curTime > @beat_time))
 
   onDestroy: (arg1, arg2) ->
     # be sure to remove listener

@@ -1626,7 +1626,7 @@ window.JST["widgets/airport_overview_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-road"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n      </h1>\n    </div>\n    <div id="key">\n      <div class="key_row"><i class="fa fa-fw fa-plane"></i> Airplane at Gate</div>\n      <div class="key_row"><i class="fa fa-fw fa-warning critical"></i> Critical Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-bell alarm"></i> Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-check-circle-o perfect"></i> Perfect Hookup</div>\n      <div class="key_row"><i class="fa fa-fw fa-wrench alarm"></i> Out of Service</div>\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-road"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n      </h1>\n    </div>\n    <div id="key">\n      <div class="key_row"><i class="fa fa-fw fa-plane"></i> Airplane at Gate</div>\n      <div class="key_row"><i class="fa fa-fw fa-warning critical"></i> Critical Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-bell alarm"></i> Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-check-circle-o perfect"></i> Perfect Hookup</div>\n      <div class="key_row"><i class="fa fa-fw fa-wrench alarm"></i> Out of Service</div>\n      <div class="key_row">\n        <span class="key_row fa-stack" style="left: -5px">\n          <i class="fa fa-rss fa-stack-1x "></i>\n          <i class="fa fa-exclamation fa-stack-1x" style="color: red;"></i> \n        </span>\n        Comm. Error\n      </div>\n\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -1857,7 +1857,7 @@ window.JST["widgets/config_gate_widget"] = function(__obj) {
         site: this.settings.site
       })));
     
-      _print(_safe('\n  </div><!-- /.box-body -->\n</div><!-- /.box-body -->\n'));
+      _print(_safe('\n    <div class="row">\n      <div id=\'terminals\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row">\n      <div id=\'zones\' class=\'col-md-12\'></div>\n    </div>\n    <div class="row">\n      <div id=\'gates\' class=\'col-md-12\'></div>  \n    </div>\n  </div><!-- /.box-body -->\n</div><!-- /.box-body -->\n'));
     
     }).call(this);
     
@@ -27231,12 +27231,12 @@ AdvancedalarmWidgetView = (function(superClass) {
   titleHtml = '';
 
   AdvancedalarmWidgetView.prototype.update = function() {
-    var alarms, gate, gates, gpu, groups, lbl, net_node, notifications, obj, obj1, obj2, p, pbb, pca, s, t, term, terminals, tzg, zone, zones;
+    var alarms, gate, gates, gpu, groups, lbl, net_node, notifications, obj, obj1, obj2, p, pbb, pca, pre, s, t, term, terminals, tzg, zone, zones;
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
     s = this.update_settings({
-      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}_',
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
     });
     if (this.site_code == null) {
@@ -27273,6 +27273,7 @@ AdvancedalarmWidgetView = (function(superClass) {
         for (zone in zones) {
           gates = zones[zone];
           for (gate in gates) {
+            pre = "Airport_" + this.site_code + "_Term" + term + "_Zone" + zone + "_Gate" + gate + "_";
             p = s.priority == null ? 'all' : s.priority;
             t = s.type == null ? 'all' : s.type;
             alarms = p === 'all' || p === 'alarms';
@@ -27282,24 +27283,24 @@ AdvancedalarmWidgetView = (function(superClass) {
             gpu = t === 'all' || t === 'GPU';
             if (alarms) {
               if (pbb) {
-                groups.push(this.prefix + "PBB_Alarms");
+                groups.push(pre + "PBB_Alarms");
               }
               if (pca) {
-                groups.push(this.prefix + "PCA_Alarms");
+                groups.push(pre + "PCA_Alarms");
               }
               if (gpu) {
-                groups.push(this.prefix + "GPU_Alarms");
+                groups.push(pre + "GPU_Alarms");
               }
             }
             if (notifications) {
               if (pbb) {
-                groups.push(this.prefix + "PBB_Warnings");
+                groups.push(pre + "PBB_Warnings");
               }
               if (pca) {
-                groups.push(this.prefix + "PCA_Warnings");
+                groups.push(pre + "PCA_Warnings");
               }
               if (gpu) {
-                groups.push(this.prefix + "GPU_Warnings");
+                groups.push(pre + "GPU_Warnings");
               }
             }
           }
@@ -27462,7 +27463,25 @@ AdvancedalarmWidgetView = (function(superClass) {
       cmTemplate: {
         title: false
       },
-      caption: "" + this.titleHtml
+      caption: "" + this.titleHtml,
+      loadComplete: (function(_this) {
+        return function() {
+          return _this.ui.alarmGrid.find("tbody > tr").each(function(idx, element) {
+            if ($("td:eq(4)", element).text() === "0") {
+              $("td:eq(4)", element).closest("tr").toggleClass("notification", true);
+            }
+            if ($("td:eq(4)", element).text() === "100") {
+              $("td:eq(4)", element).closest("tr").toggleClass("alarm", true);
+            }
+            if ($("td:eq(4)", element).text() === "200") {
+              $("td:eq(4)", element).closest("tr").toggleClass("critical", true);
+            }
+            if ($("td:eq(4)", element).text() === "999") {
+              return $("td:eq(4)", element).closest("tr").toggleClass("bad-quality", true);
+            }
+          });
+        };
+      })(this)
     });
     this.ui.alarmGrid.jqGrid('navGrid', '#pager', {
       add: false,
@@ -27481,17 +27500,12 @@ AdvancedalarmWidgetView = (function(superClass) {
   AdvancedalarmWidgetView.prototype.advanced_alarm_update = function(ab, data) {
     var alarmJson, gridWidth, idx;
     this.beat_time = new Date().getTime() + this.site_refresh;
-    alarmJson = $("table.opc-alarm").tableToJSON();
+    alarmJson = this.$("table.opc-alarm").tableToJSON();
     for (idx in alarmJson) {
       data = alarmJson[idx];
       data['Alarm Date/Time'] = data['Alarm Date/Time'].substr(13);
     }
-    gridWidth = $('table.opc-alarm').width() - 5;
-    this.ui.alarmGrid.jqGrid('setGridParam', {
-      data: {}
-    });
-    this.ui.alarmGrid[0].refreshIndex();
-    this.ui.alarmGrid.trigger("reloadGrid");
+    gridWidth = this.$('table.opc-alarm').width() - 5;
     this.ui.alarmGrid.setGridWidth(gridWidth);
     this.ui.alarmGrid.jqGrid('setGridParam', {
       data: alarmJson
@@ -27504,21 +27518,21 @@ AdvancedalarmWidgetView = (function(superClass) {
     });
     this.ui.alarmGrid[0].refreshIndex();
     this.ui.alarmGrid.trigger("reloadGrid");
-    $('table.opc-alarm > tbody > tr> td:nth-child(3)').hide();
-    $('table.opc-alarm > thead > tr> th:nth-child(3)').hide();
-    $("table.opc-alarm > tbody > tr").each((function(_this) {
+    this.$('table.opc-alarm > tbody > tr> td:nth-child(3)').hide();
+    this.$('table.opc-alarm > thead > tr> th:nth-child(3)').hide();
+    this.$("table.opc-alarm > tbody > tr").each((function(_this) {
       return function(idx, element) {
-        if ($("td:eq(2)", element).text() === "0") {
-          $("td:eq(2)", element).closest("tr").toggleClass("notification", true);
+        if (_this.$("td:eq(2)", element).text() === "0") {
+          _this.$("td:eq(2)", element).closest("tr").toggleClass("notification", true);
         }
-        if ($("td:eq(2)", element).text() === "100") {
-          $("td:eq(2)", element).closest("tr").toggleClass("alarm", true);
+        if (_this.$("td:eq(2)", element).text() === "100") {
+          _this.$("td:eq(2)", element).closest("tr").toggleClass("alarm", true);
         }
-        if ($("td:eq(2)", element).text() === "200") {
-          $("td:eq(2)", element).closest("tr").toggleClass("critical", true);
+        if (_this.$("td:eq(2)", element).text() === "200") {
+          _this.$("td:eq(2)", element).closest("tr").toggleClass("critical", true);
         }
-        if ($("td:eq(2)", element).text() === "999") {
-          return $("td:eq(2)", element).closest("tr").toggleClass("bad-quality", true);
+        if (_this.$("td:eq(2)", element).text() === "999") {
+          return _this.$("td:eq(2)", element).closest("tr").toggleClass("bad-quality", true);
         }
       };
     })(this));
@@ -27601,13 +27615,13 @@ AdvancedalarmWidgetView = (function(superClass) {
     })(this));
     p = settings.priority;
     if ((p != null) && p === 'alarms') {
-      $("#p_alarms").prop("checked", true);
+      this.$("#p_alarms").prop("checked", true);
     }
     if ((p != null) && p === 'notifications') {
-      $("#p_notifications").prop("checked", true);
+      this.$("#p_notifications").prop("checked", true);
     }
     if ((p == null) || p === 'all') {
-      $("#p_all").prop("checked", true);
+      this.$("#p_all").prop("checked", true);
     }
     this.$("[name=priority]").attr('name', "priority_" + this.cid);
     this.$("[name=priority_" + this.cid + "]").on('change', (function(_this) {
@@ -27616,7 +27630,7 @@ AdvancedalarmWidgetView = (function(superClass) {
       };
     })(this));
     ag = settings.allgates;
-    $("#allgates").prop("checked", ag);
+    this.$("#allgates").prop("checked", ag);
     this.ui.allgates.on('change', (function(_this) {
       return function() {
         var checked;
@@ -27645,7 +27659,7 @@ AdvancedalarmWidgetView = (function(superClass) {
 
   AdvancedalarmWidgetView.prototype.start_heartbeat = function() {
     this.beat_time = new Date().getTime() + this.site_refresh;
-    $("#" + this.el.parentNode.id + " .widget-outer").toggleClass("no-heartbeat", false);
+    this.$(".widget-outer").toggleClass("no-heartbeat", false);
     if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
       window.clearInterval(this.heartbeat_timer);
     }
@@ -27658,7 +27672,7 @@ AdvancedalarmWidgetView = (function(superClass) {
 
   AdvancedalarmWidgetView.prototype.check_heartbeat = function(widget_id) {
     this.curTime = new Date().getTime();
-    return $("#" + widget_id + " .widget-outer").toggleClass("no-heartbeat", this.curTime > this.beat_time);
+    return this.$(".widget-outer").toggleClass("no-heartbeat", this.curTime > this.beat_time);
   };
 
   AdvancedalarmWidgetView.prototype.onDestroy = function(arg1, arg2) {
@@ -27774,7 +27788,7 @@ AirportoverviewWidgetView = (function(superClass) {
               Tag_gate_alarm: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".Alarm._HasAlarms",
               Tag_gate_docked: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.AIRCRAFTDOCKEDCALCULATION",
               Tag_gate_critical: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".Alarm._HasCriticalAlarms",
-              Tag_gate_perfect_hookup: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".System.PERFECT_HOOKUP",
+              Tag_gate_perfect_hookup: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".System.Perfect_Hookup",
               Tag_system_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".System._OUT_OF_SERVICE",
               Tag_gpu_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".GPU._OUT_OF_SERVICE",
               Tag_pbb_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB._OUT_OF_SERVICE",
@@ -28031,7 +28045,7 @@ AlarmWidgetView = (function(superClass) {
       return null;
     }
     s = this.update_settings({
-      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}_',
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
     });
     if (this.site_code == null) {
@@ -28457,9 +28471,9 @@ ConfigairportWidgetView = (function(superClass) {
     heating_pt: 'PCA.SET_HEATINGPOINT.Value',
     cooling_tm: 'PCA.SET_COOLINGPOINT_TIMER.Value',
     heating_tm: 'PCA.SET_HEATINGPOINT_TIMER.Value',
-    pca_perfect_tm: 'PCA.SET_HOOKUPTIME.Value',
-    gpu_perfect_tm: 'GPU.SET_HOOKUPTIME.Value',
-    pbb_perfect_tm: 'PBB.SET_HOOKUPTIME.Value'
+    pca_perfect_tm: 'PCA.Set_PerfectHookupTime.Value',
+    gpu_perfect_tm: 'GPU.Set_PerfectHookupTime.Value',
+    pbb_perfect_tm: 'PBB.Set_PerfectHookupTime.Value'
   };
 
   ConfigairportWidgetView.prototype.base_tags = [];
@@ -28548,17 +28562,17 @@ ConfigairportWidgetView = (function(superClass) {
           v = (v != null) && v !== '' ? parseFloat(v) : 0;
           heat_tm = v > heat_tm ? v : heat_tm;
         }
-        if (t.name.endsWith("PCA.SET_HOOKUPTIME")) {
+        if (t.name.endsWith("PCA.Set_PerfectHookupTime")) {
           v = t.props[0].val;
           v = (v != null) && v !== '' ? parseFloat(v) : 0;
           pca_ph_tm = v > pca_ph_tm ? v : pca_ph_tm;
         }
-        if (t.name.endsWith("GPU.SET_HOOKUPTIME")) {
+        if (t.name.endsWith("GPU.Set_PerfectHookupTime")) {
           v = t.props[0].val;
           v = (v != null) && v !== '' ? parseFloat(v) : 0;
           gpu_ph_tm = v > gpu_ph_tm ? v : gpu_ph_tm;
         }
-        if (t.name.endsWith("PBB.SET_HOOKUPTIMETIME")) {
+        if (t.name.endsWith("PBB.Set_PerfectHookupTime")) {
           v = t.props[0].val;
           v = (v != null) && v !== '' ? parseFloat(v) : 0;
           pbb_ph_tm = v > pbb_ph_tm ? v : pbb_ph_tm;
@@ -28698,13 +28712,13 @@ ConfiggateWidgetView = (function(superClass) {
   };
 
   ConfiggateWidgetView.prototype.tags = {
-    cooling_pt: 'PCA.SET_COOLINGPOINT.Value',
-    heating_pt: 'PCA.SET_HEATINGPOINT.Value',
-    cooling_tm: 'PCA.SET_COOLINGPOINT_TIMER.Value',
-    heating_tm: 'PCA.SET_HEATINGPOINT_TIMER.Value',
-    pca_perfect_tm: 'PCA.SET_HOOKUPTIME.Value',
-    gpu_perfect_tm: 'GPU.SET_HOOKUPTIME.Value',
-    pbb_perfect_tm: 'PBB.SET_HOOKUPTIME.Value'
+    cooling_pt: 'PCA.SET_COOLINGPOINT',
+    heating_pt: 'PCA.SET_HEATINGPOINT',
+    cooling_tm: 'PCA.SET_COOLINGPOINT_TIMER',
+    heating_tm: 'PCA.SET_HEATINGPOINT_TIMER',
+    pca_perfect_tm: 'PCA.Set_PerfectHookupTime',
+    gpu_perfect_tm: 'GPU.Set_PerfectHookupTime',
+    pbb_perfect_tm: 'PBB.Set_PerfectHookupTime'
   };
 
   ConfiggateWidgetView.prototype.base_tags = [];
@@ -28714,8 +28728,8 @@ ConfiggateWidgetView = (function(superClass) {
   ConfiggateWidgetView.prototype.IsPageLoading = true;
 
   ConfiggateWidgetView.prototype.update = function() {
-    var lbl, s, tag, tg;
-    if (!this.IsUpdatingSettings && !this.IsPageLoading) {
+    var lbl, s, t, tags, tg;
+    if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
     s = this.update_settings({
@@ -28726,31 +28740,22 @@ ConfiggateWidgetView = (function(superClass) {
       return null;
     }
     if ((s != null) && !!s.site) {
-      this.kill_updates(this.site_code);
-      this.site = OPCManager.get_site(s.site);
-      this.site_code = this.site.get('code');
-      if (this.site_code == null) {
-        return null;
-      }
       lbl = this.site_code + ": Gate Configurations";
       this.ui.wtitle.html(lbl);
-    }
-    this.base_tags = [];
-    if (this.site != null) {
+      tags = [];
       for (tg in this.tags) {
-        tag = this.tags[tg];
-        this.base_tags.push("" + this.prefix + tag);
+        t = this.tags[tg];
+        tags.push("" + this.prefix + t + ".Value");
       }
-    }
-    if (this.base_tags.length > 0) {
-      App.opc.add_tags(this.site_code, this.base_tags);
+      App.opc.add_tags(this.site_code, tags);
       this.opc = App.opc.connections[this.site_code];
-      return this.watch_updates(this.site_code);
+      return App.vent.on("opc:data:" + this.site_code, this.data_update);
     }
   };
 
   ConfiggateWidgetView.prototype.data_update = function(data) {
     var cool, cool_tm, gpu_ph_tm, heat, heat_tm, i, len, pbb_ph_tm, pca_ph_tm, ref, t, v;
+    this.refresh_values();
     if ((data != null) && (data.tags != null) && data.tags.length > 0) {
       cool = 0;
       heat = 0;
@@ -28762,37 +28767,37 @@ ConfiggateWidgetView = (function(superClass) {
       ref = data.tags;
       for (i = 0, len = ref.length; i < len; i++) {
         t = ref[i];
-        if (t.name.endsWith("PCA.SET_COOLINGPOINT")) {
+        if (t.name.endsWith(this.tags.cooling_pt)) {
           v = t.props[0].val;
           v = (v != null) && v !== '' ? parseFloat(v) : 0;
           cool = v > cool ? v : cool;
         }
-        if (t.name.endsWith("PCA.SET_COOLINGPOINT_TIMER")) {
+        if (t.name.endsWith(this.tags.cooling_tm)) {
           v = t.props[0].val;
           v = (v != null) && v !== '' ? parseFloat(v) : 0;
           cool_tm = v > cool_tm ? v : cool_tm;
         }
-        if (t.name.endsWith("PCA.SET_HEATINGPOINT")) {
+        if (t.name.endsWith(this.tags.heating_pt)) {
           v = t.props[0].val;
           v = (v != null) && v !== '' ? parseFloat(v) : 0;
           heat = v > heat ? v : heat;
         }
-        if (t.name.endsWith("PCA.SET_HEATINGPOINT_TIMER")) {
+        if (t.name.endsWith(this.tags.heating_tm)) {
           v = t.props[0].val;
           v = (v != null) && v !== '' ? parseFloat(v) : 0;
           heat_tm = v > heat_tm ? v : heat_tm;
         }
-        if (t.name.endsWith("PCA.SET_HOOKUPTIME")) {
+        if (t.name.endsWith(this.tags.pca_perfect_tm)) {
           v = t.props[0].val;
           v = (v != null) && v !== '' ? parseFloat(v) : 0;
           pca_ph_tm = v > pca_ph_tm ? v : pca_ph_tm;
         }
-        if (t.name.endsWith("GPU.SET_HOOKUPTIME")) {
+        if (t.name.endsWith(this.tags.gpu_perfect_tm)) {
           v = t.props[0].val;
           v = (v != null) && v !== '' ? parseFloat(v) : 0;
           gpu_ph_tm = v > gpu_ph_tm ? v : gpu_ph_tm;
         }
-        if (t.name.endsWith("PBB.SET_HOOKUPTIMETIME")) {
+        if (t.name.endsWith(this.tags.pbb_perfect_tm)) {
           v = t.props[0].val;
           v = (v != null) && v !== '' ? parseFloat(v) : 0;
           pbb_ph_tm = v > pbb_ph_tm ? v : pbb_ph_tm;
@@ -28812,19 +28817,18 @@ ConfiggateWidgetView = (function(superClass) {
   ConfiggateWidgetView.prototype.set_points = function(e) {
     e.preventDefault();
     if (this.site != null) {
-      this.opc.set_value("" + this.prefix + this.tags.cooling_pt, this.$('input#cool_set').val());
-      this.opc.set_value("" + this.prefix + this.tags.heating_pt, this.$('input#heat_set').val());
-      this.opc.set_value("" + this.prefix + this.tags.cooling_tm, this.$('input#cool_set_tm').val());
-      this.opc.set_value("" + this.prefix + this.tags.heating_tm, this.$('input#heat_set_tm').val());
-      this.opc.set_value("" + this.prefix + this.tags.pca_perfect_tm, this.$('input#pca_perfect_tm').val());
-      this.opc.set_value("" + this.prefix + this.tags.gpu_perfect_tm, this.$('input#gpu_perfect_tm').val());
-      return this.opc.set_value("" + this.prefix + this.tags.pbb_perfect_tm, this.$('input#pbb_perfect_tm').val());
+      this.opc.set_value("" + this.prefix + this.tags.cooling_pt + ".Value", this.$('input#cool_set').val());
+      this.opc.set_value("" + this.prefix + this.tags.heating_pt + ".Value", this.$('input#heat_set').val());
+      this.opc.set_value("" + this.prefix + this.tags.cooling_tm + ".Value", this.$('input#cool_set_tm').val());
+      this.opc.set_value("" + this.prefix + this.tags.heating_tm + ".Value", this.$('input#heat_set_tm').val());
+      this.opc.set_value("" + this.prefix + this.tags.pca_perfect_tm + ".Value", this.$('input#pca_perfect_tm').val());
+      this.opc.set_value("" + this.prefix + this.tags.gpu_perfect_tm + ".Value", this.$('input#gpu_perfect_tm').val());
+      return this.opc.set_value("" + this.prefix + this.tags.pbb_perfect_tm + ".Value", this.$('input#pbb_perfect_tm').val());
     }
   };
 
   ConfiggateWidgetView.prototype.set_model = function() {
     var s;
-    this.IsUpdatingSettings = true;
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     this.site_code = OPCManager.get_site_code(s.site);
@@ -28836,20 +28840,22 @@ ConfiggateWidgetView = (function(superClass) {
 
   ConfiggateWidgetView.prototype.toggle_settings = function(e) {
     ConfiggateWidgetView.__super__.toggle_settings.call(this, e);
-    return this.ui.display.toggle(!this.settings_visible);
+    this.ui.display.toggle(!this.settings_visible);
+    this.IsUpdatingSettings = this.settings_visible;
+    if (!this.settings_visible) {
+      this.IsPageLoading = false;
+      return this.update();
+    }
   };
 
   ConfiggateWidgetView.prototype.onShow = function() {
-    var gate, settings, site;
+    var gate, settings;
     settings = this.model.get('settings');
     settings || (settings = {});
-    site = settings.site;
-    if ((site == null) || site === '') {
-      this.toggle_settings();
-    }
     this.draw_selectors(settings.terminal, settings.zone, settings.gate);
     this.$('#site').on('change', (function(_this) {
       return function() {
+        _this.draw_selectors();
         return _this.set_model();
       };
     })(this));
@@ -28863,15 +28869,16 @@ ConfiggateWidgetView = (function(superClass) {
     if (this.site_code != null) {
       this.site_refresh = (OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3;
     }
+    this.$('#set_pca_points').click(this.set_points);
     return this.check_init_site();
-  };
-
-  ConfiggateWidgetView.prototype.onDestroy = function(arg1, arg2) {
-    return this.kill_updates(this.site_code);
   };
 
   ConfiggateWidgetView.prototype.start = function() {
     return this.update();
+  };
+
+  ConfiggateWidgetView.prototype.onDestroy = function(arg1, arg2) {
+    return this.kill_updates(this.site_code);
   };
 
   return ConfiggateWidgetView;
