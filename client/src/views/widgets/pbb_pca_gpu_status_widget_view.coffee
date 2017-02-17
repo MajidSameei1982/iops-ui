@@ -97,12 +97,22 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
               @$("#widgetData tbody").append(
                 "<tr id='dynamic_#{tag}'>
                   <td class='lbl' id='dynamic_#{tag}_lbl'>#{label}</td>
-                  <td class='val no-show' id='dynamic_#{tag}_default_1'></td>
-                  <td class='val no-show' id='dynamic_#{tag}_default_2'></td>
-                  <td class='val no-show' id='dynamic_#{tag}_default_3'></td>
-                  <td class='val no-show' id='dynamic_#{tag}_default_4'></td>
-                  <td class='val no-show' id='dynamic_#{tag}_default_5'></td>
-                  <td class='val no-show' id='dynamic_#{tag}_default_6'></td>
+                  <td class='val no-show' id='dynamic_#{tag}_default_1'>
+                    <!-- <i id='dynamic_#{tag}_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_critical' class='fa fa-warning' title='Gate has CRITICAL ALARMS'></i>
+                    <i id='dynamic_#{tag}_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_alarm' class='fa fa-bell' title='Gate has ALARMS'></i>
+                    <i id='dynamic_#{tag}_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_outofservice' class='fa fa-wrench' title='A system is out of service'></i>
+                    <i id='dynamic_#{tag}_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_perfecthookup' class='fa fa-check-circle-o' title='Perfect Hookup'></i> -->
+                  </td>
+                  <td class='val no-show' id='dynamic_#{tag}_default_2'>
+                  </td>
+                  <td class='val no-show' id='dynamic_#{tag}_default_3'>
+                  </td>
+                  <td class='val no-show' id='dynamic_#{tag}_default_4'>
+                  </td>
+                  <td class='val no-show' id='dynamic_#{tag}_default_5'>
+                  </td>
+                  <td class='val no-show' id='dynamic_#{tag}_default_6'>
+                  </td>
                 </th>"
               )
 

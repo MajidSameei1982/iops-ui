@@ -123,7 +123,7 @@ class ConfigairportWidgetView extends IOPSWidgetView
       @$('input#pbb_perfect_tm').val(pbb_ph_tm)
     @kill_updates(@site_code)
 
-  set_points: (e)=>
+  set_points_airport: (e)=>
     e.preventDefault()
     if @site?
       settings = @site.get('settings') || {}
@@ -133,7 +133,7 @@ class ConfigairportWidgetView extends IOPSWidgetView
         for z of term
           zn = term[z]
           for g of zn
-            pre = "#{@prefix}.Term#{t}.Zone#{z}.Gate#{g}."
+            pre = "#{@prefix}Term#{t}.Zone#{z}.Gate#{g}."
             @opc.set_value("#{pre}#{@tags.cooling_pt}", @$('input#cool_set').val())
             @opc.set_value("#{pre}#{@tags.heating_pt}", @$('input#heat_set').val())
             @opc.set_value("#{pre}#{@tags.cooling_tm}", @$('input#cool_set_tm').val())
@@ -164,7 +164,7 @@ class ConfigairportWidgetView extends IOPSWidgetView
     
     @$('#site').on 'change', ()=>
       @set_model()
-    @$('#set_pca_points').click @set_points
+    @$('#set_pca_points').click @set_points_airport
     @check_init_site()
 
     

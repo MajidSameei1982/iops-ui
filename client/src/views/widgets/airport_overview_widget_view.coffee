@@ -172,7 +172,7 @@ class AirportoverviewWidgetView extends IOPSWidgetView
       if qa? && qa
         alarm = @get_bool(@opc.get_value("#{g.Tag_gate_alarm}.Value"))
         @$("#Airport_Gate_#{g.Number}_icon")
-        .toggleClass("alarm", alarm ==true && qa)
+        .toggleClass("alarm", !critical && alarm ==true && qa)
       else
         qa = false
 

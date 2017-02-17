@@ -85,7 +85,7 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
           alarmtypes:["Digital"]
           alarmgroups: groups
         columns: [
-          { name: "AlarmDateTime", text: "Alarm Date/Time", type: "datetime", visible: true, sort: 'desc', width: '140px', searchable: false }
+          { name: "AlarmDateTime", text: "Alarm DateTime", type: "datetime", visible: true, sort: 'desc', width: '140px', searchable: false }
           { name: "AlarmValue", text: "Alarm Value", type: "string", visible: false, align: 'right' }
           { name: "Text", text: "Text", type: "string", visible: true }
           { name: "Group", text: "Text", type: "string", visible: false }
@@ -134,7 +134,7 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
       {
         datatype: "local",
         data: defaultData,
-        colNames:['Acked','Alarm Date/Time','Alarm Value','Group','Priority','Text'],
+        colNames:['Acked','Alarm DateTime','Alarm Value','Group','Priority','Text'],
         colModel:[
           {
             name:'Acked',
@@ -145,13 +145,13 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
             hidden: true,
           },
           {
-            name: "Alarm Date/Time",
-            index:"Alarm Date/Time",
+            name: "Alarm DateTime",
+            index:"Alarm DateTime",
             width: 140,
             align: "center",
             sorttype: "date",
             formatter: "date", 
-            formatoptions: { newformat: "m/d/Y h:i A" },
+            formatoptions: { srcformat: "m/d/Y g:i A", newformat: "m/d/Y g:i A" },
             #editable: editableInAddForm,
             #searchoptions: { sopt: ["eq", "ne", "lt", "le", "gt", "ge"], 
             #dataInit: initDateSearch}
@@ -187,7 +187,7 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
         jsonReader: { cell: "" },
         rowNum: 10,
         rowList: [5,10,20,50],
-        sortname: 'Alarm Date/Time',
+        sortname: 'Alarm DateTime',
         sortorder: 'asc',
         viewrecords: true,
         height: "100%",
@@ -232,7 +232,7 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
       # If your table has header(th), use this:
       alarmJson = @$("table.opc-alarm").tableToJSON()
       for idx, data of alarmJson
-        data['Alarm Date/Time'] = data['Alarm Date/Time'].substr 13
+        data['Alarm DateTime'] = data['Alarm DateTime'].substr 13
 
       gridWidth = @$('table.opc-alarm').width() - 5
       #@ui.alarmGrid.jqGrid('setGridParam', { data: {} })
@@ -240,7 +240,7 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
       #@ui.alarmGrid.trigger("reloadGrid")
       @ui.alarmGrid.setGridWidth(gridWidth)
       @ui.alarmGrid.jqGrid('setGridParam', { data: alarmJson })
-      @ui.alarmGrid.jqGrid('setColProp','Alarm Date/Time',{width:140 })
+      @ui.alarmGrid.jqGrid('setColProp','Alarm DateTime',{width:140 })
       @ui.alarmGrid.jqGrid('setColProp','Text',{width: (gridWidth-140) })
       @ui.alarmGrid[0].refreshIndex()
       @ui.alarmGrid.trigger("reloadGrid")
@@ -249,14 +249,14 @@ class AdvancedalarmWidgetView extends IOPSWidgetView
       @$('table.opc-alarm > tbody > tr> td:nth-child(3)').hide()
       @$('table.opc-alarm > thead > tr> th:nth-child(3)').hide()
       @$("table.opc-alarm > tbody > tr").each (idx, element) =>
-        if @$("td:eq(2)", element).text() == "0"
-          @$("td:eq(2)", element).closest("tr").toggleClass("notification",true)
-        if @$("td:eq(2)", element).text() == "100"
-          @$("td:eq(2)", element).closest("tr").toggleClass("alarm",true)
-        if @$("td:eq(2)", element).text() == "200"
-          @$("td:eq(2)", element).closest("tr").toggleClass("critical",true)
-        if @$("td:eq(2)", element).text() == "999"
-          @$("td:eq(2)", element).closest("tr").toggleClass("bad-quality",true)
+        if $("td:eq(2)", element).text() == "0"
+          $("td:eq(2)", element).closest("tr").toggleClass("notification",true)
+        if $("td:eq(2)", element).text() == "100"
+          $("td:eq(2)", element).closest("tr").toggleClass("alarm",true)
+        if $("td:eq(2)", element).text() == "200"
+          $("td:eq(2)", element).closest("tr").toggleClass("critical",true)
+        if $("td:eq(2)", element).text() == "999"
+          $("td:eq(2)", element).closest("tr").toggleClass("bad-quality",true)
 
       # $('table.opc-alarm > tbody > tr').each (idx, element) =>
       #   $(element).hide()

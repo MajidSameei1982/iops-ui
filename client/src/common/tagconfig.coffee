@@ -6,19 +6,56 @@ class TagConfig extends Object
 		###**************************************************
 		*** SYSTEM Tags
 		**************************************************###
-		system_out_of_service:Tag:'System._OUT_OF_SERVICE',Label:'[*]Out Of Service',DataType:'Boolean'
+		system_out_of_service:Tag:'System._OUT_OF_SERVICE',Label:'Out Of Service',DataType:'Boolean'
 									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
 									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
-		system_perfect_hookup:Tag:'System.PERFECT_HOOKUP',Label:'[*]Perfect Hookup',DataType:'Boolean'
+		system_perfect_hookup:Tag:'System.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean'
 									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
 									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
-		system_quality:Tag:'System._QUALITY',Label:'[*]Bad Quality',DataType:'Boolean'
+		system_quality:Tag:'System._QUALITY',Label:'Comm Error',DataType:'Boolean'
 									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:'bad-data',Parm005:null}
 									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
+
+
+		###**************************************************
+		*** WARNING Tags
+		**************************************************###
+		gate_has_warnings:Tag:'Warning._HasWarnings',Label:'Warnings',DataType:'Boolean'
+									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+
+		###**************************************************
+		*** ALARM Tags
+		**************************************************###
+		gate_has_alarms:Tag:'Alarm._HasAlarms',Label:'Alarms',DataType:'Boolean'
+									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+		gate_has_critical_alarms:Tag:'Alarm._HasCriticalAlarms',Label:'Critical Alarms',DataType:'Boolean'
+									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
 
 		###**************************************************
 		*** GPU Tags
 		**************************************************###
+		gpu_has_warnings:Tag:'GPU.Warning._HasWarnings',Label:'Warnings',DataType:'Boolean'
+									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+		gpu_has_alarms:Tag:'GPU.Alarm._HasAlarms',Label:'Alarms',DataType:'Boolean'
+									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+		gpu_has_critical_alarms:Tag:'GPU.Alarm._HasCriticalAlarms',Label:'Critical Alarms',DataType:'Boolean'
+									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+		gpu_out_of_service:Tag:'GPU._OUT_OF_SERVICE',Label:'Out Of Service',DataType:'Boolean'
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
+		gpu_pefect_hookup:Tag:'GPU.Calc_PerfectHookupTime',Label:'Perfect Hookup',DataType:'Boolean'
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
+		gpu_quality:Tag:'GPU._QUALITY',Label:'Comm Errors',DataType:'Boolean'
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
+
 		gpu_by_pass:Tag:'GPU.ByPass',Label:'ByPass',DataType:'Boolean'
 									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
 									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
@@ -91,14 +128,48 @@ class TagConfig extends Object
 		gpu_time:Tag:'GPU.GPUTime',Label:'[*]GPU Run Time',DataType:'Float'
 									,Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null}
 									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
-		gpu_out_of_service:Tag:'GPU._OUT_OF_SERVICE',Label:'[*]GPU',DataType:'Boolean'
-									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
-									,Element:{Type:null,ParentID:null,Class:null,Object:null}
 		gpu_hookup_time:Tag:'GPU.HOOKUPTIME',Label:'[*]GPU Hookup Time',DataType:'Float'
 									,Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null}
 									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}							
 
 		# Hobart SX2400 Dual Unit Tags
+		gpu_01_has_warnings:Tag:'GPU01.Warning._HasWarnings',Label:'Warnings',DataType:'Boolean'
+									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+		gpu_02_has_warnings:Tag:'GPU02.Warning._HasWarnings',Label:'Warnings',DataType:'Boolean'
+									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+		gpu_01_has_alarms:Tag:'GPU01.Alarm._HasAlarms',Label:'Alarms',DataType:'Boolean'
+									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+		gpu_02_has_alarms:Tag:'GPU01.Alarm._HasAlarms',Label:'Alarms',DataType:'Boolean'
+									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+		gpu_01_has_critical_alarms:Tag:'GPU01.Alarm._HasCriticalAlarms',Label:'Critical Alarms',DataType:'Boolean'
+									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+		gpu_02_has_critical_alarms:Tag:'GPU02.Alarm._HasCriticalAlarms',Label:'Critical Alarms',DataType:'Boolean'
+									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+		gpu_01_out_of_service:Tag:'GPU01._OUT_OF_SERVICE',Label:'Out Of Service',DataType:'Boolean'
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
+		gpu_02_out_of_service:Tag:'GPU02._OUT_OF_SERVICE',Label:'Out Of Service',DataType:'Boolean'
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
+		gpu_01_pefect_hookup:Tag:'GPU01.Calc_PerfectHookupTime',Label:'Perfect Hookup',DataType:'Boolean'
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
+		gpu_02_pefect_hookup:Tag:'GPU02.Calc_PerfectHookupTime',Label:'Perfect Hookup',DataType:'Boolean'
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
+		gpu_01_quality:Tag:'GPU01._QUALITY',Label:'Comm Errors',DataType:'Boolean'
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
+		gpu_02_quality:Tag:'GPU02._QUALITY',Label:'Comm Errors',DataType:'Boolean'
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
+
 		gpu_01_status:Tag:'GPU01.GPUSTATUSBOOLEAN',Label:'GPU-1 Status',DataType:'Boolean'
 									,Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null}
 									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
@@ -181,6 +252,25 @@ class TagConfig extends Object
 		###**************************************************
 		*** PBB Tags
 		**************************************************###
+		pbb_has_warnings:Tag:'PBB.Warning._HasWarnings',Label:'Warnings',DataType:'Boolean'
+									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+		pbb_has_alarms:Tag:'PBB.Alarm._HasAlarms',Label:'Alarms',DataType:'Boolean'
+									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+		pbb_has_critical_alarms:Tag:'PBB.Alarm._HasCriticalAlarms',Label:'Critical Alarms',DataType:'Boolean'
+									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+		pbb_out_of_service:Tag:'PBB._OUT_OF_SERVICE',Label:'Out Of Service',DataType:'Boolean'
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
+		pbb_pefect_hookup:Tag:'PBB.Calc_PerfectHookupTime',Label:'Perfect Hookup',DataType:'Boolean'
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
+		pbb_quality:Tag:'PBB._QUALITY',Label:'Comm Errors',DataType:'Boolean'
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
+
 		pbb_autolevel_fail:Tag:'PBB.AUTOLEVEL_FAIL_FLAG',Label:'Auto Level Fail Flag',DataType:'Boolean'
 									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'err',Parm004:'ok',Parm005:null}
 									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
@@ -250,13 +340,29 @@ class TagConfig extends Object
 		pbb_wheel_angle_deg:Tag:'PBB.WHEELANGLEDEG',Label:'Wheel Bogie Angle',DataType:'Float'
 									,Parameters:{Parm001:true,Parm002:2,Parm003:'Wheel Bogie Angle :#{1}',Parm004:null}
 									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
-		pbb_out_of_service:Tag:'PBB._OUT_OF_SERVICE',Label:'[*]PBB',DataType:'Boolean'
-									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
-									,Element:{Type:null,ParentID:null,Class:null,Object:null}
 
 		###**************************************************
 		*** PCA Tags
 		**************************************************###
+		pca_has_warnings:Tag:'PCA.Warning._HasWarnings',Label:'Warnings',DataType:'Boolean'
+									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+		pca_has_alarms:Tag:'PCA.Alarm._HasAlarms',Label:'Alarms',DataType:'Boolean'
+									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+		pca_has_critical_alarms:Tag:'PCA.Alarm._HasCriticalAlarms',Label:'Critical Alarms',DataType:'Boolean'
+									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+		pca_out_of_service:Tag:'PCA._OUT_OF_SERVICE',Label:'Out Of Service',DataType:'Boolean'
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
+		pca_pefect_hookup:Tag:'PCA.Calc_PerfectHookupTime',Label:'Perfect Hookup',DataType:'Boolean'
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
+		pca_quality:Tag:'PCA._QUALITY',Label:'Comm Errors',DataType:'Boolean'
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
+
 		pca_alarm_cooling_run:Tag:'PCA.ALARM_COOLINGRUN_BOOLEAN',Label:'Cooling Run Alarm',DataType:'Boolean'
 									,Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null}
 									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
@@ -378,9 +484,34 @@ class TagConfig extends Object
 		###**************************************************
 		*** ELVROT Tags
 		**************************************************###
-		elvrot_out_of_service:Tag:'ELVROT._OUT_OF_SERVICE',Label:'[*]ELVROT',DataType:'Boolean'
+		elvrot_has_warnings:Tag:'ELVROT.Warning._HasWarnings',Label:'Warnings',DataType:'Boolean'
+									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+		elvrot_has_alarms:Tag:'ELVROT.Alarm._HasAlarms',Label:'Alarms',DataType:'Boolean'
+									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+		elvrot_has_critical_alarms:Tag:'ELVROT.Alarm._HasCriticalAlarms',Label:'Critical Alarms',DataType:'Boolean'
+									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+		elvrot_out_of_service:Tag:'ELVROT._OUT_OF_SERVICE',Label:'Out Of Service',DataType:'Boolean'
 									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
-									,Element:{Type:null,ParentID:null,Class:null,Object:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
+		elvrot_pefect_hookup:Tag:'ELVROT.Calc_PerfectHookupTime',Label:'Perfect Hookup',DataType:'Boolean'
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
+		elvrot_quality:Tag:'ELVROT._QUALITY',Label:'Comm Errors',DataType:'Boolean'
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
+
+		elvrot_rotunda_status:Tag:'ELVROT.ROTUNDA_STATUS',Label:'Elevating Rotunda Status',DataType:'Value'
+									,Parameters:{Parm001:false,Parm002:null,Parm003:'#{1}',Parm004:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
+		elvrot_rotunda_mode:{Tag:'ELVROT.ROTUNDA_MODE',Label:'Elevating Rotunda Operational Mode',DataType:'Value'
+									,Parameters:{Parm001:false,Parm002:null,Parm003:'#{1}',Parm004:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+		elvrot_rotunda_position_boolean:Tag:'ELVROT.ROTUNDA_POSITION_BOOLEAN',Label:'Elevating Rotunda Position',DataType:'Boolean'
+									,Parameters:{Parm001:'Down Position',Parm002:'Up Position',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
 				
 	###**************************************************
 	*** Widget Tag Groups

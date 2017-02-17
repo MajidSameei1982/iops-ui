@@ -1796,7 +1796,7 @@ window.JST["widgets/config_airport_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-gear"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\' class=\'display\'>\n    \n    <table id="widgetData" class=\'\'> \n      <tr id="config_title">\n        <td class="title" colspan="3">PCA SET POINTS</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>Heat Set Points</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set\'>°</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_cool">\n        <td class=\'lbl\'>Cool Set Points</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set\'>°</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set_tm\'>min.</td>\n      </tr>\n      <tr id="config_title">\n        <td class="title" colspan="3">PERFECT HOOKUP TIMES</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>PCA</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'pca_perfect_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>GPU</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'gpu_perfect_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>PBB</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'pbb_perfect_tm\'>min.</td>\n      </tr>\n    </table>\n\n<!--     <div><b style=\'color:#cc6666;\'>Heat:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set\'>°</div>\n    <div><b style=\'color:#cc6666;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set_tm\'>min.</div>\n    <div><b style=\'color:#6666cc;\'>Cool:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set\'>°</div>\n    <div><b style=\'color:#6666cc;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set_tm\'>min.</div>\n -->    \n    <div style=\'margin:10px 0;\'><button id=\'set_pca_points\'>UPDATE CONFIGURATION</button></div>\n  </div>\n  <div id="settings" class=\'settings\' style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-gear"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\' class=\'display\'>\n    \n    <table id="widgetData" class=\'\'> \n      <tr id="config_title">\n        <td class="title" colspan="3">PCA SET POINTS</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>Heat Set Points</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set\'>°</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_cool">\n        <td class=\'lbl\'>Cool Set Points</td>\n        <td class=\'input\'><input type=\'text\' id=\'cool_set\'>°</td>\n        <td class=\'input\'><input type=\'text\' id=\'cool_set_tm\'>min.</td>\n      </tr>\n      <tr id="config_title">\n        <td class="title" colspan="3">PERFECT HOOKUP TIMES</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>PCA</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'pca_perfect_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>GPU</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'gpu_perfect_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>PBB</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'pbb_perfect_tm\'>min.</td>\n      </tr>\n    </table>\n\n<!--     <div><b style=\'color:#cc6666;\'>Heat:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set\'>°</div>\n    <div><b style=\'color:#cc6666;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set_tm\'>min.</div>\n    <div><b style=\'color:#6666cc;\'>Cool:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set\'>°</div>\n    <div><b style=\'color:#6666cc;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set_tm\'>min.</div>\n -->    \n    <div style=\'margin:10px 0;\'><button id=\'set_pca_points\'>UPDATE CONFIGURATION</button></div>\n  </div>\n  <div id="settings" class=\'settings\' style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -1849,7 +1849,7 @@ window.JST["widgets/config_gate_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-gear"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\' class=\'display\'>\n    \n    <table id="widgetData" class=\'\'> \n      <tr id="config_title">\n        <td class="title" colspan="3">PCA SET POINTS</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>Heat Set Points</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set\'>°</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_cool">\n        <td class=\'lbl\'>Cool Set Points</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set\'>°</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set_tm\'>min.</td>\n      </tr>\n      <tr id="config_title">\n        <td class="title" colspan="3">PERFECT HOOKUP TIMES</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>PCA</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'pca_perfect_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>GPU</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'gpu_perfect_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>PBB</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'pbb_perfect_tm\'>min.</td>\n      </tr>\n    </table>\n\n<!--     <div><b style=\'color:#cc6666;\'>Heat:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set\'>°</div>\n    <div><b style=\'color:#cc6666;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set_tm\'>min.</div>\n    <div><b style=\'color:#6666cc;\'>Cool:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set\'>°</div>\n    <div><b style=\'color:#6666cc;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set_tm\'>min.</div>\n -->    \n    <div style=\'margin:10px 0;\'><button id=\'set_pca_points\'>UPDATE CONFIGURATION</button></div>\n  </div>\n  <div id="settings" class=\'settings\' style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-gear"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\' class=\'display\'>\n    \n    <table id="widgetData" class=\'\'> \n      <tr id="config_title">\n        <td class="title" colspan="3">PCA SET POINTS</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>Heat Set Points</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set\'>°</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_cool">\n        <td class=\'lbl\'>Cool Set Points</td>\n        <td class=\'input\'><input type=\'text\' id=\'cool_set\'>°</td>\n        <td class=\'input\'><input type=\'text\' id=\'cool_set_tm\'>min.</td>\n      </tr>\n      <tr id="config_title">\n        <td class="title" colspan="3">PERFECT HOOKUP TIMES</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>PCA</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'pca_perfect_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>GPU</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'gpu_perfect_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>PBB</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'pbb_perfect_tm\'>min.</td>\n      </tr>\n    </table>\n\n<!--     <div><b style=\'color:#cc6666;\'>Heat:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set\'>°</div>\n    <div><b style=\'color:#cc6666;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set_tm\'>min.</div>\n    <div><b style=\'color:#6666cc;\'>Cool:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set\'>°</div>\n    <div><b style=\'color:#6666cc;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set_tm\'>min.</div>\n -->    \n    <div style=\'margin:10px 0;\'><button id=\'set_pca_points\'>UPDATE CONFIGURATION</button></div>\n  </div>\n  <div id="settings" class=\'settings\' style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -4129,7 +4129,7 @@ TagConfig = (function(superClass) {
      */
     system_out_of_service: {
       Tag: 'System._OUT_OF_SERVICE',
-      Label: '[*]Out Of Service',
+      Label: 'Out Of Service',
       DataType: 'Boolean',
       Parameters: {
         Parm001: 'True',
@@ -4147,7 +4147,7 @@ TagConfig = (function(superClass) {
     },
     system_perfect_hookup: {
       Tag: 'System.PERFECT_HOOKUP',
-      Label: '[*]Perfect Hookup',
+      Label: 'Perfect Hookup',
       DataType: 'Boolean',
       Parameters: {
         Parm001: 'True',
@@ -4165,7 +4165,7 @@ TagConfig = (function(superClass) {
     },
     system_quality: {
       Tag: 'System._QUALITY',
-      Label: '[*]Bad Quality',
+      Label: 'Comm Error',
       DataType: 'Boolean',
       Parameters: {
         Parm001: 'True',
@@ -4182,9 +4182,181 @@ TagConfig = (function(superClass) {
       }
 
       /***************************************************
+      		*** WARNING Tags
+      		**************************************************
+       */
+    },
+    gate_has_warnings: {
+      Tag: 'Warning._HasWarnings',
+      Label: 'Warnings',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Down',
+        Parm002: 'Up',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+
+      /***************************************************
+      		*** ALARM Tags
+      		**************************************************
+       */
+    },
+    gate_has_alarms: {
+      Tag: 'Alarm._HasAlarms',
+      Label: 'Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Down',
+        Parm002: 'Up',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    gate_has_critical_alarms: {
+      Tag: 'Alarm._HasCriticalAlarms',
+      Label: 'Critical Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Down',
+        Parm002: 'Up',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+
+      /***************************************************
       		*** GPU Tags
       		**************************************************
        */
+    },
+    gpu_has_warnings: {
+      Tag: 'GPU.Warning._HasWarnings',
+      Label: 'Warnings',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Down',
+        Parm002: 'Up',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    gpu_has_alarms: {
+      Tag: 'GPU.Alarm._HasAlarms',
+      Label: 'Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Down',
+        Parm002: 'Up',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    gpu_has_critical_alarms: {
+      Tag: 'GPU.Alarm._HasCriticalAlarms',
+      Label: 'Critical Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Down',
+        Parm002: 'Up',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    gpu_out_of_service: {
+      Tag: 'GPU._OUT_OF_SERVICE',
+      Label: 'Out Of Service',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_pefect_hookup: {
+      Tag: 'GPU.Calc_PerfectHookupTime',
+      Label: 'Perfect Hookup',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_quality: {
+      Tag: 'GPU._QUALITY',
+      Label: 'Comm Errors',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
     },
     gpu_by_pass: {
       Tag: 'GPU.ByPass',
@@ -4598,24 +4770,6 @@ TagConfig = (function(superClass) {
         Object: null
       }
     },
-    gpu_out_of_service: {
-      Tag: 'GPU._OUT_OF_SERVICE',
-      Label: '[*]GPU',
-      DataType: 'Boolean',
-      Parameters: {
-        Parm001: 'True',
-        Parm002: 'False',
-        Parm003: 'ok',
-        Parm004: null,
-        Parm005: null
-      },
-      Element: {
-        Type: null,
-        ParentID: null,
-        Class: null,
-        Object: null
-      }
-    },
     gpu_hookup_time: {
       Tag: 'GPU.HOOKUPTIME',
       Label: '[*]GPU Hookup Time',
@@ -4625,6 +4779,222 @@ TagConfig = (function(superClass) {
         Parm002: 2,
         Parm003: 'mins',
         Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_01_has_warnings: {
+      Tag: 'GPU01.Warning._HasWarnings',
+      Label: 'Warnings',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Down',
+        Parm002: 'Up',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    gpu_02_has_warnings: {
+      Tag: 'GPU02.Warning._HasWarnings',
+      Label: 'Warnings',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Down',
+        Parm002: 'Up',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    gpu_01_has_alarms: {
+      Tag: 'GPU01.Alarm._HasAlarms',
+      Label: 'Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Down',
+        Parm002: 'Up',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    gpu_02_has_alarms: {
+      Tag: 'GPU01.Alarm._HasAlarms',
+      Label: 'Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Down',
+        Parm002: 'Up',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    gpu_01_has_critical_alarms: {
+      Tag: 'GPU01.Alarm._HasCriticalAlarms',
+      Label: 'Critical Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Down',
+        Parm002: 'Up',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    gpu_02_has_critical_alarms: {
+      Tag: 'GPU02.Alarm._HasCriticalAlarms',
+      Label: 'Critical Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Down',
+        Parm002: 'Up',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    gpu_01_out_of_service: {
+      Tag: 'GPU01._OUT_OF_SERVICE',
+      Label: 'Out Of Service',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_02_out_of_service: {
+      Tag: 'GPU02._OUT_OF_SERVICE',
+      Label: 'Out Of Service',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_01_pefect_hookup: {
+      Tag: 'GPU01.Calc_PerfectHookupTime',
+      Label: 'Perfect Hookup',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_02_pefect_hookup: {
+      Tag: 'GPU02.Calc_PerfectHookupTime',
+      Label: 'Perfect Hookup',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_01_quality: {
+      Tag: 'GPU01._QUALITY',
+      Label: 'Comm Errors',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_02_quality: {
+      Tag: 'GPU02._QUALITY',
+      Label: 'Comm Errors',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
       },
       Element: {
         Type: 'TableRow',
@@ -5082,6 +5452,114 @@ TagConfig = (function(superClass) {
       		**************************************************
        */
     },
+    pbb_has_warnings: {
+      Tag: 'PBB.Warning._HasWarnings',
+      Label: 'Warnings',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Down',
+        Parm002: 'Up',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    pbb_has_alarms: {
+      Tag: 'PBB.Alarm._HasAlarms',
+      Label: 'Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Down',
+        Parm002: 'Up',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    pbb_has_critical_alarms: {
+      Tag: 'PBB.Alarm._HasCriticalAlarms',
+      Label: 'Critical Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Down',
+        Parm002: 'Up',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    pbb_out_of_service: {
+      Tag: 'PBB._OUT_OF_SERVICE',
+      Label: 'Out Of Service',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    pbb_pefect_hookup: {
+      Tag: 'PBB.Calc_PerfectHookupTime',
+      Label: 'Perfect Hookup',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    pbb_quality: {
+      Tag: 'PBB._QUALITY',
+      Label: 'Comm Errors',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
     pbb_autolevel_fail: {
       Tag: 'PBB.AUTOLEVEL_FAIL_FLAG',
       Label: 'Auto Level Fail Flag',
@@ -5484,10 +5962,69 @@ TagConfig = (function(superClass) {
         Class: null,
         Object: null
       }
+
+      /***************************************************
+      		*** PCA Tags
+      		**************************************************
+       */
     },
-    pbb_out_of_service: {
-      Tag: 'PBB._OUT_OF_SERVICE',
-      Label: '[*]PBB',
+    pca_has_warnings: {
+      Tag: 'PCA.Warning._HasWarnings',
+      Label: 'Warnings',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Down',
+        Parm002: 'Up',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    pca_has_alarms: {
+      Tag: 'PCA.Alarm._HasAlarms',
+      Label: 'Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Down',
+        Parm002: 'Up',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    pca_has_critical_alarms: {
+      Tag: 'PCA.Alarm._HasCriticalAlarms',
+      Label: 'Critical Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Down',
+        Parm002: 'Up',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    pca_out_of_service: {
+      Tag: 'PCA._OUT_OF_SERVICE',
+      Label: 'Out Of Service',
       DataType: 'Boolean',
       Parameters: {
         Parm001: 'True',
@@ -5497,16 +6034,47 @@ TagConfig = (function(superClass) {
         Parm005: null
       },
       Element: {
-        Type: null,
-        ParentID: null,
+        Type: 'TableRow',
+        ParentID: '#widgetData',
         Class: null,
         Object: null
       }
-
-      /***************************************************
-      		*** PCA Tags
-      		**************************************************
-       */
+    },
+    pca_pefect_hookup: {
+      Tag: 'PCA.Calc_PerfectHookupTime',
+      Label: 'Perfect Hookup',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    pca_quality: {
+      Tag: 'PCA._QUALITY',
+      Label: 'Comm Errors',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
     },
     pca_alarm_cooling_run: {
       Tag: 'PCA.ALARM_COOLINGRUN_BOOLEAN',
@@ -6191,9 +6759,63 @@ TagConfig = (function(superClass) {
       		**************************************************
        */
     },
+    elvrot_has_warnings: {
+      Tag: 'ELVROT.Warning._HasWarnings',
+      Label: 'Warnings',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Down',
+        Parm002: 'Up',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    elvrot_has_alarms: {
+      Tag: 'ELVROT.Alarm._HasAlarms',
+      Label: 'Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Down',
+        Parm002: 'Up',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    elvrot_has_critical_alarms: {
+      Tag: 'ELVROT.Alarm._HasCriticalAlarms',
+      Label: 'Critical Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Down',
+        Parm002: 'Up',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
     elvrot_out_of_service: {
       Tag: 'ELVROT._OUT_OF_SERVICE',
-      Label: '[*]ELVROT',
+      Label: 'Out Of Service',
       DataType: 'Boolean',
       Parameters: {
         Parm001: 'True',
@@ -6203,8 +6825,96 @@ TagConfig = (function(superClass) {
         Parm005: null
       },
       Element: {
-        Type: null,
-        ParentID: null,
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    elvrot_pefect_hookup: {
+      Tag: 'ELVROT.Calc_PerfectHookupTime',
+      Label: 'Perfect Hookup',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    elvrot_quality: {
+      Tag: 'ELVROT._QUALITY',
+      Label: 'Comm Errors',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    elvrot_rotunda_status: {
+      Tag: 'ELVROT.ROTUNDA_STATUS',
+      Label: 'Elevating Rotunda Status',
+      DataType: 'Value',
+      Parameters: {
+        Parm001: false,
+        Parm002: null,
+        Parm003: '#{1}',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    elvrot_rotunda_mode: {
+      Tag: 'ELVROT.ROTUNDA_MODE',
+      Label: 'Elevating Rotunda Operational Mode',
+      DataType: 'Value',
+      Parameters: {
+        Parm001: false,
+        Parm002: null,
+        Parm003: '#{1}',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    elvrot_rotunda_position_boolean: {
+      Tag: 'ELVROT.ROTUNDA_POSITION_BOOLEAN',
+      Label: 'Elevating Rotunda Position',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Down Position',
+        Parm002: 'Up Position',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
         Class: null,
         Object: null
       }
@@ -27345,7 +28055,7 @@ AdvancedalarmWidgetView = (function(superClass) {
         columns: [
           {
             name: "AlarmDateTime",
-            text: "Alarm Date/Time",
+            text: "Alarm DateTime",
             type: "datetime",
             visible: true,
             sort: 'desc',
@@ -27430,7 +28140,7 @@ AdvancedalarmWidgetView = (function(superClass) {
     this.ui.alarmGrid.jqGrid({
       datatype: "local",
       data: defaultData,
-      colNames: ['Acked', 'Alarm Date/Time', 'Alarm Value', 'Group', 'Priority', 'Text'],
+      colNames: ['Acked', 'Alarm DateTime', 'Alarm Value', 'Group', 'Priority', 'Text'],
       colModel: [
         {
           name: 'Acked',
@@ -27440,14 +28150,15 @@ AdvancedalarmWidgetView = (function(superClass) {
           width: 10,
           hidden: true
         }, {
-          name: "Alarm Date/Time",
-          index: "Alarm Date/Time",
+          name: "Alarm DateTime",
+          index: "Alarm DateTime",
           width: 140,
           align: "center",
           sorttype: "date",
           formatter: "date",
           formatoptions: {
-            newformat: "m/d/Y h:i A"
+            srcformat: "m/d/Y g:i A",
+            newformat: "m/d/Y g:i A"
           }
         }, {
           name: 'Alarm Value',
@@ -27479,7 +28190,7 @@ AdvancedalarmWidgetView = (function(superClass) {
       },
       rowNum: 10,
       rowList: [5, 10, 20, 50],
-      sortname: 'Alarm Date/Time',
+      sortname: 'Alarm DateTime',
       sortorder: 'asc',
       viewrecords: true,
       height: "100%",
@@ -27530,14 +28241,14 @@ AdvancedalarmWidgetView = (function(superClass) {
     alarmJson = this.$("table.opc-alarm").tableToJSON();
     for (idx in alarmJson) {
       data = alarmJson[idx];
-      data['Alarm Date/Time'] = data['Alarm Date/Time'].substr(13);
+      data['Alarm DateTime'] = data['Alarm DateTime'].substr(13);
     }
     gridWidth = this.$('table.opc-alarm').width() - 5;
     this.ui.alarmGrid.setGridWidth(gridWidth);
     this.ui.alarmGrid.jqGrid('setGridParam', {
       data: alarmJson
     });
-    this.ui.alarmGrid.jqGrid('setColProp', 'Alarm Date/Time', {
+    this.ui.alarmGrid.jqGrid('setColProp', 'Alarm DateTime', {
       width: 140
     });
     this.ui.alarmGrid.jqGrid('setColProp', 'Text', {
@@ -27549,17 +28260,17 @@ AdvancedalarmWidgetView = (function(superClass) {
     this.$('table.opc-alarm > thead > tr> th:nth-child(3)').hide();
     this.$("table.opc-alarm > tbody > tr").each((function(_this) {
       return function(idx, element) {
-        if (_this.$("td:eq(2)", element).text() === "0") {
-          _this.$("td:eq(2)", element).closest("tr").toggleClass("notification", true);
+        if ($("td:eq(2)", element).text() === "0") {
+          $("td:eq(2)", element).closest("tr").toggleClass("notification", true);
         }
-        if (_this.$("td:eq(2)", element).text() === "100") {
-          _this.$("td:eq(2)", element).closest("tr").toggleClass("alarm", true);
+        if ($("td:eq(2)", element).text() === "100") {
+          $("td:eq(2)", element).closest("tr").toggleClass("alarm", true);
         }
-        if (_this.$("td:eq(2)", element).text() === "200") {
-          _this.$("td:eq(2)", element).closest("tr").toggleClass("critical", true);
+        if ($("td:eq(2)", element).text() === "200") {
+          $("td:eq(2)", element).closest("tr").toggleClass("critical", true);
         }
-        if (_this.$("td:eq(2)", element).text() === "999") {
-          return _this.$("td:eq(2)", element).closest("tr").toggleClass("bad-quality", true);
+        if ($("td:eq(2)", element).text() === "999") {
+          return $("td:eq(2)", element).closest("tr").toggleClass("bad-quality", true);
         }
       };
     })(this));
@@ -27909,7 +28620,7 @@ AirportoverviewWidgetView = (function(superClass) {
       qa = this.opc.tags["" + g.Tag_gate_alarm].props.Value.quality;
       if ((qa != null) && qa) {
         alarm = this.get_bool(this.opc.get_value(g.Tag_gate_alarm + ".Value"));
-        this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("alarm", alarm === true && qa);
+        this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("alarm", !critical && alarm === true && qa);
       } else {
         qa = false;
       }
@@ -28471,7 +29182,7 @@ ConfigairportWidgetView = (function(superClass) {
 
   function ConfigairportWidgetView() {
     this.set_model = bind(this.set_model, this);
-    this.set_points = bind(this.set_points, this);
+    this.set_points_airport = bind(this.set_points_airport, this);
     this.data_update = bind(this.data_update, this);
     return ConfigairportWidgetView.__super__.constructor.apply(this, arguments);
   }
@@ -28616,7 +29327,7 @@ ConfigairportWidgetView = (function(superClass) {
     return this.kill_updates(this.site_code);
   };
 
-  ConfigairportWidgetView.prototype.set_points = function(e) {
+  ConfigairportWidgetView.prototype.set_points_airport = function(e) {
     var g, pre, results, settings, t, term, terminals, z, zn;
     e.preventDefault();
     if (this.site != null) {
@@ -28634,7 +29345,7 @@ ConfigairportWidgetView = (function(superClass) {
               var results2;
               results2 = [];
               for (g in zn) {
-                pre = this.prefix + ".Term" + t + ".Zone" + z + ".Gate" + g + ".";
+                pre = this.prefix + "Term" + t + ".Zone" + z + ".Gate" + g + ".";
                 this.opc.set_value("" + pre + this.tags.cooling_pt, this.$('input#cool_set').val());
                 this.opc.set_value("" + pre + this.tags.heating_pt, this.$('input#heat_set').val());
                 this.opc.set_value("" + pre + this.tags.cooling_tm, this.$('input#cool_set_tm').val());
@@ -28681,7 +29392,7 @@ ConfigairportWidgetView = (function(superClass) {
         return _this.set_model();
       };
     })(this));
-    this.$('#set_pca_points').click(this.set_points);
+    this.$('#set_pca_points').click(this.set_points_airport);
     return this.check_init_site();
   };
 
@@ -32081,7 +32792,7 @@ PbbpcagpustatusWidgetView = (function(superClass) {
               if (/[*]/.test(label)) {
                 label = label.replace("[*]", "");
               }
-              this.$("#widgetData tbody").append("<tr id='dynamic_" + tag + "'> <td class='lbl' id='dynamic_" + tag + "_lbl'>" + label + "</td> <td class='val no-show' id='dynamic_" + tag + "_default_1'></td> <td class='val no-show' id='dynamic_" + tag + "_default_2'></td> <td class='val no-show' id='dynamic_" + tag + "_default_3'></td> <td class='val no-show' id='dynamic_" + tag + "_default_4'></td> <td class='val no-show' id='dynamic_" + tag + "_default_5'></td> <td class='val no-show' id='dynamic_" + tag + "_default_6'></td> </th>");
+              this.$("#widgetData tbody").append("<tr id='dynamic_" + tag + "'> <td class='lbl' id='dynamic_" + tag + "_lbl'>" + label + "</td> <td class='val no-show' id='dynamic_" + tag + "_default_1'> <!-- <i id='dynamic_" + tag + "_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_critical' class='fa fa-warning' title='Gate has CRITICAL ALARMS'></i> <i id='dynamic_" + tag + "_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_alarm' class='fa fa-bell' title='Gate has ALARMS'></i> <i id='dynamic_" + tag + "_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_outofservice' class='fa fa-wrench' title='A system is out of service'></i> <i id='dynamic_" + tag + "_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_perfecthookup' class='fa fa-check-circle-o' title='Perfect Hookup'></i> --> </td> <td class='val no-show' id='dynamic_" + tag + "_default_2'> </td> <td class='val no-show' id='dynamic_" + tag + "_default_3'> </td> <td class='val no-show' id='dynamic_" + tag + "_default_4'> </td> <td class='val no-show' id='dynamic_" + tag + "_default_5'> </td> <td class='val no-show' id='dynamic_" + tag + "_default_6'> </td> </th>");
             }
           }
           this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").attr('id', "dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tag);
