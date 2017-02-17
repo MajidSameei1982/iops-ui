@@ -82,6 +82,28 @@ i.form-control-feedback {
   font-size: 16px; }
 .advanced_alarm_widget .group_item {
   margin: 0 5px; }
+.advanced_alarm_widget .ui-widget-content {
+  background: none !important; }
+.advanced_alarm_widget .alarm {
+  background-color: #ff8300 !important;
+  color: black !important; }
+  .advanced_alarm_widget .alarm td[class^='sorting'], .advanced_alarm_widget .alarm td[class*=' sorting'] {
+    background-color: #ff8300 !important;
+    color: black !important; }
+.advanced_alarm_widget .critical {
+  background-color: #c00 !important;
+  color: black !important; }
+  .advanced_alarm_widget .critical td[class^='sorting'], .advanced_alarm_widget .critical td[class*=' sorting'] {
+    background-color: #c00 !important;
+    color: black !important; }
+.advanced_alarm_widget .bad-quality {
+  background-color: #000 !important;
+  color: red !important;
+  font-weight: bold; }
+  .advanced_alarm_widget .bad-quality td[class^='sorting'], .advanced_alarm_widget .bad-quality td[class*=' sorting'] {
+    background-color: #000 !important;
+    color: red !important;
+    font-weight: bold; }
 .advanced_alarm_widget .notification {
   background-color: yellow !important;
   color: black !important; }

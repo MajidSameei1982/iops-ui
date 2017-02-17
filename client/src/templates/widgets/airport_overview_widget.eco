@@ -19,6 +19,14 @@
       <div class="key_row"><i class="fa fa-fw fa-bell alarm"></i> Alarm</div>
       <div class="key_row"><i class="fa fa-fw fa-check-circle-o perfect"></i> Perfect Hookup</div>
       <div class="key_row"><i class="fa fa-fw fa-wrench alarm"></i> Out of Service</div>
+      <div class="key_row">
+        <span class="key_row fa-stack" style="left: -5px">
+          <i class="fa fa-rss fa-stack-1x "></i>
+          <i class="fa fa-exclamation fa-stack-1x" style="color: red;"></i> 
+        </span>
+        Comm. Error
+      </div>
+
     </div>
   </div>
 

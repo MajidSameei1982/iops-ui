@@ -20,9 +20,9 @@ class ConfigairportWidgetView extends IOPSWidgetView
     heating_pt:  'PCA.SET_HEATINGPOINT.Value'
     cooling_tm:  'PCA.SET_COOLINGPOINT_TIMER.Value'
     heating_tm:  'PCA.SET_HEATINGPOINT_TIMER.Value'
-    pca_perfect_tm: 'PCA.SET_HOOKUPTIME.Value'
-    gpu_perfect_tm: 'GPU.SET_HOOKUPTIME.Value'
-    pbb_perfect_tm: 'PBB.SET_HOOKUPTIME.Value'
+    pca_perfect_tm: 'PCA.Set_PerfectHookupTime.Value'
+    gpu_perfect_tm: 'GPU.Set_PerfectHookupTime.Value'
+    pbb_perfect_tm: 'PBB.Set_PerfectHookupTime.Value'
 
   base_tags: []
 
@@ -102,15 +102,15 @@ class ConfigairportWidgetView extends IOPSWidgetView
           v = t.props[0].val
           v = if v? && v != '' then parseFloat(v) else 0
           heat_tm = if v > heat_tm then v else heat_tm
-        if t.name.endsWith("PCA.SET_HOOKUPTIME")
+        if t.name.endsWith("PCA.Set_PerfectHookupTime")
           v = t.props[0].val
           v = if v? && v != '' then parseFloat(v) else 0
           pca_ph_tm = if v > pca_ph_tm then v else pca_ph_tm
-        if t.name.endsWith("GPU.SET_HOOKUPTIME")
+        if t.name.endsWith("GPU.Set_PerfectHookupTime")
           v = t.props[0].val
           v = if v? && v != '' then parseFloat(v) else 0
           gpu_ph_tm = if v > gpu_ph_tm then v else gpu_ph_tm
-        if t.name.endsWith("PBB.SET_HOOKUPTIMETIME")
+        if t.name.endsWith("PBB.Set_PerfectHookupTime")
           v = t.props[0].val
           v = if v? && v != '' then parseFloat(v) else 0
           pbb_ph_tm = if v > pbb_ph_tm then v else pbb_ph_tm

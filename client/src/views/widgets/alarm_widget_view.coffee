@@ -30,7 +30,7 @@ class AlarmWidgetView extends IOPSWidgetView
       return null
 
     s = @update_settings
-      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}_'
+      prefix: 'Airport.#{@site_code}.Term#{s.terminal}.Zone#{s.zone}.Gate#{s.gate}.'
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
 
     if !@site_code? then return null
