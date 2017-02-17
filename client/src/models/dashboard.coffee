@@ -22,6 +22,15 @@ class Dashboard extends BaseModel
     options || (options = {})
     options.blacklist = ["userId"]
     @pickUrl()
+    attrs || (attrs = $.extend(true, {}, this.attributes))
+    nums = []
+    for k of attrs
+      if !isNaN(k) then nums.push(k)
+    for k in nums
+      delete attrs[k]
+    if (attrs.widgets?)
+      for w in attrs.widgets
+        if w.position? then delete w.position
     super(attrs, options)
 
   destroy: (options)->
