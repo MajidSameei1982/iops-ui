@@ -22874,9 +22874,6 @@ BaseModel = (function(superClass) {
   BaseModel.prototype.save = function(attrs, options) {
     var blacklist, i, k, len;
     attrs || (attrs = $.extend(true, {}, this.attributes));
-    if ((attrs["0"] != null)) {
-      delete attrs["0"];
-    }
     options || (options = {});
     blacklist = ['isActive', 'createdAt', 'updatedAt', 'lastErrorObject', 'ok', 'value'];
     if (options.blacklist != null) {
@@ -25188,7 +25185,8 @@ WidgetLayout = (function(superClass) {
         }
       }
     }
-    return this.model.save();
+    this.model.save();
+    return this.resizeGrid();
   };
 
   WidgetLayout.prototype.toggle_tag_refresh = function(e) {
@@ -25228,7 +25226,8 @@ WidgetLayout = (function(superClass) {
         }
       });
     }
-    return this.model.save();
+    this.model.save();
+    return this.resizeGrid();
   };
 
   WidgetLayout.prototype.set_gridster = function() {
@@ -25239,7 +25238,10 @@ WidgetLayout = (function(superClass) {
     grid = this.$('ul.gridster').gridster({
       max_size_x: false,
       widget_base_dimensions: [50, 25],
+      avoid_overlapped_widgets: true,
       autogrow_cols: true,
+      extra_cols: 100,
+      extra_rows: 100,
       resize: {
         enabled: true,
         stop: this.persist_widgets
@@ -25250,6 +25252,7 @@ WidgetLayout = (function(superClass) {
       }
     });
     this.grid = grid.data('gridster');
+    this.resizeGrid();
     return this;
   };
 
@@ -25286,6 +25289,10 @@ WidgetLayout = (function(superClass) {
       wv.start();
       return wv;
     }
+  };
+
+  WidgetLayout.prototype.resizeGrid = function() {
+    return this.$('ul.gridster').attr("style", "min-width:5000px;min-height:5000px;position:relative;");
   };
 
   WidgetLayout.prototype.onShow = function() {
