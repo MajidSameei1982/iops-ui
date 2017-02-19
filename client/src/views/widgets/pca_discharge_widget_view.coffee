@@ -21,7 +21,6 @@ class PcadischargeWidgetView extends IOPSWidgetView
     sy: 6
 
   tags = []
-
   tagData = []
   tagConfig = []   
  

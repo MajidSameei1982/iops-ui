@@ -19,12 +19,7 @@ class PbbWidgetView extends IOPSWidgetView
     sx: 4
     sy: 6
 
-  tags:
-    #Processing Tags
-    pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
-    pbb_has_warnings :  'Warning._HasWarnings'
-    pbb_has_alarms :    'Alarm._HasAlarms'
-  
+  tags = []
   tagData = []
   tagConfig = []
   site_refresh: 50000
@@ -92,15 +87,6 @@ class PbbWidgetView extends IOPSWidgetView
         #when 'string' null
         #when 'double' null
         else null
-
-    # ALARMS
-    aq = @data_q(@tags.pbb_has_alarms)
-    @ui.alarms.toggle(@get_bool(@vals.pbb_has_alarms)==true && aq)
-    # WARNINGS
-    wq = @data_q(@tags.pbb_has_warnings)
-    @ui.warnings.toggle(@get_bool(@vals.pbb_has_warnings)==true && wq)
-
-    @set_descriptions()
 
   set_model: ()=>
 

@@ -19,12 +19,7 @@ class PbbpcagpuWidgetView extends IOPSWidgetView
     sx: 5
     sy: 8
 
-  tags:
-    #Processing Tags
-    pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
-    pbb_has_warnings :  'Warning._HasWarnings'
-    pbb_has_alarms :    'Alarm._HasAlarms'
-  
+  tags = []
   tagData = []
   tagConfig = []
   site_refresh: 50000
@@ -81,6 +76,7 @@ class PbbpcagpuWidgetView extends IOPSWidgetView
     @beat_time = new Date().getTime() + @site_refresh
     
     for tag, tagData of @tagData
+    #if tagData.Element.Class != 'no_row'
       switch tagData.DataType.toLowerCase()
         when 'boolean'
           @render_row("dynamic_#{tag}", tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004, tagData.Parameters.Parm005)
@@ -94,15 +90,6 @@ class PbbpcagpuWidgetView extends IOPSWidgetView
         #when 'double' null
         else null
 
-    # ALARMS
-    aq = @data_q(@tags.pbb_has_alarms)
-    @ui.alarms.toggle(@get_bool(@vals.pbb_has_alarms)==true && aq)
-
-    # WARNINGS
-    wq = @data_q(@tags.pbb_has_warnings)
-    @ui.warnings.toggle(@get_bool(@vals.pbb_has_warnings)==true && wq)
-
-    #@set_descriptions()
 
   set_model: ()=>
 
