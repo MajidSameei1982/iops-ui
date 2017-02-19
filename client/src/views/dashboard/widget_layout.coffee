@@ -44,6 +44,7 @@ class WidgetLayout extends Marionette.LayoutView
         wli.append('<div class="gs-resize-handle gs-resize-handle-both"></div>')
         if wv.onGridster? then wv.onGridster()
     @model.save()
+    @resizeGrid()
   
   # toggle the tag refresh for widget design
   toggle_tag_refresh: (e)->
@@ -75,6 +76,7 @@ class WidgetLayout extends Marionette.LayoutView
           wm.set("settings", s)
           #App.log s
     @model.save()
+    @resizeGrid()
     #App.save_user()
  
   # initialize gridster with default settings
@@ -83,7 +85,10 @@ class WidgetLayout extends Marionette.LayoutView
     grid = @$('ul.gridster').gridster
       max_size_x: false
       widget_base_dimensions: [50, 25]
+      avoid_overlapped_widgets: true
       autogrow_cols: true
+      extra_cols: 100
+      extra_rows: 100
       resize:
         enabled: true
         stop: @persist_widgets
@@ -91,6 +96,7 @@ class WidgetLayout extends Marionette.LayoutView
         handle: '.box-header'
         stop: @persist_widgets
     @grid = grid.data('gridster')
+    @resizeGrid()
     @
 
   # add region (if necessary) and render view in region
@@ -123,6 +129,9 @@ class WidgetLayout extends Marionette.LayoutView
       r.show(wv)
       wv.start()
       return wv
+
+  resizeGrid: ()->
+    @$('ul.gridster').attr("style", "min-width:5000px;min-height:5000px;position:relative;")
 
   onShow: ()->
     OPCManager.drop_connections()

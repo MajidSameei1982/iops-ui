@@ -58,10 +58,6 @@ i.form-control-feedback {
   overflow: scroll;
   z-index: 1000; }
 
-#content-region {
-  padding-bottom: 30px !important;
-  min-height: 930px !important; }
-
 #center-region {
   overflow-x: scroll; }
 
