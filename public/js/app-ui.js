@@ -1626,7 +1626,7 @@ window.JST["widgets/airport_overview_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-road"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n      </h1>\n    </div>\n    <div id="key">\n      <div class="key_row"><i class="fa fa-fw fa-plane"></i> Airplane at Gate</div>\n      <div class="key_row"><i class="fa fa-fw fa-warning critical"></i> Critical Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-bell alarm"></i> Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-check-circle-o perfect"></i> Perfect Hookup</div>\n      <div class="key_row"><i class="fa fa-fw fa-wrench alarm"></i> Out of Service</div>\n      <div class="key_row">\n        <span class="key_row fa-stack" style="left: -5px">\n          <i class="fa fa-rss fa-stack-1x "></i>\n          <i class="fa fa-exclamation fa-stack-1x" style="color: red;"></i> \n        </span>\n        Comm. Error\n      </div>\n\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-road"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n      </h1>\n    </div>\n    <div id="key">\n      <div class="key_row"><i class="fa fa-fw fa-plane docked"></i> Airplane at Gate</div>\n      <div class="key_row"><i class="fa fa-fw fa-warning critical"></i> Critical Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-bell alarm"></i> Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-check-circle-o perfect"></i> Perfect Hookup</div>\n      <div class="key_row"><i class="fa fa-fw fa-wrench alarm"></i> Out of Service</div>\n      <div class="key_row">\n        <span class="key_row fa-stack" style="left: -5px">\n          <i class="fa fa-rss fa-stack-1x "></i>\n          <i class="fa fa-exclamation fa-stack-1x" style="color: red;"></i> \n        </span>\n        Comm. Error\n      </div>\n\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -7140,6 +7140,12 @@ TagConfig = (function(superClass) {
     },
     pbb_pca_gpu_status_widget: {
       Tags: {
+        'system_quality': 'system_quality',
+        'system_out_of_service': 'system_out_of_service',
+        'system_perfect_hookup': 'system_perfect_hookup',
+        'gate_has_warnings': 'gate_has_warnings',
+        'gate_has_alarms': 'gate_has_alarms',
+        'gate_has_critical_alarms': 'gate_has_critical_alarms',
         'gpu_quality': 'gpu_quality',
         'gpu_out_of_service': 'gpu_out_of_service',
         'gpu_has_warnings': 'gpu_has_warnings',
@@ -7157,6 +7163,8 @@ TagConfig = (function(superClass) {
         'pca_has_warnings': 'pca_has_warnings',
         'pca_has_alarms': 'pca_has_alarms',
         'pca_has_critical_alarms': 'pca_has_critical_alarms',
+        'pca_mode_cooling': 'pca_mode_cooling',
+        'pca_mode_heating': 'pca_mode_heating',
         'pca_status': 'pca_status',
         'pca_discharge_temp': 'pca_discharge_temp'
       },
@@ -29899,19 +29907,6 @@ GpusummaryWidgetView = (function(superClass) {
 
   tags = [];
 
-
-  /**********************************************************
-  tags:
-    #Grid Tags
-    gpu_time:                       'GPU.GPUTime'
-    gpu_gpustatusb:                 'GPU.GPUSTATUSBOOLEAN'
-    gpu_raoutavg:                   'GPU.RAOUTAVG'
-    gpu_rv_out_avg:                   'GPU.RVOUTAVG'
-    gpu_ravinavg:                   'GPU.RAVINAVG'
-    gpu_rvinavg:                    'GPU.RVINAVG'
-  *********************************************************
-   */
-
   tagData = [];
 
   tagConfig = [];
@@ -30875,10 +30870,10 @@ GpuWidgetView = (function(superClass) {
           null;
       }
     }
-    aq = this.data_q(this.tags.pbb_has_alarms);
-    this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
-    wq = this.data_q(this.tags.pbb_has_warnings);
-    this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings) === true && wq);
+    aq = this.data_q(this.tags.gpu_has_alarms);
+    this.ui.alarms.toggle(this.get_bool(this.vals.gpu_has_alarms) === true && aq);
+    wq = this.data_q(this.tags.gpu_has_warnings);
+    this.ui.warnings.toggle(this.get_bool(this.vals.gpu_has_warnings) === true && wq);
     return this.set_descriptions();
   };
 
@@ -31706,7 +31701,7 @@ Marionette = require('marionette');
 IOPSWidgetView = require('./iops_widget_view');
 
 OutofserviceWidgetView = (function(superClass) {
-  var tagConfig, tagData;
+  var tagConfig, tagData, tags;
 
   extend(OutofserviceWidgetView, superClass);
 
@@ -31741,12 +31736,7 @@ OutofserviceWidgetView = (function(superClass) {
     sy: 6
   };
 
-  OutofserviceWidgetView.prototype.tags = {
-    pca_mode_cooling: 'PCA.MODE_COOLING',
-    pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
-    pbb_has_warnings: 'Warning._HasWarnings',
-    pbb_has_alarms: 'Alarm._HasAlarms'
-  };
+  tags = [];
 
   tagData = [];
 
@@ -31761,7 +31751,7 @@ OutofserviceWidgetView = (function(superClass) {
   OutofserviceWidgetView.prototype.IsPageLoading = true;
 
   OutofserviceWidgetView.prototype.update = function() {
-    var btg, col, column, data, element, elementPrefix, g, gate, gp, i, index, j, k, key, label, lbl, len, len1, len2, ref, ref1, ref2, ref3, ref4, s, t, tag, tags;
+    var btg, col, column, data, element, elementPrefix, g, gate, gp, i, index, j, k, key, label, lbl, len, len1, len2, ref, ref1, ref2, ref3, ref4, s, t, tag;
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
@@ -32103,7 +32093,7 @@ Marionette = require('marionette');
 IOPSWidgetView = require('./iops_widget_view');
 
 PbbdetailWidgetView = (function(superClass) {
-  var tagConfig, tagData;
+  var tagConfig, tagData, tags;
 
   extend(PbbdetailWidgetView, superClass);
 
@@ -32140,19 +32130,7 @@ PbbdetailWidgetView = (function(superClass) {
     sy: 8
   };
 
-  PbbdetailWidgetView.prototype.tags = {
-
-    /*
-    pbb_status :          'PBB.AIRCRAFTDOCKEDCALCULATION'
-    pbb_autolevel :       'PBB.AUTOLEVELMODEFLAG'
-    pbb_canopy:           'PBB.CANOPYDOWN'
-    pbb_docktime:         'PBB.DOCKTIME'
-    pbb_undocktime:       'PBB.UNDOCKTIME'
-     */
-    pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
-    pbb_has_warnings: 'Warning._HasWarnings',
-    pbb_has_alarms: 'Alarm._HasAlarms'
-  };
+  tags = [];
 
   tagData = [];
 
@@ -32165,7 +32143,7 @@ PbbdetailWidgetView = (function(superClass) {
   PbbdetailWidgetView.prototype.IsPageLoading = true;
 
   PbbdetailWidgetView.prototype.update = function() {
-    var lbl, ref, ref1, s, t, tag, tags, tg;
+    var lbl, ref, ref1, s, t, tag, tg;
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
@@ -32244,8 +32222,8 @@ PbbdetailWidgetView = (function(superClass) {
     this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
     wq = this.data_q(this.tags.pbb_has_warnings);
     this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings.Tag) === true && wq);
-    fq = this.data_q(this.tags.pbb_autolevelfail);
-    show_alarms = this.get_bool(this.vals.pbb_autolevelfail) === true && fq;
+    fq = this.data_q(this.tags.pbb_autolevel_fail);
+    show_alarms = this.get_bool(this.vals.pbb_autolevel_fail) === true && fq;
     this.ui.alarms.toggle(show_alarms).toggleClass("blink", show_alarms);
     undockordocktimeun = v && (this.vals.pbb_dock_time != null) && this.vals.pbb_dock_time !== '' ? parseFloat(this.vals.pbb_dock_time).toFixed(2) : !v && (this.vals.pbb_undock_time != null) && this.vals.pbb_undock_time !== '' ? parseFloat(this.vals.pbb_undock_time).toFixed(2) : ' -- ';
     el = this.$('div.pbb_undockordocktime').html(undockordocktimeun + " mins");
@@ -32352,7 +32330,7 @@ Marionette = require('marionette');
 IOPSWidgetView = require('./iops_widget_view');
 
 PbbleveldetailWidgetView = (function(superClass) {
-  var tagConfig, tagData;
+  var tagConfig, tagData, tags;
 
   extend(PbbleveldetailWidgetView, superClass);
 
@@ -32389,36 +32367,7 @@ PbbleveldetailWidgetView = (function(superClass) {
     sy: 16
   };
 
-  PbbleveldetailWidgetView.prototype.tags = {
-
-    /*
-    pbb_status :           'PBB.AIRCRAFTDOCKEDCALCULATION'
-    #pbb_aircraft :         'PBB.AIRCRAFTSTATUS'
-    pbb_autolevelmode :    'PBB.AUTOLEVELMODEFLAG'
-    pbb_canopy:            'PBB.CANOPYDOWN'
-    pbb_autolevelkey :     'PBB.AUTOLEVELKEY'
-    pbb_autolevelling:     'PBB.AUTOLEVELING'
-    pbb_estop:             'PBB.Alarm.E_STOP'  
-    pbb_estopRW:           'PBB.Alarm.RedWord2[4]'
-    pbb_limits:            'PBB.BYPASSPB'
-    pbb_docktime:          'PBB.DOCKTIME'
-    pbb_undocktime:        'PBB.UNDOCKTIME'
-    pbb_smokedetector:     'PBB.SMOKEDETECTOR'
-    pbb_dailyaircraftcount:'PBB.DAILYAIRCRAFTDOCKED'
-    pbb_lastdocktime:      'PBB.LASTDOCKTIME'
-    pbb_cabinfloordeicer:  'PBB.CABFLOORDEICER'
-    pbb_terminaldoor:      'PBB.TERMINALDOOR'
-    pbb_cabangledisp:      'PBB.CABANGLEDISP'
-    pbb_slopedeg:          'PBB.SLOPEDEG'
-    pbb_swingangledisp:    'PBB.SWINGANGLEDISP'
-    pbb_heighttodisp:      'PBB.HEIGHTTODISP'
-    pbb_wheelangledeg:     'PBB.WHEELANGLEDEG'
-    pbb_tunnellength:      'PBB.HORIZTODISP'
-     */
-    pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
-    pbb_has_warnings: 'Warning._HasWarnings',
-    pbb_has_alarms: 'Alarm._HasAlarms'
-  };
+  tags = [];
 
   tagData = [];
 
@@ -32431,7 +32380,7 @@ PbbleveldetailWidgetView = (function(superClass) {
   PbbleveldetailWidgetView.prototype.IsPageLoading = true;
 
   PbbleveldetailWidgetView.prototype.update = function() {
-    var lbl, ref, ref1, s, t, tag, tags, tg;
+    var lbl, ref, ref1, s, t, tag, tg;
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
@@ -32498,13 +32447,6 @@ PbbleveldetailWidgetView = (function(superClass) {
       eq = this.data_q(this.tagData.elvrot_rotunda_position_boolean.Tag);
       this.$("div.elevating_img").toggleClass('down-position', e === true && eq);
     }
-
-    /*
-    Tags:{'pbb_status','pbb_autolevel_mode','pbb_canopy','pbb_autolevel_key','pbb_autoleveling','pbb_estop','pbb_limits'
-            ,'pbb_dock_time','pbb_undock_time','pbb_smoke_detector','pbb_daily_aircraft_count','pbb_last_dock_time'
-            ,'pbb_cabin_floor_deicer','pbb_terminal_door','pbb_cab_angle_disp','pbb_slope_deg','pbb_swing_angle_disp'
-            ,'pbb_height_to_disp','pbb_wheel_angle_deg','pbb_tunnel_length'}
-     */
     if (this.tagData.pbb_wheel_angle_deg != null) {
       wheelangledeg = (this.vals.pbb_wheel_angle_deg != null) && this.vals.pbb_wheel_angle_deg !== '' ? parseFloat(this.vals.pbb_wheel_angle_deg).toFixed(2) : ' -- ';
       wa1 = this.$('#pbb_wheel_angle_deg').text("Wheel Bogie Angle : " + wheelangledeg);
@@ -32861,7 +32803,7 @@ Marionette = require('marionette');
 IOPSWidgetView = require('./iops_widget_view');
 
 PbbpcagpustatusWidgetView = (function(superClass) {
-  var tagConfig, tagData;
+  var tagConfig, tagData, tags;
 
   extend(PbbpcagpustatusWidgetView, superClass);
 
@@ -32893,13 +32835,7 @@ PbbpcagpustatusWidgetView = (function(superClass) {
     sy: 6
   };
 
-  PbbpcagpustatusWidgetView.prototype.tags = {
-    pca_mode_cooling: 'PCA.MODE_COOLING',
-    pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
-    pbb_has_warnings: 'Warning._HasWarnings',
-    has_alarms: 'Alarm._HasAlarms',
-    has_critical_alarms: 'Alarm._HasCriticalAlarms'
-  };
+  tags = [];
 
   tagData = [];
 
@@ -32916,7 +32852,7 @@ PbbpcagpustatusWidgetView = (function(superClass) {
   PbbpcagpustatusWidgetView.prototype.IsPageLoading = true;
 
   PbbpcagpustatusWidgetView.prototype.update = function() {
-    var btg, col, column, data, element, elementPrefix, g, gate, gp, i, index, j, k, key, label, lbl, len, len1, len2, ref, ref1, ref2, ref3, ref4, s, t, tag, tags;
+    var btg, col, column, data, element, elementPrefix, g, gate, gp, i, index, j, k, key, label, lbl, len, len1, len2, ref, ref1, ref2, ref3, ref4, s, t, tag;
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
@@ -32976,7 +32912,7 @@ PbbpcagpustatusWidgetView = (function(superClass) {
         }
         if (this.$("#dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2]).length === 0) {
           this.$("#widgetData thead tr").append("<th id='dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "' class='header'>" + gp[2] + "</th>");
-          this.$("#widgetData tbody #iconRow").append("<td id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "'> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_critical' class='fa fa-warning' title='Gate has CRITICAL ALARMS'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_alarm' class='fa fa-bell' title='Gate has ALARMS'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_docked' class='fa fa-plane' title='Plane is DOCKED'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_outofservice' class='fa fa-wrench' title='A system is out of service'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_perfecthookup' class='fa fa-check-circle-o' title='Perfect Hookup'></i> </td>");
+          this.$("#widgetData tbody #iconRow").append("<td id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "'> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_docked' class='fa fa-plane' title='Plane is DOCKED'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_system_outofservice' class='fa fa-wrench' title='A system is out of service'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_gate_critical_alarms' class='fa fa-warning' title='Gate has CRITICAL ALARMS'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_gate_alarm' class='fa fa-bell' title='Gate has ALARMS'></i> <div class='key_row'> <span class='key_row fa-stack' style='left: -5px'> <i class='fa fa-rss fa-stack-1x ''></i> <i class='fa fa-exclamation fa-stack-1x' style='color: red;''></i> </span> </div> </td>");
         }
         ref2 = this.tagConfig.TagData;
         for (tag in ref2) {
@@ -32990,7 +32926,7 @@ PbbpcagpustatusWidgetView = (function(superClass) {
               if (/[*]/.test(label)) {
                 label = label.replace("[*]", "");
               }
-              this.$("#widgetData tbody").append("<tr id='dynamic_" + tag + "'> <td class='lbl' id='dynamic_" + tag + "_lbl'>" + label + "</td> <td class='val no-show' id='dynamic_" + tag + "_default_1'> <!-- <i id='dynamic_" + tag + "_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_critical' class='fa fa-warning' title='Gate has CRITICAL ALARMS'></i> <i id='dynamic_" + tag + "_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_alarm' class='fa fa-bell' title='Gate has ALARMS'></i> <i id='dynamic_" + tag + "_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_outofservice' class='fa fa-wrench' title='A system is out of service'></i> <i id='dynamic_" + tag + "_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_perfecthookup' class='fa fa-check-circle-o' title='Perfect Hookup'></i> --> </td> <td class='val no-show' id='dynamic_" + tag + "_default_2'> </td> <td class='val no-show' id='dynamic_" + tag + "_default_3'> </td> <td class='val no-show' id='dynamic_" + tag + "_default_4'> </td> <td class='val no-show' id='dynamic_" + tag + "_default_5'> </td> <td class='val no-show' id='dynamic_" + tag + "_default_6'> </td> </th>");
+              this.$("#widgetData tbody").append("<tr id='dynamic_" + tag + "'> <td class='lbl' id='dynamic_" + tag + "_lbl'>" + label + "</td> <td class='val no-show' id='dynamic_" + tag + "_default_1'> <!-- <i id='dynamic_" + tag + "_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_equip_critical_alarms' class='fa fa-warning' title='Gate has CRITICAL ALARMS'></i> <i id='dynamic_" + tag + "_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_equip_alarms' class='fa fa-bell' title='Gate has ALARMS'></i> <i id='dynamic_" + tag + "_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_equip_outofservice' class='fa fa-wrench' title='A system is out of service'></i> <i id='dynamic_" + tag + "_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_equip_perfecthookup' class='fa fa-check-circle-o' title='Perfect Hookup'></i> --> </td> <td class='val no-show' id='dynamic_" + tag + "_default_2'> </td> <td class='val no-show' id='dynamic_" + tag + "_default_3'> </td> <td class='val no-show' id='dynamic_" + tag + "_default_4'> </td> <td class='val no-show' id='dynamic_" + tag + "_default_5'> </td> <td class='val no-show' id='dynamic_" + tag + "_default_6'> </td> </th>");
             }
           }
           this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").attr('id', "dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tag);
@@ -33050,12 +32986,12 @@ PbbpcagpustatusWidgetView = (function(superClass) {
       setValue = (this.vals[tag] != null) && this.vals[tag] === "True";
       if (/pbb_docked/.test(tag)) {
         this.$("#widgetData #dynamic_iconRow_" + tzgPrefix + "_docked").toggleClass('docked', setValue);
-      } else if (tag.indexOf(tzgPrefix + "_has_critical_alarms") > -1) {
+      } else if (tag.indexOf(tzgPrefix + "_gate_has_critical_alarms") > -1) {
         this.$("#widgetData #dynamic_iconRow_" + tzgPrefix + "_critical").toggleClass('critical', setValue);
-      } else if (tag.indexOf(tzgPrefix + "_has_alarms") > -1) {
+      } else if (tag.indexOf(tzgPrefix + "_gate_has_alarms") > -1) {
         this.$("#widgetData #dynamic_iconRow_" + tzgPrefix + "_alarm").toggleClass('alarm', setValue);
       } else if (tag.indexOf(tzgPrefix + "_system_quality") > -1) {
-        this.$("#widgetData #dynamic_iconRow_" + tzgPrefix + "_bad_quality").toggleClass('bad-data', !setValue);
+        this.$("#widgetData #dynamic_iconRow_" + tzgPrefix + "_system_quality").toggleClass('bad-data', !setValue);
       } else if (tag.indexOf(tzgPrefix + "_system_out_of_service") > -1) {
         this.$("#widgetData #dynamic_iconRow_" + tzgPrefix + "_outofservice").toggleClass('out-of-service', setValue);
       } else if (tag.indexOf(tzgPrefix + "_system_perfect_hookup") > -1) {
@@ -33749,7 +33685,7 @@ PcadischargeWidgetView = (function(superClass) {
     }
     this.cktags = [];
     if ((s != null) && !!s.site) {
-      lbl = this.site_code + ": PCA Discharge";
+      lbl = this.site_code + ": PCA Discrge";
       this.ui.wtitle.html(lbl);
       if (!s.gates || s.gates.length === 0) {
         return;
@@ -34146,7 +34082,7 @@ IOPSWidgetView = require('./iops_widget_view');
 UIUtils = require('../../common/uiutils');
 
 PcasummaryWidgetView = (function(superClass) {
-  var tagConfig, tagData;
+  var tagConfig, tagData, tags;
 
   extend(PcasummaryWidgetView, superClass);
 
@@ -34190,11 +34126,7 @@ PcasummaryWidgetView = (function(superClass) {
     sy: 7
   };
 
-  PcasummaryWidgetView.prototype.tags = {
-    pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
-    pbb_has_warnings: 'Warning._HasWarnings',
-    pbb_has_alarms: 'Alarm._HasAlarms'
-  };
+  tags = [];
 
   tagData = [];
 
@@ -34207,7 +34139,7 @@ PcasummaryWidgetView = (function(superClass) {
   PcasummaryWidgetView.prototype.IsPageLoading = true;
 
   PcasummaryWidgetView.prototype.update = function() {
-    var lbl, ref, s, show_opts, t, tData, tags, tg;
+    var lbl, ref, s, show_opts, t, tData, tg;
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
@@ -34531,10 +34463,10 @@ PcasummaryWidgetView = (function(superClass) {
     else
       @$("#fan3_img").toggleClass('fan-3-on', false)
      */
-    aq = this.data_q(this.tags.pbb_has_alarms);
-    this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
-    wq = this.data_q(this.tags.pbb_has_warnings);
-    this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings) === true && wq);
+    aq = this.data_q(this.tags.pca_has_alarms);
+    this.ui.alarms.toggle(this.get_bool(this.vals.pca_has_alarms) === true && aq);
+    wq = this.data_q(this.tags.pca_has_warnings);
+    this.ui.warnings.toggle(this.get_bool(this.vals.pca_has_warnings) === true && wq);
     return this.set_descriptions();
   };
 
@@ -34702,7 +34634,7 @@ PcasummaryWidgetView = (function(superClass) {
   };
 
   PcasummaryWidgetView.prototype.show_plot = function(p, live) {
-    var dtm, ed, h, lbl, now, pid, plot2_color, plot_color, sd, show_hist, tags;
+    var dtm, ed, h, lbl, now, pid, plot2_color, plot_color, sd, show_hist;
     this.initializing = true;
     this.kill_updates(this.site_code);
     this.$("#plots").toggle(p != null);
@@ -34983,7 +34915,7 @@ Marionette = require('marionette');
 IOPSWidgetView = require('./iops_widget_view');
 
 PcaWidgetView = (function(superClass) {
-  var tagConfig, tagData;
+  var tagConfig, tagData, tags;
 
   extend(PcaWidgetView, superClass);
 
@@ -35020,11 +34952,7 @@ PcaWidgetView = (function(superClass) {
     sy: 11
   };
 
-  PcaWidgetView.prototype.tags = {
-    pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
-    pbb_has_warnings: 'Warning._HasWarnings',
-    pbb_has_alarms: 'Alarm._HasAlarms'
-  };
+  tags = [];
 
   tagData = [];
 
@@ -35037,7 +34965,7 @@ PcaWidgetView = (function(superClass) {
   PcaWidgetView.prototype.IsPageLoading = true;
 
   PcaWidgetView.prototype.update = function() {
-    var lbl, ref, ref1, s, t, tag, tags, tg;
+    var lbl, ref, ref1, s, t, tag, tg;
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
@@ -35096,10 +35024,10 @@ PcaWidgetView = (function(superClass) {
           null;
       }
     }
-    aq = this.data_q(this.tags.pbb_has_alarms);
-    this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
-    wq = this.data_q(this.tags.pbb_has_warnings);
-    this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings) === true && wq);
+    aq = this.data_q(this.tags.pca_has_alarms);
+    this.ui.alarms.toggle(this.get_bool(this.vals.pca_has_alarms) === true && aq);
+    wq = this.data_q(this.tags.pca_has_warnings);
+    this.ui.warnings.toggle(this.get_bool(this.vals.pca_has_warnings) === true && wq);
     return this.set_descriptions();
   };
 

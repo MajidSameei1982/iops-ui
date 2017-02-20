@@ -37,17 +37,6 @@ class GpusummaryWidgetView extends IOPSWidgetView
     sy: 9
 
   tags = []
-  ###*********************************************************
-  tags:
-    #Grid Tags
-    gpu_time:                       'GPU.GPUTime'
-    gpu_gpustatusb:                 'GPU.GPUSTATUSBOOLEAN'
-    gpu_raoutavg:                   'GPU.RAOUTAVG'
-    gpu_rv_out_avg:                   'GPU.RVOUTAVG'
-    gpu_ravinavg:                   'GPU.RAVINAVG'
-    gpu_rvinavg:                    'GPU.RVINAVG'
-  *********************************************************###
-
   tagData = []
   tagConfig = []
   site_refresh: 50000

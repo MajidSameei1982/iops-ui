@@ -23,21 +23,7 @@ class PbbdetailWidgetView extends IOPSWidgetView
     sx: 12
     sy: 8
 
-  tags:
-    #Grid Tags
-    ###
-    pbb_status :          'PBB.AIRCRAFTDOCKEDCALCULATION'
-    pbb_autolevel :       'PBB.AUTOLEVELMODEFLAG'
-    pbb_canopy:           'PBB.CANOPYDOWN'
-    pbb_docktime:         'PBB.DOCKTIME'
-    pbb_undocktime:       'PBB.UNDOCKTIME'
-    ### 
-    #Processing Tags
-
-    pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
-    pbb_has_warnings :  'Warning._HasWarnings'
-    pbb_has_alarms :    'Alarm._HasAlarms'
-    
+  tags = []  
   tagData = []
   tagConfig = []
   site_refresh: 50000
@@ -138,8 +124,8 @@ class PbbdetailWidgetView extends IOPSWidgetView
    
     
     # AUTOLEVELFAIL
-    fq = @data_q(@tags.pbb_autolevelfail)
-    show_alarms = (@get_bool(@vals.pbb_autolevelfail)==true && fq)
+    fq = @data_q(@tags.pbb_autolevel_fail)
+    show_alarms = (@get_bool(@vals.pbb_autolevel_fail)==true && fq)
     @ui.alarms.toggle(show_alarms).toggleClass("blink",show_alarms)
     
      # DOCKTIME

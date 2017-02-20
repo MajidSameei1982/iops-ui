@@ -18,14 +18,7 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
     sx: 8
     sy: 6
 
-  tags:
-    #Processing Tags
-    pca_mode_cooling:   'PCA.MODE_COOLING'
-    pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
-    pbb_has_warnings :  'Warning._HasWarnings'
-    has_alarms :    'Alarm._HasAlarms'
-    has_critical_alarms : 'Alarm._HasCriticalAlarms'
-
+  tags = []
   tagData = []
   tagConfig = []
  
@@ -77,13 +70,19 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
           @$("#widgetData thead tr").append("<th id='dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}' class='header'>#{gp[2]}</th>")
           @$("#widgetData tbody #iconRow").append(
             "<td id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}'>
-              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_critical' class='fa fa-warning' title='Gate has CRITICAL ALARMS'></i>
-              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_alarm' class='fa fa-bell' title='Gate has ALARMS'></i>
               <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_docked' class='fa fa-plane' title='Plane is DOCKED'></i>
-              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_outofservice' class='fa fa-wrench' title='A system is out of service'></i>
-              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_perfecthookup' class='fa fa-check-circle-o' title='Perfect Hookup'></i>
+              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_system_outofservice' class='fa fa-wrench' title='A system is out of service'></i>
+              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_gate_critical_alarms' class='fa fa-warning' title='Gate has CRITICAL ALARMS'></i>
+              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_gate_alarm' class='fa fa-bell' title='Gate has ALARMS'></i>
+              <div class='key_row'>
+                <span class='key_row fa-stack' style='left: -5px'>
+                  <i class='fa fa-rss fa-stack-1x ''></i>
+                  <i class='fa fa-exclamation fa-stack-1x' style='color: red;''></i> 
+                </span>
+              </div>
             </td>"
           )
+              # <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_system_perfecthookup' class='fa fa-check-circle-o' title='Perfect Hookup'></i>
           
         for tag, tagData of @tagConfig.TagData
           t = tagData.Tag
@@ -98,10 +97,10 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
                 "<tr id='dynamic_#{tag}'>
                   <td class='lbl' id='dynamic_#{tag}_lbl'>#{label}</td>
                   <td class='val no-show' id='dynamic_#{tag}_default_1'>
-                    <!-- <i id='dynamic_#{tag}_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_critical' class='fa fa-warning' title='Gate has CRITICAL ALARMS'></i>
-                    <i id='dynamic_#{tag}_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_alarm' class='fa fa-bell' title='Gate has ALARMS'></i>
-                    <i id='dynamic_#{tag}_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_outofservice' class='fa fa-wrench' title='A system is out of service'></i>
-                    <i id='dynamic_#{tag}_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_perfecthookup' class='fa fa-check-circle-o' title='Perfect Hookup'></i> -->
+                    <!-- <i id='dynamic_#{tag}_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_equip_critical_alarms' class='fa fa-warning' title='Gate has CRITICAL ALARMS'></i>
+                    <i id='dynamic_#{tag}_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_equip_alarms' class='fa fa-bell' title='Gate has ALARMS'></i>
+                    <i id='dynamic_#{tag}_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_equip_outofservice' class='fa fa-wrench' title='A system is out of service'></i>
+                    <i id='dynamic_#{tag}_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_equip_perfecthookup' class='fa fa-check-circle-o' title='Perfect Hookup'></i> -->
                   </td>
                   <td class='val no-show' id='dynamic_#{tag}_default_2'>
                   </td>
@@ -166,12 +165,12 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
 
       if /pbb_docked/.test(tag)
         @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_docked").toggleClass('docked',setValue)
-      else if tag.indexOf("#{tzgPrefix}_has_critical_alarms") > -1
+      else if tag.indexOf("#{tzgPrefix}_gate_has_critical_alarms") > -1
         @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_critical").toggleClass('critical',setValue)
-      else if tag.indexOf("#{tzgPrefix}_has_alarms") > -1
+      else if tag.indexOf("#{tzgPrefix}_gate_has_alarms") > -1
         @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_alarm").toggleClass('alarm',setValue)
       else if tag.indexOf("#{tzgPrefix}_system_quality") > -1
-        @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_bad_quality").toggleClass('bad-data',!setValue)
+        @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_system_quality").toggleClass('bad-data',!setValue)
       else if tag.indexOf("#{tzgPrefix}_system_out_of_service") > -1
         @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_outofservice").toggleClass('out-of-service',setValue)
       else if tag.indexOf("#{tzgPrefix}_system_perfect_hookup") > -1

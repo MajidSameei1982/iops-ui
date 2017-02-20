@@ -111,12 +111,12 @@ class GpuWidgetView extends IOPSWidgetView
         else null
 
     # ALARMS
-    aq = @data_q(@tags.pbb_has_alarms)
-    @ui.alarms.toggle(@get_bool(@vals.pbb_has_alarms)==true && aq)
+    aq = @data_q(@tags.gpu_has_alarms)
+    @ui.alarms.toggle(@get_bool(@vals.gpu_has_alarms)==true && aq)
 
     # WARNINGS
-    wq = @data_q(@tags.pbb_has_warnings)
-    @ui.warnings.toggle(@get_bool(@vals.pbb_has_warnings)==true && wq)
+    wq = @data_q(@tags.gpu_has_warnings)
+    @ui.warnings.toggle(@get_bool(@vals.gpu_has_warnings)==true && wq)
 
     @set_descriptions()
 

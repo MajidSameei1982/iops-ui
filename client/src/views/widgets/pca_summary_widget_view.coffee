@@ -27,12 +27,7 @@ class PcasummaryWidgetView extends IOPSWidgetView
     sx: 9
     sy: 7
 
-  tags:
-    #Processing Tags
-    pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
-    pbb_has_warnings :  'Warning._HasWarnings'
-    pbb_has_alarms :    'Alarm._HasAlarms'
-  
+  tags = []
   tagData = []
   tagConfig = []
   site_refresh: 50000
@@ -371,11 +366,11 @@ class PcasummaryWidgetView extends IOPSWidgetView
     ###
 
     # ALARMS
-    aq = @data_q(@tags.pbb_has_alarms)
-    @ui.alarms.toggle(@get_bool(@vals.pbb_has_alarms)==true && aq)
+    aq = @data_q(@tags.pca_has_alarms)
+    @ui.alarms.toggle(@get_bool(@vals.pca_has_alarms)==true && aq)
     # WARNINGS
-    wq = @data_q(@tags.pbb_has_warnings)
-    @ui.warnings.toggle(@get_bool(@vals.pbb_has_warnings)==true && wq)
+    wq = @data_q(@tags.pca_has_warnings)
+    @ui.warnings.toggle(@get_bool(@vals.pca_has_warnings)==true && wq)
 
     @set_descriptions()
 

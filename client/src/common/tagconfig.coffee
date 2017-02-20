@@ -565,12 +565,13 @@ class TagConfig extends Object
 						'pca_status','pca_hookup_time','pca_time','pca_discharge_temp'}
 			Graphics:{}
 		pbb_pca_gpu_status_widget: # PBB/PCA/GPU System Status Widget
-			Tags:{'gpu_quality','gpu_out_of_service','gpu_has_warnings','gpu_has_alarms','gpu_has_critical_alarms',
+			Tags:{'system_quality','system_out_of_service','system_perfect_hookup','gate_has_warnings','gate_has_alarms','gate_has_critical_alarms',
+					'gpu_quality','gpu_out_of_service','gpu_has_warnings','gpu_has_alarms','gpu_has_critical_alarms',
 						'gpu_status',
 			      	'pbb_quality','pbb_out_of_service','pbb_has_warnings','pbb_has_alarms','pbb_has_critical_alarms',
 			      		'pbb_status',
 			      	'pca_quality','pca_out_of_service','pca_has_warnings','pca_has_alarms','pca_has_critical_alarms',
-			      		'pca_status','pca_discharge_temp'}
+			      		'pca_mode_cooling','pca_mode_heating','pca_status','pca_discharge_temp'}
 			Graphics:{}
 		pbb_system_status_widget: # PBB System Status Widget
 			Tags:{'pbb_quality','pbb_out_of_service','pbb_has_warnings','pbb_has_alarms','pbb_has_critical_alarms',

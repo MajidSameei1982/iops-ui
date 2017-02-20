@@ -135,12 +135,16 @@ i.form-control-feedback {
   z-index: 9999;
   border-radius: 10px;
   padding: 10px; }
+  .airport_overview_widget .display #key .docked {
+    color: #090; }
   .airport_overview_widget .display #key .critical {
     color: #c00; }
   .airport_overview_widget .display #key .alarm {
     color: #e45f00; }
   .airport_overview_widget .display #key .perfect {
     color: #090; }
+  .airport_overview_widget .display #key .outofservice {
+    color: #c00; }
 .airport_overview_widget .display #display_label {
   display: none; }
 .airport_overview_widget .display div[id^='Airport_Gate_'] {
