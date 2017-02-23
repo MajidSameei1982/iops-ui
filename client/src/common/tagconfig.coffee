@@ -21,31 +21,31 @@ class TagConfig extends Object
 		*** WARNING Tags
 		**************************************************###
 		gate_has_warnings:Tag:'Warning._HasWarnings',Label:'Warnings',DataType:'Boolean'
-									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
-									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}
 
 		###**************************************************
 		*** ALARM Tags
 		**************************************************###
 		gate_has_alarms:Tag:'Alarm._HasAlarms',Label:'Alarms',DataType:'Boolean'
-									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
-									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}
 		gate_has_critical_alarms:Tag:'Alarm._HasCriticalAlarms',Label:'Critical Alarms',DataType:'Boolean'
-									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
-									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}
 
 		###**************************************************
 		*** GPU Tags
 		**************************************************###
 		gpu_has_warnings:Tag:'GPU.Warning._HasWarnings',Label:'Warnings',DataType:'Boolean'
-									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
-									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}
 		gpu_has_alarms:Tag:'GPU.Alarm._HasAlarms',Label:'Alarms',DataType:'Boolean'
-									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
-									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}
 		gpu_has_critical_alarms:Tag:'GPU.Alarm._HasCriticalAlarms',Label:'Critical Alarms',DataType:'Boolean'
-									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
-									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}
 		gpu_out_of_service:Tag:'GPU._OUT_OF_SERVICE',Label:'Out Of Service',DataType:'Boolean'
 									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
 									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
@@ -134,23 +134,23 @@ class TagConfig extends Object
 
 		# Hobart SX2400 Dual Unit Tags
 		gpu_01_has_warnings:Tag:'GPU01.Warning._HasWarnings',Label:'Warnings',DataType:'Boolean'
-									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
-									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}
 		gpu_02_has_warnings:Tag:'GPU02.Warning._HasWarnings',Label:'Warnings',DataType:'Boolean'
-									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
-									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}
 		gpu_01_has_alarms:Tag:'GPU01.Alarm._HasAlarms',Label:'Alarms',DataType:'Boolean'
-									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
-									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}
 		gpu_02_has_alarms:Tag:'GPU01.Alarm._HasAlarms',Label:'Alarms',DataType:'Boolean'
-									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
-									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}
 		gpu_01_has_critical_alarms:Tag:'GPU01.Alarm._HasCriticalAlarms',Label:'Critical Alarms',DataType:'Boolean'
-									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
-									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}
 		gpu_02_has_critical_alarms:Tag:'GPU02.Alarm._HasCriticalAlarms',Label:'Critical Alarms',DataType:'Boolean'
-									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
-									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}
 		gpu_01_out_of_service:Tag:'GPU01._OUT_OF_SERVICE',Label:'Out Of Service',DataType:'Boolean'
 									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
 									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
@@ -253,14 +253,14 @@ class TagConfig extends Object
 		*** PBB Tags
 		**************************************************###
 		pbb_has_warnings:Tag:'PBB.Warning._HasWarnings',Label:'Warnings',DataType:'Boolean'
-									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
-									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}
 		pbb_has_alarms:Tag:'PBB.Alarm._HasAlarms',Label:'Alarms',DataType:'Boolean'
-									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
-									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}
 		pbb_has_critical_alarms:Tag:'PBB.Alarm._HasCriticalAlarms',Label:'Critical Alarms',DataType:'Boolean'
-									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
-									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}
 		pbb_out_of_service:Tag:'PBB._OUT_OF_SERVICE',Label:'Out Of Service',DataType:'Boolean'
 									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
 									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
@@ -345,14 +345,14 @@ class TagConfig extends Object
 		*** PCA Tags
 		**************************************************###
 		pca_has_warnings:Tag:'PCA.Warning._HasWarnings',Label:'Warnings',DataType:'Boolean'
-									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
-									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}
 		pca_has_alarms:Tag:'PCA.Alarm._HasAlarms',Label:'Alarms',DataType:'Boolean'
-									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
-									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}
 		pca_has_critical_alarms:Tag:'PCA.Alarm._HasCriticalAlarms',Label:'Critical Alarms',DataType:'Boolean'
-									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
-									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}
 		pca_out_of_service:Tag:'PCA._OUT_OF_SERVICE',Label:'Out Of Service',DataType:'Boolean'
 									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
 									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
@@ -482,14 +482,14 @@ class TagConfig extends Object
 		*** ELVROT Tags
 		**************************************************###
 		elvrot_has_warnings:Tag:'ELVROT.Warning._HasWarnings',Label:'Warnings',DataType:'Boolean'
-									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
-									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}
 		elvrot_has_alarms:Tag:'ELVROT.Alarm._HasAlarms',Label:'Alarms',DataType:'Boolean'
-									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
-									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}
 		elvrot_has_critical_alarms:Tag:'ELVROT.Alarm._HasCriticalAlarms',Label:'Critical Alarms',DataType:'Boolean'
-									,Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null}
-									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}
+									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
+									,Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}
 		elvrot_out_of_service:Tag:'ELVROT._OUT_OF_SERVICE',Label:'Out Of Service',DataType:'Boolean'
 									,Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null}
 									,Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
@@ -566,11 +566,11 @@ class TagConfig extends Object
 			Graphics:{}
 		pbb_pca_gpu_status_widget: # PBB/PCA/GPU System Status Widget
 			Tags:{'system_quality','system_out_of_service','system_perfect_hookup','gate_has_warnings','gate_has_alarms','gate_has_critical_alarms',
-					'gpu_quality','gpu_out_of_service','gpu_has_warnings','gpu_has_alarms','gpu_has_critical_alarms',
+					'gpu_quality','gpu_out_of_service','gpu_perfect_hookup','gpu_has_warnings','gpu_has_alarms','gpu_has_critical_alarms',
 						'gpu_status',
-			      	'pbb_quality','pbb_out_of_service','pbb_has_warnings','pbb_has_alarms','pbb_has_critical_alarms',
-			      		'pbb_status',
-			      	'pca_quality','pca_out_of_service','pca_has_warnings','pca_has_alarms','pca_has_critical_alarms',
+			      	'pbb_quality','pbb_out_of_service','pbb_perfect_hookup','pbb_has_warnings','pbb_has_alarms','pbb_has_critical_alarms',
+			      		'pbb_docked','pbb_status',
+			      	'pca_quality','pca_out_of_service','pca_perfect_hookup','pca_has_warnings','pca_has_alarms','pca_has_critical_alarms',
 			      		'pca_mode_cooling','pca_mode_heating','pca_status','pca_discharge_temp'}
 			Graphics:{}
 		pbb_system_status_widget: # PBB System Status Widget
@@ -651,15 +651,22 @@ class TagConfig extends Object
 				remove_tags:{'pbb_terminal_door'}
 			#pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
 			pbb_pca_gpu_status_widget: # PBB/PCA/GPU Widget
-				add_tags:{
+				update_tags:{
 					system_perfect_hookup:{Tag:'System.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					system_out_of_service:{Tag:'System._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					system_quality:{Tag:'System._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-				}
-				update_tags:{
+					pbb_perfect_hookup:{Tag:'PBB.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pbb_out_of_service:{Tag:'PBB._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pbb_quality:{Tag:'PBB._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pbb_docked:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]Docked',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'Docked',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]PBB',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'',Parm002:'',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					gpu_perfect_hookup:{Tag:'GPU.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					gpu_out_of_service:{Tag:'GPU._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					gpu_quality:{Tag:'GPU._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					gpu_status:{Tag:'GPU.GPUSTATUSBOOLEAN',Label:'[*]GPU',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					pca_perfect_hookup:{Tag:'PCA.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pca_quality:{Tag:'PCA._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pca_status:{Tag:'PCA.PCASTATUS',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 					pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'[*]DisCharge',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 					pca_mode_cooling:{Tag:'PCA.MODE_COOLING',Label:'Cooling Mode',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
@@ -766,15 +773,22 @@ class TagConfig extends Object
 					1:C3:
 						remove_tags:{'pca_discharge_temp','gpu_ra_out_avg','gpu_rv_out_avg'}
 			pbb_pca_gpu_status_widget: # PBB/PCA/GPU Widget
-				add_tags:{
+				update_tags:{
 					system_perfect_hookup:{Tag:'System.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					system_out_of_service:{Tag:'System._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					system_quality:{Tag:'System._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-				}
-				update_tags:{
+					pbb_perfect_hookup:{Tag:'PBB.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pbb_out_of_service:{Tag:'PBB._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pbb_quality:{Tag:'PBB._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pbb_docked:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]Docked',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'Docked',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]PBB',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'',Parm002:'',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					gpu_perfect_hookup:{Tag:'GPU.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					gpu_out_of_service:{Tag:'GPU._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					gpu_quality:{Tag:'GPU._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					gpu_status:{Tag:'GPU.GPUSTATUSBOOLEAN',Label:'[*]GPU',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					pca_perfect_hookup:{Tag:'PCA.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pca_quality:{Tag:'PCA._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pca_status:{Tag:'PCA.PCASTATUS',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 					pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'[*]DisCharge',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 					pca_mode_cooling:{Tag:'PCA.MODE_COOLING',Label:'Cooling Mode',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
@@ -872,15 +886,22 @@ class TagConfig extends Object
 			#pbb_level_detail_widget: # PBB Bridge Widget
 			#pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
 			pbb_pca_gpu_status_widget: # PBB/PCA/GPU Widget
-				add_tags:{
+				update_tags:{
 					system_perfect_hookup:{Tag:'System.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					system_out_of_service:{Tag:'System._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					system_quality:{Tag:'System._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-				}
-				update_tags:{
+					pbb_perfect_hookup:{Tag:'PBB.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pbb_out_of_service:{Tag:'PBB._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pbb_quality:{Tag:'PBB._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pbb_docked:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]Docked',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'Docked',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]PBB',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'',Parm002:'',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					gpu_perfect_hookup:{Tag:'GPU.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					gpu_out_of_service:{Tag:'GPU._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					gpu_quality:{Tag:'GPU._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					gpu_status:{Tag:'GPU.GPUSTATUSBOOLEAN',Label:'[*]GPU',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					pca_perfect_hookup:{Tag:'PCA.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pca_quality:{Tag:'PCA._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pca_status:{Tag:'PCA.PCASTATUS',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 					pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'[*]DisCharge',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 					pca_mode_cooling:{Tag:'PCA.MODE_COOLING',Label:'Cooling Mode',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
@@ -972,15 +993,22 @@ class TagConfig extends Object
 							gpu_02_rv_out_avg:{Tag:'GPU02.RVOUTAVG',Label:'GPU-2 Average Output - Volts',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 						}	
 			pbb_pca_gpu_status_widget: # PBB/PCA/GPU Widget
-				add_tags:{
+				update_tags:{
 					system_perfect_hookup:{Tag:'System.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					system_out_of_service:{Tag:'System._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					system_quality:{Tag:'System._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-				}
-				update_tags:{
+					pbb_perfect_hookup:{Tag:'PBB.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pbb_out_of_service:{Tag:'PBB._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pbb_quality:{Tag:'PBB._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pbb_docked:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]Docked',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'Docked',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]PBB',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'',Parm002:'',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					gpu_perfect_hookup:{Tag:'GPU.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					gpu_out_of_service:{Tag:'GPU._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					gpu_quality:{Tag:'GPU._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					gpu_status:{Tag:'GPU.GPUSTATUSBOOLEAN',Label:'[*]GPU',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					pca_perfect_hookup:{Tag:'PCA.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pca_quality:{Tag:'PCA._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pca_status:{Tag:'PCA.PCASTATUS',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 					pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'[*]DisCharge',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 					pca_mode_cooling:{Tag:'PCA.MODE_COOLING',Label:'Cooling Mode',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
@@ -988,12 +1016,24 @@ class TagConfig extends Object
 				}
 				C:
 					1:C90:
-						remove_tags:{'gpu_status'}
+						remove_tags:{'gpu_has_alarms','gpu_has_critical_alarms','gpu_has_warnings','gpu_perfect_hookup','gpu_out_of_service','gpu_quality','gpu_status'}
 					3:C125:
-						remove_tags:{'gpu_status'}
+						remove_tags:{'gpu_has_alarms','gpu_has_critical_alarms','gpu_has_warnings','gpu_perfect_hookup','gpu_out_of_service','gpu_quality','gpu_status'}
 						add_tags: {
-							gpu_01_status:{Tag:'GPU01.GPUSTATUSBOOLEAN',Label:'GPU-1 Status',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
-							gpu_02_status:{Tag:'GPU02.GPUSTATUSBOOLEAN',Label:'GPU-2 Status',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+							gpu_01_has_warnings:{Tag:'GPU01.Warning._HasWarnings',Label:'Warnings',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}},
+							gpu_02_has_warnings:{Tag:'GPU02.Warning._HasWarnings',Label:'Warnings',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}},
+							gpu_01_has_alarms:{Tag:'GPU01.Alarm._HasAlarms',Label:'Alarms',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}},
+							gpu_02_has_alarms:{Tag:'GPU01.Alarm._HasAlarms',Label:'Alarms',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}},
+							gpu_02_has_critical_alarms:{Tag:'GPU02.Alarm._HasCriticalAlarms',Label:'Critical Alarms',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}},
+							gpu_01_has_critical_alarms:{Tag:'GPU01.Alarm._HasCriticalAlarms',Label:'Critical Alarms',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}},
+							gpu_01_out_of_service:{Tag:'GPU01._OUT_OF_SERVICE',Label:'Out Of Service',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_02_out_of_service:{Tag:'GPU02._OUT_OF_SERVICE',Label:'Out Of Service',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_01_perfect_hookup:{Tag:'GPU01.Calc_PerfectHookupTime',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_02_perfect_hookup:{Tag:'GPU02.Calc_PerfectHookupTime',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_01_quality:{Tag:'GPU01._QUALITY',Label:'Comm Errors',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}},
+							gpu_02_quality:{Tag:'GPU02._QUALITY',Label:'Comm Errors',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}},
+							gpu_01_status:{Tag:'GPU01.GPUSTATUSBOOLEAN',Label:'GPU-1 Status',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+							gpu_02_status:{Tag:'GPU02.GPUSTATUSBOOLEAN',Label:'GPU-2 Status',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData2',Class:null,Object:null}},
 						}
 			pbb_system_status_widget: # PBB Status Widget
 				update_tags:{
@@ -1168,14 +1208,17 @@ class TagConfig extends Object
 			pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
 				remove_tags:{'pca_status','gpu_status','pca_time','pca_hookup_time','pca_discharge_temp','gpu_time','gpu_ra_out_avg','gpu_rv_out_avg'}	
 			pbb_pca_gpu_status_widget: # PBB/PCA/GPU Widget
-				remove_tags:{'pca_status','pca_discharge_temp','gpu_status'}
-				add_tags:{
+				remove_tags:{'pca_has_alarms','pca_has_critical_alarms','pca_has_warnings','pca_perfect_hookup','pca_out_of_service','pca_quality','pca_status','pca_discharge_temp','pca_mode_cooling','pca_mode_heating'
+							'gpu_has_alarms','gpu_has_critical_alarms','gpu_has_warnings','gpu_perfect_hookup','gpu_out_of_service','gpu_quality','gpu_status'}
+				update_tags:{
 					system_perfect_hookup:{Tag:'System.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					system_out_of_service:{Tag:'System._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					system_quality:{Tag:'System._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-				}
-				update_tags:{
-					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]PBB',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					pbb_perfect_hookup:{Tag:'PBB.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pbb_out_of_service:{Tag:'PBB._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pbb_quality:{Tag:'PBB._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pbb_docked:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]Docked',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'Docked',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]PBB',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'',Parm002:'',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 				}
 			pbb_system_status_widget: # PBB Status Widget
 				remove_tags:{'pca_status','pca_discharge_temp','gpu_status'}
@@ -1278,37 +1321,83 @@ class TagConfig extends Object
 							pca_hookup_time:Tag:'PCA.HOOKUPTIME',Label:'[*]PCA Hookup Time',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
 						}	
 			pbb_pca_gpu_status_widget: # PBB/PCA/GPU Widget
-				remove_tags:{'pca_status','pca_discharge_temp'}
-				add_tags:{
+				remove_tags:{'pca_has_alarms','pca_has_critical_alarms','pca_has_warnings','pca_perfect_hookup','pca_out_of_service','pca_quality','pca_status','pca_discharge_temp','pca_mode_cooling','pca_mode_heating'}
+				update_tags:{
 					system_perfect_hookup:{Tag:'System.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					system_out_of_service:{Tag:'System._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					system_quality:{Tag:'System._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-				}
-				update_tags:{
+					pbb_perfect_hookup:{Tag:'PBB.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pbb_out_of_service:{Tag:'PBB._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pbb_quality:{Tag:'PBB._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pbb_docked:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]Docked',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'Docked',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]PBB',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'',Parm002:'',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					gpu_perfect_hookup:{Tag:'GPU.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					gpu_out_of_service:{Tag:'GPU._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					gpu_quality:{Tag:'GPU._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					gpu_status:{Tag:'GPU.GPUSTATUSBOOLEAN',Label:'[*]GPU',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 				}
 				4:
 					B1:B29L2:
 						add_tags:{
+							elvrot_has_warnings:{Tag:'ELVROT.Warning._HasWarnings',Label:'Warnings',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}},
+							elvrot_has_alarms:{Tag:'ELVROT.Alarm._HasAlarms',Label:'Alarms',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}},
+							elvrot_has_critical_alarms:{Tag:'ELVROT.Alarm._HasCriticalAlarms',Label:'Critical Alarms',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}},
+							elvrot_out_of_service:{Tag:'ELVROT._OUT_OF_SERVICE',Label:'Out Of Service',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}},
+							elvrot_perfect_hookup:{Tag:'ELVROT.Calc_PerfectHookupTime',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}},
+							elvrot_quality:{Tag:'ELVROT._QUALITY',Label:'Comm Errors',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}},
 							elvrot_rotunda_status:{Tag:'ELVROT.ROTUNDA_STATUS',Label:'[*]Elev. Rot.',DataType:'Value',Parameters:{Parm001:false,Parm002:null,Parm003:'#{1}',Parm004:null},Element:{Type:null,ParentID:null,Class:'ElvRot',Object:null}},
 						}
 					B3:
-						update_tags:{
+						add_tags:{
+							pca_has_warnings:{Tag:'PCA.Warning._HasWarnings',Label:'Warnings',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}},
+							pca_has_alarms:{Tag:'PCA.Alarm._HasAlarms',Label:'Alarms',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}},
+							pca_has_critical_alarms:{Tag:'PCA.Alarm._HasCriticalAlarms',Label:'Critical Alarms',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}},
+							pca_perfect_hookup:{Tag:'PCA.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+							pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+							pca_quality:{Tag:'PCA._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 							pca_status:{Tag:'PCA.PCASTATUS',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 							pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'[*]DisCharge',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+							pca_mode_cooling:{Tag:'PCA.MODE_COOLING',Label:'Cooling Mode',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+							pca_mode_heating:{Tag:'PCA.MODE_HEATING',Label:'Heating Mode',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 						}
 					B2:	
-						update_tags:{
+						add_tags:{
+							pca_has_warnings:{Tag:'PCA.Warning._HasWarnings',Label:'Warnings',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}},
+							pca_has_alarms:{Tag:'PCA.Alarm._HasAlarms',Label:'Alarms',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}},
+							pca_has_critical_alarms:{Tag:'PCA.Alarm._HasCriticalAlarms',Label:'Critical Alarms',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}},
+							pca_perfect_hookup:{Tag:'PCA.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+							pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+							pca_quality:{Tag:'PCA._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 							pca_status:{Tag:'PCA.PCASTATUS',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 							pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'[*]DisCharge',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+							pca_mode_cooling:{Tag:'PCA.MODE_COOLING',Label:'Cooling Mode',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+							pca_mode_heating:{Tag:'PCA.MODE_HEATING',Label:'Heating Mode',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 						}
 			pbb_system_status_widget: # PBB Status Widget
 				remove_tags:{'pca_status','pca_discharge_temp'}
 				update_tags:{
 					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]PBB',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					gpu_status:{Tag:'GPU.GPUSTATUSBOOLEAN',Label:'[*]GPU',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+
+					system_perfect_hookup:{Tag:'System.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					system_out_of_service:{Tag:'System._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					system_quality:{Tag:'System._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pbb_perfect_hookup:{Tag:'PBB.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pbb_out_of_service:{Tag:'PBB._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pbb_quality:{Tag:'PBB._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pbb_docked:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]Docked',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'Docked',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pbb_status:{Tag:'PBB.OPERATEKEY',Label:'[*]PBB',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'',Parm002:'',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					gpu_perfect_hookup:{Tag:'GPU.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					gpu_out_of_service:{Tag:'GPU._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					gpu_quality:{Tag:'GPU._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					gpu_status:{Tag:'GPU.GPUSTATUSBOOLEAN',Label:'[*]GPU',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					pca_perfect_hookup:{Tag:'PCA.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pca_quality:{Tag:'PCA._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pca_status:{Tag:'PCA.PCASTATUS',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'[*]DisCharge',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					pca_mode_cooling:{Tag:'PCA.MODE_COOLING',Label:'Cooling Mode',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pca_mode_heating:{Tag:'PCA.MODE_HEATING',Label:'Heating Mode',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 				}
 				4:
 					B1:B29L2:
@@ -1316,14 +1405,24 @@ class TagConfig extends Object
 							elvrot_rotunda_status:{Tag:'ELVROT.ROTUNDA_STATUS',Label:'[*]Elev. Rot.',DataType:'Value',Parameters:{Parm001:false,Parm002:null,Parm003:'#{1}',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:'ElvRot',Object:null}},
 						}
 					B2:
-						update_tags:{
-							pca_status:{Tag:'PCA.PCASTATUS',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-							pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'[*]DisCharge',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:'DisCharge',Object:null}},
+						add_tags:{
+							pca_perfect_hookup:{Tag:'PCA.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+							pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+							pca_quality:{Tag:'PCA._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+							pca_status:{Tag:'PCA.PCASTATUS',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+							pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'[*]DisCharge',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+							pca_mode_cooling:{Tag:'PCA.MODE_COOLING',Label:'Cooling Mode',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+							pca_mode_heating:{Tag:'PCA.MODE_HEATING',Label:'Heating Mode',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 						}	
 					B3:	
-						update_tags:{
-							pca_status:{Tag:'PCA.PCASTATUS',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-							pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'[*]DisCharge',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:'DisCharge',Object:null}},
+						add_tags:{
+							pca_perfect_hookup:{Tag:'PCA.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+							pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+							pca_quality:{Tag:'PCA._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+							pca_status:{Tag:'PCA.PCASTATUS',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+							pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'[*]DisCharge',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+							pca_mode_cooling:{Tag:'PCA.MODE_COOLING',Label:'Cooling Mode',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+							pca_mode_heating:{Tag:'PCA.MODE_HEATING',Label:'Heating Mode',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 						}
 			pbb_widget: # PBB Bridge Widget
 				4:
@@ -1524,16 +1623,15 @@ class TagConfig extends Object
 			pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
 				remove_tags:{'pbb_status','gpu_status','pbb_hookup_time','gpu_hookup_time','pbb_dock_time','gpu_time','gpu_ra_out_avg','gpu_rv_out_avg'}	
 			pbb_pca_gpu_status_widget: # PBB/PCA/GPU Widget
-				remove_tags:{'pbb_status','gpu_status'}
-				add_tags:{
+				remove_tags:{'pbb_has_alarms','pbb_has_critical_alarms','pbb_has_warnings','pbb_perfect_hookup','pbb_out_of_service','pbb_quality','pbb_status','pbb_docked','pca_mode_cooling','pca_mode_heating',
+							'gpu_has_alarms','gpu_has_critical_alarms','gpu_has_warnings','gpu_perfect_hookup','gpu_out_of_service','gpu_quality','gpu_status'}
+				update_tags:{
 					system_perfect_hookup:{Tag:'System.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					system_out_of_service:{Tag:'System._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					system_quality:{Tag:'System._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-				}
-				update_tags:{
-					#pbb_docked:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]Docked',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'Docked',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-					#pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]PBB',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'',Parm002:'',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
-					#gpu_status:{Tag:'GPU.GPUSTATUSBOOLEAN',Label:'[*]GPU',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					pca_perfect_hookup:{Tag:'PCA.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pca_quality:{Tag:'PCA._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pca_status:{Tag:'PCA.PCASTATUS',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 					pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'[*]DisCharge',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 					pca_mode_cooling:{Tag:'PCA.MODE_COOLING',Label:'Cooling Mode',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
@@ -1737,15 +1835,22 @@ class TagConfig extends Object
 								gpu_volts_out_average_2:{Tag:'GPU.RV2OUTAVG',Label:'Volts Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							}
 			pbb_pca_gpu_status_widget: # PBB/PCA/GPU Widget
-				add_tags:{
+				update_tags:{
 					system_perfect_hookup:{Tag:'System.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					system_out_of_service:{Tag:'System._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					system_quality:{Tag:'System._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-				}
-				update_tags:{
+					pbb_perfect_hookup:{Tag:'PBB.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pbb_out_of_service:{Tag:'PBB._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pbb_quality:{Tag:'PBB._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pbb_docked:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]Docked',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'Docked',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'[*]PBB',LebelOverride:true,DataType:'Boolean',Parameters:{Parm001:'',Parm002:'',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					gpu_perfect_hookup:{Tag:'GPU.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					gpu_out_of_service:{Tag:'GPU._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					gpu_quality:{Tag:'GPU._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					gpu_status:{Tag:'GPU.GPUSTATUSBOOLEAN',Label:'[*]GPU',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					pca_perfect_hookup:{Tag:'PCA.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+					pca_quality:{Tag:'PCA._QUALITY',Label:'Bad Quality',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pca_status:{Tag:'PCA.PCASTATUS',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 					pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'[*]DisCharge',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 					pca_mode_cooling:{Tag:'PCA.MODE_COOLING',Label:'Cooling Mode',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},

@@ -115,13 +115,13 @@ window.app_config = {
       id: "configairport",
       name: "Airport Config Widget",
       icon: "gear",
-      roles: ["global:admin", "site:admin"]
+      roles: ["global:admin","site:admin","global:OperationsAdmin","site:OperationsAdmin"]
     },
     {
       id: "configgate",
       name: "Gate Config Widget",
       icon: "gear",
-      roles: ["global:admin", "site:admin"]
+      roles: ["global:admin","site:admin","global:OperationsAdmin","site:OperationsAdmin"]
     },
     {
       id: "example",

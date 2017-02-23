@@ -147,6 +147,7 @@ module.exports = (grunt)->
       vendor_css:
         src: [
           'client/requires/bootstrap-sass/bootstrap.css'
+          'client/requires/bootstrap-sass/bootstrap.css.map'
           'bower_components/font-awesome/css/font-awesome.css'
           'client/assets/adminlte/dist/css/AdminLTE.css'
           'client/assets/adminlte/dist/css/skins/_all-skins.css'
