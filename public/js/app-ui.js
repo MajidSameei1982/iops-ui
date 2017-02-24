@@ -35125,7 +35125,7 @@ PbbpcagpustatusWidgetView = (function(superClass) {
   PbbpcagpustatusWidgetView.prototype.IsPageLoading = true;
 
   PbbpcagpustatusWidgetView.prototype.update = function() {
-    var btg, col, column, data, element, g, gate, gp, i, index, j, k, key, label, lbl, len, len1, newRow, ref, ref1, ref2, ref3, s, t, tag, tp;
+    var btg, col, column, data, g, gate, gp, i, index, j, k, key, label, lbl, len, newRow, ref, ref1, ref2, s, t, tag, tp;
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
@@ -35239,14 +35239,15 @@ PbbpcagpustatusWidgetView = (function(superClass) {
           }
 
           /* Ensure we have all the cells properly hidden/shown */
-          ref3 = this.$("#dynamic_" + tag + ">td");
-          for (index = k = 0, len1 = ref3.length; k < len1; index = ++k) {
-            element = ref3[index];
-            if (element.id.indexOf("dynamic_" + tag + "_default_") > -1) {
-              col = column - 1;
-              this.$("#" + element.id).toggleClass('no-show', index > col);
-              this.$("#" + element.id).toggleClass('no-background', index <= col);
-            }
+        }
+        col = column - 1;
+        for (index = k = 1; k <= 6; index = ++k) {
+          if (index <= col) {
+            this.$("td[id^='dynamic_'][id*='_default_" + index + "']").toggleClass('no-background', true);
+            this.$("td[id^='dynamic_'][id*='_default_" + index + "']").toggleClass('no-show', false);
+          } else {
+            this.$("td[id^='dynamic_'][id*='_default_" + index + "']").toggleClass('no-background', false);
+            this.$("td[id^='dynamic_'][id*='_default_" + index + "']").toggleClass('no-show', true);
           }
         }
       }
@@ -35287,6 +35288,8 @@ PbbpcagpustatusWidgetView = (function(superClass) {
         }
       } else {
         if (this.$("#widgetData [id$='_pca_discharge_temp']").length > 0) {
+          this.render_value_row_tzg("dynamic_" + tag, data.Parameters.Parm001, data.Parameters.Parm002, data.Parameters.Parm003, data.Parameters.Parm004);
+        } else {
           this.render_value_row_tzg("dynamic_" + tag, data.Parameters.Parm001, data.Parameters.Parm002, data.Parameters.Parm003, data.Parameters.Parm004);
         }
       }

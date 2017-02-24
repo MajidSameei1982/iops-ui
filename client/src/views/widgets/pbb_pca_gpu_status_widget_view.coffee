@@ -131,7 +131,6 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
 
             ### Set the id for the gate and tag ###
 
-
             tp = tag.split('_')
             @$("#widgetData #dynamic_#{tag} td:nth-child(#{column}) #dynamic_has_critical_alarms").attr('id', "dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}_#{tp[0]}_has_critical_alarms")
             @$("#widgetData #dynamic_#{tag} td:nth-child(#{column}) #dynamic_has_alarms").attr('id', "dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}_#{tp[0]}_has_alarms")
@@ -146,11 +145,21 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
               @$("#widgetData td[id$='#{gp[0]}_#{gp[1]}_#{gp[2]}_pca_discharge_temp']").toggleClass("DisCharge", true)
 
           ### Ensure we have all the cells properly hidden/shown ###
-          for element, index in @$("#dynamic_#{tag}>td")
-            if element.id.indexOf("dynamic_#{tag}_default_") > -1
-              col = column - 1
-              @$("##{element.id}").toggleClass('no-show',(index > col))
-              @$("##{element.id}").toggleClass('no-background',(index <= col))
+
+        col = column - 1
+        for index in [1..6]
+          if index <= col
+            @$("td[id^='dynamic_'][id*='_default_#{index}']").toggleClass('no-background', true)
+            @$("td[id^='dynamic_'][id*='_default_#{index}']").toggleClass('no-show', false)
+          else
+            @$("td[id^='dynamic_'][id*='_default_#{index}']").toggleClass('no-background', false)
+            @$("td[id^='dynamic_'][id*='_default_#{index}']").toggleClass('no-show', true)
+
+          # for element, index in @$("#dynamic_#{tag}>td")
+          #   if element.id.indexOf("dynamic_#{tag}_default_") > -1
+          #     col = column - 1
+          #     @$("##{element.id}").toggleClass('no-show',(index > col))
+          #     @$("##{element.id}").toggleClass('no-background',(index <= col))
 
       # for g in s.gates
       #   gp = g.split(':')
@@ -204,6 +213,9 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
       else
         if @$("#widgetData [id$='_pca_discharge_temp']").length > 0
           @render_value_row_tzg("dynamic_#{tag}", data.Parameters.Parm001, data.Parameters.Parm002, data.Parameters.Parm003, data.Parameters.Parm004)
+        else
+          @render_value_row_tzg("dynamic_#{tag}", data.Parameters.Parm001, data.Parameters.Parm002, data.Parameters.Parm003, data.Parameters.Parm004)
+        
 
       #if /pbb_docked/.test(tag)
       # if tag.indexOf("#{tzgPrefix}_pbb_docked") > -1

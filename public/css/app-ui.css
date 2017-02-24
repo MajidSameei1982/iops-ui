@@ -3312,6 +3312,8 @@ ul.chosen-results li.highlighted {
         background-repeat: no-repeat;
         background-position: center center; }
       .pbb_pca_gpu_status_widget .display #widgetData tbody td.no-show {
+        display: none;
+        visibility: hidden;
         background: none; }
       .pbb_pca_gpu_status_widget .display #widgetData tbody td.no-background {
         background-image: none !important; }
