@@ -72,31 +72,31 @@ class ConfiggateWidgetView extends IOPSWidgetView
       pbb_ph_tm = 0
 
       for t in data.tags
-        if t.name.endsWith(@tags.cooling_pt)
+        if t.name.endsWith("#{@prefix}#{@tags.cooling_pt}")
           v = t.props[0].val
           v = if v? && v != '' then parseFloat(v) else 0
           cool = if v > cool then v else cool
-        if t.name.endsWith(@tags.cooling_tm)
+        if t.name.endsWith("#{@prefix}#{@tags.cooling_tm}")
           v = t.props[0].val
           v = if v? && v != '' then parseFloat(v) else 0
           cool_tm = if v > cool_tm then v else cool_tm
-        if t.name.endsWith(@tags.heating_pt)
+        if t.name.endsWith("#{@prefix}#{@tags.heating_pt}")
           v = t.props[0].val
           v = if v? && v != '' then parseFloat(v) else 0
           heat = if v > heat then v else heat
-        if t.name.endsWith(@tags.heating_tm)
+        if t.name.endsWith("#{@prefix}#{@tags.heating_tm}")
           v = t.props[0].val
           v = if v? && v != '' then parseFloat(v) else 0
           heat_tm = if v > heat_tm then v else heat_tm
-        if t.name.endsWith(@tags.pca_perfect_tm)
+        if t.name.endsWith("#{@prefix}#{@tags.pca_perfect_tm}")
           v = t.props[0].val
           v = if v? && v != '' then parseFloat(v) else 0
           pca_ph_tm = if v > pca_ph_tm then v else pca_ph_tm
-        if t.name.endsWith(@tags.gpu_perfect_tm)
+        if t.name.endsWith("#{@prefix}#{@tags.gpu_perfect_tm}")
           v = t.props[0].val
           v = if v? && v != '' then parseFloat(v) else 0
           gpu_ph_tm = if v > gpu_ph_tm then v else gpu_ph_tm
-        if t.name.endsWith(@tags.pbb_perfect_tm)
+        if t.name.endsWith("#{@prefix}#{@tags.pbb_perfect_tm}")
           v = t.props[0].val
           v = if v? && v != '' then parseFloat(v) else 0
           pbb_ph_tm = if v > pbb_ph_tm then v else pbb_ph_tm

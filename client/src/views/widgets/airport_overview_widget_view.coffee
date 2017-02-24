@@ -25,6 +25,7 @@ class AirportoverviewWidgetView extends IOPSWidgetView
 
   tags:{}
   site_refresh: 50000
+  refId: 0
 
   IsUpdatingSettings: false
   IsPageLoading: true
@@ -33,9 +34,6 @@ class AirportoverviewWidgetView extends IOPSWidgetView
     # Ignore all calls except those from startup and Update
     if @IsUpdatingSettings || @IsPageLoading
       return null
-
-    @IsPageLoading = false
-    @IsUpdatingSettings = false
 
     s = @update_settings
       prefix: 'Airport.#{@site_code}.'
@@ -48,7 +46,7 @@ class AirportoverviewWidgetView extends IOPSWidgetView
       @ui.wtitle.html(lbl)
 
       # stop listening for updates
-      @kill_updates(@site_code)
+      #@kill_updates(@site_code)
 
       # clear out lingering top-level <code>_account classes
       classList = $(@el).attr('class').split(/\s+/)
@@ -106,8 +104,11 @@ class AirportoverviewWidgetView extends IOPSWidgetView
       App.opc.add_tags @site_code, tags
       @opc =  App.opc.connections[@site_code]
       # listen for updates
-      @watch_updates(@site_code)
-      @start_heartbeat()
+      if @refId == 0
+        @refId = App.opc.add_tags @site_code, tags
+        App.vent.on "opc:data:#{@site_code}", @data_update
+        @opc =  App.opc.connections[@site_code]
+        @start_heartbeat()
 
   # process data and update the view
   data_update: (data)=>
@@ -196,6 +197,11 @@ class AirportoverviewWidgetView extends IOPSWidgetView
     @
 
   set_model: ()=>
+    if @refId > 0
+      @kill_updates(@site_code)
+      if @heartbeat_timer? && @heartbeat_timer > 0
+        window.clearInterval(@heartbeat_timer)
+      @refId = 0
 
     s = _.clone(@model.get("settings"))
     s.site = @$('#site').val()
@@ -208,8 +214,8 @@ class AirportoverviewWidgetView extends IOPSWidgetView
     @IsUpdatingSettings = @settings_visible
     if @settings_visible
       #@kill_updates(@site_code)
-      if @heartbeat_timer? && @heartbeat_timer > 0
-        window.clearInterval(@heartbeat_timer)
+      #if @heartbeat_timer? && @heartbeat_timer > 0
+      #  window.clearInterval(@heartbeat_timer)
       @ui.site.chosen({width:'95%'})
     else
       @IsPageLoading = false
@@ -232,7 +238,7 @@ class AirportoverviewWidgetView extends IOPSWidgetView
     @site_code = OPCManager.get_site_code(settings.site)
     if @site_code? 
       @site_refresh = ((OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3)
-      @watch_updates(@site_code)
+      #@watch_updates(@site_code)
     
     @check_init_site()
 

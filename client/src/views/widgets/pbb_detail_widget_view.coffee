@@ -23,24 +23,11 @@ class PbbdetailWidgetView extends IOPSWidgetView
     sx: 12
     sy: 8
 
-  tags:
-    #Grid Tags
-    ###
-    pbb_status :          'PBB.AIRCRAFTDOCKEDCALCULATION'
-    pbb_autolevel :       'PBB.AUTOLEVELMODEFLAG'
-    pbb_canopy:           'PBB.CANOPYDOWN'
-    pbb_docktime:         'PBB.DOCKTIME'
-    pbb_undocktime:       'PBB.UNDOCKTIME'
-    ### 
-    #Processing Tags
-
-    pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
-    pbb_has_warnings :  'Warning._HasWarnings'
-    pbb_has_alarms :    'Alarm._HasAlarms'
-    
+  tags = []  
   tagData = []
   tagConfig = []
   site_refresh: 50000
+  refId: 0
 
   IsUpdatingSettings: false
   IsPageLoading: true
@@ -61,7 +48,7 @@ class PbbdetailWidgetView extends IOPSWidgetView
       @ui.wtitle.html(lbl)
 
       # stop listening for updates
-      @kill_updates(@site_code)
+      #@kill_updates(@site_code)
 
       tags = []
       @tagData = []
@@ -82,9 +69,14 @@ class PbbdetailWidgetView extends IOPSWidgetView
       ref = s.layout
 
       # listen for updates
-      @watch_updates(@site_code)
+      #@watch_updates(@site_code)
+      #@start_heartbeat()
+      if @refId == 0
+        @refId = App.opc.add_tags @site_code, tags
+        App.vent.on "opc:data:#{@site_code}", @data_update
+        @opc =  App.opc.connections[@site_code]
+        @start_heartbeat()
       @set_descriptions(true)
-      @start_heartbeat()
 
   # process data and update the view
   data_update: (data)=>
@@ -138,8 +130,8 @@ class PbbdetailWidgetView extends IOPSWidgetView
    
     
     # AUTOLEVELFAIL
-    fq = @data_q(@tags.pbb_autolevelfail)
-    show_alarms = (@get_bool(@vals.pbb_autolevelfail)==true && fq)
+    fq = @data_q(@tags.pbb_autolevel_fail)
+    show_alarms = (@get_bool(@vals.pbb_autolevel_fail)==true && fq)
     @ui.alarms.toggle(show_alarms).toggleClass("blink",show_alarms)
     
      # DOCKTIME
@@ -152,7 +144,11 @@ class PbbdetailWidgetView extends IOPSWidgetView
     @set_descriptions()
 
   set_model: ()=>
-    @IsUpdatingSettings = true
+    if @refId > 0
+      @kill_updates(@site_code)
+      if @heartbeat_timer? && @heartbeat_timer > 0
+        window.clearInterval(@heartbeat_timer)
+      @refId = 0
 
     s = _.clone(@model.get("settings"))
     s.site = @$('#site').val()
@@ -168,8 +164,8 @@ class PbbdetailWidgetView extends IOPSWidgetView
     @IsUpdatingSettings = @settings_visible
     if @settings_visible
       #@kill_updates(@site_code)
-      if @heartbeat_timer? && @heartbeat_timer > 0
-        window.clearInterval(@heartbeat_timer)
+      #if @heartbeat_timer? && @heartbeat_timer > 0
+      #  window.clearInterval(@heartbeat_timer)
     else
       @IsPageLoading = false
       @update()
@@ -192,7 +188,7 @@ class PbbdetailWidgetView extends IOPSWidgetView
     @site_code = OPCManager.get_site_code(settings.site)
     if @site_code?
       @site_refresh = ((OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3)
-      @watch_updates(@site_code)
+      #@watch_updates(@site_code)
 
     @check_init_site()
 

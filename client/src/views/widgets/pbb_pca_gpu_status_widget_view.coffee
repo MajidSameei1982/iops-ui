@@ -18,14 +18,7 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
     sx: 8
     sy: 6
 
-  tags:
-    #Processing Tags
-    pca_mode_cooling:   'PCA.MODE_COOLING'
-    pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
-    pbb_has_warnings :  'Warning._HasWarnings'
-    has_alarms :    'Alarm._HasAlarms'
-    has_critical_alarms : 'Alarm._HasCriticalAlarms'
-
+  tags = []
   tagData = []
   tagConfig = []
  
@@ -47,96 +40,126 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
 
     if !@site_code? then return null
 
-    @cktags = []
+    # @cktags = []
     if s? && !!s.site   
       lbl = "#{@site_code}: PBB/PCA/GPU Status"
       @ui.wtitle.html(lbl)
 
       return if !s.gates || s.gates.length == 0   
 
+      ### Initialize Variables ###
       tags = []
-      elementPrefix = "li##{@el.parentNode.id} .#{@classID} "
+      #elementPrefix = "li##{@el.parentNode.id} .#{@classID} "
       @$("[id^='dynamic_']").remove()
       column = 1
       @tagData = []
+      
+      ### Process Gates ###
       for g in s.gates
+        ### Initialize Loop Variables ###
         column = column + 1
         gp = g.split(':')
         gate = "Term#{gp[0]}.Zone#{gp[1]}.Gate#{gp[2]}."
+
+        ### Call Tagconfig ###
         @tagConfig = []
         @tagConfig = @create_dynamic_elements(@el.parentNode.id, @classID, null, null, @site_code, {site: @site_code, terminal: gp[0], zone: gp[1], gate: gp[2], RetainDynamic: true})
-        for key, data of @tagConfig.TagData
-          tags["#{gp[0]}_#{gp[1]}_#{gp[2]}_#{key}"] = data.Tag
-          @tagData["#{gp[0]}_#{gp[1]}_#{gp[2]}_#{key}"] = data
-          for btg of @tags
-            t = @tags[btg]
-            @tagData["#{gp[0]}_#{gp[1]}_#{gp[2]}_#{btg}"] = { Tag: "#{t}",DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null}}
-          data = []
 
-        if(@$("#dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}").length == 0)
+        ### Create Gate Header and Alert Icons ###
+        if @$("#dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}").length == 0
           @$("#widgetData thead tr").append("<th id='dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}' class='header'>#{gp[2]}</th>")
           @$("#widgetData tbody #iconRow").append(
             "<td id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}'>
-              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_critical' class='fa fa-warning' title='Gate has CRITICAL ALARMS'></i>
-              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_alarm' class='fa fa-bell' title='Gate has ALARMS'></i>
-              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_docked' class='fa fa-plane' title='Plane is DOCKED'></i>
-              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_outofservice' class='fa fa-wrench' title='A system is out of service'></i>
-              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_perfecthookup' class='fa fa-check-circle-o' title='Perfect Hookup'></i>
+              <span id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_system_quality' class='alert-icon fa fa-stack' title='System has lost communications'>
+                <i class='fa fa-rss fa-stack-1x '></i>
+                <i class='fa fa-exclamation fa-stack-1x'></i> 
+              </span>
+              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_system_out_of_service' class='alert-icon fa fa-wrench' title='Gate is out of service'></i>
+              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_pbb_docked' class='alert-icon fa fa-plane' title='Plane is DOCKED'></i>
+              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_system_perfect_hookup' class='alert-icon fa fa-check-circle-o' title='Perfect Hookup'></i>
+              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_gate_has_critical_alarms' class='alert-icon fa fa-warning' title='Gate has CRITICAL ALARMS'></i>
+              <i id='dynamic_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_gate_has_alarms' class='alert-icon fa fa-bell' title='Gate has ALARMS'></i>
             </td>"
           )
-          
+        
+        ### Load tagData With config tags ###
+        for key, data of @tagConfig.TagData
+          tags["#{gp[0]}_#{gp[1]}_#{gp[2]}_#{key}"] = data.Tag
+          @tagData["#{gp[0]}_#{gp[1]}_#{gp[2]}_#{key}"] = data
+
+        ### Load tagData With Widget defined tags ###
+        for btg of @tags
+          t = @tags[btg]
+          @tagData["#{gp[0]}_#{gp[1]}_#{gp[2]}_#{btg}"] = { Tag: "#{t}",DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null}}
+
+
+
+      # Tags:{'system_quality','system_out_of_service','system_perfect_hookup','gate_has_warnings','gate_has_alarms','gate_has_critical_alarms',
+      #     'gpu_quality','gpu_out_of_service','gpu_perfect_hookup','gpu_has_warnings','gpu_has_alarms','gpu_has_critical_alarms',
+      #       'gpu_status',
+      #         'pbb_quality','pbb_out_of_service','pbb_perfect_hookup','pbb_has_warnings','pbb_has_alarms','pbb_has_critical_alarms',
+      #           'pbb_docked','pbb_status',
+      #         'pca_quality','pca_out_of_service','pca_perfect_hookup','pca_has_warnings','pca_has_alarms','pca_has_critical_alarms',
+      #           'pca_mode_cooling','pca_mode_heating','pca_status','pca_discharge_temp'}
+
+        ### Loop Through Tags and configure the table cells ###
         for tag, tagData of @tagConfig.TagData
           t = tagData.Tag
           gate = "Term#{gp[0]}.Zone#{gp[1]}.Gate#{gp[2]}."
           tags.push "#{@prefix}#{gate}#{tagData.Tag}.Value"
-          if(tagData.Element.Class != 'no_row')
-            if(@$("#dynamic_#{tag}").length == 0)
+          if tagData.Element.Class != 'no_row'
+            ### Create the new tag row if it doesn't already exist ###
+            if @$("#dynamic_#{tag}").length == 0
               label = tagData.Label
               if /[*]/.test(label)
                 label = label.replace "[*]", ""
-              @$("#widgetData tbody").append(
-                "<tr id='dynamic_#{tag}'>
-                  <td class='lbl' id='dynamic_#{tag}_lbl'>#{label}</td>
-                  <td class='val no-show' id='dynamic_#{tag}_default_1'>
-                    <!-- <i id='dynamic_#{tag}_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_critical' class='fa fa-warning' title='Gate has CRITICAL ALARMS'></i>
-                    <i id='dynamic_#{tag}_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_alarm' class='fa fa-bell' title='Gate has ALARMS'></i>
-                    <i id='dynamic_#{tag}_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_outofservice' class='fa fa-wrench' title='A system is out of service'></i>
-                    <i id='dynamic_#{tag}_iconRow_#{gp[0]}_#{gp[1]}_#{gp[2]}_perfecthookup' class='fa fa-check-circle-o' title='Perfect Hookup'></i> -->
-                  </td>
-                  <td class='val no-show' id='dynamic_#{tag}_default_2'>
-                  </td>
-                  <td class='val no-show' id='dynamic_#{tag}_default_3'>
-                  </td>
-                  <td class='val no-show' id='dynamic_#{tag}_default_4'>
-                  </td>
-                  <td class='val no-show' id='dynamic_#{tag}_default_5'>
-                  </td>
-                  <td class='val no-show' id='dynamic_#{tag}_default_6'>
-                  </td>
-                </th>"
-              )
+              newRow = "<tr id='dynamic_#{tag}'>
+                          <td class='lbl' id='dynamic_#{tag}_lbl'>#{label}</td>"
+              for col in [1..6]
+                newRow += "<td class='val no-show' id='dynamic_#{tag}_default_#{col}'>
+                    <i id='dynamic_has_critical_alarms' class='cell-icon fa fa-warning' title='Gate has CRITICAL ALARMS'></i>
+                    <i id='dynamic_has_alarms' class='cell-icon fa fa-bell' title='Gate has ALARMS'></i>
+                    <i id='dynamic_out_of_service' class='cell-icon fa fa-wrench' title='A system is out of service'></i>
+                    <i id='dynamic_perfect_hookup' class='cell-icon fa fa-check-circle-o' title='Perfect Hookup'></i>
+                    <span id='dynamic_quality' class='cell-icon fa fa-stack'>
+                      <i class='fa fa-rss fa-stack-1x'></i>
+                      <i class='fa fa-exclamation fa-stack-1x'></i> 
+                    </span>
+                  </td>"
+              newRow += "</tr>"
+              @$("#widgetData tbody").append(newRow)
 
-          @$("#widgetData #dynamic_#{tag} td:nth-child(#{column})").attr('id', "dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}_#{tag}")
-          @$("#widgetData #dynamic_#{tag} td:nth-child(#{column})").toggleClass("no-show", false)
-          if "dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}_#{tag}".indexOf("_discharge_") > -1
-            @$("#widgetData #dynamic_#{tag} td:nth-child(#{column})").toggleClass("val", false)
-            @$("#widgetData #dynamic_#{tag} td:nth-child(#{column})").toggleClass("DisCharge", true)
+            ### Set the id for the gate and tag ###
 
 
+            tp = tag.split('_')
+            @$("#widgetData #dynamic_#{tag} td:nth-child(#{column}) #dynamic_has_critical_alarms").attr('id', "dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}_#{tp[0]}_has_critical_alarms")
+            @$("#widgetData #dynamic_#{tag} td:nth-child(#{column}) #dynamic_has_alarms").attr('id', "dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}_#{tp[0]}_has_alarms")
+            @$("#widgetData #dynamic_#{tag} td:nth-child(#{column}) #dynamic_out_of_service").attr('id', "dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}_#{tp[0]}_out_of_service")
+            @$("#widgetData #dynamic_#{tag} td:nth-child(#{column}) #dynamic_perfect_hookup").attr('id', "dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}_#{tp[0]}_perfect_hookup")
+            @$("#widgetData #dynamic_#{tag} td:nth-child(#{column}) #dynamic_quality").attr('id', "dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}_#{tp[0]}_quality")
+            @$("#widgetData #dynamic_#{tag} td:nth-child(#{column})").attr('id', "dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}_#{tag}")
+            @$("#widgetData #dynamic_#{tag} td:nth-child(#{column})").toggleClass("no-show", false)
+            if @$("#widgetData td[id$='#{gp[0]}_#{gp[1]}_#{gp[2]}_pca_discharge_temp']").length == 1
+              @$("#widgetData td[id$='#{gp[0]}_#{gp[1]}_#{gp[2]}_pca_discharge_temp']").html('')
+              @$("#widgetData td[id$='#{gp[0]}_#{gp[1]}_#{gp[2]}_pca_discharge_temp']").toggleClass("val", false)
+              @$("#widgetData td[id$='#{gp[0]}_#{gp[1]}_#{gp[2]}_pca_discharge_temp']").toggleClass("DisCharge", true)
+
+          ### Ensure we have all the cells properly hidden/shown ###
           for element, index in @$("#dynamic_#{tag}>td")
             if element.id.indexOf("dynamic_#{tag}_default_") > -1
               col = column - 1
               @$("##{element.id}").toggleClass('no-show',(index > col))
-              @$("##{element.id}").toggleClass('show-no-status',(index <= col))
+              @$("##{element.id}").toggleClass('no-background',(index <= col))
 
-      for g in s.gates
-        gp = g.split(':')
-        gate = "Term#{gp[0]}.Zone#{gp[1]}.Gate#{gp[2]}."
-        for btg of @tags
-          t = @tags[btg]
-          tags.push "#{@prefix}#{gate}#{t}"
+      # for g in s.gates
+      #   gp = g.split(':')
+      #   gate = "Term#{gp[0]}.Zone#{gp[1]}.Gate#{gp[2]}."
+      #   for btg of @tags
+      #     t = @tags[btg]
+      #     tags.push "#{@prefix}#{gate}#{t}"
 
-      @cktags = tags
+      # @cktags = tags
 
       if @refId == 0
         @refId = App.opc.add_tags @site_code, tags
@@ -149,9 +172,11 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
 
   # process data and update the view
   data_update: (data)=>
-    elementPrefix = "li##{@el.parentNode.id} .#{@classID} "
-    s = @model.get("settings")
-    return if !s? || !s.gates? || s.gates.length == 0
+
+    # elementPrefix = "li##{@el.parentNode.id} .#{@classID} "
+    # s = @model.get("settings")
+    # return if !s? || !s.gates? || s.gates.length == 0
+
     @beat_time = new Date().getTime() + @site_refresh
 
     # load values for all tags
@@ -159,35 +184,52 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
     for tag, data of @tagData
       parsedTagId = tag.split("_")
       tzgPrefix = "#{parsedTagId[0]}_#{parsedTagId[1]}_#{parsedTagId[2]}"
-      gate = "Term#{parsedTagId[0]}.Zone#{parsedTagId[1]}.Gate#{parsedTagId[2]}."
-      @vals[tag] = @opc.get_value("#{@prefix}#{gate}#{data.Tag}.Value")
+      tzgTag = "Term#{parsedTagId[0]}.Zone#{parsedTagId[1]}.Gate#{parsedTagId[2]}.#{data.Tag}"
+
+      q = @data_q(tzgTag)
+      if q
+        @vals[tag] = @opc.get_value("#{@prefix}#{tzgTag}.Value")
       # Process the Docked
       setValue = (@vals[tag]? && @vals[tag] == "True")
 
-      if /pbb_docked/.test(tag)
-        @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_docked").toggleClass('docked',setValue)
-      else if tag.indexOf("#{tzgPrefix}_has_critical_alarms") > -1
-        @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_critical").toggleClass('critical',setValue)
-      else if tag.indexOf("#{tzgPrefix}_has_alarms") > -1
-        @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_alarm").toggleClass('alarm',setValue)
-      else if tag.indexOf("#{tzgPrefix}_system_quality") > -1
-        @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_bad_quality").toggleClass('bad-data',!setValue)
-      else if tag.indexOf("#{tzgPrefix}_system_out_of_service") > -1
-        @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_outofservice").toggleClass('out-of-service',setValue)
-      else if tag.indexOf("#{tzgPrefix}_system_perfect_hookup") > -1
-        @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_perfecthookup").toggleClass('perfect-hookup',setValue)
-      else if tag.indexOf("#{tzgPrefix}_pca_mode_cooling") > -1
-        @$("#widgetData #dynamic_#{tzgPrefix}_pca_discharge_temp").toggleClass('Cooling',setValue)
-      else if tag.indexOf("#{tzgPrefix}_pca_mode_heating") > -1
-        @$("#widgetData #dynamic_#{tzgPrefix}_pca_discharge_temp").toggleClass('Heating',setValue)
+      if data.DataType.toLowerCase() == 'boolean'
+        if tag.indexOf("#{tzgPrefix}_pca_mode_cooling") > -1
+          @$("#widgetData #dynamic_#{tzgPrefix}_pca_discharge_temp").toggleClass('Cooling',setValue)
+        else if tag.indexOf("#{tzgPrefix}_pca_mode_heating") > -1
+          @$("#widgetData #dynamic_#{tzgPrefix}_pca_discharge_temp").toggleClass('Heating',setValue)
+        else if tag.indexOf("_quality") > -1
+          @$("#widgetData [id$='#{tag}']").toggleClass('Active', !setValue)
+        else if @$("#widgetData [id$='#{tag}']").length > 0
+          @$("#widgetData [id$='#{tag}']").toggleClass('Active', setValue)
       else
-        switch data.DataType.toLowerCase()
-          when 'boolean'
-            @render_row_tzg("dynamic_#{tag}", "", "", data.Parameters.Parm003, data.Parameters.Parm004, data.Parameters.Parm005)
-          when 'float'
-            @render_value_row_tzg("dynamic_#{tag}", data.Parameters.Parm001, data.Parameters.Parm002, data.Parameters.Parm003, data.Parameters.Parm004)
-          when 'value'
-            @render_value_row_tzg("dynamic_#{tag}", "", "", data.Parameters.Parm003, data.Parameters.Parm004)
+        if @$("#widgetData [id$='_pca_discharge_temp']").length > 0
+          @render_value_row_tzg("dynamic_#{tag}", data.Parameters.Parm001, data.Parameters.Parm002, data.Parameters.Parm003, data.Parameters.Parm004)
+
+      #if /pbb_docked/.test(tag)
+      # if tag.indexOf("#{tzgPrefix}_pbb_docked") > -1
+      #   @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_docked").toggleClass('docked',setValue)
+      # else if tag.indexOf("#{tzgPrefix}_gate_has_critical_alarms") > -1
+      #   @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_critical").toggleClass('critical',setValue)
+      # else if tag.indexOf("#{tzgPrefix}_gate_has_alarms") > -1
+      #   @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_alarm").toggleClass('alarm',setValue)
+      # else if tag.indexOf("#{tzgPrefix}_system_quality") > -1
+      #   @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_system_quality").toggleClass('bad-data',!setValue)
+      # else if tag.indexOf("#{tzgPrefix}_system_out_of_service") > -1
+      #   @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_outofservice").toggleClass('out-of-service',setValue)
+      # else if tag.indexOf("#{tzgPrefix}_system_perfect_hookup") > -1
+      #   @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_perfecthookup").toggleClass('perfect-hookup',setValue)
+      # else if tag.indexOf("#{tzgPrefix}_pca_mode_cooling") > -1
+      #   @$("#widgetData #dynamic_#{tzgPrefix}_pca_discharge_temp").toggleClass('Cooling',setValue)
+      # else if tag.indexOf("#{tzgPrefix}_pca_mode_heating") > -1
+      #   @$("#widgetData #dynamic_#{tzgPrefix}_pca_discharge_temp").toggleClass('Heating',setValue)
+      # else
+      #   switch data.DataType.toLowerCase()
+      #     when 'boolean'
+      #       @render_row_tzg("dynamic_#{tag}", "", "", data.Parameters.Parm003, data.Parameters.Parm004, data.Parameters.Parm005)
+      #     when 'float'
+      #       @render_value_row_tzg("dynamic_#{tag}", data.Parameters.Parm001, data.Parameters.Parm002, data.Parameters.Parm003, data.Parameters.Parm004)
+      #     when 'value'
+      #       @render_value_row_tzg("dynamic_#{tag}", "", "", data.Parameters.Parm003, data.Parameters.Parm004)
       
     @
   

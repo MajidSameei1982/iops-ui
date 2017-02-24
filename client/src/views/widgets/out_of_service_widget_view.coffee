@@ -20,13 +20,7 @@ class OutofserviceWidgetView extends IOPSWidgetView
     sx: 8
     sy: 6
 
-  tags:
-    #Processing Tags
-    pca_mode_cooling:   'PCA.MODE_COOLING'
-    pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
-    pbb_has_warnings :  'Warning._HasWarnings'
-    pbb_has_alarms :    'Alarm._HasAlarms'
-
+  tags = []
   tagData = []
   tagConfig = []   
  

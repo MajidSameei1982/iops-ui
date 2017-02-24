@@ -58,10 +58,6 @@ i.form-control-feedback {
   overflow: scroll;
   z-index: 1000; }
 
-#content-region {
-  padding-bottom: 30px !important;
-  min-height: 930px !important; }
-
 #center-region {
   overflow-x: scroll; }
 
@@ -139,12 +135,29 @@ i.form-control-feedback {
   z-index: 9999;
   border-radius: 10px;
   padding: 10px; }
+  .airport_overview_widget .display #key .docked {
+    color: #090; }
   .airport_overview_widget .display #key .critical {
     color: #c00; }
   .airport_overview_widget .display #key .alarm {
     color: #e45f00; }
   .airport_overview_widget .display #key .perfect {
     color: #090; }
+  .airport_overview_widget .display #key .outofservice {
+    color: #c00; }
+  .airport_overview_widget .display #key .bad-data {
+    left: 23px;
+    top: -6px;
+    width: 100%; }
+    .airport_overview_widget .display #key .bad-data .fa-rss {
+      text-align: left;
+      left: -20px; }
+    .airport_overview_widget .display #key .bad-data .fa-exclamation {
+      color: red;
+      text-align: left;
+      left: -17px;
+      top: -1px;
+      font-size: .8em; }
 .airport_overview_widget .display #display_label {
   display: none; }
 .airport_overview_widget .display div[id^='Airport_Gate_'] {
@@ -3278,73 +3291,117 @@ ul.chosen-results li.highlighted {
       border-left: solid 1px #aaa;
       background-color: #cce; }
     .pbb_pca_gpu_status_widget .display #widgetData tbody td {
-      padding: 2px 5px;
-      border-left: solid 1px #ddd;
-      border-bottom: solid 1px #ddd; }
+      padding: 1px;
+      border: solid 1px #ddd;
+      position: relative; }
       .pbb_pca_gpu_status_widget .display #widgetData tbody td.val {
         background-image: url("../img/data-status-idle.png");
         background-repeat: no-repeat;
-        background-position: center center; }
-      .pbb_pca_gpu_status_widget .display #widgetData tbody td.ok {
+        background-position: center center;
+        width: calc((100% - 15%)/6); }
+      .pbb_pca_gpu_status_widget .display #widgetData tbody td.DisCharge {
+        font-size: 12px;
+        text-align: center;
+        color: black; }
+        .pbb_pca_gpu_status_widget .display #widgetData tbody td.DisCharge.Cooling {
+          color: #33adff; }
+        .pbb_pca_gpu_status_widget .display #widgetData tbody td.DisCharge.Heating {
+          color: #ff3300; }
+      .pbb_pca_gpu_status_widget .display #widgetData tbody td.Active {
         background-image: url("../img/data-status-ok.png");
         background-repeat: no-repeat;
         background-position: center center; }
-      .pbb_pca_gpu_status_widget .display #widgetData tbody td.bad_data {
-        background-image: url("../img/data-status-baddata.png");
-        background-repeat: no-repeat;
-        background-position: center center; }
       .pbb_pca_gpu_status_widget .display #widgetData tbody td.no-show {
-        visibility: hidden;
-        display: none; }
-      .pbb_pca_gpu_status_widget .display #widgetData tbody td.show {
-        visibility: visible; }
-      .pbb_pca_gpu_status_widget .display #widgetData tbody td.show-no-status {
+        background: none; }
+      .pbb_pca_gpu_status_widget .display #widgetData tbody td.no-background {
         background-image: none !important; }
+      .pbb_pca_gpu_status_widget .display #widgetData tbody td .fa {
+        margin-right: -5px;
+        padding: 1px;
+        border-radius: 10px;
+        font-size: 15px !important; }
+      .pbb_pca_gpu_status_widget .display #widgetData tbody td i {
+        position: absolute;
+        display: none;
+        padding: 0px;
+        margin: 0px;
+        z-index: 100; }
+        .pbb_pca_gpu_status_widget .display #widgetData tbody td i.Active {
+          display: inline-block; }
+        .pbb_pca_gpu_status_widget .display #widgetData tbody td i.alert-icon {
+          position: relative; }
+          .pbb_pca_gpu_status_widget .display #widgetData tbody td i.alert-icon.fa-plane {
+            color: #090; }
+          .pbb_pca_gpu_status_widget .display #widgetData tbody td i.alert-icon.fa-warning {
+            color: #c00;
+            animation: blink 2s ease-in infinite; }
+          .pbb_pca_gpu_status_widget .display #widgetData tbody td i.alert-icon.fa-bell {
+            color: #e45f00; }
+          .pbb_pca_gpu_status_widget .display #widgetData tbody td i.alert-icon.fa-check-circle-o {
+            color: #090; }
+          .pbb_pca_gpu_status_widget .display #widgetData tbody td i.alert-icon.fa-wrench {
+            color: #c00; }
+        .pbb_pca_gpu_status_widget .display #widgetData tbody td i.cell-icon {
+          font-size: 10px !important;
+          margin: 0px; }
+          .pbb_pca_gpu_status_widget .display #widgetData tbody td i.cell-icon.fa-warning {
+            color: #c00;
+            animation: blink 2s ease-in infinite;
+            top: 0%;
+            left: 70%;
+            z-index: 101; }
+          .pbb_pca_gpu_status_widget .display #widgetData tbody td i.cell-icon.fa-bell {
+            color: #e45f00;
+            top: 0%;
+            left: 70%; }
+          .pbb_pca_gpu_status_widget .display #widgetData tbody td i.cell-icon.fa-check-circle-o {
+            color: #090;
+            top: 0%;
+            left: 0%; }
+          .pbb_pca_gpu_status_widget .display #widgetData tbody td i.cell-icon.fa-wrench {
+            color: #c00;
+            top: 13%;
+            left: 30%;
+            font-size: 20px !important; }
+      .pbb_pca_gpu_status_widget .display #widgetData tbody td span {
+        display: none; }
+        .pbb_pca_gpu_status_widget .display #widgetData tbody td span i {
+          display: inline-block; }
+        .pbb_pca_gpu_status_widget .display #widgetData tbody td span.Active {
+          display: inline-block; }
+        .pbb_pca_gpu_status_widget .display #widgetData tbody td span.alert-icon.fa-stack {
+          position: relative;
+          height: 1em;
+          width: 1em;
+          line-height: 1em;
+          vertical-align: baseline; }
+          .pbb_pca_gpu_status_widget .display #widgetData tbody td span.alert-icon.fa-stack .fa-exclamation {
+            color: red;
+            top: 1px;
+            font-size: .8em !important; }
+        .pbb_pca_gpu_status_widget .display #widgetData tbody td span.cell-icon.fa-stack {
+          top: 0%;
+          left: 25%;
+          height: 1.4em;
+          width: 1.4em;
+          line-height: 1.4em; }
+          .pbb_pca_gpu_status_widget .display #widgetData tbody td span.cell-icon.fa-stack .fa-rss {
+            font-size: 26px !important; }
+          .pbb_pca_gpu_status_widget .display #widgetData tbody td span.cell-icon.fa-stack .fa-exclamation {
+            color: red;
+            top: 1px;
+            font-size: 23px !important; }
     .pbb_pca_gpu_status_widget .display #widgetData tbody td[id$="_lbl"] {
       background-color: #fff;
       font-style: italic;
       color: #333;
-      text-align: left; }
-    .pbb_pca_gpu_status_widget .display #widgetData tbody tr#iconRow i {
-      display: none;
-      text-align: center;
-      vertical-align: middle; }
-      .pbb_pca_gpu_status_widget .display #widgetData tbody tr#iconRow i.fa {
-        margin-right: -5px;
-        padding: 5px;
-        border-radius: 10px;
-        font-size: 15px !important; }
-      .pbb_pca_gpu_status_widget .display #widgetData tbody tr#iconRow i.docked {
-        color: #069;
-        display: inline-block; }
-      .pbb_pca_gpu_status_widget .display #widgetData tbody tr#iconRow i.bad-data {
-        color: #c00;
-        display: inline-block; }
-      .pbb_pca_gpu_status_widget .display #widgetData tbody tr#iconRow i.critical {
-        color: #c00;
-        display: inline-block;
-        animation: blink 2s ease-in infinite; }
-      .pbb_pca_gpu_status_widget .display #widgetData tbody tr#iconRow i.alarm {
-        color: #e45f00;
-        display: inline-block; }
-      .pbb_pca_gpu_status_widget .display #widgetData tbody tr#iconRow i.perfect-hookup {
-        color: #1dc150;
-        display: inline-block; }
-      .pbb_pca_gpu_status_widget .display #widgetData tbody tr#iconRow i.out-of-service {
-        color: #e10a12;
-        display: inline-block; }
-    .pbb_pca_gpu_status_widget .display #widgetData tbody td[id$="_pca_discharge_temp"] {
-      font-size: 12px; }
-      .pbb_pca_gpu_status_widget .display #widgetData tbody td[id$="_pca_discharge_temp"].DisCharge {
-        text-align: center; }
-        .pbb_pca_gpu_status_widget .display #widgetData tbody td[id$="_pca_discharge_temp"].DisCharge.Cooling {
-          color: #33adff; }
-        .pbb_pca_gpu_status_widget .display #widgetData tbody td[id$="_pca_discharge_temp"].DisCharge.Heating {
-          color: #ff3300; }
+      text-align: left;
+      width: 15%; }
     .pbb_pca_gpu_status_widget .display #widgetData tbody td[id$="_elvrot_rotunda_status"] {
       background-image: none !important;
       text-align: center;
-      vertical-align: middle; }
+      vertical-align: middle;
+      font-size: 12px; }
 @keyframes blink {
   from, to {
     opacity: 1; }
@@ -4014,7 +4071,10 @@ ul.chosen-results li.highlighted {
     font-weight: normal;
     font-style: normal; } }
 .weather_widget #weather {
-  margin: 20px; }
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px; }
 .weather_widget i.weather {
   font-family: weather;
   font-weight: normal;
@@ -4120,31 +4180,59 @@ ul.chosen-results li.highlighted {
     content: "S"; }
 .weather_widget .box-body.content {
   background-color: #fff; }
-  .weather_widget .box-body.content .display h1 {
-    font-size: 50px !important;
-    font-weight: bold !important;
-    text-align: center !important;
-    margin: 0 0 0 0 !important; }
-  .weather_widget .box-body.content .display sup {
-    font-size: 0.55em;
-    font-weight: normal !important; }
-  .weather_widget .box-body.content .display .details {
-    text-align: center; }
-    .weather_widget .box-body.content .display .details .location {
-      display: block;
-      font-size: 18px; }
-  .weather_widget .box-body.content .display #forecast {
-    padding: 15px 10px; }
-  .weather_widget .box-body.content .display .col .label {
-    color: #666;
-    font-size: 12px;
-    font-weight: normal;
-    line-height: 14px; }
-  .weather_widget .box-body.content .display .col .val {
-    color: #999;
-    font-size: 42px;
-    line-height: 40px;
-    font-weight: bold; }
+  .weather_widget .box-body.content .display {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px; }
+    .weather_widget .box-body.content .display h1 {
+      font-size: 50px !important;
+      font-weight: bold !important;
+      text-align: center !important;
+      margin: 0 0 0 0 !important; }
+    .weather_widget .box-body.content .display sup {
+      font-size: 0.55em;
+      font-weight: normal !important; }
+    .weather_widget .box-body.content .display #widgetData {
+      width: 100%;
+      height: 100%;
+      text-align: center; }
+      .weather_widget .box-body.content .display #widgetData tr td #wicon {
+        width: 100px;
+        margin-right: 10px; }
+      .weather_widget .box-body.content .display #widgetData tr td #temp {
+        font-size: 80px;
+        font-weight: bold;
+        line-height: 72px;
+        text-align: left; }
+      .weather_widget .box-body.content .display #widgetData tr td #summ {
+        font-size: 24px;
+        font-weight: normal;
+        line-height: 32px;
+        text-align: left; }
+      .weather_widget .box-body.content .display #widgetData tr td #forecast {
+        padding: 15px 10px; }
+      .weather_widget .box-body.content .display #widgetData tr td .col .label {
+        width: 100% !important;
+        color: #666;
+        font-size: 12px;
+        font-weight: normal;
+        line-height: 14px; }
+      .weather_widget .box-body.content .display #widgetData tr td .col .val {
+        width: auto;
+        color: #999;
+        font-size: 42px;
+        line-height: 40px;
+        font-weight: bold; }
+      .weather_widget .box-body.content .display #widgetData tr:first-child td {
+        width: 50%; }
+      .weather_widget .box-body.content .display #widgetData tr:not(:first-child) {
+        width: 100%; }
+      .weather_widget .box-body.content .display #widgetData tr:last-child div:not(:last-child) {
+        float: left;
+        width: 33%; }
+      .weather_widget .box-body.content .display #widgetData tr:last-child div:last-child {
+        clear: both; }
 
 ul.gridster.widget-container {
   list-style: none; }

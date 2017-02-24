@@ -31,9 +31,29 @@
       z-index: 9999;
       border-radius: 10px;
       padding: 10px;
+      .docked { color:#090; }
       .critical { color:#c00; }
       .alarm { color:#e45f00; }
       .perfect { color:#090; }
+      .outofservice { color:#c00; }
+      .bad-data { 
+        left: 23px;
+        top: -6px;
+        width: 100%;
+        .fa-rss {
+          text-align: left;
+          left: -20px;
+
+        }
+        .fa-exclamation {
+          color: red;
+          text-align: left;
+          left: -17px;
+          top: -1px;
+          font-size: .8em;
+        }
+
+      }
     }
     #display_label {
       display: none;

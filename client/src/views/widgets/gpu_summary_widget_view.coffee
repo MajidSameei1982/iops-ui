@@ -37,20 +37,10 @@ class GpusummaryWidgetView extends IOPSWidgetView
     sy: 9
 
   tags = []
-  ###*********************************************************
-  tags:
-    #Grid Tags
-    gpu_time:                       'GPU.GPUTime'
-    gpu_gpustatusb:                 'GPU.GPUSTATUSBOOLEAN'
-    gpu_raoutavg:                   'GPU.RAOUTAVG'
-    gpu_rv_out_avg:                   'GPU.RVOUTAVG'
-    gpu_ravinavg:                   'GPU.RAVINAVG'
-    gpu_rvinavg:                    'GPU.RVINAVG'
-  *********************************************************###
-
   tagData = []
   tagConfig = []
   site_refresh: 50000
+  refId: 0
 
   IsUpdatingSettings: false
   IsPageLoading: true
@@ -218,7 +208,7 @@ class GpusummaryWidgetView extends IOPSWidgetView
       @ui.wtitle.html(lbl)
 
       # stop listening for updates
-      @kill_updates(@site_code)
+      #@kill_updates(@site_code)
 
       tags = []
       @tagData = []
@@ -239,9 +229,13 @@ class GpusummaryWidgetView extends IOPSWidgetView
 
       @opc =  App.opc.connections[@site_code]
 
-      # listen for updates
-      @watch_updates(@site_code)
-      @start_heartbeat()
+      if @refId == 0
+        @refId = App.opc.add_tags @site_code, tags
+        App.vent.on "opc:data:#{@site_code}", @data_update
+        @opc =  App.opc.connections[@site_code]
+        @start_heartbeat()
+
+    @ 
     
   trend_callback: (data)=>
     @$('#plot-placeholder').remove()
@@ -411,7 +405,7 @@ class GpusummaryWidgetView extends IOPSWidgetView
 
   show_plot: (p, live)=>
     @initializing = true
-    @kill_updates(@site_code)
+    #@kill_updates(@site_code)
     # set buttons
     @$("#plots").toggle(p?)
     @$("#view_main").toggle(!p?)
@@ -529,7 +523,13 @@ class GpusummaryWidgetView extends IOPSWidgetView
 
     @current_plot = p
 
-    @watch_updates(@site_code)
+    #@watch_updates(@site_code)
+  	if @refId == 0
+  	  @refId = App.opc.add_tags @site_code, tags
+  	  App.vent.on "opc:data:#{@site_code}", @data_update
+  	  @opc =  App.opc.connections[@site_code]
+
+    @
 
   configure_buttons: ()=>
     @$('#mode').change (e)=>
@@ -538,6 +538,11 @@ class GpusummaryWidgetView extends IOPSWidgetView
       @show_plot(sel)
 
   set_model: ()=>
+    if @refId > 0
+      @kill_updates(@site_code)
+      if @heartbeat_timer? && @heartbeat_timer > 0
+        window.clearInterval(@heartbeat_timer)
+      @refId = 0
 
     s = _.clone(@model.get("settings"))
     s.site = @$('#site').val()
@@ -552,9 +557,10 @@ class GpusummaryWidgetView extends IOPSWidgetView
     @ui.display.toggle(!@settings_visible)
     @IsUpdatingSettings = @settings_visible
     if @settings_visible
+      
       #@kill_updates(@site_code)
-      if @heartbeat_timer? && @heartbeat_timer > 0
-        window.clearInterval(@heartbeat_timer)
+      #if @heartbeat_timer? && @heartbeat_timer > 0
+      #  window.clearInterval(@heartbeat_timer)
     else
       @IsPageLoading = false
       @update()

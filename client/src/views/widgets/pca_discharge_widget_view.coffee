@@ -21,12 +21,12 @@ class PcadischargeWidgetView extends IOPSWidgetView
     sy: 6
 
   tags = []
-
   tagData = []
   tagConfig = []   
  
   max_gates: 6
   site_refresh: 50000
+  refId: 0
 
   IsUpdatingSettings: false
   IsPageLoading: true
@@ -44,13 +44,13 @@ class PcadischargeWidgetView extends IOPSWidgetView
 
     @cktags = []
     if s? && !!s.site   
-      lbl = "#{@site_code}: PCA Discharge"
+      lbl = "#{@site_code}: PCA Discrge"
       @ui.wtitle.html(lbl)
 
       return if !s.gates || s.gates.length == 0   
 
       # stop listening for updates
-      @kill_updates(@site_code)
+      #@kill_updates(@site_code)
 
       tags = []
       @tagData = []
@@ -72,12 +72,19 @@ class PcadischargeWidgetView extends IOPSWidgetView
           gate = "Term#{gp[0]}.Zone#{gp[1]}.Gate#{gp[2]}.Value"
           @cktags.push "#{@prefix}#{gate}#{t}"
 
-      App.opc.add_tags @site_code, @cktags
-      @opc =  App.opc.connections[@site_code]
+      #App.opc.add_tags @site_code, @cktags
+      #@opc =  App.opc.connections[@site_code]
       # listen for updates
-      @watch_updates(@site_code)
-      @start_heartbeat()
+      #@watch_updates(@site_code)
+      #@start_heartbeat()
 
+      if @refId == 0
+        @refId = App.opc.add_tags @site_code, tags
+        App.vent.on "opc:data:#{@site_code}", @data_update
+        @opc =  App.opc.connections[@site_code]
+        @start_heartbeat()
+
+    @ 
 
   # process data and update the view
   data_update: (data)=>
@@ -223,6 +230,11 @@ class PcadischargeWidgetView extends IOPSWidgetView
       index++
     
   set_model: ()=>
+    if @refId > 0
+      @kill_updates(@site_code)
+      if @heartbeat_timer? && @heartbeat_timer > 0
+        window.clearInterval(@heartbeat_timer)
+      @refId = 0
 
     s = _.clone(@model.get("settings"))
     s.site = @$('#site').val()
@@ -239,8 +251,8 @@ class PcadischargeWidgetView extends IOPSWidgetView
     @IsUpdatingSettings = @settings_visible
     if @settings_visible
       #@kill_updates(@site_code)
-      if @heartbeat_timer? && @heartbeat_timer > 0
-        window.clearInterval(@heartbeat_timer)
+      #if @heartbeat_timer? && @heartbeat_timer > 0
+      #  window.clearInterval(@heartbeat_timer)
       @draw_gate_checks()
     else
       @IsPageLoading = false
@@ -309,7 +321,7 @@ class PcadischargeWidgetView extends IOPSWidgetView
     @site_code = OPCManager.get_site_code(settings.site)
     if @site_code?
       @site_refresh = ((OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3)
-      @watch_updates(@site_code)
+      #@watch_updates(@site_code)
 
     @check_init_site()
 

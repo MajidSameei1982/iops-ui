@@ -9,24 +9,14 @@
   <div class='display'>
     <div id='loading' style='display:none;'>Loading Weather Data...</div>
     <div id='weather' style='display:none;'>
-      <table style='width:100%;text-align:center;'>
+      <table id='widgetData'>
         <tr>
-          <td width="50%">
-            <canvas id='wicon' width="200" height="200" style="width:100px;margin-right:10px;"></canvas>
+          <td>
+            <canvas id='wicon' width='200' height='200'></canvas>
           </td>
-          <td width="50%">
-            <div id='temp' style='
-    font-size: 80px;
-    font-weight: bold;
-    line-height: 72px;
-    text-align:left;
-'></div>
-            <div id="summ" style='
-    font-size: 24px;
-    font-weight: normal;
-    line-height: 32px;
-    text-align:left;
-'></div>
+          <td>
+            <div id='temp'></div>
+            <div id='summ'></div>
           </td>
         </tr>
         <tr>
@@ -36,15 +26,15 @@
         </tr>
         <tr>
           <td colspan="2">
-            <div id="precip" class='col' style='float:left;width:33%;'>
+            <div id="precip" class='col'>
               <div class="label">Precipitation</div>
               <div class="val"></div>
             </div>
-            <div id="humid" class='col' style='float:left;width:33%;'>
+            <div id="humid" class='col'>
               <div class="label">Humidity</div>
               <div class="val"></div>
             </div>
-            <div id="cover" class='col' style='float:left;width:33%;'>
+            <div id="cover" class='col'>
               <div class="label">Cloud Cover</div>
               <div class="val"></div>
             </div>

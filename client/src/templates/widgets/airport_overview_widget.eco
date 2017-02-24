@@ -14,17 +14,16 @@
       </h1>
     </div>
     <div id="key">
-      <div class="key_row"><i class="fa fa-fw fa-plane"></i> Airplane at Gate</div>
+      <div class="key_row"><i class="fa fa-fw fa-plane docked"></i> Airplane at Gate</div>
       <div class="key_row"><i class="fa fa-fw fa-warning critical"></i> Critical Alarm</div>
       <div class="key_row"><i class="fa fa-fw fa-bell alarm"></i> Alarm</div>
       <div class="key_row"><i class="fa fa-fw fa-check-circle-o perfect"></i> Perfect Hookup</div>
-      <div class="key_row"><i class="fa fa-fw fa-wrench alarm"></i> Out of Service</div>
+      <div class="key_row"><i class="fa fa-fw fa-wrench outofservice"></i> Out of Service</div>
       <div class="key_row">
-        <span class="key_row fa-stack" style="left: -5px">
+        <span class="key_row fa-stack bad-data">
           <i class="fa fa-rss fa-stack-1x "></i>
-          <i class="fa fa-exclamation fa-stack-1x" style="color: red;"></i> 
+          <i class="fa fa-exclamation fa-stack-1x"></i> Comm. Error
         </span>
-        Comm. Error
       </div>
 
     </div>
