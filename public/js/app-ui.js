@@ -30912,6 +30912,8 @@ AirportoverviewWidgetView = (function(superClass) {
 
   AirportoverviewWidgetView.prototype.site_refresh = 50000;
 
+  AirportoverviewWidgetView.prototype.refId = 0;
+
   AirportoverviewWidgetView.prototype.IsUpdatingSettings = false;
 
   AirportoverviewWidgetView.prototype.IsPageLoading = true;
@@ -30921,8 +30923,6 @@ AirportoverviewWidgetView = (function(superClass) {
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
-    this.IsPageLoading = false;
-    this.IsUpdatingSettings = false;
     s = this.update_settings({
       prefix: 'Airport.#{@site_code}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
@@ -30933,7 +30933,6 @@ AirportoverviewWidgetView = (function(superClass) {
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": Airport Overview";
       this.ui.wtitle.html(lbl);
-      this.kill_updates(this.site_code);
       classList = $(this.el).attr('class').split(/\s+/);
       for (i = 0, len = classList.length; i < len; i++) {
         c = classList[i];
@@ -30986,8 +30985,12 @@ AirportoverviewWidgetView = (function(superClass) {
       }
       App.opc.add_tags(this.site_code, tags);
       this.opc = App.opc.connections[this.site_code];
-      this.watch_updates(this.site_code);
-      return this.start_heartbeat();
+      if (this.refId === 0) {
+        this.refId = App.opc.add_tags(this.site_code, tags);
+        App.vent.on("opc:data:" + this.site_code, this.data_update);
+        this.opc = App.opc.connections[this.site_code];
+        return this.start_heartbeat();
+      }
     }
   };
 
@@ -31075,6 +31078,13 @@ AirportoverviewWidgetView = (function(superClass) {
 
   AirportoverviewWidgetView.prototype.set_model = function() {
     var s;
+    if (this.refId > 0) {
+      this.kill_updates(this.site_code);
+      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+        window.clearInterval(this.heartbeat_timer);
+      }
+      this.refId = 0;
+    }
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     this.site_code = OPCManager.get_site_code(s.site);
@@ -31086,9 +31096,6 @@ AirportoverviewWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
-        window.clearInterval(this.heartbeat_timer);
-      }
       return this.ui.site.chosen({
         width: '95%'
       });
@@ -31117,7 +31124,6 @@ AirportoverviewWidgetView = (function(superClass) {
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
       this.site_refresh = (OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3;
-      this.watch_updates(this.site_code);
     }
     return this.check_init_site();
   };
@@ -32130,6 +32136,8 @@ GpusummaryWidgetView = (function(superClass) {
 
   GpusummaryWidgetView.prototype.site_refresh = 50000;
 
+  GpusummaryWidgetView.prototype.refId = 0;
+
   GpusummaryWidgetView.prototype.IsUpdatingSettings = false;
 
   GpusummaryWidgetView.prototype.IsPageLoading = true;
@@ -32371,7 +32379,6 @@ GpusummaryWidgetView = (function(superClass) {
     if (show_opts) {
       lbl = this.site_code + ": Gate " + s.gate + " - GPU Summary";
       this.ui.wtitle.html(lbl);
-      this.kill_updates(this.site_code);
       tags = [];
       this.tagData = [];
       this.tagConfig = [];
@@ -32388,9 +32395,14 @@ GpusummaryWidgetView = (function(superClass) {
       }
       App.opc.add_tags(this.site_code, tags);
       this.opc = App.opc.connections[this.site_code];
-      this.watch_updates(this.site_code);
-      return this.start_heartbeat();
+      if (this.refId === 0) {
+        this.refId = App.opc.add_tags(this.site_code, tags);
+        App.vent.on("opc:data:" + this.site_code, this.data_update);
+        this.opc = App.opc.connections[this.site_code];
+        this.start_heartbeat();
+      }
     }
+    return this;
   };
 
   GpusummaryWidgetView.prototype.trend_callback = function(data) {
@@ -32613,7 +32625,6 @@ GpusummaryWidgetView = (function(superClass) {
   GpusummaryWidgetView.prototype.show_plot = function(p, live) {
     var dtm, ed, h, lbl, now, parts, ph, pid, plot_color, ptype, sd, show_hist;
     this.initializing = true;
-    this.kill_updates(this.site_code);
     this.$("#plots").toggle(p != null);
     this.$("#view_main").toggle(p == null);
     ph = '';
@@ -32829,9 +32840,16 @@ GpusummaryWidgetView = (function(superClass) {
         })(this));
       }
     }
-    this.current_plot = p;
-    return this.watch_updates(this.site_code);
+    return this.current_plot = p;
   };
+
+  if (GpusummaryWidgetView.refId === 0) {
+    GpusummaryWidgetView.refId = App.opc.add_tags(GpusummaryWidgetView.site_code, tags);
+    App.vent.on("opc:data:" + GpusummaryWidgetView.site_code, GpusummaryWidgetView.data_update);
+    GpusummaryWidgetView.opc = App.opc.connections[GpusummaryWidgetView.site_code];
+  }
+
+  GpusummaryWidgetView;
 
   GpusummaryWidgetView.prototype.configure_buttons = function() {
     return this.$('#mode').change((function(_this) {
@@ -32846,6 +32864,13 @@ GpusummaryWidgetView = (function(superClass) {
 
   GpusummaryWidgetView.prototype.set_model = function() {
     var s;
+    if (this.refId > 0) {
+      this.kill_updates(this.site_code);
+      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+        window.clearInterval(this.heartbeat_timer);
+      }
+      this.refId = 0;
+    }
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     this.site_code = OPCManager.get_site_code(s.site);
@@ -32860,9 +32885,7 @@ GpusummaryWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
-        return window.clearInterval(this.heartbeat_timer);
-      }
+
     } else {
       this.IsPageLoading = false;
       return this.update();
@@ -33007,6 +33030,8 @@ GpuWidgetView = (function(superClass) {
 
   GpuWidgetView.prototype.site_refresh = 50000;
 
+  GpuWidgetView.prototype.refId = 0;
+
   GpuWidgetView.prototype.IsUpdatingSettings = false;
 
   GpuWidgetView.prototype.IsPageLoading = true;
@@ -33026,7 +33051,6 @@ GpuWidgetView = (function(superClass) {
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": Gate " + s.gate + " - GPU";
       this.ui.wtitle.html(lbl);
-      this.kill_updates(this.site_code);
       $("#widgetData").toggleClass("no-show", false);
       $("#widgetData2").toggleClass("no-show", true);
       tags = [];
@@ -33046,8 +33070,12 @@ GpuWidgetView = (function(superClass) {
       App.opc.add_tags(this.site_code, tags);
       this.opc = App.opc.connections[this.site_code];
       ref = s.layout;
-      this.watch_updates(this.site_code);
-      this.start_heartbeat();
+      if (this.refId === 0) {
+        this.refId = App.opc.add_tags(this.site_code, tags);
+        App.vent.on("opc:data:" + this.site_code, this.data_update);
+        this.opc = App.opc.connections[this.site_code];
+        this.start_heartbeat();
+      }
       this.set_descriptions(true);
       if (this.$('.data2').hasClass('no-show')) {
         this.$('.data').css('width', '100%');
@@ -33096,6 +33124,13 @@ GpuWidgetView = (function(superClass) {
 
   GpuWidgetView.prototype.set_model = function() {
     var s;
+    if (this.refId > 0) {
+      this.kill_updates(this.site_code);
+      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+        window.clearInterval(this.heartbeat_timer);
+      }
+      this.refId = 0;
+    }
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     this.site_code = OPCManager.get_site_code(s.site);
@@ -33110,9 +33145,7 @@ GpuWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
-        return window.clearInterval(this.heartbeat_timer);
-      }
+
     } else {
       this.IsPageLoading = false;
       return this.update();
@@ -33139,7 +33172,6 @@ GpuWidgetView = (function(superClass) {
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
       this.site_refresh = (OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3;
-      this.watch_updates(this.site_code);
     }
     return this.check_init_site();
   };
@@ -34355,6 +34387,8 @@ PbbdetailWidgetView = (function(superClass) {
 
   PbbdetailWidgetView.prototype.site_refresh = 50000;
 
+  PbbdetailWidgetView.prototype.refId = 0;
+
   PbbdetailWidgetView.prototype.IsUpdatingSettings = false;
 
   PbbdetailWidgetView.prototype.IsPageLoading = true;
@@ -34374,7 +34408,6 @@ PbbdetailWidgetView = (function(superClass) {
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": Gate " + s.gate + " - Overview";
       this.ui.wtitle.html(lbl);
-      this.kill_updates(this.site_code);
       tags = [];
       this.tagData = [];
       this.tagConfig = [];
@@ -34392,9 +34425,13 @@ PbbdetailWidgetView = (function(superClass) {
       App.opc.add_tags(this.site_code, tags);
       this.opc = App.opc.connections[this.site_code];
       ref = s.layout;
-      this.watch_updates(this.site_code);
-      this.set_descriptions(true);
-      return this.start_heartbeat();
+      if (this.refId === 0) {
+        this.refId = App.opc.add_tags(this.site_code, tags);
+        App.vent.on("opc:data:" + this.site_code, this.data_update);
+        this.opc = App.opc.connections[this.site_code];
+        this.start_heartbeat();
+      }
+      return this.set_descriptions(true);
     }
   };
 
@@ -34450,7 +34487,13 @@ PbbdetailWidgetView = (function(superClass) {
 
   PbbdetailWidgetView.prototype.set_model = function() {
     var s;
-    this.IsUpdatingSettings = true;
+    if (this.refId > 0) {
+      this.kill_updates(this.site_code);
+      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+        window.clearInterval(this.heartbeat_timer);
+      }
+      this.refId = 0;
+    }
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     this.site_code = OPCManager.get_site_code(s.site);
@@ -34465,9 +34508,7 @@ PbbdetailWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
-        return window.clearInterval(this.heartbeat_timer);
-      }
+
     } else {
       this.IsPageLoading = false;
       return this.update();
@@ -34494,7 +34535,6 @@ PbbdetailWidgetView = (function(superClass) {
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
       this.site_refresh = (OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3;
-      this.watch_updates(this.site_code);
     }
     return this.check_init_site();
   };
@@ -34592,6 +34632,8 @@ PbbleveldetailWidgetView = (function(superClass) {
 
   PbbleveldetailWidgetView.prototype.site_refresh = 50000;
 
+  PbbleveldetailWidgetView.prototype.refId = 0;
+
   PbbleveldetailWidgetView.prototype.IsUpdatingSettings = false;
 
   PbbleveldetailWidgetView.prototype.IsPageLoading = true;
@@ -34626,11 +34668,13 @@ PbbleveldetailWidgetView = (function(superClass) {
         t = this.tags[tg];
         tags.push("" + this.prefix + t + ".Value");
       }
-      App.opc.add_tags(this.site_code, tags);
-      App.vent.on("opc:data:" + this.site_code, this.data_update);
-      this.opc = App.opc.connections[this.site_code];
       ref = s.layout;
-      this.start_heartbeat();
+      if (this.refId === 0) {
+        this.refId = App.opc.add_tags(this.site_code, tags);
+        App.vent.on("opc:data:" + this.site_code, this.data_update);
+        this.opc = App.opc.connections[this.site_code];
+        this.start_heartbeat();
+      }
       return this.set_descriptions(true);
     }
   };
@@ -34715,6 +34759,13 @@ PbbleveldetailWidgetView = (function(superClass) {
 
   PbbleveldetailWidgetView.prototype.set_model = function() {
     var s;
+    if (this.refId > 0) {
+      this.kill_updates(this.site_code);
+      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+        window.clearInterval(this.heartbeat_timer);
+      }
+      this.refId = 0;
+    }
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     this.site_code = OPCManager.get_site_code(s.site);
@@ -34729,9 +34780,7 @@ PbbleveldetailWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
-        return window.clearInterval(this.heartbeat_timer);
-      }
+
     } else {
       this.IsPageLoading = false;
       return this.update();
@@ -34851,6 +34900,8 @@ PbbpcagpuWidgetView = (function(superClass) {
 
   PbbpcagpuWidgetView.prototype.site_refresh = 50000;
 
+  PbbpcagpuWidgetView.prototype.refId = 0;
+
   PbbpcagpuWidgetView.prototype.IsUpdatingSettings = false;
 
   PbbpcagpuWidgetView.prototype.IsPageLoading = true;
@@ -34870,7 +34921,6 @@ PbbpcagpuWidgetView = (function(superClass) {
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": Gate " + s.gate + " PBB/PCA/GPU";
       this.ui.wtitle.html(lbl);
-      this.kill_updates(this.site_code);
       tags = [];
       this.tagData = [];
       this.tagConfig = [];
@@ -34885,11 +34935,13 @@ PbbpcagpuWidgetView = (function(superClass) {
         t = this.tags[tg];
         tags.push("" + this.prefix + t + ".Value");
       }
-      App.opc.add_tags(this.site_code, tags);
-      this.opc = App.opc.connections[this.site_code];
       ref = s.layout;
-      this.watch_updates(this.site_code);
-      this.start_heartbeat();
+      if (this.refId === 0) {
+        this.refId = App.opc.add_tags(this.site_code, tags);
+        App.vent.on("opc:data:" + this.site_code, this.data_update);
+        this.opc = App.opc.connections[this.site_code];
+        this.start_heartbeat();
+      }
       this.set_descriptions(true);
     }
     return this;
@@ -34922,6 +34974,13 @@ PbbpcagpuWidgetView = (function(superClass) {
 
   PbbpcagpuWidgetView.prototype.set_model = function() {
     var s;
+    if (this.refId > 0) {
+      this.kill_updates(this.site_code);
+      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+        window.clearInterval(this.heartbeat_timer);
+      }
+      this.refId = 0;
+    }
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     this.site_code = OPCManager.get_site_code(s.site);
@@ -34936,9 +34995,7 @@ PbbpcagpuWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
-        return window.clearInterval(this.heartbeat_timer);
-      }
+
     } else {
       this.IsPageLoading = false;
       return this.update();
@@ -34965,7 +35022,6 @@ PbbpcagpuWidgetView = (function(superClass) {
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
       this.site_refresh = (OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3;
-      this.watch_updates(this.site_code);
     }
     return this.check_init_site();
   };
@@ -35462,6 +35518,8 @@ PbbsystemstatusWidgetView = (function(superClass) {
 
   PbbsystemstatusWidgetView.prototype.site_refresh = 50000;
 
+  PbbsystemstatusWidgetView.prototype.refId = 0;
+
   PbbsystemstatusWidgetView.prototype.IsUpdatingSettings = false;
 
   PbbsystemstatusWidgetView.prototype.IsPageLoading = true;
@@ -35481,7 +35539,6 @@ PbbsystemstatusWidgetView = (function(superClass) {
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": Gate " + s.gate + " - System Status";
       this.ui.wtitle.html(lbl);
-      this.kill_updates(this.site_code);
       $("#widgetData").toggleClass("no-show", false);
       tags = [];
       this.tagData = [];
@@ -35497,10 +35554,13 @@ PbbsystemstatusWidgetView = (function(superClass) {
         t = this.tags[tg];
         tags.push("" + this.prefix + t + ".Value");
       }
-      App.opc.add_tags(this.site_code, tags);
-      this.opc = App.opc.connections[this.site_code];
       ref = s.layout;
-      this.watch_updates(this.site_code);
+      if (this.refId === 0) {
+        this.refId = App.opc.add_tags(this.site_code, tags);
+        App.vent.on("opc:data:" + this.site_code, this.data_update);
+        this.opc = App.opc.connections[this.site_code];
+        this.start_heartbeat();
+      }
       return this.set_descriptions(true);
     }
   };
@@ -35544,6 +35604,13 @@ PbbsystemstatusWidgetView = (function(superClass) {
 
   PbbsystemstatusWidgetView.prototype.set_model = function() {
     var s;
+    if (this.refId > 0) {
+      this.kill_updates(this.site_code);
+      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+        window.clearInterval(this.heartbeat_timer);
+      }
+      this.refId = 0;
+    }
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     this.site_code = OPCManager.get_site_code(s.site);
@@ -35558,9 +35625,7 @@ PbbsystemstatusWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
-        return window.clearInterval(this.heartbeat_timer);
-      }
+
     } else {
       this.IsPageLoading = false;
       return this.update();
@@ -35587,7 +35652,6 @@ PbbsystemstatusWidgetView = (function(superClass) {
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
       this.site_refresh = (OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3;
-      this.watch_updates(this.site_code);
     }
     return this.check_init_site();
   };
@@ -35681,6 +35745,8 @@ PbbWidgetView = (function(superClass) {
 
   PbbWidgetView.prototype.site_refresh = 50000;
 
+  PbbWidgetView.prototype.refId = 0;
+
   PbbWidgetView.prototype.IsUpdatingSettings = false;
 
   PbbWidgetView.prototype.IsPageLoading = true;
@@ -35714,11 +35780,13 @@ PbbWidgetView = (function(superClass) {
         t = this.tags[tg];
         tags.push("" + this.prefix + t + ".Value");
       }
-      App.opc.add_tags(this.site_code, tags);
-      this.opc = App.opc.connections[this.site_code];
-      App.vent.on("opc:data:" + this.site_code, this.data_update);
       ref = s.layout;
-      this.start_heartbeat();
+      if (this.refId === 0) {
+        this.refId = App.opc.add_tags(this.site_code, tags);
+        App.vent.on("opc:data:" + this.site_code, this.data_update);
+        this.opc = App.opc.connections[this.site_code];
+        this.start_heartbeat();
+      }
       return this.set_descriptions(true);
     }
   };
@@ -35750,6 +35818,13 @@ PbbWidgetView = (function(superClass) {
 
   PbbWidgetView.prototype.set_model = function() {
     var s;
+    if (this.refId > 0) {
+      this.kill_updates(this.site_code);
+      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+        window.clearInterval(this.heartbeat_timer);
+      }
+      this.refId = 0;
+    }
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     this.site_code = OPCManager.get_site_code(s.site);
@@ -35764,9 +35839,7 @@ PbbWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
-        return window.clearInterval(this.heartbeat_timer);
-      }
+
     } else {
       this.IsPageLoading = false;
       return this.update();
@@ -35889,6 +35962,8 @@ PcadischargeWidgetView = (function(superClass) {
 
   PcadischargeWidgetView.prototype.site_refresh = 50000;
 
+  PcadischargeWidgetView.prototype.refId = 0;
+
   PcadischargeWidgetView.prototype.IsUpdatingSettings = false;
 
   PcadischargeWidgetView.prototype.IsPageLoading = true;
@@ -35912,7 +35987,6 @@ PcadischargeWidgetView = (function(superClass) {
       if (!s.gates || s.gates.length === 0) {
         return;
       }
-      this.kill_updates(this.site_code);
       tags = [];
       this.tagData = [];
       this.tagConfig = [];
@@ -35940,11 +36014,14 @@ PcadischargeWidgetView = (function(superClass) {
           this.cktags.push("" + this.prefix + gate + t);
         }
       }
-      App.opc.add_tags(this.site_code, this.cktags);
-      this.opc = App.opc.connections[this.site_code];
-      this.watch_updates(this.site_code);
-      return this.start_heartbeat();
+      if (this.refId === 0) {
+        this.refId = App.opc.add_tags(this.site_code, tags);
+        App.vent.on("opc:data:" + this.site_code, this.data_update);
+        this.opc = App.opc.connections[this.site_code];
+        this.start_heartbeat();
+      }
     }
+    return this;
   };
 
   PcadischargeWidgetView.prototype.data_update = function(data) {
@@ -36134,6 +36211,13 @@ PcadischargeWidgetView = (function(superClass) {
 
   PcadischargeWidgetView.prototype.set_model = function() {
     var s;
+    if (this.refId > 0) {
+      this.kill_updates(this.site_code);
+      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+        window.clearInterval(this.heartbeat_timer);
+      }
+      this.refId = 0;
+    }
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     this.site_code = OPCManager.get_site_code(s.site);
@@ -36154,9 +36238,6 @@ PcadischargeWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
-        window.clearInterval(this.heartbeat_timer);
-      }
       return this.draw_gate_checks();
     } else {
       this.IsPageLoading = false;
@@ -36249,7 +36330,6 @@ PcadischargeWidgetView = (function(superClass) {
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
       this.site_refresh = (OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3;
-      this.watch_updates(this.site_code);
     }
     return this.check_init_site();
   };
@@ -36356,6 +36436,8 @@ PcasummaryWidgetView = (function(superClass) {
 
   PcasummaryWidgetView.prototype.site_refresh = 50000;
 
+  PcasummaryWidgetView.prototype.refId = 0;
+
   PcasummaryWidgetView.prototype.IsUpdatingSettings = false;
 
   PcasummaryWidgetView.prototype.IsPageLoading = true;
@@ -36378,7 +36460,6 @@ PcasummaryWidgetView = (function(superClass) {
       this.opc = App.opc.connections[this.site_code];
       show_opts = (s != null) && !!s.gate;
       this.$('#mode').toggle(show_opts);
-      this.kill_updates(this.site_code);
       tags = [];
       this.tagData = [];
       this.tagConfig = [];
@@ -36393,11 +36474,15 @@ PcasummaryWidgetView = (function(superClass) {
         t = this.tags[tg];
         tags.push("" + this.prefix + t + ".Value");
       }
-      App.opc.add_tags(this.site_code, tags);
-      this.watch_updates(this.site_code);
-      this.start_heartbeat();
-      return this.set_descriptions(true);
+      if (this.refId === 0) {
+        this.refId = App.opc.add_tags(this.site_code, tags);
+        App.vent.on("opc:data:" + this.site_code, this.data_update);
+        this.opc = App.opc.connections[this.site_code];
+        this.start_heartbeat();
+      }
+      this.set_descriptions(true);
     }
+    return this;
   };
 
   PcasummaryWidgetView.prototype.data_update = function(data) {
@@ -36694,6 +36779,13 @@ PcasummaryWidgetView = (function(superClass) {
 
   PcasummaryWidgetView.prototype.set_model = function() {
     var s;
+    if (this.refId > 0) {
+      this.kill_updates(this.site_code);
+      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+        window.clearInterval(this.heartbeat_timer);
+      }
+      this.refId = 0;
+    }
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     this.site_code = OPCManager.get_site_code(s.site);
@@ -36708,9 +36800,7 @@ PcasummaryWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
-        return window.clearInterval(this.heartbeat_timer);
-      }
+
     } else {
       this.IsPageLoading = false;
       return this.update();
@@ -36833,7 +36923,6 @@ PcasummaryWidgetView = (function(superClass) {
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
       this.site_refresh = (OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3;
-      this.watch_updates(this.site_code);
     }
     this.configure_buttons();
     this.render_gauges();
@@ -36858,7 +36947,6 @@ PcasummaryWidgetView = (function(superClass) {
   PcasummaryWidgetView.prototype.show_plot = function(p, live) {
     var dtm, ed, h, lbl, now, pid, plot2_color, plot_color, sd, show_hist;
     this.initializing = true;
-    this.kill_updates(this.site_code);
     this.$("#plots").toggle(p != null);
     this.$("#summary").toggle(p == null);
     this.$("#graphics_container").toggle(p == null);
@@ -36947,8 +37035,7 @@ PcasummaryWidgetView = (function(superClass) {
         })(this));
       }
     }
-    this.current_plot = p;
-    return this.watch_updates(this.site_code);
+    return this.current_plot = p;
   };
 
   PcasummaryWidgetView.prototype.trend_callback = function(data) {
@@ -37182,6 +37269,8 @@ PcaWidgetView = (function(superClass) {
 
   PcaWidgetView.prototype.site_refresh = 50000;
 
+  PcaWidgetView.prototype.refId = 0;
+
   PcaWidgetView.prototype.IsUpdatingSettings = false;
 
   PcaWidgetView.prototype.IsPageLoading = true;
@@ -37201,7 +37290,6 @@ PcaWidgetView = (function(superClass) {
     if ((s != null) && !!s.gate) {
       lbl = this.site_code + ": Gate " + s.gate + " PCA";
       this.ui.wtitle.html(lbl);
-      this.kill_updates(this.site_code);
       tags = [];
       this.tagData = [];
       this.tagConfig = [];
@@ -37216,11 +37304,13 @@ PcaWidgetView = (function(superClass) {
         t = this.tags[tg];
         tags.push("" + this.prefix + t + ".Value");
       }
-      App.opc.add_tags(this.site_code, tags);
-      this.opc = App.opc.connections[this.site_code];
       ref = s.layout;
-      this.watch_updates(this.site_code);
-      this.start_heartbeat();
+      if (this.refId === 0) {
+        this.refId = App.opc.add_tags(this.site_code, tags);
+        App.vent.on("opc:data:" + this.site_code, this.data_update);
+        this.opc = App.opc.connections[this.site_code];
+        this.start_heartbeat();
+      }
       return this.set_descriptions(true);
     }
   };
@@ -37255,6 +37345,13 @@ PcaWidgetView = (function(superClass) {
 
   PcaWidgetView.prototype.set_model = function() {
     var s;
+    if (this.refId > 0) {
+      this.kill_updates(this.site_code);
+      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+        window.clearInterval(this.heartbeat_timer);
+      }
+      this.refId = 0;
+    }
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     this.site_code = OPCManager.get_site_code(s.site);
@@ -37269,9 +37366,7 @@ PcaWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
-        return window.clearInterval(this.heartbeat_timer);
-      }
+
     } else {
       this.IsPageLoading = false;
       return this.update();
@@ -37303,7 +37398,6 @@ PcaWidgetView = (function(superClass) {
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
       this.site_refresh = (OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3;
-      this.watch_updates(this.site_code);
     }
     return this.check_init_site();
   };

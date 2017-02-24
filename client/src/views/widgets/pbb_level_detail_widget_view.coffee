@@ -27,6 +27,7 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
   tagData = []
   tagConfig = []
   site_refresh: 50000
+  refId: 0
 
   IsUpdatingSettings: false
   IsPageLoading: true
@@ -64,16 +65,23 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
         t = @tags[tg]
         tags.push "#{@prefix}#{t}.Value"
 
-      App.opc.add_tags @site_code, tags
-      App.vent.on "opc:data:#{@site_code}", @data_update
+      #App.opc.add_tags @site_code, tags
+      #App.vent.on "opc:data:#{@site_code}", @data_update
 
-      @opc =  App.opc.connections[@site_code]
+      #@opc =  App.opc.connections[@site_code]
 
       ref = s.layout
 
       # listen for updates
       #@watch_updates(@site_code)
-      @start_heartbeat()
+      #@start_heartbeat()
+
+      if @refId == 0
+        @refId = App.opc.add_tags @site_code, tags
+        App.vent.on "opc:data:#{@site_code}", @data_update
+        @opc =  App.opc.connections[@site_code]
+        @start_heartbeat()
+
       @set_descriptions(true)
 
 
@@ -166,6 +174,11 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     @set_descriptions()
 
   set_model: ()=>
+    if @refId > 0
+      @kill_updates(@site_code)
+      if @heartbeat_timer? && @heartbeat_timer > 0
+        window.clearInterval(@heartbeat_timer)
+      @refId = 0
 
     s = _.clone(@model.get("settings"))
     s.site = @$('#site').val()
@@ -180,8 +193,8 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     @ui.display.toggle(!@settings_visible)
     @IsUpdatingSettings = @settings_visible
     if @settings_visible
-      if @heartbeat_timer? && @heartbeat_timer > 0
-        window.clearInterval(@heartbeat_timer)
+      #if @heartbeat_timer? && @heartbeat_timer > 0
+      #  window.clearInterval(@heartbeat_timer)
     else
       @IsPageLoading = false
       @update()
