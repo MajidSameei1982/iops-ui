@@ -40,7 +40,6 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
 
     if !@site_code? then return null
 
-    # @cktags = []
     if s? && !!s.site   
       lbl = "#{@site_code}: PBB/PCA/GPU Status"
       @ui.wtitle.html(lbl)
@@ -49,7 +48,6 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
 
       ### Initialize Variables ###
       tags = []
-      #elementPrefix = "li##{@el.parentNode.id} .#{@classID} "
       @$("[id^='dynamic_']").remove()
       column = 1
       @tagData = []
@@ -92,16 +90,6 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
           t = @tags[btg]
           @tagData["#{gp[0]}_#{gp[1]}_#{gp[2]}_#{btg}"] = { Tag: "#{t}",DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null}}
 
-
-
-      # Tags:{'system_quality','system_out_of_service','system_perfect_hookup','gate_has_warnings','gate_has_alarms','gate_has_critical_alarms',
-      #     'gpu_quality','gpu_out_of_service','gpu_perfect_hookup','gpu_has_warnings','gpu_has_alarms','gpu_has_critical_alarms',
-      #       'gpu_status',
-      #         'pbb_quality','pbb_out_of_service','pbb_perfect_hookup','pbb_has_warnings','pbb_has_alarms','pbb_has_critical_alarms',
-      #           'pbb_docked','pbb_status',
-      #         'pca_quality','pca_out_of_service','pca_perfect_hookup','pca_has_warnings','pca_has_alarms','pca_has_critical_alarms',
-      #           'pca_mode_cooling','pca_mode_heating','pca_status','pca_discharge_temp'}
-
         ### Loop Through Tags and configure the table cells ###
         for tag, tagData of @tagConfig.TagData
           t = tagData.Tag
@@ -130,7 +118,6 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
               @$("#widgetData tbody").append(newRow)
 
             ### Set the id for the gate and tag ###
-
             tp = tag.split('_')
             @$("#widgetData #dynamic_#{tag} td:nth-child(#{column}) #dynamic_has_critical_alarms").attr('id', "dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}_#{tp[0]}_has_critical_alarms")
             @$("#widgetData #dynamic_#{tag} td:nth-child(#{column}) #dynamic_has_alarms").attr('id', "dynamic_#{gp[0]}_#{gp[1]}_#{gp[2]}_#{tp[0]}_has_alarms")
@@ -144,8 +131,7 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
               @$("#widgetData td[id$='#{gp[0]}_#{gp[1]}_#{gp[2]}_pca_discharge_temp']").toggleClass("val", false)
               @$("#widgetData td[id$='#{gp[0]}_#{gp[1]}_#{gp[2]}_pca_discharge_temp']").toggleClass("DisCharge", true)
 
-          ### Ensure we have all the cells properly hidden/shown ###
-
+        ### Ensure we have all the cells properly hidden/shown ###
         col = column - 1
         for index in [1..6]
           if index <= col
@@ -154,21 +140,6 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
           else
             @$("td[id^='dynamic_'][id*='_default_#{index}']").toggleClass('no-background', false)
             @$("td[id^='dynamic_'][id*='_default_#{index}']").toggleClass('no-show', true)
-
-          # for element, index in @$("#dynamic_#{tag}>td")
-          #   if element.id.indexOf("dynamic_#{tag}_default_") > -1
-          #     col = column - 1
-          #     @$("##{element.id}").toggleClass('no-show',(index > col))
-          #     @$("##{element.id}").toggleClass('no-background',(index <= col))
-
-      # for g in s.gates
-      #   gp = g.split(':')
-      #   gate = "Term#{gp[0]}.Zone#{gp[1]}.Gate#{gp[2]}."
-      #   for btg of @tags
-      #     t = @tags[btg]
-      #     tags.push "#{@prefix}#{gate}#{t}"
-
-      # @cktags = tags
 
       if @refId == 0
         @refId = App.opc.add_tags @site_code, tags
@@ -181,11 +152,6 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
 
   # process data and update the view
   data_update: (data)=>
-
-    # elementPrefix = "li##{@el.parentNode.id} .#{@classID} "
-    # s = @model.get("settings")
-    # return if !s? || !s.gates? || s.gates.length == 0
-
     @beat_time = new Date().getTime() + @site_refresh
 
     # load values for all tags
@@ -198,7 +164,7 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
       q = @data_q(tzgTag)
       if q
         @vals[tag] = @opc.get_value("#{@prefix}#{tzgTag}.Value")
-      # Process the Docked
+
       setValue = (@vals[tag]? && @vals[tag] == "True")
 
       if data.DataType.toLowerCase() == 'boolean'
@@ -215,34 +181,6 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
           @render_value_row_tzg("dynamic_#{tag}", data.Parameters.Parm001, data.Parameters.Parm002, data.Parameters.Parm003, data.Parameters.Parm004)
         else
           @render_value_row_tzg("dynamic_#{tag}", data.Parameters.Parm001, data.Parameters.Parm002, data.Parameters.Parm003, data.Parameters.Parm004)
-        
-
-      #if /pbb_docked/.test(tag)
-      # if tag.indexOf("#{tzgPrefix}_pbb_docked") > -1
-      #   @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_docked").toggleClass('docked',setValue)
-      # else if tag.indexOf("#{tzgPrefix}_gate_has_critical_alarms") > -1
-      #   @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_critical").toggleClass('critical',setValue)
-      # else if tag.indexOf("#{tzgPrefix}_gate_has_alarms") > -1
-      #   @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_alarm").toggleClass('alarm',setValue)
-      # else if tag.indexOf("#{tzgPrefix}_system_quality") > -1
-      #   @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_system_quality").toggleClass('bad-data',!setValue)
-      # else if tag.indexOf("#{tzgPrefix}_system_out_of_service") > -1
-      #   @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_outofservice").toggleClass('out-of-service',setValue)
-      # else if tag.indexOf("#{tzgPrefix}_system_perfect_hookup") > -1
-      #   @$("#widgetData #dynamic_iconRow_#{tzgPrefix}_perfecthookup").toggleClass('perfect-hookup',setValue)
-      # else if tag.indexOf("#{tzgPrefix}_pca_mode_cooling") > -1
-      #   @$("#widgetData #dynamic_#{tzgPrefix}_pca_discharge_temp").toggleClass('Cooling',setValue)
-      # else if tag.indexOf("#{tzgPrefix}_pca_mode_heating") > -1
-      #   @$("#widgetData #dynamic_#{tzgPrefix}_pca_discharge_temp").toggleClass('Heating',setValue)
-      # else
-      #   switch data.DataType.toLowerCase()
-      #     when 'boolean'
-      #       @render_row_tzg("dynamic_#{tag}", "", "", data.Parameters.Parm003, data.Parameters.Parm004, data.Parameters.Parm005)
-      #     when 'float'
-      #       @render_value_row_tzg("dynamic_#{tag}", data.Parameters.Parm001, data.Parameters.Parm002, data.Parameters.Parm003, data.Parameters.Parm004)
-      #     when 'value'
-      #       @render_value_row_tzg("dynamic_#{tag}", "", "", data.Parameters.Parm003, data.Parameters.Parm004)
-      
     @
   
   set_model: ()=>

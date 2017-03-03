@@ -312,6 +312,8 @@ module.exports = (grunt)->
       static:
         files: ['client/**/*.html','client/**/*.png','client/**/*.jpg','client/**/*.gif',]
         tasks: ['copy:static']
+      options:
+        interval: 2000
 
     open:
       dev:

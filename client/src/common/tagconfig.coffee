@@ -2432,6 +2432,15 @@ class TagConfig extends Object
 
 					propCnt++
 
+		# @TagData.sort (a,b) =>
+		# 	if a.attributes.OBJECTID == B.attributes.OBJECTID
+		# 		return 0
+		# 	if a.attributes.OBJECTID < B.attributes.OBJECTID
+		# 		return -1
+		# 	if a.attributes.OBJECTID > B.attributes.OBJECTID
+		# 		return 1
+		# 	return
+
 	###***********************************************************
 	** FUNCTION BLOCK
 	***********************************************************###

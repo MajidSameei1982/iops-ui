@@ -75,7 +75,8 @@ class AirportoverviewWidgetView extends IOPSWidgetView
               Tag_gpu_out_of_service: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.GPU._OUT_OF_SERVICE"
               Tag_pbb_out_of_service: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB._OUT_OF_SERVICE"
               Tag_pca_out_of_service: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PCA._OUT_OF_SERVICE"
-              Tag_system_quality: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.System._QUALITY"
+              Tag_pbb_quality: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB._QUALITY"
+              
             @gateData.push gate
             # add tags to monitor
             tags.push "#{gate.Tag_gate_alarm}.Value"
@@ -86,7 +87,7 @@ class AirportoverviewWidgetView extends IOPSWidgetView
             tags.push "#{gate.Tag_gpu_out_of_service}.Value"
             tags.push "#{gate.Tag_pbb_out_of_service}.Value"
             tags.push "#{gate.Tag_pca_out_of_service}.Value"
-            tags.push "#{gate.Tag_system_quality}.Value"
+            tags.push "#{gate.Tag_pbb_quality}.Value"
  
       # draw layout and gates
       @$("#Airport_Overview").remove()
@@ -123,9 +124,9 @@ class AirportoverviewWidgetView extends IOPSWidgetView
       perfectHookup = null
       badQuality = null
 
-      qbq = @opc.tags["#{g.Tag_system_quality}"].props.Value.quality
+      qbq = @opc.tags["#{g.Tag_pbb_quality}"].props.Value.quality
       if qbq? && qbq
-        badQuality = @get_bool(@opc.get_value("#{g.Tag_system_quality}.Value"))
+        badQuality = @get_bool(@opc.get_value("#{g.Tag_pbb_quality}.Value"))
         @$("#Airport_Gate_#{g.Number}_icon")
         .toggleClass("bad-data", badQuality ==false && qbq)
       else
