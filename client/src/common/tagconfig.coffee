@@ -2399,7 +2399,7 @@ class TagConfig extends Object
 							@TagData[tag] = @constructor.tags[tag]
 
 			### LOOP:Get Tags ###
-			modList = ["use_tags","add_tags","update_tags","remove_tags","remove_all"]
+			modList = ["remove_all","remove_tags","add_tags","update_tags","use_tags"]
 			found_use =  false
 			remove_all = false
 			for key,group of groupList
@@ -2412,21 +2412,21 @@ class TagConfig extends Object
 						property = getProperty @constructor.clients[Site_Code],lookupProps
 						if property != undefined
 							switch mod
-								when "#{modList.slice(0,1)}"
+								when "#{modList.slice(4,5)}"
 									if !remove_all
 										found_use = true
 										@TagData = []
 										for key,data of property
 											@TagData[key] = data
-								when "#{modList.slice(1,2)}","#{modList.slice(2,3)}" 
+								when "#{modList.slice(2,3)}","#{modList.slice(3,4)}" 
 									if !found_use && !remove_all
 										for key,data of property
 											@TagData[key] = data
-								when "#{modList.slice(3,4)}"
+								when "#{modList.slice(1,2)}"
 									if !found_use && !remove_all
 										for key,data of property
 											delete @TagData[key]
-								when "#{modList.slice(4,5)}"
+								when "#{modList.slice(0,1)}"
 									remove_all = true
 									@TagData = []
 

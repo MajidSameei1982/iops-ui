@@ -278,7 +278,9 @@ class IOPSWidgetView extends WidgetView
 
     # Create tag elements
     for tag, tagData of tagConfig.TagData
-      $("li##{WidgetID} .#{ClassID} #{tagData.Element.ParentID}").toggleClass("no-show", false)
+      if tagData.Element.ParentID?
+        $("li##{WidgetID} .#{ClassID} #{tagData.Element.ParentID}").toggleClass("no-show", false)
+      
       if tagData.Element.Type? && tagData.Element.Class != 'no_row'
         elType = tagData.Element.Type.toLowerCase()
         switch elType
