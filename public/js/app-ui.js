@@ -25654,7 +25654,7 @@ TagConfig = (function(superClass) {
       }
 
       /* LOOP:Get Tags */
-      modList = ["use_tags", "add_tags", "update_tags", "remove_tags", "remove_all"];
+      modList = ["remove_all", "remove_tags", "add_tags", "update_tags", "use_tags"];
       found_use = false;
       remove_all = false;
       for (key in groupList) {
@@ -25669,7 +25669,7 @@ TagConfig = (function(superClass) {
             property = getProperty(this.constructor.clients[Site_Code], lookupProps);
             if (property !== void 0) {
               switch (mod) {
-                case "" + (modList.slice(0, 1)):
+                case "" + (modList.slice(4, 5)):
                   if (!remove_all) {
                     found_use = true;
                     this.TagData = [];
@@ -25679,8 +25679,8 @@ TagConfig = (function(superClass) {
                     }
                   }
                   break;
-                case "" + (modList.slice(1, 2)):
                 case "" + (modList.slice(2, 3)):
+                case "" + (modList.slice(3, 4)):
                   if (!found_use && !remove_all) {
                     for (key in property) {
                       data = property[key];
@@ -25688,7 +25688,7 @@ TagConfig = (function(superClass) {
                     }
                   }
                   break;
-                case "" + (modList.slice(3, 4)):
+                case "" + (modList.slice(1, 2)):
                   if (!found_use && !remove_all) {
                     for (key in property) {
                       data = property[key];
@@ -25696,7 +25696,7 @@ TagConfig = (function(superClass) {
                     }
                   }
                   break;
-                case "" + (modList.slice(4, 5)):
+                case "" + (modList.slice(0, 1)):
                   remove_all = true;
                   this.TagData = [];
               }
@@ -33594,7 +33594,9 @@ IOPSWidgetView = (function(superClass) {
     ref = tagConfig.TagData;
     for (tag in ref) {
       tagData = ref[tag];
-      $("li#" + WidgetID + " ." + ClassID + " " + tagData.Element.ParentID).toggleClass("no-show", false);
+      if (tagData.Element.ParentID != null) {
+        $("li#" + WidgetID + " ." + ClassID + " " + tagData.Element.ParentID).toggleClass("no-show", false);
+      }
       if ((tagData.Element.Type != null) && tagData.Element.Class !== 'no_row') {
         elType = tagData.Element.Type.toLowerCase();
         switch (elType) {
@@ -35219,7 +35221,19 @@ PbbpcagpustatusWidgetView = (function(superClass) {
                 newRow += "<td class='val no-show' id='dynamic_" + tag + "_default_" + col + "'> <i id='dynamic_has_critical_alarms' class='cell-icon fa fa-warning' title='Gate has CRITICAL ALARMS'></i> <i id='dynamic_has_alarms' class='cell-icon fa fa-bell' title='Gate has ALARMS'></i> <i id='dynamic_out_of_service' class='cell-icon fa fa-wrench' title='A system is out of service'></i> <i id='dynamic_perfect_hookup' class='cell-icon fa fa-check-circle-o' title='Perfect Hookup'></i> <span id='dynamic_quality' class='cell-icon fa fa-stack'> <i class='fa fa-rss fa-stack-1x'></i> <i class='fa fa-exclamation fa-stack-1x'></i> </span> </td>";
               }
               newRow += "</tr>";
-              this.$("#widgetData tbody").append(newRow);
+              if (this.$("#widgetData td[id$='_pca_discharge_temp']").length === 1 || this.$("#widgetData td[id$='_elvrot_rotunda_status']").length === 1) {
+                if (this.$("#widgetData td[id$='_elvrot_rotunda_status']").length === 1 && !(tag.indexOf('_discharge_temp') > -1)) {
+                  this.$("#widgetData tbody #dynamic_elvrot_rotunda_status").before(newRow);
+                } else {
+                  if (tag.indexOf('_discharge_temp') > -1) {
+                    this.$("#widgetData tbody").append(newRow);
+                  } else {
+                    this.$("#widgetData tbody").find('tr:last').prev().after(newRow);
+                  }
+                }
+              } else {
+                this.$("#widgetData tbody").append(newRow);
+              }
             }
 
             /* Set the id for the gate and tag */

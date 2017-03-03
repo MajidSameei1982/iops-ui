@@ -127,7 +127,17 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
                     </span>
                   </td>"
               newRow += "</tr>"
-              @$("#widgetData tbody").append(newRow)
+              if @$("#widgetData td[id$='_pca_discharge_temp']").length == 1 || @$("#widgetData td[id$='_elvrot_rotunda_status']").length == 1
+                if @$("#widgetData td[id$='_elvrot_rotunda_status']").length == 1 && !(tag.indexOf('_discharge_temp') > -1)
+                  @$("#widgetData tbody #dynamic_elvrot_rotunda_status").before(newRow)
+                else
+                  if tag.indexOf('_discharge_temp') > -1
+                    @$("#widgetData tbody").append(newRow)
+                  else
+                    @$("#widgetData tbody").find('tr:last').prev().after(newRow)
+              else
+                @$("#widgetData tbody").append(newRow)
+
 
             ### Set the id for the gate and tag ###
 
