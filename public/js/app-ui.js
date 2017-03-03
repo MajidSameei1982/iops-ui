@@ -7481,6 +7481,64 @@ TagConfig = (function(superClass) {
           }
         }
       },
+      out_of_service_widget: {
+        update_tags: {
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          }
+        }
+      },
       pbb_detail_widget: {
         update_tags: {
           pbb_status: {
@@ -8714,6 +8772,64 @@ TagConfig = (function(superClass) {
                   }
                 }
               }
+            }
+          }
+        }
+      },
+      out_of_service_widget: {
+        update_tags: {
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
             }
           }
         }
@@ -10003,6 +10119,64 @@ TagConfig = (function(superClass) {
       }
     },
     DAL: {
+      out_of_service_widget: {
+        update_tags: {
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          }
+        }
+      },
       pbb_detail_widget: {
         update_tags: {
           pbb_status: {
@@ -10752,6 +10926,62 @@ TagConfig = (function(superClass) {
         }
       },
       out_of_service_widget: {
+        update_tags: {
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          }
+        },
         C: {
           1: {
             C90: {
@@ -13450,6 +13680,26 @@ TagConfig = (function(superClass) {
           'pca_quality': 'pca_quality',
           'gpu_out_of_service': 'gpu_out_of_service',
           'gpu_quality': 'gpu_quality'
+        },
+        update_tags: {
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          }
         }
       },
       pbb_detail_widget: {
@@ -14028,7 +14278,46 @@ TagConfig = (function(superClass) {
       },
       out_of_service_widget: {
         remove_tags: {
-          'pca_out_of_service': 'pca_out_of_service'
+          'pca_out_of_service': 'pca_out_of_service',
+          'pca_quality': 'pca_quality'
+        },
+        update_tags: {
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          }
         },
         4: {
           B1: {
@@ -18573,6 +18862,34 @@ TagConfig = (function(superClass) {
       }
     },
     PHX: {
+      out_of_service_widget: {
+        remove_tags: {
+          'pbb_out_of_service': 'pbb_out_of_service',
+          'pbb_quality': 'pbb_quality',
+          'gpu_out_of_service': 'gpu_out_of_service',
+          'gpu_quality': 'gpu_quality'
+        },
+        update_tags: {
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          }
+        }
+      },
       pbb_pca_gpu_basic_widget: {
         remove_tags: {
           'pbb_status': 'pbb_status',
@@ -20751,6 +21068,64 @@ TagConfig = (function(superClass) {
                   }
                 }
               }
+            }
+          }
+        }
+      },
+      out_of_service_widget: {
+        update_tags: {
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
             }
           }
         }
@@ -33997,12 +34372,14 @@ OutofserviceWidgetView = (function(superClass) {
 
   OutofserviceWidgetView.prototype.site_refresh = 50000;
 
+  OutofserviceWidgetView.prototype.refId = 0;
+
   OutofserviceWidgetView.prototype.IsUpdatingSettings = false;
 
   OutofserviceWidgetView.prototype.IsPageLoading = true;
 
   OutofserviceWidgetView.prototype.update = function() {
-    var btg, col, column, data, element, elementPrefix, g, gate, gp, i, index, j, k, key, label, lbl, len, len1, len2, ref, ref1, ref2, ref3, ref4, s, t, tag;
+    var btg, col, column, data, element, g, gate, gp, i, index, j, k, key, l, label, lbl, len, len1, len2, ref, ref1, ref2, ref3, ref4, s, t, tag;
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
@@ -34013,25 +34390,30 @@ OutofserviceWidgetView = (function(superClass) {
     if (this.site_code == null) {
       return null;
     }
-    this.cktags = [];
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": Out Of Service";
       this.ui.wtitle.html(lbl);
       if (!s.gates || s.gates.length === 0) {
         return;
       }
-      this.kill_updates(this.site_code);
+
+      /* Initialize Variables */
       tags = [];
-      elementPrefix = "li#" + this.el.parentNode.id + " ." + this.classID + " ";
-      $(elementPrefix + " [id^='dynamic_']").remove();
+      this.$("[id^='dynamic_']").remove();
       column = 1;
       this.tagData = [];
+
+      /* Process Gates */
       ref = s.gates;
       for (i = 0, len = ref.length; i < len; i++) {
         g = ref[i];
+
+        /* Initialize Loop Variables */
         column = column + 1;
         gp = g.split(':');
         gate = "Term" + gp[0] + ".Zone" + gp[1] + ".Gate" + gp[2] + ".";
+
+        /* Call Tagconfig */
         this.tagConfig = [];
         this.tagConfig = this.create_dynamic_elements(this.el.parentNode.id, this.classID, null, null, this.site_code, {
           site: this.site_code,
@@ -34040,69 +34422,87 @@ OutofserviceWidgetView = (function(superClass) {
           gate: gp[2],
           RetainDynamic: true
         });
+
+        /* Create Gate Header and Alert Icons */
+        if (this.$("#dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2]).length === 0) {
+          this.$("#widgetData thead tr").append("<th id='dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "' class='header'>" + gp[2] + "</th>");
+        }
+
+        /* Load tagData With config tags */
         ref1 = this.tagConfig.TagData;
         for (key in ref1) {
           data = ref1[key];
+          tags[gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + key] = data.Tag;
           this.tagData[gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + key] = data;
-          for (btg in this.tags) {
-            t = this.tags[btg];
-            this.tagData[gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + btg] = {
-              Tag: "" + t,
-              DataType: 'Boolean',
-              Parameters: {
-                Parm001: null,
-                Parm002: null,
-                Parm003: null,
-                Parm004: null,
-                Parm005: null
-              }
-            };
-          }
-          data = [];
         }
-        if ($(elementPrefix + " #dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2]).length === 0) {
-          $(elementPrefix + " #widgetData thead tr").append("<th id='dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "' class='header'>" + gp[2] + "</th>");
+
+        /* Load tagData With Widget defined tags */
+        for (btg in this.tags) {
+          t = this.tags[btg];
+          this.tagData[gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + btg] = {
+            Tag: "" + t,
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            }
+          };
         }
         ref2 = this.tagConfig.TagData;
         for (tag in ref2) {
           tagData = ref2[tag];
+          t = tagData.Tag;
+          gate = "Term" + gp[0] + ".Zone" + gp[1] + ".Gate" + gp[2] + ".";
+          tags.push("" + this.prefix + gate + tagData.Tag + ".Value");
           if (tagData.Element.Class !== 'no_row') {
-            t = tagData.Tag;
-            gate = "Term" + gp[0] + ".Zone" + gp[1] + ".Gate" + gp[2] + ".";
-            tags.push("" + this.prefix + gate + tagData.Tag + ".Value");
-            if ($(elementPrefix + " #dynamic_" + tag).length === 0) {
+            if (this.$("#dynamic_" + tag).length === 0) {
               label = tagData.Label;
               if (/[*]/.test(label)) {
                 label = label.replace("[*]", "");
               }
-              $(elementPrefix + " #widgetData tbody").append("<tr id='dynamic_" + tag + "'> <td class='lbl' id='dynamic_" + tag + "_lbl'>" + label + "</td> <td class='val no-show' id='dynamic_" + tag + "_default_1'><input id='dynamic_" + tag + "_checkbox_1' type='checkbox' ></td> <td class='val no-show' id='dynamic_" + tag + "_default_2'><input id='dynamic_" + tag + "_checkbox_2' type='checkbox' ></td> <td class='val no-show' id='dynamic_" + tag + "_default_3'><input id='dynamic_" + tag + "_checkbox_3' type='checkbox' ></td> <td class='val no-show' id='dynamic_" + tag + "_default_4'><input id='dynamic_" + tag + "_checkbox_4' type='checkbox' ></td> <td class='val no-show' id='dynamic_" + tag + "_default_5'><input id='dynamic_" + tag + "_checkbox_5' type='checkbox' ></td> <td class='val no-show' id='dynamic_" + tag + "_default_6'><input id='dynamic_" + tag + "_checkbox_6' type='checkbox' ></td> </th>");
+              this.$("#widgetData tbody").append("<tr id='dynamic_" + tag + "'> <td class='lbl' id='dynamic_" + tag + "_lbl'>" + label + "</td> <td class='val no-show' id='dynamic_" + tag + "_default_1'><input id='dynamic_" + tag + "_checkbox_1' type='checkbox' ></td> <td class='val no-show' id='dynamic_" + tag + "_default_2'><input id='dynamic_" + tag + "_checkbox_2' type='checkbox' ></td> <td class='val no-show' id='dynamic_" + tag + "_default_3'><input id='dynamic_" + tag + "_checkbox_3' type='checkbox' ></td> <td class='val no-show' id='dynamic_" + tag + "_default_4'><input id='dynamic_" + tag + "_checkbox_4' type='checkbox' ></td> <td class='val no-show' id='dynamic_" + tag + "_default_5'><input id='dynamic_" + tag + "_checkbox_5' type='checkbox' ></td> <td class='val no-show' id='dynamic_" + tag + "_default_6'><input id='dynamic_" + tag + "_checkbox_6' type='checkbox' ></td> </th>");
+            }
+            this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").attr('id', "dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tag);
+            this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ") input").attr('id', "dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tag + "_checkbox");
+            this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ") input").bind('click', (function(_this) {
+              return function(event) {
+                _this.setOutOfService(event.target);
+              };
+            })(this));
+            this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("no-show", false);
+            if (("dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tag).indexOf("_discharge_") > -1) {
+              this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("val", false);
+              this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("DisCharge", true);
+            }
+            ref3 = this.$("#dynamic_" + tag + ">td");
+            for (index = j = 0, len1 = ref3.length; j < len1; index = ++j) {
+              element = ref3[index];
+              if (element.id.indexOf("dynamic_" + tag + "_default_") > -1) {
+                col = column - 1;
+                this.$("#" + element.id).toggleClass('no-show', index > col);
+              }
             }
           }
-          $(elementPrefix + " #widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").attr('id', "dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tag);
-          $(elementPrefix + " #widgetData #dynamic_" + tag + " td:nth-child(" + column + ") input").attr('id', "dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tag + "_checkbox");
-          $(elementPrefix + " #widgetData #dynamic_" + tag + " td:nth-child(" + column + ") input").bind('click', (function(_this) {
-            return function(event) {
-              _this.setOutOfService(event.target);
-            };
-          })(this));
-          $(elementPrefix + " #widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("no-show", false);
-          if (("dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tag).indexOf("_discharge_") > -1) {
-            $(elementPrefix + " #widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("val", false);
-            $(elementPrefix + " #widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("DisCharge", true);
-          }
-          ref3 = $(elementPrefix + " #dynamic_" + tag + ">td");
-          for (index = j = 0, len1 = ref3.length; j < len1; index = ++j) {
-            element = ref3[index];
-            if (element.id.indexOf(elementPrefix + " dynamic_" + tag + "_default_") > -1) {
-              col = column - 1;
-              $(elementPrefix + " #" + element.id).toggleClass('no-show', index > col);
-            }
+        }
+
+        /* Ensure we have all the cells properly hidden/shown */
+        col = column - 1;
+        for (index = k = 1; k <= 6; index = ++k) {
+          if (index <= col) {
+            this.$("td[id^='dynamic_'][id*='_default_" + index + "']").toggleClass('no-background', true);
+            this.$("td[id^='dynamic_'][id*='_default_" + index + "']").toggleClass('no-show', false);
+          } else {
+            this.$("td[id^='dynamic_'][id*='_default_" + index + "']").toggleClass('no-background', false);
+            this.$("td[id^='dynamic_'][id*='_default_" + index + "']").toggleClass('no-show', true);
           }
         }
       }
       ref4 = s.gates;
-      for (k = 0, len2 = ref4.length; k < len2; k++) {
-        g = ref4[k];
+      for (l = 0, len2 = ref4.length; l < len2; l++) {
+        g = ref4[l];
         gp = g.split(':');
         gate = "Term" + gp[0] + ".Zone" + gp[1] + ".Gate" + gp[2] + ".";
         for (btg in this.tags) {
@@ -34110,12 +34510,14 @@ OutofserviceWidgetView = (function(superClass) {
           tags.push("" + this.prefix + gate + t);
         }
       }
-      this.cktags = tags;
-      App.opc.add_tags(this.site_code, tags);
-      this.opc = App.opc.connections[this.site_code];
-      this.watch_updates(this.site_code);
-      return this.start_heartbeat();
+      if (this.refId === 0) {
+        this.refId = App.opc.add_tags(this.site_code, tags);
+        App.vent.on("opc:data:" + this.site_code, this.data_update);
+        this.opc = App.opc.connections[this.site_code];
+        this.start_heartbeat();
+      }
     }
+    return this;
   };
 
   OutofserviceWidgetView.prototype.setOutOfService = function(el) {
@@ -34143,11 +34545,7 @@ OutofserviceWidgetView = (function(superClass) {
   };
 
   OutofserviceWidgetView.prototype.data_update = function(data) {
-    var gate, parsedTagId, ref, results, s, tag;
-    s = this.model.get("settings");
-    if ((s == null) || (s.gates == null) || s.gates.length === 0) {
-      return;
-    }
+    var gate, parsedTagId, ref, results, tag;
     this.beat_time = new Date().getTime() + this.site_refresh;
     this.vals = {};
     ref = this.tagData;
@@ -34176,6 +34574,13 @@ OutofserviceWidgetView = (function(superClass) {
 
   OutofserviceWidgetView.prototype.set_model = function() {
     var s;
+    if (this.refId > 0) {
+      this.kill_updates(this.site_code);
+      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+        window.clearInterval(this.heartbeat_timer);
+      }
+      this.refId = 0;
+    }
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     this.site_code = OPCManager.get_site_code(s.site);
@@ -34196,9 +34601,6 @@ OutofserviceWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
-        window.clearInterval(this.heartbeat_timer);
-      }
       return this.draw_gate_checks();
     } else {
       this.IsPageLoading = false;
@@ -34291,7 +34693,6 @@ OutofserviceWidgetView = (function(superClass) {
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
       this.site_refresh = (OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3;
-      this.watch_updates(this.site_code);
     }
     return this.check_init_site();
   };
@@ -34302,10 +34703,11 @@ OutofserviceWidgetView = (function(superClass) {
 
   OutofserviceWidgetView.prototype.start_heartbeat = function() {
     this.beat_time = new Date().getTime() + this.site_refresh;
-    $("#" + this.el.parentNode.id + " .widget-outer").toggleClass("no-heartbeat", false);
+    this.$(".widget-outer").toggleClass("no-heartbeat", false);
     if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
       window.clearInterval(this.heartbeat_timer);
     }
+    console.log(this.el.parentNode.id + "_" + this.classID + "::" + this.site_code + " - Heartbeat Started: " + this.site_refresh);
     return this.heartbeat_timer = window.setInterval(((function(_this) {
       return function() {
         _this.check_heartbeat(_this.el.parentNode.id);
@@ -34315,7 +34717,7 @@ OutofserviceWidgetView = (function(superClass) {
 
   OutofserviceWidgetView.prototype.check_heartbeat = function(widget_id) {
     this.curTime = new Date().getTime();
-    return $("#" + widget_id + " .widget-outer").toggleClass("no-heartbeat", this.curTime > this.beat_time);
+    return this.$(".widget-outer").toggleClass("no-heartbeat", this.curTime > this.beat_time);
   };
 
   OutofserviceWidgetView.prototype.onDestroy = function(arg1, arg2) {
