@@ -27,6 +27,7 @@ class WeatherWidgetView extends IOPSWidgetView
     if @IsUpdatingSettings || @IsPageLoading
       return null
 
+    #@$("##{@el.parentNode.id}").height( @$("##{@el.parentNode.id}").width() )
     if @timer then clearInterval(@timer)
     @timer = setInterval(@refresh_data, @HOUR/6)
     @start_heartbeat()
