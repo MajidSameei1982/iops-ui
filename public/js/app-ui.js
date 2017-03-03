@@ -30961,7 +30961,7 @@ AirportoverviewWidgetView = (function(superClass) {
               Tag_gpu_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".GPU._OUT_OF_SERVICE",
               Tag_pbb_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB._OUT_OF_SERVICE",
               Tag_pca_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PCA._OUT_OF_SERVICE",
-              Tag_system_quality: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".System._QUALITY"
+              Tag_pbb_quality: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB._QUALITY"
             };
             this.gateData.push(gate);
             tags.push(gate.Tag_gate_alarm + ".Value");
@@ -30972,7 +30972,7 @@ AirportoverviewWidgetView = (function(superClass) {
             tags.push(gate.Tag_gpu_out_of_service + ".Value");
             tags.push(gate.Tag_pbb_out_of_service + ".Value");
             tags.push(gate.Tag_pca_out_of_service + ".Value");
-            tags.push(gate.Tag_system_quality + ".Value");
+            tags.push(gate.Tag_pbb_quality + ".Value");
           }
         }
       }
@@ -31007,9 +31007,9 @@ AirportoverviewWidgetView = (function(superClass) {
       docked = null;
       perfectHookup = null;
       badQuality = null;
-      qbq = this.opc.tags["" + g.Tag_system_quality].props.Value.quality;
+      qbq = this.opc.tags["" + g.Tag_pbb_quality].props.Value.quality;
       if ((qbq != null) && qbq) {
-        badQuality = this.get_bool(this.opc.get_value(g.Tag_system_quality + ".Value"));
+        badQuality = this.get_bool(this.opc.get_value(g.Tag_pbb_quality + ".Value"));
         this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("bad-data", badQuality === false && qbq);
       } else {
         this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("bad-data", false);
