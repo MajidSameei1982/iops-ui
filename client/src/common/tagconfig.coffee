@@ -638,7 +638,12 @@ class TagConfig extends Object
 					gpu_pm_output_phasec_v:{Tag:'GPU.RVOUTC',Label:'Volts Out Phase C',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 
 				}
-			#out_of_service_widget: # Out Of Service Widget
+			out_of_service_widget: # Out Of Service Widget
+				update_tags:{
+					pbb_out_of_service:{Tag:'PBB._OUT_OF_SERVICE',Label:'[*]PBB',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					gpu_out_of_service:{Tag:'GPU._OUT_OF_SERVICE',Label:'[*]GPU',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+				}
 			pbb_detail_widget: #PBB Detail Widget
 				update_tags:{
 					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'PBB Status',DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'div',ParentID:'#pbb_status_container',Class:'val transparent',Object:null}},
@@ -751,7 +756,12 @@ class TagConfig extends Object
 						use_tags:{
 							gpu_status:{Tag:'GPU.GPUSTATUSBOOLEAN',Label:'GPU Status',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 						}
-			#out_of_service_widget: # Out Of Service Widget
+			out_of_service_widget: # Out Of Service Widget
+				update_tags:{
+					pbb_out_of_service:{Tag:'PBB._OUT_OF_SERVICE',Label:'[*]PBB',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					gpu_out_of_service:{Tag:'GPU._OUT_OF_SERVICE',Label:'[*]GPU',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+				}
 			pbb_detail_widget: #PBB Detail Widget
 				update_tags:{
 					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'PBB Status',DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'div',ParentID:'#pbb_status_container',Class:'val transparent',Object:null}},
@@ -874,7 +884,12 @@ class TagConfig extends Object
 			#configgate_widget: # Gate Config Widget
 			#gpu_summary_widget: # GPU Summary Widget
 			#gpu_widget: # GPU Widget
-			#out_of_service_widget: # Out Of Service Widget
+			out_of_service_widget: # Out Of Service Widget
+				update_tags:{
+					pbb_out_of_service:{Tag:'PBB._OUT_OF_SERVICE',Label:'[*]PBB',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					gpu_out_of_service:{Tag:'GPU._OUT_OF_SERVICE',Label:'[*]GPU',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+				}
 			pbb_detail_widget: #PBB Detail Widget
 				update_tags:{
 					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'PBB Status',DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'div',ParentID:'#pbb_status_container',Class:'val transparent',Object:null}},
@@ -950,6 +965,11 @@ class TagConfig extends Object
 						use_groups:{'gpu_hobart_sx2400_dual_unit'}
 						remove_tags:{'gpu_01_time','gpu_02_time',}				
 			out_of_service_widget: # Out Of Service Widget
+				update_tags:{
+					pbb_out_of_service:{Tag:'PBB._OUT_OF_SERVICE',Label:'[*]PBB',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					gpu_out_of_service:{Tag:'GPU._OUT_OF_SERVICE',Label:'[*]GPU',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+				}
 				C:
 					1:C90:
 						remove_tags:{'gpu_out_of_service','gpu_quality'}
@@ -1182,6 +1202,9 @@ class TagConfig extends Object
 				remove_all: {}
 			out_of_service_widget: # Out Of Service Widget
 				remove_tags:{'pca_out_of_service','pca_quality','gpu_out_of_service','gpu_quality'}
+				update_tags:{
+					pbb_out_of_service:{Tag:'PBB._OUT_OF_SERVICE',Label:'[*]PBB',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+				}
 			pbb_detail_widget: #PBB Detail Widget
 				update_tags:{
 					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'PBB Status',DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'div',ParentID:'#pbb_status_container',Class:'val transparent',Object:null}},
@@ -1252,7 +1275,11 @@ class TagConfig extends Object
 					gpu_pm_input_phasec_v:{Tag:'GPU.RVINC',Label:'Volts In Phase C',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 				}
 			out_of_service_widget: # Out Of Service Widget
-				remove_tags:{'pca_out_of_service'}
+				remove_tags:{'pca_out_of_service','pca_quality'}
+				update_tags:{
+					pbb_out_of_service:{Tag:'PBB._OUT_OF_SERVICE',Label:'[*]PBB',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					gpu_out_of_service:{Tag:'GPU._OUT_OF_SERVICE',Label:'[*]GPU',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+				}
 				4:
 					B1:B29L2:
 						add_tags:{
@@ -1617,7 +1644,11 @@ class TagConfig extends Object
 			#configgate_widget: # Gate Config Widget
 			#gpu_summary_widget: # GPU Summary Widget
 			#gpu_widget: # GPU Widget
-			#out_of_service_widget: # Out Of Service Widget
+			out_of_service_widget: # Out Of Service Widget
+				remove_tags:{'pbb_out_of_service','pbb_quality','gpu_out_of_service','gpu_quality'}
+				update_tags:{
+					pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+				}
 			#pbb_detail_widget: #PBB Detail Widget
 			#pbb_level_detail_widget: # PBB Bridge Widget
 			pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
@@ -1811,7 +1842,12 @@ class TagConfig extends Object
 								gpu_amps_out_average_2:{Tag:'GPU.RA2OUTAVG',Label:'Amps Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 								gpu_volts_out_average_2:{Tag:'GPU.RV2OUTAVG',Label:'Volts Out Average_2',DataType:'Float',Parameters:{Parm001:false,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							}
-			#out_of_service_widget: # Out Of Service Widget
+			out_of_service_widget: # Out Of Service Widget
+				update_tags:{
+					pbb_out_of_service:{Tag:'PBB._OUT_OF_SERVICE',Label:'[*]PBB',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+					gpu_out_of_service:{Tag:'GPU._OUT_OF_SERVICE',Label:'[*]GPU',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+				}
 			pbb_detail_widget: #PBB Detail Widget
 				update_tags:{
 					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'PBB Status',DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'div',ParentID:'#pbb_status_container',Class:'val transparent',Object:null}},
