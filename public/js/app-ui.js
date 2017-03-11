@@ -7000,12 +7000,12 @@ TagConfig = (function(superClass) {
     },
     out_of_service_widget: {
       Tags: {
-        'gpu_quality': 'gpu_quality',
-        'gpu_out_of_service': 'gpu_out_of_service',
         'pbb_quality': 'pbb_quality',
         'pbb_out_of_service': 'pbb_out_of_service',
         'pca_quality': 'pca_quality',
-        'pca_out_of_service': 'pca_out_of_service'
+        'pca_out_of_service': 'pca_out_of_service',
+        'gpu_quality': 'gpu_quality',
+        'gpu_out_of_service': 'gpu_out_of_service'
       },
       Graphics: {}
     },
@@ -7108,16 +7108,6 @@ TagConfig = (function(superClass) {
     },
     pbb_pca_gpu_basic_widget: {
       Tags: {
-        'gpu_quality': 'gpu_quality',
-        'gpu_out_of_service': 'gpu_out_of_service',
-        'gpu_has_warnings': 'gpu_has_warnings',
-        'gpu_has_alarms': 'gpu_has_alarms',
-        'gpu_has_critical_alarms': 'gpu_has_critical_alarms',
-        'gpu_status': 'gpu_status',
-        'gpu_ra_out_avg': 'gpu_ra_out_avg',
-        'gpu_rv_out_avg': 'gpu_rv_out_avg',
-        'gpu_hookup_time': 'gpu_hookup_time',
-        'gpu_time': 'gpu_time',
         'pbb_quality': 'pbb_quality',
         'pbb_out_of_service': 'pbb_out_of_service',
         'pbb_has_warnings': 'pbb_has_warnings',
@@ -7134,7 +7124,17 @@ TagConfig = (function(superClass) {
         'pca_status': 'pca_status',
         'pca_hookup_time': 'pca_hookup_time',
         'pca_time': 'pca_time',
-        'pca_discharge_temp': 'pca_discharge_temp'
+        'pca_discharge_temp': 'pca_discharge_temp',
+        'gpu_quality': 'gpu_quality',
+        'gpu_out_of_service': 'gpu_out_of_service',
+        'gpu_has_warnings': 'gpu_has_warnings',
+        'gpu_has_alarms': 'gpu_has_alarms',
+        'gpu_has_critical_alarms': 'gpu_has_critical_alarms',
+        'gpu_status': 'gpu_status',
+        'gpu_ra_out_avg': 'gpu_ra_out_avg',
+        'gpu_rv_out_avg': 'gpu_rv_out_avg',
+        'gpu_hookup_time': 'gpu_hookup_time',
+        'gpu_time': 'gpu_time'
       },
       Graphics: {}
     },
@@ -7146,13 +7146,6 @@ TagConfig = (function(superClass) {
         'gate_has_warnings': 'gate_has_warnings',
         'gate_has_alarms': 'gate_has_alarms',
         'gate_has_critical_alarms': 'gate_has_critical_alarms',
-        'gpu_quality': 'gpu_quality',
-        'gpu_out_of_service': 'gpu_out_of_service',
-        'gpu_perfect_hookup': 'gpu_perfect_hookup',
-        'gpu_has_warnings': 'gpu_has_warnings',
-        'gpu_has_alarms': 'gpu_has_alarms',
-        'gpu_has_critical_alarms': 'gpu_has_critical_alarms',
-        'gpu_status': 'gpu_status',
         'pbb_quality': 'pbb_quality',
         'pbb_out_of_service': 'pbb_out_of_service',
         'pbb_perfect_hookup': 'pbb_perfect_hookup',
@@ -7170,7 +7163,14 @@ TagConfig = (function(superClass) {
         'pca_mode_cooling': 'pca_mode_cooling',
         'pca_mode_heating': 'pca_mode_heating',
         'pca_status': 'pca_status',
-        'pca_discharge_temp': 'pca_discharge_temp'
+        'pca_discharge_temp': 'pca_discharge_temp',
+        'gpu_quality': 'gpu_quality',
+        'gpu_out_of_service': 'gpu_out_of_service',
+        'gpu_perfect_hookup': 'gpu_perfect_hookup',
+        'gpu_has_warnings': 'gpu_has_warnings',
+        'gpu_has_alarms': 'gpu_has_alarms',
+        'gpu_has_critical_alarms': 'gpu_has_critical_alarms',
+        'gpu_status': 'gpu_status'
       },
       Graphics: {}
     },
@@ -7634,6 +7634,64 @@ TagConfig = (function(superClass) {
       pbb_level_detail_widget: {
         remove_tags: {
           'pbb_terminal_door': 'pbb_terminal_door'
+        }
+      },
+      pbb_pca_gpu_basic_widget: {
+        update_tags: {
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          }
         }
       },
       pbb_pca_gpu_status_widget: {
@@ -8208,6 +8266,153 @@ TagConfig = (function(superClass) {
               Type: 'TableRow',
               ParentID: '#widgetData',
               Class: null,
+              Object: null
+            }
+          },
+          pca_dirty_filter_img: {
+            Tag: 'PCA.Alarm.DIRTY_FILTER',
+            Label: 'Dirty Filter',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Yes',
+              Parm002: 'No',
+              Parm003: 'err',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_cooling_img: {
+            Tag: 'PCA.COOLINGTIMERCALC_BOOLEAN',
+            Label: 'Cooling Time',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Yes',
+              Parm002: 'No',
+              Parm003: 'err',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          }
+        },
+        update_graphics: {
+          pca_main_background: {
+            ControlTags: {
+              none: null
+            },
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#graphics_container',
+              Class: 'background jbt-airhandler',
+              Object: null
+            }
+          },
+          blower_img: {
+            ControlTags: {
+              pca_blower: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'blower-on',
+              Parm003: null,
+              Parm004: 'blower-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jbt-airhandler',
+              Object: null
+            }
+          },
+          heating_stage_1_img: {
+            ControlTags: {
+              pca_heater_1: 'Boolean',
+              pca_heater_2: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'heating-stage-1-on',
+              Parm003: null,
+              Parm004: 'heating-stage-1-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jbt-airhandler',
+              Object: null
+            }
+          },
+          cooling_stage_1_img: {
+            ControlTags: {
+              pca_cooling_img: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'cooling-stage-1-on',
+              Parm003: null,
+              Parm004: 'cooling-stage-1-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jbt-airhandler',
+              Object: null
+            }
+          }
+        },
+        remove_graphics: {
+          'heating_stage_2_img': 'heating_stage_2_img',
+          'cooling_stage_2_img': 'cooling_stage_2_img',
+          'accool_img': 'accool_img',
+          'bccool_img': 'bccool_img'
+        },
+        add_graphics: {
+          dirty_filter_img: {
+            ControlTags: {
+              pca_dirty_filter_img: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'dirty-filter-on',
+              Parm003: null,
+              Parm004: 'dirty-filter-on-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jbt-airhandler',
+              Object: null
+            }
+          },
+          damper_img: {
+            ControlTags: {
+              pca_status: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'damper-on',
+              Parm003: null,
+              Parm004: 'damper-on-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jbt-airhandler',
               Object: null
             }
           }
@@ -8967,11 +9172,69 @@ TagConfig = (function(superClass) {
         }
       },
       pbb_pca_gpu_basic_widget: {
+        update_tags: {
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          }
+        },
         1: {
           1: {
             C3: {
               remove_tags: {
+                'pca_out_of_service': 'pca_out_of_service',
                 'pca_discharge_temp': 'pca_discharge_temp',
+                'gpu_out_of_service': 'gpu_out_of_service',
                 'gpu_ra_out_avg': 'gpu_ra_out_avg',
                 'gpu_rv_out_avg': 'gpu_rv_out_avg'
               }
@@ -10269,6 +10532,64 @@ TagConfig = (function(superClass) {
           }
         }
       },
+      pbb_pca_gpu_basic_widget: {
+        update_tags: {
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          }
+        }
+      },
       pbb_pca_gpu_status_widget: {
         update_tags: {
           system_perfect_hookup: {
@@ -11192,6 +11513,42 @@ TagConfig = (function(superClass) {
       },
       pbb_pca_gpu_basic_widget: {
         update_tags: {
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
           pca_time: {
             Tag: 'PCA.PCATime',
             Label: '[*]PCA Run Time',
@@ -11206,6 +11563,24 @@ TagConfig = (function(superClass) {
               Type: 'TableRow',
               ParentID: '#widgetData',
               Class: null,
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
               Object: null
             }
           },
@@ -11283,6 +11658,7 @@ TagConfig = (function(superClass) {
           1: {
             C90: {
               remove_tags: {
+                'gpu_out_of_service': 'gpu_out_of_service',
                 'gpu_status': 'gpu_status',
                 'gpu_time': 'gpu_time',
                 'gpu_ra_out_avg': 'gpu_ra_out_avg',
@@ -11292,7 +11668,121 @@ TagConfig = (function(superClass) {
           },
           3: {
             C125: {
+              remove_tags: {
+                'gpu_has_alarms': 'gpu_has_alarms',
+                'gpu_has_critical_alarms': 'gpu_has_critical_alarms',
+                'gpu_has_warnings': 'gpu_has_warnings',
+                'gpu_perfect_hookup': 'gpu_perfect_hookup',
+                'gpu_out_of_service': 'gpu_out_of_service',
+                'gpu_quality': 'gpu_quality',
+                'gpu_status': 'gpu_status'
+              },
               add_tags: {
+                gpu_01_out_of_service: {
+                  Tag: 'GPU01._OUT_OF_SERVICE',
+                  Label: 'Out Of Service',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_01_status: {
+                  Tag: 'GPU01.GPUSTATUSBOOLEAN',
+                  Label: 'GPU Status',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_01_time: {
+                  Tag: 'GPU01.GPUTime',
+                  Label: 'GPU-2 Run Time',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: 'mins',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_01_ra_out_avg: {
+                  Tag: 'GPU01.RAOUTAVG',
+                  Label: 'GPU-2 Average Output - Amps',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 1,
+                    Parm003: 'Amps',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_01_rv_out_avg: {
+                  Tag: 'GPU01.RVOUTAVG',
+                  Label: 'GPU-2 Average Output - Volts',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 1,
+                    Parm003: 'Volts',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_02_out_of_service: {
+                  Tag: 'GPU02._OUT_OF_SERVICE',
+                  Label: 'Out Of Service',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
                 gpu_02_status: {
                   Tag: 'GPU02.GPUSTATUSBOOLEAN',
                   Label: 'GPU Status',
@@ -13887,14 +14377,36 @@ TagConfig = (function(superClass) {
       },
       pbb_pca_gpu_basic_widget: {
         remove_tags: {
+          'pca_out_of_service': 'pca_out_of_service',
           'pca_status': 'pca_status',
           'gpu_status': 'gpu_status',
           'pca_time': 'pca_time',
           'pca_hookup_time': 'pca_hookup_time',
           'pca_discharge_temp': 'pca_discharge_temp',
+          'gpu_out_of_service': 'gpu_out_of_service',
           'gpu_time': 'gpu_time',
           'gpu_ra_out_avg': 'gpu_ra_out_avg',
           'gpu_rv_out_avg': 'gpu_rv_out_avg'
+        },
+        update_tags: {
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          }
         }
       },
       pbb_pca_gpu_status_widget: {
@@ -14686,15 +15198,72 @@ TagConfig = (function(superClass) {
       },
       pbb_pca_gpu_basic_widget: {
         remove_tags: {
+          'pca_out_of_service': 'pca_out_of_service',
           'pca_status': 'pca_status',
           'pca_time': 'pca_time',
           'pca_discharge_temp': 'pca_discharge_temp',
           'pca_hookup_time': 'pca_hookup_time'
         },
+        update_tags: {
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          }
+        },
         4: {
           B1: {
             B29L2: {
               add_tags: {
+                elvrot_out_of_service: {
+                  Tag: 'ELVROT._OUT_OF_SERVICE',
+                  Label: '[*]ELVROT Out of Service',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
                 elvrot_rotunda_status: {
                   Tag: 'ELVROT.ROTUNDA_STATUS',
                   Label: 'Elevating Rotunda Status',
@@ -14716,7 +15285,25 @@ TagConfig = (function(superClass) {
             }
           },
           B2: {
-            update_tags: {
+            add_tags: {
+              pca_out_of_service: {
+                Tag: 'PCA._OUT_OF_SERVICE',
+                Label: '[*]PCA Out of Service',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: null,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: 'no_row',
+                  Object: null
+                }
+              },
               pca_status: {
                 Tag: 'PCA.PCASTATUS',
                 Label: 'PCA status',
@@ -14789,7 +15376,25 @@ TagConfig = (function(superClass) {
             }
           },
           B3: {
-            update_tags: {
+            add_tags: {
+              pca_out_of_service: {
+                Tag: 'PCA._OUT_OF_SERVICE',
+                Label: '[*]PCA Out of Service',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: null,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: 'no_row',
+                  Object: null
+                }
+              },
               pca_status: {
                 Tag: 'PCA.PCASTATUS',
                 Label: 'PCA status',
@@ -18892,11 +19497,14 @@ TagConfig = (function(superClass) {
       },
       pbb_pca_gpu_basic_widget: {
         remove_tags: {
+          'pca_out_of_service': 'pca_out_of_service',
+          'pbb_out_of_service': 'pbb_out_of_service',
           'pbb_status': 'pbb_status',
-          'gpu_status': 'gpu_status',
           'pbb_hookup_time': 'pbb_hookup_time',
-          'gpu_hookup_time': 'gpu_hookup_time',
           'pbb_dock_time': 'pbb_dock_time',
+          'gpu_out_of_service': 'gpu_out_of_service',
+          'gpu_status': 'gpu_status',
+          'gpu_hookup_time': 'gpu_hookup_time',
           'gpu_time': 'gpu_time',
           'gpu_ra_out_avg': 'gpu_ra_out_avg',
           'gpu_rv_out_avg': 'gpu_rv_out_avg'
@@ -21132,6 +21740,24 @@ TagConfig = (function(superClass) {
       },
       pbb_detail_widget: {
         update_tags: {
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
           pbb_status: {
             Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
             Label: 'PBB Status',
@@ -21223,6 +21849,62 @@ TagConfig = (function(superClass) {
         }
       },
       pbb_pca_gpu_basic_widget: {
+        update_tags: {
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          }
+        },
         2: {
           D: {
             D17: {
@@ -33462,8 +34144,12 @@ GpuWidgetView = (function(superClass) {
         }
       } else {
         this.$('.data').css('width', '75%');
-        $('.data').prepend('<thead><tr><th></th><th>Unit 01</th></tr></thead>');
-        $('.data2').prepend('<thead><tr><th></th><th>Unit 02</th></tr></thead>');
+        if (this.$('.data thead th:contains(Unit 01)').length === 0) {
+          $('.data').prepend('<thead><tr><th></th><th>Unit 01</th></tr></thead>');
+        }
+        if (this.$('.data2 thead th:contains(Unit 02)').length === 0) {
+          $('.data2').prepend('<thead><tr><th></th><th>Unit 02</th></tr></thead>');
+        }
       }
     }
     return this;
@@ -38363,6 +39049,12 @@ WeatherWidgetView = (function(superClass) {
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
+    console.log(this.$(".weather_widget").context.clientWidth + '-' + this.$(".weather_widget").context.clientHeight);
+    if (this.$(".weather_widget").context.clientWidth > 200 && this.$(".weather_widget").context.clientHeight > 240) {
+      this.$("#widgetData #forecast").css('display', 'block');
+    } else {
+      this.$("#widgetData #forecast").css('display', 'none');
+    }
     if (this.timer) {
       clearInterval(this.timer);
     }
@@ -38377,7 +39069,7 @@ WeatherWidgetView = (function(superClass) {
     if ((s != null) && (s.site != null)) {
       this.beat_time = new Date().getTime() + (this.HOUR / 6);
       this.site = OPCManager.get_site(s.site);
-      this.ui.wtitle.html("Weather for " + (this.site.get('code')));
+      this.ui.wtitle.html((this.site.get('code')) + ": Weather");
       if (typeof site !== "undefined" && site !== null) {
         return this.site.fetch({
           success: (function(_this) {
@@ -38433,7 +39125,12 @@ WeatherWidgetView = (function(superClass) {
     cover = Math.round(data.currently.cloudCover * 100);
     this.$('#cover .val').html(cover + "<sup>%</sup>");
     this.$('#weather').show();
-    return this.$('#loading').hide();
+    this.$('#loading').hide();
+    if (this.$(".weather_widget").context.clientWidth > 200 && this.$(".weather_widget").context.clientHeight > 240) {
+      return this.$("#widgetData #forecast").css('display', 'block');
+    } else {
+      return this.$("#widgetData #forecast").css('display', 'none');
+    }
   };
 
   WeatherWidgetView.prototype.set_model = function() {

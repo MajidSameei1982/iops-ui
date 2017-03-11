@@ -3701,6 +3701,8 @@ ul.chosen-results li.highlighted {
       background-image: url("../img/pca/Inet-PDX-25/Rev-001/InetPDX-25s-Base-Unit.png"); }
     .pca_summary_widget .display div.background.inet-pdx-40 {
       background-image: url("../img/pca/Inet-PDX-40/Rev-001/InetPDX-40-Base-Unit.png"); }
+    .pca_summary_widget .display div.background.jbt-airhandler {
+      background-image: url("../img/pca/JBT-Airhandler/Rev-001/JBT-Airhandler-Base-Unit.png"); }
   .pca_summary_widget .display div.img {
     /* default overlays */
     position: absolute;
@@ -3946,6 +3948,16 @@ ul.chosen-results li.highlighted {
       background-image: url("../img/pca/Inet-PDX-40/Rev-001/InetPDX-40-Filters.png"); }
     .pca_summary_widget .display div.img.inet-pdx-40.fans-on {
       background-image: url("../img/pca/Inet-PDX-40/Rev-001/InetPDX-40-Fans.png"); }
+    .pca_summary_widget .display div.img.jbt-airhandler.blower-on {
+      background-image: url("../img/pca/JBT-Airhandler/Rev-001/JBT-Airhandler-Blower-on.png"); }
+    .pca_summary_widget .display div.img.jbt-airhandler.cooling-stage-1-on {
+      background-image: url("../img/pca/JBT-Airhandler/Rev-001/JBT-Airhandler-Cooling-on.png"); }
+    .pca_summary_widget .display div.img.jbt-airhandler.heating-stage-1-on {
+      background-image: url("../img/pca/JBT-Airhandler/Rev-001/JBT-Airhandler-Heat-on.png"); }
+    .pca_summary_widget .display div.img.jbt-airhandler.dirty-filter-on {
+      background-image: url("../img/pca/JBT-Airhandler/Rev-001/JBT-Airhandler-Dirty-filter.png"); }
+    .pca_summary_widget .display div.img.jbt-airhandler.damper-on {
+      background-image: url("../img/pca/JBT-Airhandler/Rev-001/JBT-Airhandler-Damper-Open.png"); }
   .pca_summary_widget .display #display_label {
     margin-bottom: 3px; }
     .pca_summary_widget .display #display_label h1 {
@@ -4198,31 +4210,33 @@ ul.chosen-results li.highlighted {
       height: 100%;
       text-align: center; }
       .weather_widget .box-body.content .display #widgetData tr td #wicon {
-        width: 100px;
+        width: 65px;
         margin-right: 10px; }
       .weather_widget .box-body.content .display #widgetData tr td #temp {
-        font-size: 80px;
+        font-size: 50px;
         font-weight: bold;
-        line-height: 72px;
+        line-height: 50px;
         text-align: left; }
       .weather_widget .box-body.content .display #widgetData tr td #summ {
-        font-size: 24px;
+        font-size: 14px;
         font-weight: normal;
-        line-height: 32px;
+        line-height: 16px;
         text-align: left; }
       .weather_widget .box-body.content .display #widgetData tr td #forecast {
-        padding: 15px 10px; }
+        display: none;
+        padding: 8px 0px 2px 0px;
+        font-size: 15px; }
       .weather_widget .box-body.content .display #widgetData tr td .col .label {
         width: 100% !important;
         color: #666;
-        font-size: 12px;
+        font-size: 10px;
         font-weight: normal;
-        line-height: 14px; }
+        line-height: 12px; }
       .weather_widget .box-body.content .display #widgetData tr td .col .val {
         width: auto;
         color: #999;
-        font-size: 42px;
-        line-height: 40px;
+        font-size: 30px;
+        line-height: 30px;
         font-weight: bold; }
       .weather_widget .box-body.content .display #widgetData tr:first-child td {
         width: 50%; }
