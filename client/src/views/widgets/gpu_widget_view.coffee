@@ -91,8 +91,10 @@ class GpuWidgetView extends IOPSWidgetView
           $('.data2 thead').remove()
       else
         @$('.data').css('width', '75%')
-        $('.data').prepend('<thead><tr><th></th><th>Unit 01</th></tr></thead>')
-        $('.data2').prepend('<thead><tr><th></th><th>Unit 02</th></tr></thead>')
+        if @$('.data thead th:contains(Unit 01)').length == 0
+          $('.data').prepend('<thead><tr><th></th><th>Unit 01</th></tr></thead>')
+        if @$('.data2 thead th:contains(Unit 02)').length == 0
+          $('.data2').prepend('<thead><tr><th></th><th>Unit 02</th></tr></thead>')
     @
 
   # process data and update the view

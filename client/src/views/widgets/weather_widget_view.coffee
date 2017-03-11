@@ -27,6 +27,12 @@ class WeatherWidgetView extends IOPSWidgetView
     if @IsUpdatingSettings || @IsPageLoading
       return null
 
+    console.log @$(".weather_widget").context.clientWidth + '-' + @$(".weather_widget").context.clientHeight
+    if @$(".weather_widget").context.clientWidth > 200 && @$(".weather_widget").context.clientHeight > 240
+      @$("#widgetData #forecast").css('display','block')
+    else
+      @$("#widgetData #forecast").css('display','none')
+
     #@$("##{@el.parentNode.id}").height( @$("##{@el.parentNode.id}").width() )
     if @timer then clearInterval(@timer)
     @timer = setInterval(@refresh_data, @HOUR/6)
@@ -39,7 +45,7 @@ class WeatherWidgetView extends IOPSWidgetView
     if s? && s.site?
       @beat_time = new Date().getTime() + (@HOUR/6)
       @site = OPCManager.get_site(s.site)
-      @ui.wtitle.html("Weather for #{@site.get('code')}")
+      @ui.wtitle.html("#{@site.get('code')}: Weather")
       if site?
         @site.fetch
           success:(data)=>
@@ -84,6 +90,10 @@ class WeatherWidgetView extends IOPSWidgetView
     @$('#cover .val').html("#{cover}<sup>%</sup>")
     @$('#weather').show()
     @$('#loading').hide()
+    if @$(".weather_widget").context.clientWidth > 200 && @$(".weather_widget").context.clientHeight > 240
+      @$("#widgetData #forecast").css('display','block')
+    else
+      @$("#widgetData #forecast").css('display','none')
 
   set_model: ()=>
 

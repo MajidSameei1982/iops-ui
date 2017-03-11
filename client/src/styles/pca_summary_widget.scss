@@ -245,7 +245,9 @@
       &.inet-pdx-40 {
         background-image: url("../img/pca/Inet-PDX-40/Rev-001/InetPDX-40-Base-Unit.png") ;
       }
-
+      &.jbt-airhandler {
+        background-image: url("../img/pca/JBT-Airhandler/Rev-001/JBT-Airhandler-Base-Unit.png") ;
+      }
     }
     div.img {/* default overlays */
       position: absolute;
@@ -510,7 +512,7 @@
           background-image: url("../img/pca/Inet-Model-001/Rev-001/BC-Cool.png");
         }
       }
-     &.inet-pdx-15 {
+      &.inet-pdx-15 {
         &.blower-on {
           background-image: url("../img/pca/Inet-PDX-15/Rev-001/InetPDX-15-Blower.png");
         }
@@ -538,8 +540,8 @@
         &.fan-2-on {
           background-image: url("../img/pca/Inet-PDX-15/Rev-001/InetPDX-15-Fan-2.png");
         }
-     }
-     &.inet-pdx-10 {
+      }
+      &.inet-pdx-10 {
         &.blower-on {
           background-image: url("../img/pca/Inet-PDX-10/Rev-001/InetPDX-10-Blower.png");
         }
@@ -564,7 +566,7 @@
         &.evap-coil-on {
           background-image: url("../img/pca/Inet-PDX-10/Rev-001/InetPDX-10-Evap-Coils.png");
         }
-     } 
+      } 
       &.inet-pdx-25 {
         &.blower-on {
           background-image: url("../img/pca/Inet-PDX-25/Rev-001/InetPDX-25s-Blower.png");
@@ -596,7 +598,7 @@
         &.fans-on {
           background-image: url("../img/pca/Inet-PDX-25/Rev-001/InetPDX-25s-Fans.png");
         }
-     } 
+      } 
       &.inet-pdx-40 {
         &.blower-on {
           background-image: url("../img/pca/Inet-PDX-40/Rev-001/InetPDX-40-Blower.png");
@@ -628,7 +630,24 @@
         &.fans-on {
           background-image: url("../img/pca/Inet-PDX-40/Rev-001/InetPDX-40-Fans.png");
         }
-     } 
+      } 
+      &.jbt-airhandler {
+        &.blower-on {
+          background-image: url("../img/pca/JBT-Airhandler/Rev-001/JBT-Airhandler-Blower-on.png");
+        }
+        &.cooling-stage-1-on {
+          background-image: url("../img/pca/JBT-Airhandler/Rev-001/JBT-Airhandler-Cooling-on.png");
+        }
+        &.heating-stage-1-on {
+          background-image: url("../img/pca/JBT-Airhandler/Rev-001/JBT-Airhandler-Heat-on.png");
+        }
+        &.dirty-filter-on {
+           background-image: url("../img/pca/JBT-Airhandler/Rev-001/JBT-Airhandler-Dirty-filter.png");
+        }
+        &.damper-on {
+           background-image: url("../img/pca/JBT-Airhandler/Rev-001/JBT-Airhandler-Damper-Open.png");
+        }
+      }
     }
     div.val {
 
