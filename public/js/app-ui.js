@@ -36120,7 +36120,7 @@ Marionette = require('marionette');
 IOPSWidgetView = require('./iops_widget_view');
 
 PbbWidgetView = (function(superClass) {
-  var tagConfig, tagData, tags;
+  var tagConfig, tagData;
 
   extend(PbbWidgetView, superClass);
 
@@ -36153,7 +36153,11 @@ PbbWidgetView = (function(superClass) {
     sy: 6
   };
 
-  tags = [];
+  PbbWidgetView.prototype.tags = {
+    pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
+    pbb_has_warnings: 'Warning._HasWarnings',
+    pbb_has_alarms: 'Alarm._HasAlarms'
+  };
 
   tagData = [];
 
@@ -36161,14 +36165,12 @@ PbbWidgetView = (function(superClass) {
 
   PbbWidgetView.prototype.site_refresh = 50000;
 
-  PbbWidgetView.prototype.refId = 0;
-
   PbbWidgetView.prototype.IsUpdatingSettings = false;
 
   PbbWidgetView.prototype.IsPageLoading = true;
 
   PbbWidgetView.prototype.update = function() {
-    var lbl, ref, ref1, s, t, tag, tg;
+    var lbl, ref, ref1, s, t, tag, tags, tg;
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
@@ -36182,6 +36184,7 @@ PbbWidgetView = (function(superClass) {
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": Gate " + s.gate + " - PBB";
       this.ui.wtitle.html(lbl);
+      this.kill_updates(this.site_code);
       tags = [];
       this.tagData = [];
       this.tagConfig = [];
@@ -36196,51 +36199,45 @@ PbbWidgetView = (function(superClass) {
         t = this.tags[tg];
         tags.push("" + this.prefix + t + ".Value");
       }
+      App.opc.add_tags(this.site_code, tags);
+      this.opc = App.opc.connections[this.site_code];
       ref = s.layout;
-      if (this.refId === 0) {
-        this.refId = App.opc.add_tags(this.site_code, tags);
-        App.vent.on("opc:data:" + this.site_code, this.data_update);
-        this.opc = App.opc.connections[this.site_code];
-        this.start_heartbeat();
-      }
+      this.watch_updates(this.site_code);
+      this.start_heartbeat();
       return this.set_descriptions(true);
     }
   };
 
   PbbWidgetView.prototype.data_update = function(data) {
-    var ref1, results, tag;
+    var aq, ref1, tag, wq;
     this.refresh_values();
     this.beat_time = new Date().getTime() + this.site_refresh;
     ref1 = this.tagData;
-    results = [];
     for (tag in ref1) {
       tagData = ref1[tag];
       switch (tagData.DataType.toLowerCase()) {
         case 'boolean':
-          results.push(this.render_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004, tagData.Parameters.Parm005));
+          this.render_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004, tagData.Parameters.Parm005);
           break;
         case 'float':
-          results.push(this.render_value_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm00));
+          this.render_value_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm00);
           break;
         case 'value':
-          results.push(this.render_value_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004));
+          this.render_value_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004);
           break;
         default:
-          results.push(null);
+          null;
       }
     }
-    return results;
+    aq = this.data_q(this.tags.pbb_has_alarms);
+    this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
+    wq = this.data_q(this.tags.pbb_has_warnings);
+    this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings) === true && wq);
+    return this.set_descriptions();
   };
 
   PbbWidgetView.prototype.set_model = function() {
     var s;
-    if (this.refId > 0) {
-      this.kill_updates(this.site_code);
-      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
-        window.clearInterval(this.heartbeat_timer);
-      }
-      this.refId = 0;
-    }
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     this.site_code = OPCManager.get_site_code(s.site);
@@ -36255,7 +36252,9 @@ PbbWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-
+      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+        return window.clearInterval(this.heartbeat_timer);
+      }
     } else {
       this.IsPageLoading = false;
       return this.update();
@@ -36282,6 +36281,7 @@ PbbWidgetView = (function(superClass) {
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
       this.site_refresh = (OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3;
+      this.watch_updates(this.site_code);
     }
     return this.check_init_site();
   };
