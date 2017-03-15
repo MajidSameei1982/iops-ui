@@ -1605,6 +1605,59 @@ window.JST["widgets/advanced_alarm_widget"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
+window.JST["widgets/airport_overview_2d_widget"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-road"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n      </h1>\n    </div>\n    <div id="key">\n      <div class="key_row"><i class="fa fa-fw fa-plane docked"></i> Airplane at Gate</div>\n      <div class="key_row"><div class="legend-autolevel"></div> Auto Level Engaged</div>\n      <div class="key_row"><div class="legend-alarm"></div> Alarm</div>\n      <div class="key_row"><div class="legend-critical"></div> Critical Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-check-circle-o perfect"></i> Perfect Hookup</div>\n      <div class="key_row"><i class="fa fa-fw fa-wrench outofservice"></i> Out of Service</div>\n      <div class="key_row">\n        <span class="key_row fa-stack bad-data">\n          <i class="fa fa-rss fa-stack-1x "></i>\n          <i class="fa fa-exclamation fa-stack-1x"></i> Comm. Error\n        </span>\n      </div>\n\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+    
+      _print(_safe(this.siteSelector({
+        id: 'site',
+        label: 'Site',
+        site: this.settings.site
+      })));
+    
+      _print(_safe('\n  </div>\n\n</div>\n'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
 window.JST["widgets/airport_overview_widget"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
@@ -2831,6 +2884,8 @@ require('./views/widgets/advanced_alarm_widget_view');
 
 require('./views/widgets/airport_overview_widget_view');
 
+require('./views/widgets/airport_overview_2d_widget_view');
+
 require('./views/widgets/alarm_widget_view');
 
 require('./views/widgets/pbb_widget_view');
@@ -3095,7 +3150,7 @@ window.App = (function() {
   return App;
 })();
 
-},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/tagconfig":7,"./common/uiutils":8,"./models/account_collection":12,"./models/claim_collection":14,"./models/role_collection":18,"./models/session":19,"./models/site_collection":21,"./models/user_collection":23,"./opcmanager":26,"./router":27,"./views/app_layout":28,"./views/widgets/advanced_alarm_widget_view":56,"./views/widgets/airport_overview_widget_view":57,"./views/widgets/alarm_widget_view":58,"./views/widgets/asset_widget_view":59,"./views/widgets/config_airport_widget_view":60,"./views/widgets/config_gate_widget_view":61,"./views/widgets/gpu_summary_widget_view":62,"./views/widgets/gpu_widget_view":63,"./views/widgets/kpi_widget_view":65,"./views/widgets/out_of_service_widget_view":66,"./views/widgets/pbb_detail_widget_view":67,"./views/widgets/pbb_level_detail_widget_view":68,"./views/widgets/pbb_pca_gpu_basic_widget_view":69,"./views/widgets/pbb_pca_gpu_status_widget_view":70,"./views/widgets/pbb_system_status_widget_view":71,"./views/widgets/pbb_widget_view":72,"./views/widgets/pca_discharge_widget_view":73,"./views/widgets/pca_summary_widget_view":74,"./views/widgets/pca_widget_view":75,"./views/widgets/report_widget_view":76,"./views/widgets/url_widget_view":77,"./views/widgets/video_widget_view":78,"./views/widgets/weather_widget_view":79}],2:[function(require,module,exports){
+},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/tagconfig":7,"./common/uiutils":8,"./models/account_collection":12,"./models/claim_collection":14,"./models/role_collection":18,"./models/session":19,"./models/site_collection":21,"./models/user_collection":23,"./opcmanager":26,"./router":27,"./views/app_layout":28,"./views/widgets/advanced_alarm_widget_view":56,"./views/widgets/airport_overview_2d_widget_view":57,"./views/widgets/airport_overview_widget_view":58,"./views/widgets/alarm_widget_view":59,"./views/widgets/asset_widget_view":60,"./views/widgets/config_airport_widget_view":61,"./views/widgets/config_gate_widget_view":62,"./views/widgets/gpu_summary_widget_view":63,"./views/widgets/gpu_widget_view":64,"./views/widgets/kpi_widget_view":66,"./views/widgets/out_of_service_widget_view":67,"./views/widgets/pbb_detail_widget_view":68,"./views/widgets/pbb_level_detail_widget_view":69,"./views/widgets/pbb_pca_gpu_basic_widget_view":70,"./views/widgets/pbb_pca_gpu_status_widget_view":71,"./views/widgets/pbb_system_status_widget_view":72,"./views/widgets/pbb_widget_view":73,"./views/widgets/pca_discharge_widget_view":74,"./views/widgets/pca_summary_widget_view":75,"./views/widgets/pca_widget_view":76,"./views/widgets/report_widget_view":77,"./views/widgets/url_widget_view":78,"./views/widgets/video_widget_view":79,"./views/widgets/weather_widget_view":80}],2:[function(require,module,exports){
 var AccountsView, AppController, Dashboard, DashboardCollection, DashboardContentView, DashboardLayout, LoginView, Marionette, PermissionsLayout, ProfileView, ReportsView, Session, User, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -11733,7 +11788,7 @@ TagConfig = (function(superClass) {
                 },
                 gpu_01_ra_out_avg: {
                   Tag: 'GPU01.RAOUTAVG',
-                  Label: 'GPU-2 Average Output - Amps',
+                  Label: 'GPU-1 Average Output - Amps',
                   DataType: 'Float',
                   Parameters: {
                     Parm001: true,
@@ -11750,7 +11805,7 @@ TagConfig = (function(superClass) {
                 },
                 gpu_01_rv_out_avg: {
                   Tag: 'GPU01.RVOUTAVG',
-                  Label: 'GPU-2 Average Output - Volts',
+                  Label: 'GPU-1 Average Output - Volts',
                   DataType: 'Float',
                   Parameters: {
                     Parm001: true,
@@ -12284,26 +12339,8 @@ TagConfig = (function(superClass) {
                   }
                 },
                 gpu_02_has_alarms: {
-                  Tag: 'GPU01.Alarm._HasAlarms',
+                  Tag: 'GPU02.Alarm._HasAlarms',
                   Label: 'Alarms',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'True',
-                    Parm002: 'False',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'Alert',
-                    ParentID: '#widgetData',
-                    Class: 'no_row',
-                    Object: null
-                  }
-                },
-                gpu_02_has_critical_alarms: {
-                  Tag: 'GPU02.Alarm._HasCriticalAlarms',
-                  Label: 'Critical Alarms',
                   DataType: 'Boolean',
                   Parameters: {
                     Parm001: 'True',
@@ -12337,9 +12374,27 @@ TagConfig = (function(superClass) {
                     Object: null
                   }
                 },
+                gpu_02_has_critical_alarms: {
+                  Tag: 'GPU02.Alarm._HasCriticalAlarms',
+                  Label: 'Critical Alarms',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'Alert',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
                 gpu_01_out_of_service: {
                   Tag: 'GPU01._OUT_OF_SERVICE',
-                  Label: 'Out Of Service',
+                  Label: 'GPU-1 Out Of Service',
                   DataType: 'Boolean',
                   Parameters: {
                     Parm001: 'True',
@@ -12357,7 +12412,7 @@ TagConfig = (function(superClass) {
                 },
                 gpu_02_out_of_service: {
                   Tag: 'GPU02._OUT_OF_SERVICE',
-                  Label: 'Out Of Service',
+                  Label: 'GPU-2 Out Of Service',
                   DataType: 'Boolean',
                   Parameters: {
                     Parm001: 'True',
@@ -12375,7 +12430,7 @@ TagConfig = (function(superClass) {
                 },
                 gpu_01_perfect_hookup: {
                   Tag: 'GPU01.Calc_PerfectHookupTime',
-                  Label: 'Perfect Hookup',
+                  Label: 'GPU-1 Perfect Hookup',
                   DataType: 'Boolean',
                   Parameters: {
                     Parm001: 'True',
@@ -12393,7 +12448,7 @@ TagConfig = (function(superClass) {
                 },
                 gpu_02_perfect_hookup: {
                   Tag: 'GPU02.Calc_PerfectHookupTime',
-                  Label: 'Perfect Hookup',
+                  Label: 'GPU-2 Perfect Hookup',
                   DataType: 'Boolean',
                   Parameters: {
                     Parm001: 'True',
@@ -31919,7 +31974,320 @@ window.AdvancedalarmWidgetView = AdvancedalarmWidgetView;
 
 module.exports = AdvancedalarmWidgetView;
 
-},{"./iops_widget_view":64}],57:[function(require,module,exports){
+},{"./iops_widget_view":65}],57:[function(require,module,exports){
+var Airportoverview2dWidgetView, IOPSWidgetView, Marionette,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+IOPSWidgetView = require('./iops_widget_view');
+
+Airportoverview2dWidgetView = (function(superClass) {
+  extend(Airportoverview2dWidgetView, superClass);
+
+  function Airportoverview2dWidgetView() {
+    this.check_heartbeat = bind(this.check_heartbeat, this);
+    this.start_heartbeat = bind(this.start_heartbeat, this);
+    this.set_model = bind(this.set_model, this);
+    this.data_update = bind(this.data_update, this);
+    return Airportoverview2dWidgetView.__super__.constructor.apply(this, arguments);
+  }
+
+  Airportoverview2dWidgetView.prototype.template = "widgets/airport_overview_2d_widget";
+
+  Airportoverview2dWidgetView.prototype.classID = 'airport_overview_2d_widget';
+
+  Airportoverview2dWidgetView.prototype.className = 'widget-outer box box-primary airport_overview_2d_widget';
+
+  Airportoverview2dWidgetView.prototype.ui = {
+    terminal: 'input#terminal',
+    zone: 'input#zone',
+    display_prefix: 'input#display_prefix',
+    gate: 'input#gate',
+    site: 'select#site',
+    wtitle: 'h3.box-title',
+    display: '.display',
+    content: '.content',
+    docked: 'i#docked',
+    alarms: 'i#alarms',
+    warnings: 'i#warnings'
+  };
+
+  Airportoverview2dWidgetView.layout = {
+    sx: 9,
+    sy: 9
+  };
+
+  Airportoverview2dWidgetView.prototype.tags = {};
+
+  Airportoverview2dWidgetView.prototype.site_refresh = 50000;
+
+  Airportoverview2dWidgetView.prototype.refId = 0;
+
+  Airportoverview2dWidgetView.prototype.IsUpdatingSettings = false;
+
+  Airportoverview2dWidgetView.prototype.IsPageLoading = true;
+
+  Airportoverview2dWidgetView.prototype.update = function() {
+    var c, classList, g, gate, i, j, lbl, len, len1, ref, s, t, tags, term, terminals, z, zone;
+    if (this.IsUpdatingSettings || this.IsPageLoading) {
+      return null;
+    }
+    s = this.update_settings({
+      prefix: 'Airport.#{@site_code}.',
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+    });
+    if (this.site_code == null) {
+      return null;
+    }
+    if ((s != null) && !!s.site) {
+      lbl = this.site_code + ": Airport Overview - 2D";
+      this.ui.wtitle.html(lbl);
+      classList = $(this.el).attr('class').split(/\s+/);
+      for (i = 0, len = classList.length; i < len; i++) {
+        c = classList[i];
+        if (c.endsWith('_account')) {
+          $(this.el).removeClass(c);
+        }
+      }
+      $(this.el).addClass(this.site_code + "_account");
+      this.gateData = [];
+      tags = [];
+      terminals = this.site_settings.zones;
+      for (t in terminals) {
+        term = terminals[t];
+        for (z in term) {
+          zone = term[z];
+          for (g in zone) {
+            gate = {
+              Number: "" + g,
+              Terminal: "" + t,
+              Zone: "" + z,
+              Tag_gate_alarm: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".Alarm._HasAlarms",
+              Tag_gate_autolevel: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.AUTOLEVELMODEFLAG",
+              Tag_gate_docked: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.AIRCRAFTDOCKEDCALCULATION",
+              Tag_gate_critical: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".Alarm._HasCriticalAlarms",
+              Tag_gate_perfect_hookup: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".System.Perfect_Hookup",
+              Tag_system_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".System._OUT_OF_SERVICE",
+              Tag_gpu_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".GPU._OUT_OF_SERVICE",
+              Tag_pbb_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB._OUT_OF_SERVICE",
+              Tag_pca_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PCA._OUT_OF_SERVICE",
+              Tag_pbb_quality: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB._QUALITY"
+            };
+            this.gateData.push(gate);
+            tags.push(gate.Tag_gate_alarm + ".Value");
+            tags.push(gate.Tag_gate_autolevel + ".Value");
+            tags.push(gate.Tag_gate_docked + ".Value");
+            tags.push(gate.Tag_gate_critical + ".Value");
+            tags.push(gate.Tag_gate_perfect_hookup + ".Value");
+            tags.push(gate.Tag_system_out_of_service + ".Value");
+            tags.push(gate.Tag_gpu_out_of_service + ".Value");
+            tags.push(gate.Tag_pbb_out_of_service + ".Value");
+            tags.push(gate.Tag_pca_out_of_service + ".Value");
+            tags.push(gate.Tag_pbb_quality + ".Value");
+          }
+        }
+      }
+      this.$("#Airport_Overview").remove();
+      this.$(".display").append("<div id='Airport_Overview' class='" + this.site_code + "_Term_Overview'>\n  <div id='layout_container'>\n    <img id='layout' src='img/airport/" + this.site_code + "-2D/" + this.site_code + "_Term_Overview.png'></img>\n  </div>\n</div>");
+      ref = this.gateData;
+      for (j = 0, len1 = ref.length; j < len1; j++) {
+        g = ref[j];
+        this.$("#layout_container").append("<div id='Airport_Gate_" + g.Number + "_a'><div id='Airport_Gate_" + g.Number + "_icon'></div><div id='Airport_Gate_" + g.Number + "_status'><div id='Airport_Gate_" + g.Number + "_plane'></div>");
+      }
+      App.opc.add_tags(this.site_code, tags);
+      this.opc = App.opc.connections[this.site_code];
+      if (this.refId === 0) {
+        this.refId = App.opc.add_tags(this.site_code, tags);
+        App.vent.on("opc:data:" + this.site_code, this.data_update);
+        this.opc = App.opc.connections[this.site_code];
+        return this.start_heartbeat();
+      }
+    }
+  };
+
+  Airportoverview2dWidgetView.prototype.data_update = function(data) {
+    var alarm, autolevel, badQuality, critical, docked, g, i, len, oosGPU, oosPBB, oosPCA, outOfService, perfectHookup, qa, qal, qbq, qc, qd, qgpuos, qos, qpbbos, qpcaos, qpd, qsysuos, ref, s;
+    s = this.model.get("settings");
+    this.beat_time = new Date().getTime() + this.site_refresh;
+    ref = this.gateData;
+    for (i = 0, len = ref.length; i < len; i++) {
+      g = ref[i];
+      outOfService = null;
+      critical = null;
+      alarm = null;
+      autolevel = null;
+      docked = null;
+      perfectHookup = null;
+      badQuality = null;
+      qbq = this.opc.tags["" + g.Tag_pbb_quality].props.Value.quality;
+      if ((qbq != null) && qbq) {
+        badQuality = this.get_bool(this.opc.get_value(g.Tag_pbb_quality + ".Value"));
+        this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("bad-data", badQuality === false && qbq);
+      } else {
+        this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("bad-data", false);
+        qbq = false;
+      }
+      qsysuos = this.opc.tags["" + g.Tag_system_out_of_service].props.Value.quality;
+      if ((qsysuos != null) && qsysuos) {
+        outOfService = this.get_bool(this.opc.get_value(g.Tag_system_out_of_service + ".Value"));
+        this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("out-of-service", outOfService === true && qsysuos);
+      } else {
+        qsysuos = false;
+      }
+      qgpuos = this.opc.tags["" + g.Tag_gpu_out_of_service].props.Value.quality;
+      qpbbos = this.opc.tags["" + g.Tag_pbb_out_of_service].props.Value.quality;
+      qpcaos = this.opc.tags["" + g.Tag_pca_out_of_service].props.Value.quality;
+      qos = qgpuos || qpbbos || qpcaos;
+      if ((qos != null) && qos) {
+        oosGPU = false;
+        oosPBB = false;
+        oosPCA = false;
+        if ((qgpuos != null) && qgpuos) {
+          oosGPU = this.get_bool(this.opc.get_value(g.Tag_gpu_out_of_service + ".Value"));
+        }
+        if ((qpbbos != null) && qpbbos) {
+          oosPBB = this.get_bool(this.opc.get_value(g.Tag_pbb_out_of_service + ".Value"));
+        }
+        if ((qpcaos != null) && qpcaos) {
+          oosPCA = this.get_bool(this.opc.get_value(g.Tag_pca_out_of_service + ".Value"));
+        }
+        outOfService = oosGPU || oosPBB || oosPCA;
+        this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("out-of-service", outOfService === true && qos);
+      } else {
+        qos = false;
+      }
+      qc = this.opc.tags["" + g.Tag_gate_critical].props.Value.quality;
+      if ((qc != null) && qc) {
+        critical = this.get_bool(this.opc.get_value(g.Tag_gate_critical + ".Value"));
+        this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("critical", critical === true && qc);
+      } else {
+        qc = false;
+      }
+      qa = this.opc.tags["" + g.Tag_gate_alarm].props.Value.quality;
+      if ((qa != null) && qa) {
+        alarm = this.get_bool(this.opc.get_value(g.Tag_gate_alarm + ".Value"));
+        this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("alarm", !critical && alarm === true && qa);
+      } else {
+        qa = false;
+      }
+      qd = this.opc.tags["" + g.Tag_gate_docked].props.Value.quality;
+      if ((qd != null) && qd) {
+        docked = this.get_bool(this.opc.get_value(g.Tag_gate_docked + ".Value"));
+        this.$("#Airport_Gate_" + g.Number + "_a").toggleClass("docked", docked === true && qd);
+      } else {
+        qd = false;
+      }
+      qal = this.opc.tags["" + g.Tag_gate_autolevel].props.Value.quality;
+      if ((qal != null) && qal) {
+        autolevel = this.get_bool(this.opc.get_value(g.Tag_gate_autolevel + ".Value"));
+        this.$("#Airport_Gate_" + g.Number + "_plane").toggleClass("autolevel", autolevel === true && qal);
+      } else {
+        qal = false;
+      }
+      qpd = this.opc.tags["" + g.Tag_gate_perfect_hookup].props.Value.quality;
+      if ((qpd != null) && qpd) {
+        perfectHookup = this.get_bool(this.opc.get_value(g.Tag_gate_perfect_hookup + ".Value"));
+        this.$("#Airport_Gate_" + g.Number + "_status").toggleClass("perfect-hookup", perfectHookup === true && qpd);
+      } else {
+        qpd = false;
+      }
+    }
+    return this;
+  };
+
+  Airportoverview2dWidgetView.prototype.set_model = function() {
+    var s;
+    if (this.refId > 0) {
+      this.kill_updates(this.site_code);
+      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+        window.clearInterval(this.heartbeat_timer);
+      }
+      this.refId = 0;
+    }
+    s = _.clone(this.model.get("settings"));
+    s.site = this.$('#site').val();
+    this.site_code = OPCManager.get_site_code(s.site);
+    return this.model.set("settings", s);
+  };
+
+  Airportoverview2dWidgetView.prototype.toggle_settings = function(e) {
+    Airportoverview2dWidgetView.__super__.toggle_settings.call(this, e);
+    this.ui.display.toggle(!this.settings_visible);
+    this.IsUpdatingSettings = this.settings_visible;
+    if (this.settings_visible) {
+      return this.ui.site.chosen({
+        width: '95%'
+      });
+    } else {
+      this.IsPageLoading = false;
+      return this.update();
+    }
+  };
+
+  Airportoverview2dWidgetView.prototype.onShow = function() {
+    var settings, site;
+    settings = this.model.get('settings');
+    settings || (settings = {});
+    this.draw_selectors(settings.terminal, settings.zone, settings.gate);
+    this.$('#site').on('change', (function(_this) {
+      return function() {
+        return _this.set_model();
+      };
+    })(this));
+    site = settings.site;
+    if ((site == null) || site === '') {
+      this.toggle_settings();
+    } else {
+      this.IsPageLoading = false;
+    }
+    this.site_code = OPCManager.get_site_code(settings.site);
+    if (this.site_code != null) {
+      this.site_refresh = (OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3;
+    }
+    return this.check_init_site();
+  };
+
+  Airportoverview2dWidgetView.prototype.start = function() {
+    return this.update();
+  };
+
+  Airportoverview2dWidgetView.prototype.start_heartbeat = function() {
+    this.beat_time = new Date().getTime() + this.site_refresh;
+    $("#" + this.el.parentNode.id + " .widget-outer").toggleClass("no-heartbeat", false);
+    if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+      window.clearInterval(this.heartbeat_timer);
+    }
+    return this.heartbeat_timer = window.setInterval(((function(_this) {
+      return function() {
+        _this.check_heartbeat(_this.el.parentNode.id);
+      };
+    })(this)), this.site_refresh);
+  };
+
+  Airportoverview2dWidgetView.prototype.check_heartbeat = function(widget_id) {
+    this.curTime = new Date().getTime();
+    return $("#" + widget_id + " .widget-outer").toggleClass("no-heartbeat", this.curTime > this.beat_time);
+  };
+
+  Airportoverview2dWidgetView.prototype.onDestroy = function(arg1, arg2) {
+    if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+      window.clearInterval(this.heartbeat_timer);
+    }
+    return this.kill_updates(this.site_code);
+  };
+
+  return Airportoverview2dWidgetView;
+
+})(IOPSWidgetView);
+
+window.Airportoverview2dWidgetView = Airportoverview2dWidgetView;
+
+module.exports = Airportoverview2dWidgetView;
+
+},{"./iops_widget_view":65}],58:[function(require,module,exports){
 var AirportoverviewWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -32222,7 +32590,7 @@ window.AirportoverviewWidgetView = AirportoverviewWidgetView;
 
 module.exports = AirportoverviewWidgetView;
 
-},{"./iops_widget_view":64}],58:[function(require,module,exports){
+},{"./iops_widget_view":65}],59:[function(require,module,exports){
 var AlarmWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -32575,7 +32943,7 @@ window.AlarmWidgetView = AlarmWidgetView;
 
 module.exports = AlarmWidgetView;
 
-},{"./iops_widget_view":64}],59:[function(require,module,exports){
+},{"./iops_widget_view":65}],60:[function(require,module,exports){
 var AssetWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -32660,7 +33028,7 @@ window.AssetWidgetView = AssetWidgetView;
 
 module.exports = AssetWidgetView;
 
-},{"./iops_widget_view":64}],60:[function(require,module,exports){
+},{"./iops_widget_view":65}],61:[function(require,module,exports){
 var ConfigairportWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -32905,7 +33273,7 @@ window.ConfigairportWidgetView = ConfigairportWidgetView;
 
 module.exports = ConfigairportWidgetView;
 
-},{"./iops_widget_view":64}],61:[function(require,module,exports){
+},{"./iops_widget_view":65}],62:[function(require,module,exports){
 var ConfiggateWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -33120,7 +33488,7 @@ window.ConfiggateWidgetView = ConfiggateWidgetView;
 
 module.exports = ConfiggateWidgetView;
 
-},{"./iops_widget_view":64}],62:[function(require,module,exports){
+},{"./iops_widget_view":65}],63:[function(require,module,exports){
 var GpusummaryWidgetView, IOPSWidgetView, Marionette, UIUtils,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -34031,7 +34399,7 @@ window.GpusummaryWidgetView = GpusummaryWidgetView;
 
 module.exports = GpusummaryWidgetView;
 
-},{"../../common/uiutils":8,"./iops_widget_view":64}],63:[function(require,module,exports){
+},{"../../common/uiutils":8,"./iops_widget_view":65}],64:[function(require,module,exports){
 var GpuWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -34274,7 +34642,7 @@ window.GpuWidgetView = GpuWidgetView;
 
 module.exports = GpuWidgetView;
 
-},{"./iops_widget_view":64}],64:[function(require,module,exports){
+},{"./iops_widget_view":65}],65:[function(require,module,exports){
 var IOPSWidgetView, Marionette, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -34839,7 +35207,7 @@ window.IOPSWidgetView = IOPSWidgetView;
 
 module.exports = IOPSWidgetView;
 
-},{"../dashboard/widget_view":39}],65:[function(require,module,exports){
+},{"../dashboard/widget_view":39}],66:[function(require,module,exports){
 var IOPSWidgetView, KpiWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -35002,7 +35370,7 @@ window.KpiWidgetView = KpiWidgetView;
 
 module.exports = KpiWidgetView;
 
-},{"./iops_widget_view":64}],66:[function(require,module,exports){
+},{"./iops_widget_view":65}],67:[function(require,module,exports){
 var IOPSWidgetView, Marionette, OutofserviceWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -35421,7 +35789,7 @@ window.OutofserviceWidgetView = OutofserviceWidgetView;
 
 module.exports = OutofserviceWidgetView;
 
-},{"./iops_widget_view":64}],67:[function(require,module,exports){
+},{"./iops_widget_view":65}],68:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbdetailWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -35666,7 +36034,7 @@ window.PbbdetailWidgetView = PbbdetailWidgetView;
 
 module.exports = PbbdetailWidgetView;
 
-},{"./iops_widget_view":64}],68:[function(require,module,exports){
+},{"./iops_widget_view":65}],69:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbleveldetailWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -35938,7 +36306,7 @@ window.PbbleveldetailWidgetView = PbbleveldetailWidgetView;
 
 module.exports = PbbleveldetailWidgetView;
 
-},{"./iops_widget_view":64}],69:[function(require,module,exports){
+},{"./iops_widget_view":65}],70:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbpcagpuWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -36155,7 +36523,7 @@ window.PbbpcagpuWidgetView = PbbpcagpuWidgetView;
 
 module.exports = PbbpcagpuWidgetView;
 
-},{"./iops_widget_view":64}],70:[function(require,module,exports){
+},{"./iops_widget_view":65}],71:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbpcagpustatusWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -36559,7 +36927,7 @@ window.PbbpcagpustatusWidgetView = PbbpcagpustatusWidgetView;
 
 module.exports = PbbpcagpustatusWidgetView;
 
-},{"./iops_widget_view":64}],71:[function(require,module,exports){
+},{"./iops_widget_view":65}],72:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbsystemstatusWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -36795,7 +37163,7 @@ window.PbbsystemstatusWidgetView = PbbsystemstatusWidgetView;
 
 module.exports = PbbsystemstatusWidgetView;
 
-},{"./iops_widget_view":64}],72:[function(require,module,exports){
+},{"./iops_widget_view":65}],73:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -37009,7 +37377,7 @@ window.PbbWidgetView = PbbWidgetView;
 
 module.exports = PbbWidgetView;
 
-},{"./iops_widget_view":64}],73:[function(require,module,exports){
+},{"./iops_widget_view":65}],74:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PcadischargeWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -37473,7 +37841,7 @@ window.PcadischargeWidgetView = PcadischargeWidgetView;
 
 module.exports = PcadischargeWidgetView;
 
-},{"./iops_widget_view":64}],74:[function(require,module,exports){
+},{"./iops_widget_view":65}],75:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PcasummaryWidgetView, UIUtils,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -38315,7 +38683,7 @@ window.PcasummaryWidgetView = PcasummaryWidgetView;
 
 module.exports = PcasummaryWidgetView;
 
-},{"../../common/uiutils":8,"./iops_widget_view":64}],75:[function(require,module,exports){
+},{"../../common/uiutils":8,"./iops_widget_view":65}],76:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PcaWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -38541,7 +38909,7 @@ window.PcaWidgetView = PcaWidgetView;
 
 module.exports = PcaWidgetView;
 
-},{"./iops_widget_view":64}],76:[function(require,module,exports){
+},{"./iops_widget_view":65}],77:[function(require,module,exports){
 var IOPSWidgetView, Marionette, ReportWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -38738,7 +39106,7 @@ window.ReportWidgetView = ReportWidgetView;
 
 module.exports = ReportWidgetView;
 
-},{"./iops_widget_view":64}],77:[function(require,module,exports){
+},{"./iops_widget_view":65}],78:[function(require,module,exports){
 var Marionette, UrlWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -38838,7 +39206,7 @@ window.UrlWidgetView = UrlWidgetView;
 
 module.exports = UrlWidgetView;
 
-},{"../dashboard/widget_view":39}],78:[function(require,module,exports){
+},{"../dashboard/widget_view":39}],79:[function(require,module,exports){
 var IOPSWidgetView, Marionette, VideoWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -38995,7 +39363,7 @@ window.VideoWidgetView = VideoWidgetView;
 
 module.exports = VideoWidgetView;
 
-},{"./iops_widget_view":64}],79:[function(require,module,exports){
+},{"./iops_widget_view":65}],80:[function(require,module,exports){
 var IOPSWidgetView, Marionette, WeatherWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -39224,5 +39592,5 @@ window.WeatherWidgetView = WeatherWidgetView;
 
 module.exports = WeatherWidgetView;
 
-},{"./iops_widget_view":64}]},{},[1])
+},{"./iops_widget_view":65}]},{},[1])
 ;

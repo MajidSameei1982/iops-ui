@@ -16,6 +16,11 @@ window.app_config = {
       name: "Airport Overview Widget",
       icon: "road"
     },
+    {
+      id: "airportoverview2d",
+      name: "Airport Overview Widget -2D",
+      icon: "road"
+    },
 /*    {
      id: "advancedalarm",
      name: "Advanced Alarm Widget",
