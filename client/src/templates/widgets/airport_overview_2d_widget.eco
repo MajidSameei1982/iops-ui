@@ -1,0 +1,38 @@
+<div class="box-header with-border">
+  <div class='pull-left'><i class="fa fa-road"></i>&emsp;<h3 class="box-title"></h3></div>
+  <div class="pull-right controls">
+    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> 
+    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>
+  </div>
+</div>
+
+<div class="box-body content" id='content'>
+  
+  <div class="display contain">
+    <div id="display_label">
+      <h1>
+      </h1>
+    </div>
+    <div id="key">
+      <div class="key_row"><i class="fa fa-fw fa-plane docked"></i> Airplane at Gate</div>
+      <div class="key_row"><div class="legend-autolevel"></div> Auto Level Engaged</div>
+      <div class="key_row"><div class="legend-alarm"></div> Alarm</div>
+      <div class="key_row"><div class="legend-critical"></div> Critical Alarm</div>
+      <div class="key_row"><i class="fa fa-fw fa-check-circle-o perfect"></i> Perfect Hookup</div>
+      <div class="key_row"><i class="fa fa-fw fa-wrench outofservice"></i> Out of Service</div>
+      <div class="key_row">
+        <span class="key_row fa-stack bad-data">
+          <i class="fa fa-rss fa-stack-1x "></i>
+          <i class="fa fa-exclamation fa-stack-1x"></i> Comm. Error
+        </span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="settings" style="display: none;">
+    <h3>Settings</h3>
+    <%- @siteSelector({id:'site', label:'Site', site:@settings.site}) %>
+  </div>
+
+</div>
