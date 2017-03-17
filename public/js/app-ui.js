@@ -29103,7 +29103,7 @@ DashboardSideView = (function(superClass) {
   };
 
   DashboardSideView.prototype.show_link = function(e) {
-    var d, dlink, j, len, link, ref;
+    var d, dlink, i, len, link, ref;
     if (e != null) {
       e.preventDefault();
     }
@@ -29113,8 +29113,8 @@ DashboardSideView = (function(superClass) {
       return null;
     }
     ref = this.collection.models;
-    for (j = 0, len = ref.length; j < len; j++) {
-      d = ref[j];
+    for (i = 0, len = ref.length; i < len; i++) {
+      d = ref[i];
       if (dlink.hasClass("d_" + d.id)) {
         $('li', this.ui.dashboard_list).removeClass('active');
         dlink.addClass('active');
@@ -29153,14 +29153,14 @@ DashboardSideView = (function(superClass) {
   };
 
   DashboardSideView.prototype.resolve_dash = function(e, pre) {
-    var d, j, len, link, ref;
+    var d, i, len, link, ref;
     if (e != null) {
       e.preventDefault();
     }
     link = $(e.target).closest('a');
     ref = this.collection.models;
-    for (j = 0, len = ref.length; j < len; j++) {
-      d = ref[j];
+    for (i = 0, len = ref.length; i < len; i++) {
+      d = ref[i];
       if (link.hasClass(pre + "_" + d.id)) {
         return d;
       }
@@ -29242,24 +29242,12 @@ DashboardSideView = (function(superClass) {
   };
 
   DashboardSideView.prototype.build_list = function() {
-    var d, did, didx, dl, hh, i, j, len, ref, results;
+    var d, dl, hh, i, idx, len, ref, results;
     $('li.dashboard-link', this.ui.dashboard_list).remove();
-    ref = App.session.attributes.dashboards;
+    ref = this.collection.models;
     results = [];
-    for (didx = j = 0, len = ref.length; j < len; didx = ++j) {
-      did = ref[didx];
-      d = ((function() {
-        var k, len1, ref1, results1;
-        ref1 = this.collection.models;
-        results1 = [];
-        for (k = 0, len1 = ref1.length; k < len1; k++) {
-          i = ref1[k];
-          if (i.id === ("" + did)) {
-            results1.push(i);
-          }
-        }
-        return results1;
-      }).call(this))[0];
+    for (idx = i = 0, len = ref.length; i < len; idx = ++i) {
+      d = ref[idx];
       hh = "<li class='dashboard-link d_" + d.id + "' title='" + (d.get('name')) + "'>\n  <a href='#' class='dash_link'><i class='fa fa-th-large'></i> <span>" + (d.get('name')) + "</span></a>\n  <div class='controls'>\n    <a href='#' class='moveup moveup_" + d.id + "'><i class='fa fa-caret-up'></i></a>\n    <a href='#' class='movedn movedn_" + d.id + "'><i class='fa fa-caret-down'></i></a>\n    <a href='#' class='edit edit_" + d.id + "'><i class='fa fa-pencil-square'></i></a>\n    <a href='#' class='delete delete_" + d.id + "'><i class='fa fa-times-circle'></i></a>\n  </div>\n</li>";
       dl = $(hh);
       results.push(this.$('#dashboard-list').append(dl));
