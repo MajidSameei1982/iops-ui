@@ -634,10 +634,11 @@ class TagConfig extends Object
 			pca_widget: # PCA Widget
 				remove_tags:{'pca_cabin_temp','pca_ambient_temp','pca_heater_1','pca_heater_2','pca_bridge_damper','pca_bridge_air'}
 			out_of_service_widget: # Out Of Service Widget
-				remove_tags:{'pbb_out_of_service','pbb_quality','gpu_out_of_service','gpu_quality'}
+				remove_tags:{'pbb_out_of_service','pbb_quality'}
 				update_tags:{
 					pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
-			}
+					gpu_out_of_service:{Tag:'GPU._OUT_OF_SERVICE',Label:'[*]GPU',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+				}
 			pbb_detail_widget: # PBB Overview Widget
 				remove_all: {}
 			pbb_level_detail_widget:
