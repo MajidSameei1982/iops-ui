@@ -537,9 +537,9 @@ class TagConfig extends Object
 					'gpu_on_1','gpu_on_2'}
 			Graphics:{}
 		out_of_service_widget: # Out Of Service Widget
-			Tags:{'pbb_quality','pbb_out_of_service',
-					'pca_quality','pca_out_of_service',
-					'gpu_quality','gpu_out_of_service'}
+			Tags:{'gpu_quality','gpu_out_of_service',
+					'pbb_quality','pbb_out_of_service',
+					'pca_quality','pca_out_of_service'}
 			Graphics:{}
 		pbb_detail_widget: # PBB Overview Widget
 			Tags:{'pbb_quality','pbb_out_of_service','pbb_has_warnings','pbb_has_alarms','pbb_has_critical_alarms',
@@ -557,15 +557,21 @@ class TagConfig extends Object
 					'pbb_swing_angle_disp','pbb_height_to_disp','pbb_wheel_angle_deg','pbb_tunnel_length'}
 			Graphics:{}
 		pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
-			Tags:{'pbb_quality','pbb_out_of_service','pbb_has_warnings','pbb_has_alarms','pbb_has_critical_alarms','pbb_status','pbb_hookup_time','pbb_dock_time',
-					'pca_quality','pca_out_of_service','pca_has_warnings','pca_has_alarms','pca_has_critical_alarms','pca_status','pca_hookup_time','pca_time','pca_discharge_temp',
-					'gpu_quality','gpu_out_of_service','gpu_has_warnings','gpu_has_alarms','gpu_has_critical_alarms','gpu_status','gpu_ra_out_avg','gpu_rv_out_avg','gpu_hookup_time','gpu_time'}
+			Tags:{'gpu_quality','gpu_out_of_service','gpu_has_warnings','gpu_has_alarms','gpu_has_critical_alarms',
+						'gpu_status','gpu_ra_out_avg','gpu_rv_out_avg','gpu_hookup_time','gpu_time',
+					'pbb_quality','pbb_out_of_service','pbb_has_warnings','pbb_has_alarms','pbb_has_critical_alarms',
+						'pbb_status','pbb_hookup_time','pbb_dock_time',
+					'pca_quality','pca_out_of_service','pca_has_warnings','pca_has_alarms','pca_has_critical_alarms',
+						'pca_status','pca_hookup_time','pca_time','pca_discharge_temp'}
 			Graphics:{}
 		pbb_pca_gpu_status_widget: # PBB/PCA/GPU System Status Widget
 			Tags:{'system_quality','system_out_of_service','system_perfect_hookup','gate_has_warnings','gate_has_alarms','gate_has_critical_alarms',
-			      	'pbb_quality','pbb_out_of_service','pbb_perfect_hookup','pbb_has_warnings','pbb_has_alarms','pbb_has_critical_alarms','pbb_docked','pbb_status',
-			      	'pca_quality','pca_out_of_service','pca_perfect_hookup','pca_has_warnings','pca_has_alarms','pca_has_critical_alarms','pca_mode_cooling','pca_mode_heating','pca_status','pca_discharge_temp',
-					'gpu_quality','gpu_out_of_service','gpu_perfect_hookup','gpu_has_warnings','gpu_has_alarms','gpu_has_critical_alarms','gpu_status'}
+					'gpu_quality','gpu_out_of_service','gpu_perfect_hookup','gpu_has_warnings','gpu_has_alarms','gpu_has_critical_alarms',
+						'gpu_status',
+			      	'pbb_quality','pbb_out_of_service','pbb_perfect_hookup','pbb_has_warnings','pbb_has_alarms','pbb_has_critical_alarms',
+			      		'pbb_docked','pbb_status',
+			      	'pca_quality','pca_out_of_service','pca_perfect_hookup','pca_has_warnings','pca_has_alarms','pca_has_critical_alarms',
+			      		'pca_mode_cooling','pca_mode_heating','pca_status','pca_discharge_temp'}
 			Graphics:{}
 		pbb_system_status_widget: # PBB System Status Widget
 			Tags:{'pbb_quality','pbb_out_of_service','pbb_has_warnings','pbb_has_alarms','pbb_has_critical_alarms',
@@ -585,7 +591,7 @@ class TagConfig extends Object
 					'pca_ambient_humidity','pca_ambient_temp','pca_discharge_temp','pca_status','pca_time','pca_blower',
 					'pca_heater_1','pca_heater_2','pca_comp_stage_1','pca_comp_stage_2','pca_bridge_damper','pca_bridge_air',
 					'pca_pump_cond','pca_coil_dp','pca_vfd_speed','pca_suction_pressure_1','pca_suction_pressure_2',
-					'pca_hot_gas_1','pca_hot_gas_2'}
+					'pca_hot_gas_1','pca_hot_gas_2'},
 			Graphics:{}
 		pca_widget: # PCA Widget
 			Tags:{'pca_quality','pca_out_of_service','pca_has_warnings','pca_has_alarms','pca_has_critical_alarms',
@@ -612,6 +618,43 @@ class TagConfig extends Object
 	*** Client Tag and Graphics
 	**************************************************###
 	@clients:
+		SNA:
+			pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
+				remove_tags:{'pbb_quality','pbb_out_of_service','pbb_has_warnings','pbb_has_alarms','pbb_has_critical_alarms',
+						'pbb_status','pbb_hookup_time','pbb_dock_time'}
+			pbb_pca_gpu_status_widget: # PBB/PCA/GPU System Status Widget
+				remove_tags:{'pbb_quality','pbb_out_of_service','pbb_perfect_hookup','pbb_has_warnings','pbb_has_alarms','pbb_has_critical_alarms',
+			      		'pbb_docked','pbb_status'}
+			pbb_system_status_widget:
+				remove_all: {}
+			pbb_widget:
+				remove_all: {}
+			pca_summary_widget:
+				remove_all: {}
+			pca_widget: # PCA Widget
+				remove_tags:{'pca_cabin_temp','pca_ambient_temp','pca_heater_1','pca_heater_2','pca_bridge_damper','pca_bridge_air'}
+			out_of_service_widget: # Out Of Service Widget
+				remove_tags:{'pbb_out_of_service','pbb_quality','gpu_out_of_service','gpu_quality'}
+				update_tags:{
+					pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+			}
+			pbb_detail_widget: # PBB Overview Widget
+				remove_all: {}
+			pbb_level_detail_widget:
+				remove_all: {}
+			gpu_widget: # GPU Widget
+				remove_tags:{'gpu_by_pass','gpu_pm_output_phasea_i','gpu_pm_output_phaseb_i','gpu_pm_output_phasec_i','gpu_pm_output_phasea_v','gpu_pm_output_phaseb_v','gpu_pm_output_phasec_v','gpu_pm_input_phasea_i','gpu_pm_input_phaseb_i','gpu_pm_input_phasec_i','gpu_pm_input_phasea_v','gpu_pm_input_phaseb_v','gpu_pm_input_phasec_v'}
+				add_tags:{
+					gpu_pm_output_phasea_i:{Tag:'GPU.RAOUTA',Label:'Amps Out Phase A',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Amps',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					gpu_pm_output_phaseb_i:{Tag:'GPU.RAOUTB',Label:'Amps Out Phase B',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Amps',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					gpu_pm_output_phasec_i:{Tag:'GPU.RAOUTC',Label:'Amps Out Phase C',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Amps',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					gpu_pm_output_phasea_v:{Tag:'GPU.RVOUTA',Label:'Volts Out Phase A',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					gpu_pm_output_phaseb_v:{Tag:'GPU.RVOUTB',Label:'Volts Out Phase B',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					gpu_pm_output_phasec_v:{Tag:'GPU.RVOUTC',Label:'Volts Out Phase C',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					gpu_pm_input_phasea_v:{Tag:'GPU.RVINA',Label:'Volts In Phase A',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					gpu_pm_input_phaseb_v:{Tag:'GPU.RVINB',Label:'Volts In Phase B',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					gpu_pm_input_phasec_v:{Tag:'GPU.RVINC',Label:'Volts In Phase C',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+				}		
 		ATL:
 			#configairport_widget: # Airport Config Widget
 			#configgate_widget: # Gate Config Widget
@@ -648,12 +691,7 @@ class TagConfig extends Object
 				}
 			pbb_level_detail_widget: # PBB Bridge Widget
 				remove_tags:{'pbb_terminal_door'}
-			pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
-				update_tags:{
-					pbb_out_of_service:{Tag:'PBB._OUT_OF_SERVICE',Label:'[*]PBB Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-					pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'[*]PCA Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-					gpu_out_of_service:{Tag:'GPU._OUT_OF_SERVICE',Label:'[*]GPU Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-				}
+			#pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
 			pbb_pca_gpu_status_widget: # PBB/PCA/GPU Widget
 				update_tags:{
 					system_perfect_hookup:{Tag:'System.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
@@ -688,25 +726,19 @@ class TagConfig extends Object
 			#pbb_widget: # PBB Widget
 			#pca_discharge_widget: # PCA Discharge Widget
 			pca_summary_widget: # PCA Summary Widget
-				remove_tags:{'pca_ambient_humidity','pca_comp_stage_1','pca_comp_stage_2','pca_bridge_damper','pca_bridge_air','pca_pump_cond'
-					,'pca_suction_pressure_1','pca_suction_pressure_2','pca_hot_gas_1','pca_hot_gas_2'},
-				add_tags: {
-					pca_egw_inlet_temp:{Tag:'PCA.EGW_INLET_TEMP',Label:'EGW Valve Inlet Temp',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'2',Parm003:'#{1} F',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-					pca_egw_outlet_temp:{Tag:'PCA.EGW_OUTLET_TEMP',Label:'EGW Valve Outlet Temp',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'2',Parm003:'#{1} F',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-					pca_egw_interstage_temp:{Tag:'PCA.EGW_INTERSTAGE_TEMP',Label:'EGW Valve Interstage Temp',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'2',Parm003:'#{1} F',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-					pca_flow_meter_square:{Tag:'PCA.FLOW_METER_SQUARE',Label:'CHW Flow',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-					pca_strip_heat_on:{Tag:'PCA.STRIP_HEAT_ON',Label:'Strip Heat On',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-					pca_air_filter_dp:{Tag:'PCA.AIR_FILTER_DP',Label:'Air Filter DP',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-					pca_dirty_filter_img:{Tag:'PCA.Alarm.DIRTY_FILTER',Label:'Dirty Filter',DataType:'Boolean',Parameters:{Parm001:'Yes',Parm002:'No',Parm003:'err',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-					pca_cooling_img:{Tag:'PCA.COOLINGTIMERCALC_BOOLEAN',Label:'Cooling Time',DataType:'Boolean',Parameters:{Parm001:'Yes',Parm002:'No',Parm003:'err',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-				}
 				update_graphics:{
 					pca_main_background:{ControlTags:{none:null},Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null},Element:{Type:'div',ParentID:'#graphics_container',Class:'background jbt-airhandler',Object:null}},
 					blower_img:{ControlTags:{pca_blower:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'blower-on',Parm003:null,Parm004:'blower-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jbt-airhandler',Object:null}},
-					heating_stage_1_img:{ControlTags:{pca_heater_1:'Boolean',pca_heater_2:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'heating-stage-1-on',Parm003:null,Parm004:'heating-stage-1-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jbt-airhandler',Object:null}},
-					cooling_stage_1_img:{ControlTags:{pca_cooling_img:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'cooling-stage-1-on',Parm003:null,Parm004:'cooling-stage-1-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jbt-airhandler',Object:null}},
+					heating_stage_1_img:{ControlTags:{pca_heater_1:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'heating-stage-1-on',Parm003:null,Parm004:'heating-stage-1-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jbt-airhandler',Object:null}},
+					cooling_stage_1_img:{ControlTags:{pca_comp_stage_1:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'cooling-stage-1-on',Parm003:null,Parm004:'cooling-stage-1-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jbt-airhandler',Object:null}},
+					cooling_stage_2_img:{ControlTags:{pca_comp_stage_2:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'cooling-stage-2-on',Parm003:null,Parm004:'cooling-stage-2-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jbt-airhandler',Object:null}},
+					accool_img:{ControlTags:{pca_bridge_damper:'Boolean',pca_status:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'ac-cool-on',Parm003:null,Parm004:'ac-cool-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jbt-airhandler',Object:null}},
+					bccool_img:{ControlTags:{pca_bridge_air:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'bc-cool-on',Parm003:null,Parm004:'bc-cool-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jbt-airhandler',Object:null}},
 				}
-				remove_graphics:{'heating_stage_2_img','cooling_stage_2_img','accool_img','bccool_img'}
+				add_tags: {
+					pca_dirty_filter_img:{Tag:'PCA.Alarm.DIRTY_FILTER',Label:'Dirty Filter',DataType:'Boolean',Parameters:{Parm001:'Yes',Parm002:'No',Parm003:'err',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+					pca_cooling_img:{Tag:'PCA.COOLINGTIMERCALC_BOOLEAN',Label:'Cooling Time',DataType:'Boolean',Parameters:{Parm001:'Yes',Parm002:'No',Parm003:'err',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+				}
 				add_graphics:{
 					dirty_filter_img:{ControlTags:{pca_dirty_filter_img:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'dirty-filter-on',Parm003:null,Parm004:'dirty-filter-on-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jbt-airhandler',Object:null}},
 					damper_img:{ControlTags:{pca_status:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'damper-on',Parm003:null,Parm004:'damper-on-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jbt-airhandler',Object:null}},
@@ -722,6 +754,7 @@ class TagConfig extends Object
 					pca_strip_heat_on:{Tag:'PCA.STRIP_HEAT_ON',Label:'Strip Heat On',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					pca_air_filter_dp:{Tag:'PCA.AIR_FILTER_DP',Label:'Air Filter DP',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 				}
+				
 				
 		CID:
 			#configairport_widget: # Airport Config Widget
@@ -791,14 +824,9 @@ class TagConfig extends Object
 							pbb_autolevel_key:{Tag:'PBB.AUTOLEVELKEY',Label:'Auto Level Key',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 						}
 			pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
-				update_tags:{
-					pbb_out_of_service:{Tag:'PBB._OUT_OF_SERVICE',Label:'[*]PBB Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-					pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'[*]PCA Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-					gpu_out_of_service:{Tag:'GPU._OUT_OF_SERVICE',Label:'[*]GPU Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-				}
 				1:
 					1:C3:
-						remove_tags:{'pca_out_of_service','pca_discharge_temp','gpu_out_of_service','gpu_ra_out_avg','gpu_rv_out_avg'}
+						remove_tags:{'pca_discharge_temp','gpu_ra_out_avg','gpu_rv_out_avg'}
 			pbb_pca_gpu_status_widget: # PBB/PCA/GPU Widget
 				update_tags:{
 					system_perfect_hookup:{Tag:'System.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
@@ -916,12 +944,7 @@ class TagConfig extends Object
 					pbb_canopy:{Tag:'PBB.CANOPYDOWN',Label:'Canopy',DataType:'Boolean',Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:'Canopy : #{1}'},Element:{Type:'div',ParentID:'#pbb_canopy_container',Class:'val transparent',Object:null}},
 				}
 			#pbb_level_detail_widget: # PBB Bridge Widget
-			pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
-				update_tags:{
-					pbb_out_of_service:{Tag:'PBB._OUT_OF_SERVICE',Label:'[*]PBB Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-					pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'[*]PCA Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-					gpu_out_of_service:{Tag:'GPU._OUT_OF_SERVICE',Label:'[*]GPU Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-				}
+			#pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
 			pbb_pca_gpu_status_widget: # PBB/PCA/GPU Widget
 				update_tags:{
 					system_perfect_hookup:{Tag:'System.PERFECT_HOOKUP',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
@@ -1018,10 +1041,7 @@ class TagConfig extends Object
 							    ,'pbb_height_to_disp','pbb_wheel_angle_deg','pbb_tunnel_length'}
 			pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
 				update_tags:{
-					pbb_out_of_service:{Tag:'PBB._OUT_OF_SERVICE',Label:'[*]PBB Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-					pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'[*]PCA Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					pca_time:{Tag:'PCA.PCATime',Label:'[*]PCA Run Time',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-					gpu_out_of_service:{Tag:'GPU._OUT_OF_SERVICE',Label:'[*]GPU Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 					gpu_time:{Tag:'GPU01.GPUTime',Label:'[*]GPU-1 Run Time',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					gpu_ra_out_avg:{Tag:'GPU01.RAOUTAVG',Label:'GPU-1 Avg Output - Amps',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Amps',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					gpu_rv_out_avg:{Tag:'GPU01.RVOUTAVG',Label:'GPU-1 Avg Output - Volts',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
@@ -1029,16 +1049,9 @@ class TagConfig extends Object
 				}
 				C:
 					1:C90:
-						remove_tags:{'gpu_out_of_service','gpu_status','gpu_time','gpu_ra_out_avg','gpu_rv_out_avg'} 
+						remove_tags:{'gpu_status','gpu_time','gpu_ra_out_avg','gpu_rv_out_avg'} 
 					3:C125:
-						remove_tags:{'gpu_has_alarms','gpu_has_critical_alarms','gpu_has_warnings','gpu_perfect_hookup','gpu_out_of_service','gpu_quality','gpu_status'}
 						add_tags:{
-							gpu_01_out_of_service:{Tag:'GPU01._OUT_OF_SERVICE',Label:'Out Of Service',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-							gpu_01_status:{Tag:'GPU01.GPUSTATUSBOOLEAN',Label:'GPU Status',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-							gpu_01_time:{Tag:'GPU01.GPUTime',Label:'GPU-2 Run Time',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-							gpu_01_ra_out_avg:{Tag:'GPU01.RAOUTAVG',Label:'GPU-2 Average Output - Amps',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Amps',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-							gpu_01_rv_out_avg:{Tag:'GPU01.RVOUTAVG',Label:'GPU-2 Average Output - Volts',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Volts',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-							gpu_02_out_of_service:{Tag:'GPU02._OUT_OF_SERVICE',Label:'Out Of Service',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							gpu_02_status:{Tag:'GPU02.GPUSTATUSBOOLEAN',Label:'GPU Status',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							gpu_02_time:{Tag:'GPU02.GPUTime',Label:'GPU-2 Run Time',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							gpu_02_ra_out_avg:{Tag:'GPU02.RAOUTAVG',Label:'GPU-2 Average Output - Amps',DataType:'Float',Parameters:{Parm001:true,Parm002:1,Parm003:'Amps',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
@@ -1261,10 +1274,7 @@ class TagConfig extends Object
 						A30:	
 				 			remove_tags:{'pbb_canopy','pbb_autolevel_key','pbb_smoke_detector','pbb_cabin_floor_deicer','pbb_floodlight'}
 			pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
-				remove_tags:{'pca_out_of_service','pca_status','gpu_status','pca_time','pca_hookup_time','pca_discharge_temp','gpu_out_of_service','gpu_time','gpu_ra_out_avg','gpu_rv_out_avg'}	
-				update_tags:{
-					pbb_out_of_service:{Tag:'PBB._OUT_OF_SERVICE',Label:'[*]PBB Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-				}
+				remove_tags:{'pca_status','gpu_status','pca_time','pca_hookup_time','pca_discharge_temp','gpu_time','gpu_ra_out_avg','gpu_rv_out_avg'}	
 			pbb_pca_gpu_status_widget: # PBB/PCA/GPU Widget
 				remove_tags:{'pca_has_alarms','pca_has_critical_alarms','pca_has_warnings','pca_perfect_hookup','pca_out_of_service','pca_quality','pca_status','pca_discharge_temp','pca_mode_cooling','pca_mode_heating'
 							'gpu_has_alarms','gpu_has_critical_alarms','gpu_has_warnings','gpu_perfect_hookup','gpu_out_of_service','gpu_quality','gpu_status'}
@@ -1362,28 +1372,21 @@ class TagConfig extends Object
 					B2:
 					    remove_tags:{'pbb_terminal_door'}			
 			pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
-				remove_tags:{'pca_out_of_service','pca_status','pca_time','pca_discharge_temp','pca_hookup_time'}
-				update_tags:{
-					pbb_out_of_service:{Tag:'PBB._OUT_OF_SERVICE',Label:'[*]PBB Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-					gpu_out_of_service:{Tag:'GPU._OUT_OF_SERVICE',Label:'[*]GPU Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-				}
+				remove_tags:{'pca_status','pca_time','pca_discharge_temp','pca_hookup_time'}
 				4:
 					B1:B29L2:
 						add_tags:{
-							elvrot_out_of_service:{Tag:'ELVROT._OUT_OF_SERVICE',Label:'[*]ELVROT Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 							elvrot_rotunda_status:{Tag:'ELVROT.ROTUNDA_STATUS',Label:'Elevating Rotunda Status',DataType:'Value',Parameters:{Parm001:false,Parm002:null,Parm003:'#{1}',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 						}
 					B2:	
-						add_tags:{
-							pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'[*]PCA Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+						update_tags:{
 							pca_status:{Tag:'PCA.PCASTATUS',Label:'PCA status',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'[*]PCA Discharge Temp',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							pca_time:{Tag:'PCA.PCATime',Label:'[*]PCA Run Time',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							pca_hookup_time:Tag:'PCA.HOOKUPTIME',Label:'[*]PCA Hookup Time',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}
 						}
 					B3:	
-						add_tags:{
-							pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'[*]PCA Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
+						update_tags:{
 							pca_status:{Tag:'PCA.PCASTATUS',Label:'PCA status',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'[*]PCA Discharge Temp',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							pca_time:{Tag:'PCA.PCATime',Label:'[*]PCA Run Time',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
@@ -1694,7 +1697,7 @@ class TagConfig extends Object
 			#pbb_detail_widget: #PBB Detail Widget
 			#pbb_level_detail_widget: # PBB Bridge Widget
 			pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
-				remove_tags:{'pca_out_of_service','pbb_out_of_service','pbb_status','pbb_hookup_time','pbb_dock_time','gpu_out_of_service','gpu_status','gpu_hookup_time','gpu_time','gpu_ra_out_avg','gpu_rv_out_avg'}	
+				remove_tags:{'pbb_status','gpu_status','pbb_hookup_time','gpu_hookup_time','pbb_dock_time','gpu_time','gpu_ra_out_avg','gpu_rv_out_avg'}	
 			pbb_pca_gpu_status_widget: # PBB/PCA/GPU Widget
 				remove_tags:{'pbb_has_alarms','pbb_has_critical_alarms','pbb_has_warnings','pbb_perfect_hookup','pbb_out_of_service','pbb_quality','pbb_status','pbb_docked','pca_mode_cooling','pca_mode_heating',
 							'gpu_has_alarms','gpu_has_critical_alarms','gpu_has_warnings','gpu_perfect_hookup','gpu_out_of_service','gpu_quality','gpu_status'}
@@ -1892,7 +1895,6 @@ class TagConfig extends Object
 				}
 			pbb_detail_widget: #PBB Detail Widget
 				update_tags:{
-					pbb_out_of_service:{Tag:'PBB._OUT_OF_SERVICE',Label:'[*]PBB Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'PBB Status',DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'div',ParentID:'#pbb_status_container',Class:'val transparent',Object:null}},
 					pbb_undock_time:{Tag:'PBB.UNDOCKTIME',Label:null,DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'div',ParentID:'#pbb_undockordocktime_container',Class:'pbb_undockordocktime val transparent',Object:null}},
 					pbb_dock_time:{Tag:'PBB.DOCKTIME',Label:'Aircraft Docked Time (Minutes)',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:null,ParentID:null,Class:'pbb_undockordocktime val transparent',Object:null}},
@@ -1901,11 +1903,6 @@ class TagConfig extends Object
 				}
 			#pbb_level_detail_widget: # PBB Bridge Widget
 			pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
-				update_tags:{
-					pbb_out_of_service:{Tag:'PBB._OUT_OF_SERVICE',Label:'[*]PBB Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-					pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'[*]PCA Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-					gpu_out_of_service:{Tag:'GPU._OUT_OF_SERVICE',Label:'[*]GPU Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
-				}
 				2:
 					D:
 						D17:
