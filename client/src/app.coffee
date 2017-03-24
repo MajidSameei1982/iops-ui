@@ -179,6 +179,7 @@ window.App = do()->
       App.check_loaded()
       Session.restore()
       return
+    debugger
     App.dashboards = new DashboardCollection({userId:App.session.id})
     App.dashboards.fetch
       success: (data, status, xhr)=>

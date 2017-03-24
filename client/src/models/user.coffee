@@ -62,7 +62,7 @@ class User extends BaseModel
     @set_properties()
     @on "change:claims", @set_properties 
     @on "change:roles", @set_properties 
-    @on "change:dashboards", @set_properties 
+    #@on "change:dashboards", @set_properties 
     @
 
   has_role: (roleid)->

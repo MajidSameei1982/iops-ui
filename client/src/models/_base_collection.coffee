@@ -14,16 +14,20 @@ class BaseCollection extends Backbone.Collection
   	@
 
   moveup: (model)->
+    debugger
     index = @indexOf(model)
     if (index > 0) 
       @remove model, {silent: true}
       @add model, {at: index-1}
+      model.save()
 
   movedn: (model)->
+    debugger
     index = @indexOf(model)
     if (index < @models.length)
-      @remove(model, {silent: true})
-      @add(model, {at: index+1})
+      @remove model, {silent: true}
+      @add model, {at: index+1}
+      model.save()
       
 # ----------------------------------
 

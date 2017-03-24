@@ -644,7 +644,7 @@ class TagConfig extends Object
 					pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 					gpu_out_of_service:{Tag:'GPU._OUT_OF_SERVICE',Label:'[*]GPU',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 				}
-			pbb_detail_widget: #PBB Detail Widget
+			pbb_detail_widget: # PBB Overview Widget
 				update_tags:{
 					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'PBB Status',DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'div',ParentID:'#pbb_status_container',Class:'val transparent',Object:null}},
 					pbb_undock_time:{Tag:'PBB.UNDOCKTIME',Label:null,DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'div',ParentID:'#pbb_undockordocktime_container',Class:'pbb_undockordocktime val transparent',Object:null}},
@@ -770,7 +770,7 @@ class TagConfig extends Object
 					pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 					gpu_out_of_service:{Tag:'GPU._OUT_OF_SERVICE',Label:'[*]GPU',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 				}
-			pbb_detail_widget: #PBB Detail Widget
+			pbb_detail_widget: # PBB Overview Widget
 				update_tags:{
 					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'PBB Status',DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'div',ParentID:'#pbb_status_container',Class:'val transparent',Object:null}},
 					pbb_undock_time:{Tag:'PBB.UNDOCKTIME',Label:null,DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'div',ParentID:'#pbb_undockordocktime_container',Class:'pbb_undockordocktime val transparent',Object:null}},
@@ -778,7 +778,7 @@ class TagConfig extends Object
 					pbb_autolevel_mode:{Tag:'PBB.AUTOLEVELMODEFLAG',Label:'PBB Mode',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:'Auto-Level : #{1}'},Element:{Type:'div',ParentID:'#pbb_autolevel_container',Class:'val transparent',Object:null}},
 					pbb_canopy:{Tag:'PBB.CANOPYDOWN',Label:'Canopy',DataType:'Boolean',Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:'Canopy : #{1}'},Element:{Type:'div',ParentID:'#pbb_canopy_container',Class:'val transparent',Object:null}},
 				}
-			pbb_level_detail_widget: # PBB Overview Widget
+			pbb_level_detail_widget: # PBB Bridge Widget
 				remove_tags:{'pbb_terminal_door','pbb_autolevel_key'}
 				1:
 					1:C3:
@@ -898,7 +898,7 @@ class TagConfig extends Object
 					pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 					gpu_out_of_service:{Tag:'GPU._OUT_OF_SERVICE',Label:'[*]GPU',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 				}
-			pbb_detail_widget: #PBB Detail Widget
+			pbb_detail_widget: # PBB Overview Widget
 				update_tags:{
 					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'PBB Status',DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'div',ParentID:'#pbb_status_container',Class:'val transparent',Object:null}},
 					pbb_undock_time:{Tag:'PBB.UNDOCKTIME',Label:null,DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'div',ParentID:'#pbb_undockordocktime_container',Class:'pbb_undockordocktime val transparent',Object:null}},
@@ -989,7 +989,7 @@ class TagConfig extends Object
 							gpu_01_quality:Tag:{'GPU01._QUALITY',Label:'Comm Errors',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}},
 							gpu_02_quality:Tag:{'GPU02._QUALITY',Label:'Comm Errors',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}},
 						}
-			pbb_detail_widget: #PBB Detail Widget
+			pbb_detail_widget: # PBB Overview Widget
 				update_tags:{
 					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'PBB Status',DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'div',ParentID:'#pbb_status_container',Class:'val transparent',Object:null}},
 					pbb_undock_time:{Tag:'PBB.UNDOCKTIME',Label:null,DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'div',ParentID:'#pbb_undockordocktime_container',Class:'pbb_undockordocktime val transparent',Object:null}},
@@ -997,7 +997,7 @@ class TagConfig extends Object
 					pbb_autolevel_mode:{Tag:'PBB.AUTOLEVELMODEFLAG',Label:'PBB Mode',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:'Auto-Level : #{1}'},Element:{Type:'div',ParentID:'#pbb_autolevel_container',Class:'val transparent',Object:null}},
 					pbb_canopy:{Tag:'PBB.CANOPYDOWN',Label:'Canopy',DataType:'Boolean',Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:'Canopy : #{1}'},Element:{Type:'div',ParentID:'#pbb_canopy_container',Class:'val transparent',Object:null}},
 				}
-			pbb_level_detail_widget: # PBB Overview Widget
+			pbb_level_detail_widget: # PBB Bridge Widget
 				C:
 					3:C125:
 						remove_tags:{'pbb_smoke_detector','pbb_cabin_floor_deicer','pbb_terminal_door','pbb_cab_angle_disp','pbb_slope_deg','pbb_swing_angle_disp'
@@ -1213,7 +1213,7 @@ class TagConfig extends Object
 				update_tags:{
 					pbb_out_of_service:{Tag:'PBB._OUT_OF_SERVICE',Label:'[*]PBB',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 				}
-			pbb_detail_widget: #PBB Detail Widget
+			pbb_detail_widget: # PBB Overview Widget
 				update_tags:{
 					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'PBB Status',DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'div',ParentID:'#pbb_status_container',Class:'val transparent',Object:null}},
 					pbb_undock_time:{Tag:'PBB.UNDOCKTIME',Label:null,DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'div',ParentID:'#pbb_undockordocktime_container',Class:'pbb_undockordocktime val transparent',Object:null}},
@@ -1304,7 +1304,7 @@ class TagConfig extends Object
 							pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 							pca_quality:{Tag:'PCA._QUALITY',Label:'Comm Errors',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}},
 						}
-			pbb_detail_widget: #PBB Detail Widget
+			pbb_detail_widget: # PBB Overview Widget
 				update_tags:{
 					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'PBB Status',DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'div',ParentID:'#pbb_status_container',Class:'val transparent',Object:null}},
 					pbb_undock_time:{Tag:'PBB.UNDOCKTIME',Label:null,DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'div',ParentID:'#pbb_undockordocktime_container',Class:'pbb_undockordocktime val transparent',Object:null}},
@@ -1321,7 +1321,7 @@ class TagConfig extends Object
 							elvrot_rotunda_position_boolean:{Tag:'ELVROT.ROTUNDA_POSITION_BOOLEAN',Label:'Elevating Rotunda Position',DataType:'Boolean',Parameters:{Parm001:'Down Position',Parm002:'Up Position',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							position_container_tag:{Tag:'ELVROT.ROTUNDA_POSITION',Label:'Elevating Rotunda Position',DataType:'Value',Parameters:{Parm001:false,Parm002:null,Parm003:'#{1}',Parm004:null},Element:{Type:'div',ParentID:'#widgetImage2',Class:'val show',Object:null}},
 						}
-			pbb_level_detail_widget: # PBB Overview Widget
+			pbb_level_detail_widget: # PBB Bridge Widget
 				4:
 					B1:B29L2:
 						add_graphics:{
@@ -1657,7 +1657,7 @@ class TagConfig extends Object
 				update_tags:{
 					pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 				}
-			#pbb_detail_widget: #PBB Detail Widget
+			#pbb_detail_widget: # PBB Overview Widget
 			#pbb_level_detail_widget: # PBB Bridge Widget
 			pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
 				remove_tags:{'pbb_status','gpu_status','pbb_hookup_time','gpu_hookup_time','pbb_dock_time','gpu_time','gpu_ra_out_avg','gpu_rv_out_avg'}	
@@ -1856,15 +1856,19 @@ class TagConfig extends Object
 					pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 					gpu_out_of_service:{Tag:'GPU._OUT_OF_SERVICE',Label:'[*]GPU',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 				}
-			pbb_detail_widget: #PBB Detail Widget
+			pbb_detail_widget: # PBB Overview Widget
 				update_tags:{
 					pbb_status:{Tag:'PBB.AIRCRAFTDOCKEDCALCULATION',Label:'PBB Status',DataType:'Boolean',Parameters:{Parm001:'Docked',Parm002:'UnDocked',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'div',ParentID:'#pbb_status_container',Class:'val transparent',Object:null}},
 					pbb_undock_time:{Tag:'PBB.UNDOCKTIME',Label:null,DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:'div',ParentID:'#pbb_undockordocktime_container',Class:'pbb_undockordocktime val transparent',Object:null}},
 					pbb_dock_time:{Tag:'PBB.DOCKTIME',Label:'Aircraft Docked Time (Minutes)',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'mins',Parm004:null},Element:{Type:null,ParentID:null,Class:'pbb_undockordocktime val transparent',Object:null}},
-					pbb_autolevel_mode:{Tag:'PBB.AUTOLEVELMODEFLAG',Label:'PBB Mode',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:'Auto-Level : #{1}'},Element:{Type:'div',ParentID:'#pbb_autolevel_container',Class:'val transparent',Object:null}},
+					pbb_autolevel_mode:{Tag:'PBB.AUTOLEVELMODEFLAG',Label:'Autolevel',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:'Auto-Level : #{1}'},Element:{Type:'div',ParentID:'#pbb_autolevel_container',Class:'val transparent',Object:null}},
 					pbb_canopy:{Tag:'PBB.CANOPYDOWN',Label:'Canopy',DataType:'Boolean',Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:'Canopy : #{1}'},Element:{Type:'div',ParentID:'#pbb_canopy_container',Class:'val transparent',Object:null}},
 				}
-			#pbb_level_detail_widget: # PBB Bridge Widget
+			pbb_level_detail_widget: # PBB Bridge Widget
+				remove_tags:{'pbb_autolevel_key','pbb_smoke_detector','pbb_cabin_floor_deicer','pbb_terminal_door','pbb_slope_deg','pbb_tunnel_length'}
+				update_tags:{
+					pbb_autolevel_mode:{Tag:'PBB.AUTOLEVELMODEFLAG',Label:'Auto-Level',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+				}
 			pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
 				2:
 					D:
@@ -2285,7 +2289,7 @@ class TagConfig extends Object
 				}
 			pbb_detail_widget: # PBB Overview Widget
 				remove_all: {}
-			pbb_level_detail_widget:
+			pbb_level_detail_widget: # PBB Bridge Widget
 				remove_all: {}
 			gpu_widget: # GPU Widget
 				remove_tags:{'gpu_by_pass','gpu_pm_output_phasea_i','gpu_pm_output_phaseb_i','gpu_pm_output_phasec_i','gpu_pm_output_phasea_v','gpu_pm_output_phaseb_v','gpu_pm_output_phasec_v','gpu_pm_input_phasea_i','gpu_pm_input_phaseb_i','gpu_pm_input_phasec_i','gpu_pm_input_phasea_v','gpu_pm_input_phaseb_v','gpu_pm_input_phasec_v'}
