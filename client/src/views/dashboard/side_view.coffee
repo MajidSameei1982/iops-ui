@@ -42,7 +42,6 @@ class DashboardSideView extends Marionette.ItemView
     @
 
   update_dash_links: (id)=>
-    debugger
     id = if id? then id else App.current_dash
     $('li', @ui.dashboard_list).removeClass('active')
     if id?
@@ -87,14 +86,12 @@ class DashboardSideView extends Marionette.ItemView
     null
 
   moveup_link: (e)->
-    debugger
     d = @resolve_dash(e, 'moveup')
     if d? then @collection.moveup(d)
     @update_dash_links()
     App.save_user()
 
   movedn_link: (e)->
-    debugger
     d = @resolve_dash(e, 'movedn')
     if d? then @collection.movedn(d)
     @update_dash_links()
@@ -121,7 +118,6 @@ class DashboardSideView extends Marionette.ItemView
         if did == App.current_dash then App.router.navigate('', {trigger:true})
 
   onShow: ()->
-    debugger
     App.vent.on "show:dashboard", @update_dash_links
     $(@el).attr('tabindex', '-1')
     @collection.on "update", ()=>
@@ -134,27 +130,21 @@ class DashboardSideView extends Marionette.ItemView
 
   build_list: ()=>
     $('li.dashboard-link', @ui.dashboard_list).remove()
-    setTimeout (=>
-      #for ud, idx in App.session.attributes.dashboards 
-      #  d = (i for i in @collection.models when i.id is ud)[0]
-      #  #test = App.session.attributes.dashboards
-      for d, idx in @collection.models
-        hh = """
-        <li class='dashboard-link d_#{d.id}' title='#{d.get('name')}'>
-          <a href='#' class='dash_link'><i class='fa fa-th-large'></i> <span>#{d.get('name')}</span></a>
-          <div class='controls'>
-            <a href='#' class='moveup moveup_#{d.id}'><i class='fa fa-caret-up'></i></a>
-            <a href='#' class='movedn movedn_#{d.id}'><i class='fa fa-caret-down'></i></a>
-            <a href='#' class='edit edit_#{d.id}'><i class='fa fa-pencil-square'></i></a>
-            <a href='#' class='delete delete_#{d.id}'><i class='fa fa-times-circle'></i></a>
-          </div>
-        </li>
-        """
-        dl = $(hh)
-        @$('#dashboard-list').append(dl)
-        @
-    ), 1000
-    @
+    for d, idx in @collection.models
+      hh = """
+      <li class='dashboard-link d_#{d.id}' title='#{d.get('name')}'>
+        <a href='#' class='dash_link'><i class='fa fa-th-large'></i> <span>#{d.get('name')}</span></a>
+        <div class='controls'>
+          <a href='#' class='moveup moveup_#{d.id}'><i class='fa fa-caret-up'></i></a>
+          <a href='#' class='movedn movedn_#{d.id}'><i class='fa fa-caret-down'></i></a>
+          <a href='#' class='edit edit_#{d.id}'><i class='fa fa-pencil-square'></i></a>
+          <a href='#' class='delete delete_#{d.id}'><i class='fa fa-times-circle'></i></a>
+        </div>
+      </li>
+      """
+      dl = $(hh)
+      @$('#dashboard-list').append(dl)
+
 # ----------------------------------
 
 module.exports = DashboardSideView

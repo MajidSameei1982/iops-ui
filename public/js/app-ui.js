@@ -3142,7 +3142,6 @@ window.App = (function() {
       Session.restore();
       return;
     }
-    debugger;
     App.dashboards = new DashboardCollection({
       userId: App.session.id
     });
@@ -3370,7 +3369,6 @@ AppController = (function(superClass) {
   AppController.prototype.dashboard = function(id) {
     var show_dash;
     App.log('route:dashboard');
-    debugger;
     id = id != null ? id : null;
     show_dash = (function(_this) {
       return function() {
@@ -26914,32 +26912,28 @@ BaseCollection = (function(superClass) {
   }
 
   BaseCollection.prototype.moveup = function(model) {
-    debugger;
     var index;
     index = this.indexOf(model);
     if (index > 0) {
       this.remove(model, {
         silent: true
       });
-      this.add(model, {
+      return this.add(model, {
         at: index - 1
       });
-      return model.save();
     }
   };
 
   BaseCollection.prototype.movedn = function(model) {
-    debugger;
     var index;
     index = this.indexOf(model);
     if (index < this.models.length) {
       this.remove(model, {
         silent: true
       });
-      this.add(model, {
+      return this.add(model, {
         at: index + 1
       });
-      return model.save();
     }
   };
 
@@ -27313,7 +27307,6 @@ Session = (function(superClass) {
   };
 
   Session.save_session = function() {
-    debugger;
     var d, dashboards, i, len, ref;
     App.store.set("user_ts", new Date());
     App.store.set("session", App.session);
@@ -27326,8 +27319,7 @@ Session = (function(superClass) {
       }
       App.session.attributes["dashboards"] = dashboards;
     }
-    App.session.save();
-    return App.dashboards.save();
+    return App.session.save();
   };
 
   Session.clear = function() {
@@ -27340,7 +27332,6 @@ Session = (function(superClass) {
   };
 
   Session.load_dashboards = function(success) {
-    debugger;
     if (App.session == null) {
       return;
     }
@@ -27362,7 +27353,6 @@ Session = (function(superClass) {
   Session.auth = function(arg) {
     var e, email, error, password, s, success;
     email = arg.email, password = arg.password, success = arg.success, error = arg.error;
-    debugger;
     Session.clear();
     App.session = new Session({
       email: email,
@@ -27413,7 +27403,6 @@ Session = (function(superClass) {
   };
 
   Session.set_session = function(session) {
-    debugger;
     var tk, user;
     if ((session != null) && (session.get("token") != null)) {
       tk = session.get("token");
@@ -27425,6 +27414,7 @@ Session = (function(superClass) {
       delete user.iss;
       delete user.iat;
       delete user.exp;
+      user.dashboards = [];
       delete App.session.attributes["password"];
       App.session = new User(user);
     } else {
@@ -27440,7 +27430,6 @@ Session = (function(superClass) {
   };
 
   Session.restore = function(success) {
-    debugger;
     var s, tk, user;
     tk = App.store.get('token');
     if (tk != null) {
@@ -28850,7 +28839,6 @@ DashboardSideView = (function(superClass) {
   };
 
   DashboardSideView.prototype.update_dash_links = function(id) {
-    debugger;
     id = id != null ? id : App.current_dash;
     $('li', this.ui.dashboard_list).removeClass('active');
     if (id != null) {
@@ -28926,7 +28914,6 @@ DashboardSideView = (function(superClass) {
   };
 
   DashboardSideView.prototype.moveup_link = function(e) {
-    debugger;
     var d;
     d = this.resolve_dash(e, 'moveup');
     if (d != null) {
@@ -28937,7 +28924,6 @@ DashboardSideView = (function(superClass) {
   };
 
   DashboardSideView.prototype.movedn_link = function(e) {
-    debugger;
     var d;
     d = this.resolve_dash(e, 'movedn');
     if (d != null) {
@@ -28986,7 +28972,6 @@ DashboardSideView = (function(superClass) {
   };
 
   DashboardSideView.prototype.onShow = function() {
-    debugger;
     App.vent.on("show:dashboard", this.update_dash_links);
     $(this.el).attr('tabindex', '-1');
     this.collection.on("update", (function(_this) {
@@ -29002,23 +28987,17 @@ DashboardSideView = (function(superClass) {
   };
 
   DashboardSideView.prototype.build_list = function() {
+    var d, dl, hh, i, idx, len, ref, results;
     $('li.dashboard-link', this.ui.dashboard_list).remove();
-    setTimeout(((function(_this) {
-      return function() {
-        var d, dl, hh, i, idx, len, ref, results;
-        ref = _this.collection.models;
-        results = [];
-        for (idx = i = 0, len = ref.length; i < len; idx = ++i) {
-          d = ref[idx];
-          hh = "<li class='dashboard-link d_" + d.id + "' title='" + (d.get('name')) + "'>\n  <a href='#' class='dash_link'><i class='fa fa-th-large'></i> <span>" + (d.get('name')) + "</span></a>\n  <div class='controls'>\n    <a href='#' class='moveup moveup_" + d.id + "'><i class='fa fa-caret-up'></i></a>\n    <a href='#' class='movedn movedn_" + d.id + "'><i class='fa fa-caret-down'></i></a>\n    <a href='#' class='edit edit_" + d.id + "'><i class='fa fa-pencil-square'></i></a>\n    <a href='#' class='delete delete_" + d.id + "'><i class='fa fa-times-circle'></i></a>\n  </div>\n</li>";
-          dl = $(hh);
-          _this.$('#dashboard-list').append(dl);
-          results.push(_this);
-        }
-        return results;
-      };
-    })(this)), 1000);
-    return this;
+    ref = this.collection.models;
+    results = [];
+    for (idx = i = 0, len = ref.length; i < len; idx = ++i) {
+      d = ref[idx];
+      hh = "<li class='dashboard-link d_" + d.id + "' title='" + (d.get('name')) + "'>\n  <a href='#' class='dash_link'><i class='fa fa-th-large'></i> <span>" + (d.get('name')) + "</span></a>\n  <div class='controls'>\n    <a href='#' class='moveup moveup_" + d.id + "'><i class='fa fa-caret-up'></i></a>\n    <a href='#' class='movedn movedn_" + d.id + "'><i class='fa fa-caret-down'></i></a>\n    <a href='#' class='edit edit_" + d.id + "'><i class='fa fa-pencil-square'></i></a>\n    <a href='#' class='delete delete_" + d.id + "'><i class='fa fa-times-circle'></i></a>\n  </div>\n</li>";
+      dl = $(hh);
+      results.push(this.$('#dashboard-list').append(dl));
+    }
+    return results;
   };
 
   return DashboardSideView;

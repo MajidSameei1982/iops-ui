@@ -17,7 +17,6 @@ class Session extends BaseModel
     @
 
   @save_session: ()->
-    debugger
     App.store.set("user_ts", new Date())
     App.store.set("session", App.session)
     if App.dashboards?
@@ -26,7 +25,6 @@ class Session extends BaseModel
         dashboards.push(d.id)
       App.session.attributes["dashboards"] = dashboards
     App.session.save()
-    App.dashboards.save()
 
   @clear: ()->
     if App.session? then App.session.off "change"
@@ -35,7 +33,6 @@ class Session extends BaseModel
     null
 
   @load_dashboards : (success)->
-    debugger
     return if !App.session?
     App.dashboards = new DashboardCollection({userId:App.session.id})
     App.dashboards.fetch
@@ -44,7 +41,6 @@ class Session extends BaseModel
     @
   # perform authorization and set session token
   @auth: ({email, password, success, error})->
-    debugger
     Session.clear()
     App.session = new Session
       email:email
@@ -82,7 +78,6 @@ class Session extends BaseModel
     user
 
   @set_session: (session)->
-    debugger
     if session? && session.get("token")?
       tk = session.get("token")
       @set_header_token(tk)
@@ -95,7 +90,7 @@ class Session extends BaseModel
       delete user.iat
       delete user.exp
       # TODO: need server fix to list dashboards
-      #user.dashboards = [] 
+      user.dashboards = [] 
       # remove user-typed password
       delete App.session.attributes["password"]
       # convert to a User
@@ -111,7 +106,6 @@ class Session extends BaseModel
   
   # pull a session from local storage
   @restore: (success)->
-    debugger
     tk = App.store.get('token')
     if tk? then @set_header_token(tk)
     s = App.store.get('session')
