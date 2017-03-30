@@ -17,16 +17,15 @@ class Session extends BaseModel
     @
 
   @save_session: ()->
-    debugger
     App.store.set("user_ts", new Date())
     App.store.set("session", App.session)
     if App.dashboards?
       dashboards = []
       for d in App.dashboards.models
         dashboards.push(d.id)
+      debugger
       App.session.attributes["dashboards"] = dashboards
     App.session.save()
-    App.dashboards.save()
 
   @clear: ()->
     if App.session? then App.session.off "change"
@@ -35,16 +34,22 @@ class Session extends BaseModel
     null
 
   @load_dashboards : (success)->
-    debugger
     return if !App.session?
     App.dashboards = new DashboardCollection({userId:App.session.id})
     App.dashboards.fetch
       success: (data, status, xhr)=>
-        if success then success(data, status, xhr)
+        if success
+          if App.session.attributes["dashboards"]?
+            d = []
+            for ud, idx in App.session.attributes["dashboards"] 
+              a = (i for i in data.models when i.id is ud)[0]
+              d.push a
+ 
+            data.models = d
+          success(d, status, xhr)
     @
   # perform authorization and set session token
   @auth: ({email, password, success, error})->
-    debugger
     Session.clear()
     App.session = new Session
       email:email
@@ -82,7 +87,6 @@ class Session extends BaseModel
     user
 
   @set_session: (session)->
-    debugger
     if session? && session.get("token")?
       tk = session.get("token")
       @set_header_token(tk)
@@ -111,7 +115,6 @@ class Session extends BaseModel
   
   # pull a session from local storage
   @restore: (success)->
-    debugger
     tk = App.store.get('token')
     if tk? then @set_header_token(tk)
     s = App.store.get('session')

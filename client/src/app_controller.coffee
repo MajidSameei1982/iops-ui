@@ -107,7 +107,7 @@ class AppController extends Object
 
   dashboard: (id)->
     App.log('route:dashboard')
-    debugger
+
     id = if id? then id else null
     show_dash = ()=>
       OPCManager.drop_connections() # force clean when switching

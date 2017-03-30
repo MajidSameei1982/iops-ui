@@ -314,8 +314,6 @@ class IOPSWidgetView extends WidgetView
     ** format: If no #{1} is found in string treat as suffix
     **         otherwise replace #{1} with the #{set_value} 
     ********************************************************###
-    #debugger
-
     img = Iamge[0]
     #vq = @data_q(@tagData.pca_discharge_temp.Tag)
     #@$("#gauge_volts_out_#{@model.id} .bad_data").toggle(!vq)

@@ -2268,17 +2268,13 @@ class TagConfig extends Object
 						remove_tags:{'pca_bridge_damper','pca_ambient_humidity','pca_hot_gas_1','pca_hot_gas_2'}
 		SNA:
 			pbb_pca_gpu_basic_widget: # PBB_PCA_GPU Widget
-				remove_tags:{'pbb_quality','pbb_out_of_service','pbb_has_warnings','pbb_has_alarms','pbb_has_critical_alarms',
-						'pbb_status','pbb_hookup_time','pbb_dock_time'}
-			pbb_pca_gpu_status_widget: # PBB/PCA/GPU System Status Widget
-				remove_tags:{'pbb_quality','pbb_out_of_service','pbb_perfect_hookup','pbb_has_warnings','pbb_has_alarms','pbb_has_critical_alarms',
-			      		'pbb_docked','pbb_status'}
-			pbb_system_status_widget:
-				remove_all: {}
-			pbb_widget:
-				remove_all: {}
-			pca_summary_widget:
-				remove_all: {}
+				remove_tags:{'gpu_ra_out_avg'}
+			#pbb_pca_gpu_status_widget: # PBB/PCA/GPU System Status Widget
+			#pbb_system_status_widget: # PBB Status Widget
+			#pbb_widget: # PBB Widget
+			pca_discharge_widget: # PCA Discharge Widget
+				remove_tags: {'pca_mode_cooling','pca_mode_heating','pca_alarm_cooling_run','pca_alarm_heating_run'}	
+			#pca_summary_widget: # PCA Summary Widget
 			pca_widget: # PCA Widget
 				remove_tags:{'pca_cabin_temp','pca_ambient_temp','pca_heater_1','pca_heater_2','pca_bridge_damper','pca_bridge_air'}
 			out_of_service_widget: # Out Of Service Widget
@@ -2287,22 +2283,24 @@ class TagConfig extends Object
 					pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'[*]PCA',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 					gpu_out_of_service:{Tag:'GPU._OUT_OF_SERVICE',Label:'[*]GPU',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 				}
-			pbb_detail_widget: # PBB Overview Widget
-				remove_all: {}
+			#pbb_detail_widget: # PBB Overview Widget
 			pbb_level_detail_widget: # PBB Bridge Widget
-				remove_all: {}
+				remove_tags: {'pbb_terminal_door','pbb_slope_deg'}
+			gpu_summary_widget: # GPU Summary Widget
+				remove_tags:{'gpu_ra_out_avg','gpu_rv_in_avg'}
 			gpu_widget: # GPU Widget
-				remove_tags:{'gpu_by_pass','gpu_pm_output_phasea_i','gpu_pm_output_phaseb_i','gpu_pm_output_phasec_i','gpu_pm_output_phasea_v','gpu_pm_output_phaseb_v','gpu_pm_output_phasec_v','gpu_pm_input_phasea_i','gpu_pm_input_phaseb_i','gpu_pm_input_phasec_i','gpu_pm_input_phasea_v','gpu_pm_input_phaseb_v','gpu_pm_input_phasec_v'}
-				add_tags:{
-					gpu_pm_output_phasea_i:{Tag:'GPU.RAOUTA',Label:'Amps Out Phase A',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Amps',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-					gpu_pm_output_phaseb_i:{Tag:'GPU.RAOUTB',Label:'Amps Out Phase B',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Amps',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-					gpu_pm_output_phasec_i:{Tag:'GPU.RAOUTC',Label:'Amps Out Phase C',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Amps',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+				remove_tags:{'gpu_ra_out_avg','gpu_ra_in_avg','gpu_rdc_amps','gpu_rdc_volts','gpu_pm_output_phasea_i','gpu_pm_output_phaseb_i','gpu_pm_output_phasec_i','gpu_pm_input_phasea_i','gpu_pm_input_phaseb_i','gpu_pm_input_phasec_i'}
+				update_tags:{
+					gpu_by_pass:Tag:{'GPU.BYPASs',Label:'ByPass',DataType:'Boolean',Parameters:{Parm001:'Down',Parm002:'Up',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					gpu_pm_output_phasea_v:{Tag:'GPU.RVOUTA',Label:'Volts Out Phase A',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					gpu_pm_output_phaseb_v:{Tag:'GPU.RVOUTB',Label:'Volts Out Phase B',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					gpu_pm_output_phasec_v:{Tag:'GPU.RVOUTC',Label:'Volts Out Phase C',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					gpu_pm_input_phasea_v:{Tag:'GPU.RVINA',Label:'Volts In Phase A',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					gpu_pm_input_phaseb_v:{Tag:'GPU.RVINB',Label:'Volts In Phase B',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					gpu_pm_input_phasec_v:{Tag:'GPU.RVINC',Label:'Volts In Phase C',DataType:'Float',Parameters:{Parm001:'TRUE',Parm002:'1',Parm003:'Volts',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
+				}
+				add_tags:{
+					gpu_mode:{Tag:'GPU.GPUMODE',Label:'GPU Mode',DataType:'Value',Parameters:{Parm001:false,Parm002:null,Parm003:'#{1}',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 				}		
 
 

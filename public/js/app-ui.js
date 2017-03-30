@@ -3142,7 +3142,6 @@ window.App = (function() {
       Session.restore();
       return;
     }
-    debugger;
     App.dashboards = new DashboardCollection({
       userId: App.session.id
     });
@@ -3370,7 +3369,6 @@ AppController = (function(superClass) {
   AppController.prototype.dashboard = function(id) {
     var show_dash;
     App.log('route:dashboard');
-    debugger;
     id = id != null ? id : null;
     show_dash = (function(_this) {
       return function() {
@@ -26036,36 +26034,16 @@ TagConfig = (function(superClass) {
     SNA: {
       pbb_pca_gpu_basic_widget: {
         remove_tags: {
-          'pbb_quality': 'pbb_quality',
-          'pbb_out_of_service': 'pbb_out_of_service',
-          'pbb_has_warnings': 'pbb_has_warnings',
-          'pbb_has_alarms': 'pbb_has_alarms',
-          'pbb_has_critical_alarms': 'pbb_has_critical_alarms',
-          'pbb_status': 'pbb_status',
-          'pbb_hookup_time': 'pbb_hookup_time',
-          'pbb_dock_time': 'pbb_dock_time'
+          'gpu_ra_out_avg': 'gpu_ra_out_avg'
         }
       },
-      pbb_pca_gpu_status_widget: {
+      pca_discharge_widget: {
         remove_tags: {
-          'pbb_quality': 'pbb_quality',
-          'pbb_out_of_service': 'pbb_out_of_service',
-          'pbb_perfect_hookup': 'pbb_perfect_hookup',
-          'pbb_has_warnings': 'pbb_has_warnings',
-          'pbb_has_alarms': 'pbb_has_alarms',
-          'pbb_has_critical_alarms': 'pbb_has_critical_alarms',
-          'pbb_docked': 'pbb_docked',
-          'pbb_status': 'pbb_status'
+          'pca_mode_cooling': 'pca_mode_cooling',
+          'pca_mode_heating': 'pca_mode_heating',
+          'pca_alarm_cooling_run': 'pca_alarm_cooling_run',
+          'pca_alarm_heating_run': 'pca_alarm_heating_run'
         }
-      },
-      pbb_system_status_widget: {
-        remove_all: {}
-      },
-      pbb_widget: {
-        remove_all: {}
-      },
-      pca_summary_widget: {
-        remove_all: {}
       },
       pca_widget: {
         remove_tags: {
@@ -26121,174 +26099,165 @@ TagConfig = (function(superClass) {
           }
         }
       },
-      pbb_detail_widget: {
-        remove_all: {}
-      },
       pbb_level_detail_widget: {
-        remove_all: {}
+        remove_tags: {
+          'pbb_terminal_door': 'pbb_terminal_door',
+          'pbb_slope_deg': 'pbb_slope_deg'
+        }
+      },
+      gpu_summary_widget: {
+        remove_tags: {
+          'gpu_ra_out_avg': 'gpu_ra_out_avg',
+          'gpu_rv_in_avg': 'gpu_rv_in_avg'
+        }
       },
       gpu_widget: {
         remove_tags: {
-          'gpu_by_pass': 'gpu_by_pass',
+          'gpu_ra_out_avg': 'gpu_ra_out_avg',
+          'gpu_ra_in_avg': 'gpu_ra_in_avg',
+          'gpu_rdc_amps': 'gpu_rdc_amps',
+          'gpu_rdc_volts': 'gpu_rdc_volts',
           'gpu_pm_output_phasea_i': 'gpu_pm_output_phasea_i',
           'gpu_pm_output_phaseb_i': 'gpu_pm_output_phaseb_i',
           'gpu_pm_output_phasec_i': 'gpu_pm_output_phasec_i',
-          'gpu_pm_output_phasea_v': 'gpu_pm_output_phasea_v',
-          'gpu_pm_output_phaseb_v': 'gpu_pm_output_phaseb_v',
-          'gpu_pm_output_phasec_v': 'gpu_pm_output_phasec_v',
           'gpu_pm_input_phasea_i': 'gpu_pm_input_phasea_i',
           'gpu_pm_input_phaseb_i': 'gpu_pm_input_phaseb_i',
-          'gpu_pm_input_phasec_i': 'gpu_pm_input_phasec_i',
-          'gpu_pm_input_phasea_v': 'gpu_pm_input_phasea_v',
-          'gpu_pm_input_phaseb_v': 'gpu_pm_input_phaseb_v',
-          'gpu_pm_input_phasec_v': 'gpu_pm_input_phasec_v'
+          'gpu_pm_input_phasec_i': 'gpu_pm_input_phasec_i'
+        },
+        update_tags: {
+          gpu_by_pass: {
+            Tag: {
+              'GPU.BYPASs': 'GPU.BYPASs',
+              Label: 'ByPass',
+              DataType: 'Boolean',
+              Parameters: {
+                Parm001: 'Down',
+                Parm002: 'Up',
+                Parm003: 'ok',
+                Parm004: null,
+                Parm005: null
+              },
+              Element: {
+                Type: 'TableRow',
+                ParentID: '#widgetData',
+                Class: null,
+                Object: null
+              }
+            },
+            gpu_pm_output_phasea_v: {
+              Tag: 'GPU.RVOUTA',
+              Label: 'Volts Out Phase A',
+              DataType: 'Float',
+              Parameters: {
+                Parm001: 'TRUE',
+                Parm002: '1',
+                Parm003: 'Volts',
+                Parm004: ''
+              },
+              Element: {
+                Type: 'TableRow',
+                ParentID: '#widgetData',
+                Class: null,
+                Object: null
+              }
+            },
+            gpu_pm_output_phaseb_v: {
+              Tag: 'GPU.RVOUTB',
+              Label: 'Volts Out Phase B',
+              DataType: 'Float',
+              Parameters: {
+                Parm001: 'TRUE',
+                Parm002: '1',
+                Parm003: 'Volts',
+                Parm004: ''
+              },
+              Element: {
+                Type: 'TableRow',
+                ParentID: '#widgetData',
+                Class: null,
+                Object: null
+              }
+            },
+            gpu_pm_output_phasec_v: {
+              Tag: 'GPU.RVOUTC',
+              Label: 'Volts Out Phase C',
+              DataType: 'Float',
+              Parameters: {
+                Parm001: 'TRUE',
+                Parm002: '1',
+                Parm003: 'Volts',
+                Parm004: ''
+              },
+              Element: {
+                Type: 'TableRow',
+                ParentID: '#widgetData',
+                Class: null,
+                Object: null
+              }
+            },
+            gpu_pm_input_phasea_v: {
+              Tag: 'GPU.RVINA',
+              Label: 'Volts In Phase A',
+              DataType: 'Float',
+              Parameters: {
+                Parm001: 'TRUE',
+                Parm002: '1',
+                Parm003: 'Volts',
+                Parm004: ''
+              },
+              Element: {
+                Type: 'TableRow',
+                ParentID: '#widgetData',
+                Class: null,
+                Object: null
+              }
+            },
+            gpu_pm_input_phaseb_v: {
+              Tag: 'GPU.RVINB',
+              Label: 'Volts In Phase B',
+              DataType: 'Float',
+              Parameters: {
+                Parm001: 'TRUE',
+                Parm002: '1',
+                Parm003: 'Volts',
+                Parm004: ''
+              },
+              Element: {
+                Type: 'TableRow',
+                ParentID: '#widgetData',
+                Class: null,
+                Object: null
+              }
+            },
+            gpu_pm_input_phasec_v: {
+              Tag: 'GPU.RVINC',
+              Label: 'Volts In Phase C',
+              DataType: 'Float',
+              Parameters: {
+                Parm001: 'TRUE',
+                Parm002: '1',
+                Parm003: 'Volts',
+                Parm004: ''
+              },
+              Element: {
+                Type: 'TableRow',
+                ParentID: '#widgetData',
+                Class: null,
+                Object: null
+              }
+            }
+          }
         },
         add_tags: {
-          gpu_pm_output_phasea_i: {
-            Tag: 'GPU.RAOUTA',
-            Label: 'Amps Out Phase A',
-            DataType: 'Float',
+          gpu_mode: {
+            Tag: 'GPU.GPUMODE',
+            Label: 'GPU Mode',
+            DataType: 'Value',
             Parameters: {
-              Parm001: 'TRUE',
-              Parm002: '1',
-              Parm003: 'Amps',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_pm_output_phaseb_i: {
-            Tag: 'GPU.RAOUTB',
-            Label: 'Amps Out Phase B',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: 'TRUE',
-              Parm002: '1',
-              Parm003: 'Amps',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_pm_output_phasec_i: {
-            Tag: 'GPU.RAOUTC',
-            Label: 'Amps Out Phase C',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: 'TRUE',
-              Parm002: '1',
-              Parm003: 'Amps',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_pm_output_phasea_v: {
-            Tag: 'GPU.RVOUTA',
-            Label: 'Volts Out Phase A',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: 'TRUE',
-              Parm002: '1',
-              Parm003: 'Volts',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_pm_output_phaseb_v: {
-            Tag: 'GPU.RVOUTB',
-            Label: 'Volts Out Phase B',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: 'TRUE',
-              Parm002: '1',
-              Parm003: 'Volts',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_pm_output_phasec_v: {
-            Tag: 'GPU.RVOUTC',
-            Label: 'Volts Out Phase C',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: 'TRUE',
-              Parm002: '1',
-              Parm003: 'Volts',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_pm_input_phasea_v: {
-            Tag: 'GPU.RVINA',
-            Label: 'Volts In Phase A',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: 'TRUE',
-              Parm002: '1',
-              Parm003: 'Volts',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_pm_input_phaseb_v: {
-            Tag: 'GPU.RVINB',
-            Label: 'Volts In Phase B',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: 'TRUE',
-              Parm002: '1',
-              Parm003: 'Volts',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_pm_input_phasec_v: {
-            Tag: 'GPU.RVINC',
-            Label: 'Volts In Phase C',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: 'TRUE',
-              Parm002: '1',
-              Parm003: 'Volts',
-              Parm004: ''
+              Parm001: false,
+              Parm002: null,
+              Parm003: '#{1}',
+              Parm004: null
             },
             Element: {
               Type: 'TableRow',
@@ -26914,10 +26883,10 @@ BaseCollection = (function(superClass) {
   }
 
   BaseCollection.prototype.moveup = function(model) {
-    debugger;
     var index;
-    index = this.indexOf(model);
+    index = App.session.attributes["dashboards"].indexOf(model.id);
     if (index > 0) {
+      App.session.attributes["dashboards"].splice(index - 1, 0, App.session.attributes["dashboards"].splice(index, 1)[0]);
       this.remove(model, {
         silent: true
       });
@@ -26929,10 +26898,10 @@ BaseCollection = (function(superClass) {
   };
 
   BaseCollection.prototype.movedn = function(model) {
-    debugger;
     var index;
-    index = this.indexOf(model);
+    index = App.session.attributes["dashboards"].indexOf(model.id);
     if (index < this.models.length) {
+      App.session.attributes["dashboards"].splice(index + 1, 0, App.session.attributes["dashboards"].splice(index, 1)[0]);
       this.remove(model, {
         silent: true
       });
@@ -27313,21 +27282,20 @@ Session = (function(superClass) {
   };
 
   Session.save_session = function() {
-    debugger;
-    var d, dashboards, i, len, ref;
+    var d, dashboards, j, len, ref;
     App.store.set("user_ts", new Date());
     App.store.set("session", App.session);
     if (App.dashboards != null) {
       dashboards = [];
       ref = App.dashboards.models;
-      for (i = 0, len = ref.length; i < len; i++) {
-        d = ref[i];
+      for (j = 0, len = ref.length; j < len; j++) {
+        d = ref[j];
         dashboards.push(d.id);
       }
+      debugger;
       App.session.attributes["dashboards"] = dashboards;
     }
-    App.session.save();
-    return App.dashboards.save();
+    return App.session.save();
   };
 
   Session.clear = function() {
@@ -27340,7 +27308,6 @@ Session = (function(superClass) {
   };
 
   Session.load_dashboards = function(success) {
-    debugger;
     if (App.session == null) {
       return;
     }
@@ -27350,8 +27317,30 @@ Session = (function(superClass) {
     App.dashboards.fetch({
       success: (function(_this) {
         return function(data, status, xhr) {
+          var a, d, i, idx, j, len, ref, ud;
           if (success) {
-            return success(data, status, xhr);
+            if (App.session.attributes["dashboards"] != null) {
+              d = [];
+              ref = App.session.attributes["dashboards"];
+              for (idx = j = 0, len = ref.length; j < len; idx = ++j) {
+                ud = ref[idx];
+                a = ((function() {
+                  var k, len1, ref1, results;
+                  ref1 = data.models;
+                  results = [];
+                  for (k = 0, len1 = ref1.length; k < len1; k++) {
+                    i = ref1[k];
+                    if (i.id === ud) {
+                      results.push(i);
+                    }
+                  }
+                  return results;
+                })())[0];
+                d.push(a);
+              }
+              data.models = d;
+            }
+            return success(d, status, xhr);
           }
         };
       })(this)
@@ -27362,7 +27351,6 @@ Session = (function(superClass) {
   Session.auth = function(arg) {
     var e, email, error, password, s, success;
     email = arg.email, password = arg.password, success = arg.success, error = arg.error;
-    debugger;
     Session.clear();
     App.session = new Session({
       email: email,
@@ -27413,7 +27401,6 @@ Session = (function(superClass) {
   };
 
   Session.set_session = function(session) {
-    debugger;
     var tk, user;
     if ((session != null) && (session.get("token") != null)) {
       tk = session.get("token");
@@ -27440,7 +27427,6 @@ Session = (function(superClass) {
   };
 
   Session.restore = function(success) {
-    debugger;
     var s, tk, user;
     tk = App.store.get('token');
     if (tk != null) {
@@ -28850,7 +28836,6 @@ DashboardSideView = (function(superClass) {
   };
 
   DashboardSideView.prototype.update_dash_links = function(id) {
-    debugger;
     id = id != null ? id : App.current_dash;
     $('li', this.ui.dashboard_list).removeClass('active');
     if (id != null) {
@@ -28860,7 +28845,7 @@ DashboardSideView = (function(superClass) {
   };
 
   DashboardSideView.prototype.show_link = function(e) {
-    var d, dlink, i, len, link, ref;
+    var d, dlink, j, len, link, ref;
     if (e != null) {
       e.preventDefault();
     }
@@ -28870,8 +28855,8 @@ DashboardSideView = (function(superClass) {
       return null;
     }
     ref = this.collection.models;
-    for (i = 0, len = ref.length; i < len; i++) {
-      d = ref[i];
+    for (j = 0, len = ref.length; j < len; j++) {
+      d = ref[j];
       if (dlink.hasClass("d_" + d.id)) {
         $('li', this.ui.dashboard_list).removeClass('active');
         dlink.addClass('active');
@@ -28906,18 +28891,19 @@ DashboardSideView = (function(superClass) {
     d = new Dashboard({
       userId: App.session.id
     });
+    App.session.attributes["dashboards"].splice(0, 0, d.id);
     return this.show_dash_modal(d, 'add');
   };
 
   DashboardSideView.prototype.resolve_dash = function(e, pre) {
-    var d, i, len, link, ref;
+    var d, j, len, link, ref;
     if (e != null) {
       e.preventDefault();
     }
     link = $(e.target).closest('a');
     ref = this.collection.models;
-    for (i = 0, len = ref.length; i < len; i++) {
-      d = ref[i];
+    for (j = 0, len = ref.length; j < len; j++) {
+      d = ref[j];
       if (link.hasClass(pre + "_" + d.id)) {
         return d;
       }
@@ -28926,7 +28912,6 @@ DashboardSideView = (function(superClass) {
   };
 
   DashboardSideView.prototype.moveup_link = function(e) {
-    debugger;
     var d;
     d = this.resolve_dash(e, 'moveup');
     if (d != null) {
@@ -28937,7 +28922,6 @@ DashboardSideView = (function(superClass) {
   };
 
   DashboardSideView.prototype.movedn_link = function(e) {
-    debugger;
     var d;
     d = this.resolve_dash(e, 'movedn');
     if (d != null) {
@@ -28971,8 +28955,10 @@ DashboardSideView = (function(superClass) {
       body: 'Are you sure you want to delete this Dashboard? This cannot be undone and all Widget configurations for this Dashboard will be lost.',
       on_save: (function(_this) {
         return function() {
+          debugger;
           var did;
           did = d.id;
+          App.session.attributes["dashboards"].splice(App.session.attributes["dashboards"].indexOf(did), 1);
           _this.collection.remove(d);
           d.destroy();
           if (did === App.current_dash) {
@@ -28986,7 +28972,6 @@ DashboardSideView = (function(superClass) {
   };
 
   DashboardSideView.prototype.onShow = function() {
-    debugger;
     App.vent.on("show:dashboard", this.update_dash_links);
     $(this.el).attr('tabindex', '-1');
     this.collection.on("update", (function(_this) {
@@ -29002,23 +28987,51 @@ DashboardSideView = (function(superClass) {
   };
 
   DashboardSideView.prototype.build_list = function() {
-    $('li.dashboard-link', this.ui.dashboard_list).remove();
-    setTimeout(((function(_this) {
-      return function() {
-        var d, dl, hh, i, idx, len, ref, results;
-        ref = _this.collection.models;
-        results = [];
-        for (idx = i = 0, len = ref.length; i < len; idx = ++i) {
-          d = ref[idx];
-          hh = "<li class='dashboard-link d_" + d.id + "' title='" + (d.get('name')) + "'>\n  <a href='#' class='dash_link'><i class='fa fa-th-large'></i> <span>" + (d.get('name')) + "</span></a>\n  <div class='controls'>\n    <a href='#' class='moveup moveup_" + d.id + "'><i class='fa fa-caret-up'></i></a>\n    <a href='#' class='movedn movedn_" + d.id + "'><i class='fa fa-caret-down'></i></a>\n    <a href='#' class='edit edit_" + d.id + "'><i class='fa fa-pencil-square'></i></a>\n    <a href='#' class='delete delete_" + d.id + "'><i class='fa fa-times-circle'></i></a>\n  </div>\n</li>";
-          dl = $(hh);
-          _this.$('#dashboard-list').append(dl);
-          results.push(_this);
+    var d, dl, hh, i, idx, j, len, ref, results, ud;
+    if (!(App.session.attributes["dashboards"].length === this.collection.models.length)) {
+      return;
+    }
+    d = ((function() {
+      var j, len, ref, results;
+      ref = this.collection.models;
+      results = [];
+      for (j = 0, len = ref.length; j < len; j++) {
+        i = ref[j];
+        if (typeof i.id === 'undefined') {
+          results.push(i);
         }
-        return results;
-      };
-    })(this)), 1000);
-    return this;
+      }
+      return results;
+    }).call(this))[0];
+    if ((d != null) || (d != null ? d.length : void 0) > 0) {
+      return;
+    }
+    if (typeof App.session.attributes["dashboards"][0] === 'undefined') {
+      App.session.attributes["dashboards"][0] = this.collection.models[0].id;
+    }
+    $('li.dashboard-link', this.ui.dashboard_list).remove();
+    ref = App.session.attributes["dashboards"];
+    results = [];
+    for (idx = j = 0, len = ref.length; j < len; idx = ++j) {
+      ud = ref[idx];
+      d = ((function() {
+        var k, len1, ref1, results1;
+        ref1 = this.collection.models;
+        results1 = [];
+        for (k = 0, len1 = ref1.length; k < len1; k++) {
+          i = ref1[k];
+          if (i.id === ud) {
+            results1.push(i);
+          }
+        }
+        return results1;
+      }).call(this))[0];
+      hh = "<li class='dashboard-link d_" + d.id + "' title='" + (d.get('name')) + "'>\n  <a href='#' class='dash_link'><i class='fa fa-th-large'></i> <span>" + (d.get('name')) + "</span></a>\n  <div class='controls'>\n    <a href='#' class='moveup moveup_" + d.id + "'><i class='fa fa-caret-up'></i></a>\n    <a href='#' class='movedn movedn_" + d.id + "'><i class='fa fa-caret-down'></i></a>\n    <a href='#' class='edit edit_" + d.id + "'><i class='fa fa-pencil-square'></i></a>\n    <a href='#' class='delete delete_" + d.id + "'><i class='fa fa-times-circle'></i></a>\n  </div>\n</li>";
+      dl = $(hh);
+      this.$('#dashboard-list').append(dl);
+      results.push(this);
+    }
+    return results;
   };
 
   return DashboardSideView;
