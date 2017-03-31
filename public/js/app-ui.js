@@ -27811,6 +27811,7 @@ Session = (function(superClass) {
       delete user.iss;
       delete user.iat;
       delete user.exp;
+      user.dashboards = [];
       delete App.session.attributes["password"];
       App.session = new User(user);
     } else {

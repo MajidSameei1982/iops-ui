@@ -145,7 +145,7 @@ class DashboardSideView extends Marionette.ItemView
     $('li.dashboard-link', @ui.dashboard_list).remove()
     for ud, idx in App.session.attributes["dashboards"] 
       d = (i for i in @collection.models when i.id is ud)[0]
-    #  #test = App.session.attributes.dashboards
+    #test = App.session.attributes.dashboards
     #for d, idx in @collection.models
       hh = """
       <li class='dashboard-link d_#{d.id}' title='#{d.get('name')}'>
@@ -161,7 +161,5 @@ class DashboardSideView extends Marionette.ItemView
       dl = $(hh)
       @$('#dashboard-list').append(dl)
       @
-
-# ----------------------------------
 
 module.exports = DashboardSideView
