@@ -113,7 +113,6 @@ class DashboardSideView extends Marionette.ItemView
       type: 'warning'
       body: 'Are you sure you want to delete this Dashboard? This cannot be undone and all Widget configurations for this Dashboard will be lost.'
       on_save: ()=>
-        debugger
         did = d.id
         App.session.attributes["dashboards"].splice(App.session.attributes["dashboards"].indexOf(did),1)
         @collection.remove(d)
@@ -146,7 +145,7 @@ class DashboardSideView extends Marionette.ItemView
     $('li.dashboard-link', @ui.dashboard_list).remove()
     for ud, idx in App.session.attributes["dashboards"] 
       d = (i for i in @collection.models when i.id is ud)[0]
-    #  #test = App.session.attributes.dashboards
+    #test = App.session.attributes.dashboards
     #for d, idx in @collection.models
       hh = """
       <li class='dashboard-link d_#{d.id}' title='#{d.get('name')}'>
@@ -162,7 +161,5 @@ class DashboardSideView extends Marionette.ItemView
       dl = $(hh)
       @$('#dashboard-list').append(dl)
       @
-
-# ----------------------------------
 
 module.exports = DashboardSideView
