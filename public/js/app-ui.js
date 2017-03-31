@@ -27692,7 +27692,6 @@ Session = (function(superClass) {
         d = ref[j];
         dashboards.push(d.id);
       }
-      debugger;
       App.session.attributes["dashboards"] = dashboards;
     }
     return App.session.save();
@@ -29355,7 +29354,6 @@ DashboardSideView = (function(superClass) {
       body: 'Are you sure you want to delete this Dashboard? This cannot be undone and all Widget configurations for this Dashboard will be lost.',
       on_save: (function(_this) {
         return function() {
-          debugger;
           var did;
           did = d.id;
           App.session.attributes["dashboards"].splice(App.session.attributes["dashboards"].indexOf(did), 1);
