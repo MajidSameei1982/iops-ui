@@ -99,7 +99,7 @@ class Session extends BaseModel
       delete user.iat
       delete user.exp
       # TODO: need server fix to list dashboards
-      user.dashboards = [] 
+      #user.dashboards = [] 
       # remove user-typed password
       delete App.session.attributes["password"]
       # convert to a User
