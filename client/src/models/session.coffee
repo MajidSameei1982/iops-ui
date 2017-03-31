@@ -23,7 +23,7 @@ class Session extends BaseModel
       dashboards = []
       for d in App.dashboards.models
         dashboards.push(d.id)
-      debugger
+
       App.session.attributes["dashboards"] = dashboards
     App.session.save()
 

@@ -113,7 +113,6 @@ class DashboardSideView extends Marionette.ItemView
       type: 'warning'
       body: 'Are you sure you want to delete this Dashboard? This cannot be undone and all Widget configurations for this Dashboard will be lost.'
       on_save: ()=>
-        debugger
         did = d.id
         App.session.attributes["dashboards"].splice(App.session.attributes["dashboards"].indexOf(did),1)
         @collection.remove(d)
