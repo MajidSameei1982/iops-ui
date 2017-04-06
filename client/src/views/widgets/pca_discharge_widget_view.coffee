@@ -44,7 +44,7 @@ class PcadischargeWidgetView extends IOPSWidgetView
 
     @cktags = []
     if s? && !!s.site   
-      lbl = "#{@site_code}: PCA Discrge"
+      lbl = "#{@site_code}: PCA Discharge"
       @ui.wtitle.html(lbl)
 
       return if !s.gates || s.gates.length == 0   
