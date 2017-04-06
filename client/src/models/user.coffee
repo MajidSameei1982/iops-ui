@@ -111,26 +111,27 @@ class User extends BaseModel
 
   # check widget roles against user's roles for access to widgets
   check_widget_roles:(sroles)->
-    for r in sroles
-      rp = r.split(':')
-      type = rp[0]
-      role = rp[1]
-      app_role = null
-      for ar in App.roles.models
-        sid = ar.get("siteId")
-        if ar.get('name') == role
-          if (type == 'global' && !sid?) || (type == 'site' && sid)
-            app_role = ar
-            break
-          else if (type != "global" && type != "site")
-            for s in App.accounts.models[0].sites.models
-              if s.get("code").toLowerCase() == type && sid? && sid == s.id
-                app_role = ar
-                break
-      if app_role
-        for ur in @roles.models
-          if ur.id == app_role.id
-            return true
+    pg = (i for i in sroles when i.split(':')[0] == 'global')
+    ps = (i for i in sroles when i.split(':')[0] != 'global')
+
+    rg = (i for i in App.roles.models when i.get('siteId') == undefined)
+    rs = (i for i in App.roles.models when i.get('siteId') != undefined)
+
+    for r in App.session.attributes.roles
+      for gr in pg
+        grole = gr.split(':')[1] 
+        trole = (i for i in rg when i.get('name') is grole)
+        found = (i for i in trole when i.id is r)
+        if found? && found.length > 0
+          return true
+
+      for sr in ps
+        srole = sr.split(':')[1] 
+        trole = (i for i in rs when i.get('name') is srole)
+        found = (i for i in trole when i.id is r)
+        if found? && found.length > 0
+          return true
+
     false
 
   # check a specific claim against user's claims
