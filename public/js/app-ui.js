@@ -28025,18 +28025,18 @@ User = (function(superClass) {
   };
 
   User.prototype.persist = function() {
-    var c, claims, i, j, len, len1, r, ref, ref1, roles;
+    var c, claims, j, k, len, len1, r, ref, ref1, roles;
     roles = [];
     ref = this.roles.models;
-    for (i = 0, len = ref.length; i < len; i++) {
-      r = ref[i];
+    for (j = 0, len = ref.length; j < len; j++) {
+      r = ref[j];
       roles.push(r.id);
     }
     this.attributes["roles"] = roles;
     claims = [];
     ref1 = this.claims.models;
-    for (j = 0, len1 = ref1.length; j < len1; j++) {
-      c = ref1[j];
+    for (k = 0, len1 = ref1.length; k < len1; k++) {
+      c = ref1[k];
       claims.push(c.id);
     }
     this.attributes["claims"] = claims;
@@ -28044,11 +28044,11 @@ User = (function(superClass) {
   };
 
   User.prototype.set_properties = function() {
-    var c, claims, i, j, len, len1, r, ref, ref1, roles;
+    var c, claims, j, k, len, len1, r, ref, ref1, roles;
     claims = [];
     ref = this.get('claims');
-    for (i = 0, len = ref.length; i < len; i++) {
-      c = ref[i];
+    for (j = 0, len = ref.length; j < len; j++) {
+      c = ref[j];
       claims.push({
         _id: c
       });
@@ -28058,8 +28058,8 @@ User = (function(superClass) {
     this.claims.on("change", this.persist);
     roles = [];
     ref1 = this.get('roles');
-    for (j = 0, len1 = ref1.length; j < len1; j++) {
-      r = ref1[j];
+    for (k = 0, len1 = ref1.length; k < len1; k++) {
+      r = ref1[k];
       roles.push({
         _id: r
       });
@@ -28079,10 +28079,10 @@ User = (function(superClass) {
   }
 
   User.prototype.has_role = function(roleid) {
-    var i, len, r, ref;
+    var j, len, r, ref;
     ref = this.roles.models;
-    for (i = 0, len = ref.length; i < len; i++) {
-      r = ref[i];
+    for (j = 0, len = ref.length; j < len; j++) {
+      r = ref[j];
       if (r.id === roleid) {
         return true;
       }
@@ -28091,10 +28091,10 @@ User = (function(superClass) {
   };
 
   User.prototype.is_global_admin = function() {
-    var ar, i, len, ref;
+    var ar, j, len, ref;
     ref = App.roles.models;
-    for (i = 0, len = ref.length; i < len; i++) {
-      ar = ref[i];
+    for (j = 0, len = ref.length; j < len; j++) {
+      ar = ref[j];
       if (!ar.get("siteId") && ar.get("name") === "admin" && this.has_role(ar.id)) {
         return true;
         break;
@@ -28104,13 +28104,13 @@ User = (function(superClass) {
   };
 
   User.prototype.is_site_admin = function(sid) {
-    var ar, i, len, ref, tsid;
+    var ar, j, len, ref, tsid;
     if (this.is_global_admin()) {
       return true;
     }
     ref = App.roles.models;
-    for (i = 0, len = ref.length; i < len; i++) {
-      ar = ref[i];
+    for (j = 0, len = ref.length; j < len; j++) {
+      ar = ref[j];
       tsid = ar.get("siteId");
       if ((tsid == null) || tsid === '') {
         continue;
@@ -28124,10 +28124,10 @@ User = (function(superClass) {
   };
 
   User.prototype.has_site = function(sid) {
-    var i, len, ref, s;
+    var j, len, ref, s;
     ref = this.sites();
-    for (i = 0, len = ref.length; i < len; i++) {
-      s = ref[i];
+    for (j = 0, len = ref.length; j < len; j++) {
+      s = ref[j];
       if (s === sid) {
         return true;
       }
@@ -28136,21 +28136,21 @@ User = (function(superClass) {
   };
 
   User.prototype.sites = function() {
-    var acc, ar, i, j, k, l, len, len1, len2, len3, ref, ref1, ref2, ref3, s, sh, sid, sites, ur;
+    var acc, ar, j, k, l, len, len1, len2, len3, m, ref, ref1, ref2, ref3, s, sh, sid, sites, ur;
     sites = [];
     sh = {};
     ref = App.accounts.models;
-    for (i = 0, len = ref.length; i < len; i++) {
-      acc = ref[i];
+    for (j = 0, len = ref.length; j < len; j++) {
+      acc = ref[j];
       ref1 = acc.sites.models;
-      for (j = 0, len1 = ref1.length; j < len1; j++) {
-        s = ref1[j];
+      for (k = 0, len1 = ref1.length; k < len1; k++) {
+        s = ref1[k];
         ref2 = this.roles.models;
-        for (k = 0, len2 = ref2.length; k < len2; k++) {
-          ur = ref2[k];
+        for (l = 0, len2 = ref2.length; l < len2; l++) {
+          ur = ref2[l];
           ref3 = App.roles.models;
-          for (l = 0, len3 = ref3.length; l < len3; l++) {
-            ar = ref3[l];
+          for (m = 0, len3 = ref3.length; m < len3; m++) {
+            ar = ref3[m];
             if (ar.id === ur.id) {
               sid = ar.get('siteId');
               if ((sid != null) && s.id === sid && !sh[s.id]) {
@@ -28167,40 +28167,112 @@ User = (function(superClass) {
   };
 
   User.prototype.check_widget_roles = function(sroles) {
-    var app_role, ar, i, j, k, l, len, len1, len2, len3, r, ref, ref1, ref2, role, rp, s, sid, type, ur;
-    for (i = 0, len = sroles.length; i < len; i++) {
-      r = sroles[i];
-      rp = r.split(':');
-      type = rp[0];
-      role = rp[1];
-      app_role = null;
-      ref = App.roles.models;
-      for (j = 0, len1 = ref.length; j < len1; j++) {
-        ar = ref[j];
-        sid = ar.get("siteId");
-        if (ar.get('name') === role) {
-          if ((type === 'global' && (sid == null)) || (type === 'site' && sid)) {
-            app_role = ar;
-            break;
-          } else if (type !== "global" && type !== "site") {
-            ref1 = App.accounts.models[0].sites.models;
-            for (k = 0, len2 = ref1.length; k < len2; k++) {
-              s = ref1[k];
-              if (s.get("code").toLowerCase() === type && (sid != null) && sid === s.id) {
-                app_role = ar;
-                break;
-              }
-            }
-          }
+    var found, gr, grole, i, j, k, l, len, len1, len2, pg, ps, r, ref, rg, rs, sr, srole, trole;
+    pg = (function() {
+      var j, len, results;
+      results = [];
+      for (j = 0, len = sroles.length; j < len; j++) {
+        i = sroles[j];
+        if (i.split(':')[0] === 'global') {
+          results.push(i);
         }
       }
-      if (app_role) {
-        ref2 = this.roles.models;
-        for (l = 0, len3 = ref2.length; l < len3; l++) {
-          ur = ref2[l];
-          if (ur.id === app_role.id) {
-            return true;
+      return results;
+    })();
+    ps = (function() {
+      var j, len, results;
+      results = [];
+      for (j = 0, len = sroles.length; j < len; j++) {
+        i = sroles[j];
+        if (i.split(':')[0] !== 'global') {
+          results.push(i);
+        }
+      }
+      return results;
+    })();
+    rg = (function() {
+      var j, len, ref, results;
+      ref = App.roles.models;
+      results = [];
+      for (j = 0, len = ref.length; j < len; j++) {
+        i = ref[j];
+        if (i.get('siteId') === void 0) {
+          results.push(i);
+        }
+      }
+      return results;
+    })();
+    rs = (function() {
+      var j, len, ref, results;
+      ref = App.roles.models;
+      results = [];
+      for (j = 0, len = ref.length; j < len; j++) {
+        i = ref[j];
+        if (i.get('siteId') !== void 0) {
+          results.push(i);
+        }
+      }
+      return results;
+    })();
+    ref = App.session.attributes.roles;
+    for (j = 0, len = ref.length; j < len; j++) {
+      r = ref[j];
+      for (k = 0, len1 = pg.length; k < len1; k++) {
+        gr = pg[k];
+        grole = gr.split(':')[1];
+        trole = (function() {
+          var l, len2, results;
+          results = [];
+          for (l = 0, len2 = rg.length; l < len2; l++) {
+            i = rg[l];
+            if (i.get('name') === grole) {
+              results.push(i);
+            }
           }
+          return results;
+        })();
+        found = (function() {
+          var l, len2, results;
+          results = [];
+          for (l = 0, len2 = trole.length; l < len2; l++) {
+            i = trole[l];
+            if (i.id === r) {
+              results.push(i);
+            }
+          }
+          return results;
+        })();
+        if ((found != null) && found.length > 0) {
+          return true;
+        }
+      }
+      for (l = 0, len2 = ps.length; l < len2; l++) {
+        sr = ps[l];
+        srole = sr.split(':')[1];
+        trole = (function() {
+          var len3, m, results;
+          results = [];
+          for (m = 0, len3 = rs.length; m < len3; m++) {
+            i = rs[m];
+            if (i.get('name') === srole) {
+              results.push(i);
+            }
+          }
+          return results;
+        })();
+        found = (function() {
+          var len3, m, results;
+          results = [];
+          for (m = 0, len3 = trole.length; m < len3; m++) {
+            i = trole[m];
+            if (i.id === r) {
+              results.push(i);
+            }
+          }
+          return results;
+        })();
+        if ((found != null) && found.length > 0) {
+          return true;
         }
       }
     }
@@ -28208,19 +28280,19 @@ User = (function(superClass) {
   };
 
   User.prototype.check_claim = function(claim, site) {
-    var ac, i, j, len, len1, ref, ref1, s, sid, uc;
+    var ac, j, k, len, len1, ref, ref1, s, sid, uc;
     s = site != null ? OPCManager.get_site(site) : null;
     sid = s != null ? s.id : null;
     if (App.claims == null) {
       return false;
     }
     ref = App.claims.models;
-    for (i = 0, len = ref.length; i < len; i++) {
-      ac = ref[i];
+    for (j = 0, len = ref.length; j < len; j++) {
+      ac = ref[j];
       if ((claim === ac.get('name') || claim === ac.id) && (site === ac.get('siteId'))) {
         ref1 = this.claims.models;
-        for (j = 0, len1 = ref1.length; j < len1; j++) {
-          uc = ref1[j];
+        for (k = 0, len1 = ref1.length; k < len1; k++) {
+          uc = ref1[k];
           if (ac.id === uc.id) {
             return true;
           }
@@ -28232,19 +28304,19 @@ User = (function(superClass) {
   };
 
   User.prototype.check_role = function(role, site) {
-    var ar, i, j, len, len1, ref, ref1, s, sid, ur;
+    var ar, j, k, len, len1, ref, ref1, s, sid, ur;
     s = site != null ? OPCManager.get_site(site) : null;
     sid = s != null ? s.id : null;
     if (App.roles == null) {
       return false;
     }
     ref = App.roles.models;
-    for (i = 0, len = ref.length; i < len; i++) {
-      ar = ref[i];
+    for (j = 0, len = ref.length; j < len; j++) {
+      ar = ref[j];
       if ((role === ar.get('name') || role === ar.id) && (site === ar.get('siteId'))) {
         ref1 = this.roles.models;
-        for (j = 0, len1 = ref1.length; j < len1; j++) {
-          ur = ref1[j];
+        for (k = 0, len1 = ref1.length; k < len1; k++) {
+          ur = ref1[k];
           if (ar.id === ur.id) {
             return true;
           }
@@ -30119,6 +30191,7 @@ SiteView = (function(superClass) {
   SiteView.prototype.ui = {
     container: '.site_container',
     cloud: 'i#site_cloud',
+    staticdb: 'i#site_static_dashboards',
     name: '#site_name',
     code: '#site_code',
     shortName: '#site_short',
@@ -30135,7 +30208,8 @@ SiteView = (function(superClass) {
     'click #site_buttons>#cancel': 'cancel_edit',
     'click #site_buttons>#save': 'save',
     'click #site_active': 'toggle_active',
-    'click #site_cloud': 'toggle_cloud'
+    'click #site_cloud': 'toggle_cloud',
+    'click #site_static_dashboards': 'toggle_staticdb'
   };
 
   SiteView.prototype.bindings = {
@@ -30176,9 +30250,18 @@ SiteView = (function(superClass) {
     return this.ui.cloud.toggleClass('fa-toggle-off', !c);
   };
 
+  SiteView.prototype.set_staticdb = function() {
+    var c, settings;
+    settings = _.clone(this.model.get('settings'));
+    c = settings.staticdb != null ? settings.staticdb : true;
+    this.ui.staticdb.toggleClass('fa-toggle-on', c);
+    return this.ui.staticdb.toggleClass('fa-toggle-off', !c);
+  };
+
   SiteView.prototype.set_settings = function() {
     var settings;
     this.set_cloud();
+    this.set_staticdb();
     settings = _.clone(this.model.get('settings'));
     if (settings.zones != null) {
       this.ui.zones.val(JSON.stringify(settings.zones, null, 2));
@@ -30224,6 +30307,18 @@ SiteView = (function(superClass) {
     settings.cloud = c;
     this.model.set('settings', settings);
     return this.set_cloud();
+  };
+
+  SiteView.prototype.toggle_staticdb = function() {
+    var c, settings;
+    if (!this.ui.container.hasClass('rw')) {
+      return false;
+    }
+    settings = _.clone(this.model.get('settings'));
+    c = settings.staticdb != null ? !settings.staticdb : true;
+    settings.staticdb = c;
+    this.model.set('settings', settings);
+    return this.set_staticdb();
   };
 
   SiteView.prototype.toggle_edit = function(rw) {
@@ -39584,6 +39679,8 @@ WeatherWidgetView = (function(superClass) {
 
   WeatherWidgetView.prototype.HOUR = 3600000;
 
+  WeatherWidgetView.prototype.QUARTER_HOUR = 900000;
+
   WeatherWidgetView.prototype.site_refresh = 500000;
 
   WeatherWidgetView.prototype.IsUpdatingSettings = false;
@@ -39623,7 +39720,7 @@ WeatherWidgetView = (function(superClass) {
               ss = _this.site.get('settings');
               is_stale = false;
               if (ss.weather_refresh != null) {
-                is_stale = ((new Date) - (new Date(ss.weather_refresh))) > _this.QUARTER_HOUR;
+                is_stale = ((new Date) - (new Date(ss.weather_refresh))) > (_this.HOUR / 6);
               }
               if ((ss.weather_refresh == null) || is_stale) {
                 return $.ajax({

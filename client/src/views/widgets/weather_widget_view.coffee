@@ -17,6 +17,7 @@ class WeatherWidgetView extends IOPSWidgetView
     sx: 6
     sy: 8
   HOUR: 3600000 
+  QUARTER_HOUR: 900000
   site_refresh: 500000
 
   IsUpdatingSettings: false
@@ -53,7 +54,7 @@ class WeatherWidgetView extends IOPSWidgetView
 
             is_stale = false
             if ss.weather_refresh?
-              is_stale = ((new Date) - (new Date(ss.weather_refresh))) > @QUARTER_HOUR
+              is_stale = ((new Date) - (new Date(ss.weather_refresh))) > (@HOUR/6)
 
             if !ss.weather_refresh? || is_stale
               $.ajax
