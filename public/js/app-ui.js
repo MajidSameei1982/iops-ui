@@ -30191,7 +30191,6 @@ SiteView = (function(superClass) {
   SiteView.prototype.ui = {
     container: '.site_container',
     cloud: 'i#site_cloud',
-    staticdb: 'i#site_static_dashboards',
     name: '#site_name',
     code: '#site_code',
     shortName: '#site_short',
@@ -30208,8 +30207,7 @@ SiteView = (function(superClass) {
     'click #site_buttons>#cancel': 'cancel_edit',
     'click #site_buttons>#save': 'save',
     'click #site_active': 'toggle_active',
-    'click #site_cloud': 'toggle_cloud',
-    'click #site_static_dashboards': 'toggle_staticdb'
+    'click #site_cloud': 'toggle_cloud'
   };
 
   SiteView.prototype.bindings = {
@@ -30250,18 +30248,9 @@ SiteView = (function(superClass) {
     return this.ui.cloud.toggleClass('fa-toggle-off', !c);
   };
 
-  SiteView.prototype.set_staticdb = function() {
-    var c, settings;
-    settings = _.clone(this.model.get('settings'));
-    c = settings.staticdb != null ? settings.staticdb : true;
-    this.ui.staticdb.toggleClass('fa-toggle-on', c);
-    return this.ui.staticdb.toggleClass('fa-toggle-off', !c);
-  };
-
   SiteView.prototype.set_settings = function() {
     var settings;
     this.set_cloud();
-    this.set_staticdb();
     settings = _.clone(this.model.get('settings'));
     if (settings.zones != null) {
       this.ui.zones.val(JSON.stringify(settings.zones, null, 2));
@@ -30307,18 +30296,6 @@ SiteView = (function(superClass) {
     settings.cloud = c;
     this.model.set('settings', settings);
     return this.set_cloud();
-  };
-
-  SiteView.prototype.toggle_staticdb = function() {
-    var c, settings;
-    if (!this.ui.container.hasClass('rw')) {
-      return false;
-    }
-    settings = _.clone(this.model.get('settings'));
-    c = settings.staticdb != null ? !settings.staticdb : true;
-    settings.staticdb = c;
-    this.model.set('settings', settings);
-    return this.set_staticdb();
   };
 
   SiteView.prototype.toggle_edit = function(rw) {
