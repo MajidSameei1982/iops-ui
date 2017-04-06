@@ -39584,6 +39584,8 @@ WeatherWidgetView = (function(superClass) {
 
   WeatherWidgetView.prototype.HOUR = 3600000;
 
+  WeatherWidgetView.prototype.QUARTER_HOUR = 900000;
+
   WeatherWidgetView.prototype.site_refresh = 500000;
 
   WeatherWidgetView.prototype.IsUpdatingSettings = false;
@@ -39623,7 +39625,7 @@ WeatherWidgetView = (function(superClass) {
               ss = _this.site.get('settings');
               is_stale = false;
               if (ss.weather_refresh != null) {
-                is_stale = ((new Date) - (new Date(ss.weather_refresh))) > _this.QUARTER_HOUR;
+                is_stale = ((new Date) - (new Date(ss.weather_refresh))) > (_this.HOUR / 6);
               }
               if ((ss.weather_refresh == null) || is_stale) {
                 return $.ajax({
