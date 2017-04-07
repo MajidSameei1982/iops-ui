@@ -301,6 +301,36 @@
       }
     }
   }
+
+  &.SNA_account {
+    $site_code: SNA;
+    $ImagesPrefix: "../img/airport/#{$site_code}-2D/#{$site_code}_Gate_";  
+    $Gates: A2,  A3,  A4,  A5,  A6, A7, A8,
+            B9,  B10,  B11,  B12,  B13, B14,
+            C15,  C16,  C17,  C18,  C19, C20, C21;
+ 
+    .display {
+      @each $Gate in $Gates {
+        #Airport_Gate_#{$Gate}_a {
+          @extend %background_defaults;
+          background-image: url("#{$ImagesPrefix}#{$Gate}.png");
+          &.docked { background-image: url("#{$ImagesPrefix}#{$Gate}_Plane.png"); }
+        }
+        #Airport_Gate_#{$Gate}_icon {
+          @extend %background_defaults;
+          &.out-of-service { background-image: url("#{$ImagesPrefix}#{$Gate}_Service.png"); }
+          &.bad-data { background-image: url("#{$ImagesPrefix}#{$Gate}_Bad_Data.png"); }
+          &.critical { background-image: url("#{$ImagesPrefix}#{$Gate}_Critical.png"); animation: blink 2s ease-in infinite; }
+          &.alarm { background-image: url("#{$ImagesPrefix}#{$Gate}_Alarm.png"); }
+        }        
+        #Airport_Gate_#{$Gate}_status {
+          @extend %background_defaults;
+          &.perfect-hookup { background-image: url("#{$ImagesPrefix}#{$Gate}_Perfect.png"); }
+        }        
+      }
+    }
+  }
+  
   @keyframes blink {
     from, to { opacity: 1 }
     50% { opacity: 0 }
