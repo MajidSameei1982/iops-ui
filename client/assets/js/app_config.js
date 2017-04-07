@@ -127,7 +127,7 @@ window.app_config = {
       name: "Gate Config Widget",
       icon: "gear",
       roles: ["global:admin","site:admin","global:OperationsAdmin","site:OperationsAdmin"]
-    },
+    }//,
     // {
     //   id: "example",
     //   name: "Permissions Example",
