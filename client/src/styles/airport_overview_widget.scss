@@ -302,9 +302,9 @@
     }
   }
 
-  &.SNA_account {
+  &.SNA_account { 
     $site_code: SNA;
-    $ImagesPrefix: "../img/airport/#{$site_code}-2D/#{$site_code}_Gate_";  
+    $ImagesPrefix: "../img/airport/#{$site_code}/#{$site_code}_Gate_";  
     $Gates: A2,  A3,  A4,  A5,  A6, A7, A8,
             B9,  B10,  B11,  B12,  B13, B14,
             C15,  C16,  C17,  C18,  C19, C20, C21;
@@ -330,7 +330,7 @@
       }
     }
   }
-  
+
   @keyframes blink {
     from, to { opacity: 1 }
     50% { opacity: 0 }
