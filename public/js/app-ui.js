@@ -14914,6 +14914,124 @@ TagConfig = (function(superClass) {
           }
         },
         4: {
+          A1: {
+            A6L2: {
+              add_graphics: {
+                elevating_img: {
+                  ControlTags: {
+                    elvrot_rotunda_position_boolean: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'down-position',
+                    Parm003: null,
+                    Parm004: 'elevating-img-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#elevating_img_container',
+                    Class: 'elevating_img',
+                    Object: null
+                  }
+                }
+              },
+              add_tags: {
+                elvrot_rotunda_position_boolean: {
+                  Tag: 'ELVROT.ROTUNDA_POSITION_BOOLEAN',
+                  Label: 'Elevating Rotunda Position',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'Down Position',
+                    Parm002: 'Up Position',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                position_container_tag: {
+                  Tag: 'ELVROT.ROTUNDA_POSITION',
+                  Label: 'Elevating Rotunda Position',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#widgetImage2',
+                    Class: 'val show',
+                    Object: null
+                  }
+                }
+              }
+            },
+            A7L2: {
+              add_graphics: {
+                elevating_img: {
+                  ControlTags: {
+                    elvrot_rotunda_position_boolean: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'down-position',
+                    Parm003: null,
+                    Parm004: 'elevating-img-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#elevating_img_container',
+                    Class: 'elevating_img',
+                    Object: null
+                  }
+                }
+              },
+              add_tags: {
+                elvrot_rotunda_position_boolean: {
+                  Tag: 'ELVROT.ROTUNDA_POSITION_BOOLEAN',
+                  Label: 'Elevating Rotunda Position',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'Down Position',
+                    Parm002: 'Up Position',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                position_container_tag: {
+                  Tag: 'ELVROT.ROTUNDA_POSITION',
+                  Label: 'Elevating Rotunda Position',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#widgetImage2',
+                    Class: 'val show',
+                    Object: null
+                  }
+                }
+              }
+            }
+          },
           B1: {
             B29L2: {
               add_graphics: {
@@ -14978,6 +15096,192 @@ TagConfig = (function(superClass) {
       },
       pbb_level_detail_widget: {
         4: {
+          A1: {
+            A6L1: {
+              remove_tags: {
+                'pbb_autoleveling': 'pbb_autoleveling',
+                'pbb_limits': 'pbb_limits',
+                'pbb_smoke_detector': 'pbb_smoke_detector',
+                'pbb_cabin_floor_deicer': 'pbb_cabin_floor_deicer',
+                'pbb_cab_angle_disp': 'pbb_cab_angle_disp',
+                'pbb_slope_deg': 'pbb_slope_deg',
+                'pbb_swing_angle_disp': 'pbb_swing_angle_disp',
+                'pbb_height_to_disp': 'pbb_height_to_disp',
+                'pbb_wheel_angle_deg': 'pbb_wheel_angle_deg',
+                'pbb_tunnel_length': 'pbb_tunnel_length'
+              },
+              add_tags: {
+                power_on: {
+                  Tag: 'PBB.POWER_ON',
+                  Label: 'Power On',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            },
+            A6L2: {
+              add_graphics: {
+                elevating_img: {
+                  ControlTags: {
+                    elvrot_rotunda_position_boolean: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'down-position',
+                    Parm003: null,
+                    Parm004: 'elevating-img-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#elevating_img_container',
+                    Class: 'elevating_img show',
+                    Object: null
+                  }
+                }
+              },
+              add_tags: {
+                elvrot_rotunda_status: {
+                  Tag: 'ELVROT.ROTUNDA_STATUS',
+                  Label: 'Elevating Rotunda Status',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                elvrot_rotunda_mode: {
+                  Tag: 'ELVROT.ROTUNDA_MODE',
+                  Label: 'Elevating Rotunda Operational Mode',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                elvrot_rotunda_position_boolean: {
+                  Tag: 'ELVROT.ROTUNDA_POSITION_BOOLEAN',
+                  Label: 'Elevating Rotunda Position',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'Down Position',
+                    Parm002: 'Up Position',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            },
+            A7L2: {
+              add_graphics: {
+                elevating_img: {
+                  ControlTags: {
+                    elvrot_rotunda_position_boolean: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'down-position',
+                    Parm003: null,
+                    Parm004: 'elevating-img-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#elevating_img_container',
+                    Class: 'elevating_img show',
+                    Object: null
+                  }
+                }
+              },
+              add_tags: {
+                elvrot_rotunda_status: {
+                  Tag: 'ELVROT.ROTUNDA_STATUS',
+                  Label: 'Elevating Rotunda Status',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                elvrot_rotunda_mode: {
+                  Tag: 'ELVROT.ROTUNDA_MODE',
+                  Label: 'Elevating Rotunda Operational Mode',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                elvrot_rotunda_position_boolean: {
+                  Tag: 'ELVROT.ROTUNDA_POSITION_BOOLEAN',
+                  Label: 'Elevating Rotunda Position',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'Down Position',
+                    Parm002: 'Up Position',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            }
+          },
           B1: {
             B29L2: {
               add_graphics: {
@@ -15054,11 +15358,6 @@ TagConfig = (function(superClass) {
                 }
               }
             }
-          },
-          B2: {
-            remove_tags: {
-              'pbb_terminal_door': 'pbb_terminal_door'
-            }
           }
         }
       },
@@ -15067,47 +15366,56 @@ TagConfig = (function(superClass) {
           'pca_status': 'pca_status',
           'pca_time': 'pca_time',
           'pca_discharge_temp': 'pca_discharge_temp',
-          'pca_hookup_time': 'pca_hookup_time'
-        },
-        update_tags: {
-          pbb_out_of_service: {
-            Tag: 'PBB._OUT_OF_SERVICE',
-            Label: '[*]PBB Out of Service',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          },
-          gpu_out_of_service: {
-            Tag: 'GPU._OUT_OF_SERVICE',
-            Label: '[*]GPU Out of Service',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          }
+          'pca_hookup_time': 'pca_hookup_time',
+          'pbb_out_of_service': 'pbb_out_of_service',
+          'gpu_out_of_service': 'gpu_out_of_service',
+          'pca_out_of_service': 'pca_out_of_service'
         },
         4: {
+          A1: {
+            A6L2: {
+              add_tags: {
+                elvrot_rotunda_status: {
+                  Tag: 'ELVROT.ROTUNDA_STATUS',
+                  Label: 'Elevating Rotunda Status',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            },
+            A7L2: {
+              add_tags: {
+                elvrot_rotunda_status: {
+                  Tag: 'ELVROT.ROTUNDA_STATUS',
+                  Label: 'Elevating Rotunda Status',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            }
+          },
           B1: {
             B29L2: {
               add_tags: {
@@ -16685,6 +16993,50 @@ TagConfig = (function(superClass) {
       },
       pbb_widget: {
         4: {
+          A1: {
+            A6L2: {
+              add_tags: {
+                elvrot_rotunda_position: {
+                  Tag: 'ELVROT.ROTUNDA_POSITION',
+                  Label: 'Elevating Rotunda Position',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            },
+            A7L2: {
+              add_tags: {
+                elvrot_rotunda_position: {
+                  Tag: 'ELVROT.ROTUNDA_POSITION',
+                  Label: 'Elevating Rotunda Position',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            }
+          },
           B1: {
             B29L2: {
               add_tags: {
