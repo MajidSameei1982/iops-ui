@@ -1307,6 +1307,17 @@ class TagConfig extends Object
 					gpu_out_of_service:{Tag:'GPU._OUT_OF_SERVICE',Label:'[*]GPU',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 				}
 				4:
+					A1:
+						A6L2:
+							add_tags:{
+								elvrot_out_of_service:{Tag:'ELVROT._OUT_OF_SERVICE',Label:'[*]ELVROT',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+								elvrot_quality:{Tag:'ELVROT._QUALITY',Label:'Comm Errors',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}},
+							}
+						A7L2:
+							add_tags:{
+								elvrot_out_of_service:{Tag:'ELVROT._OUT_OF_SERVICE',Label:'[*]ELVROT',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
+								elvrot_quality:{Tag:'ELVROT._QUALITY',Label:'Comm Errors',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}},
+							}
 					B1:B29L2:
 						add_tags:{
 							elvrot_out_of_service:{Tag:'ELVROT._OUT_OF_SERVICE',Label:'[*]ELVROT',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
@@ -1440,6 +1451,27 @@ class TagConfig extends Object
 					gpu_status:{Tag:'GPU.GPUSTATUSBOOLEAN',Label:'[*]GPU',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:null,Object:null}},
 				}
 				4:
+					A1:
+						A6L2:
+							add_tags:{
+								elvrot_has_warnings:{Tag:'ELVROT.Warning._HasWarnings',Label:'Warnings',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}},
+								elvrot_has_alarms:{Tag:'ELVROT.Alarm._HasAlarms',Label:'Alarms',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}},
+								elvrot_has_critical_alarms:{Tag:'ELVROT.Alarm._HasCriticalAlarms',Label:'Critical Alarms',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}},
+								elvrot_out_of_service:{Tag:'ELVROT._OUT_OF_SERVICE',Label:'Out Of Service',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}},
+								elvrot_perfect_hookup:{Tag:'ELVROT.Calc_PerfectHookupTime',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}},
+								elvrot_quality:{Tag:'ELVROT._QUALITY',Label:'Comm Errors',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}},
+								elvrot_rotunda_status:{Tag:'ELVROT.ROTUNDA_STATUS',Label:'[*]Elev. Rot.',DataType:'Value',Parameters:{Parm001:false,Parm002:null,Parm003:'#{1}',Parm004:null},Element:{Type:null,ParentID:null,Class:'ElvRot',Object:null}},
+							}
+						A7L2:
+							add_tags:{
+								elvrot_has_warnings:{Tag:'ELVROT.Warning._HasWarnings',Label:'Warnings',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}},
+								elvrot_has_alarms:{Tag:'ELVROT.Alarm._HasAlarms',Label:'Alarms',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}},
+								elvrot_has_critical_alarms:{Tag:'ELVROT.Alarm._HasCriticalAlarms',Label:'Critical Alarms',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}},
+								elvrot_out_of_service:{Tag:'ELVROT._OUT_OF_SERVICE',Label:'Out Of Service',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}},
+								elvrot_perfect_hookup:{Tag:'ELVROT.Calc_PerfectHookupTime',Label:'Perfect Hookup',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}},
+								elvrot_quality:{Tag:'ELVROT._QUALITY',Label:'Comm Errors',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:'no_row',Object:null}},
+								elvrot_rotunda_status:{Tag:'ELVROT.ROTUNDA_STATUS',Label:'[*]Elev. Rot.',DataType:'Value',Parameters:{Parm001:false,Parm002:null,Parm003:'#{1}',Parm004:null},Element:{Type:null,ParentID:null,Class:'ElvRot',Object:null}},
+							}
 					B1:B29L2:
 						add_tags:{
 							elvrot_has_warnings:{Tag:'ELVROT.Warning._HasWarnings',Label:'Warnings',DataType:'Boolean',Parameters:{Parm001:'True',Parm002:'False',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'Alert',ParentID:'#widgetData',Class:'no_row',Object:null}},
@@ -1503,6 +1535,15 @@ class TagConfig extends Object
 					pca_mode_heating:{Tag:'PCA.MODE_HEATING',Label:'Heating Mode',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 				}
 				4:
+					A1:
+						A6L2:
+							add_tags:{
+								elvrot_rotunda_status:{Tag:'ELVROT.ROTUNDA_STATUS',Label:'[*]Elev. Rot.',DataType:'Value',Parameters:{Parm001:false,Parm002:null,Parm003:'#{1}',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:'ElvRot',Object:null}},
+							}
+						A7L2:
+							add_tags:{
+								elvrot_rotunda_status:{Tag:'ELVROT.ROTUNDA_STATUS',Label:'[*]Elev. Rot.',DataType:'Value',Parameters:{Parm001:false,Parm002:null,Parm003:'#{1}',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:'ElvRot',Object:null}},
+							}
 					B1:B29L2:
 						add_tags:{
 							elvrot_rotunda_status:{Tag:'ELVROT.ROTUNDA_STATUS',Label:'[*]Elev. Rot.',DataType:'Value',Parameters:{Parm001:false,Parm002:null,Parm003:'#{1}',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:'ElvRot',Object:null}},
