@@ -226,7 +226,7 @@
     $ImagesPrefix: "../img/airport/#{$site_code}-2D/#{$site_code}_Gate_";  
     $Gates: A3, A5, A7L1, A7L2, A6L1, A6L2, A6L3, A4, A2L1, A2L2
             , B25L1, B25L2, B27, B29L1, B29L2, B31L1, B31L2, B33, B35, B37, B39, B41, B43, B45, B47, B49, B51, B53, B55
-            , B48, B46, B44, B42, B40, B38, B36, B34, B32, B30, B28, B26, B24, B22, B20L1, B20L2;
+            , B48, B46, B44, B42, B38, B36, B34, B32, B30, B28, B26, B24, B22, B20L1, B20L2;
 
     .display {
       @each $Gate in $Gates {
