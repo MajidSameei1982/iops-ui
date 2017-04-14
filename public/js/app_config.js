@@ -128,12 +128,12 @@ window.app_config = {
       icon: "gear",
       roles: ["global:admin","site:admin","global:OperationsAdmin","site:OperationsAdmin"]
     },
-    {
-      id: "example",
-      name: "Permissions Example",
-      icon: "gear",
-      roles: ["jfk:user"]
-    }
+    // {
+    //   id: "example",
+    //   name: "Permissions Example",
+    //   icon: "gear",
+    //   roles: ["jfk:user"]
+    // }
     // ,
     // {
     //   id: "asset",
