@@ -7745,6 +7745,9 @@ TagConfig = (function(superClass) {
         }
       },
       pbb_pca_gpu_basic_widget: {
+        remove_tags: {
+          'pca_out_of_service': 'pca_out_of_service'
+        },
         update_tags: {
           pbb_out_of_service: {
             Tag: 'PBB._OUT_OF_SERVICE',
@@ -7767,6 +7770,24 @@ TagConfig = (function(superClass) {
           gpu_out_of_service: {
             Tag: 'GPU._OUT_OF_SERVICE',
             Label: '[*]GPU Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA Out of Service',
             DataType: 'Boolean',
             Parameters: {
               Parm001: null,
@@ -9229,6 +9250,24 @@ TagConfig = (function(superClass) {
               Class: 'no_row',
               Object: null
             }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
           }
         },
         1: {
@@ -10570,6 +10609,24 @@ TagConfig = (function(superClass) {
               Class: 'no_row',
               Object: null
             }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
           }
         }
       },
@@ -11603,6 +11660,24 @@ TagConfig = (function(superClass) {
           gpu_out_of_service: {
             Tag: 'GPU._OUT_OF_SERVICE',
             Label: '[*]GPU Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA Out of Service',
             DataType: 'Boolean',
             Parameters: {
               Parm001: null,
@@ -14258,6 +14333,24 @@ TagConfig = (function(superClass) {
           gpu_out_of_service: {
             Tag: 'GPU._OUT_OF_SERVICE',
             Label: '[*]GPU Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA Out of Service',
             DataType: 'Boolean',
             Parameters: {
               Parm001: null,
@@ -20103,6 +20196,24 @@ TagConfig = (function(superClass) {
               Class: 'no_row',
               Object: null
             }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
           }
         }
       },
@@ -22482,6 +22593,24 @@ TagConfig = (function(superClass) {
           gpu_out_of_service: {
             Tag: 'GPU._OUT_OF_SERVICE',
             Label: '[*]GPU Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA Out of Service',
             DataType: 'Boolean',
             Parameters: {
               Parm001: null,
@@ -27114,6 +27243,24 @@ TagConfig = (function(superClass) {
           gpu_out_of_service: {
             Tag: 'GPU._OUT_OF_SERVICE',
             Label: '[*]GPU Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA Out of Service',
             DataType: 'Boolean',
             Parameters: {
               Parm001: null,
