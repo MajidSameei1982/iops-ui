@@ -44236,6 +44236,7 @@ PcadischargeWidgetView = (function(superClass) {
       if (!s.gates || s.gates.length === 0) {
         return;
       }
+      this.tags = [];
       this.tagData = [];
       this.tagConfig = [];
       this.tagConfig = this.create_dynamic_elements(this.el.parentNode.id, this.classID, null, null, this.site_code, s);

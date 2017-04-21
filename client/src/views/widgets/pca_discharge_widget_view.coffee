@@ -52,7 +52,7 @@ class PcadischargeWidgetView extends IOPSWidgetView
       # stop listening for updates
       #@kill_updates(@site_code)
 
-      #@tags = []
+      @tags = []
       @tagData = []
       @tagConfig = []
       @tagConfig = @create_dynamic_elements(@el.parentNode.id, @classID, null, null, @site_code, s)
