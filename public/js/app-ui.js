@@ -43535,7 +43535,7 @@ PbbpcagpustatusWidgetView = (function(superClass) {
           this.$("#widgetData [id$='" + tag + "']").toggleClass('Active', setValue);
         }
       } else {
-        if (this.$("#widgetData [id$='_pca_discharge_temp']").length > 0) {
+        if (this.$("#widgetData [id$='" + tag + "']").length > 0) {
           this.render_value_row_tzg("dynamic_" + tag, data.Parameters.Parm001, data.Parameters.Parm002, data.Parameters.Parm003, data.Parameters.Parm004);
         }
       }
@@ -44236,7 +44236,6 @@ PcadischargeWidgetView = (function(superClass) {
       if (!s.gates || s.gates.length === 0) {
         return;
       }
-      tags = [];
       this.tagData = [];
       this.tagConfig = [];
       this.tagConfig = this.create_dynamic_elements(this.el.parentNode.id, this.classID, null, null, this.site_code, s);
@@ -44264,7 +44263,7 @@ PcadischargeWidgetView = (function(superClass) {
         }
       }
       if (this.refId === 0) {
-        this.refId = App.opc.add_tags(this.site_code, tags);
+        this.refId = App.opc.add_tags(this.site_code, this.cktags);
         App.vent.on("opc:data:" + this.site_code, this.data_update);
         this.opc = App.opc.connections[this.site_code];
         this.start_heartbeat();

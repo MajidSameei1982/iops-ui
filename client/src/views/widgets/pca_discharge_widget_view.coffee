@@ -52,7 +52,7 @@ class PcadischargeWidgetView extends IOPSWidgetView
       # stop listening for updates
       #@kill_updates(@site_code)
 
-      tags = []
+      #@tags = []
       @tagData = []
       @tagConfig = []
       @tagConfig = @create_dynamic_elements(@el.parentNode.id, @classID, null, null, @site_code, s)
@@ -79,7 +79,7 @@ class PcadischargeWidgetView extends IOPSWidgetView
       #@start_heartbeat()
 
       if @refId == 0
-        @refId = App.opc.add_tags @site_code, tags
+        @refId = App.opc.add_tags @site_code, @cktags
         App.vent.on "opc:data:#{@site_code}", @data_update
         @opc =  App.opc.connections[@site_code]
         @start_heartbeat()
