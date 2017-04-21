@@ -212,7 +212,7 @@ class PbbpcagpustatusWidgetView extends IOPSWidgetView
         else if @$("#widgetData [id$='#{tag}']").length > 0
           @$("#widgetData [id$='#{tag}']").toggleClass('Active', setValue)
       else
-        if @$("#widgetData [id$='_pca_discharge_temp']").length > 0
+        if @$("#widgetData [id$='#{tag}']").length > 0
           @render_value_row_tzg("dynamic_#{tag}", data.Parameters.Parm001, data.Parameters.Parm002, data.Parameters.Parm003, data.Parameters.Parm004)
 
       #if /pbb_docked/.test(tag)
