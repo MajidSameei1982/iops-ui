@@ -111,11 +111,13 @@ class AppController extends Object
     show_dash = ()=>
       OPCManager.drop_connections() # force clean when switching
       dl = @set_main_layout()
+      dash = null
       if dl.collection?
         first = dl.collection.first()
         if id?
           dash = dl.collection.where({_id:id})
           dash = if dash.length > 0 then dash[0] else null
+
       dash = if !dash? then first else dash
       did = if dash? then dash.id else null
       App.router.navigate("dashboard#{if did? then '/'+did else ''}", {trigger:false})
