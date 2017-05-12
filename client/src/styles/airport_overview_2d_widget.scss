@@ -1,0 +1,345 @@
+/* Airport Overview Widget Styles */
+.airport_overview_2d_widget {
+  &.alarm {
+    background-color: #c00;
+    color: #fff;
+  }
+
+  %div_defaults {
+    min-height: 100%;
+    min-width: 100%;
+    // overflow: auto;
+    position: absolute;
+    // top: 25px;
+    top: 0px;
+    left: 0px;
+  }
+  %background_defaults {
+    background-repeat:no-repeat;
+    background-size: contain;
+    background-position: bottom center;
+    background-size: 100% 100%;
+    background-image: none;
+  }
+  .display {
+    #key {
+      position: absolute;
+      top: 30px;
+      right: 20px;
+      font-size: 15px;
+      background-color: rgba(255,255,255,0.5);
+      z-index: 9999;
+      border-radius: 10px;
+      padding: 10px;
+      .alarm { color:#e45f00; }
+      .critical { color:#c00; }
+      .docked { color:#090; }
+      .legend-alarm { @extend %background_defaults; display:inline-block; height:19px; width:19px; background-image: url("../img/airport/Common/AirportOverview2D_OrangeGate.png"); }
+      .legend-autolevel { @extend %background_defaults; display:inline-block; height:19px; width:19px; background-image: url("../img/airport/Common/AirportOverview2D_GreenGate.png"); }
+      .legend-critical { @extend %background_defaults; display:inline-block; height:19px; width:19px; background-image: url("../img/airport/Common/AirportOverview2D_RedGate.png"); }
+      .outofservice { color:#c00; }
+      .perfect { color:#090; }
+      .bad-data { 
+        left: 23px;
+        top: -6px;
+        width: 100%;
+        .fa-rss {
+          text-align: left;
+          left: -20px;
+
+        }
+        .fa-exclamation {
+          color: red;
+          text-align: left;
+          left: -17px;
+          top: -1px;
+          font-size: .8em;
+        }
+
+      }
+    }
+    #display_label {
+      display: none;
+    }
+    div[id^='Airport_Gate_'] {
+      @extend %div_defaults;
+      z-index: 1000;
+    }
+    #Airport_Overview {
+      @extend %div_defaults;
+      top: 25px;
+      #layout {
+        position: absolute;
+        width:100%;
+        height:100%;
+      }
+      #layout_container {
+        top:0;left:0;
+        // overflow: hidden;
+        img, div {
+          position: absolute;
+          // top: 25px;
+          top: 0px;
+          left: 0px;
+        }
+      }
+    }
+  }
+
+  &.ATL_account {
+    $site_code: ATL;
+    $ImagesPrefix: "../img/airport/#{$site_code}-2D/#{$site_code}_Gate_";  
+    $Gates: B1, B2, B3, B4, B5, B6, B7, B9, B10, B11, B12, B13, B14, B16, B17, B18, B19, B20, B21, B22, B23, B24, B25, B26, B27, B28, B29, B31, B32, B33, B34, B36;
+
+    .display {
+      @each $Gate in $Gates {
+        #Airport_Gate_#{$Gate}_a {
+          @extend %background_defaults;
+          background-image: url("#{$ImagesPrefix}#{$Gate}.png");
+          &.docked { background-image: url("#{$ImagesPrefix}#{$Gate}_Plane.png"); }
+        }
+        #Airport_Gate_#{$Gate}_icon {
+          @extend %background_defaults;
+          &.out-of-service { background-image: url("#{$ImagesPrefix}#{$Gate}_Service.png"); }
+          &.bad-data { background-image: url("#{$ImagesPrefix}#{$Gate}_Bad_Data.png"); }
+          &.critical { background-image: url("#{$ImagesPrefix}#{$Gate}_Critical.png"); animation: blink 2s ease-in infinite; }
+          &.alarm { background-image: url("#{$ImagesPrefix}#{$Gate}_Alarm.png"); }
+        }        
+        #Airport_Gate_#{$Gate}_status {
+          @extend %background_defaults;
+          &.perfect-hookup { background-image: url("#{$ImagesPrefix}#{$Gate}_Perfect.png"); }
+        }        
+      }
+    }
+  }
+
+  &.CID_account {
+    $site_code: CID;
+    $ImagesPrefix: "../img/airport/#{$site_code}-2D/#{$site_code}_Gate_";  
+    $Gates: C1, C2, C3, C4, C5, C6;
+
+    .display {
+      @each $Gate in $Gates {
+        #Airport_Gate_#{$Gate}_a {
+          @extend %background_defaults;
+          background-image: url("#{$ImagesPrefix}#{$Gate}.png");
+          &.docked { background-image: url("#{$ImagesPrefix}#{$Gate}_Plane.png"); }
+        }
+        #Airport_Gate_#{$Gate}_icon {
+          @extend %background_defaults;
+          &.out-of-service { background-image: url("#{$ImagesPrefix}#{$Gate}_Service.png"); }
+          &.bad-data { background-image: url("#{$ImagesPrefix}#{$Gate}_Bad_Data.png"); }
+          &.critical { background-image: url("#{$ImagesPrefix}#{$Gate}_Critical.png"); animation: blink 2s ease-in infinite; }
+          &.alarm { background-image: url("#{$ImagesPrefix}#{$Gate}_Alarm.png"); }
+        }        
+        #Airport_Gate_#{$Gate}_status {
+          @extend %background_defaults;
+          &.perfect-hookup { background-image: url("#{$ImagesPrefix}#{$Gate}_Perfect.png"); }
+        }        
+      }
+    }
+  }
+
+  &.DAL_account {
+    $site_code: DAL;
+    $ImagesPrefix: "../img/airport/#{$site_code}-2D/#{$site_code}_Gate_";  
+    $Gates: 10, 12;
+
+    .display {
+      @each $Gate in $Gates {
+        #Airport_Gate_#{$Gate}_a {
+          @extend %background_defaults;
+          background-image: url("#{$ImagesPrefix}#{$Gate}.png");
+          &.docked { background-image: url("#{$ImagesPrefix}#{$Gate}_Plane.png"); }
+        }
+        #Airport_Gate_#{$Gate}_icon {
+          @extend %background_defaults;
+          &.out-of-service { background-image: url("#{$ImagesPrefix}#{$Gate}_Service.png"); }
+          &.bad-data { background-image: url("#{$ImagesPrefix}#{$Gate}_Bad_Data.png"); }
+          &.critical { background-image: url("#{$ImagesPrefix}#{$Gate}_Critical.png"); animation: blink 2s ease-in infinite; }
+          &.alarm { background-image: url("#{$ImagesPrefix}#{$Gate}_Alarm.png"); }
+        }        
+        #Airport_Gate_#{$Gate}_status {
+          @extend %background_defaults;
+          &.perfect-hookup { background-image: url("#{$ImagesPrefix}#{$Gate}_Perfect.png"); }
+        }        
+      }
+    }
+  }
+
+  &.EWR_account {
+    $site_code: EWR;
+    $ImagesPrefix: "../img/airport/#{$site_code}-2D/#{$site_code}_Gate_";  
+    $Gates: C90, C125;
+
+    .display {
+      @each $Gate in $Gates {
+        #Airport_Gate_#{$Gate}_a {
+          @extend %background_defaults;
+          background-image: url("#{$ImagesPrefix}#{$Gate}.png");
+          &.docked { background-image: url("#{$ImagesPrefix}#{$Gate}_Plane.png"); }
+        }
+        #Airport_Gate_#{$Gate}_icon {
+          @extend %background_defaults;
+          &.out-of-service { background-image: url("#{$ImagesPrefix}#{$Gate}_Service.png"); }
+          &.bad-data { background-image: url("#{$ImagesPrefix}#{$Gate}_Bad_Data.png"); }
+          &.critical { background-image: url("#{$ImagesPrefix}#{$Gate}_Critical.png"); animation: blink 2s ease-in infinite; }
+          &.alarm { background-image: url("#{$ImagesPrefix}#{$Gate}_Alarm.png"); }
+        }        
+        #Airport_Gate_#{$Gate}_status {
+          @extend %background_defaults;
+          &.perfect-hookup { background-image: url("#{$ImagesPrefix}#{$Gate}_Perfect.png"); }
+        }        
+      }
+    }
+  }
+
+  &.HAS-IAH_account {
+    $site_code: HAS-IAH;
+    $ImagesPrefix: "../img/airport/#{$site_code}-2D/#{$site_code}_Gate_";  
+    $Gates: A01, A02, A07, A08, A09, A10, A11, A12, A14, A15, A17, A18, A19, A24, A25, A26, A27, A29, A30;
+
+    .display {
+      @each $Gate in $Gates {
+        #Airport_Gate_#{$Gate}_a {
+          @extend %background_defaults;
+          background-image: url("#{$ImagesPrefix}#{$Gate}.png");
+          &.docked { background-image: url("#{$ImagesPrefix}#{$Gate}_Plane.png"); }
+        }
+        #Airport_Gate_#{$Gate}_icon {
+          @extend %background_defaults;
+          &.out-of-service { background-image: url("#{$ImagesPrefix}#{$Gate}_Service.png"); }
+          &.bad-data { background-image: url("#{$ImagesPrefix}#{$Gate}_Bad_Data.png"); }
+          &.critical { background-image: url("#{$ImagesPrefix}#{$Gate}_Critical.png"); animation: blink 2s ease-in infinite; }
+          &.alarm { background-image: url("#{$ImagesPrefix}#{$Gate}_Alarm.png"); }
+        }        
+        #Airport_Gate_#{$Gate}_status {
+          @extend %background_defaults;
+          &.perfect-hookup { background-image: url("#{$ImagesPrefix}#{$Gate}_Perfect.png"); }
+        }        
+      }
+    }
+  }
+
+  &.JFK_account {
+    $site_code: JFK;
+    $ImagesPrefix: "../img/airport/#{$site_code}-2D/#{$site_code}_Gate_";  
+    $Gates: A3, A5, A7L1, A7L2, A6L1, A6L2, A6L3, A4, A2L1, A2L2
+            , B25L1, B25L2, B27, B29L1, B29L2, B31L1, B31L2, B33, B35, B37, B39, B41, B43, B45, B47, B49, B51, B53, B55
+            , B48, B46, B44, B42, B38, B36, B34, B32, B30, B28, B26, B24, B22, B20L1, B20L2;
+
+    .display {
+      @each $Gate in $Gates {
+        #Airport_Gate_#{$Gate}_a {
+          @extend %background_defaults;
+          background-image: url("#{$ImagesPrefix}#{$Gate}.png");
+          &.docked { background-image: url("#{$ImagesPrefix}#{$Gate}_Docked.png"); }
+        }
+        #Airport_Gate_#{$Gate}_icon {
+          @extend %background_defaults;
+          &.out-of-service { background-image: url("#{$ImagesPrefix}#{$Gate}_Service.png"); }
+          &.bad-data { background-image: url("#{$ImagesPrefix}#{$Gate}_Bad_Data.png"); }
+          &.critical { background-image: url("#{$ImagesPrefix}#{$Gate}_Critical.png"); animation: blink 2s ease-in infinite; }
+          &.alarm { background-image: url("#{$ImagesPrefix}#{$Gate}_Alarm.png"); }
+        }        
+        #Airport_Gate_#{$Gate}_status {
+          @extend %background_defaults;
+          &.perfect-hookup { background-image: url("#{$ImagesPrefix}#{$Gate}_Perfect.png"); }
+        }        
+        #Airport_Gate_#{$Gate}_plane {
+          @extend %background_defaults;
+          &.autolevel { background-image: url("#{$ImagesPrefix}#{$Gate}_Plane.png"); }
+        }        
+      }
+    }
+  }
+
+  &.RDU_account {
+    $site_code: RDU;
+    $ImagesPrefix: "../img/airport/#{$site_code}-2D/#{$site_code}_Gate_";  
+    $Gates: C1,  C3,  C7,  C8,  C9, C10, C11, C12, C13, C14, C15, C16, C17, C18, C20, C21, C22, C23, C24, C25,
+            D3,  D5,  D6,  D8,  D9, D10, D11, D12, D13, D14, D15, D16, D17, D18, D19, D20;
+ 
+    .display {
+      @each $Gate in $Gates {
+        #Airport_Gate_#{$Gate}_a {
+          @extend %background_defaults;
+          background-image: url("#{$ImagesPrefix}#{$Gate}.png");
+          &.docked { background-image: url("#{$ImagesPrefix}#{$Gate}_Plane.png"); }
+        }
+        #Airport_Gate_#{$Gate}_icon {
+          @extend %background_defaults;
+          &.out-of-service { background-image: url("#{$ImagesPrefix}#{$Gate}_Service.png"); }
+          &.bad-data { background-image: url("#{$ImagesPrefix}#{$Gate}_Bad_Data.png"); }
+          &.critical { background-image: url("#{$ImagesPrefix}#{$Gate}_Critical.png"); animation: blink 2s ease-in infinite; }
+          &.alarm { background-image: url("#{$ImagesPrefix}#{$Gate}_Alarm.png"); }
+        }        
+        #Airport_Gate_#{$Gate}_status {
+          @extend %background_defaults;
+          &.perfect-hookup { background-image: url("#{$ImagesPrefix}#{$Gate}_Perfect.png"); }
+        }        
+      }
+    }
+  }
+
+  &.PHX_account {
+    $site_code: PHX;
+    $ImagesPrefix: "../img/airport/#{$site_code}-2D/#{$site_code}_Gate_";  
+    $Gates: D1;
+
+    .display {
+      @each $Gate in $Gates {
+        #Airport_Gate_#{$Gate}_a {
+          @extend %background_defaults;
+          background-image: url("#{$ImagesPrefix}#{$Gate}.png");
+          &.docked { background-image: url("#{$ImagesPrefix}#{$Gate}_Plane.png"); }
+        }
+        #Airport_Gate_#{$Gate}_icon {
+          @extend %background_defaults;
+          &.out-of-service { background-image: url("#{$ImagesPrefix}#{$Gate}_Service.png"); }
+          &.bad-data { background-image: url("#{$ImagesPrefix}#{$Gate}_Bad_Data.png"); }
+          &.critical { background-image: url("#{$ImagesPrefix}#{$Gate}_Critical.png"); animation: blink 2s ease-in infinite; }
+          &.alarm { background-image: url("#{$ImagesPrefix}#{$Gate}_Alarm.png"); }
+        }        
+        #Airport_Gate_#{$Gate}_status {
+          @extend %background_defaults;
+          &.perfect-hookup { background-image: url("#{$ImagesPrefix}#{$Gate}_Perfect.png"); }
+        }        
+      }
+    }
+  }
+
+  &.SNA_account {
+    $site_code: SNA;
+    $ImagesPrefix: "../img/airport/#{$site_code}-2D/#{$site_code}_Gate_";  
+    $Gates: A2,  A3,  A4,  A5,  A6, A7, A8,
+            B9,  B10,  B11,  B12,  B13, B14,
+            C15,  C16,  C17,  C18,  C19, C20, C21;
+ 
+    .display {
+      @each $Gate in $Gates {
+        #Airport_Gate_#{$Gate}_a {
+          @extend %background_defaults;
+          background-image: url("#{$ImagesPrefix}#{$Gate}.png");
+          &.docked { background-image: url("#{$ImagesPrefix}#{$Gate}_Plane.png"); }
+        }
+        #Airport_Gate_#{$Gate}_icon {
+          @extend %background_defaults;
+          &.out-of-service { background-image: url("#{$ImagesPrefix}#{$Gate}_Service.png"); }
+          &.bad-data { background-image: url("#{$ImagesPrefix}#{$Gate}_Bad_Data.png"); }
+          &.critical { background-image: url("#{$ImagesPrefix}#{$Gate}_Critical.png"); animation: blink 2s ease-in infinite; }
+          &.alarm { background-image: url("#{$ImagesPrefix}#{$Gate}_Alarm.png"); }
+        }        
+        #Airport_Gate_#{$Gate}_status {
+          @extend %background_defaults;
+          &.perfect-hookup { background-image: url("#{$ImagesPrefix}#{$Gate}_Perfect.png"); }
+        }        
+      }
+    }
+  }
+
+  @keyframes blink {
+    from, to { opacity: 1 }
+    50% { opacity: 0 }
+  }
+}

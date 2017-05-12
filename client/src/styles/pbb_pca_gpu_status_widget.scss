@@ -29,33 +29,147 @@
       }
       tbody {
         td{
-          padding: 2px 5px;
-          border-left: solid 1px #ddd;
-          border-bottom: solid 1px #ddd;
+          padding: 1px;
+          border: solid 1px #ddd;
+          //border-bottom: solid 1px #ddd;
+          position: relative;
           &.val {
             background-image:  url("../img/data-status-idle.png");
             background-repeat: no-repeat;
             background-position: center center;
+            width: calc((100% - 15%)/6);
           }
-          &.ok {
+          &.DisCharge {
+            font-size: 12px;
+            text-align: center;
+            color: black;
+            &.Cooling {
+              color: #33adff;
+            }
+            &.Heating {
+              color: #ff3300;
+            }
+          }
+          &.Active {
             background-image:  url("../img/data-status-ok.png");
             background-repeat: no-repeat;
             background-position: center center;
           }
-          &.bad_data {
-            background-image:  url("../img/data-status-baddata.png");
-            background-repeat: no-repeat;
-            background-position: center center
-          }
           &.no-show {
-            visibility: hidden;
-            display: none;
+            background: none;
           }
-          &.show {
-            visibility: visible;
-          }
-          &.show-no-status {
+          &.no-background {
             background-image:  none !important;
+          }
+          .fa {
+            margin-right:-5px;
+            padding: 1px;
+            border-radius: 10px;
+            font-size:15px !important;
+          }
+          i {
+            position:absolute;
+            display: none;
+            padding: 0px;
+            margin: 0px;
+            z-index: 100;
+            &.Active {
+              display: inline-block;
+            }
+            &.alert-icon {
+              position: relative;
+              &.fa-plane { // Docked
+                color: #090;
+              }
+              &.fa-warning { // Docked
+                color:#c00; 
+                animation: blink 2s ease-in infinite;
+              }
+              &.fa-bell { // Docked
+                color:#e45f00; 
+              }
+              &.fa-check-circle-o { // Docked
+                color: #090;
+              }
+              &.fa-wrench { // Docked
+                color:#c00; 
+              }
+            }
+            &.cell-icon {
+              font-size: 10px !important;
+              margin: 0px;
+              &.fa-warning { // Critical Alarms
+                color:#c00; 
+                animation: blink 2s ease-in infinite;
+                top: 0%;
+                left: 70%;
+                z-index: 101;
+              }
+              &.fa-bell { // Alarms
+                color:#e45f00; 
+                top: 0%;
+                left: 70%;
+              }
+              &.fa-check-circle-o { // Perfect Hookup 
+                color:#090; 
+                top: 0%;
+                left: 0%;
+              }
+              &.fa-wrench { // Out of Service 
+                color:#c00; 
+                top: 13%;
+                left: 30%;
+                font-size: 20px !important;
+              }
+            }
+
+          }
+          span {
+            display: none;
+            //text-align: center;
+            //vertical-align: middle;
+            //height: 25px;
+            //width: 25px;
+            //float: right;
+            i {
+              display: inline-block;
+            }
+            &.Active {
+              display: inline-block;
+            }
+            &.alert-icon {
+              &.fa-stack { // Quality - No Comm
+                position: relative;
+                height: 1em;
+                width: 1em;
+                line-height: 1em;
+                vertical-align: baseline;
+                .fa-rss {
+                }
+                .fa-exclamation {
+                  color: red;
+                  top: 1px;
+                  font-size: .8em !important;
+                }
+              }
+            }
+            &.cell-icon {
+              &.fa-stack { // Quality - No Comm
+                top: 0%;
+                left: 25%;
+                height: 1.4em;
+                width: 1.4em;
+                line-height: 1.4em;
+                .fa-rss {
+                  font-size: 26px !important;
+                }
+                .fa-exclamation {
+                  color: red;
+                  top: 1px;
+                  font-size: 23px !important;
+                }
+              }
+            }
           }
 
         }
@@ -64,46 +178,7 @@
           font-style: italic;
           color:#333;
           text-align: left;
-        }
-
-        tr#iconRow {
-          i {
-            display: none;
-            text-align: center;
-            vertical-align: middle;
-            &.fa {
-              margin-right:-5px;
-              padding: 5px;
-              border-radius: 10px;
-              font-size:15px !important;
-            }
-            &.docked {
-              color: #069;
-              display: inline-block;
-            }
-            &.bad-data { 
-              color:#c00; 
-              display: inline-block;
-            }
-            &.critical { 
-              color:#c00; 
-              display: inline-block;
-              animation: blink 2s ease-in infinite;
-            }
-            &.alarm { 
-              color:#e45f00; 
-              display: inline-block;
-            }
-            &.perfect-hookup { 
-              color:#1dc150; 
-              display: inline-block;
-            }
-            &.out-of-service { 
-              color:#e10a12; 
-              display: inline-block;
-            }
-          }
-
+          width: 15%;
         }
         td[id$="_pbb_status"] {
 
@@ -115,22 +190,13 @@
 
         }
         td[id$="_pca_discharge_temp"] {
-          font-size: 12px;
-          &.DisCharge {
-            text-align: center;
-            &.Cooling {
-              color: #33adff;
-            }
-            &.Heating {
-              color: #ff3300;
-            }
-          }
 
         }
         td[id$="_elvrot_rotunda_status"] {
           background-image: none !important;
           text-align: center;
           vertical-align: middle;
+          font-size: 12px;
         }
       }
     }

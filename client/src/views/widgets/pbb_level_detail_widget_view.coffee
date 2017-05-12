@@ -23,41 +23,11 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     sx: 13
     sy: 16
 
-  tags:
-    #Grid Tags
-    ###
-    pbb_status :           'PBB.AIRCRAFTDOCKEDCALCULATION'
-    #pbb_aircraft :         'PBB.AIRCRAFTSTATUS'
-    pbb_autolevelmode :    'PBB.AUTOLEVELMODEFLAG'
-    pbb_canopy:            'PBB.CANOPYDOWN'
-    pbb_autolevelkey :     'PBB.AUTOLEVELKEY'
-    pbb_autolevelling:     'PBB.AUTOLEVELING'
-    pbb_estop:             'PBB.Alarm.E_STOP'  
-    pbb_estopRW:           'PBB.Alarm.RedWord2[4]'
-    pbb_limits:            'PBB.BYPASSPB'
-    pbb_docktime:          'PBB.DOCKTIME'
-    pbb_undocktime:        'PBB.UNDOCKTIME'
-    pbb_smokedetector:     'PBB.SMOKEDETECTOR'
-    pbb_dailyaircraftcount:'PBB.DAILYAIRCRAFTDOCKED'
-    pbb_lastdocktime:      'PBB.LASTDOCKTIME'
-    pbb_cabinfloordeicer:  'PBB.CABFLOORDEICER'
-    pbb_terminaldoor:      'PBB.TERMINALDOOR'
-    pbb_cabangledisp:      'PBB.CABANGLEDISP'
-    pbb_slopedeg:          'PBB.SLOPEDEG'
-    pbb_swingangledisp:    'PBB.SWINGANGLEDISP'
-    pbb_heighttodisp:      'PBB.HEIGHTTODISP'
-    pbb_wheelangledeg:     'PBB.WHEELANGLEDEG'
-    pbb_tunnellength:      'PBB.HORIZTODISP'
-    ###
-
-    #Processing Tags
-    pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
-    pbb_has_warnings :  'Warning._HasWarnings'
-    pbb_has_alarms :    'Alarm._HasAlarms'
-    
+  tags = []
   tagData = []
   tagConfig = []
   site_refresh: 50000
+  refId: 0
 
   IsUpdatingSettings: false
   IsPageLoading: true
@@ -95,16 +65,23 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
         t = @tags[tg]
         tags.push "#{@prefix}#{t}.Value"
 
-      App.opc.add_tags @site_code, tags
-      App.vent.on "opc:data:#{@site_code}", @data_update
+      #App.opc.add_tags @site_code, tags
+      #App.vent.on "opc:data:#{@site_code}", @data_update
 
-      @opc =  App.opc.connections[@site_code]
+      #@opc =  App.opc.connections[@site_code]
 
       ref = s.layout
 
       # listen for updates
       #@watch_updates(@site_code)
-      @start_heartbeat()
+      #@start_heartbeat()
+
+      if @refId == 0
+        @refId = App.opc.add_tags @site_code, tags
+        App.vent.on "opc:data:#{@site_code}", @data_update
+        @opc =  App.opc.connections[@site_code]
+        @start_heartbeat()
+
       @set_descriptions(true)
 
 
@@ -138,69 +115,6 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
         eq = @data_q(@tagData.elvrot_rotunda_position_boolean.Tag)
         @$("div.elevating_img").toggleClass('down-position', e==true && eq)
       
-    
-
-    # PBB AIRCRAFT
-    #@render_row("pbb_status", "Docked", "UnDocked", "ok")
-
-     # Auto Level
-    #@render_row("pbb_autolevelmode", "On", "Off", "ok")
-
-    # LIMIT-BYPASSPB
-    #@render_row("pbb_limits", "Active","Deactive","ok"," ")
-
-    # SMOKEDETECTOR
-    #@render_row("pbb_smokedetector","Off","On","","err")
-  
-    # CANOPY
-    #@render_row("pbb_canopy", "Down", "Up", "ok")
-
-    # LIMITS
-    #@render_row("pbb_limits", "Normal", "ByPass", "ok")
-
-    # AUTO-lEVEL KEY
-    #@render_row("pbb_autolevelkey", "On", "Off", "ok")
-
-    # AUTOLEVELLING
-    #@render_row("pbb_autolevelling", "On", "Off", "ok")
-
-    # CABIN FLOOR DEICER
-    #@render_row("pbb_cabinfloordeicer", "On", "Off", "ok")
-
-    # TERMINAL DOOR
-    #@render_row("pbb_terminaldoor", "Open", "Close", "ok")
-
-    # AUTOLEVELLING
-    #if @vals.pbb_estop? && @vals.pbb_estop != '' 
-    #  @render_row("pbb_estop", "On", "Off", "err")
-    #else if @vals.pbb_estopRW? && @vals.pbb_estopRW != ''
-    #  @render_row("pbb_estopRW", "On", "Off", "err")
-    
-
-    #@$("#pbb_statused_lbl").html('PBB Status')
-    #@$("#pbb_estoped_lbl").html('E-Stop')
-
-
-    # DOCKTIME
-    #@render_value_row("pbb_docktime", true, 2," mins")
-
-
-    # UN-DOCKTIME
-    #@render_value_row("pbb_undocktime", true, 2," mins")
-
-
-    # LAST DOCK TIME
-    #@render_value_row("pbb_lastdocktime", true, 2," mins")
-
-    # DAILY DOCK TIME
-    #@render_value_row("pbb_dailyaircraftcount", false)
-
-    ###
-    Tags:{'pbb_status','pbb_autolevel_mode','pbb_canopy','pbb_autolevel_key','pbb_autoleveling','pbb_estop','pbb_limits'
-            ,'pbb_dock_time','pbb_undock_time','pbb_smoke_detector','pbb_daily_aircraft_count','pbb_last_dock_time'
-            ,'pbb_cabin_floor_deicer','pbb_terminal_door','pbb_cab_angle_disp','pbb_slope_deg','pbb_swing_angle_disp'
-            ,'pbb_height_to_disp','pbb_wheel_angle_deg','pbb_tunnel_length'}
-    ###
     #WHEEL ANGLE DEG
     if @tagData.pbb_wheel_angle_deg?
       wheelangledeg = if @vals.pbb_wheel_angle_deg? && @vals.pbb_wheel_angle_deg != '' then parseFloat(@vals.pbb_wheel_angle_deg).toFixed(2)  else ' -- ' 
@@ -260,6 +174,11 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     @set_descriptions()
 
   set_model: ()=>
+    if @refId > 0
+      @kill_updates(@site_code)
+      if @heartbeat_timer? && @heartbeat_timer > 0
+        window.clearInterval(@heartbeat_timer)
+      @refId = 0
 
     s = _.clone(@model.get("settings"))
     s.site = @$('#site').val()
@@ -274,8 +193,8 @@ class PbbleveldetailWidgetView extends IOPSWidgetView
     @ui.display.toggle(!@settings_visible)
     @IsUpdatingSettings = @settings_visible
     if @settings_visible
-      if @heartbeat_timer? && @heartbeat_timer > 0
-        window.clearInterval(@heartbeat_timer)
+      #if @heartbeat_timer? && @heartbeat_timer > 0
+      #  window.clearInterval(@heartbeat_timer)
     else
       @IsPageLoading = false
       @update()

@@ -76,8 +76,6 @@ class AccountView extends Marionette.CompositeView
       blacklist: ["users", "sites"]
       success:(data)=>
         @render()
-      # error: (err)=>
-      #   debugger
  
   onRender: ()->
     @modelBinder.bind(@model, @el, @bindings)

@@ -14,16 +14,20 @@ class BaseCollection extends Backbone.Collection
   	@
 
   moveup: (model)->
-    index = @indexOf(model)
+    index = App.session.attributes["dashboards"].indexOf(model.id)
     if (index > 0) 
+      App.session.attributes["dashboards"].splice(index-1,0,App.session.attributes["dashboards"].splice(index,1)[0]);
       @remove model, {silent: true}
       @add model, {at: index-1}
+      model.save()
 
   movedn: (model)->
-    index = @indexOf(model)
+    index = App.session.attributes["dashboards"].indexOf(model.id)
     if (index < @models.length)
-      @remove(model, {silent: true})
-      @add(model, {at: index+1})
+      App.session.attributes["dashboards"].splice(index+1,0,App.session.attributes["dashboards"].splice(index,1)[0]);
+      @remove model, {silent: true}
+      @add model, {at: index+1}
+      model.save()
       
 # ----------------------------------
 

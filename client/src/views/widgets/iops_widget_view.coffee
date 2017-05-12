@@ -278,8 +278,10 @@ class IOPSWidgetView extends WidgetView
 
     # Create tag elements
     for tag, tagData of tagConfig.TagData
-      $("li##{WidgetID} .#{ClassID} #{tagData.Element.ParentID}").toggleClass("no-show", false)
-      if tagData.Element.Type?
+      if tagData.Element.ParentID?
+        $("li##{WidgetID} .#{ClassID} #{tagData.Element.ParentID}").toggleClass("no-show", false)
+      
+      if tagData.Element.Type? && tagData.Element.Class != 'no_row'
         elType = tagData.Element.Type.toLowerCase()
         switch elType
           when 'tablerow'
@@ -312,8 +314,6 @@ class IOPSWidgetView extends WidgetView
     ** format: If no #{1} is found in string treat as suffix
     **         otherwise replace #{1} with the #{set_value} 
     ********************************************************###
-    #debugger
-
     img = Iamge[0]
     #vq = @data_q(@tagData.pca_discharge_temp.Tag)
     #@$("#gauge_volts_out_#{@model.id} .bad_data").toggle(!vq)

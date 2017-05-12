@@ -27,6 +27,7 @@ class GpuWidgetView extends IOPSWidgetView
   tagData = []
   tagConfig = []
   site_refresh: 50000
+  refId: 0
 
   IsUpdatingSettings: false
   IsPageLoading: true
@@ -47,7 +48,7 @@ class GpuWidgetView extends IOPSWidgetView
       @ui.wtitle.html(lbl)
 
       # stop listening for updates
-      @kill_updates(@site_code)
+      #@kill_updates(@site_code)
 
       $("#widgetData").toggleClass("no-show", false)
       $("#widgetData2").toggleClass("no-show", true)
@@ -71,8 +72,14 @@ class GpuWidgetView extends IOPSWidgetView
       ref = s.layout
 
       # listen for updates
-      @watch_updates(@site_code)
-      @start_heartbeat()
+      #@watch_updates(@site_code)
+      #@start_heartbeat()
+      if @refId == 0
+        @refId = App.opc.add_tags @site_code, tags
+        App.vent.on "opc:data:#{@site_code}", @data_update
+        @opc =  App.opc.connections[@site_code]
+        @start_heartbeat()
+
       @set_descriptions(true)
 
       # Handle the second table used for dual unit GPU's
@@ -84,8 +91,10 @@ class GpuWidgetView extends IOPSWidgetView
           $('.data2 thead').remove()
       else
         @$('.data').css('width', '75%')
-        $('.data').prepend('<thead><tr><th></th><th>Unit 01</th></tr></thead>')
-        $('.data2').prepend('<thead><tr><th></th><th>Unit 02</th></tr></thead>')
+        if @$('.data thead th:contains(Unit 01)').length == 0
+          $('.data').prepend('<thead><tr><th></th><th>Unit 01</th></tr></thead>')
+        if @$('.data2 thead th:contains(Unit 02)').length == 0
+          $('.data2').prepend('<thead><tr><th></th><th>Unit 02</th></tr></thead>')
     @
 
   # process data and update the view
@@ -111,16 +120,21 @@ class GpuWidgetView extends IOPSWidgetView
         else null
 
     # ALARMS
-    aq = @data_q(@tags.pbb_has_alarms)
-    @ui.alarms.toggle(@get_bool(@vals.pbb_has_alarms)==true && aq)
+    aq = @data_q(@tags.gpu_has_alarms)
+    @ui.alarms.toggle(@get_bool(@vals.gpu_has_alarms)==true && aq)
 
     # WARNINGS
-    wq = @data_q(@tags.pbb_has_warnings)
-    @ui.warnings.toggle(@get_bool(@vals.pbb_has_warnings)==true && wq)
+    wq = @data_q(@tags.gpu_has_warnings)
+    @ui.warnings.toggle(@get_bool(@vals.gpu_has_warnings)==true && wq)
 
     @set_descriptions()
 
   set_model: ()=>
+    if @refId > 0
+      @kill_updates(@site_code)
+      if @heartbeat_timer? && @heartbeat_timer > 0
+        window.clearInterval(@heartbeat_timer)
+      @refId = 0
 
     s = _.clone(@model.get("settings"))
     s.site = @$('#site').val()
@@ -136,8 +150,8 @@ class GpuWidgetView extends IOPSWidgetView
     @IsUpdatingSettings = @settings_visible
     if @settings_visible
       #@kill_updates(@site_code)
-      if @heartbeat_timer? && @heartbeat_timer > 0
-        window.clearInterval(@heartbeat_timer)
+      #if @heartbeat_timer? && @heartbeat_timer > 0
+      #  window.clearInterval(@heartbeat_timer)
     else
       @IsPageLoading = false
       @update()
@@ -160,7 +174,7 @@ class GpuWidgetView extends IOPSWidgetView
     @site_code = OPCManager.get_site_code(settings.site)
     if @site_code?
       @site_refresh = ((OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3)
-      @watch_updates(@site_code)
+      #@watch_updates(@site_code)
 
     @check_init_site()
 

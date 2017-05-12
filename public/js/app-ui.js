@@ -1605,6 +1605,112 @@ window.JST["widgets/advanced_alarm_widget"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
+window.JST["widgets/airport_overview_2d_widget"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-road"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n      </h1>\n    </div>\n    <div id="key">\n      <div class="key_row"><i class="fa fa-fw fa-plane docked"></i> Airplane at Gate</div>\n      <div class="key_row"><div class="legend-autolevel"></div> Auto Level Engaged</div>\n      <div class="key_row"><div class="legend-alarm"></div> Alarm</div>\n      <div class="key_row"><div class="legend-critical"></div> Critical Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-check-circle-o perfect"></i> Perfect Hookup</div>\n      <div class="key_row"><i class="fa fa-fw fa-wrench outofservice"></i> Out of Service</div>\n      <div class="key_row">\n        <span class="key_row fa-stack bad-data">\n          <i class="fa fa-rss fa-stack-1x "></i>\n          <i class="fa fa-exclamation fa-stack-1x"></i> Comm. Error\n        </span>\n      </div>\n\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+    
+      _print(_safe(this.siteSelector({
+        id: 'site',
+        label: 'Site',
+        site: this.settings.site
+      })));
+    
+      _print(_safe('\n  </div>\n\n</div>\n'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
+window.JST["widgets/airport_overview_widget - Copy"] = function(__obj) {
+  var _safe = function(value) {
+    if (typeof value === 'undefined' && value == null)
+      value = '';
+    var result = new String(value);
+    result.ecoSafe = true;
+    return result;
+  };
+  return (function() {
+    var __out = [], __self = this, _print = function(value) {
+      if (typeof value !== 'undefined' && value != null)
+        __out.push(value.ecoSafe ? value : __self.escape(value));
+    }, _capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return _safe(result);
+    };
+    (function() {
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-road"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n      </h1>\n    </div>\n    <div id="key">\n      <div class="key_row"><i class="fa fa-fw fa-plane docked"></i> Airplane at Gate</div>\n      <div class="key_row"><div class="legend-autolevel"></div> Auto Level Engaged</div>\n      <div class="key_row"><div class="legend-alarm"></div> Alarm</div>\n      <div class="key_row"><div class="legend-critical"></div> Critical Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-check-circle-o perfect"></i> Perfect Hookup</div>\n      <div class="key_row"><i class="fa fa-fw fa-wrench outofservice"></i> Out of Service</div>\n      <div class="key_row">\n        <span class="key_row fa-stack bad-data">\n          <i class="fa fa-rss fa-stack-1x "></i>\n          <i class="fa fa-exclamation fa-stack-1x"></i> Comm. Error\n        </span>\n      </div>\n\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+    
+      _print(_safe(this.siteSelector({
+        id: 'site',
+        label: 'Site',
+        site: this.settings.site
+      })));
+    
+      _print(_safe('\n  </div>\n\n</div>\n'));
+    
+    }).call(this);
+    
+    return __out.join('');
+  }).call((function() {
+    var obj = {
+      escape: function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      },
+      safe: _safe
+    }, key;
+    for (key in __obj) obj[key] = __obj[key];
+    return obj;
+  })());
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
 window.JST["widgets/airport_overview_widget"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
@@ -1626,7 +1732,7 @@ window.JST["widgets/airport_overview_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-road"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n      </h1>\n    </div>\n    <div id="key">\n      <div class="key_row"><i class="fa fa-fw fa-plane"></i> Airplane at Gate</div>\n      <div class="key_row"><i class="fa fa-fw fa-warning critical"></i> Critical Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-bell alarm"></i> Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-check-circle-o perfect"></i> Perfect Hookup</div>\n      <div class="key_row"><i class="fa fa-fw fa-wrench alarm"></i> Out of Service</div>\n      <div class="key_row">\n        <span class="key_row fa-stack" style="left: -5px">\n          <i class="fa fa-rss fa-stack-1x "></i>\n          <i class="fa fa-exclamation fa-stack-1x" style="color: red;"></i> \n        </span>\n        Comm. Error\n      </div>\n\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-road"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n      </h1>\n    </div>\n    <div id="key">\n      <div class="key_row"><i class="fa fa-fw fa-plane docked"></i> Airplane at Gate</div>\n      <div class="key_row"><i class="fa fa-fw fa-warning critical"></i> Critical Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-bell alarm"></i> Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-check-circle-o perfect"></i> Perfect Hookup</div>\n      <div class="key_row"><i class="fa fa-fw fa-wrench outofservice"></i> Out of Service</div>\n      <div class="key_row">\n        <span class="key_row fa-stack bad-data">\n          <i class="fa fa-rss fa-stack-1x "></i>\n          <i class="fa fa-exclamation fa-stack-1x"></i> Comm. Error\n        </span>\n      </div>\n\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -1796,7 +1902,7 @@ window.JST["widgets/config_airport_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-gear"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\' class=\'display\'>\n    \n    <table id="widgetData" class=\'\'> \n      <tr id="config_title">\n        <td class="title" colspan="3">PCA SET POINTS</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>Heat Set Points</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set\'>°</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_cool">\n        <td class=\'lbl\'>Cool Set Points</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set\'>°</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set_tm\'>min.</td>\n      </tr>\n      <tr id="config_title">\n        <td class="title" colspan="3">PERFECT HOOKUP TIMES</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>PCA</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'pca_perfect_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>GPU</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'gpu_perfect_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>PBB</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'pbb_perfect_tm\'>min.</td>\n      </tr>\n    </table>\n\n<!--     <div><b style=\'color:#cc6666;\'>Heat:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set\'>°</div>\n    <div><b style=\'color:#cc6666;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set_tm\'>min.</div>\n    <div><b style=\'color:#6666cc;\'>Cool:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set\'>°</div>\n    <div><b style=\'color:#6666cc;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set_tm\'>min.</div>\n -->    \n    <div style=\'margin:10px 0;\'><button id=\'set_pca_points\'>UPDATE CONFIGURATION</button></div>\n  </div>\n  <div id="settings" class=\'settings\' style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-gear"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\' class=\'display\'>\n    \n    <table id="widgetData" class=\'\'> \n      <tr id="config_title">\n        <td class="title" colspan="3">PCA SET POINTS</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>Heat Set Points</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set\'>°</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_cool">\n        <td class=\'lbl\'>Cool Set Points</td>\n        <td class=\'input\'><input type=\'text\' id=\'cool_set\'>°</td>\n        <td class=\'input\'><input type=\'text\' id=\'cool_set_tm\'>min.</td>\n      </tr>\n      <tr id="config_title">\n        <td class="title" colspan="3">PERFECT HOOKUP TIMES</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>PCA</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'pca_perfect_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>GPU</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'gpu_perfect_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>PBB</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'pbb_perfect_tm\'>min.</td>\n      </tr>\n    </table>\n\n<!--     <div><b style=\'color:#cc6666;\'>Heat:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set\'>°</div>\n    <div><b style=\'color:#cc6666;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set_tm\'>min.</div>\n    <div><b style=\'color:#6666cc;\'>Cool:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set\'>°</div>\n    <div><b style=\'color:#6666cc;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set_tm\'>min.</div>\n -->    \n    <div style=\'margin:10px 0;\'><button id=\'set_pca_points\'>UPDATE CONFIGURATION</button></div>\n  </div>\n  <div id="settings" class=\'settings\' style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -1849,7 +1955,7 @@ window.JST["widgets/config_gate_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-gear"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\' class=\'display\'>\n    \n    <table id="widgetData" class=\'\'> \n      <tr id="config_title">\n        <td class="title" colspan="3">PCA SET POINTS</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>Heat Set Points</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set\'>°</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_cool">\n        <td class=\'lbl\'>Cool Set Points</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set\'>°</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set_tm\'>min.</td>\n      </tr>\n      <tr id="config_title">\n        <td class="title" colspan="3">PERFECT HOOKUP TIMES</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>PCA</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'pca_perfect_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>GPU</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'gpu_perfect_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>PBB</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'pbb_perfect_tm\'>min.</td>\n      </tr>\n    </table>\n\n<!--     <div><b style=\'color:#cc6666;\'>Heat:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set\'>°</div>\n    <div><b style=\'color:#cc6666;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set_tm\'>min.</div>\n    <div><b style=\'color:#6666cc;\'>Cool:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set\'>°</div>\n    <div><b style=\'color:#6666cc;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set_tm\'>min.</div>\n -->    \n    <div style=\'margin:10px 0;\'><button id=\'set_pca_points\'>UPDATE CONFIGURATION</button></div>\n  </div>\n  <div id="settings" class=\'settings\' style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-gear"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\' class=\'display\'>\n    \n    <table id="widgetData" class=\'\'> \n      <tr id="config_title">\n        <td class="title" colspan="3">PCA SET POINTS</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>Heat Set Points</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set\'>°</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_cool">\n        <td class=\'lbl\'>Cool Set Points</td>\n        <td class=\'input\'><input type=\'text\' id=\'cool_set\'>°</td>\n        <td class=\'input\'><input type=\'text\' id=\'cool_set_tm\'>min.</td>\n      </tr>\n      <tr id="config_title">\n        <td class="title" colspan="3">PERFECT HOOKUP TIMES</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>PCA</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'pca_perfect_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>GPU</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'gpu_perfect_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>PBB</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'pbb_perfect_tm\'>min.</td>\n      </tr>\n    </table>\n\n<!--     <div><b style=\'color:#cc6666;\'>Heat:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set\'>°</div>\n    <div><b style=\'color:#cc6666;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set_tm\'>min.</div>\n    <div><b style=\'color:#6666cc;\'>Cool:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set\'>°</div>\n    <div><b style=\'color:#6666cc;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set_tm\'>min.</div>\n -->    \n    <div style=\'margin:10px 0;\'><button id=\'set_pca_points\'>UPDATE CONFIGURATION</button></div>\n  </div>\n  <div id="settings" class=\'settings\' style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -2761,7 +2867,7 @@ window.JST["widgets/weather_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-cloud"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div class=\'display\'>\n    <div id=\'loading\' style=\'display:none;\'>Loading Weather Data...</div>\n    <div id=\'weather\' style=\'display:none;\'>\n      <table style=\'width:100%;text-align:center;\'>\n        <tr>\n          <td width="50%">\n            <canvas id=\'wicon\' width="200" height="200" style="width:100px;margin-right:10px;"></canvas>\n          </td>\n          <td width="50%">\n            <div id=\'temp\' style=\'\n    font-size: 80px;\n    font-weight: bold;\n    line-height: 72px;\n    text-align:left;\n\'></div>\n            <div id="summ" style=\'\n    font-size: 24px;\n    font-weight: normal;\n    line-height: 32px;\n    text-align:left;\n\'></div>\n          </td>\n        </tr>\n        <tr>\n          <td colspan="2">\n            <div id="forecast"></div>\n          </td>\n        </tr>\n        <tr>\n          <td colspan="2">\n            <div id="precip" class=\'col\' style=\'float:left;width:33%;\'>\n              <div class="label">Precipitation</div>\n              <div class="val"></div>\n            </div>\n            <div id="humid" class=\'col\' style=\'float:left;width:33%;\'>\n              <div class="label">Humidity</div>\n              <div class="val"></div>\n            </div>\n            <div id="cover" class=\'col\' style=\'float:left;width:33%;\'>\n              <div class="label">Cloud Cover</div>\n              <div class="val"></div>\n            </div>\n            <div style=\'clear:both;\'></div>\n          </td>\n        </tr>\n      </table>\n    </div>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
+      _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-cloud"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div class=\'display\'>\n    <div id=\'loading\' style=\'display:none;\'>Loading Weather Data...</div>\n    <div id=\'weather\' style=\'display:none;\'>\n      <table id=\'widgetData\'>\n        <tr>\n          <td>\n            <canvas id=\'wicon\' width=\'200\' height=\'200\'></canvas>\n          </td>\n          <td>\n            <div id=\'temp\'></div>\n            <div id=\'summ\'></div>\n          </td>\n        </tr>\n        <tr>\n          <td colspan="2">\n            <div id="forecast"></div>\n          </td>\n        </tr>\n        <tr>\n          <td colspan="2">\n            <div id="precip" class=\'col\'>\n              <div class="label">Precipitation</div>\n              <div class="val"></div>\n            </div>\n            <div id="humid" class=\'col\'>\n              <div class="label">Humidity</div>\n              <div class="val"></div>\n            </div>\n            <div id="cover" class=\'col\'>\n              <div class="label">Cloud Cover</div>\n              <div class="val"></div>\n            </div>\n            <div style=\'clear:both;\'></div>\n          </td>\n        </tr>\n      </table>\n    </div>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
         id: 'site',
@@ -2830,6 +2936,8 @@ TagConfig = require('./common/tagconfig');
 require('./views/widgets/advanced_alarm_widget_view');
 
 require('./views/widgets/airport_overview_widget_view');
+
+require('./views/widgets/airport_overview_2d_widget_view');
 
 require('./views/widgets/alarm_widget_view');
 
@@ -3095,7 +3203,7 @@ window.App = (function() {
   return App;
 })();
 
-},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/tagconfig":7,"./common/uiutils":8,"./models/account_collection":12,"./models/claim_collection":14,"./models/role_collection":18,"./models/session":19,"./models/site_collection":21,"./models/user_collection":23,"./opcmanager":26,"./router":27,"./views/app_layout":28,"./views/widgets/advanced_alarm_widget_view":56,"./views/widgets/airport_overview_widget_view":57,"./views/widgets/alarm_widget_view":58,"./views/widgets/asset_widget_view":59,"./views/widgets/config_airport_widget_view":60,"./views/widgets/config_gate_widget_view":61,"./views/widgets/gpu_summary_widget_view":62,"./views/widgets/gpu_widget_view":63,"./views/widgets/kpi_widget_view":65,"./views/widgets/out_of_service_widget_view":66,"./views/widgets/pbb_detail_widget_view":67,"./views/widgets/pbb_level_detail_widget_view":68,"./views/widgets/pbb_pca_gpu_basic_widget_view":69,"./views/widgets/pbb_pca_gpu_status_widget_view":70,"./views/widgets/pbb_system_status_widget_view":71,"./views/widgets/pbb_widget_view":72,"./views/widgets/pca_discharge_widget_view":73,"./views/widgets/pca_summary_widget_view":74,"./views/widgets/pca_widget_view":75,"./views/widgets/report_widget_view":76,"./views/widgets/url_widget_view":77,"./views/widgets/video_widget_view":78,"./views/widgets/weather_widget_view":79}],2:[function(require,module,exports){
+},{"./app_controller":2,"./common/adminlte_lib":3,"./common/appconfig":4,"./common/baseline_app":5,"./common/extensions":6,"./common/tagconfig":7,"./common/uiutils":8,"./models/account_collection":12,"./models/claim_collection":14,"./models/role_collection":18,"./models/session":19,"./models/site_collection":21,"./models/user_collection":23,"./opcmanager":26,"./router":27,"./views/app_layout":28,"./views/widgets/advanced_alarm_widget_view":56,"./views/widgets/airport_overview_2d_widget_view":57,"./views/widgets/airport_overview_widget_view":58,"./views/widgets/alarm_widget_view":59,"./views/widgets/asset_widget_view":60,"./views/widgets/config_airport_widget_view":61,"./views/widgets/config_gate_widget_view":62,"./views/widgets/gpu_summary_widget_view":63,"./views/widgets/gpu_widget_view":64,"./views/widgets/kpi_widget_view":66,"./views/widgets/out_of_service_widget_view":67,"./views/widgets/pbb_detail_widget_view":68,"./views/widgets/pbb_level_detail_widget_view":69,"./views/widgets/pbb_pca_gpu_basic_widget_view":70,"./views/widgets/pbb_pca_gpu_status_widget_view":71,"./views/widgets/pbb_system_status_widget_view":72,"./views/widgets/pbb_widget_view":73,"./views/widgets/pca_discharge_widget_view":74,"./views/widgets/pca_summary_widget_view":75,"./views/widgets/pca_widget_view":76,"./views/widgets/report_widget_view":77,"./views/widgets/url_widget_view":78,"./views/widgets/video_widget_view":79,"./views/widgets/weather_widget_view":80}],2:[function(require,module,exports){
 var AccountsView, AppController, Dashboard, DashboardCollection, DashboardContentView, DashboardLayout, LoginView, Marionette, PermissionsLayout, ProfileView, ReportsView, Session, User, WidgetCollection,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -4129,7 +4237,7 @@ TagConfig = (function(superClass) {
      */
     system_out_of_service: {
       Tag: 'System._OUT_OF_SERVICE',
-      Label: '[*]Out Of Service',
+      Label: 'Out Of Service',
       DataType: 'Boolean',
       Parameters: {
         Parm001: 'True',
@@ -4147,7 +4255,7 @@ TagConfig = (function(superClass) {
     },
     system_perfect_hookup: {
       Tag: 'System.PERFECT_HOOKUP',
-      Label: '[*]Perfect Hookup',
+      Label: 'Perfect Hookup',
       DataType: 'Boolean',
       Parameters: {
         Parm001: 'True',
@@ -4165,7 +4273,7 @@ TagConfig = (function(superClass) {
     },
     system_quality: {
       Tag: 'System._QUALITY',
-      Label: '[*]Bad Quality',
+      Label: 'Comm Error',
       DataType: 'Boolean',
       Parameters: {
         Parm001: 'True',
@@ -4177,7 +4285,71 @@ TagConfig = (function(superClass) {
       Element: {
         Type: 'TableRow',
         ParentID: '#widgetData',
-        Class: null,
+        Class: 'no_row',
+        Object: null
+      }
+
+      /***************************************************
+      		*** WARNING Tags
+      		**************************************************
+       */
+    },
+    gate_has_warnings: {
+      Tag: 'Warning._HasWarnings',
+      Label: 'Warnings',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'Alert',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+
+      /***************************************************
+      		*** ALARM Tags
+      		**************************************************
+       */
+    },
+    gate_has_alarms: {
+      Tag: 'Alarm._HasAlarms',
+      Label: 'Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'Alert',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    gate_has_critical_alarms: {
+      Tag: 'Alarm._HasCriticalAlarms',
+      Label: 'Critical Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'Alert',
+        ParentID: '#widgetData',
+        Class: 'no_row',
         Object: null
       }
 
@@ -4185,6 +4357,114 @@ TagConfig = (function(superClass) {
       		*** GPU Tags
       		**************************************************
        */
+    },
+    gpu_has_warnings: {
+      Tag: 'GPU.Warning._HasWarnings',
+      Label: 'Warnings',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'Alert',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    gpu_has_alarms: {
+      Tag: 'GPU.Alarm._HasAlarms',
+      Label: 'Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'Alert',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    gpu_has_critical_alarms: {
+      Tag: 'GPU.Alarm._HasCriticalAlarms',
+      Label: 'Critical Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'Alert',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    gpu_out_of_service: {
+      Tag: 'GPU._OUT_OF_SERVICE',
+      Label: 'Out Of Service',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_perfect_hookup: {
+      Tag: 'GPU.Calc_PerfectHookupTime',
+      Label: 'Perfect Hookup',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_quality: {
+      Tag: 'GPU._QUALITY',
+      Label: 'Comm Errors',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
     },
     gpu_by_pass: {
       Tag: 'GPU.ByPass',
@@ -4598,24 +4878,6 @@ TagConfig = (function(superClass) {
         Object: null
       }
     },
-    gpu_out_of_service: {
-      Tag: 'GPU._OUT_OF_SERVICE',
-      Label: '[*]GPU',
-      DataType: 'Boolean',
-      Parameters: {
-        Parm001: 'True',
-        Parm002: 'False',
-        Parm003: 'ok',
-        Parm004: null,
-        Parm005: null
-      },
-      Element: {
-        Type: null,
-        ParentID: null,
-        Class: null,
-        Object: null
-      }
-    },
     gpu_hookup_time: {
       Tag: 'GPU.HOOKUPTIME',
       Label: '[*]GPU Hookup Time',
@@ -4630,6 +4892,222 @@ TagConfig = (function(superClass) {
         Type: 'TableRow',
         ParentID: '#widgetData',
         Class: null,
+        Object: null
+      }
+    },
+    gpu_01_has_warnings: {
+      Tag: 'GPU01.Warning._HasWarnings',
+      Label: 'Warnings',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'Alert',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    gpu_02_has_warnings: {
+      Tag: 'GPU02.Warning._HasWarnings',
+      Label: 'Warnings',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'Alert',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    gpu_01_has_alarms: {
+      Tag: 'GPU01.Alarm._HasAlarms',
+      Label: 'Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'Alert',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    gpu_02_has_alarms: {
+      Tag: 'GPU01.Alarm._HasAlarms',
+      Label: 'Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'Alert',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    gpu_01_has_critical_alarms: {
+      Tag: 'GPU01.Alarm._HasCriticalAlarms',
+      Label: 'Critical Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'Alert',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    gpu_02_has_critical_alarms: {
+      Tag: 'GPU02.Alarm._HasCriticalAlarms',
+      Label: 'Critical Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'Alert',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    gpu_01_out_of_service: {
+      Tag: 'GPU01._OUT_OF_SERVICE',
+      Label: 'Out Of Service',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_02_out_of_service: {
+      Tag: 'GPU02._OUT_OF_SERVICE',
+      Label: 'Out Of Service',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_01_perfect_hookup: {
+      Tag: 'GPU01.Calc_PerfectHookupTime',
+      Label: 'Perfect Hookup',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_02_perfect_hookup: {
+      Tag: 'GPU02.Calc_PerfectHookupTime',
+      Label: 'Perfect Hookup',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    gpu_01_quality: {
+      Tag: 'GPU01._QUALITY',
+      Label: 'Comm Errors',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    gpu_02_quality: {
+      Tag: 'GPU02._QUALITY',
+      Label: 'Comm Errors',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: 'no_row',
         Object: null
       }
     },
@@ -5082,6 +5560,114 @@ TagConfig = (function(superClass) {
       		**************************************************
        */
     },
+    pbb_has_warnings: {
+      Tag: 'PBB.Warning._HasWarnings',
+      Label: 'Warnings',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'Alert',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    pbb_has_alarms: {
+      Tag: 'PBB.Alarm._HasAlarms',
+      Label: 'Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'Alert',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    pbb_has_critical_alarms: {
+      Tag: 'PBB.Alarm._HasCriticalAlarms',
+      Label: 'Critical Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'Alert',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    pbb_out_of_service: {
+      Tag: 'PBB._OUT_OF_SERVICE',
+      Label: 'Out Of Service',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    pbb_perfect_hookup: {
+      Tag: 'PBB.Calc_PerfectHookupTime',
+      Label: 'Perfect Hookup',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    pbb_quality: {
+      Tag: 'PBB._QUALITY',
+      Label: 'Comm Errors',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
     pbb_autolevel_fail: {
       Tag: 'PBB.AUTOLEVEL_FAIL_FLAG',
       Label: 'Auto Level Fail Flag',
@@ -5484,10 +6070,15 @@ TagConfig = (function(superClass) {
         Class: null,
         Object: null
       }
+
+      /***************************************************
+      		*** PCA Tags
+      		**************************************************
+       */
     },
-    pbb_out_of_service: {
-      Tag: 'PBB._OUT_OF_SERVICE',
-      Label: '[*]PBB',
+    pca_has_warnings: {
+      Tag: 'PCA.Warning._HasWarnings',
+      Label: 'Warnings',
       DataType: 'Boolean',
       Parameters: {
         Parm001: 'True',
@@ -5497,16 +6088,101 @@ TagConfig = (function(superClass) {
         Parm005: null
       },
       Element: {
-        Type: null,
-        ParentID: null,
+        Type: 'Alert',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    pca_has_alarms: {
+      Tag: 'PCA.Alarm._HasAlarms',
+      Label: 'Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'Alert',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    pca_has_critical_alarms: {
+      Tag: 'PCA.Alarm._HasCriticalAlarms',
+      Label: 'Critical Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'Alert',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    pca_out_of_service: {
+      Tag: 'PCA._OUT_OF_SERVICE',
+      Label: 'Out Of Service',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
         Class: null,
         Object: null
       }
-
-      /***************************************************
-      		*** PCA Tags
-      		**************************************************
-       */
+    },
+    pca_perfect_hookup: {
+      Tag: 'PCA.Calc_PerfectHookupTime',
+      Label: 'Perfect Hookup',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    pca_quality: {
+      Tag: 'PCA._QUALITY',
+      Label: 'Comm Errors',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
     },
     pca_alarm_cooling_run: {
       Tag: 'PCA.ALARM_COOLINGRUN_BOOLEAN',
@@ -6151,24 +6827,6 @@ TagConfig = (function(superClass) {
         Object: null
       }
     },
-    pca_out_of_service: {
-      Tag: 'PCA._OUT_OF_SERVICE',
-      Label: '[*]PCA',
-      DataType: 'Boolean',
-      Parameters: {
-        Parm001: 'True',
-        Parm002: 'False',
-        Parm003: 'ok',
-        Parm004: null,
-        Parm005: null
-      },
-      Element: {
-        Type: null,
-        ParentID: null,
-        Class: null,
-        Object: null
-      }
-    },
     pca_hookup_time: {
       Tag: 'PCA.HOOKUPTIME',
       Label: '[*]PCA Hookup Time',
@@ -6191,9 +6849,9 @@ TagConfig = (function(superClass) {
       		**************************************************
        */
     },
-    elvrot_out_of_service: {
-      Tag: 'ELVROT._OUT_OF_SERVICE',
-      Label: '[*]ELVROT',
+    elvrot_has_warnings: {
+      Tag: 'ELVROT.Warning._HasWarnings',
+      Label: 'Warnings',
       DataType: 'Boolean',
       Parameters: {
         Parm001: 'True',
@@ -6203,8 +6861,150 @@ TagConfig = (function(superClass) {
         Parm005: null
       },
       Element: {
-        Type: null,
-        ParentID: null,
+        Type: 'Alert',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    elvrot_has_alarms: {
+      Tag: 'ELVROT.Alarm._HasAlarms',
+      Label: 'Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'Alert',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    elvrot_has_critical_alarms: {
+      Tag: 'ELVROT.Alarm._HasCriticalAlarms',
+      Label: 'Critical Alarms',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'Alert',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    elvrot_out_of_service: {
+      Tag: 'ELVROT._OUT_OF_SERVICE',
+      Label: 'Out Of Service',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    elvrot_perfect_hookup: {
+      Tag: 'ELVROT.Calc_PerfectHookupTime',
+      Label: 'Perfect Hookup',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    elvrot_quality: {
+      Tag: 'ELVROT._QUALITY',
+      Label: 'Comm Errors',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'True',
+        Parm002: 'False',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: 'no_row',
+        Object: null
+      }
+    },
+    elvrot_rotunda_status: {
+      Tag: 'ELVROT.ROTUNDA_STATUS',
+      Label: 'Elevating Rotunda Status',
+      DataType: 'Value',
+      Parameters: {
+        Parm001: false,
+        Parm002: null,
+        Parm003: '#{1}',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    elvrot_rotunda_mode: {
+      Tag: 'ELVROT.ROTUNDA_MODE',
+      Label: 'Elevating Rotunda Operational Mode',
+      DataType: 'Value',
+      Parameters: {
+        Parm001: false,
+        Parm002: null,
+        Parm003: '#{1}',
+        Parm004: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
+        Class: null,
+        Object: null
+      }
+    },
+    elvrot_rotunda_position_boolean: {
+      Tag: 'ELVROT.ROTUNDA_POSITION_BOOLEAN',
+      Label: 'Elevating Rotunda Position',
+      DataType: 'Boolean',
+      Parameters: {
+        Parm001: 'Down Position',
+        Parm002: 'Up Position',
+        Parm003: 'ok',
+        Parm004: null,
+        Parm005: null
+      },
+      Element: {
+        Type: 'TableRow',
+        ParentID: '#widgetData',
         Class: null,
         Object: null
       }
@@ -6223,7 +7023,10 @@ TagConfig = (function(superClass) {
         'pca_cooling_pt': 'pca_cooling_pt',
         'pca_heating_pt': 'pca_heating_pt',
         'pca_cooling_tm': 'pca_cooling_tm',
-        'pca_heating_tm': 'pca_heating_tm'
+        'pca_heating_tm': 'pca_heating_tm',
+        'gpu_perfect_hookup': 'gpu_perfect_hookup',
+        'pbb_perfect_hookup': 'pbb_perfect_hookup',
+        'pca_perfect_hookup': 'pca_perfect_hookup'
       },
       Graphics: {}
     },
@@ -6232,12 +7035,20 @@ TagConfig = (function(superClass) {
         'pca_cooling_pt': 'pca_cooling_pt',
         'pca_heating_pt': 'pca_heating_pt',
         'pca_cooling_tm': 'pca_cooling_tm',
-        'pca_heating_tm': 'pca_heating_tm'
+        'pca_heating_tm': 'pca_heating_tm',
+        'gpu_perfect_hookup': 'gpu_perfect_hookup',
+        'pbb_perfect_hookup': 'pbb_perfect_hookup',
+        'pca_perfect_hookup': 'pca_perfect_hookup'
       },
       Graphics: {}
     },
     gpu_summary_widget: {
       Tags: {
+        'gpu_quality': 'gpu_quality',
+        'gpu_out_of_service': 'gpu_out_of_service',
+        'gpu_has_warnings': 'gpu_has_warnings',
+        'gpu_has_alarms': 'gpu_has_alarms',
+        'gpu_has_critical_alarms': 'gpu_has_critical_alarms',
         'gpu_status': 'gpu_status',
         'gpu_time': 'gpu_time',
         'gpu_ra_out_avg': 'gpu_ra_out_avg',
@@ -6267,6 +7078,11 @@ TagConfig = (function(superClass) {
     },
     gpu_widget: {
       Tags: {
+        'gpu_quality': 'gpu_quality',
+        'gpu_out_of_service': 'gpu_out_of_service',
+        'gpu_has_warnings': 'gpu_has_warnings',
+        'gpu_has_alarms': 'gpu_has_alarms',
+        'gpu_has_critical_alarms': 'gpu_has_critical_alarms',
         'gpu_status': 'gpu_status',
         'gpu_by_pass': 'gpu_by_pass',
         'gpu_ra_out_avg': 'gpu_ra_out_avg',
@@ -6290,8 +7106,24 @@ TagConfig = (function(superClass) {
       },
       Graphics: {}
     },
+    out_of_service_widget: {
+      Tags: {
+        'gpu_quality': 'gpu_quality',
+        'gpu_out_of_service': 'gpu_out_of_service',
+        'pbb_quality': 'pbb_quality',
+        'pbb_out_of_service': 'pbb_out_of_service',
+        'pca_quality': 'pca_quality',
+        'pca_out_of_service': 'pca_out_of_service'
+      },
+      Graphics: {}
+    },
     pbb_detail_widget: {
       Tags: {
+        'pbb_quality': 'pbb_quality',
+        'pbb_out_of_service': 'pbb_out_of_service',
+        'pbb_has_warnings': 'pbb_has_warnings',
+        'pbb_has_alarms': 'pbb_has_alarms',
+        'pbb_has_critical_alarms': 'pbb_has_critical_alarms',
         'pbb_status': 'pbb_status',
         'pbb_autolevel_mode': 'pbb_autolevel_mode',
         'pbb_canopy': 'pbb_canopy',
@@ -6354,6 +7186,11 @@ TagConfig = (function(superClass) {
     },
     pbb_level_detail_widget: {
       Tags: {
+        'pbb_quality': 'pbb_quality',
+        'pbb_out_of_service': 'pbb_out_of_service',
+        'pbb_has_warnings': 'pbb_has_warnings',
+        'pbb_has_alarms': 'pbb_has_alarms',
+        'pbb_has_critical_alarms': 'pbb_has_critical_alarms',
         'pbb_status': 'pbb_status',
         'pbb_autolevel_mode': 'pbb_autolevel_mode',
         'pbb_canopy': 'pbb_canopy',
@@ -6379,32 +7216,79 @@ TagConfig = (function(superClass) {
     },
     pbb_pca_gpu_basic_widget: {
       Tags: {
-        'pbb_status': 'pbb_status',
+        'gpu_quality': 'gpu_quality',
+        'gpu_out_of_service': 'gpu_out_of_service',
+        'gpu_has_warnings': 'gpu_has_warnings',
+        'gpu_has_alarms': 'gpu_has_alarms',
+        'gpu_has_critical_alarms': 'gpu_has_critical_alarms',
         'gpu_status': 'gpu_status',
-        'pca_status': 'pca_status',
-        'pbb_hookup_time': 'pbb_hookup_time',
-        'gpu_hookup_time': 'gpu_hookup_time',
-        'pca_hookup_time': 'pca_hookup_time',
-        'pbb_dock_time': 'pbb_dock_time',
-        'gpu_time': 'gpu_time',
-        'pca_time': 'pca_time',
         'gpu_ra_out_avg': 'gpu_ra_out_avg',
         'gpu_rv_out_avg': 'gpu_rv_out_avg',
+        'gpu_hookup_time': 'gpu_hookup_time',
+        'gpu_time': 'gpu_time',
+        'pbb_quality': 'pbb_quality',
+        'pbb_out_of_service': 'pbb_out_of_service',
+        'pbb_has_warnings': 'pbb_has_warnings',
+        'pbb_has_alarms': 'pbb_has_alarms',
+        'pbb_has_critical_alarms': 'pbb_has_critical_alarms',
+        'pbb_status': 'pbb_status',
+        'pbb_hookup_time': 'pbb_hookup_time',
+        'pbb_dock_time': 'pbb_dock_time',
+        'pca_quality': 'pca_quality',
+        'pca_out_of_service': 'pca_out_of_service',
+        'pca_has_warnings': 'pca_has_warnings',
+        'pca_has_alarms': 'pca_has_alarms',
+        'pca_has_critical_alarms': 'pca_has_critical_alarms',
+        'pca_status': 'pca_status',
+        'pca_hookup_time': 'pca_hookup_time',
+        'pca_time': 'pca_time',
         'pca_discharge_temp': 'pca_discharge_temp'
       },
       Graphics: {}
     },
     pbb_pca_gpu_status_widget: {
       Tags: {
-        'pbb_status': 'pbb_status',
-        'pca_status': 'pca_status',
+        'system_quality': 'system_quality',
+        'system_out_of_service': 'system_out_of_service',
+        'system_perfect_hookup': 'system_perfect_hookup',
+        'gate_has_warnings': 'gate_has_warnings',
+        'gate_has_alarms': 'gate_has_alarms',
+        'gate_has_critical_alarms': 'gate_has_critical_alarms',
+        'gpu_quality': 'gpu_quality',
+        'gpu_out_of_service': 'gpu_out_of_service',
+        'gpu_perfect_hookup': 'gpu_perfect_hookup',
+        'gpu_has_warnings': 'gpu_has_warnings',
+        'gpu_has_alarms': 'gpu_has_alarms',
+        'gpu_has_critical_alarms': 'gpu_has_critical_alarms',
         'gpu_status': 'gpu_status',
+        'pbb_quality': 'pbb_quality',
+        'pbb_out_of_service': 'pbb_out_of_service',
+        'pbb_perfect_hookup': 'pbb_perfect_hookup',
+        'pbb_has_warnings': 'pbb_has_warnings',
+        'pbb_has_alarms': 'pbb_has_alarms',
+        'pbb_has_critical_alarms': 'pbb_has_critical_alarms',
+        'pbb_docked': 'pbb_docked',
+        'pbb_status': 'pbb_status',
+        'pca_quality': 'pca_quality',
+        'pca_out_of_service': 'pca_out_of_service',
+        'pca_perfect_hookup': 'pca_perfect_hookup',
+        'pca_has_warnings': 'pca_has_warnings',
+        'pca_has_alarms': 'pca_has_alarms',
+        'pca_has_critical_alarms': 'pca_has_critical_alarms',
+        'pca_mode_cooling': 'pca_mode_cooling',
+        'pca_mode_heating': 'pca_mode_heating',
+        'pca_status': 'pca_status',
         'pca_discharge_temp': 'pca_discharge_temp'
       },
       Graphics: {}
     },
     pbb_system_status_widget: {
       Tags: {
+        'pbb_quality': 'pbb_quality',
+        'pbb_out_of_service': 'pbb_out_of_service',
+        'pbb_has_warnings': 'pbb_has_warnings',
+        'pbb_has_alarms': 'pbb_has_alarms',
+        'pbb_has_critical_alarms': 'pbb_has_critical_alarms',
         'pbb_status': 'pbb_status',
         'pca_status': 'pca_status',
         'gpu_status': 'gpu_status',
@@ -6414,6 +7298,11 @@ TagConfig = (function(superClass) {
     },
     pbb_widget: {
       Tags: {
+        'pbb_quality': 'pbb_quality',
+        'pbb_out_of_service': 'pbb_out_of_service',
+        'pbb_has_warnings': 'pbb_has_warnings',
+        'pbb_has_alarms': 'pbb_has_alarms',
+        'pbb_has_critical_alarms': 'pbb_has_critical_alarms',
         'pbb_status': 'pbb_status',
         'pbb_autolevel_mode': 'pbb_autolevel_mode',
         'pbb_canopy': 'pbb_canopy',
@@ -6424,6 +7313,11 @@ TagConfig = (function(superClass) {
     },
     pca_discharge_widget: {
       Tags: {
+        'pca_quality': 'pca_quality',
+        'pca_out_of_service': 'pca_out_of_service',
+        'pca_has_warnings': 'pca_has_warnings',
+        'pca_has_alarms': 'pca_has_alarms',
+        'pca_has_critical_alarms': 'pca_has_critical_alarms',
         'pca_discharge_temp': 'pca_discharge_temp',
         'pca_status': 'pca_status',
         'pca_mode_cooling': 'pca_mode_cooling',
@@ -6439,6 +7333,11 @@ TagConfig = (function(superClass) {
     },
     pca_summary_widget: {
       Tags: {
+        'pca_quality': 'pca_quality',
+        'pca_out_of_service': 'pca_out_of_service',
+        'pca_has_warnings': 'pca_has_warnings',
+        'pca_has_alarms': 'pca_has_alarms',
+        'pca_has_critical_alarms': 'pca_has_critical_alarms',
         'pca_ambient_humidity': 'pca_ambient_humidity',
         'pca_ambient_temp': 'pca_ambient_temp',
         'pca_discharge_temp': 'pca_discharge_temp',
@@ -6463,6 +7362,11 @@ TagConfig = (function(superClass) {
     },
     pca_widget: {
       Tags: {
+        'pca_quality': 'pca_quality',
+        'pca_out_of_service': 'pca_out_of_service',
+        'pca_has_warnings': 'pca_has_warnings',
+        'pca_has_alarms': 'pca_has_alarms',
+        'pca_has_critical_alarms': 'pca_has_critical_alarms',
         'pca_cabin_temp': 'pca_cabin_temp',
         'pca_ambient_temp': 'pca_ambient_temp',
         'pca_discharge_temp': 'pca_discharge_temp',
@@ -6477,15 +7381,8 @@ TagConfig = (function(superClass) {
         'pca_suction_pressure_2': 'pca_suction_pressure_2',
         'pca_hot_gas_1': 'pca_hot_gas_1',
         'pca_hot_gas_2': 'pca_hot_gas_2',
-        'pca_status': 'pca_status'
-      },
-      Graphics: {}
-    },
-    out_of_service_widget: {
-      Tags: {
-        'pbb_out_of_service': 'pbb_out_of_service',
-        'gpu_out_of_service': 'gpu_out_of_service',
-        'pca_out_of_service': 'pca_out_of_service'
+        'pca_status': 'pca_status',
+        'pca_auto': 'pca_auto'
       },
       Graphics: {}
     }
@@ -6500,6 +7397,16 @@ TagConfig = (function(superClass) {
   TagConfig.groups = {
     gpu_hobart_sx2400_dual_unit: {
       Tags: {
+        'gpu_01_quality': 'gpu_01_quality',
+        'gpu_01_out_of_service': 'gpu_01_out_of_service',
+        'gpu_01_has_warnings': 'gpu_01_has_warnings',
+        'gpu_01_has_alarms': 'gpu_01_has_alarms',
+        'gpu_01_has_critical_alarms': 'gpu_01_has_critical_alarms',
+        'gpu_02_quality': 'gpu_02_quality',
+        'gpu_02_out_of_service': 'gpu_02_out_of_service',
+        'gpu_02_has_warnings': 'gpu_02_has_warnings',
+        'gpu_02_has_alarms': 'gpu_02_has_alarms',
+        'gpu_02_has_critical_alarms': 'gpu_02_has_critical_alarms',
         'gpu_01_status': 'gpu_01_status',
         'gpu_02_status': 'gpu_02_status',
         'gpu_01_time': 'gpu_01_time',
@@ -6538,1304 +7445,207 @@ TagConfig = (function(superClass) {
    */
 
   TagConfig.clients = {
-    PHX: {
-      pca_widget: {
-        remove_tags: {
-          'pca_hot_gas_1': 'pca_hot_gas_1',
-          'pca_hot_gas_2': 'pca_hot_gas_2'
-        },
-        update_tags: {
-          pca_heater_1: {
-            Tag: 'PCA.HEAT1',
-            Label: 'Heater #1 is running',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_heater_2: {
-            Tag: 'PCA.HEAT2',
-            Label: 'Heater #2 is running',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_comp_stage_1: {
-            Tag: 'PCA.COMPPRI1',
-            Label: 'Primary compressor #1 is running',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_comp_stage_2: {
-            Tag: 'PCA.COMPPRI2',
-            Label: 'Primary compressor #2 is running',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_suction_pressure_1: {
-            Tag: 'PCA.PRESSSUCPRI1',
-            Label: 'Suction pressure,primary compressor #1',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: false,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_suction_pressure_2: {
-            Tag: 'PCA.PRESSSUCPRI2',
-            Label: 'Suction pressure,primary compressor #2',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: false,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_bridge_damper: {
-            Tag: 'PCA.BRIDGE_DAMPER_POSITION',
-            Label: 'Aircraft Cool is running',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_bridge_air: {
-            Tag: 'PCA.BRIDGE_AIR',
-            Label: 'Bridge Cool is running',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          }
-        },
-        add_tags: {
-          pca_comp_stage_3: {
-            Tag: 'PCA.COMPPRI3',
-            Label: 'Primary compressor #3 is running',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_suction_pressure_3: {
-            Tag: 'PCA.PRESSSUCPRI3',
-            Label: 'Suction pressure,primary compressor #3',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: false,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_heater_3: {
-            Tag: 'PCA.HEAT3',
-            Label: 'Heater #3 is running',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_headpri1: {
-            Tag: 'PCA.PRESSHEADPRI1',
-            Label: 'Head pressure,primary compressor #1',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: false,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_headpri2: {
-            Tag: 'PCA.PRESSHEADPRI2',
-            Label: 'Head pressure,primary compressor #2',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: false,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_headpri3: {
-            Tag: 'PCA.PRESSHEADPRI3',
-            Label: 'Head pressure, secondary compressor #1',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: false,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_blowercurrent: {
-            Tag: 'PCA.BLOWERCURRENT',
-            Label: 'Blower Current',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: false,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_unitcurrent: {
-            Tag: 'PCA.UNITCURRENT',
-            Label: 'Unit Current',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: false,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_modeofoperation: {
-            Tag: 'PCA.MODEOFOPERATION',
-            Label: 'Mode',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: false,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          }
-        },
-        4: {
-          D: {
-            D1: {
-              add_tags: {
-                pca_comp_stage_3: {
-                  Tag: 'PCA.COMPPRI3',
-                  Label: 'Primary compressor #3 is running',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: ''
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                pca_suction_pressure_3: {
-                  Tag: 'PCA.PRESSSUCPRI3',
-                  Label: 'Suction pressure,primary compressor #3',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: null,
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                pca_heater_3: {
-                  Tag: 'PCA.HEAT3',
-                  Label: 'Heater #3 is running',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: ''
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      pca_discharge_widget: {
-        4: {
-          D: {
-            D1: {
-              use_tags: {
-                pca_status: {
-                  Tag: 'PCA.PCASTATUS',
-                  Label: 'PCA status',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: 'err',
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      pca_summary_widget: {
-        update_graphics: {
-          pca_main_background: {
-            ControlTags: {
-              none: null
-            },
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#graphics_container',
-              Class: 'background SJ_90',
-              Object: null
-            }
-          },
-          blower_img: {
-            ControlTags: {
-              pca_blower: 'Boolean'
-            },
-            Parameters: {
-              Parm001: 'ALL_TRUE',
-              Parm002: 'blower-on',
-              Parm003: null,
-              Parm004: 'blower-bq'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#dynamic_pca_main_background',
-              Class: 'img SJ_90',
-              Object: null
-            }
-          },
-          heating_stage_1_img: {
-            ControlTags: {
-              pca_heater_1: 'Boolean'
-            },
-            Parameters: {
-              Parm001: 'ALL_TRUE',
-              Parm002: 'heating-stage-1-on',
-              Parm003: null,
-              Parm004: 'heating-stage-1-bq'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#dynamic_pca_main_background',
-              Class: 'img SJ_90',
-              Object: null
-            }
-          },
-          heating_stage_2_img: {
-            ControlTags: {
-              pca_heater_2: 'Boolean'
-            },
-            Parameters: {
-              Parm001: 'ALL_TRUE',
-              Parm002: 'heating-stage-2-on',
-              Parm003: null,
-              Parm004: 'heating-stage-2-bq'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#dynamic_pca_main_background',
-              Class: 'img SJ_90',
-              Object: null
-            }
-          },
-          accool_img: {
-            ControlTags: {
-              pca_bridge_damper: 'Boolean',
-              pca_status: 'Boolean'
-            },
-            Parameters: {
-              Parm001: 'ALL_TRUE',
-              Parm002: 'ac-cool-on',
-              Parm003: null,
-              Parm004: 'ac-cool-bq'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#dynamic_pca_main_background',
-              Class: {
-                Class: 'img SJ_90',
-                Object: null
-              }
-            }
-          },
-          bccool_img: {
-            ControlTags: {
-              pca_bridge_air: 'Boolean'
-            },
-            Parameters: {
-              Parm001: 'ALL_TRUE',
-              Parm002: 'bc-cool-on',
-              Parm003: null,
-              Parm004: 'bc-cool-bq'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#dynamic_pca_main_background',
-              Class: 'img SJ_90',
-              Object: null
-            }
-          },
-          cooling_stage_1_img: {
-            ControlTags: {
-              pca_comp_stage_1: 'Boolean'
-            },
-            Parameters: {
-              Parm001: 'ALL_TRUE',
-              Parm002: 'cooling-stage-1-on',
-              Parm003: null,
-              Parm004: 'cooling-stage-1-bq'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#dynamic_pca_main_background',
-              Class: 'img SJ_90',
-              Object: null
-            }
-          },
-          cooling_stage_2_img: {
-            ControlTags: {
-              pca_comp_stage_2: 'Boolean'
-            },
-            Parameters: {
-              Parm001: 'ALL_TRUE',
-              Parm002: 'cooling-stage-2-on',
-              Parm003: null,
-              Parm004: 'cooling-stage-1-bq'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#dynamic_pca_main_background',
-              Class: 'img SJ_90',
-              Object: null
-            }
-          }
-        },
-        add_graphics: {
-          heating_stage_3_img: {
-            ControlTags: {
-              pca_heater_3: 'Boolean'
-            },
-            Parameters: {
-              Parm001: 'ALL_TRUE',
-              Parm002: 'heating-stage-3-on',
-              Parm003: null,
-              Parm004: 'heating-stage-3-bq'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#dynamic_pca_main_background',
-              Class: 'img SJ_90',
-              Object: null
-            }
-          },
-          filter_img: {
-            ControlTags: {
-              pca_dirtyfilter: 'Boolean'
-            },
-            Parameters: {
-              Parm001: 'ALL_TRUE',
-              Parm002: 'filter-on',
-              Parm003: null,
-              Parm004: 'filter-bq'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#dynamic_pca_main_background',
-              Class: 'img SJ_90',
-              Object: null
-            }
-          },
-          fan_1_img: {
-            ControlTags: {
-              pca_fan_1: 'Boolean'
-            },
-            Parameters: {
-              Parm001: 'ALL_TRUE',
-              Parm002: 'fan-1-on',
-              Parm003: null,
-              Parm004: 'fan-1-bq'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#dynamic_pca_main_background',
-              Class: 'img jetair-xpc-3013',
-              Object: null
-            }
-          },
-          cooling_stage_3_img: {
-            ControlTags: {
-              pca_comp_stage_3: 'Boolean'
-            },
-            Parameters: {
-              Parm001: 'ALL_TRUE',
-              Parm002: 'cooling-stage-3-on',
-              Parm003: null,
-              Parm004: 'comp-stage-3-bq'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#dynamic_pca_main_background',
-              Class: 'img SJ_90',
-              Object: null
-            }
-          },
-          cond_coil_1_img: {
-            ControlTags: {
-              pca_comp_stage_1: 'Boolean'
-            },
-            Parameters: {
-              Parm001: 'ALL_TRUE',
-              Parm002: 'cond-coil-1-on',
-              Parm003: null,
-              Parm004: 'cond-coil-1-bq'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#dynamic_pca_main_background',
-              Class: 'img SJ_90',
-              Object: null
-            }
-          },
-          cond_coil_2_img: {
-            ControlTags: {
-              pca_comp_stage_2: 'Boolean'
-            },
-            Parameters: {
-              Parm001: 'ALL_TRUE',
-              Parm002: 'cond-coil-2-on',
-              Parm003: null,
-              Parm004: 'cond-coil-2-bq'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#dynamic_pca_main_background',
-              Class: 'img SJ_90',
-              Object: null
-            }
-          },
-          cond_coil_3_img: {
-            ControlTags: {
-              pca_comp_stage_3: 'Boolean'
-            },
-            Parameters: {
-              Parm001: 'ALL_TRUE',
-              Parm002: 'cond-coil-3-on',
-              Parm003: null,
-              Parm004: 'cond-coil-3-bq'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#dynamic_pca_main_background',
-              Class: 'img SJ_90',
-              Object: null
-            }
-          },
-          evap_coil_1_img: {
-            ControlTags: {
-              pca_comp_stage_1: 'Boolean'
-            },
-            Parameters: {
-              Parm001: 'ALL_TRUE',
-              Parm002: 'evap-coil-1-on',
-              Parm003: null,
-              Parm004: 'evap-coil-1-bq'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#dynamic_pca_main_background',
-              Class: 'img SJ_90',
-              Object: null
-            }
-          },
-          evap_coil_2_img: {
-            ControlTags: {
-              pca_comp_stage_2: 'Boolean'
-            },
-            Parameters: {
-              Parm001: 'ALL_TRUE',
-              Parm002: 'evap-coil-2-on',
-              Parm003: null,
-              Parm004: 'evap-coil-2-bq'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#dynamic_pca_main_background',
-              Class: 'img SJ_90',
-              Object: null
-            }
-          },
-          evap_coil_3_img: {
-            ControlTags: {
-              pca_comp_stage_3: 'Boolean'
-            },
-            Parameters: {
-              Parm001: 'ALL_TRUE',
-              Parm002: 'evap-coil-3-on',
-              Parm003: null,
-              Parm004: 'evap-coil-3-bq'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#dynamic_pca_main_background',
-              Class: 'img SJ_90',
-              Object: null
-            }
-          },
-          cfan_1_img: {
-            ControlTags: {
-              pca_cfan_1: 'Boolean'
-            },
-            Parameters: {
-              Parm001: 'ALL_TRUE',
-              Parm002: 'cfan-1-on',
-              Parm003: null,
-              Parm004: 'cfan-1-bq'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#dynamic_pca_main_background',
-              Class: 'img SJ_90',
-              Object: null
-            }
-          },
-          cfan_2_img: {
-            ControlTags: {
-              pca_cfan_2: 'Boolean'
-            },
-            Parameters: {
-              Parm001: 'ALL_TRUE',
-              Parm002: 'cfan-2-on',
-              Parm003: null,
-              Parm004: 'cfan-2-bq'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#dynamic_pca_main_background',
-              Class: 'img SJ_90',
-              Object: null
-            }
-          },
-          cfan_3_img: {
-            ControlTags: {
-              pca_cfan_3: 'Boolean'
-            },
-            Parameters: {
-              Parm001: 'ALL_TRUE',
-              Parm002: 'cfan-3-on',
-              Parm003: null,
-              Parm004: 'cfan-3-bq'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#dynamic_pca_main_background',
-              Class: 'img SJ_90',
-              Object: null
-            }
-          }
-        },
-        remove_tags: {
-          'pca_hot_gas_1': 'pca_hot_gas_1',
-          'pca_hot_gas_2': 'pca_hot_gas_2',
-          'pca_ambient_humidity': 'pca_ambient_humidity',
-          'pca_coil_dp': 'pca_coil_dp',
-          'pca_vfd_speed': 'pca_vfd_speed'
-        },
-        update_tags: {
-          pca_heater_1: {
-            Tag: 'PCA.HEAT1',
-            Label: 'Heater #1 is running',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_heater_2: {
-            Tag: 'PCA.HEAT2',
-            Label: 'Heater #2 is running',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_comp_stage_1: {
-            Tag: 'PCA.COMPPRI1',
-            Label: 'Primary compressor #1 is running',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_comp_stage_2: {
-            Tag: 'PCA.COMPPRI2',
-            Label: 'Primary compressor #2 is running',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_suction_pressure_1: {
-            Tag: 'PCA.PRESSSUCPRI1',
-            Label: 'Suction pressure,primary compressor #1',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: false,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_suction_pressure_2: {
-            Tag: 'PCA.PRESSSUCPRI2',
-            Label: 'Suction pressure,primary compressor #2',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: false,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_bridge_damper: {
-            Tag: 'PCA.BRIDGE_DAMPER_POSITION',
-            Label: 'Aircraft Cool is on',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_bridge_air: {
-            Tag: 'PCA.BRIDGE_AIR',
-            Label: 'Bridge Cool is running',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          }
-        },
-        add_tags: {
-          pca_comp_stage_3: {
-            Tag: 'PCA.COMPPRI3',
-            Label: 'Primary compressor #3 is running',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_suction_pressure_3: {
-            Tag: 'PCA.PRESSSUCPRI3',
-            Label: 'Suction pressure,primary compressor #3',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: false,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_heater_3: {
-            Tag: 'PCA.HEAT3',
-            Label: 'Heater #3 is running',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_headpri1: {
-            Tag: 'PCA.PRESSHEADPRI1',
-            Label: 'Head pressure,primary compressor #1',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: false,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_headpri2: {
-            Tag: 'PCA.PRESSHEADPRI2',
-            Label: 'Head pressure,primary compressor #2',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: false,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_headpri3: {
-            Tag: 'PCA.PRESSHEADPRI3',
-            Label: 'Head pressure, secondary compressor #1',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: false,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_cfan_3: {
-            Tag: 'PCA.FANCONDFRONTPRI',
-            Label: 'Fan #3',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_cfan_2: {
-            Tag: 'PCA.FANCONDFRONTSEC',
-            Label: 'Fan #2',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_cfan_1: {
-            Tag: 'PCA.FANCONDREARPRI',
-            Label: 'Fan #1',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          }
-        }
-      },
-      pbb_system_status_widget: {
-        remove_tags: {
-          'pbb_status': 'pbb_status',
-          'gpu_status': 'gpu_status'
-        },
-        update_tags: {
-          pca_status: {
-            Tag: 'PCA.PCASTATUS',
-            Label: '[*]PCA',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_discharge_temp: {
-            Tag: 'PCA.TEMPDISCH',
-            Label: '[*]DisCharge',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: true,
-              Parm002: 2,
-              Parm003: '#{1} F',
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: 'DisCharge',
-              Object: null
-            }
-          },
-          pca_mode_cooling: {
-            Tag: 'PCA.MODE_COOLING',
-            Label: 'Cooling Mode',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          pca_mode_heating: {
-            Tag: 'PCA.MODE_HEATING',
-            Label: 'Heating Mode',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          }
-        }
-      },
-      pbb_pca_gpu_status_widget: {
-        remove_tags: {
-          'pbb_status': 'pbb_status',
-          'gpu_status': 'gpu_status'
-        },
-        add_tags: {
-          system_perfect_hookup: {
-            Tag: 'System.PERFECT_HOOKUP',
-            Label: 'Perfect Hookup',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          },
-          system_out_of_service: {
-            Tag: 'System._OUT_OF_SERVICE',
-            Label: 'Out of Service',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          },
-          system_quality: {
-            Tag: 'System._QUALITY',
-            Label: 'Bad Quality',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          }
-        },
-        update_tags: {
-          pca_status: {
-            Tag: 'PCA.PCASTATUS',
-            Label: '[*]PCA',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          pca_discharge_temp: {
-            Tag: 'PCA.TEMPDISCH',
-            Label: '[*]DisCharge',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: true,
-              Parm002: 2,
-              Parm003: '#{1} F',
-              Parm004: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          pca_mode_cooling: {
-            Tag: 'PCA.MODE_COOLING',
-            Label: 'Cooling Mode',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          },
-          pca_mode_heating: {
-            Tag: 'PCA.MODE_HEATING',
-            Label: 'Heating Mode',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          }
-        }
-      },
-      pbb_pca_gpu_basic_widget: {
-        remove_tags: {
-          'pbb_status': 'pbb_status',
-          'gpu_status': 'gpu_status',
-          'pbb_hookup_time': 'pbb_hookup_time',
-          'gpu_hookup_time': 'gpu_hookup_time',
-          'pbb_dock_time': 'pbb_dock_time',
-          'gpu_time': 'gpu_time',
-          'gpu_ra_out_avg': 'gpu_ra_out_avg',
-          'gpu_rv_out_avg': 'gpu_rv_out_avg'
-        }
-      }
-    },
-    'HAS-IAH': {
+    ATL: {
       gpu_summary_widget: {
-        remove_all: {}
+        remove_tags: {
+          'gpu_ra_in_avg': 'gpu_ra_in_avg',
+          'gpu_rv_in_avg': 'gpu_rv_in_avg'
+        }
       },
       gpu_widget: {
-        remove_all: {}
+        remove_tags: {
+          'gpu_by_pass': 'gpu_by_pass',
+          'gpu_ra_in_avg': 'gpu_ra_in_avg',
+          'gpu_rv_in_avg': 'gpu_rv_in_avg',
+          'gpu_pm_input_phasea_i': 'gpu_pm_input_phasea_i',
+          'gpu_pm_input_phaseb_i': 'gpu_pm_input_phaseb_i',
+          'gpu_pm_input_phasec_i': 'gpu_pm_input_phasec_i',
+          'gpu_pm_input_phasea_v': 'gpu_pm_input_phasea_v',
+          'gpu_pm_input_phaseb_v': 'gpu_pm_input_phaseb_v',
+          'gpu_pm_input_phasec_v': 'gpu_pm_input_phasec_v',
+          'gpu_on_2': 'gpu_on_2'
+        },
+        add_tags: {
+          gpu_mode: {
+            Tag: 'GPU.GPUMODE',
+            Label: 'GPU Mode',
+            DataType: 'Value',
+            Parameters: {
+              Parm001: false,
+              Parm002: null,
+              Parm003: '#{1}',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          }
+        },
+        update_tags: {
+          gpu_pm_output_phasea_i: {
+            Tag: 'GPU.RAOUTA',
+            Label: 'Amps Out Phase A',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 1,
+              Parm003: 'Amps',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_pm_output_phaseb_i: {
+            Tag: 'GPU.RAOUTB',
+            Label: 'Amps Out Phase B',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 1,
+              Parm003: 'Amps',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_pm_output_phasec_i: {
+            Tag: 'GPU.RAOUTC',
+            Label: 'Amps Out Phase C',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 1,
+              Parm003: 'Amps',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_pm_output_phasea_v: {
+            Tag: 'GPU.RVOUTA',
+            Label: 'Volts Out Phase A',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 1,
+              Parm003: 'Volts',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_pm_output_phaseb_v: {
+            Tag: 'GPU.RVOUTB',
+            Label: 'Volts Out Phase B',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 1,
+              Parm003: 'Volts',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_pm_output_phasec_v: {
+            Tag: 'GPU.RVOUTC',
+            Label: 'Volts Out Phase C',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 1,
+              Parm003: 'Volts',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          }
+        }
       },
-      pca_discharge_widget: {
-        remove_all: {}
-      },
-      pca_summary_widget: {
-        remove_all: {}
-      },
-      pca_widget: {
-        remove_all: {}
+      out_of_service_widget: {
+        update_tags: {
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          }
+        }
       },
       pbb_detail_widget: {
         update_tags: {
@@ -7926,62 +7736,77 @@ TagConfig = (function(superClass) {
               Class: 'val transparent',
               Object: null
             }
-          },
-          pbb_canopy: {
-            Tag: 'PBB.CANOPYDOWN',
-            Label: 'Canopy',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'Down',
-              Parm002: 'Up',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: 'Canopy : #{1}'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#pbb_canopy_container',
-              Class: 'val transparent',
-              Object: null
-            }
           }
         }
       },
-      pbb_system_status_widget: {
+      pbb_level_detail_widget: {
         remove_tags: {
-          'pca_status': 'pca_status',
-          'pca_discharge_temp': 'pca_discharge_temp',
-          'gpu_status': 'gpu_status'
+          'pbb_terminal_door': 'pbb_terminal_door'
+        }
+      },
+      pbb_pca_gpu_basic_widget: {
+        remove_tags: {
+          'pca_out_of_service': 'pca_out_of_service'
         },
         update_tags: {
-          pbb_status: {
-            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-            Label: '[*]PBB',
-            LebelOverride: true,
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB Out of Service',
             DataType: 'Boolean',
             Parameters: {
-              Parm001: 'Docked',
-              Parm002: 'UnDocked',
-              Parm003: 'ok',
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
               Parm004: null,
               Parm005: null
             },
             Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
               Object: null
             }
           }
         }
       },
       pbb_pca_gpu_status_widget: {
-        remove_tags: {
-          'pca_status': 'pca_status',
-          'pca_discharge_temp': 'pca_discharge_temp',
-          'gpu_status': 'gpu_status'
-        },
-        add_tags: {
+        update_tags: {
           system_perfect_hookup: {
             Tag: 'System.PERFECT_HOOKUP',
             Label: 'Perfect Hookup',
@@ -8035,8 +7860,299 @@ TagConfig = (function(superClass) {
               Class: 'no_row',
               Object: null
             }
+          },
+          pbb_perfect_hookup: {
+            Tag: 'PBB.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_quality: {
+            Tag: 'PBB._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_docked: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: '[*]Docked',
+            LebelOverride: true,
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Docked',
+              Parm002: 'UnDocked',
+              Parm003: 'Docked',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_status: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: '[*]PBB',
+            LebelOverride: true,
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: '',
+              Parm002: '',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_perfect_hookup: {
+            Tag: 'GPU.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_quality: {
+            Tag: 'GPU._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_status: {
+            Tag: 'GPU.GPUSTATUSBOOLEAN',
+            Label: '[*]GPU',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_perfect_hookup: {
+            Tag: 'PCA.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_quality: {
+            Tag: 'PCA._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_status: {
+            Tag: 'PCA.PCASTATUS',
+            Label: '[*]PCA',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_discharge_temp: {
+            Tag: 'PCA.TEMPDISCH',
+            Label: '[*]DisCharge',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 2,
+              Parm003: '#{1} F',
+              Parm004: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_mode_cooling: {
+            Tag: 'PCA.MODE_COOLING',
+            Label: 'Cooling Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_mode_heating: {
+            Tag: 'PCA.MODE_HEATING',
+            Label: 'Heating Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
           }
-        },
+        }
+      },
+      pbb_system_status_widget: {
         update_tags: {
           pbb_status: {
             Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
@@ -8051,6 +8167,95 @@ TagConfig = (function(superClass) {
               Parm005: null
             },
             Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_status: {
+            Tag: 'GPU.GPUSTATUSBOOLEAN',
+            Label: '[*]GPU',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_status: {
+            Tag: 'PCA.PCASTATUS',
+            Label: '[*]PCA',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_discharge_temp: {
+            Tag: 'PCA.TEMPDISCH',
+            Label: '[*]DisCharge',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 2,
+              Parm003: '#{1} F',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: 'DisCharge',
+              Object: null
+            }
+          },
+          pca_mode_cooling: {
+            Tag: 'PCA.MODE_COOLING',
+            Label: 'Cooling Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_mode_heating: {
+            Tag: 'PCA.MODE_HEATING',
+            Label: 'Heating Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
               Type: null,
               ParentID: null,
               Class: null,
@@ -8059,29 +8264,285 @@ TagConfig = (function(superClass) {
           }
         }
       },
-      out_of_service_widget: {
-        remove_tags: {
-          'pca_out_of_service': 'pca_out_of_service',
-          'gpu_out_of_service': 'gpu_out_of_service'
-        }
-      },
-      pbb_level_detail_widget: {
-        remove_tags: {
-          'pbb_autoleveling': 'pbb_autoleveling',
-          'pbb_estop': 'pbb_estop',
-          'pbb_limits': 'pbb_limits',
-          'pbb_terminal_door': 'pbb_terminal_door',
-          'pbb_cab_angle_disp': 'pbb_cab_angle_disp',
-          'pbb_slope_deg': 'pbb_slope_deg',
-          'pbb_swing_angle_disp': 'pbb_swing_angle_disp',
-          'pbb_height_to_disp': 'pbb_height_to_disp',
-          'pbb_wheel_angle_deg': 'pbb_wheel_angle_deg',
-          'pbb_tunnel_length': 'pbb_tunnel_length'
+      pca_summary_widget: {
+        update_graphics: {
+          pca_main_background: {
+            ControlTags: {
+              none: null
+            },
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#graphics_container',
+              Class: 'background jbt-airhandler',
+              Object: null
+            }
+          },
+          blower_img: {
+            ControlTags: {
+              pca_blower: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'blower-on',
+              Parm003: null,
+              Parm004: 'blower-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jbt-airhandler',
+              Object: null
+            }
+          },
+          heating_stage_1_img: {
+            ControlTags: {
+              pca_heater_1: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'heating-stage-1-on',
+              Parm003: null,
+              Parm004: 'heating-stage-1-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jbt-airhandler',
+              Object: null
+            }
+          },
+          cooling_stage_1_img: {
+            ControlTags: {
+              pca_comp_stage_1: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'cooling-stage-1-on',
+              Parm003: null,
+              Parm004: 'cooling-stage-1-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jbt-airhandler',
+              Object: null
+            }
+          },
+          cooling_stage_2_img: {
+            ControlTags: {
+              pca_comp_stage_2: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'cooling-stage-2-on',
+              Parm003: null,
+              Parm004: 'cooling-stage-2-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jbt-airhandler',
+              Object: null
+            }
+          },
+          accool_img: {
+            ControlTags: {
+              pca_bridge_damper: 'Boolean',
+              pca_status: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'ac-cool-on',
+              Parm003: null,
+              Parm004: 'ac-cool-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jbt-airhandler',
+              Object: null
+            }
+          },
+          bccool_img: {
+            ControlTags: {
+              pca_bridge_air: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'bc-cool-on',
+              Parm003: null,
+              Parm004: 'bc-cool-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jbt-airhandler',
+              Object: null
+            }
+          }
         },
         add_tags: {
-          pbb_floodlight: {
-            Tag: 'PBB.FLOODLIGHTS',
-            Label: 'FloodLights',
+          pca_dirty_filter_img: {
+            Tag: 'PCA.Alarm.DIRTY_FILTER',
+            Label: 'Dirty Filter',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Yes',
+              Parm002: 'No',
+              Parm003: 'err',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_cooling_img: {
+            Tag: 'PCA.COOLINGTIMERCALC_BOOLEAN',
+            Label: 'Cooling Time',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Yes',
+              Parm002: 'No',
+              Parm003: 'err',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          }
+        },
+        add_graphics: {
+          dirty_filter_img: {
+            ControlTags: {
+              pca_dirty_filter_img: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'dirty-filter-on',
+              Parm003: null,
+              Parm004: 'dirty-filter-on-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jbt-airhandler',
+              Object: null
+            }
+          },
+          damper_img: {
+            ControlTags: {
+              pca_status: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'damper-on',
+              Parm003: null,
+              Parm004: 'damper-on-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jbt-airhandler',
+              Object: null
+            }
+          }
+        }
+      },
+      pca_widget: {
+        remove_tags: {
+          'pca_comp_stage_1': 'pca_comp_stage_1',
+          'pca_comp_stage_2': 'pca_comp_stage_2',
+          'pca_bridge_damper': 'pca_bridge_damper',
+          'pca_bridge_air': 'pca_bridge_air',
+          'pca_suction_pressure_1': 'pca_suction_pressure_1',
+          'pca_suction_pressure_2': 'pca_suction_pressure_2',
+          'pca_hot_gas_1': 'pca_hot_gas_1',
+          'pca_hot_gas_2': 'pca_hot_gas_2'
+        },
+        add_tags: {
+          pca_egw_inlet_temp: {
+            Tag: 'PCA.EGW_INLET_TEMP',
+            Label: 'EGW Valve Inlet Temp',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: 'TRUE',
+              Parm002: '2',
+              Parm003: '#{1} F',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_egw_outlet_temp: {
+            Tag: 'PCA.EGW_OUTLET_TEMP',
+            Label: 'EGW Valve Outlet Temp',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: 'TRUE',
+              Parm002: '2',
+              Parm003: '#{1} F',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_egw_interstage_temp: {
+            Tag: 'PCA.EGW_INTERSTAGE_TEMP',
+            Label: 'EGW Valve Interstage Temp',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: 'TRUE',
+              Parm002: '2',
+              Parm003: '#{1} F',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_flow_meter_square: {
+            Tag: 'PCA.FLOW_METER_SQUARE',
+            Label: 'CHW Flow',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: '',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_strip_heat_on: {
+            Tag: 'PCA.STRIP_HEAT_ON',
+            Label: 'Strip Heat On',
             DataType: 'Boolean',
             Parameters: {
               Parm001: 'On',
@@ -8095,59 +8556,24 @@ TagConfig = (function(superClass) {
               Class: null,
               Object: null
             }
-          }
-        },
-        'A': {
-          'SC': {
-            A25: {
-              remove_tags: {
-                'pbb_canopy': 'pbb_canopy',
-                'pbb_autolevel_key': 'pbb_autolevel_key',
-                'pbb_smoke_detector': 'pbb_smoke_detector',
-                'pbb_cabin_floor_deicer': 'pbb_cabin_floor_deicer',
-                'pbb_floodlight': 'pbb_floodlight'
-              }
+          },
+          pca_air_filter_dp: {
+            Tag: 'PCA.AIR_FILTER_DP',
+            Label: 'Air Filter DP',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: '',
+              Parm004: ''
             },
-            A27: {
-              remove_tags: {
-                'pbb_canopy': 'pbb_canopy',
-                'pbb_autolevel_key': 'pbb_autolevel_key',
-                'pbb_smoke_detector': 'pbb_smoke_detector',
-                'pbb_cabin_floor_deicer': 'pbb_cabin_floor_deicer',
-                'pbb_floodlight': 'pbb_floodlight'
-              }
-            },
-            A29: {
-              remove_tags: {
-                'pbb_canopy': 'pbb_canopy',
-                'pbb_autolevel_key': 'pbb_autolevel_key',
-                'pbb_smoke_detector': 'pbb_smoke_detector',
-                'pbb_cabin_floor_deicer': 'pbb_cabin_floor_deicer',
-                'pbb_floodlight': 'pbb_floodlight'
-              }
-            },
-            A30: {
-              remove_tags: {
-                'pbb_canopy': 'pbb_canopy',
-                'pbb_autolevel_key': 'pbb_autolevel_key',
-                'pbb_smoke_detector': 'pbb_smoke_detector',
-                'pbb_cabin_floor_deicer': 'pbb_cabin_floor_deicer',
-                'pbb_floodlight': 'pbb_floodlight'
-              }
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
             }
           }
-        }
-      },
-      pbb_pca_gpu_basic_widget: {
-        remove_tags: {
-          'pca_status': 'pca_status',
-          'gpu_status': 'gpu_status',
-          'pca_time': 'pca_time',
-          'pca_hookup_time': 'pca_hookup_time',
-          'pca_discharge_temp': 'pca_discharge_temp',
-          'gpu_time': 'gpu_time',
-          'gpu_ra_out_avg': 'gpu_ra_out_avg',
-          'gpu_rv_out_avg': 'gpu_rv_out_avg'
         }
       }
     },
@@ -8595,6 +9021,729 @@ TagConfig = (function(superClass) {
               }
             }
           }
+        }
+      },
+      out_of_service_widget: {
+        update_tags: {
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          }
+        }
+      },
+      pbb_detail_widget: {
+        update_tags: {
+          pbb_status: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: 'PBB Status',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Docked',
+              Parm002: 'UnDocked',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#pbb_status_container',
+              Class: 'val transparent',
+              Object: null
+            }
+          },
+          pbb_undock_time: {
+            Tag: 'PBB.UNDOCKTIME',
+            Label: null,
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 2,
+              Parm003: 'mins',
+              Parm004: null
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#pbb_undockordocktime_container',
+              Class: 'pbb_undockordocktime val transparent',
+              Object: null
+            }
+          },
+          pbb_dock_time: {
+            Tag: 'PBB.DOCKTIME',
+            Label: 'Aircraft Docked Time (Minutes)',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 2,
+              Parm003: 'mins',
+              Parm004: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'pbb_undockordocktime val transparent',
+              Object: null
+            }
+          },
+          pbb_autolevel_mode: {
+            Tag: 'PBB.AUTOLEVELMODEFLAG',
+            Label: 'PBB Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: 'Auto-Level : #{1}'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#pbb_autolevel_container',
+              Class: 'val transparent',
+              Object: null
+            }
+          },
+          pbb_canopy: {
+            Tag: 'PBB.CANOPYDOWN',
+            Label: 'Canopy',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Down',
+              Parm002: 'Up',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: 'Canopy : #{1}'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#pbb_canopy_container',
+              Class: 'val transparent',
+              Object: null
+            }
+          }
+        }
+      },
+      pbb_level_detail_widget: {
+        remove_tags: {
+          'pbb_terminal_door': 'pbb_terminal_door',
+          'pbb_autolevel_key': 'pbb_autolevel_key'
+        },
+        1: {
+          1: {
+            C3: {
+              remove_tags: {
+                'pbb_cab_angle_disp': 'pbb_cab_angle_disp',
+                'pbb_slope_deg': 'pbb_slope_deg',
+                'pbb_swing_angle_disp': 'pbb_swing_angle_disp',
+                'pbb_height_to_disp': 'pbb_height_to_disp',
+                'pbb_wheel_angle_deg': 'pbb_wheel_angle_deg',
+                'pbb_tunnel_length': 'pbb_tunnel_length'
+              },
+              add_tags: {
+                pbb_autolevel_key: {
+                  Tag: 'PBB.AUTOLEVELKEY',
+                  Label: 'Auto Level Key',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      pbb_pca_gpu_basic_widget: {
+        update_tags: {
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          }
+        },
+        1: {
+          1: {
+            C3: {
+              remove_tags: {
+                'pca_discharge_temp': 'pca_discharge_temp',
+                'gpu_ra_out_avg': 'gpu_ra_out_avg',
+                'gpu_rv_out_avg': 'gpu_rv_out_avg'
+              }
+            }
+          }
+        }
+      },
+      pbb_pca_gpu_status_widget: {
+        update_tags: {
+          system_perfect_hookup: {
+            Tag: 'System.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          system_out_of_service: {
+            Tag: 'System._OUT_OF_SERVICE',
+            Label: 'Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          system_quality: {
+            Tag: 'System._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_perfect_hookup: {
+            Tag: 'PBB.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_quality: {
+            Tag: 'PBB._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_docked: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: '[*]Docked',
+            LebelOverride: true,
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Docked',
+              Parm002: 'UnDocked',
+              Parm003: 'Docked',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_status: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: '[*]PBB',
+            LebelOverride: true,
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: '',
+              Parm002: '',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_perfect_hookup: {
+            Tag: 'GPU.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_quality: {
+            Tag: 'GPU._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_status: {
+            Tag: 'GPU.GPUSTATUSBOOLEAN',
+            Label: '[*]GPU',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_perfect_hookup: {
+            Tag: 'PCA.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_quality: {
+            Tag: 'PCA._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_status: {
+            Tag: 'PCA.PCASTATUS',
+            Label: '[*]PCA',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_discharge_temp: {
+            Tag: 'PCA.TEMPDISCH',
+            Label: '[*]DisCharge',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 2,
+              Parm003: '#{1} F',
+              Parm004: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_mode_cooling: {
+            Tag: 'PCA.MODE_COOLING',
+            Label: 'Cooling Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_mode_heating: {
+            Tag: 'PCA.MODE_HEATING',
+            Label: 'Heating Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          }
+        }
+      },
+      pbb_system_status_widget: {
+        update_tags: {
+          pbb_status: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: '[*]PBB',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Docked',
+              Parm002: 'UnDocked',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_status: {
+            Tag: 'GPU.GPUSTATUSBOOLEAN',
+            Label: '[*]GPU',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_status: {
+            Tag: 'PCA.PCASTATUS',
+            Label: '[*]PCA',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_discharge_temp: {
+            Tag: 'PCA.TEMPDISCH',
+            Label: '[*]DisCharge',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 2,
+              Parm003: '#{1} F',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: 'DisCharge',
+              Object: null
+            }
+          },
+          pca_mode_cooling: {
+            Tag: 'PCA.MODE_COOLING',
+            Label: 'Cooling Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_mode_heating: {
+            Tag: 'PCA.MODE_HEATING',
+            Label: 'Heating Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          }
+        }
+      },
+      pbb_widget: {
+        remove_tags: {
+          'pbb_autolevel_key': 'pbb_autolevel_key',
+          'pbb_terminal_door': 'pbb_terminal_door'
         }
       },
       pca_discharge_widget: {
@@ -9270,6 +10419,66 @@ TagConfig = (function(superClass) {
             }
           }
         }
+      }
+    },
+    DAL: {
+      out_of_service_widget: {
+        update_tags: {
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          }
+        }
       },
       pbb_detail_widget: {
         update_tags: {
@@ -9359,145 +10568,15 @@ TagConfig = (function(superClass) {
               ParentID: '#pbb_canopy_container',
               Class: 'val transparent',
               Object: null
-            }
-          }
-        }
-      },
-      pbb_level_detail_widget: {
-        remove_tags: {
-          'pbb_terminal_door': 'pbb_terminal_door',
-          'pbb_autolevel_key': 'pbb_autolevel_key'
-        },
-        1: {
-          1: {
-            C3: {
-              remove_tags: {
-                'pbb_cab_angle_disp': 'pbb_cab_angle_disp',
-                'pbb_slope_deg': 'pbb_slope_deg',
-                'pbb_swing_angle_disp': 'pbb_swing_angle_disp',
-                'pbb_height_to_disp': 'pbb_height_to_disp',
-                'pbb_wheel_angle_deg': 'pbb_wheel_angle_deg',
-                'pbb_tunnel_length': 'pbb_tunnel_length'
-              },
-              add_tags: {
-                pbb_autolevel_key: {
-                  Tag: 'PBB.AUTOLEVELKEY',
-                  Label: 'Auto Level Key',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                }
-              }
             }
           }
         }
       },
       pbb_pca_gpu_basic_widget: {
-        1: {
-          1: {
-            C3: {
-              remove_tags: {
-                'pca_discharge_temp': 'pca_discharge_temp',
-                'gpu_ra_out_avg': 'gpu_ra_out_avg',
-                'gpu_rv_out_avg': 'gpu_rv_out_avg'
-              }
-            }
-          }
-        }
-      },
-      pbb_widget: {
-        remove_tags: {
-          'pbb_autolevel_key': 'pbb_autolevel_key',
-          'pbb_terminal_door': 'pbb_terminal_door'
-        }
-      },
-      pbb_system_status_widget: {
         update_tags: {
-          pbb_status: {
-            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-            Label: '[*]PBB',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'Docked',
-              Parm002: 'UnDocked',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_status: {
-            Tag: 'GPU.GPUSTATUSBOOLEAN',
-            Label: '[*]GPU',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_status: {
-            Tag: 'PCA.PCASTATUS',
-            Label: '[*]PCA',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_discharge_temp: {
-            Tag: 'PCA.TEMPDISCH',
-            Label: '[*]DisCharge',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: true,
-              Parm002: 2,
-              Parm003: '#{1} F',
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: 'DisCharge',
-              Object: null
-            }
-          },
-          pca_mode_cooling: {
-            Tag: 'PCA.MODE_COOLING',
-            Label: 'Cooling Mode',
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB Out of Service',
             DataType: 'Boolean',
             Parameters: {
               Parm001: null,
@@ -9509,13 +10588,13 @@ TagConfig = (function(superClass) {
             Element: {
               Type: null,
               ParentID: null,
-              Class: null,
+              Class: 'no_row',
               Object: null
             }
           },
-          pca_mode_heating: {
-            Tag: 'PCA.MODE_HEATING',
-            Label: 'Heating Mode',
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU Out of Service',
             DataType: 'Boolean',
             Parameters: {
               Parm001: null,
@@ -9527,14 +10606,32 @@ TagConfig = (function(superClass) {
             Element: {
               Type: null,
               ParentID: null,
-              Class: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
               Object: null
             }
           }
         }
       },
       pbb_pca_gpu_status_widget: {
-        add_tags: {
+        update_tags: {
           system_perfect_hookup: {
             Tag: 'System.PERFECT_HOOKUP',
             Label: 'Perfect Hookup',
@@ -9588,9 +10685,61 @@ TagConfig = (function(superClass) {
               Class: 'no_row',
               Object: null
             }
-          }
-        },
-        update_tags: {
+          },
+          pbb_perfect_hookup: {
+            Tag: 'PBB.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_quality: {
+            Tag: 'PBB._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
           pbb_docked: {
             Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
             Label: '[*]Docked',
@@ -9629,6 +10778,60 @@ TagConfig = (function(superClass) {
               Object: null
             }
           },
+          gpu_perfect_hookup: {
+            Tag: 'GPU.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_quality: {
+            Tag: 'GPU._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
           gpu_status: {
             Tag: 'GPU.GPUSTATUSBOOLEAN',
             Label: '[*]GPU',
@@ -9644,6 +10847,60 @@ TagConfig = (function(superClass) {
               Type: null,
               ParentID: null,
               Class: null,
+              Object: null
+            }
+          },
+          pca_perfect_hookup: {
+            Tag: 'PCA.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_quality: {
+            Tag: 'PCA._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
               Object: null
             }
           },
@@ -9715,100 +10972,6 @@ TagConfig = (function(superClass) {
               Type: null,
               ParentID: null,
               Class: 'no_row',
-              Object: null
-            }
-          }
-        }
-      }
-    },
-    DAL: {
-      pbb_detail_widget: {
-        update_tags: {
-          pbb_status: {
-            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-            Label: 'PBB Status',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'Docked',
-              Parm002: 'UnDocked',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#pbb_status_container',
-              Class: 'val transparent',
-              Object: null
-            }
-          },
-          pbb_undock_time: {
-            Tag: 'PBB.UNDOCKTIME',
-            Label: null,
-            DataType: 'Float',
-            Parameters: {
-              Parm001: true,
-              Parm002: 2,
-              Parm003: 'mins',
-              Parm004: null
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#pbb_undockordocktime_container',
-              Class: 'pbb_undockordocktime val transparent',
-              Object: null
-            }
-          },
-          pbb_dock_time: {
-            Tag: 'PBB.DOCKTIME',
-            Label: 'Aircraft Docked Time (Minutes)',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: true,
-              Parm002: 2,
-              Parm003: 'mins',
-              Parm004: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'pbb_undockordocktime val transparent',
-              Object: null
-            }
-          },
-          pbb_autolevel_mode: {
-            Tag: 'PBB.AUTOLEVELMODEFLAG',
-            Label: 'PBB Mode',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: 'Auto-Level : #{1}'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#pbb_autolevel_container',
-              Class: 'val transparent',
-              Object: null
-            }
-          },
-          pbb_canopy: {
-            Tag: 'PBB.CANOPYDOWN',
-            Label: 'Canopy',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'Down',
-              Parm002: 'Up',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: 'Canopy : #{1}'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#pbb_canopy_container',
-              Class: 'val transparent',
               Object: null
             }
           }
@@ -9921,193 +11084,6 @@ TagConfig = (function(superClass) {
               Type: null,
               ParentID: null,
               Class: null,
-              Object: null
-            }
-          }
-        }
-      },
-      pbb_pca_gpu_status_widget: {
-        add_tags: {
-          system_perfect_hookup: {
-            Tag: 'System.PERFECT_HOOKUP',
-            Label: 'Perfect Hookup',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          },
-          system_out_of_service: {
-            Tag: 'System._OUT_OF_SERVICE',
-            Label: 'Out of Service',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          },
-          system_quality: {
-            Tag: 'System._QUALITY',
-            Label: 'Bad Quality',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          }
-        },
-        update_tags: {
-          pbb_docked: {
-            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-            Label: '[*]Docked',
-            LebelOverride: true,
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'Docked',
-              Parm002: 'UnDocked',
-              Parm003: 'Docked',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          },
-          pbb_status: {
-            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-            Label: '[*]PBB',
-            LebelOverride: true,
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: '',
-              Parm002: '',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_status: {
-            Tag: 'GPU.GPUSTATUSBOOLEAN',
-            Label: '[*]GPU',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          pca_status: {
-            Tag: 'PCA.PCASTATUS',
-            Label: '[*]PCA',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          pca_discharge_temp: {
-            Tag: 'PCA.TEMPDISCH',
-            Label: '[*]DisCharge',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: true,
-              Parm002: 2,
-              Parm003: '#{1} F',
-              Parm004: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          pca_mode_cooling: {
-            Tag: 'PCA.MODE_COOLING',
-            Label: 'Cooling Mode',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          },
-          pca_mode_heating: {
-            Tag: 'PCA.MODE_HEATING',
-            Label: 'Heating Mode',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
               Object: null
             }
           }
@@ -10310,90 +11286,58 @@ TagConfig = (function(superClass) {
           }
         }
       },
-      pbb_pca_gpu_basic_widget: {
+      out_of_service_widget: {
         update_tags: {
-          pca_time: {
-            Tag: 'PCA.PCATime',
-            Label: '[*]PCA Run Time',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: true,
-              Parm002: 2,
-              Parm003: 'mins',
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_time: {
-            Tag: 'GPU01.GPUTime',
-            Label: '[*]GPU-1 Run Time',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: true,
-              Parm002: 2,
-              Parm003: 'mins',
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_ra_out_avg: {
-            Tag: 'GPU01.RAOUTAVG',
-            Label: 'GPU-1 Avg Output - Amps',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: true,
-              Parm002: 1,
-              Parm003: 'Amps',
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_rv_out_avg: {
-            Tag: 'GPU01.RVOUTAVG',
-            Label: 'GPU-1 Avg Output - Volts',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: true,
-              Parm002: 1,
-              Parm003: 'Volts',
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_status: {
-            Tag: 'GPU01.GPUSTATUSBOOLEAN',
-            Label: 'GPU Status',
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB',
             DataType: 'Boolean',
             Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
               Parm004: null,
               Parm005: null
             },
             Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
               Class: null,
               Object: null
             }
@@ -10403,83 +11347,92 @@ TagConfig = (function(superClass) {
           1: {
             C90: {
               remove_tags: {
-                'gpu_status': 'gpu_status',
-                'gpu_time': 'gpu_time',
-                'gpu_ra_out_avg': 'gpu_ra_out_avg',
-                'gpu_rv_out_avg': 'gpu_rv_out_avg'
+                'gpu_out_of_service': 'gpu_out_of_service',
+                'gpu_quality': 'gpu_quality'
               }
             }
           },
           3: {
             C125: {
+              remove_tags: {
+                'gpu_out_of_service': 'gpu_out_of_service',
+                'gpu_quality': 'gpu_quality'
+              },
               add_tags: {
-                gpu_02_status: {
-                  Tag: 'GPU02.GPUSTATUSBOOLEAN',
-                  Label: 'GPU Status',
+                gpu_01_out_of_service: {
+                  Tag: 'GPU01._OUT_OF_SERVICE',
+                  Label: '[*]GPU-01',
                   DataType: 'Boolean',
                   Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
+                    Parm001: 'True',
+                    Parm002: 'False',
                     Parm003: 'ok',
                     Parm004: null,
                     Parm005: null
                   },
                   Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
+                    Type: null,
+                    ParentID: null,
                     Class: null,
                     Object: null
                   }
                 },
-                gpu_02_time: {
-                  Tag: 'GPU02.GPUTime',
-                  Label: 'GPU-2 Run Time',
-                  DataType: 'Float',
+                gpu_02_out_of_service: {
+                  Tag: 'GPU02._OUT_OF_SERVICE',
+                  Label: '[*]GPU-02',
+                  DataType: 'Boolean',
                   Parameters: {
-                    Parm001: true,
-                    Parm002: 2,
-                    Parm003: 'mins',
-                    Parm004: null
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
                   },
                   Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
+                    Type: null,
+                    ParentID: null,
                     Class: null,
                     Object: null
                   }
                 },
-                gpu_02_ra_out_avg: {
-                  Tag: 'GPU02.RAOUTAVG',
-                  Label: 'GPU-2 Average Output - Amps',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: true,
-                    Parm002: 1,
-                    Parm003: 'Amps',
-                    Parm004: null
+                gpu_01_quality: {
+                  Tag: {
+                    'GPU01._QUALITY': 'GPU01._QUALITY',
+                    Label: 'Comm Errors',
+                    DataType: 'Boolean',
+                    Parameters: {
+                      Parm001: 'True',
+                      Parm002: 'False',
+                      Parm003: 'ok',
+                      Parm004: null,
+                      Parm005: null
+                    },
+                    Element: {
+                      Type: 'TableRow',
+                      ParentID: '#widgetData',
+                      Class: 'no_row',
+                      Object: null
+                    }
                   },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                gpu_02_rv_out_avg: {
-                  Tag: 'GPU02.RVOUTAVG',
-                  Label: 'GPU-2 Average Output - Volts',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: true,
-                    Parm002: 1,
-                    Parm003: 'Volts',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
+                  gpu_02_quality: {
+                    Tag: {
+                      'GPU02._QUALITY': 'GPU02._QUALITY',
+                      Label: 'Comm Errors',
+                      DataType: 'Boolean',
+                      Parameters: {
+                        Parm001: 'True',
+                        Parm002: 'False',
+                        Parm003: 'ok',
+                        Parm004: null,
+                        Parm005: null
+                      },
+                      Element: {
+                        Type: 'TableRow',
+                        ParentID: '#widgetData',
+                        Class: 'no_row',
+                        Object: null
+                      }
+                    }
                   }
                 }
               }
@@ -10593,6 +11546,1032 @@ TagConfig = (function(superClass) {
                 'pbb_height_to_disp': 'pbb_height_to_disp',
                 'pbb_wheel_angle_deg': 'pbb_wheel_angle_deg',
                 'pbb_tunnel_length': 'pbb_tunnel_length'
+              }
+            }
+          }
+        }
+      },
+      pbb_pca_gpu_basic_widget: {
+        update_tags: {
+          pca_time: {
+            Tag: 'PCA.PCATime',
+            Label: '[*]PCA Run Time',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 2,
+              Parm003: 'mins',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_time: {
+            Tag: 'GPU01.GPUTime',
+            Label: '[*]GPU-1 Run Time',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 2,
+              Parm003: 'mins',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_ra_out_avg: {
+            Tag: 'GPU01.RAOUTAVG',
+            Label: 'GPU-1 Avg Output - Amps',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 1,
+              Parm003: 'Amps',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_rv_out_avg: {
+            Tag: 'GPU01.RVOUTAVG',
+            Label: 'GPU-1 Avg Output - Volts',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 1,
+              Parm003: 'Volts',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_status: {
+            Tag: 'GPU01.GPUSTATUSBOOLEAN',
+            Label: 'GPU Status',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          }
+        },
+        C: {
+          1: {
+            C90: {
+              remove_tags: {
+                'gpu_status': 'gpu_status',
+                'gpu_time': 'gpu_time',
+                'gpu_ra_out_avg': 'gpu_ra_out_avg',
+                'gpu_rv_out_avg': 'gpu_rv_out_avg'
+              }
+            }
+          },
+          3: {
+            C125: {
+              add_tags: {
+                gpu_02_status: {
+                  Tag: 'GPU02.GPUSTATUSBOOLEAN',
+                  Label: 'GPU Status',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_02_time: {
+                  Tag: 'GPU02.GPUTime',
+                  Label: 'GPU-2 Run Time',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: 'mins',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_02_ra_out_avg: {
+                  Tag: 'GPU02.RAOUTAVG',
+                  Label: 'GPU-2 Average Output - Amps',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 1,
+                    Parm003: 'Amps',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_02_rv_out_avg: {
+                  Tag: 'GPU02.RVOUTAVG',
+                  Label: 'GPU-2 Average Output - Volts',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 1,
+                    Parm003: 'Volts',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      pbb_pca_gpu_status_widget: {
+        update_tags: {
+          system_perfect_hookup: {
+            Tag: 'System.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          system_out_of_service: {
+            Tag: 'System._OUT_OF_SERVICE',
+            Label: 'Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          system_quality: {
+            Tag: 'System._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_perfect_hookup: {
+            Tag: 'PBB.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: 'Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_quality: {
+            Tag: 'PBB._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_docked: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: '[*]Docked',
+            LebelOverride: true,
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Docked',
+              Parm002: 'UnDocked',
+              Parm003: 'Docked',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_status: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: '[*]PBB',
+            LebelOverride: true,
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: '',
+              Parm002: '',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_perfect_hookup: {
+            Tag: 'GPU.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: 'Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_quality: {
+            Tag: 'GPU._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_status: {
+            Tag: 'GPU.GPUSTATUSBOOLEAN',
+            Label: '[*]GPU',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_perfect_hookup: {
+            Tag: 'PCA.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: 'Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_quality: {
+            Tag: 'PCA._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_status: {
+            Tag: 'PCA.PCASTATUS',
+            Label: '[*]PCA',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_discharge_temp: {
+            Tag: 'PCA.TEMPDISCH',
+            Label: '[*]DisCharge',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 2,
+              Parm003: '#{1} F',
+              Parm004: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_mode_cooling: {
+            Tag: 'PCA.MODE_COOLING',
+            Label: 'Cooling Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_mode_heating: {
+            Tag: 'PCA.MODE_HEATING',
+            Label: 'Heating Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          }
+        },
+        C: {
+          1: {
+            C90: {
+              remove_tags: {
+                'gpu_has_alarms': 'gpu_has_alarms',
+                'gpu_has_critical_alarms': 'gpu_has_critical_alarms',
+                'gpu_has_warnings': 'gpu_has_warnings',
+                'gpu_perfect_hookup': 'gpu_perfect_hookup',
+                'gpu_out_of_service': 'gpu_out_of_service',
+                'gpu_quality': 'gpu_quality',
+                'gpu_status': 'gpu_status'
+              }
+            }
+          },
+          3: {
+            C125: {
+              remove_tags: {
+                'gpu_has_alarms': 'gpu_has_alarms',
+                'gpu_has_critical_alarms': 'gpu_has_critical_alarms',
+                'gpu_has_warnings': 'gpu_has_warnings',
+                'gpu_perfect_hookup': 'gpu_perfect_hookup',
+                'gpu_out_of_service': 'gpu_out_of_service',
+                'gpu_quality': 'gpu_quality',
+                'gpu_status': 'gpu_status'
+              },
+              add_tags: {
+                gpu_01_has_warnings: {
+                  Tag: 'GPU01.Warning._HasWarnings',
+                  Label: 'Warnings',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'Alert',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                gpu_02_has_warnings: {
+                  Tag: 'GPU02.Warning._HasWarnings',
+                  Label: 'Warnings',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'Alert',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                gpu_01_has_alarms: {
+                  Tag: 'GPU01.Alarm._HasAlarms',
+                  Label: 'Alarms',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'Alert',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                gpu_02_has_alarms: {
+                  Tag: 'GPU01.Alarm._HasAlarms',
+                  Label: 'Alarms',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'Alert',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                gpu_02_has_critical_alarms: {
+                  Tag: 'GPU02.Alarm._HasCriticalAlarms',
+                  Label: 'Critical Alarms',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'Alert',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                gpu_01_has_critical_alarms: {
+                  Tag: 'GPU01.Alarm._HasCriticalAlarms',
+                  Label: 'Critical Alarms',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'Alert',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                gpu_01_out_of_service: {
+                  Tag: 'GPU01._OUT_OF_SERVICE',
+                  Label: 'Out Of Service',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_02_out_of_service: {
+                  Tag: 'GPU02._OUT_OF_SERVICE',
+                  Label: 'Out Of Service',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_01_perfect_hookup: {
+                  Tag: 'GPU01.Calc_PerfectHookupTime',
+                  Label: 'Perfect Hookup',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_02_perfect_hookup: {
+                  Tag: 'GPU02.Calc_PerfectHookupTime',
+                  Label: 'Perfect Hookup',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_01_quality: {
+                  Tag: 'GPU01._QUALITY',
+                  Label: 'Comm Errors',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                gpu_02_quality: {
+                  Tag: 'GPU02._QUALITY',
+                  Label: 'Comm Errors',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                gpu_01_status: {
+                  Tag: 'GPU01.GPUSTATUSBOOLEAN',
+                  Label: 'GPU-1 Status',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_02_status: {
+                  Tag: 'GPU02.GPUSTATUSBOOLEAN',
+                  Label: 'GPU-2 Status',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData2',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      pbb_system_status_widget: {
+        update_tags: {
+          pbb_status: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: '[*]PBB',
+            LebelOverride: true,
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Docked',
+              Parm002: 'UnDocked',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_status: {
+            Tag: 'GPU.GPUSTATUSBOOLEAN',
+            Label: '[*]GPU',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_status: {
+            Tag: 'PCA.PCASTATUS',
+            Label: '[*]PCA',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_discharge_temp: {
+            Tag: 'PCA.TEMPDISCH',
+            Label: '[*]DisCharge',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 2,
+              Parm003: '#{1} F',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: 'DisCharge',
+              Object: null
+            }
+          },
+          pca_mode_cooling: {
+            Tag: 'PCA.MODE_COOLING',
+            Label: 'Cooling Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_mode_heating: {
+            Tag: 'PCA.MODE_HEATING',
+            Label: 'Heating Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          }
+        },
+        C: {
+          1: {
+            C90: {
+              remove_tags: {
+                'gpu_status': 'gpu_status'
+              }
+            }
+          },
+          3: {
+            C125: {
+              remove_tags: {
+                'gpu_status': 'gpu_status'
+              },
+              add_tags: {
+                gpu_01_status: {
+                  Tag: 'GPU01.GPUSTATUSBOOLEAN',
+                  Label: 'GPU-1 Status',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_02_status: {
+                  Tag: 'GPU02.GPUSTATUSBOOLEAN',
+                  Label: 'GPU-2 Status',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
               }
             }
           }
@@ -12101,13 +14080,48 @@ TagConfig = (function(superClass) {
             }
           }
         }
+      }
+    },
+    'HAS-IAH': {
+      gpu_summary_widget: {
+        remove_all: {}
       },
-      pbb_system_status_widget: {
+      gpu_widget: {
+        remove_all: {}
+      },
+      out_of_service_widget: {
+        remove_tags: {
+          'pca_out_of_service': 'pca_out_of_service',
+          'pca_quality': 'pca_quality',
+          'gpu_out_of_service': 'gpu_out_of_service',
+          'gpu_quality': 'gpu_quality'
+        },
+        update_tags: {
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          }
+        }
+      },
+      pbb_detail_widget: {
         update_tags: {
           pbb_status: {
             Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-            Label: '[*]PBB',
-            LebelOverride: true,
+            Label: 'PBB Status',
             DataType: 'Boolean',
             Parameters: {
               Parm001: 'Docked',
@@ -12117,159 +14131,264 @@ TagConfig = (function(superClass) {
               Parm005: null
             },
             Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
+              Type: 'div',
+              ParentID: '#pbb_status_container',
+              Class: 'val transparent',
               Object: null
             }
           },
-          gpu_status: {
-            Tag: 'GPU.GPUSTATUSBOOLEAN',
-            Label: '[*]GPU',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_status: {
-            Tag: 'PCA.PCASTATUS',
-            Label: '[*]PCA',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_discharge_temp: {
-            Tag: 'PCA.TEMPDISCH',
-            Label: '[*]DisCharge',
+          pbb_undock_time: {
+            Tag: 'PBB.UNDOCKTIME',
+            Label: null,
             DataType: 'Float',
             Parameters: {
               Parm001: true,
               Parm002: 2,
-              Parm003: '#{1} F',
+              Parm003: 'mins',
               Parm004: null
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#pbb_undockordocktime_container',
+              Class: 'pbb_undockordocktime val transparent',
+              Object: null
+            }
+          },
+          pbb_dock_time: {
+            Tag: 'PBB.DOCKTIME',
+            Label: 'Aircraft Docked Time (Minutes)',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 2,
+              Parm003: 'mins',
+              Parm004: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'pbb_undockordocktime val transparent',
+              Object: null
+            }
+          },
+          pbb_autolevel_mode: {
+            Tag: 'PBB.AUTOLEVELMODEFLAG',
+            Label: 'PBB Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: 'Auto-Level : #{1}'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#pbb_autolevel_container',
+              Class: 'val transparent',
+              Object: null
+            }
+          },
+          pbb_canopy: {
+            Tag: 'PBB.CANOPYDOWN',
+            Label: 'Canopy',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Down',
+              Parm002: 'Up',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: 'Canopy : #{1}'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#pbb_canopy_container',
+              Class: 'val transparent',
+              Object: null
+            }
+          },
+          pbb_canopy: {
+            Tag: 'PBB.CANOPYDOWN',
+            Label: 'Canopy',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Down',
+              Parm002: 'Up',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: 'Canopy : #{1}'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#pbb_canopy_container',
+              Class: 'val transparent',
+              Object: null
+            }
+          }
+        }
+      },
+      pbb_level_detail_widget: {
+        remove_tags: {
+          'pbb_autoleveling': 'pbb_autoleveling',
+          'pbb_estop': 'pbb_estop',
+          'pbb_limits': 'pbb_limits',
+          'pbb_terminal_door': 'pbb_terminal_door',
+          'pbb_cab_angle_disp': 'pbb_cab_angle_disp',
+          'pbb_slope_deg': 'pbb_slope_deg',
+          'pbb_swing_angle_disp': 'pbb_swing_angle_disp',
+          'pbb_height_to_disp': 'pbb_height_to_disp',
+          'pbb_wheel_angle_deg': 'pbb_wheel_angle_deg',
+          'pbb_tunnel_length': 'pbb_tunnel_length'
+        },
+        add_tags: {
+          pbb_floodlight: {
+            Tag: 'PBB.FLOODLIGHTS',
+            Label: 'FloodLights',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
             },
             Element: {
               Type: 'TableRow',
               ParentID: '#widgetData',
-              Class: 'DisCharge',
-              Object: null
-            }
-          },
-          pca_mode_cooling: {
-            Tag: 'PCA.MODE_COOLING',
-            Label: 'Cooling Mode',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          pca_mode_heating: {
-            Tag: 'PCA.MODE_HEATING',
-            Label: 'Heating Mode',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
               Class: null,
               Object: null
             }
           }
         },
-        C: {
-          1: {
-            C90: {
+        'A': {
+          'SC': {
+            A25: {
               remove_tags: {
-                'gpu_status': 'gpu_status'
+                'pbb_canopy': 'pbb_canopy',
+                'pbb_autolevel_key': 'pbb_autolevel_key',
+                'pbb_smoke_detector': 'pbb_smoke_detector',
+                'pbb_cabin_floor_deicer': 'pbb_cabin_floor_deicer',
+                'pbb_floodlight': 'pbb_floodlight'
               }
-            }
-          },
-          3: {
-            C125: {
+            },
+            A27: {
               remove_tags: {
-                'gpu_status': 'gpu_status'
-              },
-              add_tags: {
-                gpu_01_status: {
-                  Tag: 'GPU01.GPUSTATUSBOOLEAN',
-                  Label: 'GPU-1 Status',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                gpu_02_status: {
-                  Tag: 'GPU02.GPUSTATUSBOOLEAN',
-                  Label: 'GPU-2 Status',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                }
+                'pbb_canopy': 'pbb_canopy',
+                'pbb_autolevel_key': 'pbb_autolevel_key',
+                'pbb_smoke_detector': 'pbb_smoke_detector',
+                'pbb_cabin_floor_deicer': 'pbb_cabin_floor_deicer',
+                'pbb_floodlight': 'pbb_floodlight'
+              }
+            },
+            A29: {
+              remove_tags: {
+                'pbb_canopy': 'pbb_canopy',
+                'pbb_autolevel_key': 'pbb_autolevel_key',
+                'pbb_smoke_detector': 'pbb_smoke_detector',
+                'pbb_cabin_floor_deicer': 'pbb_cabin_floor_deicer',
+                'pbb_floodlight': 'pbb_floodlight'
+              }
+            },
+            A30: {
+              remove_tags: {
+                'pbb_canopy': 'pbb_canopy',
+                'pbb_autolevel_key': 'pbb_autolevel_key',
+                'pbb_smoke_detector': 'pbb_smoke_detector',
+                'pbb_cabin_floor_deicer': 'pbb_cabin_floor_deicer',
+                'pbb_floodlight': 'pbb_floodlight'
               }
             }
           }
         }
       },
+      pbb_pca_gpu_basic_widget: {
+        remove_tags: {
+          'pca_status': 'pca_status',
+          'gpu_status': 'gpu_status',
+          'pca_time': 'pca_time',
+          'pca_hookup_time': 'pca_hookup_time',
+          'pca_discharge_temp': 'pca_discharge_temp',
+          'gpu_time': 'gpu_time',
+          'gpu_ra_out_avg': 'gpu_ra_out_avg',
+          'gpu_rv_out_avg': 'gpu_rv_out_avg'
+        },
+        update_tags: {
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          }
+        }
+      },
       pbb_pca_gpu_status_widget: {
-        add_tags: {
+        remove_tags: {
+          'pca_has_alarms': 'pca_has_alarms',
+          'pca_has_critical_alarms': 'pca_has_critical_alarms',
+          'pca_has_warnings': 'pca_has_warnings',
+          'pca_perfect_hookup': 'pca_perfect_hookup',
+          'pca_out_of_service': 'pca_out_of_service',
+          'pca_quality': 'pca_quality',
+          'pca_status': 'pca_status',
+          'pca_discharge_temp': 'pca_discharge_temp',
+          'pca_mode_cooling': 'pca_mode_cooling',
+          'pca_mode_heating': 'pca_mode_heating',
+          'gpu_has_alarms': 'gpu_has_alarms',
+          'gpu_has_critical_alarms': 'gpu_has_critical_alarms',
+          'gpu_has_warnings': 'gpu_has_warnings',
+          'gpu_perfect_hookup': 'gpu_perfect_hookup',
+          'gpu_out_of_service': 'gpu_out_of_service',
+          'gpu_quality': 'gpu_quality',
+          'gpu_status': 'gpu_status'
+        },
+        update_tags: {
           system_perfect_hookup: {
             Tag: 'System.PERFECT_HOOKUP',
             Label: 'Perfect Hookup',
@@ -12323,9 +14442,61 @@ TagConfig = (function(superClass) {
               Class: 'no_row',
               Object: null
             }
-          }
-        },
-        update_tags: {
+          },
+          pbb_perfect_hookup: {
+            Tag: 'PBB.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: 'Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_quality: {
+            Tag: 'PBB._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
           pbb_docked: {
             Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
             Label: '[*]Docked',
@@ -12363,207 +14534,45 @@ TagConfig = (function(superClass) {
               Class: null,
               Object: null
             }
-          },
-          gpu_status: {
-            Tag: 'GPU.GPUSTATUSBOOLEAN',
-            Label: '[*]GPU',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          pca_status: {
-            Tag: 'PCA.PCASTATUS',
-            Label: '[*]PCA',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          pca_discharge_temp: {
-            Tag: 'PCA.TEMPDISCH',
-            Label: '[*]DisCharge',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: true,
-              Parm002: 2,
-              Parm003: '#{1} F',
-              Parm004: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          pca_mode_cooling: {
-            Tag: 'PCA.MODE_COOLING',
-            Label: 'Cooling Mode',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          },
-          pca_mode_heating: {
-            Tag: 'PCA.MODE_HEATING',
-            Label: 'Heating Mode',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
           }
+        }
+      },
+      pbb_system_status_widget: {
+        remove_tags: {
+          'pca_status': 'pca_status',
+          'pca_discharge_temp': 'pca_discharge_temp',
+          'gpu_status': 'gpu_status'
         },
-        C: {
-          1: {
-            C90: {
-              remove_tags: {
-                'gpu_status': 'gpu_status'
-              }
-            }
-          },
-          3: {
-            C125: {
-              remove_tags: {
-                'gpu_status': 'gpu_status'
-              },
-              add_tags: {
-                gpu_01_status: {
-                  Tag: 'GPU01.GPUSTATUSBOOLEAN',
-                  Label: 'GPU-1 Status',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: null,
-                    ParentID: null,
-                    Class: null,
-                    Object: null
-                  }
-                },
-                gpu_02_status: {
-                  Tag: 'GPU02.GPUSTATUSBOOLEAN',
-                  Label: 'GPU-2 Status',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: null,
-                    ParentID: null,
-                    Class: null,
-                    Object: null
-                  }
-                }
-              }
+        update_tags: {
+          pbb_status: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: '[*]PBB',
+            LebelOverride: true,
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Docked',
+              Parm002: 'UnDocked',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
             }
           }
         }
       },
-      out_of_service_widget: {
-        C: {
-          1: {
-            C90: {
-              remove_tags: {
-                'gpu_out_of_service': 'gpu_out_of_service'
-              }
-            }
-          },
-          3: {
-            C125: {
-              remove_tags: {
-                'gpu_out_of_service': 'gpu_out_of_service'
-              },
-              add_tags: {
-                gpu_01_out_of_service: {
-                  Tag: 'GPU01._OUT_OF_SERVICE',
-                  Label: '[*]GPU-01',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'True',
-                    Parm002: 'False',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: null,
-                    ParentID: null,
-                    Class: null,
-                    Object: null
-                  }
-                },
-                gpu_02_out_of_service: {
-                  Tag: 'GPU02._OUT_OF_SERVICE',
-                  Label: '[*]GPU-02',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'True',
-                    Parm002: 'False',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: null,
-                    ParentID: null,
-                    Class: null,
-                    Object: null
-                  }
-                }
-              }
-            }
-          }
-        }
+      pca_discharge_widget: {
+        remove_all: {}
+      },
+      pca_summary_widget: {
+        remove_all: {}
+      },
+      pca_widget: {
+        remove_all: {}
       }
     },
     JFK: {
@@ -12736,56 +14745,1176 @@ TagConfig = (function(superClass) {
               Object: null
             }
           }
+        },
+        add_tags: {
+          gpu_rffreq: {
+            Tag: 'GPU.RFREQ',
+            Label: 'GPU Frequency',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: '2',
+              Parm003: '',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_raocont1: {
+            Tag: 'GPU.RAOCONT1',
+            Label: 'Amps Out Contactor 1',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: '2',
+              Parm003: '',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_raocont2: {
+            Tag: 'GPU.RAOCONT2',
+            Label: 'Amps Out Contactor 2',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: '2',
+              Parm003: '',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_kvaset: {
+            Tag: 'GPU.KVASET_TEXT',
+            Label: 'KVA Setpoint',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: false,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          }
         }
       },
-      pca_widget: {
+      out_of_service_widget: {
         remove_tags: {
-          'pca_cabin_temp': 'pca_cabin_temp',
-          'pca_ambient_temp': 'pca_ambient_temp',
-          'pca_discharge_temp': 'pca_discharge_temp',
-          'pca_heater_1': 'pca_heater_1',
-          'pca_heater_2': 'pca_heater_2',
-          'pca_comp_stage_1': 'pca_comp_stage_1',
-          'pca_comp_stage_2': 'pca_comp_stage_2',
-          'pca_bridge_damper': 'pca_bridge_damper',
-          'pca_bridge_air': 'pca_bridge_air',
-          'pca_dirty_filter': 'pca_dirty_filter',
-          'pca_blower': 'pca_blower',
-          'pca_suction_pressure_1': 'pca_suction_pressure_1',
-          'pca_suction_pressure_2': 'pca_suction_pressure_2',
-          'pca_hot_gas_1': 'pca_hot_gas_1',
-          'pca_hot_gas_2': 'pca_hot_gas_2',
-          'pca_status': 'pca_status'
+          'pca_out_of_service': 'pca_out_of_service',
+          'pca_quality': 'pca_quality'
+        },
+        update_tags: {
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          }
         },
         4: {
+          A1: {
+            A6L2: {
+              add_tags: {
+                elvrot_out_of_service: {
+                  Tag: 'ELVROT._OUT_OF_SERVICE',
+                  Label: '[*]ELVROT',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: null,
+                    Object: null
+                  }
+                },
+                elvrot_quality: {
+                  Tag: 'ELVROT._QUALITY',
+                  Label: 'Comm Errors',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                }
+              }
+            },
+            A7L2: {
+              add_tags: {
+                elvrot_out_of_service: {
+                  Tag: 'ELVROT._OUT_OF_SERVICE',
+                  Label: '[*]ELVROT',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: null,
+                    Object: null
+                  }
+                },
+                elvrot_quality: {
+                  Tag: 'ELVROT._QUALITY',
+                  Label: 'Comm Errors',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                }
+              }
+            }
+          },
+          B1: {
+            B29L2: {
+              add_tags: {
+                elvrot_out_of_service: {
+                  Tag: 'ELVROT._OUT_OF_SERVICE',
+                  Label: '[*]ELVROT',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: null,
+                    Object: null
+                  }
+                },
+                elvrot_quality: {
+                  Tag: 'ELVROT._QUALITY',
+                  Label: 'Comm Errors',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                }
+              }
+            }
+          },
           B2: {
-            update_tags: {
-              pca_cabin_temp: {
-                Tag: 'PCA.TEMPCABIN',
-                Label: 'Cabin Air Temperature',
-                DataType: 'Float',
+            add_tags: {
+              pca_out_of_service: {
+                Tag: 'PCA._OUT_OF_SERVICE',
+                Label: '[*]PCA',
+                DataType: 'Boolean',
                 Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1} F',
-                  Parm004: null
+                  Parm001: 'True',
+                  Parm002: 'False',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
                 },
                 Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
+                  Type: null,
+                  ParentID: null,
                   Class: null,
                   Object: null
                 }
               },
-              pca_ambient_temp: {
-                Tag: 'PCA.TEMPAMB',
-                Label: 'Ambient Air Temperature',
-                DataType: 'Float',
+              pca_quality: {
+                Tag: 'PCA._QUALITY',
+                Label: 'Comm Errors',
+                DataType: 'Boolean',
                 Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1} F',
-                  Parm004: null
+                  Parm001: 'True',
+                  Parm002: 'False',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: 'no_row',
+                  Object: null
+                }
+              }
+            }
+          },
+          B3: {
+            add_tags: {
+              pca_out_of_service: {
+                Tag: 'PCA._OUT_OF_SERVICE',
+                Label: '[*]PCA',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'True',
+                  Parm002: 'False',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_quality: {
+                Tag: 'PCA._QUALITY',
+                Label: 'Comm Errors',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'True',
+                  Parm002: 'False',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: 'no_row',
+                  Object: null
+                }
+              }
+            }
+          }
+        }
+      },
+      pbb_detail_widget: {
+        update_tags: {
+          pbb_status: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: 'PBB Status',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Docked',
+              Parm002: 'UnDocked',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#pbb_status_container',
+              Class: 'val transparent',
+              Object: null
+            }
+          },
+          pbb_undock_time: {
+            Tag: 'PBB.UNDOCKTIME',
+            Label: null,
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 2,
+              Parm003: 'mins',
+              Parm004: null
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#pbb_undockordocktime_container',
+              Class: 'pbb_undockordocktime val transparent',
+              Object: null
+            }
+          },
+          pbb_dock_time: {
+            Tag: 'PBB.DOCKTIME',
+            Label: 'Aircraft Docked Time (Minutes)',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 2,
+              Parm003: 'mins',
+              Parm004: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'pbb_undockordocktime val transparent',
+              Object: null
+            }
+          },
+          pbb_autolevel_mode: {
+            Tag: 'PBB.AUTOLEVELMODEFLAG',
+            Label: 'PBB Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: 'Auto-Level : #{1}'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#pbb_autolevel_container',
+              Class: 'val transparent',
+              Object: null
+            }
+          },
+          pbb_canopy: {
+            Tag: 'PBB.CANOPYDOWN',
+            Label: 'Canopy',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Down',
+              Parm002: 'Up',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: 'Canopy : #{1}'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#pbb_canopy_container',
+              Class: 'val transparent',
+              Object: null
+            }
+          }
+        },
+        4: {
+          A1: {
+            A6L2: {
+              add_graphics: {
+                elevating_img: {
+                  ControlTags: {
+                    elvrot_rotunda_position_boolean: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'down-position',
+                    Parm003: null,
+                    Parm004: 'elevating-img-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#elevating_img_container',
+                    Class: 'elevating_img',
+                    Object: null
+                  }
+                }
+              },
+              add_tags: {
+                elvrot_rotunda_position_boolean: {
+                  Tag: 'ELVROT.ROTUNDA_POSITION_BOOLEAN',
+                  Label: 'Elevating Rotunda Position',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'Down Position',
+                    Parm002: 'Up Position',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                position_container_tag: {
+                  Tag: 'ELVROT.ROTUNDA_POSITION',
+                  Label: 'Elevating Rotunda Position',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#widgetImage2',
+                    Class: 'val show',
+                    Object: null
+                  }
+                }
+              }
+            },
+            A7L2: {
+              add_graphics: {
+                elevating_img: {
+                  ControlTags: {
+                    elvrot_rotunda_position_boolean: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'down-position',
+                    Parm003: null,
+                    Parm004: 'elevating-img-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#elevating_img_container',
+                    Class: 'elevating_img',
+                    Object: null
+                  }
+                }
+              },
+              add_tags: {
+                elvrot_rotunda_position_boolean: {
+                  Tag: 'ELVROT.ROTUNDA_POSITION_BOOLEAN',
+                  Label: 'Elevating Rotunda Position',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'Down Position',
+                    Parm002: 'Up Position',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                position_container_tag: {
+                  Tag: 'ELVROT.ROTUNDA_POSITION',
+                  Label: 'Elevating Rotunda Position',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#widgetImage2',
+                    Class: 'val show',
+                    Object: null
+                  }
+                }
+              }
+            }
+          },
+          B1: {
+            B29L2: {
+              add_graphics: {
+                elevating_img: {
+                  ControlTags: {
+                    elvrot_rotunda_position_boolean: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'down-position',
+                    Parm003: null,
+                    Parm004: 'elevating-img-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#elevating_img_container',
+                    Class: 'elevating_img',
+                    Object: null
+                  }
+                }
+              },
+              add_tags: {
+                elvrot_rotunda_position_boolean: {
+                  Tag: 'ELVROT.ROTUNDA_POSITION_BOOLEAN',
+                  Label: 'Elevating Rotunda Position',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'Down Position',
+                    Parm002: 'Up Position',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                position_container_tag: {
+                  Tag: 'ELVROT.ROTUNDA_POSITION',
+                  Label: 'Elevating Rotunda Position',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#widgetImage2',
+                    Class: 'val show',
+                    Object: null
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      pbb_level_detail_widget: {
+        4: {
+          A1: {
+            A6L1: {
+              remove_tags: {
+                'pbb_autoleveling': 'pbb_autoleveling',
+                'pbb_limits': 'pbb_limits',
+                'pbb_smoke_detector': 'pbb_smoke_detector',
+                'pbb_cabin_floor_deicer': 'pbb_cabin_floor_deicer',
+                'pbb_cab_angle_disp': 'pbb_cab_angle_disp',
+                'pbb_slope_deg': 'pbb_slope_deg',
+                'pbb_swing_angle_disp': 'pbb_swing_angle_disp',
+                'pbb_height_to_disp': 'pbb_height_to_disp',
+                'pbb_wheel_angle_deg': 'pbb_wheel_angle_deg',
+                'pbb_tunnel_length': 'pbb_tunnel_length'
+              },
+              add_tags: {
+                power_on: {
+                  Tag: 'PBB.POWER_ON',
+                  Label: 'Power On',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            },
+            A6L2: {
+              add_graphics: {
+                elevating_img: {
+                  ControlTags: {
+                    elvrot_rotunda_position_boolean: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'down-position',
+                    Parm003: null,
+                    Parm004: 'elevating-img-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#elevating_img_container',
+                    Class: 'elevating_img show',
+                    Object: null
+                  }
+                }
+              },
+              add_tags: {
+                elvrot_rotunda_status: {
+                  Tag: 'ELVROT.ROTUNDA_STATUS',
+                  Label: 'Elevating Rotunda Status',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                elvrot_rotunda_mode: {
+                  Tag: 'ELVROT.ROTUNDA_MODE',
+                  Label: 'Elevating Rotunda Operational Mode',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                elvrot_rotunda_position_boolean: {
+                  Tag: 'ELVROT.ROTUNDA_POSITION_BOOLEAN',
+                  Label: 'Elevating Rotunda Position',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'Down Position',
+                    Parm002: 'Up Position',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            },
+            A7L2: {
+              add_graphics: {
+                elevating_img: {
+                  ControlTags: {
+                    elvrot_rotunda_position_boolean: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'down-position',
+                    Parm003: null,
+                    Parm004: 'elevating-img-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#elevating_img_container',
+                    Class: 'elevating_img show',
+                    Object: null
+                  }
+                }
+              },
+              add_tags: {
+                elvrot_rotunda_status: {
+                  Tag: 'ELVROT.ROTUNDA_STATUS',
+                  Label: 'Elevating Rotunda Status',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                elvrot_rotunda_mode: {
+                  Tag: 'ELVROT.ROTUNDA_MODE',
+                  Label: 'Elevating Rotunda Operational Mode',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                elvrot_rotunda_position_boolean: {
+                  Tag: 'ELVROT.ROTUNDA_POSITION_BOOLEAN',
+                  Label: 'Elevating Rotunda Position',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'Down Position',
+                    Parm002: 'Up Position',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            }
+          },
+          B1: {
+            B29L2: {
+              add_graphics: {
+                elevating_img: {
+                  ControlTags: {
+                    elvrot_rotunda_position_boolean: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'down-position',
+                    Parm003: null,
+                    Parm004: 'elevating-img-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#elevating_img_container',
+                    Class: 'elevating_img show',
+                    Object: null
+                  }
+                }
+              },
+              add_tags: {
+                elvrot_rotunda_status: {
+                  Tag: 'ELVROT.ROTUNDA_STATUS',
+                  Label: 'Elevating Rotunda Status',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                elvrot_rotunda_mode: {
+                  Tag: 'ELVROT.ROTUNDA_MODE',
+                  Label: 'Elevating Rotunda Operational Mode',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                elvrot_rotunda_position_boolean: {
+                  Tag: 'ELVROT.ROTUNDA_POSITION_BOOLEAN',
+                  Label: 'Elevating Rotunda Position',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'Down Position',
+                    Parm002: 'Up Position',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      pbb_pca_gpu_basic_widget: {
+        remove_tags: {
+          'pca_status': 'pca_status',
+          'pca_time': 'pca_time',
+          'pca_discharge_temp': 'pca_discharge_temp',
+          'pca_hookup_time': 'pca_hookup_time',
+          'pbb_out_of_service': 'pbb_out_of_service',
+          'gpu_out_of_service': 'gpu_out_of_service',
+          'pca_out_of_service': 'pca_out_of_service'
+        },
+        4: {
+          A1: {
+            A6L2: {
+              add_tags: {
+                elvrot_rotunda_status: {
+                  Tag: 'ELVROT.ROTUNDA_STATUS',
+                  Label: 'Elevating Rotunda Status',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            },
+            A7L2: {
+              add_tags: {
+                elvrot_rotunda_status: {
+                  Tag: 'ELVROT.ROTUNDA_STATUS',
+                  Label: 'Elevating Rotunda Status',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            }
+          },
+          B1: {
+            B29L2: {
+              add_tags: {
+                elvrot_rotunda_status: {
+                  Tag: 'ELVROT.ROTUNDA_STATUS',
+                  Label: 'Elevating Rotunda Status',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            },
+            B24: {
+              update_tags: {
+                pca_status: {
+                  Tag: 'PCA.PCASTATUS',
+                  Label: 'PCA status',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_discharge_temp: {
+                  Tag: 'PCA.TEMPDISCH',
+                  Label: '[*]PCA Discharge Temp',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1} F',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_time: {
+                  Tag: 'PCA.PCATime',
+                  Label: '[*]PCA Run Time',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: 'mins',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_hookup_time: {
+                  Tag: 'PCA.HOOKUPTIME',
+                  Label: '[*]PCA Hookup Time',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: 'mins',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            },
+            B25L1: {
+              update_tags: {
+                pca_status: {
+                  Tag: 'PCA.PCASTATUS',
+                  Label: 'PCA status',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_discharge_temp: {
+                  Tag: 'PCA.TEMPDISCH',
+                  Label: '[*]PCA Discharge Temp',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1} F',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_time: {
+                  Tag: 'PCA.PCATime',
+                  Label: '[*]PCA Run Time',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: 'mins',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_hookup_time: {
+                  Tag: 'PCA.HOOKUPTIME',
+                  Label: '[*]PCA Hookup Time',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: 'mins',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            },
+            B25L2: {
+              update_tags: {
+                pca_status: {
+                  Tag: 'PCA.PCASTATUS',
+                  Label: 'PCA status',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_discharge_temp: {
+                  Tag: 'PCA.TEMPDISCH',
+                  Label: '[*]PCA Discharge Temp',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1} F',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_time: {
+                  Tag: 'PCA.PCATime',
+                  Label: '[*]PCA Run Time',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: 'mins',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_hookup_time: {
+                  Tag: 'PCA.HOOKUPTIME',
+                  Label: '[*]PCA Hookup Time',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: 'mins',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            }
+          },
+          B2: {
+            update_tags: {
+              pca_status: {
+                Tag: 'PCA.PCASTATUS',
+                Label: 'PCA status',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
                 },
                 Element: {
                   Type: 'TableRow',
@@ -12811,230 +15940,14 @@ TagConfig = (function(superClass) {
                   Object: null
                 }
               },
-              pca_heater_1: {
-                Tag: 'PCA.HEAT1',
-                Label: 'Heater #1 is running',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_heater_2: {
-                Tag: 'PCA.HEAT2',
-                Label: 'Heater #2 is running',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_heater_3: {
-                Tag: 'PCA.HEAT3',
-                Label: 'Heater #3 is running',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_heater_4: {
-                Tag: 'PCA.HEAT4',
-                Label: 'Heater #4 is running',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_heater_5: {
-                Tag: 'PCA.HEAT5',
-                Label: 'Heater #5 is running',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_comp_pri_1: {
-                Tag: 'PCA.COMPPRI1',
-                Label: 'Primary compressor #1 is running',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_comp_pri_2: {
-                Tag: 'PCA.COMPPRI2',
-                Label: 'Primary compressor #2 is running',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_comp_sec_1: {
-                Tag: 'PCA.COMPSEC1',
-                Label: 'Secondary compressor #1 is running',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_comp_sec_2: {
-                Tag: 'PCA.COMPSEC2',
-                Label: 'Secondary compressor #2 is running',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_bridge_damper: {
-                Tag: 'PCA.BRIDGE_DAMPER_POSITION',
-                Label: 'Aircraft Damper',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_blower: {
-                Tag: 'PCA.BLOWER',
-                Label: 'Blower Status',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_bridge_air: {
-                Tag: 'PCA.BRIDGE_AIR',
-                Label: 'Bridge Damper',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_suction_pressure_1: {
-                Tag: 'PCA.PRESSSUCPRI1',
-                Label: 'Suction pressure,primary compressor #1',
+              pca_time: {
+                Tag: 'PCA.PCATime',
+                Label: '[*]PCA Run Time',
                 DataType: 'Float',
                 Parameters: {
                   Parm001: true,
                   Parm002: 2,
-                  Parm003: '#{1}',
+                  Parm003: 'mins',
                   Parm004: null
                 },
                 Element: {
@@ -13044,170 +15957,15 @@ TagConfig = (function(superClass) {
                   Object: null
                 }
               },
-              pca_suction_pressure_2: {
-                Tag: 'PCA.PRESSSUCPRI2',
-                Label: 'Suction pressure,primary compressor #2',
+              pca_hookup_time: {
+                Tag: 'PCA.HOOKUPTIME',
+                Label: '[*]PCA Hookup Time',
                 DataType: 'Float',
                 Parameters: {
                   Parm001: true,
                   Parm002: 2,
-                  Parm003: '#{1}',
+                  Parm003: 'mins',
                   Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_suction_pressure_sec_1: {
-                Tag: 'PCA.PRESSSUCSEC1',
-                Label: 'Suction pressure,secondary compressor #1',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1}',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_suction_pressure_sec_2: {
-                Tag: 'PCA.PRESSSUCSEC2',
-                Label: 'Suction pressure,secondary compressor #2',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1}',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_pressure_head_1: {
-                Tag: 'PCA.PRESSHEADPRI1',
-                Label: 'Head pressure,primary compressor #1',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1}',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_pressure_head_2: {
-                Tag: 'PCA.PRESSHEADPRI2',
-                Label: 'Head pressure,primary compressor #2',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1}',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_pressure_head_1_sec: {
-                Tag: 'PCA.PRESSHEADSEC1',
-                Label: 'Head pressure,secondary compressor #1',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1}',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_pressure_head_2_sec: {
-                Tag: 'PCA.PRESSHEADSEC2',
-                Label: 'Head pressure,secondary compressor #2',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1}',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_status: {
-                Tag: 'PCA.PCASTATUS',
-                Label: 'PCA status',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_modeofoperation: {
-                Tag: 'PCA.MODEOFOPERATION',
-                Label: 'Mode',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: false,
-                  Parm002: null,
-                  Parm003: null,
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_modeovernight: {
-                Tag: 'PCA.MODEOVERNIGHT',
-                Label: 'Overnight Mode',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
                 },
                 Element: {
                   Type: 'TableRow',
@@ -13220,32 +15978,16 @@ TagConfig = (function(superClass) {
           },
           B3: {
             update_tags: {
-              pca_cabin_temp: {
-                Tag: 'PCA.TEMPCABIN',
-                Label: 'Cabin Air Temperature',
-                DataType: 'Float',
+              pca_status: {
+                Tag: 'PCA.PCASTATUS',
+                Label: 'PCA status',
+                DataType: 'Boolean',
                 Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1} F',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_ambient_temp: {
-                Tag: 'PCA.TEMPAMB',
-                Label: 'Ambient Air Temperature',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1} F',
-                  Parm004: null
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
                 },
                 Element: {
                   Type: 'TableRow',
@@ -13271,176 +16013,14 @@ TagConfig = (function(superClass) {
                   Object: null
                 }
               },
-              pca_heater_1: {
-                Tag: 'PCA.HEATER1',
-                Label: 'Heater #1 is running',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_heater_2: {
-                Tag: 'PCA.HEATER2',
-                Label: 'Heater #2 is running',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_comp_pri_1: {
-                Tag: 'PCA.COMPPRI1',
-                Label: 'Primary compressor #1 is running',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_comp_pri_2: {
-                Tag: 'PCA.COMPPRI2',
-                Label: 'Primary compressor #2 is running',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_comp_sec_1: {
-                Tag: 'PCA.COMPSEC1',
-                Label: 'Secondary compressor #1 is running',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_comp_sec_2: {
-                Tag: 'PCA.COMPSEC2',
-                Label: 'Secondary compressor #2 is running',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_bridge_damper: {
-                Tag: 'PCA.BRIDGE_DAMPER_POSITION',
-                Label: 'Aircraft Damper',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_blower: {
-                Tag: 'PCA.BLOWER',
-                Label: 'Blower Status',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_bridge_air: {
-                Tag: 'PCA.BRIDGE_AIR',
-                Label: 'Bridge Damper',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_suction_pressure_1: {
-                Tag: 'PCA.PRESSSUCPRI1',
-                Label: 'Suction pressure,primary compressor #1',
+              pca_time: {
+                Tag: 'PCA.PCATime',
+                Label: '[*]PCA Run Time',
                 DataType: 'Float',
                 Parameters: {
                   Parm001: true,
                   Parm002: 2,
-                  Parm003: '#{1}',
+                  Parm003: 'mins',
                   Parm004: null
                 },
                 Element: {
@@ -13450,102 +16030,15 @@ TagConfig = (function(superClass) {
                   Object: null
                 }
               },
-              pca_suction_pressure_sec_1: {
-                Tag: 'PCA.PRESSSUCSEC1',
-                Label: 'Suction pressure,secondary compressor #1',
+              pca_hookup_time: {
+                Tag: 'PCA.HOOKUPTIME',
+                Label: '[*]PCA Hookup Time',
                 DataType: 'Float',
                 Parameters: {
                   Parm001: true,
                   Parm002: 2,
-                  Parm003: '#{1}',
+                  Parm003: 'mins',
                   Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_pressure_head_1: {
-                Tag: 'PCA.PRESSHEADPRI1',
-                Label: 'Head pressure,primary compressor #1',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1}',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_pressure_head_1_sec: {
-                Tag: 'PCA.PRESSHEADSEC1',
-                Label: 'Head pressure,secondary compressor #1',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1}',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_status: {
-                Tag: 'PCA.PCASTATUS',
-                Label: 'PCA status',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_modeofoperation: {
-                Tag: 'PCA.MODEOFOPERATION',
-                Label: 'Mode',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: false,
-                  Parm002: null,
-                  Parm003: null,
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_modeovernight: {
-                Tag: 'PCA.MODEOVERNIGHT',
-                Label: 'Overnight Mode',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
                 },
                 Element: {
                   Type: 'TableRow',
@@ -13558,8 +16051,4623 @@ TagConfig = (function(superClass) {
           }
         }
       },
+      pbb_pca_gpu_status_widget: {
+        remove_tags: {
+          'pca_has_alarms': 'pca_has_alarms',
+          'pca_has_critical_alarms': 'pca_has_critical_alarms',
+          'pca_has_warnings': 'pca_has_warnings',
+          'pca_perfect_hookup': 'pca_perfect_hookup',
+          'pca_out_of_service': 'pca_out_of_service',
+          'pca_quality': 'pca_quality',
+          'pca_status': 'pca_status',
+          'pca_discharge_temp': 'pca_discharge_temp',
+          'pca_mode_cooling': 'pca_mode_cooling',
+          'pca_mode_heating': 'pca_mode_heating'
+        },
+        update_tags: {
+          system_perfect_hookup: {
+            Tag: 'System.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          system_out_of_service: {
+            Tag: 'System._OUT_OF_SERVICE',
+            Label: 'Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          system_quality: {
+            Tag: 'System._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_perfect_hookup: {
+            Tag: 'PBB.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_quality: {
+            Tag: 'PBB._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_docked: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: '[*]Docked',
+            LebelOverride: true,
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Docked',
+              Parm002: 'UnDocked',
+              Parm003: 'Docked',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_status: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: '[*]PBB',
+            LebelOverride: true,
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: '',
+              Parm002: '',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_perfect_hookup: {
+            Tag: 'GPU.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_quality: {
+            Tag: 'GPU._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_status: {
+            Tag: 'GPU.GPUSTATUSBOOLEAN',
+            Label: '[*]GPU',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          }
+        },
+        4: {
+          A1: {
+            A6L2: {
+              add_tags: {
+                elvrot_has_warnings: {
+                  Tag: 'ELVROT.Warning._HasWarnings',
+                  Label: 'Warnings',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'Alert',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                elvrot_has_alarms: {
+                  Tag: 'ELVROT.Alarm._HasAlarms',
+                  Label: 'Alarms',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'Alert',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                elvrot_has_critical_alarms: {
+                  Tag: 'ELVROT.Alarm._HasCriticalAlarms',
+                  Label: 'Critical Alarms',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'Alert',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                elvrot_out_of_service: {
+                  Tag: 'ELVROT._OUT_OF_SERVICE',
+                  Label: 'Out Of Service',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                elvrot_perfect_hookup: {
+                  Tag: 'ELVROT.Calc_PerfectHookupTime',
+                  Label: 'Perfect Hookup',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                elvrot_quality: {
+                  Tag: 'ELVROT._QUALITY',
+                  Label: 'Comm Errors',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                elvrot_rotunda_status: {
+                  Tag: 'ELVROT.ROTUNDA_STATUS',
+                  Label: '[*]Elev. Rot.',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'ElvRot',
+                    Object: null
+                  }
+                }
+              }
+            },
+            A7L2: {
+              add_tags: {
+                elvrot_has_warnings: {
+                  Tag: 'ELVROT.Warning._HasWarnings',
+                  Label: 'Warnings',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'Alert',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                elvrot_has_alarms: {
+                  Tag: 'ELVROT.Alarm._HasAlarms',
+                  Label: 'Alarms',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'Alert',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                elvrot_has_critical_alarms: {
+                  Tag: 'ELVROT.Alarm._HasCriticalAlarms',
+                  Label: 'Critical Alarms',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'Alert',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                elvrot_out_of_service: {
+                  Tag: 'ELVROT._OUT_OF_SERVICE',
+                  Label: 'Out Of Service',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                elvrot_perfect_hookup: {
+                  Tag: 'ELVROT.Calc_PerfectHookupTime',
+                  Label: 'Perfect Hookup',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                elvrot_quality: {
+                  Tag: 'ELVROT._QUALITY',
+                  Label: 'Comm Errors',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                elvrot_rotunda_status: {
+                  Tag: 'ELVROT.ROTUNDA_STATUS',
+                  Label: '[*]Elev. Rot.',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'ElvRot',
+                    Object: null
+                  }
+                }
+              }
+            }
+          },
+          B1: {
+            B29L2: {
+              add_tags: {
+                elvrot_rotunda_status: {
+                  Tag: 'ELVROT.ROTUNDA_STATUS',
+                  Label: 'Elevating Rotunda Status',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            },
+            B24: {
+              update_tags: {
+                pca_has_warnings: {
+                  Tag: 'PCA.Warning._HasWarnings',
+                  Label: 'Warnings',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'Alert',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_has_alarms: {
+                  Tag: 'PCA.Alarm._HasAlarms',
+                  Label: 'Alarms',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'Alert',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_has_critical_alarms: {
+                  Tag: 'PCA.Alarm._HasCriticalAlarms',
+                  Label: 'Critical Alarms',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'Alert',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_perfect_hookup: {
+                  Tag: 'PCA.PERFECT_HOOKUP',
+                  Label: 'Perfect Hookup',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_out_of_service: {
+                  Tag: 'PCA._OUT_OF_SERVICE',
+                  Label: 'Out of Service',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_quality: {
+                  Tag: 'PCA._QUALITY',
+                  Label: 'Bad Quality',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_status: {
+                  Tag: 'PCA.PCASTATUS',
+                  Label: '[*]PCA',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_discharge_temp: {
+                  Tag: 'PCA.TEMPDISCH',
+                  Label: '[*]DisCharge',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1} F',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_mode_cooling: {
+                  Tag: 'PCA.MODE_COOLING',
+                  Label: 'Cooling Mode',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_mode_heating: {
+                  Tag: 'PCA.MODE_HEATING',
+                  Label: 'Heating Mode',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                }
+              }
+            },
+            B25L1: {
+              update_tags: {
+                pca_has_warnings: {
+                  Tag: 'PCA.Warning._HasWarnings',
+                  Label: 'Warnings',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'Alert',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_has_alarms: {
+                  Tag: 'PCA.Alarm._HasAlarms',
+                  Label: 'Alarms',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'Alert',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_has_critical_alarms: {
+                  Tag: 'PCA.Alarm._HasCriticalAlarms',
+                  Label: 'Critical Alarms',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'Alert',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_perfect_hookup: {
+                  Tag: 'PCA.PERFECT_HOOKUP',
+                  Label: 'Perfect Hookup',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_out_of_service: {
+                  Tag: 'PCA._OUT_OF_SERVICE',
+                  Label: 'Out of Service',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_quality: {
+                  Tag: 'PCA._QUALITY',
+                  Label: 'Bad Quality',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_status: {
+                  Tag: 'PCA.PCASTATUS',
+                  Label: '[*]PCA',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_discharge_temp: {
+                  Tag: 'PCA.TEMPDISCH',
+                  Label: '[*]DisCharge',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1} F',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_mode_cooling: {
+                  Tag: 'PCA.MODE_COOLING',
+                  Label: 'Cooling Mode',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_mode_heating: {
+                  Tag: 'PCA.MODE_HEATING',
+                  Label: 'Heating Mode',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                }
+              }
+            },
+            B25L2: {
+              update_tags: {
+                pca_has_warnings: {
+                  Tag: 'PCA.Warning._HasWarnings',
+                  Label: 'Warnings',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'Alert',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_has_alarms: {
+                  Tag: 'PCA.Alarm._HasAlarms',
+                  Label: 'Alarms',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'Alert',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_has_critical_alarms: {
+                  Tag: 'PCA.Alarm._HasCriticalAlarms',
+                  Label: 'Critical Alarms',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'Alert',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_perfect_hookup: {
+                  Tag: 'PCA.PERFECT_HOOKUP',
+                  Label: 'Perfect Hookup',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_out_of_service: {
+                  Tag: 'PCA._OUT_OF_SERVICE',
+                  Label: 'Out of Service',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_quality: {
+                  Tag: 'PCA._QUALITY',
+                  Label: 'Bad Quality',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_status: {
+                  Tag: 'PCA.PCASTATUS',
+                  Label: '[*]PCA',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_discharge_temp: {
+                  Tag: 'PCA.TEMPDISCH',
+                  Label: '[*]DisCharge',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1} F',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_mode_cooling: {
+                  Tag: 'PCA.MODE_COOLING',
+                  Label: 'Cooling Mode',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_mode_heating: {
+                  Tag: 'PCA.MODE_HEATING',
+                  Label: 'Heating Mode',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                }
+              }
+            }
+          },
+          B1: {
+            B29L2: {
+              add_tags: {
+                elvrot_has_warnings: {
+                  Tag: 'ELVROT.Warning._HasWarnings',
+                  Label: 'Warnings',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'Alert',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                elvrot_has_alarms: {
+                  Tag: 'ELVROT.Alarm._HasAlarms',
+                  Label: 'Alarms',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'Alert',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                elvrot_has_critical_alarms: {
+                  Tag: 'ELVROT.Alarm._HasCriticalAlarms',
+                  Label: 'Critical Alarms',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'Alert',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                elvrot_out_of_service: {
+                  Tag: 'ELVROT._OUT_OF_SERVICE',
+                  Label: 'Out Of Service',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                elvrot_perfect_hookup: {
+                  Tag: 'ELVROT.Calc_PerfectHookupTime',
+                  Label: 'Perfect Hookup',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                elvrot_quality: {
+                  Tag: 'ELVROT._QUALITY',
+                  Label: 'Comm Errors',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'True',
+                    Parm002: 'False',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                elvrot_rotunda_status: {
+                  Tag: 'ELVROT.ROTUNDA_STATUS',
+                  Label: '[*]Elev. Rot.',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'ElvRot',
+                    Object: null
+                  }
+                }
+              }
+            }
+          },
+          B3: {
+            add_tags: {
+              pca_has_warnings: {
+                Tag: 'PCA.Warning._HasWarnings',
+                Label: 'Warnings',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'True',
+                  Parm002: 'False',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'Alert',
+                  ParentID: '#widgetData',
+                  Class: 'no_row',
+                  Object: null
+                }
+              },
+              pca_has_alarms: {
+                Tag: 'PCA.Alarm._HasAlarms',
+                Label: 'Alarms',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'True',
+                  Parm002: 'False',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'Alert',
+                  ParentID: '#widgetData',
+                  Class: 'no_row',
+                  Object: null
+                }
+              },
+              pca_has_critical_alarms: {
+                Tag: 'PCA.Alarm._HasCriticalAlarms',
+                Label: 'Critical Alarms',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'True',
+                  Parm002: 'False',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'Alert',
+                  ParentID: '#widgetData',
+                  Class: 'no_row',
+                  Object: null
+                }
+              },
+              pca_perfect_hookup: {
+                Tag: 'PCA.PERFECT_HOOKUP',
+                Label: 'Perfect Hookup',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: null,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: 'no_row',
+                  Object: null
+                }
+              },
+              pca_out_of_service: {
+                Tag: 'PCA._OUT_OF_SERVICE',
+                Label: 'Out of Service',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: null,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: 'no_row',
+                  Object: null
+                }
+              },
+              pca_quality: {
+                Tag: 'PCA._QUALITY',
+                Label: 'Bad Quality',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: null,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: 'no_row',
+                  Object: null
+                }
+              },
+              pca_status: {
+                Tag: 'PCA.PCASTATUS',
+                Label: '[*]PCA',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_discharge_temp: {
+                Tag: 'PCA.TEMPDISCH',
+                Label: '[*]DisCharge',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_mode_cooling: {
+                Tag: 'PCA.MODE_COOLING',
+                Label: 'Cooling Mode',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: null,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: 'no_row',
+                  Object: null
+                }
+              },
+              pca_mode_heating: {
+                Tag: 'PCA.MODE_HEATING',
+                Label: 'Heating Mode',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: null,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: 'no_row',
+                  Object: null
+                }
+              }
+            }
+          },
+          B2: {
+            add_tags: {
+              pca_has_warnings: {
+                Tag: 'PCA.Warning._HasWarnings',
+                Label: 'Warnings',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'True',
+                  Parm002: 'False',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'Alert',
+                  ParentID: '#widgetData',
+                  Class: 'no_row',
+                  Object: null
+                }
+              },
+              pca_has_alarms: {
+                Tag: 'PCA.Alarm._HasAlarms',
+                Label: 'Alarms',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'True',
+                  Parm002: 'False',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'Alert',
+                  ParentID: '#widgetData',
+                  Class: 'no_row',
+                  Object: null
+                }
+              },
+              pca_has_critical_alarms: {
+                Tag: 'PCA.Alarm._HasCriticalAlarms',
+                Label: 'Critical Alarms',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'True',
+                  Parm002: 'False',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'Alert',
+                  ParentID: '#widgetData',
+                  Class: 'no_row',
+                  Object: null
+                }
+              },
+              pca_perfect_hookup: {
+                Tag: 'PCA.PERFECT_HOOKUP',
+                Label: 'Perfect Hookup',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: null,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: 'no_row',
+                  Object: null
+                }
+              },
+              pca_out_of_service: {
+                Tag: 'PCA._OUT_OF_SERVICE',
+                Label: 'Out of Service',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: null,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: 'no_row',
+                  Object: null
+                }
+              },
+              pca_quality: {
+                Tag: 'PCA._QUALITY',
+                Label: 'Bad Quality',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: null,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: 'no_row',
+                  Object: null
+                }
+              },
+              pca_status: {
+                Tag: 'PCA.PCASTATUS',
+                Label: '[*]PCA',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_discharge_temp: {
+                Tag: 'PCA.TEMPDISCH',
+                Label: '[*]DisCharge',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_mode_cooling: {
+                Tag: 'PCA.MODE_COOLING',
+                Label: 'Cooling Mode',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: null,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: 'no_row',
+                  Object: null
+                }
+              },
+              pca_mode_heating: {
+                Tag: 'PCA.MODE_HEATING',
+                Label: 'Heating Mode',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: null,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: 'no_row',
+                  Object: null
+                }
+              }
+            }
+          }
+        }
+      },
+      pbb_system_status_widget: {
+        remove_tags: {
+          'pca_status': 'pca_status',
+          'pca_discharge_temp': 'pca_discharge_temp'
+        },
+        update_tags: {
+          pbb_status: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: '[*]PBB',
+            LebelOverride: true,
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Docked',
+              Parm002: 'UnDocked',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_status: {
+            Tag: 'GPU.GPUSTATUSBOOLEAN',
+            Label: '[*]GPU',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          system_perfect_hookup: {
+            Tag: 'System.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          system_out_of_service: {
+            Tag: 'System._OUT_OF_SERVICE',
+            Label: 'Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          system_quality: {
+            Tag: 'System._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_perfect_hookup: {
+            Tag: 'PBB.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: 'Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_quality: {
+            Tag: 'PBB._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_docked: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: '[*]Docked',
+            LebelOverride: true,
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Docked',
+              Parm002: 'UnDocked',
+              Parm003: 'Docked',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_status: {
+            Tag: 'PBB.OPERATEKEY',
+            Label: '[*]PBB',
+            LebelOverride: true,
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: '',
+              Parm002: '',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_perfect_hookup: {
+            Tag: 'GPU.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: 'Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_quality: {
+            Tag: 'GPU._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_status: {
+            Tag: 'GPU.GPUSTATUSBOOLEAN',
+            Label: '[*]GPU',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_perfect_hookup: {
+            Tag: 'PCA.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: 'Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_quality: {
+            Tag: 'PCA._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_status: {
+            Tag: 'PCA.PCASTATUS',
+            Label: '[*]PCA',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_discharge_temp: {
+            Tag: 'PCA.TEMPDISCH',
+            Label: '[*]DisCharge',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 2,
+              Parm003: '#{1} F',
+              Parm004: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_mode_cooling: {
+            Tag: 'PCA.MODE_COOLING',
+            Label: 'Cooling Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_mode_heating: {
+            Tag: 'PCA.MODE_HEATING',
+            Label: 'Heating Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          }
+        },
+        4: {
+          A1: {
+            A6L2: {
+              add_tags: {
+                elvrot_rotunda_status: {
+                  Tag: 'ELVROT.ROTUNDA_STATUS',
+                  Label: '[*]Elev. Rot.',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: 'ElvRot',
+                    Object: null
+                  }
+                }
+              }
+            },
+            A7L2: {
+              add_tags: {
+                elvrot_rotunda_status: {
+                  Tag: 'ELVROT.ROTUNDA_STATUS',
+                  Label: '[*]Elev. Rot.',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: 'ElvRot',
+                    Object: null
+                  }
+                }
+              }
+            }
+          },
+          B1: {
+            B29L2: {
+              add_tags: {
+                elvrot_rotunda_status: {
+                  Tag: 'ELVROT.ROTUNDA_STATUS',
+                  Label: '[*]Elev. Rot.',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: 'ElvRot',
+                    Object: null
+                  }
+                }
+              }
+            },
+            B24: {
+              add_tags: {
+                pca_perfect_hookup: {
+                  Tag: 'PCA.PERFECT_HOOKUP',
+                  Label: 'Perfect Hookup',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_out_of_service: {
+                  Tag: 'PCA._OUT_OF_SERVICE',
+                  Label: 'Out of Service',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_quality: {
+                  Tag: 'PCA._QUALITY',
+                  Label: 'Bad Quality',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_status: {
+                  Tag: 'PCA.PCASTATUS',
+                  Label: '[*]PCA',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_discharge_temp: {
+                  Tag: 'PCA.TEMPDISCH',
+                  Label: '[*]DisCharge',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1} F',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_mode_cooling: {
+                  Tag: 'PCA.MODE_COOLING',
+                  Label: 'Cooling Mode',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_mode_heating: {
+                  Tag: 'PCA.MODE_HEATING',
+                  Label: 'Heating Mode',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                }
+              }
+            },
+            B25L1: {
+              add_tags: {
+                pca_perfect_hookup: {
+                  Tag: 'PCA.PERFECT_HOOKUP',
+                  Label: 'Perfect Hookup',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_out_of_service: {
+                  Tag: 'PCA._OUT_OF_SERVICE',
+                  Label: 'Out of Service',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_quality: {
+                  Tag: 'PCA._QUALITY',
+                  Label: 'Bad Quality',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_status: {
+                  Tag: 'PCA.PCASTATUS',
+                  Label: '[*]PCA',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_discharge_temp: {
+                  Tag: 'PCA.TEMPDISCH',
+                  Label: '[*]DisCharge',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1} F',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_mode_cooling: {
+                  Tag: 'PCA.MODE_COOLING',
+                  Label: 'Cooling Mode',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_mode_heating: {
+                  Tag: 'PCA.MODE_HEATING',
+                  Label: 'Heating Mode',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                }
+              }
+            },
+            B25L2: {
+              add_tags: {
+                pca_perfect_hookup: {
+                  Tag: 'PCA.PERFECT_HOOKUP',
+                  Label: 'Perfect Hookup',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_out_of_service: {
+                  Tag: 'PCA._OUT_OF_SERVICE',
+                  Label: 'Out of Service',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_quality: {
+                  Tag: 'PCA._QUALITY',
+                  Label: 'Bad Quality',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_status: {
+                  Tag: 'PCA.PCASTATUS',
+                  Label: '[*]PCA',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_discharge_temp: {
+                  Tag: 'PCA.TEMPDISCH',
+                  Label: '[*]DisCharge',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1} F',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_mode_cooling: {
+                  Tag: 'PCA.MODE_COOLING',
+                  Label: 'Cooling Mode',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
+                pca_mode_heating: {
+                  Tag: 'PCA.MODE_HEATING',
+                  Label: 'Heating Mode',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                }
+              }
+            }
+          },
+          B2: {
+            add_tags: {
+              pca_perfect_hookup: {
+                Tag: 'PCA.PERFECT_HOOKUP',
+                Label: 'Perfect Hookup',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: null,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: 'no_row',
+                  Object: null
+                }
+              },
+              pca_out_of_service: {
+                Tag: 'PCA._OUT_OF_SERVICE',
+                Label: 'Out of Service',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: null,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: 'no_row',
+                  Object: null
+                }
+              },
+              pca_quality: {
+                Tag: 'PCA._QUALITY',
+                Label: 'Bad Quality',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: null,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: 'no_row',
+                  Object: null
+                }
+              },
+              pca_status: {
+                Tag: 'PCA.PCASTATUS',
+                Label: '[*]PCA',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_discharge_temp: {
+                Tag: 'PCA.TEMPDISCH',
+                Label: '[*]DisCharge',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_mode_cooling: {
+                Tag: 'PCA.MODE_COOLING',
+                Label: 'Cooling Mode',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: null,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: 'no_row',
+                  Object: null
+                }
+              },
+              pca_mode_heating: {
+                Tag: 'PCA.MODE_HEATING',
+                Label: 'Heating Mode',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: null,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: 'no_row',
+                  Object: null
+                }
+              }
+            }
+          },
+          B3: {
+            add_tags: {
+              pca_perfect_hookup: {
+                Tag: 'PCA.PERFECT_HOOKUP',
+                Label: 'Perfect Hookup',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: null,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: 'no_row',
+                  Object: null
+                }
+              },
+              pca_out_of_service: {
+                Tag: 'PCA._OUT_OF_SERVICE',
+                Label: 'Out of Service',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: null,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: 'no_row',
+                  Object: null
+                }
+              },
+              pca_quality: {
+                Tag: 'PCA._QUALITY',
+                Label: 'Bad Quality',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: null,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: 'no_row',
+                  Object: null
+                }
+              },
+              pca_status: {
+                Tag: 'PCA.PCASTATUS',
+                Label: '[*]PCA',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_discharge_temp: {
+                Tag: 'PCA.TEMPDISCH',
+                Label: '[*]DisCharge',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_mode_cooling: {
+                Tag: 'PCA.MODE_COOLING',
+                Label: 'Cooling Mode',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: null,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: 'no_row',
+                  Object: null
+                }
+              },
+              pca_mode_heating: {
+                Tag: 'PCA.MODE_HEATING',
+                Label: 'Heating Mode',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: null,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: 'no_row',
+                  Object: null
+                }
+              }
+            }
+          }
+        }
+      },
+      pbb_widget: {
+        4: {
+          A1: {
+            A6L2: {
+              add_tags: {
+                elvrot_rotunda_position: {
+                  Tag: 'ELVROT.ROTUNDA_POSITION',
+                  Label: 'Elevating Rotunda Position',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            },
+            A7L2: {
+              add_tags: {
+                elvrot_rotunda_position: {
+                  Tag: 'ELVROT.ROTUNDA_POSITION',
+                  Label: 'Elevating Rotunda Position',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            }
+          },
+          B1: {
+            B29L2: {
+              add_tags: {
+                elvrot_rotunda_position: {
+                  Tag: 'ELVROT.ROTUNDA_POSITION',
+                  Label: 'Elevating Rotunda Position',
+                  DataType: 'Value',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       pca_summary_widget: {
         4: {
+          B1: {
+            B24: {
+              update_graphics: {
+                pca_main_background: {
+                  ControlTags: {
+                    none: null
+                  },
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#graphics_container',
+                    Class: 'background jetway-100',
+                    Object: null
+                  }
+                },
+                blower_img: {
+                  ControlTags: {
+                    pca_blower: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'blower-on',
+                    Parm003: null,
+                    Parm004: 'blower-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                heating_stage_1_img: {
+                  ControlTags: {
+                    pca_heater_1: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-1-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-1-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                heating_stage_2_img: {
+                  ControlTags: {
+                    pca_heater_2: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-2-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-2-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                heating_stage_3_img: {
+                  ControlTags: {
+                    pca_heater_3: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-3-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-3-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                heating_stage_4_img: {
+                  ControlTags: {
+                    pca_heater_4: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-4-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-4-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                heating_stage_5_img: {
+                  ControlTags: {
+                    pca_heater_5: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-5-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-5-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                cooling_stage_1_img: {
+                  ControlTags: {
+                    pca_comp_stage_2_sec: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-1-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-1-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                cooling_stage_2_img: {
+                  ControlTags: {
+                    pca_comp_stage_1_sec: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-2-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-2-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                cooling_stage_3_img: {
+                  ControlTags: {
+                    pca_comp_stage_2: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-3-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-3-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                cooling_stage_4_img: {
+                  ControlTags: {
+                    pca_comp_stage_1: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-4-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-3-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                accool_img: {
+                  ControlTags: {
+                    pca_bridge_damper: 'Boolean',
+                    pca_status: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'ac-cool-on',
+                    Parm003: null,
+                    Parm004: 'ac-cool-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                bccool_img: {
+                  ControlTags: {
+                    pca_bridge_air: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'bc-cool-on',
+                    Parm003: null,
+                    Parm004: 'bc-cool-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                fan_1_img: {
+                  ControlTags: {
+                    pca_fan_1: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'fan-1-on',
+                    Parm003: null,
+                    Parm004: 'fan-1-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                fan_2_img: {
+                  ControlTags: {
+                    pca_fan_2: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'fan-2-on',
+                    Parm003: null,
+                    Parm004: 'fan-2-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                fan_3_img: {
+                  ControlTags: {
+                    pca_fan_3: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'fan-3-on',
+                    Parm003: null,
+                    Parm004: 'fan-3-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                fan_4_img: {
+                  ControlTags: {
+                    pca_fan_4: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'fan-4-on',
+                    Parm003: null,
+                    Parm004: 'fan-4-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                filter_img: {
+                  ControlTags: {
+                    pca_dirtyfilter: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'filter-on',
+                    Parm003: null,
+                    Parm004: 'filter-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                }
+              },
+              remove_tags: {
+                'pca_ambient_humidity': 'pca_ambient_humidity',
+                'pca_coil_dp': 'pca_coil_dp',
+                'pca_hot_gas_1': 'pca_hot_gas_1',
+                'pca_hot_gas_2': 'pca_hot_gas_2'
+              },
+              update_tags: {
+                pca_heater_1: {
+                  Tag: 'PCA.HEAT1',
+                  Label: 'Heater #1',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_2: {
+                  Tag: 'PCA.HEAT2',
+                  Label: 'Heater #2',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_3: {
+                  Tag: 'PCA.HEAT3',
+                  Label: 'Heater #3',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_4: {
+                  Tag: 'PCA.HEAT4',
+                  Label: 'Heater #4',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_5: {
+                  Tag: 'PCA.HEAT5',
+                  Label: 'Heater #5',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_fan_1: {
+                  Tag: 'PCA.FANCONDFRONTPRI',
+                  Label: 'Fan #1',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_fan_2: {
+                  Tag: 'PCA.FANCONDREARPRI',
+                  Label: 'Fan #2',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_fan_3: {
+                  Tag: 'PCA.FANCONDFRONTSEC',
+                  Label: 'Fan #3',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_fan_4: {
+                  Tag: 'PCA.FANCONDREARSEC',
+                  Label: 'Fan #4',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_stage_1: {
+                  Tag: 'PCA.COMPPRI1',
+                  Label: 'Primary compressor #1',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_stage_2: {
+                  Tag: 'PCA.COMPPRI2',
+                  Label: 'Primary compressor #2',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_stage_1_sec: {
+                  Tag: 'PCA.COMPSEC1',
+                  Label: 'Secondary compressor #1',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_stage_2_sec: {
+                  Tag: 'PCA.COMPSEC2',
+                  Label: 'Secondary compressor #2',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_dirtyfilter: {
+                  Tag: 'PCA.Alarm.DIRTY_AIR_FILTER',
+                  Label: 'Dirty Filter',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_bridge_damper: {
+                  Tag: 'PCA.BRIDGE_DAMPER_POSITION',
+                  Label: 'Aircraft Damper',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_blower: {
+                  Tag: 'PCA.BLOWER',
+                  Label: 'Blower Status',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_bridge_air: {
+                  Tag: 'PCA.BRIDGE_AIR',
+                  Label: 'Bridge Damper',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            },
+            B25L1: {
+              update_graphics: {
+                pca_main_background: {
+                  ControlTags: {
+                    none: null
+                  },
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#graphics_container',
+                    Class: 'background jetway-100',
+                    Object: null
+                  }
+                },
+                blower_img: {
+                  ControlTags: {
+                    pca_blower: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'blower-on',
+                    Parm003: null,
+                    Parm004: 'blower-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                heating_stage_1_img: {
+                  ControlTags: {
+                    pca_heater_1: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-1-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-1-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                heating_stage_2_img: {
+                  ControlTags: {
+                    pca_heater_2: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-2-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-2-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                heating_stage_3_img: {
+                  ControlTags: {
+                    pca_heater_3: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-3-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-3-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                heating_stage_4_img: {
+                  ControlTags: {
+                    pca_heater_4: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-4-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-4-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                heating_stage_5_img: {
+                  ControlTags: {
+                    pca_heater_5: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-5-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-5-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                cooling_stage_1_img: {
+                  ControlTags: {
+                    pca_comp_stage_2_sec: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-1-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-1-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                cooling_stage_2_img: {
+                  ControlTags: {
+                    pca_comp_stage_1_sec: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-2-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-2-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                cooling_stage_3_img: {
+                  ControlTags: {
+                    pca_comp_stage_2: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-3-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-3-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                cooling_stage_4_img: {
+                  ControlTags: {
+                    pca_comp_stage_1: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-4-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-3-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                accool_img: {
+                  ControlTags: {
+                    pca_bridge_damper: 'Boolean',
+                    pca_status: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'ac-cool-on',
+                    Parm003: null,
+                    Parm004: 'ac-cool-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                bccool_img: {
+                  ControlTags: {
+                    pca_bridge_air: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'bc-cool-on',
+                    Parm003: null,
+                    Parm004: 'bc-cool-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                fan_1_img: {
+                  ControlTags: {
+                    pca_fan_1: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'fan-1-on',
+                    Parm003: null,
+                    Parm004: 'fan-1-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                fan_2_img: {
+                  ControlTags: {
+                    pca_fan_2: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'fan-2-on',
+                    Parm003: null,
+                    Parm004: 'fan-2-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                fan_3_img: {
+                  ControlTags: {
+                    pca_fan_3: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'fan-3-on',
+                    Parm003: null,
+                    Parm004: 'fan-3-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                fan_4_img: {
+                  ControlTags: {
+                    pca_fan_4: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'fan-4-on',
+                    Parm003: null,
+                    Parm004: 'fan-4-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                filter_img: {
+                  ControlTags: {
+                    pca_dirtyfilter: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'filter-on',
+                    Parm003: null,
+                    Parm004: 'filter-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                }
+              },
+              remove_tags: {
+                'pca_ambient_humidity': 'pca_ambient_humidity',
+                'pca_coil_dp': 'pca_coil_dp',
+                'pca_hot_gas_1': 'pca_hot_gas_1',
+                'pca_hot_gas_2': 'pca_hot_gas_2'
+              },
+              update_tags: {
+                pca_heater_1: {
+                  Tag: 'PCA.HEAT1',
+                  Label: 'Heater #1',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_2: {
+                  Tag: 'PCA.HEAT2',
+                  Label: 'Heater #2',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_3: {
+                  Tag: 'PCA.HEAT3',
+                  Label: 'Heater #3',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_4: {
+                  Tag: 'PCA.HEAT4',
+                  Label: 'Heater #4',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_5: {
+                  Tag: 'PCA.HEAT5',
+                  Label: 'Heater #5',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_fan_1: {
+                  Tag: 'PCA.FANCONDFRONTPRI',
+                  Label: 'Fan #1',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_fan_2: {
+                  Tag: 'PCA.FANCONDREARPRI',
+                  Label: 'Fan #2',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_fan_3: {
+                  Tag: 'PCA.FANCONDFRONTSEC',
+                  Label: 'Fan #3',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_fan_4: {
+                  Tag: 'PCA.FANCONDREARSEC',
+                  Label: 'Fan #4',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_stage_1: {
+                  Tag: 'PCA.COMPPRI1',
+                  Label: 'Primary compressor #1',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_stage_2: {
+                  Tag: 'PCA.COMPPRI2',
+                  Label: 'Primary compressor #2',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_stage_1_sec: {
+                  Tag: 'PCA.COMPSEC1',
+                  Label: 'Secondary compressor #1',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_stage_2_sec: {
+                  Tag: 'PCA.COMPSEC2',
+                  Label: 'Secondary compressor #2',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_dirtyfilter: {
+                  Tag: 'PCA.Alarm.DIRTY_AIR_FILTER',
+                  Label: 'Dirty Filter',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_bridge_damper: {
+                  Tag: 'PCA.BRIDGE_DAMPER_POSITION',
+                  Label: 'Aircraft Damper',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_blower: {
+                  Tag: 'PCA.BLOWER',
+                  Label: 'Blower Status',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_bridge_air: {
+                  Tag: 'PCA.BRIDGE_AIR',
+                  Label: 'Bridge Damper',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            },
+            B25L2: {
+              update_graphics: {
+                pca_main_background: {
+                  ControlTags: {
+                    none: null
+                  },
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#graphics_container',
+                    Class: 'background jetway-100',
+                    Object: null
+                  }
+                },
+                blower_img: {
+                  ControlTags: {
+                    pca_blower: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'blower-on',
+                    Parm003: null,
+                    Parm004: 'blower-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                heating_stage_1_img: {
+                  ControlTags: {
+                    pca_heater_1: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-1-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-1-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                heating_stage_2_img: {
+                  ControlTags: {
+                    pca_heater_2: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-2-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-2-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                heating_stage_3_img: {
+                  ControlTags: {
+                    pca_heater_3: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-3-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-3-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                heating_stage_4_img: {
+                  ControlTags: {
+                    pca_heater_4: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-4-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-4-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                heating_stage_5_img: {
+                  ControlTags: {
+                    pca_heater_5: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-5-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-5-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                cooling_stage_1_img: {
+                  ControlTags: {
+                    pca_comp_stage_2_sec: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-1-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-1-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                cooling_stage_2_img: {
+                  ControlTags: {
+                    pca_comp_stage_1_sec: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-2-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-2-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                cooling_stage_3_img: {
+                  ControlTags: {
+                    pca_comp_stage_2: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-3-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-3-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                cooling_stage_4_img: {
+                  ControlTags: {
+                    pca_comp_stage_1: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'cooling-stage-4-on',
+                    Parm003: null,
+                    Parm004: 'cooling-stage-3-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                accool_img: {
+                  ControlTags: {
+                    pca_bridge_damper: 'Boolean',
+                    pca_status: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'ac-cool-on',
+                    Parm003: null,
+                    Parm004: 'ac-cool-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                bccool_img: {
+                  ControlTags: {
+                    pca_bridge_air: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'bc-cool-on',
+                    Parm003: null,
+                    Parm004: 'bc-cool-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                fan_1_img: {
+                  ControlTags: {
+                    pca_fan_1: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'fan-1-on',
+                    Parm003: null,
+                    Parm004: 'fan-1-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                fan_2_img: {
+                  ControlTags: {
+                    pca_fan_2: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'fan-2-on',
+                    Parm003: null,
+                    Parm004: 'fan-2-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                fan_3_img: {
+                  ControlTags: {
+                    pca_fan_3: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'fan-3-on',
+                    Parm003: null,
+                    Parm004: 'fan-3-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                fan_4_img: {
+                  ControlTags: {
+                    pca_fan_4: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'fan-4-on',
+                    Parm003: null,
+                    Parm004: 'fan-4-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                },
+                filter_img: {
+                  ControlTags: {
+                    pca_dirtyfilter: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'filter-on',
+                    Parm003: null,
+                    Parm004: 'filter-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-100',
+                    Object: null
+                  }
+                }
+              },
+              remove_tags: {
+                'pca_ambient_humidity': 'pca_ambient_humidity',
+                'pca_coil_dp': 'pca_coil_dp',
+                'pca_hot_gas_1': 'pca_hot_gas_1',
+                'pca_hot_gas_2': 'pca_hot_gas_2'
+              },
+              update_tags: {
+                pca_heater_1: {
+                  Tag: 'PCA.HEAT1',
+                  Label: 'Heater #1',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_2: {
+                  Tag: 'PCA.HEAT2',
+                  Label: 'Heater #2',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_3: {
+                  Tag: 'PCA.HEAT3',
+                  Label: 'Heater #3',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_4: {
+                  Tag: 'PCA.HEAT4',
+                  Label: 'Heater #4',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_5: {
+                  Tag: 'PCA.HEAT5',
+                  Label: 'Heater #5',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_fan_1: {
+                  Tag: 'PCA.FANCONDFRONTPRI',
+                  Label: 'Fan #1',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_fan_2: {
+                  Tag: 'PCA.FANCONDREARPRI',
+                  Label: 'Fan #2',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_fan_3: {
+                  Tag: 'PCA.FANCONDFRONTSEC',
+                  Label: 'Fan #3',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_fan_4: {
+                  Tag: 'PCA.FANCONDREARSEC',
+                  Label: 'Fan #4',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_stage_1: {
+                  Tag: 'PCA.COMPPRI1',
+                  Label: 'Primary compressor #1',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_stage_2: {
+                  Tag: 'PCA.COMPPRI2',
+                  Label: 'Primary compressor #2',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_stage_1_sec: {
+                  Tag: 'PCA.COMPSEC1',
+                  Label: 'Secondary compressor #1',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_stage_2_sec: {
+                  Tag: 'PCA.COMPSEC2',
+                  Label: 'Secondary compressor #2',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_dirtyfilter: {
+                  Tag: 'PCA.Alarm.DIRTY_AIR_FILTER',
+                  Label: 'Dirty Filter',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_bridge_damper: {
+                  Tag: 'PCA.BRIDGE_DAMPER_POSITION',
+                  Label: 'Aircraft Damper',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_blower: {
+                  Tag: 'PCA.BLOWER',
+                  Label: 'Blower Status',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_bridge_air: {
+                  Tag: 'PCA.BRIDGE_AIR',
+                  Label: 'Bridge Damper',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            }
+          },
           B2: {
             update_graphics: {
               pca_main_background: {
@@ -14254,6 +21362,23 @@ TagConfig = (function(superClass) {
                     Object: null
                   }
                 },
+                heating_stage_3_img: {
+                  ControlTags: {
+                    pca_heater_3: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-3-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-3-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
+                    Object: null
+                  }
+                },
                 cooling_stage_1_img: {
                   ControlTags: {
                     pca_comp_stage_1: 'Boolean'
@@ -14417,8 +21542,6 @@ TagConfig = (function(superClass) {
                 'fan_4_img': 'fan_4_img'
               },
               remove_tags: {
-                'pca_heater_4': 'pca_heater_4',
-                'pca_heater_5': 'pca_heater_5',
                 'pca_fan_3': 'pca_fan_3',
                 'pca_fan_4': 'pca_fan_4',
                 'pca_comp_stage_1_sec': 'pca_comp_stage_1_sec',
@@ -14499,6 +21622,23 @@ TagConfig = (function(superClass) {
                     Object: null
                   }
                 },
+                heating_stage_3_img: {
+                  ControlTags: {
+                    pca_heater_3: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-3-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-3-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
+                    Object: null
+                  }
+                },
                 cooling_stage_1_img: {
                   ControlTags: {
                     pca_comp_stage_1: 'Boolean'
@@ -14662,8 +21802,6 @@ TagConfig = (function(superClass) {
                 'fan_4_img': 'fan_4_img'
               },
               remove_tags: {
-                'pca_heater_4': 'pca_heater_4',
-                'pca_heater_5': 'pca_heater_5',
                 'pca_fan_3': 'pca_fan_3',
                 'pca_fan_4': 'pca_fan_4',
                 'pca_comp_stage_1_sec': 'pca_comp_stage_1_sec',
@@ -14744,6 +21882,23 @@ TagConfig = (function(superClass) {
                     Object: null
                   }
                 },
+                heating_stage_3_img: {
+                  ControlTags: {
+                    pca_heater_3: 'Boolean'
+                  },
+                  Parameters: {
+                    Parm001: 'ALL_TRUE',
+                    Parm002: 'heating-stage-3-on',
+                    Parm003: null,
+                    Parm004: 'heating-stage-3-bq'
+                  },
+                  Element: {
+                    Type: 'div',
+                    ParentID: '#dynamic_pca_main_background',
+                    Class: 'img jetway-twist-75',
+                    Object: null
+                  }
+                },
                 cooling_stage_1_img: {
                   ControlTags: {
                     pca_comp_stage_1: 'Boolean'
@@ -14907,8 +22062,6 @@ TagConfig = (function(superClass) {
                 'fan_4_img': 'fan_4_img'
               },
               remove_tags: {
-                'pca_heater_4': 'pca_heater_4',
-                'pca_heater_5': 'pca_heater_5',
                 'pca_fan_3': 'pca_fan_3',
                 'pca_fan_4': 'pca_fan_4',
                 'pca_comp_stage_1_sec': 'pca_comp_stage_1_sec',
@@ -15304,6 +22457,4982 @@ TagConfig = (function(superClass) {
           }
         }
       },
+      pca_widget: {
+        remove_tags: {
+          'pca_cabin_temp': 'pca_cabin_temp',
+          'pca_ambient_temp': 'pca_ambient_temp',
+          'pca_discharge_temp': 'pca_discharge_temp',
+          'pca_heater_1': 'pca_heater_1',
+          'pca_heater_2': 'pca_heater_2',
+          'pca_comp_stage_1': 'pca_comp_stage_1',
+          'pca_comp_stage_2': 'pca_comp_stage_2',
+          'pca_bridge_damper': 'pca_bridge_damper',
+          'pca_bridge_air': 'pca_bridge_air',
+          'pca_dirty_filter': 'pca_dirty_filter',
+          'pca_blower': 'pca_blower',
+          'pca_suction_pressure_1': 'pca_suction_pressure_1',
+          'pca_suction_pressure_2': 'pca_suction_pressure_2',
+          'pca_hot_gas_1': 'pca_hot_gas_1',
+          'pca_hot_gas_2': 'pca_hot_gas_2',
+          'pca_status': 'pca_status'
+        },
+        4: {
+          B1: {
+            B24: {
+              update_tags: {
+                pca_cabin_temp: {
+                  Tag: 'PCA.TEMPCABIN',
+                  Label: 'Cabin Air Temperature',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1} F',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_ambient_temp: {
+                  Tag: 'PCA.TEMPAMB',
+                  Label: 'Ambient Air Temperature',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1} F',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_discharge_temp: {
+                  Tag: 'PCA.TEMPDISCH',
+                  Label: 'PCA Discharge Temp',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1} F',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_1: {
+                  Tag: 'PCA.HEAT1',
+                  Label: 'Heater #1 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_2: {
+                  Tag: 'PCA.HEAT2',
+                  Label: 'Heater #2 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_3: {
+                  Tag: 'PCA.HEAT3',
+                  Label: 'Heater #3 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_4: {
+                  Tag: 'PCA.HEAT4',
+                  Label: 'Heater #4 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_5: {
+                  Tag: 'PCA.HEAT5',
+                  Label: 'Heater #5 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_pri_1: {
+                  Tag: 'PCA.COMPPRI1',
+                  Label: 'Primary compressor #1 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_pri_2: {
+                  Tag: 'PCA.COMPPRI2',
+                  Label: 'Primary compressor #2 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_sec_1: {
+                  Tag: 'PCA.COMPSEC1',
+                  Label: 'Secondary compressor #1 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_sec_2: {
+                  Tag: 'PCA.COMPSEC2',
+                  Label: 'Secondary compressor #2 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_bridge_damper: {
+                  Tag: 'PCA.BRIDGE_DAMPER_POSITION',
+                  Label: 'Aircraft Damper',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_blower: {
+                  Tag: 'PCA.BLOWER',
+                  Label: 'Blower Status',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_bridge_air: {
+                  Tag: 'PCA.BRIDGE_AIR',
+                  Label: 'Bridge Damper',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_suction_pressure_1: {
+                  Tag: 'PCA.PRESSSUCPRI1',
+                  Label: 'Suction pressure,primary compressor #1',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_suction_pressure_2: {
+                  Tag: 'PCA.PRESSSUCPRI2',
+                  Label: 'Suction pressure,primary compressor #2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_suction_pressure_sec_1: {
+                  Tag: 'PCA.PRESSSUCSEC1',
+                  Label: 'Suction pressure,secondary compressor #1',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_suction_pressure_sec_2: {
+                  Tag: 'PCA.PRESSSUCSEC2',
+                  Label: 'Suction pressure,secondary compressor #2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_pressure_head_1: {
+                  Tag: 'PCA.PRESSHEADPRI1',
+                  Label: 'Head pressure,primary compressor #1',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_pressure_head_2: {
+                  Tag: 'PCA.PRESSHEADPRI2',
+                  Label: 'Head pressure,primary compressor #2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_pressure_head_1_sec: {
+                  Tag: 'PCA.PRESSHEADSEC1',
+                  Label: 'Head pressure,secondary compressor #1',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_pressure_head_2_sec: {
+                  Tag: 'PCA.PRESSHEADSEC2',
+                  Label: 'Head pressure,secondary compressor #2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_status: {
+                  Tag: 'PCA.PCASTATUS',
+                  Label: 'PCA status',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_modeofoperation: {
+                  Tag: 'PCA.MODEOFOPERATION',
+                  Label: 'Mode',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_modeovernight: {
+                  Tag: 'PCA.MODEOVERNIGHT',
+                  Label: 'Overnight Mode',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_aircraftselection: {
+                  Tag: 'PCA.AIRCRAFTSELECTION',
+                  Label: 'Aircraft Selection',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_fancondfrontpri: {
+                  Tag: 'PCA.FANCONDFRONTPRI',
+                  Label: 'Condenser Fan Primary Front',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_fancondfrontsec: {
+                  Tag: 'PCA.FANCONDFRONTSEC',
+                  Label: 'Condenser Fan Primary Rear',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_fancondenrearpri: {
+                  Tag: 'PCA.FANCONDREARPRI',
+                  Label: 'Condenser Fan Secondary Front',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_fancondenrearsec: {
+                  Tag: 'PCA.FANCONDREARSEC',
+                  Label: 'Condenser Fan Secondary Rear',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            },
+            B25L1: {
+              update_tags: {
+                pca_cabin_temp: {
+                  Tag: 'PCA.TEMPCABIN',
+                  Label: 'Cabin Air Temperature',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1} F',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_ambient_temp: {
+                  Tag: 'PCA.TEMPAMB',
+                  Label: 'Ambient Air Temperature',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1} F',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_discharge_temp: {
+                  Tag: 'PCA.TEMPDISCH',
+                  Label: 'PCA Discharge Temp',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1} F',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_1: {
+                  Tag: 'PCA.HEAT1',
+                  Label: 'Heater #1 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_2: {
+                  Tag: 'PCA.HEAT2',
+                  Label: 'Heater #2 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_3: {
+                  Tag: 'PCA.HEAT3',
+                  Label: 'Heater #3 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_4: {
+                  Tag: 'PCA.HEAT4',
+                  Label: 'Heater #4 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_5: {
+                  Tag: 'PCA.HEAT5',
+                  Label: 'Heater #5 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_pri_1: {
+                  Tag: 'PCA.COMPPRI1',
+                  Label: 'Primary compressor #1 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_pri_2: {
+                  Tag: 'PCA.COMPPRI2',
+                  Label: 'Primary compressor #2 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_sec_1: {
+                  Tag: 'PCA.COMPSEC1',
+                  Label: 'Secondary compressor #1 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_sec_2: {
+                  Tag: 'PCA.COMPSEC2',
+                  Label: 'Secondary compressor #2 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_bridge_damper: {
+                  Tag: 'PCA.BRIDGE_DAMPER_POSITION',
+                  Label: 'Aircraft Damper',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_blower: {
+                  Tag: 'PCA.BLOWER',
+                  Label: 'Blower Status',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_bridge_air: {
+                  Tag: 'PCA.BRIDGE_AIR',
+                  Label: 'Bridge Damper',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_suction_pressure_1: {
+                  Tag: 'PCA.PRESSSUCPRI1',
+                  Label: 'Suction pressure,primary compressor #1',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_suction_pressure_2: {
+                  Tag: 'PCA.PRESSSUCPRI2',
+                  Label: 'Suction pressure,primary compressor #2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_suction_pressure_sec_1: {
+                  Tag: 'PCA.PRESSSUCSEC1',
+                  Label: 'Suction pressure,secondary compressor #1',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_suction_pressure_sec_2: {
+                  Tag: 'PCA.PRESSSUCSEC2',
+                  Label: 'Suction pressure,secondary compressor #2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_pressure_head_1: {
+                  Tag: 'PCA.PRESSHEADPRI1',
+                  Label: 'Head pressure,primary compressor #1',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_pressure_head_2: {
+                  Tag: 'PCA.PRESSHEADPRI2',
+                  Label: 'Head pressure,primary compressor #2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_pressure_head_1_sec: {
+                  Tag: 'PCA.PRESSHEADSEC1',
+                  Label: 'Head pressure,secondary compressor #1',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_pressure_head_2_sec: {
+                  Tag: 'PCA.PRESSHEADSEC2',
+                  Label: 'Head pressure,secondary compressor #2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_status: {
+                  Tag: 'PCA.PCASTATUS',
+                  Label: 'PCA status',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_modeofoperation: {
+                  Tag: 'PCA.MODEOFOPERATION',
+                  Label: 'Mode',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_modeovernight: {
+                  Tag: 'PCA.MODEOVERNIGHT',
+                  Label: 'Overnight Mode',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_aircraftselection: {
+                  Tag: 'PCA.AIRCRAFTSELECTION',
+                  Label: 'Aircraft Selection',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_fancondfrontpri: {
+                  Tag: 'PCA.FANCONDFRONTPRI',
+                  Label: 'Condenser Fan Primary Front',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_fancondfrontsec: {
+                  Tag: 'PCA.FANCONDFRONTSEC',
+                  Label: 'Condenser Fan Primary Rear',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_fancondenrearpri: {
+                  Tag: 'PCA.FANCONDREARPRI',
+                  Label: 'Condenser Fan Secondary Front',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_fancondenrearsec: {
+                  Tag: 'PCA.FANCONDREARSEC',
+                  Label: 'Condenser Fan Secondary Rear',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            },
+            B25L2: {
+              update_tags: {
+                pca_cabin_temp: {
+                  Tag: 'PCA.TEMPCABIN',
+                  Label: 'Cabin Air Temperature',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1} F',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_ambient_temp: {
+                  Tag: 'PCA.TEMPAMB',
+                  Label: 'Ambient Air Temperature',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1} F',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_discharge_temp: {
+                  Tag: 'PCA.TEMPDISCH',
+                  Label: '[*]PCA Discharge Temp',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1} F',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_1: {
+                  Tag: 'PCA.HEAT1',
+                  Label: 'Heater #1 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_2: {
+                  Tag: 'PCA.HEAT2',
+                  Label: 'Heater #2 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_3: {
+                  Tag: 'PCA.HEAT3',
+                  Label: 'Heater #3 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_4: {
+                  Tag: 'PCA.HEAT4',
+                  Label: 'Heater #4 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_5: {
+                  Tag: 'PCA.HEAT5',
+                  Label: 'Heater #5 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_pri_1: {
+                  Tag: 'PCA.COMPPRI1',
+                  Label: 'Primary compressor #1 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_pri_2: {
+                  Tag: 'PCA.COMPPRI2',
+                  Label: 'Primary compressor #2 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_sec_1: {
+                  Tag: 'PCA.COMPSEC1',
+                  Label: 'Secondary compressor #1 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_comp_sec_2: {
+                  Tag: 'PCA.COMPSEC2',
+                  Label: 'Secondary compressor #2 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_bridge_damper: {
+                  Tag: 'PCA.BRIDGE_DAMPER_POSITION',
+                  Label: 'Aircraft Damper',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_blower: {
+                  Tag: 'PCA.BLOWER',
+                  Label: 'Blower Status',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_bridge_air: {
+                  Tag: 'PCA.BRIDGE_AIR',
+                  Label: 'Bridge Damper',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_suction_pressure_1: {
+                  Tag: 'PCA.PRESSSUCPRI1',
+                  Label: 'Suction pressure,primary compressor #1',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_suction_pressure_2: {
+                  Tag: 'PCA.PRESSSUCPRI2',
+                  Label: 'Suction pressure,primary compressor #2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_suction_pressure_sec_1: {
+                  Tag: 'PCA.PRESSSUCSEC1',
+                  Label: 'Suction pressure,secondary compressor #1',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_suction_pressure_sec_2: {
+                  Tag: 'PCA.PRESSSUCSEC2',
+                  Label: 'Suction pressure,secondary compressor #2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_pressure_head_1: {
+                  Tag: 'PCA.PRESSHEADPRI1',
+                  Label: 'Head pressure,primary compressor #1',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_pressure_head_2: {
+                  Tag: 'PCA.PRESSHEADPRI2',
+                  Label: 'Head pressure,primary compressor #2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_pressure_head_1_sec: {
+                  Tag: 'PCA.PRESSHEADSEC1',
+                  Label: 'Head pressure,secondary compressor #1',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_pressure_head_2_sec: {
+                  Tag: 'PCA.PRESSHEADSEC2',
+                  Label: 'Head pressure,secondary compressor #2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: true,
+                    Parm002: 2,
+                    Parm003: '#{1}',
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_status: {
+                  Tag: 'PCA.PCASTATUS',
+                  Label: 'PCA status',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_modeofoperation: {
+                  Tag: 'PCA.MODEOFOPERATION',
+                  Label: 'Mode',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_modeovernight: {
+                  Tag: 'PCA.MODEOVERNIGHT',
+                  Label: 'Overnight Mode',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_aircraftselection: {
+                  Tag: 'PCA.AIRCRAFTSELECTION',
+                  Label: 'Aircraft Selection',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_fancondfrontpri: {
+                  Tag: 'PCA.FANCONDFRONTPRI',
+                  Label: 'Condenser Fan Primary Front',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_fancondfrontsec: {
+                  Tag: 'PCA.FANCONDFRONTSEC',
+                  Label: 'Condenser Fan Primary Rear',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_fancondenrearpri: {
+                  Tag: 'PCA.FANCONDREARPRI',
+                  Label: 'Condenser Fan Secondary Front',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_fancondenrearsec: {
+                  Tag: 'PCA.FANCONDREARSEC',
+                  Label: 'Condenser Fan Secondary Rear',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            }
+          },
+          B2: {
+            update_tags: {
+              pca_cabin_temp: {
+                Tag: 'PCA.TEMPCABIN',
+                Label: 'Cabin Air Temperature',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_ambient_temp: {
+                Tag: 'PCA.TEMPAMB',
+                Label: 'Ambient Air Temperature',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_discharge_temp: {
+                Tag: 'PCA.TEMPDISCH',
+                Label: '[*]PCA Discharge Temp',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_heater_1: {
+                Tag: 'PCA.HEAT1',
+                Label: 'Heater #1 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_heater_2: {
+                Tag: 'PCA.HEAT2',
+                Label: 'Heater #2 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_heater_3: {
+                Tag: 'PCA.HEAT3',
+                Label: 'Heater #3 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_heater_4: {
+                Tag: 'PCA.HEAT4',
+                Label: 'Heater #4 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_heater_5: {
+                Tag: 'PCA.HEAT5',
+                Label: 'Heater #5 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_comp_pri_1: {
+                Tag: 'PCA.COMPPRI1',
+                Label: 'Primary compressor #1 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_comp_pri_2: {
+                Tag: 'PCA.COMPPRI2',
+                Label: 'Primary compressor #2 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_comp_sec_1: {
+                Tag: 'PCA.COMPSEC1',
+                Label: 'Secondary compressor #1 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_comp_sec_2: {
+                Tag: 'PCA.COMPSEC2',
+                Label: 'Secondary compressor #2 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_bridge_damper: {
+                Tag: 'PCA.BRIDGE_DAMPER_POSITION',
+                Label: 'Aircraft Damper',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_blower: {
+                Tag: 'PCA.BLOWER',
+                Label: 'Blower Status',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_bridge_air: {
+                Tag: 'PCA.BRIDGE_AIR',
+                Label: 'Bridge Damper',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_suction_pressure_1: {
+                Tag: 'PCA.PRESSSUCPRI1',
+                Label: 'Suction pressure,primary compressor #1',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1}',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_suction_pressure_2: {
+                Tag: 'PCA.PRESSSUCPRI2',
+                Label: 'Suction pressure,primary compressor #2',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1}',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_suction_pressure_sec_1: {
+                Tag: 'PCA.PRESSSUCSEC1',
+                Label: 'Suction pressure,secondary compressor #1',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1}',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_suction_pressure_sec_2: {
+                Tag: 'PCA.PRESSSUCSEC2',
+                Label: 'Suction pressure,secondary compressor #2',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1}',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_pressure_head_1: {
+                Tag: 'PCA.PRESSHEADPRI1',
+                Label: 'Head pressure,primary compressor #1',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1}',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_pressure_head_2: {
+                Tag: 'PCA.PRESSHEADPRI2',
+                Label: 'Head pressure,primary compressor #2',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1}',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_pressure_head_1_sec: {
+                Tag: 'PCA.PRESSHEADSEC1',
+                Label: 'Head pressure,secondary compressor #1',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1}',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_pressure_head_2_sec: {
+                Tag: 'PCA.PRESSHEADSEC2',
+                Label: 'Head pressure,secondary compressor #2',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1}',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_status: {
+                Tag: 'PCA.PCASTATUS',
+                Label: 'PCA status',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_modeofoperation: {
+                Tag: 'PCA.MODEOFOPERATION',
+                Label: 'Mode',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: false,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_modeovernight: {
+                Tag: 'PCA.MODEOVERNIGHT',
+                Label: 'Overnight Mode',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_aircraftselection: {
+                Tag: 'PCA.AIRCRAFTSELECTION',
+                Label: 'Aircraft Selection',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: false,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_fancondfrontpri: {
+                Tag: 'PCA.FANCONDFRONTPRI',
+                Label: 'Condenser Fan Primary Front',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_fancondfrontsec: {
+                Tag: 'PCA.FANCONDFRONTSEC',
+                Label: 'Condenser Fan Primary Rear',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_fancondenrearpri: {
+                Tag: 'PCA.FANCONDREARPRI',
+                Label: 'Condenser Fan Secondary Front',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_fancondenrearsec: {
+                Tag: 'PCA.FANCONDREARSEC',
+                Label: 'Condenser Fan Secondary Rear',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              }
+            },
+            B33: {
+              remove_tags: {
+                'pca_heater_5': 'pca_heater_5',
+                'pca_comp_pri_2': 'pca_comp_pri_2',
+                'pca_suction_pressure_2': 'pca_suction_pressure_2',
+                'pca_pressure_head_2': 'pca_pressure_head_2'
+              }
+            },
+            B35: {
+              remove_tags: {
+                'pca_heater_5': 'pca_heater_5',
+                'pca_comp_pri_2': 'pca_comp_pri_2',
+                'pca_suction_pressure_2': 'pca_suction_pressure_2',
+                'pca_pressure_head_2': 'pca_pressure_head_2'
+              }
+            },
+            B36: {
+              remove_tags: {
+                'pca_heater_5': 'pca_heater_5',
+                'pca_comp_pri_2': 'pca_comp_pri_2',
+                'pca_suction_pressure_2': 'pca_suction_pressure_2',
+                'pca_pressure_head_2': 'pca_pressure_head_2'
+              }
+            }
+          },
+          B3: {
+            update_tags: {
+              pca_cabin_temp: {
+                Tag: 'PCA.TEMPCABIN',
+                Label: 'Cabin Air Temperature',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_ambient_temp: {
+                Tag: 'PCA.TEMPAMB',
+                Label: 'Ambient Air Temperature',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_discharge_temp: {
+                Tag: 'PCA.TEMPDISCH',
+                Label: '[*]PCA Discharge Temp',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1} F',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_heater_1: {
+                Tag: 'PCA.HEATER1',
+                Label: 'Heater #1 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_heater_2: {
+                Tag: 'PCA.HEATER2',
+                Label: 'Heater #2 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_comp_pri_1: {
+                Tag: 'PCA.COMPPRI1',
+                Label: 'Primary compressor #1 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_comp_sec_1: {
+                Tag: 'PCA.COMPSEC1',
+                Label: 'Secondary compressor #1 is running',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_bridge_damper: {
+                Tag: 'PCA.BRIDGE_DAMPER_POSITION',
+                Label: 'Aircraft Damper',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_blower: {
+                Tag: 'PCA.BLOWER',
+                Label: 'Blower Status',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_bridge_air: {
+                Tag: 'PCA.BRIDGE_AIR',
+                Label: 'Bridge Damper',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_suction_pressure_1: {
+                Tag: 'PCA.PRESSSUCPRI1',
+                Label: 'Suction pressure,primary compressor #1',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1}',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_suction_pressure_sec_1: {
+                Tag: 'PCA.PRESSSUCSEC1',
+                Label: 'Suction pressure,secondary compressor #1',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1}',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_pressure_head_1: {
+                Tag: 'PCA.PRESSHEADPRI1',
+                Label: 'Head pressure,primary compressor #1',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1}',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_pressure_head_1_sec: {
+                Tag: 'PCA.PRESSHEADSEC1',
+                Label: 'Head pressure,secondary compressor #1',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 2,
+                  Parm003: '#{1}',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_status: {
+                Tag: 'PCA.PCASTATUS',
+                Label: 'PCA status',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_modeofoperation: {
+                Tag: 'PCA.MODEOFOPERATION',
+                Label: 'Mode',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: false,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_modeovernight: {
+                Tag: 'PCA.MODEOVERNIGHT',
+                Label: 'Overnight Mode',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_aircraftselection: {
+                Tag: 'PCA.AIRCRAFTSELECTION',
+                Label: 'Aircraft Selection',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: false,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_fancondfrontpri: {
+                Tag: 'PCA.FANCONDFRONTPRI',
+                Label: 'Condenser Fan Primary Front',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_fancondfrontsec: {
+                Tag: 'PCA.FANCONDFRONTSEC',
+                Label: 'Condenser Fan Primary Rear',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_fancondenrearpri: {
+                Tag: 'PCA.FANCONDREARPRI',
+                Label: 'Condenser Fan Secondary Front',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              pca_fancondenrearsec: {
+                Tag: 'PCA.FANCONDREARSEC',
+                Label: 'Condenser Fan Secondary Rear',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    PHX: {
+      gpu_summary_widget: {
+        remove_all: {}
+      },
+      gpu_widget: {
+        remove_all: {}
+      },
+      out_of_service_widget: {
+        remove_tags: {
+          'pbb_out_of_service': 'pbb_out_of_service',
+          'pbb_quality': 'pbb_quality',
+          'gpu_out_of_service': 'gpu_out_of_service',
+          'gpu_quality': 'gpu_quality'
+        },
+        update_tags: {
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          }
+        }
+      },
+      pbb_detail_widget: {
+        remove_all: {}
+      },
+      pbb_level_detail_widget: {
+        remove_all: {}
+      },
+      pbb_pca_gpu_basic_widget: {
+        remove_tags: {
+          'pbb_status': 'pbb_status',
+          'gpu_status': 'gpu_status',
+          'pbb_hookup_time': 'pbb_hookup_time',
+          'gpu_hookup_time': 'gpu_hookup_time',
+          'pbb_dock_time': 'pbb_dock_time',
+          'gpu_time': 'gpu_time',
+          'gpu_ra_out_avg': 'gpu_ra_out_avg',
+          'gpu_rv_out_avg': 'gpu_rv_out_avg'
+        },
+        update_tags: {
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          }
+        }
+      },
+      pbb_pca_gpu_status_widget: {
+        remove_tags: {
+          'pbb_has_alarms': 'pbb_has_alarms',
+          'pbb_has_critical_alarms': 'pbb_has_critical_alarms',
+          'pbb_has_warnings': 'pbb_has_warnings',
+          'pbb_perfect_hookup': 'pbb_perfect_hookup',
+          'pbb_out_of_service': 'pbb_out_of_service',
+          'pbb_quality': 'pbb_quality',
+          'pbb_status': 'pbb_status',
+          'pbb_docked': 'pbb_docked',
+          'pca_mode_cooling': 'pca_mode_cooling',
+          'pca_mode_heating': 'pca_mode_heating',
+          'gpu_has_alarms': 'gpu_has_alarms',
+          'gpu_has_critical_alarms': 'gpu_has_critical_alarms',
+          'gpu_has_warnings': 'gpu_has_warnings',
+          'gpu_perfect_hookup': 'gpu_perfect_hookup',
+          'gpu_out_of_service': 'gpu_out_of_service',
+          'gpu_quality': 'gpu_quality',
+          'gpu_status': 'gpu_status'
+        },
+        update_tags: {
+          system_perfect_hookup: {
+            Tag: 'System.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          system_out_of_service: {
+            Tag: 'System._OUT_OF_SERVICE',
+            Label: 'Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          system_quality: {
+            Tag: 'System._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_perfect_hookup: {
+            Tag: 'PCA.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: 'Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_quality: {
+            Tag: 'PCA._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_status: {
+            Tag: 'PCA.PCASTATUS',
+            Label: '[*]PCA',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_discharge_temp: {
+            Tag: 'PCA.TEMPDISCH',
+            Label: '[*]DisCharge',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 2,
+              Parm003: '#{1} F',
+              Parm004: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_mode_cooling: {
+            Tag: 'PCA.MODE_COOLING',
+            Label: 'Cooling Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_mode_heating: {
+            Tag: 'PCA.MODE_HEATING',
+            Label: 'Heating Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          }
+        }
+      },
+      pbb_system_status_widget: {
+        remove_tags: {
+          'pbb_status': 'pbb_status',
+          'gpu_status': 'gpu_status'
+        },
+        update_tags: {
+          pca_status: {
+            Tag: 'PCA.PCASTATUS',
+            Label: '[*]PCA',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_discharge_temp: {
+            Tag: 'PCA.TEMPDISCH',
+            Label: '[*]DisCharge',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 2,
+              Parm003: '#{1} F',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: 'DisCharge',
+              Object: null
+            }
+          },
+          pca_mode_cooling: {
+            Tag: 'PCA.MODE_COOLING',
+            Label: 'Cooling Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_mode_heating: {
+            Tag: 'PCA.MODE_HEATING',
+            Label: 'Heating Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          }
+        }
+      },
+      pbb_widget: {
+        remove_all: {}
+      },
+      pca_discharge_widget: {
+        4: {
+          D: {
+            D1: {
+              use_tags: {
+                pca_status: {
+                  Tag: 'PCA.PCASTATUS',
+                  Label: 'PCA status',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: 'err',
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      pca_summary_widget: {
+        update_graphics: {
+          pca_main_background: {
+            ControlTags: {
+              none: null
+            },
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#graphics_container',
+              Class: 'background SJ_90',
+              Object: null
+            }
+          },
+          blower_img: {
+            ControlTags: {
+              pca_blower: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'blower-on',
+              Parm003: null,
+              Parm004: 'blower-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          },
+          heating_stage_1_img: {
+            ControlTags: {
+              pca_heater_1: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'heating-stage-1-on',
+              Parm003: null,
+              Parm004: 'heating-stage-1-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          },
+          heating_stage_2_img: {
+            ControlTags: {
+              pca_heater_2: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'heating-stage-2-on',
+              Parm003: null,
+              Parm004: 'heating-stage-2-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          },
+          accool_img: {
+            ControlTags: {
+              pca_bridge_damper: 'Boolean',
+              pca_status: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'ac-cool-on',
+              Parm003: null,
+              Parm004: 'ac-cool-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: {
+                Class: 'img SJ_90',
+                Object: null
+              }
+            }
+          },
+          bccool_img: {
+            ControlTags: {
+              pca_bridge_air: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'bc-cool-on',
+              Parm003: null,
+              Parm004: 'bc-cool-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          },
+          cooling_stage_1_img: {
+            ControlTags: {
+              pca_comp_stage_1: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'cooling-stage-1-on',
+              Parm003: null,
+              Parm004: 'cooling-stage-1-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          },
+          cooling_stage_2_img: {
+            ControlTags: {
+              pca_comp_stage_2: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'cooling-stage-2-on',
+              Parm003: null,
+              Parm004: 'cooling-stage-1-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          }
+        },
+        add_graphics: {
+          heating_stage_3_img: {
+            ControlTags: {
+              pca_heater_3: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'heating-stage-3-on',
+              Parm003: null,
+              Parm004: 'heating-stage-3-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          },
+          filter_img: {
+            ControlTags: {
+              pca_dirtyfilter: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'filter-on',
+              Parm003: null,
+              Parm004: 'filter-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          },
+          fan_1_img: {
+            ControlTags: {
+              pca_fan_1: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'fan-1-on',
+              Parm003: null,
+              Parm004: 'fan-1-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jetair-xpc-3013',
+              Object: null
+            }
+          },
+          cooling_stage_3_img: {
+            ControlTags: {
+              pca_comp_stage_3: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'cooling-stage-3-on',
+              Parm003: null,
+              Parm004: 'comp-stage-3-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          },
+          cond_coil_1_img: {
+            ControlTags: {
+              pca_comp_stage_1: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'cond-coil-1-on',
+              Parm003: null,
+              Parm004: 'cond-coil-1-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          },
+          cond_coil_2_img: {
+            ControlTags: {
+              pca_comp_stage_2: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'cond-coil-2-on',
+              Parm003: null,
+              Parm004: 'cond-coil-2-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          },
+          cond_coil_3_img: {
+            ControlTags: {
+              pca_comp_stage_3: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'cond-coil-3-on',
+              Parm003: null,
+              Parm004: 'cond-coil-3-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          },
+          evap_coil_1_img: {
+            ControlTags: {
+              pca_comp_stage_1: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'evap-coil-1-on',
+              Parm003: null,
+              Parm004: 'evap-coil-1-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          },
+          evap_coil_2_img: {
+            ControlTags: {
+              pca_comp_stage_2: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'evap-coil-2-on',
+              Parm003: null,
+              Parm004: 'evap-coil-2-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          },
+          evap_coil_3_img: {
+            ControlTags: {
+              pca_comp_stage_3: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'evap-coil-3-on',
+              Parm003: null,
+              Parm004: 'evap-coil-3-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          },
+          cfan_1_img: {
+            ControlTags: {
+              pca_cfan_1: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'cfan-1-on',
+              Parm003: null,
+              Parm004: 'cfan-1-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          },
+          cfan_2_img: {
+            ControlTags: {
+              pca_cfan_2: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'cfan-2-on',
+              Parm003: null,
+              Parm004: 'cfan-2-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          },
+          cfan_3_img: {
+            ControlTags: {
+              pca_cfan_3: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'cfan-3-on',
+              Parm003: null,
+              Parm004: 'cfan-3-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img SJ_90',
+              Object: null
+            }
+          }
+        },
+        remove_tags: {
+          'pca_hot_gas_1': 'pca_hot_gas_1',
+          'pca_hot_gas_2': 'pca_hot_gas_2',
+          'pca_ambient_humidity': 'pca_ambient_humidity',
+          'pca_coil_dp': 'pca_coil_dp',
+          'pca_vfd_speed': 'pca_vfd_speed'
+        },
+        update_tags: {
+          pca_heater_1: {
+            Tag: 'PCA.HEAT1',
+            Label: 'Heater #1 is running',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_heater_2: {
+            Tag: 'PCA.HEAT2',
+            Label: 'Heater #2 is running',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_comp_stage_1: {
+            Tag: 'PCA.COMPPRI1',
+            Label: 'Primary compressor #1 is running',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_comp_stage_2: {
+            Tag: 'PCA.COMPPRI2',
+            Label: 'Primary compressor #2 is running',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_suction_pressure_1: {
+            Tag: 'PCA.PRESSSUCPRI1',
+            Label: 'Suction pressure,primary compressor #1',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: false,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_suction_pressure_2: {
+            Tag: 'PCA.PRESSSUCPRI2',
+            Label: 'Suction pressure,primary compressor #2',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: false,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_bridge_damper: {
+            Tag: 'PCA.BRIDGE_DAMPER_POSITION',
+            Label: 'Aircraft Cool is on',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_bridge_air: {
+            Tag: 'PCA.BRIDGE_AIR',
+            Label: 'Bridge Cool is running',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          }
+        },
+        add_tags: {
+          pca_comp_stage_3: {
+            Tag: 'PCA.COMPPRI3',
+            Label: 'Primary compressor #3 is running',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_suction_pressure_3: {
+            Tag: 'PCA.PRESSSUCPRI3',
+            Label: 'Suction pressure,primary compressor #3',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: false,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_heater_3: {
+            Tag: 'PCA.HEAT3',
+            Label: 'Heater #3 is running',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_headpri1: {
+            Tag: 'PCA.PRESSHEADPRI1',
+            Label: 'Head pressure,primary compressor #1',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: false,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_headpri2: {
+            Tag: 'PCA.PRESSHEADPRI2',
+            Label: 'Head pressure,primary compressor #2',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: false,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_headpri3: {
+            Tag: 'PCA.PRESSHEADPRI3',
+            Label: 'Head pressure, secondary compressor #1',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: false,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_cfan_3: {
+            Tag: 'PCA.FANCONDFRONTPRI',
+            Label: 'Fan #3',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_cfan_2: {
+            Tag: 'PCA.FANCONDFRONTSEC',
+            Label: 'Fan #2',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_cfan_1: {
+            Tag: 'PCA.FANCONDREARPRI',
+            Label: 'Fan #1',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          }
+        }
+      },
+      pca_widget: {
+        remove_tags: {
+          'pca_hot_gas_1': 'pca_hot_gas_1',
+          'pca_hot_gas_2': 'pca_hot_gas_2'
+        },
+        update_tags: {
+          pca_heater_1: {
+            Tag: 'PCA.HEAT1',
+            Label: 'Heater #1 is running',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_heater_2: {
+            Tag: 'PCA.HEAT2',
+            Label: 'Heater #2 is running',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_comp_stage_1: {
+            Tag: 'PCA.COMPPRI1',
+            Label: 'Primary compressor #1 is running',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_comp_stage_2: {
+            Tag: 'PCA.COMPPRI2',
+            Label: 'Primary compressor #2 is running',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_suction_pressure_1: {
+            Tag: 'PCA.PRESSSUCPRI1',
+            Label: 'Suction pressure,primary compressor #1',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: false,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_suction_pressure_2: {
+            Tag: 'PCA.PRESSSUCPRI2',
+            Label: 'Suction pressure,primary compressor #2',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: false,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_bridge_damper: {
+            Tag: 'PCA.BRIDGE_DAMPER_POSITION',
+            Label: 'Aircraft Cool is running',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_bridge_air: {
+            Tag: 'PCA.BRIDGE_AIR',
+            Label: 'Bridge Cool is running',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          }
+        },
+        add_tags: {
+          pca_comp_stage_3: {
+            Tag: 'PCA.COMPPRI3',
+            Label: 'Primary compressor #3 is running',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_suction_pressure_3: {
+            Tag: 'PCA.PRESSSUCPRI3',
+            Label: 'Suction pressure,primary compressor #3',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: false,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_heater_3: {
+            Tag: 'PCA.HEAT3',
+            Label: 'Heater #3 is running',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: ''
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_headpri1: {
+            Tag: 'PCA.PRESSHEADPRI1',
+            Label: 'Head pressure,primary compressor #1',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: false,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_headpri2: {
+            Tag: 'PCA.PRESSHEADPRI2',
+            Label: 'Head pressure,primary compressor #2',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: false,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_headpri3: {
+            Tag: 'PCA.PRESSHEADPRI3',
+            Label: 'Head pressure, secondary compressor #1',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: false,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_blowercurrent: {
+            Tag: 'PCA.BLOWERCURRENT',
+            Label: 'Blower Current',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: false,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_unitcurrent: {
+            Tag: 'PCA.UNITCURRENT',
+            Label: 'Unit Current',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: false,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_modeofoperation: {
+            Tag: 'PCA.MODEOFOPERATION',
+            Label: 'Mode',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: false,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          }
+        },
+        4: {
+          D: {
+            D1: {
+              add_tags: {
+                pca_comp_stage_3: {
+                  Tag: 'PCA.COMPPRI3',
+                  Label: 'Primary compressor #3 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: ''
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_suction_pressure_3: {
+                  Tag: 'PCA.PRESSSUCPRI3',
+                  Label: 'Suction pressure,primary compressor #3',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                pca_heater_3: {
+                  Tag: 'PCA.HEAT3',
+                  Label: 'Heater #3 is running',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: 'On',
+                    Parm002: 'Off',
+                    Parm003: 'ok',
+                    Parm004: ''
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    RDU: {
+      gpu_summary_widget: {
+        2: {
+          C: {
+            remove_tags: {
+              'gpu_ra_in_avg': 'gpu_ra_in_avg'
+            }
+          },
+          D: {
+            D17: {
+              add_tags: {
+                gpu_amps_out_average_2: {
+                  Tag: 'GPU.RA2OUTAVG',
+                  Label: 'Amps Out Average_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_volts_out_average_2: {
+                  Tag: 'GPU.RV2OUTAVG',
+                  Label: 'Volts Out Average_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            },
+            D20: {
+              add_tags: {
+                gpu_amps_out_average_2: {
+                  Tag: 'GPU.RA2OUTAVG',
+                  Label: 'Amps Out Average_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_volts_out_average_2: {
+                  Tag: 'GPU.RV2OUTAVG',
+                  Label: 'Volts Out Average_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      gpu_widget: {
+        2: {
+          C: {
+            remove_tags: {
+              'gpu_by_pass': 'gpu_by_pass',
+              'gpu_ra_in_avg': 'gpu_ra_in_avg',
+              'gpu_pm_input_phasea_i': 'gpu_pm_input_phasea_i',
+              'gpu_pm_input_phaseb_i': 'gpu_pm_input_phaseb_i',
+              'gpu_pm_input_phasec_i': 'gpu_pm_input_phasec_i',
+              'gpu_on_1': 'gpu_on_1',
+              'gpu_on_2': 'gpu_on_2'
+            },
+            add_tags: {
+              gpu_mode: {
+                Tag: 'GPU.GPUMODE',
+                Label: 'GPU Mode',
+                DataType: 'Value',
+                Parameters: {
+                  Parm001: false,
+                  Parm002: null,
+                  Parm003: '#{1}',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              gpu_rdc_amps: {
+                Tag: 'GPU.RDCAMPS',
+                Label: 'DC Output -  Amps',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 1,
+                  Parm003: 'Amps',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              gpu_rdc_volts: {
+                Tag: 'GPU.RDCVOLTS',
+                Label: 'DC Output -  Volts',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: true,
+                  Parm002: 1,
+                  Parm003: 'Volts',
+                  Parm004: null
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              }
+            },
+            update_tags: {
+              gpu_pm_output_phasea_i: {
+                Tag: 'GPU.RAOUTA',
+                Label: 'Amps Out Phase A',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: 'TRUE',
+                  Parm002: '1',
+                  Parm003: 'Amps',
+                  Parm004: ''
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              gpu_pm_output_phaseb_i: {
+                Tag: 'GPU.RAOUTB',
+                Label: 'Amps Out Phase B',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: 'TRUE',
+                  Parm002: '1',
+                  Parm003: 'Amps',
+                  Parm004: ''
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              gpu_pm_output_phasec_i: {
+                Tag: 'GPU.RAOUTC',
+                Label: 'Amps Out Phase C',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: 'TRUE',
+                  Parm002: '1',
+                  Parm003: 'Amps',
+                  Parm004: ''
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              gpu_pm_output_phasea_v: {
+                Tag: 'GPU.RVOUTA',
+                Label: 'Volts Out Phase A',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: 'TRUE',
+                  Parm002: '1',
+                  Parm003: 'Volts',
+                  Parm004: ''
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              gpu_pm_output_phaseb_v: {
+                Tag: 'GPU.RVOUTB',
+                Label: 'Volts Out Phase B',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: 'TRUE',
+                  Parm002: '1',
+                  Parm003: 'Volts',
+                  Parm004: ''
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              gpu_pm_output_phasec_v: {
+                Tag: 'GPU.RVOUTC',
+                Label: 'Volts Out Phase C',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: 'TRUE',
+                  Parm002: '1',
+                  Parm003: 'Volts',
+                  Parm004: ''
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              gpu_pm_input_phasea_v: {
+                Tag: 'GPU.RVINA',
+                Label: 'Volts In Phase A',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: 'TRUE',
+                  Parm002: '1',
+                  Parm003: 'Volts',
+                  Parm004: ''
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              gpu_pm_input_phaseb_v: {
+                Tag: 'GPU.RVINB',
+                Label: 'Volts In Phase B',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: 'TRUE',
+                  Parm002: '1',
+                  Parm003: 'Volts',
+                  Parm004: ''
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              gpu_pm_input_phasec_v: {
+                Tag: 'GPU.RVINC',
+                Label: 'Volts In Phase C',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: 'TRUE',
+                  Parm002: '1',
+                  Parm003: 'Volts',
+                  Parm004: ''
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              }
+            }
+          },
+          D: {
+            update_tags: {
+              gpu_on_1: {
+                Tag: 'GPU.ON1',
+                Label: 'Contactor 1 ON',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: ''
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              gpu_on_2: {
+                Tag: 'GPU.ON2',
+                Label: 'Contactor 1 ON',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: ''
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              gpu_pm_output_phasea_i: {
+                Tag: 'GPU.RAOUTA',
+                Label: 'Amps Out Phase A',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: 'TRUE',
+                  Parm002: '1',
+                  Parm003: 'Amps',
+                  Parm004: ''
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              gpu_pm_output_phaseb_i: {
+                Tag: 'GPU.RAOUTB',
+                Label: 'Amps Out Phase B',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: 'TRUE',
+                  Parm002: '1',
+                  Parm003: 'Amps',
+                  Parm004: ''
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              gpu_pm_output_phasec_i: {
+                Tag: 'GPU.RAOUTC',
+                Label: 'Amps Out Phase C',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: 'TRUE',
+                  Parm002: '1',
+                  Parm003: 'Amps',
+                  Parm004: ''
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              gpu_pm_output_phasea_v: {
+                Tag: 'GPU.RVOUTA',
+                Label: 'Volts Out Phase A',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: 'TRUE',
+                  Parm002: '1',
+                  Parm003: 'Volts',
+                  Parm004: ''
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              gpu_pm_output_phaseb_v: {
+                Tag: 'GPU.RVOUTB',
+                Label: 'Volts Out Phase B',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: 'TRUE',
+                  Parm002: '1',
+                  Parm003: 'Volts',
+                  Parm004: ''
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              gpu_pm_output_phasec_v: {
+                Tag: 'GPU.RVOUTC',
+                Label: 'Volts Out Phase C',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: 'TRUE',
+                  Parm002: '1',
+                  Parm003: 'Volts',
+                  Parm004: ''
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              gpu_pm_input_phasea_v: {
+                Tag: 'GPU.RVINA',
+                Label: 'Volts In Phase A',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: 'TRUE',
+                  Parm002: '1',
+                  Parm003: 'Volts',
+                  Parm004: ''
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              gpu_pm_input_phaseb_v: {
+                Tag: 'GPU.RVINB',
+                Label: 'Volts In Phase B',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: 'TRUE',
+                  Parm002: '1',
+                  Parm003: 'Volts',
+                  Parm004: ''
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              gpu_pm_input_phasec_v: {
+                Tag: 'GPU.RVINC',
+                Label: 'Volts In Phase C',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: 'TRUE',
+                  Parm002: '1',
+                  Parm003: 'Volts',
+                  Parm004: ''
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              gpu_pm_input_phasea_i: {
+                Tag: 'GPU.RAINA',
+                Label: 'Amps In Phase A',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: 'TRUE',
+                  Parm002: '1',
+                  Parm003: 'Volts',
+                  Parm004: ''
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              gpu_pm_input_phaseb_i: {
+                Tag: 'GPU.RAINB',
+                Label: 'Amps In Phase B',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: 'TRUE',
+                  Parm002: '1',
+                  Parm003: 'Volts',
+                  Parm004: ''
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              },
+              gpu_pm_input_phasec_i: {
+                Tag: 'GPU.RAINC',
+                Label: 'Amps In Phase C',
+                DataType: 'Float',
+                Parameters: {
+                  Parm001: 'TRUE',
+                  Parm002: '1',
+                  Parm003: 'Volts',
+                  Parm004: ''
+                },
+                Element: {
+                  Type: 'TableRow',
+                  ParentID: '#widgetData',
+                  Class: null,
+                  Object: null
+                }
+              }
+            },
+            D17: {
+              add_tags: {
+                gpu_amps_out_phase_A_2: {
+                  Tag: 'GPU.RA2OUTA',
+                  Label: 'Amps Out Phase A_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_amps_out_phase_B_2: {
+                  Tag: 'GPU.RA2OUTB',
+                  Label: 'Amps Out Phase B_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_amps_out_phase_C_2: {
+                  Tag: 'GPU.RA2OUTC',
+                  Label: 'Amps Out Phase C_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_volts_out_phase_A_2: {
+                  Tag: 'GPU.RV2OUTA',
+                  Label: 'Volts Out Phase A_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_volts_out_phase_B_2: {
+                  Tag: 'GPU.RV2OUTB',
+                  Label: 'Volts Out Phase B_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_volts_out_phase_C_2: {
+                  Tag: 'GPU.RV2OUTC',
+                  Label: 'Volts Out Phase C_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_amps_out_average_2: {
+                  Tag: 'GPU.RA2OUTAVG',
+                  Label: 'Amps Out Average_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_volts_out_average_2: {
+                  Tag: 'GPU.RV2OUTAVG',
+                  Label: 'Volts Out Average_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            },
+            D20: {
+              add_tags: {
+                gpu_amps_out_phase_A_2: {
+                  Tag: 'GPU.RA2OUTA',
+                  Label: 'Amps Out Phase A_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_amps_out_phase_B_2: {
+                  Tag: 'GPU.RA2OUTB',
+                  Label: 'Amps Out Phase B_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_amps_out_phase_C_2: {
+                  Tag: 'GPU.RA2OUTC',
+                  Label: 'Amps Out Phase C_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_volts_out_phase_A_2: {
+                  Tag: 'GPU.RV2OUTA',
+                  Label: 'Volts Out Phase A_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_volts_out_phase_B_2: {
+                  Tag: 'GPU.RV2OUTB',
+                  Label: 'Volts Out Phase B_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_volts_out_phase_C_2: {
+                  Tag: 'GPU.RV2OUTC',
+                  Label: 'Volts Out Phase C_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_amps_out_average_2: {
+                  Tag: 'GPU.RA2OUTAVG',
+                  Label: 'Amps Out Average_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_volts_out_average_2: {
+                  Tag: 'GPU.RV2OUTAVG',
+                  Label: 'Volts Out Average_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      out_of_service_widget: {
+        update_tags: {
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          }
+        }
+      },
       pbb_detail_widget: {
         update_tags: {
           pbb_status: {
@@ -15360,7 +27489,7 @@ TagConfig = (function(superClass) {
           },
           pbb_autolevel_mode: {
             Tag: 'PBB.AUTOLEVELMODEFLAG',
-            Label: 'PBB Mode',
+            Label: 'Autolevel',
             DataType: 'Boolean',
             Parameters: {
               Parm001: 'On',
@@ -15394,390 +27523,21 @@ TagConfig = (function(superClass) {
               Object: null
             }
           }
-        },
-        4: {
-          B1: {
-            B29L2: {
-              add_graphics: {
-                elevating_img: {
-                  ControlTags: {
-                    elvrot_rotunda_position_boolean: 'Boolean'
-                  },
-                  Parameters: {
-                    Parm001: 'ALL_TRUE',
-                    Parm002: 'down-position',
-                    Parm003: null,
-                    Parm004: 'elevating-img-bq'
-                  },
-                  Element: {
-                    Type: 'div',
-                    ParentID: '#elevating_img_container',
-                    Class: 'elevating_img',
-                    Object: null
-                  }
-                }
-              },
-              add_tags: {
-                elvrot_rotunda_position_boolean: {
-                  Tag: 'ELVROT.ROTUNDA_POSITION_BOOLEAN',
-                  Label: 'Elevating Rotunda Position',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'Down Position',
-                    Parm002: 'Up Position',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                position_container_tag: {
-                  Tag: 'ELVROT.ROTUNDA_POSITION',
-                  Label: 'Elevating Rotunda Position',
-                  DataType: 'Value',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: '#{1}',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'div',
-                    ParentID: '#widgetImage2',
-                    Class: 'val show',
-                    Object: null
-                  }
-                }
-              }
-            }
-          }
         }
       },
       pbb_level_detail_widget: {
-        4: {
-          B1: {
-            B29L2: {
-              add_graphics: {
-                elevating_img: {
-                  ControlTags: {
-                    elvrot_rotunda_position_boolean: 'Boolean'
-                  },
-                  Parameters: {
-                    Parm001: 'ALL_TRUE',
-                    Parm002: 'down-position',
-                    Parm003: null,
-                    Parm004: 'elevating-img-bq'
-                  },
-                  Element: {
-                    Type: 'div',
-                    ParentID: '#elevating_img_container',
-                    Class: 'elevating_img show',
-                    Object: null
-                  }
-                }
-              },
-              add_tags: {
-                elvrot_rotunda_status: {
-                  Tag: 'ELVROT.ROTUNDA_STATUS',
-                  Label: 'Elevating Rotunda Status',
-                  DataType: 'Value',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: '#{1}',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                elvrot_rotunda_mode: {
-                  Tag: 'ELVROT.ROTUNDA_MODE',
-                  Label: 'Elevating Rotunda Operational Mode',
-                  DataType: 'Value',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: '#{1}',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                elvrot_rotunda_position_boolean: {
-                  Tag: 'ELVROT.ROTUNDA_POSITION_BOOLEAN',
-                  Label: 'Elevating Rotunda Position',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'Down Position',
-                    Parm002: 'Up Position',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                }
-              }
-            }
-          },
-          B2: {
-            remove_tags: {
-              'pbb_terminal_door': 'pbb_terminal_door'
-            }
-          }
-        }
-      },
-      pbb_pca_gpu_basic_widget: {
         remove_tags: {
-          'pca_status': 'pca_status',
-          'pca_time': 'pca_time',
-          'pca_discharge_temp': 'pca_discharge_temp',
-          'pca_hookup_time': 'pca_hookup_time'
-        },
-        4: {
-          B1: {
-            B29L2: {
-              add_tags: {
-                elvrot_rotunda_status: {
-                  Tag: 'ELVROT.ROTUNDA_STATUS',
-                  Label: 'Elevating Rotunda Status',
-                  DataType: 'Value',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: '#{1}',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                }
-              }
-            }
-          },
-          B2: {
-            update_tags: {
-              pca_status: {
-                Tag: 'PCA.PCASTATUS',
-                Label: 'PCA status',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_discharge_temp: {
-                Tag: 'PCA.TEMPDISCH',
-                Label: '[*]PCA Discharge Temp',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1} F',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_time: {
-                Tag: 'PCA.PCATime',
-                Label: '[*]PCA Run Time',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: 'mins',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_hookup_time: {
-                Tag: 'PCA.HOOKUPTIME',
-                Label: '[*]PCA Hookup Time',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: 'mins',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              }
-            }
-          },
-          B3: {
-            update_tags: {
-              pca_status: {
-                Tag: 'PCA.PCASTATUS',
-                Label: 'PCA status',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_discharge_temp: {
-                Tag: 'PCA.TEMPDISCH',
-                Label: '[*]PCA Discharge Temp',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1} F',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_time: {
-                Tag: 'PCA.PCATime',
-                Label: '[*]PCA Run Time',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: 'mins',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_hookup_time: {
-                Tag: 'PCA.HOOKUPTIME',
-                Label: '[*]PCA Hookup Time',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: 'mins',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              }
-            }
-          }
-        }
-      },
-      pbb_widget: {
-        4: {
-          B1: {
-            B29L2: {
-              add_tags: {
-                elvrot_rotunda_position: {
-                  Tag: 'ELVROT.ROTUNDA_POSITION',
-                  Label: 'Elevating Rotunda Position',
-                  DataType: 'Value',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: '#{1}',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      pbb_system_status_widget: {
-        remove_tags: {
-          'pca_status': 'pca_status',
-          'pca_discharge_temp': 'pca_discharge_temp'
+          'pbb_autolevel_key': 'pbb_autolevel_key',
+          'pbb_smoke_detector': 'pbb_smoke_detector',
+          'pbb_cabin_floor_deicer': 'pbb_cabin_floor_deicer',
+          'pbb_terminal_door': 'pbb_terminal_door',
+          'pbb_slope_deg': 'pbb_slope_deg',
+          'pbb_tunnel_length': 'pbb_tunnel_length'
         },
         update_tags: {
-          pbb_status: {
-            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-            Label: '[*]PBB',
-            LebelOverride: true,
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'Docked',
-              Parm002: 'UnDocked',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_status: {
-            Tag: 'GPU.GPUSTATUSBOOLEAN',
-            Label: '[*]GPU',
+          pbb_autolevel_mode: {
+            Tag: 'PBB.AUTOLEVELMODEFLAG',
+            Label: 'Auto-Level',
             DataType: 'Boolean',
             Parameters: {
               Parm001: 'On',
@@ -15793,105 +27553,140 @@ TagConfig = (function(superClass) {
               Object: null
             }
           }
+        }
+      },
+      pbb_pca_gpu_basic_widget: {
+        update_tags: {
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          }
         },
-        4: {
-          B1: {
-            B29L2: {
+        2: {
+          D: {
+            D17: {
               add_tags: {
-                elvrot_rotunda_status: {
-                  Tag: 'ELVROT.ROTUNDA_STATUS',
-                  Label: '[*]Elev. Rot.',
-                  DataType: 'Value',
+                gpu_amps_out_average_2: {
+                  Tag: 'GPU.RA2OUTAVG',
+                  Label: 'Amps Out Average_2',
+                  DataType: 'Float',
                   Parameters: {
                     Parm001: false,
                     Parm002: null,
-                    Parm003: '#{1}',
+                    Parm003: null,
                     Parm004: null
                   },
                   Element: {
                     Type: 'TableRow',
                     ParentID: '#widgetData',
-                    Class: 'ElvRot',
+                    Class: null,
+                    Object: null
+                  }
+                },
+                gpu_volts_out_average_2: {
+                  Tag: 'GPU.RV2OUTAVG',
+                  Label: 'Volts Out Average_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
                     Object: null
                   }
                 }
               }
-            }
-          },
-          B2: {
-            update_tags: {
-              pca_status: {
-                Tag: 'PCA.PCASTATUS',
-                Label: '[*]PCA',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
+            },
+            D20: {
+              add_tags: {
+                gpu_amps_out_average_2: {
+                  Tag: 'GPU.RA2OUTAVG',
+                  Label: 'Amps Out Average_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
                 },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_discharge_temp: {
-                Tag: 'PCA.TEMPDISCH',
-                Label: '[*]DisCharge',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1} F',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: 'DisCharge',
-                  Object: null
-                }
-              }
-            }
-          },
-          B3: {
-            update_tags: {
-              pca_status: {
-                Tag: 'PCA.PCASTATUS',
-                Label: '[*]PCA',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_discharge_temp: {
-                Tag: 'PCA.TEMPDISCH',
-                Label: '[*]DisCharge',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1} F',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: 'DisCharge',
-                  Object: null
+                gpu_volts_out_average_2: {
+                  Tag: 'GPU.RV2OUTAVG',
+                  Label: 'Volts Out Average_2',
+                  DataType: 'Float',
+                  Parameters: {
+                    Parm001: false,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null
+                  },
+                  Element: {
+                    Type: 'TableRow',
+                    ParentID: '#widgetData',
+                    Class: null,
+                    Object: null
+                  }
                 }
               }
             }
@@ -15899,11 +27694,7 @@ TagConfig = (function(superClass) {
         }
       },
       pbb_pca_gpu_status_widget: {
-        remove_tags: {
-          'pca_status': 'pca_status',
-          'pca_discharge_temp': 'pca_discharge_temp'
-        },
-        add_tags: {
+        update_tags: {
           system_perfect_hookup: {
             Tag: 'System.PERFECT_HOOKUP',
             Label: 'Perfect Hookup',
@@ -15957,9 +27748,61 @@ TagConfig = (function(superClass) {
               Class: 'no_row',
               Object: null
             }
-          }
-        },
-        update_tags: {
+          },
+          pbb_perfect_hookup: {
+            Tag: 'PBB.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: 'Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_quality: {
+            Tag: 'PBB._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
           pbb_docked: {
             Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
             Label: '[*]Docked',
@@ -15998,6 +27841,60 @@ TagConfig = (function(superClass) {
               Object: null
             }
           },
+          gpu_perfect_hookup: {
+            Tag: 'GPU.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: 'Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_quality: {
+            Tag: 'GPU._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
           gpu_status: {
             Tag: 'GPU.GPUSTATUSBOOLEAN',
             Label: '[*]GPU',
@@ -16015,225 +27912,242 @@ TagConfig = (function(superClass) {
               Class: null,
               Object: null
             }
-          }
-        },
-        4: {
-          B1: {
-            B29L2: {
-              add_tags: {
-                elvrot_rotunda_status: {
-                  Tag: 'ELVROT.ROTUNDA_STATUS',
-                  Label: '[*]Elev. Rot.',
-                  DataType: 'Value',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: '#{1}',
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: null,
-                    ParentID: null,
-                    Class: 'ElvRot',
-                    Object: null
-                  }
-                }
-              }
+          },
+          pca_perfect_hookup: {
+            Tag: 'PCA.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
             }
           },
-          B3: {
-            update_tags: {
-              pca_status: {
-                Tag: 'PCA.PCASTATUS',
-                Label: '[*]PCA',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: null,
-                  ParentID: null,
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_discharge_temp: {
-                Tag: 'PCA.TEMPDISCH',
-                Label: '[*]DisCharge',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1} F',
-                  Parm004: null
-                },
-                Element: {
-                  Type: null,
-                  ParentID: null,
-                  Class: null,
-                  Object: null
-                }
-              }
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: 'Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
             }
           },
-          B2: {
-            update_tags: {
-              pca_status: {
-                Tag: 'PCA.PCASTATUS',
-                Label: '[*]PCA',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: null,
-                  ParentID: null,
-                  Class: null,
-                  Object: null
-                }
-              },
-              pca_discharge_temp: {
-                Tag: 'PCA.TEMPDISCH',
-                Label: '[*]DisCharge',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 2,
-                  Parm003: '#{1} F',
-                  Parm004: null
-                },
-                Element: {
-                  Type: null,
-                  ParentID: null,
-                  Class: null,
-                  Object: null
-                }
-              }
+          pca_quality: {
+            Tag: 'PCA._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_status: {
+            Tag: 'PCA.PCASTATUS',
+            Label: '[*]PCA',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_discharge_temp: {
+            Tag: 'PCA.TEMPDISCH',
+            Label: '[*]DisCharge',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 2,
+              Parm003: '#{1} F',
+              Parm004: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_mode_cooling: {
+            Tag: 'PCA.MODE_COOLING',
+            Label: 'Cooling Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_mode_heating: {
+            Tag: 'PCA.MODE_HEATING',
+            Label: 'Heating Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
             }
           }
         }
       },
-      out_of_service_widget: {
-        remove_tags: {
-          'pca_out_of_service': 'pca_out_of_service'
-        },
-        4: {
-          B1: {
-            B29L2: {
-              add_tags: {
-                elvrot_out_of_service: {
-                  Tag: 'ELVROT._OUT_OF_SERVICE',
-                  Label: '[*]ELVROT',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'True',
-                    Parm002: 'False',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: null,
-                    ParentID: null,
-                    Class: null,
-                    Object: null
-                  }
-                }
-              }
-            }
-          },
-          B2: {
-            update_tags: {
-              pca_out_of_service: {
-                Tag: 'PCA._OUT_OF_SERVICE',
-                Label: '[*]PCA',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'True',
-                  Parm002: 'False',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: null,
-                  ParentID: null,
-                  Class: null,
-                  Object: null
-                }
-              }
-            }
-          },
-          B3: {
-            update_tags: {
-              pca_out_of_service: {
-                Tag: 'PCA._OUT_OF_SERVICE',
-                Label: '[*]PCA',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'True',
-                  Parm002: 'False',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: null,
-                  ParentID: null,
-                  Class: null,
-                  Object: null
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    RDU: {
-      pca_widget: {
-        2: {
-          C: {
-            remove_tags: {
-              'pca_bridge_damper': 'pca_bridge_damper',
-              'pca_ambient_humidity': 'pca_ambient_humidity',
-              'pca_hot_gas_1': 'pca_hot_gas_1',
-              'pca_hot_gas_2': 'pca_hot_gas_2'
+      pbb_system_status_widget: {
+        update_tags: {
+          pbb_status: {
+            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
+            Label: '[*]PBB',
+            LebelOverride: true,
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'Docked',
+              Parm002: 'UnDocked',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
             },
-            update_tags: {
-              pca_modeovernight: {
-                Tag: 'PCA.MODE_OVERNIGHT',
-                Label: 'Overnight Mode',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: null,
-                  Parm005: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              }
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
             }
           },
-          D: {
-            remove_tags: {
-              'pca_bridge_damper': 'pca_bridge_damper',
-              'pca_ambient_humidity': 'pca_ambient_humidity',
-              'pca_hot_gas_1': 'pca_hot_gas_1',
-              'pca_hot_gas_2': 'pca_hot_gas_2'
+          gpu_status: {
+            Tag: 'GPU.GPUSTATUSBOOLEAN',
+            Label: '[*]GPU',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_status: {
+            Tag: 'PCA.PCASTATUS',
+            Label: '[*]PCA',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: 'On',
+              Parm002: 'Off',
+              Parm003: 'ok',
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_discharge_temp: {
+            Tag: 'PCA.TEMPDISCH',
+            Label: '[*]DisCharge',
+            DataType: 'Float',
+            Parameters: {
+              Parm001: true,
+              Parm002: 2,
+              Parm003: '#{1} F',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: 'DisCharge',
+              Object: null
+            }
+          },
+          pca_mode_cooling: {
+            Tag: 'PCA.MODE_COOLING',
+            Label: 'Cooling Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_mode_heating: {
+            Tag: 'PCA.MODE_HEATING',
+            Label: 'Heating Mode',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
             }
           }
         }
@@ -20249,217 +32163,26 @@ TagConfig = (function(superClass) {
           }
         }
       },
-      gpu_widget: {
+      pca_widget: {
         2: {
           C: {
             remove_tags: {
-              'gpu_by_pass': 'gpu_by_pass',
-              'gpu_ra_in_avg': 'gpu_ra_in_avg',
-              'gpu_pm_input_phasea_i': 'gpu_pm_input_phasea_i',
-              'gpu_pm_input_phaseb_i': 'gpu_pm_input_phaseb_i',
-              'gpu_pm_input_phasec_i': 'gpu_pm_input_phasec_i',
-              'gpu_on_1': 'gpu_on_1',
-              'gpu_on_2': 'gpu_on_2'
-            },
-            add_tags: {
-              gpu_mode: {
-                Tag: 'GPU.GPUMODE',
-                Label: 'GPU Mode',
-                DataType: 'Value',
-                Parameters: {
-                  Parm001: false,
-                  Parm002: null,
-                  Parm003: '#{1}',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              gpu_rdc_amps: {
-                Tag: 'GPU.RDCAMPS',
-                Label: 'DC Output -  Amps',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 1,
-                  Parm003: 'Amps',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              gpu_rdc_volts: {
-                Tag: 'GPU.RDCVOLTS',
-                Label: 'DC Output -  Volts',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: true,
-                  Parm002: 1,
-                  Parm003: 'Volts',
-                  Parm004: null
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              }
+              'pca_bridge_damper': 'pca_bridge_damper',
+              'pca_ambient_humidity': 'pca_ambient_humidity',
+              'pca_hot_gas_1': 'pca_hot_gas_1',
+              'pca_hot_gas_2': 'pca_hot_gas_2'
             },
             update_tags: {
-              gpu_pm_output_phasea_i: {
-                Tag: 'GPU.RAOUTA',
-                Label: 'Amps Out Phase A',
-                DataType: 'Float',
+              pca_modeovernight: {
+                Tag: 'PCA.MODE_OVERNIGHT',
+                Label: 'Overnight Mode',
+                DataType: 'Boolean',
                 Parameters: {
-                  Parm001: 'TRUE',
-                  Parm002: '1',
-                  Parm003: 'Amps',
-                  Parm004: ''
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              gpu_pm_output_phaseb_i: {
-                Tag: 'GPU.RAOUTB',
-                Label: 'Amps Out Phase B',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: 'TRUE',
-                  Parm002: '1',
-                  Parm003: 'Amps',
-                  Parm004: ''
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              gpu_pm_output_phasec_i: {
-                Tag: 'GPU.RAOUTC',
-                Label: 'Amps Out Phase C',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: 'TRUE',
-                  Parm002: '1',
-                  Parm003: 'Amps',
-                  Parm004: ''
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              gpu_pm_output_phasea_v: {
-                Tag: 'GPU.RVOUTA',
-                Label: 'Volts Out Phase A',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: 'TRUE',
-                  Parm002: '1',
-                  Parm003: 'Volts',
-                  Parm004: ''
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              gpu_pm_output_phaseb_v: {
-                Tag: 'GPU.RVOUTB',
-                Label: 'Volts Out Phase B',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: 'TRUE',
-                  Parm002: '1',
-                  Parm003: 'Volts',
-                  Parm004: ''
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              gpu_pm_output_phasec_v: {
-                Tag: 'GPU.RVOUTC',
-                Label: 'Volts Out Phase C',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: 'TRUE',
-                  Parm002: '1',
-                  Parm003: 'Volts',
-                  Parm004: ''
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              gpu_pm_input_phasea_v: {
-                Tag: 'GPU.RVINA',
-                Label: 'Volts In Phase A',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: 'TRUE',
-                  Parm002: '1',
-                  Parm003: 'Volts',
-                  Parm004: ''
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              gpu_pm_input_phaseb_v: {
-                Tag: 'GPU.RVINB',
-                Label: 'Volts In Phase B',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: 'TRUE',
-                  Parm002: '1',
-                  Parm003: 'Volts',
-                  Parm004: ''
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              gpu_pm_input_phasec_v: {
-                Tag: 'GPU.RVINC',
-                Label: 'Volts In Phase C',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: 'TRUE',
-                  Parm002: '1',
-                  Parm003: 'Volts',
-                  Parm004: ''
+                  Parm001: 'On',
+                  Parm002: 'Off',
+                  Parm003: 'ok',
+                  Parm004: null,
+                  Parm005: null
                 },
                 Element: {
                   Type: 'TableRow',
@@ -20471,867 +32194,22 @@ TagConfig = (function(superClass) {
             }
           },
           D: {
-            update_tags: {
-              gpu_on_1: {
-                Tag: 'GPU.ON1',
-                Label: 'Contactor 1 ON',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: ''
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              gpu_on_2: {
-                Tag: 'GPU.ON2',
-                Label: 'Contactor 1 ON',
-                DataType: 'Boolean',
-                Parameters: {
-                  Parm001: 'On',
-                  Parm002: 'Off',
-                  Parm003: 'ok',
-                  Parm004: ''
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              gpu_pm_output_phasea_i: {
-                Tag: 'GPU.RAOUTA',
-                Label: 'Amps Out Phase A',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: 'TRUE',
-                  Parm002: '1',
-                  Parm003: 'Amps',
-                  Parm004: ''
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              gpu_pm_output_phaseb_i: {
-                Tag: 'GPU.RAOUTB',
-                Label: 'Amps Out Phase B',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: 'TRUE',
-                  Parm002: '1',
-                  Parm003: 'Amps',
-                  Parm004: ''
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              gpu_pm_output_phasec_i: {
-                Tag: 'GPU.RAOUTC',
-                Label: 'Amps Out Phase C',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: 'TRUE',
-                  Parm002: '1',
-                  Parm003: 'Amps',
-                  Parm004: ''
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              gpu_pm_output_phasea_v: {
-                Tag: 'GPU.RVOUTA',
-                Label: 'Volts Out Phase A',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: 'TRUE',
-                  Parm002: '1',
-                  Parm003: 'Volts',
-                  Parm004: ''
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              gpu_pm_output_phaseb_v: {
-                Tag: 'GPU.RVOUTB',
-                Label: 'Volts Out Phase B',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: 'TRUE',
-                  Parm002: '1',
-                  Parm003: 'Volts',
-                  Parm004: ''
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              gpu_pm_output_phasec_v: {
-                Tag: 'GPU.RVOUTC',
-                Label: 'Volts Out Phase C',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: 'TRUE',
-                  Parm002: '1',
-                  Parm003: 'Volts',
-                  Parm004: ''
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              gpu_pm_input_phasea_v: {
-                Tag: 'GPU.RVINA',
-                Label: 'Volts In Phase A',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: 'TRUE',
-                  Parm002: '1',
-                  Parm003: 'Volts',
-                  Parm004: ''
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              gpu_pm_input_phaseb_v: {
-                Tag: 'GPU.RVINB',
-                Label: 'Volts In Phase B',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: 'TRUE',
-                  Parm002: '1',
-                  Parm003: 'Volts',
-                  Parm004: ''
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              gpu_pm_input_phasec_v: {
-                Tag: 'GPU.RVINC',
-                Label: 'Volts In Phase C',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: 'TRUE',
-                  Parm002: '1',
-                  Parm003: 'Volts',
-                  Parm004: ''
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              gpu_pm_input_phasea_i: {
-                Tag: 'GPU.RAINA',
-                Label: 'Amps In Phase A',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: 'TRUE',
-                  Parm002: '1',
-                  Parm003: 'Volts',
-                  Parm004: ''
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              gpu_pm_input_phaseb_i: {
-                Tag: 'GPU.RAINB',
-                Label: 'Amps In Phase B',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: 'TRUE',
-                  Parm002: '1',
-                  Parm003: 'Volts',
-                  Parm004: ''
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              },
-              gpu_pm_input_phasec_i: {
-                Tag: 'GPU.RAINC',
-                Label: 'Amps In Phase C',
-                DataType: 'Float',
-                Parameters: {
-                  Parm001: 'TRUE',
-                  Parm002: '1',
-                  Parm003: 'Volts',
-                  Parm004: ''
-                },
-                Element: {
-                  Type: 'TableRow',
-                  ParentID: '#widgetData',
-                  Class: null,
-                  Object: null
-                }
-              }
-            },
-            D17: {
-              add_tags: {
-                gpu_amps_out_phase_A_2: {
-                  Tag: 'GPU.RA2OUTA',
-                  Label: 'Amps Out Phase A_2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: null,
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                gpu_amps_out_phase_B_2: {
-                  Tag: 'GPU.RA2OUTB',
-                  Label: 'Amps Out Phase B_2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: null,
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                gpu_amps_out_phase_C_2: {
-                  Tag: 'GPU.RA2OUTC',
-                  Label: 'Amps Out Phase C_2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: null,
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                gpu_volts_out_phase_A_2: {
-                  Tag: 'GPU.RV2OUTA',
-                  Label: 'Volts Out Phase A_2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: null,
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                gpu_volts_out_phase_B_2: {
-                  Tag: 'GPU.RV2OUTB',
-                  Label: 'Volts Out Phase B_2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: null,
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                gpu_volts_out_phase_C_2: {
-                  Tag: 'GPU.RV2OUTC',
-                  Label: 'Volts Out Phase C_2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: null,
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                gpu_amps_out_average_2: {
-                  Tag: 'GPU.RA2OUTAVG',
-                  Label: 'Amps Out Average_2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: null,
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                gpu_volts_out_average_2: {
-                  Tag: 'GPU.RV2OUTAVG',
-                  Label: 'Volts Out Average_2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: null,
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                }
-              }
-            },
-            D20: {
-              add_tags: {
-                gpu_amps_out_phase_A_2: {
-                  Tag: 'GPU.RA2OUTA',
-                  Label: 'Amps Out Phase A_2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: null,
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                gpu_amps_out_phase_B_2: {
-                  Tag: 'GPU.RA2OUTB',
-                  Label: 'Amps Out Phase B_2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: null,
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                gpu_amps_out_phase_C_2: {
-                  Tag: 'GPU.RA2OUTC',
-                  Label: 'Amps Out Phase C_2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: null,
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                gpu_volts_out_phase_A_2: {
-                  Tag: 'GPU.RV2OUTA',
-                  Label: 'Volts Out Phase A_2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: null,
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                gpu_volts_out_phase_B_2: {
-                  Tag: 'GPU.RV2OUTB',
-                  Label: 'Volts Out Phase B_2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: null,
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                gpu_volts_out_phase_C_2: {
-                  Tag: 'GPU.RV2OUTC',
-                  Label: 'Volts Out Phase C_2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: null,
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                gpu_amps_out_average_2: {
-                  Tag: 'GPU.RA2OUTAVG',
-                  Label: 'Amps Out Average_2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: null,
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                gpu_volts_out_average_2: {
-                  Tag: 'GPU.RV2OUTAVG',
-                  Label: 'Volts Out Average_2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: null,
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      gpu_summary_widget: {
-        2: {
-          C: {
             remove_tags: {
-              'gpu_ra_in_avg': 'gpu_ra_in_avg'
-            }
-          },
-          D: {
-            D17: {
-              add_tags: {
-                gpu_amps_out_average_2: {
-                  Tag: 'GPU.RA2OUTAVG',
-                  Label: 'Amps Out Average_2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: null,
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                gpu_volts_out_average_2: {
-                  Tag: 'GPU.RV2OUTAVG',
-                  Label: 'Volts Out Average_2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: null,
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                }
-              }
-            },
-            D20: {
-              add_tags: {
-                gpu_amps_out_average_2: {
-                  Tag: 'GPU.RA2OUTAVG',
-                  Label: 'Amps Out Average_2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: null,
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                gpu_volts_out_average_2: {
-                  Tag: 'GPU.RV2OUTAVG',
-                  Label: 'Volts Out Average_2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: null,
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                }
-              }
+              'pca_bridge_damper': 'pca_bridge_damper',
+              'pca_ambient_humidity': 'pca_ambient_humidity',
+              'pca_hot_gas_1': 'pca_hot_gas_1',
+              'pca_hot_gas_2': 'pca_hot_gas_2'
             }
           }
         }
-      },
-      pbb_detail_widget: {
-        update_tags: {
-          pbb_status: {
-            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-            Label: 'PBB Status',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'Docked',
-              Parm002: 'UnDocked',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#pbb_status_container',
-              Class: 'val transparent',
-              Object: null
-            }
-          },
-          pbb_undock_time: {
-            Tag: 'PBB.UNDOCKTIME',
-            Label: null,
-            DataType: 'Float',
-            Parameters: {
-              Parm001: true,
-              Parm002: 2,
-              Parm003: 'mins',
-              Parm004: null
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#pbb_undockordocktime_container',
-              Class: 'pbb_undockordocktime val transparent',
-              Object: null
-            }
-          },
-          pbb_dock_time: {
-            Tag: 'PBB.DOCKTIME',
-            Label: 'Aircraft Docked Time (Minutes)',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: true,
-              Parm002: 2,
-              Parm003: 'mins',
-              Parm004: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'pbb_undockordocktime val transparent',
-              Object: null
-            }
-          },
-          pbb_autolevel_mode: {
-            Tag: 'PBB.AUTOLEVELMODEFLAG',
-            Label: 'PBB Mode',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: 'Auto-Level : #{1}'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#pbb_autolevel_container',
-              Class: 'val transparent',
-              Object: null
-            }
-          },
-          pbb_canopy: {
-            Tag: 'PBB.CANOPYDOWN',
-            Label: 'Canopy',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'Down',
-              Parm002: 'Up',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: 'Canopy : #{1}'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#pbb_canopy_container',
-              Class: 'val transparent',
-              Object: null
-            }
-          }
-        }
-      },
+      }
+    },
+    SNA: {
       pbb_pca_gpu_basic_widget: {
-        2: {
-          D: {
-            D17: {
-              add_tags: {
-                gpu_amps_out_average_2: {
-                  Tag: 'GPU.RA2OUTAVG',
-                  Label: 'Amps Out Average_2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: null,
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                gpu_volts_out_average_2: {
-                  Tag: 'GPU.RV2OUTAVG',
-                  Label: 'Volts Out Average_2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: null,
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                }
-              }
-            },
-            D20: {
-              add_tags: {
-                gpu_amps_out_average_2: {
-                  Tag: 'GPU.RA2OUTAVG',
-                  Label: 'Amps Out Average_2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: null,
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                },
-                gpu_volts_out_average_2: {
-                  Tag: 'GPU.RV2OUTAVG',
-                  Label: 'Volts Out Average_2',
-                  DataType: 'Float',
-                  Parameters: {
-                    Parm001: false,
-                    Parm002: null,
-                    Parm003: null,
-                    Parm004: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      pbb_system_status_widget: {
         update_tags: {
-          pbb_status: {
-            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-            Label: '[*]PBB',
-            LebelOverride: true,
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'Docked',
-              Parm002: 'UnDocked',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_status: {
-            Tag: 'GPU.GPUSTATUSBOOLEAN',
-            Label: '[*]GPU',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_status: {
-            Tag: 'PCA.PCASTATUS',
-            Label: '[*]PCA',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_discharge_temp: {
-            Tag: 'PCA.TEMPDISCH',
-            Label: '[*]DisCharge',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: true,
-              Parm002: 2,
-              Parm003: '#{1} F',
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: 'DisCharge',
-              Object: null
-            }
-          },
-          pca_mode_cooling: {
-            Tag: 'PCA.MODE_COOLING',
-            Label: 'Cooling Mode',
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB Out of Service',
             DataType: 'Boolean',
             Parameters: {
               Parm001: null,
@@ -21343,13 +32221,13 @@ TagConfig = (function(superClass) {
             Element: {
               Type: null,
               ParentID: null,
-              Class: null,
+              Class: 'no_row',
               Object: null
             }
           },
-          pca_mode_heating: {
-            Tag: 'PCA.MODE_HEATING',
-            Label: 'Heating Mode',
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU Out of Service',
             DataType: 'Boolean',
             Parameters: {
               Parm001: null,
@@ -21361,14 +32239,32 @@ TagConfig = (function(superClass) {
             Element: {
               Type: null,
               ParentID: null,
-              Class: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
               Object: null
             }
           }
         }
       },
       pbb_pca_gpu_status_widget: {
-        add_tags: {
+        update_tags: {
           system_perfect_hookup: {
             Tag: 'System.PERFECT_HOOKUP',
             Label: 'Perfect Hookup',
@@ -21422,9 +32318,61 @@ TagConfig = (function(superClass) {
               Class: 'no_row',
               Object: null
             }
-          }
-        },
-        update_tags: {
+          },
+          pbb_perfect_hookup: {
+            Tag: 'PBB.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pbb_quality: {
+            Tag: 'PBB._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
           pbb_docked: {
             Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
             Label: '[*]Docked',
@@ -21463,6 +32411,60 @@ TagConfig = (function(superClass) {
               Object: null
             }
           },
+          gpu_perfect_hookup: {
+            Tag: 'GPU.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          gpu_quality: {
+            Tag: 'GPU._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
           gpu_status: {
             Tag: 'GPU.GPUSTATUSBOOLEAN',
             Label: '[*]GPU',
@@ -21478,6 +32480,60 @@ TagConfig = (function(superClass) {
               Type: null,
               ParentID: null,
               Class: null,
+              Object: null
+            }
+          },
+          pca_perfect_hookup: {
+            Tag: 'PCA.PERFECT_HOOKUP',
+            Label: 'Perfect Hookup',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA Out of Service',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
+              Object: null
+            }
+          },
+          pca_quality: {
+            Tag: 'PCA._QUALITY',
+            Label: 'Bad Quality',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: 'no_row',
               Object: null
             }
           },
@@ -21553,9 +32609,252 @@ TagConfig = (function(superClass) {
             }
           }
         }
-      }
-    },
-    ATL: {
+      },
+      pca_summary_widget: {
+        update_graphics: {
+          pca_main_background: {
+            ControlTags: {
+              none: null
+            },
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#graphics_container',
+              Class: 'background jetair-xpc-3013',
+              Object: null
+            }
+          },
+          blower_img: {
+            ControlTags: {
+              pca_blower: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'blower-on',
+              Parm003: null,
+              Parm004: 'blower-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jetair-xpc-3013',
+              Object: null
+            }
+          },
+          heating_stage_1_img: {
+            ControlTags: {
+              pca_heater_1: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'heating-stage-1-on',
+              Parm003: null,
+              Parm004: 'heating-stage-1-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jetair-xpc-3013',
+              Object: null
+            }
+          },
+          heating_stage_2_img: {
+            ControlTags: {
+              pca_heater_2: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'heating-stage-2-on',
+              Parm003: null,
+              Parm004: 'heating-stage-2-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jetair-xpc-3013',
+              Object: null
+            }
+          },
+          cooling_stage_1_img: {
+            ControlTags: {
+              pca_comp_stage_1: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'cooling-stage-1-on',
+              Parm003: null,
+              Parm004: 'cooling-stage-1-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jetair-xpc-3013',
+              Object: null
+            }
+          },
+          cooling_stage_2_img: {
+            ControlTags: {
+              pca_comp_stage_2: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'cooling-stage-2-on',
+              Parm003: null,
+              Parm004: 'cooling-stage-2-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jetair-xpc-3013',
+              Object: null
+            }
+          },
+          accool_img: {
+            ControlTags: {
+              pca_bridge_damper: 'Boolean',
+              pca_status: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'ac-cool-on',
+              Parm003: null,
+              Parm004: 'ac-cool-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jetair-xpc-3013',
+              Object: null
+            }
+          },
+          bccool_img: {
+            ControlTags: {
+              pca_bridge_air: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'bc-cool-on',
+              Parm003: null,
+              Parm004: 'bc-cool-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jetair-xpc-3013',
+              Object: null
+            }
+          }
+        }
+      },
+      pca_widget: {
+        remove_tags: {
+          'pca_cabin_temp': 'pca_cabin_temp',
+          'pca_ambient_temp': 'pca_ambient_temp',
+          'pca_heater_1': 'pca_heater_1',
+          'pca_heater_2': 'pca_heater_2',
+          'pca_bridge_damper': 'pca_bridge_damper',
+          'pca_bridge_air': 'pca_bridge_air'
+        },
+        add_tags: {
+          pca_mode: {
+            Tag: 'PCA.MODEOFOPERATION',
+            Label: 'PCA Mode',
+            DataType: 'Value',
+            Parameters: {
+              Parm001: false,
+              Parm002: null,
+              Parm003: '#{1}',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          },
+          pca_aircraftselection: {
+            Tag: 'PCA.AIRCRAFTSELECTION',
+            Label: 'Aircraft Selection',
+            DataType: 'Value',
+            Parameters: {
+              Parm001: false,
+              Parm002: null,
+              Parm003: '#{1}',
+              Parm004: null
+            },
+            Element: {
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
+              Object: null
+            }
+          }
+        }
+      },
+      out_of_service_widget: {
+        update_tags: {
+          pbb_out_of_service: {
+            Tag: 'PBB._OUT_OF_SERVICE',
+            Label: '[*]PBB',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          pca_out_of_service: {
+            Tag: 'PCA._OUT_OF_SERVICE',
+            Label: '[*]PCA',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          },
+          gpu_out_of_service: {
+            Tag: 'GPU._OUT_OF_SERVICE',
+            Label: '[*]GPU',
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            },
+            Element: {
+              Type: null,
+              ParentID: null,
+              Class: null,
+              Object: null
+            }
+          }
+        }
+      },
       pbb_detail_widget: {
         update_tags: {
           pbb_status: {
@@ -21648,25 +32947,13 @@ TagConfig = (function(superClass) {
           }
         }
       },
-      gpu_summary_widget: {
+      pbb_level_detail_widget: {
         remove_tags: {
-          'gpu_ra_in_avg': 'gpu_ra_in_avg',
-          'gpu_rv_in_avg': 'gpu_rv_in_avg'
+          'pbb_terminal_door': 'pbb_terminal_door',
+          'pbb_slope_deg': 'pbb_slope_deg'
         }
       },
       gpu_widget: {
-        remove_tags: {
-          'gpu_by_pass': 'gpu_by_pass',
-          'gpu_ra_in_avg': 'gpu_ra_in_avg',
-          'gpu_rv_in_avg': 'gpu_rv_in_avg',
-          'gpu_pm_input_phasea_i': 'gpu_pm_input_phasea_i',
-          'gpu_pm_input_phaseb_i': 'gpu_pm_input_phaseb_i',
-          'gpu_pm_input_phasec_i': 'gpu_pm_input_phasec_i',
-          'gpu_pm_input_phasea_v': 'gpu_pm_input_phasea_v',
-          'gpu_pm_input_phaseb_v': 'gpu_pm_input_phaseb_v',
-          'gpu_pm_input_phasec_v': 'gpu_pm_input_phasec_v',
-          'gpu_on_2': 'gpu_on_2'
-        },
         add_tags: {
           gpu_mode: {
             Tag: 'GPU.GPUMODE',
@@ -21692,10 +32979,10 @@ TagConfig = (function(superClass) {
             Label: 'Amps Out Phase A',
             DataType: 'Float',
             Parameters: {
-              Parm001: true,
-              Parm002: 1,
+              Parm001: 'TRUE',
+              Parm002: '1',
               Parm003: 'Amps',
-              Parm004: null
+              Parm004: ''
             },
             Element: {
               Type: 'TableRow',
@@ -21709,10 +32996,10 @@ TagConfig = (function(superClass) {
             Label: 'Amps Out Phase B',
             DataType: 'Float',
             Parameters: {
-              Parm001: true,
-              Parm002: 1,
+              Parm001: 'TRUE',
+              Parm002: '1',
               Parm003: 'Amps',
-              Parm004: null
+              Parm004: ''
             },
             Element: {
               Type: 'TableRow',
@@ -21726,10 +33013,10 @@ TagConfig = (function(superClass) {
             Label: 'Amps Out Phase C',
             DataType: 'Float',
             Parameters: {
-              Parm001: true,
-              Parm002: 1,
+              Parm001: 'TRUE',
+              Parm002: '1',
               Parm003: 'Amps',
-              Parm004: null
+              Parm004: ''
             },
             Element: {
               Type: 'TableRow',
@@ -21743,10 +33030,10 @@ TagConfig = (function(superClass) {
             Label: 'Volts Out Phase A',
             DataType: 'Float',
             Parameters: {
-              Parm001: true,
-              Parm002: 1,
+              Parm001: 'TRUE',
+              Parm002: '1',
               Parm003: 'Volts',
-              Parm004: null
+              Parm004: ''
             },
             Element: {
               Type: 'TableRow',
@@ -21760,10 +33047,10 @@ TagConfig = (function(superClass) {
             Label: 'Volts Out Phase B',
             DataType: 'Float',
             Parameters: {
-              Parm001: true,
-              Parm002: 1,
+              Parm001: 'TRUE',
+              Parm002: '1',
               Parm003: 'Volts',
-              Parm004: null
+              Parm004: ''
             },
             Element: {
               Type: 'TableRow',
@@ -21777,47 +33064,9 @@ TagConfig = (function(superClass) {
             Label: 'Volts Out Phase C',
             DataType: 'Float',
             Parameters: {
-              Parm001: true,
-              Parm002: 1,
+              Parm001: 'TRUE',
+              Parm002: '1',
               Parm003: 'Volts',
-              Parm004: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          }
-        }
-      },
-      pbb_level_detail_widget: {
-        remove_tags: {
-          'pbb_terminal_door': 'pbb_terminal_door'
-        }
-      },
-      pca_summary_widget: {
-        remove_tags: {
-          'pca_ambient_humidity': 'pca_ambient_humidity',
-          'pca_comp_stage_1': 'pca_comp_stage_1',
-          'pca_comp_stage_2': 'pca_comp_stage_2',
-          'pca_bridge_damper': 'pca_bridge_damper',
-          'pca_bridge_air': 'pca_bridge_air',
-          'pca_pump_cond': 'pca_pump_cond',
-          'pca_suction_pressure_1': 'pca_suction_pressure_1',
-          'pca_suction_pressure_2': 'pca_suction_pressure_2',
-          'pca_hot_gas_1': 'pca_hot_gas_1',
-          'pca_hot_gas_2': 'pca_hot_gas_2'
-        },
-        add_tags: {
-          pca_egw_inlet_temp: {
-            Tag: 'PCA.EGW_INLET_TEMP',
-            Label: 'EGW Valve Inlet Temp',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: 'TRUE',
-              Parm002: '2',
-              Parm003: '#{1} F',
               Parm004: ''
             },
             Element: {
@@ -21827,48 +33076,14 @@ TagConfig = (function(superClass) {
               Object: null
             }
           },
-          pca_egw_outlet_temp: {
-            Tag: 'PCA.EGW_OUTLET_TEMP',
-            Label: 'EGW Valve Outlet Temp',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: 'TRUE',
-              Parm002: '2',
-              Parm003: '#{1} F',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_egw_interstage_temp: {
-            Tag: 'PCA.EGW_INTERSTAGE_TEMP',
-            Label: 'EGW Valve Interstage Temp',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: 'TRUE',
-              Parm002: '2',
-              Parm003: '#{1} F',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_flow_meter_square: {
-            Tag: 'PCA.FLOW_METER_SQUARE',
-            Label: 'CHW Flow',
+          gpu_pm_input_phasea_v: {
+            Tag: 'GPU.RVINA',
+            Label: 'Volts In Phase A',
             DataType: 'Float',
             Parameters: {
               Parm001: 'TRUE',
               Parm002: '1',
-              Parm003: '',
+              Parm003: 'Volts',
               Parm004: ''
             },
             Element: {
@@ -21878,62 +33093,14 @@ TagConfig = (function(superClass) {
               Object: null
             }
           },
-          pca_strip_heat_on: {
-            Tag: 'PCA.STRIP_HEAT_ON',
-            Label: 'Strip Heat On',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_air_filter_dp: {
-            Tag: 'PCA.AIR_FILTER_DP',
-            Label: 'Air Filter DP',
+          gpu_pm_input_phaseb_v: {
+            Tag: 'GPU.RVINB',
+            Label: 'Volts In Phase B',
             DataType: 'Float',
             Parameters: {
               Parm001: 'TRUE',
               Parm002: '1',
-              Parm003: '',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          }
-        }
-      },
-      pca_widget: {
-        remove_tags: {
-          'pca_comp_stage_1': 'pca_comp_stage_1',
-          'pca_comp_stage_2': 'pca_comp_stage_2',
-          'pca_bridge_damper': 'pca_bridge_damper',
-          'pca_bridge_air': 'pca_bridge_air',
-          'pca_suction_pressure_1': 'pca_suction_pressure_1',
-          'pca_suction_pressure_2': 'pca_suction_pressure_2',
-          'pca_hot_gas_1': 'pca_hot_gas_1',
-          'pca_hot_gas_2': 'pca_hot_gas_2'
-        },
-        add_tags: {
-          pca_egw_inlet_temp: {
-            Tag: 'PCA.EGW_INLET_TEMP',
-            Label: 'EGW Valve Inlet Temp',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: 'TRUE',
-              Parm002: '2',
-              Parm003: '#{1} F',
+              Parm003: 'Volts',
               Parm004: ''
             },
             Element: {
@@ -21943,48 +33110,14 @@ TagConfig = (function(superClass) {
               Object: null
             }
           },
-          pca_egw_outlet_temp: {
-            Tag: 'PCA.EGW_OUTLET_TEMP',
-            Label: 'EGW Valve Outlet Temp',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: 'TRUE',
-              Parm002: '2',
-              Parm003: '#{1} F',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_egw_interstage_temp: {
-            Tag: 'PCA.EGW_INTERSTAGE_TEMP',
-            Label: 'EGW Valve Interstage Temp',
-            DataType: 'Float',
-            Parameters: {
-              Parm001: 'TRUE',
-              Parm002: '2',
-              Parm003: '#{1} F',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_flow_meter_square: {
-            Tag: 'PCA.FLOW_METER_SQUARE',
-            Label: 'CHW Flow',
+          gpu_pm_input_phasec_v: {
+            Tag: 'GPU.RVINC',
+            Label: 'Volts In Phase C',
             DataType: 'Float',
             Parameters: {
               Parm001: 'TRUE',
               Parm002: '1',
-              Parm003: '',
+              Parm003: 'Volts',
               Parm004: ''
             },
             Element: {
@@ -21994,31 +33127,14 @@ TagConfig = (function(superClass) {
               Object: null
             }
           },
-          pca_strip_heat_on: {
-            Tag: 'PCA.STRIP_HEAT_ON',
-            Label: 'Strip Heat On',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: ''
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_air_filter_dp: {
-            Tag: 'PCA.AIR_FILTER_DP',
-            Label: 'Air Filter DP',
+          gpu_pm_input_phasea_i: {
+            Tag: 'GPU.RAINA',
+            Label: 'Amps In Phase A',
             DataType: 'Float',
             Parameters: {
               Parm001: 'TRUE',
               Parm002: '1',
-              Parm003: '',
+              Parm003: 'Volts',
               Parm004: ''
             },
             Element: {
@@ -22027,303 +33143,56 @@ TagConfig = (function(superClass) {
               Class: null,
               Object: null
             }
-          }
-        }
-      },
-      pbb_system_status_widget: {
-        update_tags: {
-          pbb_status: {
-            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-            Label: '[*]PBB',
-            LebelOverride: true,
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'Docked',
-              Parm002: 'UnDocked',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
           },
-          gpu_status: {
-            Tag: 'GPU.GPUSTATUSBOOLEAN',
-            Label: '[*]GPU',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_status: {
-            Tag: 'PCA.PCASTATUS',
-            Label: '[*]PCA',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: 'TableRow',
-              ParentID: '#widgetData',
-              Class: null,
-              Object: null
-            }
-          },
-          pca_discharge_temp: {
-            Tag: 'PCA.TEMPDISCH',
-            Label: '[*]DisCharge',
+          gpu_pm_input_phaseb_i: {
+            Tag: 'GPU.RAINB',
+            Label: 'Amps In Phase B',
             DataType: 'Float',
             Parameters: {
-              Parm001: true,
-              Parm002: 2,
-              Parm003: '#{1} F',
-              Parm004: null
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Volts',
+              Parm004: ''
             },
             Element: {
               Type: 'TableRow',
               ParentID: '#widgetData',
-              Class: 'DisCharge',
-              Object: null
-            }
-          },
-          pca_mode_cooling: {
-            Tag: 'PCA.MODE_COOLING',
-            Label: 'Cooling Mode',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
               Class: null,
               Object: null
             }
           },
-          pca_mode_heating: {
-            Tag: 'PCA.MODE_HEATING',
-            Label: 'Heating Mode',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          }
-        }
-      },
-      pbb_pca_gpu_status_widget: {
-        add_tags: {
-          system_perfect_hookup: {
-            Tag: 'System.PERFECT_HOOKUP',
-            Label: 'Perfect Hookup',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          },
-          system_out_of_service: {
-            Tag: 'System._OUT_OF_SERVICE',
-            Label: 'Out of Service',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          },
-          system_quality: {
-            Tag: 'System._QUALITY',
-            Label: 'Bad Quality',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          }
-        },
-        update_tags: {
-          pbb_docked: {
-            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-            Label: '[*]Docked',
-            LebelOverride: true,
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'Docked',
-              Parm002: 'UnDocked',
-              Parm003: 'Docked',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          },
-          pbb_status: {
-            Tag: 'PBB.AIRCRAFTDOCKEDCALCULATION',
-            Label: '[*]PBB',
-            LebelOverride: true,
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: '',
-              Parm002: '',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          gpu_status: {
-            Tag: 'GPU.GPUSTATUSBOOLEAN',
-            Label: '[*]GPU',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          pca_status: {
-            Tag: 'PCA.PCASTATUS',
-            Label: '[*]PCA',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: 'On',
-              Parm002: 'Off',
-              Parm003: 'ok',
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: null,
-              Object: null
-            }
-          },
-          pca_discharge_temp: {
-            Tag: 'PCA.TEMPDISCH',
-            Label: '[*]DisCharge',
+          gpu_pm_input_phasec_i: {
+            Tag: 'GPU.RAINC',
+            Label: 'Amps In Phase C',
             DataType: 'Float',
             Parameters: {
-              Parm001: true,
-              Parm002: 2,
-              Parm003: '#{1} F',
-              Parm004: null
+              Parm001: 'TRUE',
+              Parm002: '1',
+              Parm003: 'Volts',
+              Parm004: ''
             },
             Element: {
-              Type: null,
-              ParentID: null,
+              Type: 'TableRow',
+              ParentID: '#widgetData',
               Class: null,
               Object: null
             }
           },
-          pca_mode_cooling: {
-            Tag: 'PCA.MODE_COOLING',
-            Label: 'Cooling Mode',
+          gpu_by_pass: {
+            Tag: 'GPU.BYPASS',
+            Label: 'ByPass',
             DataType: 'Boolean',
             Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
+              Parm001: 'Down',
+              Parm002: 'Up',
+              Parm003: 'ok',
               Parm004: null,
               Parm005: null
             },
             Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
-              Object: null
-            }
-          },
-          pca_mode_heating: {
-            Tag: 'PCA.MODE_HEATING',
-            Label: 'Heating Mode',
-            DataType: 'Boolean',
-            Parameters: {
-              Parm001: null,
-              Parm002: null,
-              Parm003: null,
-              Parm004: null,
-              Parm005: null
-            },
-            Element: {
-              Type: null,
-              ParentID: null,
-              Class: 'no_row',
+              Type: 'TableRow',
+              ParentID: '#widgetData',
+              Class: null,
               Object: null
             }
           }
@@ -22544,7 +33413,7 @@ TagConfig = (function(superClass) {
       }
 
       /* LOOP:Get Tags */
-      modList = ["use_tags", "add_tags", "update_tags", "remove_tags", "remove_all"];
+      modList = ["remove_all", "remove_tags", "add_tags", "update_tags", "use_tags"];
       found_use = false;
       remove_all = false;
       for (key in groupList) {
@@ -22559,7 +33428,7 @@ TagConfig = (function(superClass) {
             property = getProperty(this.constructor.clients[Site_Code], lookupProps);
             if (property !== void 0) {
               switch (mod) {
-                case "" + (modList.slice(0, 1)):
+                case "" + (modList.slice(4, 5)):
                   if (!remove_all) {
                     found_use = true;
                     this.TagData = [];
@@ -22569,8 +33438,8 @@ TagConfig = (function(superClass) {
                     }
                   }
                   break;
-                case "" + (modList.slice(1, 2)):
                 case "" + (modList.slice(2, 3)):
+                case "" + (modList.slice(3, 4)):
                   if (!found_use && !remove_all) {
                     for (key in property) {
                       data = property[key];
@@ -22578,7 +33447,7 @@ TagConfig = (function(superClass) {
                     }
                   }
                   break;
-                case "" + (modList.slice(3, 4)):
+                case "" + (modList.slice(1, 2)):
                   if (!found_use && !remove_all) {
                     for (key in property) {
                       data = property[key];
@@ -22586,7 +33455,7 @@ TagConfig = (function(superClass) {
                     }
                   }
                   break;
-                case "" + (modList.slice(4, 5)):
+                case "" + (modList.slice(0, 1)):
                   remove_all = true;
                   this.TagData = [];
               }
@@ -22945,27 +33814,31 @@ BaseCollection = (function(superClass) {
 
   BaseCollection.prototype.moveup = function(model) {
     var index;
-    index = this.indexOf(model);
+    index = App.session.attributes["dashboards"].indexOf(model.id);
     if (index > 0) {
+      App.session.attributes["dashboards"].splice(index - 1, 0, App.session.attributes["dashboards"].splice(index, 1)[0]);
       this.remove(model, {
         silent: true
       });
-      return this.add(model, {
+      this.add(model, {
         at: index - 1
       });
+      return model.save();
     }
   };
 
   BaseCollection.prototype.movedn = function(model) {
     var index;
-    index = this.indexOf(model);
+    index = App.session.attributes["dashboards"].indexOf(model.id);
     if (index < this.models.length) {
+      App.session.attributes["dashboards"].splice(index + 1, 0, App.session.attributes["dashboards"].splice(index, 1)[0]);
       this.remove(model, {
         silent: true
       });
-      return this.add(model, {
+      this.add(model, {
         at: index + 1
       });
+      return model.save();
     }
   };
 
@@ -23339,14 +34212,14 @@ Session = (function(superClass) {
   };
 
   Session.save_session = function() {
-    var d, dashboards, i, len, ref;
+    var d, dashboards, j, len, ref;
     App.store.set("user_ts", new Date());
     App.store.set("session", App.session);
     if (App.dashboards != null) {
       dashboards = [];
       ref = App.dashboards.models;
-      for (i = 0, len = ref.length; i < len; i++) {
-        d = ref[i];
+      for (j = 0, len = ref.length; j < len; j++) {
+        d = ref[j];
         dashboards.push(d.id);
       }
       App.session.attributes["dashboards"] = dashboards;
@@ -23373,8 +34246,30 @@ Session = (function(superClass) {
     App.dashboards.fetch({
       success: (function(_this) {
         return function(data, status, xhr) {
+          var a, d, i, idx, j, len, ref, ud;
           if (success) {
-            return success(data, status, xhr);
+            if (App.session.attributes["dashboards"] != null) {
+              d = [];
+              ref = App.session.attributes["dashboards"];
+              for (idx = j = 0, len = ref.length; j < len; idx = ++j) {
+                ud = ref[idx];
+                a = ((function() {
+                  var k, len1, ref1, results;
+                  ref1 = data.models;
+                  results = [];
+                  for (k = 0, len1 = ref1.length; k < len1; k++) {
+                    i = ref1[k];
+                    if (i.id === ud) {
+                      results.push(i);
+                    }
+                  }
+                  return results;
+                })())[0];
+                d.push(a);
+              }
+              data.models = d;
+            }
+            return success(d, status, xhr);
           }
         };
       })(this)
@@ -23446,7 +34341,6 @@ Session = (function(superClass) {
       delete user.iss;
       delete user.iat;
       delete user.exp;
-      user.dashboards = [];
       delete App.session.attributes["password"];
       App.session = new User(user);
     } else {
@@ -23661,18 +34555,18 @@ User = (function(superClass) {
   };
 
   User.prototype.persist = function() {
-    var c, claims, i, j, len, len1, r, ref, ref1, roles;
+    var c, claims, j, k, len, len1, r, ref, ref1, roles;
     roles = [];
     ref = this.roles.models;
-    for (i = 0, len = ref.length; i < len; i++) {
-      r = ref[i];
+    for (j = 0, len = ref.length; j < len; j++) {
+      r = ref[j];
       roles.push(r.id);
     }
     this.attributes["roles"] = roles;
     claims = [];
     ref1 = this.claims.models;
-    for (j = 0, len1 = ref1.length; j < len1; j++) {
-      c = ref1[j];
+    for (k = 0, len1 = ref1.length; k < len1; k++) {
+      c = ref1[k];
       claims.push(c.id);
     }
     this.attributes["claims"] = claims;
@@ -23680,11 +34574,11 @@ User = (function(superClass) {
   };
 
   User.prototype.set_properties = function() {
-    var c, claims, i, j, len, len1, r, ref, ref1, roles;
+    var c, claims, j, k, len, len1, r, ref, ref1, roles;
     claims = [];
     ref = this.get('claims');
-    for (i = 0, len = ref.length; i < len; i++) {
-      c = ref[i];
+    for (j = 0, len = ref.length; j < len; j++) {
+      c = ref[j];
       claims.push({
         _id: c
       });
@@ -23694,8 +34588,8 @@ User = (function(superClass) {
     this.claims.on("change", this.persist);
     roles = [];
     ref1 = this.get('roles');
-    for (j = 0, len1 = ref1.length; j < len1; j++) {
-      r = ref1[j];
+    for (k = 0, len1 = ref1.length; k < len1; k++) {
+      r = ref1[k];
       roles.push({
         _id: r
       });
@@ -23711,15 +34605,14 @@ User = (function(superClass) {
     this.set_properties();
     this.on("change:claims", this.set_properties);
     this.on("change:roles", this.set_properties);
-    this.on("change:dashboards", this.set_properties);
     this;
   }
 
   User.prototype.has_role = function(roleid) {
-    var i, len, r, ref;
+    var j, len, r, ref;
     ref = this.roles.models;
-    for (i = 0, len = ref.length; i < len; i++) {
-      r = ref[i];
+    for (j = 0, len = ref.length; j < len; j++) {
+      r = ref[j];
       if (r.id === roleid) {
         return true;
       }
@@ -23728,10 +34621,10 @@ User = (function(superClass) {
   };
 
   User.prototype.is_global_admin = function() {
-    var ar, i, len, ref;
+    var ar, j, len, ref;
     ref = App.roles.models;
-    for (i = 0, len = ref.length; i < len; i++) {
-      ar = ref[i];
+    for (j = 0, len = ref.length; j < len; j++) {
+      ar = ref[j];
       if (!ar.get("siteId") && ar.get("name") === "admin" && this.has_role(ar.id)) {
         return true;
         break;
@@ -23741,13 +34634,13 @@ User = (function(superClass) {
   };
 
   User.prototype.is_site_admin = function(sid) {
-    var ar, i, len, ref, tsid;
+    var ar, j, len, ref, tsid;
     if (this.is_global_admin()) {
       return true;
     }
     ref = App.roles.models;
-    for (i = 0, len = ref.length; i < len; i++) {
-      ar = ref[i];
+    for (j = 0, len = ref.length; j < len; j++) {
+      ar = ref[j];
       tsid = ar.get("siteId");
       if ((tsid == null) || tsid === '') {
         continue;
@@ -23761,10 +34654,10 @@ User = (function(superClass) {
   };
 
   User.prototype.has_site = function(sid) {
-    var i, len, ref, s;
+    var j, len, ref, s;
     ref = this.sites();
-    for (i = 0, len = ref.length; i < len; i++) {
-      s = ref[i];
+    for (j = 0, len = ref.length; j < len; j++) {
+      s = ref[j];
       if (s === sid) {
         return true;
       }
@@ -23773,21 +34666,21 @@ User = (function(superClass) {
   };
 
   User.prototype.sites = function() {
-    var acc, ar, i, j, k, l, len, len1, len2, len3, ref, ref1, ref2, ref3, s, sh, sid, sites, ur;
+    var acc, ar, j, k, l, len, len1, len2, len3, m, ref, ref1, ref2, ref3, s, sh, sid, sites, ur;
     sites = [];
     sh = {};
     ref = App.accounts.models;
-    for (i = 0, len = ref.length; i < len; i++) {
-      acc = ref[i];
+    for (j = 0, len = ref.length; j < len; j++) {
+      acc = ref[j];
       ref1 = acc.sites.models;
-      for (j = 0, len1 = ref1.length; j < len1; j++) {
-        s = ref1[j];
+      for (k = 0, len1 = ref1.length; k < len1; k++) {
+        s = ref1[k];
         ref2 = this.roles.models;
-        for (k = 0, len2 = ref2.length; k < len2; k++) {
-          ur = ref2[k];
+        for (l = 0, len2 = ref2.length; l < len2; l++) {
+          ur = ref2[l];
           ref3 = App.roles.models;
-          for (l = 0, len3 = ref3.length; l < len3; l++) {
-            ar = ref3[l];
+          for (m = 0, len3 = ref3.length; m < len3; m++) {
+            ar = ref3[m];
             if (ar.id === ur.id) {
               sid = ar.get('siteId');
               if ((sid != null) && s.id === sid && !sh[s.id]) {
@@ -23804,40 +34697,112 @@ User = (function(superClass) {
   };
 
   User.prototype.check_widget_roles = function(sroles) {
-    var app_role, ar, i, j, k, l, len, len1, len2, len3, r, ref, ref1, ref2, role, rp, s, sid, type, ur;
-    for (i = 0, len = sroles.length; i < len; i++) {
-      r = sroles[i];
-      rp = r.split(':');
-      type = rp[0];
-      role = rp[1];
-      app_role = null;
-      ref = App.roles.models;
-      for (j = 0, len1 = ref.length; j < len1; j++) {
-        ar = ref[j];
-        sid = ar.get("siteId");
-        if (ar.get('name') === role) {
-          if ((type === 'global' && (sid == null)) || (type === 'site' && sid)) {
-            app_role = ar;
-            break;
-          } else if (type !== "global" && type !== "site") {
-            ref1 = App.accounts.models[0].sites.models;
-            for (k = 0, len2 = ref1.length; k < len2; k++) {
-              s = ref1[k];
-              if (s.get("code").toLowerCase() === type && (sid != null) && sid === s.id) {
-                app_role = ar;
-                break;
-              }
-            }
-          }
+    var found, gr, grole, i, j, k, l, len, len1, len2, pg, ps, r, ref, rg, rs, sr, srole, trole;
+    pg = (function() {
+      var j, len, results;
+      results = [];
+      for (j = 0, len = sroles.length; j < len; j++) {
+        i = sroles[j];
+        if (i.split(':')[0] === 'global') {
+          results.push(i);
         }
       }
-      if (app_role) {
-        ref2 = this.roles.models;
-        for (l = 0, len3 = ref2.length; l < len3; l++) {
-          ur = ref2[l];
-          if (ur.id === app_role.id) {
-            return true;
+      return results;
+    })();
+    ps = (function() {
+      var j, len, results;
+      results = [];
+      for (j = 0, len = sroles.length; j < len; j++) {
+        i = sroles[j];
+        if (i.split(':')[0] !== 'global') {
+          results.push(i);
+        }
+      }
+      return results;
+    })();
+    rg = (function() {
+      var j, len, ref, results;
+      ref = App.roles.models;
+      results = [];
+      for (j = 0, len = ref.length; j < len; j++) {
+        i = ref[j];
+        if (i.get('siteId') === void 0) {
+          results.push(i);
+        }
+      }
+      return results;
+    })();
+    rs = (function() {
+      var j, len, ref, results;
+      ref = App.roles.models;
+      results = [];
+      for (j = 0, len = ref.length; j < len; j++) {
+        i = ref[j];
+        if (i.get('siteId') !== void 0) {
+          results.push(i);
+        }
+      }
+      return results;
+    })();
+    ref = App.session.attributes.roles;
+    for (j = 0, len = ref.length; j < len; j++) {
+      r = ref[j];
+      for (k = 0, len1 = pg.length; k < len1; k++) {
+        gr = pg[k];
+        grole = gr.split(':')[1];
+        trole = (function() {
+          var l, len2, results;
+          results = [];
+          for (l = 0, len2 = rg.length; l < len2; l++) {
+            i = rg[l];
+            if (i.get('name') === grole) {
+              results.push(i);
+            }
           }
+          return results;
+        })();
+        found = (function() {
+          var l, len2, results;
+          results = [];
+          for (l = 0, len2 = trole.length; l < len2; l++) {
+            i = trole[l];
+            if (i.id === r) {
+              results.push(i);
+            }
+          }
+          return results;
+        })();
+        if ((found != null) && found.length > 0) {
+          return true;
+        }
+      }
+      for (l = 0, len2 = ps.length; l < len2; l++) {
+        sr = ps[l];
+        srole = sr.split(':')[1];
+        trole = (function() {
+          var len3, m, results;
+          results = [];
+          for (m = 0, len3 = rs.length; m < len3; m++) {
+            i = rs[m];
+            if (i.get('name') === srole) {
+              results.push(i);
+            }
+          }
+          return results;
+        })();
+        found = (function() {
+          var len3, m, results;
+          results = [];
+          for (m = 0, len3 = trole.length; m < len3; m++) {
+            i = trole[m];
+            if (i.id === r) {
+              results.push(i);
+            }
+          }
+          return results;
+        })();
+        if ((found != null) && found.length > 0) {
+          return true;
         }
       }
     }
@@ -23845,19 +34810,19 @@ User = (function(superClass) {
   };
 
   User.prototype.check_claim = function(claim, site) {
-    var ac, i, j, len, len1, ref, ref1, s, sid, uc;
+    var ac, j, k, len, len1, ref, ref1, s, sid, uc;
     s = site != null ? OPCManager.get_site(site) : null;
     sid = s != null ? s.id : null;
     if (App.claims == null) {
       return false;
     }
     ref = App.claims.models;
-    for (i = 0, len = ref.length; i < len; i++) {
-      ac = ref[i];
+    for (j = 0, len = ref.length; j < len; j++) {
+      ac = ref[j];
       if ((claim === ac.get('name') || claim === ac.id) && (site === ac.get('siteId'))) {
         ref1 = this.claims.models;
-        for (j = 0, len1 = ref1.length; j < len1; j++) {
-          uc = ref1[j];
+        for (k = 0, len1 = ref1.length; k < len1; k++) {
+          uc = ref1[k];
           if (ac.id === uc.id) {
             return true;
           }
@@ -23869,19 +34834,19 @@ User = (function(superClass) {
   };
 
   User.prototype.check_role = function(role, site) {
-    var ar, i, j, len, len1, ref, ref1, s, sid, ur;
+    var ar, j, k, len, len1, ref, ref1, s, sid, ur;
     s = site != null ? OPCManager.get_site(site) : null;
     sid = s != null ? s.id : null;
     if (App.roles == null) {
       return false;
     }
     ref = App.roles.models;
-    for (i = 0, len = ref.length; i < len; i++) {
-      ar = ref[i];
+    for (j = 0, len = ref.length; j < len; j++) {
+      ar = ref[j];
       if ((role === ar.get('name') || role === ar.id) && (site === ar.get('siteId'))) {
         ref1 = this.roles.models;
-        for (j = 0, len1 = ref1.length; j < len1; j++) {
-          ur = ref1[j];
+        for (k = 0, len1 = ref1.length; k < len1; k++) {
+          ur = ref1[k];
           if (ar.id === ur.id) {
             return true;
           }
@@ -24881,7 +35846,7 @@ DashboardSideView = (function(superClass) {
   };
 
   DashboardSideView.prototype.show_link = function(e) {
-    var d, dlink, i, len, link, ref;
+    var d, dlink, j, len, link, ref;
     if (e != null) {
       e.preventDefault();
     }
@@ -24891,8 +35856,8 @@ DashboardSideView = (function(superClass) {
       return null;
     }
     ref = this.collection.models;
-    for (i = 0, len = ref.length; i < len; i++) {
-      d = ref[i];
+    for (j = 0, len = ref.length; j < len; j++) {
+      d = ref[j];
       if (dlink.hasClass("d_" + d.id)) {
         $('li', this.ui.dashboard_list).removeClass('active');
         dlink.addClass('active');
@@ -24927,18 +35892,19 @@ DashboardSideView = (function(superClass) {
     d = new Dashboard({
       userId: App.session.id
     });
+    App.session.attributes["dashboards"].splice(0, 0, d.id);
     return this.show_dash_modal(d, 'add');
   };
 
   DashboardSideView.prototype.resolve_dash = function(e, pre) {
-    var d, i, len, link, ref;
+    var d, j, len, link, ref;
     if (e != null) {
       e.preventDefault();
     }
     link = $(e.target).closest('a');
     ref = this.collection.models;
-    for (i = 0, len = ref.length; i < len; i++) {
-      d = ref[i];
+    for (j = 0, len = ref.length; j < len; j++) {
+      d = ref[j];
       if (link.hasClass(pre + "_" + d.id)) {
         return d;
       }
@@ -24992,6 +35958,7 @@ DashboardSideView = (function(superClass) {
         return function() {
           var did;
           did = d.id;
+          App.session.attributes["dashboards"].splice(App.session.attributes["dashboards"].indexOf(did), 1);
           _this.collection.remove(d);
           d.destroy();
           if (did === App.current_dash) {
@@ -25020,15 +35987,49 @@ DashboardSideView = (function(superClass) {
   };
 
   DashboardSideView.prototype.build_list = function() {
-    var d, dl, hh, i, idx, len, ref, results;
+    var d, dl, hh, i, idx, j, len, ref, results, ud;
+    if (!(App.session.attributes["dashboards"].length === this.collection.models.length)) {
+      return;
+    }
+    d = ((function() {
+      var j, len, ref, results;
+      ref = this.collection.models;
+      results = [];
+      for (j = 0, len = ref.length; j < len; j++) {
+        i = ref[j];
+        if (typeof i.id === 'undefined') {
+          results.push(i);
+        }
+      }
+      return results;
+    }).call(this))[0];
+    if ((d != null) || (d != null ? d.length : void 0) > 0) {
+      return;
+    }
+    if (typeof App.session.attributes["dashboards"][0] === 'undefined') {
+      App.session.attributes["dashboards"][0] = this.collection.models[0].id;
+    }
     $('li.dashboard-link', this.ui.dashboard_list).remove();
-    ref = this.collection.models;
+    ref = App.session.attributes["dashboards"];
     results = [];
-    for (idx = i = 0, len = ref.length; i < len; idx = ++i) {
-      d = ref[idx];
+    for (idx = j = 0, len = ref.length; j < len; idx = ++j) {
+      ud = ref[idx];
+      d = ((function() {
+        var k, len1, ref1, results1;
+        ref1 = this.collection.models;
+        results1 = [];
+        for (k = 0, len1 = ref1.length; k < len1; k++) {
+          i = ref1[k];
+          if (i.id === ud) {
+            results1.push(i);
+          }
+        }
+        return results1;
+      }).call(this))[0];
       hh = "<li class='dashboard-link d_" + d.id + "' title='" + (d.get('name')) + "'>\n  <a href='#' class='dash_link'><i class='fa fa-th-large'></i> <span>" + (d.get('name')) + "</span></a>\n  <div class='controls'>\n    <a href='#' class='moveup moveup_" + d.id + "'><i class='fa fa-caret-up'></i></a>\n    <a href='#' class='movedn movedn_" + d.id + "'><i class='fa fa-caret-down'></i></a>\n    <a href='#' class='edit edit_" + d.id + "'><i class='fa fa-pencil-square'></i></a>\n    <a href='#' class='delete delete_" + d.id + "'><i class='fa fa-times-circle'></i></a>\n  </div>\n</li>";
       dl = $(hh);
-      results.push(this.$('#dashboard-list').append(dl));
+      this.$('#dashboard-list').append(dl);
+      results.push(this);
     }
     return results;
   };
@@ -27376,7 +38377,7 @@ AdvancedalarmWidgetView = (function(superClass) {
         columns: [
           {
             name: "AlarmDateTime",
-            text: "Alarm Date/Time",
+            text: "Alarm DateTime",
             type: "datetime",
             visible: true,
             sort: 'desc',
@@ -27461,7 +38462,7 @@ AdvancedalarmWidgetView = (function(superClass) {
     this.ui.alarmGrid.jqGrid({
       datatype: "local",
       data: defaultData,
-      colNames: ['Acked', 'Alarm Date/Time', 'Alarm Value', 'Group', 'Priority', 'Text'],
+      colNames: ['Acked', 'Alarm DateTime', 'Alarm Value', 'Group', 'Priority', 'Text'],
       colModel: [
         {
           name: 'Acked',
@@ -27471,14 +38472,15 @@ AdvancedalarmWidgetView = (function(superClass) {
           width: 10,
           hidden: true
         }, {
-          name: "Alarm Date/Time",
-          index: "Alarm Date/Time",
+          name: "Alarm DateTime",
+          index: "Alarm DateTime",
           width: 140,
           align: "center",
           sorttype: "date",
           formatter: "date",
           formatoptions: {
-            newformat: "m/d/Y h:i A"
+            srcformat: "m/d/Y g:i A",
+            newformat: "m/d/Y g:i A"
           }
         }, {
           name: 'Alarm Value',
@@ -27510,7 +38512,7 @@ AdvancedalarmWidgetView = (function(superClass) {
       },
       rowNum: 10,
       rowList: [5, 10, 20, 50],
-      sortname: 'Alarm Date/Time',
+      sortname: 'Alarm DateTime',
       sortorder: 'asc',
       viewrecords: true,
       height: "100%",
@@ -27561,14 +38563,14 @@ AdvancedalarmWidgetView = (function(superClass) {
     alarmJson = this.$("table.opc-alarm").tableToJSON();
     for (idx in alarmJson) {
       data = alarmJson[idx];
-      data['Alarm Date/Time'] = data['Alarm Date/Time'].substr(13);
+      data['Alarm DateTime'] = data['Alarm DateTime'].substr(13);
     }
     gridWidth = this.$('table.opc-alarm').width() - 5;
     this.ui.alarmGrid.setGridWidth(gridWidth);
     this.ui.alarmGrid.jqGrid('setGridParam', {
       data: alarmJson
     });
-    this.ui.alarmGrid.jqGrid('setColProp', 'Alarm Date/Time', {
+    this.ui.alarmGrid.jqGrid('setColProp', 'Alarm DateTime', {
       width: 140
     });
     this.ui.alarmGrid.jqGrid('setColProp', 'Text', {
@@ -27580,17 +38582,17 @@ AdvancedalarmWidgetView = (function(superClass) {
     this.$('table.opc-alarm > thead > tr> th:nth-child(3)').hide();
     this.$("table.opc-alarm > tbody > tr").each((function(_this) {
       return function(idx, element) {
-        if (_this.$("td:eq(2)", element).text() === "0") {
-          _this.$("td:eq(2)", element).closest("tr").toggleClass("notification", true);
+        if ($("td:eq(2)", element).text() === "0") {
+          $("td:eq(2)", element).closest("tr").toggleClass("notification", true);
         }
-        if (_this.$("td:eq(2)", element).text() === "100") {
-          _this.$("td:eq(2)", element).closest("tr").toggleClass("alarm", true);
+        if ($("td:eq(2)", element).text() === "100") {
+          $("td:eq(2)", element).closest("tr").toggleClass("alarm", true);
         }
-        if (_this.$("td:eq(2)", element).text() === "200") {
-          _this.$("td:eq(2)", element).closest("tr").toggleClass("critical", true);
+        if ($("td:eq(2)", element).text() === "200") {
+          $("td:eq(2)", element).closest("tr").toggleClass("critical", true);
         }
-        if (_this.$("td:eq(2)", element).text() === "999") {
-          return _this.$("td:eq(2)", element).closest("tr").toggleClass("bad-quality", true);
+        if ($("td:eq(2)", element).text() === "999") {
+          return $("td:eq(2)", element).closest("tr").toggleClass("bad-quality", true);
         }
       };
     })(this));
@@ -27751,7 +38753,320 @@ window.AdvancedalarmWidgetView = AdvancedalarmWidgetView;
 
 module.exports = AdvancedalarmWidgetView;
 
-},{"./iops_widget_view":64}],57:[function(require,module,exports){
+},{"./iops_widget_view":65}],57:[function(require,module,exports){
+var Airportoverview2dWidgetView, IOPSWidgetView, Marionette,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+Marionette = require('marionette');
+
+IOPSWidgetView = require('./iops_widget_view');
+
+Airportoverview2dWidgetView = (function(superClass) {
+  extend(Airportoverview2dWidgetView, superClass);
+
+  function Airportoverview2dWidgetView() {
+    this.check_heartbeat = bind(this.check_heartbeat, this);
+    this.start_heartbeat = bind(this.start_heartbeat, this);
+    this.set_model = bind(this.set_model, this);
+    this.data_update = bind(this.data_update, this);
+    return Airportoverview2dWidgetView.__super__.constructor.apply(this, arguments);
+  }
+
+  Airportoverview2dWidgetView.prototype.template = "widgets/airport_overview_2d_widget";
+
+  Airportoverview2dWidgetView.prototype.classID = 'airport_overview_2d_widget';
+
+  Airportoverview2dWidgetView.prototype.className = 'widget-outer box box-primary airport_overview_2d_widget';
+
+  Airportoverview2dWidgetView.prototype.ui = {
+    terminal: 'input#terminal',
+    zone: 'input#zone',
+    display_prefix: 'input#display_prefix',
+    gate: 'input#gate',
+    site: 'select#site',
+    wtitle: 'h3.box-title',
+    display: '.display',
+    content: '.content',
+    docked: 'i#docked',
+    alarms: 'i#alarms',
+    warnings: 'i#warnings'
+  };
+
+  Airportoverview2dWidgetView.layout = {
+    sx: 9,
+    sy: 9
+  };
+
+  Airportoverview2dWidgetView.prototype.tags = {};
+
+  Airportoverview2dWidgetView.prototype.site_refresh = 50000;
+
+  Airportoverview2dWidgetView.prototype.refId = 0;
+
+  Airportoverview2dWidgetView.prototype.IsUpdatingSettings = false;
+
+  Airportoverview2dWidgetView.prototype.IsPageLoading = true;
+
+  Airportoverview2dWidgetView.prototype.update = function() {
+    var c, classList, g, gate, i, j, lbl, len, len1, ref, s, t, tags, term, terminals, z, zone;
+    if (this.IsUpdatingSettings || this.IsPageLoading) {
+      return null;
+    }
+    s = this.update_settings({
+      prefix: 'Airport.#{@site_code}.',
+      cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
+    });
+    if (this.site_code == null) {
+      return null;
+    }
+    if ((s != null) && !!s.site) {
+      lbl = this.site_code + ": Airport Overview - 2D";
+      this.ui.wtitle.html(lbl);
+      classList = $(this.el).attr('class').split(/\s+/);
+      for (i = 0, len = classList.length; i < len; i++) {
+        c = classList[i];
+        if (c.endsWith('_account')) {
+          $(this.el).removeClass(c);
+        }
+      }
+      $(this.el).addClass(this.site_code + "_account");
+      this.gateData = [];
+      tags = [];
+      terminals = this.site_settings.zones;
+      for (t in terminals) {
+        term = terminals[t];
+        for (z in term) {
+          zone = term[z];
+          for (g in zone) {
+            gate = {
+              Number: "" + g,
+              Terminal: "" + t,
+              Zone: "" + z,
+              Tag_gate_alarm: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.Alarm._HasAlarms",
+              Tag_gate_autolevel: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.AIRCRAFTDOCKEDCALCULATION",
+              Tag_gate_docked: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.AIRCRAFTDOCKEDCALCULATION",
+              Tag_gate_critical: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.Alarm._HasCriticalAlarms",
+              Tag_gate_perfect_hookup: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".System.Perfect_Hookup",
+              Tag_system_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".System._OUT_OF_SERVICE",
+              Tag_gpu_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".GPU._OUT_OF_SERVICE",
+              Tag_pbb_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB._OUT_OF_SERVICE",
+              Tag_pca_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PCA._OUT_OF_SERVICE",
+              Tag_pbb_quality: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB._QUALITY"
+            };
+            this.gateData.push(gate);
+            tags.push(gate.Tag_gate_alarm + ".Value");
+            tags.push(gate.Tag_gate_autolevel + ".Value");
+            tags.push(gate.Tag_gate_docked + ".Value");
+            tags.push(gate.Tag_gate_critical + ".Value");
+            tags.push(gate.Tag_gate_perfect_hookup + ".Value");
+            tags.push(gate.Tag_system_out_of_service + ".Value");
+            tags.push(gate.Tag_gpu_out_of_service + ".Value");
+            tags.push(gate.Tag_pbb_out_of_service + ".Value");
+            tags.push(gate.Tag_pca_out_of_service + ".Value");
+            tags.push(gate.Tag_pbb_quality + ".Value");
+          }
+        }
+      }
+      this.$("#Airport_Overview").remove();
+      this.$(".display").append("<div id='Airport_Overview' class='" + this.site_code + "_Term_Overview'>\n  <div id='layout_container'>\n    <img id='layout' src='img/airport/" + this.site_code + "-2D/" + this.site_code + "_Term_Overview.png'></img>\n  </div>\n</div>");
+      ref = this.gateData;
+      for (j = 0, len1 = ref.length; j < len1; j++) {
+        g = ref[j];
+        this.$("#layout_container").append("<div id='Airport_Gate_" + g.Number + "_a'><div id='Airport_Gate_" + g.Number + "_icon'></div><div id='Airport_Gate_" + g.Number + "_status'><div id='Airport_Gate_" + g.Number + "_plane'></div>");
+      }
+      App.opc.add_tags(this.site_code, tags);
+      this.opc = App.opc.connections[this.site_code];
+      if (this.refId === 0) {
+        this.refId = App.opc.add_tags(this.site_code, tags);
+        App.vent.on("opc:data:" + this.site_code, this.data_update);
+        this.opc = App.opc.connections[this.site_code];
+        return this.start_heartbeat();
+      }
+    }
+  };
+
+  Airportoverview2dWidgetView.prototype.data_update = function(data) {
+    var alarm, autolevel, badQuality, critical, docked, g, i, len, oosGPU, oosPBB, oosPCA, outOfService, perfectHookup, qa, qal, qbq, qc, qd, qgpuos, qos, qpbbos, qpcaos, qpd, qsysuos, ref, s;
+    s = this.model.get("settings");
+    this.beat_time = new Date().getTime() + this.site_refresh;
+    ref = this.gateData;
+    for (i = 0, len = ref.length; i < len; i++) {
+      g = ref[i];
+      outOfService = null;
+      critical = null;
+      alarm = null;
+      autolevel = null;
+      docked = null;
+      perfectHookup = null;
+      badQuality = null;
+      qbq = this.opc.tags["" + g.Tag_pbb_quality].props.Value.quality;
+      if ((qbq != null) && qbq) {
+        badQuality = this.get_bool(this.opc.get_value(g.Tag_pbb_quality + ".Value"));
+        this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("bad-data", badQuality === false && qbq);
+      } else {
+        this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("bad-data", false);
+        qbq = false;
+      }
+      qsysuos = this.opc.tags["" + g.Tag_system_out_of_service].props.Value.quality;
+      if ((qsysuos != null) && qsysuos) {
+        outOfService = this.get_bool(this.opc.get_value(g.Tag_system_out_of_service + ".Value"));
+        this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("out-of-service", outOfService === true && qsysuos);
+      } else {
+        qsysuos = false;
+      }
+      qgpuos = this.opc.tags["" + g.Tag_gpu_out_of_service].props.Value.quality;
+      qpbbos = this.opc.tags["" + g.Tag_pbb_out_of_service].props.Value.quality;
+      qpcaos = this.opc.tags["" + g.Tag_pca_out_of_service].props.Value.quality;
+      qos = qgpuos || qpbbos || qpcaos;
+      if ((qos != null) && qos) {
+        oosGPU = false;
+        oosPBB = false;
+        oosPCA = false;
+        if ((qgpuos != null) && qgpuos) {
+          oosGPU = this.get_bool(this.opc.get_value(g.Tag_gpu_out_of_service + ".Value"));
+        }
+        if ((qpbbos != null) && qpbbos) {
+          oosPBB = this.get_bool(this.opc.get_value(g.Tag_pbb_out_of_service + ".Value"));
+        }
+        if ((qpcaos != null) && qpcaos) {
+          oosPCA = this.get_bool(this.opc.get_value(g.Tag_pca_out_of_service + ".Value"));
+        }
+        outOfService = oosGPU || oosPBB || oosPCA;
+        this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("out-of-service", outOfService === true && qos);
+      } else {
+        qos = false;
+      }
+      qc = this.opc.tags["" + g.Tag_gate_critical].props.Value.quality;
+      if ((qc != null) && qc) {
+        critical = this.get_bool(this.opc.get_value(g.Tag_gate_critical + ".Value"));
+        this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("critical", critical === true && qc);
+      } else {
+        qc = false;
+      }
+      qa = this.opc.tags["" + g.Tag_gate_alarm].props.Value.quality;
+      if ((qa != null) && qa) {
+        alarm = this.get_bool(this.opc.get_value(g.Tag_gate_alarm + ".Value"));
+        this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("alarm", !critical && alarm === true && qa);
+      } else {
+        qa = false;
+      }
+      qd = this.opc.tags["" + g.Tag_gate_docked].props.Value.quality;
+      if ((qd != null) && qd) {
+        docked = this.get_bool(this.opc.get_value(g.Tag_gate_docked + ".Value"));
+        this.$("#Airport_Gate_" + g.Number + "_a").toggleClass("docked", docked === true && qd);
+      } else {
+        qd = false;
+      }
+      qal = this.opc.tags["" + g.Tag_gate_autolevel].props.Value.quality;
+      if ((qal != null) && qal) {
+        autolevel = this.get_bool(this.opc.get_value(g.Tag_gate_autolevel + ".Value"));
+        this.$("#Airport_Gate_" + g.Number + "_plane").toggleClass("autolevel", autolevel === true && qal);
+      } else {
+        qal = false;
+      }
+      qpd = this.opc.tags["" + g.Tag_gate_perfect_hookup].props.Value.quality;
+      if ((qpd != null) && qpd) {
+        perfectHookup = this.get_bool(this.opc.get_value(g.Tag_gate_perfect_hookup + ".Value"));
+        this.$("#Airport_Gate_" + g.Number + "_status").toggleClass("perfect-hookup", perfectHookup === true && qpd);
+      } else {
+        qpd = false;
+      }
+    }
+    return this;
+  };
+
+  Airportoverview2dWidgetView.prototype.set_model = function() {
+    var s;
+    if (this.refId > 0) {
+      this.kill_updates(this.site_code);
+      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+        window.clearInterval(this.heartbeat_timer);
+      }
+      this.refId = 0;
+    }
+    s = _.clone(this.model.get("settings"));
+    s.site = this.$('#site').val();
+    this.site_code = OPCManager.get_site_code(s.site);
+    return this.model.set("settings", s);
+  };
+
+  Airportoverview2dWidgetView.prototype.toggle_settings = function(e) {
+    Airportoverview2dWidgetView.__super__.toggle_settings.call(this, e);
+    this.ui.display.toggle(!this.settings_visible);
+    this.IsUpdatingSettings = this.settings_visible;
+    if (this.settings_visible) {
+      return this.ui.site.chosen({
+        width: '95%'
+      });
+    } else {
+      this.IsPageLoading = false;
+      return this.update();
+    }
+  };
+
+  Airportoverview2dWidgetView.prototype.onShow = function() {
+    var settings, site;
+    settings = this.model.get('settings');
+    settings || (settings = {});
+    this.draw_selectors(settings.terminal, settings.zone, settings.gate);
+    this.$('#site').on('change', (function(_this) {
+      return function() {
+        return _this.set_model();
+      };
+    })(this));
+    site = settings.site;
+    if ((site == null) || site === '') {
+      this.toggle_settings();
+    } else {
+      this.IsPageLoading = false;
+    }
+    this.site_code = OPCManager.get_site_code(settings.site);
+    if (this.site_code != null) {
+      this.site_refresh = (OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3;
+    }
+    return this.check_init_site();
+  };
+
+  Airportoverview2dWidgetView.prototype.start = function() {
+    return this.update();
+  };
+
+  Airportoverview2dWidgetView.prototype.start_heartbeat = function() {
+    this.beat_time = new Date().getTime() + this.site_refresh;
+    $("#" + this.el.parentNode.id + " .widget-outer").toggleClass("no-heartbeat", false);
+    if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+      window.clearInterval(this.heartbeat_timer);
+    }
+    return this.heartbeat_timer = window.setInterval(((function(_this) {
+      return function() {
+        _this.check_heartbeat(_this.el.parentNode.id);
+      };
+    })(this)), this.site_refresh);
+  };
+
+  Airportoverview2dWidgetView.prototype.check_heartbeat = function(widget_id) {
+    this.curTime = new Date().getTime();
+    return $("#" + widget_id + " .widget-outer").toggleClass("no-heartbeat", this.curTime > this.beat_time);
+  };
+
+  Airportoverview2dWidgetView.prototype.onDestroy = function(arg1, arg2) {
+    if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+      window.clearInterval(this.heartbeat_timer);
+    }
+    return this.kill_updates(this.site_code);
+  };
+
+  return Airportoverview2dWidgetView;
+
+})(IOPSWidgetView);
+
+window.Airportoverview2dWidgetView = Airportoverview2dWidgetView;
+
+module.exports = Airportoverview2dWidgetView;
+
+},{"./iops_widget_view":65}],58:[function(require,module,exports){
 var AirportoverviewWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -27801,6 +39116,8 @@ AirportoverviewWidgetView = (function(superClass) {
 
   AirportoverviewWidgetView.prototype.site_refresh = 50000;
 
+  AirportoverviewWidgetView.prototype.refId = 0;
+
   AirportoverviewWidgetView.prototype.IsUpdatingSettings = false;
 
   AirportoverviewWidgetView.prototype.IsPageLoading = true;
@@ -27810,8 +39127,6 @@ AirportoverviewWidgetView = (function(superClass) {
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
-    this.IsPageLoading = false;
-    this.IsUpdatingSettings = false;
     s = this.update_settings({
       prefix: 'Airport.#{@site_code}.',
       cloud_prefix: 'RemoteSCADAHosting.Airport-#{@site_code}.'
@@ -27822,7 +39137,6 @@ AirportoverviewWidgetView = (function(superClass) {
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": Airport Overview";
       this.ui.wtitle.html(lbl);
-      this.kill_updates(this.site_code);
       classList = $(this.el).attr('class').split(/\s+/);
       for (i = 0, len = classList.length; i < len; i++) {
         c = classList[i];
@@ -27843,15 +39157,15 @@ AirportoverviewWidgetView = (function(superClass) {
               Number: "" + g,
               Terminal: "" + t,
               Zone: "" + z,
-              Tag_gate_alarm: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".Alarm._HasAlarms",
+              Tag_gate_alarm: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.Alarm._HasAlarms",
               Tag_gate_docked: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.AIRCRAFTDOCKEDCALCULATION",
-              Tag_gate_critical: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".Alarm._HasCriticalAlarms",
+              Tag_gate_critical: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB.Alarm._HasCriticalAlarms",
               Tag_gate_perfect_hookup: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".System.Perfect_Hookup",
               Tag_system_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".System._OUT_OF_SERVICE",
               Tag_gpu_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".GPU._OUT_OF_SERVICE",
               Tag_pbb_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB._OUT_OF_SERVICE",
               Tag_pca_out_of_service: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PCA._OUT_OF_SERVICE",
-              Tag_system_quality: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".System._QUALITY"
+              Tag_pbb_quality: this.cloud_prefix + "Airport." + this.site_code + ".Term" + t + ".Zone" + z + ".Gate" + g + ".PBB._QUALITY"
             };
             this.gateData.push(gate);
             tags.push(gate.Tag_gate_alarm + ".Value");
@@ -27862,7 +39176,7 @@ AirportoverviewWidgetView = (function(superClass) {
             tags.push(gate.Tag_gpu_out_of_service + ".Value");
             tags.push(gate.Tag_pbb_out_of_service + ".Value");
             tags.push(gate.Tag_pca_out_of_service + ".Value");
-            tags.push(gate.Tag_system_quality + ".Value");
+            tags.push(gate.Tag_pbb_quality + ".Value");
           }
         }
       }
@@ -27875,8 +39189,12 @@ AirportoverviewWidgetView = (function(superClass) {
       }
       App.opc.add_tags(this.site_code, tags);
       this.opc = App.opc.connections[this.site_code];
-      this.watch_updates(this.site_code);
-      return this.start_heartbeat();
+      if (this.refId === 0) {
+        this.refId = App.opc.add_tags(this.site_code, tags);
+        App.vent.on("opc:data:" + this.site_code, this.data_update);
+        this.opc = App.opc.connections[this.site_code];
+        return this.start_heartbeat();
+      }
     }
   };
 
@@ -27893,9 +39211,9 @@ AirportoverviewWidgetView = (function(superClass) {
       docked = null;
       perfectHookup = null;
       badQuality = null;
-      qbq = this.opc.tags["" + g.Tag_system_quality].props.Value.quality;
+      qbq = this.opc.tags["" + g.Tag_pbb_quality].props.Value.quality;
       if ((qbq != null) && qbq) {
-        badQuality = this.get_bool(this.opc.get_value(g.Tag_system_quality + ".Value"));
+        badQuality = this.get_bool(this.opc.get_value(g.Tag_pbb_quality + ".Value"));
         this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("bad-data", badQuality === false && qbq);
       } else {
         this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("bad-data", false);
@@ -27940,7 +39258,7 @@ AirportoverviewWidgetView = (function(superClass) {
       qa = this.opc.tags["" + g.Tag_gate_alarm].props.Value.quality;
       if ((qa != null) && qa) {
         alarm = this.get_bool(this.opc.get_value(g.Tag_gate_alarm + ".Value"));
-        this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("alarm", alarm === true && qa);
+        this.$("#Airport_Gate_" + g.Number + "_icon").toggleClass("alarm", !critical && alarm === true && qa);
       } else {
         qa = false;
       }
@@ -27964,6 +39282,13 @@ AirportoverviewWidgetView = (function(superClass) {
 
   AirportoverviewWidgetView.prototype.set_model = function() {
     var s;
+    if (this.refId > 0) {
+      this.kill_updates(this.site_code);
+      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+        window.clearInterval(this.heartbeat_timer);
+      }
+      this.refId = 0;
+    }
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     this.site_code = OPCManager.get_site_code(s.site);
@@ -27975,9 +39300,6 @@ AirportoverviewWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
-        window.clearInterval(this.heartbeat_timer);
-      }
       return this.ui.site.chosen({
         width: '95%'
       });
@@ -28006,7 +39328,6 @@ AirportoverviewWidgetView = (function(superClass) {
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
       this.site_refresh = (OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3;
-      this.watch_updates(this.site_code);
     }
     return this.check_init_site();
   };
@@ -28048,7 +39369,7 @@ window.AirportoverviewWidgetView = AirportoverviewWidgetView;
 
 module.exports = AirportoverviewWidgetView;
 
-},{"./iops_widget_view":64}],58:[function(require,module,exports){
+},{"./iops_widget_view":65}],59:[function(require,module,exports){
 var AlarmWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -28401,7 +39722,7 @@ window.AlarmWidgetView = AlarmWidgetView;
 
 module.exports = AlarmWidgetView;
 
-},{"./iops_widget_view":64}],59:[function(require,module,exports){
+},{"./iops_widget_view":65}],60:[function(require,module,exports){
 var AssetWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -28486,7 +39807,7 @@ window.AssetWidgetView = AssetWidgetView;
 
 module.exports = AssetWidgetView;
 
-},{"./iops_widget_view":64}],60:[function(require,module,exports){
+},{"./iops_widget_view":65}],61:[function(require,module,exports){
 var ConfigairportWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -28501,7 +39822,7 @@ ConfigairportWidgetView = (function(superClass) {
 
   function ConfigairportWidgetView() {
     this.set_model = bind(this.set_model, this);
-    this.set_points = bind(this.set_points, this);
+    this.set_points_airport = bind(this.set_points_airport, this);
     this.data_update = bind(this.data_update, this);
     return ConfigairportWidgetView.__super__.constructor.apply(this, arguments);
   }
@@ -28646,7 +39967,7 @@ ConfigairportWidgetView = (function(superClass) {
     return this.kill_updates(this.site_code);
   };
 
-  ConfigairportWidgetView.prototype.set_points = function(e) {
+  ConfigairportWidgetView.prototype.set_points_airport = function(e) {
     var g, pre, results, settings, t, term, terminals, z, zn;
     e.preventDefault();
     if (this.site != null) {
@@ -28664,7 +39985,7 @@ ConfigairportWidgetView = (function(superClass) {
               var results2;
               results2 = [];
               for (g in zn) {
-                pre = this.prefix + ".Term" + t + ".Zone" + z + ".Gate" + g + ".";
+                pre = this.prefix + "Term" + t + ".Zone" + z + ".Gate" + g + ".";
                 this.opc.set_value("" + pre + this.tags.cooling_pt, this.$('input#cool_set').val());
                 this.opc.set_value("" + pre + this.tags.heating_pt, this.$('input#heat_set').val());
                 this.opc.set_value("" + pre + this.tags.cooling_tm, this.$('input#cool_set_tm').val());
@@ -28711,7 +40032,7 @@ ConfigairportWidgetView = (function(superClass) {
         return _this.set_model();
       };
     })(this));
-    this.$('#set_pca_points').click(this.set_points);
+    this.$('#set_pca_points').click(this.set_points_airport);
     return this.check_init_site();
   };
 
@@ -28731,7 +40052,7 @@ window.ConfigairportWidgetView = ConfigairportWidgetView;
 
 module.exports = ConfigairportWidgetView;
 
-},{"./iops_widget_view":64}],61:[function(require,module,exports){
+},{"./iops_widget_view":65}],62:[function(require,module,exports){
 var ConfiggateWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -28824,37 +40145,37 @@ ConfiggateWidgetView = (function(superClass) {
       ref = data.tags;
       for (i = 0, len = ref.length; i < len; i++) {
         t = ref[i];
-        if (t.name.endsWith(this.tags.cooling_pt)) {
+        if (t.name.endsWith("" + this.prefix + this.tags.cooling_pt)) {
           v = t.props[0].val;
           v = (v != null) && v !== '' ? parseFloat(v) : 0;
           cool = v > cool ? v : cool;
         }
-        if (t.name.endsWith(this.tags.cooling_tm)) {
+        if (t.name.endsWith("" + this.prefix + this.tags.cooling_tm)) {
           v = t.props[0].val;
           v = (v != null) && v !== '' ? parseFloat(v) : 0;
           cool_tm = v > cool_tm ? v : cool_tm;
         }
-        if (t.name.endsWith(this.tags.heating_pt)) {
+        if (t.name.endsWith("" + this.prefix + this.tags.heating_pt)) {
           v = t.props[0].val;
           v = (v != null) && v !== '' ? parseFloat(v) : 0;
           heat = v > heat ? v : heat;
         }
-        if (t.name.endsWith(this.tags.heating_tm)) {
+        if (t.name.endsWith("" + this.prefix + this.tags.heating_tm)) {
           v = t.props[0].val;
           v = (v != null) && v !== '' ? parseFloat(v) : 0;
           heat_tm = v > heat_tm ? v : heat_tm;
         }
-        if (t.name.endsWith(this.tags.pca_perfect_tm)) {
+        if (t.name.endsWith("" + this.prefix + this.tags.pca_perfect_tm)) {
           v = t.props[0].val;
           v = (v != null) && v !== '' ? parseFloat(v) : 0;
           pca_ph_tm = v > pca_ph_tm ? v : pca_ph_tm;
         }
-        if (t.name.endsWith(this.tags.gpu_perfect_tm)) {
+        if (t.name.endsWith("" + this.prefix + this.tags.gpu_perfect_tm)) {
           v = t.props[0].val;
           v = (v != null) && v !== '' ? parseFloat(v) : 0;
           gpu_ph_tm = v > gpu_ph_tm ? v : gpu_ph_tm;
         }
-        if (t.name.endsWith(this.tags.pbb_perfect_tm)) {
+        if (t.name.endsWith("" + this.prefix + this.tags.pbb_perfect_tm)) {
           v = t.props[0].val;
           v = (v != null) && v !== '' ? parseFloat(v) : 0;
           pbb_ph_tm = v > pbb_ph_tm ? v : pbb_ph_tm;
@@ -28946,7 +40267,7 @@ window.ConfiggateWidgetView = ConfiggateWidgetView;
 
 module.exports = ConfiggateWidgetView;
 
-},{"./iops_widget_view":64}],62:[function(require,module,exports){
+},{"./iops_widget_view":65}],63:[function(require,module,exports){
 var GpusummaryWidgetView, IOPSWidgetView, Marionette, UIUtils,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -29013,24 +40334,13 @@ GpusummaryWidgetView = (function(superClass) {
 
   tags = [];
 
-
-  /**********************************************************
-  tags:
-    #Grid Tags
-    gpu_time:                       'GPU.GPUTime'
-    gpu_gpustatusb:                 'GPU.GPUSTATUSBOOLEAN'
-    gpu_raoutavg:                   'GPU.RAOUTAVG'
-    gpu_rv_out_avg:                   'GPU.RVOUTAVG'
-    gpu_ravinavg:                   'GPU.RAVINAVG'
-    gpu_rvinavg:                    'GPU.RVINAVG'
-  *********************************************************
-   */
-
   tagData = [];
 
   tagConfig = [];
 
   GpusummaryWidgetView.prototype.site_refresh = 50000;
+
+  GpusummaryWidgetView.prototype.refId = 0;
 
   GpusummaryWidgetView.prototype.IsUpdatingSettings = false;
 
@@ -29273,7 +40583,6 @@ GpusummaryWidgetView = (function(superClass) {
     if (show_opts) {
       lbl = this.site_code + ": Gate " + s.gate + " - GPU Summary";
       this.ui.wtitle.html(lbl);
-      this.kill_updates(this.site_code);
       tags = [];
       this.tagData = [];
       this.tagConfig = [];
@@ -29290,9 +40599,14 @@ GpusummaryWidgetView = (function(superClass) {
       }
       App.opc.add_tags(this.site_code, tags);
       this.opc = App.opc.connections[this.site_code];
-      this.watch_updates(this.site_code);
-      return this.start_heartbeat();
+      if (this.refId === 0) {
+        this.refId = App.opc.add_tags(this.site_code, tags);
+        App.vent.on("opc:data:" + this.site_code, this.data_update);
+        this.opc = App.opc.connections[this.site_code];
+        this.start_heartbeat();
+      }
     }
+    return this;
   };
 
   GpusummaryWidgetView.prototype.trend_callback = function(data) {
@@ -29515,7 +40829,6 @@ GpusummaryWidgetView = (function(superClass) {
   GpusummaryWidgetView.prototype.show_plot = function(p, live) {
     var dtm, ed, h, lbl, now, parts, ph, pid, plot_color, ptype, sd, show_hist;
     this.initializing = true;
-    this.kill_updates(this.site_code);
     this.$("#plots").toggle(p != null);
     this.$("#view_main").toggle(p == null);
     ph = '';
@@ -29731,9 +41044,16 @@ GpusummaryWidgetView = (function(superClass) {
         })(this));
       }
     }
-    this.current_plot = p;
-    return this.watch_updates(this.site_code);
+    return this.current_plot = p;
   };
+
+  if (GpusummaryWidgetView.refId === 0) {
+    GpusummaryWidgetView.refId = App.opc.add_tags(GpusummaryWidgetView.site_code, tags);
+    App.vent.on("opc:data:" + GpusummaryWidgetView.site_code, GpusummaryWidgetView.data_update);
+    GpusummaryWidgetView.opc = App.opc.connections[GpusummaryWidgetView.site_code];
+  }
+
+  GpusummaryWidgetView;
 
   GpusummaryWidgetView.prototype.configure_buttons = function() {
     return this.$('#mode').change((function(_this) {
@@ -29748,6 +41068,13 @@ GpusummaryWidgetView = (function(superClass) {
 
   GpusummaryWidgetView.prototype.set_model = function() {
     var s;
+    if (this.refId > 0) {
+      this.kill_updates(this.site_code);
+      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+        window.clearInterval(this.heartbeat_timer);
+      }
+      this.refId = 0;
+    }
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     this.site_code = OPCManager.get_site_code(s.site);
@@ -29762,9 +41089,7 @@ GpusummaryWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
-        return window.clearInterval(this.heartbeat_timer);
-      }
+
     } else {
       this.IsPageLoading = false;
       return this.update();
@@ -29853,7 +41178,7 @@ window.GpusummaryWidgetView = GpusummaryWidgetView;
 
 module.exports = GpusummaryWidgetView;
 
-},{"../../common/uiutils":8,"./iops_widget_view":64}],63:[function(require,module,exports){
+},{"../../common/uiutils":8,"./iops_widget_view":65}],64:[function(require,module,exports){
 var GpuWidgetView, IOPSWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -29909,6 +41234,8 @@ GpuWidgetView = (function(superClass) {
 
   GpuWidgetView.prototype.site_refresh = 50000;
 
+  GpuWidgetView.prototype.refId = 0;
+
   GpuWidgetView.prototype.IsUpdatingSettings = false;
 
   GpuWidgetView.prototype.IsPageLoading = true;
@@ -29928,7 +41255,6 @@ GpuWidgetView = (function(superClass) {
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": Gate " + s.gate + " - GPU";
       this.ui.wtitle.html(lbl);
-      this.kill_updates(this.site_code);
       $("#widgetData").toggleClass("no-show", false);
       $("#widgetData2").toggleClass("no-show", true);
       tags = [];
@@ -29948,8 +41274,12 @@ GpuWidgetView = (function(superClass) {
       App.opc.add_tags(this.site_code, tags);
       this.opc = App.opc.connections[this.site_code];
       ref = s.layout;
-      this.watch_updates(this.site_code);
-      this.start_heartbeat();
+      if (this.refId === 0) {
+        this.refId = App.opc.add_tags(this.site_code, tags);
+        App.vent.on("opc:data:" + this.site_code, this.data_update);
+        this.opc = App.opc.connections[this.site_code];
+        this.start_heartbeat();
+      }
       this.set_descriptions(true);
       if (this.$('.data2').hasClass('no-show')) {
         this.$('.data').css('width', '100%');
@@ -29961,8 +41291,12 @@ GpuWidgetView = (function(superClass) {
         }
       } else {
         this.$('.data').css('width', '75%');
-        $('.data').prepend('<thead><tr><th></th><th>Unit 01</th></tr></thead>');
-        $('.data2').prepend('<thead><tr><th></th><th>Unit 02</th></tr></thead>');
+        if (this.$('.data thead th:contains(Unit 01)').length === 0) {
+          $('.data').prepend('<thead><tr><th></th><th>Unit 01</th></tr></thead>');
+        }
+        if (this.$('.data2 thead th:contains(Unit 02)').length === 0) {
+          $('.data2').prepend('<thead><tr><th></th><th>Unit 02</th></tr></thead>');
+        }
       }
     }
     return this;
@@ -29989,15 +41323,22 @@ GpuWidgetView = (function(superClass) {
           null;
       }
     }
-    aq = this.data_q(this.tags.pbb_has_alarms);
-    this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
-    wq = this.data_q(this.tags.pbb_has_warnings);
-    this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings) === true && wq);
+    aq = this.data_q(this.tags.gpu_has_alarms);
+    this.ui.alarms.toggle(this.get_bool(this.vals.gpu_has_alarms) === true && aq);
+    wq = this.data_q(this.tags.gpu_has_warnings);
+    this.ui.warnings.toggle(this.get_bool(this.vals.gpu_has_warnings) === true && wq);
     return this.set_descriptions();
   };
 
   GpuWidgetView.prototype.set_model = function() {
     var s;
+    if (this.refId > 0) {
+      this.kill_updates(this.site_code);
+      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+        window.clearInterval(this.heartbeat_timer);
+      }
+      this.refId = 0;
+    }
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     this.site_code = OPCManager.get_site_code(s.site);
@@ -30012,9 +41353,7 @@ GpuWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
-        return window.clearInterval(this.heartbeat_timer);
-      }
+
     } else {
       this.IsPageLoading = false;
       return this.update();
@@ -30041,7 +41380,6 @@ GpuWidgetView = (function(superClass) {
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
       this.site_refresh = (OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3;
-      this.watch_updates(this.site_code);
     }
     return this.check_init_site();
   };
@@ -30083,7 +41421,7 @@ window.GpuWidgetView = GpuWidgetView;
 
 module.exports = GpuWidgetView;
 
-},{"./iops_widget_view":64}],64:[function(require,module,exports){
+},{"./iops_widget_view":65}],65:[function(require,module,exports){
 var IOPSWidgetView, Marionette, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -30464,8 +41802,10 @@ IOPSWidgetView = (function(superClass) {
     ref = tagConfig.TagData;
     for (tag in ref) {
       tagData = ref[tag];
-      $("li#" + WidgetID + " ." + ClassID + " " + tagData.Element.ParentID).toggleClass("no-show", false);
-      if (tagData.Element.Type != null) {
+      if (tagData.Element.ParentID != null) {
+        $("li#" + WidgetID + " ." + ClassID + " " + tagData.Element.ParentID).toggleClass("no-show", false);
+      }
+      if ((tagData.Element.Type != null) && tagData.Element.Class !== 'no_row') {
         elType = tagData.Element.Type.toLowerCase();
         switch (elType) {
           case 'tablerow':
@@ -30646,7 +41986,7 @@ window.IOPSWidgetView = IOPSWidgetView;
 
 module.exports = IOPSWidgetView;
 
-},{"../dashboard/widget_view":39}],65:[function(require,module,exports){
+},{"../dashboard/widget_view":39}],66:[function(require,module,exports){
 var IOPSWidgetView, KpiWidgetView, Marionette,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -30809,7 +42149,7 @@ window.KpiWidgetView = KpiWidgetView;
 
 module.exports = KpiWidgetView;
 
-},{"./iops_widget_view":64}],66:[function(require,module,exports){
+},{"./iops_widget_view":65}],67:[function(require,module,exports){
 var IOPSWidgetView, Marionette, OutofserviceWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -30820,7 +42160,7 @@ Marionette = require('marionette');
 IOPSWidgetView = require('./iops_widget_view');
 
 OutofserviceWidgetView = (function(superClass) {
-  var tagConfig, tagData;
+  var tagConfig, tagData, tags;
 
   extend(OutofserviceWidgetView, superClass);
 
@@ -30855,12 +42195,7 @@ OutofserviceWidgetView = (function(superClass) {
     sy: 6
   };
 
-  OutofserviceWidgetView.prototype.tags = {
-    pca_mode_cooling: 'PCA.MODE_COOLING',
-    pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
-    pbb_has_warnings: 'Warning._HasWarnings',
-    pbb_has_alarms: 'Alarm._HasAlarms'
-  };
+  tags = [];
 
   tagData = [];
 
@@ -30870,12 +42205,14 @@ OutofserviceWidgetView = (function(superClass) {
 
   OutofserviceWidgetView.prototype.site_refresh = 50000;
 
+  OutofserviceWidgetView.prototype.refId = 0;
+
   OutofserviceWidgetView.prototype.IsUpdatingSettings = false;
 
   OutofserviceWidgetView.prototype.IsPageLoading = true;
 
   OutofserviceWidgetView.prototype.update = function() {
-    var btg, col, column, data, element, elementPrefix, g, gate, gp, i, index, j, k, key, label, lbl, len, len1, len2, ref, ref1, ref2, ref3, ref4, s, t, tag, tags;
+    var btg, col, column, data, element, g, gate, gp, i, index, j, k, key, l, label, lbl, len, len1, len2, ref, ref1, ref2, ref3, ref4, s, t, tag;
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
@@ -30886,25 +42223,30 @@ OutofserviceWidgetView = (function(superClass) {
     if (this.site_code == null) {
       return null;
     }
-    this.cktags = [];
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": Out Of Service";
       this.ui.wtitle.html(lbl);
       if (!s.gates || s.gates.length === 0) {
         return;
       }
-      this.kill_updates(this.site_code);
+
+      /* Initialize Variables */
       tags = [];
-      elementPrefix = "li#" + this.el.parentNode.id + " ." + this.classID + " ";
-      $(elementPrefix + " [id^='dynamic_']").remove();
+      this.$("[id^='dynamic_']").remove();
       column = 1;
       this.tagData = [];
+
+      /* Process Gates */
       ref = s.gates;
       for (i = 0, len = ref.length; i < len; i++) {
         g = ref[i];
+
+        /* Initialize Loop Variables */
         column = column + 1;
         gp = g.split(':');
         gate = "Term" + gp[0] + ".Zone" + gp[1] + ".Gate" + gp[2] + ".";
+
+        /* Call Tagconfig */
         this.tagConfig = [];
         this.tagConfig = this.create_dynamic_elements(this.el.parentNode.id, this.classID, null, null, this.site_code, {
           site: this.site_code,
@@ -30913,69 +42255,87 @@ OutofserviceWidgetView = (function(superClass) {
           gate: gp[2],
           RetainDynamic: true
         });
+
+        /* Create Gate Header and Alert Icons */
+        if (this.$("#dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2]).length === 0) {
+          this.$("#widgetData thead tr").append("<th id='dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "' class='header'>" + gp[2] + "</th>");
+        }
+
+        /* Load tagData With config tags */
         ref1 = this.tagConfig.TagData;
         for (key in ref1) {
           data = ref1[key];
+          tags[gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + key] = data.Tag;
           this.tagData[gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + key] = data;
-          for (btg in this.tags) {
-            t = this.tags[btg];
-            this.tagData[gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + btg] = {
-              Tag: "" + t,
-              DataType: 'Boolean',
-              Parameters: {
-                Parm001: null,
-                Parm002: null,
-                Parm003: null,
-                Parm004: null,
-                Parm005: null
-              }
-            };
-          }
-          data = [];
         }
-        if ($(elementPrefix + " #dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2]).length === 0) {
-          $(elementPrefix + " #widgetData thead tr").append("<th id='dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "' class='header'>" + gp[2] + "</th>");
+
+        /* Load tagData With Widget defined tags */
+        for (btg in this.tags) {
+          t = this.tags[btg];
+          this.tagData[gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + btg] = {
+            Tag: "" + t,
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            }
+          };
         }
         ref2 = this.tagConfig.TagData;
         for (tag in ref2) {
           tagData = ref2[tag];
+          t = tagData.Tag;
+          gate = "Term" + gp[0] + ".Zone" + gp[1] + ".Gate" + gp[2] + ".";
+          tags.push("" + this.prefix + gate + tagData.Tag + ".Value");
           if (tagData.Element.Class !== 'no_row') {
-            t = tagData.Tag;
-            gate = "Term" + gp[0] + ".Zone" + gp[1] + ".Gate" + gp[2] + ".";
-            tags.push("" + this.prefix + gate + tagData.Tag + ".Value");
-            if ($(elementPrefix + " #dynamic_" + tag).length === 0) {
+            if (this.$("#dynamic_" + tag).length === 0) {
               label = tagData.Label;
               if (/[*]/.test(label)) {
                 label = label.replace("[*]", "");
               }
-              $(elementPrefix + " #widgetData tbody").append("<tr id='dynamic_" + tag + "'> <td class='lbl' id='dynamic_" + tag + "_lbl'>" + label + "</td> <td class='val no-show' id='dynamic_" + tag + "_default_1'><input id='dynamic_" + tag + "_checkbox_1' type='checkbox' ></td> <td class='val no-show' id='dynamic_" + tag + "_default_2'><input id='dynamic_" + tag + "_checkbox_2' type='checkbox' ></td> <td class='val no-show' id='dynamic_" + tag + "_default_3'><input id='dynamic_" + tag + "_checkbox_3' type='checkbox' ></td> <td class='val no-show' id='dynamic_" + tag + "_default_4'><input id='dynamic_" + tag + "_checkbox_4' type='checkbox' ></td> <td class='val no-show' id='dynamic_" + tag + "_default_5'><input id='dynamic_" + tag + "_checkbox_5' type='checkbox' ></td> <td class='val no-show' id='dynamic_" + tag + "_default_6'><input id='dynamic_" + tag + "_checkbox_6' type='checkbox' ></td> </th>");
+              this.$("#widgetData tbody").append("<tr id='dynamic_" + tag + "'> <td class='lbl' id='dynamic_" + tag + "_lbl'>" + label + "</td> <td class='val no-show' id='dynamic_" + tag + "_default_1'><input id='dynamic_" + tag + "_checkbox_1' type='checkbox' ></td> <td class='val no-show' id='dynamic_" + tag + "_default_2'><input id='dynamic_" + tag + "_checkbox_2' type='checkbox' ></td> <td class='val no-show' id='dynamic_" + tag + "_default_3'><input id='dynamic_" + tag + "_checkbox_3' type='checkbox' ></td> <td class='val no-show' id='dynamic_" + tag + "_default_4'><input id='dynamic_" + tag + "_checkbox_4' type='checkbox' ></td> <td class='val no-show' id='dynamic_" + tag + "_default_5'><input id='dynamic_" + tag + "_checkbox_5' type='checkbox' ></td> <td class='val no-show' id='dynamic_" + tag + "_default_6'><input id='dynamic_" + tag + "_checkbox_6' type='checkbox' ></td> </th>");
+            }
+            this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").attr('id', "dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tag);
+            this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ") input").attr('id', "dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tag + "_checkbox");
+            this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ") input").bind('click', (function(_this) {
+              return function(event) {
+                _this.setOutOfService(event.target);
+              };
+            })(this));
+            this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("no-show", false);
+            if (("dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tag).indexOf("_discharge_") > -1) {
+              this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("val", false);
+              this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("DisCharge", true);
+            }
+            ref3 = this.$("#dynamic_" + tag + ">td");
+            for (index = j = 0, len1 = ref3.length; j < len1; index = ++j) {
+              element = ref3[index];
+              if (element.id.indexOf("dynamic_" + tag + "_default_") > -1) {
+                col = column - 1;
+                this.$("#" + element.id).toggleClass('no-show', index > col);
+              }
             }
           }
-          $(elementPrefix + " #widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").attr('id', "dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tag);
-          $(elementPrefix + " #widgetData #dynamic_" + tag + " td:nth-child(" + column + ") input").attr('id', "dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tag + "_checkbox");
-          $(elementPrefix + " #widgetData #dynamic_" + tag + " td:nth-child(" + column + ") input").bind('click', (function(_this) {
-            return function(event) {
-              _this.setOutOfService(event.target);
-            };
-          })(this));
-          $(elementPrefix + " #widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("no-show", false);
-          if (("dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tag).indexOf("_discharge_") > -1) {
-            $(elementPrefix + " #widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("val", false);
-            $(elementPrefix + " #widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("DisCharge", true);
-          }
-          ref3 = $(elementPrefix + " #dynamic_" + tag + ">td");
-          for (index = j = 0, len1 = ref3.length; j < len1; index = ++j) {
-            element = ref3[index];
-            if (element.id.indexOf(elementPrefix + " dynamic_" + tag + "_default_") > -1) {
-              col = column - 1;
-              $(elementPrefix + " #" + element.id).toggleClass('no-show', index > col);
-            }
+        }
+
+        /* Ensure we have all the cells properly hidden/shown */
+        col = column - 1;
+        for (index = k = 1; k <= 6; index = ++k) {
+          if (index <= col) {
+            this.$("td[id^='dynamic_'][id*='_default_" + index + "']").toggleClass('no-background', true);
+            this.$("td[id^='dynamic_'][id*='_default_" + index + "']").toggleClass('no-show', false);
+          } else {
+            this.$("td[id^='dynamic_'][id*='_default_" + index + "']").toggleClass('no-background', false);
+            this.$("td[id^='dynamic_'][id*='_default_" + index + "']").toggleClass('no-show', true);
           }
         }
       }
       ref4 = s.gates;
-      for (k = 0, len2 = ref4.length; k < len2; k++) {
-        g = ref4[k];
+      for (l = 0, len2 = ref4.length; l < len2; l++) {
+        g = ref4[l];
         gp = g.split(':');
         gate = "Term" + gp[0] + ".Zone" + gp[1] + ".Gate" + gp[2] + ".";
         for (btg in this.tags) {
@@ -30983,12 +42343,14 @@ OutofserviceWidgetView = (function(superClass) {
           tags.push("" + this.prefix + gate + t);
         }
       }
-      this.cktags = tags;
-      App.opc.add_tags(this.site_code, tags);
-      this.opc = App.opc.connections[this.site_code];
-      this.watch_updates(this.site_code);
-      return this.start_heartbeat();
+      if (this.refId === 0) {
+        this.refId = App.opc.add_tags(this.site_code, tags);
+        App.vent.on("opc:data:" + this.site_code, this.data_update);
+        this.opc = App.opc.connections[this.site_code];
+        this.start_heartbeat();
+      }
     }
+    return this;
   };
 
   OutofserviceWidgetView.prototype.setOutOfService = function(el) {
@@ -31016,11 +42378,7 @@ OutofserviceWidgetView = (function(superClass) {
   };
 
   OutofserviceWidgetView.prototype.data_update = function(data) {
-    var gate, parsedTagId, ref, results, s, tag;
-    s = this.model.get("settings");
-    if ((s == null) || (s.gates == null) || s.gates.length === 0) {
-      return;
-    }
+    var gate, parsedTagId, ref, results, tag;
     this.beat_time = new Date().getTime() + this.site_refresh;
     this.vals = {};
     ref = this.tagData;
@@ -31049,6 +42407,13 @@ OutofserviceWidgetView = (function(superClass) {
 
   OutofserviceWidgetView.prototype.set_model = function() {
     var s;
+    if (this.refId > 0) {
+      this.kill_updates(this.site_code);
+      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+        window.clearInterval(this.heartbeat_timer);
+      }
+      this.refId = 0;
+    }
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     this.site_code = OPCManager.get_site_code(s.site);
@@ -31069,9 +42434,6 @@ OutofserviceWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
-        window.clearInterval(this.heartbeat_timer);
-      }
       return this.draw_gate_checks();
     } else {
       this.IsPageLoading = false;
@@ -31164,7 +42526,6 @@ OutofserviceWidgetView = (function(superClass) {
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
       this.site_refresh = (OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3;
-      this.watch_updates(this.site_code);
     }
     return this.check_init_site();
   };
@@ -31175,10 +42536,11 @@ OutofserviceWidgetView = (function(superClass) {
 
   OutofserviceWidgetView.prototype.start_heartbeat = function() {
     this.beat_time = new Date().getTime() + this.site_refresh;
-    $("#" + this.el.parentNode.id + " .widget-outer").toggleClass("no-heartbeat", false);
+    this.$(".widget-outer").toggleClass("no-heartbeat", false);
     if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
       window.clearInterval(this.heartbeat_timer);
     }
+    console.log(this.el.parentNode.id + "_" + this.classID + "::" + this.site_code + " - Heartbeat Started: " + this.site_refresh);
     return this.heartbeat_timer = window.setInterval(((function(_this) {
       return function() {
         _this.check_heartbeat(_this.el.parentNode.id);
@@ -31188,7 +42550,7 @@ OutofserviceWidgetView = (function(superClass) {
 
   OutofserviceWidgetView.prototype.check_heartbeat = function(widget_id) {
     this.curTime = new Date().getTime();
-    return $("#" + widget_id + " .widget-outer").toggleClass("no-heartbeat", this.curTime > this.beat_time);
+    return this.$(".widget-outer").toggleClass("no-heartbeat", this.curTime > this.beat_time);
   };
 
   OutofserviceWidgetView.prototype.onDestroy = function(arg1, arg2) {
@@ -31206,7 +42568,7 @@ window.OutofserviceWidgetView = OutofserviceWidgetView;
 
 module.exports = OutofserviceWidgetView;
 
-},{"./iops_widget_view":64}],67:[function(require,module,exports){
+},{"./iops_widget_view":65}],68:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbdetailWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -31217,7 +42579,7 @@ Marionette = require('marionette');
 IOPSWidgetView = require('./iops_widget_view');
 
 PbbdetailWidgetView = (function(superClass) {
-  var tagConfig, tagData;
+  var tagConfig, tagData, tags;
 
   extend(PbbdetailWidgetView, superClass);
 
@@ -31254,19 +42616,7 @@ PbbdetailWidgetView = (function(superClass) {
     sy: 8
   };
 
-  PbbdetailWidgetView.prototype.tags = {
-
-    /*
-    pbb_status :          'PBB.AIRCRAFTDOCKEDCALCULATION'
-    pbb_autolevel :       'PBB.AUTOLEVELMODEFLAG'
-    pbb_canopy:           'PBB.CANOPYDOWN'
-    pbb_docktime:         'PBB.DOCKTIME'
-    pbb_undocktime:       'PBB.UNDOCKTIME'
-     */
-    pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
-    pbb_has_warnings: 'Warning._HasWarnings',
-    pbb_has_alarms: 'Alarm._HasAlarms'
-  };
+  tags = [];
 
   tagData = [];
 
@@ -31274,12 +42624,14 @@ PbbdetailWidgetView = (function(superClass) {
 
   PbbdetailWidgetView.prototype.site_refresh = 50000;
 
+  PbbdetailWidgetView.prototype.refId = 0;
+
   PbbdetailWidgetView.prototype.IsUpdatingSettings = false;
 
   PbbdetailWidgetView.prototype.IsPageLoading = true;
 
   PbbdetailWidgetView.prototype.update = function() {
-    var lbl, ref, ref1, s, t, tag, tags, tg;
+    var lbl, ref, ref1, s, t, tag, tg;
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
@@ -31293,7 +42645,6 @@ PbbdetailWidgetView = (function(superClass) {
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": Gate " + s.gate + " - Overview";
       this.ui.wtitle.html(lbl);
-      this.kill_updates(this.site_code);
       tags = [];
       this.tagData = [];
       this.tagConfig = [];
@@ -31311,9 +42662,13 @@ PbbdetailWidgetView = (function(superClass) {
       App.opc.add_tags(this.site_code, tags);
       this.opc = App.opc.connections[this.site_code];
       ref = s.layout;
-      this.watch_updates(this.site_code);
-      this.set_descriptions(true);
-      return this.start_heartbeat();
+      if (this.refId === 0) {
+        this.refId = App.opc.add_tags(this.site_code, tags);
+        App.vent.on("opc:data:" + this.site_code, this.data_update);
+        this.opc = App.opc.connections[this.site_code];
+        this.start_heartbeat();
+      }
+      return this.set_descriptions(true);
     }
   };
 
@@ -31358,8 +42713,8 @@ PbbdetailWidgetView = (function(superClass) {
     this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
     wq = this.data_q(this.tags.pbb_has_warnings);
     this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings.Tag) === true && wq);
-    fq = this.data_q(this.tags.pbb_autolevelfail);
-    show_alarms = this.get_bool(this.vals.pbb_autolevelfail) === true && fq;
+    fq = this.data_q(this.tags.pbb_autolevel_fail);
+    show_alarms = this.get_bool(this.vals.pbb_autolevel_fail) === true && fq;
     this.ui.alarms.toggle(show_alarms).toggleClass("blink", show_alarms);
     undockordocktimeun = v && (this.vals.pbb_dock_time != null) && this.vals.pbb_dock_time !== '' ? parseFloat(this.vals.pbb_dock_time).toFixed(2) : !v && (this.vals.pbb_undock_time != null) && this.vals.pbb_undock_time !== '' ? parseFloat(this.vals.pbb_undock_time).toFixed(2) : ' -- ';
     el = this.$('div.pbb_undockordocktime').html(undockordocktimeun + " mins");
@@ -31369,7 +42724,13 @@ PbbdetailWidgetView = (function(superClass) {
 
   PbbdetailWidgetView.prototype.set_model = function() {
     var s;
-    this.IsUpdatingSettings = true;
+    if (this.refId > 0) {
+      this.kill_updates(this.site_code);
+      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+        window.clearInterval(this.heartbeat_timer);
+      }
+      this.refId = 0;
+    }
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     this.site_code = OPCManager.get_site_code(s.site);
@@ -31384,9 +42745,7 @@ PbbdetailWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
-        return window.clearInterval(this.heartbeat_timer);
-      }
+
     } else {
       this.IsPageLoading = false;
       return this.update();
@@ -31413,7 +42772,6 @@ PbbdetailWidgetView = (function(superClass) {
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
       this.site_refresh = (OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3;
-      this.watch_updates(this.site_code);
     }
     return this.check_init_site();
   };
@@ -31455,7 +42813,7 @@ window.PbbdetailWidgetView = PbbdetailWidgetView;
 
 module.exports = PbbdetailWidgetView;
 
-},{"./iops_widget_view":64}],68:[function(require,module,exports){
+},{"./iops_widget_view":65}],69:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbleveldetailWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -31466,7 +42824,7 @@ Marionette = require('marionette');
 IOPSWidgetView = require('./iops_widget_view');
 
 PbbleveldetailWidgetView = (function(superClass) {
-  var tagConfig, tagData;
+  var tagConfig, tagData, tags;
 
   extend(PbbleveldetailWidgetView, superClass);
 
@@ -31503,36 +42861,7 @@ PbbleveldetailWidgetView = (function(superClass) {
     sy: 16
   };
 
-  PbbleveldetailWidgetView.prototype.tags = {
-
-    /*
-    pbb_status :           'PBB.AIRCRAFTDOCKEDCALCULATION'
-    #pbb_aircraft :         'PBB.AIRCRAFTSTATUS'
-    pbb_autolevelmode :    'PBB.AUTOLEVELMODEFLAG'
-    pbb_canopy:            'PBB.CANOPYDOWN'
-    pbb_autolevelkey :     'PBB.AUTOLEVELKEY'
-    pbb_autolevelling:     'PBB.AUTOLEVELING'
-    pbb_estop:             'PBB.Alarm.E_STOP'  
-    pbb_estopRW:           'PBB.Alarm.RedWord2[4]'
-    pbb_limits:            'PBB.BYPASSPB'
-    pbb_docktime:          'PBB.DOCKTIME'
-    pbb_undocktime:        'PBB.UNDOCKTIME'
-    pbb_smokedetector:     'PBB.SMOKEDETECTOR'
-    pbb_dailyaircraftcount:'PBB.DAILYAIRCRAFTDOCKED'
-    pbb_lastdocktime:      'PBB.LASTDOCKTIME'
-    pbb_cabinfloordeicer:  'PBB.CABFLOORDEICER'
-    pbb_terminaldoor:      'PBB.TERMINALDOOR'
-    pbb_cabangledisp:      'PBB.CABANGLEDISP'
-    pbb_slopedeg:          'PBB.SLOPEDEG'
-    pbb_swingangledisp:    'PBB.SWINGANGLEDISP'
-    pbb_heighttodisp:      'PBB.HEIGHTTODISP'
-    pbb_wheelangledeg:     'PBB.WHEELANGLEDEG'
-    pbb_tunnellength:      'PBB.HORIZTODISP'
-     */
-    pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
-    pbb_has_warnings: 'Warning._HasWarnings',
-    pbb_has_alarms: 'Alarm._HasAlarms'
-  };
+  tags = [];
 
   tagData = [];
 
@@ -31540,12 +42869,14 @@ PbbleveldetailWidgetView = (function(superClass) {
 
   PbbleveldetailWidgetView.prototype.site_refresh = 50000;
 
+  PbbleveldetailWidgetView.prototype.refId = 0;
+
   PbbleveldetailWidgetView.prototype.IsUpdatingSettings = false;
 
   PbbleveldetailWidgetView.prototype.IsPageLoading = true;
 
   PbbleveldetailWidgetView.prototype.update = function() {
-    var lbl, ref, ref1, s, t, tag, tags, tg;
+    var lbl, ref, ref1, s, t, tag, tg;
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
@@ -31574,11 +42905,13 @@ PbbleveldetailWidgetView = (function(superClass) {
         t = this.tags[tg];
         tags.push("" + this.prefix + t + ".Value");
       }
-      App.opc.add_tags(this.site_code, tags);
-      App.vent.on("opc:data:" + this.site_code, this.data_update);
-      this.opc = App.opc.connections[this.site_code];
       ref = s.layout;
-      this.start_heartbeat();
+      if (this.refId === 0) {
+        this.refId = App.opc.add_tags(this.site_code, tags);
+        App.vent.on("opc:data:" + this.site_code, this.data_update);
+        this.opc = App.opc.connections[this.site_code];
+        this.start_heartbeat();
+      }
       return this.set_descriptions(true);
     }
   };
@@ -31612,13 +42945,6 @@ PbbleveldetailWidgetView = (function(superClass) {
       eq = this.data_q(this.tagData.elvrot_rotunda_position_boolean.Tag);
       this.$("div.elevating_img").toggleClass('down-position', e === true && eq);
     }
-
-    /*
-    Tags:{'pbb_status','pbb_autolevel_mode','pbb_canopy','pbb_autolevel_key','pbb_autoleveling','pbb_estop','pbb_limits'
-            ,'pbb_dock_time','pbb_undock_time','pbb_smoke_detector','pbb_daily_aircraft_count','pbb_last_dock_time'
-            ,'pbb_cabin_floor_deicer','pbb_terminal_door','pbb_cab_angle_disp','pbb_slope_deg','pbb_swing_angle_disp'
-            ,'pbb_height_to_disp','pbb_wheel_angle_deg','pbb_tunnel_length'}
-     */
     if (this.tagData.pbb_wheel_angle_deg != null) {
       wheelangledeg = (this.vals.pbb_wheel_angle_deg != null) && this.vals.pbb_wheel_angle_deg !== '' ? parseFloat(this.vals.pbb_wheel_angle_deg).toFixed(2) : ' -- ';
       wa1 = this.$('#pbb_wheel_angle_deg').text("Wheel Bogie Angle : " + wheelangledeg);
@@ -31670,6 +42996,13 @@ PbbleveldetailWidgetView = (function(superClass) {
 
   PbbleveldetailWidgetView.prototype.set_model = function() {
     var s;
+    if (this.refId > 0) {
+      this.kill_updates(this.site_code);
+      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+        window.clearInterval(this.heartbeat_timer);
+      }
+      this.refId = 0;
+    }
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     this.site_code = OPCManager.get_site_code(s.site);
@@ -31684,9 +43017,7 @@ PbbleveldetailWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
-        return window.clearInterval(this.heartbeat_timer);
-      }
+
     } else {
       this.IsPageLoading = false;
       return this.update();
@@ -31754,7 +43085,7 @@ window.PbbleveldetailWidgetView = PbbleveldetailWidgetView;
 
 module.exports = PbbleveldetailWidgetView;
 
-},{"./iops_widget_view":64}],69:[function(require,module,exports){
+},{"./iops_widget_view":65}],70:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbpcagpuWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -31765,7 +43096,7 @@ Marionette = require('marionette');
 IOPSWidgetView = require('./iops_widget_view');
 
 PbbpcagpuWidgetView = (function(superClass) {
-  var tagConfig, tagData;
+  var tagConfig, tagData, tags;
 
   extend(PbbpcagpuWidgetView, superClass);
 
@@ -31798,11 +43129,7 @@ PbbpcagpuWidgetView = (function(superClass) {
     sy: 8
   };
 
-  PbbpcagpuWidgetView.prototype.tags = {
-    pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
-    pbb_has_warnings: 'Warning._HasWarnings',
-    pbb_has_alarms: 'Alarm._HasAlarms'
-  };
+  tags = [];
 
   tagData = [];
 
@@ -31810,12 +43137,14 @@ PbbpcagpuWidgetView = (function(superClass) {
 
   PbbpcagpuWidgetView.prototype.site_refresh = 50000;
 
+  PbbpcagpuWidgetView.prototype.refId = 0;
+
   PbbpcagpuWidgetView.prototype.IsUpdatingSettings = false;
 
   PbbpcagpuWidgetView.prototype.IsPageLoading = true;
 
   PbbpcagpuWidgetView.prototype.update = function() {
-    var lbl, ref, ref1, s, t, tag, tags, tg;
+    var lbl, ref, ref1, s, t, tag, tg;
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
@@ -31829,7 +43158,6 @@ PbbpcagpuWidgetView = (function(superClass) {
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": Gate " + s.gate + " PBB/PCA/GPU";
       this.ui.wtitle.html(lbl);
-      this.kill_updates(this.site_code);
       tags = [];
       this.tagData = [];
       this.tagConfig = [];
@@ -31844,45 +43172,52 @@ PbbpcagpuWidgetView = (function(superClass) {
         t = this.tags[tg];
         tags.push("" + this.prefix + t + ".Value");
       }
-      App.opc.add_tags(this.site_code, tags);
-      this.opc = App.opc.connections[this.site_code];
       ref = s.layout;
-      this.watch_updates(this.site_code);
-      this.start_heartbeat();
+      if (this.refId === 0) {
+        this.refId = App.opc.add_tags(this.site_code, tags);
+        App.vent.on("opc:data:" + this.site_code, this.data_update);
+        this.opc = App.opc.connections[this.site_code];
+        this.start_heartbeat();
+      }
       this.set_descriptions(true);
     }
     return this;
   };
 
   PbbpcagpuWidgetView.prototype.data_update = function(data) {
-    var aq, ref1, tag, wq;
+    var ref1, results, tag;
     this.refresh_values();
     this.beat_time = new Date().getTime() + this.site_refresh;
     ref1 = this.tagData;
+    results = [];
     for (tag in ref1) {
       tagData = ref1[tag];
       switch (tagData.DataType.toLowerCase()) {
         case 'boolean':
-          this.render_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004, tagData.Parameters.Parm005);
+          results.push(this.render_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004, tagData.Parameters.Parm005));
           break;
         case 'float':
-          this.render_value_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004);
+          results.push(this.render_value_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004));
           break;
         case 'value':
-          this.render_value_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004);
+          results.push(this.render_value_row("dynamic_" + tag, tagData.Parameters.Parm001, tagData.Parameters.Parm002, tagData.Parameters.Parm003, tagData.Parameters.Parm004));
           break;
         default:
-          null;
+          results.push(null);
       }
     }
-    aq = this.data_q(this.tags.pbb_has_alarms);
-    this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
-    wq = this.data_q(this.tags.pbb_has_warnings);
-    return this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings) === true && wq);
+    return results;
   };
 
   PbbpcagpuWidgetView.prototype.set_model = function() {
     var s;
+    if (this.refId > 0) {
+      this.kill_updates(this.site_code);
+      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+        window.clearInterval(this.heartbeat_timer);
+      }
+      this.refId = 0;
+    }
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     this.site_code = OPCManager.get_site_code(s.site);
@@ -31897,9 +43232,7 @@ PbbpcagpuWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
-        return window.clearInterval(this.heartbeat_timer);
-      }
+
     } else {
       this.IsPageLoading = false;
       return this.update();
@@ -31926,7 +43259,6 @@ PbbpcagpuWidgetView = (function(superClass) {
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
       this.site_refresh = (OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3;
-      this.watch_updates(this.site_code);
     }
     return this.check_init_site();
   };
@@ -31970,7 +43302,7 @@ window.PbbpcagpuWidgetView = PbbpcagpuWidgetView;
 
 module.exports = PbbpcagpuWidgetView;
 
-},{"./iops_widget_view":64}],70:[function(require,module,exports){
+},{"./iops_widget_view":65}],71:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbpcagpustatusWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -31981,7 +43313,7 @@ Marionette = require('marionette');
 IOPSWidgetView = require('./iops_widget_view');
 
 PbbpcagpustatusWidgetView = (function(superClass) {
-  var tagConfig, tagData;
+  var tagConfig, tagData, tags;
 
   extend(PbbpcagpustatusWidgetView, superClass);
 
@@ -32013,13 +43345,7 @@ PbbpcagpustatusWidgetView = (function(superClass) {
     sy: 6
   };
 
-  PbbpcagpustatusWidgetView.prototype.tags = {
-    pca_mode_cooling: 'PCA.MODE_COOLING',
-    pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
-    pbb_has_warnings: 'Warning._HasWarnings',
-    has_alarms: 'Alarm._HasAlarms',
-    has_critical_alarms: 'Alarm._HasCriticalAlarms'
-  };
+  tags = [];
 
   tagData = [];
 
@@ -32036,7 +43362,7 @@ PbbpcagpustatusWidgetView = (function(superClass) {
   PbbpcagpustatusWidgetView.prototype.IsPageLoading = true;
 
   PbbpcagpustatusWidgetView.prototype.update = function() {
-    var btg, col, column, data, element, elementPrefix, g, gate, gp, i, index, j, k, key, label, lbl, len, len1, len2, ref, ref1, ref2, ref3, ref4, s, t, tag, tags;
+    var btg, col, column, data, element, g, gate, gp, i, index, j, k, key, label, lbl, len, len1, newRow, ref, ref1, ref2, ref3, s, t, tag, tp;
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
@@ -32047,24 +43373,30 @@ PbbpcagpustatusWidgetView = (function(superClass) {
     if (this.site_code == null) {
       return null;
     }
-    this.cktags = [];
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": PBB/PCA/GPU Status";
       this.ui.wtitle.html(lbl);
       if (!s.gates || s.gates.length === 0) {
         return;
       }
+
+      /* Initialize Variables */
       tags = [];
-      elementPrefix = "li#" + this.el.parentNode.id + " ." + this.classID + " ";
       this.$("[id^='dynamic_']").remove();
       column = 1;
       this.tagData = [];
+
+      /* Process Gates */
       ref = s.gates;
       for (i = 0, len = ref.length; i < len; i++) {
         g = ref[i];
+
+        /* Initialize Loop Variables */
         column = column + 1;
         gp = g.split(':');
         gate = "Term" + gp[0] + ".Zone" + gp[1] + ".Gate" + gp[2] + ".";
+
+        /* Call Tagconfig */
         this.tagConfig = [];
         this.tagConfig = this.create_dynamic_elements(this.el.parentNode.id, this.classID, null, null, this.site_code, {
           site: this.site_code,
@@ -32073,31 +43405,38 @@ PbbpcagpustatusWidgetView = (function(superClass) {
           gate: gp[2],
           RetainDynamic: true
         });
+
+        /* Create Gate Header and Alert Icons */
+        if (this.$("#dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2]).length === 0) {
+          this.$("#widgetData thead tr").append("<th id='dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "' class='header'>" + gp[2] + "</th>");
+          this.$("#widgetData tbody #iconRow").append("<td id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "'> <span id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_system_quality' class='alert-icon fa fa-stack' title='System has lost communications'> <i class='fa fa-rss fa-stack-1x '></i> <i class='fa fa-exclamation fa-stack-1x'></i> </span> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_system_out_of_service' class='alert-icon fa fa-wrench' title='Gate is out of service'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_pbb_docked' class='alert-icon fa fa-plane' title='Plane is DOCKED'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_system_perfect_hookup' class='alert-icon fa fa-check-circle-o' title='Perfect Hookup'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_gate_has_critical_alarms' class='alert-icon fa fa-warning' title='Gate has CRITICAL ALARMS'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_gate_has_alarms' class='alert-icon fa fa-bell' title='Gate has ALARMS'></i> </td>");
+        }
+
+        /* Load tagData With config tags */
         ref1 = this.tagConfig.TagData;
         for (key in ref1) {
           data = ref1[key];
           tags[gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + key] = data.Tag;
           this.tagData[gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + key] = data;
-          for (btg in this.tags) {
-            t = this.tags[btg];
-            this.tagData[gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + btg] = {
-              Tag: "" + t,
-              DataType: 'Boolean',
-              Parameters: {
-                Parm001: null,
-                Parm002: null,
-                Parm003: null,
-                Parm004: null,
-                Parm005: null
-              }
-            };
-          }
-          data = [];
         }
-        if (this.$("#dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2]).length === 0) {
-          this.$("#widgetData thead tr").append("<th id='dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "' class='header'>" + gp[2] + "</th>");
-          this.$("#widgetData tbody #iconRow").append("<td id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "'> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_critical' class='fa fa-warning' title='Gate has CRITICAL ALARMS'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_alarm' class='fa fa-bell' title='Gate has ALARMS'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_docked' class='fa fa-plane' title='Plane is DOCKED'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_outofservice' class='fa fa-wrench' title='A system is out of service'></i> <i id='dynamic_iconRow_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_perfecthookup' class='fa fa-check-circle-o' title='Perfect Hookup'></i> </td>");
+
+        /* Load tagData With Widget defined tags */
+        for (btg in this.tags) {
+          t = this.tags[btg];
+          this.tagData[gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + btg] = {
+            Tag: "" + t,
+            DataType: 'Boolean',
+            Parameters: {
+              Parm001: null,
+              Parm002: null,
+              Parm003: null,
+              Parm004: null,
+              Parm005: null
+            }
+          };
         }
+
+        /* Loop Through Tags and configure the table cells */
         ref2 = this.tagConfig.TagData;
         for (tag in ref2) {
           tagData = ref2[tag];
@@ -32105,42 +43444,61 @@ PbbpcagpustatusWidgetView = (function(superClass) {
           gate = "Term" + gp[0] + ".Zone" + gp[1] + ".Gate" + gp[2] + ".";
           tags.push("" + this.prefix + gate + tagData.Tag + ".Value");
           if (tagData.Element.Class !== 'no_row') {
+
+            /* Create the new tag row if it doesn't already exist */
             if (this.$("#dynamic_" + tag).length === 0) {
               label = tagData.Label;
               if (/[*]/.test(label)) {
                 label = label.replace("[*]", "");
               }
-              this.$("#widgetData tbody").append("<tr id='dynamic_" + tag + "'> <td class='lbl' id='dynamic_" + tag + "_lbl'>" + label + "</td> <td class='val no-show' id='dynamic_" + tag + "_default_1'></td> <td class='val no-show' id='dynamic_" + tag + "_default_2'></td> <td class='val no-show' id='dynamic_" + tag + "_default_3'></td> <td class='val no-show' id='dynamic_" + tag + "_default_4'></td> <td class='val no-show' id='dynamic_" + tag + "_default_5'></td> <td class='val no-show' id='dynamic_" + tag + "_default_6'></td> </th>");
+              newRow = "<tr id='dynamic_" + tag + "'> <td class='lbl' id='dynamic_" + tag + "_lbl'>" + label + "</td>";
+              for (col = j = 1; j <= 6; col = ++j) {
+                newRow += "<td class='val no-show' id='dynamic_" + tag + "_default_" + col + "'> <i id='dynamic_has_critical_alarms' class='cell-icon fa fa-warning' title='Gate has CRITICAL ALARMS'></i> <i id='dynamic_has_alarms' class='cell-icon fa fa-bell' title='Gate has ALARMS'></i> <i id='dynamic_out_of_service' class='cell-icon fa fa-wrench' title='A system is out of service'></i> <i id='dynamic_perfect_hookup' class='cell-icon fa fa-check-circle-o' title='Perfect Hookup'></i> <span id='dynamic_quality' class='cell-icon fa fa-stack'> <i class='fa fa-rss fa-stack-1x'></i> <i class='fa fa-exclamation fa-stack-1x'></i> </span> </td>";
+              }
+              newRow += "</tr>";
+              if (this.$("#widgetData td[id$='_pca_discharge_temp']").length === 1 || this.$("#widgetData td[id$='_elvrot_rotunda_status']").length === 1) {
+                if (this.$("#widgetData td[id$='_elvrot_rotunda_status']").length === 1 && !(tag.indexOf('_discharge_temp') > -1)) {
+                  this.$("#widgetData tbody #dynamic_elvrot_rotunda_status").before(newRow);
+                } else {
+                  if (tag.indexOf('_discharge_temp') > -1) {
+                    this.$("#widgetData tbody").append(newRow);
+                  } else {
+                    this.$("#widgetData tbody").find('tr:last').prev().after(newRow);
+                  }
+                }
+              } else {
+                this.$("#widgetData tbody").append(newRow);
+              }
+            }
+
+            /* Set the id for the gate and tag */
+            tp = tag.split('_');
+            this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ") #dynamic_has_critical_alarms").attr('id', "dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tp[0] + "_has_critical_alarms");
+            this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ") #dynamic_has_alarms").attr('id', "dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tp[0] + "_has_alarms");
+            this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ") #dynamic_out_of_service").attr('id', "dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tp[0] + "_out_of_service");
+            this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ") #dynamic_perfect_hookup").attr('id', "dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tp[0] + "_perfect_hookup");
+            this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ") #dynamic_quality").attr('id', "dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tp[0] + "_quality");
+            this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").attr('id', "dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tag);
+            this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("no-show", false);
+            if (this.$("#widgetData td[id$='" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_pca_discharge_temp']").length === 1) {
+              this.$("#widgetData td[id$='" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_pca_discharge_temp']").html('');
+              this.$("#widgetData td[id$='" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_pca_discharge_temp']").toggleClass("val", false);
+              this.$("#widgetData td[id$='" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_pca_discharge_temp']").toggleClass("DisCharge", true);
             }
           }
-          this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").attr('id', "dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tag);
-          this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("no-show", false);
-          if (("dynamic_" + gp[0] + "_" + gp[1] + "_" + gp[2] + "_" + tag).indexOf("_discharge_") > -1) {
-            this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("val", false);
-            this.$("#widgetData #dynamic_" + tag + " td:nth-child(" + column + ")").toggleClass("DisCharge", true);
-          }
+
+          /* Ensure we have all the cells properly hidden/shown */
           ref3 = this.$("#dynamic_" + tag + ">td");
-          for (index = j = 0, len1 = ref3.length; j < len1; index = ++j) {
+          for (index = k = 0, len1 = ref3.length; k < len1; index = ++k) {
             element = ref3[index];
             if (element.id.indexOf("dynamic_" + tag + "_default_") > -1) {
               col = column - 1;
               this.$("#" + element.id).toggleClass('no-show', index > col);
-              this.$("#" + element.id).toggleClass('show-no-status', index <= col);
+              this.$("#" + element.id).toggleClass('no-background', index <= col);
             }
           }
         }
       }
-      ref4 = s.gates;
-      for (k = 0, len2 = ref4.length; k < len2; k++) {
-        g = ref4[k];
-        gp = g.split(':');
-        gate = "Term" + gp[0] + ".Zone" + gp[1] + ".Gate" + gp[2] + ".";
-        for (btg in this.tags) {
-          t = this.tags[btg];
-          tags.push("" + this.prefix + gate + t);
-        }
-      }
-      this.cktags = tags;
       if (this.refId === 0) {
         this.refId = App.opc.add_tags(this.site_code, tags);
         App.vent.on("opc:data:" + this.site_code, this.data_update);
@@ -32152,12 +43510,7 @@ PbbpcagpustatusWidgetView = (function(superClass) {
   };
 
   PbbpcagpustatusWidgetView.prototype.data_update = function(data) {
-    var elementPrefix, gate, parsedTagId, ref, s, setValue, tag, tzgPrefix;
-    elementPrefix = "li#" + this.el.parentNode.id + " ." + this.classID + " ";
-    s = this.model.get("settings");
-    if ((s == null) || (s.gates == null) || s.gates.length === 0) {
-      return;
-    }
+    var parsedTagId, q, ref, setValue, tag, tzgPrefix, tzgTag;
     this.beat_time = new Date().getTime() + this.site_refresh;
     this.vals = {};
     ref = this.tagData;
@@ -32165,35 +43518,25 @@ PbbpcagpustatusWidgetView = (function(superClass) {
       data = ref[tag];
       parsedTagId = tag.split("_");
       tzgPrefix = parsedTagId[0] + "_" + parsedTagId[1] + "_" + parsedTagId[2];
-      gate = "Term" + parsedTagId[0] + ".Zone" + parsedTagId[1] + ".Gate" + parsedTagId[2] + ".";
-      this.vals[tag] = this.opc.get_value("" + this.prefix + gate + data.Tag + ".Value");
+      tzgTag = "Term" + parsedTagId[0] + ".Zone" + parsedTagId[1] + ".Gate" + parsedTagId[2] + "." + data.Tag;
+      q = this.data_q(tzgTag);
+      if (q) {
+        this.vals[tag] = this.opc.get_value("" + this.prefix + tzgTag + ".Value");
+      }
       setValue = (this.vals[tag] != null) && this.vals[tag] === "True";
-      if (/pbb_docked/.test(tag)) {
-        this.$("#widgetData #dynamic_iconRow_" + tzgPrefix + "_docked").toggleClass('docked', setValue);
-      } else if (tag.indexOf(tzgPrefix + "_has_critical_alarms") > -1) {
-        this.$("#widgetData #dynamic_iconRow_" + tzgPrefix + "_critical").toggleClass('critical', setValue);
-      } else if (tag.indexOf(tzgPrefix + "_has_alarms") > -1) {
-        this.$("#widgetData #dynamic_iconRow_" + tzgPrefix + "_alarm").toggleClass('alarm', setValue);
-      } else if (tag.indexOf(tzgPrefix + "_system_quality") > -1) {
-        this.$("#widgetData #dynamic_iconRow_" + tzgPrefix + "_bad_quality").toggleClass('bad-data', !setValue);
-      } else if (tag.indexOf(tzgPrefix + "_system_out_of_service") > -1) {
-        this.$("#widgetData #dynamic_iconRow_" + tzgPrefix + "_outofservice").toggleClass('out-of-service', setValue);
-      } else if (tag.indexOf(tzgPrefix + "_system_perfect_hookup") > -1) {
-        this.$("#widgetData #dynamic_iconRow_" + tzgPrefix + "_perfecthookup").toggleClass('perfect-hookup', setValue);
-      } else if (tag.indexOf(tzgPrefix + "_pca_mode_cooling") > -1) {
-        this.$("#widgetData #dynamic_" + tzgPrefix + "_pca_discharge_temp").toggleClass('Cooling', setValue);
-      } else if (tag.indexOf(tzgPrefix + "_pca_mode_heating") > -1) {
-        this.$("#widgetData #dynamic_" + tzgPrefix + "_pca_discharge_temp").toggleClass('Heating', setValue);
+      if (data.DataType.toLowerCase() === 'boolean') {
+        if (tag.indexOf(tzgPrefix + "_pca_mode_cooling") > -1) {
+          this.$("#widgetData #dynamic_" + tzgPrefix + "_pca_discharge_temp").toggleClass('Cooling', setValue);
+        } else if (tag.indexOf(tzgPrefix + "_pca_mode_heating") > -1) {
+          this.$("#widgetData #dynamic_" + tzgPrefix + "_pca_discharge_temp").toggleClass('Heating', setValue);
+        } else if (tag.indexOf("_quality") > -1) {
+          this.$("#widgetData [id$='" + tag + "']").toggleClass('Active', !setValue);
+        } else if (this.$("#widgetData [id$='" + tag + "']").length > 0) {
+          this.$("#widgetData [id$='" + tag + "']").toggleClass('Active', setValue);
+        }
       } else {
-        switch (data.DataType.toLowerCase()) {
-          case 'boolean':
-            this.render_row_tzg("dynamic_" + tag, "", "", data.Parameters.Parm003, data.Parameters.Parm004, data.Parameters.Parm005);
-            break;
-          case 'float':
-            this.render_value_row_tzg("dynamic_" + tag, data.Parameters.Parm001, data.Parameters.Parm002, data.Parameters.Parm003, data.Parameters.Parm004);
-            break;
-          case 'value':
-            this.render_value_row_tzg("dynamic_" + tag, "", "", data.Parameters.Parm003, data.Parameters.Parm004);
+        if (this.$("#widgetData [id$='" + tag + "']").length > 0) {
+          this.render_value_row_tzg("dynamic_" + tag, data.Parameters.Parm001, data.Parameters.Parm002, data.Parameters.Parm003, data.Parameters.Parm004);
         }
       }
     }
@@ -32363,7 +43706,7 @@ window.PbbpcagpustatusWidgetView = PbbpcagpustatusWidgetView;
 
 module.exports = PbbpcagpustatusWidgetView;
 
-},{"./iops_widget_view":64}],71:[function(require,module,exports){
+},{"./iops_widget_view":65}],72:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbsystemstatusWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -32424,6 +43767,8 @@ PbbsystemstatusWidgetView = (function(superClass) {
 
   PbbsystemstatusWidgetView.prototype.site_refresh = 50000;
 
+  PbbsystemstatusWidgetView.prototype.refId = 0;
+
   PbbsystemstatusWidgetView.prototype.IsUpdatingSettings = false;
 
   PbbsystemstatusWidgetView.prototype.IsPageLoading = true;
@@ -32443,7 +43788,6 @@ PbbsystemstatusWidgetView = (function(superClass) {
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": Gate " + s.gate + " - System Status";
       this.ui.wtitle.html(lbl);
-      this.kill_updates(this.site_code);
       $("#widgetData").toggleClass("no-show", false);
       tags = [];
       this.tagData = [];
@@ -32459,10 +43803,13 @@ PbbsystemstatusWidgetView = (function(superClass) {
         t = this.tags[tg];
         tags.push("" + this.prefix + t + ".Value");
       }
-      App.opc.add_tags(this.site_code, tags);
-      this.opc = App.opc.connections[this.site_code];
       ref = s.layout;
-      this.watch_updates(this.site_code);
+      if (this.refId === 0) {
+        this.refId = App.opc.add_tags(this.site_code, tags);
+        App.vent.on("opc:data:" + this.site_code, this.data_update);
+        this.opc = App.opc.connections[this.site_code];
+        this.start_heartbeat();
+      }
       return this.set_descriptions(true);
     }
   };
@@ -32506,6 +43853,13 @@ PbbsystemstatusWidgetView = (function(superClass) {
 
   PbbsystemstatusWidgetView.prototype.set_model = function() {
     var s;
+    if (this.refId > 0) {
+      this.kill_updates(this.site_code);
+      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+        window.clearInterval(this.heartbeat_timer);
+      }
+      this.refId = 0;
+    }
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     this.site_code = OPCManager.get_site_code(s.site);
@@ -32520,9 +43874,7 @@ PbbsystemstatusWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
-        return window.clearInterval(this.heartbeat_timer);
-      }
+
     } else {
       this.IsPageLoading = false;
       return this.update();
@@ -32549,7 +43901,6 @@ PbbsystemstatusWidgetView = (function(superClass) {
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
       this.site_refresh = (OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3;
-      this.watch_updates(this.site_code);
     }
     return this.check_init_site();
   };
@@ -32591,7 +43942,7 @@ window.PbbsystemstatusWidgetView = PbbsystemstatusWidgetView;
 
 module.exports = PbbsystemstatusWidgetView;
 
-},{"./iops_widget_view":64}],72:[function(require,module,exports){
+},{"./iops_widget_view":65}],73:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PbbWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -32666,6 +44017,7 @@ PbbWidgetView = (function(superClass) {
     if ((s != null) && !!s.site) {
       lbl = this.site_code + ": Gate " + s.gate + " - PBB";
       this.ui.wtitle.html(lbl);
+      this.kill_updates(this.site_code);
       tags = [];
       this.tagData = [];
       this.tagConfig = [];
@@ -32682,8 +44034,8 @@ PbbWidgetView = (function(superClass) {
       }
       App.opc.add_tags(this.site_code, tags);
       this.opc = App.opc.connections[this.site_code];
-      App.vent.on("opc:data:" + this.site_code, this.data_update);
       ref = s.layout;
+      this.watch_updates(this.site_code);
       this.start_heartbeat();
       return this.set_descriptions(true);
     }
@@ -32762,6 +44114,7 @@ PbbWidgetView = (function(superClass) {
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
       this.site_refresh = (OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3;
+      this.watch_updates(this.site_code);
     }
     return this.check_init_site();
   };
@@ -32803,7 +44156,7 @@ window.PbbWidgetView = PbbWidgetView;
 
 module.exports = PbbWidgetView;
 
-},{"./iops_widget_view":64}],73:[function(require,module,exports){
+},{"./iops_widget_view":65}],74:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PcadischargeWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -32858,6 +44211,8 @@ PcadischargeWidgetView = (function(superClass) {
 
   PcadischargeWidgetView.prototype.site_refresh = 50000;
 
+  PcadischargeWidgetView.prototype.refId = 0;
+
   PcadischargeWidgetView.prototype.IsUpdatingSettings = false;
 
   PcadischargeWidgetView.prototype.IsPageLoading = true;
@@ -32881,8 +44236,7 @@ PcadischargeWidgetView = (function(superClass) {
       if (!s.gates || s.gates.length === 0) {
         return;
       }
-      this.kill_updates(this.site_code);
-      tags = [];
+      this.tags = [];
       this.tagData = [];
       this.tagConfig = [];
       this.tagConfig = this.create_dynamic_elements(this.el.parentNode.id, this.classID, null, null, this.site_code, s);
@@ -32909,11 +44263,14 @@ PcadischargeWidgetView = (function(superClass) {
           this.cktags.push("" + this.prefix + gate + t);
         }
       }
-      App.opc.add_tags(this.site_code, this.cktags);
-      this.opc = App.opc.connections[this.site_code];
-      this.watch_updates(this.site_code);
-      return this.start_heartbeat();
+      if (this.refId === 0) {
+        this.refId = App.opc.add_tags(this.site_code, this.cktags);
+        App.vent.on("opc:data:" + this.site_code, this.data_update);
+        this.opc = App.opc.connections[this.site_code];
+        this.start_heartbeat();
+      }
     }
+    return this;
   };
 
   PcadischargeWidgetView.prototype.data_update = function(data) {
@@ -33103,6 +44460,13 @@ PcadischargeWidgetView = (function(superClass) {
 
   PcadischargeWidgetView.prototype.set_model = function() {
     var s;
+    if (this.refId > 0) {
+      this.kill_updates(this.site_code);
+      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+        window.clearInterval(this.heartbeat_timer);
+      }
+      this.refId = 0;
+    }
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     this.site_code = OPCManager.get_site_code(s.site);
@@ -33123,9 +44487,6 @@ PcadischargeWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
-        window.clearInterval(this.heartbeat_timer);
-      }
       return this.draw_gate_checks();
     } else {
       this.IsPageLoading = false;
@@ -33218,7 +44579,6 @@ PcadischargeWidgetView = (function(superClass) {
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
       this.site_refresh = (OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3;
-      this.watch_updates(this.site_code);
     }
     return this.check_init_site();
   };
@@ -33260,7 +44620,7 @@ window.PcadischargeWidgetView = PcadischargeWidgetView;
 
 module.exports = PcadischargeWidgetView;
 
-},{"./iops_widget_view":64}],74:[function(require,module,exports){
+},{"./iops_widget_view":65}],75:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PcasummaryWidgetView, UIUtils,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -33273,7 +44633,7 @@ IOPSWidgetView = require('./iops_widget_view');
 UIUtils = require('../../common/uiutils');
 
 PcasummaryWidgetView = (function(superClass) {
-  var tagConfig, tagData;
+  var tagConfig, tagData, tags;
 
   extend(PcasummaryWidgetView, superClass);
 
@@ -33317,11 +44677,7 @@ PcasummaryWidgetView = (function(superClass) {
     sy: 7
   };
 
-  PcasummaryWidgetView.prototype.tags = {
-    pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
-    pbb_has_warnings: 'Warning._HasWarnings',
-    pbb_has_alarms: 'Alarm._HasAlarms'
-  };
+  tags = [];
 
   tagData = [];
 
@@ -33329,12 +44685,14 @@ PcasummaryWidgetView = (function(superClass) {
 
   PcasummaryWidgetView.prototype.site_refresh = 50000;
 
+  PcasummaryWidgetView.prototype.refId = 0;
+
   PcasummaryWidgetView.prototype.IsUpdatingSettings = false;
 
   PcasummaryWidgetView.prototype.IsPageLoading = true;
 
   PcasummaryWidgetView.prototype.update = function() {
-    var lbl, ref, s, show_opts, t, tData, tags, tg;
+    var lbl, ref, s, show_opts, t, tData, tg;
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
@@ -33351,7 +44709,6 @@ PcasummaryWidgetView = (function(superClass) {
       this.opc = App.opc.connections[this.site_code];
       show_opts = (s != null) && !!s.gate;
       this.$('#mode').toggle(show_opts);
-      this.kill_updates(this.site_code);
       tags = [];
       this.tagData = [];
       this.tagConfig = [];
@@ -33366,11 +44723,15 @@ PcasummaryWidgetView = (function(superClass) {
         t = this.tags[tg];
         tags.push("" + this.prefix + t + ".Value");
       }
-      App.opc.add_tags(this.site_code, tags);
-      this.watch_updates(this.site_code);
-      this.start_heartbeat();
-      return this.set_descriptions(true);
+      if (this.refId === 0) {
+        this.refId = App.opc.add_tags(this.site_code, tags);
+        App.vent.on("opc:data:" + this.site_code, this.data_update);
+        this.opc = App.opc.connections[this.site_code];
+        this.start_heartbeat();
+      }
+      this.set_descriptions(true);
     }
+    return this;
   };
 
   PcasummaryWidgetView.prototype.data_update = function(data) {
@@ -33658,15 +45019,22 @@ PcasummaryWidgetView = (function(superClass) {
     else
       @$("#fan3_img").toggleClass('fan-3-on', false)
      */
-    aq = this.data_q(this.tags.pbb_has_alarms);
-    this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
-    wq = this.data_q(this.tags.pbb_has_warnings);
-    this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings) === true && wq);
+    aq = this.data_q(this.tags.pca_has_alarms);
+    this.ui.alarms.toggle(this.get_bool(this.vals.pca_has_alarms) === true && aq);
+    wq = this.data_q(this.tags.pca_has_warnings);
+    this.ui.warnings.toggle(this.get_bool(this.vals.pca_has_warnings) === true && wq);
     return this.set_descriptions();
   };
 
   PcasummaryWidgetView.prototype.set_model = function() {
     var s;
+    if (this.refId > 0) {
+      this.kill_updates(this.site_code);
+      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+        window.clearInterval(this.heartbeat_timer);
+      }
+      this.refId = 0;
+    }
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     this.site_code = OPCManager.get_site_code(s.site);
@@ -33681,9 +45049,7 @@ PcasummaryWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
-        return window.clearInterval(this.heartbeat_timer);
-      }
+
     } else {
       this.IsPageLoading = false;
       return this.update();
@@ -33806,7 +45172,6 @@ PcasummaryWidgetView = (function(superClass) {
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
       this.site_refresh = (OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3;
-      this.watch_updates(this.site_code);
     }
     this.configure_buttons();
     this.render_gauges();
@@ -33829,9 +45194,8 @@ PcasummaryWidgetView = (function(superClass) {
   };
 
   PcasummaryWidgetView.prototype.show_plot = function(p, live) {
-    var dtm, ed, h, lbl, now, pid, plot2_color, plot_color, sd, show_hist, tags;
+    var dtm, ed, h, lbl, now, pid, plot2_color, plot_color, sd, show_hist;
     this.initializing = true;
-    this.kill_updates(this.site_code);
     this.$("#plots").toggle(p != null);
     this.$("#summary").toggle(p == null);
     this.$("#graphics_container").toggle(p == null);
@@ -33920,8 +45284,7 @@ PcasummaryWidgetView = (function(superClass) {
         })(this));
       }
     }
-    this.current_plot = p;
-    return this.watch_updates(this.site_code);
+    return this.current_plot = p;
   };
 
   PcasummaryWidgetView.prototype.trend_callback = function(data) {
@@ -34099,7 +45462,7 @@ window.PcasummaryWidgetView = PcasummaryWidgetView;
 
 module.exports = PcasummaryWidgetView;
 
-},{"../../common/uiutils":8,"./iops_widget_view":64}],75:[function(require,module,exports){
+},{"../../common/uiutils":8,"./iops_widget_view":65}],76:[function(require,module,exports){
 var IOPSWidgetView, Marionette, PcaWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -34110,7 +45473,7 @@ Marionette = require('marionette');
 IOPSWidgetView = require('./iops_widget_view');
 
 PcaWidgetView = (function(superClass) {
-  var tagConfig, tagData;
+  var tagConfig, tagData, tags;
 
   extend(PcaWidgetView, superClass);
 
@@ -34147,11 +45510,7 @@ PcaWidgetView = (function(superClass) {
     sy: 11
   };
 
-  PcaWidgetView.prototype.tags = {
-    pbb_autolevelfail: 'PBB.AUTOLEVEL_FAIL_FLAG',
-    pbb_has_warnings: 'Warning._HasWarnings',
-    pbb_has_alarms: 'Alarm._HasAlarms'
-  };
+  tags = [];
 
   tagData = [];
 
@@ -34159,12 +45518,14 @@ PcaWidgetView = (function(superClass) {
 
   PcaWidgetView.prototype.site_refresh = 50000;
 
+  PcaWidgetView.prototype.refId = 0;
+
   PcaWidgetView.prototype.IsUpdatingSettings = false;
 
   PcaWidgetView.prototype.IsPageLoading = true;
 
   PcaWidgetView.prototype.update = function() {
-    var lbl, ref, ref1, s, t, tag, tags, tg;
+    var lbl, ref, ref1, s, t, tag, tg;
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
     }
@@ -34178,7 +45539,6 @@ PcaWidgetView = (function(superClass) {
     if ((s != null) && !!s.gate) {
       lbl = this.site_code + ": Gate " + s.gate + " PCA";
       this.ui.wtitle.html(lbl);
-      this.kill_updates(this.site_code);
       tags = [];
       this.tagData = [];
       this.tagConfig = [];
@@ -34193,11 +45553,13 @@ PcaWidgetView = (function(superClass) {
         t = this.tags[tg];
         tags.push("" + this.prefix + t + ".Value");
       }
-      App.opc.add_tags(this.site_code, tags);
-      this.opc = App.opc.connections[this.site_code];
       ref = s.layout;
-      this.watch_updates(this.site_code);
-      this.start_heartbeat();
+      if (this.refId === 0) {
+        this.refId = App.opc.add_tags(this.site_code, tags);
+        App.vent.on("opc:data:" + this.site_code, this.data_update);
+        this.opc = App.opc.connections[this.site_code];
+        this.start_heartbeat();
+      }
       return this.set_descriptions(true);
     }
   };
@@ -34223,15 +45585,22 @@ PcaWidgetView = (function(superClass) {
           null;
       }
     }
-    aq = this.data_q(this.tags.pbb_has_alarms);
-    this.ui.alarms.toggle(this.get_bool(this.vals.pbb_has_alarms) === true && aq);
-    wq = this.data_q(this.tags.pbb_has_warnings);
-    this.ui.warnings.toggle(this.get_bool(this.vals.pbb_has_warnings) === true && wq);
+    aq = this.data_q(this.tags.pca_has_alarms);
+    this.ui.alarms.toggle(this.get_bool(this.vals.pca_has_alarms) === true && aq);
+    wq = this.data_q(this.tags.pca_has_warnings);
+    this.ui.warnings.toggle(this.get_bool(this.vals.pca_has_warnings) === true && wq);
     return this.set_descriptions();
   };
 
   PcaWidgetView.prototype.set_model = function() {
     var s;
+    if (this.refId > 0) {
+      this.kill_updates(this.site_code);
+      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
+        window.clearInterval(this.heartbeat_timer);
+      }
+      this.refId = 0;
+    }
     s = _.clone(this.model.get("settings"));
     s.site = this.$('#site').val();
     this.site_code = OPCManager.get_site_code(s.site);
@@ -34246,9 +45615,7 @@ PcaWidgetView = (function(superClass) {
     this.ui.display.toggle(!this.settings_visible);
     this.IsUpdatingSettings = this.settings_visible;
     if (this.settings_visible) {
-      if ((this.heartbeat_timer != null) && this.heartbeat_timer > 0) {
-        return window.clearInterval(this.heartbeat_timer);
-      }
+
     } else {
       this.IsPageLoading = false;
       return this.update();
@@ -34280,7 +45647,6 @@ PcaWidgetView = (function(superClass) {
     this.site_code = OPCManager.get_site_code(settings.site);
     if (this.site_code != null) {
       this.site_refresh = (OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3;
-      this.watch_updates(this.site_code);
     }
     return this.check_init_site();
   };
@@ -34322,7 +45688,7 @@ window.PcaWidgetView = PcaWidgetView;
 
 module.exports = PcaWidgetView;
 
-},{"./iops_widget_view":64}],76:[function(require,module,exports){
+},{"./iops_widget_view":65}],77:[function(require,module,exports){
 var IOPSWidgetView, Marionette, ReportWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -34519,7 +45885,7 @@ window.ReportWidgetView = ReportWidgetView;
 
 module.exports = ReportWidgetView;
 
-},{"./iops_widget_view":64}],77:[function(require,module,exports){
+},{"./iops_widget_view":65}],78:[function(require,module,exports){
 var Marionette, UrlWidgetView, WidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -34619,7 +45985,7 @@ window.UrlWidgetView = UrlWidgetView;
 
 module.exports = UrlWidgetView;
 
-},{"../dashboard/widget_view":39}],78:[function(require,module,exports){
+},{"../dashboard/widget_view":39}],79:[function(require,module,exports){
 var IOPSWidgetView, Marionette, VideoWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -34776,7 +46142,7 @@ window.VideoWidgetView = VideoWidgetView;
 
 module.exports = VideoWidgetView;
 
-},{"./iops_widget_view":64}],79:[function(require,module,exports){
+},{"./iops_widget_view":65}],80:[function(require,module,exports){
 var IOPSWidgetView, Marionette, WeatherWidgetView,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -34820,6 +46186,8 @@ WeatherWidgetView = (function(superClass) {
 
   WeatherWidgetView.prototype.HOUR = 3600000;
 
+  WeatherWidgetView.prototype.QUARTER_HOUR = 900000;
+
   WeatherWidgetView.prototype.site_refresh = 500000;
 
   WeatherWidgetView.prototype.IsUpdatingSettings = false;
@@ -34829,6 +46197,12 @@ WeatherWidgetView = (function(superClass) {
   WeatherWidgetView.prototype.update = function() {
     if (this.IsUpdatingSettings || this.IsPageLoading) {
       return null;
+    }
+    console.log(this.$(".weather_widget").context.clientWidth + '-' + this.$(".weather_widget").context.clientHeight);
+    if (this.$(".weather_widget").context.clientWidth > 200 && this.$(".weather_widget").context.clientHeight > 240) {
+      this.$("#widgetData #forecast").css('display', 'block');
+    } else {
+      this.$("#widgetData #forecast").css('display', 'none');
     }
     if (this.timer) {
       clearInterval(this.timer);
@@ -34844,7 +46218,7 @@ WeatherWidgetView = (function(superClass) {
     if ((s != null) && (s.site != null)) {
       this.beat_time = new Date().getTime() + (this.HOUR / 6);
       this.site = OPCManager.get_site(s.site);
-      this.ui.wtitle.html("Weather for " + (this.site.get('code')));
+      this.ui.wtitle.html((this.site.get('code')) + ": Weather");
       if (typeof site !== "undefined" && site !== null) {
         return this.site.fetch({
           success: (function(_this) {
@@ -34853,7 +46227,7 @@ WeatherWidgetView = (function(superClass) {
               ss = _this.site.get('settings');
               is_stale = false;
               if (ss.weather_refresh != null) {
-                is_stale = ((new Date) - (new Date(ss.weather_refresh))) > _this.QUARTER_HOUR;
+                is_stale = ((new Date) - (new Date(ss.weather_refresh))) > (_this.HOUR / 6);
               }
               if ((ss.weather_refresh == null) || is_stale) {
                 return $.ajax({
@@ -34900,7 +46274,12 @@ WeatherWidgetView = (function(superClass) {
     cover = Math.round(data.currently.cloudCover * 100);
     this.$('#cover .val').html(cover + "<sup>%</sup>");
     this.$('#weather').show();
-    return this.$('#loading').hide();
+    this.$('#loading').hide();
+    if (this.$(".weather_widget").context.clientWidth > 200 && this.$(".weather_widget").context.clientHeight > 240) {
+      return this.$("#widgetData #forecast").css('display', 'block');
+    } else {
+      return this.$("#widgetData #forecast").css('display', 'none');
+    }
   };
 
   WeatherWidgetView.prototype.set_model = function() {
@@ -34994,5 +46373,5 @@ window.WeatherWidgetView = WeatherWidgetView;
 
 module.exports = WeatherWidgetView;
 
-},{"./iops_widget_view":64}]},{},[1])
+},{"./iops_widget_view":65}]},{},[1])
 ;

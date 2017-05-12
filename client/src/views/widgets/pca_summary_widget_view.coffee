@@ -27,15 +27,11 @@ class PcasummaryWidgetView extends IOPSWidgetView
     sx: 9
     sy: 7
 
-  tags:
-    #Processing Tags
-    pbb_autolevelfail:  'PBB.AUTOLEVEL_FAIL_FLAG'
-    pbb_has_warnings :  'Warning._HasWarnings'
-    pbb_has_alarms :    'Alarm._HasAlarms'
-  
+  tags = []
   tagData = []
   tagConfig = []
   site_refresh: 50000
+  refId: 0
 
   IsUpdatingSettings: false
   IsPageLoading: true
@@ -61,7 +57,7 @@ class PcasummaryWidgetView extends IOPSWidgetView
       @$('#mode').toggle(show_opts)
 
       # stop listening for updates
-      @kill_updates(@site_code)
+      #@kill_updates(@site_code)
 
       tags = []
       @tagData = []
@@ -76,13 +72,20 @@ class PcasummaryWidgetView extends IOPSWidgetView
         t = @tags[tg]
         tags.push "#{@prefix}#{t}.Value"
 
-      App.opc.add_tags @site_code, tags
+      #App.opc.add_tags @site_code, tags
 
  
       # listen for updates
-      @watch_updates(@site_code)
-      @start_heartbeat()
+      #@watch_updates(@site_code)
+      #@start_heartbeat()
+      if @refId == 0
+        @refId = App.opc.add_tags @site_code, tags
+        App.vent.on "opc:data:#{@site_code}", @data_update
+        @opc =  App.opc.connections[@site_code]
+        @start_heartbeat()
+
       @set_descriptions(true)
+    @ 
 
   # process data and update the view
   data_update: (data)=>
@@ -371,15 +374,20 @@ class PcasummaryWidgetView extends IOPSWidgetView
     ###
 
     # ALARMS
-    aq = @data_q(@tags.pbb_has_alarms)
-    @ui.alarms.toggle(@get_bool(@vals.pbb_has_alarms)==true && aq)
+    aq = @data_q(@tags.pca_has_alarms)
+    @ui.alarms.toggle(@get_bool(@vals.pca_has_alarms)==true && aq)
     # WARNINGS
-    wq = @data_q(@tags.pbb_has_warnings)
-    @ui.warnings.toggle(@get_bool(@vals.pbb_has_warnings)==true && wq)
+    wq = @data_q(@tags.pca_has_warnings)
+    @ui.warnings.toggle(@get_bool(@vals.pca_has_warnings)==true && wq)
 
     @set_descriptions()
 
   set_model: ()=>
+    if @refId > 0
+      @kill_updates(@site_code)
+      if @heartbeat_timer? && @heartbeat_timer > 0
+        window.clearInterval(@heartbeat_timer)
+      @refId = 0
 
     s = _.clone(@model.get("settings"))
     s.site = @$('#site').val()
@@ -395,8 +403,8 @@ class PcasummaryWidgetView extends IOPSWidgetView
     @IsUpdatingSettings = @settings_visible
     if @settings_visible
       #@kill_updates(@site_code)
-      if @heartbeat_timer? && @heartbeat_timer > 0
-        window.clearInterval(@heartbeat_timer)
+      #if @heartbeat_timer? && @heartbeat_timer > 0
+      #  window.clearInterval(@heartbeat_timer)
     else
       @IsPageLoading = false
       @update()
@@ -491,7 +499,7 @@ class PcasummaryWidgetView extends IOPSWidgetView
     @site_code = OPCManager.get_site_code(settings.site)
     if @site_code?
       @site_refresh = ((OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3)
-      @watch_updates(@site_code)
+      #@watch_updates(@site_code)
 
     @configure_buttons()
     @render_gauges()
@@ -509,7 +517,7 @@ class PcasummaryWidgetView extends IOPSWidgetView
 
   show_plot: (p, live)=>
     @initializing = true
-    @kill_updates(@site_code)
+    #@kill_updates(@site_code)
     # set buttons
     @$("#plots").toggle(p?)
     @$("#summary").toggle(!p?)
@@ -585,7 +593,7 @@ class PcasummaryWidgetView extends IOPSWidgetView
 
     @current_plot = p
 
-    @watch_updates(@site_code)
+    #@watch_updates(@site_code)
 
   trend_callback: (data)=>
     @$('#plot-placeholder').remove()

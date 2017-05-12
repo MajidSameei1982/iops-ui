@@ -11,7 +11,10 @@
   }
 
   #weather {
-    margin: 20px;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
   }
   i.weather {
     font-family: weather;
@@ -74,6 +77,10 @@
   .box-body.content {
     background-color:#fff;
     .display {
+      width: 100%;
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
       h1 {
         font-size: 50px !important;
         font-weight: bold !important;
@@ -84,29 +91,81 @@
         font-size: 0.55em;
         font-weight: normal !important;
       }
-      .details {
-        text-align:center;
-        .location {
-          display:block;
-          font-size:18px;
+      #widgetData {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        tr {
+          td {
+            #wicon {
+              width: 65px;
+              margin-right: 10px;
+            }
+            #temp {
+              font-size: 50px;
+              font-weight: bold;
+              line-height: 50px;
+              text-align: left;
+            }
+            #summ {
+              font-size: 14px;
+              font-weight: normal;
+              line-height: 16px;
+              text-align: left;
+            }
+            #precip {
+
+            }
+            #humid {
+
+            }
+            #cover {
+
+            }
+            #forecast {
+              display: none;
+              padding:8px 0px 2px 0px;
+              font-size: 15px;
+            }
+            .col {
+              .label {
+                width: 100% !important;
+                color:#666;
+                font-size:10px;
+                font-weight:normal;
+                line-height: 12px;
+              }
+              .val {
+                width: auto;
+                color:#999;
+                font-size:30px;
+                line-height: 30px;
+                font-weight: bold;
+              }
+            }
+
+
+          }
+          &:first-child {
+            td {
+              width: 50%;
+            }
+          }
+          &:not(:first-child) {
+            width: 100%;
+          }
+          &:last-child {
+            div:not(:last-child) {
+              float: left;
+              width: 33%;
+            }
+            div:last-child {
+              clear: both;
+            }
+          }
+
         }
-      }
-      #forecast {
-        padding:15px 10px;
-      }
-      .col {
-        .label {
-          color:#666;
-          font-size:12px;
-          font-weight:normal;
-          line-height: 14px;
-        }
-        .val {
-          color:#999;
-          font-size:42px;
-          line-height: 40px;
-          font-weight: bold;
-        }
+
       }
     }
   }

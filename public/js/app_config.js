@@ -17,11 +17,16 @@ window.app_config = {
       icon: "road"
     },
     {
+      id: "airportoverview2d",
+      name: "Airport Overview Widget -2D",
+      icon: "road"
+    },
+/*    {
      id: "advancedalarm",
      name: "Advanced Alarm Widget",
      icon: "bullhorn"
     },
-    {
+*/    {
       id: "alarm",
       name: "Alarm Widget",
       icon: "bullhorn"
@@ -115,20 +120,20 @@ window.app_config = {
       id: "configairport",
       name: "Airport Config Widget",
       icon: "gear",
-      roles: ["global:admin", "site:admin"]
+      roles: ["global:admin","site:admin","global:OperationsAdmin","site:OperationsAdmin"]
     },
     {
       id: "configgate",
       name: "Gate Config Widget",
       icon: "gear",
-      roles: ["global:admin", "site:admin"]
-    },
-    {
-      id: "example",
-      name: "Permissions Example",
-      icon: "gear",
-      roles: ["jfk:user"]
-    }
+      roles: ["global:admin","site:admin","global:OperationsAdmin","site:OperationsAdmin"]
+    }//,
+    // {
+    //   id: "example",
+    //   name: "Permissions Example",
+    //   icon: "gear",
+    //   roles: ["jfk:user"]
+    // }
     // ,
     // {
     //   id: "asset",

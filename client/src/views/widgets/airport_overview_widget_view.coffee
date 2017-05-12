@@ -25,6 +25,7 @@ class AirportoverviewWidgetView extends IOPSWidgetView
 
   tags:{}
   site_refresh: 50000
+  refId: 0
 
   IsUpdatingSettings: false
   IsPageLoading: true
@@ -33,9 +34,6 @@ class AirportoverviewWidgetView extends IOPSWidgetView
     # Ignore all calls except those from startup and Update
     if @IsUpdatingSettings || @IsPageLoading
       return null
-
-    @IsPageLoading = false
-    @IsUpdatingSettings = false
 
     s = @update_settings
       prefix: 'Airport.#{@site_code}.'
@@ -48,7 +46,7 @@ class AirportoverviewWidgetView extends IOPSWidgetView
       @ui.wtitle.html(lbl)
 
       # stop listening for updates
-      @kill_updates(@site_code)
+      #@kill_updates(@site_code)
 
       # clear out lingering top-level <code>_account classes
       classList = $(@el).attr('class').split(/\s+/)
@@ -69,15 +67,16 @@ class AirportoverviewWidgetView extends IOPSWidgetView
               Number: "#{g}"
               Terminal: "#{t}"
               Zone: "#{z}"
-              Tag_gate_alarm: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.Alarm._HasAlarms"
+              Tag_gate_alarm: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB.Alarm._HasAlarms"
               Tag_gate_docked: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB.AIRCRAFTDOCKEDCALCULATION"
-              Tag_gate_critical: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.Alarm._HasCriticalAlarms"
+              Tag_gate_critical: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB.Alarm._HasCriticalAlarms"
               Tag_gate_perfect_hookup: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.System.Perfect_Hookup"
               Tag_system_out_of_service: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.System._OUT_OF_SERVICE"
               Tag_gpu_out_of_service: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.GPU._OUT_OF_SERVICE"
               Tag_pbb_out_of_service: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB._OUT_OF_SERVICE"
               Tag_pca_out_of_service: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PCA._OUT_OF_SERVICE"
-              Tag_system_quality: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.System._QUALITY"
+              Tag_pbb_quality: "#{@cloud_prefix}Airport.#{@site_code}.Term#{t}.Zone#{z}.Gate#{g}.PBB._QUALITY"
+              
             @gateData.push gate
             # add tags to monitor
             tags.push "#{gate.Tag_gate_alarm}.Value"
@@ -88,7 +87,7 @@ class AirportoverviewWidgetView extends IOPSWidgetView
             tags.push "#{gate.Tag_gpu_out_of_service}.Value"
             tags.push "#{gate.Tag_pbb_out_of_service}.Value"
             tags.push "#{gate.Tag_pca_out_of_service}.Value"
-            tags.push "#{gate.Tag_system_quality}.Value"
+            tags.push "#{gate.Tag_pbb_quality}.Value"
  
       # draw layout and gates
       @$("#Airport_Overview").remove()
@@ -106,8 +105,11 @@ class AirportoverviewWidgetView extends IOPSWidgetView
       App.opc.add_tags @site_code, tags
       @opc =  App.opc.connections[@site_code]
       # listen for updates
-      @watch_updates(@site_code)
-      @start_heartbeat()
+      if @refId == 0
+        @refId = App.opc.add_tags @site_code, tags
+        App.vent.on "opc:data:#{@site_code}", @data_update
+        @opc =  App.opc.connections[@site_code]
+        @start_heartbeat()
 
   # process data and update the view
   data_update: (data)=>
@@ -122,9 +124,9 @@ class AirportoverviewWidgetView extends IOPSWidgetView
       perfectHookup = null
       badQuality = null
 
-      qbq = @opc.tags["#{g.Tag_system_quality}"].props.Value.quality
+      qbq = @opc.tags["#{g.Tag_pbb_quality}"].props.Value.quality
       if qbq? && qbq
-        badQuality = @get_bool(@opc.get_value("#{g.Tag_system_quality}.Value"))
+        badQuality = @get_bool(@opc.get_value("#{g.Tag_pbb_quality}.Value"))
         @$("#Airport_Gate_#{g.Number}_icon")
         .toggleClass("bad-data", badQuality ==false && qbq)
       else
@@ -172,7 +174,7 @@ class AirportoverviewWidgetView extends IOPSWidgetView
       if qa? && qa
         alarm = @get_bool(@opc.get_value("#{g.Tag_gate_alarm}.Value"))
         @$("#Airport_Gate_#{g.Number}_icon")
-        .toggleClass("alarm", alarm ==true && qa)
+        .toggleClass("alarm", !critical && alarm ==true && qa)
       else
         qa = false
 
@@ -196,6 +198,11 @@ class AirportoverviewWidgetView extends IOPSWidgetView
     @
 
   set_model: ()=>
+    if @refId > 0
+      @kill_updates(@site_code)
+      if @heartbeat_timer? && @heartbeat_timer > 0
+        window.clearInterval(@heartbeat_timer)
+      @refId = 0
 
     s = _.clone(@model.get("settings"))
     s.site = @$('#site').val()
@@ -208,8 +215,8 @@ class AirportoverviewWidgetView extends IOPSWidgetView
     @IsUpdatingSettings = @settings_visible
     if @settings_visible
       #@kill_updates(@site_code)
-      if @heartbeat_timer? && @heartbeat_timer > 0
-        window.clearInterval(@heartbeat_timer)
+      #if @heartbeat_timer? && @heartbeat_timer > 0
+      #  window.clearInterval(@heartbeat_timer)
       @ui.site.chosen({width:'95%'})
     else
       @IsPageLoading = false
@@ -232,7 +239,7 @@ class AirportoverviewWidgetView extends IOPSWidgetView
     @site_code = OPCManager.get_site_code(settings.site)
     if @site_code? 
       @site_refresh = ((OPCManager.get_site(settings.site).get("refreshRate") * 1000) * 3)
-      @watch_updates(@site_code)
+      #@watch_updates(@site_code)
     
     @check_init_site()
 

@@ -19,8 +19,8 @@
       </tr>
       <tr id="config_set_cool">
         <td class='lbl'>Cool Set Points</td>
-        <td class='input'><input type='text' id='heat_set'>°</td>
-        <td class='input'><input type='text' id='heat_set_tm'>min.</td>
+        <td class='input'><input type='text' id='cool_set'>°</td>
+        <td class='input'><input type='text' id='cool_set_tm'>min.</td>
       </tr>
       <tr id="config_title">
         <td class="title" colspan="3">PERFECT HOOKUP TIMES</td>

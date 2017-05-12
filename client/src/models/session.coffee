@@ -23,6 +23,7 @@ class Session extends BaseModel
       dashboards = []
       for d in App.dashboards.models
         dashboards.push(d.id)
+
       App.session.attributes["dashboards"] = dashboards
     App.session.save()
 
@@ -37,7 +38,15 @@ class Session extends BaseModel
     App.dashboards = new DashboardCollection({userId:App.session.id})
     App.dashboards.fetch
       success: (data, status, xhr)=>
-        if success then success(data, status, xhr)
+        if success
+          if App.session.attributes["dashboards"]?
+            d = []
+            for ud, idx in App.session.attributes["dashboards"] 
+              a = (i for i in data.models when i.id is ud)[0]
+              d.push a
+ 
+            data.models = d
+          success(d, status, xhr)
     @
   # perform authorization and set session token
   @auth: ({email, password, success, error})->
@@ -90,7 +99,7 @@ class Session extends BaseModel
       delete user.iat
       delete user.exp
       # TODO: need server fix to list dashboards
-      user.dashboards = [] 
+      #user.dashboards = [] 
       # remove user-typed password
       delete App.session.attributes["password"]
       # convert to a User
