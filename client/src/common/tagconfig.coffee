@@ -703,14 +703,12 @@ class TagConfig extends Object
 					cooling_stage_2_img:{ControlTags:{pca_comp_stage_2:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'cooling-stage-2-on',Parm003:null,Parm004:'cooling-stage-2-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jbt-airhandler',Object:null}},
 					accool_img:{ControlTags:{pca_bridge_damper:'Boolean',pca_status:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'ac-cool-on',Parm003:null,Parm004:'ac-cool-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jbt-airhandler',Object:null}},
 					bccool_img:{ControlTags:{pca_bridge_air:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'bc-cool-on',Parm003:null,Parm004:'bc-cool-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jbt-airhandler',Object:null}},
+					dirty_filter_img:{ControlTags:{pca_dirty_filter_img:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'dirty-filter-on',Parm003:null,Parm004:'dirty-filter-on-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jbt-airhandler',Object:null}},
+					damper_img:{ControlTags:{pca_status:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'damper-on',Parm003:null,Parm004:'damper-on-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jbt-airhandler',Object:null}},
 				}
 				add_tags: {
 					pca_dirty_filter_img:{Tag:'PCA.Alarm.DIRTY_FILTER',Label:'Dirty Filter',DataType:'Boolean',Parameters:{Parm001:'Yes',Parm002:'No',Parm003:'err',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 					pca_cooling_img:{Tag:'PCA.COOLINGTIMERCALC_BOOLEAN',Label:'Cooling Time',DataType:'Boolean',Parameters:{Parm001:'Yes',Parm002:'No',Parm003:'err',Parm004:''},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-				}
-				add_graphics:{
-					dirty_filter_img:{ControlTags:{pca_dirty_filter_img:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'dirty-filter-on',Parm003:null,Parm004:'dirty-filter-on-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jbt-airhandler',Object:null}},
-					damper_img:{ControlTags:{pca_status:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'damper-on',Parm003:null,Parm004:'damper-on-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jbt-airhandler',Object:null}},
 				}
 			pca_widget: # PCA Widget
 				remove_tags:{'pca_comp_stage_1','pca_comp_stage_2','pca_bridge_damper','pca_bridge_air','pca_suction_pressure_1','pca_suction_pressure_2'
@@ -850,8 +848,6 @@ class TagConfig extends Object
 					cooling_stage_2_img:{ControlTags:{pca_comp_stage_2:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'cooling-stage-2-on',Parm003:null,Parm004:'cooling-stage-2-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetair-xpc-3013',Object:null}},
 					accool_img:{ControlTags:{pca_bridge_damper:'Boolean',pca_status:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'ac-cool-on',Parm003:null,Parm004:'ac-cool-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetair-xpc-3013',Object:null}},
 					bccool_img:{ControlTags:{pca_bridge_air:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'bc-cool-on',Parm003:null,Parm004:'bc-cool-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetair-xpc-3013',Object:null}},
-				}
-				add_graphics:{
 					fan_1_img:{ControlTags:{pca_fan_1:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'fan-1-on',Parm003:null,Parm004:'fan-1-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetair-xpc-3013',Object:null}},
 					fan_2_img:{ControlTags:{pca_fan_2:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'fan-2-on',Parm003:null,Parm004:'fan-2-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetair-xpc-3013',Object:null}},
 					fan_3_img:{ControlTags:{pca_fan_3:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'fan-3-on',Parm003:null,Parm004:'fan-3-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetair-xpc-3013',Object:null}},
@@ -1114,8 +1110,6 @@ class TagConfig extends Object
 							cooling_stage_2_img:{ControlTags:{pca_comp_stage_1_sec:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'cooling-stage-2-on',Parm003:null,Parm004:'cooling-stage-2-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetway-100',Object:null}},
 							accool_img:{ControlTags:{pca_bridge_damper:'Boolean',pca_status:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'ac-cool-on',Parm003:null,Parm004:'ac-cool-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetway-100',Object:null}},
 							bccool_img:{ControlTags:{pca_bridge_air:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'bc-cool-on',Parm003:null,Parm004:'bc-cool-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetway-100',Object:null}},
-						}
-						add_graphics:{
 							heating_stage_3_img:{ControlTags:{pca_heater_3:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'heating-stage-3-on',Parm003:null,Parm004:'heating-stage-3-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetway-100',Object:null}},
 							heating_stage_4_img:{ControlTags:{pca_heater_4:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'heating-stage-4-on',Parm003:null,Parm004:'heating-stage-4-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetway-100',Object:null}},
 							heating_stage_5_img:{ControlTags:{pca_heater_5:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'heating-stage-5-on',Parm003:null,Parm004:'heating-stage-5-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetway-100',Object:null}},
@@ -1163,8 +1157,6 @@ class TagConfig extends Object
 							cooling_stage_1_img:{ControlTags:{pca_comp_stage_1:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'cooling-stage-1-on',Parm003:null,Parm004:'cooling-stage-1-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetway-twist-75',Object:null}},
 							cooling_stage_2_img:{ControlTags:{pca_comp_stage_2:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'cooling-stage-2-on',Parm003:null,Parm004:'cooling-stage-2-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetway-twist-75',Object:null}},
 							accool_img:{ControlTags:{pca_bridge_damper:'Boolean',pca_status:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'ac-cool-on',Parm003:null,Parm004:'ac-cool-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetway-twist-75',Object:null}},
-						}
-						add_graphics:{
 							heating_stage_3_img:{ControlTags:{pca_heater_3:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'heating-stage-3-on',Parm003:null,Parm004:'heating-stage-3-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetway-twist-75',Object:null}},
 							cooling_stage_3_img:{ControlTags:{pca_comp_stage_3:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'cooling-stage-3-on',Parm003:null,Parm004:'cooling-stage-3-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetway-twist-75',Object:null}},
 							fan_1_img:{ControlTags:{pca_fan_1:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'fan-1-on',Parm003:null,Parm004:'fan-1-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetway-twist-75',Object:null}},
@@ -2184,8 +2176,6 @@ class TagConfig extends Object
 					bccool_img:{ControlTags:{pca_bridge_air:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'bc-cool-on',Parm003:null,Parm004:'bc-cool-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img SJ_90',Object:null}},
 					cooling_stage_1_img:{ControlTags:{pca_comp_stage_1:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'cooling-stage-1-on',Parm003:null,Parm004:'cooling-stage-1-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img SJ_90',Object:null}},
 					cooling_stage_2_img:{ControlTags:{pca_comp_stage_2:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'cooling-stage-2-on',Parm003:null,Parm004:'cooling-stage-1-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img SJ_90',Object:null}},
-				}
-				add_graphics:{
 					heating_stage_3_img:{ControlTags:{pca_heater_3:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'heating-stage-3-on',Parm003:null,Parm004:'heating-stage-3-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img SJ_90',Object:null}},
 					filter_img:{ControlTags:{pca_dirtyfilter:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'filter-on',Parm003:null,Parm004:'filter-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img SJ_90',Object:null}},
 					fan_1_img:{ControlTags:{pca_fan_1:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'fan-1-on',Parm003:null,Parm004:'fan-1-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetair-xpc-3013',Object:null}},
@@ -2415,8 +2405,6 @@ class TagConfig extends Object
 							cooling_stage_2_img:{ControlTags:{pca_comp_stage_2:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'cooling-stage-2-on',Parm003:null,Parm004:'cooling-stage-2-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetair-xpc-3013',Object:null}},
 							accool_img:{ControlTags:{pca_bridge_damper:'Boolean',pca_status:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'ac-cool-on',Parm003:null,Parm004:'ac-cool-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetair-xpc-3013',Object:null}},
 							bccool_img:{ControlTags:{pca_bridge_air:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'bc-cool-on',Parm003:null,Parm004:'bc-cool-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetair-xpc-3013',Object:null}},
-						}
-						add_graphics:{
 							fan_1_img:{ControlTags:{pca_fan_1:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'fan-1-on',Parm003:null,Parm004:'fan-1-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetair-xpc-3013',Object:null}},
 							fan_2_img:{ControlTags:{pca_fan_2:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'fan-2-on',Parm003:null,Parm004:'fan-2-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetair-xpc-3013',Object:null}},
 							fan_3_img:{ControlTags:{pca_fan_3:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'fan-3-on',Parm003:null,Parm004:'fan-3-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetair-xpc-3013',Object:null}},
@@ -2501,8 +2489,6 @@ class TagConfig extends Object
 								fan_1_img:{ControlTags:{pca_fan_1:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'fan-1-on',Parm003:null,Parm004:'fan-1-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetway-100',Object:null}},
 								fan_2_img:{ControlTags:{pca_fan_2:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'fan-2-on',Parm003:null,Parm004:'fan-2-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetway-100',Object:null}},
 								fan_3_img:{ControlTags:{pca_fan_3:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'fan-3-on',Parm003:null,Parm004:'fan-3-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetway-100',Object:null}},		
-							}
-							add_graphics:{
 								heating_stage_3_img:{ControlTags:{pca_heater_3:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'heating-stage-3-on',Parm003:null,Parm004:'heating-stage-3-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetway-100',Object:null}},
 								heating_stage_4_img:{ControlTags:{pca_heater_4:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'heating-stage-4-on',Parm003:null,Parm004:'heating-stage-4-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetway-100',Object:null}},
 								heating_stage_5_img:{ControlTags:{pca_heater_5:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'heating-stage-5-on',Parm003:null,Parm004:'heating-stage-5-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetway-100',Object:null}},
@@ -2551,8 +2537,6 @@ class TagConfig extends Object
 								fan_1_img:{ControlTags:{pca_fan_1:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'fan-1-on',Parm003:null,Parm004:'fan-1-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetway-100',Object:null}},
 								fan_2_img:{ControlTags:{pca_fan_2:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'fan-2-on',Parm003:null,Parm004:'fan-2-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetway-100',Object:null}},
 								fan_3_img:{ControlTags:{pca_fan_3:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'fan-3-on',Parm003:null,Parm004:'fan-3-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetway-100',Object:null}},		
-							}
-							add_graphics:{
 								heating_stage_3_img:{ControlTags:{pca_heater_3:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'heating-stage-3-on',Parm003:null,Parm004:'heating-stage-3-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetway-100',Object:null}},
 								heating_stage_4_img:{ControlTags:{pca_heater_4:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'heating-stage-4-on',Parm003:null,Parm004:'heating-stage-4-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetway-100',Object:null}},
 								heating_stage_5_img:{ControlTags:{pca_heater_5:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'heating-stage-5-on',Parm003:null,Parm004:'heating-stage-5-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetway-100',Object:null}},
@@ -2597,13 +2581,11 @@ class TagConfig extends Object
 							cooling_stage_1_img:{ControlTags:{pca_comp_stage_1:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'cooling-stage-1-on',Parm003:null,Parm004:'cooling-stage-1-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img inet-pdx-15',Object:null}},
 							cooling_stage_2_img:{ControlTags:{pca_comp_stage_2:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'cooling-stage-2-on',Parm003:null,Parm004:'cooling-stage-2-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img inet-pdx-15',Object:null}},
 							accool_img:{ControlTags:{pca_bridge_damper:'Boolean',pca_status:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'ac-cool-on',Parm003:null,Parm004:'ac-cool-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img inet-pdx-15',Object:null}},
-						}
-						remove_graphics: {'bccool_img'}
-						add_graphics:{
 							fan_1_img:{ControlTags:{pca_fan_1:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'fan-1-on',Parm003:null,Parm004:'fan-1-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetair-xpc-3013',Object:null}},
 							fan_2_img:{ControlTags:{pca_fan_2:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'fan-2-on',Parm003:null,Parm004:'fan-2-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetair-xpc-3013',Object:null}},
 							filters_img:{ControlTags:{pca_filters:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'filters-on',Parm003:null,Parm004:'fan-3-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetair-xpc-3013',Object:null}},
 						}
+						remove_graphics: {'bccool_img'}
 						remove_tags:{'pca_ambient_humidity','pca_coil_dp','pca_vfd_speed','pca_ambient_humidity','pca_hot_gas_1','pca_hot_gas_2','pca_bridge_air'}
 						add_tags:{
 							pca_filters:{Tag:'PCA.FANCONDFRONTPRI',Label:'Filters',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
@@ -2621,8 +2603,6 @@ class TagConfig extends Object
 								cooling_stage_2_img:{ControlTags:{pca_comp_stage_2:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'cooling-stage-2-on',Parm003:null,Parm004:'cooling-stage-2-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img inet-pdx-10',Object:null}},
 								accool_img:{ControlTags:{pca_bridge_damper:'Boolean',pca_status:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'ac-cool-on',Parm003:null,Parm004:'ac-cool-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img inet-pdx-10',Object:null}},
 								filters_img:{ControlTags:{pca_filters:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'filters-on',Parm003:null,Parm004:'fan-3-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img jetair-xpc-3013',Object:null}},
-							}
-							add_graphics:{
 								evap_coil_img:{ControlTags:{pca_evap_coil:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'evap-coil-on',Parm003:null,Parm004:'evap-coil-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img inet-pdx-10',Object:null}},
 							}
 							remove_graphics: {'bccool_img','fan_1_img','fan_2_img'}
@@ -2645,8 +2625,6 @@ class TagConfig extends Object
 								cooling_stage_2_img:{ControlTags:{pca_comp_stage_2:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'cooling-stage-2-on',Parm003:null,Parm004:'cooling-stage-2-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img inet-pdx-10',Object:null}},
 								accool_img:{ControlTags:{pca_bridge_damper:'Boolean',pca_status:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'ac-cool-on',Parm003:null,Parm004:'ac-cool-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img inet-pdx-10',Object:null}},
 								filters_img:{ControlTags:{pca_filters:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'filters-on',Parm003:null,Parm004:'filters-on-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img inet-pdx-10',Object:null}},
-							}
-							add_graphics:{
 								evap_coil_img:{ControlTags:{pca_evap_coil:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'evap-coil-on',Parm003:null,Parm004:'evap-coil-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img inet-pdx-10',Object:null}},
 							}
 							remove_graphics: {'bccool_img','fan_1_img','fan_2_img'}
@@ -2671,8 +2649,6 @@ class TagConfig extends Object
 								accool_img:{ControlTags:{pca_bridge_damper:'Boolean',pca_status:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'ac-cool-on',Parm003:null,Parm004:'ac-cool-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img inet-pdx-25',Object:null}},
 								filters_img:{ControlTags:{pca_filters:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'filters-on',Parm003:null,Parm004:'filters-on-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img inet-pdx-25',Object:null}},
 								fan_1_img:{ControlTags:{pca_fan_1:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'fans-on',Parm003:null,Parm004:'fan-1-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img inet-pdx-25',Object:null}},
-							}
-							add_graphics:{
 								heating_stage_3_img:{ControlTags:{pca_heater_2:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'heating-stage-3-on',Parm003:null,Parm004:'heating-stage-3-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img inet-pdx-25',Object:null}},
 								cooling_stage_3_img:{ControlTags:{pca_comp_stage_2:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'cooling-stage-3-on',Parm003:null,Parm004:'cooling-stage-3-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img inet-pdx-25',Object:null}},
 							}
@@ -2700,8 +2676,6 @@ class TagConfig extends Object
 								accool_img:{ControlTags:{pca_bridge_damper:'Boolean',pca_status:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'ac-cool-on',Parm003:null,Parm004:'ac-cool-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img inet-pdx-40',Object:null}},
 								filters_img:{ControlTags:{pca_filters:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'filters-on',Parm003:null,Parm004:'filters-on-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img inet-pdx-40',Object:null}},
 								fan_1_img:{ControlTags:{pca_fan_1:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'fans-on',Parm003:null,Parm004:'fan-1-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img inet-pdx-40',Object:null}},
-							}
-							add_graphics:{
 								heating_stage_3_img:{ControlTags:{pca_heater_2:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'heating-stage-3-on',Parm003:null,Parm004:'heating-stage-3-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img inet-pdx-40',Object:null}},
 								cooling_stage_3_img:{ControlTags:{pca_comp_stage_2:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'cooling-stage-3-on',Parm003:null,Parm004:'cooling-stage-3-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img inet-pdx-40',Object:null}},
 							}
@@ -2727,8 +2701,6 @@ class TagConfig extends Object
 								accool_img:{ControlTags:{pca_bridge_damper:'Boolean',pca_status:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'ac-cool-on',Parm003:null,Parm004:'ac-cool-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img inet-pdx-40',Object:null}},
 								filters_img:{ControlTags:{pca_filters:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'filters-on',Parm003:null,Parm004:'filters-on-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img inet-pdx-40',Object:null}},
 								fan_1_img:{ControlTags:{pca_fan_1:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'fans-on',Parm003:null,Parm004:'fan-1-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img inet-pdx-40',Object:null}},
-							}
-							add_graphics:{
 								heating_stage_3_img:{ControlTags:{pca_heater_2:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'heating-stage-3-on',Parm003:null,Parm004:'heating-stage-3-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img inet-pdx-40',Object:null}},
 								cooling_stage_3_img:{ControlTags:{pca_comp_stage_2:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'cooling-stage-3-on',Parm003:null,Parm004:'cooling-stage-3-bq'},Element:{Type:'div',ParentID:'#dynamic_pca_main_background',Class:'img inet-pdx-40',Object:null}},
 							}

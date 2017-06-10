@@ -22,6 +22,7 @@ window.JST["common/modal"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="modal-dialog">\n  <div class="modal-content">\n    <div class="modal-header">\n      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>\n      <h4 class="modal-title"></h4>\n    </div>\n    <div class="modal-body"></div>\n    <div class="modal-footer">\n      <button type="button" id=\'modal_cancel\' class="btn btn-outline pull-left" data-dismiss="modal"></button>\n      <button type="button" id=\'modal_save\' class="btn btn-outline"></button>\n    </div>\n  </div><!-- /.modal-content -->\n</div><!-- /.modal-dialog -->\n\n\n\n'));
     
     }).call(this);
@@ -67,6 +68,7 @@ window.JST["dashboard/content"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<!-- Content Header (Page header) -->\n<section class="content-header">\n  <h1 id="title"></h1>\n</section>\n\n<!-- Main content -->\n<section id="center-region" class="content"></section>\n<!-- /.content -->'));
     
     }).call(this);
@@ -112,6 +114,7 @@ window.JST["dashboard/dashboard_layout"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="wrapper">\n\n  <!-- Main Header -->\n  <div id="header-region" tabindex="-1"></div>\n\n  <!-- Left side column. contains the logo and sidebar -->\n  <div id="side-region" tabindex="-1"></div>\n\n  <!-- Content Wrapper. Contains page content -->\n  <div id="content-region" class="content-wrapper" tabindex="-1"></div>\n  \n  <!-- Main Footer -->\n  <div id="footer-region" tabindex="-1"></div>\n  \n  <!-- Control Sidebar -->      \n  <div id="tool-region" tabindex="-1"></div>\n\n  <!-- Add the sidebar\'s background. This div must be placed\n       immediately after the control sidebar -->\n  <div class=\'control-sidebar-bg\' tabindex="-1"></div>\n\n</div><!-- ./wrapper -->\n<script src=\'adminlte/app.js\' type="text/javascript"></script>\n\n\n'));
     
     }).call(this);
@@ -157,6 +160,7 @@ window.JST["dashboard/dashboard_modal"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="modal-dialog">\n  <div class="modal-content">\n    <div class="modal-header">\n      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>\n      <h4 class="modal-title"></h4>\n      <div class="modal-subtitle"></div>\n    </div>\n    <div class="modal-body">\n      <div class="row">\n        '));
     
       _print(_safe(this.formGroup({
@@ -213,6 +217,7 @@ window.JST["dashboard/footer"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="pull-right">\n\t<span id=\'logo\'><img src=\'img/logos/logo_wide.png\'/> powered by <img src=\'img/logos/jbt_sm.png\'/></span>\n</div>\n\n'));
     
     }).call(this);
@@ -258,6 +263,7 @@ window.JST["dashboard/header"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<!-- Logo -->\n<a href="/" class="logo">\n  <span class="logo-mini"><img src=\'img/logos/logo_square.png\'/></span>\n  <span class="logo-lg"><img src=\'img/logos/logo_wide.png\'/></span>\n</a>\n\n<!-- Header Navbar -->\n<nav class="navbar navbar-static-top" role="navigation">\n  <!-- Sidebar toggle button-->\n  <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">\n    <span class="sr-only">Toggle navigation</span>\n  </a>\n  <span id=\'dashboard_title_label\'>Dashboard:&nbsp;&nbsp;</span>\n  <!-- Navbar Right Menu -->\n  <span id=\'Memory_Test\' style=\'display:none;\'></span>\n  <div class="navbar-custom-menu">\n    <ul class="nav navbar-nav">\n      <li id=\'systemclock\' class=\'user user-menu\'>\n        <div style=\'padding:15px\' id=\'clock\'>--, --- ---, ---- 00:00</div>\n      </li>\n      <!-- User Account Menu -->\n      <li id = \'profilemenu\' class="dropdown user user-menu">\n        <!-- Menu Toggle Button -->\n        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\n          <!-- The user image in the navbar-->\n          <img src="img/avatar.png" class="user-image" id=\'avatar\'/>\n          <!-- hidden-xs hides the username on small devices so only the image appears. -->\n          <span class="hidden-xs" id=\'fullname\'>'));
     
       _print(this.fullName());
@@ -315,6 +321,7 @@ window.JST["dashboard/side"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<!-- sidebar -->\n<section class="sidebar" tabindex=\'-1\'>\n  <!-- Sidebar Menu -->\n  <ul class="sidebar-menu" id=\'dashboard-list\' tabindex=\'-1\'>\n    <li class="header" tabindex=\'-1\'>DASHBOARDS\n      <a href=\'#\' id=\'add_dash\' class=\'short\'><i class=\'fa fa-plus-square\'></i>Add</a>\n      <a href=\'#\' id=\'lock_dash\' class=\'short\'><i class="fa fa-toggle-off" ></i> <span class=\'lock_label\'>UNLOCKED</span></a>\n    </li>\n    <!-- <li class="header" tabindex=\'-1\'>DASHBOARDS </li> -->\n  </ul>\n  <!-- /.sidebar-menu -->\n</section>\n<!-- /.sidebar -->'));
     
     }).call(this);
@@ -360,6 +367,7 @@ window.JST["dashboard/tool"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<!-- sidebar -->\n<section class="sidebar" tabindex="-1">\n  <!-- Sidebar Menu -->\n  <ul class="sidebar-menu" id=\'dashboard-list\' tabindex=\'-1\'>\n    <li class="header">App Admin</li>\n    <li id="manage_accounts" class=\'tool_link\' data-toggle="control-sidebar" tabindex=\'-1\'><a href="#" tabindex=\'-1\'><i class=\'fa fa-building-o\'></i> <span>Manage Accounts</span></a></li>\n    <li id="manage_permissions" class=\'tool_link\' data-toggle="control-sidebar" tabindex=\'-1\'><a href="#" tabindex=\'-1\'><i class=\'fa fa-users\'></i> <span>Manage Permissions</span></a></li>\n  </ul>\n  <!-- /.sidebar-menu -->\n</section>\n<!-- /.sidebar -->'));
     
     }).call(this);
@@ -405,6 +413,7 @@ window.JST["dashboard/widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  Widget Body\n</div><!-- /.box-body -->\n'));
     
     }).call(this);
@@ -450,6 +459,7 @@ window.JST["dashboard/widget_layout"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div><a id="add_widget" href="#"><i class=\'fa fa-plus-square\'></i> Add New Widget</a></div>\n<ul class=\'gridster widget-container\'></ul>\n'));
     
     }).call(this);
@@ -495,6 +505,7 @@ window.JST["dashboard/widget_modal"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="modal-dialog">\n  <div class="modal-content">\n    <div class="modal-header">\n      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>\n      <h4 class="modal-title">Add a Widget</h4>\n      Select a widget below to add to the current dashboard.\n    </div>\n    <div class="modal-body">\n      <div id=\'widget_selections\'>\n        \n      </div>\n    </div>\n    <div class="modal-footer">\n      <button type="button" id=\'modal_cancel\' class="btn btn-outline pull-left" data-dismiss="modal">CANCEL</button>\n    </div>\n  </div><!-- /.modal-content -->\n</div><!-- /.modal-dialog -->\n'));
     
     }).call(this);
@@ -540,6 +551,7 @@ window.JST["forms/manage_accounts/account"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class=\'account_container\'>\n\t<div class=\'col-md-12 title\'>\n\t\t<i id=\'account_active\' class="fa fa-fw"></i>\n\t\t<span id=\'account_name_label\'>'));
     
       _print(this.name);
@@ -593,6 +605,7 @@ window.JST["forms/manage_accounts/accounts"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="preamble">\n\t<span id="add_account"><i class=\'fa fa-plus-square\'></i> Add New Account</span>\n</div>\n<div class="container" id="account_list"></div>'));
     
     }).call(this);
@@ -638,6 +651,7 @@ window.JST["forms/manage_accounts/site"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class=\'site_container\'>\n  <div>\n    <span class=\'display\' id=\'site_label\'><b>'));
     
       _print(this.name);
@@ -680,7 +694,7 @@ window.JST["forms/manage_accounts/site"] = function(__obj) {
     
       _print(_safe('\' size=\'5\' placeholder=\'Rate\'/>\n    <i>&nbsp;sec.</i>\n  </div>\n  <div>\n    <span id="site_cloud_label" class=\'label left\'>Cloud Data</span>\n    <i id=\'site_cloud\' class="fa fa-fw"></i>\n  </div>\n  <div>\n    <span class=\'label left\'>Location:</span>\n    <span class=\'display\' id=\'site_lat_label\'>'));
     
-      _print((this.settings.lat != null) && (this.settings.lon != null) ? this.settings.lat + ", " + this.settings.lon : '');
+      _print((this.settings.lat != null) && (this.settings.lon != null) ? "" + this.settings.lat + ", " + this.settings.lon : '');
     
       _print(_safe('</span>\n    <input class=\'edit\' type=\'text\' id=\'site_lat\' value=\''));
     
@@ -735,6 +749,7 @@ window.JST["forms/manage_permissions/layout"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="nav-tabs-custom">\n  <ul class="nav nav-tabs">\n    <li class="users active"><a href="#users_region" data-toggle="tab" aria-expanded="true">Users</a></li>\n    <li class="roles"><a href="#roles_region" data-toggle="tab" aria-expanded="false">Roles</a></li>\n    <li class="permissions"><a href="#permissions_region" data-toggle="tab" aria-expanded="false">Permissions</a></li>\n  </ul>\n  <div class="tab-content">\n    <div class="tab-pane" id="users_region"></div>\n    <div class="tab-pane" id="roles_region"></div>\n    <div class="tab-pane active" id="permissions_region"></div>\n  </div><!-- /.tab-content -->\n</div>'));
     
     }).call(this);
@@ -780,6 +795,7 @@ window.JST["forms/manage_permissions/permission"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class=\'col-md-12\'>\n  <i class=\'fa fa-fw fa-lock\'></i>\n  <span id=\'permission_label\'><b>'));
     
       _print(this.name);
@@ -841,6 +857,7 @@ window.JST["forms/manage_permissions/permissions"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="preamble">\n  '));
     
       if (this.global) {
@@ -900,6 +917,7 @@ window.JST["forms/manage_permissions/permissions_top"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div id=\'global_region\'>\n  <div class="loading"><i class="fa fa-spinner fa-pulse"></i> LOADING...</div>\n</div>\n'));
     
     }).call(this);
@@ -945,6 +963,7 @@ window.JST["forms/manage_permissions/role"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class=\'col-md-12\'>\n  <i class=\'fa fa-fw fa-group\'></i>\n  <span id=\'role_label\'><b>'));
     
       _print(this.name);
@@ -1015,6 +1034,7 @@ window.JST["forms/manage_permissions/roles"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="preamble">\n  '));
     
       if (this.global) {
@@ -1074,6 +1094,7 @@ window.JST["forms/manage_permissions/roles_top"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div id=\'global_region\'>\n  <div class="loading"><i class="fa fa-spinner fa-pulse"></i> LOADING...</div>\n</div>'));
     
     }).call(this);
@@ -1119,11 +1140,11 @@ window.JST["forms/manage_permissions/user"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      var acc, i, j, len, len1, ref, ref1, s;
+      var acc, s, _i, _j, _len, _len1, _ref, _ref1;
     
       _print(_safe('<div class=\'col-md-12 display\'>\n  <span id=\'user_crud\' class=\'crud_container\'>\n    <span id=\'user_label\'>'));
     
-      _print(this.lastName + ", " + this.firstName);
+      _print("" + this.lastName + ", " + this.firstName);
     
       _print(_safe(' <small>('));
     
@@ -1220,21 +1241,21 @@ window.JST["forms/manage_permissions/user"] = function(__obj) {
     
       _print(_safe('\n\n  <div class="row">\n  '));
     
-      ref = App.accounts.models;
-      for (i = 0, len = ref.length; i < len; i++) {
-        acc = ref[i];
+      _ref = App.accounts.models;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        acc = _ref[_i];
         _print(_safe('\n    <div class=\'account_container col-md-12\'>\n      <h3 class=\'account_name\'><i class="fa fa-fw fa-building-o"></i>'));
         _print(acc.get('name'));
         _print(_safe(' Roles</h3>\n  '));
-        ref1 = acc.sites.models;
-        for (j = 0, len1 = ref1.length; j < len1; j++) {
-          s = ref1[j];
+        _ref1 = acc.sites.models;
+        for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+          s = _ref1[_j];
           _print(_safe('\n  '));
           if (App.session.is_site_admin(s.id)) {
             _print(_safe('\n        '));
             _print(_safe(this.roleSelector({
               id: 'roles_' + s.id,
-              label: (s.get('name')) + " (" + (s.get('code')) + ")",
+              label: "" + (s.get('name')) + " (" + (s.get('code')) + ")",
               value: this.roles,
               site_id: s.id,
               cls: 'col-md-12 roleselect'
@@ -1291,6 +1312,7 @@ window.JST["forms/manage_permissions/users_layout"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="loading"><i class="fa fa-spinner fa-pulse"></i> LOADING...</div>\n<div class="preamble">\n  <span id="add_user" class=\'button\'><i class=\'fa fa-plus-square\'></i> Add New User</span>\n  <input id=\'filter\' type=\'text\' placeholder=\'search users\' class=\'pull-right\'></input>\n</div>\n<div id=\'users_region\'></div>\n'));
     
     }).call(this);
@@ -1336,6 +1358,7 @@ window.JST["forms/profile"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="container">\n\t<div class="row">\n\t\t<!-- <div class="col-xs-12 col-sm-4" style=\'border-right:solid 1px #ccc;\'>\n\t\t\t<div style=\'border:solid 1px #ccc;width:200px;height:200px\'></div>\n\t\t</div> -->\n\n\t\t<div class="col-xs-12 col-sm-8">\n\t\t\t\n\t\t\t<div id="alertContainer"></div>\n\n\t\t\t'));
     
       _print(_safe(this.formGroup({
@@ -1456,6 +1479,7 @@ window.JST["login"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-body" id="alert-container">\n</div>\n<div class="login-box">\n  <div class="login-logo"><img src=\'img/logos/logo_login.png\'/></div>\n  <div class="login-box-body">\n\n    <form id="loginform" action="#" method="post">\n      <p class="login-box-msg">Sign in to start your session</p>\n      '));
     
       _print(_safe(this.formGroup({
@@ -1528,6 +1552,7 @@ window.JST["reports"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<style>\n    #reportViewer1 {\n        position: absolute;\n        left: 5px;\n        right: 5px;\n        top: 5px;\n        bottom: 5px;\n        font-family: \'segoe ui\', \'ms sans serif\';\n        overflow: hidden;\n    }\n</style>\n<div id="reportViewer1" class="k-widget">\n    loading...\n</div>'));
     
     }).call(this);
@@ -1573,6 +1598,7 @@ window.JST["widgets/advanced_alarm_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-bullhorn"></i>&emsp;<h3 class="box-title">Alarms</h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" id=\'content\'>\n  <div class="display contain">\n    <h3 id=\'alarm_lbl\'></h3>\n    <table id="alarmGrid"></table>\n    <div id="pager"></div>\n  </div>\n  \n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -1626,6 +1652,7 @@ window.JST["widgets/airport_overview_2d_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-road"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n      </h1>\n    </div>\n    <div id="key">\n      <div class="key_row"><i class="fa fa-fw fa-plane docked"></i> Airplane at Gate</div>\n      <div class="key_row"><div class="legend-autolevel"></div> Auto Level Engaged</div>\n      <div class="key_row"><div class="legend-alarm"></div> Alarm</div>\n      <div class="key_row"><div class="legend-critical"></div> Critical Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-check-circle-o perfect"></i> Perfect Hookup</div>\n      <div class="key_row"><i class="fa fa-fw fa-wrench outofservice"></i> Out of Service</div>\n      <div class="key_row">\n        <span class="key_row fa-stack bad-data">\n          <i class="fa fa-rss fa-stack-1x "></i>\n          <i class="fa fa-exclamation fa-stack-1x"></i> Comm. Error\n        </span>\n      </div>\n\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -1679,6 +1706,7 @@ window.JST["widgets/airport_overview_widget - Copy"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-road"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n      </h1>\n    </div>\n    <div id="key">\n      <div class="key_row"><i class="fa fa-fw fa-plane docked"></i> Airplane at Gate</div>\n      <div class="key_row"><div class="legend-autolevel"></div> Auto Level Engaged</div>\n      <div class="key_row"><div class="legend-alarm"></div> Alarm</div>\n      <div class="key_row"><div class="legend-critical"></div> Critical Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-check-circle-o perfect"></i> Perfect Hookup</div>\n      <div class="key_row"><i class="fa fa-fw fa-wrench outofservice"></i> Out of Service</div>\n      <div class="key_row">\n        <span class="key_row fa-stack bad-data">\n          <i class="fa fa-rss fa-stack-1x "></i>\n          <i class="fa fa-exclamation fa-stack-1x"></i> Comm. Error\n        </span>\n      </div>\n\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -1732,6 +1760,7 @@ window.JST["widgets/airport_overview_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-road"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n      </h1>\n    </div>\n    <div id="key">\n      <div class="key_row"><i class="fa fa-fw fa-plane docked"></i> Airplane at Gate</div>\n      <div class="key_row"><i class="fa fa-fw fa-warning critical"></i> Critical Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-bell alarm"></i> Alarm</div>\n      <div class="key_row"><i class="fa fa-fw fa-check-circle-o perfect"></i> Perfect Hookup</div>\n      <div class="key_row"><i class="fa fa-fw fa-wrench outofservice"></i> Out of Service</div>\n      <div class="key_row">\n        <span class="key_row fa-stack bad-data">\n          <i class="fa fa-rss fa-stack-1x "></i>\n          <i class="fa fa-exclamation fa-stack-1x"></i> Comm. Error\n        </span>\n      </div>\n\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -1785,6 +1814,7 @@ window.JST["widgets/alarm_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-bullhorn"></i>&emsp;<h3 class="box-title">Alarms</h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" id=\'content\'>\n  <div class="display contain">\n    <h3 id=\'alarm_lbl\'></h3>\n  </div>\n  \n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -1838,6 +1868,7 @@ window.JST["widgets/asset_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-cubes">&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div class="display" style="position:relative;min-height:100%;min-width:100%;">\n    <div id="map" style=\'position:absolute;top:0;left:0;height:100%;width:100%;\'></div>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.formGroup({
@@ -1902,6 +1933,7 @@ window.JST["widgets/config_airport_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-gear"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\' class=\'display\'>\n    \n    <table id="widgetData" class=\'\'> \n      <tr id="config_title">\n        <td class="title" colspan="3">PCA SET POINTS</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>Heat Set Points</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set\'>°</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_cool">\n        <td class=\'lbl\'>Cool Set Points</td>\n        <td class=\'input\'><input type=\'text\' id=\'cool_set\'>°</td>\n        <td class=\'input\'><input type=\'text\' id=\'cool_set_tm\'>min.</td>\n      </tr>\n      <tr id="config_title">\n        <td class="title" colspan="3">PERFECT HOOKUP TIMES</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>PCA</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'pca_perfect_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>GPU</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'gpu_perfect_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>PBB</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'pbb_perfect_tm\'>min.</td>\n      </tr>\n    </table>\n\n<!--     <div><b style=\'color:#cc6666;\'>Heat:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set\'>°</div>\n    <div><b style=\'color:#cc6666;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set_tm\'>min.</div>\n    <div><b style=\'color:#6666cc;\'>Cool:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set\'>°</div>\n    <div><b style=\'color:#6666cc;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set_tm\'>min.</div>\n -->    \n    <div style=\'margin:10px 0;\'><button id=\'set_pca_points\'>UPDATE CONFIGURATION</button></div>\n  </div>\n  <div id="settings" class=\'settings\' style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -1955,6 +1987,7 @@ window.JST["widgets/config_gate_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-gear"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div id=\'display\' class=\'display\'>\n    \n    <table id="widgetData" class=\'\'> \n      <tr id="config_title">\n        <td class="title" colspan="3">PCA SET POINTS</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>Heat Set Points</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set\'>°</td>\n        <td class=\'input\'><input type=\'text\' id=\'heat_set_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_cool">\n        <td class=\'lbl\'>Cool Set Points</td>\n        <td class=\'input\'><input type=\'text\' id=\'cool_set\'>°</td>\n        <td class=\'input\'><input type=\'text\' id=\'cool_set_tm\'>min.</td>\n      </tr>\n      <tr id="config_title">\n        <td class="title" colspan="3">PERFECT HOOKUP TIMES</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>PCA</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'pca_perfect_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>GPU</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'gpu_perfect_tm\'>min.</td>\n      </tr>\n      <tr id="config_set_heat">\n        <td class=\'lbl\'>PBB</td>\n        <td colspan="2" class=\'input\'><input type=\'text\' id=\'pbb_perfect_tm\'>min.</td>\n      </tr>\n    </table>\n\n<!--     <div><b style=\'color:#cc6666;\'>Heat:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set\'>°</div>\n    <div><b style=\'color:#cc6666;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'heat_set_tm\'>min.</div>\n    <div><b style=\'color:#6666cc;\'>Cool:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set\'>°</div>\n    <div><b style=\'color:#6666cc;\'>Time:</b> <input type=\'text\' style=\'width:50px;text-align:right;\' id=\'cool_set_tm\'>min.</div>\n -->    \n    <div style=\'margin:10px 0;\'><button id=\'set_pca_points\'>UPDATE CONFIGURATION</button></div>\n  </div>\n  <div id="settings" class=\'settings\' style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -2008,6 +2041,7 @@ window.JST["widgets/gpu_summary_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'>\n    <i class="fa fa-flash"></i>&emsp;<h3 class="box-title"></h3>&emsp;\n    <select id="mode" style=\'display:none;\'>\n      <option value=\'\'>Summary</option>\n      <option value=\'vin\'>Input Voltage</option>\n      <option value=\'vout\'>Output Voltage</option>\n      <option value=\'aout\'>Output Amperage</option>\n    </select>\n  </div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="gpu_summary_label">\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <div id="view_main">\n      <div id="gpu_image"></div>\n      <div id="power_indicator"></div>\n      <div id="txt_connected_time"></div>\n    </div>\n    <div id="plots" style="display: none;">\n      <table id=\'plot_container\' border="0">\n        <tr>\n          <td id=\'options\'>\n            <div id=\'ptype_lbl\'></div>\n\n            <div id=\'live_container\'>\n              <label>Live Data</label>\n              <input id=\'live_data\' type="checkbox" data-toggle="toggle" >\n            </div>\n            \n            <div id="phases">\n              <a id="phase_a" class=\'plot_type\' href="#">Phase A</a>\n              <a id="phase_b" class=\'plot_type\' href="#">Phase B</a>\n              <a id="phase_c" class=\'plot_type\' href="#">Phase C</a>\n            </div>\n\n          </td>\n          <td id=\'plot_data\'></td>\n        </tr>\n      </table>\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -2061,6 +2095,7 @@ window.JST["widgets/gpu_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'>\n    <i class="fa fa-flash"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table id="widgetData" class=\'data no-show\'>\n      <tbody>\n      </tbody>\n    </table>\n    <table id="widgetData2" class=\'data2 no-show\'>\n      <tbody>\n      </tbody>\n    </table>\n\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -2114,6 +2149,7 @@ window.JST["widgets/kpi_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-area-chart"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" style=\'overflow:auto !important;\'>\n  <div class="display">\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -2167,6 +2203,7 @@ window.JST["widgets/out_of_service_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-wrench"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n\n  <div class="display contain" style=\'width:100%;height:100%;\'>\n    <div id="display_label">\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table id="widgetData" class=\'data-status\'>\n      <thead>\n        <th id="H0"></th>\n      </thead>\n      <tbody>\n        <tr id="iconRow">\n<!--           <td id="iconRow_0">\n            Alerts\n          </td> -->\n        </tr>\n      </tbody>\n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -2220,6 +2257,7 @@ window.JST["widgets/pbb_detail_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div>\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n<table style="height:100%;width: 100%;">\n  <tr>\n    <td>\n      <table> \n        <tr><td id="aircraft_img_container" style="width:300px; height:200px; ;text-align:center; vertical-align:middle"></td><tr>\n      </table>\n    </td>\n    <td>\n      <table class=\'data transparent\'> \n        <tr><td id=\'pbb_status_container\' class=\'\'></td><td id=\'pbb_undockordocktime_container\' class=\'\'></td></tr>\n        <tr>\n            <td id="autolevel_img_container" style="width:225px; height:150px; vertical-align:middle"></td>\n            <td id="canopy_img_container" style="width:225px; height:150px; vertical-align:middle"></td>\n        </tr>  \n        <tr><td id=\'pbb_autolevel_container\' class=\'\'></td><td id=\'pbb_canopy_container\' class=\'\'></td></tr>     \n      </table>\n    </td>\n    <td class="elev_rotunda no-show">\n      <table id="widgetImage2" class=\'data transparent no-show\'>  \n        <tr><td class=\'val\'>&nbsp;</td></tr>\n        <tr><td id="elevating_img_container" style="width:150px; height:165px; vertical-align:middle"></td></tr>\n      </table>\n    </td>\n  </tr>\n</table> \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -2273,6 +2311,7 @@ window.JST["widgets/pbb_level_detail_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="aircraft_img" class="">\n      <div></div>\n\n    <table id="widgetData" class=\'data transparent\'>\n      <tbody>\n      </tbody>\n    </table>\n\n      <!-- <div id="pbb_cab_angle_disp" class=""></div> -->\n      <label id="pbb_cab_angle_disp" class=""></label>  \n      <!-- <div id="pbb_slope_deg" class=""></div> --> \n      <label id="pbb_slope_deg" class=""></label> \n      <!-- <div id="pbb_swing_angle_disp" class=""></div> -->   \n      <label id="pbb_swing_angle_disp" class=""></label>   \n      <!-- <div id="pbb_height_to_disp" class=""></div> -->\n      <label id="pbb_height_to_disp" class=""></label>\n      <!-- <div id="pca_pcaambhumidity" class=""></div> -->\n      <label id="pca_pcaambhumidity" class=""></label>\n      <!-- <div id="pbb_wheel_angle_deg" class=""></div> -->\n      <label id="pbb_wheel_angle_deg" class=""></label>\n      <!-- <div id="pbb_tunnel_length" class=""></div> --> \n      <label id="pbb_tunnel_length" class=""></label> \n    <table id="widgetImage21">  \n        <tr><td id="elevating_img_container" style="width:150px; height:165px; vertical-align:middle"  class=\'no-show\'></td></tr>\n    </table>\n   </div>\n </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -2326,6 +2365,7 @@ window.JST["widgets/pbb_pca_gpu_basic_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class="pull-left"><i class="fa fa-plane"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -2379,6 +2419,7 @@ window.JST["widgets/pbb_pca_gpu_status_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-server"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n\n  <div class="display contain" style=\'width:100%;height:100%;\'>\n    <div id="display_label">\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table id="widgetData" class=\'data-status\'>\n      <thead>\n        <th id="H0"></th>\n      </thead>\n      <tbody>\n        <tr id="iconRow">\n          <td id="iconRow_lbl">\n            Alerts\n          </td>\n        </tr>\n      </tbody>\n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -2432,6 +2473,7 @@ window.JST["widgets/pbb_system_status_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'>\n    <i class="fa fa-flash"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id="display_label">\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n    <table id="widgetData" class=\'data-status no-show\'>\n      <tbody>\n      </tbody>\n    </table>\n\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -2485,6 +2527,7 @@ window.JST["widgets/pbb_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-plane"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div>\n      <h1>\n        <i id=\'docked\' class="fa fa-plane" title=\'Plane is DOCKED\' style=\'display:none;\'></i>\n        <i id=\'alarms\' class="fa fa-bell-o" title=\'Gate has ALARMS\' style=\'display:none;\'></i>\n        <i id=\'warnings\' class="fa fa-warning" title=\'Gate has WARNINGS\' style=\'display:none;\'></i>\n      </h1>\n    </div>\n\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table id="widgetData" class="data" style="float: left; width:92%"> \n      <tbody>\n      </tbody>\n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -2538,6 +2581,7 @@ window.JST["widgets/pca_discharge_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-server"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain" style=\'width:100%;height:100%;\'>\n    <div id="chart" style="width:100%;height:100%;"></div>     \n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -2591,6 +2635,7 @@ window.JST["widgets/pca_summary_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-server"></i>&emsp;<h3 class="box-title"></h3>&emsp;\n    <select id="mode" style=\'display:none;\'>\n      <option value=\'\'>Summary</option>\n      <option value=\'plots\'>Temp. Data</option>\n    </select>\n  </div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  \n  <div class="display contain">\n    <div id=\'display_label\'>\n      <h1>\n      </h1>\n    </div>\n    <div id="summary">\n      <div id="view_main">\n        <div id="power_indicator"></div>\n        <div id="txt_connected_time"></div>\n      </div>\n      <div id="pca_coil_dp" class="val"></div>   \n      <div id="pca_vfd_speed" class="val"></div>\n      <div id="pca_ambient_humidity" class="val"></div>\n      <div id="pca_suction_pressure_1" class="val"></div>\n      <div id="pca_suction_pressure_2" class="val"></div>\n      <div id="pca_suction_pressure_3" class="val"></div>\n      <div id="pca_headpri1" class="val"></div>\n      <div id="pca_headpri2" class="val"></div>\n      <div id="pca_headpri3" class="val"></div>\n      <div id="pca_hot_gas_1" class="val"></div>\n      <div id="pca_hot_gas_2" class="val"></div>\n      <div id="pca_pump_cond" class="val"></div>\n      <div id="pca_bridge_damper" class="val"></div>\n      <div id="pca_bridge_air" class="val"></div>\n    </div>\n    <div id="plots" style="display: none;">\n      <table id=\'plot_container\' border="0">\n        <tr>\n          <td id=\'options\'>\n            <div id=\'ptype_lbl\'>\n              <table>\n                <tr>\n                  <td>Ambient Temp:</td>\n                  <td><div style=\'width:14px;height:14px;background-color:#80C3FF;\'></div></td>\n                </tr>\n                <tr>\n                  <td>Discharge Temp:</td>\n                  <td><div style=\'width:14px;height:14px;background-color:#FF8C1A;\'></div></td>\n                </tr>\n              </table>\n            </div>\n\n            <div id=\'live_container\'>\n              <label>Live Data</label>\n              <div>\n                <input id=\'live_data\' type="checkbox" data-toggle="toggle" >\n              </div>\n            </div>\n            \n          </td>\n          <td id=\'plot_data\'></td>\n        </tr>\n      </table>\n    </div>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -2644,6 +2689,7 @@ window.JST["widgets/pca_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-server"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n\n<div class="box-body content" id=\'content\'>\n  <div class="display contain">\n    <div id="gate_label">\n      <h1>\n      </h1>\n    </div>\n    <table style="float: left; width:4%"><tr><td>&nbsp;</td></tr></table>\n    <table id="widgetData" class="data" style="float: left; width:92%"> \n      <tbody>\n      </tbody>\n    </table>\n  </div>\n\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -2697,6 +2743,7 @@ window.JST["widgets/report_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-file-text"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content" style=\'overflow:auto !important;\'>\n  <div class="display">\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -2750,6 +2797,7 @@ window.JST["widgets/url_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class=\'fa fa-link\'></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <iframe id=\'iframe\' src="" frameborder="0" allowfullscreen></iframe>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.formGroup({
@@ -2814,6 +2862,7 @@ window.JST["widgets/video_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-video-camera"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div>\n<div class="box-body content" id=\'content\' style=\'overflow:auto !important;\'>\n  <div class="display contain">\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -2867,6 +2916,7 @@ window.JST["widgets/weather_widget"] = function(__obj) {
       return _safe(result);
     };
     (function() {
+    
       _print(_safe('<div class="box-header with-border">\n  <div class=\'pull-left\'><i class="fa fa-cloud"></i>&emsp;<h3 class="box-title"></h3></div>\n  <div class="pull-right controls">\n    <a href="#" id="show_settings"><i class="fa fa-cogs"></i></a> \n    <a href="#" id="remove"><i class="fa fa-times-circle"></i></a>\n  </div>\n</div><!-- /.box-header -->\n<div class="box-body content">\n  <div class=\'display\'>\n    <div id=\'loading\' style=\'display:none;\'>Loading Weather Data...</div>\n    <div id=\'weather\' style=\'display:none;\'>\n      <table id=\'widgetData\'>\n        <tr>\n          <td>\n            <canvas id=\'wicon\' width=\'200\' height=\'200\'></canvas>\n          </td>\n          <td>\n            <div id=\'temp\'></div>\n            <div id=\'summ\'></div>\n          </td>\n        </tr>\n        <tr>\n          <td colspan="2">\n            <div id="forecast"></div>\n          </td>\n        </tr>\n        <tr>\n          <td colspan="2">\n            <div id="precip" class=\'col\'>\n              <div class="label">Precipitation</div>\n              <div class="val"></div>\n            </div>\n            <div id="humid" class=\'col\'>\n              <div class="label">Humidity</div>\n              <div class="val"></div>\n            </div>\n            <div id="cover" class=\'col\'>\n              <div class="label">Cloud Cover</div>\n              <div class="val"></div>\n            </div>\n            <div style=\'clear:both;\'></div>\n          </td>\n        </tr>\n      </table>\n    </div>\n  </div>\n  <div class="settings" style="display: none;">\n    <h3>Settings</h3>\n    '));
     
       _print(_safe(this.siteSelector({
@@ -8386,6 +8436,40 @@ TagConfig = (function(superClass) {
               Class: 'img jbt-airhandler',
               Object: null
             }
+          },
+          dirty_filter_img: {
+            ControlTags: {
+              pca_dirty_filter_img: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'dirty-filter-on',
+              Parm003: null,
+              Parm004: 'dirty-filter-on-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jbt-airhandler',
+              Object: null
+            }
+          },
+          damper_img: {
+            ControlTags: {
+              pca_status: 'Boolean'
+            },
+            Parameters: {
+              Parm001: 'ALL_TRUE',
+              Parm002: 'damper-on',
+              Parm003: null,
+              Parm004: 'damper-on-bq'
+            },
+            Element: {
+              Type: 'div',
+              ParentID: '#dynamic_pca_main_background',
+              Class: 'img jbt-airhandler',
+              Object: null
+            }
           }
         },
         add_tags: {
@@ -8420,42 +8504,6 @@ TagConfig = (function(superClass) {
               Type: 'TableRow',
               ParentID: '#widgetData',
               Class: null,
-              Object: null
-            }
-          }
-        },
-        add_graphics: {
-          dirty_filter_img: {
-            ControlTags: {
-              pca_dirty_filter_img: 'Boolean'
-            },
-            Parameters: {
-              Parm001: 'ALL_TRUE',
-              Parm002: 'dirty-filter-on',
-              Parm003: null,
-              Parm004: 'dirty-filter-on-bq'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#dynamic_pca_main_background',
-              Class: 'img jbt-airhandler',
-              Object: null
-            }
-          },
-          damper_img: {
-            ControlTags: {
-              pca_status: 'Boolean'
-            },
-            Parameters: {
-              Parm001: 'ALL_TRUE',
-              Parm002: 'damper-on',
-              Parm003: null,
-              Parm004: 'damper-on-bq'
-            },
-            Element: {
-              Type: 'div',
-              ParentID: '#dynamic_pca_main_background',
-              Class: 'img jbt-airhandler',
               Object: null
             }
           }
@@ -9913,9 +9961,7 @@ TagConfig = (function(superClass) {
               Class: 'img jetair-xpc-3013',
               Object: null
             }
-          }
-        },
-        add_graphics: {
+          },
           fan_1_img: {
             ControlTags: {
               pca_fan_1: 'Boolean'
@@ -12719,9 +12765,7 @@ TagConfig = (function(superClass) {
                     Class: 'img jetway-100',
                     Object: null
                   }
-                }
-              },
-              add_graphics: {
+                },
                 heating_stage_3_img: {
                   ControlTags: {
                     pca_heater_3: 'Boolean'
@@ -13415,9 +13459,7 @@ TagConfig = (function(superClass) {
                     Class: 'img jetway-twist-75',
                     Object: null
                   }
-                }
-              },
-              add_graphics: {
+                },
                 heating_stage_3_img: {
                   ControlTags: {
                     pca_heater_3: 'Boolean'
@@ -25655,9 +25697,7 @@ TagConfig = (function(superClass) {
               Class: 'img SJ_90',
               Object: null
             }
-          }
-        },
-        add_graphics: {
+          },
           heating_stage_3_img: {
             ControlTags: {
               pca_heater_3: 'Boolean'
@@ -28293,9 +28333,7 @@ TagConfig = (function(superClass) {
                   Class: 'img jetair-xpc-3013',
                   Object: null
                 }
-              }
-            },
-            add_graphics: {
+              },
               fan_1_img: {
                 ControlTags: {
                   pca_fan_1: 'Boolean'
@@ -29276,9 +29314,7 @@ TagConfig = (function(superClass) {
                     Class: 'img jetway-100',
                     Object: null
                   }
-                }
-              },
-              add_graphics: {
+                },
                 heating_stage_3_img: {
                   ControlTags: {
                     pca_heater_3: 'Boolean'
@@ -29987,9 +30023,7 @@ TagConfig = (function(superClass) {
                     Class: 'img jetway-100',
                     Object: null
                   }
-                }
-              },
-              add_graphics: {
+                },
                 heating_stage_3_img: {
                   ControlTags: {
                     pca_heater_3: 'Boolean'
@@ -30631,12 +30665,7 @@ TagConfig = (function(superClass) {
                   Class: 'img inet-pdx-15',
                   Object: null
                 }
-              }
-            },
-            remove_graphics: {
-              'bccool_img': 'bccool_img'
-            },
-            add_graphics: {
+              },
               fan_1_img: {
                 ControlTags: {
                   pca_fan_1: 'Boolean'
@@ -30688,6 +30717,9 @@ TagConfig = (function(superClass) {
                   Object: null
                 }
               }
+            },
+            remove_graphics: {
+              'bccool_img': 'bccool_img'
             },
             remove_tags: {
               'pca_ambient_humidity': 'pca_ambient_humidity',
@@ -30892,9 +30924,7 @@ TagConfig = (function(superClass) {
                     Class: 'img jetair-xpc-3013',
                     Object: null
                   }
-                }
-              },
-              add_graphics: {
+                },
                 evap_coil_img: {
                   ControlTags: {
                     pca_evap_coil: 'Boolean'
@@ -31141,9 +31171,7 @@ TagConfig = (function(superClass) {
                     Class: 'img inet-pdx-10',
                     Object: null
                   }
-                }
-              },
-              add_graphics: {
+                },
                 evap_coil_img: {
                   ControlTags: {
                     pca_evap_coil: 'Boolean'
@@ -31407,9 +31435,7 @@ TagConfig = (function(superClass) {
                     Class: 'img inet-pdx-25',
                     Object: null
                   }
-                }
-              },
-              add_graphics: {
+                },
                 heating_stage_3_img: {
                   ControlTags: {
                     pca_heater_2: 'Boolean'
@@ -31722,9 +31748,7 @@ TagConfig = (function(superClass) {
                     Class: 'img inet-pdx-40',
                     Object: null
                   }
-                }
-              },
-              add_graphics: {
+                },
                 heating_stage_3_img: {
                   ControlTags: {
                     pca_heater_2: 'Boolean'
@@ -32019,9 +32043,7 @@ TagConfig = (function(superClass) {
                     Class: 'img inet-pdx-40',
                     Object: null
                   }
-                }
-              },
-              add_graphics: {
+                },
                 heating_stage_3_img: {
                   ControlTags: {
                     pca_heater_2: 'Boolean'
