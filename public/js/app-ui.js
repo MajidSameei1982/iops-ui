@@ -15385,40 +15385,6 @@ TagConfig = (function(superClass) {
       pbb_level_detail_widget: {
         4: {
           A1: {
-            A6L1: {
-              remove_tags: {
-                'pbb_autoleveling': 'pbb_autoleveling',
-                'pbb_limits': 'pbb_limits',
-                'pbb_smoke_detector': 'pbb_smoke_detector',
-                'pbb_cabin_floor_deicer': 'pbb_cabin_floor_deicer',
-                'pbb_cab_angle_disp': 'pbb_cab_angle_disp',
-                'pbb_slope_deg': 'pbb_slope_deg',
-                'pbb_swing_angle_disp': 'pbb_swing_angle_disp',
-                'pbb_height_to_disp': 'pbb_height_to_disp',
-                'pbb_wheel_angle_deg': 'pbb_wheel_angle_deg',
-                'pbb_tunnel_length': 'pbb_tunnel_length'
-              },
-              add_tags: {
-                power_on: {
-                  Tag: 'PBB.POWER_ON',
-                  Label: 'Power On',
-                  DataType: 'Boolean',
-                  Parameters: {
-                    Parm001: 'On',
-                    Parm002: 'Off',
-                    Parm003: 'ok',
-                    Parm004: null,
-                    Parm005: null
-                  },
-                  Element: {
-                    Type: 'TableRow',
-                    ParentID: '#widgetData',
-                    Class: null,
-                    Object: null
-                  }
-                }
-              }
-            },
             A6L2: {
               add_graphics: {
                 elevating_img: {
@@ -22517,7 +22483,8 @@ TagConfig = (function(superClass) {
           'pca_suction_pressure_2': 'pca_suction_pressure_2',
           'pca_hot_gas_1': 'pca_hot_gas_1',
           'pca_hot_gas_2': 'pca_hot_gas_2',
-          'pca_status': 'pca_status'
+          'pca_status': 'pca_status',
+          'pca_out_of_service': 'pca_out_of_service'
         },
         4: {
           B1: {

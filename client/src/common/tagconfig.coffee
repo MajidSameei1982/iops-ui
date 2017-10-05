@@ -1374,12 +1374,7 @@ class TagConfig extends Object
 			pbb_level_detail_widget: # PBB Bridge Widget		
 				4:
 					A1:
-						A6L1:
-							remove_tags:{'pbb_autoleveling','pbb_limits','pbb_smoke_detector','pbb_cabin_floor_deicer','pbb_cab_angle_disp',
-										'pbb_slope_deg','pbb_swing_angle_disp','pbb_height_to_disp','pbb_wheel_angle_deg','pbb_tunnel_length'}
-							add_tags:{
-								power_on:{Tag:'PBB.POWER_ON',Label:'Power On',DataType:'Boolean',Parameters:{Parm001:'On',Parm002:'Off',Parm003:'ok',Parm004:null,Parm005:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
-							}			
+									
 						A6L2:
 							add_graphics:{
 								elevating_img:{ControlTags:{elvrot_rotunda_position_boolean:'Boolean'},Parameters:{Parm001:'ALL_TRUE',Parm002:'down-position',Parm003:null,Parm004:'elevating-img-bq'},Element:{Type:'div',ParentID:'#elevating_img_container',Class:'elevating_img show',Object:null}},
@@ -1938,7 +1933,7 @@ class TagConfig extends Object
 			pca_widget: # PCA Widget
 				remove_tags:{'pca_cabin_temp','pca_ambient_temp','pca_discharge_temp','pca_heater_1','pca_heater_2','pca_comp_stage_1','pca_comp_stage_2'
 					,'pca_bridge_damper','pca_bridge_air','pca_dirty_filter','pca_blower','pca_suction_pressure_1','pca_suction_pressure_2'
-					,'pca_hot_gas_1','pca_hot_gas_2','pca_status'}
+					,'pca_hot_gas_1','pca_hot_gas_2','pca_status','pca_out_of_service'}
 				4:
 					B1:
 						B24:	
