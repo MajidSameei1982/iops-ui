@@ -22490,6 +22490,24 @@ TagConfig = (function(superClass) {
           B1: {
             B24: {
               update_tags: {
+                pca_out_of_service: {
+                  Tag: 'PCA._OUT_OF_SERVICE',
+                  Label: 'Out of Service',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
                 pca_cabin_temp: {
                   Tag: 'PCA.TEMPCABIN',
                   Label: 'Cabin Air Temperature',
@@ -23039,6 +23057,24 @@ TagConfig = (function(superClass) {
             },
             B25L1: {
               update_tags: {
+                pca_out_of_service: {
+                  Tag: 'PCA._OUT_OF_SERVICE',
+                  Label: 'Out of Service',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
                 pca_cabin_temp: {
                   Tag: 'PCA.TEMPCABIN',
                   Label: 'Cabin Air Temperature',
@@ -23588,6 +23624,24 @@ TagConfig = (function(superClass) {
             },
             B25L2: {
               update_tags: {
+                pca_out_of_service: {
+                  Tag: 'PCA._OUT_OF_SERVICE',
+                  Label: 'Out of Service',
+                  DataType: 'Boolean',
+                  Parameters: {
+                    Parm001: null,
+                    Parm002: null,
+                    Parm003: null,
+                    Parm004: null,
+                    Parm005: null
+                  },
+                  Element: {
+                    Type: null,
+                    ParentID: null,
+                    Class: 'no_row',
+                    Object: null
+                  }
+                },
                 pca_cabin_temp: {
                   Tag: 'PCA.TEMPCABIN',
                   Label: 'Cabin Air Temperature',
@@ -24138,6 +24192,24 @@ TagConfig = (function(superClass) {
           },
           B2: {
             update_tags: {
+              pca_out_of_service: {
+                Tag: 'PCA._OUT_OF_SERVICE',
+                Label: 'Out of Service',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: null,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: 'no_row',
+                  Object: null
+                }
+              },
               pca_cabin_temp: {
                 Tag: 'PCA.TEMPCABIN',
                 Label: 'Cabin Air Temperature',
@@ -24711,6 +24783,24 @@ TagConfig = (function(superClass) {
           },
           B3: {
             update_tags: {
+              pca_out_of_service: {
+                Tag: 'PCA._OUT_OF_SERVICE',
+                Label: 'Out of Service',
+                DataType: 'Boolean',
+                Parameters: {
+                  Parm001: null,
+                  Parm002: null,
+                  Parm003: null,
+                  Parm004: null,
+                  Parm005: null
+                },
+                Element: {
+                  Type: null,
+                  ParentID: null,
+                  Class: 'no_row',
+                  Object: null
+                }
+              },
               pca_cabin_temp: {
                 Tag: 'PCA.TEMPCABIN',
                 Label: 'Cabin Air Temperature',

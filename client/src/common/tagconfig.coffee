@@ -1938,6 +1938,7 @@ class TagConfig extends Object
 					B1:
 						B24:	
 							update_tags:{
+								pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 								pca_cabin_temp:{Tag:'PCA.TEMPCABIN',Label:'Cabin Air Temperature',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 								pca_ambient_temp:{Tag:'PCA.TEMPAMB',Label:'Ambient Air Temperature',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 								pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'PCA Discharge Temp',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
@@ -1972,6 +1973,7 @@ class TagConfig extends Object
 							}
 						B25L1:	
 							update_tags:{
+								pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 								pca_cabin_temp:{Tag:'PCA.TEMPCABIN',Label:'Cabin Air Temperature',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 								pca_ambient_temp:{Tag:'PCA.TEMPAMB',Label:'Ambient Air Temperature',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 								pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'PCA Discharge Temp',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
@@ -2006,6 +2008,7 @@ class TagConfig extends Object
 							}	
 						B25L2:	
 							update_tags:{
+								pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 								pca_cabin_temp:{Tag:'PCA.TEMPCABIN',Label:'Cabin Air Temperature',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 								pca_ambient_temp:{Tag:'PCA.TEMPAMB',Label:'Ambient Air Temperature',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 								pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'[*]PCA Discharge Temp',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
@@ -2040,6 +2043,7 @@ class TagConfig extends Object
 							}
 					B2:
 						update_tags:{
+							pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 							pca_cabin_temp:{Tag:'PCA.TEMPCABIN',Label:'Cabin Air Temperature',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							pca_ambient_temp:{Tag:'PCA.TEMPAMB',Label:'Ambient Air Temperature',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'[*]PCA Discharge Temp',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
@@ -2081,6 +2085,7 @@ class TagConfig extends Object
 
 					B3:
 						update_tags:{
+							pca_out_of_service:{Tag:'PCA._OUT_OF_SERVICE',Label:'Out of Service',DataType:'Boolean',Parameters:{Parm001:null,Parm002:null,Parm003:null,Parm004:null,Parm005:null},Element:{Type:null,ParentID:null,Class:'no_row',Object:null}},
 							pca_cabin_temp:{Tag:'PCA.TEMPCABIN',Label:'Cabin Air Temperature',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							pca_ambient_temp:{Tag:'PCA.TEMPAMB',Label:'Ambient Air Temperature',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
 							pca_discharge_temp:{Tag:'PCA.TEMPDISCH',Label:'[*]PCA Discharge Temp',DataType:'Float',Parameters:{Parm001:true,Parm002:2,Parm003:'#{1} F',Parm004:null},Element:{Type:'TableRow',ParentID:'#widgetData',Class:null,Object:null}},
